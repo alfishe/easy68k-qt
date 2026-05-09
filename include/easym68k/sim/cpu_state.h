@@ -58,6 +58,12 @@ struct CpuState {
   }
 
   int GetInterruptMask() const { return (sr & kSrIntMask) >> 8; }
+
+  void SetSupervisor(bool value) { SetFlag(kSrSupervisor, value); }
+
+  void SetInterruptMask(int level) {
+    sr = static_cast<uint16_t>((sr & ~kSrIntMask) | ((level & 0x7) << 8));
+  }
 };
 
 }  // namespace easym68k::sim
