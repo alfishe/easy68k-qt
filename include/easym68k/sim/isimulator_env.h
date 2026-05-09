@@ -29,7 +29,7 @@ class ISimulatorEnv {
   virtual void SetExceptionsEnabled(bool enable) = 0;
   virtual void SetWindowSize(unsigned short width, unsigned short height) = 0;
   virtual void GetWindowSize(unsigned short* width, unsigned short* height) = 0;
-  virtual void SetupWindow() = 0;
+  virtual void SetupWindow(bool fullscreen) = 0;
 };
 
 }  // namespace easym68k::sim

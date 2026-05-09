@@ -53,11 +53,26 @@ TEST_F(MiscTest, TrapPushesStackFrame) {
 }
 
 TEST_F(MiscTest, TrapVectorRange) {
-  // TRAP #15 → vector 47, address 47*4=0xBC
-  sim_.GetMemory().WriteLong(47 * 4, 0x6000);
-  sim_.GetMemory().WriteWord(0x1000, 0x4E4F);  // TRAP #15
+  // TRAP #14 → vector 32+14=46, address 46*4=0xB8 (TRAP #15 is the I/O trap, not a hw vector)
+  sim_.GetMemory().WriteLong(46 * 4, 0x6000);
+  sim_.GetMemory().WriteWord(0x1000, 0x4E4E);  // TRAP #14
   sim_.Step();
   EXPECT_EQ(sim_.State().pc, 0x6000u);
+}
+
+TEST_F(MiscTest, Trap15Task9Terminates) {
+  // TRAP #15 task 9 (terminate) returns kHalted without going through exception vector
+  sim_.State().d[0] = 9;
+  sim_.GetMemory().WriteWord(0x1000, 0x4E4F);  // TRAP #15
+  EXPECT_EQ(sim_.Step(), SimResult::kHalted);
+}
+
+TEST_F(MiscTest, Trap15UnknownTaskReturnsOk) {
+  // TRAP #15 unknown task (no interface) returns kOk silently
+  sim_.State().d[0] = 200;
+  sim_.GetMemory().WriteWord(0x1000, 0x4E4F);  // TRAP #15
+  EXPECT_EQ(sim_.Step(), SimResult::kOk);
+  EXPECT_EQ(sim_.State().pc, 0x1002u);
 }
 
 // =============================================================================

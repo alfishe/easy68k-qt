@@ -200,6 +200,9 @@ class M68kSimulator {
   SimResult OpReset(uint16_t opcode);
   SimResult OpStop(uint16_t opcode);
 
+  // Trap #15 I/O dispatch (trap15_dispatch.cc)
+  SimResult DispatchTrap15();
+
   // Leaf instruction implementations (opcodes_shift.cc)
   SimResult OpShiftRotate(uint16_t opcode);
   SimResult OpBtst(uint16_t opcode);

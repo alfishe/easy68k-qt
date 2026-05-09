@@ -14,7 +14,9 @@ namespace easym68k::sim {
 // Step() extracts n from (opcode & 0x0F) when handling kTrapException.
 // ---------------------------------------------------------------------------
 
-SimResult M68kSimulator::OpTrap(uint16_t /*opcode*/) {
+SimResult M68kSimulator::OpTrap(uint16_t opcode) {
+  if ((opcode & 0x0F) == 15)
+    return DispatchTrap15();
   return SimResult::kTrapException;
 }
 

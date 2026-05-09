@@ -113,8 +113,8 @@ Decision: Register shift count uses `% 64` (not `& sizeMask`) — the original's
 | Task | Status | Commit | Summary |
 |------|--------|--------|---------|
 | 7.1 Define Trap #15 Interface Headers | DONE | `5cee051` | 10 interface headers: ITextIO/IFileIO/ISerialIO/INetworkIO/IGraphicsIO/ISoundIO/IPeripheralIO/ISimulatorEnv/IPrintIO/ILogger; all self-contained |
-| 7.2 Implement Trap #15 Dispatch | TODO | | |
-| 7.3 Trap #15 Mock Tests | TODO | | |
+| 7.2 Implement Trap #15 Dispatch | DONE | `35b12e7` | DispatchTrap15() 50-case switch; SetupWindow(bool fullscreen) on ISimulatorEnv; 2 new MiscTest cases; 402 tests |
+| 7.3 Trap #15 Mock Tests | ACTIVE | | |
 
 ## Phase 8: Assembler
 
@@ -176,4 +176,4 @@ Decision: Register shift count uses `% 64` (not `& sizeMask`) — the original's
 
 ---
 
-**NEXT:** Task 7.2 — Implement Trap #15 Dispatch
+**NEXT:** Task 7.3 — Trap #15 Mock Tests

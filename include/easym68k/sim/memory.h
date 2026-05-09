@@ -75,9 +75,10 @@ class Memory {
   bool IsRom(uint32_t address) const;
 
   // ---------------------------------------------------------------------------
-  // Direct Access (for debugging/display)
+  // Direct Access (for debugging, display, and I/O buffer writes)
   // ---------------------------------------------------------------------------
 
+  uint8_t* RawData() { return data_.data(); }
   const uint8_t* RawData() const { return data_.data(); }
   uint32_t Size() const { return static_cast<uint32_t>(data_.size()); }
 
