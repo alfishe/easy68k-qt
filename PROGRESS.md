@@ -92,12 +92,13 @@ Decision: NOP/STOP moved from simulator.cc to DispatchGroup4 in decode.cc.
 | 6.1 Move Instructions | DONE | `87ca91d` | Full dispatch for all 16 opcode groups; 13 move-class ops + 5 flag helpers; 37 tests |
 | 6.2 Arithmetic Instructions | DONE | `46432cf` | All 27 arithmetic ops (ADD/SUB/MUL/DIV/NEG/CMP/TST/EXT/BCD/CHK); 69 tests |
 | 6.3 Logic Instructions | DONE | `ecd8bdb` | OR/AND/EOR + immediate + CCR/SR variants, NOT, TAS; 40 tests |
-| 6.4 Branch Instructions | ACTIVE | 2026-05-09 | |
+| 6.4 Branch Instructions | DONE | `pending` | BRA/BSR/Bcc/DBcc/Scc/JMP/JSR/RTS/RTE/RTR; FetchWord made public; 32 tests |
 
 Decision: ABCD/SBCD/NBCD set X=C (per M68000 manual). Original EASy68K omits X update — a bug.
 Decision: CHK negative-check uses int16_t cast. Original masks to WORD_MASK then tests < 0, which is always false — a bug. Port is correct.
 Decision: CHK leaves N/Z/V/C undefined (spec allows this). Original sets Z as a side-effect; not replicated since spec explicitly marks all flags undefined for CHK.
-| 6.5 Miscellaneous Instructions | TODO | | |
+Decision: FetchWord/FetchLong moved to public section so the FetchBranchDisp static helper in opcodes_branch.cc can call them without code duplication.
+| 6.5 Miscellaneous Instructions | ACTIVE | 2026-05-09 | |
 | 6.6 Shift/Rotate Instructions | TODO | | |
 | 6.7 Flag Computation Verification Suite | TODO | | |
 
@@ -169,4 +170,4 @@ Decision: CHK leaves N/Z/V/C undefined (spec allows this). Original sets Z as a 
 
 ---
 
-**NEXT:** Task 6.4 — Branch Instructions
+**NEXT:** Task 6.5 — Miscellaneous Instructions

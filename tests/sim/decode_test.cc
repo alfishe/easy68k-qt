@@ -43,8 +43,11 @@ TEST_F(DecodeTest, NopDispatches) {
 // ---------------------------------------------------------------------------
 
 TEST_F(DecodeTest, RtsDispatches) {
-  SetupOpcode(0x4E75);  // RTS (group 4) — not yet implemented in Phase 5
-  EXPECT_EQ(sim_.Step(), SimResult::kBadInstruction);
+  sim_.GetMemory().WriteLong(0x3FFA, 0x2000);  // return address on stack
+  sim_.State().ssp = 0x3FFA;
+  SetupOpcode(0x4E75);  // RTS (group 4)
+  EXPECT_EQ(sim_.Step(), SimResult::kOk);
+  EXPECT_EQ(sim_.State().pc, 0x2000u);
 }
 
 // ---------------------------------------------------------------------------

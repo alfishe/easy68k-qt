@@ -89,10 +89,11 @@ class M68kSimulator {
   // Condition check — public for direct testability.
   bool CheckCondition(Condition cond) const;
 
- private:
+  // Fetch next instruction word/long from PC (advances PC).
   uint16_t FetchWord();
   uint32_t FetchLong();
 
+ private:
   SimResult ExecuteInstruction(uint16_t opcode);
 
   // EA wrappers that use state_.pc and state_ implicitly.
