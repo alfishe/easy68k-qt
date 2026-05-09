@@ -154,8 +154,8 @@ TEST_F(DecodeTest, MovemRegister) {
 // ---------------------------------------------------------------------------
 
 TEST_F(DecodeTest, BtstDynamic) {
-  SetupOpcode(0x0100);  // BTST Dn (group 0) — not yet implemented in Phase 5
-  EXPECT_EQ(sim_.Step(), SimResult::kBadInstruction);
+  SetupOpcode(0x0100);  // BTST D0,D0 (group 0) — dispatches to OpBtst
+  EXPECT_EQ(sim_.Step(), SimResult::kOk);
 }
 
 }  // namespace

@@ -101,7 +101,11 @@ Decision: FetchWord/FetchLong moved to public section so the FetchBranchDisp sta
 | 6.5 Miscellaneous Instructions | DONE | `6d451e0` | TRAP/TRAPV/ILLEGAL/RESET/STOP; decode.cc STOP delegated to OpStop (SR load fix); 19 tests |
 
 Decision: STOP fully ported from CODE9.CPP: immediate word fetched before privilege check (PC always advances), trace flag preserved across SR load, post-load supervisor check added. Original decode.cc stub skipped SR load entirely — now fixed by delegating to OpStop.
-| 6.6 Shift/Rotate Instructions | ACTIVE | 2026-05-09 | |
+| 6.6 Shift/Rotate Instructions | DONE | `pending` | OpShiftRotate (register+memory), OpBtst/Bchg/Bclr/Bset; 25 tests + DecodeTest stub updated |
+
+Decision: `DecodeTest.BtstDynamic` was a Phase 5 stub expecting `kBadInstruction`; updated to expect `kOk` now that BTST is implemented.
+Decision: ROL/ROR preserve X by saving `orig_x` before `UpdateFlagsShift` and restoring after (type==3). ASL V flag tracked per-iteration via `prev` variable.
+Decision: Register shift count uses `% 64` (not `& sizeMask`) — the original's mask was a bug (count 1–7 become 0 for byte/word shifts). The port uses the correct M68000 PRM modulo-64 behaviour.
 | 6.7 Flag Computation Verification Suite | TODO | | |
 
 ## Phase 7: Trap #15 Dispatch
@@ -172,4 +176,4 @@ Decision: STOP fully ported from CODE9.CPP: immediate word fetched before privil
 
 ---
 
-**NEXT:** Task 6.6 — Shift/Rotate Instructions
+**NEXT:** Task 6.7 — Flag Computation Verification Suite
