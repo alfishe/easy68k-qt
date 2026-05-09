@@ -14,7 +14,7 @@ This repository is based on the unpacked Borland C++Builder sources from [alfish
 
 ## Current Status
 
-**Phase 6 (Opcode Implementation) — 6/7 tasks complete, 336 tests passing.**
+**Phase 8 (Assembler) — 2/6 tasks complete, 678 tests passing (505 sim + 173 asm).**
 
 ### Completed
 
@@ -32,14 +32,24 @@ This repository is based on the unpacked Borland C++Builder sources from [alfish
 | 6.4 | Branch (BRA/BSR/Bcc/DBcc/Scc/JMP/JSR/RTS/RTE/RTR) | 32 |
 | 6.5 | Miscellaneous (TRAP/TRAPV/ILLEGAL/RESET/STOP) | 19 |
 | 6.6 | Shift/Rotate (ASL/ASR/LSL/LSR/ROL/ROR/ROXL/ROXR + BTST/BCHG/BCLR/BSET) | 25 |
+| 6.7 | Flag computation verification suite (end-to-end flag state for all instruction classes) | 64 |
+| 7.1 | Trap #15 interface headers (10 I/O interfaces) | — |
+| 7.2 | Trap #15 dispatch (50-case switch, SetupWindow) | — |
+| 7.3 | Trap #15 mock tests (all task numbers, null-interface edge cases) | 103 |
+| 8.1 | Lexer (TokenType/SizeSpec/RegisterType enums, Token, all opcodes + directives) | 100 |
+| 8.2 | Parser + Symbol Table (AddressMode/Operand/ParsedLine, SymbolFlags/ForwardRef, Pratt-precedence evaluator) | 73 |
 
 Deliberate correctness improvements over the original are logged in `PROGRESS.md` — BCD X flag, CHK signed comparison, STOP full 5-step port, shift count modulo-64.
 
+### In Progress
+
+- **8.3** Expression evaluator
+
 ### Next Up
 
-- **6.7** Flag computation verification suite
-- **7** Trap #15 I/O dispatch
-- **8** Assembler (lexer, parser, expression evaluator)
+- **8.4** Assembler core (two-pass assembly)
+- **8.5** Missing assembler components (macros, structured control, conditional assembly)
+- **8.6** Golden assembly tests
 - **9** Golden simulation traces
 - **10** Exception and interrupt tests
 - **11** CI, code coverage, clang-tidy
@@ -83,7 +93,7 @@ cmake --build build-asan && ctest --test-dir build-asan --output-on-failure
 
 ## Testing
 
-336 tests across 13 test suites covering memory, addressing modes, the decoder, all implemented instruction groups, and flag computation.
+678 tests across 17 test suites covering memory, addressing modes, the decoder, all instruction groups, flag computation, Trap #15 I/O, lexer, parser, and symbol table.
 
 ```bash
 ctest --test-dir build --output-on-failure         # all tests
@@ -118,4 +128,4 @@ GPL-2.0-or-later — consistent with the original EASy68K project.
 
 ---
 
-*Phase 6 nearly complete · 336 tests passing · Next: flag verification suite*
+*Phase 8 assembler in progress · 678 tests passing · Next: expression evaluator*
