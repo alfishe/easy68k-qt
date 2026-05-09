@@ -103,6 +103,23 @@ class M68kSimulator {
   // Pushes stack frame for vector, sets supervisor mode, clears trace, loads new PC.
   void HandleException(ExceptionVector vector);
 
+  // Hierarchical instruction decoder (defined in decode.cc).
+  SimResult DispatchGroup0(uint16_t opcode);
+  SimResult OpMove(uint16_t opcode);
+  SimResult DispatchMoveOrMovea(uint16_t opcode);
+  SimResult DispatchGroup4(uint16_t opcode);
+  SimResult DispatchGroup5(uint16_t opcode);
+  SimResult DispatchGroup6(uint16_t opcode);
+  SimResult OpMoveq(uint16_t opcode);
+  SimResult DispatchGroup8(uint16_t opcode);
+  SimResult DispatchGroup9(uint16_t opcode);
+  SimResult OpLine1010(uint16_t opcode);
+  SimResult DispatchGroupB(uint16_t opcode);
+  SimResult DispatchGroupC(uint16_t opcode);
+  SimResult DispatchGroupD(uint16_t opcode);
+  SimResult DispatchGroupE(uint16_t opcode);
+  SimResult DispatchSimhalt(uint16_t opcode);
+
   CpuState state_{};
   Memory memory_;
   Config config_;

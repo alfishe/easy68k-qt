@@ -126,25 +126,6 @@ void M68kSimulator::HandleException(ExceptionVector vector) {
 }
 
 // =============================================================================
-// Instruction dispatch (Phase 4: NOP, Line A/F; Phase 5+ fills remaining groups)
-// =============================================================================
-
-SimResult M68kSimulator::ExecuteInstruction(uint16_t opcode) {
-  if ((opcode & 0xF000) == 0xA000)
-    return SimResult::kLine1010;
-  if ((opcode & 0xF000) == 0xF000)
-    return SimResult::kLine1111;
-  if (opcode == 0x4E71)
-    return SimResult::kOk;  // NOP
-  if (opcode == 0x4E72) {   // STOP #imm (privileged); next word is the new SR
-    if (!state_.IsSupervisor())
-      return SimResult::kPrivilegeViolation;
-    return SimResult::kStopInstruction;
-  }
-  return SimResult::kBadInstruction;
-}
-
-// =============================================================================
 // Step — fetch, execute, handle exception
 // =============================================================================
 

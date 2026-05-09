@@ -14,16 +14,19 @@ namespace {
 
 class SimTest : public ::testing::Test {
  protected:
-  M68kSimulator sim_{M68kSimulator::Config{}};
+  static M68kSimulator sim_;
 
   // Convenience: reset with SSP=ssp, PC pointing to a NOP or user-supplied opcode.
   void ResetWithVectors(uint32_t ssp_val, uint32_t pc_val) {
     sim_.GetMemory().Clear();
     sim_.GetMemory().WriteLong(0x0, ssp_val);
     sim_.GetMemory().WriteLong(0x4, pc_val);
+    sim_.ClearBreakpoints();
     sim_.Reset();
   }
 };
+
+M68kSimulator SimTest::sim_{M68kSimulator::Config{}};
 
 // ---------------------------------------------------------------------------
 // 1. ResetInitializesFromVectors
