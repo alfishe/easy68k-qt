@@ -120,8 +120,8 @@ Decision: Register shift count uses `% 64` (not `& sizeMask`) — the original's
 
 | Task | Status | Commit | Summary |
 |------|--------|--------|---------|
-| 8.1 Transfer Lexer | DONE | `pending` | TokenType/SizeSpec/RegisterType enums, Token struct, Lexer class; all 68000 opcodes + EASy68K directives; 99 LexerTest |
-| 8.2 Transfer Parser and Symbol Table | TODO | | |
+| 8.1 Transfer Lexer | DONE | `7c5b148` | TokenType/SizeSpec/RegisterType enums, Token struct, Lexer class; all 68000 opcodes + EASy68K directives; 100 LexerTest |
+| 8.2 Transfer Parser and Symbol Table | ACTIVE | | Parser (AddressMode/Operand/ParsedLine/Parser), SymbolTable (SymbolFlags/ForwardRef/SymbolInfo); Pratt-precedence expression evaluator; 173 tests |
 | 8.3 Transfer Expression Evaluator | TODO | | |
 | 8.4 Transfer Assembler Core | TODO | | |
 | 8.5 Implement Missing Assembler Components | TODO | | |
