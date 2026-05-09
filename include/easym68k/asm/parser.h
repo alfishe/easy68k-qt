@@ -11,13 +11,13 @@
 #include <string>
 #include <vector>
 
+#include "easym68k/asm/expression.h"
 #include "easym68k/asm/lexer.h"
 
 namespace easym68k::asm_ {
 
 // Forward declarations
 class SymbolTable;
-class ExpressionEvaluator;
 
 // Addressing mode codes (bit masks matching EASy68K asm.h conventions).
 enum class AddressMode {
@@ -108,6 +108,7 @@ class Parser {
 
  private:
   Lexer lexer_;
+  ExpressionEvaluator evaluator_;
   SymbolTable* symbols_;
   uint32_t location_counter_;
   int pass_;
@@ -137,8 +138,6 @@ class Parser {
                          AddressMode idx_mode);
 
   bool EvaluateExpression(int32_t& value, bool& is_back_ref);
-  bool ParsePrimary(int32_t& value, bool& is_back_ref);
-  bool ParseExprPrec(int32_t& value, bool& is_back_ref, int min_prec);
 
   void Error(const std::string& message);
   static std::string ToUpper(const std::string& s);

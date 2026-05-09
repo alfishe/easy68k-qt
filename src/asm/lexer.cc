@@ -400,6 +400,20 @@ Token Lexer::ScanToken() {
       Advance();
       return MakeToken(TokenType::kHash, "#");
     case '.':
+      // ".N" — structured-control symbol (.0/.1/.2/.3). Only digit-lead so
+      // that ".W"/".L" size-suffix dots remain plain kDot tokens.
+      if (IsDigit(Peek(1))) {
+        size_t start = pos_;
+        Advance();  // consume '.'
+        while (IsIdentifierChar(Current()))
+          Advance();
+        Token sym_tok;
+        sym_tok.line = start_line;
+        sym_tok.column = start_column;
+        sym_tok.type = TokenType::kSymbol;
+        sym_tok.text = source_.substr(start, pos_ - start);
+        return sym_tok;
+      }
       Advance();
       return MakeToken(TokenType::kDot, ".");
     case '+':
@@ -550,18 +564,23 @@ Token Lexer::ScanHexNumber() {
     return MakeError("Expected hexadecimal digit after $");
   }
 
-  int32_t value = 0;
+  uint32_t value = 0;
+  bool overflow = false;
   while (IsHexDigit(Current())) {
     char d = ToUpper(Current());
-    int digit = (d >= 'A') ? (d - 'A' + 10) : (d - '0');
+    uint32_t digit = static_cast<uint32_t>((d >= 'A') ? (d - 'A' + 10) : (d - '0'));
+    if (value > 0x0FFFFFFFu)
+      overflow = true;
     value = (value << 4) | digit;
     Advance();
   }
 
+  if (overflow)
+    return MakeError("Number too large");
   Token token;
   token.type = TokenType::kNumber;
   token.text = source_.substr(start, pos_ - start);
-  token.int_value = value;
+  token.int_value = static_cast<int32_t>(value);
   token.line = start_line;
   token.column = start_column;
   return token;
@@ -578,16 +597,21 @@ Token Lexer::ScanBinaryNumber() {
     return MakeError("Expected binary digit after %");
   }
 
-  int32_t value = 0;
+  uint32_t value = 0;
+  bool overflow = false;
   while (Current() == '0' || Current() == '1') {
-    value = (value << 1) | (Current() - '0');
+    if (value > 0x7FFFFFFFu)
+      overflow = true;
+    value = (value << 1) | static_cast<uint32_t>(Current() - '0');
     Advance();
   }
 
+  if (overflow)
+    return MakeError("Number too large");
   Token token;
   token.type = TokenType::kNumber;
   token.text = source_.substr(start, pos_ - start);
-  token.int_value = value;
+  token.int_value = static_cast<int32_t>(value);
   token.line = start_line;
   token.column = start_column;
   return token;
@@ -604,16 +628,21 @@ Token Lexer::ScanOctalNumber() {
     return MakeError("Expected octal digit after @");
   }
 
-  int32_t value = 0;
+  uint32_t value = 0;
+  bool overflow = false;
   while (Current() >= '0' && Current() <= '7') {
-    value = (value << 3) | (Current() - '0');
+    if (value > 0x1FFFFFFFu)
+      overflow = true;
+    value = (value << 3) | static_cast<uint32_t>(Current() - '0');
     Advance();
   }
 
+  if (overflow)
+    return MakeError("Number too large");
   Token token;
   token.type = TokenType::kNumber;
   token.text = source_.substr(start, pos_ - start);
-  token.int_value = value;
+  token.int_value = static_cast<int32_t>(value);
   token.line = start_line;
   token.column = start_column;
   return token;
@@ -624,16 +653,22 @@ Token Lexer::ScanDecimalNumber() {
   int start_column = column_;
   size_t start = pos_;
 
-  int32_t value = 0;
+  uint32_t value = 0;
+  bool overflow = false;
   while (IsDigit(Current())) {
-    value = value * 10 + (Current() - '0');
+    uint32_t digit = static_cast<uint32_t>(Current() - '0');
+    if (value > (0xFFFFFFFFu - digit) / 10u)
+      overflow = true;
+    value = value * 10u + digit;
     Advance();
   }
 
+  if (overflow)
+    return MakeError("Number too large");
   Token token;
   token.type = TokenType::kNumber;
   token.text = source_.substr(start, pos_ - start);
-  token.int_value = value;
+  token.int_value = static_cast<int32_t>(value);
   token.line = start_line;
   token.column = start_column;
   return token;

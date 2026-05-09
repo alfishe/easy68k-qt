@@ -17,12 +17,15 @@ Parser::~Parser() = default;
 
 void Parser::SetSymbolTable(SymbolTable* symbols) {
   symbols_ = symbols;
+  evaluator_.SetSymbolTable(symbols);
 }
 void Parser::SetLocationCounter(uint32_t loc) {
   location_counter_ = loc;
+  evaluator_.SetLocationCounter(loc);
 }
 void Parser::SetPass(int pass) {
   pass_ = pass;
+  evaluator_.SetPass(pass);
 }
 
 ParsedLine Parser::ParseLine(const std::string& line, int line_number) {
@@ -493,140 +496,14 @@ bool Parser::FinishIndexedMode(Operand& out, int32_t disp, bool back_ref, Addres
   return true;
 }
 
-// Returns 1-4 for binary operators (EASy68K precedence), 0 for non-operators.
-// Matches EVAL.CPP precedence(): +/- lowest, then *//, then &|^, then <</>>.
-static int BinOpPrec(const Token& tok) {
-  if (tok.type == TokenType::kPlus || tok.type == TokenType::kMinus)
-    return 1;
-  if (tok.type == TokenType::kOperator) {
-    const std::string& s = tok.text;
-    if (s == "*" || s == "/" || s == "\\")
-      return 2;
-    if (s == "&" || s == "|" || s == "^")
-      return 3;
-    if (s == "<<" || s == ">>")
-      return 4;
-  }
-  return 0;
-}
-
 bool Parser::EvaluateExpression(int32_t& value, bool& is_back_ref) {
-  value = 0;
-  is_back_ref = true;
-  return ParseExprPrec(value, is_back_ref, 1);
-}
-
-bool Parser::ParsePrimary(int32_t& value, bool& is_back_ref) {
-  bool negate = false;
-  bool complement = false;
-  while (Check(TokenType::kMinus) || Check(TokenType::kOperator)) {
-    if (Check(TokenType::kMinus)) {
-      negate = !negate;
-      Advance();
-    } else if (Current().text == "~") {
-      complement = !complement;
-      Advance();
-    } else {
-      break;
-    }
-  }
-
-  Token token = Current();
-  if (token.type == TokenType::kNumber) {
-    value = token.int_value;
-    Advance();
-  } else if (token.type == TokenType::kString) {
-    value = token.int_value;
-    Advance();
-  } else if (token.type == TokenType::kOperator && token.text == "*") {
-    value = static_cast<int32_t>(location_counter_);
-    Advance();
-  } else if (token.type == TokenType::kSymbol) {
-    if (symbols_) {
-      SymbolInfo info;
-      if (symbols_->Lookup(token.text, info)) {
-        value = info.value;
-        is_back_ref = info.is_defined;
-      } else {
-        is_back_ref = false;
-        if (pass_ == 2) {
-          Error("Undefined symbol: " + token.text);
-          return false;
-        }
-      }
-    } else {
-      is_back_ref = false;
-    }
-    Advance();
-  } else if (token.type == TokenType::kLParen) {
-    Advance();
-    if (!EvaluateExpression(value, is_back_ref))
-      return false;
-    if (!Match(TokenType::kRParen)) {
-      Error("Expected )");
-      return false;
-    }
-  } else {
-    Error("Expected value in expression");
+  ExpressionResult result = evaluator_.Evaluate(tokens_, token_pos_, token_pos_);
+  if (!result.is_valid) {
+    Error(result.error_message);
     return false;
   }
-
-  if (complement)
-    value = ~value;
-  if (negate)
-    value = -value;
-  return true;
-}
-
-bool Parser::ParseExprPrec(int32_t& value, bool& is_back_ref, int min_prec) {
-  if (!ParsePrimary(value, is_back_ref))
-    return false;
-
-  while (true) {
-    Token op_tok = Current();
-    int prec = BinOpPrec(op_tok);
-    if (prec == 0 || prec < min_prec)
-      break;
-    Advance();
-
-    int32_t rhs = 0;
-    bool rhs_back_ref = true;
-    if (!ParseExprPrec(rhs, rhs_back_ref, prec + 1))
-      return false;
-    is_back_ref = is_back_ref && rhs_back_ref;
-
-    std::string op_str = op_tok.text;
-    if (op_tok.type == TokenType::kPlus) {
-      value += rhs;
-    } else if (op_tok.type == TokenType::kMinus) {
-      value -= rhs;
-    } else if (op_str == "*") {
-      value *= rhs;
-    } else if (op_str == "/") {
-      if (rhs == 0) {
-        Error("Division by zero");
-        return false;
-      }
-      value /= rhs;
-    } else if (op_str == "&") {
-      value &= rhs;
-    } else if (op_str == "|") {
-      value |= rhs;
-    } else if (op_str == "^") {
-      value ^= rhs;
-    } else if (op_str == "<<") {
-      value <<= rhs;
-    } else if (op_str == ">>") {
-      value = static_cast<int32_t>(static_cast<uint32_t>(value) >> rhs);
-    } else if (op_str == "\\") {
-      if (rhs == 0) {
-        Error("Modulo by zero");
-        return false;
-      }
-      value %= rhs;
-    }
-  }
-
+  value = result.value;
+  is_back_ref = result.is_back_ref;
   return true;
 }
 

@@ -109,6 +109,44 @@ TEST(LexerTest, OctalMissingDigitIsError) {
   EXPECT_EQ(t.type, TokenType::kError);
 }
 
+TEST(LexerTest, HexOverflowIsError) {
+  // 9 hex digits always exceeds 32 bits.
+  Token t = FirstToken("$100000000");
+  EXPECT_EQ(t.type, TokenType::kError);
+}
+
+TEST(LexerTest, HexMaxValue) {
+  // $FFFFFFFF fits exactly in uint32_t (stored as int32_t -1).
+  Token t = FirstToken("$FFFFFFFF");
+  EXPECT_EQ(t.type, TokenType::kNumber);
+  EXPECT_EQ(t.int_value, static_cast<int32_t>(0xFFFFFFFFu));
+}
+
+TEST(LexerTest, BinaryOverflowIsError) {
+  // 33 binary digits exceed 32 bits.
+  Token t = FirstToken("%100000000000000000000000000000000");
+  EXPECT_EQ(t.type, TokenType::kError);
+}
+
+TEST(LexerTest, OctalOverflowIsError) {
+  // @40000000000 = 2^33, exceeds 32 bits.
+  Token t = FirstToken("@40000000000");
+  EXPECT_EQ(t.type, TokenType::kError);
+}
+
+TEST(LexerTest, DecimalOverflowIsError) {
+  // 4294967296 = 2^32, exceeds uint32_t range.
+  Token t = FirstToken("4294967296");
+  EXPECT_EQ(t.type, TokenType::kError);
+}
+
+TEST(LexerTest, DecimalMaxValue) {
+  // 4294967295 = 0xFFFFFFFF, fits in uint32_t.
+  Token t = FirstToken("4294967295");
+  EXPECT_EQ(t.type, TokenType::kNumber);
+  EXPECT_EQ(t.int_value, static_cast<int32_t>(0xFFFFFFFFu));
+}
+
 // ---------------------------------------------------------------------------
 // Strings
 // ---------------------------------------------------------------------------
@@ -502,6 +540,23 @@ TEST(LexerTest, MinusToken) {
 
 TEST(LexerTest, DotToken) {
   EXPECT_EQ(FirstToken(".").type, TokenType::kDot);
+}
+
+TEST(LexerTest, LocalLabelDigitIsSymbol) {
+  Token t = FirstToken(".0");
+  EXPECT_EQ(t.type, TokenType::kSymbol);
+  EXPECT_EQ(t.text, ".0");
+}
+
+TEST(LexerTest, DotAloneRemainsKDot) {
+  Token t = FirstToken(". ");
+  EXPECT_EQ(t.type, TokenType::kDot);
+}
+
+TEST(LexerTest, DotLetterRemainsKDot) {
+  // ".W" must remain a kDot token so that size-suffix parsing works.
+  Token t = FirstToken(".W");
+  EXPECT_EQ(t.type, TokenType::kDot);
 }
 
 TEST(LexerTest, OperatorTokens) {
