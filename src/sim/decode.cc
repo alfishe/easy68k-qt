@@ -240,9 +240,7 @@ SimResult M68kSimulator::DispatchGroup4(uint16_t opcode) {
         case 0x4E71:
           return SimResult::kOk;  // NOP
         case 0x4E72:
-          if (!state_.IsSupervisor())
-            return SimResult::kPrivilegeViolation;
-          return SimResult::kStopInstruction;
+          return OpStop(opcode);
         case 0x4E73:
           return OpRte(opcode);
         case 0x4E75:

@@ -7,6 +7,8 @@ This file governs how AI agents work on this project. Deviation produces broken 
 * **Pass Quality Gates:** If a task's quality gate fails, stop and fix it immediately. Errors compound.
 * **No Premature Generalization:** Implement exactly what the task requires.
 * **Track Progress:** Update `PROGRESS.md` after every task. Read it first when resuming work. It is the single source of truth for what is done and what to do next.
+* **No Autonomous Commits:** Never commit code without explicit human review and confirmation. Present changes for review, wait for approval, then commit only when told to.
+* **No Co-Authored Tags:** Never add `Co-authored-by:` or similar AI-attribution tags to commit messages.
 
 ## 2. Source Authority (CRITICAL)
 This project has a **hard source boundary**:
