@@ -43,3 +43,44 @@ This project has a **hard source boundary**:
 * Write tests immediately after porting a file using Google Test (`gtest`).
 * **Flag Computation Testing is Critical.** Verify N/Z/V/C/X for all arithmetic/logic instructions with edge-case operands.
 * Always run `clang-format` before concluding your work.
+
+## 7. Build and Test Commands
+
+All commands run from `/Users/dev/Projects/GitHub/EASy68k-port/`.
+
+```bash
+# Configure (first time or after CMakeLists changes)
+cmake -B build -DBUILD_GUI=OFF
+
+# Build everything
+cmake --build build
+
+# Build a specific target
+cmake --build build --target easym68k-sim
+cmake --build build --target easym68k-sim-tests
+
+# Run all tests
+ctest --test-dir build --output-on-failure
+
+# Run a specific test suite by name
+ctest --test-dir build -R sim-tests --output-on-failure
+ctest --test-dir build -R asm-tests --output-on-failure
+
+# Run a specific GoogleTest case directly (fastest)
+build/tests/easym68k-sim-tests --gtest_filter="MemoryTest*"
+build/tests/easym68k-asm-tests --gtest_filter="LexerTest*"
+
+# Format check (clang-format is at /opt/homebrew/Cellar/llvm/21.1.8_1/bin/clang-format)
+CFMT=/opt/homebrew/Cellar/llvm/21.1.8_1/bin/clang-format
+find include/easym68k src tests \( -name '*.cc' -o -name '*.h' \) \
+  | xargs $CFMT --dry-run --Werror
+
+# Format in-place
+find include/easym68k src tests \( -name '*.cc' -o -name '*.h' \) \
+  | xargs $CFMT -i
+
+# ASan + UBSan build
+cmake -B build-asan -DBUILD_GUI=OFF -DENABLE_ASAN=ON -DENABLE_UBSAN=ON
+cmake --build build-asan
+ctest --test-dir build-asan --output-on-failure
+```

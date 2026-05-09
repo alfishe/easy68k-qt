@@ -1,0 +1,30 @@
+qt_add_executable(easy68k-simulator
+  main.cc
+  mainwindow.cc
+  register_widget.cc
+  source_view.cc
+  stack_window.cc
+  disassembly_view.cc
+  console_widget.cc
+  memory_window.cc
+  log_window.cc
+  memory_range_dialog.cc
+  hardware_window.cc
+  qt_text_io.cc
+  qt_file_io.cc
+  qt_serial_io.cc
+  qt_network_io.cc
+  qt_graphics_io.cc
+  qt_sound_io.cc
+  qt_peripheral_io.cc
+  qt_simulator_env.cc
+  qt_print_io.cc
+)
+target_link_libraries(easy68k-simulator PRIVATE
+  easym68k-sim
+  Qt6::Widgets
+  Qt6::Multimedia
+  Qt6::SerialPort
+  Qt6::Network
+  Qt6::PrintSupport
+)
