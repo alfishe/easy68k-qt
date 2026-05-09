@@ -1,12 +1,17 @@
 // Copyright 2024 EASy68K Contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
 //
-// Addressing mode constants for 68000 instruction encoding and decoding.
+// Addressing mode constants and effective address calculation.
 
 #ifndef EASY68K_SIM_ADDRESSING_MODE_H_
 #define EASY68K_SIM_ADDRESSING_MODE_H_
 
 #include <cstdint>
+
+#include "easym68k/sim/cpu_state.h"
+#include "easym68k/sim/effective_addr.h"
+#include "easym68k/sim/memory.h"
+#include "easym68k/sim/types.h"
 
 namespace easym68k::sim {
 
@@ -40,6 +45,32 @@ constexpr int kAddrModeCtrlAlt = kAddrModeControl & kAddrModeAlter;
 // Instruction word field extraction masks
 constexpr int kModeMask = 0x0038;
 constexpr int kRegMask = 0x0007;
+
+// =============================================================================
+// Effective Address API
+// =============================================================================
+
+// Calculate effective address from mode/reg fields.
+// May advance pc (extension words: displacement, index, absolute, immediate).
+// For modes 3/(An)+ and 4/-(An), advances or decrements the address register in state.
+// Does NOT read or write the value at the EA — that is ReadEA / WriteEA.
+EffectiveAddr CalculateEA(Memory& memory, CpuState& state, uint32_t& pc, int mode, int reg,
+                          DataSize size);
+
+// Read a value from ea according to size.
+// For kDataReg/kAddrReg: reads from state registers.
+// For kMemory: reads from memory (big-endian).
+// For kImmediate: returns ea.address (the pre-fetched immediate value).
+uint32_t ReadEA(const Memory& memory, const CpuState& state, const EffectiveAddr& ea,
+                DataSize size);
+
+// Write value to ea according to size.
+// For kDataReg: preserves upper bits for byte/word operations.
+// For kAddrReg: word writes sign-extend to 32 bits.
+// For kMemory: writes to memory (big-endian).
+// For kImmediate: returns SimResult::kBadInstruction.
+SimResult WriteEA(Memory& memory, CpuState& state, const EffectiveAddr& ea, uint32_t value,
+                  DataSize size);
 
 }  // namespace easym68k::sim
 
