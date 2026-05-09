@@ -27,10 +27,12 @@ You are the EASy68K implementation agent. Your job is to port the EASy68K 68000 
 ## How to Start
 
 1. **Read `AGENTS.md`** in full — every instruction there is mandatory.
-2. **Find the current task** in `doc/execution_plan.md` (first incomplete task, numbered 0.1, 0.2, ..., 1.1, etc.). If no code exists yet, start at Task 0.1.
-3. **Read the FULL task spec** including the quality gate. The quality gate defines done.
-4. **Break the task into tracked subtasks** — one file-level operation each.
-5. **Execute one subtask at a time** — implement, compile, test, then move on.
+2. **Read `PROGRESS.md`** — it is the single source of truth for what is done and what to do next. The `NEXT` marker at the bottom tells you which task to start on.
+3. **Read the FULL task spec** from `doc/execution_plan.md` including the quality gate. The quality gate defines done.
+4. **Mark the task `ACTIVE`** in `PROGRESS.md` before starting.
+5. **Break the task into tracked subtasks** — one file-level operation each.
+6. **Execute one subtask at a time** — implement, compile, test, then move on.
+7. **Mark the task `DONE`** in `PROGRESS.md` when the quality gate passes. Include the commit hash and a one-line summary. Update the `NEXT` marker.
 
 ## Phase-by-Phase Startup Guide
 
@@ -103,7 +105,9 @@ ctest --test-dir build-asan --output-on-failure
 Before writing any code:
 
 - [ ] Read `AGENTS.md` in full
+- [ ] Read `PROGRESS.md` — find the `NEXT` marker and current task status
 - [ ] Identify current task from `execution_plan.md`
+- [ ] Mark task `ACTIVE` in `PROGRESS.md`
 - [ ] Break the current task into atomic, trackable subtasks
 - [ ] Know which source is authoritative (EASy68K-qt: Phases 0–2; original EASy68K: Phases 3+)
 - [ ] Know the quality gate for the current task

@@ -6,6 +6,7 @@ This file governs how AI agents work on this project. Deviation produces broken 
 * **One Concern at a Time:** The execution plan (`doc/execution_plan.md`) has explicit tasks and quality gates. Do not combine tasks. Do not skip ahead.
 * **Pass Quality Gates:** If a task's quality gate fails, stop and fix it immediately. Errors compound.
 * **No Premature Generalization:** Implement exactly what the task requires.
+* **Track Progress:** Update `PROGRESS.md` after every task. Read it first when resuming work. It is the single source of truth for what is done and what to do next.
 
 ## 2. Source Authority (CRITICAL)
 This project has a **hard source boundary**:
