@@ -16,7 +16,7 @@ add_executable(easym68k-sim-tests
   sim/trap15_mock_test.cc
   sim/golden_trace_test.cc
 )
-target_link_libraries(easym68k-sim-tests PRIVATE easym68k-sim GTest::gtest_main)
+target_link_libraries(easym68k-sim-tests PRIVATE easym68k-sim GTest::gtest_main GTest::gmock)
 add_test(NAME sim-tests COMMAND easym68k-sim-tests)
 
 add_executable(easym68k-asm-tests
