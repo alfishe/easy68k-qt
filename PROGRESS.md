@@ -89,7 +89,7 @@ Decision: NOP/STOP moved from simulator.cc to DispatchGroup4 in decode.cc.
 
 | Task | Status | Commit | Summary |
 |------|--------|--------|---------|
-| 6.1 Move Instructions | DONE | TBD | Full dispatch for all 16 opcode groups; 13 move-class ops + 5 flag helpers; 37 tests |
+| 6.1 Move Instructions | DONE | `87ca91d` | Full dispatch for all 16 opcode groups; 13 move-class ops + 5 flag helpers; 37 tests |
 | 6.2 Arithmetic Instructions | ACTIVE | | |
 | 6.3 Logic Instructions | TODO | | |
 | 6.4 Branch Instructions | TODO | | |
