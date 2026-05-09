@@ -7,35 +7,6 @@
 
 namespace easym68k::sim {
 
-namespace {
-
-// Returns the sign-bit mask for the given size.
-uint32_t SignBit(DataSize size) {
-  switch (size) {
-    case DataSize::kByte:
-      return 0x80u;
-    case DataSize::kWord:
-      return 0x8000u;
-    case DataSize::kLong:
-      return 0x80000000u;
-  }
-  return 0;
-}
-
-uint32_t SizeMask(DataSize size) {
-  switch (size) {
-    case DataSize::kByte:
-      return kByteMask;
-    case DataSize::kWord:
-      return kWordMask;
-    case DataSize::kLong:
-      return kLongMask;
-  }
-  return 0;
-}
-
-}  // namespace
-
 void UpdateFlagsAdd(CpuState& state, uint32_t src, uint32_t dst, uint32_t result, DataSize size) {
   uint32_t mask = SizeMask(size);
   uint32_t msb = SignBit(size);

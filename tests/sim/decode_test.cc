@@ -137,8 +137,11 @@ TEST_F(DecodeTest, ExgAnAn) {
 // ---------------------------------------------------------------------------
 
 TEST_F(DecodeTest, MovemRegister) {
-  SetupOpcode(0x4880);  // MOVEM (group 4) — not yet implemented in Phase 5
-  EXPECT_EQ(sim_.Step(), SimResult::kBadInstruction);
+  // MOVEM.W (A0)+,regs with mask=0x0000 (no registers loaded): dispatch succeeds
+  sim_.State().a[0] = 0x2000;
+  sim_.GetMemory().WriteWord(0x1000, 0x4C98);  // MOVEM.W (A0)+,regs (group 4, case 0xC)
+  sim_.GetMemory().WriteWord(0x1002, 0x0000);  // register mask: no regs
+  EXPECT_EQ(sim_.Step(), SimResult::kOk);
 }
 
 // ---------------------------------------------------------------------------

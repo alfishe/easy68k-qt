@@ -54,6 +54,32 @@ constexpr uint16_t kSrTrace = 0x8000;       // T - Trace
 // Data size for operations
 enum class DataSize { kByte = 0, kWord = 1, kLong = 2 };
 
+constexpr uint32_t kByteSignBit = 0x80u;
+constexpr uint32_t kWordSignBit = 0x8000u;
+constexpr uint32_t kLongSignBit = 0x80000000u;
+
+constexpr uint32_t SizeMask(DataSize size) {
+  switch (size) {
+    case DataSize::kByte:
+      return kByteMask;
+    case DataSize::kWord:
+      return kWordMask;
+    default:
+      return kLongMask;
+  }
+}
+
+constexpr uint32_t SignBit(DataSize size) {
+  switch (size) {
+    case DataSize::kByte:
+      return kByteSignBit;
+    case DataSize::kWord:
+      return kWordSignBit;
+    default:
+      return kLongSignBit;
+  }
+}
+
 // Condition codes for Bcc, DBcc, Scc
 enum class Condition {
   kTrue = 0x00,            // T
