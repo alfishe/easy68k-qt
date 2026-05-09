@@ -31,9 +31,7 @@ class SRecordLoaderTest : public ::testing::Test {
   static Memory memory;
   SRecordLoader loader;
 
-  void SetUp() override {
-    memory.Clear();
-  }
+  void SetUp() override { memory.Clear(); }
 };
 
 Memory SRecordLoaderTest::memory;

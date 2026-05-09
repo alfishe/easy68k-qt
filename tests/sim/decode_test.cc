@@ -52,8 +52,10 @@ TEST_F(DecodeTest, RtsDispatches) {
 // ---------------------------------------------------------------------------
 
 TEST_F(DecodeTest, MoveqDispatches) {
-  SetupOpcode(0x7042);  // MOVEQ #66,D0 (group 7) — not yet implemented in Phase 5
-  EXPECT_EQ(sim_.Step(), SimResult::kBadInstruction);
+  SetupOpcode(0x7042);  // MOVEQ #66,D0 (group 7)
+  EXPECT_EQ(sim_.Step(), SimResult::kOk);
+  EXPECT_EQ(sim_.State().d[0], 66u);
+  EXPECT_EQ(sim_.State().pc, 0x1002u);
 }
 
 // ---------------------------------------------------------------------------
@@ -112,8 +114,11 @@ TEST_F(DecodeTest, OriToCcr) {
 // ---------------------------------------------------------------------------
 
 TEST_F(DecodeTest, ExgDnDn) {
-  SetupOpcode(0xC140);  // EXG D0,D0 (group C) — not yet implemented in Phase 5
-  EXPECT_EQ(sim_.Step(), SimResult::kBadInstruction);
+  sim_.State().d[0] = 0x11111111;
+  sim_.State().d[0] = 0x22222222;  // self-exchange leaves D0 unchanged
+  SetupOpcode(0xC140);             // EXG D0,D0 (group C)
+  EXPECT_EQ(sim_.Step(), SimResult::kOk);
+  EXPECT_EQ(sim_.State().pc, 0x1002u);
 }
 
 // ---------------------------------------------------------------------------
@@ -121,8 +126,10 @@ TEST_F(DecodeTest, ExgDnDn) {
 // ---------------------------------------------------------------------------
 
 TEST_F(DecodeTest, ExgAnAn) {
-  SetupOpcode(0xC148);  // EXG A0,A0 (group C) — not yet implemented in Phase 5
-  EXPECT_EQ(sim_.Step(), SimResult::kBadInstruction);
+  sim_.State().a[0] = 0xAABBCCDD;  // self-exchange leaves A0 unchanged
+  SetupOpcode(0xC148);             // EXG A0,A0 (group C)
+  EXPECT_EQ(sim_.Step(), SimResult::kOk);
+  EXPECT_EQ(sim_.State().pc, 0x1002u);
 }
 
 // ---------------------------------------------------------------------------

@@ -110,6 +110,110 @@ void UpdateFlagsMove(CpuState& state, uint32_t result, DataSize size) {
   // X is not affected by MOVE
 }
 
+void UpdateFlagsNeg(CpuState& state, uint32_t dst, uint32_t result, DataSize size) {
+  uint32_t mask = SizeMask(size);
+  uint32_t msb = SignBit(size);
+
+  dst &= mask;
+  result &= mask;
+
+  bool dm = (dst & msb) != 0;
+  bool rm = (result & msb) != 0;
+
+  state.SetFlag(kSrNegative, rm);
+  state.SetFlag(kSrZero, result == 0);
+  state.SetFlag(kSrOverflow, dm && rm);  // V: both operand and result have sign bit set
+  bool c = (result != 0);
+  state.SetFlag(kSrCarry, c);
+  state.SetFlag(kSrExtend, c);
+}
+
+void UpdateFlagsCmp(CpuState& state, uint32_t src, uint32_t dst, uint32_t result, DataSize size) {
+  uint32_t mask = SizeMask(size);
+  uint32_t msb = SignBit(size);
+
+  src &= mask;
+  dst &= mask;
+  result &= mask;
+
+  bool sm = (src & msb) != 0;
+  bool dm = (dst & msb) != 0;
+  bool rm = (result & msb) != 0;
+
+  state.SetFlag(kSrNegative, rm);
+  state.SetFlag(kSrZero, result == 0);
+  state.SetFlag(kSrOverflow, (!sm && dm && !rm) || (sm && !dm && rm));
+  state.SetFlag(kSrCarry, (sm && !dm) || (rm && !dm) || (sm && rm));
+  // X is not affected by CMP
+}
+
+void UpdateFlagsAddX(CpuState& state, uint32_t src, uint32_t dst, uint32_t result, DataSize size) {
+  uint32_t mask = SizeMask(size);
+  uint32_t msb = SignBit(size);
+
+  src &= mask;
+  dst &= mask;
+  result &= mask;
+
+  bool sm = (src & msb) != 0;
+  bool dm = (dst & msb) != 0;
+  bool rm = (result & msb) != 0;
+
+  bool n = rm;
+  bool v = (sm && dm && !rm) || (!sm && !dm && rm);
+  bool c = (sm && dm) || (!rm && dm) || (sm && !rm);
+
+  state.SetFlag(kSrNegative, n);
+  if (result != 0)
+    state.SetFlag(kSrZero, false);  // Z cleared only if result != 0
+  state.SetFlag(kSrOverflow, v);
+  state.SetFlag(kSrCarry, c);
+  state.SetFlag(kSrExtend, c);
+}
+
+void UpdateFlagsSubX(CpuState& state, uint32_t src, uint32_t dst, uint32_t result, DataSize size) {
+  uint32_t mask = SizeMask(size);
+  uint32_t msb = SignBit(size);
+
+  src &= mask;
+  dst &= mask;
+  result &= mask;
+
+  bool sm = (src & msb) != 0;
+  bool dm = (dst & msb) != 0;
+  bool rm = (result & msb) != 0;
+
+  bool n = rm;
+  bool v = (!sm && dm && !rm) || (sm && !dm && rm);
+  bool c = (sm && !dm) || (rm && !dm) || (sm && rm);
+
+  state.SetFlag(kSrNegative, n);
+  if (result != 0)
+    state.SetFlag(kSrZero, false);
+  state.SetFlag(kSrOverflow, v);
+  state.SetFlag(kSrCarry, c);
+  state.SetFlag(kSrExtend, c);
+}
+
+void UpdateFlagsNegX(CpuState& state, uint32_t dst, uint32_t result, DataSize size) {
+  uint32_t mask = SizeMask(size);
+  uint32_t msb = SignBit(size);
+
+  dst &= mask;
+  result &= mask;
+
+  bool dm = (dst & msb) != 0;
+  bool rm = (result & msb) != 0;
+
+  state.SetFlag(kSrNegative, rm);
+  if (result != 0)
+    state.SetFlag(kSrZero, false);
+  state.SetFlag(kSrOverflow, dm && rm);
+  bool c = (result != 0);
+  state.SetFlag(kSrCarry, c);
+  state.SetFlag(kSrExtend, c);
+}
+
 void UpdateFlagsShift(CpuState& state, uint32_t result, DataSize size, bool carry, int count) {
   uint32_t mask = SizeMask(size);
   uint32_t msb = SignBit(size);

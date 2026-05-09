@@ -11,9 +11,7 @@ namespace {
 class MemoryTest : public ::testing::Test {
  protected:
   static Memory memory;
-  void SetUp() override {
-    memory.Clear();
-  }
+  void SetUp() override { memory.Clear(); }
 };
 
 Memory MemoryTest::memory;

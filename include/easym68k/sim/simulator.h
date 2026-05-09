@@ -120,6 +120,92 @@ class M68kSimulator {
   SimResult DispatchGroupE(uint16_t opcode);
   SimResult DispatchSimhalt(uint16_t opcode);
 
+  // Leaf instruction implementations (opcodes_move.cc)
+  SimResult OpMovea(uint16_t opcode);
+  SimResult OpMovem(uint16_t opcode);
+  SimResult OpMovep(uint16_t opcode);
+  SimResult OpMoveFrSr(uint16_t opcode);
+  SimResult OpMoveToCcr(uint16_t opcode);
+  SimResult OpMoveToSr(uint16_t opcode);
+  SimResult OpMoveUsp(uint16_t opcode);
+  SimResult OpExg(uint16_t opcode);
+  SimResult OpLea(uint16_t opcode);
+  SimResult OpPea(uint16_t opcode);
+  SimResult OpLink(uint16_t opcode);
+  SimResult OpUnlk(uint16_t opcode);
+  SimResult OpSwap(uint16_t opcode);
+
+  // Leaf instruction implementations (opcodes_arithmetic.cc)
+  SimResult OpAdd(uint16_t opcode);
+  SimResult OpAdda(uint16_t opcode);
+  SimResult OpAddi(uint16_t opcode);
+  SimResult OpAddq(uint16_t opcode);
+  SimResult OpAddx(uint16_t opcode);
+  SimResult OpSub(uint16_t opcode);
+  SimResult OpSuba(uint16_t opcode);
+  SimResult OpSubi(uint16_t opcode);
+  SimResult OpSubq(uint16_t opcode);
+  SimResult OpSubx(uint16_t opcode);
+  SimResult OpMulu(uint16_t opcode);
+  SimResult OpMuls(uint16_t opcode);
+  SimResult OpDivu(uint16_t opcode);
+  SimResult OpDivs(uint16_t opcode);
+  SimResult OpNeg(uint16_t opcode);
+  SimResult OpNegx(uint16_t opcode);
+  SimResult OpClr(uint16_t opcode);
+  SimResult OpCmp(uint16_t opcode);
+  SimResult OpCmpa(uint16_t opcode);
+  SimResult OpCmpi(uint16_t opcode);
+  SimResult OpCmpm(uint16_t opcode);
+  SimResult OpTst(uint16_t opcode);
+  SimResult OpExt(uint16_t opcode);
+  SimResult OpAbcd(uint16_t opcode);
+  SimResult OpSbcd(uint16_t opcode);
+  SimResult OpNbcd(uint16_t opcode);
+  SimResult OpChk(uint16_t opcode);
+
+  // Leaf instruction implementations (opcodes_logic.cc)
+  SimResult OpOr(uint16_t opcode);
+  SimResult OpOri(uint16_t opcode);
+  SimResult OpOriToCcr(uint16_t opcode);
+  SimResult OpOriToSr(uint16_t opcode);
+  SimResult OpAnd(uint16_t opcode);
+  SimResult OpAndi(uint16_t opcode);
+  SimResult OpAndiToCcr(uint16_t opcode);
+  SimResult OpAndiToSr(uint16_t opcode);
+  SimResult OpEor(uint16_t opcode);
+  SimResult OpEori(uint16_t opcode);
+  SimResult OpEoriToCcr(uint16_t opcode);
+  SimResult OpEoriToSr(uint16_t opcode);
+  SimResult OpNot(uint16_t opcode);
+  SimResult OpTas(uint16_t opcode);
+
+  // Leaf instruction implementations (opcodes_branch.cc)
+  SimResult OpBra(uint16_t opcode);
+  SimResult OpBsr(uint16_t opcode);
+  SimResult OpBcc(uint16_t opcode);
+  SimResult OpDbcc(uint16_t opcode);
+  SimResult OpScc(uint16_t opcode);
+  SimResult OpJmp(uint16_t opcode);
+  SimResult OpJsr(uint16_t opcode);
+  SimResult OpRts(uint16_t opcode);
+  SimResult OpRte(uint16_t opcode);
+  SimResult OpRtr(uint16_t opcode);
+
+  // Leaf instruction implementations (opcodes_misc.cc)
+  SimResult OpTrap(uint16_t opcode);
+  SimResult OpTrapV(uint16_t opcode);
+  SimResult OpIllegal(uint16_t opcode);
+  SimResult OpReset(uint16_t opcode);
+  SimResult OpStop(uint16_t opcode);
+
+  // Leaf instruction implementations (opcodes_shift.cc)
+  SimResult OpShiftRotate(uint16_t opcode);
+  SimResult OpBtst(uint16_t opcode);
+  SimResult OpBchg(uint16_t opcode);
+  SimResult OpBclr(uint16_t opcode);
+  SimResult OpBset(uint16_t opcode);
+
   CpuState state_{};
   Memory memory_;
   Config config_;
