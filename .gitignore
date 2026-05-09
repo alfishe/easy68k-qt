@@ -1,0 +1,66 @@
+# Build directories
+build/
+build-*/
+cmake-build-*/
+out/
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Compiled objects
+*.o
+*.obj
+*.so
+*.so.*
+*.dylib
+*.dll
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
+
+# CMake generated
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+*.cmake.in
+!cmake/*.cmake
+compile_commands.json
+CTestTestfile.cmake
+*.pc
+
+# Qt generated
+moc_*.cpp
+moc_*.h
+ui_*.h
+qrc_*.cpp
+*.qm
+*.pro.user
+*.pro.user.*
+
+# Dependency fetch
+_googletest/
+
+# Coverage and sanitizer
+*.gcno
+*.gcda
+*.gcov
+*.profdata
+*.dwarf
+ubsan.*
+
+# Package and archive
+*.tar.gz
+*.zip
+*.deb
+*.rpm
