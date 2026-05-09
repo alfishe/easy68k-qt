@@ -112,7 +112,7 @@ Decision: Register shift count uses `% 64` (not `& sizeMask`) — the original's
 
 | Task | Status | Commit | Summary |
 |------|--------|--------|---------|
-| 7.1 Define Trap #15 Interface Headers | DONE | `a8f582b` | 10 interface headers: ITextIO/IFileIO/ISerialIO/INetworkIO/IGraphicsIO/ISoundIO/IPeripheralIO/ISimulatorEnv/IPrintIO/ILogger; all self-contained |
+| 7.1 Define Trap #15 Interface Headers | DONE | `5cee051` | 10 interface headers: ITextIO/IFileIO/ISerialIO/INetworkIO/IGraphicsIO/ISoundIO/IPeripheralIO/ISimulatorEnv/IPrintIO/ILogger; all self-contained |
 | 7.2 Implement Trap #15 Dispatch | TODO | | |
 | 7.3 Trap #15 Mock Tests | TODO | | |
 
