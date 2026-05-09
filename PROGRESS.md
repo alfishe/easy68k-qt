@@ -122,8 +122,8 @@ Decision: Register shift count uses `% 64` (not `& sizeMask`) — the original's
 |------|--------|--------|---------|
 | 8.1 Transfer Lexer | DONE | `7c5b148` | TokenType/SizeSpec/RegisterType enums, Token struct, Lexer class; all 68000 opcodes + EASy68K directives; 100 LexerTest |
 | 8.2 Transfer Parser and Symbol Table | DONE | `dd18436` | Parser (AddressMode/Operand/ParsedLine/Parser), SymbolTable (SymbolFlags/ForwardRef/SymbolInfo); Pratt-precedence expression evaluator; 173 tests |
-| 8.3 Transfer Expression Evaluator | DONE | `pending` | ExpressionEvaluator standalone class; Pratt parser matching EVAL.CPP precedence; parser delegates to evaluator; lexer .digit local-label support; 46 ExpressionTest + 6 new LexerTest; 228 total |
-| 8.4 Transfer Assembler Core | TODO | | |
+| 8.3 Transfer Expression Evaluator | DONE | `fa27014` | ExpressionEvaluator standalone class; Pratt parser matching EVAL.CPP precedence; parser delegates to evaluator; lexer .digit local-label support; 46 ExpressionTest + 6 new LexerTest; 228 total |
+| 8.4 Transfer Assembler Core | DONE | `pending` | Two-pass assembler (ORG/EQU/SET/DC/DS/EVEN/END directives; NOP/MOVEQ instructions); forward-label resolution; 19 AssemblerTest; 247 total |
 | 8.5 Implement Missing Assembler Components | TODO | | |
 | 8.6 Golden Assembly Tests | TODO | | |
 
@@ -176,4 +176,4 @@ Decision: Register shift count uses `% 64` (not `& sizeMask`) — the original's
 
 ---
 
-**NEXT:** Task 8.4 — Transfer Assembler Core
+**NEXT:** Task 8.5 — Implement Missing Assembler Components
