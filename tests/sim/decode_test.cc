@@ -105,8 +105,10 @@ TEST_F(DecodeTest, LineFDispatches) {
 // ---------------------------------------------------------------------------
 
 TEST_F(DecodeTest, OriToCcr) {
-  SetupOpcode(0x003C);  // ORI to CCR (group 0) — not yet implemented in Phase 5
-  EXPECT_EQ(sim_.Step(), SimResult::kBadInstruction);
+  sim_.GetMemory().WriteWord(0x1000, 0x003C);  // ORI to CCR
+  sim_.GetMemory().WriteWord(0x1002, 0x0001);  // immediate = 1 (sets carry)
+  EXPECT_EQ(sim_.Step(), SimResult::kOk);
+  EXPECT_TRUE(sim_.State().GetFlag(kSrCarry));
 }
 
 // ---------------------------------------------------------------------------

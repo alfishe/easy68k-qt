@@ -91,8 +91,8 @@ Decision: NOP/STOP moved from simulator.cc to DispatchGroup4 in decode.cc.
 |------|--------|--------|---------|
 | 6.1 Move Instructions | DONE | `87ca91d` | Full dispatch for all 16 opcode groups; 13 move-class ops + 5 flag helpers; 37 tests |
 | 6.2 Arithmetic Instructions | DONE | `46432cf` | All 27 arithmetic ops (ADD/SUB/MUL/DIV/NEG/CMP/TST/EXT/BCD/CHK); 69 tests |
-| 6.3 Logic Instructions | ACTIVE | 2026-05-09 | |
-| 6.4 Branch Instructions | TODO | | |
+| 6.3 Logic Instructions | DONE | TBD | OR/AND/EOR + immediate + CCR/SR variants, NOT, TAS; 40 tests |
+| 6.4 Branch Instructions | ACTIVE | 2026-05-09 | |
 | 6.5 Miscellaneous Instructions | TODO | | |
 | 6.6 Shift/Rotate Instructions | TODO | | |
 | 6.7 Flag Computation Verification Suite | TODO | | |
@@ -165,4 +165,4 @@ Decision: NOP/STOP moved from simulator.cc to DispatchGroup4 in decode.cc.
 
 ---
 
-**NEXT:** Task 6.3 — Logic Instructions
+**NEXT:** Task 6.4 — Branch Instructions

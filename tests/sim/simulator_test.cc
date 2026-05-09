@@ -128,7 +128,7 @@ TEST_F(SimTest, StepNop) {
 
 TEST_F(SimTest, StepIllegal) {
   ResetWithVectors(0x3FFE, 0x1000);
-  sim_.GetMemory().WriteWord(0x1000, 0x0200);  // unimplemented in Phase 4
+  sim_.GetMemory().WriteWord(0x1000, 0x4AFC);  // unimplemented in Phase 4
   // Provide a valid illegal-instruction vector so HandleException doesn't crash
   sim_.GetMemory().WriteLong(static_cast<uint32_t>(ExceptionVector::kIllegalInst) * 4, 0x5000);
 
@@ -288,7 +288,7 @@ TEST_F(SimTest, HandleExceptionStackFrame) {
   sim_.GetMemory().WriteLong(0x10, handler_pc);
   // Unimplemented opcode at PC
   uint16_t saved_sr = sim_.State().sr;
-  sim_.GetMemory().WriteWord(0x1000, 0x0200);
+  sim_.GetMemory().WriteWord(0x1000, 0x4AFC);
 
   sim_.Step();
 
@@ -314,7 +314,7 @@ TEST_F(SimTest, HandleExceptionSupervisorSwitch) {
   sim_.State().sr |= kSrTrace;                 // also set trace bit
   sim_.State().ssp = 0x3FFE;                   // set SSP directly even in user mode
   sim_.GetMemory().WriteLong(0x10, 0x5000);    // illegal inst vector
-  sim_.GetMemory().WriteWord(0x1000, 0x0200);  // unimplemented opcode
+  sim_.GetMemory().WriteWord(0x1000, 0x4AFC);  // unimplemented opcode
 
   sim_.Step();
 
