@@ -12,7 +12,7 @@ This plan has a deliberate **source transition** at the boundary between Phase 2
 
 - **Phases 0–2** transfer salvageable code from `EASy68K-qt` per the [Code Transfer Plan](code_transfer_plan.md). Only types.h, the Memory class, and the S-Record loader are transferred — these are the components assessed as sound.
 
-- **Phases 3–8** port directly from the **original EASy68K Borland sources** (`EASy68K/Sim68K/` and `EASy68K/Edit68K/`). EASy68K-qt is used only as a secondary cross-reference where noted. The original sources are the authoritative reference for behavioral parity — every opcode, every flag, every Trap #15 task must match what the original `CODE1.CPP`–`CODE9.CPP`, `RUN.CPP`, `SCAN.CPP`, and assembler files do.
+- **Phases 3–9** port directly from the **original EASy68K Borland sources** (`EASy68K/Sim68K/` and `EASy68K/Edit68K/`). EASy68K-qt is used only as a secondary cross-reference where noted. The original sources are the authoritative reference for behavioral parity — every opcode, every flag, every Trap #15 task must match what the original `CODE1.CPP`–`CODE9.CPP`, `RUN.CPP`, `SCAN.CPP`, and assembler files do.
 
 **Rationale:** EASy68K-qt has fatal architectural flaws (sentinel EA addresses, linear instruction decoder, incomplete flag computation, toy-level I/O callbacks, Cpu-owns-Memory, stub assembler components). Continuing to use it as the primary source beyond the salvageable skeleton would propagate these bugs. The original Borland code, despite its VCL coupling and global state, contains proven-correct instruction logic that has been tested by thousands of students over two decades.
 
@@ -24,36 +24,36 @@ This matrix maps every feature of the original EASy68K simulator to the executio
 
 | # | Original Feature | Original Source | Execution Plan Task(s) | Status |
 |---|-----------------|-----------------|----------------------|--------|
-| 1 | 68000 register display (D0-D7, A0-A7, PC, USP, SSP, SR, Cycles) | SIM68Ku.cpp | Task 12.3 RegisterWidget | Covered |
-| 2 | Source code display (.L68 listing mapped to PC) | SIM68Ku.cpp ListBox1, highlight() | Task 12.4 SourceView | **NEW** |
-| 3 | Stack viewer (A7 highlight, address register selection, scroll) | Stack1.cpp | Task 12.5 StackWindow | **NEW** |
-| 4 | Memory display (hex/ASCII viewer, address jump) | Memory1.cpp FormPaint | Task 12.6 MemoryWindow | Covered |
-| 5 | Direct memory editing (click hex/ASCII byte, type new value) | Memory1.cpp FormKeyPress | Task 12.7 Memory Editing | **NEW** |
-| 6 | Memory block copy (From/To/Bytes fields, overlap-safe) | Memory1.cpp CopyClick | Task 12.7 Memory Editing | **NEW** |
-| 7 | Memory block fill (From/To/FillValue) | Memory1.cpp FillClick | Task 12.7 Memory Editing | **NEW** |
-| 8 | Hardware display (7-segment, LEDs, switches, push buttons) | hardwareu.cpp | Task 12.8 HardwareWindow | Covered |
-| 9 | Output results (Trap #15 text I/O console) | simIOu.cpp | Task 12.9 ConsoleWidget | Covered |
-| 10 | Graphics output (QPainter, 16 raster ops, double buffer) | CODE9.CPP tasks 80-96 | Task 12.10 GraphicsIO | Covered |
-| 11 | Sound output (single-voice + multi-voice) | CODE9.CPP tasks 70-77 | Task 12.11 SoundIO | Covered |
-| 12 | Interrupts (auto-IRQ, hardware IRQ, autovector) | hardwareu.cpp autoIRQ | Task 12.8 HardwareWindow + Task 10.2 | Covered |
-| 13 | Log execution output (instruction + registers to text file) | logU.cpp ElogFile | Task 12.12 LogWindow | **NEW** |
-| 14 | Log Trap #15 output (binary file) | logU.cpp OlogFile | Task 12.12 LogWindow | **NEW** |
-| 15 | Log memory range dump (configurable from/bytes) | logU.cpp MemFrom/MemBytes | Task 12.12 LogWindow | **NEW** |
+| 1 | 68000 register display (D0-D7, A0-A7, PC, USP, SSP, SR, Cycles) | SIM68Ku.cpp | Task 13.3 RegisterWidget | Covered |
+| 2 | Source code display (.L68 listing mapped to PC) | SIM68Ku.cpp ListBox1, highlight() | Task 13.4 SourceView | **NEW** |
+| 3 | Stack viewer (A7 highlight, address register selection, scroll) | Stack1.cpp | Task 13.5 StackWindow | **NEW** |
+| 4 | Memory display (hex/ASCII viewer, address jump) | Memory1.cpp FormPaint | Task 13.6 MemoryWindow | Covered |
+| 5 | Direct memory editing (click hex/ASCII byte, type new value) | Memory1.cpp FormKeyPress | Task 13.7 Memory Editing | **NEW** |
+| 6 | Memory block copy (From/To/Bytes fields, overlap-safe) | Memory1.cpp CopyClick | Task 13.7 Memory Editing | **NEW** |
+| 7 | Memory block fill (From/To/FillValue) | Memory1.cpp FillClick | Task 13.7 Memory Editing | **NEW** |
+| 8 | Hardware display (7-segment, LEDs, switches, push buttons) | hardwareu.cpp | Task 13.8 HardwareWindow | Covered |
+| 9 | Output results (Trap #15 text I/O console) | simIOu.cpp | Task 13.9 ConsoleWidget | Covered |
+| 10 | Graphics output (QPainter, 16 raster ops, double buffer) | CODE9.CPP tasks 80-96 | Task 13.10 GraphicsIO | Covered |
+| 11 | Sound output (single-voice + multi-voice) | CODE9.CPP tasks 70-77 | Task 13.11 SoundIO | Covered |
+| 12 | Interrupts (auto-IRQ, hardware IRQ, autovector) | hardwareu.cpp autoIRQ | Task 13.8 HardwareWindow + Task 11.2 | Covered |
+| 13 | Log execution output (instruction + registers to text file) | logU.cpp ElogFile | Task 13.12 LogWindow | **NEW** |
+| 14 | Log Trap #15 output (binary file) | logU.cpp OlogFile | Task 13.12 LogWindow | **NEW** |
+| 15 | Log memory range dump (configurable from/bytes) | logU.cpp MemFrom/MemBytes | Task 13.12 LogWindow | **NEW** |
 | 16 | Load S-Record files (.S68, .S19, .S3) | SIM68Ku.cpp loadSrec | Task 2.1 SRecordLoader + Task 12.2 | Covered |
-| 17 | Serial I/O (COM port init, read, send) | CODE9.CPP tasks 40-43 | Task 12.13 SerialIO | Covered |
-| 18 | TCP/UDP network I/O (client/server, send/receive) | CODE9.CPP tasks 100-107 | Task 12.14 NetworkIO | Covered |
-| 19 | Definable memory ranges (Protected/Invalid/ROM with start/end) | SIMOPS2.CPP + hardwareu.cpp | Task 12.15 MemoryRangeDialog | **NEW** |
-| 20 | Breakpoints (PC breakpoints with toggle, clear all) | SIM68Ku.cpp BreaksFrm | Task 4.1 M68kSimulator + Task 12.4 SourceView | Covered |
+| 17 | Serial I/O (COM port init, read, send) | CODE9.CPP tasks 40-43 | Task 13.13 SerialIO | Covered |
+| 18 | TCP/UDP network I/O (client/server, send/receive) | CODE9.CPP tasks 100-107 | Task 13.14 NetworkIO | Covered |
+| 19 | Definable memory ranges (Protected/Invalid/ROM with start/end) | SIMOPS2.CPP + hardwareu.cpp | Task 13.15 MemoryRangeDialog | **NEW** |
+| 20 | Breakpoints (PC breakpoints with toggle, clear all) | SIM68Ku.cpp BreaksFrm | Task 4.1 M68kSimulator + Task 13.4 SourceView | Covered |
 | 21 | Run/Step/Trace/Pause/Reset controls | SIM68Ku.cpp Run/Step/Trace | Task 12.2 MainWindow | Covered |
-| 22 | Run-to-cursor | SIM68Ku.cpp RunToCursorExecute | Task 12.4 SourceView | Covered |
-| 23 | *[sim68k] listing commands (break, bitfield, SIMHALT_OFF) | SIM68Ku.cpp lines 310-337 | Task 12.4 SourceView | **NEW** |
-| 24 | Printing (character output, form feed) | CODE9.CPP task 10 | Task 12.16 PrintIO | Covered |
-| 25 | File I/O (open, read, write, seek, close, delete, dialog) | CODE9.CPP tasks 50-59 | Task 12.17 FileIO | Covered |
-| 26 | Peripheral I/O (mouse/keyboard IRQ enable, state read) | CODE9.CPP tasks 60-62 | Task 12.8 HardwareWindow | Covered |
-| 27 | Full-screen output window | CODE9.CPP task 33 | Task 12.10 GraphicsIO | Covered |
+| 22 | Run-to-cursor | SIM68Ku.cpp RunToCursorExecute | Task 13.4 SourceView | Covered |
+| 23 | *[sim68k] listing commands (break, bitfield, SIMHALT_OFF) | SIM68Ku.cpp lines 310-337 | Task 13.4 SourceView | **NEW** |
+| 24 | Printing (character output, form feed) | CODE9.CPP task 10 | Task 13.16 PrintIO | Covered |
+| 25 | File I/O (open, read, write, seek, close, delete, dialog) | CODE9.CPP tasks 50-59 | Task 13.17 FileIO | Covered |
+| 26 | Peripheral I/O (mouse/keyboard IRQ enable, state read) | CODE9.CPP tasks 60-62 | Task 13.8 HardwareWindow | Covered |
+| 27 | Full-screen output window | CODE9.CPP task 33 | Task 13.10 GraphicsIO | Covered |
 | 28 | Drag-and-drop file open | SIM68Ku.cpp WmDropFiles | Task 12.2 MainWindow | Covered |
-| 29 | Settings persistence (QSettings for window positions, fonts, options) | SIM68Ku.cpp SaveSettings | Task 12.18 SettingsPersistence | Covered |
-| 30 | Cycle counter with clear button | SIM68Ku.cpp | Task 12.3 RegisterWidget | Covered |
+| 29 | Settings persistence (QSettings for window positions, fonts, options) | SIM68Ku.cpp SaveSettings | Task 13.18 SettingsPersistence | Covered |
+| 30 | Cycle counter with clear button | SIM68Ku.cpp | Task 13.3 RegisterWidget | Covered |
 
 ---
 
@@ -1939,9 +1939,493 @@ TEST_P(GoldenAssemblyTest, ByteIdenticalOutput) {
 
 ---
 
-## Phase 9: Golden Simulation Traces (Proposal Section 5)
+## Phase 9: Simulator Core Library — Full Parity & Headless Readiness
 
-### Task 9.1 — Implement Golden Trace Comparison
+This phase closes all remaining gaps between the ported simulator core and the
+original EASy68K simulator (`Sim68K/RUN.CPP`, `hardwareu.cpp`, `SIM68Ku.cpp`).
+After this phase, the simulator can execute any valid M68K program headlessly with
+identical behavior to the original — including interrupts, cycle counting, SIMHALT
+configuration, execution logging, and all exception processing.
+
+The core must remain **GUI-independent**: all features are accessible via the
+`M68kSimulator` public API and `Config` struct interfaces alone. No Qt or platform-
+specific code is introduced.
+
+**Prerequisite:** Phase 8 (Assembler) complete. Golden assembly tests (8.6) passing.
+The assembler is needed to generate `.S68` test programs for Phase 9.
+
+---
+
+### Task 9.1 — Interrupt Injection and Processing
+
+Port the original's interrupt system from `RUN.CPP:1083-1117` (`irqHandler()`)
+and `hardwareu.cpp:757-775` (`IRQprocess()`).
+
+**New public API on `M68kSimulator`:**
+
+```cpp
+// Inject a hardware interrupt at the given level (1-7).
+// Thread-safe; may be called from any thread (e.g., timer, hardware sim).
+// The interrupt is processed on the next Step() or Run() iteration.
+void Interrupt(int level);
+
+// Returns the current pending IRQ bitmask (for testing).
+uint8_t GetPendingIrqs() const;
+
+// Clear all pending interrupts.
+void ClearPendingIrqs();
+```
+
+**Implementation details:**
+
+1. Add `std::atomic<uint8_t> pending_irqs_{0}` to `M68kSimulator`. Bit 0 = IRQ1,
+   bit 6 = IRQ7. `Interrupt(level)` sets the appropriate bit atomically.
+
+2. **IRQ check in `Step()`** — after the existing exception processing `switch`,
+   if `pending_irqs_ & int_mask` is non-zero, call `HandleIrq()`:
+   - Push exception stack frame (class 2 format: info word + PC + SR)
+   - Clear the highest-priority pending IRQ bit
+   - Set the SR interrupt mask to the serviced level
+   - Load PC from autovector address (`$64 + level * 4`)
+   - Add 34 cycle penalty (per original `inc_cyc(34)`)
+
+3. **STOP wake-on-interrupt** — When `state_.stopped == true` and a non-masked
+   IRQ is pending, `Interrupt()` must clear `stopped` and `halted` so that the
+   next `Step()` or `Run()` call resumes execution. Port from `hardwareu.cpp:763-774`.
+
+4. **Interrupt priority** — IRQ7 (NMI) can never be masked. Levels 1-6 are masked
+   when `SR interrupt mask >= IRQ level`. Port from `RUN.CPP:1086-1114`.
+
+**Source references:**
+- `RUN.CPP:878-880` — IRQ check after each instruction
+- `RUN.CPP:1083-1117` — `irqHandler()` with autovector dispatch
+- `hardwareu.cpp:757-775` — `IRQprocess()` with STOP wake
+- `hardwareu.cpp:796-903` — Auto-IRQ timer management (GUI side, not ported here)
+
+**New test file:** `tests/sim/interrupt_test.cc`
+
+Minimum test cases (15):
+1. `InterruptSetsPendingBit` — Interrupt(5) sets bit 4 in pending bitmask
+2. `InterruptLevel1Through7` — all 7 levels set correct bits
+3. `IrqBelowMaskNoException` — mask=7, IRQ level 3 → no exception
+4. `IrqAboveMaskGeneratesException` — mask=3, IRQ level 5 → exception
+5. `Irq7NmiCannotBeMasked` — mask=7, IRQ level 7 → exception (NMI)
+6. `AutovectorDispatchCorrectAddress` — IRQ level 3 loads PC from vector $6C
+7. `IrqSetsNewInterruptMask` — after servicing IRQ5, SR mask = 5
+8. `IrqClearsPendingBit` — after servicing, the serviced IRQ bit is cleared
+9. `IrqStackFrameCorrect` — PC and SR pushed in correct order, supervisor set
+10. `IrqClearsTraceFlag` — trace mode active, IRQ clears T bit
+11. `MultiplePendingIrqsHighestFirst` — IRQ3+IRQ5 pending, services IRQ5 first
+12. `StopWakesOnInterrupt` — STOP instruction active, IRQ arrives, execution resumes
+13. `StopDoesNotWakeOnMaskedIrq` — STOP active, masked IRQ, stays stopped
+14. `ThreadSafeInterrupt` — Interrupt() called from another thread during Run()
+15. `ClearPendingIrqs` — clears all pending without processing
+
+**Quality Gate 9.1:** All 15 interrupt tests pass. `Interrupt()` is thread-safe.
+STOP instruction wakes on non-masked interrupt.
+
+---
+
+### Task 9.2 — Cycle Counting
+
+Port the original's `inc_cyc()` from `RUN.CPP`. The original increments a cycle
+counter in every instruction handler. The ported `CpuState::cycles` field exists
+but nothing increments it.
+
+**Implementation details:**
+
+1. Add `void IncrementCycles(uint64_t count)` private helper to `M68kSimulator`
+   that adds to `state_.cycles`.
+
+2. **Cycle data table** — Create `src/sim/cycle_data.cc` containing a lookup table
+   of base cycle counts per instruction/encoding type. Source: M68000 Programmer's
+   Reference Manual, Section 8 (Instruction Execution Times).
+
+   Key cycle counts from the PRM:
+   | Instruction | Byte | Word | Long | EA Penalty |
+   |-------------|------|------|------|------------|
+   | MOVE reg→reg | 4 | 4 | 4 | +EA |
+   | MOVE reg→mem | 8 | 8 | 12 | +EA |
+   | MOVE mem→reg | 4 | 4 | 4 | +EA |
+   | ADD/SUB reg,reg | 4 | 4 | 8 | — |
+   | ADD/SUB #imm,reg | 8 | 8 | 16 | — |
+   | MULU | 70 | | | +EA |
+   | MULS | 70 | | | +EA |
+   | DIVU | 140 | | | +EA |
+   | DIVS | 158 | | | +EA |
+   | Bcc taken | 10 | | | — |
+   | Bcc not-taken | 8 (byte), 12 (word) | | | — |
+   | BRA/BSR | 10 | | | — |
+   | NOP | 4 | | | — |
+   | LEA | 4 | | | +EA |
+   | PEA | 12 | | | +EA |
+   | JSR | 8 | | | +EA |
+   | JMP | 4 | | | +EA |
+   | RTS | 16 | | | — |
+   | RTE | 20 | | | — |
+   | TRAP | 34 | | | — |
+   | STOP | 4 | | | — |
+   | RESET | 132 | | | — |
+   | Exception processing | 34-44 | | | — |
+
+3. **EA penalty** — Each addressing mode adds cycle penalties. Add `EaCyclePenalty()`
+   function to `cycle_data.cc`:
+   | Mode | Penalty |
+   |------|---------|
+   | Dn | 0 |
+   | An | 0 |
+   | (An) | 4 |
+   | (An)+ | 4 |
+   | -(An) | 6 |
+   | d(An) | 8 |
+   | d(An,Xi) | 10 |
+   | (d8,An,Xn) | — |
+   | #imm | 4 (word), 8 (long) |
+   | d(PC) | 8 |
+   | d(PC,Xi) | 10 |
+
+4. **Instrument every opcode handler** — Each `Op*()` method calls
+   `IncrementCycles(base + ea_penalty)` at the appropriate point. This is
+   mechanical but touches every handler in all 5 opcode files.
+
+**Source references:**
+- `RUN.CPP` — `inc_cyc()` calls scattered throughout all instruction handlers
+- `extern.h` — `unsigned long cycles` global declaration
+- M68000 PRM Section 8 — authoritative cycle count tables
+
+**New test file:** `tests/sim/cycle_test.cc`
+
+Minimum test cases (20):
+1. `NopIs4Cycles` — NOP increments cycles by 4
+2. `MoveRegRegWord` — MOVE.W D0,D1 = 4 cycles
+3. `MoveRegMemWord` — MOVE.W D0,(A0) = 8 cycles + 4 EA = 12
+4. `MoveMemRegLong` — MOVE.L (A0),D0 = 4 cycles + 4 EA = 8
+5. `AddRegRegByte` — ADD.B D0,D1 = 4 cycles
+6. `AddRegRegLong` — ADD.L D0,D1 = 8 cycles
+7. `AddImmReg` — ADDI.W #1,D0 = 8 cycles
+8. `SubImmReg` — SUBI.W #1,D0 = 8 cycles
+9. `MuluIs70Cycles` — MULU D0,D1 = 70 + EA
+10. `MulsIs70Cycles` — MULS D0,D1 = 70 + EA
+11. `DivuIs140Cycles` — DIVU D0,D1 = 140 + EA
+12. `DivsIs158Cycles` — DIVS D0,D1 = 158 + EA
+13. `BccTakenIs10` — BRA taken = 10 cycles
+14. `BccNotTakenByte` — BRA not-taken byte = 8 cycles
+15. `BccNotTakenWord` — BRA not-taken word = 12 cycles
+16. `LeaIs4PlusEA` — LEA (A0),A1 = 4 + 4 = 8
+17. `RtsIs16Cycles` — RTS = 16
+18. `RteIs20Cycles` — RTE = 20
+19. `TrapIs34Cycles` — TRAP #15 = 34
+20. `ResetIs132Cycles` — RESET = 132
+21. `ResetClearsCycles` — Trap #15 task 30 resets counter to 0
+22. `GetCyclesReturnsCurrent` — Trap #15 task 31 returns current count
+23. `EaPenaltyAnIndirect` — (An) adds 4 cycles
+24. `EaPenaltyAnPostInc` — (An)+ adds 4 cycles
+25. `EaPenaltyAnPreDec` — -(An) adds 6 cycles
+26. `EaPenaltyAnDisplacement` — d(An) adds 8 cycles
+27. `EaPenaltyAnIndex` — d(An,Xi) adds 10 cycles
+28. `EaPenaltyImmediate` — #imm adds 4 (word) or 8 (long)
+29. `MultipleInstructionsAccumulate` — 10 NOPs = 40 cycles
+
+**Quality Gate 9.2:** All 29 cycle tests pass. Trap #15 tasks 30-31 return correct
+cycle counts. Cycle counts match original EASy68K within ±1 cycle for all tested
+instructions.
+
+---
+
+### Task 9.3 — SIMHALT Configuration and Exception Toggle
+
+Port two runtime configuration options from the original that affect core behavior.
+
+**9.3a — SIMHALT enable/disable**
+
+The original supports `*[sim68k]simhalt_off` in .L68 listing comments to disable
+the SIMHALT instruction. When disabled, opcode `0xFFFF` is treated as a Line-F
+exception instead of halting the simulator.
+
+Source: `SIM68Ku.cpp:320-328` — `*[sim68k]` command parsing.
+
+**Changes:**
+
+1. Add `bool simhalt_enabled = true` to `M68kSimulator::Config`.
+
+2. Modify `DispatchSimhalt()` in `decode.cc`:
+   ```cpp
+   // Before (always halts):
+   if (opcode == 0xFFFF) return SimResult::kHalted;
+
+   // After (configurable):
+   if (opcode == 0xFFFF) {
+     if (!config_.simhalt_enabled) return SimResult::kLine1111;
+     return SimResult::kHalted;
+   }
+   ```
+
+**9.3b — Exception processing enable/disable**
+
+The original has `exceptions` flag controlled by `Hardware->setExceptionsEnabled()`.
+When disabled, the simulator skips exception processing for illegal instructions,
+privilege violations, etc.
+
+Source: `hardwareu.cpp:831-855` — Trap #15 task 32 subtask 5.
+
+**Changes:**
+
+1. Add `bool exceptions_enabled = true` to `M68kSimulator::Config`.
+
+2. In `Step()`, when `exceptions_enabled == false`, skip the exception-handling
+   `switch` after `ExecuteInstruction()`. Return `result` directly without calling
+   `HandleException()`.
+
+3. Wire to existing `ISimulatorEnv::SetExceptionsEnabled()` — the `SimulatorEnv`
+   backend can flip this flag at runtime via Trap #15 task 32 subtask 5.
+
+**New test cases** added to `tests/sim/simulator_test.cc`:
+
+1. `SimhaltEnabledHalts` — default config, SIMHALT returns kHalted
+2. `SimhaltDisabledReturnsLineF` — simhalt_enabled=false, SIMHALT returns kLine1111
+3. `SimhaltDisabledTriggersException` — SIMHALT when disabled → HandleException(kLine1111)
+4. `ExceptionsEnabledProcessesIllegal` — illegal opcode → kIllegalInst exception
+5. `ExceptionsDisabledSkipsIllegal` — exceptions_enabled=false, illegal opcode → returns kBadInstruction without exception processing
+6. `ExceptionsDisabledSkipPrivilege` — MOVE to SR in user mode → no exception
+7. `ConfigDefaultsBothEnabled` — default Config has both flags true
+8. `SimhaltToggleAtRuntime` — change simhalt_enabled between Steps
+
+**Quality Gate 9.3:** All 8 config tests pass. SIMHALT can be toggled. Exceptions
+can be disabled. Default behavior is unchanged (both enabled).
+
+---
+
+### Task 9.4 — Execution Logging Interface
+
+Port the core execution logging capability from the original's `RUN.CPP:834-845`
+and `logU.cpp`. The original writes PC, opcode, register state, and optional memory
+dump to a file on each instruction step.
+
+This task adds a **core logging interface** so that any client (GUI, CLI, test
+harness) can receive execution trace data without modifying the simulator core.
+
+**New interface file:** `include/easym68k/sim/iexecution_logger.h`
+
+```cpp
+class IExecutionLogger {
+ public:
+  virtual ~IExecutionLogger() = default;
+
+  // Called after each instruction execution in Step()/Trace mode.
+  // pc: address of the instruction that just executed
+  // opcode: the fetched opcode word
+  // state: full CPU state after execution
+  virtual void LogInstruction(uint32_t pc, uint16_t opcode,
+                               const CpuState& state) = 0;
+
+  // Called to dump a memory range (when "Instructions + Registers + Memory"
+  // logging mode is active).
+  virtual void LogMemoryDump(uint32_t start, uint32_t length,
+                              const Memory& memory) = 0;
+
+  // Called for each Trap #15 text output when output logging is active.
+  virtual void LogOutput(const char* text, int length) = 0;
+
+  // Configuration: what to log
+  enum class Mode { kOff, kInstructions, kInstructionsAndMemory };
+  virtual void SetMode(Mode mode) = 0;
+  virtual Mode GetMode() const = 0;
+
+  // Memory dump range configuration
+  virtual void SetDumpRange(uint32_t start, uint32_t bytes) = 0;
+};
+```
+
+**Changes to `M68kSimulator`:**
+
+1. Add `IExecutionLogger* execution_logger = nullptr` to `Config`.
+
+2. In `Step()`, after instruction execution, if `config_.execution_logger` is
+   non-null and mode != kOff:
+   ```cpp
+   if (config_.execution_logger &&
+       config_.execution_logger->GetMode() != IExecutionLogger::Mode::kOff) {
+     config_.execution_logger->LogInstruction(inst_pc_, opcode, state_);
+     if (config_.execution_logger->GetMode() == Mode::kInstructionsAndMemory) {
+       config_.execution_logger->LogMemoryDump(dump_start, dump_bytes, memory_);
+     }
+   }
+   ```
+
+3. In `DispatchTrap15()`, for all text output tasks (0-1, 6, 13-14, 17-18, 20),
+   call `LogOutput()` if logger is active.
+
+**Source references:**
+- `RUN.CPP:834-845` — execution log writing in the instruction loop
+- `SIM68Ku.cpp` — log configuration dialog
+- `logU.cpp` — log file management (full 296-line source)
+
+**New test file:** `tests/sim/execution_logger_test.cc`
+
+Minimum test cases (12):
+1. `NullLoggerIsNoOp` — nullptr execution_logger, Step() works normally
+2. `LogInstructionCalledPerStep` — mock logger receives LogInstruction for each Step()
+3. `LogInstructionReceivesCorrectPc` — logged PC matches instruction address
+4. `LogInstructionReceivesCorrectOpcode` — logged opcode matches fetched word
+5. `LogInstructionReceivesPostExecutionState` — logged state reflects instruction result
+6. `ModeOffNoLogging` — Mode::kOff → no LogInstruction calls
+7. `ModeInstructionsOnly` — Mode::kInstructions → LogInstruction but no LogMemoryDump
+8. `ModeInstructionsAndMemory` — Mode::kInstructionsAndMemory → both called
+9. `DumpRangeConfigurable` — SetDumpRange sets the range used in LogMemoryDump
+10. `LogOutputCapturesText` — Trap #15 task 0 triggers LogOutput
+11. `LogOutputCapturesChar` — Trap #15 task 6 triggers LogOutput
+12. `MultipleStepsLogMultiple` — 10 Steps → 12 LogInstruction calls
+
+**Quality Gate 9.4:** All 12 execution logger tests pass. Logger is fully optional.
+No performance impact when logger is null. Mode switching works at runtime.
+
+---
+
+### Task 9.5 — Event/Observer System
+
+Add an observer pattern to `M68kSimulator` that decouples monitoring and debugging
+from the core execution loop. This enables multiple simultaneous consumers of
+simulator state changes without modifying core code.
+
+**New interface file:** `include/easym68k/sim/isim_observer.h`
+
+```cpp
+enum class SimEventType {
+  kInstructionExecuted,
+  kBreakpointHit,
+  kExceptionRaised,
+  kInterruptRequested,
+  kHalted,
+  kStopped,       // STOP instruction
+  kResumed,       // Woke from STOP
+};
+
+struct SimEvent {
+  SimEventType type;
+  uint32_t pc;
+  SimResult result;
+  int interrupt_level;  // valid for kInterruptRequested
+};
+
+class ISimObserver {
+ public:
+  virtual ~ISimObserver() = default;
+  virtual void OnEvent(const SimEvent& event) = 0;
+};
+```
+
+**Changes to `M68kSimulator`:**
+
+1. Add observer management:
+   ```cpp
+   void AddObserver(ISimObserver* observer);
+   void RemoveObserver(ISimObserver* observer);
+   ```
+
+2. Add `std::vector<ISimObserver*> observers_` member.
+
+3. Emit events at key points in `Step()` and `Run()`:
+   - `kInstructionExecuted` — after each successful Step()
+   - `kBreakpointHit` — when Run() stops at a breakpoint
+   - `kExceptionRaised` — when HandleException() is called
+   - `kInterruptRequested` — when Interrupt() is called
+   - `kHalted` — when state becomes halted
+   - `kStopped` — when STOP instruction executes
+   - `kResumed` — when STOP wakes from interrupt
+
+4. **Thread safety** — Observer notifications happen on the simulator's execution
+   thread (the thread calling Step()/Run()). Observers must be fast or defer work.
+   No mutex needed since the call is synchronous.
+
+**New test file:** `tests/sim/observer_test.cc`
+
+Minimum test cases (12):
+1. `AddRemoveObserver` — add and remove, no crash
+2. `InstructionExecutedEvent` — Step() emits kInstructionExecuted
+3. `EventHasCorrectPc` — event.pc matches instruction address
+4. `BreakpointHitEvent` — Run() stops at BP, emits kBreakpointHit
+5. `ExceptionRaisedEvent` — illegal opcode → kExceptionRaised
+6. `HaltedEvent` — SIMHALT → kHalted
+7. `StoppedEvent` — STOP instruction → kStopped
+8. `ResumedEvent` — STOP + Interrupt() → kResumed
+9. `InterruptRequestedEvent` — Interrupt(5) → kInterruptRequested
+10. `MultipleObservers` — 3 observers all receive the same event
+11. `RemoveObserverDuringRun` — removing observer between Steps is safe
+12. `NullObserverIgnored` — nullptr observer is silently ignored
+
+**Quality Gate 9.5:** All 12 observer tests pass. No performance impact when
+observer list is empty (check vector empty before iterating). Observer removal
+is safe during iteration.
+
+---
+
+### Task 9.6 — Simulator Core Integration Test
+
+A comprehensive integration test that exercises all Phase 9 features together
+to prove the simulator can run a non-trivial M68K program headlessly with full
+parity.
+
+**New test file:** `tests/sim/core_integration_test.cc`
+
+Test program (assembled by the Phase 8 assembler or hand-coded):
+
+```asm
+    ORG     $1000
+START:
+    MOVE.W  #$1234,D0     ; load test value
+    MOVE.W  #$5678,D1     ; load test value
+    ADD.W   D0,D1         ; D1 = $68AC
+    MOVE.W  D1,$2000      ; store result
+    TRAP    #15            ; task 9 = terminate
+    DC.W    9
+```
+
+Integration test cases (10):
+1. `FullProgramExecution` — assemble, load, run, verify D1=$68AC at $2000
+2. `CycleCountAccumulated` — above program, verify total cycles > 0
+3. `InterruptDuringRun` — run a long loop, inject IRQ3, verify handler called
+4. `StopWakeCycle` — STOP instruction, IRQ wakes it, continues execution
+5. `LoggerCapturesFullTrace` — run with logger, verify all instructions logged
+6. `ObserverReceivesAllEvents` — run with observer, verify event sequence
+7. `SimhaltDisabledStillRuns` — program with 0xFFFF data, simhalt_off, no halt
+8. `ExceptionsDisabledNoTrap` — illegal opcode, exceptions off, no exception
+9. `MemoryProtectionWithInterrupt` — protected memory, IRQ handler writes to it
+10. `HeadlessTrap15IO` — program does text output via mock ITextIO, verify output
+
+**Quality Gate 9.6:** All 10 integration tests pass. The simulator runs a complete
+M68K program from S-Record load through termination with correct register state,
+memory state, cycle count, interrupt handling, and event trace.
+
+---
+
+### Phase 9 Summary
+
+| Task | Description | Tests | Source |
+|------|-------------|-------|--------|
+| 9.1 | Interrupt Injection & Processing | 15 | RUN.CPP irqHandler(), hardwareu.cpp IRQprocess() |
+| 9.2 | Cycle Counting | 29 | RUN.CPP inc_cyc(), M68000 PRM Section 8 |
+| 9.3 | SIMHALT Config & Exception Toggle | 8 | SIM68Ku.cpp *[sim68k], hardwareu.cpp setExceptionsEnabled() |
+| 9.4 | Execution Logging Interface | 12 | RUN.CPP logging, logU.cpp |
+| 9.5 | Event/Observer System | 12 | New (not in original, enables extensibility) |
+| 9.6 | Core Integration Test | 10 | Cross-cutting |
+
+**Total new tests:** ~86
+
+**Phase exit criteria:**
+- All 86 Phase 9 tests pass
+- Simulator can run any valid M68K program headlessly
+- Interrupt injection is thread-safe
+- Cycle counting matches original ±1 cycle
+- SIMHALT and exception toggles work
+- Execution logging works without GUI
+- Observer system delivers events to all registered listeners
+- Zero Qt dependencies in core library
+
+---
+
+## Phase 10: Golden Simulation Traces (Proposal Section 5)
+
+### Task 10.1 — Implement Golden Trace Comparison
 
 New file: `tests/sim/golden_trace_test.cc`
 
@@ -1966,13 +2450,13 @@ TEST_P(GoldenTraceTest, ExecutionTraceMatches) {
 }
 ```
 
-**Quality Gate 9.1:** All 10+ golden simulation trace tests pass with 100% register and memory parity.
+**Quality Gate 10.1:** All 10+ golden simulation trace tests pass with 100% register and memory parity.
 
 ---
 
-## Phase 10: Exception and Interrupt Tests
+## Phase 11: Exception and Interrupt Tests
 
-### Task 10.1 — Exception Tests
+### Task 11.1 — Exception Tests
 
 New file: `tests/sim/exception_test.cc`
 
@@ -1991,11 +2475,11 @@ Test cases:
 12. RTE restores both SR and PC
 13. Double bus fault halts the simulator
 
-**Quality Gate 10.1:** All 13 exception tests pass.
+**Quality Gate 11.1:** All 13 exception tests pass.
 
 ---
 
-### Task 10.2 — Interrupt Tests
+### Task 11.2 — Interrupt Tests
 
 New file: (part of `exception_test.cc` or separate)
 
@@ -2006,13 +2490,13 @@ Test cases:
 4. Interrupt clears trace flag
 5. Stop instruction wakes on pending interrupt
 
-**Quality Gate 10.2:** All 5 interrupt tests pass.
+**Quality Gate 11.2:** All 5 interrupt tests pass.
 
 ---
 
-## Phase 11: CI and Code Quality
+## Phase 12: CI and Code Quality
 
-### Task 11.1 — Enable CI
+### Task 12.1 — Enable CI
 
 Push CI configs from Task 0.5. Verify:
 - Linux (gcc + clang) builds and tests pass
@@ -2020,33 +2504,33 @@ Push CI configs from Task 0.5. Verify:
 - Windows (MSVC) builds and tests pass
 - ASan/UBSan builds pass on all platforms
 
-**Quality Gate 11.1:** All CI pipelines green.
+**Quality Gate 12.1:** All CI pipelines green.
 
 ---
 
-### Task 11.2 — Code Coverage
+### Task 12.2 — Code Coverage
 
 Add `gcov`/`lcov` to CI. Target:
 - `libeasym68k-sim`: ≥90% line coverage
 - `libeasym68k-asm`: ≥85% line coverage
 
-**Quality Gate 11.2:** Coverage meets targets on all platforms.
+**Quality Gate 12.2:** Coverage meets targets on all platforms.
 
 ---
 
-### Task 11.3 — clang-tidy
+### Task 12.3 — clang-tidy
 
 Add `clang-tidy` checks to CI using the config in `ci/clang-tidy.cfg`.
 
-**Quality Gate 11.3:** Zero `clang-tidy` warnings on core library code.
+**Quality Gate 12.3:** Zero `clang-tidy` warnings on core library code.
 
-## Phase 12: GUI Implementation
+## Phase 13: GUI Implementation
 
 This phase implements the three Qt GUI applications. Every task references specific features from the Feature Coverage Matrix above. The simulator GUI is the largest and most complex application and receives the most detailed breakdown.
 
-Prerequisite: All quality gates from Phases 0–11 must pass before any GUI work begins. The core libraries must be proven correct via golden tests before GUI development starts.
+Prerequisite: All quality gates from Phases 0–12 must pass before any GUI work begins. The core libraries must be proven correct via golden tests before GUI development starts.
 
-### Task 12.1 — Implement Trap #15 Qt Backends
+### Task 13.1 — Implement Trap #15 Qt Backends
 
 Create the concrete Qt classes implementing the 9 I/O interfaces defined in Phase 7 plus `ILogger`. Each backend is a thin Qt wrapper around the corresponding Qt module.
 
@@ -2064,11 +2548,11 @@ Create the concrete Qt classes implementing the 9 I/O interfaces defined in Phas
 
 All implementations must be thread-safe. The simulator runs in a dedicated `QThread` (Proposal Section 7.2). Asynchronous operations (text output, graphics drawing, sound) use `Qt::QueuedConnection`. Synchronous operations (text input, file dialogs) use `QMetaObject::invokeMethod` with `Qt::BlockingQueuedConnection`.
 
-**Quality Gate 12.1:** All 9 Qt backends compile and instantiate. A minimal test harness creates each backend and verifies its interface methods are callable without crash. Thread-safe signal/slot wiring verified for both sync and async paths.
+**Quality Gate 13.1:** All 9 Qt backends compile and instantiate. A minimal test harness creates each backend and verifies its interface methods are callable without crash. Thread-safe signal/slot wiring verified for both sync and async paths.
 
 ---
 
-### Task 12.2 — Sim68K-Qt Main Window and Execution Controls
+### Task 13.2 — Sim68K-Qt Main Window and Execution Controls
 
 Build the main simulator window shell with the threading model and execution controls.
 
@@ -2096,13 +2580,13 @@ Reference: `EASy68K/Sim68K/SIM68Ku.cpp` (main form), `SIM68Ku.dfm` (layout)
 
 6. **View menu** — Menu items to open/show: Memory Viewer, Hardware Window, Stack Window, I/O Console, Log Window. Each creates or shows the corresponding `QDialog`/`QDockWidget`.
 
-7. **Options menu** — Font selection, Memory Ranges dialog (Task 12.15), Logging setup (Task 12.12).
+7. **Options menu** — Font selection, Memory Ranges dialog (Task 13.15), Logging setup (Task 12.12).
 
-**Quality Gate 12.2:** Sim68K-Qt launches. User can open an `.S68` file, see the PC set, and use Step/Run/Pause/Reset controls. State signals correctly update a minimal register display. Drag-and-drop works.
+**Quality Gate 13.2:** Sim68K-Qt launches. User can open an `.S68` file, see the PC set, and use Step/Run/Pause/Reset controls. State signals correctly update a minimal register display. Drag-and-drop works.
 
 ---
 
-### Task 12.3 — Register Display Widget
+### Task 13.3 — Register Display Widget
 
 Build `gui/simulator/register_widget.h/.cc` — the dense register panel.
 
@@ -2124,11 +2608,11 @@ Features: #1 (register display), #30 (cycle counter)
 
 4. **Supervisor mode** — When SR.S bit changes, swap A7 display between USP and SSP, and show/hide the USP/SSP fields accordingly.
 
-**Quality Gate 12.3:** Register widget displays all D0-D7, A0-A7, PC, USP, SSP, SR bits, and Cycles. User can edit values and see them take effect on the next Step. Changed registers highlight after each step.
+**Quality Gate 13.3:** Register widget displays all D0-D7, A0-A7, PC, USP, SSP, SR bits, and Cycles. User can edit values and see them take effect on the next Step. Changed registers highlight after each step.
 
 ---
 
-### Task 12.4 — Source Code View
+### Task 13.4 — Source Code View
 
 Build `gui/simulator/source_view.h/.cc` — the listing-based source-level debugging view.
 
@@ -2170,11 +2654,11 @@ Each line has: 8-char hex address, machine code, line number, source text. The v
 
 8. **Font selection** — View → Font menu opens `QFontDialog`, applies to listing display. Port `FontSourceExecute()` at line 940.
 
-**Quality Gate 12.4:** Source view loads a `.L68` file, displays it with correct columns. PC highlight works. Breakpoints can be toggled by clicking the margin. Run-to-cursor works. *[sim68k]break and simhalt_off commands are processed on load. Search finds text in the listing.
+**Quality Gate 13.4:** Source view loads a `.L68` file, displays it with correct columns. PC highlight works. Breakpoints can be toggled by clicking the margin. Run-to-cursor works. *[sim68k]break and simhalt_off commands are processed on load. Search finds text in the listing.
 
 ---
 
-### Task 12.5 — Stack Viewer Window
+### Task 13.5 — Stack Viewer Window
 
 Build `gui/simulator/stack_window.h/.cc` — a dedicated floating/dockable window showing the 68000 stack contents.
 
@@ -2203,11 +2687,11 @@ The original stack viewer is a separate window that displays memory around the c
 
 6. **Ctrl+Tab switching** — Original uses Ctrl+Tab to cycle between Memory → Stack → Hardware windows. Implement with `QShortcut` and `bringToFront()` logic.
 
-**Quality Gate 12.5:** Stack window opens, displays memory at the stack pointer. A7 row highlighted in yellow, selected A register highlighted in aqua. Address register combo box works. Scroll by 4 bytes. Updates after each step.
+**Quality Gate 13.5:** Stack window opens, displays memory at the stack pointer. A7 row highlighted in yellow, selected A register highlighted in aqua. Address register combo box works. Scroll by 4 bytes. Updates after each step.
 
 ---
 
-### Task 12.6 — Memory Viewer Window
+### Task 13.6 — Memory Viewer Window
 
 Build `gui/simulator/memory_window.h/.cc` — the hex/ASCII memory viewer.
 
@@ -2230,11 +2714,11 @@ Features: #4 (memory display)
 
 5. **High-performance rendering** — Use `QAbstractTableModel` with `canFetchMore`/`fetchMore` to only render visible rows (Proposal Section 7.11). Memory is 16MB; never render all of it.
 
-**Quality Gate 12.6:** Memory window opens, displays memory contents in hex/ASCII. Address jump scrolls to the target. LivePaint mode refreshes after each step. Invalid/ROM/Protected regions shown in correct colors. Scrolling is smooth for any address range.
+**Quality Gate 13.6:** Memory window opens, displays memory contents in hex/ASCII. Address jump scrolls to the target. LivePaint mode refreshes after each step. Invalid/ROM/Protected regions shown in correct colors. Scrolling is smooth for any address range.
 
 ---
 
-### Task 12.7 — Memory Editing (Direct Edit, Copy, Fill)
+### Task 13.7 — Memory Editing (Direct Edit, Copy, Fill)
 
 Extend `memory_window.h/.cc` with direct byte editing and block operations.
 
@@ -2272,11 +2756,11 @@ Features: #5 (direct memory editing), #6 (memory block copy), #7 (memory block f
 
 6. **Hardware update** — After any memory write, call `HardwareWindow::updateIfNeeded(address)` and `StackWindow::DisplayStack()` to refresh dependent views. Port `FormKeyPress()` line 464-465.
 
-**Quality Gate 12.7:** Clicking on a hex digit and typing changes the byte in memory. Clicking on an ASCII character and typing replaces the byte. Copy operation correctly handles overlapping regions. Fill operation fills the range with the specified value. Hardware and stack views update after edits.
+**Quality Gate 13.7:** Clicking on a hex digit and typing changes the byte in memory. Clicking on an ASCII character and typing replaces the byte. Copy operation correctly handles overlapping regions. Fill operation fills the range with the specified value. Hardware and stack views update after edits.
 
 ---
 
-### Task 12.8 — Hardware Window (7-Segment, LEDs, Switches, Interrupts)
+### Task 13.8 — Hardware Window (7-Segment, LEDs, Switches, Interrupts)
 
 Build `gui/simulator/hardware_window.h/.cc` — the simulated hardware peripheral window.
 
@@ -2318,11 +2802,11 @@ Features: #8 (hardware display), #12 (interrupts), #26 (peripheral I/O)
 
 7. **Hardware refresh** — `updateIfNeeded(uint32_t addr)` method: if `addr` falls within any mapped peripheral range, update that peripheral's display. Called after every memory write and every Step.
 
-**Quality Gate 12.8:** Hardware window displays 7-segment digits, LEDs, switches, and push buttons. Each peripheral responds to memory reads/writes at its mapped address. Switches and push buttons write to memory. Auto-IRQ timer generates interrupts at the configured rate.
+**Quality Gate 13.8:** Hardware window displays 7-segment digits, LEDs, switches, and push buttons. Each peripheral responds to memory reads/writes at its mapped address. Switches and push buttons write to memory. Auto-IRQ timer generates interrupts at the configured rate.
 
 ---
 
-### Task 12.9 — I/O Console Widget
+### Task 13.9 — I/O Console Widget
 
 Build `gui/simulator/console_widget.h/.cc` — the Trap #15 text I/O terminal.
 
@@ -2349,11 +2833,11 @@ Features: #9 (output results)
 
 5. **Full-screen mode** — Toggle via `QWidget::showFullScreen()` (task 33). Restores with Escape key.
 
-**Quality Gate 12.9:** Console displays text output. User can type input when requested by Trap #15 task 2. Cursor positioning, scrolling, and font property changes work. Full-screen toggle works.
+**Quality Gate 13.9:** Console displays text output. User can type input when requested by Trap #15 task 2. Cursor positioning, scrolling, and font property changes work. Full-screen toggle works.
 
 ---
 
-### Task 12.10 — Graphics Output Window
+### Task 13.10 — Graphics Output Window
 
 Build `gui/simulator/qt_graphics_io.h/.cc` — the `IGraphicsIO` implementation.
 
@@ -2382,11 +2866,11 @@ Features: #10 (graphics), #27 (full-screen)
 
 3. **Full-screen mode** — `QWidget::showFullScreen()` with `QScreen` selection for multi-monitor. Escape to exit.
 
-**Quality Gate 12.10:** Graphics window renders all primitive shapes (pixel, line, rect, ellipse, text). Pen/fill color changes work. All 16 drawing modes produce correct results. Double-buffered rendering shows no flicker. Full-screen toggle works.
+**Quality Gate 13.10:** Graphics window renders all primitive shapes (pixel, line, rect, ellipse, text). Pen/fill color changes work. All 16 drawing modes produce correct results. Double-buffered rendering shows no flicker. Full-screen toggle works.
 
 ---
 
-### Task 12.11 — Sound System
+### Task 13.11 — Sound System
 
 Build `gui/simulator/qt_sound_io.h/.cc` — the `ISoundIO` implementation.
 
@@ -2412,11 +2896,11 @@ Features: #11 (sound)
 
 4. **ResetSounds** — Stop all playback, clear all cached sounds.
 
-**Quality Gate 12.11:** Single-voice playback works (play, pause, resume, stop). Multi-voice playback allows 2+ sounds simultaneously. Sound caching by reference number works. ResetSounds clears all state.
+**Quality Gate 13.11:** Single-voice playback works (play, pause, resume, stop). Multi-voice playback allows 2+ sounds simultaneously. Sound caching by reference number works. ResetSounds clears all state.
 
 ---
 
-### Task 12.12 — Log Window
+### Task 13.12 — Log Window
 
 Build `gui/simulator/log_window.h/.cc` — the logging configuration and execution window.
 
@@ -2461,11 +2945,11 @@ The original has two independent logging systems:
 
 6. **Auto-naming** — When an `.S68` file is opened, auto-set log file names to `<basename>_RunLog.txt` and `<basename>_OutLog.txt`. Port `setLogFileNames()` from logU.cpp line 59.
 
-**Quality Gate 12.12:** Log configuration dialog opens and saves settings. Execution log records instructions with registers to a text file. Output log records Trap #15 output to a binary file. Memory range dump works when selected. File-exists dialog offers Replace/Append/Cancel. Start/Stop controls work. Auto-naming derives log names from the S-Record file name.
+**Quality Gate 13.12:** Log configuration dialog opens and saves settings. Execution log records instructions with registers to a text file. Output log records Trap #15 output to a binary file. Memory range dump works when selected. File-exists dialog offers Replace/Append/Cancel. Start/Stop controls work. Auto-naming derives log names from the S-Record file name.
 
 ---
 
-### Task 12.13 — Serial I/O
+### Task 13.13 — Serial I/O
 
 Build `gui/simulator/qt_serial_io.h/.cc` — the `ISerialIO` implementation.
 
@@ -2489,11 +2973,11 @@ Features: #17 (serial I/O)
 
 5. **CloseAll** — Close and delete all open `QSerialPort` instances.
 
-**Quality Gate 12.13:** Serial port enumeration lists available ports. Port can be opened, configured, read from, and written to. Timeout behavior matches original. CloseAll cleans up all ports.
+**Quality Gate 13.13:** Serial port enumeration lists available ports. Port can be opened, configured, read from, and written to. Timeout behavior matches original. CloseAll cleans up all ports.
 
 ---
 
-### Task 12.14 — Network I/O (TCP/UDP)
+### Task 13.14 — Network I/O (TCP/UDP)
 
 Build `gui/simulator/qt_network_io.h/.cc` — the `INetworkIO` implementation.
 
@@ -2524,11 +3008,11 @@ Features: #18 (TCP/UDP network I/O)
    - Close the appropriate socket
    - `QNetworkInterface::allAddresses()` for local IP
 
-**Quality Gate 12.14:** UDP client can send to a server. UDP server can receive from a client. TCP send/receive works. Local IP is correctly reported. Timeout behavior on receive matches original.
+**Quality Gate 13.14:** UDP client can send to a server. UDP server can receive from a client. TCP send/receive works. Local IP is correctly reported. Timeout behavior on receive matches original.
 
 ---
 
-### Task 12.15 — Memory Range Definition Dialog
+### Task 13.15 — Memory Range Definition Dialog
 
 Build `gui/simulator/memory_range_dialog.h/.cc` — the Options dialog for defining memory protection regions.
 
@@ -2568,11 +3052,11 @@ The original simulator supports four memory region types, each with a start/end 
 - Apply them to the `Memory` object
 - Update the Memory Range dialog to reflect the loaded ranges
 
-**Quality Gate 12.15:** Memory range dialog opens. Enabling a range and setting addresses correctly marks those memory bytes. Accessing invalid memory generates a bus error. Accessing protected memory in user mode generates a bus error. ROM memory ignores writes. S-Record files with embedded range definitions are loaded correctly.
+**Quality Gate 13.15:** Memory range dialog opens. Enabling a range and setting addresses correctly marks those memory bytes. Accessing invalid memory generates a bus error. Accessing protected memory in user mode generates a bus error. ROM memory ignores writes. S-Record files with embedded range definitions are loaded correctly.
 
 ---
 
-### Task 12.16 — Printing
+### Task 13.16 — Printing
 
 Build `gui/simulator/qt_print_io.h/.cc` — the `IPrintIO` implementation.
 
@@ -2587,11 +3071,11 @@ Features: #24 (printing)
 
 2. **FormFeed** — Eject current page and start a new page.
 
-**Quality Gate 12.16:** PrintChar outputs characters to a printer. FormFeed advances to the next page. Page margins and line wrapping are correct.
+**Quality Gate 13.16:** PrintChar outputs characters to a printer. FormFeed advances to the next page. Page margins and line wrapping are correct.
 
 ---
 
-### Task 12.17 — File I/O
+### Task 13.17 — File I/O
 
 Build `gui/simulator/qt_file_io.h/.cc` — the `IFileIO` implementation.
 
@@ -2613,11 +3097,11 @@ Features: #25 (file I/O)
 
 7. **DisplayFileDialog** — Native file open/save dialog for the 68000 program to request a filename.
 
-**Quality Gate 12.17:** Files can be opened, read, written, seeked, closed, and deleted through the Trap #15 interface. File dialog integration works.
+**Quality Gate 13.17:** Files can be opened, read, written, seeked, closed, and deleted through the Trap #15 interface. File dialog integration works.
 
 ---
 
-### Task 12.18 — Settings Persistence
+### Task 13.18 — Settings Persistence
 
 Implement cross-platform settings storage.
 
@@ -2637,11 +3121,11 @@ Features: #29 (settings persistence)
 
 3. **Load on start** — `QMainWindow` constructor reads settings and restores window geometry.
 
-**Quality Gate 12.18:** Settings persist across application restarts. Window positions, fonts, and memory ranges are restored correctly.
+**Quality Gate 13.18:** Settings persist across application restarts. Window positions, fonts, and memory ranges are restored correctly.
 
 ---
 
-### Task 12.19 — Edit68K-Qt Editor Application
+### Task 13.19 — Edit68K-Qt Editor Application
 
 Build the assembler IDE.
 
@@ -2665,11 +3149,11 @@ Reference: `EASy68K/Edit68K/` (full Borland source), Proposal Section 7.1.1.
 
 4. **Status bar** — Cursor position ("ln X col Y"), Insert/Overwrite mode indicator.
 
-**Quality Gate 12.19:** Edit68K-Qt launches, provides syntax highlighting with the correct color scheme, assembles a source file, and can launch Sim68K-Qt with the assembled output.
+**Quality Gate 13.19:** Edit68K-Qt launches, provides syntax highlighting with the correct color scheme, assembles a source file, and can launch Sim68K-Qt with the assembled output.
 
 ---
 
-### Task 12.20 — EASyBIN-Qt Binary Utility
+### Task 13.20 — EASyBIN-Qt Binary Utility
 
 Build the binary manipulation utility.
 
@@ -2691,11 +3175,11 @@ Reference: `EASy68K/EASyBIN/` (full source), `EASyBIN.dfm`, Proposal Section 7.1
 
 5. **S-Record loading** — Uses `SRecordLoader` from `libeasym68k-sim` (shared code, Proposal Section 7.12).
 
-**Quality Gate 12.20:** EASyBIN-Qt correctly loads an `.S68`, displays it with correct color-coding for file splits, and successfully splits it into 1/2/4 binary files. Copy and Fill operations work.
+**Quality Gate 13.20:** EASyBIN-Qt correctly loads an `.S68`, displays it with correct color-coding for file splits, and successfully splits it into 1/2/4 binary files. Copy and Fill operations work.
 
 ---
 
-### Task 12.21 — Feature Parity Validation
+### Task 13.21 — Feature Parity Validation
 
 Systematic verification that every feature from the Feature Coverage Matrix works in the GUI.
 
@@ -2717,7 +3201,7 @@ For each of the 30 features in the matrix:
 - Run a program that uses serial I/O (requires loopback or virtual COM port)
 - Run a program that uses UDP/TCP networking
 
-**Quality Gate 12.21:** All 30 features in the Feature Coverage Matrix pass validation. Zero features are missing or broken.
+**Quality Gate 13.21:** All 30 features in the Feature Coverage Matrix pass validation. Zero features are missing or broken.
 
 ---
 

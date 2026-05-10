@@ -14,7 +14,7 @@ This repository is based on the unpacked Borland C++Builder sources from [alfish
 
 ## Current Status
 
-**Phase 8 (Assembler) — 4/6 tasks complete, 765 tests passing (505 sim + 260 asm).**
+**Phase 8 (Assembler) — 5/6 tasks complete, 904 tests passing (505 sim + 399 asm).**
 
 ### Completed
 
@@ -46,10 +46,11 @@ Deliberate correctness improvements over the original are logged in `PROGRESS.md
 ### Next Up
 
 - **8.6** Golden assembly tests
-- **9** Golden simulation traces
-- **10** Exception and interrupt tests
-- **11** CI, code coverage, clang-tidy
-- **12** Qt6 GUI (simulator, editor, binary utility)
+- **9** Simulator core library (interrupts, cycle counting, SIMHALT config, logging, observers)
+- **10** Golden simulation traces
+- **11** Exception and interrupt tests
+- **12** CI, code coverage, clang-tidy
+- **13** Qt6 GUI (simulator, editor, binary utility)
 
 ## Architecture
 
@@ -89,7 +90,7 @@ cmake --build build-asan && ctest --test-dir build-asan --output-on-failure
 
 ## Testing
 
-765 tests across 17 test suites covering memory, addressing modes, the decoder, all instruction groups, flag computation, Trap #15 I/O, lexer, parser, symbol table, expression evaluator, and assembler core.
+904 tests across 18 test suites covering memory, addressing modes, the decoder, all instruction groups, flag computation, Trap #15 I/O, lexer, parser, symbol table, expression evaluator, assembler core, instruction table, and code generator.
 
 ```bash
 ctest --test-dir build --output-on-failure         # all tests
@@ -131,4 +132,4 @@ GPL-2.0-or-later — consistent with the original EASy68K project.
 
 ---
 
-*Phase 8 assembler in progress · 765 tests passing · Next: code generator & assembler wiring*
+*Phase 8 assembler in progress · 904 tests passing · Next: instruction encoding handlers (8.5.3) · Phase 9 (simulator core parity) planned*

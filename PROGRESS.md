@@ -124,8 +124,8 @@ Decision: Register shift count uses `% 64` (not `& sizeMask`) — the original's
 | 8.2 Transfer Parser and Symbol Table | DONE | `dd18436` | Parser (AddressMode/Operand/ParsedLine/Parser), SymbolTable (SymbolFlags/ForwardRef/SymbolInfo); Pratt-precedence expression evaluator; 173 tests |
 | 8.3 Transfer Expression Evaluator | DONE | `fa27014` | ExpressionEvaluator standalone class; Pratt parser matching EVAL.CPP precedence; parser delegates to evaluator; lexer .digit local-label support; 46 ExpressionTest + 6 new LexerTest; 228 total |
 | 8.4 Transfer Assembler Core | DONE | `91cfef0` | Two-pass assembler (ORG/EQU/SET/DC/DS/EVEN/END directives; NOP/MOVEQ instructions; DC/DS word-alignment); forward-label resolution; 32 AssemblerTest; 260 total |
-| 8.5.1 Instruction Table Tests & Assembler Wiring | DONE | pending commit | 77 InstrTableTest cases; InstructionSize() table-driven; HandleInstruction() dispatches via CodeGenerator (kFixed+kMoveq fully wired; stubs for all other encodings) |
-| 8.5.2 Code Generator: EA Encoding + Ext Words | TODO | | |
+| 8.5.1 Instruction Table Tests & Assembler Wiring | DONE | `5da6f69` | 77 InstrTableTest cases; InstructionSize() table-driven; HandleInstruction() dispatches via CodeGenerator (kFixed+kMoveq fully wired; stubs for all other encodings) |
+| 8.5.2 Code Generator: EA Encoding + Ext Words | DONE | pending | EffAddr() all 13 EA modes to 6-bit codes; ExtWords() all mode+size combos with range checking; PC-relative disp = value-(loc+2) fixing original off-by-2; 62 CodeGeneratorTest (15 EffAddr + 41 ExtWords + 6 Encode); 399 total |
 | 8.5.3 Code Generator: Instruction Encoding Handlers | TODO | | |
 | 8.5.4 MOVEM Register List Parsing & Encoding | TODO | | |
 | 8.5.5 Remaining Directives (DCB/DC strings/INCLUDE/INCBIN/SECTION/OFFSET/OPT/FAIL/LIST/PAGE/etc.) | TODO | | |
@@ -137,53 +137,64 @@ Decision: Register shift count uses `% 64` (not `& sizeMask`) — the original's
 | 8.5.11 Object/S-Record Output (S0/S1/S2/S3/S8) | TODO | | |
 | 8.6 Golden Assembly Tests | TODO | | |
 
-## Phase 9: Golden Simulation Traces
+## Phase 9: Simulator Core Library — Full Parity & Headless Readiness
 
 | Task | Status | Commit | Summary |
 |------|--------|--------|---------|
-| 9.1 Implement Golden Trace Comparison | TODO | | |
+| 9.1 Interrupt Injection & Processing | TODO | | |
+| 9.2 Cycle Counting | TODO | | |
+| 9.3 SIMHALT Config & Exception Toggle | TODO | | |
+| 9.4 Execution Logging Interface | TODO | | |
+| 9.5 Event/Observer System | TODO | | |
+| 9.6 Core Integration Test | TODO | | |
 
-## Phase 10: Exception and Interrupt Tests
-
-| Task | Status | Commit | Summary |
-|------|--------|--------|---------|
-| 10.1 Exception Tests | TODO | | |
-| 10.2 Interrupt Tests | TODO | | |
-
-## Phase 11: CI and Code Quality
+## Phase 10: Golden Simulation Traces
 
 | Task | Status | Commit | Summary |
 |------|--------|--------|---------|
-| 11.1 Enable CI | TODO | | |
-| 11.2 Code Coverage | TODO | | |
-| 11.3 clang-tidy | TODO | | |
+| 10.1 Implement Golden Trace Comparison | TODO | | |
 
-## Phase 12: GUI Implementation
+## Phase 11: Exception and Interrupt Tests
 
 | Task | Status | Commit | Summary |
 |------|--------|--------|---------|
-| 12.1 Implement Trap #15 Qt Backends | TODO | | |
-| 12.2 Sim68K-Qt Main Window | TODO | | |
-| 12.3 Register Display Widget | TODO | | |
-| 12.4 Source Code View | TODO | | |
-| 12.5 Stack Viewer Window | TODO | | |
-| 12.6 Memory Viewer Window | TODO | | |
-| 12.7 Memory Editing | TODO | | |
-| 12.8 Hardware Window | TODO | | |
-| 12.9 I/O Console Widget | TODO | | |
-| 12.10 Graphics Output Window | TODO | | |
-| 12.11 Sound System | TODO | | |
-| 12.12 Log Window | TODO | | |
-| 12.13 Serial I/O | TODO | | |
-| 12.14 Network I/O | TODO | | |
-| 12.15 Memory Range Definition Dialog | TODO | | |
-| 12.16 Printing | TODO | | |
-| 12.17 File I/O | TODO | | |
-| 12.18 Settings Persistence | TODO | | |
-| 12.19 Edit68K-Qt Editor Application | TODO | | |
-| 12.20 EASyBIN-Qt Binary Utility | TODO | | |
-| 12.21 Feature Parity Validation | TODO | | |
+| 11.1 Exception Tests | TODO | | |
+| 11.2 Interrupt Tests | TODO | | |
+
+## Phase 12: CI and Code Quality
+
+| Task | Status | Commit | Summary |
+|------|--------|--------|---------|
+| 12.1 Enable CI | TODO | | |
+| 12.2 Code Coverage | TODO | | |
+| 12.3 clang-tidy | TODO | | |
+
+## Phase 13: GUI Implementation
+
+| Task | Status | Commit | Summary |
+|------|--------|--------|---------|
+| 13.1 Implement Trap #15 Qt Backends | TODO | | |
+| 13.2 Sim68K-Qt Main Window | TODO | | |
+| 13.3 Register Display Widget | TODO | | |
+| 13.4 Source Code View | TODO | | |
+| 13.5 Stack Viewer Window | TODO | | |
+| 13.6 Memory Viewer Window | TODO | | |
+| 13.7 Memory Editing | TODO | | |
+| 13.8 Hardware Window | TODO | | |
+| 13.9 I/O Console Widget | TODO | | |
+| 13.10 Graphics Output Window | TODO | | |
+| 13.11 Sound System | TODO | | |
+| 13.12 Log Window | TODO | | |
+| 13.13 Serial I/O | TODO | | |
+| 13.14 Network I/O | TODO | | |
+| 13.15 Memory Range Definition Dialog | TODO | | |
+| 13.16 Printing | TODO | | |
+| 13.17 File I/O | TODO | | |
+| 13.18 Settings Persistence | TODO | | |
+| 13.19 Edit68K-Qt Editor Application | TODO | | |
+| 13.20 EASyBIN-Qt Binary Utility | TODO | | |
+| 13.21 Feature Parity Validation | TODO | | |
 
 ---
 
-**NEXT:** Task 8.5.2 — Code Generator: EA Encoding + Ext Words
+**NEXT:** Task 8.5.3 — Code Generator: Instruction Encoding Handlers
