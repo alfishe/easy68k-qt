@@ -246,6 +246,16 @@ int Assembler::InstructionSize(const ParsedLine& line) const {
   SizeSpec sz = (line.size != SizeSpec::kNone) ? line.size : SizeSpec::kWord;
   int words = 1;  // base opcode word
 
+  // Mirrors the CanUseQuick() peephole check in code_generator.cc's anonymous
+  // namespace so that pass-1 size prediction matches pass-2 Encode() output.
+  auto can_use_quick = [&]() -> bool {
+    if (line.operands.empty())
+      return false;
+    const Operand& src = line.operands[0];
+    return src.mode == AddressMode::kImmediate && src.is_back_ref && src.data >= 1 &&
+           src.data <= 8 && src.forced_size == SizeSpec::kNone && sz != SizeSpec::kByte;
+  };
+
   switch (entry->encoding) {
     // Fixed 1-word opcodes — no extension words.
     case InstrEncoding::kFixed:
@@ -266,10 +276,10 @@ int Assembler::InstructionSize(const ParsedLine& line) const {
     case InstrEncoding::kTrap:
       break;
 
-    // Bcc/BRA/BSR: assume word-displacement form (2 words) conservatively in
-    // pass 1.  The code generator may select the short form on pass 2.
+    // Bcc/BRA/BSR: explicit .S/.B suffix → short form (1 word);
+    // otherwise conservative word form (2 words).
     case InstrEncoding::kBranch:
-      words = 2;
+      words = (line.size == SizeSpec::kShort || line.size == SizeSpec::kByte) ? 1 : 2;
       break;
 
     // DBcc: always 2 words (opcode + 16-bit displacement word).
@@ -296,6 +306,68 @@ int Assembler::InstructionSize(const ParsedLine& line) const {
     case InstrEncoding::kMoveM:
       words = 2;
       break;
+
+    // MOVE: MOVEQ peephole fires when MOVE.L #imm,Dn with imm in [-128,127].
+    // All other forms sum extension words normally.
+    case InstrEncoding::kMove: {
+      if (line.operands.size() >= 2) {
+        const Operand& src = line.operands[0];
+        const Operand& dst = line.operands[1];
+        if (src.mode == AddressMode::kImmediate && src.is_back_ref && src.data >= -128 &&
+            src.data <= 127 && dst.mode == AddressMode::kDnDirect && sz == SizeSpec::kLong &&
+            src.forced_size == SizeSpec::kNone) {
+          break;  // MOVEQ: 1 word, no extension words
+        }
+      }
+      for (const auto& op : line.operands)
+        words += InstructionTable::ExtWordCount(op.mode, sz);
+      break;
+    }
+
+    // ADD/SUB/AND/OR (kEaBidirect): ADDQ/SUBQ peephole for immediate src.
+    case InstrEncoding::kEaBidirect: {
+      if (line.operands.size() >= 2 && line.operands[0].mode == AddressMode::kImmediate) {
+        uint16_t top = entry->base & 0xF000;
+        if ((top == 0xD000 || top == 0x9000) && can_use_quick()) {
+          // ADDQ/SUBQ: opcode + dst extension words only
+          words += InstructionTable::ExtWordCount(line.operands[1].mode, sz);
+          break;
+        }
+      }
+      for (const auto& op : line.operands)
+        words += InstructionTable::ExtWordCount(op.mode, sz);
+      break;
+    }
+
+    // ADDI/SUBI/etc. (kImmedToEa): ADDQ/SUBQ peephole for ADDI/SUBI.
+    case InstrEncoding::kImmedToEa: {
+      if (line.operands.size() >= 2) {
+        uint16_t itype = entry->base & 0xFF00;
+        if ((itype == 0x0600 || itype == 0x0400) && can_use_quick()) {
+          // ADDQ/SUBQ: opcode + dst extension words only
+          words += InstructionTable::ExtWordCount(line.operands[1].mode, sz);
+          break;
+        }
+      }
+      for (const auto& op : line.operands)
+        words += InstructionTable::ExtWordCount(op.mode, sz);
+      break;
+    }
+
+    // ADDA/SUBA (kAddrEa): ADDQ/SUBQ peephole when immediate fits 1–8.
+    case InstrEncoding::kAddrEa: {
+      if (line.operands.size() >= 2) {
+        uint16_t top = entry->base & 0xF000;
+        if ((top == 0xD000 || top == 0x9000) && can_use_quick()) {
+          // ADDQ/SUBQ: opcode + dst extension words only
+          words += InstructionTable::ExtWordCount(line.operands[1].mode, sz);
+          break;
+        }
+      }
+      for (const auto& op : line.operands)
+        words += InstructionTable::ExtWordCount(op.mode, sz);
+      break;
+    }
 
     // General case: sum extension words across all operands.
     default:

@@ -125,9 +125,9 @@ Decision: Register shift count uses `% 64` (not `& sizeMask`) — the original's
 | 8.3 Transfer Expression Evaluator | DONE | `fa27014` | ExpressionEvaluator standalone class; Pratt parser matching EVAL.CPP precedence; parser delegates to evaluator; lexer .digit local-label support; 46 ExpressionTest + 6 new LexerTest; 228 total |
 | 8.4 Transfer Assembler Core | DONE | `91cfef0` | Two-pass assembler (ORG/EQU/SET/DC/DS/EVEN/END directives; NOP/MOVEQ instructions; DC/DS word-alignment); forward-label resolution; 32 AssemblerTest; 260 total |
 | 8.5.1 Instruction Table Tests & Assembler Wiring | DONE | `5da6f69` | 77 InstrTableTest cases; InstructionSize() table-driven; HandleInstruction() dispatches via CodeGenerator (kFixed+kMoveq fully wired; stubs for all other encodings) |
-| 8.5.2 Code Generator: EA Encoding + Ext Words | DONE | pending | EffAddr() all 13 EA modes to 6-bit codes; ExtWords() all mode+size combos with range checking; PC-relative disp = value-(loc+2) fixing original off-by-2; 62 CodeGeneratorTest (15 EffAddr + 41 ExtWords + 6 Encode); 399 total |
-| 8.5.3 Code Generator: Instruction Encoding Handlers | TODO | | |
-| 8.5.4 MOVEM Register List Parsing & Encoding | TODO | | |
+| 8.5.2 Code Generator: EA Encoding + Ext Words | DONE | `c264fc7` | EffAddr() all 13 EA modes to 6-bit codes; ExtWords() all mode+size combos with range checking; PC-relative disp = value-(loc+2) fixing original off-by-2; 62 CodeGeneratorTest |
+| 8.5.3 Code Generator: Instruction Encoding Handlers | DONE | `pending` | All 36 InstrEncoding cases in Encode(); ADDQ/SUBQ/MOVEQ peepholes; branch short/word forms; MOVEP all 4 sub-forms; InstructionSize() peephole consistency; 213 CodeGeneratorTest (473 total) |
+| 8.5.4 MOVEM Register List Parsing & Encoding | ACTIVE | | |
 | 8.5.5 Remaining Directives (DCB/DC strings/INCLUDE/INCBIN/SECTION/OFFSET/OPT/FAIL/LIST/PAGE/etc.) | TODO | | |
 | 8.5.6 Conditional Assembly (IFC/IFNC/IFEQ/IFNE/IFLT/IFLE/IFGT/IFGE/ELSE/ENDC) | TODO | | |
 | 8.5.7 Structured Control Flow (WHILE/FOR/REPEAT/IF/DBLOOP/UNLESS) | TODO | | |
@@ -197,4 +197,4 @@ Decision: Register shift count uses `% 64` (not `& sizeMask`) — the original's
 
 ---
 
-**NEXT:** Task 8.5.3 — Code Generator: Instruction Encoding Handlers
+**NEXT:** Task 8.5.4 — MOVEM Register List Parsing & Encoding
