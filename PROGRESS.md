@@ -127,7 +127,9 @@ Decision: Register shift count uses `% 64` (not `& sizeMask`) — the original's
 | 8.5.1 Instruction Table Tests & Assembler Wiring | DONE | `5da6f69` | 77 InstrTableTest cases; InstructionSize() table-driven; HandleInstruction() dispatches via CodeGenerator (kFixed+kMoveq fully wired; stubs for all other encodings) |
 | 8.5.2 Code Generator: EA Encoding + Ext Words | DONE | `c264fc7` | EffAddr() all 13 EA modes to 6-bit codes; ExtWords() all mode+size combos with range checking; PC-relative disp = value-(loc+2) fixing original off-by-2; 62 CodeGeneratorTest |
 | 8.5.3 Code Generator: Instruction Encoding Handlers | DONE | `pending` | All 36 InstrEncoding cases in Encode(); ADDQ/SUBQ/MOVEQ peepholes; branch short/word forms; MOVEP all 4 sub-forms; InstructionSize() peephole consistency; 213 CodeGeneratorTest (473 total) |
-| 8.5.4 MOVEM Register List Parsing & Encoding | ACTIVE | | |
+| 8.5.4 MOVEM Register List Parsing & Encoding | DONE | `pending` | kRegisterList mode; ParseRegisterList/ParseMovemOperands; REG directive; kMoveM encoder with mask reversal; InstructionSize fix; 28 MovemTest (501 asm / 1006 total) |
+
+Decision: EA mode validation (reject Dn/An/Imm/PreDec-as-source/etc.) is NOT implemented in the encoder — the original's DestModes/SourceModes checks are error-reporter logic, deferred to Task 8.5.9. The encoding itself is correct for all valid inputs.
 | 8.5.5 Remaining Directives (DCB/DC strings/INCLUDE/INCBIN/SECTION/OFFSET/OPT/FAIL/LIST/PAGE/etc.) | TODO | | |
 | 8.5.6 Conditional Assembly (IFC/IFNC/IFEQ/IFNE/IFLT/IFLE/IFGT/IFGE/ELSE/ENDC) | TODO | | |
 | 8.5.7 Structured Control Flow (WHILE/FOR/REPEAT/IF/DBLOOP/UNLESS) | TODO | | |
@@ -197,4 +199,4 @@ Decision: Register shift count uses `% 64` (not `& sizeMask`) — the original's
 
 ---
 
-**NEXT:** Task 8.5.4 — MOVEM Register List Parsing & Encoding
+**NEXT:** Task 8.5.5 — Remaining Directives (DCB/DC strings/INCLUDE/INCBIN/SECTION/OFFSET/OPT/FAIL/LIST/PAGE/etc.)

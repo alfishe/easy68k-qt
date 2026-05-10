@@ -79,7 +79,7 @@ void Assembler::RunPass(const std::vector<std::string>& lines) {
 bool Assembler::ProcessLine(const ParsedLine& line) {
   // Regular labels (not EQU/SET) are defined at the current location counter.
   if (!line.label.empty() && pass_ == 1) {
-    if (line.opcode != "EQU" && line.opcode != "SET") {
+    if (line.opcode != "EQU" && line.opcode != "SET" && line.opcode != "REG") {
       symbols_.DefineLabel(line.label, location_counter_, line.line_number);
     }
     symbols_.SetCurrentParentLabel(line.label);
@@ -210,9 +210,21 @@ bool Assembler::HandleDirective(const ParsedLine& line) {
     return false;  // Signal end of assembly
   }
 
-  // XDEF/XREF/REG are linker annotations with no code-generation effect.
-  // They are recognized as directives so HandleInstruction does not emit
-  // an "Unknown instruction" error for them.
+  if (op == "REG") {
+    if (pass_ == 1) {
+      if (line.label.empty()) {
+        AddError(line.line_number, "REG requires a label");
+      } else if (line.operands.empty()) {
+        AddError(line.line_number, "REG requires a register list operand");
+      } else {
+        uint16_t mask = static_cast<uint16_t>(line.operands[0].data & 0xFFFF);
+        symbols_.DefineRegisterList(line.label, mask, line.line_number);
+      }
+    }
+    return true;
+  }
+
+  // XDEF/XREF are linker annotations with no code-generation effect.
   return true;
 }
 
@@ -301,11 +313,17 @@ int Assembler::InstructionSize(const ParsedLine& line) const {
         words += InstructionTable::ExtWordCount(line.operands[0].mode, sz);
       break;
 
-    // MOVEM: 1 opcode + 1 register-list word + EA extension words.
-    // Stubbed to 2 words until Task 8.5.4.
-    case InstrEncoding::kMoveM:
-      words = 2;
+    // MOVEM: 1 opcode word + 1 register-list word + EA extension words.
+    case InstrEncoding::kMoveM: {
+      words = 2;  // opcode + register-mask word
+      for (const auto& operand : line.operands) {
+        if (operand.mode != AddressMode::kRegisterList) {
+          words += InstructionTable::ExtWordCount(operand.mode, sz);
+          break;
+        }
+      }
       break;
+    }
 
     // MOVE: MOVEQ peephole fires when MOVE.L #imm,Dn with imm in [-128,127].
     // All other forms sum extension words normally.

@@ -53,7 +53,18 @@ ParsedLine Parser::ParseLine(const std::string& line, int line_number) {
 
   if (!has_error_ && !result.opcode.empty() && !IsAtEnd() && !Check(TokenType::kComment) &&
       !Check(TokenType::kNewline)) {
-    ParseOperands(result);
+    if (result.opcode == "MOVEM") {
+      ParseMovemOperands(result);
+    } else if (result.opcode == "REG") {
+      Operand reg_op;
+      if (!ParseRegisterList(reg_op)) {
+        // error already set via Error()
+      } else {
+        result.operands.push_back(reg_op);
+      }
+    } else {
+      ParseOperands(result);
+    }
   }
 
   if (Check(TokenType::kComment)) {
@@ -517,6 +528,182 @@ std::string Parser::ToUpper(const std::string& s) {
   std::transform(result.begin(), result.end(), result.begin(),
                  [](unsigned char c) { return std::toupper(c); });
   return result;
+}
+
+// ---------------------------------------------------------------------------
+// ParseRegisterList — ports evalList() from MOVEM.CPP.
+// Parses an explicit D/A register list (D0-D7/A0-A6 etc.) or a named
+// register-list symbol (defined via REG directive).  Stores the 16-bit
+// register mask in op.data and sets op.mode = kRegisterList.
+// ---------------------------------------------------------------------------
+bool Parser::ParseRegisterList(Operand& op) {
+  // Named register-list symbol (e.g. SAVE_REGS defined via REG)
+  if (Check(TokenType::kSymbol)) {
+    std::string name = Current().text;
+    Advance();
+    op.mode = AddressMode::kRegisterList;
+    op.symbol_name = name;
+    op.data = 0;
+    op.is_back_ref = false;
+
+    if (symbols_) {
+      SymbolInfo info;
+      if (symbols_->Lookup(name, info)) {
+        if (HasFlag(info.flags, SymbolFlags::kRegisterList)) {
+          op.data = info.value;
+          op.is_back_ref = true;
+        } else if (pass_ == 2) {
+          Error("Symbol '" + name + "' is not a register list");
+          return false;
+        }
+      } else if (pass_ == 2) {
+        Error("Undefined register list symbol: " + name);
+        return false;
+      }
+    }
+    return true;
+  }
+
+  // Explicit register list: must start with a data or address register
+  if (!Check(TokenType::kRegister)) {
+    Error("Expected register or register-list symbol");
+    return false;
+  }
+  {
+    Token first = Current();
+    if (first.reg_type != RegisterType::kData && first.reg_type != RegisterType::kAddress &&
+        first.reg_type != RegisterType::kSP) {
+      Error("Expected data or address register in register list");
+      return false;
+    }
+  }
+
+  uint16_t mask = 0;
+  while (true) {
+    if (!Check(TokenType::kRegister)) {
+      Error("Expected register in register list");
+      return false;
+    }
+    Token r1 = Advance();
+    int bit1;
+    if (r1.reg_type == RegisterType::kData) {
+      bit1 = r1.reg_num;
+    } else if (r1.reg_type == RegisterType::kAddress || r1.reg_type == RegisterType::kSP) {
+      bit1 = 8 + r1.reg_num;
+    } else {
+      Error("Invalid register type in register list");
+      return false;
+    }
+
+    if (Check(TokenType::kMinus)) {
+      Advance();  // consume '-'
+      if (!Check(TokenType::kRegister)) {
+        Error("Expected register after '-' in register list range");
+        return false;
+      }
+      Token r2 = Advance();
+      int bit2;
+      if (r2.reg_type == RegisterType::kData) {
+        bit2 = r2.reg_num;
+      } else if (r2.reg_type == RegisterType::kAddress || r2.reg_type == RegisterType::kSP) {
+        bit2 = 8 + r2.reg_num;
+      } else {
+        Error("Invalid register type in register list range");
+        return false;
+      }
+      int lo = std::min(bit1, bit2);
+      int hi = std::max(bit1, bit2);
+      for (int r = lo; r <= hi; r++)
+        mask |= static_cast<uint16_t>(1 << r);
+    } else {
+      mask |= static_cast<uint16_t>(1 << bit1);
+    }
+
+    // '/' separator is kOperator("/")
+    if (Check(TokenType::kOperator) && Current().text == "/") {
+      Advance();  // consume '/'
+    } else {
+      break;
+    }
+  }
+
+  op.mode = AddressMode::kRegisterList;
+  op.data = static_cast<int32_t>(mask);
+  op.is_back_ref = true;
+  return true;
+}
+
+// ---------------------------------------------------------------------------
+// ParseMovemOperands — dispatches between the two MOVEM forms:
+//   Form 1: MOVEM <reglist>, <ea>   (register list first)
+//   Form 2: MOVEM <ea>, <reglist>   (effective address first)
+// ---------------------------------------------------------------------------
+bool Parser::ParseMovemOperands(ParsedLine& line) {
+  // A data or address register token unambiguously starts a register list.
+  bool first_is_explicit_list = false;
+  if (Check(TokenType::kRegister)) {
+    Token t = Current();
+    first_is_explicit_list =
+        (t.reg_type == RegisterType::kData || t.reg_type == RegisterType::kAddress ||
+         t.reg_type == RegisterType::kSP);
+  }
+
+  if (first_is_explicit_list) {
+    // Form 1: <reglist>, <ea>
+    Operand reg_op;
+    if (!ParseRegisterList(reg_op))
+      return false;
+    if (!Match(TokenType::kComma)) {
+      Error("Expected comma after MOVEM register list");
+      return false;
+    }
+    Operand ea_op;
+    if (!ParseSingleOperand(ea_op))
+      return false;
+    line.operands.push_back(reg_op);
+    line.operands.push_back(ea_op);
+    return true;
+  }
+
+  // A symbol might be a REG-defined register list — try parsing it as one,
+  // then check that a comma follows before committing.
+  if (Check(TokenType::kSymbol)) {
+    size_t saved_pos = token_pos_;
+    bool saved_err = has_error_;
+    std::string saved_msg = error_message_;
+    has_error_ = false;
+    error_message_.clear();
+
+    Operand maybe_reg_op;
+    if (ParseRegisterList(maybe_reg_op) && Check(TokenType::kComma)) {
+      Advance();  // consume comma
+      Operand ea_op;
+      if (!ParseSingleOperand(ea_op))
+        return false;
+      line.operands.push_back(maybe_reg_op);
+      line.operands.push_back(ea_op);
+      return true;
+    }
+    // Backtrack — not a register list symbol
+    token_pos_ = saved_pos;
+    has_error_ = saved_err;
+    error_message_ = saved_msg;
+  }
+
+  // Form 2: <ea>, <reglist>
+  Operand ea_op;
+  if (!ParseSingleOperand(ea_op))
+    return false;
+  if (!Match(TokenType::kComma)) {
+    Error("Expected comma in MOVEM operands");
+    return false;
+  }
+  Operand reg_op;
+  if (!ParseRegisterList(reg_op))
+    return false;
+  line.operands.push_back(ea_op);
+  line.operands.push_back(reg_op);
+  return true;
 }
 
 int GetEAEncoding(const Operand& op) {

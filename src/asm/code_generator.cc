@@ -636,11 +636,49 @@ bool CodeGenerator::Encode(const InstrEntry& entry, const ParsedLine& line,
     }
 
     // -----------------------------------------------------------------------
-    // kMoveM — MOVEM: stubbed until Task 8.5.4
+    // kMoveM — MOVEM <reglist>,<ea> / MOVEM <ea>,<reglist>
+    // Form 1 (reglist first): operands[0].mode == kRegisterList
+    // Form 2 (ea first):      operands[1].mode == kRegisterList
+    // Pre-decrement mode reverses the 16-bit register mask (MOVEM.CPP movem()).
+    // TODO(8.5.9): validate DestModes / SourceModes (original MOVEM.CPP lines 114-144).
     // -----------------------------------------------------------------------
-    case InstrEncoding::kMoveM:
-      emit_word(entry.base);
-      return true;
+    case InstrEncoding::kMoveM: {
+      if (line.operands.size() < 2) {
+        *error_msg = "MOVEM requires two operands";
+        return false;
+      }
+      bool reglist_first = (src().mode == AM::kRegisterList);
+      const Operand& reg_op = reglist_first ? src() : dst();
+      const Operand& ea_op = reglist_first ? dst() : src();
+
+      uint16_t base = entry.base;
+      if (size == SizeSpec::kLong)
+        base |= 0x0040;  // bit 6: W=0, L=1
+
+      uint16_t mask = static_cast<uint16_t>(reg_op.data & 0xFFFF);
+
+      if (reglist_first) {
+        // Reg→mem: pre-decrement reverses the bit order
+        if (ea_op.mode == AM::kAnIndirectPre) {
+          uint16_t temp = mask;
+          mask = 0;
+          for (int i = 0; i < 16; i++) {
+            mask = static_cast<uint16_t>((mask << 1) | (temp & 1));
+            temp >>= 1;
+          }
+        }
+        emit_word(static_cast<uint16_t>(base | EffAddr(ea_op)));
+        emit_word(mask);
+        uint32_t ext_loc = location_counter + 4;
+        return ExtWords(ea_op, size, ext_loc, emit_word, error_msg);
+      } else {
+        // Mem→reg: set bit 10 (0x0400)
+        emit_word(static_cast<uint16_t>(base | 0x0400 | EffAddr(ea_op)));
+        emit_word(mask);
+        uint32_t ext_loc = location_counter + 4;
+        return ExtWords(ea_op, size, ext_loc, emit_word, error_msg);
+      }
+    }
 
     // -----------------------------------------------------------------------
     // kMoveP — MOVEP Dn,d(An) / MOVEP d(An),Dn: four sub-forms.

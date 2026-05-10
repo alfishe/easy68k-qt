@@ -39,7 +39,8 @@ enum class AddressMode {
   kUSPDirect = 0x04000,       // USP
   kSFCDirect = 0x08000,       // SFC (68010)
   kDFCDirect = 0x10000,       // DFC (68010)
-  kVBRDirect = 0x20000        // VBR (68010)
+  kVBRDirect = 0x20000,       // VBR (68010)
+  kRegisterList = 0x40000     // MOVEM/REG register list (mask in op.data)
 };
 
 inline AddressMode operator|(AddressMode a, AddressMode b) {
@@ -136,6 +137,10 @@ class Parser {
   bool ParseAbsoluteOrDisplacement(Operand& op);
   bool FinishIndexedMode(Operand& out, int32_t disp, bool back_ref, AddressMode base_mode,
                          AddressMode idx_mode);
+
+  // MOVEM/REG register list support (ports evalList() from MOVEM.CPP)
+  bool ParseRegisterList(Operand& op);
+  bool ParseMovemOperands(ParsedLine& line);
 
   bool EvaluateExpression(int32_t& value, bool& is_back_ref);
 
