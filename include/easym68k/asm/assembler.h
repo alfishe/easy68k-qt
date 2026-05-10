@@ -10,6 +10,8 @@
 #include <string>
 #include <vector>
 
+#include "easym68k/asm/code_generator.h"
+#include "easym68k/asm/instruction_table.h"
 #include "easym68k/asm/parser.h"
 #include "easym68k/asm/symbol_table.h"
 
@@ -47,6 +49,8 @@ class Assembler {
 
   Parser parser_;
   SymbolTable symbols_;
+  InstructionTable instruction_table_;
+  CodeGenerator code_generator_;
 
   static std::vector<std::string> SplitLines(const std::string& source);
 

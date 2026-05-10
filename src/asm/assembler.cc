@@ -105,11 +105,9 @@ bool Assembler::HandleDirective(const ParsedLine& line) {
       AddError(line.line_number, "ORG requires an address");
       return true;
     }
-    location_counter_ = static_cast<uint32_t>(line.operands[0].data);
-    // TODO(Task 8.5): Handle ORG discontinuities. Currently AssemblyResult
-    // exposes a single flat code vector starting at org_, so a second ORG
-    // that jumps to a non-contiguous address will silently produce incorrect
-    // output.  The fix requires a segment map: map<uint32_t, vector<uint8_t>>.
+    uint32_t new_loc = static_cast<uint32_t>(line.operands[0].data);
+    // TODO: Warn and auto-align on odd ORG address (DIRECTIV.CPP:112-115).
+    location_counter_ = new_loc;
     return true;
   }
 
@@ -140,6 +138,11 @@ bool Assembler::HandleDirective(const ParsedLine& line) {
                     : (sz == SizeSpec::kLong) ? 4
                                               : 2;  // kWord / kShort
 
+    // Word-align before DC.W or DC.L (DIRECTIV.CPP:351-355).
+    // DC.B is exempt so consecutive DC.B's can be contiguous.
+    if (bytes_per > 1 && (location_counter_ & 1))
+      EmitByte(0);
+
     if (pass_ == 1) {
       location_counter_ +=
           static_cast<uint32_t>(bytes_per * static_cast<int>(line.operands.size()));
@@ -164,6 +167,10 @@ bool Assembler::HandleDirective(const ParsedLine& line) {
       sz = SizeSpec::kWord;
 
     int bytes_per = (sz == SizeSpec::kByte) ? 1 : (sz == SizeSpec::kLong) ? 4 : 2;
+
+    // Word-align before DS.W or DS.L (DIRECTIV.CPP:529-533).
+    if (bytes_per > 1 && (location_counter_ & 1))
+      EmitByte(0);
 
     int32_t count = line.operands.empty() ? 1 : line.operands[0].data;
     uint32_t total = static_cast<uint32_t>(bytes_per * count);
@@ -210,58 +217,94 @@ bool Assembler::HandleDirective(const ParsedLine& line) {
 }
 
 bool Assembler::HandleInstruction(const ParsedLine& line) {
-  const std::string& op = line.opcode;
-
   if (pass_ == 1) {
     location_counter_ += static_cast<uint32_t>(InstructionSize(line));
     return true;
   }
 
-  // Pass 2: emit encoding
-  if (op == "NOP") {
-    EmitWord(0x4E71);
+  // Pass 2: look up instruction and dispatch to code generator.
+  const InstrEntry* entry = instruction_table_.Lookup(line.opcode);
+  if (!entry) {
+    AddError(line.line_number, "Unknown instruction: " + line.opcode);
     return true;
   }
 
-  if (op == "MOVEQ") {
-    // Syntax: MOVEQ #imm,Dn
-    // Encoding: 0111 DDD0 iiiiiiii
-    if (line.operands.size() < 2) {
-      AddError(line.line_number, "MOVEQ requires two operands");
-      return true;
-    }
-    const Operand& src = line.operands[0];
-    const Operand& dst = line.operands[1];
-    if (src.mode != AddressMode::kImmediate) {
-      AddError(line.line_number, "MOVEQ source must be immediate");
-      return true;
-    }
-    if (dst.mode != AddressMode::kDnDirect) {
-      AddError(line.line_number, "MOVEQ destination must be data register");
-      return true;
-    }
-    int8_t imm8 = static_cast<int8_t>(src.data & 0xFF);
-    uint16_t word =
-        static_cast<uint16_t>(0x7000 | ((dst.reg & 7) << 9) | (static_cast<uint8_t>(imm8)));
-    EmitWord(word);
-    return true;
+  std::string error_msg;
+  if (!code_generator_.Encode(
+          *entry, line, location_counter_, symbols_, [this](uint16_t w) { EmitWord(w); },
+          &error_msg)) {
+    AddError(line.line_number, error_msg);
   }
-
-  AddError(line.line_number, "Unknown instruction: " + op);
   return true;
 }
 
 int Assembler::InstructionSize(const ParsedLine& line) const {
-  const std::string& op = line.opcode;
-  if (op == "NOP")
+  const InstrEntry* entry = instruction_table_.Lookup(line.opcode);
+  if (!entry)
     return 2;
-  if (op == "MOVEQ")
-    return 2;
-  // TODO(Task 8.5): Replace with instruction_table lookup.  The default of 2
-  // bytes is correct for single-word opcodes but wrong for instructions with
-  // immediate or absolute-long operands (e.g. ADDI, BRA.W, LINK).  Any code
-  // that uses unimplemented instructions will get incorrect label addresses.
-  return 2;
+
+  SizeSpec sz = (line.size != SizeSpec::kNone) ? line.size : SizeSpec::kWord;
+  int words = 1;  // base opcode word
+
+  switch (entry->encoding) {
+    // Fixed 1-word opcodes — no extension words.
+    case InstrEncoding::kFixed:
+    case InstrEncoding::kRegOp:
+    case InstrEncoding::kAnOp:
+    case InstrEncoding::kMoveUsp:
+    case InstrEncoding::kAddxSubx:
+    case InstrEncoding::kAbcdSbcd:
+    case InstrEncoding::kCmpm:
+    case InstrEncoding::kExg:
+      break;
+
+    // MOVEQ: immediate data encoded in the opcode word — no extension words.
+    case InstrEncoding::kMoveq:
+      break;
+
+    // TRAP: vector encoded in the opcode word — no extension words.
+    case InstrEncoding::kTrap:
+      break;
+
+    // Bcc/BRA/BSR: assume word-displacement form (2 words) conservatively in
+    // pass 1.  The code generator may select the short form on pass 2.
+    case InstrEncoding::kBranch:
+      words = 2;
+      break;
+
+    // DBcc: always 2 words (opcode + 16-bit displacement word).
+    case InstrEncoding::kDBcc:
+      words = 2;
+      break;
+
+    // ADDQ/SUBQ: quick data (#1-8) lives in the opcode — count only the
+    // destination's extension words.
+    case InstrEncoding::kQuick:
+      if (line.operands.size() >= 2)
+        words += InstructionTable::ExtWordCount(line.operands[1].mode, sz);
+      break;
+
+    // Shift/rotate: register form (2 operands) has no extension words; memory
+    // form (1 operand) adds extension words for the effective address.
+    case InstrEncoding::kShift:
+      if (line.operands.size() == 1)
+        words += InstructionTable::ExtWordCount(line.operands[0].mode, sz);
+      break;
+
+    // MOVEM: 1 opcode + 1 register-list word + EA extension words.
+    // Stubbed to 2 words until Task 8.5.4.
+    case InstrEncoding::kMoveM:
+      words = 2;
+      break;
+
+    // General case: sum extension words across all operands.
+    default:
+      for (const auto& op : line.operands)
+        words += InstructionTable::ExtWordCount(op.mode, sz);
+      break;
+  }
+
+  return words * 2;
 }
 
 void Assembler::EmitByte(uint8_t b) {

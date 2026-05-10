@@ -14,41 +14,37 @@ This repository is based on the unpacked Borland C++Builder sources from [alfish
 
 ## Current Status
 
-**Phase 8 (Assembler) — 2/6 tasks complete, 678 tests passing (505 sim + 173 asm).**
+**Phase 8 (Assembler) — 4/6 tasks complete, 765 tests passing (505 sim + 260 asm).**
 
 ### Completed
 
 | Phase | Description | Tests |
 |-------|-------------|-------|
-| 0 | Project infrastructure, CMake, clang-format | — |
-| 1 | Types, Memory, EffectiveAddr tagged union | 22 |
-| 2 | S-Record loader (.S68/.S19/.S3) | 16 |
-| 3 | All 12 addressing modes, CpuState (SSP/USP) | 37 |
-| 4 | Simulator core (Reset/Step/Run, HandleException) | 26 |
-| 5 | Hierarchical instruction decoder (16 groups) | 14 |
-| 6.1 | Move instructions (MOVE/MOVEA/MOVEQ/LEA/PEA/SWAP/EXG) | 37 |
-| 6.2 | Arithmetic (ADD/SUB/MUL/DIV/NEG/CMP/TST/EXT/BCD/CHK) | 69 |
-| 6.3 | Logic (OR/AND/EOR + immediate + CCR/SR, NOT, TAS) | 40 |
-| 6.4 | Branch (BRA/BSR/Bcc/DBcc/Scc/JMP/JSR/RTS/RTE/RTR) | 32 |
-| 6.5 | Miscellaneous (TRAP/TRAPV/ILLEGAL/RESET/STOP) | 19 |
-| 6.6 | Shift/Rotate (ASL/ASR/LSL/LSR/ROL/ROR/ROXL/ROXR + BTST/BCHG/BCLR/BSET) | 25 |
-| 6.7 | Flag computation verification suite (end-to-end flag state for all instruction classes) | 64 |
-| 7.1 | Trap #15 interface headers (10 I/O interfaces) | — |
-| 7.2 | Trap #15 dispatch (50-case switch, SetupWindow) | — |
-| 7.3 | Trap #15 mock tests (all task numbers, null-interface edge cases) | 103 |
-| 8.1 | Lexer (TokenType/SizeSpec/RegisterType enums, Token, all opcodes + directives) | 100 |
-| 8.2 | Parser + Symbol Table (AddressMode/Operand/ParsedLine, SymbolFlags/ForwardRef, Pratt-precedence evaluator) | 73 |
+| ⋮ | *Phases 0–7 complete (infrastructure, simulator, all opcodes, Trap #15)* | 505 |
+| 8.1 | Lexer (all opcodes + directives) | 100 |
+| 8.2 | Parser + Symbol Table + Pratt-precedence evaluator | 73 |
+| 8.3 | Expression evaluator (matching EVAL.CPP precedence) | 52 |
+| 8.4 | Assembler core (two-pass, ORG/EQU/SET/DC/DS/EVEN/ODD/END, DC/DS word-alignment) | 32 |
 
 Deliberate correctness improvements over the original are logged in `PROGRESS.md` — BCD X flag, CHK signed comparison, STOP full 5-step port, shift count modulo-64.
 
 ### In Progress
 
-- **8.3** Expression evaluator
+- **8.5** Missing assembler components (11 subtasks):
+  - 8.5.1 Instruction table tests & assembler wiring
+  - 8.5.2 Code generator: EA encoding + extension words
+  - 8.5.3 Code generator: instruction encoding handlers (BUILD.CPP)
+  - 8.5.4 MOVEM register list parsing & encoding
+  - 8.5.5 Remaining directives (DCB, DC strings, INCLUDE, INCBIN, SECTION, OFFSET, OPT, etc.)
+  - 8.5.6 Conditional assembly (IFC/IFNC/IFEQ/IFNE/IFLT/IFLE/IFGT/IFGE/ELSE/ENDC)
+  - 8.5.7 Structured control flow (WHILE/FOR/REPEAT/IF/DBLOOP/UNLESS)
+  - 8.5.8 Macro processor (MACRO/ENDM, parameter substitution, NARG, IFARG, MEXIT)
+  - 8.5.9 Error reporter (43+ specific error codes)
+  - 8.5.10 Listing generator (.L68 output)
+  - 8.5.11 Object/S-Record output (S0/S1/S2/S3/S8)
 
 ### Next Up
 
-- **8.4** Assembler core (two-pass assembly)
-- **8.5** Missing assembler components (macros, structured control, conditional assembly)
 - **8.6** Golden assembly tests
 - **9** Golden simulation traces
 - **10** Exception and interrupt tests
@@ -93,7 +89,7 @@ cmake --build build-asan && ctest --test-dir build-asan --output-on-failure
 
 ## Testing
 
-678 tests across 17 test suites covering memory, addressing modes, the decoder, all instruction groups, flag computation, Trap #15 I/O, lexer, parser, and symbol table.
+765 tests across 17 test suites covering memory, addressing modes, the decoder, all instruction groups, flag computation, Trap #15 I/O, lexer, parser, symbol table, expression evaluator, and assembler core.
 
 ```bash
 ctest --test-dir build --output-on-failure         # all tests
@@ -117,6 +113,13 @@ build/tests/easym68k-sim-tests --gtest_filter="ShiftTest*"  # specific suite
 6. No autonomous commits — all changes require human review
 7. No `Co-authored-by:` tags in commit messages
 
+### Scope Exclusions
+
+The following original features are **not ported** (commented out or not applicable):
+- MOVES/MOVEC (68010+ instructions) — commented out in original sources
+- BINFILE.CPP binary output — dead code in original (not in project build, never called)
+- 68020 bit-field instructions — optional, may be added later
+
 ## License
 
 GPL-2.0-or-later — consistent with the original EASy68K project.
@@ -128,4 +131,4 @@ GPL-2.0-or-later — consistent with the original EASy68K project.
 
 ---
 
-*Phase 8 assembler in progress · 678 tests passing · Next: expression evaluator*
+*Phase 8 assembler in progress · 765 tests passing · Next: code generator & assembler wiring*

@@ -293,6 +293,70 @@ TEST(AssemblerTest, DswReservesSpace) {
   EXPECT_EQ(r.code[7], 0xEF);
 }
 
+TEST(AssemblerTest, DswAutoAlignsAfterOddByte) {
+  // DC.B $01 leaves LC at odd address; DS.W must word-align before reserving.
+  // DIRECTIV.CPP:529-533: loc++ before DS.W/L if loc is odd.
+  Assembler a;
+  auto r = a.Assemble(
+      "    ORG $1000\n"
+      "    DC.B $01\n"    // 1 byte: LC = $1001 (odd)
+      "    DS.W 1\n"      // word-align pad + 2 reserved bytes
+      "    DC.B $FF\n");  // 1 byte
+  EXPECT_TRUE(r.success);
+  ASSERT_EQ(r.code.size(), 5u);  // $01 + pad + $00 $00 + $FF
+  EXPECT_EQ(r.code[0], 0x01);    // DC.B
+  EXPECT_EQ(r.code[1], 0x00);    // alignment pad
+  EXPECT_EQ(r.code[2], 0x00);    // DS.W reserved byte 0
+  EXPECT_EQ(r.code[3], 0x00);    // DS.W reserved byte 1
+  EXPECT_EQ(r.code[4], 0xFF);    // DC.B $FF
+}
+
+TEST(AssemblerTest, DcwAutoAlignsAfterOddByte) {
+  // DC.B $AB leaves LC odd; DC.W must insert a pad byte first.
+  // DIRECTIV.CPP:351-355: loc++ before DC.W/L if loc is odd.
+  Assembler a;
+  auto r = a.Assemble(
+      "    ORG $1000\n"
+      "    DC.B $AB\n"      // 1 byte: LC = $1001 (odd)
+      "    DC.W $1234\n");  // pad + word
+  EXPECT_TRUE(r.success);
+  ASSERT_EQ(r.code.size(), 4u);
+  EXPECT_EQ(r.code[0], 0xAB);  // DC.B
+  EXPECT_EQ(r.code[1], 0x00);  // alignment pad
+  EXPECT_EQ(r.code[2], 0x12);  // DC.W high
+  EXPECT_EQ(r.code[3], 0x34);  // DC.W low
+}
+
+TEST(AssemblerTest, DclAutoAlignsAfterOddByte) {
+  Assembler a;
+  auto r = a.Assemble(
+      "    ORG $1000\n"
+      "    DC.B $FF\n"
+      "    DC.L $12345678\n");
+  EXPECT_TRUE(r.success);
+  ASSERT_EQ(r.code.size(), 6u);
+  EXPECT_EQ(r.code[0], 0xFF);
+  EXPECT_EQ(r.code[1], 0x00);  // pad
+  EXPECT_EQ(r.code[2], 0x12);
+  EXPECT_EQ(r.code[3], 0x34);
+  EXPECT_EQ(r.code[4], 0x56);
+  EXPECT_EQ(r.code[5], 0x78);
+}
+
+TEST(AssemblerTest, DcbsAreContiguousNoAlignment) {
+  // DC.B's must NOT trigger word alignment between them (original comment:
+  // "so DC.B's can be contiguous").
+  Assembler a;
+  auto r = a.Assemble(
+      "    ORG $1000\n"
+      "    DC.B $01,$02,$03\n");
+  EXPECT_TRUE(r.success);
+  ASSERT_EQ(r.code.size(), 3u);
+  EXPECT_EQ(r.code[0], 0x01);
+  EXPECT_EQ(r.code[1], 0x02);
+  EXPECT_EQ(r.code[2], 0x03);
+}
+
 TEST(AssemblerTest, DsbReservesBytes) {
   Assembler a;
   auto r = a.Assemble(

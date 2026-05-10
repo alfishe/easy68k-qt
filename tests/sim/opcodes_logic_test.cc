@@ -117,7 +117,7 @@ TEST_F(LogicTest, Ori_Long) {
 
 TEST_F(LogicTest, OriToCcr) {
   sim_.State().sr = kSrSupervisor;  // no CCR flags set
-  OpcodeImm16(0x003C, 0x0005);  // ORI #5,CCR  (5 = kSrCarry|kSrZero)
+  OpcodeImm16(0x003C, 0x0005);      // ORI #5,CCR  (5 = kSrCarry|kSrZero)
   EXPECT_EQ(sim_.Step(), SimResult::kOk);
   EXPECT_TRUE(sim_.State().GetFlag(kSrCarry));
   EXPECT_TRUE(sim_.State().GetFlag(kSrZero));

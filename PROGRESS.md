@@ -123,8 +123,18 @@ Decision: Register shift count uses `% 64` (not `& sizeMask`) — the original's
 | 8.1 Transfer Lexer | DONE | `7c5b148` | TokenType/SizeSpec/RegisterType enums, Token struct, Lexer class; all 68000 opcodes + EASy68K directives; 100 LexerTest |
 | 8.2 Transfer Parser and Symbol Table | DONE | `dd18436` | Parser (AddressMode/Operand/ParsedLine/Parser), SymbolTable (SymbolFlags/ForwardRef/SymbolInfo); Pratt-precedence expression evaluator; 173 tests |
 | 8.3 Transfer Expression Evaluator | DONE | `fa27014` | ExpressionEvaluator standalone class; Pratt parser matching EVAL.CPP precedence; parser delegates to evaluator; lexer .digit local-label support; 46 ExpressionTest + 6 new LexerTest; 228 total |
-| 8.4 Transfer Assembler Core | DONE | `pending` | Two-pass assembler (ORG/EQU/SET/DC/DS/EVEN/END directives; NOP/MOVEQ instructions); forward-label resolution; 19 AssemblerTest; 247 total |
-| 8.5 Implement Missing Assembler Components | TODO | | |
+| 8.4 Transfer Assembler Core | DONE | `91cfef0` | Two-pass assembler (ORG/EQU/SET/DC/DS/EVEN/END directives; NOP/MOVEQ instructions; DC/DS word-alignment); forward-label resolution; 32 AssemblerTest; 260 total |
+| 8.5.1 Instruction Table Tests & Assembler Wiring | DONE | pending commit | 77 InstrTableTest cases; InstructionSize() table-driven; HandleInstruction() dispatches via CodeGenerator (kFixed+kMoveq fully wired; stubs for all other encodings) |
+| 8.5.2 Code Generator: EA Encoding + Ext Words | TODO | | |
+| 8.5.3 Code Generator: Instruction Encoding Handlers | TODO | | |
+| 8.5.4 MOVEM Register List Parsing & Encoding | TODO | | |
+| 8.5.5 Remaining Directives (DCB/DC strings/INCLUDE/INCBIN/SECTION/OFFSET/OPT/FAIL/LIST/PAGE/etc.) | TODO | | |
+| 8.5.6 Conditional Assembly (IFC/IFNC/IFEQ/IFNE/IFLT/IFLE/IFGT/IFGE/ELSE/ENDC) | TODO | | |
+| 8.5.7 Structured Control Flow (WHILE/FOR/REPEAT/IF/DBLOOP/UNLESS) | TODO | | |
+| 8.5.8 Macro Processor (MACRO/ENDM/params/\@/NARG/IFARG/MEXIT) | TODO | | |
+| 8.5.9 Error Reporter (43+ error codes) | TODO | | |
+| 8.5.10 Listing Generator (.L68 output) | TODO | | |
+| 8.5.11 Object/S-Record Output (S0/S1/S2/S3/S8) | TODO | | |
 | 8.6 Golden Assembly Tests | TODO | | |
 
 ## Phase 9: Golden Simulation Traces
@@ -176,4 +186,4 @@ Decision: Register shift count uses `% 64` (not `& sizeMask`) — the original's
 
 ---
 
-**NEXT:** Task 8.5 — Implement Missing Assembler Components
+**NEXT:** Task 8.5.2 — Code Generator: EA Encoding + Ext Words
