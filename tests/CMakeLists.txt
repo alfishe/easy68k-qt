@@ -29,6 +29,7 @@ add_executable(easym68k-asm-tests
   asm/instruction_table_test.cc
   asm/movem_test.cc
   asm/directives_test.cc
+  asm/conditional_assembly_test.cc
   asm/macro_test.cc
   asm/structured_test.cc
   asm/listing_test.cc

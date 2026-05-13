@@ -88,6 +88,7 @@ AssemblyResult Assembler::Assemble(const std::string& source) {
     current_section_ = 0;
     for (auto& s : section_locs_)
       s = 0;
+    cond_stack_.clear();
   };
 
   // Pass 1: define all labels / EQU symbols; compute location counter.
@@ -113,6 +114,129 @@ AssemblyResult Assembler::Assemble(const std::string& source) {
   return result;
 }
 
+bool Assembler::IsAssembling() const {
+  for (const auto& f : cond_stack_)
+    if (!f.active)
+      return false;
+  return true;
+}
+
+bool Assembler::OuterIsAssembling() const {
+  for (size_t i = 0; i + 1 < cond_stack_.size(); i++)
+    if (!cond_stack_[i].active)
+      return false;
+  return true;
+}
+
+bool Assembler::IsConditional(const std::string& opcode) const {
+  return opcode == "IFC" || opcode == "IFNC" || opcode == "IFEQ" || opcode == "IFNE" ||
+         opcode == "IFLT" || opcode == "IFLE" || opcode == "IFGT" || opcode == "IFGE" ||
+         opcode == "ELSE" || opcode == "ENDC";
+}
+
+void Assembler::HandleConditional(const ParsedLine& line) {
+  const std::string& op = line.opcode;
+  const bool outer = OuterIsAssembling();
+
+  // The original rejects labels on conditional directive lines (ASSEMBLE.CPP: LABEL_ERROR).
+  if (!line.label.empty() && pass_ == 2)
+    AddError(line.line_number, "Label not permitted on conditional directive: " + line.label);
+
+  // Helper: extract string value from an operand for IFC/IFNC comparison.
+  // kStringLiteral → symbol_name; kImmediate → decimal; otherwise → symbol_name
+  auto operand_str = [](const Operand& o) -> std::string {
+    if (o.mode == AddressMode::kStringLiteral)
+      return o.symbol_name;
+    if (o.mode == AddressMode::kImmediate)
+      return std::to_string(o.data);
+    return o.symbol_name;
+  };
+
+  if (op == "IFC") {
+    // IFC 'str1','str2' — assemble if strings are equal (case-sensitive)
+    if (!IsAssembling()) {
+      // Nested inside an already-skipped block — track depth only
+      cond_stack_.push_back({false, false});
+      return;
+    }
+    bool cond = false;
+    if (line.operands.size() >= 2) {
+      cond = (operand_str(line.operands[0]) == operand_str(line.operands[1]));
+    } else if (pass_ == 2) {
+      AddError(line.line_number, "IFC requires two operands");
+    }
+    cond_stack_.push_back({cond, false});
+
+  } else if (op == "IFNC") {
+    // IFNC 'str1','str2' — assemble if strings are NOT equal
+    if (!IsAssembling()) {
+      cond_stack_.push_back({false, false});
+      return;
+    }
+    bool cond = true;
+    if (line.operands.size() >= 2) {
+      cond = (operand_str(line.operands[0]) != operand_str(line.operands[1]));
+    } else if (pass_ == 2) {
+      AddError(line.line_number, "IFNC requires two operands");
+    }
+    cond_stack_.push_back({cond, false});
+
+  } else if (op == "IFEQ" || op == "IFNE" || op == "IFLT" || op == "IFLE" || op == "IFGT" ||
+             op == "IFGE") {
+    // IFxx expr — assemble based on expr compared to 0
+    if (!IsAssembling()) {
+      cond_stack_.push_back({false, false});
+      return;
+    }
+    bool cond = false;
+    if (line.operands.empty()) {
+      if (pass_ == 2)
+        AddError(line.line_number, op + " requires an expression");
+    } else {
+      int32_t val = line.operands[0].data;
+      if (op == "IFEQ")
+        cond = (val == 0);
+      else if (op == "IFNE")
+        cond = (val != 0);
+      else if (op == "IFLT")
+        cond = (val < 0);
+      else if (op == "IFLE")
+        cond = (val <= 0);
+      else if (op == "IFGT")
+        cond = (val > 0);
+      else if (op == "IFGE")
+        cond = (val >= 0);
+    }
+    cond_stack_.push_back({cond, false});
+
+  } else if (op == "ELSE") {
+    if (cond_stack_.empty()) {
+      if (pass_ == 2)
+        AddError(line.line_number, "ELSE without matching IF");
+      return;
+    }
+    CondFrame& top = cond_stack_.back();
+    if (top.seen_else) {
+      if (pass_ == 2)
+        AddError(line.line_number, "Multiple ELSE in same conditional block");
+      return;
+    }
+    top.seen_else = true;
+    // Only toggle active state when the outer context is assembling.
+    // If the outer is skipped, the whole block is dead regardless.
+    if (outer)
+      top.active = !top.active;
+
+  } else if (op == "ENDC") {
+    if (cond_stack_.empty()) {
+      if (pass_ == 2)
+        AddError(line.line_number, "ENDC without matching IF");
+      return;
+    }
+    cond_stack_.pop_back();
+  }
+}
+
 void Assembler::RunPass(const std::vector<std::string>& lines) {
   for (int i = 0; i < static_cast<int>(lines.size()); i++) {
     if (end_seen_)
@@ -121,10 +245,20 @@ void Assembler::RunPass(const std::vector<std::string>& lines) {
     ParsedLine line = parser_.ParseLine(lines[i], i + 1);
 
     if (line.has_error) {
-      if (pass_ == 2)
+      if (pass_ == 2 && IsAssembling())
         AddError(line.line_number, line.error_message);
       continue;
     }
+
+    // Conditional directives are always evaluated to maintain the nesting stack.
+    if (!line.opcode.empty() && IsConditional(line.opcode)) {
+      HandleConditional(line);
+      continue;
+    }
+
+    // Skip non-conditional content when inside an inactive conditional block.
+    if (!IsAssembling())
+      continue;
 
     if (!ProcessLine(line))
       break;

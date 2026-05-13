@@ -74,6 +74,16 @@ class Assembler {
   // Include cycle detection: set of filenames currently being assembled
   std::set<std::string> active_includes_;
 
+  // Conditional assembly stack (IFC/IFNC/IFxx/ELSE/ENDC)
+  struct CondFrame {
+    bool active;     // true = current branch is being assembled
+    bool seen_else;  // true = ELSE already encountered for this frame
+  };
+  std::vector<CondFrame> cond_stack_;
+
+  bool IsAssembling() const;       // true when no enclosing conditional is inactive
+  bool OuterIsAssembling() const;  // true when all frames *except* the top are active
+
   FileReader file_reader_;
 
   Parser parser_;
@@ -93,6 +103,10 @@ class Assembler {
   bool HandleDirective(const ParsedLine& line);
   bool HandleInstruction(const ParsedLine& line);
   int InstructionSize(const ParsedLine& line) const;
+
+  // Conditional assembly — always called regardless of IsAssembling()
+  bool IsConditional(const std::string& opcode) const;
+  void HandleConditional(const ParsedLine& line);
 
   void EmitByte(uint8_t b);
   void EmitWord(uint16_t w);
