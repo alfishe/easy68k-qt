@@ -3,14 +3,34 @@
 
 #include "easym68k/asm/assembler.h"
 
+#include <fstream>
 #include <sstream>
 #include <unordered_set>
 
 namespace easym68k::asm_ {
 
-Assembler::Assembler() : pass_(1), location_counter_(0), org_(0), org_set_(false) {}
+Assembler::Assembler()
+    : pass_(1),
+      location_counter_(0),
+      org_(0),
+      org_set_(false),
+      end_seen_(false),
+      listing_enabled_(true),
+      offset_mode_(false),
+      offset_save_loc_(0),
+      section_locs_{},
+      current_section_(0) {
+  // Default file reader: read from the real filesystem
+  file_reader_ = [this](const std::string& filename) -> std::string {
+    return ReadIncludeFile(filename);
+  };
+}
 
 Assembler::~Assembler() = default;
+
+void Assembler::AddIncludePath(const std::string& path) {
+  include_paths_.push_back(path);
+}
 
 // static
 std::vector<std::string> Assembler::SplitLines(const std::string& source) {
@@ -19,21 +39,60 @@ std::vector<std::string> Assembler::SplitLines(const std::string& source) {
   std::string line;
   while (std::getline(ss, line))
     lines.push_back(line);
-  // Guarantee at least one line so single-expression sources are processed.
   if (lines.empty())
     lines.push_back("");
   return lines;
+}
+
+std::string Assembler::ReadIncludeFile(const std::string& filename) {
+  // Search include paths first
+  for (const auto& dir : include_paths_) {
+    std::string path = dir + "/" + filename;
+    std::ifstream f(path);
+    if (f.is_open()) {
+      std::ostringstream buf;
+      buf << f.rdbuf();
+      return buf.str();
+    }
+  }
+  // Fallback: try filename as-is
+  std::ifstream f(filename);
+  if (!f.is_open())
+    return "";
+  std::ostringstream buf;
+  buf << f.rdbuf();
+  return buf.str();
+}
+
+std::string Assembler::ReadBinaryFile(const std::string& filename) {
+  std::ifstream f(filename, std::ios::binary);
+  if (!f.is_open())
+    return "";
+  std::ostringstream buf;
+  buf << f.rdbuf();
+  return buf.str();
 }
 
 AssemblyResult Assembler::Assemble(const std::string& source) {
   auto lines = SplitLines(source);
   errors_.clear();
 
+  auto reset_state = [this]() {
+    location_counter_ = 0;
+    org_ = 0;
+    org_set_ = false;
+    end_seen_ = false;
+    listing_enabled_ = true;
+    offset_mode_ = false;
+    offset_save_loc_ = 0;
+    current_section_ = 0;
+    for (auto& s : section_locs_)
+      s = 0;
+  };
+
   // Pass 1: define all labels / EQU symbols; compute location counter.
   pass_ = 1;
-  location_counter_ = 0;
-  org_ = 0;
-  org_set_ = false;
+  reset_state();
   symbols_.Clear();
   parser_.SetPass(1);
   parser_.SetSymbolTable(&symbols_);
@@ -41,9 +100,7 @@ AssemblyResult Assembler::Assemble(const std::string& source) {
 
   // Pass 2: emit object code using the symbol table built in pass 1.
   pass_ = 2;
-  location_counter_ = 0;
-  org_ = 0;
-  org_set_ = false;
+  reset_state();
   code_.clear();
   parser_.SetPass(2);
   RunPass(lines);
@@ -58,14 +115,12 @@ AssemblyResult Assembler::Assemble(const std::string& source) {
 
 void Assembler::RunPass(const std::vector<std::string>& lines) {
   for (int i = 0; i < static_cast<int>(lines.size()); i++) {
+    if (end_seen_)
+      break;
     parser_.SetLocationCounter(location_counter_);
     ParsedLine line = parser_.ParseLine(lines[i], i + 1);
 
     if (line.has_error) {
-      // Pass-1 errors are silently skipped: the assembler finishes pass 1 to
-      // collect all label addresses, then re-parses and reports errors in
-      // pass 2.  Structural errors that corrupt the symbol table (e.g.
-      // multiply-defined labels) will surface as errors in pass 2.
       if (pass_ == 2)
         AddError(line.line_number, line.error_message);
       continue;
@@ -77,7 +132,7 @@ void Assembler::RunPass(const std::vector<std::string>& lines) {
 }
 
 bool Assembler::ProcessLine(const ParsedLine& line) {
-  // Regular labels (not EQU/SET) are defined at the current location counter.
+  // Regular labels (not EQU/SET/REG) are defined at the current location counter.
   if (!line.label.empty() && pass_ == 1) {
     if (line.opcode != "EQU" && line.opcode != "SET" && line.opcode != "REG") {
       symbols_.DefineLabel(line.label, location_counter_, line.line_number);
@@ -89,7 +144,9 @@ bool Assembler::ProcessLine(const ParsedLine& line) {
     return true;
 
   static const std::unordered_set<std::string> kDirectiveOpcodes = {
-      "ORG", "EQU", "SET", "DC", "DS", "END", "EVEN", "ODD", "XDEF", "XREF", "REG",
+      "ORG", "EQU",  "SET",  "DC",     "DS",      "DCB",     "END",     "EVEN",
+      "ODD", "XDEF", "XREF", "REG",    "INCLUDE", "INCBIN",  "SECTION", "OFFSET",
+      "OPT", "FAIL", "LIST", "NOLIST", "PAGE",    "SIMHALT", "MEMORY",
   };
   if (kDirectiveOpcodes.count(line.opcode))
     return HandleDirective(line);
@@ -106,7 +163,17 @@ bool Assembler::HandleDirective(const ParsedLine& line) {
       return true;
     }
     uint32_t new_loc = static_cast<uint32_t>(line.operands[0].data);
-    // TODO: Warn and auto-align on odd ORG address (DIRECTIV.CPP:112-115).
+    if (new_loc & 1) {
+      // Odd ORG: warn and align (DIRECTIV.CPP:112-115)
+      if (pass_ == 2)
+        AddError(line.line_number, "ORG address is odd — auto-aligned to even");
+      new_loc &= ~1u;
+    }
+    if (offset_mode_) {
+      // Exiting OFFSET mode via ORG
+      offset_mode_ = false;
+      location_counter_ = offset_save_loc_;
+    }
     location_counter_ = new_loc;
     return true;
   }
@@ -132,31 +199,78 @@ bool Assembler::HandleDirective(const ParsedLine& line) {
   if (op == "DC") {
     SizeSpec sz = line.size;
     if (sz == SizeSpec::kNone)
-      sz = SizeSpec::kWord;  // DC without size → DC.W
+      sz = SizeSpec::kWord;
 
-    int bytes_per = (sz == SizeSpec::kByte)   ? 1
-                    : (sz == SizeSpec::kLong) ? 4
-                                              : 2;  // kWord / kShort
+    int bytes_per = (sz == SizeSpec::kByte) ? 1 : (sz == SizeSpec::kLong) ? 4 : 2;
 
-    // Word-align before DC.W or DC.L (DIRECTIV.CPP:351-355).
-    // DC.B is exempt so consecutive DC.B's can be contiguous.
+    // Word-align before DC.W or DC.L (DIRECTIV.CPP:351-355)
     if (bytes_per > 1 && (location_counter_ & 1))
       EmitByte(0);
 
     if (pass_ == 1) {
-      location_counter_ +=
-          static_cast<uint32_t>(bytes_per * static_cast<int>(line.operands.size()));
-    } else {
-      for (const auto& op_val : line.operands) {
-        uint32_t val = static_cast<uint32_t>(op_val.data);
-        if (bytes_per == 1) {
-          EmitByte(static_cast<uint8_t>(val & 0xFF));
-        } else if (bytes_per == 2) {
-          EmitWord(static_cast<uint16_t>(val & 0xFFFF));
+      for (const auto& operand : line.operands) {
+        if (operand.mode == AddressMode::kStringLiteral) {
+          location_counter_ += static_cast<uint32_t>(operand.symbol_name.size());
         } else {
-          EmitLong(val);
+          location_counter_ += static_cast<uint32_t>(bytes_per);
         }
       }
+    } else {
+      for (const auto& op_val : line.operands) {
+        if (op_val.mode == AddressMode::kStringLiteral) {
+          for (unsigned char ch : op_val.symbol_name)
+            EmitByte(ch);
+        } else {
+          uint32_t val = static_cast<uint32_t>(op_val.data);
+          if (bytes_per == 1) {
+            EmitByte(static_cast<uint8_t>(val & 0xFF));
+          } else if (bytes_per == 2) {
+            EmitWord(static_cast<uint16_t>(val & 0xFFFF));
+          } else {
+            EmitLong(val);
+          }
+        }
+      }
+    }
+    return true;
+  }
+
+  if (op == "DCB") {
+    SizeSpec sz = line.size;
+    if (sz == SizeSpec::kNone)
+      sz = SizeSpec::kWord;
+
+    int bytes_per = (sz == SizeSpec::kByte) ? 1 : (sz == SizeSpec::kLong) ? 4 : 2;
+
+    // Word-align before DCB.W or DCB.L
+    if (bytes_per > 1 && (location_counter_ & 1))
+      EmitByte(0);
+
+    int32_t count = 0;
+    uint32_t fill_val = 0;
+    if (line.operands.size() >= 1)
+      count = line.operands[0].data;
+    if (line.operands.size() >= 2)
+      fill_val = static_cast<uint32_t>(line.operands[1].data);
+
+    if (count < 0) {
+      AddError(line.line_number, "DCB count must be non-negative");
+      return true;
+    }
+
+    uint32_t total = static_cast<uint32_t>(bytes_per * count);
+    if (pass_ == 2) {
+      for (int32_t j = 0; j < count; j++) {
+        if (bytes_per == 1) {
+          EmitByte(static_cast<uint8_t>(fill_val & 0xFF));
+        } else if (bytes_per == 2) {
+          EmitWord(static_cast<uint16_t>(fill_val & 0xFFFF));
+        } else {
+          EmitLong(fill_val);
+        }
+      }
+    } else {
+      location_counter_ += total;
     }
     return true;
   }
@@ -168,7 +282,6 @@ bool Assembler::HandleDirective(const ParsedLine& line) {
 
     int bytes_per = (sz == SizeSpec::kByte) ? 1 : (sz == SizeSpec::kLong) ? 4 : 2;
 
-    // Word-align before DS.W or DS.L (DIRECTIV.CPP:529-533).
     if (bytes_per > 1 && (location_counter_ & 1))
       EmitByte(0);
 
@@ -207,7 +320,8 @@ bool Assembler::HandleDirective(const ParsedLine& line) {
   }
 
   if (op == "END") {
-    return false;  // Signal end of assembly
+    end_seen_ = true;
+    return false;
   }
 
   if (op == "REG") {
@@ -221,6 +335,135 @@ bool Assembler::HandleDirective(const ParsedLine& line) {
         symbols_.DefineRegisterList(line.label, mask, line.line_number);
       }
     }
+    return true;
+  }
+
+  if (op == "INCLUDE") {
+    if (line.operands.empty() || line.operands[0].mode != AddressMode::kStringLiteral) {
+      AddError(line.line_number, "INCLUDE requires a filename string");
+      return true;
+    }
+    const std::string& filename = line.operands[0].symbol_name;
+
+    // Cycle detection
+    if (active_includes_.count(filename)) {
+      AddError(line.line_number, "INCLUDE cycle detected: " + filename);
+      return true;
+    }
+
+    std::string content = file_reader_(filename);
+    if (content.empty()) {
+      // Only error in pass 2 so pass 1 can still build the symbol table
+      if (pass_ == 2)
+        AddError(line.line_number, "INCLUDE: cannot open file: " + filename);
+      return true;
+    }
+
+    auto sub_lines = SplitLines(content);
+    active_includes_.insert(filename);
+    bool saved_end = end_seen_;
+    end_seen_ = false;
+    RunPass(sub_lines);
+    end_seen_ = saved_end;  // END inside INCLUDE ends only that file
+    active_includes_.erase(filename);
+    return true;
+  }
+
+  if (op == "INCBIN") {
+    if (line.operands.empty() || line.operands[0].mode != AddressMode::kStringLiteral) {
+      AddError(line.line_number, "INCBIN requires a filename string");
+      return true;
+    }
+    const std::string& filename = line.operands[0].symbol_name;
+    std::string content = ReadBinaryFile(filename);
+    if (content.empty() && pass_ == 2) {
+      AddError(line.line_number, "INCBIN: cannot open file: " + filename);
+      return true;
+    }
+    uint32_t sz = static_cast<uint32_t>(content.size());
+    if (pass_ == 2) {
+      for (unsigned char ch : content)
+        EmitByte(ch);
+    } else {
+      location_counter_ += sz;
+    }
+    return true;
+  }
+
+  if (op == "SECTION") {
+    // SECTION n — switch to section 0-15, saving current LC
+    int32_t n = line.operands.empty() ? 0 : line.operands[0].data;
+    if (n < 0 || n >= kNumSections) {
+      AddError(line.line_number, "SECTION number must be 0-15");
+      return true;
+    }
+    if (offset_mode_) {
+      // Exiting OFFSET mode via SECTION
+      offset_mode_ = false;
+      location_counter_ = offset_save_loc_;
+    }
+    // Save current section's LC and restore new section's LC
+    section_locs_[current_section_] = location_counter_;
+    current_section_ = static_cast<int>(n);
+    location_counter_ = section_locs_[current_section_];
+    return true;
+  }
+
+  if (op == "OFFSET") {
+    // OFFSET expr — starts OFFSET mode: LC = expr, code not emitted
+    if (line.operands.empty()) {
+      AddError(line.line_number, "OFFSET requires an expression");
+      return true;
+    }
+    if (!offset_mode_)
+      offset_save_loc_ = location_counter_;
+    offset_mode_ = true;
+    location_counter_ = static_cast<uint32_t>(line.operands[0].data);
+    return true;
+  }
+
+  if (op == "OPT") {
+    // Options control listing / assembly behavior — no-op in this implementation
+    return true;
+  }
+
+  if (op == "FAIL") {
+    // FAIL 'message' — unconditional user error
+    if (pass_ == 2) {
+      std::string msg = "FAIL";
+      if (!line.operands.empty() && line.operands[0].mode == AddressMode::kStringLiteral) {
+        msg += ": " + line.operands[0].symbol_name;
+      }
+      AddError(line.line_number, msg);
+    }
+    return true;
+  }
+
+  if (op == "LIST") {
+    listing_enabled_ = true;
+    return true;
+  }
+
+  if (op == "NOLIST") {
+    listing_enabled_ = false;
+    return true;
+  }
+
+  if (op == "PAGE") {
+    // Page break in listing — no-op
+    return true;
+  }
+
+  if (op == "SIMHALT") {
+    // Word-align then emit two 0xFFFF words (= 4 bytes)
+    WordAlign();
+    EmitWord(0xFFFF);
+    EmitWord(0xFFFF);
+    return true;
+  }
+
+  if (op == "MEMORY") {
+    // MEMORY directive: no-op (memory region definition for simulator)
     return true;
   }
 
@@ -258,8 +501,6 @@ int Assembler::InstructionSize(const ParsedLine& line) const {
   SizeSpec sz = (line.size != SizeSpec::kNone) ? line.size : SizeSpec::kWord;
   int words = 1;  // base opcode word
 
-  // Mirrors the CanUseQuick() peephole check in code_generator.cc's anonymous
-  // namespace so that pass-1 size prediction matches pass-2 Encode() output.
   auto can_use_quick = [&]() -> bool {
     if (line.operands.empty())
       return false;
@@ -269,7 +510,6 @@ int Assembler::InstructionSize(const ParsedLine& line) const {
   };
 
   switch (entry->encoding) {
-    // Fixed 1-word opcodes — no extension words.
     case InstrEncoding::kFixed:
     case InstrEncoding::kRegOp:
     case InstrEncoding::kAnOp:
@@ -278,44 +518,30 @@ int Assembler::InstructionSize(const ParsedLine& line) const {
     case InstrEncoding::kAbcdSbcd:
     case InstrEncoding::kCmpm:
     case InstrEncoding::kExg:
-      break;
-
-    // MOVEQ: immediate data encoded in the opcode word — no extension words.
     case InstrEncoding::kMoveq:
-      break;
-
-    // TRAP: vector encoded in the opcode word — no extension words.
     case InstrEncoding::kTrap:
       break;
 
-    // Bcc/BRA/BSR: explicit .S/.B suffix → short form (1 word);
-    // otherwise conservative word form (2 words).
     case InstrEncoding::kBranch:
       words = (line.size == SizeSpec::kShort || line.size == SizeSpec::kByte) ? 1 : 2;
       break;
 
-    // DBcc: always 2 words (opcode + 16-bit displacement word).
     case InstrEncoding::kDBcc:
       words = 2;
       break;
 
-    // ADDQ/SUBQ: quick data (#1-8) lives in the opcode — count only the
-    // destination's extension words.
     case InstrEncoding::kQuick:
       if (line.operands.size() >= 2)
         words += InstructionTable::ExtWordCount(line.operands[1].mode, sz);
       break;
 
-    // Shift/rotate: register form (2 operands) has no extension words; memory
-    // form (1 operand) adds extension words for the effective address.
     case InstrEncoding::kShift:
       if (line.operands.size() == 1)
         words += InstructionTable::ExtWordCount(line.operands[0].mode, sz);
       break;
 
-    // MOVEM: 1 opcode word + 1 register-list word + EA extension words.
     case InstrEncoding::kMoveM: {
-      words = 2;  // opcode + register-mask word
+      words = 2;
       for (const auto& operand : line.operands) {
         if (operand.mode != AddressMode::kRegisterList) {
           words += InstructionTable::ExtWordCount(operand.mode, sz);
@@ -325,8 +551,6 @@ int Assembler::InstructionSize(const ParsedLine& line) const {
       break;
     }
 
-    // MOVE: MOVEQ peephole fires when MOVE.L #imm,Dn with imm in [-128,127].
-    // All other forms sum extension words normally.
     case InstrEncoding::kMove: {
       if (line.operands.size() >= 2) {
         const Operand& src = line.operands[0];
@@ -334,7 +558,7 @@ int Assembler::InstructionSize(const ParsedLine& line) const {
         if (src.mode == AddressMode::kImmediate && src.is_back_ref && src.data >= -128 &&
             src.data <= 127 && dst.mode == AddressMode::kDnDirect && sz == SizeSpec::kLong &&
             src.forced_size == SizeSpec::kNone) {
-          break;  // MOVEQ: 1 word, no extension words
+          break;
         }
       }
       for (const auto& op : line.operands)
@@ -342,12 +566,10 @@ int Assembler::InstructionSize(const ParsedLine& line) const {
       break;
     }
 
-    // ADD/SUB/AND/OR (kEaBidirect): ADDQ/SUBQ peephole for immediate src.
     case InstrEncoding::kEaBidirect: {
       if (line.operands.size() >= 2 && line.operands[0].mode == AddressMode::kImmediate) {
         uint16_t top = entry->base & 0xF000;
         if ((top == 0xD000 || top == 0x9000) && can_use_quick()) {
-          // ADDQ/SUBQ: opcode + dst extension words only
           words += InstructionTable::ExtWordCount(line.operands[1].mode, sz);
           break;
         }
@@ -357,12 +579,10 @@ int Assembler::InstructionSize(const ParsedLine& line) const {
       break;
     }
 
-    // ADDI/SUBI/etc. (kImmedToEa): ADDQ/SUBQ peephole for ADDI/SUBI.
     case InstrEncoding::kImmedToEa: {
       if (line.operands.size() >= 2) {
         uint16_t itype = entry->base & 0xFF00;
         if ((itype == 0x0600 || itype == 0x0400) && can_use_quick()) {
-          // ADDQ/SUBQ: opcode + dst extension words only
           words += InstructionTable::ExtWordCount(line.operands[1].mode, sz);
           break;
         }
@@ -372,12 +592,10 @@ int Assembler::InstructionSize(const ParsedLine& line) const {
       break;
     }
 
-    // ADDA/SUBA (kAddrEa): ADDQ/SUBQ peephole when immediate fits 1–8.
     case InstrEncoding::kAddrEa: {
       if (line.operands.size() >= 2) {
         uint16_t top = entry->base & 0xF000;
         if ((top == 0xD000 || top == 0x9000) && can_use_quick()) {
-          // ADDQ/SUBQ: opcode + dst extension words only
           words += InstructionTable::ExtWordCount(line.operands[1].mode, sz);
           break;
         }
@@ -387,7 +605,6 @@ int Assembler::InstructionSize(const ParsedLine& line) const {
       break;
     }
 
-    // General case: sum extension words across all operands.
     default:
       for (const auto& op : line.operands)
         words += InstructionTable::ExtWordCount(op.mode, sz);
@@ -398,7 +615,7 @@ int Assembler::InstructionSize(const ParsedLine& line) const {
 }
 
 void Assembler::EmitByte(uint8_t b) {
-  if (pass_ == 2) {
+  if (pass_ == 2 && !offset_mode_) {
     if (!org_set_) {
       org_ = location_counter_;
       org_set_ = true;
@@ -418,6 +635,12 @@ void Assembler::EmitLong(uint32_t l) {
   EmitByte(static_cast<uint8_t>((l >> 16) & 0xFF));
   EmitByte(static_cast<uint8_t>((l >> 8) & 0xFF));
   EmitByte(static_cast<uint8_t>(l & 0xFF));
+}
+
+void Assembler::WordAlign() {
+  if (location_counter_ & 1) {
+    EmitByte(0);
+  }
 }
 
 void Assembler::AddError(int line_number, const std::string& message) {

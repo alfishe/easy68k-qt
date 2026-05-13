@@ -40,7 +40,8 @@ enum class AddressMode {
   kSFCDirect = 0x08000,       // SFC (68010)
   kDFCDirect = 0x10000,       // DFC (68010)
   kVBRDirect = 0x20000,       // VBR (68010)
-  kRegisterList = 0x40000     // MOVEM/REG register list (mask in op.data)
+  kRegisterList = 0x40000,    // MOVEM/REG register list (mask in op.data)
+  kStringLiteral = 0x80000    // DC string literal (content in symbol_name)
 };
 
 inline AddressMode operator|(AddressMode a, AddressMode b) {
@@ -141,6 +142,9 @@ class Parser {
   // MOVEM/REG register list support (ports evalList() from MOVEM.CPP)
   bool ParseRegisterList(Operand& op);
   bool ParseMovemOperands(ParsedLine& line);
+
+  // OPT directive — option names are identifiers, not expressions
+  void ParseOptOperands(ParsedLine& line);
 
   bool EvaluateExpression(int32_t& value, bool& is_back_ref);
 

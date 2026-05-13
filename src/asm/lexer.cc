@@ -366,6 +366,8 @@ Token Lexer::ScanToken() {
 
   if (c == '\'')
     return ScanString();
+  if (c == '"')
+    return ScanDoubleQuotedString();
 
   // Numeric literals
   if (c == '$')
@@ -709,6 +711,31 @@ Token Lexer::ScanString() {
   if (value.size() == 3) {
     token.int_value <<= 8;
   }
+  token.line = start_line;
+  token.column = start_column;
+  return token;
+}
+
+Token Lexer::ScanDoubleQuotedString() {
+  int start_line = line_;
+  int start_column = column_;
+
+  Advance();  // skip opening "
+
+  std::string value;
+  while (!IsAtEnd() && Current() != '\n') {
+    if (Current() == '"') {
+      Advance();  // skip closing "
+      break;
+    }
+    value += Current();
+    Advance();
+  }
+
+  Token token;
+  token.type = TokenType::kString;
+  token.text = value;
+  token.int_value = 0;
   token.line = start_line;
   token.column = start_column;
   return token;

@@ -53,7 +53,9 @@ ParsedLine Parser::ParseLine(const std::string& line, int line_number) {
 
   if (!has_error_ && !result.opcode.empty() && !IsAtEnd() && !Check(TokenType::kComment) &&
       !Check(TokenType::kNewline)) {
-    if (result.opcode == "MOVEM") {
+    if (result.opcode == "OPT") {
+      ParseOptOperands(result);
+    } else if (result.opcode == "MOVEM") {
       ParseMovemOperands(result);
     } else if (result.opcode == "REG") {
       Operand reg_op;
@@ -213,6 +215,16 @@ bool Parser::ParseSingleOperand(Operand& op) {
       op.reg = reg.reg_num;
       return true;
     }
+  }
+
+  // String literal operand (DC.B 'hello', INCLUDE "file.x68", etc.)
+  if (Check(TokenType::kString)) {
+    Token tok = Advance();
+    op.mode = AddressMode::kStringLiteral;
+    op.symbol_name = tok.text;
+    op.data = 0;
+    op.is_back_ref = true;
+    return true;
   }
 
   if (Check(TokenType::kRegister))
@@ -704,6 +716,28 @@ bool Parser::ParseMovemOperands(ParsedLine& line) {
   line.operands.push_back(ea_op);
   line.operands.push_back(reg_op);
   return true;
+}
+
+// OPT directive: option names are identifiers (CRE, MEX, NOMEX, etc.),
+// not expressions. Collect them as kStringLiteral operands.
+void Parser::ParseOptOperands(ParsedLine& line) {
+  while (!IsAtEnd()) {
+    if (Check(TokenType::kComma)) {
+      Advance();
+      continue;
+    }
+    // Accept any identifier-like token (symbol, opcode, directive)
+    if (Check(TokenType::kSymbol) || Check(TokenType::kOpcode) || Check(TokenType::kDirective)) {
+      Operand op;
+      op.mode = AddressMode::kStringLiteral;
+      op.symbol_name = ToUpper(Current().text);
+      op.is_back_ref = true;
+      line.operands.push_back(op);
+      Advance();
+    } else {
+      break;
+    }
+  }
 }
 
 int GetEAEncoding(const Operand& op) {

@@ -7,6 +7,8 @@
 #define EASYM68K_ASM_ASSEMBLER_H_
 
 #include <cstdint>
+#include <functional>
+#include <set>
 #include <string>
 #include <vector>
 
@@ -31,10 +33,20 @@ struct AssemblyResult {
   AssemblyResult() : success(false), org(0) {}
 };
 
+// Callback for reading included files: given a filename, returns its contents.
+// Returns empty string if the file cannot be found/read.
+using FileReader = std::function<std::string(const std::string& filename)>;
+
 class Assembler {
  public:
   Assembler();
   ~Assembler();
+
+  // Inject a file reader for INCLUDE/INCBIN (default: read from filesystem)
+  void SetFileReader(FileReader reader) { file_reader_ = std::move(reader); }
+
+  // Add a directory to the include search path
+  void AddIncludePath(const std::string& path);
 
   AssemblyResult Assemble(const std::string& source);
 
@@ -43,9 +55,26 @@ class Assembler {
   uint32_t location_counter_;
   uint32_t org_;
   bool org_set_;
+  bool end_seen_;
+  bool listing_enabled_;
+
+  // OFFSET mode: saves location counter; exits on ORG/SECTION
+  bool offset_mode_;
+  uint32_t offset_save_loc_;
+
+  // SECTION support: 16 sections, each with a saved location counter
+  static constexpr int kNumSections = 16;
+  uint32_t section_locs_[kNumSections];
+  int current_section_;
 
   std::vector<uint8_t> code_;
   std::vector<AssemblyError> errors_;
+  std::vector<std::string> include_paths_;
+
+  // Include cycle detection: set of filenames currently being assembled
+  std::set<std::string> active_includes_;
+
+  FileReader file_reader_;
 
   Parser parser_;
   SymbolTable symbols_;
@@ -53,6 +82,11 @@ class Assembler {
   CodeGenerator code_generator_;
 
   static std::vector<std::string> SplitLines(const std::string& source);
+
+  // Reads a file via file_reader_ (with include path search for INCLUDE)
+  std::string ReadIncludeFile(const std::string& filename);
+  // Reads a binary file for INCBIN (raw bytes)
+  std::string ReadBinaryFile(const std::string& filename);
 
   void RunPass(const std::vector<std::string>& lines);
   bool ProcessLine(const ParsedLine& line);
@@ -63,6 +97,7 @@ class Assembler {
   void EmitByte(uint8_t b);
   void EmitWord(uint16_t w);
   void EmitLong(uint32_t l);
+  void WordAlign();
   void AddError(int line_number, const std::string& message);
 };
 

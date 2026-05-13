@@ -117,7 +117,8 @@ class Lexer {
   Token ScanBinaryNumber();
   Token ScanOctalNumber();
   Token ScanDecimalNumber();
-  Token ScanString();
+  Token ScanString();              // single-quoted: 'content'
+  Token ScanDoubleQuotedString();  // double-quoted: "content" (for INCLUDE)
   Token ScanComment();
 
   bool IsOpcode(const std::string& upper_name) const;
