@@ -84,6 +84,27 @@ class Assembler {
   bool IsAssembling() const;       // true when no enclosing conditional is inactive
   bool OuterIsAssembling() const;  // true when all frames *except* the top are active
 
+  // Structured control flow state (reset each pass)
+  uint32_t stc_label_i_;                // IF label counter (starts 0x00000000)
+  uint32_t stc_label_w_;                // WHILE label counter (starts 0x10000000)
+  uint32_t stc_label_f_;                // FOR label counter (starts 0x20000000)
+  uint32_t stc_label_r_;                // REPEAT label counter (starts 0x30000000)
+  uint32_t stc_label_d_;                // DBLOOP label counter (starts 0x40000000)
+  std::vector<uint32_t> stc_stack_;     // label values tagged with type mask
+  std::vector<char> db_stack_;          // DBLOOP register-number stack
+  std::vector<std::string> for_stack_;  // FOR deferred instruction strings
+
+  static constexpr uint32_t kStcMaskI = 0x00000000u;
+  static constexpr uint32_t kStcMaskW = 0x10000000u;
+  static constexpr uint32_t kStcMaskF = 0x20000000u;
+  static constexpr uint32_t kStcMaskR = 0x30000000u;
+  static constexpr uint32_t kStcMaskD = 0x40000000u;
+  static constexpr uint32_t kStcTypeMask = 0xF0000000u;
+
+  bool IsStructured(const std::string& opcode) const;
+  void HandleStructured(const std::string& raw_line, int line_number);
+  void InjectLines(const std::vector<std::string>& generated);
+
   FileReader file_reader_;
 
   Parser parser_;

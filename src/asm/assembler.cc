@@ -19,7 +19,12 @@ Assembler::Assembler()
       offset_mode_(false),
       offset_save_loc_(0),
       section_locs_{},
-      current_section_(0) {
+      current_section_(0),
+      stc_label_i_(0x00000000u),
+      stc_label_w_(0x10000000u),
+      stc_label_f_(0x20000000u),
+      stc_label_r_(0x30000000u),
+      stc_label_d_(0x40000000u) {
   // Default file reader: read from the real filesystem
   file_reader_ = [this](const std::string& filename) -> std::string {
     return ReadIncludeFile(filename);
@@ -89,6 +94,14 @@ AssemblyResult Assembler::Assemble(const std::string& source) {
     for (auto& s : section_locs_)
       s = 0;
     cond_stack_.clear();
+    stc_label_i_ = 0x00000000u;
+    stc_label_w_ = 0x10000000u;
+    stc_label_f_ = 0x20000000u;
+    stc_label_r_ = 0x30000000u;
+    stc_label_d_ = 0x40000000u;
+    stc_stack_.clear();
+    db_stack_.clear();
+    for_stack_.clear();
   };
 
   // Pass 1: define all labels / EQU symbols; compute location counter.
@@ -126,6 +139,19 @@ bool Assembler::OuterIsAssembling() const {
     if (!cond_stack_[i].active)
       return false;
   return true;
+}
+
+bool Assembler::IsStructured(const std::string& opcode) const {
+  return opcode == "IF" || opcode == "ELSE" || opcode == "ENDI" || opcode == "WHILE" ||
+         opcode == "ENDW" || opcode == "REPEAT" || opcode == "UNTIL" || opcode == "FOR" ||
+         opcode == "ENDF" || opcode == "DBLOOP" || opcode == "UNLESS";
+}
+
+void Assembler::InjectLines(const std::vector<std::string>& generated) {
+  bool saved_end = end_seen_;
+  end_seen_ = false;
+  RunPass(generated);
+  end_seen_ = saved_end;
 }
 
 bool Assembler::IsConditional(const std::string& opcode) const {
@@ -243,6 +269,18 @@ void Assembler::RunPass(const std::vector<std::string>& lines) {
       break;
     parser_.SetLocationCounter(location_counter_);
     ParsedLine line = parser_.ParseLine(lines[i], i + 1);
+
+    // Structured directives are checked BEFORE error handling because the parser
+    // fails on <cc> tokens (e.g. <EQ>, <GT>) in operands.  line.opcode is still
+    // set even when has_error is true.
+    // Exception: ELSE is also a conditional-assembly keyword; when a conditional
+    // frame is active it belongs to the conditional handler, not structured.
+    if (!line.opcode.empty() && IsStructured(line.opcode) &&
+        !(line.opcode == "ELSE" && !cond_stack_.empty())) {
+      if (IsAssembling())
+        HandleStructured(lines[i], line.line_number);
+      continue;
+    }
 
     if (line.has_error) {
       if (pass_ == 2 && IsAssembling())

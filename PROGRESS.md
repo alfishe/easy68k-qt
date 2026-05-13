@@ -137,7 +137,10 @@ Decision: Odd ORG address alignment rounds DOWN (`new_loc &= ~1u`) rather than U
 
 Decision: IFC/IFNC use case-sensitive comparison (original uses stricmp/case-insensitive). Case-sensitive is more predictable for macro argument matching and is what the execution plan specifies.
 Decision: ELSE is supported (original has no ELSE for IFxx/ENDC — only for structured IF/ENDI). Extension is backwards-compatible since ELSE was unused in that context.
-| 8.5.7 Structured Control Flow (WHILE/FOR/REPEAT/IF/DBLOOP/UNLESS) | TODO | | |
+| 8.5.7 Structured Control Flow (WHILE/FOR/REPEAT/IF/DBLOOP/UNLESS) | DONE | `pending` | structured.cc: IF/ELSE/ENDI, WHILE/ENDW, REPEAT/UNTIL, FOR/ENDF, DBLOOP/UNLESS; label injection via InjectLines; ELSE disambiguation vs conditional ELSE; 33 StructuredTest (619 total) |
+
+Decision: Structured directives are checked in RunPass BEFORE the parser-error check because operands like `<EQ>` cause parse errors but still set line.opcode. ELSE disambiguation: when cond_stack_ is non-empty, ELSE routes to the conditional handler, not structured.
+Decision: CMP with immediate source is encoded as CMP (0xB0xx) not CMPI (0x0Cxx) — this is what the assembler's instruction table emits for `CMP.W #n,Dn`.
 | 8.5.8 Macro Processor (MACRO/ENDM/params/\@/NARG/IFARG/MEXIT) | TODO | | |
 | 8.5.9 Error Reporter (43+ error codes) | TODO | | |
 | 8.5.10 Listing Generator (.L68 output) | TODO | | |
@@ -204,4 +207,4 @@ Decision: ELSE is supported (original has no ELSE for IFxx/ENDC — only for str
 
 ---
 
-**NEXT:** Task 8.5.7 — Structured Control Flow (WHILE/FOR/REPEAT/IF/DBLOOP/UNLESS)
+**NEXT:** Task 8.5.8 — Macro Processor (MACRO/ENDM/params/\@/NARG/IFARG/MEXIT)
