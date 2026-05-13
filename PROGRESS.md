@@ -133,7 +133,7 @@ Decision: EA mode validation (reject Dn/An/Imm/PreDec-as-source/etc.) is NOT imp
 | 8.5.5 Remaining Directives (DCB/DC strings/INCLUDE/INCBIN/SECTION/OFFSET/OPT/FAIL/LIST/PAGE/etc.) | DONE | `3490a7d` | DCB/DC strings/SIMHALT/INCLUDE(mock reader)/INCBIN/SECTION/OFFSET/OPT/FAIL/LIST/NOLIST/PAGE/ORG odd-align; kStringLiteral mode; double-quoted strings in lexer; 49 DirectivesTest (550 total) |
 
 Decision: Odd ORG address alignment rounds DOWN (`new_loc &= ~1u`) rather than UP (`newLoc++`) as the original does. For ORG $1001: original → $1002, port → $1000. Round-down is intentional — rounding up skips a byte and is arguably the worse choice. Both are valid error-recovery behaviors; the difference is documented, not a bug.
-| 8.5.6 Conditional Assembly (IFC/IFNC/IFEQ/IFNE/IFLT/IFLE/IFGT/IFGE/ELSE/ENDC) | DONE | `pending` | CondFrame stack in assembler; IsAssembling/OuterIsAssembling; HandleConditional; RunPass routes conditionals before skip check; 35 ConditionalTest (585 total) |
+| 8.5.6 Conditional Assembly (IFC/IFNC/IFEQ/IFNE/IFLT/IFLE/IFGT/IFGE/ELSE/ENDC) | DONE | `f0f5c3c` | CondFrame stack in assembler; IsAssembling/OuterIsAssembling; HandleConditional; RunPass routes conditionals before skip check; 35 ConditionalTest (585 total) |
 
 Decision: IFC/IFNC use case-sensitive comparison (original uses stricmp/case-insensitive). Case-sensitive is more predictable for macro argument matching and is what the execution plan specifies.
 Decision: ELSE is supported (original has no ELSE for IFxx/ENDC — only for structured IF/ENDI). Extension is backwards-compatible since ELSE was unused in that context.
