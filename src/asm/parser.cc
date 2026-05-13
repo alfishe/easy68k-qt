@@ -138,10 +138,11 @@ bool Parser::ParseLabel(ParsedLine& line) {
     return true;
   }
 
-  // Label without colon at column 1 (symbol followed by opcode/directive)
-  if (Check(TokenType::kSymbol)) {
+  // Label without colon at column 1 (symbol followed by opcode/directive/macro-name)
+  if (Check(TokenType::kSymbol) && Current().column == 1) {
     Token next = Peek();
-    if (next.type == TokenType::kOpcode || next.type == TokenType::kDirective) {
+    if (next.type == TokenType::kOpcode || next.type == TokenType::kDirective ||
+        next.type == TokenType::kSymbol) {
       line.label = Current().text;
       Advance();
       return true;

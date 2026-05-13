@@ -24,7 +24,9 @@ Assembler::Assembler()
       stc_label_w_(0x10000000u),
       stc_label_f_(0x20000000u),
       stc_label_r_(0x30000000u),
-      stc_label_d_(0x40000000u) {
+      stc_label_d_(0x40000000u),
+      macro_label_num_(0),
+      macro_nest_depth_(0) {
   // Default file reader: read from the real filesystem
   file_reader_ = [this](const std::string& filename) -> std::string {
     return ReadIncludeFile(filename);
@@ -80,6 +82,22 @@ std::string Assembler::ReadBinaryFile(const std::string& filename) {
 
 AssemblyResult Assembler::Assemble(const std::string& source) {
   auto lines = SplitLines(source);
+
+  // Join macro continuation lines: a line ending with ',' followed by a line
+  // starting with '&' (after whitespace) merges into one argument list.
+  for (int i = static_cast<int>(lines.size()) - 1; i > 0; --i) {
+    std::string& prev = lines[i - 1];
+    std::string& curr = lines[i];
+    size_t last = prev.find_last_not_of(" \t\r");
+    if (last == std::string::npos || prev[last] != ',')
+      continue;
+    size_t first = curr.find_first_not_of(" \t");
+    if (first == std::string::npos || curr[first] != '&')
+      continue;
+    prev += " " + curr.substr(first + 1);
+    curr.clear();
+  }
+
   errors_.clear();
 
   auto reset_state = [this]() {
@@ -102,7 +120,13 @@ AssemblyResult Assembler::Assemble(const std::string& source) {
     stc_stack_.clear();
     db_stack_.clear();
     for_stack_.clear();
+    macro_label_num_ = 0;
+    macro_nest_depth_ = 0;
   };
+
+  // Pre-scan: build macro table so forward-referenced macros work in both passes.
+  macros_.clear();
+  ScanMacros(lines);
 
   // Pass 1: define all labels / EQU symbols; compute location counter.
   pass_ = 1;
@@ -282,9 +306,34 @@ void Assembler::RunPass(const std::vector<std::string>& lines) {
       continue;
     }
 
+    // MACRO definition: scan ahead to collect body, skip to ENDM.
+    // Only when assembling; if not assembling the body lines are individually skipped.
+    if (line.opcode == "MACRO" && IsAssembling()) {
+      if (line.label.empty() && pass_ == 2)
+        AddError(line.line_number, "MACRO requires a name (label)");
+      else if (!line.label.empty())
+        CollectMacroBody(line.label, lines, i, line.line_number);
+      continue;
+    }
+
+    // Macro invocations are checked BEFORE the error check because the parser
+    // fails on operands that are not valid 68000 addressing modes.
+    if (IsAssembling() && !line.opcode.empty() && IsMacro(line.opcode)) {
+      InvokeMacro(line.opcode, line.label, ExtractRawOperands(lines[i], line.label, line.opcode),
+                  line.size, line.line_number);
+      continue;
+    }
+
     if (line.has_error) {
       if (pass_ == 2 && IsAssembling())
         AddError(line.line_number, line.error_message);
+      continue;
+    }
+
+    // Standalone ENDM/MEXIT outside a macro body.
+    if (line.opcode == "ENDM" || line.opcode == "MEXIT") {
+      if (IsAssembling() && pass_ == 2)
+        AddError(line.line_number, line.opcode + " outside macro");
       continue;
     }
 

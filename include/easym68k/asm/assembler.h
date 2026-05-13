@@ -8,6 +8,7 @@
 
 #include <cstdint>
 #include <functional>
+#include <map>
 #include <set>
 #include <string>
 #include <vector>
@@ -104,6 +105,30 @@ class Assembler {
   bool IsStructured(const std::string& opcode) const;
   void HandleStructured(const std::string& raw_line, int line_number);
   void InjectLines(const std::vector<std::string>& generated);
+
+  // Macro processor
+  static constexpr int kMacroNestLimit = 256;
+  std::map<std::string, std::vector<std::string>> macros_;  // name → body lines
+  int macro_label_num_;   // per-invocation unique label counter for \@
+  int macro_nest_depth_;  // recursion guard
+
+  void ScanMacros(const std::vector<std::string>& lines);
+  bool IsMacro(const std::string& opcode) const;
+  // Collect body lines [i+1 .. ENDM) from lines, store under name, advance i to ENDM.
+  void CollectMacroBody(const std::string& name, const std::vector<std::string>& lines, int& i,
+                        int line_number);
+  void InvokeMacro(const std::string& name, const std::string& label,
+                   const std::string& raw_operands, SizeSpec size, int line_number);
+
+  // Helpers used by InvokeMacro (implemented in macro_processor.cc)
+  static std::string ExtractRawOperands(const std::string& raw_line, const std::string& label,
+                                        const std::string& opcode);
+  static std::vector<std::string> ParseMacroArgs(const std::string& arg_text, char size_char);
+  static std::string SubstituteMacroParams(const std::string& body_line,
+                                           const std::vector<std::string>& args, int narg,
+                                           int label_num);
+  static std::string GetLineOpcode(const std::string& raw);
+  static int ExtractIfargN(const std::string& raw);
 
   FileReader file_reader_;
 
