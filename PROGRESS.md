@@ -130,7 +130,7 @@ Decision: Register shift count uses `% 64` (not `& sizeMask`) — the original's
 | 8.5.4 MOVEM Register List Parsing & Encoding | DONE | `pending` | kRegisterList mode; ParseRegisterList/ParseMovemOperands; REG directive; kMoveM encoder with mask reversal; InstructionSize fix; 28 MovemTest (501 asm / 1006 total) |
 
 Decision: EA mode validation (reject Dn/An/Imm/PreDec-as-source/etc.) is NOT implemented in the encoder — the original's DestModes/SourceModes checks are error-reporter logic, deferred to Task 8.5.9. The encoding itself is correct for all valid inputs.
-| 8.5.5 Remaining Directives (DCB/DC strings/INCLUDE/INCBIN/SECTION/OFFSET/OPT/FAIL/LIST/PAGE/etc.) | DONE | `pending` | DCB/DC strings/SIMHALT/INCLUDE(mock reader)/INCBIN/SECTION/OFFSET/OPT/FAIL/LIST/NOLIST/PAGE/ORG odd-align; kStringLiteral mode; double-quoted strings in lexer; 49 DirectivesTest (550 total) |
+| 8.5.5 Remaining Directives (DCB/DC strings/INCLUDE/INCBIN/SECTION/OFFSET/OPT/FAIL/LIST/PAGE/etc.) | DONE | `3490a7d` | DCB/DC strings/SIMHALT/INCLUDE(mock reader)/INCBIN/SECTION/OFFSET/OPT/FAIL/LIST/NOLIST/PAGE/ORG odd-align; kStringLiteral mode; double-quoted strings in lexer; 49 DirectivesTest (550 total) |
 
 Decision: Odd ORG address alignment rounds DOWN (`new_loc &= ~1u`) rather than UP (`newLoc++`) as the original does. For ORG $1001: original → $1002, port → $1000. Round-down is intentional — rounding up skips a byte and is arguably the worse choice. Both are valid error-recovery behaviors; the difference is documented, not a bug.
 | 8.5.6 Conditional Assembly (IFC/IFNC/IFEQ/IFNE/IFLT/IFLE/IFGT/IFGE/ELSE/ENDC) | TODO | | |
