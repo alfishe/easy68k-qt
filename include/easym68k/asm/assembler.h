@@ -16,6 +16,7 @@
 #include "easym68k/asm/code_generator.h"
 #include "easym68k/asm/error_codes.h"
 #include "easym68k/asm/instruction_table.h"
+#include "easym68k/asm/listing_generator.h"
 #include "easym68k/asm/parser.h"
 #include "easym68k/asm/symbol_table.h"
 
@@ -64,6 +65,11 @@ class Assembler {
   void SetMaxErrors(int n) { max_errors_ = n; }
 
   AssemblyResult Assemble(const std::string& source);
+
+  // Listing configuration and retrieval
+  void ConfigureListing(const std::string& filename, const std::string& date, int page_length = 60,
+                        bool cex_flag = true);
+  std::string GetListing() const;
 
  private:
   int pass_;
@@ -184,6 +190,36 @@ class Assembler {
                 ErrorSeverity severity);
 
   int max_errors_;  // 0 = unlimited; default = 10
+
+  // Listing generator state
+  ListingGenerator listing_generator_;
+  std::vector<EmittedItem> current_line_emitted_;
+  bool current_line_has_equ_;
+  int32_t current_line_equ_value_;
+  std::string source_filename_;
+  std::string source_date_;
+  int page_length_;
+  bool cex_flag_;
+  bool in_emit_word_or_long_;
+  int in_structured_expansion_;
+  int listing_macro_nest_depth_;
+
+  // Memory map state fields
+  bool map_rom_ = false;
+  uint32_t map_rom_start_ = 0;
+  uint32_t map_rom_end_ = 0;
+
+  bool map_read_ = false;
+  uint32_t map_read_start_ = 0;
+  uint32_t map_read_end_ = 0;
+
+  bool map_protected_ = false;
+  uint32_t map_protected_start_ = 0;
+  uint32_t map_protected_end_ = 0;
+
+  bool map_invalid_ = false;
+  uint32_t map_invalid_start_ = 0;
+  uint32_t map_invalid_end_ = 0;
 };
 
 }  // namespace easym68k::asm_

@@ -55,6 +55,8 @@ ParsedLine Parser::ParseLine(const std::string& line, int line_number) {
       !Check(TokenType::kNewline)) {
     if (result.opcode == "OPT") {
       ParseOptOperands(result);
+    } else if (result.opcode == "MEMORY") {
+      ParseMemoryOperands(result);
     } else if (result.opcode == "MOVEM") {
       ParseMovemOperands(result);
     } else if (result.opcode == "REG") {
@@ -799,6 +801,54 @@ int GetEAReg(const Operand& op) {
     default:
       return 0;
   }
+}
+
+void Parser::ParseMemoryOperands(ParsedLine& line) {
+  // 1. Map type
+  if (IsAtEnd()) {
+    Error("Expected memory map type (ROM, READ, PROTECTED, INVALID)");
+    return;
+  }
+  Token type_tok = Current();
+  if (type_tok.type != TokenType::kSymbol && type_tok.type != TokenType::kOpcode &&
+      type_tok.type != TokenType::kDirective) {
+    Error("Expected memory map type");
+    return;
+  }
+  std::string type_name = ToUpper(type_tok.text);
+  if (type_name != "ROM" && type_name != "READ" && type_name != "PROTECTED" &&
+      type_name != "INVALID") {
+    Error("Invalid memory map type: " + type_name);
+    return;
+  }
+  Operand type_op;
+  type_op.mode = AddressMode::kStringLiteral;
+  type_op.symbol_name = type_name;
+  type_op.is_back_ref = true;
+  line.operands.push_back(type_op);
+  Advance();
+
+  // 2. Start address expression
+  Operand start_op;
+  start_op.mode = AddressMode::kImmediate;
+  if (!EvaluateExpression(start_op.data, start_op.is_back_ref)) {
+    return;
+  }
+  line.operands.push_back(start_op);
+
+  // 3. Comma
+  if (!Match(TokenType::kComma)) {
+    Error("Expected comma between start and end address");
+    return;
+  }
+
+  // 4. End address expression
+  Operand end_op;
+  end_op.mode = AddressMode::kImmediate;
+  if (!EvaluateExpression(end_op.data, end_op.is_back_ref)) {
+    return;
+  }
+  line.operands.push_back(end_op);
 }
 
 }  // namespace easym68k::asm_

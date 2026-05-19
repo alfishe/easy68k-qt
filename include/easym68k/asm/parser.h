@@ -146,6 +146,9 @@ class Parser {
   // OPT directive — option names are identifiers, not expressions
   void ParseOptOperands(ParsedLine& line);
 
+  // MEMORY directive support
+  void ParseMemoryOperands(ParsedLine& line);
+
   bool EvaluateExpression(int32_t& value, bool& is_back_ref);
 
   void Error(const std::string& message);

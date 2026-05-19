@@ -27,7 +27,14 @@ Assembler::Assembler()
       stc_label_d_(0x40000000u),
       macro_label_num_(0),
       macro_nest_depth_(0),
-      max_errors_(10) {
+      max_errors_(10),
+      current_line_has_equ_(false),
+      current_line_equ_value_(0),
+      page_length_(60),
+      cex_flag_(true),
+      in_emit_word_or_long_(false),
+      in_structured_expansion_(0),
+      listing_macro_nest_depth_(0) {
   // Default file reader: read from the real filesystem
   file_reader_ = [this](const std::string& filename) -> std::string {
     return ReadIncludeFile(filename);
@@ -81,6 +88,26 @@ std::string Assembler::ReadBinaryFile(const std::string& filename) {
   return buf.str();
 }
 
+void Assembler::ConfigureListing(const std::string& filename, const std::string& date,
+                                 int page_length, bool cex_flag) {
+  source_filename_ = filename;
+  source_date_ = date;
+  page_length_ = page_length;
+  cex_flag_ = cex_flag;
+}
+
+std::string Assembler::GetListing() const {
+  int wcount = 0;
+  int ecount = 0;
+  for (const auto& e : errors_) {
+    if (e.severity == ErrorSeverity::kWarning)
+      wcount++;
+    else
+      ecount++;
+  }
+  return listing_generator_.Generate(ecount, wcount);
+}
+
 AssemblyResult Assembler::Assemble(const std::string& source) {
   auto lines = SplitLines(source);
 
@@ -123,6 +150,19 @@ AssemblyResult Assembler::Assemble(const std::string& source) {
     for_stack_.clear();
     macro_label_num_ = 0;
     macro_nest_depth_ = 0;
+
+    map_rom_ = false;
+    map_rom_start_ = 0;
+    map_rom_end_ = 0;
+    map_read_ = false;
+    map_read_start_ = 0;
+    map_read_end_ = 0;
+    map_protected_ = false;
+    map_protected_start_ = 0;
+    map_protected_end_ = 0;
+    map_invalid_ = false;
+    map_invalid_start_ = 0;
+    map_invalid_end_ = 0;
   };
 
   // Pre-scan: build macro table so forward-referenced macros work in both passes.
@@ -142,7 +182,10 @@ AssemblyResult Assembler::Assemble(const std::string& source) {
   reset_state();
   code_.clear();
   parser_.SetPass(2);
+  listing_generator_.Reset();
+  listing_generator_.Configure(source_filename_, source_date_, page_length_, cex_flag_);
   RunPass(lines);
+  listing_generator_.SetStartAddress(org_);
 
   AssemblyResult result;
   result.org = org_;
@@ -298,9 +341,30 @@ void Assembler::HandleConditional(const ParsedLine& line) {
 }
 
 void Assembler::RunPass(const std::vector<std::string>& lines) {
+  auto flush_listing = [&](uint32_t start_lc, const std::string& raw_line, int line_number) {
+    if (pass_ == 2 && listing_enabled_) {
+      std::string ident = "";
+      if (listing_macro_nest_depth_ > 0) {
+        ident.append(listing_macro_nest_depth_, 'm');
+      }
+      if (in_structured_expansion_ > 0) {
+        ident.push_back('s');
+      }
+      listing_generator_.AddLine(start_lc, current_line_emitted_, raw_line, line_number, ident,
+                                 offset_mode_, false, current_line_equ_value_,
+                                 current_line_has_equ_);
+    }
+  };
+
   for (int i = 0; i < static_cast<int>(lines.size()); i++) {
     if (end_seen_)
       break;
+    uint32_t start_lc = location_counter_;
+    if (pass_ == 2) {
+      current_line_emitted_.clear();
+      current_line_has_equ_ = false;
+      current_line_equ_value_ = 0;
+    }
     parser_.SetLocationCounter(location_counter_);
     ParsedLine line = parser_.ParseLine(lines[i], i + 1);
 
@@ -311,8 +375,12 @@ void Assembler::RunPass(const std::vector<std::string>& lines) {
     // frame is active it belongs to the conditional handler, not structured.
     if (!line.opcode.empty() && IsStructured(line.opcode) &&
         !(line.opcode == "ELSE" && !cond_stack_.empty())) {
-      if (IsAssembling())
+      if (IsAssembling()) {
+        in_structured_expansion_++;
         HandleStructured(lines[i], line.line_number);
+        in_structured_expansion_--;
+      }
+      flush_listing(start_lc, lines[i], i + 1);
       continue;
     }
 
@@ -323,6 +391,7 @@ void Assembler::RunPass(const std::vector<std::string>& lines) {
         AddError(line.line_number, ErrorCode::kMacroNoName);
       else if (!line.label.empty())
         CollectMacroBody(line.label, lines, i, line.line_number);
+      flush_listing(start_lc, lines[i], i + 1);
       continue;
     }
 
@@ -331,12 +400,14 @@ void Assembler::RunPass(const std::vector<std::string>& lines) {
     if (IsAssembling() && !line.opcode.empty() && IsMacro(line.opcode)) {
       InvokeMacro(line.opcode, line.label, ExtractRawOperands(lines[i], line.label, line.opcode),
                   line.size, line.line_number);
+      flush_listing(start_lc, lines[i], i + 1);
       continue;
     }
 
     if (line.has_error) {
       if (pass_ == 2 && IsAssembling())
         AddError(line.line_number, line.error_message);
+      flush_listing(start_lc, lines[i], i + 1);
       continue;
     }
 
@@ -345,20 +416,26 @@ void Assembler::RunPass(const std::vector<std::string>& lines) {
       if (IsAssembling() && pass_ == 2)
         AddError(line.line_number,
                  line.opcode == "ENDM" ? ErrorCode::kEndmOutside : ErrorCode::kMexitOutside);
+      flush_listing(start_lc, lines[i], i + 1);
       continue;
     }
 
     // Conditional directives are always evaluated to maintain the nesting stack.
     if (!line.opcode.empty() && IsConditional(line.opcode)) {
       HandleConditional(line);
+      flush_listing(start_lc, lines[i], i + 1);
       continue;
     }
 
     // Skip non-conditional content when inside an inactive conditional block.
-    if (!IsAssembling())
+    if (!IsAssembling()) {
+      flush_listing(start_lc, lines[i], i + 1);
       continue;
+    }
 
-    if (!ProcessLine(line))
+    bool ok = ProcessLine(line);
+    flush_listing(start_lc, lines[i], i + 1);
+    if (!ok)
       break;
   }
 }
@@ -422,6 +499,14 @@ bool Assembler::HandleDirective(const ParsedLine& line) {
           symbols_.DefineSet(line.label, val, line.line_number);
         } else {
           symbols_.DefineEqu(line.label, val, line.line_number);
+        }
+      }
+    } else {
+      if (!line.label.empty()) {
+        SymbolInfo info;
+        if (symbols_.Lookup(line.label, info)) {
+          current_line_has_equ_ = true;
+          current_line_equ_value_ = info.value;
         }
       }
     }
@@ -682,7 +767,9 @@ bool Assembler::HandleDirective(const ParsedLine& line) {
   }
 
   if (op == "PAGE") {
-    // Page break in listing — no-op
+    if (pass_ == 2) {
+      listing_generator_.AddPageBreak();
+    }
     return true;
   }
 
@@ -695,7 +782,34 @@ bool Assembler::HandleDirective(const ParsedLine& line) {
   }
 
   if (op == "MEMORY") {
-    // MEMORY directive: no-op (memory region definition for simulator)
+    if (line.operands.size() != 3) {
+      AddError(line.line_number, ErrorCode::kInvMemory,
+               "Expected map type, start address, and end address");
+      return true;
+    }
+    std::string type = line.operands[0].symbol_name;
+    uint32_t start_addr = static_cast<uint32_t>(line.operands[1].data) & 0x00FFFFFF;
+    uint32_t end_addr = static_cast<uint32_t>(line.operands[2].data) & 0x00FFFFFF;
+
+    if (type == "ROM") {
+      map_rom_ = true;
+      map_rom_start_ = start_addr;
+      map_rom_end_ = end_addr;
+    } else if (type == "READ") {
+      map_read_ = true;
+      map_read_start_ = start_addr;
+      map_read_end_ = end_addr;
+    } else if (type == "PROTECTED") {
+      map_protected_ = true;
+      map_protected_start_ = start_addr;
+      map_protected_end_ = end_addr;
+    } else if (type == "INVALID") {
+      map_invalid_ = true;
+      map_invalid_start_ = start_addr;
+      map_invalid_end_ = end_addr;
+    } else {
+      AddError(line.line_number, ErrorCode::kInvMemory, "Invalid memory map type: " + type);
+    }
     return true;
   }
 
@@ -853,20 +967,35 @@ void Assembler::EmitByte(uint8_t b) {
       org_set_ = true;
     }
     code_.push_back(b);
+    if (!in_emit_word_or_long_) {
+      current_line_emitted_.push_back({b, 1});
+    }
   }
   location_counter_++;
 }
 
 void Assembler::EmitWord(uint16_t w) {
+  if (pass_ == 2 && !offset_mode_) {
+    current_line_emitted_.push_back({w, 2});
+  }
+  bool saved = in_emit_word_or_long_;
+  in_emit_word_or_long_ = true;
   EmitByte(static_cast<uint8_t>((w >> 8) & 0xFF));
   EmitByte(static_cast<uint8_t>(w & 0xFF));
+  in_emit_word_or_long_ = saved;
 }
 
 void Assembler::EmitLong(uint32_t l) {
+  if (pass_ == 2 && !offset_mode_) {
+    current_line_emitted_.push_back({l, 4});
+  }
+  bool saved = in_emit_word_or_long_;
+  in_emit_word_or_long_ = true;
   EmitByte(static_cast<uint8_t>((l >> 24) & 0xFF));
   EmitByte(static_cast<uint8_t>((l >> 16) & 0xFF));
   EmitByte(static_cast<uint8_t>((l >> 8) & 0xFF));
   EmitByte(static_cast<uint8_t>(l & 0xFF));
+  in_emit_word_or_long_ = saved;
 }
 
 void Assembler::WordAlign() {
@@ -876,6 +1005,9 @@ void Assembler::WordAlign() {
 }
 
 void Assembler::AddError(int line_number, const std::string& message) {
+  if (pass_ == 2) {
+    listing_generator_.AddErrorLine(message, false);
+  }
   if (max_errors_ > 0) {
     int err_count = 0;
     for (const auto& e : errors_)
@@ -903,12 +1035,18 @@ void Assembler::AddWarning(int line_number, ErrorCode code, const std::string& e
   std::string msg = ErrorCodeMessage(code);
   if (!extra.empty())
     msg += ": " + extra;
+  if (pass_ == 2) {
+    listing_generator_.AddErrorLine(msg, true);
+  }
   errors_.push_back({line_number, std::move(msg), code, ErrorSeverity::kWarning});
 }
 
 // Internal: push with explicit code+severity, bypassing limit (used by code-based overloads).
 void Assembler::AddError(int line_number, const std::string& message, ErrorCode code,
                          ErrorSeverity severity) {
+  if (pass_ == 2) {
+    listing_generator_.AddErrorLine(message, severity == ErrorSeverity::kWarning);
+  }
   if (severity == ErrorSeverity::kError && max_errors_ > 0) {
     int err_count = 0;
     for (const auto& e : errors_)

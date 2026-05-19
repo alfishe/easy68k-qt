@@ -60,10 +60,16 @@ void Assembler::CollectMacroBody(const std::string& name, const std::vector<std:
       break;
     }
     body.push_back(lines[j]);
+    if (pass_ == 2 && listing_enabled_) {
+      listing_generator_.AddLine(0, {}, lines[j], j + 1, "", offset_mode_, false, 0, false);
+    }
     j++;
   }
   if (!found && pass_ == 2)
     AddError(line_number, ErrorCode::kMacroNoEndm, name);
+  if (found && pass_ == 2 && listing_enabled_) {
+    listing_generator_.AddLine(0, {}, lines[j], j + 1, "", offset_mode_, false, 0, false);
+  }
   macros_[name] = std::move(body);
   i = j;
 }
@@ -413,7 +419,9 @@ void Assembler::InvokeMacro(const std::string& name, const std::string& label,
   }
 
   macro_nest_depth_--;
+  listing_macro_nest_depth_++;
   InjectLines(inject);
+  listing_macro_nest_depth_--;
 }
 
 }  // namespace easym68k::asm_
