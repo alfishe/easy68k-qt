@@ -145,7 +145,7 @@ Decision: CMP with immediate source is encoded as CMP (0xB0xx) not CMPI (0x0Cxx)
 | 8.5.9 Error Reporter (43+ error codes) | DONE | `782ec7d` | ErrorCode enum (45 codes + kGeneric); ErrorSeverity kError/kWarning; AddError/AddWarning overloads; error limit (default 10); odd-ORG demoted to warning; AssemblyError.code/.severity/.column; AssemblyResult.warning_count; 23 ErrorReporterTest (671 total) |
 | 8.5.10 Listing Generator (.L68 output) | DONE | `2c27536` | EmittedItem capture; smart tab stops (12/20/44); constant truncation (...) and expansion (CEXflag); automatic pagination with PAGE breaks; EQU/SET resolved values (=XXXXXXXX); errors/warnings logging inside listing; 6 ListingGeneratorTest (677 total) |
 | 8.5.11 Object/S-Record Output (S0/S1/S2/S3/S8) | DONE | `0867023` | SRecordGenerator with robust checksum verification, contiguous byte grouping, 16/24/32-bit addresses, S0 memory maps output, S8 execution start record, and 5 unit tests (682 total) |
-| 8.6 Golden Assembly Tests | TODO | | |
+| 8.6 Golden Assembly Tests | DONE | `3264a94` | 21 golden test cases covering full M68k instruction set, macros, directives, conditional assembly, structured control flow, and memory maps; byte-identical verify protection |
 
 ## Phase 9: Simulator Core Library — Full Parity & Headless Readiness
 
@@ -217,4 +217,4 @@ Decision: Refactored `ListLine` to use type-safe metadata structure (`left_colum
 
 Decision: Replicated exact S0/S1/S2/S3/S8 Motorola format with memory map S0 records. S8 termination address formats to 24-bit to match Borland. S0 checksum calculated programmatically to avoid hardcoded mismatch. SRecordGenerator buffers bytes to output SRECSIZE=36 records.
 
-**NEXT:** Task 8.6 — Golden Assembly Tests
+**NEXT:** Phase 9 — Simulator Core Library — Full Parity & Headless Readiness
