@@ -142,8 +142,8 @@ Decision: ELSE is supported (original has no ELSE for IFxx/ENDC — only for str
 Decision: Structured directives are checked in RunPass BEFORE the parser-error check because operands like `<EQ>` cause parse errors but still set line.opcode. ELSE disambiguation: when cond_stack_ is non-empty, ELSE routes to the conditional handler, not structured.
 Decision: CMP with immediate source is encoded as CMP (0xB0xx) not CMPI (0x0Cxx) — this is what the assembler's instruction table emits for `CMP.W #n,Dn`.
 | 8.5.8 Macro Processor (MACRO/ENDM/params/\@/NARG/IFARG/MEXIT) | DONE | `fb4df94` | Pre-scan ScanMacros; InvokeMacro with unified LocalFrame conditional stack; \0–\9/\@/NARG substitution; label-without-colon on macro calls (column-1 check); continuation lines (&); 29 MacroTest (648 total) |
-| 8.5.9 Error Reporter (43+ error codes) | TODO | | |
-| 8.5.10 Listing Generator (.L68 output) | TODO | | |
+| 8.5.9 Error Reporter (43+ error codes) | DONE | `782ec7d` | ErrorCode enum (45 codes + kGeneric); ErrorSeverity kError/kWarning; AddError/AddWarning overloads; error limit (default 10); odd-ORG demoted to warning; AssemblyError.code/.severity/.column; AssemblyResult.warning_count; 23 ErrorReporterTest (671 total) |
+| 8.5.10 Listing Generator (.L68 output) | ACTIVE | | started 2026-05-19 |
 | 8.5.11 Object/S-Record Output (S0/S1/S2/S3/S8) | TODO | | |
 | 8.6 Golden Assembly Tests | TODO | | |
 
@@ -210,4 +210,7 @@ Decision: CMP with immediate source is encoded as CMP (0xB0xx) not CMPI (0x0Cxx)
 Decision: IFARG and all body conditionals (IFC/etc.) are handled via a unified LocalFrame stack inside InvokeMacro — never injected to RunPass raw. IFC inside true IFARG is tracked as an "injected" frame (its ENDC is also injected); IFC inside false IFARG is tracked as a "local" frame (nothing injected). This ensures ENDC is always correctly paired.
 Decision: Label-without-colon on macro calls requires the symbol to be at column 1 (ParseLabel column-1 guard). Without this guard, indented macro invocations like `  MYMACRO A,B` would misclassify `MYMACRO` as a label and `A` as the opcode.
 
-**NEXT:** Task 8.5.9 — Error Reporter (43+ error codes)
+Decision: ORG to an odd address was changed from kError to kWarning (kOddAddress) to match original EASy68K behaviour (ODD_ADDRESS was a warning in the original asm.h). Existing tests that check for "odd" in the message still pass because the warning message contains "odd".
+Decision: The 4-argument AddError(int, string, ErrorCode, ErrorSeverity) is the internal implementation; the 2- and 3-argument public overloads format and delegate to it.
+
+**NEXT:** Task 8.5.10 — Listing Generator (.L68 output)
