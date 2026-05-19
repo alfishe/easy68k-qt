@@ -34,6 +34,7 @@ add_executable(easym68k-asm-tests
   asm/structured_test.cc
   asm/error_reporter_test.cc
   asm/listing_test.cc
+  asm/srecord_test.cc
   asm/golden_assembly_test.cc
 )
 target_link_libraries(easym68k-asm-tests PRIVATE easym68k-asm GTest::gtest_main)

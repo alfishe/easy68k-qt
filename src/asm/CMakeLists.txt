@@ -10,6 +10,7 @@ add_library(easym68k-asm STATIC
   instruction_table.cc
   listing_generator.cc
   macro_processor.cc
+  srecord_generator.cc
   structured.cc
 )
 

@@ -163,6 +163,7 @@ AssemblyResult Assembler::Assemble(const std::string& source) {
     map_invalid_ = false;
     map_invalid_start_ = 0;
     map_invalid_end_ = 0;
+    srecord_generator_.Reset();
   };
 
   // Pre-scan: build macro table so forward-referenced macros work in both passes.
@@ -187,6 +188,12 @@ AssemblyResult Assembler::Assemble(const std::string& source) {
   RunPass(lines);
   listing_generator_.SetStartAddress(org_);
 
+  srecord_generator_.SetStartAddress(org_);
+  srecord_generator_.SetMemoryMaps(map_rom_, map_rom_start_, map_rom_end_, map_read_,
+                                   map_read_start_, map_read_end_, map_protected_,
+                                   map_protected_start_, map_protected_end_, map_invalid_,
+                                   map_invalid_start_, map_invalid_end_);
+
   AssemblyResult result;
   result.org = org_;
   result.code = code_;
@@ -201,6 +208,9 @@ AssemblyResult Assembler::Assemble(const std::string& source) {
   }
   result.warning_count = wcount;
   result.success = !has_error;
+  if (result.success) {
+    result.srecord = srecord_generator_.Generate();
+  }
   return result;
 }
 
@@ -970,6 +980,10 @@ void Assembler::EmitByte(uint8_t b) {
     if (!in_emit_word_or_long_) {
       current_line_emitted_.push_back({b, 1});
     }
+    // S-Record generation receives the final flat stream of individual bytes here.
+    // This correctly handles all contiguous and non-contiguous byte groupings
+    // regardless of whether they were emitted via EmitByte, EmitWord, or EmitLong.
+    srecord_generator_.AddByte(location_counter_, b);
   }
   location_counter_++;
 }

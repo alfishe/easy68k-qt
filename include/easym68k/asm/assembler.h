@@ -18,6 +18,7 @@
 #include "easym68k/asm/instruction_table.h"
 #include "easym68k/asm/listing_generator.h"
 #include "easym68k/asm/parser.h"
+#include "easym68k/asm/srecord_generator.h"
 #include "easym68k/asm/symbol_table.h"
 
 namespace easym68k::asm_ {
@@ -42,6 +43,7 @@ struct AssemblyResult {
   std::vector<uint8_t> code;  // Contiguous bytes starting at org
   std::vector<AssemblyError> errors;
   int warning_count;
+  std::string srecord;  // Generated Motorola S-Record text
 
   AssemblyResult() : success(false), org(0), warning_count(0) {}
 };
@@ -220,6 +222,9 @@ class Assembler {
   bool map_invalid_ = false;
   uint32_t map_invalid_start_ = 0;
   uint32_t map_invalid_end_ = 0;
+
+  // S-Record generator state
+  SRecordGenerator srecord_generator_;
 };
 
 }  // namespace easym68k::asm_
