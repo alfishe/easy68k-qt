@@ -26,7 +26,8 @@ Assembler::Assembler()
       stc_label_r_(0x30000000u),
       stc_label_d_(0x40000000u),
       macro_label_num_(0),
-      macro_nest_depth_(0) {
+      macro_nest_depth_(0),
+      max_errors_(10) {
   // Default file reader: read from the real filesystem
   file_reader_ = [this](const std::string& filename) -> std::string {
     return ReadIncludeFile(filename);
@@ -144,10 +145,19 @@ AssemblyResult Assembler::Assemble(const std::string& source) {
   RunPass(lines);
 
   AssemblyResult result;
-  result.success = errors_.empty();
   result.org = org_;
   result.code = code_;
   result.errors = errors_;
+  int wcount = 0;
+  bool has_error = false;
+  for (const auto& e : errors_) {
+    if (e.severity == ErrorSeverity::kWarning)
+      wcount++;
+    else
+      has_error = true;
+  }
+  result.warning_count = wcount;
+  result.success = !has_error;
   return result;
 }
 
@@ -190,7 +200,7 @@ void Assembler::HandleConditional(const ParsedLine& line) {
 
   // The original rejects labels on conditional directive lines (ASSEMBLE.CPP: LABEL_ERROR).
   if (!line.label.empty() && pass_ == 2)
-    AddError(line.line_number, "Label not permitted on conditional directive: " + line.label);
+    AddError(line.line_number, ErrorCode::kLabelOnCond, line.label);
 
   // Helper: extract string value from an operand for IFC/IFNC comparison.
   // kStringLiteral → symbol_name; kImmediate → decimal; otherwise → symbol_name
@@ -213,7 +223,7 @@ void Assembler::HandleConditional(const ParsedLine& line) {
     if (line.operands.size() >= 2) {
       cond = (operand_str(line.operands[0]) == operand_str(line.operands[1]));
     } else if (pass_ == 2) {
-      AddError(line.line_number, "IFC requires two operands");
+      AddError(line.line_number, ErrorCode::kMissingOperand, "IFC requires two string operands");
     }
     cond_stack_.push_back({cond, false});
 
@@ -227,7 +237,7 @@ void Assembler::HandleConditional(const ParsedLine& line) {
     if (line.operands.size() >= 2) {
       cond = (operand_str(line.operands[0]) != operand_str(line.operands[1]));
     } else if (pass_ == 2) {
-      AddError(line.line_number, "IFNC requires two operands");
+      AddError(line.line_number, ErrorCode::kMissingOperand, "IFNC requires two string operands");
     }
     cond_stack_.push_back({cond, false});
 
@@ -241,7 +251,7 @@ void Assembler::HandleConditional(const ParsedLine& line) {
     bool cond = false;
     if (line.operands.empty()) {
       if (pass_ == 2)
-        AddError(line.line_number, op + " requires an expression");
+        AddError(line.line_number, ErrorCode::kMissingOperand, op + " requires an expression");
     } else {
       int32_t val = line.operands[0].data;
       if (op == "IFEQ")
@@ -262,13 +272,13 @@ void Assembler::HandleConditional(const ParsedLine& line) {
   } else if (op == "ELSE") {
     if (cond_stack_.empty()) {
       if (pass_ == 2)
-        AddError(line.line_number, "ELSE without matching IF");
+        AddError(line.line_number, ErrorCode::kElseWithoutIf);
       return;
     }
     CondFrame& top = cond_stack_.back();
     if (top.seen_else) {
       if (pass_ == 2)
-        AddError(line.line_number, "Multiple ELSE in same conditional block");
+        AddError(line.line_number, ErrorCode::kMultipleElse);
       return;
     }
     top.seen_else = true;
@@ -280,7 +290,7 @@ void Assembler::HandleConditional(const ParsedLine& line) {
   } else if (op == "ENDC") {
     if (cond_stack_.empty()) {
       if (pass_ == 2)
-        AddError(line.line_number, "ENDC without matching IF");
+        AddError(line.line_number, ErrorCode::kEndcWithoutIf);
       return;
     }
     cond_stack_.pop_back();
@@ -310,7 +320,7 @@ void Assembler::RunPass(const std::vector<std::string>& lines) {
     // Only when assembling; if not assembling the body lines are individually skipped.
     if (line.opcode == "MACRO" && IsAssembling()) {
       if (line.label.empty() && pass_ == 2)
-        AddError(line.line_number, "MACRO requires a name (label)");
+        AddError(line.line_number, ErrorCode::kMacroNoName);
       else if (!line.label.empty())
         CollectMacroBody(line.label, lines, i, line.line_number);
       continue;
@@ -333,7 +343,8 @@ void Assembler::RunPass(const std::vector<std::string>& lines) {
     // Standalone ENDM/MEXIT outside a macro body.
     if (line.opcode == "ENDM" || line.opcode == "MEXIT") {
       if (IsAssembling() && pass_ == 2)
-        AddError(line.line_number, line.opcode + " outside macro");
+        AddError(line.line_number,
+                 line.opcode == "ENDM" ? ErrorCode::kEndmOutside : ErrorCode::kMexitOutside);
       continue;
     }
 
@@ -380,14 +391,14 @@ bool Assembler::HandleDirective(const ParsedLine& line) {
 
   if (op == "ORG") {
     if (line.operands.empty()) {
-      AddError(line.line_number, "ORG requires an address");
+      AddError(line.line_number, ErrorCode::kMissingOperand, "ORG requires an address");
       return true;
     }
     uint32_t new_loc = static_cast<uint32_t>(line.operands[0].data);
     if (new_loc & 1) {
       // Odd ORG: warn and align (DIRECTIV.CPP:112-115)
       if (pass_ == 2)
-        AddError(line.line_number, "ORG address is odd — auto-aligned to even");
+        AddWarning(line.line_number, ErrorCode::kOddAddress);
       new_loc &= ~1u;
     }
     if (offset_mode_) {
@@ -402,9 +413,9 @@ bool Assembler::HandleDirective(const ParsedLine& line) {
   if (op == "EQU" || op == "SET") {
     if (pass_ == 1) {
       if (line.label.empty()) {
-        AddError(line.line_number, "EQU/SET requires a label");
+        AddError(line.line_number, ErrorCode::kMissingLabel);
       } else if (line.operands.empty()) {
-        AddError(line.line_number, "EQU/SET requires a value");
+        AddError(line.line_number, ErrorCode::kMissingOperand, "EQU/SET requires a value");
       } else {
         int32_t val = line.operands[0].data;
         if (op == "SET") {
@@ -475,7 +486,7 @@ bool Assembler::HandleDirective(const ParsedLine& line) {
       fill_val = static_cast<uint32_t>(line.operands[1].data);
 
     if (count < 0) {
-      AddError(line.line_number, "DCB count must be non-negative");
+      AddError(line.line_number, ErrorCode::kDcbNegCount);
       return true;
     }
 
@@ -548,9 +559,10 @@ bool Assembler::HandleDirective(const ParsedLine& line) {
   if (op == "REG") {
     if (pass_ == 1) {
       if (line.label.empty()) {
-        AddError(line.line_number, "REG requires a label");
+        AddError(line.line_number, ErrorCode::kMissingLabel);
       } else if (line.operands.empty()) {
-        AddError(line.line_number, "REG requires a register list operand");
+        AddError(line.line_number, ErrorCode::kMissingOperand,
+                 "REG requires a register list operand");
       } else {
         uint16_t mask = static_cast<uint16_t>(line.operands[0].data & 0xFFFF);
         symbols_.DefineRegisterList(line.label, mask, line.line_number);
@@ -561,14 +573,14 @@ bool Assembler::HandleDirective(const ParsedLine& line) {
 
   if (op == "INCLUDE") {
     if (line.operands.empty() || line.operands[0].mode != AddressMode::kStringLiteral) {
-      AddError(line.line_number, "INCLUDE requires a filename string");
+      AddError(line.line_number, ErrorCode::kMissingOperand, "INCLUDE requires a filename string");
       return true;
     }
     const std::string& filename = line.operands[0].symbol_name;
 
     // Cycle detection
     if (active_includes_.count(filename)) {
-      AddError(line.line_number, "INCLUDE cycle detected: " + filename);
+      AddError(line.line_number, ErrorCode::kIncludeCycle, filename);
       return true;
     }
 
@@ -576,7 +588,7 @@ bool Assembler::HandleDirective(const ParsedLine& line) {
     if (content.empty()) {
       // Only error in pass 2 so pass 1 can still build the symbol table
       if (pass_ == 2)
-        AddError(line.line_number, "INCLUDE: cannot open file: " + filename);
+        AddError(line.line_number, ErrorCode::kIncludeNotFound, filename);
       return true;
     }
 
@@ -592,13 +604,13 @@ bool Assembler::HandleDirective(const ParsedLine& line) {
 
   if (op == "INCBIN") {
     if (line.operands.empty() || line.operands[0].mode != AddressMode::kStringLiteral) {
-      AddError(line.line_number, "INCBIN requires a filename string");
+      AddError(line.line_number, ErrorCode::kMissingOperand, "INCBIN requires a filename string");
       return true;
     }
     const std::string& filename = line.operands[0].symbol_name;
     std::string content = ReadBinaryFile(filename);
     if (content.empty() && pass_ == 2) {
-      AddError(line.line_number, "INCBIN: cannot open file: " + filename);
+      AddError(line.line_number, ErrorCode::kIncbinNotFound, filename);
       return true;
     }
     uint32_t sz = static_cast<uint32_t>(content.size());
@@ -615,7 +627,7 @@ bool Assembler::HandleDirective(const ParsedLine& line) {
     // SECTION n — switch to section 0-15, saving current LC
     int32_t n = line.operands.empty() ? 0 : line.operands[0].data;
     if (n < 0 || n >= kNumSections) {
-      AddError(line.line_number, "SECTION number must be 0-15");
+      AddError(line.line_number, ErrorCode::kSectionOutOfRange);
       return true;
     }
     if (offset_mode_) {
@@ -633,7 +645,7 @@ bool Assembler::HandleDirective(const ParsedLine& line) {
   if (op == "OFFSET") {
     // OFFSET expr — starts OFFSET mode: LC = expr, code not emitted
     if (line.operands.empty()) {
-      AddError(line.line_number, "OFFSET requires an expression");
+      AddError(line.line_number, ErrorCode::kMissingOperand, "OFFSET requires an expression");
       return true;
     }
     if (!offset_mode_)
@@ -651,11 +663,10 @@ bool Assembler::HandleDirective(const ParsedLine& line) {
   if (op == "FAIL") {
     // FAIL 'message' — unconditional user error
     if (pass_ == 2) {
-      std::string msg = "FAIL";
-      if (!line.operands.empty() && line.operands[0].mode == AddressMode::kStringLiteral) {
-        msg += ": " + line.operands[0].symbol_name;
-      }
-      AddError(line.line_number, msg);
+      std::string extra;
+      if (!line.operands.empty() && line.operands[0].mode == AddressMode::kStringLiteral)
+        extra = line.operands[0].symbol_name;
+      AddError(line.line_number, ErrorCode::kFailDirective, extra);
     }
     return true;
   }
@@ -701,7 +712,7 @@ bool Assembler::HandleInstruction(const ParsedLine& line) {
   // Pass 2: look up instruction and dispatch to code generator.
   const InstrEntry* entry = instruction_table_.Lookup(line.opcode);
   if (!entry) {
-    AddError(line.line_number, "Unknown instruction: " + line.opcode);
+    AddError(line.line_number, ErrorCode::kUnknownInstruction, line.opcode);
     return true;
   }
 
@@ -865,7 +876,53 @@ void Assembler::WordAlign() {
 }
 
 void Assembler::AddError(int line_number, const std::string& message) {
+  if (max_errors_ > 0) {
+    int err_count = 0;
+    for (const auto& e : errors_)
+      if (e.severity == ErrorSeverity::kError)
+        err_count++;
+    if (err_count >= max_errors_) {
+      if (err_count == max_errors_) {
+        errors_.push_back({line_number, "too many errors — assembly stopped", ErrorCode::kGeneric});
+        end_seen_ = true;
+      }
+      return;
+    }
+  }
   errors_.push_back({line_number, message});
+}
+
+void Assembler::AddError(int line_number, ErrorCode code, const std::string& extra) {
+  std::string msg = ErrorCodeMessage(code);
+  if (!extra.empty())
+    msg += ": " + extra;
+  AddError(line_number, msg, code, ErrorSeverity::kError);
+}
+
+void Assembler::AddWarning(int line_number, ErrorCode code, const std::string& extra) {
+  std::string msg = ErrorCodeMessage(code);
+  if (!extra.empty())
+    msg += ": " + extra;
+  errors_.push_back({line_number, std::move(msg), code, ErrorSeverity::kWarning});
+}
+
+// Internal: push with explicit code+severity, bypassing limit (used by code-based overloads).
+void Assembler::AddError(int line_number, const std::string& message, ErrorCode code,
+                         ErrorSeverity severity) {
+  if (severity == ErrorSeverity::kError && max_errors_ > 0) {
+    int err_count = 0;
+    for (const auto& e : errors_)
+      if (e.severity == ErrorSeverity::kError)
+        err_count++;
+    if (err_count >= max_errors_) {
+      if (err_count == max_errors_) {
+        errors_.push_back({line_number, "too many errors — assembly stopped", ErrorCode::kGeneric});
+        end_seen_ = true;
+      }
+      return;
+    }
+  }
+  errors_.push_back({line_number, message, code, severity});
 }
 
 }  // namespace easym68k::asm_

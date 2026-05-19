@@ -32,6 +32,7 @@ add_executable(easym68k-asm-tests
   asm/conditional_assembly_test.cc
   asm/macro_test.cc
   asm/structured_test.cc
+  asm/error_reporter_test.cc
   asm/listing_test.cc
   asm/golden_assembly_test.cc
 )

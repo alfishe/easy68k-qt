@@ -271,7 +271,7 @@ void Assembler::HandleStructured(const std::string& raw_line, int line_number) {
 
   auto add_error = [&](const std::string& msg) {
     if (pass_ == 2)
-      AddError(line_number, msg);
+      AddError(line_number, ErrorCode::kCondMismatch, msg);
   };
 
   // ==================== IF ====================

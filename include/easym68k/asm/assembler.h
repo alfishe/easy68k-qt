@@ -14,6 +14,7 @@
 #include <vector>
 
 #include "easym68k/asm/code_generator.h"
+#include "easym68k/asm/error_codes.h"
 #include "easym68k/asm/instruction_table.h"
 #include "easym68k/asm/parser.h"
 #include "easym68k/asm/symbol_table.h"
@@ -22,7 +23,16 @@ namespace easym68k::asm_ {
 
 struct AssemblyError {
   int line_number;
+  int column;  // 1-based; 0 = unknown
   std::string message;
+  ErrorCode code;  // kGeneric for untyped messages
+  ErrorSeverity severity;
+
+  AssemblyError()
+      : line_number(0), column(0), code(ErrorCode::kGeneric), severity(ErrorSeverity::kError) {}
+  AssemblyError(int ln, std::string msg, ErrorCode c = ErrorCode::kGeneric,
+                ErrorSeverity sev = ErrorSeverity::kError)
+      : line_number(ln), column(0), message(std::move(msg)), code(c), severity(sev) {}
 };
 
 struct AssemblyResult {
@@ -30,8 +40,9 @@ struct AssemblyResult {
   uint32_t org;               // Address of first emitted byte
   std::vector<uint8_t> code;  // Contiguous bytes starting at org
   std::vector<AssemblyError> errors;
+  int warning_count;
 
-  AssemblyResult() : success(false), org(0) {}
+  AssemblyResult() : success(false), org(0), warning_count(0) {}
 };
 
 // Callback for reading included files: given a filename, returns its contents.
@@ -48,6 +59,9 @@ class Assembler {
 
   // Add a directory to the include search path
   void AddIncludePath(const std::string& path);
+
+  // Stop assembly after this many errors (default: 10; 0 = unlimited)
+  void SetMaxErrors(int n) { max_errors_ = n; }
 
   AssemblyResult Assemble(const std::string& source);
 
@@ -158,7 +172,18 @@ class Assembler {
   void EmitWord(uint16_t w);
   void EmitLong(uint32_t l);
   void WordAlign();
+
+  // Error/warning helpers — all ultimately push to errors_.
+  // String form: code=kGeneric, severity=kError.
   void AddError(int line_number, const std::string& message);
+  // Code form: message = ErrorCodeMessage(code) [+ ": " + extra].
+  void AddError(int line_number, ErrorCode code, const std::string& extra = "");
+  void AddWarning(int line_number, ErrorCode code, const std::string& extra = "");
+  // Internal: push with explicit code + severity (bypasses limit check for warnings).
+  void AddError(int line_number, const std::string& message, ErrorCode code,
+                ErrorSeverity severity);
+
+  int max_errors_;  // 0 = unlimited; default = 10
 };
 
 }  // namespace easym68k::asm_

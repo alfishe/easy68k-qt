@@ -56,14 +56,14 @@ void Assembler::CollectMacroBody(const std::string& name, const std::vector<std:
     }
     if (bl.opcode == "MACRO") {
       if (pass_ == 2)
-        AddError(line_number, "Nested MACRO definition not allowed: " + name);
+        AddError(line_number, ErrorCode::kMacroNested, name);
       break;
     }
     body.push_back(lines[j]);
     j++;
   }
   if (!found && pass_ == 2)
-    AddError(line_number, "MACRO without matching ENDM: " + name);
+    AddError(line_number, ErrorCode::kMacroNoEndm, name);
   macros_[name] = std::move(body);
   i = j;
 }
@@ -298,7 +298,7 @@ void Assembler::InvokeMacro(const std::string& name, const std::string& label,
                             const std::string& raw_operands, SizeSpec size, int line_number) {
   if (macro_nest_depth_ >= kMacroNestLimit) {
     if (pass_ == 2)
-      AddError(line_number, "Macro recursion limit exceeded: " + name);
+      AddError(line_number, ErrorCode::kMacroRecursion, name);
     return;
   }
 
