@@ -1,0 +1,14 @@
+00001000 Starting Address
+Assembler used: EASy68K
+Created On: 
+
+EASy68K 68000 Assembler                                                 Page 1
+================================================================================
+
+00000000                             1  * Basic ORG and NOP test
+00000000                             2      ORG $1000
+00001000  4E71                       3      NOP
+00001002                             4      END $1000
+
+No errors detected
+No warnings generated

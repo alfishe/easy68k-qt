@@ -1,0 +1,7 @@
+* MOVEM instruction
+    ORG $1000
+    MOVEM.W D0-D7/A0-A6,-(A7)
+    MOVEM.W (A7)+,D0-D7/A0-A6
+    MOVEM.L D0-D3/A0-A2,$2000
+    MOVEM.L $2000,D0-D3/A0-A2
+    END $1000

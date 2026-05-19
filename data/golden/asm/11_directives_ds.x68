@@ -1,0 +1,6 @@
+* DS directives
+    ORG $1000
+BUFFER_B: DS.B 10
+BUFFER_W: DS.W 5
+BUFFER_L: DS.L 2
+    END $1000

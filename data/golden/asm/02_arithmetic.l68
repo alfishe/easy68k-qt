@@ -1,0 +1,21 @@
+00001000 Starting Address
+Assembler used: EASy68K
+Created On: 
+
+EASy68K 68000 Assembler                                                 Page 1
+================================================================================
+
+00000000                             1  * Arithmetic instructions
+00000000                             2      ORG $1000
+00001000  D240                       3      ADD.W D0,D1
+00001002  0682 0000 1234             4      ADD.L #$1234,D2
+00001008  9803                       5      SUB.B D3,D4
+0000100A  0445 0010                  6      SUB.W #$10,D5
+0000100E  C2C0                       7      MULU.W D0,D1
+00001010  C5FC 0064                  8      MULS.W #100,D2
+00001014  88C3                       9      DIVU.W D3,D4
+00001016  8BFC FFFB                 10      DIVS.W #-5,D5
+0000101A                            11      END $1000
+
+No errors detected
+No warnings generated

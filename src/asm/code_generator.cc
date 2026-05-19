@@ -597,6 +597,9 @@ bool CodeGenerator::Encode(const InstrEntry& entry, const ParsedLine& line,
       if (dst().mode == AM::kSRDirect) {
         return emit_ea1(static_cast<uint16_t>(0x46C0 | EffAddr(src())), src());
       }
+      if (src().mode == AM::kSRDirect) {
+        return emit_ea1(static_cast<uint16_t>(0x40C0 | EffAddr(dst())), dst());
+      }
       if (dst().mode == AM::kUSPDirect) {
         // MOVE An,USP
         emit_word(static_cast<uint16_t>(0x4E60 | (src().reg & 7)));

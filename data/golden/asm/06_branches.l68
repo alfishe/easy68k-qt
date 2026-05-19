@@ -1,0 +1,24 @@
+00001000 Starting Address
+Assembler used: EASy68K
+Created On: 
+
+EASy68K 68000 Assembler                                                 Page 1
+================================================================================
+
+00000000                             1  * Branch and jump instructions
+00000000                             2      ORG $1000
+00001000                             3  START:
+00001000  6000 FFFE                  4      BRA START
+00001004  6100 001C                  5      BSR SUBR
+00001008  6700 FFF6                  6      BEQ START
+0000100C  6600 FFF2                  7      BNE START
+00001010  6E00 FFEE                  8      BGT START
+00001014  6D00 FFEA                  9      BLT START
+00001018  4EF8 1000                 10      JMP START
+0000101C  4EB8 1022                 11      JSR SUBR
+00001020                            12  SUBR:
+00001020  4E75                      13      RTS
+00001022                            14      END START
+
+No errors detected
+No warnings generated

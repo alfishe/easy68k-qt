@@ -1,0 +1,10 @@
+* EQU and SET directives
+VAL1:   EQU $100
+VAL2:   EQU VAL1+$20
+TEMP:   SET 5
+    ORG $1000
+    MOVE.W #VAL1,D0
+    MOVE.W #VAL2,D1
+TEMP:   SET 10
+    MOVE.W #TEMP,D2
+    END $1000

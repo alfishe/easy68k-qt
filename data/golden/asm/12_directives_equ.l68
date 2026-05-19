@@ -1,0 +1,20 @@
+00001000 Starting Address
+Assembler used: EASy68K
+Created On: 
+
+EASy68K 68000 Assembler                                                 Page 1
+================================================================================
+
+00000000                             1  * EQU and SET directives
+00000000  =00000100                  2  VAL1:   EQU $100
+00000000  =00000120                  3  VAL2:   EQU VAL1+$20
+00000000  =0000000A                  4  TEMP:   SET 5
+00000000                             5      ORG $1000
+00001000  303C 0100                  6      MOVE.W #VAL1,D0
+00001004  323C 0120                  7      MOVE.W #VAL2,D1
+00001008  =0000000A                  8  TEMP:   SET 10
+00001008  343C 000A                  9      MOVE.W #TEMP,D2
+0000100C                            10      END $1000
+
+No errors detected
+No warnings generated

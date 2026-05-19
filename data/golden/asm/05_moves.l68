@@ -1,0 +1,21 @@
+00001000 Starting Address
+Assembler used: EASy68K
+Created On: 
+
+EASy68K 68000 Assembler                                                 Page 1
+================================================================================
+
+00000000                             1  * Move instructions
+00000000                             2      ORG $1000
+00001000  3200                       3      MOVE.W D0,D1
+00001002  2042                       4      MOVE.L D2,A0
+00001004  163C 0042                  5      MOVE.B #$42,D3
+00001008  7805                       6      MOVEQ #5,D4
+0000100A  7AF6                       7      MOVEQ #-10,D5
+0000100C  44C0                       8      MOVE.W D0,CCR
+0000100E  40C1                       9      MOVE.W SR,D1
+00001010  46C2                      10      MOVE.W D2,SR
+00001012                            11      END $1000
+
+No errors detected
+No warnings generated
