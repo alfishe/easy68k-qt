@@ -1,15 +1,16 @@
 // Copyright 2024 EASy68K Contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
 
-#include "easym68k/asm/assembler.h"
-
 #include <gtest/gtest.h>
+
 #include <cstdlib>
 #include <filesystem>
 #include <fstream>
 #include <sstream>
 #include <string>
 #include <vector>
+
+#include "easym68k/asm/assembler.h"
 
 namespace easym68k::asm_ {
 namespace {
@@ -76,42 +77,26 @@ TEST_P(GoldenAssemblyTest, ByteIdenticalOutput) {
     std::string golden_l68 = ReadFile(l68_path);
 
     ASSERT_FALSE(golden_s68.empty())
-        << "Golden S-Record file is empty or missing. Run with GENERATE_GOLDEN=1 to bootstrap: " << s68_path;
+        << "Golden S-Record file is empty or missing. Run with GENERATE_GOLDEN=1 to bootstrap: "
+        << s68_path;
     ASSERT_FALSE(golden_l68.empty())
-        << "Golden Listing file is empty or missing. Run with GENERATE_GOLDEN=1 to bootstrap: " << l68_path;
+        << "Golden Listing file is empty or missing. Run with GENERATE_GOLDEN=1 to bootstrap: "
+        << l68_path;
 
     EXPECT_EQ(generated_s68, golden_s68) << "S-Record mismatch for " << test_name;
     EXPECT_EQ(generated_l68, golden_l68) << "Listing mismatch for " << test_name;
   }
 }
 
-INSTANTIATE_TEST_SUITE_P(
-    GoldenAssemblySuite,
-    GoldenAssemblyTest,
-    ::testing::Values(
-        "01_nop",
-        "02_arithmetic",
-        "03_logic",
-        "04_shifts",
-        "05_moves",
-        "06_branches",
-        "07_comparisons",
-        "08_movem",
-        "09_stack",
-        "10_directives_dc",
-        "11_directives_ds",
-        "12_directives_equ",
-        "13_directives_org",
-        "14_macro_simple",
-        "15_macro_params",
-        "16_macro_narg",
-        "17_macro_continuation",
-        "18_conditional_assembly",
-        "19_structured_if",
-        "20_structured_loop",
-        "21_memory_map"
-    )
-);
+INSTANTIATE_TEST_SUITE_P(GoldenAssemblySuite, GoldenAssemblyTest,
+                         ::testing::Values("01_nop", "02_arithmetic", "03_logic", "04_shifts",
+                                           "05_moves", "06_branches", "07_comparisons", "08_movem",
+                                           "09_stack", "10_directives_dc", "11_directives_ds",
+                                           "12_directives_equ", "13_directives_org",
+                                           "14_macro_simple", "15_macro_params", "16_macro_narg",
+                                           "17_macro_continuation", "18_conditional_assembly",
+                                           "19_structured_if", "20_structured_loop",
+                                           "21_memory_map"));
 
 }  // namespace
 }  // namespace easym68k::asm_

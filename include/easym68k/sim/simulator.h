@@ -70,6 +70,17 @@ class M68kSimulator {
   // Thread-safe stop request; checked at top of each Run iteration.
   void RequestStop();
 
+  // Inject a hardware interrupt at the given level (1-7).
+  // Thread-safe; may be called from any thread (e.g., timer, hardware sim).
+  // The interrupt is processed on the next Step() or Run() iteration.
+  void Interrupt(int level);
+
+  // Returns the current pending IRQ bitmask (for testing).
+  uint8_t GetPendingIrqs() const;
+
+  // Clear all pending interrupts.
+  void ClearPendingIrqs();
+
   // State and memory accessors
   CpuState& State() { return state_; }
   const CpuState& State() const { return state_; }
@@ -103,6 +114,9 @@ class M68kSimulator {
 
   // Pushes stack frame for vector, sets supervisor mode, clears trace, loads new PC.
   void HandleException(ExceptionVector vector);
+
+  // Process the highest priority pending interrupt.
+  void HandleIrq(int level);
 
   // Hierarchical instruction decoder (defined in decode.cc).
   SimResult DispatchGroup0(uint16_t opcode);
@@ -215,6 +229,7 @@ class M68kSimulator {
   Config config_;
   std::vector<Breakpoint> breakpoints_;
   std::atomic<bool> stop_requested_{false};
+  std::atomic<uint8_t> pending_irqs_{0};
   uint32_t inst_pc_{0};  // PC of the instruction currently executing
   uint32_t start_address_{0};
 };

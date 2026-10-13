@@ -151,7 +151,7 @@ Decision: CMP with immediate source is encoded as CMP (0xB0xx) not CMPI (0x0Cxx)
 
 | Task | Status | Commit | Summary |
 |------|--------|--------|---------|
-| 9.1 Interrupt Injection & Processing | TODO | | |
+| 9.1 Interrupt Injection & Processing | DONE | `pending` | Thread-safe autovectored interrupts (levels 1-7); wake-on-interrupt; priority masking; 15 unit tests in tests/sim/interrupt_test.cc |
 | 9.2 Cycle Counting | TODO | | |
 | 9.3 SIMHALT Config & Exception Toggle | TODO | | |
 | 9.4 Execution Logging Interface | TODO | | |
@@ -217,4 +217,4 @@ Decision: Refactored `ListLine` to use type-safe metadata structure (`left_colum
 
 Decision: Replicated exact S0/S1/S2/S3/S8 Motorola format with memory map S0 records. S8 termination address formats to 24-bit to match Borland. S0 checksum calculated programmatically to avoid hardcoded mismatch. SRecordGenerator buffers bytes to output SRECSIZE=36 records.
 
-**NEXT:** Phase 9 — Simulator Core Library — Full Parity & Headless Readiness
+**NEXT:** Task 9.2 — Cycle Counting

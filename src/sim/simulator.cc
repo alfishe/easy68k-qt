@@ -12,7 +12,7 @@
 
 namespace easym68k::sim {
 
-M68kSimulator::M68kSimulator(Config config) : config_(config) {}
+M68kSimulator::M68kSimulator(Config config) : config_(config), pending_irqs_(0) {}
 
 // =============================================================================
 // Reset
@@ -26,6 +26,7 @@ void M68kSimulator::Reset() {
   state_.halted = false;
   state_.stopped = false;
   stop_requested_.store(false, std::memory_order_relaxed);
+  pending_irqs_.store(0, std::memory_order_relaxed);
 }
 
 // =============================================================================
@@ -132,6 +133,20 @@ void M68kSimulator::HandleException(ExceptionVector vector) {
 SimResult M68kSimulator::Step() {
   if (state_.halted)
     return SimResult::kHalted;
+
+  // Check for pending non-masked interrupts before fetching
+  uint8_t mask = pending_irqs_.load(std::memory_order_relaxed);
+  if (mask != 0) {
+    int current_mask = state_.GetInterruptMask();
+    for (int lvl = 7; lvl >= 1; --lvl) {
+      if ((mask & (1 << (lvl - 1))) != 0) {
+        if (lvl == 7 || lvl > current_mask) {
+          HandleIrq(lvl);
+          return SimResult::kOk;
+        }
+      }
+    }
+  }
 
   inst_pc_ = state_.pc;
   bool trace_before = state_.GetFlag(kSrTrace);
@@ -263,6 +278,62 @@ bool M68kSimulator::LoadSRecordLines(const std::vector<std::string>& lines) {
   if (r.success && r.has_start_address)
     start_address_ = r.start_address;
   return r.success;
+}
+
+// =============================================================================
+// Interrupts
+// =============================================================================
+
+void M68kSimulator::Interrupt(int level) {
+  if (level < 1 || level > 7) {
+    return;
+  }
+
+  // Set bit atomically
+  pending_irqs_.fetch_or(static_cast<uint8_t>(1 << (level - 1)));
+
+  // Wake from STOP if not masked
+  if (state_.stopped) {
+    int current_mask = state_.GetInterruptMask();
+    if (level == 7 || level > current_mask) {
+      state_.stopped = false;
+      state_.halted = false;
+    }
+  }
+}
+
+uint8_t M68kSimulator::GetPendingIrqs() const {
+  return pending_irqs_.load(std::memory_order_relaxed);
+}
+
+void M68kSimulator::ClearPendingIrqs() {
+  pending_irqs_.store(0, std::memory_order_relaxed);
+}
+
+void M68kSimulator::HandleIrq(int level) {
+  // Push exception stack frame
+  state_.ssp -= 4;
+  memory_.WriteLong(state_.ssp & kAddressMask, state_.pc);
+  state_.ssp -= 2;
+  memory_.WriteWord(state_.ssp & kAddressMask, state_.sr);
+
+  // Set SR supervisor bit
+  state_.sr |= kSrSupervisor;
+  // Clear trace flag
+  state_.sr &= static_cast<uint16_t>(~kSrTrace);
+
+  // Set SR interrupt mask to serviced level
+  state_.SetInterruptMask(level);
+
+  // Clear serviced interrupt bit
+  pending_irqs_.fetch_and(static_cast<uint8_t>(~(1 << (level - 1))));
+
+  // Load PC from autovector address
+  uint32_t vec_addr = (24 + level) * 4;
+  state_.pc = memory_.ReadLong(vec_addr).value & kAddressMask;
+
+  // Add 34 cycles penalty
+  state_.cycles += 34;
 }
 
 }  // namespace easym68k::sim
