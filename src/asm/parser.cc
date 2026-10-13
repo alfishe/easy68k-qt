@@ -51,6 +51,9 @@ ParsedLine Parser::ParseLine(const std::string& line, int line_number) {
     ParseOpcodeOrDirective(result);
   }
 
+  if (label_hook_ && (!result.label.empty() || !result.opcode.empty()))
+    label_hook_(result);
+
   if (!has_error_ && !result.opcode.empty() && !IsAtEnd() && !Check(TokenType::kComment) &&
       !Check(TokenType::kNewline)) {
     if (result.opcode == "OPT") {

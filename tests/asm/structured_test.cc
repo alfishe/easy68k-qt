@@ -141,35 +141,36 @@ TEST(StructuredTest, IfImmediateRight) {
 
 TEST(StructuredTest, WhileSimple) {
   // WHILE <EQ> DO NOP ENDW
-  // → top: BNE.W exit; NOP; BRA.W top; exit:
+  // → top: BNE.W exit; NOP; BRA top; exit:
+  // The BRA back to top is a backward reference in range, so (as in the
+  // original, BUILD.CPP branch()) it assembles to the short form.
+  // Verified against the reference assembler: 6600 0006 4E71 60F8.
   auto code =
       Asm("  ORG $1000\n"
           "  WHILE <EQ> DO\n"
           "    NOP\n"
           "  ENDW\n");
-  // top (0): BNE.W exit (4) + NOP (2) + BRA.W top (4) + exit:
-  ASSERT_EQ(code.size(), 10u);
+  // top (0): BNE.W exit (4) + NOP (2) + BRA.S top (2) + exit:
+  ASSERT_EQ(code.size(), 8u);
   EXPECT_EQ(Word(code, 0), 0x6600u);  // BNE.W
-  EXPECT_EQ(SWord(code, 2), 8);       // disp = $100A - ($1000+2) = 8 (to exit)
+  EXPECT_EQ(SWord(code, 2), 6);       // disp = $1008 - ($1000+2) = 6 (to exit)
   EXPECT_EQ(Word(code, 4), 0x4E71u);  // NOP
-  EXPECT_EQ(Word(code, 6), 0x6000u);  // BRA.W
-  EXPECT_EQ(SWord(code, 8), -8);      // disp = $1000 - ($1006+2) = -8 (back to top)
+  EXPECT_EQ(Word(code, 6), 0x60F8u);  // BRA.S top: $1000 - ($1006+2) = -8
 }
 
 TEST(StructuredTest, WhileBackBranchDisplacement) {
-  // Verify the BRA.W displacement goes back to loop top.
+  // Verify the BRA displacement goes back to loop top.
   // top at $1000 (0 bytes offset).
   // BNE.W skip: 4 bytes at $1000
   // NOP: 2 bytes at $1004
-  // BRA.W top: at $1006, PC after fetch = $1008, target = $1000 → disp = -8
+  // BRA.S top: at $1006, PC after fetch = $1008, target = $1000 → disp = -8
   auto code =
       Asm("  ORG $1000\n"
           "  WHILE <EQ> DO\n"
           "    NOP\n"
           "  ENDW\n");
-  ASSERT_GE(code.size(), 10u);
-  // BRA.W opword at offset 6; PC after opword fetch = offset 6+2=8; target offset=0 → disp=0-8=-8
-  EXPECT_EQ(SWord(code, 8), -8);
+  ASSERT_GE(code.size(), 8u);
+  EXPECT_EQ(static_cast<int8_t>(code[7]), -8);
 }
 
 TEST(StructuredTest, WhileInfinite) {
@@ -179,11 +180,10 @@ TEST(StructuredTest, WhileInfinite) {
           "  WHILE <T> DO\n"
           "    NOP\n"
           "  ENDW\n");
-  // top: NOP (2) + BRA.W top (4)
-  ASSERT_EQ(code.size(), 6u);
+  // top: NOP (2) + BRA.S top (2); reference: 4E71 60FC
+  ASSERT_EQ(code.size(), 4u);
   EXPECT_EQ(Word(code, 0), 0x4E71u);  // NOP
-  EXPECT_EQ(Word(code, 2), 0x6000u);  // BRA.W
-  EXPECT_EQ(SWord(code, 4), -4);      // disp = $1000 - ($1002+2) = -4
+  EXPECT_EQ(Word(code, 2), 0x60FCu);  // BRA.S, disp = $1000 - ($1002+2) = -4
 }
 
 TEST(StructuredTest, WhileNested) {
@@ -210,12 +210,12 @@ TEST(StructuredTest, RepeatUntilSimple) {
           "  REPEAT\n"
           "    NOP\n"
           "  UNTIL <EQ> DO\n");
-  // top: NOP (2 bytes) + BNE.W disp (4 bytes) = 6
-  ASSERT_EQ(code.size(), 6u);
+  // top: NOP (2 bytes) + BNE.S (2 bytes) = 4; reference: 4E71 66FC
+  ASSERT_EQ(code.size(), 4u);
   EXPECT_EQ(Word(code, 0), 0x4E71u);  // NOP
-  EXPECT_EQ(Word(code, 2),
-            0x6600u);  // BNE.W (for <EQ> col-1 = BNE, branch when NOT equal = keep looping)
-  EXPECT_EQ(SWord(code, 4), -4);  // disp = $1000 - ($1002+2) = -4
+  // BNE.S (for <EQ> col-1 = BNE, branch when NOT equal = keep looping),
+  // disp = $1000 - ($1002+2) = -4
+  EXPECT_EQ(Word(code, 2), 0x66FCu);
 }
 
 TEST(StructuredTest, RepeatUntilMultipleIterations) {
@@ -226,13 +226,12 @@ TEST(StructuredTest, RepeatUntilMultipleIterations) {
           "    NOP\n"
           "    NOP\n"
           "  UNTIL <NE> DO\n");
-  // top: NOP(2) + NOP(2) + BEQ.W disp(4) = 8
+  // top: NOP(2) + NOP(2) + BEQ.S(2) = 6; reference: 4E71 4E71 67FA
   // For <NE> col-1 = BEQ (branch when NOT <NE> = branch when equal = keep looping)
-  ASSERT_EQ(code.size(), 8u);
+  ASSERT_EQ(code.size(), 6u);
   EXPECT_EQ(Word(code, 0), 0x4E71u);
   EXPECT_EQ(Word(code, 2), 0x4E71u);
-  EXPECT_EQ(Word(code, 4), 0x6700u);  // BEQ.W
-  EXPECT_EQ(SWord(code, 6), -6);      // disp = $1000 - ($1004+2) = -6
+  EXPECT_EQ(Word(code, 4), 0x67FAu);  // BEQ.S, disp = $1000 - ($1004+2) = -6
 }
 
 // ─── FOR / ENDF ─────────────────────────────────────────────────────────────
@@ -405,19 +404,19 @@ TEST(StructuredTest, IfDisplacementWithLargerBody) {
 
 TEST(StructuredTest, WhileRegisterCondition) {
   // WHILE D0 <GT> D1 DO NOP ENDW
-  // → top: CMP.W D1,D0 (2) + BLE.W exit (4) + NOP (2) + BRA.W top (4) + exit:
+  // → top: CMP.W D1,D0 (2) + BLE.W exit (4) + NOP (2) + BRA.S top (2) + exit:
+  // reference: B041 6F00 0006 4E71 60F6
   auto code =
       Asm("  ORG $1000\n"
           "  WHILE D0 <GT> D1 DO\n"
           "    NOP\n"
           "  ENDW\n");
-  ASSERT_EQ(code.size(), 12u);
+  ASSERT_EQ(code.size(), 10u);
   EXPECT_EQ(Word(code, 0), 0xB041u);  // CMP.W D1,D0
   EXPECT_EQ(Word(code, 2), 0x6F00u);  // BLE.W
-  EXPECT_EQ(SWord(code, 4), 8);       // disp = $100C - ($1002+2) = 8 (to exit)
+  EXPECT_EQ(SWord(code, 4), 6);       // disp = $100A - ($1002+2) = 6 (to exit)
   EXPECT_EQ(Word(code, 6), 0x4E71u);  // NOP
-  EXPECT_EQ(Word(code, 8), 0x6000u);  // BRA.W
-  EXPECT_EQ(SWord(code, 10), -10);    // disp = $1000 - ($1008+2) = -10 (back to top)
+  EXPECT_EQ(Word(code, 8), 0x60F6u);  // BRA.S, disp = $1000 - ($1008+2) = -10
 }
 
 // ─── Error cases ─────────────────────────────────────────────────────────────
@@ -535,9 +534,10 @@ TEST(StructuredTest, WhileShortBranch) {
           "  WHILE <EQ> DO.S\n"
           "    NOP\n"
           "  ENDW\n");
-  // BNE.S (2 bytes) + NOP (2 bytes) + BRA.W top (4 bytes) = 8 bytes
+  // BNE.S (2 bytes) + NOP (2 bytes) + BRA.S top (2 bytes) = 6 bytes
   // BNE.S: 0x6600 with byte displacement (0x66xx where xx != 0)
-  ASSERT_EQ(code.size(), 8u);
+  // reference: 6604 4E71 60FA
+  ASSERT_EQ(code.size(), 6u);
   uint8_t ophi = code[0];
   EXPECT_EQ(ophi, 0x66u);  // BNE
   uint8_t disp = code[1];

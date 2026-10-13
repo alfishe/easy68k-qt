@@ -43,9 +43,10 @@ struct AssemblyResult {
   std::vector<uint8_t> code;  // Contiguous bytes starting at org
   std::vector<AssemblyError> errors;
   int warning_count;
-  std::string srecord;  // Generated Motorola S-Record text
+  std::string srecord;     // Generated Motorola S-Record text
+  uint32_t start_address;  // END operand (S8 record / listing)
 
-  AssemblyResult() : success(false), org(0), warning_count(0) {}
+  AssemblyResult() : success(false), org(0), warning_count(0), start_address(0) {}
 };
 
 // Callback for reading included files: given a filename, returns its contents.
@@ -79,6 +80,7 @@ class Assembler {
   uint32_t org_;
   bool org_set_;
   bool end_seen_;
+  uint32_t start_address_ = 0;
   bool listing_enabled_;
 
   // OFFSET mode: saves location counter; exits on ORG/SECTION
@@ -168,6 +170,8 @@ class Assembler {
 
   void RunPass(const std::vector<std::string>& lines);
   bool ProcessLine(const ParsedLine& line);
+  void OnLineParsed(const ParsedLine& line);
+  void DefineOrMarkLabel(const std::string& label, uint32_t value, int line_number);
   bool HandleDirective(const ParsedLine& line);
   bool HandleInstruction(const ParsedLine& line);
   int InstructionSize(const ParsedLine& line) const;
@@ -178,6 +182,7 @@ class Assembler {
 
   void EmitByte(uint8_t b);
   void EmitWord(uint16_t w);
+  void SkipBytes(uint32_t n);
   void EmitLong(uint32_t l);
   void WordAlign();
 

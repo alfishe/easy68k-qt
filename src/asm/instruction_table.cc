@@ -106,7 +106,7 @@ static const InstrEntry kInstrTable[] = {
   {"DIVS",   E::kMulDiv,      0,  kSzWord,  2, Data,                 kModeD,                 0x81C0},
   {"DIVU",   E::kMulDiv,      0,  kSzWord,  2, Data,                 kModeD,                 0x80C0},
   // EOR: only Dn,DataAlt (no reversed form); EORI handles immediate
-  {"EOR",    E::kRegToEa,     0,  kSzBWL,   2, kModeD,               DataAlt,                0xB100},
+  {"EOR",    E::kRegToEa,     0,  kSzBWL,   2, kModeD|kModeImm,      DataAlt,                0xB100},
   {"EORI",   E::kImmedToEa,   0,  kSzBWL,   2, kModeImm,             DataAlt|kModeCCR|kModeSR, 0x0A00},
   // EXG: three sub-forms (Dx,Dy / Ax,Ay / Dx,Ay) selected by code gen
   {"EXG",    E::kExg,         0,  kSzLong,  2, kModeD|kModeA,        kModeD|kModeA,          0xC140},

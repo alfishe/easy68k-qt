@@ -55,18 +55,32 @@ void SRecordGenerator::SetStartAddress(uint32_t addr) {
 }
 
 void SRecordGenerator::AddByte(uint32_t addr, uint8_t byte) {
-  if (records_.empty()) {
-    records_.push_back({addr, {byte}});
-    return;
-  }
+  AddItem(addr, &byte, 1);
+}
 
-  Record& last = records_.back();
-  uint32_t expected = last.address + static_cast<uint32_t>(last.data.size());
-  if (addr == expected && last.data.size() < 36) {
-    last.data.push_back(byte);
-  } else {
-    records_.push_back({addr, {byte}});
+// OBJECT.CPP outputObj(): a new record starts when the item does not follow
+// the previous data or when byteCount + size > SRECSIZE (36), where byteCount
+// starts at 3/4/5 (count byte + 2/3/4 address bytes for S1/S2/S3) and items
+// (byte, word, long) are never split across records.
+void SRecordGenerator::AddItem(uint32_t addr, const uint8_t* bytes, int size) {
+  constexpr int kSrecSize = 36;
+  auto header_bytes = [](uint32_t a) {
+    if ((a & 0xFFFFu) == a)
+      return 3;
+    if ((a & 0xFFFFFFu) == a)
+      return 4;
+    return 5;
+  };
+  bool start_new = records_.empty();
+  if (!start_new) {
+    const Record& last = records_.back();
+    uint32_t expected = last.address + static_cast<uint32_t>(last.data.size());
+    int byte_count = header_bytes(last.address) + static_cast<int>(last.data.size());
+    start_new = (addr != expected) || (byte_count + size > kSrecSize);
   }
+  if (start_new)
+    records_.push_back({addr, {}});
+  records_.back().data.insert(records_.back().data.end(), bytes, bytes + size);
 }
 
 std::string SRecordGenerator::Generate() const {

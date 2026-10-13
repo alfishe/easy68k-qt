@@ -100,6 +100,10 @@ const char* ErrorCodeMessage(ErrorCode code) {
       return "Label not permitted on conditional directive";
     case ErrorCode::kCondMismatch:
       return "mismatched structured control flow";
+    case ErrorCode::kInvForwardRef:
+      return "INV_FORWARD_REF: forward references not allowed with this directive";
+    case ErrorCode::kLabelError:
+      return "LABEL_ERROR: label is not allowed";
     // Warnings
     case ErrorCode::kOddAddress:
       return "ODD_ADDRESS: address is odd — auto-aligned to even";
@@ -109,6 +113,8 @@ const char* ErrorCodeMessage(ErrorCode code) {
       return "value truncated to fit field";
     case ErrorCode::kPhaseError:
       return "PHASE_ERROR: value differs between pass 1 and pass 2";
+    case ErrorCode::kAddressMissing:
+      return "ADDRESS_MISSING: address expected";
   }
   return "unknown error";
 }
@@ -119,6 +125,7 @@ ErrorSeverity ErrorCodeSeverity(ErrorCode code) {
     case ErrorCode::kInvMemory:
     case ErrorCode::kTruncation:
     case ErrorCode::kPhaseError:
+    case ErrorCode::kAddressMissing:
       return ErrorSeverity::kWarning;
     default:
       return ErrorSeverity::kError;

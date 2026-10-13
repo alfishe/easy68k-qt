@@ -329,10 +329,8 @@ void Assembler::InvokeMacro(const std::string& name, const std::string& label,
   const int label_num = macro_label_num_;
 
   // Define the label attached to the call site (original: define(label, loc, ...)).
-  if (!label.empty() && pass_ == 1) {
-    symbols_.DefineLabel(label, location_counter_, line_number);
-    symbols_.SetCurrentParentLabel(label);
-  }
+  if (!label.empty())
+    DefineOrMarkLabel(label, location_counter_, line_number);
 
   macro_nest_depth_++;
 

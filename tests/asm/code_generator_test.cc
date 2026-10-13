@@ -1109,15 +1109,25 @@ TEST(EncodeTest, BraShortExplicit) {
   EXPECT_EQ(r.words[0], 0x60F8u);
 }
 
-TEST(EncodeTest, BraUnsizedIsWordForm) {
-  // BRA without explicit size (kNone → kWord inside Encode): always word form.
-  // loc=0x1010, target=0x1008 → disp=-10; word form [0x6000, 0xFFF6]
+TEST(EncodeTest, BraUnsizedBackRefInRangeIsShortForm) {
+  // BUILD.CPP branch(): an unsized branch to a backward reference within
+  // -128..127 (and non-zero) uses the short form.
+  // loc=0x1010, target=0x1008 → disp=-10; short form [0x60F6]
   auto r = RunEncode(InstrEncoding::kBranch, 0x6000, kSzByte | kSzWord, SizeSpec::kNone,
                      {MakeImm(0x1008)}, 0x1010);
   EXPECT_TRUE(r.ok);
+  ASSERT_EQ(r.words.size(), 1u);
+  EXPECT_EQ(r.words[0], 0x60F6u);
+}
+
+TEST(EncodeTest, BraUnsizedForwardRefIsWordForm) {
+  // BUILD.CPP branch(): forward references always use the word form.
+  auto r = RunEncode(InstrEncoding::kBranch, 0x6000, kSzByte | kSzWord, SizeSpec::kNone,
+                     {MakeImmFwd(0x1020)}, 0x1010);
+  EXPECT_TRUE(r.ok);
   ASSERT_EQ(r.words.size(), 2u);
   EXPECT_EQ(r.words[0], 0x6000u);
-  EXPECT_EQ(r.words[1], static_cast<uint16_t>(-10));
+  EXPECT_EQ(r.words[1], 0x000Eu);
 }
 
 TEST(EncodeTest, BccWordForwardRef) {

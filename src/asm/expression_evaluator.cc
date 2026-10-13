@@ -132,7 +132,11 @@ ExpressionResult ExpressionEvaluator::ParsePrimary() {
         if (HasFlag(info.flags, SymbolFlags::kRegisterList))
           return MakeError("Register list symbol not valid in expression: " + token.text);
         result.value = info.value;
-        result.is_back_ref = info.is_defined;
+        // EVAL.CPP evalNumber(): in pass 1 any known symbol is a backward
+        // reference; in pass 2 only symbols whose definition has already been
+        // reached in pass 2 (BACKREF flag, set by define()).
+        result.is_back_ref =
+            (pass_ == 2) ? HasFlag(info.flags, SymbolFlags::kBackRef) : info.is_defined;
       } else {
         result.is_back_ref = false;
         if (pass_ == 2) {

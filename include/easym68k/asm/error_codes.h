@@ -69,12 +69,15 @@ enum class ErrorCode {
   kEndcWithoutIf,  // ENDC without matching IF
   kLabelOnCond,    // label not permitted on conditional directive
   kCondMismatch,   // structured control flow mismatch
+  kInvForwardRef,  // INV_FORWARD_REF — forward reference not allowed here
+  kLabelError,     // LABEL_ERROR — label not allowed on this directive
 
   // Warnings (severity == kWarning)
-  kOddAddress,  // ODD_ADDRESS — address is odd, auto-aligned
-  kInvMemory,   // INV_MEMORY — invalid memory range
-  kTruncation,  // value truncated to fit field
-  kPhaseError,  // value differs between pass 1 and pass 2
+  kOddAddress,      // ODD_ADDRESS — address is odd, auto-aligned
+  kInvMemory,       // INV_MEMORY — invalid memory range
+  kTruncation,      // value truncated to fit field
+  kPhaseError,      // value differs between pass 1 and pass 2
+  kAddressMissing,  // ADDRESS_MISSING — END without a starting address
 };
 
 // Returns the canonical short message for a given error code.

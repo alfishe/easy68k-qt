@@ -2,17 +2,14 @@
 # Format: <test> <s68|l68>  # reason. Remove entries as gaps are fixed.
 01_nop l68
 02_arithmetic l68
-03_logic s68
 03_logic l68
 04_shifts l68
 05_moves l68
-06_branches s68
 06_branches l68
 07_comparisons l68
 08_movem l68
 09_stack l68
 10_directives_dc l68
-11_directives_ds s68
 11_directives_ds l68
 12_directives_equ l68
 13_directives_org l68
@@ -22,6 +19,5 @@
 17_macro_continuation l68
 18_conditional_assembly l68
 19_structured_if l68
-20_structured_loop s68
 20_structured_loop l68
 21_memory_map l68

@@ -284,13 +284,13 @@ TEST(AssemblerTest, DswReservesSpace) {
       "    DS.W 3\n"
       "    DC.W $BEEF\n");
   EXPECT_TRUE(r.success);
-  ASSERT_EQ(r.code.size(), 8u);
-  // Bytes 0-5: zeroed storage
-  EXPECT_EQ(r.code[0], 0x00);
-  EXPECT_EQ(r.code[5], 0x00);
-  // Bytes 6-7: DC.W $BEEF
-  EXPECT_EQ(r.code[6], 0xBE);
-  EXPECT_EQ(r.code[7], 0xEF);
+  // DIRECTIV.CPP ds() only advances loc: no object data is written for the
+  // reserved space, so the first emitted byte is the DC.W at $1006.
+  EXPECT_EQ(r.org, 0x1006u);
+  ASSERT_EQ(r.code.size(), 2u);
+  EXPECT_EQ(r.code[0], 0xBE);
+  EXPECT_EQ(r.code[1], 0xEF);
+  EXPECT_EQ(r.srecord.find("S1"), r.srecord.find("S1051006BEEF"));
 }
 
 TEST(AssemblerTest, DswAutoAlignsAfterOddByte) {
@@ -364,8 +364,9 @@ TEST(AssemblerTest, DsbReservesBytes) {
       "    DS.B 4\n"
       "    DC.B $FF\n");
   EXPECT_TRUE(r.success);
-  ASSERT_EQ(r.code.size(), 5u);
-  EXPECT_EQ(r.code[4], 0xFF);
+  EXPECT_EQ(r.org, 0x1004u);  // reserved space is not emitted
+  ASSERT_EQ(r.code.size(), 1u);
+  EXPECT_EQ(r.code[0], 0xFF);
 }
 
 // ---------------------------------------------------------------------------
@@ -435,6 +436,35 @@ TEST(AssemblerTest, OnlyCommentsSucceeds) {
   auto r = a.Assemble("* just a comment\n; another comment\n");
   EXPECT_TRUE(r.success);
   EXPECT_TRUE(r.code.empty());
+}
+
+// ---------------------------------------------------------------------------
+// Logical immediates (INSTTABL.CPP andfl[]/orfl[]/eorfl[] flavor order)
+// ---------------------------------------------------------------------------
+
+TEST(AssemblerTest, AndOrImmediateToDnUseEaImmediateForm) {
+  // The <Data>,Dn flavor precedes the immediate flavor, so AND/OR #imm,Dn
+  // assemble as C07C/807C + data (not ANDI/ORI). Matches the reference.
+  Assembler a;
+  auto r = a.Assemble(
+      "    ORG $1000\n"
+      "    AND.W #$00FF,D2\n"
+      "    OR.W #$F0F0,D5\n"
+      "    AND.W #$00FF,(A0)\n");
+  ASSERT_TRUE(r.success);
+  const std::vector<uint8_t> want = {0xC4, 0x7C, 0x00, 0xFF, 0x8A, 0x7C,
+                                     0xF0, 0xF0, 0x02, 0x50, 0x00, 0xFF};
+  EXPECT_EQ(r.code, want);
+}
+
+TEST(AssemblerTest, EorImmediateIsEori) {
+  Assembler a;
+  auto r = a.Assemble(
+      "    ORG $1000\n"
+      "    EOR.W #$00FF,D0\n");
+  ASSERT_TRUE(r.success);
+  const std::vector<uint8_t> want = {0x0A, 0x40, 0x00, 0xFF};
+  EXPECT_EQ(r.code, want);
 }
 
 }  // namespace

@@ -39,9 +39,60 @@ Assembler::Assembler()
   file_reader_ = [this](const std::string& filename) -> std::string {
     return ReadIncludeFile(filename);
   };
+  parser_.SetLabelHook([this](const ParsedLine& line) { OnLineParsed(line); });
 }
 
 Assembler::~Assembler() = default;
+
+// Defines a label in pass 1, or marks it as reached (BACKREF) in pass 2, and
+// tracks the current global label for local (".name") label scoping. In the
+// original, define() looks the symbol up with the previous global label and
+// only then makes a global label current (SYMBOL.CPP define()).
+void Assembler::DefineOrMarkLabel(const std::string& label, uint32_t value, int line_number) {
+  if (pass_ == 1)
+    symbols_.DefineLabel(label, value, line_number);
+  else
+    symbols_.MarkAsBackRef(label);
+  if (!label.empty() && label[0] != '.')
+    symbols_.SetCurrentParentLabel(label);
+}
+
+// Parser hook: runs after label/opcode parsing and before operand evaluation.
+// Word-aligns the location counter where the original does (instructions,
+// DC/DS/DCB .W/.L, SIMHALT) and defines the label at the aligned address, so
+// operands of the same line see it (ASSEMBLE.CPP assemble(), DIRECTIV.CPP).
+void Assembler::OnLineParsed(const ParsedLine& line) {
+  const std::string& op = line.opcode;
+  // Labels with their own value or handling: EQU/SET/REG (operand value),
+  // ORG (new location), SECTION (section number), MACRO (definition name),
+  // macro calls (MacroProcessor), structured statements (re-injected as a
+  // label line), conditional directives (labels are an error there).
+  if (op == "EQU" || op == "SET" || op == "REG" || op == "ORG" || op == "SECTION" ||
+      op == "MACRO" || op == "ENDM" || IsStructured(op) || IsConditional(op) ||
+      (!op.empty() && IsMacro(op)))
+    return;
+  if (!IsAssembling())
+    return;
+
+  bool align = false;
+  if (op == "DC" || op == "DS" || op == "DCB")
+    align = line.size != SizeSpec::kByte;
+  else if (op == "SIMHALT")
+    align = true;
+  else if (!op.empty() && instruction_table_.Lookup(op) != nullptr)
+    align = true;
+  if (align && (location_counter_ & 1)) {
+    // The original only increments loc (no pad byte; the S-records simply
+    // skip the address). Keep `code_` a gap-filled image of the program.
+    if (pass_ == 2 && !offset_mode_ && org_set_)
+      code_.push_back(0);
+    ++location_counter_;
+    parser_.SetLocationCounter(location_counter_);
+  }
+
+  if (!line.label.empty())
+    DefineOrMarkLabel(line.label, location_counter_, line.line_number);
+}
 
 void Assembler::AddIncludePath(const std::string& path) {
   include_paths_.push_back(path);
@@ -133,6 +184,7 @@ AssemblyResult Assembler::Assemble(const std::string& source) {
     org_ = 0;
     org_set_ = false;
     end_seen_ = false;
+    start_address_ = 0;
     listing_enabled_ = true;
     offset_mode_ = false;
     offset_save_loc_ = 0;
@@ -186,9 +238,9 @@ AssemblyResult Assembler::Assemble(const std::string& source) {
   listing_generator_.Reset();
   listing_generator_.Configure(source_filename_, source_date_, page_length_, cex_flag_);
   RunPass(lines);
-  listing_generator_.SetStartAddress(org_);
+  listing_generator_.SetStartAddress(start_address_);
 
-  srecord_generator_.SetStartAddress(org_);
+  srecord_generator_.SetStartAddress(start_address_);
   srecord_generator_.SetMemoryMaps(map_rom_, map_rom_start_, map_rom_end_, map_read_,
                                    map_read_start_, map_read_end_, map_protected_,
                                    map_protected_start_, map_protected_end_, map_invalid_,
@@ -196,6 +248,7 @@ AssemblyResult Assembler::Assemble(const std::string& source) {
 
   AssemblyResult result;
   result.org = org_;
+  result.start_address = start_address_;
   result.code = code_;
   result.errors = errors_;
   int wcount = 0;
@@ -377,6 +430,9 @@ void Assembler::RunPass(const std::vector<std::string>& lines) {
     }
     parser_.SetLocationCounter(location_counter_);
     ParsedLine line = parser_.ParseLine(lines[i], i + 1);
+    // OnLineParsed() may have word-aligned the location counter; the listing
+    // shows the aligned address, as the original's listLoc() after loc++.
+    start_lc = location_counter_;
 
     // Structured directives are checked BEFORE error handling because the parser
     // fails on <cc> tokens (e.g. <EQ>, <GT>) in operands.  line.opcode is still
@@ -451,13 +507,8 @@ void Assembler::RunPass(const std::vector<std::string>& lines) {
 }
 
 bool Assembler::ProcessLine(const ParsedLine& line) {
-  // Regular labels (not EQU/SET/REG) are defined at the current location counter.
-  if (!line.label.empty() && pass_ == 1) {
-    if (line.opcode != "EQU" && line.opcode != "SET" && line.opcode != "REG") {
-      symbols_.DefineLabel(line.label, location_counter_, line.line_number);
-    }
-    symbols_.SetCurrentParentLabel(line.label);
-  }
+  // Labels are defined (pass 1) / marked (pass 2) in OnLineParsed() before
+  // operand evaluation, or by the handlers of EQU/SET/REG/ORG/SECTION.
 
   if (line.opcode.empty())
     return true;
@@ -494,6 +545,9 @@ bool Assembler::HandleDirective(const ParsedLine& line) {
       location_counter_ = offset_save_loc_;
     }
     location_counter_ = new_loc;
+    // DIRECTIV.CPP org(): a label on ORG takes the NEW location.
+    if (!line.label.empty())
+      DefineOrMarkLabel(line.label, location_counter_, line.line_number);
     return true;
   }
 
@@ -513,6 +567,7 @@ bool Assembler::HandleDirective(const ParsedLine& line) {
       }
     } else {
       if (!line.label.empty()) {
+        symbols_.MarkAsBackRef(line.label);  // define() in pass 2 sets BACKREF
         SymbolInfo info;
         if (symbols_.Lookup(line.label, info)) {
           current_line_has_equ_ = true;
@@ -610,28 +665,20 @@ bool Assembler::HandleDirective(const ParsedLine& line) {
     int bytes_per = (sz == SizeSpec::kByte) ? 1 : (sz == SizeSpec::kLong) ? 4 : 2;
 
     if (bytes_per > 1 && (location_counter_ & 1))
-      EmitByte(0);
+      SkipBytes(1);
 
     int32_t count = line.operands.empty() ? 1 : line.operands[0].data;
     uint32_t total = static_cast<uint32_t>(bytes_per * count);
 
-    if (pass_ == 2) {
-      for (uint32_t j = 0; j < total; j++)
-        EmitByte(0);
-    } else {
-      location_counter_ += total;
-    }
+    // DIRECTIV.CPP ds(): only advances loc; no object data is written (the
+    // S-records skip the reserved space).
+    SkipBytes(total);
     return true;
   }
 
   if (op == "EVEN") {
-    if (location_counter_ & 1) {
-      if (pass_ == 2) {
-        EmitByte(0);
-      } else {
-        location_counter_++;
-      }
-    }
+    if (location_counter_ & 1)
+      SkipBytes(1);
     return true;
   }
 
@@ -648,6 +695,29 @@ bool Assembler::HandleDirective(const ParsedLine& line) {
 
   if (op == "END") {
     end_seen_ = true;
+    // DIRECTIV.CPP funct_end(): the operand is the starting address
+    // (defaults to $1000 with a warning); it must be a backward reference
+    // and is rounded up to even.
+    if (pass_ == 2) {
+      if (line.operands.empty()) {
+        start_address_ = 0x1000;
+        AddWarning(line.line_number, ErrorCode::kAddressMissing);
+      } else {
+        if (!line.label.empty())
+          AddError(line.line_number, ErrorCode::kLabelError);
+        const Operand& o = line.operands[0];
+        if (!o.is_back_ref) {
+          AddError(line.line_number, ErrorCode::kInvForwardRef);
+        } else {
+          uint32_t addr = static_cast<uint32_t>(o.data);
+          if (addr & 1) {
+            AddWarning(line.line_number, ErrorCode::kOddAddress);
+            ++addr;
+          }
+          start_address_ = addr;
+        }
+      }
+    }
     return false;
   }
 
@@ -662,6 +732,8 @@ bool Assembler::HandleDirective(const ParsedLine& line) {
         uint16_t mask = static_cast<uint16_t>(line.operands[0].data & 0xFFFF);
         symbols_.DefineRegisterList(line.label, mask, line.line_number);
       }
+    } else if (!line.label.empty()) {
+      symbols_.MarkAsBackRef(line.label);
     }
     return true;
   }
@@ -734,6 +806,9 @@ bool Assembler::HandleDirective(const ParsedLine& line) {
     section_locs_[current_section_] = location_counter_;
     current_section_ = static_cast<int>(n);
     location_counter_ = section_locs_[current_section_];
+    // DIRECTIV.CPP section(): a label on SECTION is defined as the section number.
+    if (!line.label.empty())
+      DefineOrMarkLabel(line.label, static_cast<uint32_t>(n), line.line_number);
     return true;
   }
 
@@ -879,7 +954,20 @@ int Assembler::InstructionSize(const ParsedLine& line) const {
       break;
 
     case InstrEncoding::kBranch:
-      words = (line.size == SizeSpec::kShort || line.size == SizeSpec::kByte) ? 1 : 2;
+      // BUILD.CPP branch(): unsized branches use the short form when the
+      // target is a backward reference within -128..127 (and not +0);
+      // pass 1 must size exactly like pass 2 encodes.
+      if (line.size == SizeSpec::kShort || line.size == SizeSpec::kByte) {
+        words = 1;
+      } else if (line.size == SizeSpec::kLong || line.size == SizeSpec::kWord) {
+        words = 2;
+      } else if (!line.operands.empty()) {
+        const Operand& target = line.operands[0];
+        int32_t disp = target.data - static_cast<int32_t>(location_counter_) - 2;
+        words = (target.is_back_ref && disp >= -128 && disp <= 127 && disp != 0) ? 1 : 2;
+      } else {
+        words = 2;
+      }
       break;
 
     case InstrEncoding::kDBcc:
@@ -980,10 +1068,10 @@ void Assembler::EmitByte(uint8_t b) {
     if (!in_emit_word_or_long_) {
       current_line_emitted_.push_back({b, 1});
     }
-    // S-Record generation receives the final flat stream of individual bytes here.
-    // This correctly handles all contiguous and non-contiguous byte groupings
-    // regardless of whether they were emitted via EmitByte, EmitWord, or EmitLong.
-    srecord_generator_.AddByte(location_counter_, b);
+    // S-Record generation: bytes emitted on their own are items; words and
+    // longs are added as whole items by EmitWord/EmitLong.
+    if (!in_emit_word_or_long_)
+      srecord_generator_.AddByte(location_counter_, b);
   }
   location_counter_++;
 }
@@ -991,6 +1079,12 @@ void Assembler::EmitByte(uint8_t b) {
 void Assembler::EmitWord(uint16_t w) {
   if (pass_ == 2 && !offset_mode_) {
     current_line_emitted_.push_back({w, 2});
+    const uint8_t bytes[2] = {static_cast<uint8_t>(w >> 8), static_cast<uint8_t>(w)};
+    if (!org_set_) {
+      org_ = location_counter_;
+      org_set_ = true;
+    }
+    srecord_generator_.AddItem(location_counter_, bytes, 2);
   }
   bool saved = in_emit_word_or_long_;
   in_emit_word_or_long_ = true;
@@ -1002,6 +1096,13 @@ void Assembler::EmitWord(uint16_t w) {
 void Assembler::EmitLong(uint32_t l) {
   if (pass_ == 2 && !offset_mode_) {
     current_line_emitted_.push_back({l, 4});
+    const uint8_t bytes[4] = {static_cast<uint8_t>(l >> 24), static_cast<uint8_t>(l >> 16),
+                              static_cast<uint8_t>(l >> 8), static_cast<uint8_t>(l)};
+    if (!org_set_) {
+      org_ = location_counter_;
+      org_set_ = true;
+    }
+    srecord_generator_.AddItem(location_counter_, bytes, 4);
   }
   bool saved = in_emit_word_or_long_;
   in_emit_word_or_long_ = true;
@@ -1010,6 +1111,14 @@ void Assembler::EmitLong(uint32_t l) {
   EmitByte(static_cast<uint8_t>((l >> 8) & 0xFF));
   EmitByte(static_cast<uint8_t>(l & 0xFF));
   in_emit_word_or_long_ = saved;
+}
+
+void Assembler::SkipBytes(uint32_t n) {
+  // Reserve space without generating object code (original DS/EVEN only
+  // advance loc). `code_` stays a gap-filled image of the program.
+  if (pass_ == 2 && !offset_mode_ && org_set_)
+    code_.insert(code_.end(), n, 0);
+  location_counter_ += n;
 }
 
 void Assembler::WordAlign() {

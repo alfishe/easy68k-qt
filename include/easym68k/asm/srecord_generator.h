@@ -32,6 +32,10 @@ class SRecordGenerator {
   // Add a byte of machine code at a specific address
   void AddByte(uint32_t addr, uint8_t byte);
 
+  // Add an indivisible item (1, 2 or 4 bytes, big-endian order) at addr,
+  // following the original's record-splitting rule.
+  void AddItem(uint32_t addr, const uint8_t* bytes, int size);
+
   // Generate complete S-Record output text
   std::string Generate() const;
 

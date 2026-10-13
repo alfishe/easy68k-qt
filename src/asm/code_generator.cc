@@ -323,6 +323,10 @@ bool CodeGenerator::Encode(const InstrEntry& entry, const ParsedLine& line,
     // kRegToEa — arithAddr() form: Dn,<ea>  (EOR)
     // -----------------------------------------------------------------------
     case InstrEncoding::kRegToEa:
+      // INSTTABL.CPP eorfl[]: EOR #imm,<ea> is assembled as EORI.
+      if (src().mode == AM::kImmediate)
+        return emit_ea2(static_cast<uint16_t>(0x0A00 | SizeBits(size) | EffAddr(dst())), src(),
+                        dst());
       return emit_ea1(
           static_cast<uint16_t>(entry.base | SizeBits(size) | (src().reg << 9) | EffAddr(dst())),
           dst());
@@ -379,7 +383,11 @@ bool CodeGenerator::Encode(const InstrEntry& entry, const ParsedLine& line,
     // (immedToCCR, immedToSR, immedInst) and the ADDQ/SUBQ peephole.
     // -----------------------------------------------------------------------
     case InstrEncoding::kEaBidirect: {
-      if (src().mode == AM::kImmediate) {
+      // INSTTABL.CPP andfl[]/orfl[]: the <Data>,Dn flavor (arithReg) is tried
+      // before the immediate one, so AND/OR #imm,Dn use the EA-immediate form.
+      const uint16_t op_type = entry.base & 0xF000;
+      const bool logical = op_type == 0xC000 || op_type == 0x8000;
+      if (src().mode == AM::kImmediate && !(logical && dst().mode == AM::kDnDirect)) {
         if (dst().mode == AM::kCCRDirect) {
           // AND/OR #n,CCR → ANDI/ORI to CCR
           uint16_t ccr_base = static_cast<uint16_t>((ImmFormBase(entry.base) & 0xFF00) | 0x003C);
@@ -476,10 +484,13 @@ bool CodeGenerator::Encode(const InstrEntry& entry, const ParsedLine& line,
     // Displacement formula: disp = target - (loc + 2), per M68000 PRM.
     // -----------------------------------------------------------------------
     case InstrEncoding::kBranch: {
+      // Use the size as written: an unsized branch may become short
+      // (BUILD.CPP branch()); `size` above defaults unsized lines to .W.
+      const SizeSpec bsize = line.size;
       int32_t disp = src().data - static_cast<int32_t>(location_counter) - 2;
-      bool short_disp = (size == SizeSpec::kShort || size == SizeSpec::kByte) ||
-                        (size != SizeSpec::kLong && size != SizeSpec::kWord && src().is_back_ref &&
-                         disp >= -128 && disp <= 127 && disp != 0);
+      bool short_disp = (bsize == SizeSpec::kShort || bsize == SizeSpec::kByte) ||
+                        (bsize != SizeSpec::kLong && bsize != SizeSpec::kWord &&
+                         src().is_back_ref && disp >= -128 && disp <= 127 && disp != 0);
       if (short_disp) {
         emit_word(static_cast<uint16_t>(entry.base | (disp & 0xFF)));
         if (disp < -128 || disp > 127 || disp == 0) {

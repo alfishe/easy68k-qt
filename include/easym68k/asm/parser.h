@@ -7,6 +7,7 @@
 #define EASYM68K_ASM_PARSER_H_
 
 #include <cstdint>
+#include <functional>
 #include <memory>
 #include <string>
 #include <vector>
@@ -102,6 +103,14 @@ class Parser {
   void SetLocationCounter(uint32_t loc);
   void SetPass(int pass);
 
+  // Called after a line's label and opcode are parsed and BEFORE its operands
+  // are evaluated (for every line with a label or opcode), mirroring the
+  // original's word alignment and define(label) ahead of opParse()
+  // (ASSEMBLE.CPP assemble()). The assembler aligns the location counter and
+  // defines/marks the label here so that operands on the same line
+  // (e.g. "L: BRA L") see it as a backward reference.
+  void SetLabelHook(std::function<void(const ParsedLine&)> hook) { label_hook_ = std::move(hook); }
+
   ParsedLine ParseLine(const std::string& line, int line_number);
   bool ParseOperand(const std::string& operand_text, Operand& operand);
 
@@ -118,6 +127,7 @@ class Parser {
   std::string error_message_;
 
   std::vector<Token> tokens_;
+  std::function<void(const ParsedLine&)> label_hook_;
   size_t token_pos_;
 
   Token Current() const;
