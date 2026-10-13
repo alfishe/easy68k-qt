@@ -45,3 +45,12 @@ add_executable(easym68k-asm-tests
 target_link_libraries(easym68k-asm-tests PRIVATE easym68k-asm GTest::gtest_main)
 add_test(NAME asm-tests COMMAND easym68k-asm-tests
          WORKING_DIRECTORY ${CMAKE_SOURCE_DIR})
+
+# Cross-library integration tests (assembler + simulator), Task 9.6.
+add_executable(easym68k-integration-tests
+  integration/core_integration_test.cc
+)
+target_link_libraries(easym68k-integration-tests PRIVATE
+  easym68k-asm easym68k-sim GTest::gtest_main
+)
+add_test(NAME integration-tests COMMAND easym68k-integration-tests)
