@@ -13,6 +13,7 @@
 #include <cstdio>
 #include <cstring>
 
+#include "easym68k/sim/iexecution_logger.h"
 #include "easym68k/sim/ifile_io.h"
 #include "easym68k/sim/igraphics_io.h"
 #include "easym68k/sim/ilogger.h"
@@ -66,6 +67,33 @@ void ToBase(uint32_t val, int base, char* buf, size_t len) {
 }  // namespace
 
 // ---------------------------------------------------------------------------
+// Text output helpers. The original logs every displayed character to the
+// output log (simIOu.cpp charOut(), OlogFlag == TEXTONLY); here every Trap #15
+// text output task goes through EmitText()/EmitChar().
+// ---------------------------------------------------------------------------
+
+void M68kSimulator::LogOutputText(const char* text, int length) {
+  IExecutionLogger* log = config_.execution_logger;
+  if (log != nullptr && length > 0 && log->IsOutputLogging())
+    log->LogOutput(text, length);
+}
+
+void M68kSimulator::EmitText(const char* text, bool crlf) {
+  if (crlf)
+    config_.text_io->TextOutCRLF(text);
+  else
+    config_.text_io->TextOut(text);
+  LogOutputText(text, static_cast<int>(std::strlen(text)));
+  if (crlf)
+    LogOutputText("\r\n", 2);
+}
+
+void M68kSimulator::EmitChar(char ch) {
+  config_.text_io->CharOut(ch);
+  LogOutputText(&ch, 1);
+}
+
+// ---------------------------------------------------------------------------
 // DispatchTrap15 — map D0.B task number to interface method call.
 // Returns kHalted for task 9 (terminate). Returns kOk for all others.
 // Null interface pointer → task is a silent no-op.
@@ -86,10 +114,7 @@ SimResult M68kSimulator::DispatchTrap15() {
       size_t copy_len = (len <= 0) ? 0 : (len > 255 ? 255 : static_cast<size_t>(len));
       std::memcpy(buf, raw + (state_.a[1] & kAddressMask), copy_len);
       buf[copy_len] = '\0';
-      if (task == kTrap15DisplayStringCRLF)
-        config_.text_io->TextOutCRLF(buf);
-      else
-        config_.text_io->TextOut(buf);
+      EmitText(buf, task == kTrap15DisplayStringCRLF);
       break;
     }
 
@@ -107,7 +132,7 @@ SimResult M68kSimulator::DispatchTrap15() {
       if (!config_.text_io)
         break;
       std::snprintf(buf, sizeof(buf), "%d", static_cast<int32_t>(state_.d[1]));
-      config_.text_io->TextOut(buf);
+      EmitText(buf, false);
       break;
     }
 
@@ -133,7 +158,7 @@ SimResult M68kSimulator::DispatchTrap15() {
     case kTrap15DisplayChar:  // 6: display char in D1.B
       if (!config_.text_io)
         break;
-      config_.text_io->CharOut(static_cast<char>(state_.d[1] & 0xFF));
+      EmitChar(static_cast<char>(state_.d[1] & 0xFF));
       break;
 
     case kTrap15KeyPending: {  // 7: D1.B = 1 if key pending, else 0
@@ -189,10 +214,7 @@ SimResult M68kSimulator::DispatchTrap15() {
       if (!config_.text_io)
         break;
       ReadStrFromMem(raw, state_.a[1], buf, sizeof(buf));
-      if (task == kTrap15DisplayNullStringCRLF)
-        config_.text_io->TextOutCRLF(buf);
-      else
-        config_.text_io->TextOut(buf);
+      EmitText(buf, task == kTrap15DisplayNullStringCRLF);
       break;
     }
 
@@ -202,7 +224,7 @@ SimResult M68kSimulator::DispatchTrap15() {
       int base = static_cast<int8_t>(state_.d[2]);
       if (base >= 2 && base <= 36) {
         ToBase(state_.d[1], base, buf, sizeof(buf));
-        config_.text_io->TextOut(buf);
+        EmitText(buf, false);
       }
       break;
     }
@@ -232,10 +254,10 @@ SimResult M68kSimulator::DispatchTrap15() {
       if (!config_.text_io)
         break;
       ReadStrFromMem(raw, state_.a[1], buf, sizeof(buf));
-      config_.text_io->TextOut(buf);
+      EmitText(buf, false);
       char num[32];
       std::snprintf(num, sizeof(num), "%d", static_cast<int32_t>(state_.d[1]));
-      config_.text_io->TextOut(num);
+      EmitText(num, false);
       break;
     }
 
@@ -243,7 +265,7 @@ SimResult M68kSimulator::DispatchTrap15() {
       if (!config_.text_io)
         break;
       ReadStrFromMem(raw, state_.a[1], buf, sizeof(buf));
-      config_.text_io->TextOut(buf);
+      EmitText(buf, false);
       long result = 0;
       long size = 0;
       config_.text_io->TextIn(buf, &size, &result);
@@ -265,7 +287,7 @@ SimResult M68kSimulator::DispatchTrap15() {
         break;
       std::snprintf(buf, sizeof(buf), "%*d", static_cast<int>(static_cast<int8_t>(state_.d[2])),
                     static_cast<int32_t>(state_.d[1]));
-      config_.text_io->TextOut(buf);
+      EmitText(buf, false);
       break;
     }
 

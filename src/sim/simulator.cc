@@ -9,6 +9,7 @@
 
 #include "easym68k/sim/addressing_mode.h"
 #include "easym68k/sim/cycle_data.h"
+#include "easym68k/sim/iexecution_logger.h"
 #include "easym68k/sim/srecord_loader.h"
 
 namespace easym68k::sim {
@@ -158,6 +159,19 @@ SimResult M68kSimulator::Step() {
   bool trace_before = state_.GetFlag(kSrTrace);
 
   uint16_t opcode = FetchWord();
+
+  // Execution logging happens before the instruction executes, as in
+  // RUN.CPP exec_inst(): memory rows, then registers + instruction line.
+  if (config_.execution_logger != nullptr) {
+    IExecutionLogger* log = config_.execution_logger;
+    IExecutionLogger::Mode mode = log->GetMode();
+    if (mode != IExecutionLogger::Mode::kOff) {
+      if (mode == IExecutionLogger::Mode::kInstructionsRegistersAndMemory)
+        log->LogMemoryDump(log->GetDumpStart(), log->GetDumpBytes(), memory_);
+      log->LogInstruction(inst_pc_, opcode, state_);
+    }
+  }
+
   SimResult result = ExecuteInstruction(opcode);
 
   if (!exceptions_enabled_.load(std::memory_order_relaxed)) {

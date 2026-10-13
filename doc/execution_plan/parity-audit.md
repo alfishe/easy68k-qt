@@ -27,13 +27,13 @@ tests), all 27 GUI source files are still 1-line stubs.
 | S3 | Address/bus error (class 0 frame, 50 cycles) | RUN.CPP exceptionHandler | **Partial**: port halts instead of building the class 0 frame | **NEW 9.7** |
 | S4 | Interrupts: autovector IRQ 1-7, NMI, STOP wake | RUN.CPP irqHandler, hardwareu.cpp | Done | 9.1 |
 | S5 | Cycle counting, Trap #15 tasks 30/31 | inc_cyc(), CODE9.CPP | Done | 9.2 |
-| S6 | SIMHALT on/off (`*[sim68k]simhalt_off`) | SIM68Ku.cpp | Gap | 9.3 |
-| S7 | Enable Exceptions toggle (Options menu, task 32/5) | SIM68Ku.cpp, hardwareu.cpp | Gap | 9.3 (core-owned flag, see note A) |
+| S6 | SIMHALT on/off (`*[sim68k]simhalt_off`) | SIM68Ku.cpp | Done | 9.3 |
+| S7 | Enable Exceptions toggle (Options menu, task 32/5) | SIM68Ku.cpp, hardwareu.cpp | Done | 9.3 (core-owned flag, see note A) |
 | S8 | **68020 bit-field instructions** BFTST/BFEXTU/BFCHG/BFEXTS/BFCLR/BFFFO/BFSET/BFINS (Options → Enable Bit Field Instructions, `*[sim68k]bitfield`) | CODE7.CPP BIT_FIELD() | **Gap**: not in simulator, not in plan | **NEW 9.8** |
 | S9 | Trap #15 tasks 0-25, 30-33, 40-43, 50-62, 70-77, 80-96, 100-107 | CODE9.CPP TRAP() | Done (dispatch + interfaces; back ends in Phase 13) | 7.x |
 | S10 | Memory map: ROM / Read / Protected / Invalid ranges | hardwareu.cpp memoryMapCheck | Partial (Memory flags exist; verify behaviour) | 9.6 + 13.15 |
-| S11 | Execution logging (instruction / +registers / +memory range) | RUN.CPP, logU.cpp | Gap | 9.4 |
-| S12 | Output (Trap #15 text) logging | logU.cpp OlogFile | Gap | 9.4 |
+| S11 | Execution logging (instruction / +registers / +memory range) | RUN.CPP, logU.cpp | Done (core hooks) | 9.4 |
+| S12 | Output (Trap #15 text) logging | logU.cpp OlogFile | Done (core hooks) | 9.4 |
 | S13 | PC breakpoints | BPoint.cpp | Done (core) | 4.1 |
 | S14 | **Advanced breakpoints**: register conditions (D0-D7/A0-A7/PC, ==, !=, >, >=, <, <=, size B/W/L), memory conditions (address, value, R/W/Read/Write, size), expression builder (AND/OR/parentheses, pass count, ON/OFF) | BREAKPOINTSu.cpp, BPoint*.cpp | **Gap**: not in plan | **NEW 9.9** (core engine) + **NEW 13.22** (dialog) |
 | S15 | Step Over (skip into BSR/JSR), Trace Into, Run To Cursor, Auto Trace | SIM68Ku.cpp, CODE8.CPP stepToAddr | Partial: Step/Run only | **NEW 9.10** (step-over / run-to core API) |
@@ -65,7 +65,7 @@ tests), all 27 GUI source files are still 1-line stubs.
 | G7 | Search: Find (Ctrl+F), Find Next (F3), Go to PC (Ctrl+G) | findDialogS, SIM68Ku.dfm | **NEW 13.23** |
 | G8 | View menu: Output Window, Memory, Stack, Hardware, Break Points, EASyBIN | SIM68Ku.dfm | 13.2 |
 | G9 | Options: Source / Output / Printer fonts | SIM68Ku.dfm | 13.18 |
-| G10 | Options: Log Output dialog (exec log type, output log type, file names, memory range) + Replace/Append prompt | logU.dfm, LogfileDialogu.dfm | 13.12 |
+| G10 | Options: Log Output dialog (exec log type, output log type, file names, memory range) + Replace/Append prompt. Execution logging is active only while tracing (Step/Trace/Auto Trace, not Run); log file layout per RUN.CPP (memory rows, register block, source/instruction line); "***** Reset/Reload Program Pressed *****" markers | logU.dfm, LogfileDialogu.dfm, RUN.CPP | 13.12 (core hooks: 9.4) |
 | G11 | Options: Enable Exceptions, Enable Bit Field Instructions | SIM68Ku.dfm | 13.2 (wires S7, S8) |
 | G12 | Options: Auto Trace Options (interval ms, disable display update) | Optionsu.dfm | **NEW 13.24** |
 | G13 | Options: Fullscreen Options (screen number) | FullscreenOptions.dfm | 13.10 |

@@ -30,6 +30,7 @@ class IPeripheralIO;
 class ISimulatorEnv;
 class IPrintIO;
 class ILogger;
+class IExecutionLogger;
 
 struct Breakpoint {
   uint32_t address;
@@ -50,6 +51,9 @@ class M68kSimulator {
     IPrintIO* print_io = nullptr;
     ILogger* logger = nullptr;
 
+    // Optional execution/output logging (Options > Log Output). Null = off,
+    // with no per-instruction cost beyond a pointer check.
+    IExecutionLogger* execution_logger = nullptr;
     // SIMHALT ($FFFF $FFFF) halts the simulator when true; when false it is a
     // Line 1111 exception (`*[sim68k]simhalt_off`, SIM68Ku.cpp).
     bool simhalt_enabled = true;
@@ -235,6 +239,12 @@ class M68kSimulator {
 
   // Trap #15 I/O dispatch (trap15_dispatch.cc)
   SimResult DispatchTrap15();
+
+  // Trap #15 text output helpers: display via ITextIO and, when output logging
+  // is enabled, copy to the execution logger (logU.cpp OlogFile).
+  void EmitText(const char* text, bool crlf);
+  void EmitChar(char ch);
+  void LogOutputText(const char* text, int length);
 
   // Leaf instruction implementations (opcodes_shift.cc)
   SimResult OpShiftRotate(uint16_t opcode);

@@ -168,7 +168,11 @@ Decision: `asm-tests` is registered with `WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}`
 
 Decision: With exceptions disabled the port halts on any exception condition, matching RUN.CPP's "exception processing not enabled" branch ("... Execution halted"). The plan's wording ("return result without exception processing") is satisfied, and the simulator additionally stops, as the original does. Trace and interrupts are only processed when exceptions are enabled, as in the original.
 Decision: Trap #15 task 32 subtask 5 sets the core flag directly (works without sim_env) and then notifies `ISimulatorEnv::SetExceptionsEnabled(true)` so a GUI can update its menu and settings.
-| 9.4 Execution Logging Interface | TODO | | |
+| 9.4 Execution Logging Interface | DONE | `pending` | iexecution_logger.h (IExecutionLogger + thread-safe ExecutionLoggerBase); Config.execution_logger; Step() logs memory dump then instruction before execution; all Trap #15 text output routed via EmitText/EmitChar → LogOutput; 18 ExecutionLoggerTest (639 sim tests) |
+
+Decision: Four execution log modes (Off / Instructions / Instructions+Registers / Instructions+Registers+Memory) instead of the plan's three, matching the original's Execution Log Type options; output logging is a separate switch (original Output Log Type).
+Decision: The logger is called before the instruction executes, with pre-execution state, and the memory dump comes before the instruction line — the original's log layout (RUN.CPP exec_inst()). Plan test 5 was adapted accordingly (pre- instead of post-execution state); plan test 12's "12 calls for 10 steps" is a typo and tests 10.
+Decision: The core logs every executed instruction while a mode is set. The original only logs while tracing (Step/Trace/Auto Trace, not Run); the Sim68K GUI must reproduce that by enabling the mode only in trace mode (parity audit G10). Echoed keyboard input is logged by the ITextIO back end (13.9), which sees the echo, as simIOu.cpp charOut() did.
 | 9.5 Event/Observer System | TODO | | |
 | 9.6 Core Integration Test | TODO | | |
 | 9.7 Address/Bus Error Class 0 Exception Frame (parity S3) | TODO | | |
@@ -242,4 +246,4 @@ Decision: Refactored `ListLine` to use type-safe metadata structure (`left_colum
 
 Decision: Replicated exact S0/S1/S2/S3/S8 Motorola format with memory map S0 records. S8 termination address formats to 24-bit to match Borland. S0 checksum calculated programmatically to avoid hardcoded mismatch. SRecordGenerator buffers bytes to output SRECSIZE=36 records.
 
-**NEXT:** Task 9.4 — Execution Logging Interface
+**NEXT:** Task 9.5 — Event/Observer System
