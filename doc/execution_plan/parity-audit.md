@@ -31,13 +31,14 @@ tests), all 27 GUI source files are still 1-line stubs.
 | S7 | Enable Exceptions toggle (Options menu, task 32/5) | SIM68Ku.cpp, hardwareu.cpp | Done | 9.3 (core-owned flag, see note A) |
 | S8 | **68020 bit-field instructions** BFTST/BFEXTU/BFCHG/BFEXTS/BFCLR/BFFFO/BFSET/BFINS (Options → Enable Bit Field Instructions, `*[sim68k]bitfield`) | CODE7.CPP BIT_FIELD() | **Gap**: not in simulator, not in plan | **NEW 9.8** |
 | S9 | Trap #15 tasks 0-25, 30-33, 40-43, 50-62, 70-77, 80-96, 100-107 | CODE9.CPP TRAP() | Done (dispatch + interfaces; back ends in Phase 13) | 7.x |
-| S10 | Memory map: ROM / Read / Protected / Invalid ranges | hardwareu.cpp memoryMapCheck | Partial (Memory flags exist; verify behaviour) | 9.6 + 13.15 |
+| S10 | Memory map: ROM (writes ignored) / Read (bus error on write) / Protected (bus error unless supervisor) / Invalid (bus error on access); hardware I/O addresses always accessible | UTILS.CPP memoryMapCheck(), hardwareu.cpp | **Partial**: port bus-errors ROM writes and Protected in any mode; no Read map | **9.7** + 13.15 |
 | S11 | Execution logging (instruction / +registers / +memory range) | RUN.CPP, logU.cpp | Done (core hooks) | 9.4 |
 | S12 | Output (Trap #15 text) logging | logU.cpp OlogFile | Done (core hooks) | 9.4 |
 | S13 | PC breakpoints | BPoint.cpp | Done (core) | 4.1 |
 | S14 | **Advanced breakpoints**: register conditions (D0-D7/A0-A7/PC, ==, !=, >, >=, <, <=, size B/W/L), memory conditions (address, value, R/W/Read/Write, size), expression builder (AND/OR/parentheses, pass count, ON/OFF) | BREAKPOINTSu.cpp, BPoint*.cpp | **Gap**: not in plan | **NEW 9.9** (core engine) + **NEW 13.22** (dialog) |
 | S15 | Step Over (skip into BSR/JSR), Trace Into, Run To Cursor, Auto Trace | SIM68Ku.cpp, CODE8.CPP stepToAddr | Partial: Step/Run only | **NEW 9.10** (step-over / run-to core API) |
 | S16 | Event/observer hooks for GUI | — (new) | Done | 9.5 |
+| S17 | Program init on open/rewind (PC = S-record/listing start, SR=$2000, USP=$00FF0000, SSP=$01000000, registers and cycles cleared) and hardware Reset button (S=1, T=0, mask 7, SSP/PC from vectors 0/4, +40 cycles, clears STOP) | STARTSIM.CPP initSim(), SIM68Ku.cpp, hardwareu.cpp ResetBtnClick | Done | 9.11 |
 
 ## 2. Assembler (`easym68k-asm`)
 
@@ -137,10 +138,11 @@ tests), all 27 GUI source files are still 1-line stubs.
 | 8.7 | Bit-field instruction encoding (A4) | 8.5 |
 | 8.8 | OPT CRE symbol table; OPT MEX/SEX listing expansion (A5, A6) — golden tests | 8.5.10 |
 | 8.9 | `AssemblerOptions` struct: list/S-record/warnings/bitfield/expansion flags (A7) | 8.8 |
-| 9.7 | Address/bus error class 0 exception frame, 50 cycles (S3) | 9.3 |
+| 9.7 | Memory map semantics per memoryMapCheck() + address/bus error class 0 exception frame, 50 cycles (S3, S10) | 9.11 |
 | 9.8 | Bit-field instructions in simulator, gated by flag (S8) | 9.3 |
 | 9.9 | Advanced breakpoint engine: register/memory/expression conditions, pass counts (S14) | 9.5 |
 | 9.10 | Step Over / Run To address core API (S15) | 9.5 |
+| 9.11 | Program init/rewind (initSim) and hardware Reset button semantics (S17) | 9.5 |
 | 13.22 | Advanced Break Points dialog (G19) | 9.9 |
 | 13.23 | Sim68K Find / Find Next / Go to PC (G7) | 13.4 |
 | 13.24 | Auto Trace + options dialog (G12) | 9.10 |

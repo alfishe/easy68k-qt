@@ -5,7 +5,9 @@
 
 #include <gtest/gtest.h>
 
+#include <cstdio>
 #include <initializer_list>
+#include <string>
 
 namespace easym68k::sim {
 namespace {
@@ -462,6 +464,129 @@ TEST_F(SimConfigTest, Trap15Task32Sub5ReenablesExceptionsHeadless) {
   sim.State().d[1] = 5;
   EXPECT_EQ(sim.Step(), SimResult::kOk);
   EXPECT_TRUE(sim.IsExceptionsEnabled());
+}
+
+// ===========================================================================
+// Task 9.11 — Program init/rewind and hardware reset
+// ===========================================================================
+
+// Builds an S1/S9 record with a correct checksum.
+std::string SRec(char type, uint16_t addr, std::initializer_list<uint8_t> data) {
+  uint8_t count = static_cast<uint8_t>(2 + data.size() + 1);
+  uint32_t sum = count + (addr >> 8) + (addr & 0xFF);
+  char buf[8];
+  std::string s = "S";
+  s += type;
+  std::snprintf(buf, sizeof(buf), "%02X%04X", count, addr);
+  s += buf;
+  for (uint8_t b : data) {
+    std::snprintf(buf, sizeof(buf), "%02X", b);
+    s += buf;
+    sum += b;
+  }
+  std::snprintf(buf, sizeof(buf), "%02X", static_cast<uint8_t>(~sum & 0xFF));
+  s += buf;
+  return s;
+}
+
+class ProgramInitTest : public ::testing::Test {
+ protected:
+  ProgramInitTest() : sim_(M68kSimulator::Config{}) {}
+  M68kSimulator sim_;
+};
+
+TEST_F(ProgramInitTest, InitProgramMatchesOriginalInitSim) {
+  sim_.SetStartAddress(0x1000);
+  sim_.State().d[3] = 0xDEADBEEF;
+  sim_.State().a[2] = 0x1234;
+  sim_.State().cycles = 999;
+  sim_.InitProgram();
+  const CpuState& s = sim_.State();
+  for (int i = 0; i < 8; ++i)
+    EXPECT_EQ(s.d[i], 0u) << "D" << i;
+  for (int i = 0; i < 7; ++i)
+    EXPECT_EQ(s.a[i], 0u) << "A" << i;
+  EXPECT_EQ(s.a[7], 0x00FF0000u);  // USP
+  EXPECT_EQ(s.ssp, 0x01000000u);   // SSP
+  EXPECT_EQ(s.sr, 0x2000);
+  EXPECT_EQ(s.pc, 0x1000u);
+  EXPECT_EQ(s.cycles, 0u);
+  EXPECT_FALSE(s.halted);
+  EXPECT_FALSE(s.stopped);
+}
+
+TEST_F(ProgramInitTest, InitProgramDoesNotReadVectors) {
+  sim_.GetMemory().WriteLong(0x0, 0x00004000);
+  sim_.GetMemory().WriteLong(0x4, 0x00005000);
+  sim_.SetStartAddress(0x1000);
+  sim_.InitProgram();
+  EXPECT_EQ(sim_.State().pc, 0x1000u);
+  EXPECT_EQ(sim_.State().ssp, 0x01000000u);
+}
+
+TEST_F(ProgramInitTest, InitProgramUsesSRecordStartAddress) {
+  // MOVEQ #5,D0 at $1200, start address $1200 in the S9 record.
+  ASSERT_TRUE(sim_.LoadSRecordLines({SRec('1', 0x1200, {0x70, 0x05}), SRec('9', 0x1200, {})}));
+  EXPECT_EQ(sim_.GetStartAddress(), 0x1200u);
+  sim_.InitProgram();
+  EXPECT_EQ(sim_.State().pc, 0x1200u);
+  EXPECT_EQ(sim_.Step(), SimResult::kOk);
+  EXPECT_EQ(sim_.State().d[0], 5u);
+}
+
+TEST_F(ProgramInitTest, InitProgramClearsHaltAndPendingInterrupts) {
+  sim_.State().halted = true;
+  sim_.State().stopped = true;
+  sim_.Interrupt(3);
+  sim_.InitProgram();
+  EXPECT_FALSE(sim_.State().halted);
+  EXPECT_FALSE(sim_.State().stopped);
+  EXPECT_EQ(sim_.GetPendingIrqs(), 0u);
+}
+
+TEST_F(ProgramInitTest, PushOnInitialSspWrapsInto24BitSpace) {
+  // SSP = $01000000; the first push lands at $00FFFFFC (24-bit address bus).
+  sim_.SetStartAddress(0x1000);
+  sim_.GetMemory().WriteWord(0x1000, 0x4E40);  // TRAP #0
+  sim_.GetMemory().WriteLong(0x80, 0x3000);
+  sim_.InitProgram();
+  sim_.Step();
+  EXPECT_EQ(sim_.State().pc, 0x3000u);
+  EXPECT_EQ(sim_.GetMemory().ReadLong(0x00FFFFFC).value, 0x1000u);  // stacked PC
+}
+
+TEST_F(ProgramInitTest, HardwareResetLoadsVectorsKeepsRegisters) {
+  sim_.GetMemory().WriteLong(0x0, 0x00004000);
+  sim_.GetMemory().WriteLong(0x4, 0x00005000);
+  sim_.InitProgram();
+  sim_.State().sr = 0x8005;  // user mode, trace on, mask 0, C/Z flags
+  sim_.State().d[1] = 0x77;
+  sim_.HardwareReset();
+  const CpuState& s = sim_.State();
+  EXPECT_TRUE(s.IsSupervisor());
+  EXPECT_FALSE(s.GetFlag(kSrTrace));
+  EXPECT_EQ(s.GetInterruptMask(), 7);
+  EXPECT_EQ(s.sr & 0x1F, 0x05);  // CCR kept
+  EXPECT_EQ(s.ssp, 0x4000u);
+  EXPECT_EQ(s.pc, 0x5000u);
+  EXPECT_EQ(s.d[1], 0x77u);
+  EXPECT_EQ(s.cycles, 40u);
+}
+
+TEST_F(ProgramInitTest, HardwareResetWakesFromStop) {
+  sim_.SetStartAddress(0x1000);
+  sim_.GetMemory().WriteWord(0x1000, 0x4E72);  // STOP #$2000
+  sim_.GetMemory().WriteWord(0x1002, 0x2000);
+  sim_.GetMemory().WriteLong(0x4, 0x2000);
+  sim_.GetMemory().WriteWord(0x2000, 0x4E71);
+  sim_.InitProgram();
+  sim_.Step();
+  ASSERT_TRUE(sim_.State().stopped);
+  sim_.HardwareReset();
+  EXPECT_FALSE(sim_.State().stopped);
+  EXPECT_FALSE(sim_.State().halted);
+  EXPECT_EQ(sim_.Step(), SimResult::kOk);
+  EXPECT_EQ(sim_.State().pc, 0x2002u);
 }
 
 }  // namespace

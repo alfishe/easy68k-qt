@@ -71,8 +71,25 @@ class M68kSimulator {
   M68kSimulator(const M68kSimulator&) = delete;
   M68kSimulator& operator=(const M68kSimulator&) = delete;
 
-  // Loads reset vectors from memory and enters supervisor mode.
+  // Loads reset vectors from memory and enters supervisor mode (power-on
+  // style reset; registers and cycles cleared, SR = S only).
   void Reset();
+
+  // Program start / Rewind, as the original's initSim() after loading a
+  // program: D0-D7/A0-A6 = 0, cycles = 0, SR = $2000, USP = $00FF0000,
+  // SSP = $01000000, PC = start address. Vectors are NOT read. Clears halt,
+  // STOP, pending interrupts and stop requests.
+  void InitProgram();
+
+  // Hardware window Reset button (hardwareu.cpp ResetBtnClick()): enter
+  // supervisor, clear trace, interrupt mask = 7, SSP/PC from vectors $0/$4,
+  // +40 cycles, wake from STOP. Other registers are kept.
+  void HardwareReset();
+
+  // Program start address: set by LoadSRecord*() from the S7/S8/S9 record;
+  // a GUI may override it (the original uses the .L68 listing's first line).
+  uint32_t GetStartAddress() const { return start_address_; }
+  void SetStartAddress(uint32_t address) { start_address_ = address & kAddressMask; }
 
   // Executes a single instruction, handles exceptions.
   SimResult Step();

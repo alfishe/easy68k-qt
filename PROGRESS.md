@@ -178,10 +178,15 @@ Decision: The core logs every executed instruction while a mode is set. The orig
 Decision: All observer callbacks run on the simulator thread. Interrupt() may be called from any thread, so kInterruptRequested and kResumed are recorded atomically and delivered at the start of the next Step(); events recorded while no observer is registered are dropped, and Reset() clears them.
 Decision: kInstructionExecuted is emitted right after execution (before any kExceptionRaised the instruction causes); kExceptionRaised carries the vector number (and IRQ level for interrupts) so the GUI can reproduce the original's per-exception messages. STOP emits kStopped instead of kHalted.
 | 9.6 Core Integration Test | TODO | | |
-| 9.7 Address/Bus Error Class 0 Exception Frame (parity S3) | TODO | | |
+| 9.7 Memory Map Semantics + Address/Bus Error Class 0 Exception Frame (parity S3, S10) | TODO | | |
 | 9.8 Bit-Field Instructions in Simulator (parity S8) | TODO | | |
 | 9.9 Advanced Breakpoint Engine (parity S14) | TODO | | |
 | 9.10 Step Over / Run To Core API (parity S15) | TODO | | |
+| 9.11 Program Init/Rewind + Hardware Reset Semantics (parity S17) | DONE | `pending` | InitProgram() = initSim() (PC=start, SR=$2000, USP=$00FF0000, SSP=$01000000, regs/cycles cleared, no vector fetch); HardwareReset() = Reset button (S=1, T=0, mask 7, SSP/PC from vectors, +40 cycles, wakes STOP); Get/SetStartAddress (S-record start used); 7 ProgramInitTest (662 sim tests; ASan+UBSan clean) |
+
+Decision: The existing vector-based Reset() is kept as a power-on reset (used by unit tests); program open/rewind uses InitProgram() and the hardware window uses HardwareReset(), matching the original's two distinct paths.
+
+Decision: Order revised during 9.6 preparation: 9.11 → 9.7 → 9.6 → 9.8 → 9.9 → 9.10. The integration test needs S-record start-address init (original initSim(): PC=start, SR=$2000, USP=$00FF0000, SSP=$01000000, no vector fetch) and the original memory map semantics (UTILS.CPP memoryMapCheck(): ROM writes ignored, Read = bus error on write, Protected = bus error unless supervisor, Invalid = bus error on access, class 0 frame), neither of which the port had.
 
 Decision: Parity audit (`doc/execution_plan/parity-audit.md`) inventoried every menu, dialog, option and Trap #15 task of Sim68K, Edit68K and EASyBIN from the original `.dfm` forms and sources. It added tasks 8.7-8.9, 9.7-9.10 and 13.22-13.25. Order: finish 9.3-9.6 as planned, then 9.7-9.10, then 8.7-8.9, before Phase 10.
 Decision: Each task is committed once it is tested and certified (full test suites green, clang-format clean, PROGRESS.md updated); the commit hash is recorded in a follow-up PROGRESS commit (user instruction, 2026-10-13).
@@ -249,4 +254,4 @@ Decision: Refactored `ListLine` to use type-safe metadata structure (`left_colum
 
 Decision: Replicated exact S0/S1/S2/S3/S8 Motorola format with memory map S0 records. S8 termination address formats to 24-bit to match Borland. S0 checksum calculated programmatically to avoid hardcoded mismatch. SRecordGenerator buffers bytes to output SRECSIZE=36 records.
 
-**NEXT:** Task 9.6 — Core Integration Test
+**NEXT:** Task 9.7 — Memory Map Semantics + Address/Bus Error Class 0 Exception Frame

@@ -37,6 +37,34 @@ void M68kSimulator::Reset() {
   async_resumed_event_.store(false, std::memory_order_relaxed);
 }
 
+void M68kSimulator::InitProgram() {
+  // STARTSIM.CPP initSim()
+  state_ = CpuState{};
+  state_.sr = 0x2000;
+  state_.a[7] = 0x00FF0000;  // user stack
+  state_.usp = state_.a[7];
+  state_.ssp = 0x01000000;  // supervisor stack
+  state_.pc = start_address_ & kAddressMask;
+  state_.halted = false;
+  state_.stopped = false;
+  stop_requested_.store(false, std::memory_order_relaxed);
+  pending_irqs_.store(0, std::memory_order_relaxed);
+  async_irq_events_.store(0, std::memory_order_relaxed);
+  async_resumed_event_.store(false, std::memory_order_relaxed);
+}
+
+void M68kSimulator::HardwareReset() {
+  // hardwareu.cpp ResetBtnClick()
+  state_.sr |= kSrSupervisor;
+  state_.sr &= static_cast<uint16_t>(~kSrTrace);
+  state_.SetInterruptMask(7);
+  state_.ssp = memory_.ReadLong(0x0).value;
+  state_.pc = memory_.ReadLong(0x4).value & kAddressMask;
+  IncrementCycles(40);  // reset execution time
+  state_.stopped = false;
+  state_.halted = false;
+}
+
 // =============================================================================
 // Fetch helpers
 // =============================================================================
