@@ -24,7 +24,10 @@ target_link_libraries(easy68k-simulator PRIVATE
   easym68k-sim
   Qt6::Widgets
   Qt6::Multimedia
-  Qt6::SerialPort
   Qt6::Network
   Qt6::PrintSupport
 )
+if(Qt6SerialPort_FOUND)
+  target_link_libraries(easy68k-simulator PRIVATE Qt6::SerialPort)
+  target_compile_definitions(easy68k-simulator PRIVATE EASYM68K_HAS_SERIALPORT=1)
+endif()

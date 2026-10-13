@@ -10,6 +10,7 @@ include(cmake/CompilerWarnings.cmake)
 
 option(BUILD_TESTING "Build unit and golden tests" ON)
 option(BUILD_GUI "Build Qt 6 GUI applications" ON)
+option(ENABLE_SERIAL_PORT "Use Qt SerialPort for Trap #15 serial I/O if available" ON)
 option(ENABLE_ASAN "Enable AddressSanitizer" OFF)
 option(ENABLE_UBSAN "Enable UndefinedBehaviorSanitizer" OFF)
 
@@ -20,8 +21,22 @@ add_subdirectory(src/asm)
 # Qt GUI applications
 if(BUILD_GUI)
   find_package(Qt6 REQUIRED COMPONENTS
-    Widgets Multimedia SerialPort Network PrintSupport
+    Widgets Multimedia Network PrintSupport
   )
+  # SerialPort is optional: without it, Trap #15 serial tasks (40-43) report
+  # failure to the 68000 program instead of the build failing.
+  # ENABLE_SERIAL_PORT=OFF disables it even when the module is installed.
+  set(Qt6SerialPort_FOUND FALSE)
+  if(ENABLE_SERIAL_PORT)
+    find_package(Qt6 QUIET OPTIONAL_COMPONENTS SerialPort)
+  endif()
+  if(Qt6SerialPort_FOUND)
+    message(STATUS "Qt6 SerialPort found: serial I/O enabled")
+  elseif(ENABLE_SERIAL_PORT)
+    message(STATUS "Qt6 SerialPort not found: serial I/O disabled")
+  else()
+    message(STATUS "ENABLE_SERIAL_PORT=OFF: serial I/O disabled")
+  endif()
   set(CMAKE_AUTOMOC ON)
   set(CMAKE_AUTORCC ON)
   set(CMAKE_AUTOUIC ON)
