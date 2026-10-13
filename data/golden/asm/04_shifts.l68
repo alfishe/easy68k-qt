@@ -1,12 +1,9 @@
 00001000 Starting Address
-Assembler used: EASy68K
+Assembler used: EASy68K Editor/Assembler v5.16.01
 Created On: 
 
-EASy68K 68000 Assembler                                                 Page 1
-================================================================================
-
 00000000                             1  * Shift and rotate instructions
-00000000                             2      ORG $1000
+00001000                             2      ORG $1000
 00001000  E500                       3      ASL.B #2,D0
 00001002  E262                       4      ASR.W D1,D2
 00001004  E18B                       5      LSL.L #8,D3
@@ -17,3 +14,8 @@ EASy68K 68000 Assembler                                                 Page 1
 
 No errors detected
 No warnings generated
+
+
+SYMBOL TABLE INFORMATION
+Symbol-name         Value
+-------------------------

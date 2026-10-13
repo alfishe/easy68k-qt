@@ -1,18 +1,20 @@
 00001000 Starting Address
-Assembler used: EASy68K
+Assembler used: EASy68K Editor/Assembler v5.16.01
 Created On: 
 
-EASy68K 68000 Assembler                                                 Page 1
-================================================================================
-
 00000000                             1  * Disjoint memory blocks using ORG
-00000000                             2      ORG $1000
+00001000                             2      ORG $1000
 00001000  4E71                       3      NOP
-00001002                             4      ORG $2000
+00002000                             4      ORG $2000
 00002000  7001                       5      MOVEQ #1,D0
-00002002                             6      ORG $3000
+00003000                             6      ORG $3000
 00003000  4E75                       7      RTS
 00003002                             8      END $1000
 
 No errors detected
 No warnings generated
+
+
+SYMBOL TABLE INFORMATION
+Symbol-name         Value
+-------------------------

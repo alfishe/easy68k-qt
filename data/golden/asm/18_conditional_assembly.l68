@@ -1,19 +1,22 @@
 00001000 Starting Address
-Assembler used: EASy68K
+Assembler used: EASy68K Editor/Assembler v5.16.01
 Created On: 
 
-EASy68K 68000 Assembler                                                 Page 1
-================================================================================
-
-00000000                             1  * Conditional assembly IF/ELSE/ENDC
+00000000                             1  * Conditional assembly IFNE/IFEQ/ENDC
 00000000  =00000001                  2  MODE: EQU 1
-00000000                             3      ORG $1000
-00001000                             4      IFNE MODE
+00001000                             3      ORG $1000
+00001000                 TRUE        4      IFNE MODE
 00001000  7001                       5      MOVEQ #1,D0
-00001002                             6      ELSE
-00001002                             7      MOVEQ #2,D0
+00001002                             6      ENDC
+00001002                 FALSE       7      IFEQ MODE
 00001002                             8      ENDC
 00001002                             9      END $1000
 
 No errors detected
 No warnings generated
+
+
+SYMBOL TABLE INFORMATION
+Symbol-name         Value
+-------------------------
+MODE                1

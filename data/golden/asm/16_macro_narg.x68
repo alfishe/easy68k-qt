@@ -1,7 +1,7 @@
 * Macro using NARG and \0 parameter
 ARGCOUNT: MACRO
     DC.W NARG
-    IFARG \1
+    IFARG 1
     MOVE.W \1,D0
     ENDC
     ENDM

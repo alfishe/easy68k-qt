@@ -1,23 +1,24 @@
 00001000 Starting Address
-Assembler used: EASy68K
+Assembler used: EASy68K Editor/Assembler v5.16.01
 Created On: 
 
-EASy68K 68000 Assembler                                                 Page 1
-================================================================================
-
 00000000                             1  * Macro using NARG and \0 parameter
-00000000                             2      DC.W NARG
-00000000                             3      IFARG \1
-00000000                             4      MOVE.W \1,D0
-00000000                             5      ENDC
-00000000                             6      ENDM
+00000000                             2  ARGCOUNT: MACRO
+00000000                             3      DC.W NARG
+00000000                             4      IFARG 1
+00000000                             5      MOVE.W \1,D0
+00000000                             6      ENDC
 00000000                             7      ENDM
-00000000                             8      ORG $1000
-00001000  0000                       9m     DC.W 0
-00001000  0000                      10      ARGCOUNT
-00001002  0001                      11m     DC.W 1
-00001002  0001                      12      ARGCOUNT D1
-00001004                            13      END $1000
+00001000                             8      ORG $1000
+00001000                             9m     ARGCOUNT
+00001002                            10m     ARGCOUNT D1
+00001006                            11      END $1000
 
 No errors detected
 No warnings generated
+
+
+SYMBOL TABLE INFORMATION
+Symbol-name         Value
+-------------------------
+ARGCOUNT            0

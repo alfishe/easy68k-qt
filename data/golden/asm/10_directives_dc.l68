@@ -1,16 +1,21 @@
 00001000 Starting Address
-Assembler used: EASy68K
+Assembler used: EASy68K Editor/Assembler v5.16.01
 Created On: 
 
-EASy68K 68000 Assembler                                                 Page 1
-================================================================================
-
 00000000                             1  * DC directives
-00000000                             2      ORG $1000
-00001000  0A 14 30 41                3  CONST_B: DC.B 10,20,$30,'A'
-00001004  1234 162E 1000             4  CONST_W: DC.W $1234,5678,CONST_B
-0000100A  12345678 00001004          5  CONST_L: DC.L $12345678,CONST_W
+00001000                             2      ORG $1000
+00001000= 0A 14 30 41                3  CONST_B: DC.B 10,20,$30,'A'
+00001004= 1234 162E 1000             4  CONST_W: DC.W $1234,5678,CONST_B
+0000100A= 12345678 00001004          5  CONST_L: DC.L $12345678,CONST_W
 00001012                             6      END $1000
 
 No errors detected
 No warnings generated
+
+
+SYMBOL TABLE INFORMATION
+Symbol-name         Value
+-------------------------
+CONST_B             1000
+CONST_L             100A
+CONST_W             1004

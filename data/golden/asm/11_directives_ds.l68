@@ -1,19 +1,21 @@
 00001000 Starting Address
-Assembler used: EASy68K
+Assembler used: EASy68K Editor/Assembler v5.16.01
 Created On: 
 
-EASy68K 68000 Assembler                                                 Page 1
-================================================================================
-
 00000000                             1  * DS directives
-00000000                             2      ORG $1000
-00001000  00 00 00 00 00 00 00       3  BUFFER_B: DS.B 10
-          00 00 00              
-0000100A  00 00 00 00 00 00 00       4  BUFFER_W: DS.W 5
-          00 00 00              
-00001014  00 00 00 00 00 00 00       5  BUFFER_L: DS.L 2
-          00                    
+00001000                             2      ORG $1000
+00001000                             3  BUFFER_B: DS.B 10
+0000100A                             4  BUFFER_W: DS.W 5
+00001014                             5  BUFFER_L: DS.L 2
 0000101C                             6      END $1000
 
 No errors detected
 No warnings generated
+
+
+SYMBOL TABLE INFORMATION
+Symbol-name         Value
+-------------------------
+BUFFER_B            1000
+BUFFER_L            1014
+BUFFER_W            100A

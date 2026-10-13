@@ -1,12 +1,9 @@
 00001000 Starting Address
-Assembler used: EASy68K
+Assembler used: EASy68K Editor/Assembler v5.16.01
 Created On: 
 
-EASy68K 68000 Assembler                                                 Page 1
-================================================================================
-
 00000000                             1  * MOVEM instruction
-00000000                             2      ORG $1000
+00001000                             2      ORG $1000
 00001000  48A7 FFFE                  3      MOVEM.W D0-D7/A0-A6,-(A7)
 00001004  4C9F 7FFF                  4      MOVEM.W (A7)+,D0-D7/A0-A6
 00001008  48F8 070F 2000             5      MOVEM.L D0-D3/A0-A2,$2000
@@ -15,3 +12,8 @@ EASy68K 68000 Assembler                                                 Page 1
 
 No errors detected
 No warnings generated
+
+
+SYMBOL TABLE INFORMATION
+Symbol-name         Value
+-------------------------

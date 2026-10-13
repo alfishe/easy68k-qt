@@ -1,12 +1,9 @@
 00001000 Starting Address
-Assembler used: EASy68K
+Assembler used: EASy68K Editor/Assembler v5.16.01
 Created On: 
 
-EASy68K 68000 Assembler                                                 Page 1
-================================================================================
-
 00000000                             1  * Stack manipulation instructions
-00000000                             2      ORG $1000
+00001000                             2      ORG $1000
 00001000  4878 2000                  3      PEA $2000
 00001004  4E56 FFF0                  4      LINK A6,#-16
 00001008  4E5E                       5      UNLK A6
@@ -14,3 +11,8 @@ EASy68K 68000 Assembler                                                 Page 1
 
 No errors detected
 No warnings generated
+
+
+SYMBOL TABLE INFORMATION
+Symbol-name         Value
+-------------------------

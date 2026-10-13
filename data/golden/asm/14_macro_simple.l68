@@ -1,18 +1,20 @@
 00001000 Starting Address
-Assembler used: EASy68K
+Assembler used: EASy68K Editor/Assembler v5.16.01
 Created On: 
 
-EASy68K 68000 Assembler                                                 Page 1
-================================================================================
-
 00000000                             1  * Simple macro
-00000000                             2      NOP
-00000000                             3      ENDM
+00000000                             2  MYMAC: MACRO
+00000000                             3      NOP
 00000000                             4      ENDM
-00000000                             5      ORG $1000
-00001000  4E71                       6m     NOP
-00001000  4E71                       7      MYMAC
-00001002                             8      END $1000
+00001000                             5      ORG $1000
+00001000                             6m     MYMAC
+00001002                             7      END $1000
 
 No errors detected
 No warnings generated
+
+
+SYMBOL TABLE INFORMATION
+Symbol-name         Value
+-------------------------
+MYMAC               0

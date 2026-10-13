@@ -1,12 +1,9 @@
 00001000 Starting Address
-Assembler used: EASy68K
+Assembler used: EASy68K Editor/Assembler v5.16.01
 Created On: 
 
-EASy68K 68000 Assembler                                                 Page 1
-================================================================================
-
 00000000                             1  * Move instructions
-00000000                             2      ORG $1000
+00001000                             2      ORG $1000
 00001000  3200                       3      MOVE.W D0,D1
 00001002  2042                       4      MOVE.L D2,A0
 00001004  163C 0042                  5      MOVE.B #$42,D3
@@ -19,3 +16,8 @@ EASy68K 68000 Assembler                                                 Page 1
 
 No errors detected
 No warnings generated
+
+
+SYMBOL TABLE INFORMATION
+Symbol-name         Value
+-------------------------

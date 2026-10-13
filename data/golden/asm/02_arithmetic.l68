@@ -1,14 +1,11 @@
 00001000 Starting Address
-Assembler used: EASy68K
+Assembler used: EASy68K Editor/Assembler v5.16.01
 Created On: 
 
-EASy68K 68000 Assembler                                                 Page 1
-================================================================================
-
 00000000                             1  * Arithmetic instructions
-00000000                             2      ORG $1000
+00001000                             2      ORG $1000
 00001000  D240                       3      ADD.W D0,D1
-00001002  0682 0000 1234             4      ADD.L #$1234,D2
+00001002  0682 00001234              4      ADD.L #$1234,D2
 00001008  9803                       5      SUB.B D3,D4
 0000100A  0445 0010                  6      SUB.W #$10,D5
 0000100E  C2C0                       7      MULU.W D0,D1
@@ -19,3 +16,8 @@ EASy68K 68000 Assembler                                                 Page 1
 
 No errors detected
 No warnings generated
+
+
+SYMBOL TABLE INFORMATION
+Symbol-name         Value
+-------------------------

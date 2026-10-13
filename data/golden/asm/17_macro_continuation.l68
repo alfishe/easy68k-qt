@@ -1,21 +1,22 @@
 00001000 Starting Address
-Assembler used: EASy68K
+Assembler used: EASy68K Editor/Assembler v5.16.01
 Created On: 
 
-EASy68K 68000 Assembler                                                 Page 1
-================================================================================
-
 00000000                             1  * Macro using continuation lines
-00000000                             2      ADD.W \1,\2
-00000000                             3      ADD.W \3,\4
-00000000                             4      ENDM
+00000000                             2  COMPLEX: MACRO
+00000000                             3      ADD.W \1,\2
+00000000                             4      ADD.W \3,\4
 00000000                             5      ENDM
-00000000                             6      ORG $1000
-00001000  D240                       7m     ADD.W D0,D1
-00001002  D642                       8m     ADD.W D2,D3
-00001000  D642                       9      COMPLEX D0,D1,  D2,D3
-00001004                            10  
-00001004                            11      END $1000
+00001000                             6      ORG $1000
+00001000                             7m     COMPLEX D0,D1,
+00001000                             8m & D2,D3
+00001004                             9      END $1000
 
 No errors detected
 No warnings generated
+
+
+SYMBOL TABLE INFORMATION
+Symbol-name         Value
+-------------------------
+COMPLEX             0

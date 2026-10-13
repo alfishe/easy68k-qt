@@ -1,21 +1,23 @@
 00001000 Starting Address
-Assembler used: EASy68K
+Assembler used: EASy68K Editor/Assembler v5.16.01
 Created On: 
 
-EASy68K 68000 Assembler                                                 Page 1
-================================================================================
-
 00000000                             1  * Logic instructions
-00000000                             2      ORG $1000
+00001000                             2      ORG $1000
 00001000  C200                       3      AND.B D0,D1
-00001002  0242 00FF                  4      AND.W #$FF,D2
+00001002  C47C 00FF                  4      AND.W #$FF,D2
 00001006  8883                       5      OR.L D3,D4
-00001008  0045 F0F0                  6      OR.W #$F0F0,D5
+00001008  8A7C F0F0                  6      OR.W #$F0F0,D5
 0000100C  BD07                       7      EOR.B D6,D7
-0000100E  FF40                       8      EOR.W #$00FF,D0
-00001010  4641                       9      NOT.W D1
-00001012  4682                      10      NOT.L D2
-00001014                            11      END $1000
+0000100E  0A40 00FF                  8      EOR.W #$00FF,D0
+00001012  4641                       9      NOT.W D1
+00001014  4682                      10      NOT.L D2
+00001016                            11      END $1000
 
 No errors detected
 No warnings generated
+
+
+SYMBOL TABLE INFORMATION
+Symbol-name         Value
+-------------------------

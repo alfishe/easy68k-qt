@@ -1,22 +1,29 @@
 00001000 Starting Address
-Assembler used: EASy68K
+Assembler used: EASy68K Editor/Assembler v5.16.01
 Created On: 
 
-EASy68K 68000 Assembler                                                 Page 1
-================================================================================
-
 00000000                             1  * Structured loop structures
-00000000                             2      ORG $1000
-00001000                             3      .FOR D0 = #1 TO #10 BY #1
-00001000  4E71                       4      NOP
-00001002                             5      .ENDF
-00001002                             6      .WHILE D1 <LT> #5 DO
-00001002  5281                       7      ADDQ.L #1,D1
-00001004                             8      .ENDW
-00001004                             9      .REPEAT
-00001004  5382                      10      SUBQ.L #1,D2
-00001006                            11      .UNTIL D2 <EQ> #0
-00001006                            12      END $1000
+00001000                             2      ORG $1000
+00001000                             3      FOR.L D0 = #1 TO #10 BY #1 DO
+00001006  4E71                       4      NOP
+00001008                             5      ENDF
+00001012                             6      WHILE.L D1 <LT> #5 DO
+0000101C  5281                       7      ADDQ.L #1,D1
+0000101E                             8      ENDW
+00001020                             9      REPEAT
+00001020  5382                      10      SUBQ.L #1,D2
+00001022                            11      UNTIL.L D2 <EQ> #0 DO
+0000102A                            12      END $1000
 
 No errors detected
 No warnings generated
+
+
+SYMBOL TABLE INFORMATION
+Symbol-name         Value
+-------------------------
+_10000000           1012
+_10000001           1020
+_20000000           1006
+_20000001           100A
+_30000000           1020

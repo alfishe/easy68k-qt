@@ -1,8 +1,8 @@
 * Structured IF/ELSE/ENDI
     ORG $1000
-    .IF D0 <EQ> #0
+    IF.L D0 <EQ> #0 THEN
     NOP
-    .ELSE
+    ELSE
     MOVEQ #1,D0
-    .ENDI
+    ENDI
     END $1000

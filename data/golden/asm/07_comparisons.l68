@@ -1,16 +1,13 @@
 00001000 Starting Address
-Assembler used: EASy68K
+Assembler used: EASy68K Editor/Assembler v5.16.01
 Created On: 
 
-EASy68K 68000 Assembler                                                 Page 1
-================================================================================
-
 00000000                             1  * Comparison and Scc instructions
-00000000                             2      ORG $1000
+00001000                             2      ORG $1000
 00001000  B240                       3      CMP.W D0,D1
-00001002  B4BC 0000 2000             4      CMP.L #$2000,D2
+00001002  B4BC 00002000              4      CMP.L #$2000,D2
 00001008  4A03                       5      TST.B D3
-0000100A  4A88                       6      TST.L A0
+0000100A  4A90                       6      TST.L (A0)
 0000100C  57C0                       7      SEQ D0
 0000100E  56C1                       8      SNE D1
 00001010  5EC2                       9      SGT D2
@@ -19,3 +16,8 @@ EASy68K 68000 Assembler                                                 Page 1
 
 No errors detected
 No warnings generated
+
+
+SYMBOL TABLE INFORMATION
+Symbol-name         Value
+-------------------------

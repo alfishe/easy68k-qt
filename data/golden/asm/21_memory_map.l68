@@ -1,16 +1,18 @@
 00001000 Starting Address
-Assembler used: EASy68K
+Assembler used: EASy68K Editor/Assembler v5.16.01
 Created On: 
-
-EASy68K 68000 Assembler                                                 Page 1
-================================================================================
 
 00000000                             1  * Memory map directive
 00000000                             2      MEMORY ROM $1000,$2000
 00000000                             3      MEMORY READ $2000,$3000
-00000000                             4      ORG $1000
+00001000                             4      ORG $1000
 00001000  4E71                       5      NOP
 00001002                             6      END $1000
 
 No errors detected
 No warnings generated
+
+
+SYMBOL TABLE INFORMATION
+Symbol-name         Value
+-------------------------

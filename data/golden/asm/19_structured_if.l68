@@ -1,18 +1,22 @@
 00001000 Starting Address
-Assembler used: EASy68K
+Assembler used: EASy68K Editor/Assembler v5.16.01
 Created On: 
 
-EASy68K 68000 Assembler                                                 Page 1
-================================================================================
-
 00000000                             1  * Structured IF/ELSE/ENDI
-00000000                             2      ORG $1000
-00001000                             3      .IF D0 <EQ> #0
-00001000  4E71                       4      NOP
-00001002                             5      .ELSE
-00001002  7001                       6      MOVEQ #1,D0
-00001004                             7      .ENDI
-00001004                             8      END $1000
+00001000                             2      ORG $1000
+00001000                             3      IF.L D0 <EQ> #0 THEN
+0000100A  4E71                       4      NOP
+0000100C                             5      ELSE
+00001010  7001                       6      MOVEQ #1,D0
+00001012                             7      ENDI
+00001012                             8      END $1000
 
 No errors detected
 No warnings generated
+
+
+SYMBOL TABLE INFORMATION
+Symbol-name         Value
+-------------------------
+_00000000           1010
+_00000001           1012
