@@ -182,7 +182,7 @@ Decision: kInstructionExecuted is emitted right after execution (before any kExc
 | 9.8 Bit-Field Instructions in Simulator (parity S8) | TODO | | |
 | 9.9 Advanced Breakpoint Engine (parity S14) | TODO | | |
 | 9.10 Step Over / Run To Core API (parity S15) | TODO | | |
-| 9.11 Program Init/Rewind + Hardware Reset Semantics (parity S17) | DONE | `pending` | InitProgram() = initSim() (PC=start, SR=$2000, USP=$00FF0000, SSP=$01000000, regs/cycles cleared, no vector fetch); HardwareReset() = Reset button (S=1, T=0, mask 7, SSP/PC from vectors, +40 cycles, wakes STOP); Get/SetStartAddress (S-record start used); 7 ProgramInitTest (662 sim tests; ASan+UBSan clean) |
+| 9.11 Program Init/Rewind + Hardware Reset Semantics (parity S17) | DONE | `bc53056` | InitProgram() = initSim() (PC=start, SR=$2000, USP=$00FF0000, SSP=$01000000, regs/cycles cleared, no vector fetch); HardwareReset() = Reset button (S=1, T=0, mask 7, SSP/PC from vectors, +40 cycles, wakes STOP); Get/SetStartAddress (S-record start used); 7 ProgramInitTest (662 sim tests; ASan+UBSan clean) |
 
 Decision: The existing vector-based Reset() is kept as a power-on reset (used by unit tests); program open/rewind uses InitProgram() and the hardware window uses HardwareReset(), matching the original's two distinct paths.
 
