@@ -18,6 +18,16 @@ option(ENABLE_UBSAN "Enable UndefinedBehaviorSanitizer" OFF)
 add_subdirectory(src/sim)
 add_subdirectory(src/asm)
 
+# Command-line tools (no Qt)
+add_subdirectory(tools/easy68k-asm)
+
+# Developer reference tools built from the original EASy68K sources (oracles
+# for parity testing). Never part of the applications.
+option(BUILD_REFERENCE_TOOLS "Build reference oracles from the original EASy68K sources" OFF)
+if(BUILD_REFERENCE_TOOLS)
+  add_subdirectory(tools/reference)
+endif()
+
 # Qt GUI applications
 if(BUILD_GUI)
   find_package(Qt6 REQUIRED COMPONENTS
