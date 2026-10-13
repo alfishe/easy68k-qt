@@ -147,6 +147,9 @@ Decision: CMP with immediate source is encoded as CMP (0xB0xx) not CMPI (0x0Cxx)
 | 8.5.10 Listing Generator (.L68 output) | DONE | `2c27536` | EmittedItem capture; smart tab stops (12/20/44); constant truncation (...) and expansion (CEXflag); automatic pagination with PAGE breaks; EQU/SET resolved values (=XXXXXXXX); errors/warnings logging inside listing; 6 ListingGeneratorTest (677 total) |
 | 8.5.11 Object/S-Record Output (S0/S1/S2/S3/S8) | DONE | `0867023` | SRecordGenerator with robust checksum verification, contiguous byte grouping, 16/24/32-bit addresses, S0 memory maps output, S8 execution start record, and 5 unit tests (682 total) |
 | 8.6 Golden Assembly Tests | DONE | `3264a94` | 21 golden test cases covering full M68k instruction set, macros, directives, conditional assembly, structured control flow, and memory maps; byte-identical verify protection |
+| 8.7 Bit-Field Instruction Encoding (parity A4) | TODO | | |
+| 8.8 OPT CRE Symbol Table + MEX/SEX Listing Expansion (parity A5, A6) | TODO | | |
+| 8.9 AssemblerOptions Struct (parity A7) | TODO | | |
 
 ## Phase 9: Simulator Core Library — Full Parity & Headless Readiness
 
@@ -165,6 +168,13 @@ Decision: `asm-tests` is registered with `WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}`
 | 9.4 Execution Logging Interface | TODO | | |
 | 9.5 Event/Observer System | TODO | | |
 | 9.6 Core Integration Test | TODO | | |
+| 9.7 Address/Bus Error Class 0 Exception Frame (parity S3) | TODO | | |
+| 9.8 Bit-Field Instructions in Simulator (parity S8) | TODO | | |
+| 9.9 Advanced Breakpoint Engine (parity S14) | TODO | | |
+| 9.10 Step Over / Run To Core API (parity S15) | TODO | | |
+
+Decision: Parity audit (`doc/execution_plan/parity-audit.md`) inventoried every menu, dialog, option and Trap #15 task of Sim68K, Edit68K and EASyBIN from the original `.dfm` forms and sources. It added tasks 8.7-8.9, 9.7-9.10 and 13.22-13.25. Order: finish 9.3-9.6 as planned, then 9.7-9.10, then 8.7-8.9, before Phase 10.
+Decision: Each task is committed once it is tested and certified (full test suites green, clang-format clean, PROGRESS.md updated); the commit hash is recorded in a follow-up PROGRESS commit (user instruction, 2026-10-13).
 
 ## Phase 10: Golden Simulation Traces
 
@@ -212,6 +222,10 @@ Decision: `asm-tests` is registered with `WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}`
 | 13.19 Edit68K-Qt Editor Application | TODO | | |
 | 13.20 EASyBIN-Qt Binary Utility | TODO | | |
 | 13.21 Feature Parity Validation | TODO | | |
+| 13.22 Advanced Break Points Dialog (parity G19) | TODO | | |
+| 13.23 Sim68K Find / Find Next / Go to PC (parity G7) | TODO | | |
+| 13.24 Auto Trace + Options Dialog (parity G12) | TODO | | |
+| 13.25 Help System (parity H1) | TODO | | |
 
 ---
 
