@@ -178,7 +178,12 @@ Decision: The core logs every executed instruction while a mode is set. The orig
 Decision: All observer callbacks run on the simulator thread. Interrupt() may be called from any thread, so kInterruptRequested and kResumed are recorded atomically and delivered at the start of the next Step(); events recorded while no observer is registered are dropped, and Reset() clears them.
 Decision: kInstructionExecuted is emitted right after execution (before any kExceptionRaised the instruction causes); kExceptionRaised carries the vector number (and IRQ level for interrupts) so the GUI can reproduce the original's per-exception messages. STOP emits kStopped instead of kHalted.
 | 9.6 Core Integration Test | TODO | | |
-| 9.7 Memory Map Semantics + Address/Bus Error Class 0 Exception Frame (parity S3, S10) | TODO | | |
+| 9.7 Memory Map Semantics + Address/Bus Error Class 0 Exception Frame (parity S3, S10) | DONE | `pending` | Memory map per memoryMapCheck() (Invalid / Protected-unless-supervisor / new kMemReadOnly / ROM writes ignored; hardware I/O exempt); Memory fault latch; class 0 frame (PC, SR, IR, address, info word FC5/6+R/W), +50 cycles, double fault and bad SSP halt; ConfigureMemoryMap/SetHardwareAddresses; stacked-PC rule fixed; Run() continues through exceptions; 27 new tests (688 sim tests; ASan+UBSan clean) |
+
+Decision: Memory records the first failing access in a fault latch (with the PC at that moment); Step() checks it after the opcode fetch and after execution, restores the registers to their pre-instruction state (the original returns before storing results) and builds the class 0 frame. This catches faults from every access path (ReadEA discards errors; handlers access memory_ directly) without threading error returns through all handlers. Cycles on a fault are 50, without the EA time the original adds before detecting the error (≤ EA penalty difference).
+Decision: Stacked PC for class 1/2 exceptions follows RUN.CPP: OLD_PC = PC after the instruction for TRAP/TRAPV/CHK/DIV0/trace/privilege/Line A/Line F, and the instruction address only for illegal instruction. Previously every exception stacked the instruction address, so a TRAP handler's RTE re-executed the TRAP. Class 0 stacks OLD_PC+2: the PC at the time of the access for reads, instruction address + 2 for writes; info word FC = 6 (program) when the faulting address equals that PC, else 5 (data), plus $10 for reads.
+Decision: Run() now continues through exceptions (they vector to their handlers) and stops only on halt, breakpoint, stop request or instruction limit, as the original run loop does; previously any non-OK result stopped it.
+Decision: Memory map reads check only the first byte (mem_req()), writes check the whole access range (memoryMapCheck()); ROM writes return kOk without writing. Trap #15 string-buffer map checks (memoryMapCheck(Invalid, ...) in CODE9.CPP) remain a follow-up for the Trap #15 back ends.
 | 9.8 Bit-Field Instructions in Simulator (parity S8) | TODO | | |
 | 9.9 Advanced Breakpoint Engine (parity S14) | TODO | | |
 | 9.10 Step Over / Run To Core API (parity S15) | TODO | | |
@@ -254,4 +259,4 @@ Decision: Refactored `ListLine` to use type-safe metadata structure (`left_colum
 
 Decision: Replicated exact S0/S1/S2/S3/S8 Motorola format with memory map S0 records. S8 termination address formats to 24-bit to match Borland. S0 checksum calculated programmatically to avoid hardcoded mismatch. SRecordGenerator buffers bytes to output SRECSIZE=36 records.
 
-**NEXT:** Task 9.7 — Memory Map Semantics + Address/Bus Error Class 0 Exception Frame
+**NEXT:** Task 9.6 — Core Integration Test

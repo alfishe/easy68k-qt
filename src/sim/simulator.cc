@@ -18,7 +18,9 @@ M68kSimulator::M68kSimulator(Config config)
     : config_(config),
       pending_irqs_(0),
       simhalt_enabled_(config.simhalt_enabled),
-      exceptions_enabled_(config.exceptions_enabled) {}
+      exceptions_enabled_(config.exceptions_enabled) {
+  memory_.SetFaultPcSource(&state_.pc);
+}
 
 // =============================================================================
 // Reset
@@ -35,6 +37,8 @@ void M68kSimulator::Reset() {
   pending_irqs_.store(0, std::memory_order_relaxed);
   async_irq_events_.store(0, std::memory_order_relaxed);
   async_resumed_event_.store(false, std::memory_order_relaxed);
+  last_step_faulted_ = false;
+  memory_.ClearFault();
 }
 
 void M68kSimulator::InitProgram() {
@@ -51,6 +55,8 @@ void M68kSimulator::InitProgram() {
   pending_irqs_.store(0, std::memory_order_relaxed);
   async_irq_events_.store(0, std::memory_order_relaxed);
   async_resumed_event_.store(false, std::memory_order_relaxed);
+  last_step_faulted_ = false;
+  memory_.ClearFault();
 }
 
 void M68kSimulator::HardwareReset() {
@@ -63,6 +69,26 @@ void M68kSimulator::HardwareReset() {
   IncrementCycles(40);  // reset execution time
   state_.stopped = false;
   state_.halted = false;
+}
+
+void M68kSimulator::ConfigureMemoryMap(const MemoryMapConfig& map) {
+  memory_.SetFlags(0, kAddressMask, kMemNormal);
+  auto apply = [this](const MemoryMapConfig::Range& r, uint8_t flag) {
+    if (r.enabled)
+      memory_.AddFlags(r.start, r.end, flag);
+  };
+  apply(map.invalid, kMemInvalid);
+  apply(map.protected_, kMemProtected);
+  apply(map.read, kMemReadOnly);
+  apply(map.rom, kMemRom);
+}
+
+void M68kSimulator::SetHardwareAddresses(uint32_t seg7, uint32_t leds, uint32_t switches,
+                                         uint32_t buttons) {
+  memory_.SetMapExemptions({{seg7 & kAddressMask, (seg7 + 15) & kAddressMask},
+                            {leds & kAddressMask, leds & kAddressMask},
+                            {switches & kAddressMask, switches & kAddressMask},
+                            {buttons & kAddressMask, buttons & kAddressMask}});
 }
 
 // =============================================================================
@@ -151,20 +177,110 @@ bool M68kSimulator::CheckCondition(Condition cond) const {
 // Pushes PC (longword) then SR (word) onto SSP, enters supervisor, clears trace.
 // =============================================================================
 
-void M68kSimulator::HandleException(ExceptionVector vector) {
+void M68kSimulator::HandleException(ExceptionVector vector, uint32_t stacked_pc) {
+  uint32_t vec_addr = static_cast<uint32_t>(vector) * 4;
+  if (!SupervisorStackUsable()) {
+    // RUN.CPP exceptionHandler(): "SSP odd or outside memory space" — the
+    // vector has been fetched but no frame is built and execution stops.
+    state_.pc = memory_.ReadLong(vec_addr).value & kAddressMask;
+    state_.halted = true;
+    return;
+  }
+  memory_.SetSupervisor(true);  // exception processing runs in supervisor state
   state_.ssp -= 4;
-  memory_.WriteLong(state_.ssp & kAddressMask, inst_pc_);
+  memory_.WriteLong(state_.ssp & kAddressMask, stacked_pc);
   state_.ssp -= 2;
   memory_.WriteWord(state_.ssp & kAddressMask, state_.sr);
   state_.sr |= kSrSupervisor;
   state_.sr &= static_cast<uint16_t>(~kSrTrace);
-  uint32_t vec_addr = static_cast<uint32_t>(vector) * 4;
   state_.pc = memory_.ReadLong(vec_addr).value & kAddressMask;
   if (!observers_.empty()) {
     SimEvent ev{SimEventType::kExceptionRaised, inst_pc_, SimResult::kOk};
     ev.vector = static_cast<int>(vector);
     Notify(ev);
   }
+}
+
+bool M68kSimulator::SupervisorStackUsable() const {
+  // RUN.CPP exceptionHandler(): A[8] odd, negative or > MEMSIZE is fatal.
+  return (state_.ssp & 1) == 0 && state_.ssp <= 0x01000000u;
+}
+
+// =============================================================================
+// Class 0 exception (address / bus error)
+// Ported from RUN.CPP exceptionHandler() class 0 path and UTILS.CPP
+// mem_put()/mem_req(). Called when an instruction (or its opcode fetch)
+// faulted; `before` is the CPU state at the start of the instruction.
+// =============================================================================
+
+SimResult M68kSimulator::HandleMemoryFault(const CpuState& before, uint16_t opcode) {
+  MemoryFault fault = memory_.GetFault();
+  memory_.ClearFault();
+
+  // The original returns from the instruction as soon as the access fails,
+  // before results are stored; restore the registers (cycles included) to
+  // their state at the start of the instruction.
+  state_ = before;
+
+  bool double_fault = last_step_faulted_;
+  last_step_faulted_ = true;
+
+  if (!exceptions_enabled_.load(std::memory_order_relaxed)) {
+    // "Address Error/Bus Error: Instruction at ... accessing address ..."
+    state_.halted = true;
+    NotifyHaltOrStop(fault.kind);
+    return fault.kind;
+  }
+
+  if (double_fault) {
+    // RUN.CPP runprog(): "Address or Bus error during exception processing."
+    state_.halted = true;
+    NotifyHaltOrStop(fault.kind);
+    return fault.kind;
+  }
+
+  ExceptionVector vector = (fault.kind == SimResult::kAddressError) ? ExceptionVector::kAddressError
+                                                                    : ExceptionVector::kBusError;
+  uint32_t vec_addr = static_cast<uint32_t>(vector) * 4;
+
+  if (!SupervisorStackUsable()) {
+    state_.pc = memory_.ReadLong(vec_addr).value & kAddressMask;
+    state_.halted = true;
+    NotifyHaltOrStop(fault.kind);
+    return fault.kind;
+  }
+
+  // Stacked PC: reads use OLD_PC = PC-2 at the time of the access
+  // (mem_req()), writes use the instruction address; the frame holds OLD_PC+2.
+  uint32_t frame_pc = fault.is_read ? fault.pc : inst_pc_ + 2;
+  uint16_t info = (fault.address == frame_pc) ? 0x6 : 0x5;  // FC: program / data
+  if (fault.is_read)
+    info |= 0x10;
+
+  IncrementCycles(50);  // address or bus exception time
+  memory_.SetSupervisor(true);
+  state_.ssp -= 4;
+  memory_.WriteLong(state_.ssp & kAddressMask, frame_pc);
+  state_.ssp -= 2;
+  memory_.WriteWord(state_.ssp & kAddressMask, state_.sr);
+  state_.ssp -= 2;
+  memory_.WriteWord(state_.ssp & kAddressMask, opcode);
+  state_.ssp -= 4;
+  memory_.WriteLong(state_.ssp & kAddressMask, fault.address);
+  state_.ssp -= 2;
+  memory_.WriteWord(state_.ssp & kAddressMask, info);
+  memory_.ClearFault();
+
+  state_.sr |= kSrSupervisor;
+  state_.sr &= static_cast<uint16_t>(~kSrTrace);
+  state_.pc = memory_.ReadLong(vec_addr).value & kAddressMask;
+
+  if (!observers_.empty()) {
+    SimEvent ev{SimEventType::kExceptionRaised, inst_pc_, fault.kind};
+    ev.vector = static_cast<int>(vector);
+    Notify(ev);
+  }
+  return fault.kind;
 }
 
 // =============================================================================
@@ -197,7 +313,15 @@ SimResult M68kSimulator::Step() {
   inst_pc_ = state_.pc;
   bool trace_before = state_.GetFlag(kSrTrace);
 
+  // Snapshot for class 0 faults; memory map checks use the current mode.
+  const CpuState before = state_;
+  memory_.ClearFault();
+  memory_.SetSupervisor(state_.IsSupervisor());
+
   uint16_t opcode = FetchWord();
+  if (memory_.HasFault())  // odd PC or bus error on opcode fetch
+    return HandleMemoryFault(before, last_opcode_);
+  last_opcode_ = opcode;
 
   // Execution logging happens before the instruction executes, as in
   // RUN.CPP exec_inst(): memory rows, then registers + instruction line.
@@ -214,6 +338,10 @@ SimResult M68kSimulator::Step() {
   SimResult result = ExecuteInstruction(opcode);
   if (!observers_.empty())
     Notify(SimEventType::kInstructionExecuted, inst_pc_, result);
+
+  if (memory_.HasFault())
+    return HandleMemoryFault(before, opcode);
+  last_step_faulted_ = false;
 
   if (!exceptions_enabled_.load(std::memory_order_relaxed)) {
     // RUN.CPP runprog(), "exception processing not enabled": every exception
@@ -232,46 +360,47 @@ SimResult M68kSimulator::Step() {
     case SimResult::kOk:
       if (trace_before) {
         IncrementCycles(kCyclesTrace);
-        HandleException(ExceptionVector::kTrace);
+        HandleException(ExceptionVector::kTrace, state_.pc);
         return SimResult::kTraceException;
       }
       break;
     case SimResult::kBadInstruction:
       IncrementCycles(kCyclesIllegalInst);
-      HandleException(ExceptionVector::kIllegalInst);
+      HandleException(ExceptionVector::kIllegalInst, inst_pc_);
       break;
     case SimResult::kPrivilegeViolation:
       IncrementCycles(kCyclesPrivilege);
-      HandleException(ExceptionVector::kPrivilege);
+      HandleException(ExceptionVector::kPrivilege, state_.pc);
       break;
     case SimResult::kDivideByZero:
       IncrementCycles(kCyclesDivideByZero);
-      HandleException(ExceptionVector::kDivideByZero);
+      HandleException(ExceptionVector::kDivideByZero, state_.pc);
       break;
     case SimResult::kChkException:
       IncrementCycles(kCyclesChk);
-      HandleException(ExceptionVector::kChk);
+      HandleException(ExceptionVector::kChk, state_.pc);
       break;
     case SimResult::kTrapVException:
       IncrementCycles(kCyclesTrapV);
-      HandleException(ExceptionVector::kTrapV);
+      HandleException(ExceptionVector::kTrapV, state_.pc);
       break;
     case SimResult::kTrapException:
       IncrementCycles(kCyclesTrap);
-      HandleException(static_cast<ExceptionVector>(static_cast<int>(ExceptionVector::kTrap0) +
-                                                   (opcode & 0x0F)));
+      HandleException(
+          static_cast<ExceptionVector>(static_cast<int>(ExceptionVector::kTrap0) + (opcode & 0x0F)),
+          state_.pc);
       break;
     case SimResult::kTraceException:
       IncrementCycles(kCyclesTrace);
-      HandleException(ExceptionVector::kTrace);
+      HandleException(ExceptionVector::kTrace, state_.pc);
       break;
     case SimResult::kLine1010:
       IncrementCycles(kCyclesLineA);
-      HandleException(ExceptionVector::kLine1010);
+      HandleException(ExceptionVector::kLine1010, state_.pc);
       break;
     case SimResult::kLine1111:
       IncrementCycles(kCyclesLineF);
-      HandleException(ExceptionVector::kLine1111);
+      HandleException(ExceptionVector::kLine1111, state_.pc);
       break;
     case SimResult::kStopInstruction:
       state_.halted = true;
@@ -308,8 +437,10 @@ SimResult M68kSimulator::Run(int max_instructions) {
         Notify(SimEventType::kBreakpointHit, state_.pc);
       break;
     }
+    // Like the original run loop, keep running through exceptions (which
+    // vector to their handlers); stop only on halt, breakpoint or request.
     result = Step();
-    if (result != SimResult::kOk)
+    if (state_.halted)
       break;
     ++count;
     if (max_instructions >= 0 && count >= max_instructions)
@@ -428,6 +559,11 @@ bool M68kSimulator::IsExceptionsEnabled() const {
 }
 
 void M68kSimulator::HandleIrq(int level) {
+  if (!SupervisorStackUsable()) {
+    state_.halted = true;  // RUN.CPP exceptionHandler(): SSP odd/out of range
+    return;
+  }
+  memory_.SetSupervisor(true);
   // Push exception stack frame
   state_.ssp -= 4;
   memory_.WriteLong(state_.ssp & kAddressMask, state_.pc);

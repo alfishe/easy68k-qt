@@ -49,7 +49,8 @@ TEST_F(MiscTest, TrapPushesStackFrame) {
   sim_.Step();
   uint32_t new_ssp = sim_.State().ssp;
   EXPECT_EQ(sim_.GetMemory().ReadWord(new_ssp).value, sr_before);
-  EXPECT_EQ(sim_.GetMemory().ReadLong(new_ssp + 2).value, 0x1000u);  // inst_pc_ = TRAP address
+  // RUN.CPP stacks OLD_PC = PC after the TRAP (the return address).
+  EXPECT_EQ(sim_.GetMemory().ReadLong(new_ssp + 2).value, 0x1002u);
 }
 
 TEST_F(MiscTest, TrapVectorRange) {

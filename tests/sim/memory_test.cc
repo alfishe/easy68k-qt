@@ -66,11 +66,15 @@ TEST_F(MemoryTest, AddressWrapping) {
   EXPECT_EQ(memory.ReadByte(0x000000).value, 0x42u);
 }
 
+// ROM map: writes are silently ignored (UTILS.CPP memoryMapCheck ROM_MAP).
 TEST_F(MemoryTest, RomProtection) {
+  memory.LoadData(0x1000, std::vector<uint8_t>{0xAA, 0xBB, 0xCC, 0xDD});
   memory.SetFlags(0x1000, 0x1FFF, kMemRom);
-  EXPECT_EQ(memory.WriteByte(0x1000, 0x42), SimResult::kBusError);
-  EXPECT_EQ(memory.WriteWord(0x1000, 0x1234), SimResult::kBusError);
-  EXPECT_EQ(memory.WriteLong(0x1000, 0x12345678), SimResult::kBusError);
+  EXPECT_EQ(memory.WriteByte(0x1000, 0x42), SimResult::kOk);
+  EXPECT_EQ(memory.WriteWord(0x1000, 0x1234), SimResult::kOk);
+  EXPECT_EQ(memory.WriteLong(0x1000, 0x12345678), SimResult::kOk);
+  EXPECT_EQ(memory.ReadLong(0x1000).value, 0xAABBCCDDu);  // unchanged
+  EXPECT_FALSE(memory.HasFault());
   // Reads still succeed
   EXPECT_TRUE(memory.ReadByte(0x1000).success);
 }
@@ -78,6 +82,57 @@ TEST_F(MemoryTest, RomProtection) {
 TEST_F(MemoryTest, ProtectedMemory) {
   memory.SetFlags(0x2000, 0x2FFF, kMemProtected);
   EXPECT_EQ(memory.WriteByte(0x2000, 0x42), SimResult::kBusError);
+}
+
+// Protected map: bus error on access unless in supervisor mode.
+TEST_F(MemoryTest, ProtectedAllowsSupervisor) {
+  memory.SetFlags(0x2000, 0x2FFF, kMemProtected);
+  memory.SetSupervisor(false);
+  EXPECT_FALSE(memory.ReadWord(0x2000).success);
+  EXPECT_EQ(memory.WriteWord(0x2000, 1), SimResult::kBusError);
+  memory.SetSupervisor(true);
+  EXPECT_TRUE(memory.ReadWord(0x2000).success);
+  EXPECT_EQ(memory.WriteWord(0x2000, 1), SimResult::kOk);
+}
+
+// Read map: reads succeed, writes bus-error.
+TEST_F(MemoryTest, ReadOnlyMapBusErrorOnWrite) {
+  memory.SetFlags(0x3000, 0x3FFF, kMemReadOnly);
+  EXPECT_TRUE(memory.ReadLong(0x3000).success);
+  EXPECT_EQ(memory.WriteByte(0x3000, 1), SimResult::kBusError);
+}
+
+// Writes test every byte of the access (range overlap), reads only the first.
+TEST_F(MemoryTest, WriteChecksWholeRangeReadChecksFirstByte) {
+  memory.SetFlags(0x4002, 0x4002, kMemInvalid);
+  EXPECT_EQ(memory.WriteLong(0x4000, 0), SimResult::kBusError);  // overlaps $4002
+  EXPECT_TRUE(memory.ReadLong(0x4000).success);                  // first byte valid
+  EXPECT_FALSE(memory.ReadByte(0x4002).success);
+}
+
+TEST_F(MemoryTest, HardwareAddressesExemptFromMap) {
+  memory.SetFlags(0xE00000, 0xE0FFFF, kMemInvalid);
+  memory.SetMapExemptions({{0xE00010, 0xE0001F}});
+  EXPECT_EQ(memory.WriteByte(0xE00012, 7), SimResult::kOk);
+  EXPECT_TRUE(memory.ReadByte(0xE00012).success);
+  EXPECT_EQ(memory.WriteByte(0xE00020, 7), SimResult::kBusError);
+}
+
+TEST_F(MemoryTest, FaultLatchKeepsFirstFault) {
+  uint32_t pc = 0x1234;
+  memory.SetFaultPcSource(&pc);
+  memory.SetFlags(0x5000, 0x5FFF, kMemInvalid);
+  EXPECT_FALSE(memory.HasFault());
+  memory.ReadWord(0x1001);  // address error first
+  memory.WriteByte(0x5000, 0);
+  ASSERT_TRUE(memory.HasFault());
+  EXPECT_EQ(memory.GetFault().kind, SimResult::kAddressError);
+  EXPECT_EQ(memory.GetFault().address, 0x1001u);
+  EXPECT_TRUE(memory.GetFault().is_read);
+  EXPECT_EQ(memory.GetFault().pc, 0x1234u);
+  memory.ClearFault();
+  EXPECT_FALSE(memory.HasFault());
+  memory.SetFaultPcSource(nullptr);  // `pc` goes out of scope; fixture is static
 }
 
 TEST_F(MemoryTest, LoadData) {

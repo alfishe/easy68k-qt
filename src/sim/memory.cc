@@ -11,41 +11,101 @@ namespace easym68k::sim {
 Memory::Memory() : data_(kMemorySize, 0), flags_(kMemorySize, kMemNormal) {}
 
 // =============================================================================
+// Memory map checks (UTILS.CPP memoryMapCheck() / mem_req())
+// =============================================================================
+
+bool Memory::IsExempt(uint32_t addr) const {
+  for (const auto& r : exemptions_) {
+    if (addr >= r.first && addr <= r.second)
+      return true;
+  }
+  return false;
+}
+
+// mem_req() checks the Invalid and Protected maps at the first byte only.
+Memory::MapResult Memory::CheckRead(uint32_t addr, int /*bytes*/) const {
+  uint8_t f = flags_[addr];
+  if (f == kMemNormal || IsExempt(addr))
+    return MapResult::kOk;
+  if (f & kMemInvalid)
+    return MapResult::kBusError;
+  if ((f & kMemProtected) && !supervisor_)
+    return MapResult::kBusError;
+  return MapResult::kOk;
+}
+
+// memoryMapCheck(Invalid | Protected | Read | Rom) tests the whole access range;
+// ROM is checked last and makes the write a silent no-op.
+Memory::MapResult Memory::CheckWrite(uint32_t addr, int bytes) const {
+  if (IsExempt(addr))
+    return MapResult::kOk;
+  uint8_t f = 0;
+  for (int i = 0; i < bytes; ++i)
+    f |= flags_[(addr + i) & kAddressMask];
+  if (f == kMemNormal)
+    return MapResult::kOk;
+  if (f & kMemInvalid)
+    return MapResult::kBusError;
+  if ((f & kMemProtected) && !supervisor_)
+    return MapResult::kBusError;
+  if (f & kMemReadOnly)
+    return MapResult::kBusError;
+  if (f & kMemRom)
+    return MapResult::kRomIgnore;
+  return MapResult::kOk;
+}
+
+void Memory::RecordFault(SimResult kind, uint32_t address, bool is_read) const {
+  if (fault_.kind != SimResult::kOk)
+    return;  // keep the first fault
+  fault_.kind = kind;
+  fault_.address = address;
+  fault_.is_read = is_read;
+  fault_.pc = fault_pc_source_ ? *fault_pc_source_ : 0;
+}
+
+// =============================================================================
 // Read Operations
 // =============================================================================
 
 MemoryAccessResult Memory::ReadByte(uint32_t address) const {
   uint32_t addr = MaskAddress(address);
-  if (flags_[addr] & kMemInvalid) {
-    return {false, 0, SimResult::kBusError, "invalid memory read"};
+  if (CheckRead(addr, 1) == MapResult::kBusError) {
+    RecordFault(SimResult::kBusError, address, true);
+    return {false, 0, SimResult::kBusError, "bus error on read"};
   }
   return {true, data_[addr], SimResult::kOk, {}};
 }
 
 MemoryAccessResult Memory::ReadWord(uint32_t address) const {
   if (!IsAligned(address)) {
+    RecordFault(SimResult::kAddressError, address, true);
     return {false, 0, SimResult::kAddressError, "word read at odd address"};
   }
   uint32_t addr = MaskAddress(address);
-  if ((flags_[addr] | flags_[addr + 1]) & kMemInvalid) {
-    return {false, 0, SimResult::kBusError, "invalid memory read"};
+  if (CheckRead(addr, 2) == MapResult::kBusError) {
+    RecordFault(SimResult::kBusError, address, true);
+    return {false, 0, SimResult::kBusError, "bus error on read"};
   }
-  uint32_t value =
-      (static_cast<uint32_t>(data_[addr]) << 8) | static_cast<uint32_t>(data_[addr + 1]);
+  uint32_t value = (static_cast<uint32_t>(data_[addr]) << 8) |
+                   static_cast<uint32_t>(data_[(addr + 1) & kAddressMask]);
   return {true, value, SimResult::kOk, {}};
 }
 
 MemoryAccessResult Memory::ReadLong(uint32_t address) const {
   if (!IsAligned(address)) {
+    RecordFault(SimResult::kAddressError, address, true);
     return {false, 0, SimResult::kAddressError, "long read at odd address"};
   }
   uint32_t addr = MaskAddress(address);
-  if ((flags_[addr] | flags_[addr + 1] | flags_[addr + 2] | flags_[addr + 3]) & kMemInvalid) {
-    return {false, 0, SimResult::kBusError, "invalid memory read"};
+  if (CheckRead(addr, 4) == MapResult::kBusError) {
+    RecordFault(SimResult::kBusError, address, true);
+    return {false, 0, SimResult::kBusError, "bus error on read"};
   }
-  uint32_t value =
-      (static_cast<uint32_t>(data_[addr]) << 24) | (static_cast<uint32_t>(data_[addr + 1]) << 16) |
-      (static_cast<uint32_t>(data_[addr + 2]) << 8) | static_cast<uint32_t>(data_[addr + 3]);
+  uint32_t value = (static_cast<uint32_t>(data_[addr]) << 24) |
+                   (static_cast<uint32_t>(data_[(addr + 1) & kAddressMask]) << 16) |
+                   (static_cast<uint32_t>(data_[(addr + 2) & kAddressMask]) << 8) |
+                   static_cast<uint32_t>(data_[(addr + 3) & kAddressMask]);
   return {true, value, SimResult::kOk, {}};
 }
 
@@ -67,8 +127,14 @@ MemoryAccessResult Memory::Read(uint32_t address, DataSize size) const {
 
 SimResult Memory::WriteByte(uint32_t address, uint8_t value) {
   uint32_t addr = MaskAddress(address);
-  if (flags_[addr] & (kMemInvalid | kMemRom | kMemProtected)) {
-    return SimResult::kBusError;
+  switch (CheckWrite(addr, 1)) {
+    case MapResult::kBusError:
+      RecordFault(SimResult::kBusError, address, false);
+      return SimResult::kBusError;
+    case MapResult::kRomIgnore:
+      return SimResult::kOk;
+    case MapResult::kOk:
+      break;
   }
   data_[addr] = value;
   return SimResult::kOk;
@@ -76,31 +142,43 @@ SimResult Memory::WriteByte(uint32_t address, uint8_t value) {
 
 SimResult Memory::WriteWord(uint32_t address, uint16_t value) {
   if (!IsAligned(address)) {
+    RecordFault(SimResult::kAddressError, address, false);
     return SimResult::kAddressError;
   }
   uint32_t addr = MaskAddress(address);
-  if ((flags_[addr] | flags_[addr + 1]) & (kMemInvalid | kMemRom | kMemProtected)) {
-    return SimResult::kBusError;
+  switch (CheckWrite(addr, 2)) {
+    case MapResult::kBusError:
+      RecordFault(SimResult::kBusError, address, false);
+      return SimResult::kBusError;
+    case MapResult::kRomIgnore:
+      return SimResult::kOk;
+    case MapResult::kOk:
+      break;
   }
   data_[addr] = static_cast<uint8_t>(value >> 8);
-  data_[addr + 1] = static_cast<uint8_t>(value & 0xFF);
+  data_[(addr + 1) & kAddressMask] = static_cast<uint8_t>(value & 0xFF);
   return SimResult::kOk;
 }
 
 SimResult Memory::WriteLong(uint32_t address, uint32_t value) {
   if (!IsAligned(address)) {
+    RecordFault(SimResult::kAddressError, address, false);
     return SimResult::kAddressError;
   }
   uint32_t addr = MaskAddress(address);
-  for (int i = 0; i < 4; ++i) {
-    if (flags_[addr + i] & (kMemInvalid | kMemRom | kMemProtected)) {
+  switch (CheckWrite(addr, 4)) {
+    case MapResult::kBusError:
+      RecordFault(SimResult::kBusError, address, false);
       return SimResult::kBusError;
-    }
+    case MapResult::kRomIgnore:
+      return SimResult::kOk;
+    case MapResult::kOk:
+      break;
   }
   data_[addr] = static_cast<uint8_t>(value >> 24);
-  data_[addr + 1] = static_cast<uint8_t>(value >> 16);
-  data_[addr + 2] = static_cast<uint8_t>(value >> 8);
-  data_[addr + 3] = static_cast<uint8_t>(value & 0xFF);
+  data_[(addr + 1) & kAddressMask] = static_cast<uint8_t>(value >> 16);
+  data_[(addr + 2) & kAddressMask] = static_cast<uint8_t>(value >> 8);
+  data_[(addr + 3) & kAddressMask] = static_cast<uint8_t>(value & 0xFF);
   return SimResult::kOk;
 }
 
@@ -123,6 +201,8 @@ SimResult Memory::Write(uint32_t address, uint32_t value, DataSize size) {
 void Memory::Clear() {
   std::memset(data_.data(), 0, data_.size());
   std::memset(flags_.data(), kMemNormal, flags_.size());
+  fault_ = MemoryFault{};
+  supervisor_ = false;
 }
 
 void Memory::LoadData(uint32_t address, const uint8_t* data, size_t size) {
@@ -150,17 +230,27 @@ void Memory::SetFlags(uint32_t start_address, uint32_t end_address, uint8_t flag
   }
 }
 
+void Memory::AddFlags(uint32_t start_address, uint32_t end_address, uint8_t flags) {
+  uint32_t start = MaskAddress(start_address);
+  uint32_t end = MaskAddress(end_address);
+  if (start > end) {
+    std::swap(start, end);
+  }
+  for (uint32_t addr = start; addr <= end && addr < kMemorySize; ++addr) {
+    flags_[addr] |= flags;
+  }
+}
+
 uint8_t Memory::GetFlags(uint32_t address) const {
   return flags_[MaskAddress(address)];
 }
 
 bool Memory::IsValidRead(uint32_t address) const {
-  return !(flags_[MaskAddress(address)] & kMemInvalid);
+  return CheckRead(MaskAddress(address), 1) != MapResult::kBusError;
 }
 
 bool Memory::IsValidWrite(uint32_t address) const {
-  uint8_t f = flags_[MaskAddress(address)];
-  return !(f & (kMemInvalid | kMemRom | kMemProtected));
+  return CheckWrite(MaskAddress(address), 1) != MapResult::kBusError;
 }
 
 bool Memory::IsRom(uint32_t address) const {

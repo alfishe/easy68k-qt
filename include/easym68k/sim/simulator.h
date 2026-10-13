@@ -91,6 +91,26 @@ class M68kSimulator {
   uint32_t GetStartAddress() const { return start_address_; }
   void SetStartAddress(uint32_t address) { start_address_ = address & kAddressMask; }
 
+  // Hardware window memory map (one optional range per type, as in the
+  // original). Replaces all map flags in memory.
+  struct MemoryMapConfig {
+    struct Range {
+      bool enabled = false;
+      uint32_t start = 0;
+      uint32_t end = 0;
+    };
+    Range rom;         // writes ignored
+    Range read;        // bus error on write
+    Range protected_;  // bus error unless supervisor
+    Range invalid;     // bus error on access
+  };
+  void ConfigureMemoryMap(const MemoryMapConfig& map);
+
+  // Hardware I/O addresses are always accessible regardless of the memory map
+  // (UTILS.CPP memoryMapCheck()): 7-segment display (16 bytes), LEDs,
+  // toggle switches and push buttons.
+  void SetHardwareAddresses(uint32_t seg7, uint32_t leds, uint32_t switches, uint32_t buttons);
+
   // Executes a single instruction, handles exceptions.
   SimResult Step();
 
@@ -159,10 +179,18 @@ class M68kSimulator {
   SimResult WriteEA(const EffectiveAddr& ea, uint32_t value, DataSize size);
 
   // Pushes stack frame for vector, sets supervisor mode, clears trace, loads new PC.
-  void HandleException(ExceptionVector vector);
+  // Pushes stacked_pc and SR on the SSP, sets supervisor, clears trace, loads
+  // the vector. RUN.CPP stacks OLD_PC = PC after the instruction for every
+  // class 1/2 exception except illegal instruction (OLD_PC -= 2).
+  void HandleException(ExceptionVector vector, uint32_t stacked_pc);
 
   // Process the highest priority pending interrupt.
   void HandleIrq(int level);
+
+  // Class 0 (address/bus error) exception processing for a faulted step.
+  SimResult HandleMemoryFault(const CpuState& before, uint16_t opcode);
+  // False if SSP is odd or beyond the 16 MB space (no frame can be built).
+  bool SupervisorStackUsable() const;
 
   // Observer notification helpers.
   void Notify(const SimEvent& event);
@@ -295,7 +323,9 @@ class M68kSimulator {
   bool observers_dirty_{false};               // null slots to compact after delivery
   std::atomic<uint8_t> async_irq_events_{0};  // levels passed to Interrupt()
   std::atomic<bool> async_resumed_event_{false};
-  uint32_t inst_pc_{0};  // PC of the instruction currently executing
+  uint32_t inst_pc_{0};            // PC of the instruction currently executing
+  uint16_t last_opcode_{0};        // IR stacked when the opcode fetch faults
+  bool last_step_faulted_{false};  // RUN.CPP errflg (double fault => halt)
   uint32_t start_address_{0};
 };
 

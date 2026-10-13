@@ -552,7 +552,7 @@ TEST_F(ProgramInitTest, PushOnInitialSspWrapsInto24BitSpace) {
   sim_.InitProgram();
   sim_.Step();
   EXPECT_EQ(sim_.State().pc, 0x3000u);
-  EXPECT_EQ(sim_.GetMemory().ReadLong(0x00FFFFFC).value, 0x1000u);  // stacked PC
+  EXPECT_EQ(sim_.GetMemory().ReadLong(0x00FFFFFC).value, 0x1002u);  // stacked return PC
 }
 
 TEST_F(ProgramInitTest, HardwareResetLoadsVectorsKeepsRegisters) {

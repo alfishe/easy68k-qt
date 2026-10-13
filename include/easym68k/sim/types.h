@@ -150,6 +150,7 @@ enum MemoryFlags : uint8_t {
   kMemInvalid = 0x01,
   kMemProtected = 0x02,
   kMemReadLog = 0x04,
+  kMemReadOnly = 0x08,  // "Read" memory map: bus error on write
   kMemRom = 0x10
 };
 
