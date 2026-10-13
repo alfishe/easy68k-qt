@@ -14,6 +14,7 @@
 
 #include "easym68k/sim/cpu_state.h"
 #include "easym68k/sim/effective_addr.h"
+#include "easym68k/sim/isim_observer.h"
 #include "easym68k/sim/memory.h"
 #include "easym68k/sim/types.h"
 
@@ -101,6 +102,11 @@ class M68kSimulator {
   void SetExceptionsEnabled(bool enabled);
   bool IsExceptionsEnabled() const;
 
+  // Event observers (see isim_observer.h for threading rules). Null and
+  // duplicate registrations are ignored. Safe to call from inside OnEvent().
+  void AddObserver(ISimObserver* observer);
+  void RemoveObserver(ISimObserver* observer);
+
   // State and memory accessors
   CpuState& State() { return state_; }
   const CpuState& State() const { return state_; }
@@ -140,6 +146,12 @@ class M68kSimulator {
 
   // Process the highest priority pending interrupt.
   void HandleIrq(int level);
+
+  // Observer notification helpers.
+  void Notify(const SimEvent& event);
+  void Notify(SimEventType type, uint32_t pc, SimResult result = SimResult::kOk);
+  void DeliverAsyncEvents();  // events recorded by Interrupt() on other threads
+  void NotifyHaltOrStop(SimResult result);
 
   // Hierarchical instruction decoder (defined in decode.cc).
   SimResult DispatchGroup0(uint16_t opcode);
@@ -261,6 +273,11 @@ class M68kSimulator {
   std::atomic<uint8_t> pending_irqs_{0};
   std::atomic<bool> simhalt_enabled_{true};
   std::atomic<bool> exceptions_enabled_{true};
+  std::vector<ISimObserver*> observers_;
+  int notify_depth_{0};                       // >0 while delivering an event
+  bool observers_dirty_{false};               // null slots to compact after delivery
+  std::atomic<uint8_t> async_irq_events_{0};  // levels passed to Interrupt()
+  std::atomic<bool> async_resumed_event_{false};
   uint32_t inst_pc_{0};  // PC of the instruction currently executing
   uint32_t start_address_{0};
 };

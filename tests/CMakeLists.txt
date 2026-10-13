@@ -18,6 +18,7 @@ add_executable(easym68k-sim-tests
   sim/interrupt_test.cc
   sim/cycle_test.cc
   sim/execution_logger_test.cc
+  sim/observer_test.cc
 )
 target_link_libraries(easym68k-sim-tests PRIVATE easym68k-sim GTest::gtest_main GTest::gmock)
 add_test(NAME sim-tests COMMAND easym68k-sim-tests)

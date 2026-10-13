@@ -173,7 +173,10 @@ Decision: Trap #15 task 32 subtask 5 sets the core flag directly (works without 
 Decision: Four execution log modes (Off / Instructions / Instructions+Registers / Instructions+Registers+Memory) instead of the plan's three, matching the original's Execution Log Type options; output logging is a separate switch (original Output Log Type).
 Decision: The logger is called before the instruction executes, with pre-execution state, and the memory dump comes before the instruction line — the original's log layout (RUN.CPP exec_inst()). Plan test 5 was adapted accordingly (pre- instead of post-execution state); plan test 12's "12 calls for 10 steps" is a typo and tests 10.
 Decision: The core logs every executed instruction while a mode is set. The original only logs while tracing (Step/Trace/Auto Trace, not Run); the Sim68K GUI must reproduce that by enabling the mode only in trace mode (parity audit G10). Echoed keyboard input is logged by the ITextIO back end (13.9), which sees the echo, as simIOu.cpp charOut() did.
-| 9.5 Event/Observer System | TODO | | |
+| 9.5 Event/Observer System | DONE | `pending` | isim_observer.h (SimEventType/SimEvent/ISimObserver); Add/RemoveObserver; events for instruction executed, breakpoint, exception (with vector + IRQ level), interrupt requested, halted, stopped, resumed; removal-safe delivery; 16 ObserverTest (655 sim tests; ASan+UBSan clean) |
+
+Decision: All observer callbacks run on the simulator thread. Interrupt() may be called from any thread, so kInterruptRequested and kResumed are recorded atomically and delivered at the start of the next Step(); events recorded while no observer is registered are dropped, and Reset() clears them.
+Decision: kInstructionExecuted is emitted right after execution (before any kExceptionRaised the instruction causes); kExceptionRaised carries the vector number (and IRQ level for interrupts) so the GUI can reproduce the original's per-exception messages. STOP emits kStopped instead of kHalted.
 | 9.6 Core Integration Test | TODO | | |
 | 9.7 Address/Bus Error Class 0 Exception Frame (parity S3) | TODO | | |
 | 9.8 Bit-Field Instructions in Simulator (parity S8) | TODO | | |
@@ -246,4 +249,4 @@ Decision: Refactored `ListLine` to use type-safe metadata structure (`left_colum
 
 Decision: Replicated exact S0/S1/S2/S3/S8 Motorola format with memory map S0 records. S8 termination address formats to 24-bit to match Borland. S0 checksum calculated programmatically to avoid hardcoded mismatch. SRecordGenerator buffers bytes to output SRECSIZE=36 records.
 
-**NEXT:** Task 9.5 — Event/Observer System
+**NEXT:** Task 9.6 — Core Integration Test

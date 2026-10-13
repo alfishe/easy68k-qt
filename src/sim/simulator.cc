@@ -33,6 +33,8 @@ void M68kSimulator::Reset() {
   state_.stopped = false;
   stop_requested_.store(false, std::memory_order_relaxed);
   pending_irqs_.store(0, std::memory_order_relaxed);
+  async_irq_events_.store(0, std::memory_order_relaxed);
+  async_resumed_event_.store(false, std::memory_order_relaxed);
 }
 
 // =============================================================================
@@ -130,6 +132,11 @@ void M68kSimulator::HandleException(ExceptionVector vector) {
   state_.sr &= static_cast<uint16_t>(~kSrTrace);
   uint32_t vec_addr = static_cast<uint32_t>(vector) * 4;
   state_.pc = memory_.ReadLong(vec_addr).value & kAddressMask;
+  if (!observers_.empty()) {
+    SimEvent ev{SimEventType::kExceptionRaised, inst_pc_, SimResult::kOk};
+    ev.vector = static_cast<int>(vector);
+    Notify(ev);
+  }
 }
 
 // =============================================================================
@@ -137,6 +144,10 @@ void M68kSimulator::HandleException(ExceptionVector vector) {
 // =============================================================================
 
 SimResult M68kSimulator::Step() {
+  if (async_irq_events_.load(std::memory_order_relaxed) != 0 ||
+      async_resumed_event_.load(std::memory_order_relaxed))
+    DeliverAsyncEvents();  // drains even with no observers registered
+
   if (state_.halted)
     return SimResult::kHalted;
 
@@ -173,6 +184,8 @@ SimResult M68kSimulator::Step() {
   }
 
   SimResult result = ExecuteInstruction(opcode);
+  if (!observers_.empty())
+    Notify(SimEventType::kInstructionExecuted, inst_pc_, result);
 
   if (!exceptions_enabled_.load(std::memory_order_relaxed)) {
     // RUN.CPP runprog(), "exception processing not enabled": every exception
@@ -182,6 +195,7 @@ SimResult M68kSimulator::Step() {
       state_.stopped = true;
     if (result != SimResult::kOk)
       state_.halted = true;
+    NotifyHaltOrStop(result);
     return result;
   }
 
@@ -242,7 +256,14 @@ SimResult M68kSimulator::Step() {
       break;
   }
 
+  NotifyHaltOrStop(result);
   return result;
+}
+
+void M68kSimulator::NotifyHaltOrStop(SimResult result) {
+  if (observers_.empty() || !state_.halted)
+    return;
+  Notify(state_.stopped ? SimEventType::kStopped : SimEventType::kHalted, inst_pc_, result);
 }
 
 // =============================================================================
@@ -254,8 +275,11 @@ SimResult M68kSimulator::Run(int max_instructions) {
   SimResult result = SimResult::kOk;
 
   while (!stop_requested_.load(std::memory_order_relaxed) && !state_.halted) {
-    if (HasBreakpoint(state_.pc))
+    if (HasBreakpoint(state_.pc)) {
+      if (!observers_.empty())
+        Notify(SimEventType::kBreakpointHit, state_.pc);
       break;
+    }
     result = Step();
     if (result != SimResult::kOk)
       break;
@@ -333,6 +357,8 @@ void M68kSimulator::Interrupt(int level) {
 
   // Set bit atomically
   pending_irqs_.fetch_or(static_cast<uint8_t>(1 << (level - 1)));
+  // Observer events are delivered on the simulator thread (next Step()).
+  async_irq_events_.fetch_or(static_cast<uint8_t>(1 << (level - 1)));
 
   // Wake from STOP if not masked (only when interrupts can be serviced)
   if (state_.stopped && exceptions_enabled_.load(std::memory_order_relaxed)) {
@@ -340,6 +366,7 @@ void M68kSimulator::Interrupt(int level) {
     if (level == 7 || level > current_mask) {
       state_.stopped = false;
       state_.halted = false;
+      async_resumed_event_.store(true);
     }
   }
 }
@@ -396,6 +423,74 @@ void M68kSimulator::HandleIrq(int level) {
 
   // Add 34 cycles penalty (RUN.CPP irqHandler() inc_cyc(34))
   IncrementCycles(kCyclesIrq);
+
+  if (!observers_.empty()) {
+    SimEvent ev{SimEventType::kExceptionRaised, state_.pc, SimResult::kOk};
+    ev.interrupt_level = level;
+    ev.vector = 24 + level;  // autovector
+    Notify(ev);
+  }
+}
+
+// =============================================================================
+// Observers
+// =============================================================================
+
+void M68kSimulator::AddObserver(ISimObserver* observer) {
+  if (observer == nullptr)
+    return;
+  for (ISimObserver* o : observers_) {
+    if (o == observer)
+      return;
+  }
+  observers_.push_back(observer);
+}
+
+void M68kSimulator::RemoveObserver(ISimObserver* observer) {
+  for (auto& o : observers_) {
+    if (o == observer) {
+      o = nullptr;  // never erase during delivery; compact afterwards
+      observers_dirty_ = true;
+    }
+  }
+  if (notify_depth_ == 0 && observers_dirty_) {
+    observers_.erase(std::remove(observers_.begin(), observers_.end(), nullptr), observers_.end());
+    observers_dirty_ = false;
+  }
+}
+
+void M68kSimulator::Notify(const SimEvent& event) {
+  ++notify_depth_;
+  // Fixed bound: observers added during delivery get the next event.
+  const size_t n = observers_.size();
+  for (size_t i = 0; i < n; ++i) {
+    if (observers_[i] != nullptr)
+      observers_[i]->OnEvent(event);
+  }
+  if (--notify_depth_ == 0 && observers_dirty_) {
+    observers_.erase(std::remove(observers_.begin(), observers_.end(), nullptr), observers_.end());
+    observers_dirty_ = false;
+  }
+}
+
+void M68kSimulator::Notify(SimEventType type, uint32_t pc, SimResult result) {
+  Notify(SimEvent{type, pc, result});
+}
+
+void M68kSimulator::DeliverAsyncEvents() {
+  uint8_t levels = async_irq_events_.exchange(0);
+  bool resumed = async_resumed_event_.exchange(false);
+  if (observers_.empty())
+    return;
+  for (int lvl = 1; lvl <= 7; ++lvl) {
+    if (levels & (1 << (lvl - 1))) {
+      SimEvent ev{SimEventType::kInterruptRequested, state_.pc, SimResult::kOk};
+      ev.interrupt_level = lvl;
+      Notify(ev);
+    }
+  }
+  if (resumed)
+    Notify(SimEventType::kResumed, state_.pc);
 }
 
 }  // namespace easym68k::sim

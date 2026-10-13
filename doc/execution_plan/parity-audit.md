@@ -37,7 +37,7 @@ tests), all 27 GUI source files are still 1-line stubs.
 | S13 | PC breakpoints | BPoint.cpp | Done (core) | 4.1 |
 | S14 | **Advanced breakpoints**: register conditions (D0-D7/A0-A7/PC, ==, !=, >, >=, <, <=, size B/W/L), memory conditions (address, value, R/W/Read/Write, size), expression builder (AND/OR/parentheses, pass count, ON/OFF) | BREAKPOINTSu.cpp, BPoint*.cpp | **Gap**: not in plan | **NEW 9.9** (core engine) + **NEW 13.22** (dialog) |
 | S15 | Step Over (skip into BSR/JSR), Trace Into, Run To Cursor, Auto Trace | SIM68Ku.cpp, CODE8.CPP stepToAddr | Partial: Step/Run only | **NEW 9.10** (step-over / run-to core API) |
-| S16 | Event/observer hooks for GUI | — (new) | Gap | 9.5 |
+| S16 | Event/observer hooks for GUI | — (new) | Done | 9.5 |
 
 ## 2. Assembler (`easym68k-asm`)
 
