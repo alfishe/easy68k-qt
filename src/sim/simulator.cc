@@ -13,7 +13,11 @@
 
 namespace easym68k::sim {
 
-M68kSimulator::M68kSimulator(Config config) : config_(config), pending_irqs_(0) {}
+M68kSimulator::M68kSimulator(Config config)
+    : config_(config),
+      pending_irqs_(0),
+      simhalt_enabled_(config.simhalt_enabled),
+      exceptions_enabled_(config.exceptions_enabled) {}
 
 // =============================================================================
 // Reset
@@ -135,9 +139,10 @@ SimResult M68kSimulator::Step() {
   if (state_.halted)
     return SimResult::kHalted;
 
-  // Check for pending non-masked interrupts before fetching
+  // Check for pending non-masked interrupts before fetching. Interrupts are
+  // only serviced while exception processing is enabled (RUN.CPP).
   uint8_t mask = pending_irqs_.load(std::memory_order_relaxed);
-  if (mask != 0) {
+  if (mask != 0 && exceptions_enabled_.load(std::memory_order_relaxed)) {
     int current_mask = state_.GetInterruptMask();
     for (int lvl = 7; lvl >= 1; --lvl) {
       if ((mask & (1 << (lvl - 1))) != 0) {
@@ -154,6 +159,17 @@ SimResult M68kSimulator::Step() {
 
   uint16_t opcode = FetchWord();
   SimResult result = ExecuteInstruction(opcode);
+
+  if (!exceptions_enabled_.load(std::memory_order_relaxed)) {
+    // RUN.CPP runprog(), "exception processing not enabled": every exception
+    // condition halts the program; no stack frame, no exception cycles, and
+    // the trace bit is ignored.
+    if (result == SimResult::kStopInstruction)
+      state_.stopped = true;
+    if (result != SimResult::kOk)
+      state_.halted = true;
+    return result;
+  }
 
   // Exception cycle counts follow RUN.CPP runprog() exception processing.
   switch (result) {
@@ -304,8 +320,8 @@ void M68kSimulator::Interrupt(int level) {
   // Set bit atomically
   pending_irqs_.fetch_or(static_cast<uint8_t>(1 << (level - 1)));
 
-  // Wake from STOP if not masked
-  if (state_.stopped) {
+  // Wake from STOP if not masked (only when interrupts can be serviced)
+  if (state_.stopped && exceptions_enabled_.load(std::memory_order_relaxed)) {
     int current_mask = state_.GetInterruptMask();
     if (level == 7 || level > current_mask) {
       state_.stopped = false;
@@ -320,6 +336,26 @@ uint8_t M68kSimulator::GetPendingIrqs() const {
 
 void M68kSimulator::ClearPendingIrqs() {
   pending_irqs_.store(0, std::memory_order_relaxed);
+}
+
+// =============================================================================
+// Runtime toggles
+// =============================================================================
+
+void M68kSimulator::SetSimhaltEnabled(bool enabled) {
+  simhalt_enabled_.store(enabled, std::memory_order_relaxed);
+}
+
+bool M68kSimulator::IsSimhaltEnabled() const {
+  return simhalt_enabled_.load(std::memory_order_relaxed);
+}
+
+void M68kSimulator::SetExceptionsEnabled(bool enabled) {
+  exceptions_enabled_.store(enabled, std::memory_order_relaxed);
+}
+
+bool M68kSimulator::IsExceptionsEnabled() const {
+  return exceptions_enabled_.load(std::memory_order_relaxed);
 }
 
 void M68kSimulator::HandleIrq(int level) {

@@ -5,6 +5,8 @@
 
 #include <gtest/gtest.h>
 
+#include <initializer_list>
+
 namespace easym68k::sim {
 namespace {
 
@@ -320,6 +322,146 @@ TEST_F(SimTest, HandleExceptionSupervisorSwitch) {
 
   EXPECT_TRUE(sim_.State().IsSupervisor());
   EXPECT_FALSE(sim_.State().GetFlag(kSrTrace));
+}
+
+// ===========================================================================
+// Task 9.3 — SIMHALT configuration and exception toggle
+// ===========================================================================
+
+class SimConfigTest : public ::testing::Test {
+ protected:
+  static constexpr uint32_t kStack = 0x8000;
+  static constexpr uint32_t kCode = 0x1000;
+  static constexpr uint32_t kHandler = 0x3000;
+
+  // Clears memory, installs reset vectors and the given program, and resets.
+  static void Load(M68kSimulator& sim, std::initializer_list<uint16_t> words) {
+    Memory& m = sim.GetMemory();
+    m.Clear();
+    m.WriteLong(0x0, kStack);
+    m.WriteLong(0x4, kCode);
+    uint32_t addr = kCode;
+    for (uint16_t w : words) {
+      m.WriteWord(addr, w);
+      addr += 2;
+    }
+    sim.ClearPendingIrqs();
+    sim.Reset();
+  }
+
+  static M68kSimulator::Config Cfg(bool simhalt, bool exceptions) {
+    M68kSimulator::Config c;
+    c.simhalt_enabled = simhalt;
+    c.exceptions_enabled = exceptions;
+    return c;
+  }
+};
+
+TEST_F(SimConfigTest, ConfigDefaultsBothEnabled) {
+  M68kSimulator::Config c;
+  EXPECT_TRUE(c.simhalt_enabled);
+  EXPECT_TRUE(c.exceptions_enabled);
+  M68kSimulator sim{c};
+  EXPECT_TRUE(sim.IsSimhaltEnabled());
+  EXPECT_TRUE(sim.IsExceptionsEnabled());
+}
+
+TEST_F(SimConfigTest, SimhaltEnabledHalts) {
+  M68kSimulator sim{Cfg(true, true)};
+  Load(sim, {0xFFFF, 0xFFFF});
+  EXPECT_EQ(sim.Step(), SimResult::kHalted);
+  EXPECT_TRUE(sim.State().halted);
+}
+
+TEST_F(SimConfigTest, SimhaltDisabledReturnsLineF) {
+  M68kSimulator sim{Cfg(false, true)};
+  Load(sim, {0xFFFF, 0xFFFF});
+  sim.GetMemory().WriteLong(0x2C, kHandler);
+  EXPECT_EQ(sim.Step(), SimResult::kLine1111);
+}
+
+TEST_F(SimConfigTest, SimhaltDisabledTriggersException) {
+  M68kSimulator sim{Cfg(false, true)};
+  Load(sim, {0xFFFF, 0xFFFF});
+  sim.GetMemory().WriteLong(0x2C, kHandler);
+  sim.Step();
+  EXPECT_FALSE(sim.State().halted);
+  EXPECT_EQ(sim.State().pc, kHandler);
+  EXPECT_EQ(sim.State().ssp, kStack - 6);  // class 2 frame: SR + PC
+  EXPECT_EQ(sim.State().cycles, 34u);
+}
+
+TEST_F(SimConfigTest, SimhaltToggleAtRuntime) {
+  M68kSimulator sim{Cfg(true, true)};
+  Load(sim, {0xFFFF, 0xFFFF});
+  sim.GetMemory().WriteLong(0x2C, kHandler);
+  sim.SetSimhaltEnabled(false);
+  EXPECT_FALSE(sim.IsSimhaltEnabled());
+  EXPECT_EQ(sim.Step(), SimResult::kLine1111);
+
+  Load(sim, {0xFFFF, 0xFFFF});
+  sim.SetSimhaltEnabled(true);
+  EXPECT_EQ(sim.Step(), SimResult::kHalted);
+}
+
+TEST_F(SimConfigTest, ExceptionsEnabledProcessesIllegal) {
+  M68kSimulator sim{Cfg(true, true)};
+  Load(sim, {0x4AFC});  // ILLEGAL
+  sim.GetMemory().WriteLong(0x10, kHandler);
+  EXPECT_EQ(sim.Step(), SimResult::kBadInstruction);
+  EXPECT_EQ(sim.State().pc, kHandler);
+  EXPECT_FALSE(sim.State().halted);
+}
+
+TEST_F(SimConfigTest, ExceptionsDisabledHaltsOnIllegal) {
+  M68kSimulator sim{Cfg(true, false)};
+  Load(sim, {0x4AFC});  // ILLEGAL
+  sim.GetMemory().WriteLong(0x10, kHandler);
+  EXPECT_EQ(sim.Step(), SimResult::kBadInstruction);
+  EXPECT_TRUE(sim.State().halted);      // RUN.CPP: "Execution halted"
+  EXPECT_NE(sim.State().pc, kHandler);  // not vectored
+  EXPECT_EQ(sim.State().ssp, kStack);   // no stack frame
+  EXPECT_EQ(sim.State().cycles, 0u);    // no exception cycles
+}
+
+TEST_F(SimConfigTest, ExceptionsDisabledSkipPrivilege) {
+  M68kSimulator sim{Cfg(true, false)};
+  Load(sim, {0x46FC, 0x2700});  // MOVE #$2700,SR
+  sim.State().sr = 0x0000;      // user mode
+  sim.GetMemory().WriteLong(0x20, kHandler);
+  EXPECT_EQ(sim.Step(), SimResult::kPrivilegeViolation);
+  EXPECT_TRUE(sim.State().halted);
+  EXPECT_NE(sim.State().pc, kHandler);
+  EXPECT_FALSE(sim.State().IsSupervisor());
+}
+
+TEST_F(SimConfigTest, ExceptionsDisabledIgnoresTrace) {
+  M68kSimulator sim{Cfg(true, false)};
+  Load(sim, {0x4E71});  // NOP
+  sim.State().SetFlag(kSrTrace, true);
+  sim.GetMemory().WriteLong(0x24, kHandler);
+  EXPECT_EQ(sim.Step(), SimResult::kOk);
+  EXPECT_EQ(sim.State().pc, kCode + 2);
+  EXPECT_FALSE(sim.State().halted);
+}
+
+TEST_F(SimConfigTest, ExceptionsDisabledIgnoresInterrupts) {
+  M68kSimulator sim{Cfg(true, false)};
+  Load(sim, {0x4E71});
+  sim.GetMemory().WriteLong((24 + 7) * 4, kHandler);
+  sim.Interrupt(7);
+  EXPECT_EQ(sim.Step(), SimResult::kOk);
+  EXPECT_EQ(sim.State().pc, kCode + 2);      // NOP executed, IRQ not serviced
+  EXPECT_EQ(sim.GetPendingIrqs(), 1u << 6);  // still pending
+}
+
+TEST_F(SimConfigTest, Trap15Task32Sub5ReenablesExceptionsHeadless) {
+  M68kSimulator sim{Cfg(true, false)};  // no sim_env configured
+  Load(sim, {0x4E4F});                  // TRAP #15
+  sim.State().d[0] = 32;
+  sim.State().d[1] = 5;
+  EXPECT_EQ(sim.Step(), SimResult::kOk);
+  EXPECT_TRUE(sim.IsExceptionsEnabled());
 }
 
 }  // namespace

@@ -404,7 +404,8 @@ SimResult M68kSimulator::DispatchGroupE(uint16_t opcode) {
 // =============================================================================
 
 SimResult M68kSimulator::DispatchSimhalt(uint16_t opcode) {
-  if (opcode == 0xFFFF) {
+  // CODE9.CPP LINE1111(): SIMHALT only when simhalt_on; otherwise Line F.
+  if (opcode == 0xFFFF && simhalt_enabled_.load(std::memory_order_relaxed)) {
     uint16_t next_word = FetchWord();
     if (next_word == 0xFFFF) {
       return SimResult::kHalted;

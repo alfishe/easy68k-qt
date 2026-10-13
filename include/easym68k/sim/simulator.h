@@ -49,6 +49,15 @@ class M68kSimulator {
     ISimulatorEnv* sim_env = nullptr;
     IPrintIO* print_io = nullptr;
     ILogger* logger = nullptr;
+
+    // SIMHALT ($FFFF $FFFF) halts the simulator when true; when false it is a
+    // Line 1111 exception (`*[sim68k]simhalt_off`, SIM68Ku.cpp).
+    bool simhalt_enabled = true;
+
+    // Exception processing (Options > Enable Exceptions). When false, any
+    // exception condition halts the simulator instead of vectoring, trace is
+    // ignored and interrupts are not serviced (RUN.CPP runprog()).
+    bool exceptions_enabled = true;
   };
 
   explicit M68kSimulator(Config config);
@@ -80,6 +89,13 @@ class M68kSimulator {
 
   // Clear all pending interrupts.
   void ClearPendingIrqs();
+
+  // Runtime toggles, initialised from Config. Thread-safe; the simulator owns
+  // these flags (Trap #15 task 32 subtask 5 re-enables exceptions directly).
+  void SetSimhaltEnabled(bool enabled);
+  bool IsSimhaltEnabled() const;
+  void SetExceptionsEnabled(bool enabled);
+  bool IsExceptionsEnabled() const;
 
   // State and memory accessors
   CpuState& State() { return state_; }
@@ -233,6 +249,8 @@ class M68kSimulator {
   std::vector<Breakpoint> breakpoints_;
   std::atomic<bool> stop_requested_{false};
   std::atomic<uint8_t> pending_irqs_{0};
+  std::atomic<bool> simhalt_enabled_{true};
+  std::atomic<bool> exceptions_enabled_{true};
   uint32_t inst_pc_{0};  // PC of the instruction currently executing
   uint32_t start_address_{0};
 };

@@ -320,6 +320,15 @@ SimResult M68kSimulator::DispatchTrap15() {
       break;
 
     case kTrap15Hardware:  // 32: hardware subtasks via D1.B
+      if (static_cast<uint8_t>(state_.d[1]) == 5) {
+        // CODE9.CPP: `exceptions = true` — the flag is owned by the core, so
+        // this works headless. sim_env is notified so a GUI can update its
+        // menu check mark and saved settings.
+        SetExceptionsEnabled(true);
+        if (config_.sim_env)
+          config_.sim_env->SetExceptionsEnabled(true);
+        break;
+      }
       if (!config_.sim_env)
         break;
       switch (static_cast<uint8_t>(state_.d[1])) {
@@ -338,8 +347,7 @@ SimResult M68kSimulator::DispatchTrap15() {
         case 4:
           state_.d[1] = config_.sim_env->GetVersion();
           break;
-        case 5:
-          config_.sim_env->SetExceptionsEnabled(true);
+        case 5:  // handled above (works without sim_env)
           break;
         case 6:
           config_.sim_env->SetAutoIRQ(static_cast<uint8_t>(state_.d[2]), state_.d[3]);

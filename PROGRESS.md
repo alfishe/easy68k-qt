@@ -164,7 +164,10 @@ Decision: Trap #15 tasks 30/31 now read/clear `state_.cycles` directly (as CODE9
 Decision: Shift cycle count uses the port's (PRM-correct, modulo-64) shift count, not the original's buggy `& size` count, so timing matches the shift actually performed.
 Decision: On instructions that end with `return WriteEA(...)`, cycles are added before the write. Write failures halt the simulator, so ordering on the error path is not observable.
 Decision: `asm-tests` is registered with `WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}` so the golden test finds `data/golden/asm` under ctest.
-| 9.3 SIMHALT Config & Exception Toggle | TODO | | |
+| 9.3 SIMHALT Config & Exception Toggle | DONE | `pending` | Config.simhalt_enabled/exceptions_enabled + thread-safe runtime setters owned by the core; SIMHALT off → Line F; exceptions off → halt (no frame/cycles), trace and IRQs ignored; Trap #15 32/5 re-enables headless; 11 SimConfigTest (621 sim tests) |
+
+Decision: With exceptions disabled the port halts on any exception condition, matching RUN.CPP's "exception processing not enabled" branch ("... Execution halted"). The plan's wording ("return result without exception processing") is satisfied, and the simulator additionally stops, as the original does. Trace and interrupts are only processed when exceptions are enabled, as in the original.
+Decision: Trap #15 task 32 subtask 5 sets the core flag directly (works without sim_env) and then notifies `ISimulatorEnv::SetExceptionsEnabled(true)` so a GUI can update its menu and settings.
 | 9.4 Execution Logging Interface | TODO | | |
 | 9.5 Event/Observer System | TODO | | |
 | 9.6 Core Integration Test | TODO | | |
@@ -239,4 +242,4 @@ Decision: Refactored `ListLine` to use type-safe metadata structure (`left_colum
 
 Decision: Replicated exact S0/S1/S2/S3/S8 Motorola format with memory map S0 records. S8 termination address formats to 24-bit to match Borland. S0 checksum calculated programmatically to avoid hardcoded mismatch. SRecordGenerator buffers bytes to output SRECSIZE=36 records.
 
-**NEXT:** Task 9.3 — SIMHALT Config & Exception Toggle
+**NEXT:** Task 9.4 — Execution Logging Interface
