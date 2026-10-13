@@ -12,6 +12,8 @@ namespace easym68k::sim {
 // TRAP #n — generate trap exception (vector kTrap0 + n)
 // Opcode: 0100 1110 0100 nnnn  n = 0..15
 // Step() extracts n from (opcode & 0x0F) when handling kTrapException.
+// Cycles: TRAP #0-#14 cost 38 (added by Step()). TRAP #15 is handled by the
+// simulator itself and adds no cycles, matching CODE9.CPP TRAP().
 // ---------------------------------------------------------------------------
 
 SimResult M68kSimulator::OpTrap(uint16_t opcode) {
@@ -29,6 +31,7 @@ SimResult M68kSimulator::OpTrap(uint16_t opcode) {
 SimResult M68kSimulator::OpTrapV(uint16_t /*opcode*/) {
   if (state_.GetFlag(kSrOverflow))
     return SimResult::kTrapVException;
+  IncrementCycles(4);  // CODE9.CPP TRAPV: inc_cyc(4) only when no trap
   return SimResult::kOk;
 }
 
@@ -49,6 +52,7 @@ SimResult M68kSimulator::OpIllegal(uint16_t /*opcode*/) {
 SimResult M68kSimulator::OpReset(uint16_t /*opcode*/) {
   if (!state_.IsSupervisor())
     return SimResult::kPrivilegeViolation;
+  IncrementCycles(132);  // CODE9.CPP RESET: inc_cyc(132)
   return SimResult::kOk;
 }
 
@@ -65,6 +69,7 @@ SimResult M68kSimulator::OpReset(uint16_t /*opcode*/) {
 // ---------------------------------------------------------------------------
 
 SimResult M68kSimulator::OpStop(uint16_t /*opcode*/) {
+  IncrementCycles(4);             // CODE9.CPP STOP: inc_cyc(4) before any checks
   uint16_t new_sr = FetchWord();  // always fetched, even on privilege violation
 
   if (!state_.IsSupervisor())

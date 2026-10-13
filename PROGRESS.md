@@ -106,6 +106,7 @@ Decision: STOP fully ported from CODE9.CPP: immediate word fetched before privil
 Decision: `DecodeTest.BtstDynamic` was a Phase 5 stub expecting `kBadInstruction`; updated to expect `kOk` now that BTST is implemented.
 Decision: ROL/ROR preserve X by saving `orig_x` before `UpdateFlagsShift` and restoring after (type==3). ASL V flag tracked per-iteration via `prev` variable.
 Decision: Register shift count uses `% 64` (not `& sizeMask`) — the original's mask was a bug (count 1–7 become 0 for byte/word shifts). The port uses the correct M68000 PRM modulo-64 behaviour.
+| 6.6 Shift/Rotate Instructions | REWORK | `pending` | Register-form i/r bit (bit 5) was decoded inverted: 1 is register count, 0 is immediate (M68000 PRM, CODE7.CPP `if (inst & 0x20)`). Assembled programs (e.g. ASL.B #2,D0 = $E500) shifted by the wrong count. Fixed OpShiftRotate; corrected 30 hand-encoded opcodes in ShiftTest/InstrFlagTest; added 2 regression tests |
 | 6.7 Flag Computation Verification Suite | DONE | `5645127` | 64 end-to-end InstrFlagTest cases: ADD/SUB/ADDX/SUBX/NEG/NEGX/CMP/TST/CLR/AND/OR/EOR/NOT/MOVE/shifts/MUL/EXT |
 
 ## Phase 7: Trap #15 Dispatch
@@ -152,7 +153,14 @@ Decision: CMP with immediate source is encoded as CMP (0xB0xx) not CMPI (0x0Cxx)
 | Task | Status | Commit | Summary |
 |------|--------|--------|---------|
 | 9.1 Interrupt Injection & Processing | DONE | `pending` | Thread-safe autovectored interrupts (levels 1-7); wake-on-interrupt; priority masking; 15 unit tests in tests/sim/interrupt_test.cc |
-| 9.2 Cycle Counting | TODO | | |
+| 9.2 Cycle Counting | DONE | `pending` | cycle_data.{h,cc} (EA penalty, MOVE/MOVEM tables, MULU/MULS 38+2n, exact DIVU/DIVS timing); IncrementCycles() in every opcode handler + exception processing; Trap #15 tasks 30/31 use core counter; 88 CycleTest/CycleDataTest (608 sim tests) |
+
+Decision: Cycle values are ported from the original EASy68K (RUN.CPP eff_addr() bwinc/linc, CODE1-CODE9.CPP inc_cyc()) rather than the simplified PRM table in the execution plan, since the quality gate is "match original ±1". Where they differ, the original wins: MOVE.W D0,(A0)=8 (plan: 12), MOVE.L (A0),D0=12 (plan: 8), LEA (A0),A1=4 (plan: 8), MULU/MULS=38+2n (plan: fixed 70), DIVU/DIVS use the exact Cwik timing routines (plan: fixed 140/158), TRAP #0-14=38 (plan: 34), TRAP #15 itself adds 0 cycles.
+Decision: MOVE/MOVEA/MOVEM/LEA/PEA/JMP/JSR call eff_addr() with add_times=false in the original; their tables already include EA time, so no EaCyclePenalty() is added for them.
+Decision: Trap #15 tasks 30/31 now read/clear `state_.cycles` directly (as CODE9.CPP does with the global `cycles`). `ISimulatorEnv::ClearCycles()/GetCycles()` were removed — the counter is owned by the core, not the environment.
+Decision: Shift cycle count uses the port's (PRM-correct, modulo-64) shift count, not the original's buggy `& size` count, so timing matches the shift actually performed.
+Decision: On instructions that end with `return WriteEA(...)`, cycles are added before the write. Write failures halt the simulator, so ordering on the error path is not observable.
+Decision: `asm-tests` is registered with `WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}` so the golden test finds `data/golden/asm` under ctest.
 | 9.3 SIMHALT Config & Exception Toggle | TODO | | |
 | 9.4 Execution Logging Interface | TODO | | |
 | 9.5 Event/Observer System | TODO | | |
@@ -217,4 +225,4 @@ Decision: Refactored `ListLine` to use type-safe metadata structure (`left_colum
 
 Decision: Replicated exact S0/S1/S2/S3/S8 Motorola format with memory map S0 records. S8 termination address formats to 24-bit to match Borland. S0 checksum calculated programmatically to avoid hardcoded mismatch. SRecordGenerator buffers bytes to output SRECSIZE=36 records.
 
-**NEXT:** Task 9.2 — Cycle Counting
+**NEXT:** Task 9.3 — SIMHALT Config & Exception Toggle

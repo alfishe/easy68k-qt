@@ -6,6 +6,7 @@
 // Ported from EASy68K/Sim68K/CODE1.CPP and CODE2.CPP.
 
 #include "easym68k/sim/addressing_mode.h"
+#include "easym68k/sim/cycle_data.h"
 #include "easym68k/sim/flag_computation.h"
 #include "easym68k/sim/simulator.h"
 
@@ -21,6 +22,8 @@ SimResult M68kSimulator::OpMovea(uint16_t opcode) {
   int src_reg = opcode & 0x7;
   int dst_reg = (opcode >> 9) & 0x7;
 
+  // CODE1.CPP MOVEA: table time (dest column An); eff_addr() add_times=false.
+  IncrementCycles(MoveCycles(EaCode(src_mode, src_reg), 1, size));
   EffectiveAddr src = CalcEA(src_mode, src_reg, size);
   uint32_t val = ReadEA(src, size);
 
@@ -57,9 +60,13 @@ SimResult M68kSimulator::OpMovem(uint16_t opcode) {
     addr = ea.address;
   }
 
+  // CODE1.CPP MOVEM: base time by EA code, plus 4 (word) / 8 (long) per register.
+  IncrementCycles(MovemCycles(EaCode(mode, areg), to_regs));
+
   for (int counter = 0; counter < 16; counter++) {
     if (!(mask & (1u << counter)))
       continue;
+    IncrementCycles(size == DataSize::kLong ? 8 : 4);
 
     if (predecrement) {
       // Reversed register mapping: counter 0=A7, 7=A0, 8=D7, 15=D0
@@ -143,6 +150,7 @@ SimResult M68kSimulator::OpMovep(uint16_t opcode) {
     else
       state_.d[dreg] = (state_.d[dreg] & 0xFFFF0000) | (result & 0xFFFF);
   }
+  IncrementCycles(is_long ? 24 : 16);  // CODE1.CPP MOVEP
   return SimResult::kOk;
 }
 
@@ -154,7 +162,12 @@ SimResult M68kSimulator::OpMoveFrSr(uint16_t opcode) {
   int mode = (opcode >> 3) & 0x7;
   int reg = opcode & 0x7;
   EffectiveAddr ea = CalcEA(mode, reg, DataSize::kWord);
-  return WriteEA(ea, state_.sr, DataSize::kWord);
+  IncrementCycles(EaCyclePenalty(ea, DataSize::kWord));
+  SimResult r = WriteEA(ea, state_.sr, DataSize::kWord);
+  if (r != SimResult::kOk)
+    return r;
+  IncrementCycles((opcode & 0x0030) ? 8 : 6);  // CODE1.CPP MOVE_FR_SR: 6 for Dn, else 8
+  return SimResult::kOk;
 }
 
 // ---------------------------------------------------------------------------
@@ -165,8 +178,10 @@ SimResult M68kSimulator::OpMoveToCcr(uint16_t opcode) {
   int mode = (opcode >> 3) & 0x7;
   int reg = opcode & 0x7;
   EffectiveAddr ea = CalcEA(mode, reg, DataSize::kWord);
+  IncrementCycles(EaCyclePenalty(ea, DataSize::kWord));
   uint32_t val = ReadEA(ea, DataSize::kWord);
   state_.sr = static_cast<uint16_t>((state_.sr & 0xFF00) | (val & 0x00FF));
+  IncrementCycles(12);  // CODE1.CPP MOVE_TO_CCR
   return SimResult::kOk;
 }
 
@@ -180,8 +195,10 @@ SimResult M68kSimulator::OpMoveToSr(uint16_t opcode) {
   int mode = (opcode >> 3) & 0x7;
   int reg = opcode & 0x7;
   EffectiveAddr ea = CalcEA(mode, reg, DataSize::kWord);
+  IncrementCycles(EaCyclePenalty(ea, DataSize::kWord));
   uint32_t val = ReadEA(ea, DataSize::kWord);
   state_.sr = static_cast<uint16_t>(val);
+  IncrementCycles(12);  // CODE1.CPP MOVE_TO_SR
   return SimResult::kOk;
 }
 
@@ -200,6 +217,7 @@ SimResult M68kSimulator::OpMoveUsp(uint16_t opcode) {
     // USP ← An: store address register into user SP (a[7])
     state_.a[7] = state_.GetAReg(reg);
   }
+  IncrementCycles(4);  // CODE1.CPP MOVE_USP
   return SimResult::kOk;
 }
 
@@ -232,6 +250,7 @@ SimResult M68kSimulator::OpExg(uint16_t opcode) {
     default:
       return SimResult::kBadInstruction;
   }
+  IncrementCycles(6);  // CODE2.CPP EXG
   return SimResult::kOk;
 }
 
@@ -246,6 +265,24 @@ SimResult M68kSimulator::OpLea(uint16_t opcode) {
   // Use kByte to avoid even-address requirement on the EA calculation itself.
   EffectiveAddr ea = CalcEA(src_mode, src_reg, DataSize::kByte);
   state_.SetAReg(dst_reg, ea.address);
+  // CODE2.CPP LEA: per-EA-code time; eff_addr_noread() add_times=false.
+  switch (EaCode(src_mode, src_reg)) {
+    case 0x02:
+      IncrementCycles(4);
+      break;
+    case 0x05:
+    case 0x07:
+    case 0x09:
+      IncrementCycles(8);
+      break;
+    case 0x06:
+    case 0x08:
+    case 0x0A:
+      IncrementCycles(12);
+      break;
+    default:
+      break;
+  }
   return SimResult::kOk;
 }
 
@@ -261,6 +298,24 @@ SimResult M68kSimulator::OpPea(uint16_t opcode) {
   uint32_t sp = state_.GetSP() - 4;
   state_.SetSP(sp);
   memory_.WriteLong(sp & kAddressMask, ea.address);
+  // CODE2.CPP PEA: per-EA-code time; eff_addr_noread() add_times=false.
+  switch (EaCode(src_mode, src_reg)) {
+    case 0x02:
+      IncrementCycles(12);
+      break;
+    case 0x05:
+    case 0x07:
+    case 0x09:
+      IncrementCycles(16);
+      break;
+    case 0x06:
+    case 0x08:
+    case 0x0A:
+      IncrementCycles(20);
+      break;
+    default:
+      break;
+  }
   return SimResult::kOk;
 }
 
@@ -277,6 +332,7 @@ SimResult M68kSimulator::OpLink(uint16_t opcode) {
   memory_.WriteLong(sp & kAddressMask, state_.a[reg]);  // push raw a[reg]
   state_.a[reg] = sp;                                   // set raw a[reg] = SP
   state_.SetSP(sp + static_cast<uint32_t>(disp));
+  IncrementCycles(16);  // CODE2.CPP LINK
   return SimResult::kOk;
 }
 
@@ -289,6 +345,7 @@ SimResult M68kSimulator::OpUnlk(uint16_t opcode) {
   state_.SetSP(state_.a[reg]);
   state_.a[reg] = memory_.ReadLong(state_.GetSP() & kAddressMask).value;
   state_.SetSP(state_.GetSP() + 4);
+  IncrementCycles(12);  // CODE2.CPP UNLK
   return SimResult::kOk;
 }
 
@@ -302,6 +359,7 @@ SimResult M68kSimulator::OpSwap(uint16_t opcode) {
   val = ((val & 0x0000FFFF) << 16) | ((val & 0xFFFF0000) >> 16);
   state_.d[reg] = val;
   UpdateFlagsMove(state_, val, DataSize::kLong);
+  IncrementCycles(4);  // CODE7.CPP SWAP
   return SimResult::kOk;
 }
 

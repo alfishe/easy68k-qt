@@ -1,6 +1,7 @@
 add_library(easym68k-sim STATIC
   memory.cc
   addressing_mode.cc
+  cycle_data.cc
   flag_computation.cc
   simulator.cc
   decode.cc

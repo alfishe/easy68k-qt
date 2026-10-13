@@ -309,16 +309,14 @@ SimResult M68kSimulator::DispatchTrap15() {
 
       // ---- SIMULATOR ENVIRONMENT -------------------------------------------
 
+    // Tasks 30/31 operate on the core's own cycle counter (CODE9.CPP TRAP()
+    // reads/writes the global `cycles` directly), so no sim_env is required.
     case kTrap15ClearCycles:  // 30: clear cycle counter
-      if (!config_.sim_env)
-        break;
-      config_.sim_env->ClearCycles();
+      state_.cycles = 0;
       break;
 
     case kTrap15GetCycles:  // 31: D1.L = cycle counter (0 if overflow)
-      if (!config_.sim_env)
-        break;
-      state_.d[1] = config_.sim_env->GetCycles();
+      state_.d[1] = (state_.cycles > 0xFFFFFFFFull) ? 0u : static_cast<uint32_t>(state_.cycles);
       break;
 
     case kTrap15Hardware:  // 32: hardware subtasks via D1.B

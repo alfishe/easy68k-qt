@@ -16,6 +16,7 @@ add_executable(easym68k-sim-tests
   sim/trap15_mock_test.cc
   sim/golden_trace_test.cc
   sim/interrupt_test.cc
+  sim/cycle_test.cc
 )
 target_link_libraries(easym68k-sim-tests PRIVATE easym68k-sim GTest::gtest_main GTest::gmock)
 add_test(NAME sim-tests COMMAND easym68k-sim-tests)
@@ -39,4 +40,5 @@ add_executable(easym68k-asm-tests
   asm/golden_assembly_test.cc
 )
 target_link_libraries(easym68k-asm-tests PRIVATE easym68k-asm GTest::gtest_main)
-add_test(NAME asm-tests COMMAND easym68k-asm-tests)
+add_test(NAME asm-tests COMMAND easym68k-asm-tests
+         WORKING_DIRECTORY ${CMAKE_SOURCE_DIR})

@@ -107,6 +107,9 @@ class M68kSimulator {
  private:
   SimResult ExecuteInstruction(uint16_t opcode);
 
+  // Adds count to the machine cycle counter (port of UTILS.CPP inc_cyc()).
+  void IncrementCycles(uint64_t count) { state_.cycles += count; }
+
   // EA wrappers that use state_.pc and state_ implicitly.
   EffectiveAddr CalcEA(int mode, int reg, DataSize size);
   uint32_t ReadEA(const EffectiveAddr& ea, DataSize size);

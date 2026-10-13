@@ -8,6 +8,7 @@
 // Primary source: EASy68K/Sim68K/RUN.CPP exec_inst(), CODE1.CPP–CODE8.CPP.
 
 #include "easym68k/sim/addressing_mode.h"
+#include "easym68k/sim/cycle_data.h"
 #include "easym68k/sim/flag_computation.h"
 #include "easym68k/sim/simulator.h"
 
@@ -138,6 +139,9 @@ SimResult M68kSimulator::OpMove(uint16_t opcode) {
   SimResult r = WriteEA(dst, val, DataSize::kByte);
   if (r != SimResult::kOk)
     return r;
+  // CODE1.CPP MOVE: table-driven time; eff_addr() called with add_times=false.
+  IncrementCycles(
+      MoveCycles(EaCode(src_mode, src_reg), EaCode(dst_mode, dst_reg), DataSize::kByte));
   UpdateFlagsMove(state_, val, DataSize::kByte);
   return SimResult::kOk;
 }
@@ -159,6 +163,8 @@ SimResult M68kSimulator::DispatchMoveOrMovea(uint16_t opcode) {
   SimResult r = WriteEA(dst, val, size);
   if (r != SimResult::kOk)
     return r;
+  // CODE1.CPP MOVE: table-driven time; eff_addr() called with add_times=false.
+  IncrementCycles(MoveCycles(EaCode(src_mode, src_reg), EaCode(dst_mode, dst_reg), size));
   UpdateFlagsMove(state_, val, size);
   return SimResult::kOk;
 }
@@ -238,7 +244,8 @@ SimResult M68kSimulator::DispatchGroup4(uint16_t opcode) {
         case 0x4E70:
           return OpReset(opcode);
         case 0x4E71:
-          return SimResult::kOk;  // NOP
+          IncrementCycles(4);  // CODE8.CPP NOP: inc_cyc(4)
+          return SimResult::kOk;
         case 0x4E72:
           return OpStop(opcode);
         case 0x4E73:
@@ -298,6 +305,7 @@ SimResult M68kSimulator::OpMoveq(uint16_t opcode) {
   int8_t imm = static_cast<int8_t>(opcode & 0xFF);
   state_.d[reg] = static_cast<uint32_t>(static_cast<int32_t>(imm));
   UpdateFlagsMove(state_, state_.d[reg], DataSize::kLong);
+  IncrementCycles(4);  // CODE1.CPP MOVEQ: inc_cyc(4)
   return SimResult::kOk;
 }
 

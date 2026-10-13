@@ -7,6 +7,7 @@
 // Ported from EASy68K/Sim68K/CODE2.CPP and CODE3.CPP.
 
 #include "easym68k/sim/addressing_mode.h"
+#include "easym68k/sim/cycle_data.h"
 #include "easym68k/sim/flag_computation.h"
 #include "easym68k/sim/simulator.h"
 
@@ -25,6 +26,52 @@ DataSize SizeFromSS(int ss) {
   }
 }
 
+// CODE3.CPP ADD/SUB timing (excluding EA time).
+//   <ea> destination:  8 (B/W) / 12 (L)
+//   Dn destination:    4 (B/W); for .L, 8 if source is Dn/An/#imm, else 6.
+int AddSubCycles(uint16_t opcode, DataSize size) {
+  if (opcode & 0x0100)
+    return (size == DataSize::kLong) ? 12 : 8;
+  if (size == DataSize::kLong)
+    return (!(opcode & 0x0030) || (opcode & 0x003F) == 0x003C) ? 8 : 6;
+  return 4;
+}
+
+// CODE3.CPP ADDA/SUBA timing (excluding EA time):
+//   .W: 8; .L: 8 if source is Dn/An/#imm, else 6.
+int AddaSubaCycles(uint16_t opcode, bool is_long) {
+  if (is_long)
+    return (!(opcode & 0x0030) || (opcode & 0x003F) == 0x003C) ? 8 : 6;
+  return 8;
+}
+
+// CODE3.CPP ADDQ/SUBQ timing (excluding EA time).
+int AddqSubqCycles(uint16_t opcode, DataSize size) {
+  switch (opcode & 0x0038) {
+    case 0x00:
+      return (size == DataSize::kLong) ? 8 : 4;
+    case 0x08:
+      return 8;
+    default:
+      return (size == DataSize::kLong) ? 12 : 8;
+  }
+}
+
+// CODE3.CPP ADDX/SUBX timing.
+int AddxSubxCycles(bool mem_mode, DataSize size) {
+  if (size == DataSize::kLong)
+    return mem_mode ? 30 : 8;
+  return mem_mode ? 18 : 4;
+}
+
+// Read-modify-write unary op timing (NEG/NEGX/CLR, CODE4.CPP):
+//   register: 4 (B/W) / 6 (L); memory: 8 (B/W) / 12 (L).
+int UnaryRmwCycles(uint16_t opcode, DataSize size) {
+  if (opcode & 0x0030)
+    return (size == DataSize::kLong) ? 12 : 8;
+  return (size == DataSize::kLong) ? 6 : 4;
+}
+
 }  // namespace
 
 // ---------------------------------------------------------------------------
@@ -41,6 +88,7 @@ SimResult M68kSimulator::OpAdd(uint16_t opcode) {
   int reg = opcode & 0x7;
 
   EffectiveAddr ea = CalcEA(mode, reg, size);
+  IncrementCycles(EaCyclePenalty(ea, size) + AddSubCycles(opcode, size));
   uint32_t ea_val = ReadEA(ea, size);
   uint32_t dn_val = state_.d[dn] & SizeMask(size);
 
@@ -78,6 +126,7 @@ SimResult M68kSimulator::OpAdda(uint16_t opcode) {
   int reg = opcode & 0x7;
 
   EffectiveAddr ea = CalcEA(mode, reg, src_size);
+  IncrementCycles(EaCyclePenalty(ea, src_size) + AddaSubaCycles(opcode, is_long));
   uint32_t val = ReadEA(ea, src_size);
   if (!is_long)
     val = static_cast<uint32_t>(static_cast<int16_t>(val & 0xFFFF));
@@ -104,6 +153,12 @@ SimResult M68kSimulator::OpAddi(uint16_t opcode) {
   }
 
   EffectiveAddr ea = CalcEA(mode, reg, size);
+  // CODE3.CPP ADDI/SUBI: EA time + 8/16 (Dn) or 12/20 (memory).
+  IncrementCycles(EaCyclePenalty(ea, size));
+  if (opcode & 0x0038)
+    IncrementCycles(size == DataSize::kLong ? 20 : 12);
+  else
+    IncrementCycles(size == DataSize::kLong ? 16 : 8);
   uint32_t dst = ReadEA(ea, size) & SizeMask(size);
   uint32_t result = (imm + dst) & SizeMask(size);
   UpdateFlagsAdd(state_, imm, dst, result, size);
@@ -125,12 +180,15 @@ SimResult M68kSimulator::OpAddq(uint16_t opcode) {
   bool dst_is_an = (mode == 1);
   if (dst_is_an) {
     // Address register: always 32-bit add, no flags
+    // (An EA time is 0; CODE3.CPP ADDQ case 0x8: inc_cyc(8)).
+    IncrementCycles(AddqSubqCycles(opcode, DataSize::kLong));
     uint32_t an_val = state_.GetAReg(reg);
     state_.SetAReg(reg, an_val + imm);
     return SimResult::kOk;
   }
 
   EffectiveAddr ea = CalcEA(mode, reg, size);
+  IncrementCycles(EaCyclePenalty(ea, size) + AddqSubqCycles(opcode, size));
   uint32_t dst = ReadEA(ea, size) & SizeMask(size);
   uint32_t result = (imm + dst) & SizeMask(size);
   UpdateFlagsAdd(state_, imm, dst, result, size);
@@ -149,6 +207,8 @@ SimResult M68kSimulator::OpAddx(uint16_t opcode) {
   bool mem_mode = (opcode & 0x0008) != 0;
   uint32_t mask = SizeMask(size);
   uint32_t x = state_.GetFlag(kSrExtend) ? 1u : 0u;
+  // CODE3.CPP ADDX/SUBX: fixed time; operands are not fetched via eff_addr().
+  IncrementCycles(AddxSubxCycles(mem_mode, size));
 
   uint32_t src, dst;
   if (mem_mode) {
@@ -182,6 +242,7 @@ SimResult M68kSimulator::OpSub(uint16_t opcode) {
   int reg = opcode & 0x7;
 
   EffectiveAddr ea = CalcEA(mode, reg, size);
+  IncrementCycles(EaCyclePenalty(ea, size) + AddSubCycles(opcode, size));
   uint32_t ea_val = ReadEA(ea, size);
   uint32_t dn_val = state_.d[dn] & SizeMask(size);
 
@@ -219,6 +280,7 @@ SimResult M68kSimulator::OpSuba(uint16_t opcode) {
   int reg = opcode & 0x7;
 
   EffectiveAddr ea = CalcEA(mode, reg, src_size);
+  IncrementCycles(EaCyclePenalty(ea, src_size) + AddaSubaCycles(opcode, is_long));
   uint32_t val = ReadEA(ea, src_size);
   if (!is_long)
     val = static_cast<uint32_t>(static_cast<int16_t>(val & 0xFFFF));
@@ -245,6 +307,12 @@ SimResult M68kSimulator::OpSubi(uint16_t opcode) {
   }
 
   EffectiveAddr ea = CalcEA(mode, reg, size);
+  // CODE3.CPP ADDI/SUBI: EA time + 8/16 (Dn) or 12/20 (memory).
+  IncrementCycles(EaCyclePenalty(ea, size));
+  if (opcode & 0x0038)
+    IncrementCycles(size == DataSize::kLong ? 20 : 12);
+  else
+    IncrementCycles(size == DataSize::kLong ? 16 : 8);
   uint32_t dst = ReadEA(ea, size) & SizeMask(size);
   uint32_t result = (dst - imm) & SizeMask(size);
   UpdateFlagsSub(state_, imm, dst, result, size);
@@ -265,11 +333,14 @@ SimResult M68kSimulator::OpSubq(uint16_t opcode) {
 
   bool dst_is_an = (mode == 1);
   if (dst_is_an) {
+    // CODE3.CPP SUBQ case 0x8: inc_cyc(8); An EA time is 0.
+    IncrementCycles(AddqSubqCycles(opcode, DataSize::kLong));
     state_.SetAReg(reg, state_.GetAReg(reg) - imm);
     return SimResult::kOk;
   }
 
   EffectiveAddr ea = CalcEA(mode, reg, size);
+  IncrementCycles(EaCyclePenalty(ea, size) + AddqSubqCycles(opcode, size));
   uint32_t dst = ReadEA(ea, size) & SizeMask(size);
   uint32_t result = (dst - imm) & SizeMask(size);
   UpdateFlagsSub(state_, imm, dst, result, size);
@@ -288,6 +359,8 @@ SimResult M68kSimulator::OpSubx(uint16_t opcode) {
   bool mem_mode = (opcode & 0x0008) != 0;
   uint32_t mask = SizeMask(size);
   uint32_t x = state_.GetFlag(kSrExtend) ? 1u : 0u;
+  // CODE3.CPP ADDX/SUBX: fixed time; operands are not fetched via eff_addr().
+  IncrementCycles(AddxSubxCycles(mem_mode, size));
 
   uint32_t src, dst;
   if (mem_mode) {
@@ -323,6 +396,8 @@ SimResult M68kSimulator::OpMulu(uint16_t opcode) {
   uint32_t src = ReadEA(ea, DataSize::kWord) & kWordMask;
   uint32_t dst = state_.d[dn] & kWordMask;
   uint32_t result = src * dst;
+  // CODE4.CPP MULU: EA time + 38 + 2n (n = ones in source).
+  IncrementCycles(EaCyclePenalty(ea, DataSize::kWord) + MuluCycles(static_cast<uint16_t>(src)));
 
   state_.d[dn] = result;
   UpdateFlagsLogic(state_, result, DataSize::kLong);
@@ -343,6 +418,8 @@ SimResult M68kSimulator::OpMuls(uint16_t opcode) {
   int32_t src = static_cast<int16_t>(ReadEA(ea, DataSize::kWord) & kWordMask);
   int32_t dst = static_cast<int16_t>(state_.d[dn] & kWordMask);
   uint32_t result = static_cast<uint32_t>(src * dst);
+  // CODE4.CPP MULS: EA time + 38 + 2n (n = bit transitions in <src:0>).
+  IncrementCycles(EaCyclePenalty(ea, DataSize::kWord) + MulsCycles(static_cast<uint16_t>(src)));
 
   state_.d[dn] = result;
   UpdateFlagsLogic(state_, result, DataSize::kLong);
@@ -362,12 +439,15 @@ SimResult M68kSimulator::OpDivu(uint16_t opcode) {
   int reg = opcode & 0x7;
 
   EffectiveAddr ea = CalcEA(mode, reg, DataSize::kWord);
+  IncrementCycles(EaCyclePenalty(ea, DataSize::kWord));
   uint32_t divisor = ReadEA(ea, DataSize::kWord) & kWordMask;
 
   if (divisor == 0)
     return SimResult::kDivideByZero;
 
   uint32_t dividend = state_.d[dn];
+  // CODE4.CPP DIVU: getDivu68kCycles() on both normal and overflow paths.
+  IncrementCycles(DivuCycles(dividend, static_cast<uint16_t>(divisor)));
   uint32_t quotient = dividend / divisor;
   uint32_t remainder = dividend % divisor;
 
@@ -398,12 +478,15 @@ SimResult M68kSimulator::OpDivs(uint16_t opcode) {
   int reg = opcode & 0x7;
 
   EffectiveAddr ea = CalcEA(mode, reg, DataSize::kWord);
+  IncrementCycles(EaCyclePenalty(ea, DataSize::kWord));
   int32_t divisor = static_cast<int16_t>(ReadEA(ea, DataSize::kWord) & kWordMask);
 
   if (divisor == 0)
     return SimResult::kDivideByZero;
 
   int32_t dividend = static_cast<int32_t>(state_.d[dn]);
+  // CODE4.CPP DIVS: getDivs68kCycles() on both normal and overflow paths.
+  IncrementCycles(DivsCycles(dividend, static_cast<int16_t>(divisor)));
 
   if (dividend == INT32_MIN && divisor == -1) {
     state_.SetFlag(kSrOverflow, true);
@@ -441,6 +524,7 @@ SimResult M68kSimulator::OpNeg(uint16_t opcode) {
   int reg = opcode & 0x7;
 
   EffectiveAddr ea = CalcEA(mode, reg, size);
+  IncrementCycles(EaCyclePenalty(ea, size) + UnaryRmwCycles(opcode, size));  // CODE4.CPP NEG
   uint32_t dst = ReadEA(ea, size) & SizeMask(size);
   uint32_t result = (0u - dst) & SizeMask(size);
   UpdateFlagsNeg(state_, dst, result, size);
@@ -459,6 +543,7 @@ SimResult M68kSimulator::OpNegx(uint16_t opcode) {
   uint32_t x = state_.GetFlag(kSrExtend) ? 1u : 0u;
 
   EffectiveAddr ea = CalcEA(mode, reg, size);
+  IncrementCycles(EaCyclePenalty(ea, size) + UnaryRmwCycles(opcode, size));  // CODE4.CPP NEGX
   uint32_t dst = ReadEA(ea, size) & SizeMask(size);
   uint32_t result = (0u - dst - x) & SizeMask(size);
   UpdateFlagsNegX(state_, dst, result, size);
@@ -476,6 +561,7 @@ SimResult M68kSimulator::OpClr(uint16_t opcode) {
   int reg = opcode & 0x7;
 
   EffectiveAddr ea = CalcEA(mode, reg, size);
+  IncrementCycles(EaCyclePenalty(ea, size) + UnaryRmwCycles(opcode, size));  // CODE4.CPP CLR
   SimResult r = WriteEA(ea, 0, size);
   if (r != SimResult::kOk)
     return r;
@@ -498,6 +584,8 @@ SimResult M68kSimulator::OpCmp(uint16_t opcode) {
   int reg = opcode & 0x7;
 
   EffectiveAddr ea = CalcEA(mode, reg, size);
+  // CODE4.CPP CMP: EA time + 4 (B/W) / 6 (L).
+  IncrementCycles(EaCyclePenalty(ea, size) + (size == DataSize::kLong ? 6 : 4));
   uint32_t src = ReadEA(ea, size) & SizeMask(size);
   uint32_t dst = state_.d[dn] & SizeMask(size);
   uint32_t result = (dst - src) & SizeMask(size);
@@ -518,6 +606,7 @@ SimResult M68kSimulator::OpCmpa(uint16_t opcode) {
   int reg = opcode & 0x7;
 
   EffectiveAddr ea = CalcEA(mode, reg, src_size);
+  IncrementCycles(EaCyclePenalty(ea, src_size) + 6);  // CODE4.CPP CMPA: inc_cyc(6)
   uint32_t val = ReadEA(ea, src_size);
   if (!is_long)
     val = static_cast<uint32_t>(static_cast<int16_t>(val & 0xFFFF));
@@ -546,6 +635,12 @@ SimResult M68kSimulator::OpCmpi(uint16_t opcode) {
   }
 
   EffectiveAddr ea = CalcEA(mode, reg, size);
+  // CODE4.CPP CMPI: EA time + 8/14 (Dn) or 8/12 (memory) for B,W/L.
+  IncrementCycles(EaCyclePenalty(ea, size));
+  if (opcode & 0x0038)
+    IncrementCycles(size == DataSize::kLong ? 12 : 8);
+  else
+    IncrementCycles(size == DataSize::kLong ? 14 : 8);
   uint32_t dst = ReadEA(ea, size) & SizeMask(size);
   uint32_t result = (dst - imm) & SizeMask(size);
   UpdateFlagsCmp(state_, imm, dst, result, size);
@@ -564,6 +659,8 @@ SimResult M68kSimulator::OpCmpm(uint16_t opcode) {
 
   EffectiveAddr src_ea = CalcEA(3, ay, size);  // (Ay)+
   EffectiveAddr dst_ea = CalcEA(3, ax, size);  // (Ax)+
+  // CODE4.CPP CMPM: 12 (B/W) / 20 (L); operands not fetched via eff_addr().
+  IncrementCycles(size == DataSize::kLong ? 20 : 12);
   uint32_t src = ReadEA(src_ea, size) & SizeMask(size);
   uint32_t dst = ReadEA(dst_ea, size) & SizeMask(size);
   uint32_t result = (dst - src) & SizeMask(size);
@@ -582,6 +679,7 @@ SimResult M68kSimulator::OpTst(uint16_t opcode) {
   int reg = opcode & 0x7;
 
   EffectiveAddr ea = CalcEA(mode, reg, size);
+  IncrementCycles(EaCyclePenalty(ea, size) + 4);  // CODE4.CPP TST: inc_cyc(4)
   uint32_t val = ReadEA(ea, size) & SizeMask(size);
   UpdateFlagsMove(state_, val, size);
   return SimResult::kOk;
@@ -607,6 +705,7 @@ SimResult M68kSimulator::OpExt(uint16_t opcode) {
     state_.d[dn] = (state_.d[dn] & 0xFFFF0000u) | result;
     UpdateFlagsMove(state_, result, DataSize::kWord);
   }
+  IncrementCycles(4);  // CODE4.CPP EXT
   return SimResult::kOk;
 }
 
@@ -622,6 +721,8 @@ SimResult M68kSimulator::OpAbcd(uint16_t opcode) {
   int src_reg = opcode & 0x7;
   bool mem_mode = (opcode & 0x0008) != 0;
   uint32_t x = state_.GetFlag(kSrExtend) ? 1u : 0u;
+  // CODE5.CPP ABCD/SBCD: 6 (Dn) / 18 (-(An)); operands not fetched via eff_addr().
+  IncrementCycles(mem_mode ? 18 : 6);
 
   uint32_t src, dst;
   EffectiveAddr src_ea, dst_ea;
@@ -670,6 +771,8 @@ SimResult M68kSimulator::OpSbcd(uint16_t opcode) {
   int src_reg = opcode & 0x7;
   bool mem_mode = (opcode & 0x0008) != 0;
   uint32_t x = state_.GetFlag(kSrExtend) ? 1u : 0u;
+  // CODE5.CPP ABCD/SBCD: 6 (Dn) / 18 (-(An)); operands not fetched via eff_addr().
+  IncrementCycles(mem_mode ? 18 : 6);
 
   uint32_t src, dst;
   EffectiveAddr src_ea, dst_ea;
@@ -723,6 +826,8 @@ SimResult M68kSimulator::OpNbcd(uint16_t opcode) {
   uint32_t x = state_.GetFlag(kSrExtend) ? 1u : 0u;
 
   EffectiveAddr ea = CalcEA(mode, reg, DataSize::kByte);
+  // CODE5.CPP NBCD: EA time + 6 (Dn) / 8 (memory).
+  IncrementCycles(EaCyclePenalty(ea, DataSize::kByte) + ((opcode & 0x0030) ? 8 : 6));
   uint32_t dst = ReadEA(ea, DataSize::kByte) & kByteMask;
 
   int low = 0 - static_cast<int>(dst & 0xF) - static_cast<int>(x);
@@ -759,11 +864,13 @@ SimResult M68kSimulator::OpChk(uint16_t opcode) {
   int reg = opcode & 0x7;
 
   EffectiveAddr ea = CalcEA(mode, reg, DataSize::kWord);
+  IncrementCycles(EaCyclePenalty(ea, DataSize::kWord));
   int16_t upper = static_cast<int16_t>(ReadEA(ea, DataSize::kWord) & kWordMask);
   int16_t val = static_cast<int16_t>(state_.d[dn] & kWordMask);
 
   if (val < 0 || val > upper)
     return SimResult::kChkException;
+  IncrementCycles(10);  // CODE9.CPP CHK: inc_cyc(10) only when no exception
   return SimResult::kOk;
 }
 

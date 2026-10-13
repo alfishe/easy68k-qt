@@ -6,6 +6,7 @@
 // Ported from EASy68K/Sim68K/CODE7.CPP.
 
 #include "easym68k/sim/addressing_mode.h"
+#include "easym68k/sim/cycle_data.h"
 #include "easym68k/sim/flag_computation.h"
 #include "easym68k/sim/simulator.h"
 
@@ -71,15 +72,39 @@ ShiftOut ShiftRight1(uint32_t val, DataSize size, int type, bool x_in) {
   return {result, c, x};
 }
 
+// CODE7.CPP BIT_OP timing. op: 0=BTST, 1=BCHG, 2=BCLR, 3=BSET.
+//   Dn:     BTST 6, BCHG 8, BCLR 10, BSET 8 (EA time 0).
+//   memory: EA time (byte) + BTST 4 / BCHG 8 / BCLR 8 / BSET 8, plus 4.
+int BitOpCycles(uint16_t opcode, int op) {
+  int mode = (opcode >> 3) & 0x7;
+  int reg = opcode & 0x7;
+  bool mem = (opcode & 0x0038) != 0;
+  int base;
+  switch (op) {
+    case 0:
+      base = mem ? 4 : 6;
+      break;
+    case 2:
+      base = mem ? 8 : 10;
+      break;
+    default:
+      base = 8;
+      break;
+  }
+  if (mem)
+    return EaCyclePenalty(mode, reg, DataSize::kByte) + base + 4;
+  return base;
+}
+
 }  // namespace
 
 // ---------------------------------------------------------------------------
 // ShiftRotate — unified handler for all 8 shift/rotate types
 // Register form: 1110 ccc d ss i tt rrr
-//   bits 11-9: count (if i=1, 1-8 with 0→8) or Dn index (if i=0)
+//   bits 11-9: count (if i/r=0, 1-8 with 0→8) or Dn index (if i/r=1)
 //   bit    8:  direction (1=left, 0=right)
 //   bits 7-6:  size (00=byte, 01=word, 10=long); 11=memory form
-//   bit    5:  immediate (1) or register count (0)
+//   bit    5:  i/r — immediate count (0) or register count (1)
 //   bits 4-3:  type (00=AS, 01=LS, 10=ROX, 11=RO)
 //   bits 2-0:  destination data register
 // Memory form: bits 7-6 = 11; always word, count=1; bits 11-9 = type+dir.
@@ -97,6 +122,7 @@ SimResult M68kSimulator::OpShiftRotate(uint16_t opcode) {
     int reg = opcode & 0x7;
 
     EffectiveAddr ea = CalcEA(mode, reg, DataSize::kWord);
+    IncrementCycles(EaCyclePenalty(ea, DataSize::kWord) + 8);  // CODE7.CPP SHIFT_ROT memory
     uint32_t val = ReadEA(ea, DataSize::kWord) & kWordMask;
     bool x = state_.GetFlag(kSrExtend);
 
@@ -115,18 +141,20 @@ SimResult M68kSimulator::OpShiftRotate(uint16_t opcode) {
   // ---- Register form ----
   DataSize size = SizeFromSS(sz);
   bool left = (opcode >> 8) & 1;
-  bool imm = (opcode >> 5) & 1;
+  bool reg_count = (opcode >> 5) & 1;  // i/r: 1 = count in Dn, 0 = immediate (CODE7.CPP)
   int type = (opcode >> 3) & 0x3;
   int dst = opcode & 0x7;
 
   uint32_t count;
-  if (imm) {
+  if (!reg_count) {
     count = (opcode >> 9) & 0x7;
     if (count == 0)
       count = 8;
   } else {
     count = state_.d[(opcode >> 9) & 0x7] % 64;
   }
+  // CODE7.CPP SHIFT_ROT register: 6 + 2n (B/W) / 8 + 2n (L), n = shift count.
+  IncrementCycles((size == DataSize::kLong ? 8 : 6) + 2 * count);
 
   uint32_t mask = SizeMask(size);
   uint32_t msb = SignBit(size);
@@ -167,6 +195,7 @@ SimResult M68kSimulator::OpShiftRotate(uint16_t opcode) {
 // ---------------------------------------------------------------------------
 
 SimResult M68kSimulator::OpBtst(uint16_t opcode) {
+  IncrementCycles(BitOpCycles(opcode, 0));
   uint32_t bit_num = (opcode & 0x0100) ? state_.d[(opcode >> 9) & 0x7] : (FetchWord() & 0xFF);
   int mode = (opcode >> 3) & 0x7;
   int reg = opcode & 0x7;
@@ -184,6 +213,7 @@ SimResult M68kSimulator::OpBtst(uint16_t opcode) {
 }
 
 SimResult M68kSimulator::OpBchg(uint16_t opcode) {
+  IncrementCycles(BitOpCycles(opcode, 1));
   uint32_t bit_num = (opcode & 0x0100) ? state_.d[(opcode >> 9) & 0x7] : (FetchWord() & 0xFF);
   int mode = (opcode >> 3) & 0x7;
   int reg = opcode & 0x7;
@@ -203,6 +233,7 @@ SimResult M68kSimulator::OpBchg(uint16_t opcode) {
 }
 
 SimResult M68kSimulator::OpBclr(uint16_t opcode) {
+  IncrementCycles(BitOpCycles(opcode, 2));
   uint32_t bit_num = (opcode & 0x0100) ? state_.d[(opcode >> 9) & 0x7] : (FetchWord() & 0xFF);
   int mode = (opcode >> 3) & 0x7;
   int reg = opcode & 0x7;
@@ -222,6 +253,7 @@ SimResult M68kSimulator::OpBclr(uint16_t opcode) {
 }
 
 SimResult M68kSimulator::OpBset(uint16_t opcode) {
+  IncrementCycles(BitOpCycles(opcode, 3));
   uint32_t bit_num = (opcode & 0x0100) ? state_.d[(opcode >> 9) & 0x7] : (FetchWord() & 0xFF);
   int mode = (opcode >> 3) & 0x7;
   int reg = opcode & 0x7;

@@ -27,19 +27,18 @@ M68kSimulator ShiftTest::sim_{M68kSimulator::Config{}};
 // ASL — Arithmetic Shift Left
 // =============================================================================
 
-// ASL.B #1,D0: 1110 0001 00 100 000 = 0xE100 + (1<<9) | (1<<5) | D0
-// Register form: bits11-9=001(count=1), bit8=1(left), bits7-6=00(byte),
-//                bit5=1(imm), bits4-3=00(AS), bits2-0=000(D0)
-// 0xE100 | (1<<9) | (1<<5) | 0 = 0xE100 | 0x0200 | 0x0020 = 0xE320... wait
-
-// Let me recalculate:
-// bits15-12 = 1110, bits11-9 = 001(count=1), bit8=1(left), bits7-6=00(byte),
-// bit5=1(imm), bits4-3=00(AS), bits2-0=000(D0)
-// = 1110 001 1 00 1 00 000 = 0xE320
+// Register-form encoding: 1110 ccc d ss i tt rrr
+//   ccc = count (1-8, 0 means 8) when i/r=0, or count register Dn when i/r=1
+//   d = direction (1=left), ss = size, i/r = bit 5 (0=immediate, 1=register),
+//   tt = type (00=AS, 01=LS, 10=ROX, 11=RO), rrr = destination Dn.
+//
+// ASL.B #1,D0: bits11-9=001(count=1), bit8=1(left), bits7-6=00(byte),
+// bit5=0(imm), bits4-3=00(AS), bits2-0=000(D0)
+// = 1110 001 1 00 0 00 000 = 0xE300
 
 TEST_F(ShiftTest, AslByte_SignChanges_SetsV) {
   sim_.State().d[0] = 0x40;                    // 0100 0000 → ASL by 1 → 0x80, sign changes
-  sim_.GetMemory().WriteWord(0x1000, 0xE320);  // ASL.B #1,D0
+  sim_.GetMemory().WriteWord(0x1000, 0xE300);  // ASL.B #1,D0
   EXPECT_EQ(sim_.Step(), SimResult::kOk);
   EXPECT_EQ(sim_.State().d[0] & 0xFF, 0x80u);
   EXPECT_TRUE(sim_.State().GetFlag(kSrOverflow));
@@ -51,7 +50,7 @@ TEST_F(ShiftTest, AslByte_SignChanges_SetsV) {
 
 TEST_F(ShiftTest, AslByte_NoSignChange_ClearsV) {
   sim_.State().d[0] = 0x20;  // 0010 0000 → ASL by 1 → 0x40, sign unchanged (both 0)
-  sim_.GetMemory().WriteWord(0x1000, 0xE320);  // ASL.B #1,D0
+  sim_.GetMemory().WriteWord(0x1000, 0xE300);  // ASL.B #1,D0
   EXPECT_EQ(sim_.Step(), SimResult::kOk);
   EXPECT_EQ(sim_.State().d[0] & 0xFF, 0x40u);
   EXPECT_FALSE(sim_.State().GetFlag(kSrOverflow));
@@ -60,7 +59,7 @@ TEST_F(ShiftTest, AslByte_NoSignChange_ClearsV) {
 
 TEST_F(ShiftTest, AslByte_CarryFromMSB) {
   sim_.State().d[0] = 0x81;                    // 1000 0001: MSB=1 → C=1, result=0x02
-  sim_.GetMemory().WriteWord(0x1000, 0xE320);  // ASL.B #1,D0
+  sim_.GetMemory().WriteWord(0x1000, 0xE300);  // ASL.B #1,D0
   EXPECT_EQ(sim_.Step(), SimResult::kOk);
   EXPECT_EQ(sim_.State().d[0] & 0xFF, 0x02u);
   EXPECT_TRUE(sim_.State().GetFlag(kSrCarry));
@@ -68,26 +67,45 @@ TEST_F(ShiftTest, AslByte_CarryFromMSB) {
 }
 
 // ASL.W #2,D0: bits11-9=010(count=2), bit8=1, bits7-6=01(word),
-//              bit5=1(imm), bits4-3=00(AS), bits2-0=000
-// = 1110 010 1 01 1 00 000 = 0xE540 | 0x20 = 0xE560
+//              bit5=0(imm), bits4-3=00(AS), bits2-0=000
+// = 1110 010 1 01 0 00 000 = 0xE540
 TEST_F(ShiftTest, AslWord_Count2) {
   sim_.State().d[0] = 0x0001;
-  sim_.GetMemory().WriteWord(0x1000, 0xE560);  // ASL.W #2,D0
+  sim_.GetMemory().WriteWord(0x1000, 0xE540);  // ASL.W #2,D0
   EXPECT_EQ(sim_.Step(), SimResult::kOk);
   EXPECT_EQ(sim_.State().d[0] & 0xFFFF, 0x0004u);
   EXPECT_FALSE(sim_.State().GetFlag(kSrCarry));
   EXPECT_FALSE(sim_.State().GetFlag(kSrOverflow));
 }
 
+// Regression: the assembler emits ASL.B #2,D0 as 0xE500 (golden 04_shifts.l68),
+// i.e. i/r=0 means immediate. The count must not be taken from D2.
+TEST_F(ShiftTest, ImmediateFormMatchesAssemblerEncoding) {
+  sim_.State().d[0] = 0x01;
+  sim_.State().d[2] = 5;                       // would give 0x20 if misread as register
+  sim_.GetMemory().WriteWord(0x1000, 0xE500);  // ASL.B #2,D0
+  EXPECT_EQ(sim_.Step(), SimResult::kOk);
+  EXPECT_EQ(sim_.State().d[0] & 0xFF, 0x04u);
+}
+
+// Regression: LSL.L D3,D0 = 1110 011 1 10 1 01 000 = 0xE7A8 (i/r=1: count in D3).
+TEST_F(ShiftTest, RegisterFormUsesDnCount) {
+  sim_.State().d[0] = 0x01;
+  sim_.State().d[3] = 4;
+  sim_.GetMemory().WriteWord(0x1000, 0xE7A8);  // LSL.L D3,D0
+  EXPECT_EQ(sim_.Step(), SimResult::kOk);
+  EXPECT_EQ(sim_.State().d[0], 0x10u);
+}
+
 // ASL count=0 via register: use D1=0 as count
 // ASL.B D1,D0: bits11-9=001(D1), bit8=1, bits7-6=00(byte),
-//              bit5=0(reg), bits4-3=00(AS), bits2-0=000(D0)
-// = 1110 001 1 00 0 00 000 = 0xE300
+//              bit5=1(reg), bits4-3=00(AS), bits2-0=000(D0)
+// = 1110 001 1 00 1 00 000 = 0xE320
 TEST_F(ShiftTest, AslCount0_NoCFlagChange) {
   sim_.State().sr = kSrSupervisor | kSrExtend;  // X=1 before
   sim_.State().d[0] = 0x42;
   sim_.State().d[1] = 0;                       // count = 0
-  sim_.GetMemory().WriteWord(0x1000, 0xE300);  // ASL.B D1,D0
+  sim_.GetMemory().WriteWord(0x1000, 0xE320);  // ASL.B D1,D0
   EXPECT_EQ(sim_.Step(), SimResult::kOk);
   EXPECT_EQ(sim_.State().d[0] & 0xFF, 0x42u);  // unchanged
   EXPECT_FALSE(sim_.State().GetFlag(kSrCarry));
@@ -100,11 +118,11 @@ TEST_F(ShiftTest, AslCount0_NoCFlagChange) {
 // =============================================================================
 
 // ASR.B #1,D0: bits11-9=001, bit8=0(right), bits7-6=00(byte),
-//              bit5=1(imm), bits4-3=00(AS), bits2-0=000
-// = 1110 001 0 00 1 00 000 = 0xE220
+//              bit5=0(imm), bits4-3=00(AS), bits2-0=000
+// = 1110 001 0 00 0 00 000 = 0xE200
 TEST_F(ShiftTest, AsrByte_FillsWithSign) {
   sim_.State().d[0] = 0x80;  // 1000 0000 → ASR by 1 → 0xC0 (fills with sign bit 1)
-  sim_.GetMemory().WriteWord(0x1000, 0xE220);  // ASR.B #1,D0
+  sim_.GetMemory().WriteWord(0x1000, 0xE200);  // ASR.B #1,D0
   EXPECT_EQ(sim_.Step(), SimResult::kOk);
   EXPECT_EQ(sim_.State().d[0] & 0xFF, 0xC0u);
   EXPECT_FALSE(sim_.State().GetFlag(kSrCarry));  // LSB of 0x80 = 0
@@ -114,7 +132,7 @@ TEST_F(ShiftTest, AsrByte_FillsWithSign) {
 
 TEST_F(ShiftTest, AsrByte_CarryFromLSB) {
   sim_.State().d[0] = 0x01;  // LSB=1 → C=1, result=0x00
-  sim_.GetMemory().WriteWord(0x1000, 0xE220);
+  sim_.GetMemory().WriteWord(0x1000, 0xE200);
   EXPECT_EQ(sim_.Step(), SimResult::kOk);
   EXPECT_EQ(sim_.State().d[0] & 0xFF, 0x00u);
   EXPECT_TRUE(sim_.State().GetFlag(kSrCarry));
@@ -126,11 +144,11 @@ TEST_F(ShiftTest, AsrByte_CarryFromLSB) {
 // =============================================================================
 
 // LSL.W #1,D0: bits11-9=001, bit8=1(left), bits7-6=01(word),
-//              bit5=1(imm), bits4-3=01(LS), bits2-0=000
-// = 1110 001 1 01 1 01 000 = 0xE368
+//              bit5=0(imm), bits4-3=01(LS), bits2-0=000
+// = 1110 001 1 01 0 01 000 = 0xE348
 TEST_F(ShiftTest, LslWord) {
   sim_.State().d[0] = 0x8001;
-  sim_.GetMemory().WriteWord(0x1000, 0xE368);  // LSL.W #1,D0
+  sim_.GetMemory().WriteWord(0x1000, 0xE348);  // LSL.W #1,D0
   EXPECT_EQ(sim_.Step(), SimResult::kOk);
   EXPECT_EQ(sim_.State().d[0] & 0xFFFF, 0x0002u);  // MSB shifted out, fills with 0
   EXPECT_TRUE(sim_.State().GetFlag(kSrCarry));
@@ -138,10 +156,10 @@ TEST_F(ShiftTest, LslWord) {
 }
 
 // LSR.W #1,D0: bit8=0(right), type=LS(01)
-// = 1110 001 0 01 1 01 000 = 0xE268
+// = 1110 001 0 01 0 01 000 = 0xE248
 TEST_F(ShiftTest, LsrWord_FillsWithZero) {
   sim_.State().d[0] = 0x8001;
-  sim_.GetMemory().WriteWord(0x1000, 0xE268);  // LSR.W #1,D0
+  sim_.GetMemory().WriteWord(0x1000, 0xE248);  // LSR.W #1,D0
   EXPECT_EQ(sim_.Step(), SimResult::kOk);
   EXPECT_EQ(sim_.State().d[0] & 0xFFFF, 0x4000u);  // fills with 0, not sign bit
   EXPECT_TRUE(sim_.State().GetFlag(kSrCarry));     // LSB=1
@@ -152,21 +170,21 @@ TEST_F(ShiftTest, LsrWord_FillsWithZero) {
 // =============================================================================
 
 // ROL.L #1,D0: bits11-9=001, bit8=1, bits7-6=10(long),
-//              bit5=1(imm), bits4-3=11(RO), bits2-0=000
-// = 1110 001 1 10 1 11 000 = 0xE3B8
+//              bit5=0(imm), bits4-3=11(RO), bits2-0=000
+// = 1110 001 1 10 0 11 000 = 0xE398
 TEST_F(ShiftTest, RolLong_WrapsMSB) {
   sim_.State().d[0] = 0x80000001;
-  sim_.GetMemory().WriteWord(0x1000, 0xE3B8);  // ROL.L #1,D0
+  sim_.GetMemory().WriteWord(0x1000, 0xE398);  // ROL.L #1,D0
   EXPECT_EQ(sim_.Step(), SimResult::kOk);
   EXPECT_EQ(sim_.State().d[0], 0x00000003u);    // MSB rotated to LSB
   EXPECT_TRUE(sim_.State().GetFlag(kSrCarry));  // MSB=1 was shifted out
 }
 
 // ROR.B #1,D0: bit8=0(right), type=RO(11)
-// = 1110 001 0 00 1 11 000 = 0xE238
+// = 1110 001 0 00 0 11 000 = 0xE218
 TEST_F(ShiftTest, RorByte_WrapsLSB) {
   sim_.State().d[0] = 0x01;                    // LSB=1 → wraps to MSB
-  sim_.GetMemory().WriteWord(0x1000, 0xE238);  // ROR.B #1,D0
+  sim_.GetMemory().WriteWord(0x1000, 0xE218);  // ROR.B #1,D0
   EXPECT_EQ(sim_.Step(), SimResult::kOk);
   EXPECT_EQ(sim_.State().d[0] & 0xFF, 0x80u);
   EXPECT_TRUE(sim_.State().GetFlag(kSrCarry));
@@ -175,7 +193,7 @@ TEST_F(ShiftTest, RorByte_WrapsLSB) {
 TEST_F(ShiftTest, RolRor_XNotAffected) {
   sim_.State().sr = kSrSupervisor | kSrExtend;
   sim_.State().d[0] = 0x00;
-  sim_.GetMemory().WriteWord(0x1000, 0xE3B8);  // ROL.L #1,D0
+  sim_.GetMemory().WriteWord(0x1000, 0xE398);  // ROL.L #1,D0
   EXPECT_EQ(sim_.Step(), SimResult::kOk);
   EXPECT_TRUE(sim_.State().GetFlag(kSrExtend));  // X unchanged
 }
@@ -185,23 +203,23 @@ TEST_F(ShiftTest, RolRor_XNotAffected) {
 // =============================================================================
 
 // ROXL.B #1,D0: bits11-9=001, bit8=1, bits7-6=00(byte),
-//               bit5=1(imm), bits4-3=10(ROX), bits2-0=000
-// = 1110 001 1 00 1 10 000 = 0xE330
+//               bit5=0(imm), bits4-3=10(ROX), bits2-0=000
+// = 1110 001 1 00 0 10 000 = 0xE310
 TEST_F(ShiftTest, RoxlByte_ShiftsInExtend) {
   sim_.State().sr = kSrSupervisor | kSrExtend;  // X=1
   sim_.State().d[0] = 0x00;
-  sim_.GetMemory().WriteWord(0x1000, 0xE330);  // ROXL.B #1,D0
+  sim_.GetMemory().WriteWord(0x1000, 0xE310);  // ROXL.B #1,D0
   EXPECT_EQ(sim_.Step(), SimResult::kOk);
   EXPECT_EQ(sim_.State().d[0] & 0xFF, 0x01u);    // X=1 shifted in at LSB
   EXPECT_FALSE(sim_.State().GetFlag(kSrCarry));  // old MSB=0 → C=0, X=0
 }
 
 // ROXR.B #1,D0: bit8=0(right), type=ROX(10)
-// = 1110 001 0 00 1 10 000 = 0xE230
+// = 1110 001 0 00 0 10 000 = 0xE210
 TEST_F(ShiftTest, RoxrByte_ShiftsInExtend) {
   sim_.State().sr = kSrSupervisor | kSrExtend;  // X=1
   sim_.State().d[0] = 0x00;
-  sim_.GetMemory().WriteWord(0x1000, 0xE230);  // ROXR.B #1,D0
+  sim_.GetMemory().WriteWord(0x1000, 0xE210);  // ROXR.B #1,D0
   EXPECT_EQ(sim_.Step(), SimResult::kOk);
   EXPECT_EQ(sim_.State().d[0] & 0xFF, 0x80u);    // X=1 shifted in at MSB
   EXPECT_FALSE(sim_.State().GetFlag(kSrCarry));  // old LSB=0
@@ -212,9 +230,9 @@ TEST_F(ShiftTest, RoxlCount0_CEqualsX) {
   sim_.State().d[1] = 0;                        // count = 0
   sim_.State().d[0] = 0x42;
   // ROXL.B D1,D0: bits11-9=001(D1), bit8=1, bits7-6=00(byte),
-  //               bit5=0(reg), bits4-3=10(ROX), bits2-0=000
-  // = 1110 001 1 00 0 10 000 = 0xE310
-  sim_.GetMemory().WriteWord(0x1000, 0xE310);
+  //               bit5=1(reg), bits4-3=10(ROX), bits2-0=000
+  // = 1110 001 1 00 1 10 000 = 0xE330
+  sim_.GetMemory().WriteWord(0x1000, 0xE330);
   EXPECT_EQ(sim_.Step(), SimResult::kOk);
   EXPECT_EQ(sim_.State().d[0] & 0xFF, 0x42u);    // unchanged
   EXPECT_TRUE(sim_.State().GetFlag(kSrCarry));   // C = X = 1

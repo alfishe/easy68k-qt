@@ -8,6 +8,7 @@
 #include <algorithm>
 
 #include "easym68k/sim/addressing_mode.h"
+#include "easym68k/sim/cycle_data.h"
 #include "easym68k/sim/srecord_loader.h"
 
 namespace easym68k::sim {
@@ -154,39 +155,50 @@ SimResult M68kSimulator::Step() {
   uint16_t opcode = FetchWord();
   SimResult result = ExecuteInstruction(opcode);
 
+  // Exception cycle counts follow RUN.CPP runprog() exception processing.
   switch (result) {
     case SimResult::kOk:
       if (trace_before) {
+        IncrementCycles(kCyclesTrace);
         HandleException(ExceptionVector::kTrace);
         return SimResult::kTraceException;
       }
       break;
     case SimResult::kBadInstruction:
+      IncrementCycles(kCyclesIllegalInst);
       HandleException(ExceptionVector::kIllegalInst);
       break;
     case SimResult::kPrivilegeViolation:
+      IncrementCycles(kCyclesPrivilege);
       HandleException(ExceptionVector::kPrivilege);
       break;
     case SimResult::kDivideByZero:
+      IncrementCycles(kCyclesDivideByZero);
       HandleException(ExceptionVector::kDivideByZero);
       break;
     case SimResult::kChkException:
+      IncrementCycles(kCyclesChk);
       HandleException(ExceptionVector::kChk);
       break;
     case SimResult::kTrapVException:
+      IncrementCycles(kCyclesTrapV);
       HandleException(ExceptionVector::kTrapV);
       break;
     case SimResult::kTrapException:
+      IncrementCycles(kCyclesTrap);
       HandleException(static_cast<ExceptionVector>(static_cast<int>(ExceptionVector::kTrap0) +
                                                    (opcode & 0x0F)));
       break;
     case SimResult::kTraceException:
+      IncrementCycles(kCyclesTrace);
       HandleException(ExceptionVector::kTrace);
       break;
     case SimResult::kLine1010:
+      IncrementCycles(kCyclesLineA);
       HandleException(ExceptionVector::kLine1010);
       break;
     case SimResult::kLine1111:
+      IncrementCycles(kCyclesLineF);
       HandleException(ExceptionVector::kLine1111);
       break;
     case SimResult::kStopInstruction:
@@ -332,8 +344,8 @@ void M68kSimulator::HandleIrq(int level) {
   uint32_t vec_addr = (24 + level) * 4;
   state_.pc = memory_.ReadLong(vec_addr).value & kAddressMask;
 
-  // Add 34 cycles penalty
-  state_.cycles += 34;
+  // Add 34 cycles penalty (RUN.CPP irqHandler() inc_cyc(34))
+  IncrementCycles(kCyclesIrq);
 }
 
 }  // namespace easym68k::sim

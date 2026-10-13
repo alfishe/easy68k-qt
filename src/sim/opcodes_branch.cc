@@ -6,9 +6,39 @@
 // Ported from EASy68K/Sim68K/CODE6.CPP and CODE7.CPP.
 
 #include "easym68k/sim/addressing_mode.h"
+#include "easym68k/sim/cycle_data.h"
 #include "easym68k/sim/simulator.h"
 
 namespace easym68k::sim {
+
+// ---------------------------------------------------------------------------
+// JMP/JSR execution time by EaCode() (CODE8.CPP JMP()/JSR(); eff_addr() is
+// called with add_times=false, so the table includes the EA time).
+// ---------------------------------------------------------------------------
+
+static int JmpJsrCycles(int ea_code, bool is_jsr) {
+  int jmp;
+  switch (ea_code) {
+    case 0x02:  // (An)
+      jmp = 8;
+      break;
+    case 0x05:  // d(An)
+    case 0x07:  // xxx.W
+    case 0x09:  // d(PC)
+      jmp = 10;
+      break;
+    case 0x08:  // xxx.L
+      jmp = 12;
+      break;
+    case 0x06:  // d(An,Xi)
+    case 0x0A:  // d(PC,Xi)
+      jmp = 14;
+      break;
+    default:
+      return 0;
+  }
+  return is_jsr ? jmp + 8 : jmp;
+}
 
 // ---------------------------------------------------------------------------
 // Branch displacement helper.
@@ -34,6 +64,7 @@ SimResult M68kSimulator::OpBra(uint16_t opcode) {
   uint32_t base = state_.pc;  // pc already past opcode word
   int32_t disp = FetchBranchDisp(opcode, *this);
   state_.pc = (base + disp) & kAddressMask;
+  IncrementCycles(10);  // CODE8.CPP BRA
   return SimResult::kOk;
 }
 
@@ -49,6 +80,7 @@ SimResult M68kSimulator::OpBsr(uint16_t opcode) {
   state_.SetSP(state_.GetSP() - 4);
   memory_.WriteLong(state_.GetSP() & kAddressMask, state_.pc);
   state_.pc = (base + disp) & kAddressMask;
+  IncrementCycles(18);  // CODE8.CPP BSR
   return SimResult::kOk;
 }
 
@@ -63,6 +95,9 @@ SimResult M68kSimulator::OpBcc(uint16_t opcode) {
   uint8_t cond = (opcode >> 8) & 0xF;
   if (CheckCondition(static_cast<Condition>(cond))) {
     state_.pc = (base + disp) & kAddressMask;
+    IncrementCycles(10);  // CODE8.CPP BCC: taken
+  } else {
+    IncrementCycles((opcode & 0xFF) ? 8 : 12);  // not taken: short 8, word 12
   }
   return SimResult::kOk;
 }
@@ -80,13 +115,19 @@ SimResult M68kSimulator::OpDbcc(uint16_t opcode) {
   uint32_t disp_pc = state_.pc;  // pc points at displacement word
   int16_t disp = static_cast<int16_t>(FetchWord());
 
+  // CODE8.CPP DBCC: cond true 12; counter expired 14; branch taken 10.
   if (!CheckCondition(static_cast<Condition>(cond))) {
     int16_t counter = static_cast<int16_t>(state_.d[dn] & 0xFFFF);
     --counter;
     state_.d[dn] = (state_.d[dn] & 0xFFFF0000u) | static_cast<uint16_t>(counter);
     if (counter != -1) {
       state_.pc = (disp_pc + disp) & kAddressMask;
+      IncrementCycles(10);
+    } else {
+      IncrementCycles(14);
     }
+  } else {
+    IncrementCycles(12);
   }
   return SimResult::kOk;
 }
@@ -104,6 +145,12 @@ SimResult M68kSimulator::OpScc(uint16_t opcode) {
 
   uint8_t val = CheckCondition(static_cast<Condition>(cond)) ? 0xFF : 0x00;
   EffectiveAddr ea = CalcEA(mode, reg, DataSize::kByte);
+  // CODE8.CPP SCC: EA time + Dn: 6 (true) / 4 (false); memory: 8.
+  IncrementCycles(EaCyclePenalty(ea, DataSize::kByte));
+  if ((opcode & 0x0030) == 0)
+    IncrementCycles(val ? 6 : 4);
+  else
+    IncrementCycles(8);
   return WriteEA(ea, val, DataSize::kByte);
 }
 
@@ -117,6 +164,7 @@ SimResult M68kSimulator::OpJmp(uint16_t opcode) {
   int reg = opcode & 0x7;
   EffectiveAddr ea = CalcEA(mode, reg, DataSize::kLong);
   state_.pc = ea.address & kAddressMask;
+  IncrementCycles(JmpJsrCycles(EaCode(mode, reg), /*is_jsr=*/false));
   return SimResult::kOk;
 }
 
@@ -132,6 +180,7 @@ SimResult M68kSimulator::OpJsr(uint16_t opcode) {
   state_.SetSP(state_.GetSP() - 4);
   memory_.WriteLong(state_.GetSP() & kAddressMask, state_.pc);
   state_.pc = ea.address & kAddressMask;
+  IncrementCycles(JmpJsrCycles(EaCode(mode, reg), /*is_jsr=*/true));
   return SimResult::kOk;
 }
 
@@ -145,6 +194,7 @@ SimResult M68kSimulator::OpRts(uint16_t /*opcode*/) {
   auto result = memory_.ReadLong(sp & kAddressMask);
   state_.pc = result.value & kAddressMask;
   state_.SetSP(sp + 4);
+  IncrementCycles(16);  // CODE8.CPP RTS
   return SimResult::kOk;
 }
 
@@ -162,6 +212,7 @@ SimResult M68kSimulator::OpRte(uint16_t /*opcode*/) {
   state_.sr = static_cast<uint16_t>(sr_res.value);
   state_.pc = pc_res.value & kAddressMask;
   state_.ssp = sp + 6;
+  IncrementCycles(20);  // CODE8.CPP RTE
   return SimResult::kOk;
 }
 
@@ -178,6 +229,7 @@ SimResult M68kSimulator::OpRtr(uint16_t /*opcode*/) {
   state_.sr = static_cast<uint16_t>((state_.sr & 0xFF00u) | (ccr_res.value & 0xFFu));
   state_.pc = pc_res.value & kAddressMask;
   state_.SetSP(sp + 6);
+  IncrementCycles(20);  // CODE8.CPP RTR
   return SimResult::kOk;
 }
 

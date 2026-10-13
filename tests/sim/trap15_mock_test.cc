@@ -144,8 +144,6 @@ class MockSimulatorEnv : public ISimulatorEnv {
   MOCK_METHOD(uint32_t, GetSwitchAddress, (), (override));
   MOCK_METHOD(uint32_t, GetPushButtonAddress, (), (override));
   MOCK_METHOD(void, SetAutoIRQ, (uint8_t, uint32_t), (override));
-  MOCK_METHOD(void, ClearCycles, (), (override));
-  MOCK_METHOD(uint32_t, GetCycles, (), (override));
   MOCK_METHOD(uint32_t, GetVersion, (), (override));
   MOCK_METHOD(void, SetExceptionsEnabled, (bool), (override));
   MOCK_METHOD(void, SetWindowSize, (unsigned short, unsigned short), (override));
@@ -458,14 +456,21 @@ TEST_F(Trap15Test, Task25_ScrollRect) {
 // ===========================================================================
 
 TEST_F(Trap15Test, Task30_ClearCycles) {
-  EXPECT_CALL(sim_env_, ClearCycles()).Times(1);
+  sim_->State().cycles = 12345;
   RunTask(kTrap15ClearCycles);
+  EXPECT_EQ(sim_->State().cycles, 0u);
 }
 
 TEST_F(Trap15Test, Task31_GetCycles_WritesD1L) {
-  EXPECT_CALL(sim_env_, GetCycles()).WillOnce(Return(99999u));
+  sim_->State().cycles = 99999;
   RunTask(kTrap15GetCycles);
   EXPECT_EQ(sim_->State().d[1], 99999u);
+}
+
+TEST_F(Trap15Test, Task31_GetCycles_OverflowReturnsZero) {
+  sim_->State().cycles = 0x100000000ull;
+  RunTask(kTrap15GetCycles);
+  EXPECT_EQ(sim_->State().d[1], 0u);
 }
 
 TEST_F(Trap15Test, Task32_Sub0_ShowHardware) {

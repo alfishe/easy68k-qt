@@ -2,8 +2,9 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 //
 // ISimulatorEnv — simulator environment interface (Trap #15 tasks 8, 23,
-// 30-33). Provides timers, cycle counter, version, exception control, hardware
-// window, output window sizing, and memory-mapped peripheral addresses.
+// 32-33). Provides timers, version, exception control, hardware window,
+// output window sizing, and memory-mapped peripheral addresses. The cycle
+// counter (tasks 30-31) is owned by the simulator core.
 // Replaces Win32 GetTickCount and VCL hardware/output windows in original.
 
 #pragma once
@@ -23,8 +24,6 @@ class ISimulatorEnv {
   virtual uint32_t GetSwitchAddress() = 0;
   virtual uint32_t GetPushButtonAddress() = 0;
   virtual void SetAutoIRQ(uint8_t irq_config, uint32_t interval) = 0;
-  virtual void ClearCycles() = 0;
-  virtual uint32_t GetCycles() = 0;
   virtual uint32_t GetVersion() = 0;
   virtual void SetExceptionsEnabled(bool enable) = 0;
   virtual void SetWindowSize(unsigned short width, unsigned short height) = 0;
