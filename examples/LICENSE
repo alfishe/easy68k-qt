@@ -1,0 +1,18 @@
+EASy68K-Qt Examples — Public Domain Dedication
+
+SPDX-License-Identifier: CC0-1.0
+
+To the extent possible under law, the EASy68K-Qt contributors have waived all
+copyright and related or neighboring rights to the files in this `examples/`
+directory (example programs, exercises, solutions, specifications and their
+documentation). This work is published from: the contributors' respective
+jurisdictions.
+
+The full legal code of the Creative Commons CC0 1.0 Universal Public Domain
+Dedication is available at:
+
+    https://creativecommons.org/publicdomain/zero/1.0/legalcode
+
+This dedication applies only to the contents of the `examples/` directory.
+The EASy68K-Qt applications and libraries are licensed under the GNU General
+Public License (see ../LICENSE).

@@ -1,0 +1,14 @@
+# <ID> — <Title>
+# Spec format: doc/examples/example-spec.md
+id = "<ID>"
+title = "<Title>"
+track = "core"            # core | systems | c | optimization | projects
+level = 0                 # 0-3 core path, 4 tracks/capstones
+difficulty = 1            # 1 basic .. 4 expert
+requires = []             # e.g. ["L0-01"]
+source = "main.x68"
+
+[expect]
+halted = true
+registers = { D0 = 42 }
+max_cycles = 100

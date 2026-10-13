@@ -247,6 +247,24 @@ Decision: Each task is committed once it is tested and certified (full test suit
 | 13.24 Auto Trace + Options Dialog (parity G12) | TODO | | |
 | 13.25 Help System (parity H1) | TODO | | |
 
+## Examples & Education (doc/examples/EDUCATION_STRATEGY.md)
+
+| Task | Status | Commit | Summary |
+|------|--------|--------|---------|
+| E0 Strategy, Skeleton, Templates, Spec Format | DONE | `pending` | Approved strategy (4 tracks + core path, 83 planned examples); `examples/` skeleton with track indexes generated from the curriculum; `_template/` (verified: assembles, runs, meets its spec); `example.toml` spec format; CC0-1.0 for examples |
+| E1 easy68k-run CLI + Example Runner Test | TODO | | |
+| E2 Levels 0–1 (15 examples) | TODO | | |
+| E3 Levels 2–3 (19 examples) | TODO | | |
+| E4 Track S (16 examples) | TODO | | |
+| E5 Track C: toolchain, libeasy68k, C-01..C-09 (in parallel with E2–E3) | TODO | | |
+| E6 Track C++: C-10..C-13 | TODO | | |
+| E7 Track O (13 pairs) | TODO | | |
+| E8 Capstones (7 projects) | TODO | | |
+| E9 In-app Examples Browser + Solution Checker (post-parity) | TODO | | |
+
+Decision: Examples are CC0-1.0 (user chose "CC"; CC0 is the Creative Commons option suited to code). GCC cross-compiler (C11, freestanding C++17) is the reference C/C++ toolchain. Core path and Track C proceed in parallel.
+Decision: E2 depends on the assembler forward-reference fix (pass-2 backward-reference semantics found by the 9.6 integration test); examples must assemble identically to the original EASy68K.
+
 ---
 
 Decision: IFARG and all body conditionals (IFC/etc.) are handled via a unified LocalFrame stack inside InvokeMacro — never injected to RunPass raw. IFC inside true IFARG is tracked as an "injected" frame (its ENDC is also injected); IFC inside false IFARG is tracked as a "local" frame (nothing injected). This ensures ENDC is always correctly paired.
