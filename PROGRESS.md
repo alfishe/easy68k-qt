@@ -251,7 +251,7 @@ Decision: Each task is committed once it is tested and certified (full test suit
 
 | Task | Status | Commit | Summary |
 |------|--------|--------|---------|
-| E0 Strategy, Skeleton, Templates, Spec Format | DONE | `pending` | Approved strategy (4 tracks + core path, 83 planned examples); `examples/` skeleton with track indexes generated from the curriculum; `_template/` (verified: assembles, runs, meets its spec); `example.toml` spec format; CC0-1.0 for examples |
+| E0 Strategy, Skeleton, Templates, Spec Format | DONE | `15d04b4` | Approved strategy (4 tracks + core path, 83 planned examples); `examples/` skeleton with track indexes generated from the curriculum; `_template/` (verified: assembles, runs, meets its spec); `example.toml` spec format; CC0-1.0 for examples |
 | E1 easy68k-run CLI + Example Runner Test | TODO | | |
 | E2 Levels 0–1 (15 examples) | TODO | | |
 | E3 Levels 2–3 (19 examples) | TODO | | |
