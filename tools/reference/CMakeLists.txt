@@ -3,3 +3,4 @@
 set(EASY68K_ORIGINAL_SOURCE_DIR "${CMAKE_SOURCE_DIR}/../Easy68k"
     CACHE PATH "Path to a checkout of the original EASy68K sources")
 add_subdirectory(edit68k)
+add_subdirectory(sim68k)

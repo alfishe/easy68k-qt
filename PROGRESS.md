@@ -219,7 +219,13 @@ Decision: Each task is committed once it is tested and certified (full test suit
 
 | Task | Status | Commit | Summary |
 |------|--------|--------|---------|
+| 10.0 Reference Simulator Oracle + Trace Comparison | DONE | pending | `tools/reference/sim68k` builds the ORIGINAL Sim68K core (RUN, CODE1-9, UTILS, STARTSIM, SIMOPS1/2, STRUTILS, SCAN, BPoint*) as a 32-bit headless `easy68k-ref-sim` (VCL/GUI stand-ins in `compat/sim_prelude.h`, Trap #15 text on stdout/stdin); `tools/easy68k-sim` runs the port with the same trace format; `tools/reference/compare_sim.sh` diffs per-instruction register traces, memory hash and program output; `tools/reference/gen_sim_corpus.py` turns the assembler matrix into 131 programs (4,453 instruction cases); first finding fixed: LEA to A4-A7 and CHK on D4-D7 decoded as illegal (2 unit tests, 726 sim tests) |
 | 10.1 Implement Golden Trace Comparison | TODO | | |
+
+Decision: The simulator oracle is the original core compiled with `-m32` (the sources assume 32-bit `long` and pointers) against headless stand-ins for the VCL forms. Only two Borland-only constructs are rewritten when the sources are staged (CODE7.CPP cast-as-lvalue shift and address-of-cast), with identical meaning. The driver mirrors TForm1::OpenFile (initSim, erase to $FF, toggle-switch byte 0, loadSrec) and runLoop (runprog until halted); the original's default is exceptions off (`-e` enables, like Sim68K `/e`). Traces exclude message-pane text (MSG lines).
+Decision: First oracle run of the instruction corpus (exceptions on): 96 of 131 programs identical. The remaining differences are systematic, not per-instruction typos: (1) an address/bus error in the original builds the exception frame inside mem_req()/mem_put() at the moment of the access, with (An)+/-(An) updates and EA cycles already applied, and the instruction then carries on, whereas the port rolls the registers back to the start of the instruction; (2) flags the original computes for "undefined" cases through cc_update() (ABCD/SBCD/NBCD N and V, CHK, DIVS/DIVU/MULS, NEGX); (3) the original keeps a 32-bit PC (RTS/RTR/RTE to $FFFFFFFF), the port masks it to 24 bits; (4) EA cycles added before a faulting access.
+Decision: Parity policy (user instruction, 2026-10-14): do NOT reproduce bugs of the original — fix them when found, and fix algorithmic inefficiencies too, but add no functional improvements (no new features or behaviour beyond the original's). This supersedes "bug-for-bug by default". The oracle stays the reference for everything the original does correctly; every intentional difference is a documented deviation (original bug or inefficiency) with a reason. The Phase 6 decisions (ABCD/SBCD/NBCD X, CHK sign test, shift count modulo 64) stand under this policy.
+| 10.2 Oracle Difference Triage | TODO | | Block-level trace comparison for the instruction corpus (per-case diff, cycle deltas instead of totals); each difference is either a port bug (fixed, with a unit test) or an original bug (listed in an accepted-deviations file with the reason, checked by the comparer); acceptance: no unexplained differences |
 
 ## Phase 11: Exception and Interrupt Tests
 
@@ -297,4 +303,4 @@ Decision: Refactored `ListLine` to use type-safe metadata structure (`left_colum
 
 Decision: Replicated exact S0/S1/S2/S3/S8 Motorola format with memory map S0 records. S8 termination address formats to 24-bit to match Borland. S0 checksum calculated programmatically to avoid hardcoded mismatch. SRecordGenerator buffers bytes to output SRECSIZE=36 records.
 
-**NEXT:** Phase 10 — Golden simulation traces (10.1), with a reference simulator built from the original sources like the assembler oracle
+**NEXT:** 10.2 — triage simulator oracle differences (fix port bugs; document original bugs as accepted deviations); then 10.1 golden traces

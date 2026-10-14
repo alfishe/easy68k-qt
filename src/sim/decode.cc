@@ -176,8 +176,9 @@ SimResult M68kSimulator::DispatchMoveOrMovea(uint16_t opcode) {
 
 SimResult M68kSimulator::DispatchGroup4(uint16_t opcode) {
   // Sub-decode group 4 (0x4xxx) by bits 11-8, then by bits 7-6 (size/subtype).
-  // CHK/LEA span all of bits 11-8 via bit 8 = 1; check them first.
-  if ((opcode & 0x0100) && (opcode & 0xFF00) < 0x4800) {
+  // CHK/LEA span all of bits 11-8 via bit 8 = 1 (register field in bits
+  // 11-9, so every odd nibble 1..F); check them first.
+  if (opcode & 0x0100) {
     // CHK: bit 8=1, bits 7-6=10; LEA: bit 8=1, bits 7-6=11
     uint16_t sz = opcode & 0x00C0;
     if (sz == 0x0080)

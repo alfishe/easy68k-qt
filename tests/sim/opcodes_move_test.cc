@@ -284,6 +284,29 @@ TEST_F(MoveTest, Lea_AbsoluteLong) {
   EXPECT_EQ(sim_.State().pc, 0x1006u);
 }
 
+TEST_F(MoveTest, Lea_HighAddressRegisters) {
+  // LEA into A4-A7 (register field 4-7, opcode $49C0-$4FC0): these were
+  // decoded as illegal before the simulator parity oracle found them.
+  // LEA $2000.W,A4 / LEA $3000.W,A6 / LEA $8000.L,SP (supervisor: SSP)
+  PutWords({0x49F8, 0x2000, 0x4DF8, 0x3000, 0x4FF9, 0x0000, 0x8000});
+  EXPECT_EQ(sim_.Step(), SimResult::kOk);
+  EXPECT_EQ(sim_.State().a[4], 0x2000u);
+  EXPECT_EQ(sim_.Step(), SimResult::kOk);
+  EXPECT_EQ(sim_.State().a[6], 0x3000u);
+  EXPECT_EQ(sim_.Step(), SimResult::kOk);
+  EXPECT_EQ(sim_.State().ssp, 0x8000u);
+  EXPECT_EQ(sim_.State().pc, 0x100Eu);
+}
+
+TEST_F(MoveTest, Chk_HighDataRegisters) {
+  // CHK D5,D7 = $4F85: D7 = 3 within 0..D5 = 10, no exception.
+  sim_.State().d[5] = 10;
+  sim_.State().d[7] = 3;
+  PutWords({0x4F85});
+  EXPECT_EQ(sim_.Step(), SimResult::kOk);
+  EXPECT_EQ(sim_.State().pc, 0x1002u);
+}
+
 // ===========================================================================
 // PEA
 // ===========================================================================
