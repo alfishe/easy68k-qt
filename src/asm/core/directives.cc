@@ -971,8 +971,13 @@ int AsmCore::simhalt(int size, char *label, char *op, int *errorPtr)
   if (pass2) {
     //if (listFlag)       // if directive should be listed
     //  listLine(line);
+    // Port fix: the original outputs both words at the same address, so only
+    // one $FFFF reached the S-record (the second came from Sim68K's erased
+    // memory). Advance the location between the two words.
     output(0xFFFF, WORD_SIZE);  // opcode $FFFF $FFFF
+    loc += WORD_SIZE;
     output(0xFFFF, WORD_SIZE);  // opcode $FFFF $FFFF
+    loc -= WORD_SIZE;
   }
   loc += LONG_SIZE;
 

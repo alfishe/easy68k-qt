@@ -14,6 +14,7 @@
 #include <algorithm>
 #include <filesystem>
 #include <fstream>
+#include <map>
 #include <sstream>
 #include <string>
 #include <vector>
@@ -83,6 +84,30 @@ std::vector<Case> Cases() {
   return cases;
 }
 
+// Memory image of S1/S2/S3 records, bytes equal to $FF omitted (the value of
+// erased Sim68K memory).
+std::map<uint32_t, uint8_t> SRecordImage(const std::string& srec) {
+  std::map<uint32_t, uint8_t> image;
+  std::istringstream in(srec);
+  std::string line;
+  while (std::getline(in, line)) {
+    if (line.size() < 4 || line[0] != 'S' || line[1] < '1' || line[1] > '3')
+      continue;
+    int addr_len = 2 * (line[1] - '0' + 1);
+    int count = std::stoi(line.substr(2, 2), nullptr, 16);
+    uint32_t addr = static_cast<uint32_t>(std::stoul(line.substr(4, addr_len), nullptr, 16));
+    int data_bytes = count - addr_len / 2 - 1;
+    for (int i = 0; i < data_bytes; i++) {
+      auto b = static_cast<uint8_t>(std::stoi(line.substr(4 + addr_len + 2 * i, 2), nullptr, 16));
+      if (b != 0xFF)
+        image[addr + i] = b;
+      else
+        image.erase(addr + i);
+    }
+  }
+  return image;
+}
+
 class CorpusTest : public ::testing::TestWithParam<Case> {};
 
 TEST_P(CorpusTest, MatchesOriginalAssembler) {
@@ -102,8 +127,19 @@ TEST_P(CorpusTest, MatchesOriginalAssembler) {
   const std::filesystem::path expected = dir / "expected" / c.variant;
   EXPECT_EQ(StripCr(assembler.GetListing()), StripCr(ReadFile(expected / (c.program + ".L68"))))
       << "listing differs for " << c.program << " (" << c.variant << ")";
-  EXPECT_EQ(StripCr(r.srecord), StripCr(ReadFile(expected / (c.program + ".S68"))))
-      << "S-records differ for " << c.program << " (" << c.variant << ")";
+  const std::string want = StripCr(ReadFile(expected / (c.program + ".S68")));
+  const std::string got = StripCr(r.srecord);
+  if (got != want && ReadFile(dir / (c.program + ".x68")).find("SIMHALT") != std::string::npos) {
+    // SIMHALT: the original writes only one of its two $FFFF words to the
+    // S-records (deviation, fixed in the port), which also shifts the record
+    // splitting. Compare the loaded images instead (Sim68K erases memory to
+    // $FF before loading) plus the header and end records.
+    EXPECT_EQ(SRecordImage(got), SRecordImage(want)) << c.program << " (" << c.variant << ")";
+    EXPECT_EQ(got.substr(0, got.find('\n')), want.substr(0, want.find('\n')));
+    EXPECT_EQ(got.substr(got.rfind("S8")), want.substr(want.rfind("S8")));
+  } else {
+    EXPECT_EQ(got, want) << "S-records differ for " << c.program << " (" << c.variant << ")";
+  }
 }
 
 INSTANTIATE_TEST_SUITE_P(Corpus, CorpusTest, ::testing::ValuesIn(Cases()),

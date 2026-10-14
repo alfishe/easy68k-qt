@@ -1,0 +1,57 @@
+00001000 Starting Address
+Assembler used: EASy68K Editor/Assembler v5.16.01
+Created On: 
+
+00000000                             1  * Assembler corpus: nested macros (with local labels, NARG and IFARG),
+00000000                             2  * nested INCLUDE files and long DC constants (OPT CEX continuation lines),
+00000000                             3  * compared with the original assembler in every option variant. CC0-1.0.
+00001000                             4          ORG     $1000
+00001000                             5  INNER   MACRO
+00001000                             6          IFARG   2
+00001000                             7          ADD.\0  \1,\2
+00001000                             8          ENDC
+00001000                             9          IFNC    '\1',''
+00001000                            10          MOVE.\0 \1,D7
+00001000                            11          ENDC
+00001000                            12  LOOP\@  DBRA    D6,LOOP\@
+00001000                            13          ENDM
+00001000                            14  MIDDLE  MACRO
+00001000                            15          INNER.W \1,\2
+00001000                            16          INNER.L #NARG,D5
+00001000                            17          ENDM
+00001000                            18  OUTER   MACRO
+00001000                            19          MIDDLE  \1,\2
+00001000                            20          MIDDLE  #3,D0
+00001000                            21          ENDM
+00001000                            22m START   OUTER   D1,D2
+00001022                            23m         OUTER   #$10
+Line 24 ERROR: Invalid argument
+00001022                            24mm         INCLUDE inc_nest1.x68
+00001034= 54 68 69 73 20 69 ...     25  TEXT    DC.B    'This is a long string constant that spans several listing lines',0
+00001074= 0001 0002 0003 0...       26  WORDS   DC.W    1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24
+000010A4= 11111111 22222222 ...     27  LONGS   DC.L    $11111111,$22222222,$33333333,$44444444,$55555555,$66666666
+000010BC= ABCD ABCD ABCD A...       28  BLOCK   DCB.W   20,$ABCD
+000010E4  FFFF FFFF                 29          SIMHALT
+000010E8                            30          END     START
+
+1 error detected
+No warnings generated
+
+
+SYMBOL TABLE INFORMATION
+Symbol-name         Value
+-------------------------
+BLOCK               10BC
+INNER               0
+LONGS               10A4
+LOOP_10             1028
+LOOP_11             1030
+LOOP_3              1004
+LOOP_4              100C
+LOOP_6              1016
+LOOP_7              101E
+MIDDLE              97
+OUTER               D3
+START               1000
+TEXT                1034
+WORDS               1074

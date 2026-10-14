@@ -235,31 +235,35 @@ TEST(DirectivesTest, DcByteStringLabelPlacement) {
 // SIMHALT tests
 // ============================================================
 
-TEST(DirectivesTest, SimhaltObjectIsOneFfffWord) {
-  // DIRECTIV.CPP simhalt(): the listing shows FFFF FFFF but only one $FFFF
-  // word reaches the S-record (reference oracle: S1051000FFFFEC).
+TEST(DirectivesTest, SimhaltObjectIsTwoFfffWords) {
+  // DIRECTIV.CPP simhalt() lists FFFF FFFF but writes both words at the same
+  // address, so the original's S-record holds one (S1051000FFFFEC). The port
+  // writes both (deviation: original bug).
   auto code = Asm("  ORG $1000\n  SIMHALT\n");
-  ASSERT_EQ(code.size(), 2u);
-  EXPECT_EQ(code[0], 0xFF);
-  EXPECT_EQ(code[1], 0xFF);
+  ASSERT_EQ(code.size(), 4u);
+  for (uint8_t b : code)
+    EXPECT_EQ(b, 0xFF);
+  Assembler a;
+  EXPECT_NE(a.Assemble("  ORG $1000\n  SIMHALT\n").srecord.find("S1071000FFFFFFFF"),
+            std::string::npos);
 }
 
 TEST(DirectivesTest, SimhaltAtOddAddressAligns) {
   // DC.B $01, SIMHALT → word aligned to $1002 (no pad byte is written)
   auto code = Asm("  ORG $1000\n  DC.B $01\n  SIMHALT\n");
-  ASSERT_EQ(code.size(), 4u);
+  ASSERT_EQ(code.size(), 6u);
   EXPECT_EQ(code[0], 0x01);
   EXPECT_EQ(code[1], 0x00);  // gap (not in the S-records)
-  EXPECT_EQ(code[2], 0xFF);
-  EXPECT_EQ(code[3], 0xFF);
+  for (int i = 2; i < 6; i++)
+    EXPECT_EQ(code[i], 0xFF);
 }
 
 TEST(DirectivesTest, SimhaltAtEvenAddressNoExtraPad) {
   // DC.W $1234, SIMHALT → no extra padding
   auto code = Asm("  ORG $1000\n  DC.W $1234\n  SIMHALT\n");
-  ASSERT_EQ(code.size(), 4u);
+  ASSERT_EQ(code.size(), 6u);
   EXPECT_EQ(code[2], 0xFF);
-  EXPECT_EQ(code[3], 0xFF);
+  EXPECT_EQ(code[5], 0xFF);
 }
 
 TEST(DirectivesTest, SimhaltLabelFollowing) {
@@ -563,14 +567,14 @@ TEST(DirectivesTest, DcbAfterInclude) {
 TEST(DirectivesTest, SimhaltAfterString) {
   // DC.B string (odd count) then SIMHALT
   auto code = Asm("  ORG $1000\n  DC.B 'HI!'\n  SIMHALT\n");
-  // 3 bytes + 1 gap + one $FFFF word (see SimhaltObjectIsOneFfffWord)
-  ASSERT_EQ(code.size(), 6u);
+  // 3 bytes + 1 gap + two $FFFF words (see SimhaltObjectIsTwoFfffWords)
+  ASSERT_EQ(code.size(), 8u);
   EXPECT_EQ(code[0], 'H');
   EXPECT_EQ(code[1], 'I');
   EXPECT_EQ(code[2], '!');
   EXPECT_EQ(code[3], 0x00);  // pad
-  EXPECT_EQ(code[4], 0xFF);
-  EXPECT_EQ(code[5], 0xFF);
+  for (int i = 4; i < 8; i++)
+    EXPECT_EQ(code[i], 0xFF);
 }
 
 TEST(DirectivesTest, OptListNolistDoNotAffectCode) {

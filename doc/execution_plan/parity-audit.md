@@ -28,7 +28,7 @@ hash and the program output.
 
 ## Status snapshot
 
-*Updated after every committed iteration (last: 2026-10-14, commit `080908a`).*
+*Updated after every committed iteration (last: 2026-10-14, commit `(X)`).*
 
 | Area | Rows | Done | Partial | Gap | Notes |
 |------|------|------|---------|-----|-------|
@@ -42,14 +42,15 @@ hash and the program output.
 
 | Measure | Value |
 |---------|-------|
-| Plan tasks (PROGRESS.md) | 68 done, 42 open (10.4 next) |
+| Plan tasks (PROGRESS.md) | 69 done, 42 open (10.4 / Phase 11 next) |
 | Simulator unit tests | 764 pass, incl. 23 golden simulation traces (ASan+UBSan clean) |
-| Assembler tests | 394 pass (incl. 132 instruction-matrix suites, 21 golden, 21 corpus cases); ASan+UBSan clean |
+| Assembler tests | 400 pass (incl. 132 instruction-matrix suites, 21 golden, 27 corpus cases); ASan+UBSan clean |
 | Integration tests (asm + sim) | 10 pass |
 | Instruction matrix vs oracle | 98,583 / 98,583 cases match (bytes + diagnostic class) |
 | Golden programs, S-records (.S68) vs oracle | 21 / 21 match |
 | Golden programs, listings (.L68) vs oracle | 21 / 21 match |
-| Corpus (directives, macros, conditional/structured, OPT, INCLUDE/INCBIN, MEMORY, errors) × 3 option variants vs oracle | 21 / 21 match (.L68 + .S68) |
+| Corpus (directives, macros, conditional/structured, OPT, INCLUDE/INCBIN, MEMORY, errors, every diagnostic text, nested macros/includes) × 3 option variants vs oracle | 27 / 27 match (.L68 byte-identical; .S68 identical or, with SIMHALT, same loaded image) |
+| Assembler option combinations (`--no-list`, `--no-srec`, `--no-warnings`, `--no-cre`, `--no-bitfield`, `--mex --sex --cex`) on all corpus + golden programs; bit field matrix with `--no-bitfield` | all match |
 | Simulator instruction corpus vs oracle (131 programs from the matrix, exceptions on; `compare_sim_corpus.sh`) | all executed cases match: identical or an accepted deviation (`data/golden/sim/deviations.tsv`); memory hash identical or accepted |
 | Golden simulation traces (oracle-generated, `tests/sim/golden_trace_test.cc`) | 23 / 23 match |
 | Simulator opcode sweep vs oracle (every first word, 61,034 opcodes in 16 programs; `compare_sim_corpus.sh --sweep`) | 0 unexplained differences (legal/illegal decision, results, flags, cycles) |
@@ -85,8 +86,8 @@ hash and the program output.
 |----|---------|----------|-------------|------|
 | A1a | Instruction set: every mnemonic, flavor, addressing mode and size, incl. error paths (INSTTABL/BUILD/CODEGEN/MOVEM ported verbatim) | INSTTABL.CPP, BUILD.CPP, CODEGEN.CPP, MOVEM.CPP, ASSEMBLE.CPP createCode() | **Done**: 98,583-case matrix matches the oracle | 8.12 |
 | A1b | Directives, macros, conditional + structured assembly | DIRECTIV.CPP, MACRO.CPP, STRUCTURED.CPP, ASSEMBLE.CPP | **Done**: ported function by function (src/asm/core); golden + corpus match the oracle | 8.13 ✓ |
-| A2 | Listing (.L68) and S-Record (.S68) output | LISTING.CPP, OBJECT.CPP | **Done**: byte-identical to the oracle (golden 21/21, corpus 21/21) | 8.11 ✓, 8.13 ✓ |
-| A3 | Error/warning reporting (original texts, one most-severe status per line, no error limit) | ERROR.CPP | **Done**: printError() ported; messages carry the original status | 8.12 ✓, 8.13 ✓ |
+| A2 | Listing (.L68) and S-Record (.S68) output | LISTING.CPP, OBJECT.CPP | **Done**: listings byte-identical to the oracle (golden 21/21, corpus 27/27, all option combinations); S-records identical except SIMHALT's second word, which the port writes (original bug) | 8.11 ✓, 8.13 ✓, 8.15 ✓ |
+| A3 | Error/warning reporting (original texts, one most-severe status per line, no error limit) | ERROR.CPP | **Done**: printError() ported; 33 distinct diagnostic texts verified in the corpus (`diagnostics.x68` and others); the rest need undefined symbols or crash the original | 8.12 ✓, 8.13 ✓, 8.15 ✓ |
 | A4 | **Bit-field instruction encoding** (Assembler Options → Assemble Bit Field Instructions) | CODEGEN.CPP, INSTTABL.CPP | **Done** (8.7/8.12, matrix-verified); OPT BITFIELD switch with 8.9 | **NEW 8.7** ✓ |
 | A5 | OPT CRE: cross-reference / symbol table appended to listing | LISTING.CPP optCRE() | **Done** | **NEW 8.8** ✓ (8.13) |
 | A6 | OPT MEX / SEX / CEX listing expansion (macros, structured, constants) | LISTING.CPP | **Done** (corpus "expand" variant) | **NEW 8.8** ✓ (8.13) |
@@ -227,6 +228,7 @@ Each committed iteration updates the snapshot above and adds a line here.
 | 2026-10-14 | `9f42410` | 10.2 oracle difference triage: case-level comparer, accepted deviations, 5 port bugs fixed | S1-S3 Done (0 unexplained differences) |
 | 2026-10-14 | `16ac30d` | 10.3 opcode sweep; opcode legality table; ABCD/SBCD digits | S1 legality verified for every first word |
 | 2026-10-14 | `080908a` | 10.1 golden simulation traces (23 programs from the oracle, incl. Trap #15 text tasks) | acceptance item 2 (golden traces) in place |
+| 2026-10-14 | `(X)` | 8.15 assembler parity widening: SIMHALT S-record fix, diagnostics + nesting corpus, option combinations | A2/A3 coverage widened |
 
 ## 10. Parity acceptance
 

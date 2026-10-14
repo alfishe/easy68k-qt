@@ -290,14 +290,14 @@ char *AsmCore::evalNumber(char *p, int *numberPtr, bool *refPtr, int *errorPtr)
     while (!endFlag && *p) {
       if (*p == '\'')           // if '
 	if (*(p+1) == '\'') {   // if ''
-	  x = (x << 8) + *p;
+	  x = static_cast<int>((static_cast<unsigned>(x) << 8) + *p);  // port: wraps (no UB)
 	  i++;
 	  p++;
 	}
 	else                    // ending ' found
 	  endFlag = true;       // end of string literal
       else {
-	x = (x << 8) + *p;
+	x = static_cast<int>((static_cast<unsigned>(x) << 8) + *p);  // port: wraps (no UB)
 	i++;
       }
       p++;
@@ -307,7 +307,7 @@ char *AsmCore::evalNumber(char *p, int *numberPtr, bool *refPtr, int *errorPtr)
       return NULL;
     }
     else if (i == 3)
-      x = x << 8;
+      x = static_cast<int>(static_cast<unsigned>(x) << 8);
     else if (i > 4)
       NEWERROR(*errorPtr, ASCII_TOO_BIG);
     *numberPtr = x;

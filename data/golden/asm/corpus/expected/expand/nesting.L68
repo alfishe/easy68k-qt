@@ -1,0 +1,136 @@
+00001000 Starting Address
+Assembler used: EASy68K Editor/Assembler v5.16.01
+Created On: 
+
+00000000                             1  * Assembler corpus: nested macros (with local labels, NARG and IFARG),
+00000000                             2  * nested INCLUDE files and long DC constants (OPT CEX continuation lines),
+00000000                             3  * compared with the original assembler in every option variant. CC0-1.0.
+00001000                             4          ORG     $1000
+00001000                             5  INNER   MACRO
+00001000                             6          IFARG   2
+00001000                             7          ADD.\0  \1,\2
+00001000                             8          ENDC
+00001000                             9          IFNC    '\1',''
+00001000                            10          MOVE.\0 \1,D7
+00001000                            11          ENDC
+00001000                            12  LOOP\@  DBRA    D6,LOOP\@
+00001000                            13          ENDM
+00001000                            14  MIDDLE  MACRO
+00001000                            15          INNER.W \1,\2
+00001000                            16          INNER.L #NARG,D5
+00001000                            17          ENDM
+00001000                            18  OUTER   MACRO
+00001000                            19          MIDDLE  \1,\2
+00001000                            20          MIDDLE  #3,D0
+00001000                            21          ENDM
+00001000                            22m START   OUTER   D1,D2
+00001000                            23mm         MIDDLE  D1,D2
+00001000                            24mmm         INNER.W D1,D2
+00001000                 TRUE       25mmm         IFARG   2
+00001000  D441                      26mmm         ADD.W  D1,D2
+00001002                            27mmm         ENDC
+00001002                 TRUE       28mmm         IFNC    'D1',''
+00001002  3E01                      29mmm         MOVE.W D1,D7
+00001004                            30mmm         ENDC
+00001004  51CE FFFE                 31mmm LOOP_3  DBRA    D6,LOOP_3
+00001008                            32mmm         ENDM
+00001008                            33mmm         INNER.L #2,D5
+00001008                 TRUE       34mmm         IFARG   2
+00001008  5485                      35mmm         ADD.L  #2,D5
+0000100A                            36mmm         ENDC
+0000100A                 TRUE       37mmm         IFNC    '#2',''
+0000100A  7E02                      38mmm         MOVE.L #2,D7
+0000100C                            39mmm         ENDC
+0000100C  51CE FFFE                 40mmm LOOP_4  DBRA    D6,LOOP_4
+00001010                            41mmm         ENDM
+00001010                            42mm         ENDM
+00001010                            43mm         MIDDLE  #3,D0
+00001010                            44mmm         INNER.W #3,D0
+00001010                 TRUE       45mmm         IFARG   2
+00001010  5640                      46mmm         ADD.W  #3,D0
+00001012                            47mmm         ENDC
+00001012                 TRUE       48mmm         IFNC    '#3',''
+00001012  3E3C 0003                 49mmm         MOVE.W #3,D7
+00001016                            50mmm         ENDC
+00001016  51CE FFFE                 51mmm LOOP_6  DBRA    D6,LOOP_6
+0000101A                            52mmm         ENDM
+0000101A                            53mmm         INNER.L #2,D5
+0000101A                 TRUE       54mmm         IFARG   2
+0000101A  5485                      55mmm         ADD.L  #2,D5
+0000101C                            56mmm         ENDC
+0000101C                 TRUE       57mmm         IFNC    '#2',''
+0000101C  7E02                      58mmm         MOVE.L #2,D7
+0000101E                            59mmm         ENDC
+0000101E  51CE FFFE                 60mmm LOOP_7  DBRA    D6,LOOP_7
+00001022                            61mmm         ENDM
+00001022                            62mm         ENDM
+00001022                            63m         ENDM
+00001022                            64m         OUTER   #$10
+00001022                            65mm         MIDDLE  #$10,
+Line 66 ERROR: Invalid argument
+00001022                            66mm         INCLUDE inc_nest1.x68
+00001022                            67mm         MIDDLE  #3,D0
+00001022                            68mmm         INNER.W #3,D0
+00001022                 TRUE       69mmm         IFARG   2
+00001022  5640                      70mmm         ADD.W  #3,D0
+00001024                            71mmm         ENDC
+00001024                 TRUE       72mmm         IFNC    '#3',''
+00001024  3E3C 0003                 73mmm         MOVE.W #3,D7
+00001028                            74mmm         ENDC
+00001028  51CE FFFE                 75mmm LOOP_10  DBRA    D6,LOOP_10
+0000102C                            76mmm         ENDM
+0000102C                            77mmm         INNER.L #2,D5
+0000102C                 TRUE       78mmm         IFARG   2
+0000102C  5485                      79mmm         ADD.L  #2,D5
+0000102E                            80mmm         ENDC
+0000102E                 TRUE       81mmm         IFNC    '#2',''
+0000102E  7E02                      82mmm         MOVE.L #2,D7
+00001030                            83mmm         ENDC
+00001030  51CE FFFE                 84mmm LOOP_11  DBRA    D6,LOOP_11
+00001034                            85mmm         ENDM
+00001034                            86mm         ENDM
+00001034                            87m         ENDM
+00001034= 54 68 69 73 20 69 73      88  TEXT    DC.B    'This is a long string constant that spans several listing lines',0
+          20 61 20 6C 6F 6E 67  
+          20 73 74 72 69 6E 67  
+          20 63 6F 6E 73 74 61  
+          6E 74 20 74 68 61 74  
+          20 73 70 61 6E 73 20  
+          73 65 76 65 72 61 6C  
+          20 6C 69 73 74 69 6E  
+          67 20 6C 69 6E 65 73  
+          00                    
+00001074= 0001 0002 0003 0004       98  WORDS   DC.W    1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24
+          0005 0006 0007 0008   
+          0009 000A 000B 000C   
+          000D 000E 000F 0010   
+          0011 0012 0013 0014   
+          0015 0016 0017 0018   
+000010A4= 11111111 22222222        104  LONGS   DC.L    $11111111,$22222222,$33333333,$44444444,$55555555,$66666666
+          33333333 44444444     
+          55555555 66666666     
+000010BC= ABCD ABCD ABCD A...      107  BLOCK   DCB.W   20,$ABCD
+000010E4  FFFF FFFF                108          SIMHALT
+000010E8                           109          END     START
+
+1 error detected
+No warnings generated
+
+
+SYMBOL TABLE INFORMATION
+Symbol-name         Value
+-------------------------
+BLOCK               10BC
+INNER               0
+LONGS               10A4
+LOOP_10             1028
+LOOP_11             1030
+LOOP_3              1004
+LOOP_4              100C
+LOOP_6              1016
+LOOP_7              101E
+MIDDLE              97
+OUTER               D3
+START               1000
+TEXT                1034
+WORDS               1074

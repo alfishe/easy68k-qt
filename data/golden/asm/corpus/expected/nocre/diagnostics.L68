@@ -1,0 +1,87 @@
+00001000 Starting Address
+Assembler used: EASy68K Editor/Assembler v5.16.01
+Created On: 
+
+00000000                             1m * Assembler corpus: one line per diagnostic of the original (ERROR.CPP),
+00000000                             2m * listing text compared with the original assembler. Lines that make the
+00000000                             3m * original crash (ELSE/ENDI/ENDF/ENDW/UNTIL/... with no open structure:
+00000000                             4m * "No matching ... statement") or use undefined symbols (the original
+00000000                             5m * encodes an uninitialized value: unclosed IF/FOR/WHILE/REPEAT/DBLOOP,
+00000000                             6m * undefined register lists) are not included. CC0-1.0.
+00001000                             7m         ORG     $1000
+00001000  3039 00012345              8m START   MOVE.W  $12345,D0               absolute address exceeds 16 bits?
+00001006  3038 2345                  9m         MOVE.W  ($12345).W,D0           Absolute address exceeds 16 bits
+Line 10 ERROR: Invalid addressing mode
+0000100A                            10m         JMP     D0                      Invalid addressing mode
+0000100A  203C 42434445             11m         MOVE.L  #'ABCDE',D0             ASCII constant exceeds 4 characters
+Line 12 ERROR: Branch instruction displacement is out of range or invalid
+00001010  60F8                      12m         BRA.S   FAR                     Branch displacement out of range
+Line 13 ERROR: Comma expected
+00001012                            13m         MOVE.W  D0 D1                   Comma expected
+Line 14 ERROR: Displacement out of range
+00001012  3028 2345                 14m         MOVE.W  $12345(A0),D0           Displacement out of range
+Line 15 ERROR: Division by zero attempted
+00001016= 0000                      15m         DC.W    1/0                     Division by zero attempted
+Line 16 ERROR: Invalid syntax
+00001018                            16m         MOVE.W  #1+,D0                  Evaluation could not be completed
+00001018  3038 4000                 17m         MOVE.W  BEFORE.W,D0             Forcing SHORT addressing
+Line 18 ERROR: Forward references not allowed with this directive
+0000101C                            18m FWD     EQU     LATER                   Forward reference
+Line 19 ERROR: Forward references not allowed with this directive
+0000101C                            19m         DS.B    LATER2                  Forward references not allowed
+0000101C  303C 0123                 20m         MOVE.W  #$123,D0
+Line 21 ERROR: Quick immediate data range must be 1 to 8
+00001020  5240                      21m         ADDQ    #9,D0                   Quick immediate data range must be 1 to 8
+Line 22 ERROR: Quick immediate data range exceeds 1 byte
+00001022  70FF                      22m         MOVEQ   #$1FF,D0                Quick immediate data range exceeds 1 byte
+Line 23 ERROR: Immediate data exceeds 8 bits
+00001024  0600 0023                 23m         ADD.B   #$123,D0                Immediate data exceeds 8 bits
+Line 24 ERROR: Invalid opcode
+00001028                            24m         BFTST   D0{33:1}                Invalid bitfield
+Line 25 ERROR: Invalid constant shift count
+00001028  E340                      25m         ASL.W   #9,D0                   Invalid constant shift count
+Line 26 ERROR: Invalid syntax
+0000102A                            26m         MOVE.W  #1&&2,D0                Invalid operator
+Line 27 ERROR: Invalid vector number
+0000102A  4E40                      27m         TRAP    #16                     Invalid vector number
+Line 28 ERROR: Label required with this directive
+0000102C                            28m         EQU     5                       Label required with this directive
+0000102C  4E71                      29m ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZ NOP
+0000102E= 23456789                  30m         DC.L    $123456789              Numeric constant exceeds 32 bits
+00002002                            31m         ORG     $2001                   Origin value is odd
+00002002                            32m LIST1   REG     D0-D3
+Line 33 ERROR: Register list symbol used in an expression
+00002002  303C 0000                 33m         MOVE.W  #LIST1,D0               Register list symbol used in an expression
+00002006  4E71                      34m DUP     NOP
+Line 35 ERROR: Symbol defined more than once
+00002008  4E71                      35m DUP     NOP                             Symbol defined more than once
+0000200A  =00000001                 36m NOTLIST EQU     1
+Line 37 ERROR: Invalid syntax
+0000200A                            37m         MOVEM.L NOTLIST,-(SP)           Symbol is not a register list symbol
+Line 38 ERROR: Invalid syntax
+0000200A                            38m         MOVE.W  #1,9D0                  Illegal symbol?
+Line 39 ERROR: Invalid syntax
+0000200A                            39m         MOVE.W  @@,D0                   Illegal symbol
+Line 40 ERROR: Comma expected
+0000200A                            40m         MOVE.W  D0                      Address expected?
+Line 41 ERROR: Invalid syntax
+0000200A                            41m         MOVE.W  (A0,D0,D1),D0           Invalid argument?
+0000200A                            42  MAC1    MACRO
+0000200A                            43          MAC1
+0000200A                            44m         ENDM
+0000200A                            45m         MAC1                            Nested Macro calls are too many levels deep
+Line 46 ERROR: Nested Macro calls are too many levels deep
+0000200A                            46mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm         MAC1
+0000200A                            47  MAC2    MACRO
+0000200A                            48          DC.W    \1,\2,\3,\4,\5,\6,\7,\8,\9,\A,\B,\C,\D,\E,\F,\G,\H,\I,\J,\K,\L,\M,\N,\O,\P,\Q,\R,\S,\T,\U,\V,\W,\X,\Y,\Z,\a
+0000200A                            49          ENDM
+Line 50 ERROR: Too many arguments
+0000200A                            50m         MAC2    1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38
+0000200A  =00004000                 51m BEFORE  EQU     $4000
+0000200A  =00000010                 52m LATER   EQU     $10
+0000200A  =00000004                 53m LATER2  EQU     4
+0000200A  4E71                      54m FAR     NOP
+0000200C                            55m         END     START
+
+25 errors detected
+6 warnings generated

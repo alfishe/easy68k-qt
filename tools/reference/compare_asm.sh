@@ -24,6 +24,9 @@ while [[ $# -gt 0 ]]; do
   sources+=("$1"); shift
 done
 
+# Files are the same if equal or both absent (e.g. --no-list).
+same() { [[ ! -e "$1" && ! -e "$2" ]] || cmp -s "$1" "$2"; }
+
 work="$(mktemp -d)"
 trap 'rm -rf "$work"' EXIT
 status=0
@@ -44,8 +47,13 @@ for src in "${sources[@]}"; do
   verdict="SAME"
   if [[ $ref_rc -ne 0 && $port_rc -eq 0 ]]; then verdict="REF-ERROR"
   elif [[ $port_rc -ne 0 && $ref_rc -eq 0 ]]; then verdict="PORT-ERROR"
-  elif ! cmp -s "$work/$name.ref.S68" "$work/$name.port.S68"; then verdict="DIFF-S68"
-  elif ! cmp -s "$work/$name.ref.L68" "$work/$name.port.L68"; then verdict="DIFF-L68"
+  elif ! same "$work/$name.ref.S68" "$work/$name.port.S68" &&
+       ! { grep -qi "SIMHALT" "$src" && python3 "$(dirname "$0")/srec_equal.py" \
+             "$work/$name.ref.S68" "$work/$name.port.S68"; }; then
+    # (SIMHALT: the port writes both $FFFF words, the original drops one;
+    # accepted deviation when the loaded images are equal.)
+    verdict="DIFF-S68"
+  elif ! same "$work/$name.ref.L68" "$work/$name.port.L68"; then verdict="DIFF-L68"
   fi
   printf '%-12s %s\n' "$verdict" "$src"
   if [[ "$verdict" != "SAME" ]]; then
