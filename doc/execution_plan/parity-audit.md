@@ -20,7 +20,7 @@ the original Edit68K assembler core built on Linux from the original sources
 
 ## Status snapshot
 
-*Updated after every committed iteration (last: 2026-10-14, commit `3d15f4b`).*
+*Updated after every committed iteration (last: 2026-10-14, commit `dfd8262`).*
 
 | Area | Rows | Done | Partial | Gap | Notes |
 |------|------|------|---------|-----|-------|
@@ -205,7 +205,7 @@ Each committed iteration updates the snapshot above and adds a line here.
 | 2026-10-14 | `e0826c2` | 8.12 + 8.7 instruction table/builders, matrix | A1a, A4 Done; matrix 98,583/98,583 |
 | 2026-10-14 | `29fad1c` | 8.13 assembly loop ported from the original (core), corpus test, Memory::Erase | A1b, A2, A3, A5, A6 Done; A7 Partial; L68 21/21 |
 | 2026-10-14 | `3d15f4b` | removed unused assembler front end | — |
-| 2026-10-14 | (9.8) | bit field instructions in the simulator | S8 Done |
+| 2026-10-14 | `dfd8262` | bit field instructions in the simulator | S8 Done |
 
 ## 10. Parity acceptance
 
