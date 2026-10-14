@@ -63,6 +63,11 @@ class M68kSimulator {
     // exception condition halts the simulator instead of vectoring, trace is
     // ignored and interrupts are not serviced (RUN.CPP runprog()).
     bool exceptions_enabled = true;
+
+    // 68020 bit field instructions (Options > Enable Bit Field Instructions,
+    // `*[sim68k]bitfield`); off by default as in Sim68K. When off they are
+    // illegal instructions.
+    bool bitfield_enabled = false;
   };
 
   explicit M68kSimulator(Config config);
@@ -138,6 +143,8 @@ class M68kSimulator {
   bool IsSimhaltEnabled() const;
   void SetExceptionsEnabled(bool enabled);
   bool IsExceptionsEnabled() const;
+  void SetBitFieldEnabled(bool enabled);
+  bool IsBitFieldEnabled() const;
 
   // Event observers (see isim_observer.h for threading rules). Null and
   // duplicate registrations are ignored. Safe to call from inside OnEvent().
@@ -305,6 +312,7 @@ class M68kSimulator {
 
   // Leaf instruction implementations (opcodes_shift.cc)
   SimResult OpShiftRotate(uint16_t opcode);
+  SimResult OpBitField(uint16_t opcode);
   SimResult OpBtst(uint16_t opcode);
   SimResult OpBchg(uint16_t opcode);
   SimResult OpBclr(uint16_t opcode);
@@ -318,6 +326,7 @@ class M68kSimulator {
   std::atomic<uint8_t> pending_irqs_{0};
   std::atomic<bool> simhalt_enabled_{true};
   std::atomic<bool> exceptions_enabled_{true};
+  std::atomic<bool> bitfield_enabled_{false};
   std::vector<ISimObserver*> observers_;
   int notify_depth_{0};                       // >0 while delivering an event
   bool observers_dirty_{false};               // null slots to compact after delivery

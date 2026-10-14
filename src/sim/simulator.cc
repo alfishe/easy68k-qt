@@ -18,7 +18,8 @@ M68kSimulator::M68kSimulator(Config config)
     : config_(config),
       pending_irqs_(0),
       simhalt_enabled_(config.simhalt_enabled),
-      exceptions_enabled_(config.exceptions_enabled) {
+      exceptions_enabled_(config.exceptions_enabled),
+      bitfield_enabled_(config.bitfield_enabled) {
   memory_.SetFaultPcSource(&state_.pc);
 }
 
@@ -548,6 +549,14 @@ void M68kSimulator::SetSimhaltEnabled(bool enabled) {
 
 bool M68kSimulator::IsSimhaltEnabled() const {
   return simhalt_enabled_.load(std::memory_order_relaxed);
+}
+
+void M68kSimulator::SetBitFieldEnabled(bool enabled) {
+  bitfield_enabled_.store(enabled, std::memory_order_relaxed);
+}
+
+bool M68kSimulator::IsBitFieldEnabled() const {
+  return bitfield_enabled_.load(std::memory_order_relaxed);
 }
 
 void M68kSimulator::SetExceptionsEnabled(bool enabled) {

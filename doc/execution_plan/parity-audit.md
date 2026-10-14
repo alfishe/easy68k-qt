@@ -24,18 +24,18 @@ the original Edit68K assembler core built on Linux from the original sources
 
 | Area | Rows | Done | Partial | Gap | Notes |
 |------|------|------|---------|-----|-------|
-| 1. Simulator core | 17 | 14 | 1 | 2 | S8 (9.8), S14 (9.9) gap; S15 (9.10) partial |
+| 1. Simulator core | 17 | 15 | 1 | 1 | S14 (9.9) gap; S15 (9.10) partial |
 | 2. Assembler | 9 | 7 | 1 | 1 | core is a port of the original; listings and S-records match the oracle |
 | 3. Sim68K GUI | 21 | 0 | 0 | 21 | GUI sources are 1-line stubs (27 files) |
 | 4. Edit68K GUI | 14 | 0 | 0 | 14 | |
 | 5. EASyBIN | 4 | 0 | 0 | 4 | |
 | 6. Help | 1 | 0 | 0 | 1 | |
-| **Total** | **66** | **21** | **2** | **43** | |
+| **Total** | **66** | **22** | **2** | **42** | |
 
 | Measure | Value |
 |---------|-------|
-| Plan tasks (PROGRESS.md) | 61 done, 45 open (9.8 next) |
-| Simulator unit tests | 688 pass (ASan+UBSan clean) |
+| Plan tasks (PROGRESS.md) | 62 done, 44 open (9.9 next) |
+| Simulator unit tests | 702 pass (ASan+UBSan clean) |
 | Assembler tests | 394 pass (incl. 132 instruction-matrix suites, 21 golden, 21 corpus cases); ASan+UBSan clean |
 | Integration tests (asm + sim) | 10 pass |
 | Instruction matrix vs oracle | 98,583 / 98,583 cases match (bytes + diagnostic class) |
@@ -57,7 +57,7 @@ the original Edit68K assembler core built on Linux from the original sources
 | S5 | Cycle counting, Trap #15 tasks 30/31 | inc_cyc(), CODE9.CPP | Done | 9.2 |
 | S6 | SIMHALT on/off (`*[sim68k]simhalt_off`) | SIM68Ku.cpp | Done | 9.3 |
 | S7 | Enable Exceptions toggle (Options menu, task 32/5) | SIM68Ku.cpp, hardwareu.cpp | Done | 9.3 (core-owned flag, see note A) |
-| S8 | **68020 bit-field instructions** BFTST/BFEXTU/BFCHG/BFEXTS/BFCLR/BFFFO/BFSET/BFINS (Options → Enable Bit Field Instructions, `*[sim68k]bitfield`) | CODE7.CPP BIT_FIELD() | **Gap**: not in simulator, not in plan | **NEW 9.8** |
+| S8 | **68020 bit-field instructions** BFTST/BFEXTU/BFCHG/BFEXTS/BFCLR/BFFFO/BFSET/BFINS (Options → Enable Bit Field Instructions, `*[sim68k]bitfield`) | CODE7.CPP BIT_FIELD() | **Done** (core; menu/listing command in 13.2/13.4) | **NEW 9.8** ✓ |
 | S9 | Trap #15 tasks 0-25, 30-33, 40-43, 50-62, 70-77, 80-96, 100-107 | CODE9.CPP TRAP() | Done (dispatch + interfaces; back ends in Phase 13) | 7.x |
 | S10 | Memory map: ROM (writes ignored) / Read (bus error on write) / Protected (bus error unless supervisor) / Invalid (bus error on access); hardware I/O addresses always accessible | UTILS.CPP memoryMapCheck(), hardwareu.cpp | **Done** (core); Trap #15 buffer checks pending | **9.7** + 13.15 |
 | S11 | Execution logging (instruction / +registers / +memory range) | RUN.CPP, logU.cpp | Done (core hooks) | 9.4 |
@@ -205,6 +205,7 @@ Each committed iteration updates the snapshot above and adds a line here.
 | 2026-10-14 | `e0826c2` | 8.12 + 8.7 instruction table/builders, matrix | A1a, A4 Done; matrix 98,583/98,583 |
 | 2026-10-14 | `29fad1c` | 8.13 assembly loop ported from the original (core), corpus test, Memory::Erase | A1b, A2, A3, A5, A6 Done; A7 Partial; L68 21/21 |
 | 2026-10-14 | `3d15f4b` | removed unused assembler front end | — |
+| 2026-10-14 | (9.8) | bit field instructions in the simulator | S8 Done |
 
 ## 10. Parity acceptance
 

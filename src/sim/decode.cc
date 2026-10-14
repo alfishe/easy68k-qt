@@ -390,10 +390,14 @@ SimResult M68kSimulator::DispatchGroupD(uint16_t opcode) {
 }
 
 // =============================================================================
-// Group 0xE — ASd/LSd/ROXd/ROd (all shift/rotate variants)
+// Group 0xE — ASd/LSd/ROXd/ROd (all shift/rotate variants) and the 68020
+// bit field instructions (OPCODES.H: BIT_FIELD {0x073f, 0xe8c0} is matched
+// before the memory shift form {0x073f, 0xe0c0})
 // =============================================================================
 
 SimResult M68kSimulator::DispatchGroupE(uint16_t opcode) {
+  if ((opcode & 0xF8C0) == 0xE8C0)
+    return OpBitField(opcode);
   return OpShiftRotate(opcode);
 }
 

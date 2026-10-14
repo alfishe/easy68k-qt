@@ -13,6 +13,7 @@ add_library(easym68k-sim STATIC
   opcodes_branch.cc
   opcodes_misc.cc
   opcodes_shift.cc
+  opcodes_bitfield.cc
 )
 
 target_include_directories(easym68k-sim PUBLIC
