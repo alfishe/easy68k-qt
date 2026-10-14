@@ -28,7 +28,7 @@ hash and the program output.
 
 ## Status snapshot
 
-*Updated after every committed iteration (last: 2026-10-14, commit `(X)`).*
+*Updated after every committed iteration (last: 2026-10-14, commit `16ac30d`).*
 
 | Area | Rows | Done | Partial | Gap | Notes |
 |------|------|------|---------|-----|-------|
@@ -224,7 +224,7 @@ Each committed iteration updates the snapshot above and adds a line here.
 | 2026-10-14 | `c2ec310` | Step Over / Run To core API | S15 Done (core) |
 | 2026-10-14 | `c467956` | 10.0 simulator oracle, port tracer, instruction corpus; LEA/CHK decode fix | S1-S3 back to Partial (96/131 corpus programs identical) |
 | 2026-10-14 | `9f42410` | 10.2 oracle difference triage: case-level comparer, accepted deviations, 5 port bugs fixed | S1-S3 Done (0 unexplained differences) |
-| 2026-10-14 | `(X)` | 10.3 opcode sweep; opcode legality table; ABCD/SBCD digits | S1 legality verified for every first word |
+| 2026-10-14 | `16ac30d` | 10.3 opcode sweep; opcode legality table; ABCD/SBCD digits | S1 legality verified for every first word |
 
 ## 10. Parity acceptance
 
