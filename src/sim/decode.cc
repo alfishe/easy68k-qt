@@ -421,7 +421,7 @@ SimResult M68kSimulator::DispatchSimhalt(uint16_t opcode) {
       return SimResult::kHalted;
     }
     // Rewind PC if it wasn't a valid SIMHALT double-word
-    state_.pc = (state_.pc - 2) & kAddressMask;
+    state_.pc -= 2;
   }
   return SimResult::kLine1111;
 }

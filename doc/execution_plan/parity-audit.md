@@ -28,7 +28,7 @@ hash and the program output.
 
 ## Status snapshot
 
-*Updated after every committed iteration (last: 2026-10-14, commit `63cff79`).*
+*Updated after every committed iteration (last: 2026-10-14, commit `(X)`).*
 
 | Area | Rows | Done | Partial | Gap | Notes |
 |------|------|------|---------|-----|-------|
@@ -42,8 +42,8 @@ hash and the program output.
 
 | Measure | Value |
 |---------|-------|
-| Plan tasks (PROGRESS.md) | 69 done, 42 open (10.4 / Phase 11 next) |
-| Simulator unit tests | 764 pass, incl. 23 golden simulation traces (ASan+UBSan clean) |
+| Plan tasks (PROGRESS.md) | 70 done, 42 open (10.4 / Phase 11 next) |
+| Simulator unit tests | 771 pass, incl. 26 golden simulation traces (ASan+UBSan clean) |
 | Assembler tests | 400 pass (incl. 132 instruction-matrix suites, 21 golden, 27 corpus cases); ASan+UBSan clean |
 | Integration tests (asm + sim) | 10 pass |
 | Instruction matrix vs oracle | 98,583 / 98,583 cases match (bytes + diagnostic class) |
@@ -52,7 +52,7 @@ hash and the program output.
 | Corpus (directives, macros, conditional/structured, OPT, INCLUDE/INCBIN, MEMORY, errors, every diagnostic text, nested macros/includes) × 3 option variants vs oracle | 27 / 27 match (.L68 byte-identical; .S68 identical or, with SIMHALT, same loaded image) |
 | Assembler option combinations (`--no-list`, `--no-srec`, `--no-warnings`, `--no-cre`, `--no-bitfield`, `--mex --sex --cex`) on all corpus + golden programs; bit field matrix with `--no-bitfield` | all match |
 | Simulator instruction corpus vs oracle (131 programs from the matrix, exceptions on; `compare_sim_corpus.sh`) | all executed cases match: identical or an accepted deviation (`data/golden/sim/deviations.tsv`); memory hash identical or accepted |
-| Golden simulation traces (oracle-generated, `tests/sim/golden_trace_test.cc`) | 23 / 23 match |
+| Golden simulation traces (oracle-generated, `tests/sim/golden_trace_test.cc`) | 26 / 26 match |
 | Simulator opcode sweep vs oracle (every first word, 61,034 opcodes in 16 programs; `compare_sim_corpus.sh --sweep`) | 0 unexplained differences (legal/illegal decision, results, flags, cycles) |
 | GUI | not started (Phase 13) |
 
@@ -62,7 +62,7 @@ hash and the program output.
 
 | ID | Feature | Original | Port status | Task |
 |----|---------|----------|-------------|------|
-| S1 | All 68000 instructions, addressing modes, N/Z/V/C/X | RUN.CPP, CODE1-9.CPP | Done — verified against the oracle (instruction corpus + opcode sweep); fixed LEA A4-A7 / CHK D4-D7 decode, illegal-encoding detection, NEGX C/X, CHK N, ABCD/SBCD/NBCD; deviations: undefined flags, original bugs (see deviations.tsv), 24-bit PC | 3-6, 10.0, 10.2, 10.3 |
+| S1 | All 68000 instructions, addressing modes, N/Z/V/C/X | RUN.CPP, CODE1-9.CPP | Done — verified against the oracle (instruction corpus + opcode sweep); fixed LEA A4-A7 / CHK D4-D7 decode, illegal-encoding detection, NEGX C/X, CHK N, ABCD/SBCD/NBCD; 32-bit PC as in the original (10.5); deviations: undefined flags, original bugs (see deviations.tsv) | 3-6, 10.0, 10.2, 10.3, 10.5 |
 | S2 | Exceptions: illegal, privilege, div0, CHK, TRAPV, TRAP #n, trace, Line A/F (stacked PC per RUN.CPP: next instruction, except illegal) | RUN.CPP | Done — verified by the corpus | 4.2, 6.5, 9.7, 10.2 |
 | S3 | Address/bus error (class 0 frame, 50 cycles) | RUN.CPP exceptionHandler | Done — frames verified by the corpus; CLR/Scc/MOVE SR fault as reads; deviation: registers/cycles restored to the instruction start (original keeps (An)+/-(An) and EA cycles) | 9.7, 10.2 |
 | S4 | Interrupts: autovector IRQ 1-7, NMI, STOP wake | RUN.CPP irqHandler, hardwareu.cpp | Done | 9.1 |
@@ -192,6 +192,7 @@ hash and the program output.
 | 10.2 | Oracle difference triage: fix port bugs, document original bugs as accepted deviations (S1-S3) ✓ | 10.0 |
 | 10.3 | Opcode sweep (all first words) vs the oracle; opcode legality table ✓ | 10.2 |
 | 10.4 | Deterministic Trap #15 tasks vs the oracle | 10.3 |
+| 10.5 | 32-bit program counter, as the original ✓ | 10.3 |
 | 13.22 | Advanced Break Points dialog (G19) | 9.9 |
 | 13.23 | Sim68K Find / Find Next / Go to PC (G7) | 13.4 |
 | 13.24 | Auto Trace + options dialog (G12) | 9.10 |
@@ -229,6 +230,7 @@ Each committed iteration updates the snapshot above and adds a line here.
 | 2026-10-14 | `16ac30d` | 10.3 opcode sweep; opcode legality table; ABCD/SBCD digits | S1 legality verified for every first word |
 | 2026-10-14 | `080908a` | 10.1 golden simulation traces (23 programs from the oracle, incl. Trap #15 text tasks) | acceptance item 2 (golden traces) in place |
 | 2026-10-14 | `63cff79` | 8.15 assembler parity widening: SIMHALT S-record fix, diagnostics + nesting corpus, option combinations | A2/A3 coverage widened |
+| 2026-10-14 | `(X)` | 10.5 32-bit program counter (user decision) | 24-bit PC deviation removed; 26 golden traces |
 
 ## 10. Parity acceptance
 

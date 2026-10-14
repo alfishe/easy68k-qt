@@ -32,7 +32,7 @@ void M68kSimulator::Reset() {
   state_ = CpuState{};
   state_.sr = kSrSupervisor;  // start in supervisor mode
   state_.ssp = memory_.ReadLong(0x0).value;
-  state_.pc = memory_.ReadLong(0x4).value & kAddressMask;
+  state_.pc = memory_.ReadLong(0x4).value;
   state_.halted = false;
   state_.stopped = false;
   stop_requested_.store(false, std::memory_order_relaxed);
@@ -70,7 +70,7 @@ void M68kSimulator::HardwareReset() {
   state_.sr &= static_cast<uint16_t>(~kSrTrace);
   state_.SetInterruptMask(7);
   state_.ssp = memory_.ReadLong(0x0).value;
-  state_.pc = memory_.ReadLong(0x4).value & kAddressMask;
+  state_.pc = memory_.ReadLong(0x4).value;
   IncrementCycles(40);  // reset execution time
   state_.stopped = false;
   state_.halted = false;
@@ -102,13 +102,13 @@ void M68kSimulator::SetHardwareAddresses(uint32_t seg7, uint32_t leds, uint32_t 
 
 uint16_t M68kSimulator::FetchWord() {
   uint16_t val = static_cast<uint16_t>(memory_.ReadWord(state_.pc).value);
-  state_.pc = (state_.pc + 2) & kAddressMask;
+  state_.pc += 2;  // the PC keeps all 32 bits; fetches use the low 24
   return val;
 }
 
 uint32_t M68kSimulator::FetchLong() {
   uint32_t val = memory_.ReadLong(state_.pc).value;
-  state_.pc = (state_.pc + 4) & kAddressMask;
+  state_.pc += 4;
   return val;
 }
 
@@ -187,7 +187,7 @@ void M68kSimulator::HandleException(ExceptionVector vector, uint32_t stacked_pc)
   if (!SupervisorStackUsable()) {
     // RUN.CPP exceptionHandler(): "SSP odd or outside memory space" — the
     // vector has been fetched but no frame is built and execution stops.
-    state_.pc = memory_.ReadLong(vec_addr).value & kAddressMask;
+    state_.pc = memory_.ReadLong(vec_addr).value;
     state_.halted = true;
     return;
   }
@@ -198,7 +198,7 @@ void M68kSimulator::HandleException(ExceptionVector vector, uint32_t stacked_pc)
   memory_.WriteWord(state_.ssp & kAddressMask, state_.sr);
   state_.sr |= kSrSupervisor;
   state_.sr &= static_cast<uint16_t>(~kSrTrace);
-  state_.pc = memory_.ReadLong(vec_addr).value & kAddressMask;
+  state_.pc = memory_.ReadLong(vec_addr).value;
   if (!observers_.empty()) {
     SimEvent ev{SimEventType::kExceptionRaised, inst_pc_, SimResult::kOk};
     ev.vector = static_cast<int>(vector);
@@ -249,7 +249,7 @@ SimResult M68kSimulator::HandleMemoryFault(const CpuState& before, uint16_t opco
   uint32_t vec_addr = static_cast<uint32_t>(vector) * 4;
 
   if (!SupervisorStackUsable()) {
-    state_.pc = memory_.ReadLong(vec_addr).value & kAddressMask;
+    state_.pc = memory_.ReadLong(vec_addr).value;
     state_.halted = true;
     NotifyHaltOrStop(fault.kind);
     return fault.kind;
@@ -278,7 +278,7 @@ SimResult M68kSimulator::HandleMemoryFault(const CpuState& before, uint16_t opco
 
   state_.sr |= kSrSupervisor;
   state_.sr &= static_cast<uint16_t>(~kSrTrace);
-  state_.pc = memory_.ReadLong(vec_addr).value & kAddressMask;
+  state_.pc = memory_.ReadLong(vec_addr).value;
 
   if (!observers_.empty()) {
     SimEvent ev{SimEventType::kExceptionRaised, inst_pc_, fault.kind};
@@ -461,7 +461,7 @@ SimResult M68kSimulator::Run(int max_instructions) {
         Notify(SimEventType::kBreakpointHit, state_.pc);
       hit = true;
     }
-    if (run_to_addr_ != 0 && state_.pc == run_to_addr_) {  // run to cursor reached
+    if (run_to_addr_ != 0 && (state_.pc & kAddressMask) == run_to_addr_) {  // run to cursor reached
       run_to_addr_ = 0;
       hit = true;
     }
@@ -482,8 +482,8 @@ SimResult M68kSimulator::StepOver() {
     // runLoop()/runprog() with trace off until the return address (or a
     // breakpoint) is reached.
     bool hit = advanced_break_hit_ || HasBreakpoint(state_.pc);
-    while (!hit && state_.pc != step_to_addr_ && !stop_requested_.load(std::memory_order_relaxed) &&
-           !state_.halted) {
+    while (!hit && (state_.pc & kAddressMask) != step_to_addr_ &&
+           !stop_requested_.load(std::memory_order_relaxed) && !state_.halted) {
       result = Step();
       if (state_.halted)
         break;
@@ -493,12 +493,12 @@ SimResult M68kSimulator::StepOver() {
           Notify(SimEventType::kBreakpointHit, state_.pc);
         hit = true;
       }
-      if (run_to_addr_ != 0 && state_.pc == run_to_addr_) {
+      if (run_to_addr_ != 0 && (state_.pc & kAddressMask) == run_to_addr_) {
         run_to_addr_ = 0;
         hit = true;
       }
     }
-    if (state_.pc == step_to_addr_)
+    if ((state_.pc & kAddressMask) == step_to_addr_)
       step_to_addr_ = 0;  // reset for next use
   }
   step_over_ = false;
@@ -657,7 +657,7 @@ void M68kSimulator::HandleIrq(int level) {
 
   // Load PC from autovector address
   uint32_t vec_addr = (24 + level) * 4;
-  state_.pc = memory_.ReadLong(vec_addr).value & kAddressMask;
+  state_.pc = memory_.ReadLong(vec_addr).value;
 
   // Add 34 cycles penalty (RUN.CPP irqHandler() inc_cyc(34))
   IncrementCycles(kCyclesIrq);

@@ -366,7 +366,7 @@ class M68kSimulator {
   // address to stop at.
   void NoteSubroutineCall(uint32_t return_address) {
     if (step_over_ && step_to_addr_ == 0)
-      step_to_addr_ = return_address;
+      step_to_addr_ = return_address & kAddressMask;  // compared as an address
   }
   SimResult StepInstruction();
   bool IsConditionMet(const BreakCondition& condition);

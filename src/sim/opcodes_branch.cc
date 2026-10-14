@@ -63,8 +63,8 @@ static int32_t FetchBranchDisp(uint16_t opcode, M68kSimulator& sim) {
 SimResult M68kSimulator::OpBra(uint16_t opcode) {
   uint32_t base = state_.pc;  // pc already past opcode word
   int32_t disp = FetchBranchDisp(opcode, *this);
-  state_.pc = (base + disp) & kAddressMask;
-  IncrementCycles(10);  // CODE8.CPP BRA
+  state_.pc = base + disp;  // 32-bit PC (CODE8.CPP: PC = OLD_PC + disp + 2)
+  IncrementCycles(10);      // CODE8.CPP BRA
   return SimResult::kOk;
 }
 
@@ -80,7 +80,7 @@ SimResult M68kSimulator::OpBsr(uint16_t opcode) {
   state_.SetSP(state_.GetSP() - 4);
   memory_.WriteLong(state_.GetSP() & kAddressMask, state_.pc);
   NoteSubroutineCall(state_.pc);
-  state_.pc = (base + disp) & kAddressMask;
+  state_.pc = base + disp;
   IncrementCycles(18);  // CODE8.CPP BSR
   return SimResult::kOk;
 }
@@ -95,7 +95,7 @@ SimResult M68kSimulator::OpBcc(uint16_t opcode) {
   int32_t disp = FetchBranchDisp(opcode, *this);
   uint8_t cond = (opcode >> 8) & 0xF;
   if (CheckCondition(static_cast<Condition>(cond))) {
-    state_.pc = (base + disp) & kAddressMask;
+    state_.pc = base + disp;
     IncrementCycles(10);  // CODE8.CPP BCC: taken
   } else {
     IncrementCycles((opcode & 0xFF) ? 8 : 12);  // not taken: short 8, word 12
@@ -122,7 +122,7 @@ SimResult M68kSimulator::OpDbcc(uint16_t opcode) {
     --counter;
     state_.d[dn] = (state_.d[dn] & 0xFFFF0000u) | static_cast<uint16_t>(counter);
     if (counter != -1) {
-      state_.pc = (disp_pc + disp) & kAddressMask;
+      state_.pc = disp_pc + disp;
       IncrementCycles(10);
     } else {
       IncrementCycles(14);
@@ -198,7 +198,7 @@ SimResult M68kSimulator::OpJsr(uint16_t opcode) {
 SimResult M68kSimulator::OpRts(uint16_t /*opcode*/) {
   uint32_t sp = state_.GetSP();
   auto result = memory_.ReadLong(sp & kAddressMask);
-  state_.pc = result.value & kAddressMask;
+  state_.pc = result.value;  // all 32 bits popped (the 68000 PC is 32-bit)
   state_.SetSP(sp + 4);
   IncrementCycles(16);  // CODE8.CPP RTS
   return SimResult::kOk;
@@ -216,7 +216,7 @@ SimResult M68kSimulator::OpRte(uint16_t /*opcode*/) {
   auto sr_res = memory_.ReadWord(sp & kAddressMask);
   auto pc_res = memory_.ReadLong((sp + 2) & kAddressMask);
   state_.sr = static_cast<uint16_t>(sr_res.value);
-  state_.pc = pc_res.value & kAddressMask;
+  state_.pc = pc_res.value;
   state_.ssp = sp + 6;
   IncrementCycles(20);  // CODE8.CPP RTE
   return SimResult::kOk;
@@ -233,7 +233,7 @@ SimResult M68kSimulator::OpRtr(uint16_t /*opcode*/) {
   auto pc_res = memory_.ReadLong((sp + 2) & kAddressMask);
   // Restore only CCR (low byte), not the supervisor half
   state_.sr = static_cast<uint16_t>((state_.sr & 0xFF00u) | (ccr_res.value & 0xFFu));
-  state_.pc = pc_res.value & kAddressMask;
+  state_.pc = pc_res.value;
   state_.SetSP(sp + 6);
   IncrementCycles(20);  // CODE8.CPP RTR
   return SimResult::kOk;

@@ -138,5 +138,48 @@ TEST_F(OracleRegressionTest, NbcdNonBcdDigits) {
   }
 }
 
+// The PC is a 32-bit register (Task 10.5): RTS/RTR/RTE, branches and
+// exception vectors keep the upper byte, instruction fetches use the low 24
+// bits; JMP/JSR mask their target as the original's eff_addr() does.
+TEST_F(OracleRegressionTest, RtsKeepsUpperPcByte) {
+  Load({0x4E75});  // RTS
+  sim_.State().ssp = 0x8000;
+  sim_.GetMemory().WriteLong(0x8000, 0xFF002000);
+  sim_.GetMemory().WriteWord(0x2000, 0x7005);  // MOVEQ #5,D0
+  EXPECT_EQ(sim_.Step(), SimResult::kOk);
+  EXPECT_EQ(sim_.State().pc, 0xFF002000u);
+  EXPECT_EQ(sim_.Step(), SimResult::kOk);  // fetched from $002000
+  EXPECT_EQ(sim_.State().d[0], 5u);
+  EXPECT_EQ(sim_.State().pc, 0xFF002002u);
+}
+
+TEST_F(OracleRegressionTest, JmpMasksTarget) {
+  Load({0x4EF9, 0xFF00, 0x2000});  // JMP $FF002000
+  EXPECT_EQ(sim_.Step(), SimResult::kOk);
+  EXPECT_EQ(sim_.State().pc, 0x002000u);
+}
+
+TEST_F(OracleRegressionTest, BreakpointMatchesLow24Bits) {
+  Load({0x4E75});  // RTS to $FF002000
+  sim_.State().ssp = 0x8000;
+  sim_.GetMemory().WriteLong(0x8000, 0xFF002000);
+  sim_.GetMemory().WriteWord(0x2000, 0x4E71);
+  sim_.AddBreakpoint(0x2000);
+  sim_.Run(10);
+  EXPECT_EQ(sim_.State().pc, 0xFF002000u);
+}
+
+TEST_F(OracleRegressionTest, OddUpperPcFaultsAtFetch) {
+  Load({0x4E75});  // RTS to $FFFFFFFF: address error on the next fetch
+  sim_.State().ssp = 0x8000;
+  sim_.GetMemory().WriteLong(0x8000, 0xFFFFFFFF);
+  EXPECT_EQ(sim_.Step(), SimResult::kOk);
+  EXPECT_EQ(sim_.State().pc, 0xFFFFFFFFu);
+  EXPECT_EQ(sim_.Step(), SimResult::kAddressError);
+  EXPECT_EQ(sim_.State().pc, kAddrHandler);
+  // fault address in the frame keeps all 32 bits, as in the original
+  EXPECT_EQ(sim_.GetMemory().ReadLong(sim_.State().ssp + 2).value, 0xFFFFFFFFu);
+}
+
 }  // namespace
 }  // namespace easym68k::sim
