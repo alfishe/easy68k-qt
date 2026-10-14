@@ -28,7 +28,7 @@ hash and the program output.
 
 ## Status snapshot
 
-*Updated after every committed iteration (last: 2026-10-14, commit `(X)`).*
+*Updated after every committed iteration (last: 2026-10-14, commit `c467956`).*
 
 | Area | Rows | Done | Partial | Gap | Notes |
 |------|------|------|---------|-----|-------|
@@ -219,7 +219,7 @@ Each committed iteration updates the snapshot above and adds a line here.
 | 2026-10-14 | `dfd8262` | bit field instructions in the simulator | S8 Done |
 | 2026-10-14 | `1b68a39` | advanced breakpoint engine; Run checks after executing | S14 Done (core) |
 | 2026-10-14 | `c2ec310` | Step Over / Run To core API | S15 Done (core) |
-| 2026-10-14 | `(X)` | 10.0 simulator oracle, port tracer, instruction corpus; LEA/CHK decode fix | S1-S3 back to Partial (96/131 corpus programs identical) |
+| 2026-10-14 | `c467956` | 10.0 simulator oracle, port tracer, instruction corpus; LEA/CHK decode fix | S1-S3 back to Partial (96/131 corpus programs identical) |
 
 ## 10. Parity acceptance
 
