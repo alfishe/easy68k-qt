@@ -1,0 +1,3 @@
+# Golden simulation data is compared byte for byte (Trap #15 output keeps
+# the program's CR LF); never convert line endings.
+data/golden/sim/programs/** -text

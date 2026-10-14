@@ -28,7 +28,7 @@ hash and the program output.
 
 ## Status snapshot
 
-*Updated after every committed iteration (last: 2026-10-14, commit `16ac30d`).*
+*Updated after every committed iteration (last: 2026-10-14, commit `(X)`).*
 
 | Area | Rows | Done | Partial | Gap | Notes |
 |------|------|------|---------|-----|-------|
@@ -42,8 +42,8 @@ hash and the program output.
 
 | Measure | Value |
 |---------|-------|
-| Plan tasks (PROGRESS.md) | 67 done, 43 open (10.4 next) |
-| Simulator unit tests | 740 pass (ASan+UBSan clean) |
+| Plan tasks (PROGRESS.md) | 68 done, 42 open (10.4 next) |
+| Simulator unit tests | 764 pass, incl. 23 golden simulation traces (ASan+UBSan clean) |
 | Assembler tests | 394 pass (incl. 132 instruction-matrix suites, 21 golden, 21 corpus cases); ASan+UBSan clean |
 | Integration tests (asm + sim) | 10 pass |
 | Instruction matrix vs oracle | 98,583 / 98,583 cases match (bytes + diagnostic class) |
@@ -51,6 +51,7 @@ hash and the program output.
 | Golden programs, listings (.L68) vs oracle | 21 / 21 match |
 | Corpus (directives, macros, conditional/structured, OPT, INCLUDE/INCBIN, MEMORY, errors) × 3 option variants vs oracle | 21 / 21 match (.L68 + .S68) |
 | Simulator instruction corpus vs oracle (131 programs from the matrix, exceptions on; `compare_sim_corpus.sh`) | all executed cases match: identical or an accepted deviation (`data/golden/sim/deviations.tsv`); memory hash identical or accepted |
+| Golden simulation traces (oracle-generated, `tests/sim/golden_trace_test.cc`) | 23 / 23 match |
 | Simulator opcode sweep vs oracle (every first word, 61,034 opcodes in 16 programs; `compare_sim_corpus.sh --sweep`) | 0 unexplained differences (legal/illegal decision, results, flags, cycles) |
 | GUI | not started (Phase 13) |
 
@@ -68,7 +69,7 @@ hash and the program output.
 | S6 | SIMHALT on/off (`*[sim68k]simhalt_off`) | SIM68Ku.cpp | Done | 9.3 |
 | S7 | Enable Exceptions toggle (Options menu, task 32/5) | SIM68Ku.cpp, hardwareu.cpp | Done | 9.3 (core-owned flag, see note A) |
 | S8 | **68020 bit-field instructions** BFTST/BFEXTU/BFCHG/BFEXTS/BFCLR/BFFFO/BFSET/BFINS (Options → Enable Bit Field Instructions, `*[sim68k]bitfield`) | CODE7.CPP BIT_FIELD() | **Done** (core; menu/listing command in 13.2/13.4) | **NEW 9.8** ✓ |
-| S9 | Trap #15 tasks 0-25, 30-33, 40-43, 50-62, 70-77, 80-96, 100-107 | CODE9.CPP TRAP() | Done (dispatch + interfaces; back ends in Phase 13) | 7.x |
+| S9 | Trap #15 tasks 0-25, 30-33, 40-43, 50-62, 70-77, 80-96, 100-107 | CODE9.CPP TRAP() | Done (dispatch + interfaces; back ends in Phase 13); text/number tasks verified against the oracle (golden `trap15_text`) | 7.x, 10.1, 10.4 |
 | S10 | Memory map: ROM (writes ignored) / Read (bus error on write) / Protected (bus error unless supervisor) / Invalid (bus error on access); hardware I/O addresses always accessible | UTILS.CPP memoryMapCheck(), hardwareu.cpp | **Done** (core); Trap #15 buffer checks pending | **9.7** + 13.15 |
 | S11 | Execution logging (instruction / +registers / +memory range) | RUN.CPP, logU.cpp | Done (core hooks) | 9.4 |
 | S12 | Output (Trap #15 text) logging | logU.cpp OlogFile | Done (core hooks) | 9.4 |
@@ -225,6 +226,7 @@ Each committed iteration updates the snapshot above and adds a line here.
 | 2026-10-14 | `c467956` | 10.0 simulator oracle, port tracer, instruction corpus; LEA/CHK decode fix | S1-S3 back to Partial (96/131 corpus programs identical) |
 | 2026-10-14 | `9f42410` | 10.2 oracle difference triage: case-level comparer, accepted deviations, 5 port bugs fixed | S1-S3 Done (0 unexplained differences) |
 | 2026-10-14 | `16ac30d` | 10.3 opcode sweep; opcode legality table; ABCD/SBCD digits | S1 legality verified for every first word |
+| 2026-10-14 | `(X)` | 10.1 golden simulation traces (23 programs from the oracle, incl. Trap #15 text tasks) | acceptance item 2 (golden traces) in place |
 
 ## 10. Parity acceptance
 

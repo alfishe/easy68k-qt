@@ -1,0 +1,24 @@
+# Instruction corpus programs (gen_sim_corpus.py) whose oracle trace the
+# port reproduces exactly; regenerate_sim_golden.sh turns them into golden
+# traces.
+ADDX
+ASL
+BCHG
+BFEXTU
+BTST
+CMPM
+DBCC
+EXG
+EXT
+JSR
+LEA
+LINK
+MOVEM
+MOVEP
+MOVEQ
+PEA
+ROXR
+SCC
+SUBX
+TAS
+TRAP

@@ -45,6 +45,10 @@ typedef struct _DISPLAY_DEVICE {
 #define CALLBACK
 inline void Sleep(int) {}
 inline char* ultoa(unsigned long value, char* buf, int radix) {
+  if (radix == 10) {  // itoa() prints radix 10 signed
+    std::sprintf(buf, "%lu", value);
+    return buf;
+  }
   return itoa(static_cast<int>(value), buf, radix);
 }
 inline int netCloseSockets() {
