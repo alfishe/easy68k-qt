@@ -34,9 +34,9 @@ the original Edit68K assembler core built on Linux from the original sources
 
 | Measure | Value |
 |---------|-------|
-| Plan tasks (PROGRESS.md) | 60 done, 46 open (8.14 front-end cleanup next) |
+| Plan tasks (PROGRESS.md) | 61 done, 45 open (9.8 next) |
 | Simulator unit tests | 688 pass (ASan+UBSan clean) |
-| Assembler tests | 622 pass (incl. 132 instruction-matrix suites, 21 golden, 21 corpus cases); ASan+UBSan clean |
+| Assembler tests | 394 pass (incl. 132 instruction-matrix suites, 21 golden, 21 corpus cases); ASan+UBSan clean |
 | Integration tests (asm + sim) | 10 pass |
 | Instruction matrix vs oracle | 98,583 / 98,583 cases match (bytes + diagnostic class) |
 | Golden programs, S-records (.S68) vs oracle | 21 / 21 match |
@@ -203,7 +203,8 @@ Each committed iteration updates the snapshot above and adds a line here.
 | 2026-10-13 | `426acd0` | 9.6 core integration test | asm + sim end to end (10 tests) |
 | 2026-10-14 | `0c0433f` | licence: GPL-2.0-or-later | — |
 | 2026-10-14 | `e0826c2` | 8.12 + 8.7 instruction table/builders, matrix | A1a, A4 Done; matrix 98,583/98,583 |
-| 2026-10-14 | `29fad1c` | assembly loop ported from the original (core), corpus test, Memory::Erase | A1b, A2, A3, A5, A6 Done; A7 Partial; L68 21/21 |
+| 2026-10-14 | `29fad1c` | 8.13 assembly loop ported from the original (core), corpus test, Memory::Erase | A1b, A2, A3, A5, A6 Done; A7 Partial; L68 21/21 |
+| 2026-10-14 | (8.14) | removed unused assembler front end | — |
 
 ## 10. Parity acceptance
 

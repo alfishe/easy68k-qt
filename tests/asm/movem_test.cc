@@ -10,7 +10,6 @@
 #include <vector>
 
 #include "easym68k/asm/assembler.h"
-#include "easym68k/asm/parser.h"
 #include "gtest/gtest.h"
 
 namespace easym68k::asm_ {

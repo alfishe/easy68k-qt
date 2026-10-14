@@ -19,8 +19,6 @@
 #include <string>
 #include <vector>
 
-#include "easym68k/asm/lexer.h"
-
 namespace easym68k::asm_ {
 
 // Addressing mode bit masks (asm.h); identical to AddressMode values.
@@ -105,9 +103,6 @@ const std::vector<Instruction>& AllInstructions();
 // ASSEMBLE.CPP pickMask(): the skeleton mask for `size` (see the original's
 // dangling else in instruction_set.cc).
 uint16_t PickMask(int size, const Flavor& flavor, int& status);
-
-// Original size code for a parsed size suffix (0 when none).
-int SizeCode(SizeSpec size);
 
 }  // namespace easym68k::asm_
 

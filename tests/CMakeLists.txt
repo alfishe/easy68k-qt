@@ -25,10 +25,6 @@ target_link_libraries(easym68k-sim-tests PRIVATE easym68k-sim GTest::gtest_main 
 add_test(NAME sim-tests COMMAND easym68k-sim-tests)
 
 add_executable(easym68k-asm-tests
-  asm/lexer_test.cc
-  asm/parser_test.cc
-  asm/symbol_table_test.cc
-  asm/expression_test.cc
   asm/assembler_test.cc
   asm/movem_test.cc
   asm/directives_test.cc

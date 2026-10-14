@@ -1,9 +1,5 @@
 add_library(easym68k-asm STATIC
   assembler.cc
-  lexer.cc
-  parser.cc
-  symbol_table.cc
-  expression_evaluator.cc
   error_reporter.cc
   instruction_set.cc
   original_status.cc

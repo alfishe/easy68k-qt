@@ -14,43 +14,24 @@ This repository is based on the unpacked Borland C++Builder sources from [alfish
 
 ## Current Status
 
-**Phase 8 (Assembler) — 5/6 tasks complete, 904 tests passing (505 sim + 399 asm).**
+See [PROGRESS.md](PROGRESS.md) for task status and
+[doc/execution_plan/parity-audit.md](doc/execution_plan/parity-audit.md) for
+the feature-by-feature parity snapshot.
 
-### Completed
+- **Simulator core** (`src/sim/`) — all 68000 instructions, exceptions,
+  interrupts, cycle counting, memory map semantics, Trap #15 dispatch,
+  logging and observer hooks (Phases 1–9, bit fields and advanced
+  breakpoints pending).
+- **Assembler** (`src/asm/`) — a function-by-function port of the original
+  Edit68K assembler (`src/asm/core/`). Listings (.L68) and S-records (.S68)
+  are byte-identical to the original's on the golden programs and the
+  corpus; the instruction matrix (98,583 instruction × addressing mode ×
+  size cases) matches the original assembler.
+- **GUI** (Phase 13) — not started.
 
-| Phase | Description | Tests |
-|-------|-------------|-------|
-| ⋮ | *Phases 0–7 complete (infrastructure, simulator, all opcodes, Trap #15)* | 505 |
-| 8.1 | Lexer (all opcodes + directives) | 100 |
-| 8.2 | Parser + Symbol Table + Pratt-precedence evaluator | 73 |
-| 8.3 | Expression evaluator (matching EVAL.CPP precedence) | 52 |
-| 8.4 | Assembler core (two-pass, ORG/EQU/SET/DC/DS/EVEN/ODD/END, DC/DS word-alignment) | 32 |
-
-Deliberate correctness improvements over the original are logged in `PROGRESS.md` — BCD X flag, CHK signed comparison, STOP full 5-step port, shift count modulo-64.
-
-### In Progress
-
-- **8.5** Missing assembler components (11 subtasks):
-  - 8.5.1 Instruction table tests & assembler wiring
-  - 8.5.2 Code generator: EA encoding + extension words
-  - 8.5.3 Code generator: instruction encoding handlers (BUILD.CPP)
-  - 8.5.4 MOVEM register list parsing & encoding
-  - 8.5.5 Remaining directives (DCB, DC strings, INCLUDE, INCBIN, SECTION, OFFSET, OPT, etc.)
-  - 8.5.6 Conditional assembly (IFC/IFNC/IFEQ/IFNE/IFLT/IFLE/IFGT/IFGE/ELSE/ENDC)
-  - 8.5.7 Structured control flow (WHILE/FOR/REPEAT/IF/DBLOOP/UNLESS)
-  - 8.5.8 Macro processor (MACRO/ENDM, parameter substitution, NARG, IFARG, MEXIT)
-  - 8.5.9 Error reporter (43+ specific error codes)
-  - 8.5.10 Listing generator (.L68 output)
-  - 8.5.11 Object/S-Record output (S0/S1/S2/S3/S8)
-
-### Next Up
-
-- **8.6** Golden assembly tests
-- **9** Simulator core library (interrupts, cycle counting, SIMHALT config, logging, observers)
-- **10** Golden simulation traces
-- **11** Exception and interrupt tests
-- **12** CI, code coverage, clang-tidy
-- **13** Qt6 GUI (simulator, editor, binary utility)
+Correctness is checked against a *reference oracle*: the original
+assembler built on Linux from the original sources
+(`-DBUILD_REFERENCE_TOOLS=ON`, `tools/reference/`).
 
 ## Architecture
 
@@ -90,7 +71,15 @@ cmake --build build-asan && ctest --test-dir build-asan --output-on-failure
 
 ## Testing
 
-904 tests across 18 test suites covering memory, addressing modes, the decoder, all instruction groups, flag computation, Trap #15 I/O, lexer, parser, symbol table, expression evaluator, assembler core, instruction table, and code generator.
+Simulator unit tests, assembler tests (unit, golden programs, corpus and
+instruction matrix compared with the original assembler) and asm + sim
+integration tests. To compare the assembler with the original directly:
+
+```bash
+cmake -B build-ref -DBUILD_GUI=OFF -DBUILD_REFERENCE_TOOLS=ON -DBUILD_TESTING=OFF
+cmake --build build-ref
+tools/reference/compare_asm.sh build-ref program.x68 [-- --mex --sex --cex]
+```
 
 ```bash
 ctest --test-dir build --output-on-failure         # all tests
@@ -119,7 +108,6 @@ build/tests/easym68k-sim-tests --gtest_filter="ShiftTest*"  # specific suite
 The following original features are **not ported** (commented out or not applicable):
 - MOVES/MOVEC (68010+ instructions) — commented out in original sources
 - BINFILE.CPP binary output — dead code in original (not in project build, never called)
-- 68020 bit-field instructions — optional, may be added later
 
 ## License
 

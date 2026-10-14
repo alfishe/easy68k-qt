@@ -1192,19 +1192,4 @@ bool IsBitFieldInstruction(const Instruction& instruction) {
   return instruction.flavor_count > 0 && instruction.flavors[0].exec == bitField;
 }
 
-int SizeCode(SizeSpec size) {
-  switch (size) {
-    case SizeSpec::kByte:
-      return BYTE_SIZE;
-    case SizeSpec::kWord:
-      return WORD_SIZE;
-    case SizeSpec::kLong:
-      return LONG_SIZE;
-    case SizeSpec::kShort:
-      return SHORT_SIZE;
-    default:
-      return 0;
-  }
-}
-
 }  // namespace easym68k::asm_
