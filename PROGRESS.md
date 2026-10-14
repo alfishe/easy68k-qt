@@ -267,6 +267,7 @@ Decision: Each task is committed once it is tested and certified (full test suit
 | E8 Capstones (7 projects) | TODO | | |
 | E9 In-app Examples Browser + Solution Checker (post-parity) | TODO | | |
 
+Decision: The applications are GPL-2.0-or-later (user choice, 2026-10-14; commit `0c0433f`): root `LICENSE` is the GPLv2 text, matching the original EASy68K (GPL, unversioned, ships GPLv2) and the SPDX headers; "or later" keeps a GPLv3 move open.
 Decision: Examples are CC0-1.0 (user chose "CC"; CC0 is the Creative Commons option suited to code). GCC cross-compiler (C11, freestanding C++17) is the reference C/C++ toolchain. Core path and Track C proceed in parallel.
 Decision: E2 depends on the assembler forward-reference fix (pass-2 backward-reference semantics found by the 9.6 integration test); examples must assemble identically to the original EASy68K.
 
