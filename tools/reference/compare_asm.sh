@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+# Copyright 2024 EASy68K Contributors
+# SPDX-License-Identifier: GPL-2.0-or-later
 # Compare the EASy68K-Qt assembler against the original EASy68K assembler
 # (reference oracle) on a set of sources.
 #

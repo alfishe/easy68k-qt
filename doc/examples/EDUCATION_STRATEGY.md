@@ -304,7 +304,7 @@ exist.
    vbcc may be added later as a secondary compiler.
 3. **Licensing.** Examples are dedicated to the public domain under
    **CC0 1.0 Universal** (SPDX `CC0-1.0`) so learners can reuse them freely.
-   The applications remain under the GNU GPL (repository root `LICENSE`).
+   The applications remain under GPL-2.0-or-later (repository root `LICENSE`).
 4. **Ordering.** The core path (Levels 0–3) and Track C are developed in
    parallel.
 5. **First increment.** E0–E2: skeleton, templates and spec format (E0);

@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+# Copyright 2024 EASy68K Contributors
+# SPDX-License-Identifier: GPL-2.0-or-later
 # Regenerate data/golden/asm/*.l68/*.s68 with the ORIGINAL EASy68K assembler
 # (reference oracle), using its default options. The port's golden test then
 # checks the EASy68K-Qt assembler against these files.

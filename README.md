@@ -123,7 +123,16 @@ The following original features are **not ported** (commented out or not applica
 
 ## License
 
-GPL-2.0-or-later — consistent with the original EASy68K project.
+EASy68K-Qt is licensed under the GNU General Public License, version 2 or
+(at your option) any later version (SPDX `GPL-2.0-or-later`). The full GPLv2
+text is in [`LICENSE`](LICENSE).
+
+This follows the original EASy68K, which is distributed under the GNU GPL
+without a version number (it ships the GPLv2 text; GPLv2 §9 lets the
+licensee choose any published version) and includes code explicitly under
+GPL-2.0-or-later. The "or later" option allows a move to GPLv3 if needed.
+
+The learning examples under `examples/` are CC0-1.0 (see `examples/LICENSE`).
 
 ## Acknowledgments
 

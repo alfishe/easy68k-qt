@@ -49,5 +49,5 @@ Copy [`_template/`](_template/) to start a new example.
 
 All files under `examples/` are dedicated to the public domain under
 CC0 1.0 Universal — see [`LICENSE`](LICENSE). Use them however you like.
-The EASy68K-Qt applications themselves are licensed under the GNU GPL (see the
+The EASy68K-Qt applications themselves are licensed under GPL-2.0-or-later (see the
 repository's root `LICENSE`).
