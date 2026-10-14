@@ -58,6 +58,9 @@ void M68kSimulator::InitProgram() {
   async_resumed_event_.store(false, std::memory_order_relaxed);
   last_step_faulted_ = false;
   memory_.ClearFault();
+  step_over_ = false;
+  step_to_addr_ = 0;  // clear step
+  run_to_addr_ = 0;   // clear runTo
 }
 
 void M68kSimulator::HardwareReset() {
@@ -457,6 +460,10 @@ SimResult M68kSimulator::Run(int max_instructions) {
         Notify(SimEventType::kBreakpointHit, state_.pc);
       hit = true;
     }
+    if (run_to_addr_ != 0 && state_.pc == run_to_addr_) {  // run to cursor reached
+      run_to_addr_ = 0;
+      hit = true;
+    }
     if (hit)
       break;
     if (max_instructions >= 0 && count >= max_instructions)
@@ -464,6 +471,48 @@ SimResult M68kSimulator::Run(int max_instructions) {
   }
 
   return result;
+}
+
+SimResult M68kSimulator::StepOver() {
+  step_over_ = true;
+  step_to_addr_ = 0;  // reset step to address
+  SimResult result = Step();
+  if (step_to_addr_ != 0 && !state_.halted) {
+    // runLoop()/runprog() with trace off until the return address (or a
+    // breakpoint) is reached.
+    bool hit = advanced_break_hit_ || HasBreakpoint(state_.pc);
+    while (!hit && state_.pc != step_to_addr_ && !stop_requested_.load(std::memory_order_relaxed) &&
+           !state_.halted) {
+      result = Step();
+      if (state_.halted)
+        break;
+      hit = advanced_break_hit_;
+      if (HasBreakpoint(state_.pc)) {
+        if (!observers_.empty())
+          Notify(SimEventType::kBreakpointHit, state_.pc);
+        hit = true;
+      }
+      if (run_to_addr_ != 0 && state_.pc == run_to_addr_) {
+        run_to_addr_ = 0;
+        hit = true;
+      }
+    }
+    if (state_.pc == step_to_addr_)
+      step_to_addr_ = 0;  // reset for next use
+  }
+  step_over_ = false;
+  return result;
+}
+
+SimResult M68kSimulator::RunTo(uint32_t address, int max_instructions) {
+  address &= kAddressMask;
+  if (!HasBreakpoint(address))  // if this address is not already a break point
+    run_to_addr_ = address;
+  return Run(max_instructions);
+}
+
+void M68kSimulator::ResetBreakPassCounts() {
+  break_pass_counts_.assign(break_expressions_.size(), 0);
 }
 
 void M68kSimulator::RequestStop() {

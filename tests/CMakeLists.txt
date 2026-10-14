@@ -13,6 +13,7 @@ add_executable(easym68k-sim-tests
   sim/opcodes_shift_test.cc
   sim/bitfield_test.cc
   sim/break_condition_test.cc
+  sim/step_over_test.cc
   sim/flag_computation_test.cc
   sim/exception_test.cc
   sim/trap15_mock_test.cc

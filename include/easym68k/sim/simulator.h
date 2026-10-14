@@ -128,6 +128,23 @@ class M68kSimulator {
   // max_instructions < 0 means unlimited.
   SimResult Run(int max_instructions = -1);
 
+  // Step Over (SIM68Ku.cpp StepExecute): executes one instruction; if it is a
+  // BSR/JSR, keeps running until execution returns to the instruction after
+  // it (CODE8.CPP stepToAddr), a breakpoint is hit, the program halts or a
+  // stop is requested.
+  SimResult StepOver();
+
+  // Run To Cursor (SIM68Ku.cpp RunToCursorExecute): runs until `address` is
+  // reached unless it is already a PC breakpoint. The run-to address stays
+  // armed until it is reached or the program is initialized (runToAddr), so
+  // a run stopped earlier by a breakpoint still stops there later.
+  SimResult RunTo(uint32_t address, int max_instructions = -1);
+  uint32_t GetRunToAddress() const { return run_to_addr_; }
+
+  // Resets the pass counters of the break expressions; Sim68K does this when
+  // Run is selected (BreaksFrm->resetDebug()).
+  void ResetBreakPassCounts();
+
   // Thread-safe stop request; checked at top of each Run iteration.
   void RequestStop();
 
@@ -342,6 +359,15 @@ class M68kSimulator {
   std::vector<BreakExpression> break_expressions_;
   std::vector<int> break_pass_counts_;  // bpCountCond[]
   bool advanced_break_hit_ = false;
+  bool step_over_ = false;     // sstep
+  uint32_t step_to_addr_ = 0;  // stepToAddr (0 = none)
+  uint32_t run_to_addr_ = 0;   // runToAddr (0 = none)
+  // CODE8.CPP BSR/JSR: in Step Over mode the first call sets the return
+  // address to stop at.
+  void NoteSubroutineCall(uint32_t return_address) {
+    if (step_over_ && step_to_addr_ == 0)
+      step_to_addr_ = return_address;
+  }
   SimResult StepInstruction();
   bool IsConditionMet(const BreakCondition& condition);
   bool IsExpressionBreak(int index);

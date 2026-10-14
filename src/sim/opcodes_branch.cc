@@ -79,6 +79,7 @@ SimResult M68kSimulator::OpBsr(uint16_t opcode) {
   // Push return address (address after the full BSR instruction)
   state_.SetSP(state_.GetSP() - 4);
   memory_.WriteLong(state_.GetSP() & kAddressMask, state_.pc);
+  NoteSubroutineCall(state_.pc);
   state_.pc = (base + disp) & kAddressMask;
   IncrementCycles(18);  // CODE8.CPP BSR
   return SimResult::kOk;
@@ -179,6 +180,7 @@ SimResult M68kSimulator::OpJsr(uint16_t opcode) {
   EffectiveAddr ea = CalcEA(mode, reg, DataSize::kLong);
   state_.SetSP(state_.GetSP() - 4);
   memory_.WriteLong(state_.GetSP() & kAddressMask, state_.pc);
+  NoteSubroutineCall(state_.pc);
   state_.pc = ea.address & kAddressMask;
   IncrementCycles(JmpJsrCycles(EaCode(mode, reg), /*is_jsr=*/true));
   return SimResult::kOk;

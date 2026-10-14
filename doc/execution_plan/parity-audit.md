@@ -24,18 +24,18 @@ the original Edit68K assembler core built on Linux from the original sources
 
 | Area | Rows | Done | Partial | Gap | Notes |
 |------|------|------|---------|-----|-------|
-| 1. Simulator core | 17 | 16 | 1 | 0 | S15 (9.10) partial |
+| 1. Simulator core | 17 | 17 | 0 | 0 | Phase 9 complete |
 | 2. Assembler | 9 | 7 | 1 | 1 | core is a port of the original; listings and S-records match the oracle |
 | 3. Sim68K GUI | 21 | 0 | 0 | 21 | GUI sources are 1-line stubs (27 files) |
 | 4. Edit68K GUI | 14 | 0 | 0 | 14 | |
 | 5. EASyBIN | 4 | 0 | 0 | 4 | |
 | 6. Help | 1 | 0 | 0 | 1 | |
-| **Total** | **66** | **23** | **2** | **41** | |
+| **Total** | **66** | **24** | **1** | **41** | |
 
 | Measure | Value |
 |---------|-------|
-| Plan tasks (PROGRESS.md) | 63 done, 43 open (9.10 next) |
-| Simulator unit tests | 715 pass (ASan+UBSan clean) |
+| Plan tasks (PROGRESS.md) | 64 done, 42 open (Phase 10 next) |
+| Simulator unit tests | 724 pass (ASan+UBSan clean) |
 | Assembler tests | 394 pass (incl. 132 instruction-matrix suites, 21 golden, 21 corpus cases); ASan+UBSan clean |
 | Integration tests (asm + sim) | 10 pass |
 | Instruction matrix vs oracle | 98,583 / 98,583 cases match (bytes + diagnostic class) |
@@ -64,7 +64,7 @@ the original Edit68K assembler core built on Linux from the original sources
 | S12 | Output (Trap #15 text) logging | logU.cpp OlogFile | Done (core hooks) | 9.4 |
 | S13 | PC breakpoints | BPoint.cpp | Done (core) | 4.1 |
 | S14 | **Advanced breakpoints**: register conditions (D0-D7/A0-A7/PC, ==, !=, >, >=, <, <=, size B/W/L), memory conditions (address, value, R/W/Read/Write, size), expression builder (AND/OR/parentheses, pass count, ON/OFF) | BREAKPOINTSu.cpp, BPoint*.cpp | **Done** (core engine; dialog in 13.22) | **NEW 9.9** (core engine) + **NEW 13.22** (dialog) |
-| S15 | Step Over (skip into BSR/JSR), Trace Into, Run To Cursor, Auto Trace | SIM68Ku.cpp, CODE8.CPP stepToAddr | Partial: Step/Run only | **NEW 9.10** (step-over / run-to core API) |
+| S15 | Step Over (skip into BSR/JSR), Trace Into, Run To Cursor, Auto Trace | SIM68Ku.cpp, CODE8.CPP stepToAddr | **Done** (core: Step, Step Over, Run, Run To; Auto Trace is GUI 13.24) | **NEW 9.10** (step-over / run-to core API) |
 | S16 | Event/observer hooks for GUI | — (new) | Done | 9.5 |
 | S17 | Program init on open/rewind (PC = S-record/listing start, SR=$2000, USP=$00FF0000, SSP=$01000000, registers and cycles cleared) and hardware Reset button (S=1, T=0, mask 7, SSP/PC from vectors 0/4, +40 cycles, clears STOP) | STARTSIM.CPP initSim(), SIM68Ku.cpp, hardwareu.cpp ResetBtnClick | Done | 9.11 |
 
@@ -207,6 +207,7 @@ Each committed iteration updates the snapshot above and adds a line here.
 | 2026-10-14 | `3d15f4b` | removed unused assembler front end | — |
 | 2026-10-14 | `dfd8262` | bit field instructions in the simulator | S8 Done |
 | 2026-10-14 | `1b68a39` | advanced breakpoint engine; Run checks after executing | S14 Done (core) |
+| 2026-10-14 | (9.10) | Step Over / Run To core API | S15 Done (core) |
 
 ## 10. Parity acceptance
 
