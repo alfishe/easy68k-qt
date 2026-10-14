@@ -24,18 +24,18 @@ the original Edit68K assembler core built on Linux from the original sources
 
 | Area | Rows | Done | Partial | Gap | Notes |
 |------|------|------|---------|-----|-------|
-| 1. Simulator core | 17 | 15 | 1 | 1 | S14 (9.9) gap; S15 (9.10) partial |
+| 1. Simulator core | 17 | 16 | 1 | 0 | S15 (9.10) partial |
 | 2. Assembler | 9 | 7 | 1 | 1 | core is a port of the original; listings and S-records match the oracle |
 | 3. Sim68K GUI | 21 | 0 | 0 | 21 | GUI sources are 1-line stubs (27 files) |
 | 4. Edit68K GUI | 14 | 0 | 0 | 14 | |
 | 5. EASyBIN | 4 | 0 | 0 | 4 | |
 | 6. Help | 1 | 0 | 0 | 1 | |
-| **Total** | **66** | **22** | **2** | **42** | |
+| **Total** | **66** | **23** | **2** | **41** | |
 
 | Measure | Value |
 |---------|-------|
-| Plan tasks (PROGRESS.md) | 62 done, 44 open (9.9 next) |
-| Simulator unit tests | 702 pass (ASan+UBSan clean) |
+| Plan tasks (PROGRESS.md) | 63 done, 43 open (9.10 next) |
+| Simulator unit tests | 715 pass (ASan+UBSan clean) |
 | Assembler tests | 394 pass (incl. 132 instruction-matrix suites, 21 golden, 21 corpus cases); ASan+UBSan clean |
 | Integration tests (asm + sim) | 10 pass |
 | Instruction matrix vs oracle | 98,583 / 98,583 cases match (bytes + diagnostic class) |
@@ -63,7 +63,7 @@ the original Edit68K assembler core built on Linux from the original sources
 | S11 | Execution logging (instruction / +registers / +memory range) | RUN.CPP, logU.cpp | Done (core hooks) | 9.4 |
 | S12 | Output (Trap #15 text) logging | logU.cpp OlogFile | Done (core hooks) | 9.4 |
 | S13 | PC breakpoints | BPoint.cpp | Done (core) | 4.1 |
-| S14 | **Advanced breakpoints**: register conditions (D0-D7/A0-A7/PC, ==, !=, >, >=, <, <=, size B/W/L), memory conditions (address, value, R/W/Read/Write, size), expression builder (AND/OR/parentheses, pass count, ON/OFF) | BREAKPOINTSu.cpp, BPoint*.cpp | **Gap**: not in plan | **NEW 9.9** (core engine) + **NEW 13.22** (dialog) |
+| S14 | **Advanced breakpoints**: register conditions (D0-D7/A0-A7/PC, ==, !=, >, >=, <, <=, size B/W/L), memory conditions (address, value, R/W/Read/Write, size), expression builder (AND/OR/parentheses, pass count, ON/OFF) | BREAKPOINTSu.cpp, BPoint*.cpp | **Done** (core engine; dialog in 13.22) | **NEW 9.9** (core engine) + **NEW 13.22** (dialog) |
 | S15 | Step Over (skip into BSR/JSR), Trace Into, Run To Cursor, Auto Trace | SIM68Ku.cpp, CODE8.CPP stepToAddr | Partial: Step/Run only | **NEW 9.10** (step-over / run-to core API) |
 | S16 | Event/observer hooks for GUI | — (new) | Done | 9.5 |
 | S17 | Program init on open/rewind (PC = S-record/listing start, SR=$2000, USP=$00FF0000, SSP=$01000000, registers and cycles cleared) and hardware Reset button (S=1, T=0, mask 7, SSP/PC from vectors 0/4, +40 cycles, clears STOP) | STARTSIM.CPP initSim(), SIM68Ku.cpp, hardwareu.cpp ResetBtnClick | Done | 9.11 |
@@ -206,6 +206,7 @@ Each committed iteration updates the snapshot above and adds a line here.
 | 2026-10-14 | `29fad1c` | 8.13 assembly loop ported from the original (core), corpus test, Memory::Erase | A1b, A2, A3, A5, A6 Done; A7 Partial; L68 21/21 |
 | 2026-10-14 | `3d15f4b` | removed unused assembler front end | — |
 | 2026-10-14 | `dfd8262` | bit field instructions in the simulator | S8 Done |
+| 2026-10-14 | (9.9) | advanced breakpoint engine; Run checks after executing | S14 Done (core) |
 
 ## 10. Parity acceptance
 

@@ -289,6 +289,17 @@ SimResult M68kSimulator::HandleMemoryFault(const CpuState& before, uint16_t opco
 // =============================================================================
 
 SimResult M68kSimulator::Step() {
+  // RUN.CPP exec_inst(): reset the read/write flags so the breakpoints see
+  // the accesses of this instruction only.
+  memory_.ResetAccessTracking();
+  SimResult result = StepInstruction();
+  advanced_break_hit_ = !break_expressions_.empty() && EvaluateBreakExpressions();
+  if (advanced_break_hit_ && !observers_.empty())
+    Notify(SimEventType::kBreakpointHit, state_.pc);
+  return result;
+}
+
+SimResult M68kSimulator::StepInstruction() {
   if (async_irq_events_.load(std::memory_order_relaxed) != 0 ||
       async_resumed_event_.load(std::memory_order_relaxed))
     DeliverAsyncEvents();  // drains even with no observers registered
@@ -433,17 +444,21 @@ SimResult M68kSimulator::Run(int max_instructions) {
   SimResult result = SimResult::kOk;
 
   while (!stop_requested_.load(std::memory_order_relaxed) && !state_.halted) {
-    if (HasBreakpoint(state_.pc)) {
-      if (!observers_.empty())
-        Notify(SimEventType::kBreakpointHit, state_.pc);
-      break;
-    }
     // Like the original run loop, keep running through exceptions (which
     // vector to their handlers); stop only on halt, breakpoint or request.
     result = Step();
     if (state_.halted)
       break;
     ++count;
+    // runprog(): breakpoints are checked after the instruction executed.
+    bool hit = advanced_break_hit_;  // already notified by Step()
+    if (HasBreakpoint(state_.pc)) {
+      if (!observers_.empty())
+        Notify(SimEventType::kBreakpointHit, state_.pc);
+      hit = true;
+    }
+    if (hit)
+      break;
     if (max_instructions >= 0 && count >= max_instructions)
       break;
   }

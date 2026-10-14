@@ -74,6 +74,7 @@ MemoryAccessResult Memory::ReadByte(uint32_t address) const {
     RecordFault(SimResult::kBusError, address, true);
     return {false, 0, SimResult::kBusError, "bus error on read"};
   }
+  NoteRead(addr);
   return {true, data_[addr], SimResult::kOk, {}};
 }
 
@@ -89,6 +90,7 @@ MemoryAccessResult Memory::ReadWord(uint32_t address) const {
   }
   uint32_t value = (static_cast<uint32_t>(data_[addr]) << 8) |
                    static_cast<uint32_t>(data_[(addr + 1) & kAddressMask]);
+  NoteRead(addr);
   return {true, value, SimResult::kOk, {}};
 }
 
@@ -106,6 +108,7 @@ MemoryAccessResult Memory::ReadLong(uint32_t address) const {
                    (static_cast<uint32_t>(data_[(addr + 1) & kAddressMask]) << 16) |
                    (static_cast<uint32_t>(data_[(addr + 2) & kAddressMask]) << 8) |
                    static_cast<uint32_t>(data_[(addr + 3) & kAddressMask]);
+  NoteRead(addr);
   return {true, value, SimResult::kOk, {}};
 }
 
@@ -137,6 +140,7 @@ SimResult Memory::WriteByte(uint32_t address, uint8_t value) {
       break;
   }
   data_[addr] = value;
+  NoteWrite(addr);
   return SimResult::kOk;
 }
 
@@ -157,6 +161,7 @@ SimResult Memory::WriteWord(uint32_t address, uint16_t value) {
   }
   data_[addr] = static_cast<uint8_t>(value >> 8);
   data_[(addr + 1) & kAddressMask] = static_cast<uint8_t>(value & 0xFF);
+  NoteWrite(addr);
   return SimResult::kOk;
 }
 
@@ -179,6 +184,7 @@ SimResult Memory::WriteLong(uint32_t address, uint32_t value) {
   data_[(addr + 1) & kAddressMask] = static_cast<uint8_t>(value >> 16);
   data_[(addr + 2) & kAddressMask] = static_cast<uint8_t>(value >> 8);
   data_[(addr + 3) & kAddressMask] = static_cast<uint8_t>(value & 0xFF);
+  NoteWrite(addr);
   return SimResult::kOk;
 }
 

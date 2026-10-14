@@ -110,6 +110,21 @@ class Memory {
   // The PC value recorded with a fault is read from *pc (may be null).
   void SetFaultPcSource(const uint32_t* pc) { fault_pc_source_ = pc; }
 
+  // Access tracking for address breakpoints (UTILS.CPP mem_req()/mem_put()
+  // set readEA/bpRead and writeEA/bpWrite): the address of the last
+  // successful read and write since ResetAccessTracking().
+  struct AccessTracking {
+    bool read = false;
+    bool write = false;
+    uint32_t read_address = 0;
+    uint32_t write_address = 0;
+  };
+  const AccessTracking& GetAccessTracking() const { return access_; }
+  void ResetAccessTracking() {
+    access_.read = false;
+    access_.write = false;
+  }
+
   // ---------------------------------------------------------------------------
   // Direct Access (for debugging, display, and I/O buffer writes)
   // ---------------------------------------------------------------------------
@@ -125,6 +140,16 @@ class Memory {
   std::vector<std::pair<uint32_t, uint32_t>> exemptions_;
   mutable MemoryFault fault_;
   const uint32_t* fault_pc_source_ = nullptr;
+  mutable AccessTracking access_;
+
+  void NoteRead(uint32_t addr) const {
+    access_.read = true;
+    access_.read_address = addr;
+  }
+  void NoteWrite(uint32_t addr) {
+    access_.write = true;
+    access_.write_address = addr;
+  }
 
   uint32_t MaskAddress(uint32_t address) const { return address & kAddressMask; }
   bool IsAligned(uint32_t address) const { return (address & 1) == 0; }

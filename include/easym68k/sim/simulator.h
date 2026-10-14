@@ -12,6 +12,7 @@
 #include <string>
 #include <vector>
 
+#include "easym68k/sim/break_condition.h"
 #include "easym68k/sim/cpu_state.h"
 #include "easym68k/sim/effective_addr.h"
 #include "easym68k/sim/isim_observer.h"
@@ -116,10 +117,14 @@ class M68kSimulator {
   // toggle switches and push buttons.
   void SetHardwareAddresses(uint32_t seg7, uint32_t leds, uint32_t switches, uint32_t buttons);
 
-  // Executes a single instruction, handles exceptions.
+  // Executes a single instruction, handles exceptions, then evaluates the
+  // advanced breakpoints (as RUN.CPP runprog() does after exec_inst()).
   SimResult Step();
 
   // Runs until halt, stop_requested_, breakpoint, or max_instructions.
+  // Like runprog(), each iteration executes an instruction first and then
+  // checks the PC breakpoints and the advanced breakpoints, so a run started
+  // on a breakpoint address executes that instruction.
   // max_instructions < 0 means unlimited.
   SimResult Run(int max_instructions = -1);
 
@@ -156,6 +161,17 @@ class M68kSimulator {
   const CpuState& State() const { return state_; }
   Memory& GetMemory() { return memory_; }
   const Memory& GetMemory() const { return memory_; }
+
+  // Advanced breakpoints (break_condition.h)
+  void SetBreakCondition(int index, const BreakCondition& condition);
+  const BreakCondition& GetBreakCondition(int index) const;
+  // Replaces the expressions (at most kMaxBreakExpressions) and resets their
+  // pass counters.
+  void SetBreakExpressions(std::vector<BreakExpression> expressions);
+  const std::vector<BreakExpression>& GetBreakExpressions() const { return break_expressions_; }
+  void ClearAdvancedBreakpoints();
+  // True if an advanced breakpoint expression broke after the last Step().
+  bool AdvancedBreakpointHit() const { return advanced_break_hit_; }
 
   // Breakpoints
   void AddBreakpoint(uint32_t address);
@@ -322,6 +338,14 @@ class M68kSimulator {
   Memory memory_;
   Config config_;
   std::vector<Breakpoint> breakpoints_;
+  BreakCondition break_conditions_[kMaxBreakConditions];
+  std::vector<BreakExpression> break_expressions_;
+  std::vector<int> break_pass_counts_;  // bpCountCond[]
+  bool advanced_break_hit_ = false;
+  SimResult StepInstruction();
+  bool IsConditionMet(const BreakCondition& condition);
+  bool IsExpressionBreak(int index);
+  bool EvaluateBreakExpressions();
   std::atomic<bool> stop_requested_{false};
   std::atomic<uint8_t> pending_irqs_{0};
   std::atomic<bool> simhalt_enabled_{true};
