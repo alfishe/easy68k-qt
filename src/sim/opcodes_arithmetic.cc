@@ -740,15 +740,21 @@ SimResult M68kSimulator::OpAbcd(uint16_t opcode) {
     dst = state_.d[dst_reg] & kByteMask;
   }
 
+  // Digit by digit as CODE5.CPP ABCD (identical to decimal addition for valid
+  // BCD; non-BCD digits, undefined in the PRM, give the original's results).
   uint32_t low = (src & 0xF) + (dst & 0xF) + x;
-  if (low > 9)
-    low += 6;
-  uint32_t high = (src >> 4) + (dst >> 4) + (low >> 4);
-  low &= 0xF;
-  if (high > 9)
-    high += 6;
-  uint32_t result = ((high & 0xF) << 4) | low;
-  bool carry = (high > 0xF);
+  uint32_t carry_low = 0;
+  if (low > 9) {
+    low -= 10;
+    carry_low = 1;
+  }
+  uint32_t high = ((src >> 4) & 0xF) + ((dst >> 4) & 0xF) + carry_low;
+  bool carry = false;
+  if (high > 9) {
+    high -= 10;
+    carry = true;
+  }
+  uint32_t result = (low + (high << 4)) & kByteMask;
 
   if (result != 0)
     state_.SetFlag(kSrZero, false);
@@ -802,7 +808,9 @@ SimResult M68kSimulator::OpSbcd(uint16_t opcode) {
     high += 10;
     borrow_high = 1;
   }
-  uint32_t result = (static_cast<uint32_t>(high & 0xF) << 4) | static_cast<uint32_t>(low & 0xF);
+  // As CODE5.CPP SBCD: the digits are combined without masking, which only
+  // matters for non-BCD digits (undefined in the PRM).
+  uint32_t result = (static_cast<uint32_t>(low) + (static_cast<uint32_t>(high) << 4)) & kByteMask;
   bool carry = (borrow_high != 0);
 
   if (result != 0)

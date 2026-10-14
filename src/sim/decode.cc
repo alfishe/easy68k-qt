@@ -7,6 +7,8 @@
 // instructions not yet implemented; they are filled in during Phase 6.
 // Primary source: EASy68K/Sim68K/RUN.CPP exec_inst(), CODE1.CPP–CODE8.CPP.
 
+#include "easym68k/sim/decode.h"
+
 #include "easym68k/sim/addressing_mode.h"
 #include "easym68k/sim/cycle_data.h"
 #include "easym68k/sim/flag_computation.h"
@@ -19,6 +21,9 @@ namespace easym68k::sim {
 // =============================================================================
 
 SimResult M68kSimulator::ExecuteInstruction(uint16_t opcode) {
+  // Illegal encodings are rejected before any operand access (decode.h).
+  if (!IsLegalOpcode(opcode, bitfield_enabled_.load(std::memory_order_relaxed)))
+    return SimResult::kBadInstruction;
   switch ((opcode >> 12) & 0xF) {
     case 0x0:
       return DispatchGroup0(opcode);

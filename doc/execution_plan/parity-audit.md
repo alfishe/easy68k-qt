@@ -28,7 +28,7 @@ hash and the program output.
 
 ## Status snapshot
 
-*Updated after every committed iteration (last: 2026-10-14, commit `9f42410`).*
+*Updated after every committed iteration (last: 2026-10-14, commit `(X)`).*
 
 | Area | Rows | Done | Partial | Gap | Notes |
 |------|------|------|---------|-----|-------|
@@ -42,15 +42,16 @@ hash and the program output.
 
 | Measure | Value |
 |---------|-------|
-| Plan tasks (PROGRESS.md) | 66 done, 43 open (10.3 next) |
-| Simulator unit tests | 734 pass (ASan+UBSan clean) |
+| Plan tasks (PROGRESS.md) | 67 done, 43 open (10.4 next) |
+| Simulator unit tests | 740 pass (ASan+UBSan clean) |
 | Assembler tests | 394 pass (incl. 132 instruction-matrix suites, 21 golden, 21 corpus cases); ASan+UBSan clean |
 | Integration tests (asm + sim) | 10 pass |
 | Instruction matrix vs oracle | 98,583 / 98,583 cases match (bytes + diagnostic class) |
 | Golden programs, S-records (.S68) vs oracle | 21 / 21 match |
 | Golden programs, listings (.L68) vs oracle | 21 / 21 match |
 | Corpus (directives, macros, conditional/structured, OPT, INCLUDE/INCBIN, MEMORY, errors) × 3 option variants vs oracle | 21 / 21 match (.L68 + .S68) |
-| Simulator instruction corpus vs oracle (131 programs from the matrix, exceptions on; `compare_sim_corpus.sh`) | 4,288 / 4,288 executed cases match: 4,106 identical, 182 accepted deviations (`data/golden/sim/deviations.tsv`); memory hash: 125 identical, 6 accepted |
+| Simulator instruction corpus vs oracle (131 programs from the matrix, exceptions on; `compare_sim_corpus.sh`) | all executed cases match: identical or an accepted deviation (`data/golden/sim/deviations.tsv`); memory hash identical or accepted |
+| Simulator opcode sweep vs oracle (every first word, 61,034 opcodes in 16 programs; `compare_sim_corpus.sh --sweep`) | 0 unexplained differences (legal/illegal decision, results, flags, cycles) |
 | GUI | not started (Phase 13) |
 
 ---
@@ -59,7 +60,7 @@ hash and the program output.
 
 | ID | Feature | Original | Port status | Task |
 |----|---------|----------|-------------|------|
-| S1 | All 68000 instructions, addressing modes, N/Z/V/C/X | RUN.CPP, CODE1-9.CPP | Done — verified against the oracle (instruction corpus); fixed LEA A4-A7 / CHK D4-D7 decode, NEGX C/X, CHK N, NBCD; deviations: undefined flags, DIVS/DIVU C, MULS V, 24-bit PC | 3-6, 10.0, 10.2 |
+| S1 | All 68000 instructions, addressing modes, N/Z/V/C/X | RUN.CPP, CODE1-9.CPP | Done — verified against the oracle (instruction corpus + opcode sweep); fixed LEA A4-A7 / CHK D4-D7 decode, illegal-encoding detection, NEGX C/X, CHK N, ABCD/SBCD/NBCD; deviations: undefined flags, original bugs (see deviations.tsv), 24-bit PC | 3-6, 10.0, 10.2, 10.3 |
 | S2 | Exceptions: illegal, privilege, div0, CHK, TRAPV, TRAP #n, trace, Line A/F (stacked PC per RUN.CPP: next instruction, except illegal) | RUN.CPP | Done — verified by the corpus | 4.2, 6.5, 9.7, 10.2 |
 | S3 | Address/bus error (class 0 frame, 50 cycles) | RUN.CPP exceptionHandler | Done — frames verified by the corpus; CLR/Scc/MOVE SR fault as reads; deviation: registers/cycles restored to the instruction start (original keeps (An)+/-(An) and EA cycles) | 9.7, 10.2 |
 | S4 | Interrupts: autovector IRQ 1-7, NMI, STOP wake | RUN.CPP irqHandler, hardwareu.cpp | Done | 9.1 |
@@ -187,7 +188,8 @@ hash and the program output.
 | 9.11 | Program init/rewind (initSim) and hardware Reset button semantics (S17) | 9.5 |
 | 10.0 | Reference simulator oracle (original Sim68K core built headless), port tracer, trace comparison, instruction corpus ✓ | 8.10 |
 | 10.2 | Oracle difference triage: fix port bugs, document original bugs as accepted deviations (S1-S3) ✓ | 10.0 |
-| 10.3 | Opcode sweep (all first words) + deterministic Trap #15 tasks vs the oracle | 10.2 |
+| 10.3 | Opcode sweep (all first words) vs the oracle; opcode legality table ✓ | 10.2 |
+| 10.4 | Deterministic Trap #15 tasks vs the oracle | 10.3 |
 | 13.22 | Advanced Break Points dialog (G19) | 9.9 |
 | 13.23 | Sim68K Find / Find Next / Go to PC (G7) | 13.4 |
 | 13.24 | Auto Trace + options dialog (G12) | 9.10 |
@@ -222,6 +224,7 @@ Each committed iteration updates the snapshot above and adds a line here.
 | 2026-10-14 | `c2ec310` | Step Over / Run To core API | S15 Done (core) |
 | 2026-10-14 | `c467956` | 10.0 simulator oracle, port tracer, instruction corpus; LEA/CHK decode fix | S1-S3 back to Partial (96/131 corpus programs identical) |
 | 2026-10-14 | `9f42410` | 10.2 oracle difference triage: case-level comparer, accepted deviations, 5 port bugs fixed | S1-S3 Done (0 unexplained differences) |
+| 2026-10-14 | `(X)` | 10.3 opcode sweep; opcode legality table; ABCD/SBCD digits | S1 legality verified for every first word |
 
 ## 10. Parity acceptance
 

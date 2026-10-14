@@ -7,9 +7,11 @@ For every mnemonic in data/golden/asm/matrix/*.tsv this writes one program,
 <outdir>/<MNEMONIC>.x68, that executes every distinct legal encoding of the
 mnemonic once, each inside its own block:
 
-           ORG     $10100+k*64        ; fixed slots: label values never
+           ORG     $10400+k*128       ; fixed slots: label values never
     T<k>:  MOVE    #$2700,SR          ; depend on instruction sizes
-           MOVE.L  #T<k+1>,NEXT       ; where HANDLER resumes
+           MOVE.L  #T<k+1>,NEXT       ; where the vector stubs resume
+           MOVEM.L FILL,D0-D7/A0-A6   ; restore stack/data memory windows
+           MOVEM.L D0-D7/A0-A6,SSTK-60 / SSTK / $2FC4.. $30B4
            LEA     USTK,A0
            MOVE    A0,USP
            LEA     SSTK,SP
@@ -19,8 +21,9 @@ mnemonic once, each inside its own block:
                                       ; T<k+1>; data BK/FW -> $2E00/$2F00
            BRA     T<k+1>
 
-All exception vectors point at HANDLER, which jumps to (NEXT), so a faulting
-case resumes at the next block (run with exceptions enabled, -e). Memory at
+Every exception vector v points at its own stub VEC<v> at $9000 + 8*v,
+which jumps to (NEXT), so a faulting case resumes at the next block and the
+trace shows which exception was taken (run with exceptions enabled, -e). Memory at
 $1000-$2FFF holds ILLEGAL words so stray jumps fault rather than run away;
 the register sets point A0-A6 into a data patch at $3000.
 
@@ -33,6 +36,7 @@ in both simulators by tools/reference/compare_sim.sh; golden results come
 from tools/reference/regenerate_sim_golden.sh (oracle only).
 
 Usage: gen_sim_corpus.py <matrix-dir> <outdir>
+       gen_sim_corpus.py --sweep <outdir>    (opcode sweep, see sweep())
 """
 
 import os
@@ -95,8 +99,11 @@ def excluded(src):
     return False
 
 
+SLOT_SIZE = 128
+
+
 def slot(k):
-    return 0x10100 + k * 64
+    return 0x10400 + k * SLOT_SIZE
 
 
 def program(mnemonic, cases):
@@ -110,7 +117,8 @@ def program(mnemonic, cases):
     out.append("RL       REG     D2-D4/A3")
     out.append("         ORG     0")
     out.append("         DC.L    SSTK,START")
-    out.append("         DCB.L   62,HANDLER")
+    for v in range(2, 64):
+        out.append(f"         DC.L    VEC{v}")
     out.append("         ORG     $1000")
     out.append("         DCB.W   $1000,$4AFC")
     out.append("         ORG     $3000")
@@ -119,9 +127,13 @@ def program(mnemonic, cases):
         words.append(0x4AFC if i % 2 == 0 else PATCH_WORDS[(i // 2) % len(PATCH_WORDS)])
     for i in range(0, len(words), 8):
         out.append("         DC.W    " + ",".join(f"${w:04X}" for w in words[i:i + 8]))
+    # One handler stub per vector at $9000 + 8 * vector, so the trace shows
+    # which exception was taken.
+    out.append("         ORG     $9000")
+    for v in range(64):
+        out.append(f"VEC{v}     MOVEA.L NEXT,A0")
+        out.append("         JMP     (A0)")
     out.append("         ORG     $10000")
-    out.append("HANDLER  MOVEA.L NEXT,A0")
-    out.append("         JMP     (A0)")
     out.append("START    BRA     T0")
     for k, src in enumerate(cases):
         j = k % len(REG_SETS)
@@ -140,6 +152,14 @@ def program(mnemonic, cases):
         out.append(f"         ORG     ${slot(k):X}")
         out.append(f"T{k}       MOVE    #$2700,SR")
         out.append(f"         MOVE.L  #T{k + 1},NEXT")
+        # Restore the memory the cases touch most (stack frames around SSTK,
+        # the start of the data patch), so one case's writes do not carry
+        # into the next.
+        out.append("         MOVEM.L FILL,D0-D7/A0-A6")
+        out.append("         MOVEM.L D0-D7/A0-A6,SSTK-60")
+        out.append("         MOVEM.L D0-D7/A0-A6,SSTK")
+        for base in (0x2FC4, 0x3000, 0x303C, 0x3078, 0x30B4):
+            out.append(f"         MOVEM.L D0-D7/A0-A6,${base:X}")
         out.append("         LEA     USTK,A0")
         out.append("         MOVE    A0,USP")
         out.append("         LEA     SSTK,SP")
@@ -150,6 +170,9 @@ def program(mnemonic, cases):
     out.append(f"         ORG     ${slot(len(cases)):X}")
     out.append(f"T{len(cases)}       MOVE    #$2700,SR")
     out.append("         SIMHALT")
+    fill = [(w << 16) | PATCH_WORDS[i % len(PATCH_WORDS)] for i, w in enumerate([0x4AFC] * 15)]
+    out.append("FILL     DC.L    " + ",".join(f"${v:08X}" for v in fill[:8]))
+    out.append("         DC.L    " + ",".join(f"${v:08X}" for v in fill[8:]))
     for j, (d, a) in enumerate(REG_SETS):
         vals = d + a
         out.append(f"REGS{j}    DC.L    " + ",".join(f"${v:08X}" for v in vals[:8]))
@@ -158,7 +181,102 @@ def program(mnemonic, cases):
     return "\n".join(out) + "\n"
 
 
+SWEEP_EXT = 0x3000
+
+
+def sweep_excluded(op):
+    """Opcodes left out of the sweep (all covered by the matrix corpus)."""
+    if op >> 12 == 0x6:                      # Bcc/BRA/BSR: arbitrary targets
+        return True
+    if (op & 0xF0F8) == 0x50C8:              # DBcc: branch +$3000
+        return True
+    if (op & 0xFF80) == 0x4E80:              # JSR/JMP
+        return True
+    if (op & 0xFFF8) == 0x4E58:              # UNLK: odd An stops the original
+        return True                           # (odd SSP), ending the program
+    # Encodings the original executes although they are illegal and that
+    # write through a PC-relative EA, i.e. into the program itself (accepted
+    # deviations; they would corrupt the following cases).
+    if (op & 0xF138) == 0x0138 and (op & 0x00C0) and (op & 7) in (2, 3):
+        return True                           # BCHG/BCLR/BSET Dn,d(PC)
+    if (op & 0xFF38) == 0x0838 and (op & 0x00C0) and (op & 7) in (2, 3):
+        return True                           # BCHG/BCLR/BSET #n,d(PC)
+    if (op & 0xF8FE) == 0xE8FA and (op >> 8) & 7 in (2, 4, 6, 7):
+        return True                           # BFCHG/BFCLR/BFSET/BFINS d(PC)
+    # ABCD/SBCD/ADDX.B/SUBX.B -(A7) and CMPM.B (A7)+: the original steps A7
+    # by 1 (accepted deviation; the odd SP would break the following cases).
+    if (op & 0xF1F8) in (0x8108, 0xC108, 0x9108, 0xD108, 0xB108) and \
+            (op & 7 == 7 or (op >> 9) & 7 == 7):
+        return True
+    return op in (0x4E72, 0x4E4F, 0x4E73, 0x4E75, 0x4E77)  # STOP, TRAP #15, RTE/RTS/RTR
+
+
+SHIFT_NAMES = ("AS", "LS", "ROX", "RO")
+
+
+def sweep_name(op):
+    """Mnemonic of a first word, for deviation rules (\"; NAME\" in the case)."""
+    hi = op >> 12
+    if hi in (1, 2, 3):
+        return "MOVEA" if (op >> 6) & 7 == 1 else "MOVE"
+    if hi == 4:
+        if (op & 0x01C0) == 0x0180:
+            return "CHK"
+        if (op & 0xFFC0) == 0x4800:
+            return "NBCD"
+    if hi == 8:
+        if (op & 0x01C0) == 0x00C0:
+            return "DIVU"
+        if (op & 0x01C0) == 0x01C0:
+            return "DIVS"
+        if (op & 0x01F0) == 0x0100:
+            return "SBCD"
+    if hi == 0xC:
+        if (op & 0x01C0) == 0x01C0:
+            return "MULS"
+        if (op & 0x01C0) == 0x00C0:
+            return "MULU"
+        if (op & 0x01F0) == 0x0100:
+            return "ABCD"
+    if hi == 0xE and (op >> 6) & 3 != 3:
+        name = SHIFT_NAMES[(op >> 3) & 3] + ("L" if op & 0x0100 else "R")
+        return name + (".Dn" if op & 0x0020 else "")
+    return f"OP{hi:X}"
+
+
+def sweep(outdir):
+    """Opcode sweep: every first word, followed by four $3000 extension words
+    ($3000 = absolute/displacement/immediate/index D3.W; as an instruction
+    MOVE.W D0,D0), one program per top nibble (SWEEP_0 .. SWEEP_F)."""
+    total = 0
+    for nib in range(16):
+        cases = []
+        for low in range(0x1000):
+            op = (nib << 12) | low
+            if not sweep_excluded(op):
+                cases.append(f"DC.W    ${op:04X},${SWEEP_EXT:04X},${SWEEP_EXT:04X},"
+                             f"${SWEEP_EXT:04X},${SWEEP_EXT:04X} ; {sweep_name(op)}")
+        if not cases:
+            continue
+        name = f"SWEEP_{nib:X}"
+        total += len(cases)
+        with open(os.path.join(outdir, name + ".x68"), "w") as f:
+            f.write(program(name, cases).replace(
+                "every legal SWEEP", "opcode sweep SWEEP").replace(
+                "encoding from the\n* assembler matrix", "first word $X000-$XFFF".replace("X", f"{nib:X}")))
+        if nib == 0xE:
+            with open(os.path.join(outdir, name + "_BF.x68"), "w") as f:
+                f.write(program(name + "_BF", cases))
+            with open(os.path.join(outdir, name + "_BF.flags"), "w") as f:
+                f.write("-b\n")
+    print(f"{total} opcodes")
+
+
 def main():
+    if len(sys.argv) == 3 and sys.argv[1] == "--sweep":
+        os.makedirs(sys.argv[2], exist_ok=True)
+        sweep(sys.argv[2])
+        return
     if len(sys.argv) != 3:
         sys.exit(__doc__)
     matrix_dir, outdir = sys.argv[1], sys.argv[2]

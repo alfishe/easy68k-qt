@@ -15,6 +15,7 @@ add_executable(easym68k-sim-tests
   sim/break_condition_test.cc
   sim/step_over_test.cc
   sim/oracle_regression_test.cc
+  sim/legality_test.cc
   sim/flag_computation_test.cc
   sim/exception_test.cc
   sim/trap15_mock_test.cc

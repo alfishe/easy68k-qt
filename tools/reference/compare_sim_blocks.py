@@ -18,7 +18,8 @@ A deviations file lists accepted differences, one per line:
 <case regex> is matched against "<MNEMONIC-FILE>: <instruction text>".
 <ignore> is a comma list of what to disregard in a matching case: a register
 or field name (CYC, PC, A4, ...), a range (A0-A7), SR=<hex bits>, and
-optional conditions: @fault (only cases that took an address/bus error) and
+optional conditions: @fault (only cases that took an address/bus error),
+@illegal (both took the illegal instruction exception) and
 @V (only if the oracle's result has V set). A case is accepted if it matches
 once those parts are masked out of both traces. Exit status 1 if any
 unexplained difference remains.
@@ -28,8 +29,9 @@ import os
 import re
 import sys
 
+# Slot geometry, read from the listing (T0, T1 and B0 labels).
 BASE = 0x10100
-SLOT = 64
+SLOT = 128
 
 
 def cases_from_listing(path):
@@ -51,11 +53,23 @@ def cases_from_listing(path):
     return cases
 
 
-# Offset of B<k> in a slot: the prologue (MOVE #,SR; MOVE.L #,NEXT; LEA;
-# MOVE USP; LEA; MOVEM.L) is 34 bytes. A slot's comparison starts at the state
-# right after its MOVEM.L (all registers reloaded), so state carried over from
-# the previous case does not count against this one.
+# Offset of B<k> in a slot (end of the prologue). A slot's comparison starts
+# at the state right after the prologue (memory windows and all registers
+# reloaded), so state carried over from the previous case does not count
+# against this one.
 B_OFFSET = 0x22
+
+
+def read_geometry(path):
+    """Set BASE/SLOT/B_OFFSET from the T0, T1 and B0 label addresses."""
+    global BASE, SLOT, B_OFFSET
+    addr = {}
+    for line in open(path, errors="replace"):
+        m = re.match(r"([0-9A-F]{8})\s.*?\s\d+\s+(T0|T1|B0)\s", line)
+        if m:
+            addr.setdefault(m.group(2), int(m.group(1), 16))
+    if {"T0", "T1", "B0"} <= addr.keys():
+        BASE, SLOT, B_OFFSET = addr["T0"], addr["T1"] - addr["T0"], addr["B0"] - addr["T0"]
 
 
 def blocks(trace_path):
@@ -90,7 +104,9 @@ def blocks(trace_path):
 def parse_ignore(spec):
     fields, sr_mask, conds = set(), 0, set()
     for item in filter(None, (x.strip() for x in spec.split(","))):
-        if item.startswith("@"):
+        if item == "*":
+            conds.add("any")
+        elif item.startswith("@"):
             conds.add(item[1:])
         elif item.startswith("SR="):
             sr_mask |= int(item[3:], 16)
@@ -117,13 +133,22 @@ def masked(lines, fields, sr_mask):
 
 
 def faulted(lines):
-    # class 0 (address/bus error) frames are 14 bytes below SSTK ($8000)
-    return any("SS=00007FF2" in x for x in lines)
+    # bus / address error: vector stubs 2 and 3 ($9010, $9018)
+    return any(x.startswith(("PC=00009010 ", "PC=00009018 ")) for x in lines)
+
+
+def illegal(lines):
+    # the corpus vector stubs live at $9000 + 8 * vector; 4 = illegal
+    return any(x.startswith("PC=00009020 ") for x in lines)
 
 
 def accepted_by(rule, r, p):
     fields, sr_mask, conds = rule
+    if "any" in conds:
+        return True
     if "fault" in conds and not faulted(r):
+        return False
+    if "illegal" in conds and not (illegal(r) and illegal(p)):
         return False
     if "V" in conds:
         first = next((a for a, b in zip(r, p) if a != b), None)
@@ -145,6 +170,7 @@ def main():
                 pat, ignore, reason = (line.rstrip("\n").split("\t") + ["", ""])[:3]
                 devs.append((re.compile(pat), parse_ignore(ignore), reason))
     name = os.path.splitext(os.path.basename(l68))[0]
+    read_geometry(l68)
     cases = cases_from_listing(l68)
     rb, pb = blocks(ref_t), blocks(port_t)
     bad = 0
@@ -153,7 +179,9 @@ def main():
         r, p = rb.get(k), pb.get(k)
         if r == p:
             continue
-        key = f"{name}: {cases.get(k, '?')}"
+        text = cases.get(k, "?")
+        m = re.search(r";\s*(\S+)\s*$", text)  # sweep cases carry "; MNEMONIC"
+        key = f"{m.group(1)}: {text}" if m else f"{name}: {text}"
         if r is not None and p is not None and any(
                 d[0].search(key) and accepted_by(d[1], r, p) for d in devs):
             accepted += 1

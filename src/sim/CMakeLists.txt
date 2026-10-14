@@ -5,6 +5,7 @@ add_library(easym68k-sim STATIC
   flag_computation.cc
   simulator.cc
   decode.cc
+  legality.cc
   srecord_loader.cc
   trap15_dispatch.cc
   opcodes_move.cc

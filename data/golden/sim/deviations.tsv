@@ -5,8 +5,19 @@
 ^CHK:	SR=0007	Z, V, C are undefined (PRM); the original inverts them (cc_update UND), the port leaves them unchanged
 ^DIV[SU]:	SR=000D,@V	overflow: C must be cleared (PRM), the original leaves it unchanged (bug, fixed); N and Z are undefined
 ^MULS:	SR=0002	V must be cleared (PRM); the original computes it with the ASL overflow rule (cc_update CASE_9; bug, fixed)
-.	CYC,A0-A7,@fault	address/bus error: the original raises the exception inside the memory access after (An)+/-(An) updates and EA cycles; the port restores the registers and cycle count of the instruction start (the 68000 aborts the instruction)
+.	CYC,A0-A7,SR=001F,@fault	address/bus error: the original raises the exception inside the memory access after (An)+/-(An) updates and EA cycles; the port restores the registers, condition codes and cycle count of the instruction start; the original also carries on after the failed access (e.g. computes flags from it)
 ^(RTS|RTR|RTE):	PC	the port keeps PC within the 24-bit address space; the original keeps the upper byte popped from the stack (fetches are masked to 24 bits in both)
 HASH ^(CHK|NBCD|ABCD|SBCD)$		exception frames stack the SR, which holds the undefined flags above
 HASH ^MOVE$		the original reads the MOVE destination before writing it (eff_addr() for the destination EA; the 68000 does not), so a faulting destination stacks a read (R/W=1) frame with the read PC; the port stacks a write frame (bug, fixed)
 HASH ^(RTS|RTR|RTE)$		24-bit PC (above): the stacked PC and fault address of the resulting address error differ in the upper byte
+^OP5: DC\.W\s+\$5[0-9A-F]0[89A-F],	*	ADDQ.B/SUBQ.B #n,An is illegal on the 68000; the original executes it as .L (CODE3.CPP; bug, fixed)
+^OP0: DC\.W\s+\$0[13579BDF][7BF][ABC],	*	BCHG/BCLR/BSET Dn with d16(PC), d8(PC,Xn) or #imm is illegal on the 68000; the original accepts any data mode (BIT_OP; bug, fixed)
+^MOVEA?: DC\.W\s+\$[123][579BDF][C-F]	*	MOVE to d16(PC)/d8(PC,Xn)/#imm is illegal; the original reads the source before checking the destination mode, so a faulting source raises an address error instead (the 68000 rejects the encoding first)
+^OP4: DC\.W\s+\$46[C-F][0-9A-F],	*	MOVE to SR with an invalid EA in user mode: the original checks privilege before decoding the EA; the encoding is illegal first
+^OPE: DC\.W\s+\$E[ACEF][C-F][AB],	*	BFCHG/BFCLR/BFSET/BFINS need a control alterable EA (68020); the original accepts d16(PC)/d8(PC,Xn) (BIT_FIELD; bug, fixed)
+.	CYC,A0-A7,@illegal	illegal encoding: the original fetches and updates operands (e.g. (An)+, -(An), extension words, EA cycles) before it rejects the encoding; the port rejects it first, as the 68000 does, so registers, cycles and the frame position (SSP) are those of the instruction start
+^(ABCD|SBCD|ADDX\.B|SUBX\.B|CMPM\.B|ADDX|SUBX|CMPM): .*\(A7\)	*	byte ABCD/SBCD/ADDX/SUBX -(A7) and CMPM (A7)+: the original steps A7 by 1, leaving the stack pointer odd; the 68000 steps A7 by 2 (bug, fixed)
+^OP0: DC\.W\s+\$08[4-9A-F][ABC],	*	BCHG/BCLR/BSET #n with d16(PC), d8(PC,Xn) or #imm is illegal on the 68000; the original accepts any data mode and writes into the program (BIT_OP; bug, fixed)
+^OP0: DC\.W\s+\$0[02A]3C,\$[1-9A-F]	*	ORI/ANDI/EORI to CCR use the low byte of the immediate word only; the original applies the whole word, changing the system byte of SR (bug, fixed; assembled code always has a zero high byte)
+^AS[LR]\.Dn: 	SR=0002	ASL/ASR with a count register: the original's V test for large counts has an operator-precedence bug (cc_update CASE_4 `shiftCount > (size-1) & source`); the port sets V per the PRM
+HASH ^SWEEP_E_BF$		illegal bit field encodings: the original fetches the extension word before rejecting the encoding, so its illegal-instruction frame stacks PC+2 (see the @illegal rule)

@@ -5,15 +5,23 @@
 # and the port, and compare case by case (compare_sim_blocks.py) plus the
 # final memory hash, honouring the accepted deviations.
 #
-# Usage: tools/reference/compare_sim_corpus.sh [-v] <build-dir> [<corpus-dir>]
-#   <corpus-dir> defaults to a fresh one generated from data/golden/asm/matrix.
+# Usage: tools/reference/compare_sim_corpus.sh [-v] [--sweep] <build-dir> [<corpus-dir>]
+#   <corpus-dir> defaults to a fresh one generated from data/golden/asm/matrix,
+#   or with --sweep to the opcode sweep (every first word, gen_sim_corpus.py).
 #   Deviations: data/golden/sim/deviations.tsv (case rules; "HASH <regex>"
 #   lines accept a memory hash difference for matching programs).
 # Prints one line per program with differences; exit status 1 if any
 # difference is not covered by a deviation.
 set -u
 verbose=0
-if [[ "${1:-}" == "-v" ]]; then verbose=1; shift; fi
+sweep=0
+while [[ "${1:-}" == -* ]]; do
+  case "$1" in
+    -v) verbose=1 ;;
+    --sweep) sweep=1 ;;
+  esac
+  shift
+done
 build="$(cd "$1" && pwd)"
 here="$(cd "$(dirname "$0")" && pwd)"
 root="$(cd "$here/../.." && pwd)"
@@ -28,7 +36,11 @@ trap 'rm -rf "$work"' EXIT
 corpus="${2:-}"
 if [[ -z "$corpus" ]]; then
   corpus="$work/corpus"
-  python3 "$here/gen_sim_corpus.py" "$root/data/golden/asm/matrix" "$corpus" >/dev/null
+  if [[ $sweep -eq 1 ]]; then
+    python3 "$here/gen_sim_corpus.py" --sweep "$corpus" >/dev/null
+  else
+    python3 "$here/gen_sim_corpus.py" "$root/data/golden/asm/matrix" "$corpus" >/dev/null
+  fi
 fi
 corpus="$(cd "$corpus" && pwd)"
 
@@ -36,7 +48,7 @@ status=0
 total=0
 for src in "$corpus"/*.x68; do
   name="$(basename "${src%.x68}")"
-  flags=(-e -n 200000)
+  flags=(-e -n 400000)
   [[ -f "$corpus/$name.flags" ]] && read -r -a extra <"$corpus/$name.flags" && flags+=("${extra[@]}")
   (cd "$work" && "$asm" "$src" -o "$work/$name") >/dev/null 2>&1
   "$ref" -t "${flags[@]}" -o "$work/$name.ref" "$work/$name.S68" </dev/null >/dev/null 2>&1
