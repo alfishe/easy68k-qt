@@ -1,0 +1,82 @@
+BEQ		ERROR: Invalid syntax
+BEQ *+2	67000000	-
+BEQ *+4	6702	-
+BEQ *+$80	677E	-
+BEQ *+$82	67000080	-
+BEQ *-$7E	6780	-
+BEQ *-$80	6700FF7E	-
+BEQ *+$8000	67007FFE	-
+BEQ *	67FE	-
+BEQ BK	67000EFE	-
+BEQ FW	67000EFE	-
+BEQ $1000	67FE	-
+BEQ $12345678	67004676	ERROR: Branch instruction displacement is out of range or invalid
+BEQ D1		ERROR: Invalid addressing mode
+BEQ (A0)		ERROR: Invalid addressing mode
+BEQ #4		ERROR: Invalid addressing mode
+BEQ.B		ERROR: Invalid syntax
+BEQ.B *+2	6700	ERROR: Branch instruction displacement is out of range or invalid
+BEQ.B *+4	6702	-
+BEQ.B *+$80	677E	-
+BEQ.B *+$82	6780	ERROR: Branch instruction displacement is out of range or invalid
+BEQ.B *-$7E	6780	-
+BEQ.B *-$80	677E	ERROR: Branch instruction displacement is out of range or invalid
+BEQ.B *+$8000	67FE	ERROR: Branch instruction displacement is out of range or invalid
+BEQ.B *	67FE	-
+BEQ.B BK	67FE	ERROR: Branch instruction displacement is out of range or invalid
+BEQ.B FW	67FE	ERROR: Branch instruction displacement is out of range or invalid
+BEQ.B $1000	67FE	-
+BEQ.B $12345678	6776	ERROR: Branch instruction displacement is out of range or invalid
+BEQ.B D1		ERROR: Invalid addressing mode
+BEQ.B (A0)		ERROR: Invalid addressing mode
+BEQ.B #4		ERROR: Invalid addressing mode
+BEQ.W		ERROR: Invalid syntax
+BEQ.W *+2	67000000	-
+BEQ.W *+4	67000002	-
+BEQ.W *+$80	6700007E	-
+BEQ.W *+$82	67000080	-
+BEQ.W *-$7E	6700FF80	-
+BEQ.W *-$80	6700FF7E	-
+BEQ.W *+$8000	67007FFE	-
+BEQ.W *	6700FFFE	-
+BEQ.W BK	67000EFE	-
+BEQ.W FW	67000EFE	-
+BEQ.W $1000	6700FFFE	-
+BEQ.W $12345678	67004676	ERROR: Branch instruction displacement is out of range or invalid
+BEQ.W D1		ERROR: Invalid addressing mode
+BEQ.W (A0)		ERROR: Invalid addressing mode
+BEQ.W #4		ERROR: Invalid addressing mode
+BEQ.L		ERROR: Invalid syntax
+BEQ.L *+2	67000000	-
+BEQ.L *+4	67000002	-
+BEQ.L *+$80	6700007E	-
+BEQ.L *+$82	67000080	-
+BEQ.L *-$7E	6700FF80	-
+BEQ.L *-$80	6700FF7E	-
+BEQ.L *+$8000	67007FFE	-
+BEQ.L *	6700FFFE	-
+BEQ.L BK	67000EFE	-
+BEQ.L FW	67000EFE	-
+BEQ.L $1000	6700FFFE	-
+BEQ.L $12345678	67004676	ERROR: Branch instruction displacement is out of range or invalid
+BEQ.L D1		ERROR: Invalid addressing mode
+BEQ.L (A0)		ERROR: Invalid addressing mode
+BEQ.L #4		ERROR: Invalid addressing mode
+BEQ.S		ERROR: Invalid syntax
+BEQ.S *+2	6700	ERROR: Branch instruction displacement is out of range or invalid
+BEQ.S *+4	6702	-
+BEQ.S *+$80	677E	-
+BEQ.S *+$82	6780	ERROR: Branch instruction displacement is out of range or invalid
+BEQ.S *-$7E	6780	-
+BEQ.S *-$80	677E	ERROR: Branch instruction displacement is out of range or invalid
+BEQ.S *+$8000	67FE	ERROR: Branch instruction displacement is out of range or invalid
+BEQ.S *	67FE	-
+BEQ.S BK	67FE	ERROR: Branch instruction displacement is out of range or invalid
+BEQ.S FW	67FE	ERROR: Branch instruction displacement is out of range or invalid
+BEQ.S $1000	67FE	-
+BEQ.S $12345678	6776	ERROR: Branch instruction displacement is out of range or invalid
+BEQ.S D1		ERROR: Invalid addressing mode
+BEQ.S (A0)		ERROR: Invalid addressing mode
+BEQ.S #4		ERROR: Invalid addressing mode
+BEQ.X D1,D2		ERROR: Invalid addressing mode
+BEQ.X #1		ERROR: Invalid addressing mode

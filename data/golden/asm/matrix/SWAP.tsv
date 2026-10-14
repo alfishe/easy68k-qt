@@ -1,0 +1,405 @@
+SWAP		ERROR: Invalid syntax
+SWAP D1	4841	-
+SWAP A2		ERROR: Invalid addressing mode
+SWAP SP		ERROR: Invalid addressing mode
+SWAP (A3)		ERROR: Invalid addressing mode
+SWAP (A4)+		ERROR: Invalid addressing mode
+SWAP -(A5)		ERROR: Invalid addressing mode
+SWAP $10(A6)		ERROR: Invalid addressing mode
+SWAP -2(A0)		ERROR: Invalid addressing mode
+SWAP $10(A6,D7.W)		ERROR: Invalid addressing mode
+SWAP $12(A0,A1.L)		ERROR: Invalid addressing mode
+SWAP (A2,D3)		ERROR: Invalid addressing mode
+SWAP $1234		ERROR: Invalid addressing mode
+SWAP $12345678		ERROR: Invalid addressing mode
+SWAP $1234.L		ERROR: Invalid addressing mode
+SWAP $1234.W		ERROR: Invalid addressing mode
+SWAP $8000		ERROR: Invalid addressing mode
+SWAP BK		ERROR: Invalid addressing mode
+SWAP FW		ERROR: Invalid addressing mode
+SWAP *+$10(PC)		ERROR: Invalid addressing mode
+SWAP *(PC,D0.W)		ERROR: Invalid addressing mode
+SWAP BK(PC)		ERROR: Invalid addressing mode
+SWAP #1		ERROR: Invalid addressing mode
+SWAP #8		ERROR: Invalid addressing mode
+SWAP #9		ERROR: Invalid addressing mode
+SWAP #0		ERROR: Invalid addressing mode
+SWAP #-1		ERROR: Invalid addressing mode
+SWAP #$80		ERROR: Invalid addressing mode
+SWAP #$1234		ERROR: Invalid addressing mode
+SWAP #$12345678		ERROR: Invalid addressing mode
+SWAP #$12345678.L		ERROR: Invalid addressing mode
+SWAP #BK		ERROR: Invalid addressing mode
+SWAP #FW		ERROR: Invalid addressing mode
+SWAP #UNDEF		ERROR: Invalid addressing mode
+SWAP UNDEF		ERROR: Invalid addressing mode
+SWAP SR		ERROR: Invalid addressing mode
+SWAP CCR		ERROR: Invalid addressing mode
+SWAP USP		ERROR: Invalid addressing mode
+SWAP D1,D1		ERROR: Invalid syntax
+SWAP D1,A2		ERROR: Invalid syntax
+SWAP D1,(A3)		ERROR: Invalid syntax
+SWAP D1,$10(A6)		ERROR: Invalid syntax
+SWAP D1,$1234		ERROR: Invalid syntax
+SWAP D1,FW		ERROR: Invalid syntax
+SWAP D1,#1		ERROR: Invalid syntax
+SWAP D1,#$1234		ERROR: Invalid syntax
+SWAP D1,CCR		ERROR: Invalid syntax
+SWAP D1,SR		ERROR: Invalid syntax
+SWAP A2,D1		ERROR: Invalid addressing mode
+SWAP A2,A2		ERROR: Invalid addressing mode
+SWAP A2,(A3)		ERROR: Invalid addressing mode
+SWAP A2,$10(A6)		ERROR: Invalid addressing mode
+SWAP A2,$1234		ERROR: Invalid addressing mode
+SWAP A2,FW		ERROR: Invalid addressing mode
+SWAP A2,#1		ERROR: Invalid addressing mode
+SWAP A2,#$1234		ERROR: Invalid addressing mode
+SWAP A2,CCR		ERROR: Invalid addressing mode
+SWAP A2,SR		ERROR: Invalid addressing mode
+SWAP (A3),D1		ERROR: Invalid addressing mode
+SWAP (A3),A2		ERROR: Invalid addressing mode
+SWAP (A3),(A3)		ERROR: Invalid addressing mode
+SWAP (A3),$10(A6)		ERROR: Invalid addressing mode
+SWAP (A3),$1234		ERROR: Invalid addressing mode
+SWAP (A3),FW		ERROR: Invalid addressing mode
+SWAP (A3),#1		ERROR: Invalid addressing mode
+SWAP (A3),#$1234		ERROR: Invalid addressing mode
+SWAP (A3),CCR		ERROR: Invalid addressing mode
+SWAP (A3),SR		ERROR: Invalid addressing mode
+SWAP $10(A6),D1		ERROR: Invalid addressing mode
+SWAP $10(A6),A2		ERROR: Invalid addressing mode
+SWAP $10(A6),(A3)		ERROR: Invalid addressing mode
+SWAP $10(A6),$10(A6)		ERROR: Invalid addressing mode
+SWAP $10(A6),$1234		ERROR: Invalid addressing mode
+SWAP $10(A6),FW		ERROR: Invalid addressing mode
+SWAP $10(A6),#1		ERROR: Invalid addressing mode
+SWAP $10(A6),#$1234		ERROR: Invalid addressing mode
+SWAP $10(A6),CCR		ERROR: Invalid addressing mode
+SWAP $10(A6),SR		ERROR: Invalid addressing mode
+SWAP $1234,D1		ERROR: Invalid addressing mode
+SWAP $1234,A2		ERROR: Invalid addressing mode
+SWAP $1234,(A3)		ERROR: Invalid addressing mode
+SWAP $1234,$10(A6)		ERROR: Invalid addressing mode
+SWAP $1234,$1234		ERROR: Invalid addressing mode
+SWAP $1234,FW		ERROR: Invalid addressing mode
+SWAP $1234,#1		ERROR: Invalid addressing mode
+SWAP $1234,#$1234		ERROR: Invalid addressing mode
+SWAP $1234,CCR		ERROR: Invalid addressing mode
+SWAP $1234,SR		ERROR: Invalid addressing mode
+SWAP FW,D1		ERROR: Invalid addressing mode
+SWAP FW,A2		ERROR: Invalid addressing mode
+SWAP FW,(A3)		ERROR: Invalid addressing mode
+SWAP FW,$10(A6)		ERROR: Invalid addressing mode
+SWAP FW,$1234		ERROR: Invalid addressing mode
+SWAP FW,FW		ERROR: Invalid addressing mode
+SWAP FW,#1		ERROR: Invalid addressing mode
+SWAP FW,#$1234		ERROR: Invalid addressing mode
+SWAP FW,CCR		ERROR: Invalid addressing mode
+SWAP FW,SR		ERROR: Invalid addressing mode
+SWAP #1,D1		ERROR: Invalid addressing mode
+SWAP #1,A2		ERROR: Invalid addressing mode
+SWAP #1,(A3)		ERROR: Invalid addressing mode
+SWAP #1,$10(A6)		ERROR: Invalid addressing mode
+SWAP #1,$1234		ERROR: Invalid addressing mode
+SWAP #1,FW		ERROR: Invalid addressing mode
+SWAP #1,#1		ERROR: Invalid addressing mode
+SWAP #1,#$1234		ERROR: Invalid addressing mode
+SWAP #1,CCR		ERROR: Invalid addressing mode
+SWAP #1,SR		ERROR: Invalid addressing mode
+SWAP #$1234,D1		ERROR: Invalid addressing mode
+SWAP #$1234,A2		ERROR: Invalid addressing mode
+SWAP #$1234,(A3)		ERROR: Invalid addressing mode
+SWAP #$1234,$10(A6)		ERROR: Invalid addressing mode
+SWAP #$1234,$1234		ERROR: Invalid addressing mode
+SWAP #$1234,FW		ERROR: Invalid addressing mode
+SWAP #$1234,#1		ERROR: Invalid addressing mode
+SWAP #$1234,#$1234		ERROR: Invalid addressing mode
+SWAP #$1234,CCR		ERROR: Invalid addressing mode
+SWAP #$1234,SR		ERROR: Invalid addressing mode
+SWAP CCR,D1		ERROR: Invalid addressing mode
+SWAP CCR,A2		ERROR: Invalid addressing mode
+SWAP CCR,(A3)		ERROR: Invalid addressing mode
+SWAP CCR,$10(A6)		ERROR: Invalid addressing mode
+SWAP CCR,$1234		ERROR: Invalid addressing mode
+SWAP CCR,FW		ERROR: Invalid addressing mode
+SWAP CCR,#1		ERROR: Invalid addressing mode
+SWAP CCR,#$1234		ERROR: Invalid addressing mode
+SWAP CCR,CCR		ERROR: Invalid addressing mode
+SWAP CCR,SR		ERROR: Invalid addressing mode
+SWAP SR,D1		ERROR: Invalid addressing mode
+SWAP SR,A2		ERROR: Invalid addressing mode
+SWAP SR,(A3)		ERROR: Invalid addressing mode
+SWAP SR,$10(A6)		ERROR: Invalid addressing mode
+SWAP SR,$1234		ERROR: Invalid addressing mode
+SWAP SR,FW		ERROR: Invalid addressing mode
+SWAP SR,#1		ERROR: Invalid addressing mode
+SWAP SR,#$1234		ERROR: Invalid addressing mode
+SWAP SR,CCR		ERROR: Invalid addressing mode
+SWAP SR,SR		ERROR: Invalid addressing mode
+SWAP SP,D1		ERROR: Invalid addressing mode
+SWAP SP,A2		ERROR: Invalid addressing mode
+SWAP D1,SP		ERROR: Invalid syntax
+SWAP #$12,SP		ERROR: Invalid addressing mode
+SWAP (A4)+,D1		ERROR: Invalid addressing mode
+SWAP (A4)+,A2		ERROR: Invalid addressing mode
+SWAP D1,(A4)+		ERROR: Invalid syntax
+SWAP #$12,(A4)+		ERROR: Invalid addressing mode
+SWAP -(A5),D1		ERROR: Invalid addressing mode
+SWAP -(A5),A2		ERROR: Invalid addressing mode
+SWAP D1,-(A5)		ERROR: Invalid syntax
+SWAP #$12,-(A5)		ERROR: Invalid addressing mode
+SWAP -2(A0),D1		ERROR: Invalid addressing mode
+SWAP -2(A0),A2		ERROR: Invalid addressing mode
+SWAP D1,-2(A0)		ERROR: Invalid syntax
+SWAP #$12,-2(A0)		ERROR: Invalid addressing mode
+SWAP $10(A6,D7.W),D1		ERROR: Invalid addressing mode
+SWAP $10(A6,D7.W),A2		ERROR: Invalid addressing mode
+SWAP D1,$10(A6,D7.W)		ERROR: Invalid syntax
+SWAP #$12,$10(A6,D7.W)		ERROR: Invalid addressing mode
+SWAP $12(A0,A1.L),D1		ERROR: Invalid addressing mode
+SWAP $12(A0,A1.L),A2		ERROR: Invalid addressing mode
+SWAP D1,$12(A0,A1.L)		ERROR: Invalid syntax
+SWAP #$12,$12(A0,A1.L)		ERROR: Invalid addressing mode
+SWAP (A2,D3),D1		ERROR: Invalid addressing mode
+SWAP (A2,D3),A2		ERROR: Invalid addressing mode
+SWAP D1,(A2,D3)		ERROR: Invalid syntax
+SWAP #$12,(A2,D3)		ERROR: Invalid addressing mode
+SWAP $12345678,D1		ERROR: Invalid addressing mode
+SWAP $12345678,A2		ERROR: Invalid addressing mode
+SWAP D1,$12345678		ERROR: Invalid syntax
+SWAP #$12,$12345678		ERROR: Invalid addressing mode
+SWAP $1234.L,D1		ERROR: Invalid addressing mode
+SWAP $1234.L,A2		ERROR: Invalid addressing mode
+SWAP D1,$1234.L		ERROR: Invalid syntax
+SWAP #$12,$1234.L		ERROR: Invalid addressing mode
+SWAP $1234.W,D1		ERROR: Invalid addressing mode
+SWAP $1234.W,A2		ERROR: Invalid addressing mode
+SWAP D1,$1234.W		ERROR: Invalid syntax
+SWAP #$12,$1234.W		ERROR: Invalid addressing mode
+SWAP $8000,D1		ERROR: Invalid addressing mode
+SWAP $8000,A2		ERROR: Invalid addressing mode
+SWAP D1,$8000		ERROR: Invalid syntax
+SWAP #$12,$8000		ERROR: Invalid addressing mode
+SWAP BK,D1		ERROR: Invalid addressing mode
+SWAP BK,A2		ERROR: Invalid addressing mode
+SWAP D1,BK		ERROR: Invalid syntax
+SWAP #$12,BK		ERROR: Invalid addressing mode
+SWAP *+$10(PC),D1		ERROR: Invalid addressing mode
+SWAP *+$10(PC),A2		ERROR: Invalid addressing mode
+SWAP D1,*+$10(PC)		ERROR: Invalid syntax
+SWAP #$12,*+$10(PC)		ERROR: Invalid addressing mode
+SWAP *(PC,D0.W),D1		ERROR: Invalid addressing mode
+SWAP *(PC,D0.W),A2		ERROR: Invalid addressing mode
+SWAP D1,*(PC,D0.W)		ERROR: Invalid syntax
+SWAP #$12,*(PC,D0.W)		ERROR: Invalid addressing mode
+SWAP BK(PC),D1		ERROR: Invalid addressing mode
+SWAP BK(PC),A2		ERROR: Invalid addressing mode
+SWAP D1,BK(PC)		ERROR: Invalid syntax
+SWAP #$12,BK(PC)		ERROR: Invalid addressing mode
+SWAP #8,D1		ERROR: Invalid addressing mode
+SWAP #8,A2		ERROR: Invalid addressing mode
+SWAP D1,#8		ERROR: Invalid syntax
+SWAP #$12,#8		ERROR: Invalid addressing mode
+SWAP #9,D1		ERROR: Invalid addressing mode
+SWAP #9,A2		ERROR: Invalid addressing mode
+SWAP D1,#9		ERROR: Invalid syntax
+SWAP #$12,#9		ERROR: Invalid addressing mode
+SWAP #0,D1		ERROR: Invalid addressing mode
+SWAP #0,A2		ERROR: Invalid addressing mode
+SWAP D1,#0		ERROR: Invalid syntax
+SWAP #$12,#0		ERROR: Invalid addressing mode
+SWAP #-1,D1		ERROR: Invalid addressing mode
+SWAP #-1,A2		ERROR: Invalid addressing mode
+SWAP D1,#-1		ERROR: Invalid syntax
+SWAP #$12,#-1		ERROR: Invalid addressing mode
+SWAP #$80,D1		ERROR: Invalid addressing mode
+SWAP #$80,A2		ERROR: Invalid addressing mode
+SWAP D1,#$80		ERROR: Invalid syntax
+SWAP #$12,#$80		ERROR: Invalid addressing mode
+SWAP #$12345678,D1		ERROR: Invalid addressing mode
+SWAP #$12345678,A2		ERROR: Invalid addressing mode
+SWAP D1,#$12345678		ERROR: Invalid syntax
+SWAP #$12,#$12345678		ERROR: Invalid addressing mode
+SWAP #$12345678.L,D1		ERROR: Invalid addressing mode
+SWAP #$12345678.L,A2		ERROR: Invalid addressing mode
+SWAP D1,#$12345678.L		ERROR: Invalid syntax
+SWAP #$12,#$12345678.L		ERROR: Invalid addressing mode
+SWAP #BK,D1		ERROR: Invalid addressing mode
+SWAP #BK,A2		ERROR: Invalid addressing mode
+SWAP D1,#BK		ERROR: Invalid syntax
+SWAP #$12,#BK		ERROR: Invalid addressing mode
+SWAP #FW,D1		ERROR: Invalid addressing mode
+SWAP #FW,A2		ERROR: Invalid addressing mode
+SWAP D1,#FW		ERROR: Invalid syntax
+SWAP #$12,#FW		ERROR: Invalid addressing mode
+SWAP #UNDEF,D1		ERROR: Invalid addressing mode
+SWAP #UNDEF,A2		ERROR: Invalid addressing mode
+SWAP D1,#UNDEF		ERROR: Invalid syntax
+SWAP #$12,#UNDEF		ERROR: Invalid addressing mode
+SWAP UNDEF,D1		ERROR: Invalid addressing mode
+SWAP UNDEF,A2		ERROR: Invalid addressing mode
+SWAP D1,UNDEF		ERROR: Invalid syntax
+SWAP #$12,UNDEF		ERROR: Invalid addressing mode
+SWAP USP,D1		ERROR: Invalid addressing mode
+SWAP USP,A2		ERROR: Invalid addressing mode
+SWAP D1,USP		ERROR: Invalid syntax
+SWAP #$12,USP		ERROR: Invalid addressing mode
+SWAP D1,D2,D3		ERROR: Invalid syntax
+SWAP.B		ERROR: Invalid syntax
+SWAP.B D1	4841	ERROR: Invalid size code
+SWAP.B A2		ERROR: Invalid addressing mode
+SWAP.B SP		ERROR: Invalid addressing mode
+SWAP.B (A3)		ERROR: Invalid addressing mode
+SWAP.B (A4)+		ERROR: Invalid addressing mode
+SWAP.B -(A5)		ERROR: Invalid addressing mode
+SWAP.B $10(A6)		ERROR: Invalid addressing mode
+SWAP.B -2(A0)		ERROR: Invalid addressing mode
+SWAP.B $10(A6,D7.W)		ERROR: Invalid addressing mode
+SWAP.B $12(A0,A1.L)		ERROR: Invalid addressing mode
+SWAP.B (A2,D3)		ERROR: Invalid addressing mode
+SWAP.B $1234		ERROR: Invalid addressing mode
+SWAP.B $12345678		ERROR: Invalid addressing mode
+SWAP.B $1234.L		ERROR: Invalid addressing mode
+SWAP.B $1234.W		ERROR: Invalid addressing mode
+SWAP.B $8000		ERROR: Invalid addressing mode
+SWAP.B BK		ERROR: Invalid addressing mode
+SWAP.B FW		ERROR: Invalid addressing mode
+SWAP.B *+$10(PC)		ERROR: Invalid addressing mode
+SWAP.B *(PC,D0.W)		ERROR: Invalid addressing mode
+SWAP.B BK(PC)		ERROR: Invalid addressing mode
+SWAP.B #1		ERROR: Invalid addressing mode
+SWAP.B #8		ERROR: Invalid addressing mode
+SWAP.B #9		ERROR: Invalid addressing mode
+SWAP.B #0		ERROR: Invalid addressing mode
+SWAP.B #-1		ERROR: Invalid addressing mode
+SWAP.B #$80		ERROR: Invalid addressing mode
+SWAP.B #$1234		ERROR: Invalid addressing mode
+SWAP.B #$12345678		ERROR: Invalid addressing mode
+SWAP.B #$12345678.L		ERROR: Invalid addressing mode
+SWAP.B #BK		ERROR: Invalid addressing mode
+SWAP.B #FW		ERROR: Invalid addressing mode
+SWAP.B #UNDEF		ERROR: Invalid addressing mode
+SWAP.B UNDEF		ERROR: Invalid addressing mode
+SWAP.B SR		ERROR: Invalid addressing mode
+SWAP.B CCR		ERROR: Invalid addressing mode
+SWAP.B USP		ERROR: Invalid addressing mode
+SWAP.B D1,D2,D3		ERROR: Invalid syntax
+SWAP.W		ERROR: Invalid syntax
+SWAP.W D1	4841	-
+SWAP.W A2		ERROR: Invalid addressing mode
+SWAP.W SP		ERROR: Invalid addressing mode
+SWAP.W (A3)		ERROR: Invalid addressing mode
+SWAP.W (A4)+		ERROR: Invalid addressing mode
+SWAP.W -(A5)		ERROR: Invalid addressing mode
+SWAP.W $10(A6)		ERROR: Invalid addressing mode
+SWAP.W -2(A0)		ERROR: Invalid addressing mode
+SWAP.W $10(A6,D7.W)		ERROR: Invalid addressing mode
+SWAP.W $12(A0,A1.L)		ERROR: Invalid addressing mode
+SWAP.W (A2,D3)		ERROR: Invalid addressing mode
+SWAP.W $1234		ERROR: Invalid addressing mode
+SWAP.W $12345678		ERROR: Invalid addressing mode
+SWAP.W $1234.L		ERROR: Invalid addressing mode
+SWAP.W $1234.W		ERROR: Invalid addressing mode
+SWAP.W $8000		ERROR: Invalid addressing mode
+SWAP.W BK		ERROR: Invalid addressing mode
+SWAP.W FW		ERROR: Invalid addressing mode
+SWAP.W *+$10(PC)		ERROR: Invalid addressing mode
+SWAP.W *(PC,D0.W)		ERROR: Invalid addressing mode
+SWAP.W BK(PC)		ERROR: Invalid addressing mode
+SWAP.W #1		ERROR: Invalid addressing mode
+SWAP.W #8		ERROR: Invalid addressing mode
+SWAP.W #9		ERROR: Invalid addressing mode
+SWAP.W #0		ERROR: Invalid addressing mode
+SWAP.W #-1		ERROR: Invalid addressing mode
+SWAP.W #$80		ERROR: Invalid addressing mode
+SWAP.W #$1234		ERROR: Invalid addressing mode
+SWAP.W #$12345678		ERROR: Invalid addressing mode
+SWAP.W #$12345678.L		ERROR: Invalid addressing mode
+SWAP.W #BK		ERROR: Invalid addressing mode
+SWAP.W #FW		ERROR: Invalid addressing mode
+SWAP.W #UNDEF		ERROR: Invalid addressing mode
+SWAP.W UNDEF		ERROR: Invalid addressing mode
+SWAP.W SR		ERROR: Invalid addressing mode
+SWAP.W CCR		ERROR: Invalid addressing mode
+SWAP.W USP		ERROR: Invalid addressing mode
+SWAP.W D1,D2,D3		ERROR: Invalid syntax
+SWAP.L		ERROR: Invalid syntax
+SWAP.L D1	4841	ERROR: Invalid size code
+SWAP.L A2		ERROR: Invalid addressing mode
+SWAP.L SP		ERROR: Invalid addressing mode
+SWAP.L (A3)		ERROR: Invalid addressing mode
+SWAP.L (A4)+		ERROR: Invalid addressing mode
+SWAP.L -(A5)		ERROR: Invalid addressing mode
+SWAP.L $10(A6)		ERROR: Invalid addressing mode
+SWAP.L -2(A0)		ERROR: Invalid addressing mode
+SWAP.L $10(A6,D7.W)		ERROR: Invalid addressing mode
+SWAP.L $12(A0,A1.L)		ERROR: Invalid addressing mode
+SWAP.L (A2,D3)		ERROR: Invalid addressing mode
+SWAP.L $1234		ERROR: Invalid addressing mode
+SWAP.L $12345678		ERROR: Invalid addressing mode
+SWAP.L $1234.L		ERROR: Invalid addressing mode
+SWAP.L $1234.W		ERROR: Invalid addressing mode
+SWAP.L $8000		ERROR: Invalid addressing mode
+SWAP.L BK		ERROR: Invalid addressing mode
+SWAP.L FW		ERROR: Invalid addressing mode
+SWAP.L *+$10(PC)		ERROR: Invalid addressing mode
+SWAP.L *(PC,D0.W)		ERROR: Invalid addressing mode
+SWAP.L BK(PC)		ERROR: Invalid addressing mode
+SWAP.L #1		ERROR: Invalid addressing mode
+SWAP.L #8		ERROR: Invalid addressing mode
+SWAP.L #9		ERROR: Invalid addressing mode
+SWAP.L #0		ERROR: Invalid addressing mode
+SWAP.L #-1		ERROR: Invalid addressing mode
+SWAP.L #$80		ERROR: Invalid addressing mode
+SWAP.L #$1234		ERROR: Invalid addressing mode
+SWAP.L #$12345678		ERROR: Invalid addressing mode
+SWAP.L #$12345678.L		ERROR: Invalid addressing mode
+SWAP.L #BK		ERROR: Invalid addressing mode
+SWAP.L #FW		ERROR: Invalid addressing mode
+SWAP.L #UNDEF		ERROR: Invalid addressing mode
+SWAP.L UNDEF		ERROR: Invalid addressing mode
+SWAP.L SR		ERROR: Invalid addressing mode
+SWAP.L CCR		ERROR: Invalid addressing mode
+SWAP.L USP		ERROR: Invalid addressing mode
+SWAP.L D1,D2,D3		ERROR: Invalid syntax
+SWAP.S		ERROR: Invalid syntax
+SWAP.S D1	4841	ERROR: Invalid size code
+SWAP.S A2		ERROR: Invalid addressing mode
+SWAP.S SP		ERROR: Invalid addressing mode
+SWAP.S (A3)		ERROR: Invalid addressing mode
+SWAP.S (A4)+		ERROR: Invalid addressing mode
+SWAP.S -(A5)		ERROR: Invalid addressing mode
+SWAP.S $10(A6)		ERROR: Invalid addressing mode
+SWAP.S -2(A0)		ERROR: Invalid addressing mode
+SWAP.S $10(A6,D7.W)		ERROR: Invalid addressing mode
+SWAP.S $12(A0,A1.L)		ERROR: Invalid addressing mode
+SWAP.S (A2,D3)		ERROR: Invalid addressing mode
+SWAP.S $1234		ERROR: Invalid addressing mode
+SWAP.S $12345678		ERROR: Invalid addressing mode
+SWAP.S $1234.L		ERROR: Invalid addressing mode
+SWAP.S $1234.W		ERROR: Invalid addressing mode
+SWAP.S $8000		ERROR: Invalid addressing mode
+SWAP.S BK		ERROR: Invalid addressing mode
+SWAP.S FW		ERROR: Invalid addressing mode
+SWAP.S *+$10(PC)		ERROR: Invalid addressing mode
+SWAP.S *(PC,D0.W)		ERROR: Invalid addressing mode
+SWAP.S BK(PC)		ERROR: Invalid addressing mode
+SWAP.S #1		ERROR: Invalid addressing mode
+SWAP.S #8		ERROR: Invalid addressing mode
+SWAP.S #9		ERROR: Invalid addressing mode
+SWAP.S #0		ERROR: Invalid addressing mode
+SWAP.S #-1		ERROR: Invalid addressing mode
+SWAP.S #$80		ERROR: Invalid addressing mode
+SWAP.S #$1234		ERROR: Invalid addressing mode
+SWAP.S #$12345678		ERROR: Invalid addressing mode
+SWAP.S #$12345678.L		ERROR: Invalid addressing mode
+SWAP.S #BK		ERROR: Invalid addressing mode
+SWAP.S #FW		ERROR: Invalid addressing mode
+SWAP.S #UNDEF		ERROR: Invalid addressing mode
+SWAP.S UNDEF		ERROR: Invalid addressing mode
+SWAP.S SR		ERROR: Invalid addressing mode
+SWAP.S CCR		ERROR: Invalid addressing mode
+SWAP.S USP		ERROR: Invalid addressing mode
+SWAP.S D1,D2,D3		ERROR: Invalid syntax
+SWAP.X D1,D2		ERROR: Invalid syntax
+SWAP.X #1		ERROR: Invalid addressing mode

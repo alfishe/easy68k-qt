@@ -1,0 +1,1621 @@
+MOVE		ERROR: Invalid syntax
+MOVE D1		ERROR: Comma expected
+MOVE A2		ERROR: Comma expected
+MOVE SP		ERROR: Comma expected
+MOVE (A3)		ERROR: Comma expected
+MOVE (A4)+		ERROR: Comma expected
+MOVE -(A5)		ERROR: Comma expected
+MOVE $10(A6)		ERROR: Comma expected
+MOVE -2(A0)		ERROR: Comma expected
+MOVE $10(A6,D7.W)		ERROR: Comma expected
+MOVE $12(A0,A1.L)		ERROR: Comma expected
+MOVE (A2,D3)		ERROR: Comma expected
+MOVE $1234		ERROR: Comma expected
+MOVE $12345678		ERROR: Comma expected
+MOVE $1234.L		ERROR: Comma expected
+MOVE $1234.W		ERROR: Comma expected
+MOVE $8000		ERROR: Comma expected
+MOVE BK		ERROR: Comma expected
+MOVE FW		ERROR: Comma expected
+MOVE *+$10(PC)		ERROR: Comma expected
+MOVE *(PC,D0.W)		ERROR: Comma expected
+MOVE BK(PC)		ERROR: Comma expected
+MOVE #1		ERROR: Comma expected
+MOVE #8		ERROR: Comma expected
+MOVE #9		ERROR: Comma expected
+MOVE #0		ERROR: Comma expected
+MOVE #-1		ERROR: Comma expected
+MOVE #$80		ERROR: Comma expected
+MOVE #$1234		ERROR: Comma expected
+MOVE #$12345678		ERROR: Comma expected
+MOVE #$12345678.L		ERROR: Comma expected
+MOVE #BK		ERROR: Comma expected
+MOVE #FW		ERROR: Comma expected
+MOVE #UNDEF		ERROR: Comma expected
+MOVE UNDEF		ERROR: Comma expected
+MOVE SR		ERROR: Comma expected
+MOVE CCR		ERROR: Comma expected
+MOVE USP		ERROR: Comma expected
+MOVE D1,D1	3201	-
+MOVE D1,A2	3441	-
+MOVE D1,(A3)	3681	-
+MOVE D1,(A4)+	38C1	-
+MOVE D1,-(A5)	3B01	-
+MOVE D1,$10(A6)	3D410010	-
+MOVE D1,$10(A6,D7.W)	3D817010	-
+MOVE D1,$1234	31C11234	-
+MOVE D1,$12345678	33C112345678	-
+MOVE D1,FW	33C100001F00	-
+MOVE D1,*+$10(PC)		ERROR: Invalid addressing mode
+MOVE D1,#1		ERROR: Invalid addressing mode
+MOVE D1,#$80		ERROR: Invalid addressing mode
+MOVE D1,#$1234		ERROR: Invalid addressing mode
+MOVE D1,#$12345678		ERROR: Invalid addressing mode
+MOVE D1,SR	46C1	-
+MOVE D1,CCR	44C1	-
+MOVE D1,USP		ERROR: Invalid addressing mode
+MOVE A2,D1	320A	-
+MOVE A2,A2	344A	-
+MOVE A2,(A3)	368A	-
+MOVE A2,(A4)+	38CA	-
+MOVE A2,-(A5)	3B0A	-
+MOVE A2,$10(A6)	3D4A0010	-
+MOVE A2,$10(A6,D7.W)	3D8A7010	-
+MOVE A2,$1234	31CA1234	-
+MOVE A2,$12345678	33CA12345678	-
+MOVE A2,FW	33CA00001F00	-
+MOVE A2,*+$10(PC)		ERROR: Invalid addressing mode
+MOVE A2,#1		ERROR: Invalid addressing mode
+MOVE A2,#$80		ERROR: Invalid addressing mode
+MOVE A2,#$1234		ERROR: Invalid addressing mode
+MOVE A2,#$12345678		ERROR: Invalid addressing mode
+MOVE A2,SR		ERROR: Invalid addressing mode
+MOVE A2,CCR		ERROR: Invalid addressing mode
+MOVE A2,USP	4E62	-
+MOVE (A3),D1	3213	-
+MOVE (A3),A2	3453	-
+MOVE (A3),(A3)	3693	-
+MOVE (A3),(A4)+	38D3	-
+MOVE (A3),-(A5)	3B13	-
+MOVE (A3),$10(A6)	3D530010	-
+MOVE (A3),$10(A6,D7.W)	3D937010	-
+MOVE (A3),$1234	31D31234	-
+MOVE (A3),$12345678	33D312345678	-
+MOVE (A3),FW	33D300001F00	-
+MOVE (A3),*+$10(PC)		ERROR: Invalid addressing mode
+MOVE (A3),#1		ERROR: Invalid addressing mode
+MOVE (A3),#$80		ERROR: Invalid addressing mode
+MOVE (A3),#$1234		ERROR: Invalid addressing mode
+MOVE (A3),#$12345678		ERROR: Invalid addressing mode
+MOVE (A3),SR	46D3	-
+MOVE (A3),CCR	44D3	-
+MOVE (A3),USP		ERROR: Invalid addressing mode
+MOVE (A4)+,D1	321C	-
+MOVE (A4)+,A2	345C	-
+MOVE (A4)+,(A3)	369C	-
+MOVE (A4)+,(A4)+	38DC	-
+MOVE (A4)+,-(A5)	3B1C	-
+MOVE (A4)+,$10(A6)	3D5C0010	-
+MOVE (A4)+,$10(A6,D7.W)	3D9C7010	-
+MOVE (A4)+,$1234	31DC1234	-
+MOVE (A4)+,$12345678	33DC12345678	-
+MOVE (A4)+,FW	33DC00001F00	-
+MOVE (A4)+,*+$10(PC)		ERROR: Invalid addressing mode
+MOVE (A4)+,#1		ERROR: Invalid addressing mode
+MOVE (A4)+,#$80		ERROR: Invalid addressing mode
+MOVE (A4)+,#$1234		ERROR: Invalid addressing mode
+MOVE (A4)+,#$12345678		ERROR: Invalid addressing mode
+MOVE (A4)+,SR	46DC	-
+MOVE (A4)+,CCR	44DC	-
+MOVE (A4)+,USP		ERROR: Invalid addressing mode
+MOVE -(A5),D1	3225	-
+MOVE -(A5),A2	3465	-
+MOVE -(A5),(A3)	36A5	-
+MOVE -(A5),(A4)+	38E5	-
+MOVE -(A5),-(A5)	3B25	-
+MOVE -(A5),$10(A6)	3D650010	-
+MOVE -(A5),$10(A6,D7.W)	3DA57010	-
+MOVE -(A5),$1234	31E51234	-
+MOVE -(A5),$12345678	33E512345678	-
+MOVE -(A5),FW	33E500001F00	-
+MOVE -(A5),*+$10(PC)		ERROR: Invalid addressing mode
+MOVE -(A5),#1		ERROR: Invalid addressing mode
+MOVE -(A5),#$80		ERROR: Invalid addressing mode
+MOVE -(A5),#$1234		ERROR: Invalid addressing mode
+MOVE -(A5),#$12345678		ERROR: Invalid addressing mode
+MOVE -(A5),SR	46E5	-
+MOVE -(A5),CCR	44E5	-
+MOVE -(A5),USP		ERROR: Invalid addressing mode
+MOVE $10(A6),D1	322E0010	-
+MOVE $10(A6),A2	346E0010	-
+MOVE $10(A6),(A3)	36AE0010	-
+MOVE $10(A6),(A4)+	38EE0010	-
+MOVE $10(A6),-(A5)	3B2E0010	-
+MOVE $10(A6),$10(A6)	3D6E00100010	-
+MOVE $10(A6),$10(A6,D7.W)	3DAE00107010	-
+MOVE $10(A6),$1234	31EE00101234	-
+MOVE $10(A6),$12345678	33EE001012345678	-
+MOVE $10(A6),FW	33EE001000001F00	-
+MOVE $10(A6),*+$10(PC)		ERROR: Invalid addressing mode
+MOVE $10(A6),#1		ERROR: Invalid addressing mode
+MOVE $10(A6),#$80		ERROR: Invalid addressing mode
+MOVE $10(A6),#$1234		ERROR: Invalid addressing mode
+MOVE $10(A6),#$12345678		ERROR: Invalid addressing mode
+MOVE $10(A6),SR	46EE0010	-
+MOVE $10(A6),CCR	44EE0010	-
+MOVE $10(A6),USP		ERROR: Invalid addressing mode
+MOVE $10(A6,D7.W),D1	32367010	-
+MOVE $10(A6,D7.W),A2	34767010	-
+MOVE $10(A6,D7.W),(A3)	36B67010	-
+MOVE $10(A6,D7.W),(A4)+	38F67010	-
+MOVE $10(A6,D7.W),-(A5)	3B367010	-
+MOVE $10(A6,D7.W),$10(A6)	3D7670100010	-
+MOVE $10(A6,D7.W),$10(A6,D7.W)	3DB670107010	-
+MOVE $10(A6,D7.W),$1234	31F670101234	-
+MOVE $10(A6,D7.W),$12345678	33F6701012345678	-
+MOVE $10(A6,D7.W),FW	33F6701000001F00	-
+MOVE $10(A6,D7.W),*+$10(PC)		ERROR: Invalid addressing mode
+MOVE $10(A6,D7.W),#1		ERROR: Invalid addressing mode
+MOVE $10(A6,D7.W),#$80		ERROR: Invalid addressing mode
+MOVE $10(A6,D7.W),#$1234		ERROR: Invalid addressing mode
+MOVE $10(A6,D7.W),#$12345678		ERROR: Invalid addressing mode
+MOVE $10(A6,D7.W),SR	46F67010	-
+MOVE $10(A6,D7.W),CCR	44F67010	-
+MOVE $10(A6,D7.W),USP		ERROR: Invalid addressing mode
+MOVE $1234,D1	32381234	-
+MOVE $1234,A2	34781234	-
+MOVE $1234,(A3)	36B81234	-
+MOVE $1234,(A4)+	38F81234	-
+MOVE $1234,-(A5)	3B381234	-
+MOVE $1234,$10(A6)	3D7812340010	-
+MOVE $1234,$10(A6,D7.W)	3DB812347010	-
+MOVE $1234,$1234	31F812341234	-
+MOVE $1234,$12345678	33F8123412345678	-
+MOVE $1234,FW	33F8123400001F00	-
+MOVE $1234,*+$10(PC)		ERROR: Invalid addressing mode
+MOVE $1234,#1		ERROR: Invalid addressing mode
+MOVE $1234,#$80		ERROR: Invalid addressing mode
+MOVE $1234,#$1234		ERROR: Invalid addressing mode
+MOVE $1234,#$12345678		ERROR: Invalid addressing mode
+MOVE $1234,SR	46F81234	-
+MOVE $1234,CCR	44F81234	-
+MOVE $1234,USP		ERROR: Invalid addressing mode
+MOVE $12345678,D1	323912345678	-
+MOVE $12345678,A2	347912345678	-
+MOVE $12345678,(A3)	36B912345678	-
+MOVE $12345678,(A4)+	38F912345678	-
+MOVE $12345678,-(A5)	3B3912345678	-
+MOVE $12345678,$10(A6)	3D79123456780010	-
+MOVE $12345678,$10(A6,D7.W)	3DB9123456787010	-
+MOVE $12345678,$1234	31F9123456781234	-
+MOVE $12345678,$12345678	33F91234567812345678	-
+MOVE $12345678,FW	33F91234567800001F00	-
+MOVE $12345678,*+$10(PC)		ERROR: Invalid addressing mode
+MOVE $12345678,#1		ERROR: Invalid addressing mode
+MOVE $12345678,#$80		ERROR: Invalid addressing mode
+MOVE $12345678,#$1234		ERROR: Invalid addressing mode
+MOVE $12345678,#$12345678		ERROR: Invalid addressing mode
+MOVE $12345678,SR	46F912345678	-
+MOVE $12345678,CCR	44F912345678	-
+MOVE $12345678,USP		ERROR: Invalid addressing mode
+MOVE FW,D1	323900001F00	-
+MOVE FW,A2	347900001F00	-
+MOVE FW,(A3)	36B900001F00	-
+MOVE FW,(A4)+	38F900001F00	-
+MOVE FW,-(A5)	3B3900001F00	-
+MOVE FW,$10(A6)	3D7900001F000010	-
+MOVE FW,$10(A6,D7.W)	3DB900001F007010	-
+MOVE FW,$1234	31F900001F001234	-
+MOVE FW,$12345678	33F900001F0012345678	-
+MOVE FW,FW	33F900001F0000001F00	-
+MOVE FW,*+$10(PC)		ERROR: Invalid addressing mode
+MOVE FW,#1		ERROR: Invalid addressing mode
+MOVE FW,#$80		ERROR: Invalid addressing mode
+MOVE FW,#$1234		ERROR: Invalid addressing mode
+MOVE FW,#$12345678		ERROR: Invalid addressing mode
+MOVE FW,SR	46F900001F00	-
+MOVE FW,CCR	44F900001F00	-
+MOVE FW,USP		ERROR: Invalid addressing mode
+MOVE *+$10(PC),D1	323A000E	-
+MOVE *+$10(PC),A2	347A000E	-
+MOVE *+$10(PC),(A3)	36BA000E	-
+MOVE *+$10(PC),(A4)+	38FA000E	-
+MOVE *+$10(PC),-(A5)	3B3A000E	-
+MOVE *+$10(PC),$10(A6)	3D7A000E0010	-
+MOVE *+$10(PC),$10(A6,D7.W)	3DBA000E7010	-
+MOVE *+$10(PC),$1234	31FA000E1234	-
+MOVE *+$10(PC),$12345678	33FA000E12345678	-
+MOVE *+$10(PC),FW	33FA000E00001F00	-
+MOVE *+$10(PC),*+$10(PC)		ERROR: Invalid addressing mode
+MOVE *+$10(PC),#1		ERROR: Invalid addressing mode
+MOVE *+$10(PC),#$80		ERROR: Invalid addressing mode
+MOVE *+$10(PC),#$1234		ERROR: Invalid addressing mode
+MOVE *+$10(PC),#$12345678		ERROR: Invalid addressing mode
+MOVE *+$10(PC),SR	46FA000E	-
+MOVE *+$10(PC),CCR	44FA000E	-
+MOVE *+$10(PC),USP		ERROR: Invalid addressing mode
+MOVE #1,D1	323C0001	-
+MOVE #1,A2	347C0001	-
+MOVE #1,(A3)	36BC0001	-
+MOVE #1,(A4)+	38FC0001	-
+MOVE #1,-(A5)	3B3C0001	-
+MOVE #1,$10(A6)	3D7C00010010	-
+MOVE #1,$10(A6,D7.W)	3DBC00017010	-
+MOVE #1,$1234	31FC00011234	-
+MOVE #1,$12345678	33FC000112345678	-
+MOVE #1,FW	33FC000100001F00	-
+MOVE #1,*+$10(PC)		ERROR: Invalid addressing mode
+MOVE #1,#1		ERROR: Invalid addressing mode
+MOVE #1,#$80		ERROR: Invalid addressing mode
+MOVE #1,#$1234		ERROR: Invalid addressing mode
+MOVE #1,#$12345678		ERROR: Invalid addressing mode
+MOVE #1,SR	46FC0001	-
+MOVE #1,CCR	44FC0001	-
+MOVE #1,USP		ERROR: Invalid addressing mode
+MOVE #$80,D1	323C0080	-
+MOVE #$80,A2	347C0080	-
+MOVE #$80,(A3)	36BC0080	-
+MOVE #$80,(A4)+	38FC0080	-
+MOVE #$80,-(A5)	3B3C0080	-
+MOVE #$80,$10(A6)	3D7C00800010	-
+MOVE #$80,$10(A6,D7.W)	3DBC00807010	-
+MOVE #$80,$1234	31FC00801234	-
+MOVE #$80,$12345678	33FC008012345678	-
+MOVE #$80,FW	33FC008000001F00	-
+MOVE #$80,*+$10(PC)		ERROR: Invalid addressing mode
+MOVE #$80,#1		ERROR: Invalid addressing mode
+MOVE #$80,#$80		ERROR: Invalid addressing mode
+MOVE #$80,#$1234		ERROR: Invalid addressing mode
+MOVE #$80,#$12345678		ERROR: Invalid addressing mode
+MOVE #$80,SR	46FC0080	-
+MOVE #$80,CCR	44FC0080	-
+MOVE #$80,USP		ERROR: Invalid addressing mode
+MOVE #$1234,D1	323C1234	-
+MOVE #$1234,A2	347C1234	-
+MOVE #$1234,(A3)	36BC1234	-
+MOVE #$1234,(A4)+	38FC1234	-
+MOVE #$1234,-(A5)	3B3C1234	-
+MOVE #$1234,$10(A6)	3D7C12340010	-
+MOVE #$1234,$10(A6,D7.W)	3DBC12347010	-
+MOVE #$1234,$1234	31FC12341234	-
+MOVE #$1234,$12345678	33FC123412345678	-
+MOVE #$1234,FW	33FC123400001F00	-
+MOVE #$1234,*+$10(PC)		ERROR: Invalid addressing mode
+MOVE #$1234,#1		ERROR: Invalid addressing mode
+MOVE #$1234,#$80		ERROR: Invalid addressing mode
+MOVE #$1234,#$1234		ERROR: Invalid addressing mode
+MOVE #$1234,#$12345678		ERROR: Invalid addressing mode
+MOVE #$1234,SR	46FC1234	-
+MOVE #$1234,CCR	44FC1234	-
+MOVE #$1234,USP		ERROR: Invalid addressing mode
+MOVE #$12345678,D1	323C5678	ERROR: Immediate data exceeds 16 bits
+MOVE #$12345678,A2	347C5678	ERROR: Immediate data exceeds 16 bits
+MOVE #$12345678,(A3)	36BC5678	ERROR: Immediate data exceeds 16 bits
+MOVE #$12345678,(A4)+	38FC5678	ERROR: Immediate data exceeds 16 bits
+MOVE #$12345678,-(A5)	3B3C5678	ERROR: Immediate data exceeds 16 bits
+MOVE #$12345678,$10(A6)	3D7C56780010	ERROR: Immediate data exceeds 16 bits
+MOVE #$12345678,$10(A6,D7.W)	3DBC56787010	ERROR: Immediate data exceeds 16 bits
+MOVE #$12345678,$1234	31FC56781234	ERROR: Immediate data exceeds 16 bits
+MOVE #$12345678,$12345678	33FC567812345678	ERROR: Immediate data exceeds 16 bits
+MOVE #$12345678,FW	33FC567800001F00	ERROR: Immediate data exceeds 16 bits
+MOVE #$12345678,*+$10(PC)		ERROR: Invalid addressing mode
+MOVE #$12345678,#1		ERROR: Invalid addressing mode
+MOVE #$12345678,#$80		ERROR: Invalid addressing mode
+MOVE #$12345678,#$1234		ERROR: Invalid addressing mode
+MOVE #$12345678,#$12345678		ERROR: Invalid addressing mode
+MOVE #$12345678,SR	46FC5678	ERROR: Immediate data exceeds 16 bits
+MOVE #$12345678,CCR	44FC5678	ERROR: Immediate data exceeds 16 bits
+MOVE #$12345678,USP		ERROR: Invalid addressing mode
+MOVE SR,D1	40C1	-
+MOVE SR,A2		ERROR: Invalid addressing mode
+MOVE SR,(A3)	40D3	-
+MOVE SR,(A4)+	40DC	-
+MOVE SR,-(A5)	40E5	-
+MOVE SR,$10(A6)	40EE0010	-
+MOVE SR,$10(A6,D7.W)	40F67010	-
+MOVE SR,$1234	40F81234	-
+MOVE SR,$12345678	40F912345678	-
+MOVE SR,FW	40F900001F00	-
+MOVE SR,*+$10(PC)		ERROR: Invalid addressing mode
+MOVE SR,#1		ERROR: Invalid addressing mode
+MOVE SR,#$80		ERROR: Invalid addressing mode
+MOVE SR,#$1234		ERROR: Invalid addressing mode
+MOVE SR,#$12345678		ERROR: Invalid addressing mode
+MOVE SR,SR		ERROR: Invalid addressing mode
+MOVE SR,CCR		ERROR: Invalid addressing mode
+MOVE SR,USP		ERROR: Invalid addressing mode
+MOVE CCR,D1		ERROR: Invalid addressing mode
+MOVE CCR,A2		ERROR: Invalid addressing mode
+MOVE CCR,(A3)		ERROR: Invalid addressing mode
+MOVE CCR,(A4)+		ERROR: Invalid addressing mode
+MOVE CCR,-(A5)		ERROR: Invalid addressing mode
+MOVE CCR,$10(A6)		ERROR: Invalid addressing mode
+MOVE CCR,$10(A6,D7.W)		ERROR: Invalid addressing mode
+MOVE CCR,$1234		ERROR: Invalid addressing mode
+MOVE CCR,$12345678		ERROR: Invalid addressing mode
+MOVE CCR,FW		ERROR: Invalid addressing mode
+MOVE CCR,*+$10(PC)		ERROR: Invalid addressing mode
+MOVE CCR,#1		ERROR: Invalid addressing mode
+MOVE CCR,#$80		ERROR: Invalid addressing mode
+MOVE CCR,#$1234		ERROR: Invalid addressing mode
+MOVE CCR,#$12345678		ERROR: Invalid addressing mode
+MOVE CCR,SR		ERROR: Invalid addressing mode
+MOVE CCR,CCR		ERROR: Invalid addressing mode
+MOVE CCR,USP		ERROR: Invalid addressing mode
+MOVE USP,D1		ERROR: Invalid addressing mode
+MOVE USP,A2	4E6A	-
+MOVE USP,(A3)		ERROR: Invalid addressing mode
+MOVE USP,(A4)+		ERROR: Invalid addressing mode
+MOVE USP,-(A5)		ERROR: Invalid addressing mode
+MOVE USP,$10(A6)		ERROR: Invalid addressing mode
+MOVE USP,$10(A6,D7.W)		ERROR: Invalid addressing mode
+MOVE USP,$1234		ERROR: Invalid addressing mode
+MOVE USP,$12345678		ERROR: Invalid addressing mode
+MOVE USP,FW		ERROR: Invalid addressing mode
+MOVE USP,*+$10(PC)		ERROR: Invalid addressing mode
+MOVE USP,#1		ERROR: Invalid addressing mode
+MOVE USP,#$80		ERROR: Invalid addressing mode
+MOVE USP,#$1234		ERROR: Invalid addressing mode
+MOVE USP,#$12345678		ERROR: Invalid addressing mode
+MOVE USP,SR		ERROR: Invalid addressing mode
+MOVE USP,CCR		ERROR: Invalid addressing mode
+MOVE USP,USP		ERROR: Invalid addressing mode
+MOVE SP,D1	320F	-
+MOVE SP,A2	344F	-
+MOVE D1,SP	3E41	-
+MOVE #$12,SP	3E7C0012	-
+MOVE -2(A0),D1	3228FFFE	-
+MOVE -2(A0),A2	3468FFFE	-
+MOVE D1,-2(A0)	3141FFFE	-
+MOVE #$12,-2(A0)	317C0012FFFE	-
+MOVE $12(A0,A1.L),D1	32309812	-
+MOVE $12(A0,A1.L),A2	34709812	-
+MOVE D1,$12(A0,A1.L)	31819812	-
+MOVE #$12,$12(A0,A1.L)	31BC00129812	-
+MOVE (A2,D3),D1	32323000	-
+MOVE (A2,D3),A2	34723000	-
+MOVE D1,(A2,D3)	35813000	-
+MOVE #$12,(A2,D3)	35BC00123000	-
+MOVE $1234.L,D1	323900001234	-
+MOVE $1234.L,A2	347900001234	-
+MOVE D1,$1234.L	33C100001234	-
+MOVE #$12,$1234.L	33FC001200001234	-
+MOVE $1234.W,D1	32381234	WARNING: Forcing SHORT addressing disables range checking of extension word
+MOVE $1234.W,A2	34781234	WARNING: Forcing SHORT addressing disables range checking of extension word
+MOVE D1,$1234.W	31C11234	WARNING: Forcing SHORT addressing disables range checking of extension word
+MOVE #$12,$1234.W	31FC00121234	WARNING: Forcing SHORT addressing disables range checking of extension word
+MOVE $8000,D1	323900008000	-
+MOVE $8000,A2	347900008000	-
+MOVE D1,$8000	33C100008000	-
+MOVE #$12,$8000	33FC001200008000	-
+MOVE BK,D1	32381F00	-
+MOVE BK,A2	34781F00	-
+MOVE D1,BK	31C11F00	-
+MOVE #$12,BK	31FC00121F00	-
+MOVE *(PC,D0.W),D1	323B00FE	-
+MOVE *(PC,D0.W),A2	347B00FE	-
+MOVE D1,*(PC,D0.W)		ERROR: Invalid addressing mode
+MOVE #$12,*(PC,D0.W)		ERROR: Invalid addressing mode
+MOVE BK(PC),D1	323A0EFE	-
+MOVE BK(PC),A2	347A0EFE	-
+MOVE D1,BK(PC)		ERROR: Invalid addressing mode
+MOVE #$12,BK(PC)		ERROR: Invalid addressing mode
+MOVE #8,D1	323C0008	-
+MOVE #8,A2	347C0008	-
+MOVE D1,#8		ERROR: Invalid addressing mode
+MOVE #$12,#8		ERROR: Invalid addressing mode
+MOVE #9,D1	323C0009	-
+MOVE #9,A2	347C0009	-
+MOVE D1,#9		ERROR: Invalid addressing mode
+MOVE #$12,#9		ERROR: Invalid addressing mode
+MOVE #0,D1	323C0000	-
+MOVE #0,A2	347C0000	-
+MOVE D1,#0		ERROR: Invalid addressing mode
+MOVE #$12,#0		ERROR: Invalid addressing mode
+MOVE #-1,D1	323CFFFF	-
+MOVE #-1,A2	347CFFFF	-
+MOVE D1,#-1		ERROR: Invalid addressing mode
+MOVE #$12,#-1		ERROR: Invalid addressing mode
+MOVE #$12345678.L,D1	323C5678	ERROR: Immediate data exceeds 16 bits
+MOVE #$12345678.L,A2	347C5678	ERROR: Immediate data exceeds 16 bits
+MOVE D1,#$12345678.L		ERROR: Invalid addressing mode
+MOVE #$12,#$12345678.L		ERROR: Invalid addressing mode
+MOVE #BK,D1	323C1F00	-
+MOVE #BK,A2	347C1F00	-
+MOVE D1,#BK		ERROR: Invalid addressing mode
+MOVE #$12,#BK		ERROR: Invalid addressing mode
+MOVE #FW,D1	323C1F00	-
+MOVE #FW,A2	347C1F00	-
+MOVE D1,#FW		ERROR: Invalid addressing mode
+MOVE #$12,#FW		ERROR: Invalid addressing mode
+MOVE #UNDEF,D1	323C561F	ERROR: Undefined symbol
+MOVE #UNDEF,A2	347C561F	ERROR: Undefined symbol
+MOVE D1,#UNDEF		ERROR: Invalid addressing mode
+MOVE #$12,#UNDEF		ERROR: Invalid addressing mode
+MOVE UNDEF,D1	32390000561F	ERROR: Undefined symbol
+MOVE UNDEF,A2	34790000561F	ERROR: Undefined symbol
+MOVE D1,UNDEF	33C100001F00	ERROR: Undefined symbol
+MOVE #$12,UNDEF	33FC001200001F00	ERROR: Undefined symbol
+MOVE D1,D2,D3		ERROR: Invalid syntax
+MOVE.B		ERROR: Invalid syntax
+MOVE.B D1		ERROR: Comma expected
+MOVE.B A2		ERROR: Comma expected
+MOVE.B SP		ERROR: Comma expected
+MOVE.B (A3)		ERROR: Comma expected
+MOVE.B (A4)+		ERROR: Comma expected
+MOVE.B -(A5)		ERROR: Comma expected
+MOVE.B $10(A6)		ERROR: Comma expected
+MOVE.B -2(A0)		ERROR: Comma expected
+MOVE.B $10(A6,D7.W)		ERROR: Comma expected
+MOVE.B $12(A0,A1.L)		ERROR: Comma expected
+MOVE.B (A2,D3)		ERROR: Comma expected
+MOVE.B $1234		ERROR: Comma expected
+MOVE.B $12345678		ERROR: Comma expected
+MOVE.B $1234.L		ERROR: Comma expected
+MOVE.B $1234.W		ERROR: Comma expected
+MOVE.B $8000		ERROR: Comma expected
+MOVE.B BK		ERROR: Comma expected
+MOVE.B FW		ERROR: Comma expected
+MOVE.B *+$10(PC)		ERROR: Comma expected
+MOVE.B *(PC,D0.W)		ERROR: Comma expected
+MOVE.B BK(PC)		ERROR: Comma expected
+MOVE.B #1		ERROR: Comma expected
+MOVE.B #8		ERROR: Comma expected
+MOVE.B #9		ERROR: Comma expected
+MOVE.B #0		ERROR: Comma expected
+MOVE.B #-1		ERROR: Comma expected
+MOVE.B #$80		ERROR: Comma expected
+MOVE.B #$1234		ERROR: Comma expected
+MOVE.B #$12345678		ERROR: Comma expected
+MOVE.B #$12345678.L		ERROR: Comma expected
+MOVE.B #BK		ERROR: Comma expected
+MOVE.B #FW		ERROR: Comma expected
+MOVE.B #UNDEF		ERROR: Comma expected
+MOVE.B UNDEF		ERROR: Comma expected
+MOVE.B SR		ERROR: Comma expected
+MOVE.B CCR		ERROR: Comma expected
+MOVE.B USP		ERROR: Comma expected
+MOVE.B D1,D1	1201	-
+MOVE.B D1,A2	3441	ERROR: Invalid size code
+MOVE.B D1,(A3)	1681	-
+MOVE.B D1,$10(A6)	1D410010	-
+MOVE.B D1,$1234	11C11234	-
+MOVE.B D1,FW	13C100001F00	-
+MOVE.B D1,#1		ERROR: Invalid addressing mode
+MOVE.B D1,#$1234		ERROR: Invalid addressing mode
+MOVE.B D1,CCR	44C1	ERROR: Invalid size code
+MOVE.B D1,SR	46C1	ERROR: Invalid size code
+MOVE.B A2,D1	320A	ERROR: Invalid size code
+MOVE.B A2,A2	344A	ERROR: Invalid size code
+MOVE.B A2,(A3)	368A	ERROR: Invalid size code
+MOVE.B A2,$10(A6)	3D4A0010	ERROR: Invalid size code
+MOVE.B A2,$1234	31CA1234	ERROR: Invalid size code
+MOVE.B A2,FW	33CA00001F00	ERROR: Invalid size code
+MOVE.B A2,#1		ERROR: Invalid addressing mode
+MOVE.B A2,#$1234		ERROR: Invalid addressing mode
+MOVE.B A2,CCR		ERROR: Invalid addressing mode
+MOVE.B A2,SR		ERROR: Invalid addressing mode
+MOVE.B (A3),D1	1213	-
+MOVE.B (A3),A2	3453	ERROR: Invalid size code
+MOVE.B (A3),(A3)	1693	-
+MOVE.B (A3),$10(A6)	1D530010	-
+MOVE.B (A3),$1234	11D31234	-
+MOVE.B (A3),FW	13D300001F00	-
+MOVE.B (A3),#1		ERROR: Invalid addressing mode
+MOVE.B (A3),#$1234		ERROR: Invalid addressing mode
+MOVE.B (A3),CCR	44D3	ERROR: Invalid size code
+MOVE.B (A3),SR	46D3	ERROR: Invalid size code
+MOVE.B $10(A6),D1	122E0010	-
+MOVE.B $10(A6),A2	346E0010	ERROR: Invalid size code
+MOVE.B $10(A6),(A3)	16AE0010	-
+MOVE.B $10(A6),$10(A6)	1D6E00100010	-
+MOVE.B $10(A6),$1234	11EE00101234	-
+MOVE.B $10(A6),FW	13EE001000001F00	-
+MOVE.B $10(A6),#1		ERROR: Invalid addressing mode
+MOVE.B $10(A6),#$1234		ERROR: Invalid addressing mode
+MOVE.B $10(A6),CCR	44EE0010	ERROR: Invalid size code
+MOVE.B $10(A6),SR	46EE0010	ERROR: Invalid size code
+MOVE.B $1234,D1	12381234	-
+MOVE.B $1234,A2	34781234	ERROR: Invalid size code
+MOVE.B $1234,(A3)	16B81234	-
+MOVE.B $1234,$10(A6)	1D7812340010	-
+MOVE.B $1234,$1234	11F812341234	-
+MOVE.B $1234,FW	13F8123400001F00	-
+MOVE.B $1234,#1		ERROR: Invalid addressing mode
+MOVE.B $1234,#$1234		ERROR: Invalid addressing mode
+MOVE.B $1234,CCR	44F81234	ERROR: Invalid size code
+MOVE.B $1234,SR	46F81234	ERROR: Invalid size code
+MOVE.B FW,D1	123900001F00	-
+MOVE.B FW,A2	347900001F00	ERROR: Invalid size code
+MOVE.B FW,(A3)	16B900001F00	-
+MOVE.B FW,$10(A6)	1D7900001F000010	-
+MOVE.B FW,$1234	11F900001F001234	-
+MOVE.B FW,FW	13F900001F0000001F00	-
+MOVE.B FW,#1		ERROR: Invalid addressing mode
+MOVE.B FW,#$1234		ERROR: Invalid addressing mode
+MOVE.B FW,CCR	44F900001F00	ERROR: Invalid size code
+MOVE.B FW,SR	46F900001F00	ERROR: Invalid size code
+MOVE.B #1,D1	123C0001	-
+MOVE.B #1,A2	347C0001	ERROR: Invalid size code
+MOVE.B #1,(A3)	16BC0001	-
+MOVE.B #1,$10(A6)	1D7C00010010	-
+MOVE.B #1,$1234	11FC00011234	-
+MOVE.B #1,FW	13FC000100001F00	-
+MOVE.B #1,#1		ERROR: Invalid addressing mode
+MOVE.B #1,#$1234		ERROR: Invalid addressing mode
+MOVE.B #1,CCR	44FC0001	ERROR: Invalid size code
+MOVE.B #1,SR	46FC0001	ERROR: Invalid size code
+MOVE.B #$1234,D1	123C0034	ERROR: Immediate data exceeds 8 bits
+MOVE.B #$1234,A2	347C0034	ERROR: Invalid size code
+MOVE.B #$1234,(A3)	16BC0034	ERROR: Immediate data exceeds 8 bits
+MOVE.B #$1234,$10(A6)	1D7C00340010	ERROR: Immediate data exceeds 8 bits
+MOVE.B #$1234,$1234	11FC00341234	ERROR: Immediate data exceeds 8 bits
+MOVE.B #$1234,FW	13FC003400001F00	ERROR: Immediate data exceeds 8 bits
+MOVE.B #$1234,#1		ERROR: Invalid addressing mode
+MOVE.B #$1234,#$1234		ERROR: Invalid addressing mode
+MOVE.B #$1234,CCR	44FC0034	ERROR: Invalid size code
+MOVE.B #$1234,SR	46FC0034	ERROR: Invalid size code
+MOVE.B CCR,D1		ERROR: Invalid addressing mode
+MOVE.B CCR,A2		ERROR: Invalid addressing mode
+MOVE.B CCR,(A3)		ERROR: Invalid addressing mode
+MOVE.B CCR,$10(A6)		ERROR: Invalid addressing mode
+MOVE.B CCR,$1234		ERROR: Invalid addressing mode
+MOVE.B CCR,FW		ERROR: Invalid addressing mode
+MOVE.B CCR,#1		ERROR: Invalid addressing mode
+MOVE.B CCR,#$1234		ERROR: Invalid addressing mode
+MOVE.B CCR,CCR		ERROR: Invalid addressing mode
+MOVE.B CCR,SR		ERROR: Invalid addressing mode
+MOVE.B SR,D1	40C1	ERROR: Invalid size code
+MOVE.B SR,A2		ERROR: Invalid addressing mode
+MOVE.B SR,(A3)	40D3	ERROR: Invalid size code
+MOVE.B SR,$10(A6)	40EE0010	ERROR: Invalid size code
+MOVE.B SR,$1234	40F81234	ERROR: Invalid size code
+MOVE.B SR,FW	40F900001F00	ERROR: Invalid size code
+MOVE.B SR,#1		ERROR: Invalid addressing mode
+MOVE.B SR,#$1234		ERROR: Invalid addressing mode
+MOVE.B SR,CCR		ERROR: Invalid addressing mode
+MOVE.B SR,SR		ERROR: Invalid addressing mode
+MOVE.B SP,D1	320F	ERROR: Invalid size code
+MOVE.B SP,A2	344F	ERROR: Invalid size code
+MOVE.B D1,SP	3E41	ERROR: Invalid size code
+MOVE.B #$12,SP	3E7C0012	ERROR: Invalid size code
+MOVE.B (A4)+,D1	121C	-
+MOVE.B (A4)+,A2	345C	ERROR: Invalid size code
+MOVE.B D1,(A4)+	18C1	-
+MOVE.B #$12,(A4)+	18FC0012	-
+MOVE.B -(A5),D1	1225	-
+MOVE.B -(A5),A2	3465	ERROR: Invalid size code
+MOVE.B D1,-(A5)	1B01	-
+MOVE.B #$12,-(A5)	1B3C0012	-
+MOVE.B -2(A0),D1	1228FFFE	-
+MOVE.B -2(A0),A2	3468FFFE	ERROR: Invalid size code
+MOVE.B D1,-2(A0)	1141FFFE	-
+MOVE.B #$12,-2(A0)	117C0012FFFE	-
+MOVE.B $10(A6,D7.W),D1	12367010	-
+MOVE.B $10(A6,D7.W),A2	34767010	ERROR: Invalid size code
+MOVE.B D1,$10(A6,D7.W)	1D817010	-
+MOVE.B #$12,$10(A6,D7.W)	1DBC00127010	-
+MOVE.B $12(A0,A1.L),D1	12309812	-
+MOVE.B $12(A0,A1.L),A2	34709812	ERROR: Invalid size code
+MOVE.B D1,$12(A0,A1.L)	11819812	-
+MOVE.B #$12,$12(A0,A1.L)	11BC00129812	-
+MOVE.B (A2,D3),D1	12323000	-
+MOVE.B (A2,D3),A2	34723000	ERROR: Invalid size code
+MOVE.B D1,(A2,D3)	15813000	-
+MOVE.B #$12,(A2,D3)	15BC00123000	-
+MOVE.B $12345678,D1	123912345678	-
+MOVE.B $12345678,A2	347912345678	ERROR: Invalid size code
+MOVE.B D1,$12345678	13C112345678	-
+MOVE.B #$12,$12345678	13FC001212345678	-
+MOVE.B $1234.L,D1	123900001234	-
+MOVE.B $1234.L,A2	347900001234	ERROR: Invalid size code
+MOVE.B D1,$1234.L	13C100001234	-
+MOVE.B #$12,$1234.L	13FC001200001234	-
+MOVE.B $1234.W,D1	12381234	WARNING: Forcing SHORT addressing disables range checking of extension word
+MOVE.B $1234.W,A2	34781234	ERROR: Invalid size code
+MOVE.B D1,$1234.W	11C11234	WARNING: Forcing SHORT addressing disables range checking of extension word
+MOVE.B #$12,$1234.W	11FC00121234	WARNING: Forcing SHORT addressing disables range checking of extension word
+MOVE.B $8000,D1	123900008000	-
+MOVE.B $8000,A2	347900008000	ERROR: Invalid size code
+MOVE.B D1,$8000	13C100008000	-
+MOVE.B #$12,$8000	13FC001200008000	-
+MOVE.B BK,D1	12381F00	-
+MOVE.B BK,A2	34781F00	ERROR: Invalid size code
+MOVE.B D1,BK	11C11F00	-
+MOVE.B #$12,BK	11FC00121F00	-
+MOVE.B *+$10(PC),D1	123A000E	-
+MOVE.B *+$10(PC),A2	347A000E	ERROR: Invalid size code
+MOVE.B D1,*+$10(PC)		ERROR: Invalid addressing mode
+MOVE.B #$12,*+$10(PC)		ERROR: Invalid addressing mode
+MOVE.B *(PC,D0.W),D1	123B00FE	-
+MOVE.B *(PC,D0.W),A2	347B00FE	ERROR: Invalid size code
+MOVE.B D1,*(PC,D0.W)		ERROR: Invalid addressing mode
+MOVE.B #$12,*(PC,D0.W)		ERROR: Invalid addressing mode
+MOVE.B BK(PC),D1	123A0EFE	-
+MOVE.B BK(PC),A2	347A0EFE	ERROR: Invalid size code
+MOVE.B D1,BK(PC)		ERROR: Invalid addressing mode
+MOVE.B #$12,BK(PC)		ERROR: Invalid addressing mode
+MOVE.B #8,D1	123C0008	-
+MOVE.B #8,A2	347C0008	ERROR: Invalid size code
+MOVE.B D1,#8		ERROR: Invalid addressing mode
+MOVE.B #$12,#8		ERROR: Invalid addressing mode
+MOVE.B #9,D1	123C0009	-
+MOVE.B #9,A2	347C0009	ERROR: Invalid size code
+MOVE.B D1,#9		ERROR: Invalid addressing mode
+MOVE.B #$12,#9		ERROR: Invalid addressing mode
+MOVE.B #0,D1	123C0000	-
+MOVE.B #0,A2	347C0000	ERROR: Invalid size code
+MOVE.B D1,#0		ERROR: Invalid addressing mode
+MOVE.B #$12,#0		ERROR: Invalid addressing mode
+MOVE.B #-1,D1	123C00FF	-
+MOVE.B #-1,A2	347C00FF	ERROR: Invalid size code
+MOVE.B D1,#-1		ERROR: Invalid addressing mode
+MOVE.B #$12,#-1		ERROR: Invalid addressing mode
+MOVE.B #$80,D1	123C0080	-
+MOVE.B #$80,A2	347C0080	ERROR: Invalid size code
+MOVE.B D1,#$80		ERROR: Invalid addressing mode
+MOVE.B #$12,#$80		ERROR: Invalid addressing mode
+MOVE.B #$12345678,D1	123C0078	ERROR: Immediate data exceeds 8 bits
+MOVE.B #$12345678,A2	347C0078	ERROR: Invalid size code
+MOVE.B D1,#$12345678		ERROR: Invalid addressing mode
+MOVE.B #$12,#$12345678		ERROR: Invalid addressing mode
+MOVE.B #$12345678.L,D1	123C0078	ERROR: Immediate data exceeds 8 bits
+MOVE.B #$12345678.L,A2	347C0078	ERROR: Invalid size code
+MOVE.B D1,#$12345678.L		ERROR: Invalid addressing mode
+MOVE.B #$12,#$12345678.L		ERROR: Invalid addressing mode
+MOVE.B #BK,D1	123C0000	ERROR: Immediate data exceeds 8 bits
+MOVE.B #BK,A2	347C0000	ERROR: Invalid size code
+MOVE.B D1,#BK		ERROR: Invalid addressing mode
+MOVE.B #$12,#BK		ERROR: Invalid addressing mode
+MOVE.B #FW,D1	123C0000	ERROR: Immediate data exceeds 8 bits
+MOVE.B #FW,A2	347C0000	ERROR: Invalid size code
+MOVE.B D1,#FW		ERROR: Invalid addressing mode
+MOVE.B #$12,#FW		ERROR: Invalid addressing mode
+MOVE.B #UNDEF,D1	123C001F	ERROR: Undefined symbol
+MOVE.B #UNDEF,A2	347C001F	ERROR: Undefined symbol
+MOVE.B D1,#UNDEF		ERROR: Invalid addressing mode
+MOVE.B #$12,#UNDEF		ERROR: Invalid addressing mode
+MOVE.B UNDEF,D1	12390000561F	ERROR: Undefined symbol
+MOVE.B UNDEF,A2	34790000561F	ERROR: Undefined symbol
+MOVE.B D1,UNDEF	13C100001F00	ERROR: Undefined symbol
+MOVE.B #$12,UNDEF	13FC001200001F00	ERROR: Undefined symbol
+MOVE.B USP,D1		ERROR: Invalid addressing mode
+MOVE.B USP,A2	4E6A	ERROR: Invalid size code
+MOVE.B D1,USP		ERROR: Invalid addressing mode
+MOVE.B #$12,USP		ERROR: Invalid addressing mode
+MOVE.B D1,D2,D3		ERROR: Invalid syntax
+MOVE.W		ERROR: Invalid syntax
+MOVE.W D1		ERROR: Comma expected
+MOVE.W A2		ERROR: Comma expected
+MOVE.W SP		ERROR: Comma expected
+MOVE.W (A3)		ERROR: Comma expected
+MOVE.W (A4)+		ERROR: Comma expected
+MOVE.W -(A5)		ERROR: Comma expected
+MOVE.W $10(A6)		ERROR: Comma expected
+MOVE.W -2(A0)		ERROR: Comma expected
+MOVE.W $10(A6,D7.W)		ERROR: Comma expected
+MOVE.W $12(A0,A1.L)		ERROR: Comma expected
+MOVE.W (A2,D3)		ERROR: Comma expected
+MOVE.W $1234		ERROR: Comma expected
+MOVE.W $12345678		ERROR: Comma expected
+MOVE.W $1234.L		ERROR: Comma expected
+MOVE.W $1234.W		ERROR: Comma expected
+MOVE.W $8000		ERROR: Comma expected
+MOVE.W BK		ERROR: Comma expected
+MOVE.W FW		ERROR: Comma expected
+MOVE.W *+$10(PC)		ERROR: Comma expected
+MOVE.W *(PC,D0.W)		ERROR: Comma expected
+MOVE.W BK(PC)		ERROR: Comma expected
+MOVE.W #1		ERROR: Comma expected
+MOVE.W #8		ERROR: Comma expected
+MOVE.W #9		ERROR: Comma expected
+MOVE.W #0		ERROR: Comma expected
+MOVE.W #-1		ERROR: Comma expected
+MOVE.W #$80		ERROR: Comma expected
+MOVE.W #$1234		ERROR: Comma expected
+MOVE.W #$12345678		ERROR: Comma expected
+MOVE.W #$12345678.L		ERROR: Comma expected
+MOVE.W #BK		ERROR: Comma expected
+MOVE.W #FW		ERROR: Comma expected
+MOVE.W #UNDEF		ERROR: Comma expected
+MOVE.W UNDEF		ERROR: Comma expected
+MOVE.W SR		ERROR: Comma expected
+MOVE.W CCR		ERROR: Comma expected
+MOVE.W USP		ERROR: Comma expected
+MOVE.W D1,D1	3201	-
+MOVE.W D1,A2	3441	-
+MOVE.W D1,(A3)	3681	-
+MOVE.W D1,(A4)+	38C1	-
+MOVE.W D1,-(A5)	3B01	-
+MOVE.W D1,$10(A6)	3D410010	-
+MOVE.W D1,$10(A6,D7.W)	3D817010	-
+MOVE.W D1,$1234	31C11234	-
+MOVE.W D1,$12345678	33C112345678	-
+MOVE.W D1,FW	33C100001F00	-
+MOVE.W D1,*+$10(PC)		ERROR: Invalid addressing mode
+MOVE.W D1,#1		ERROR: Invalid addressing mode
+MOVE.W D1,#$80		ERROR: Invalid addressing mode
+MOVE.W D1,#$1234		ERROR: Invalid addressing mode
+MOVE.W D1,#$12345678		ERROR: Invalid addressing mode
+MOVE.W D1,SR	46C1	-
+MOVE.W D1,CCR	44C1	-
+MOVE.W D1,USP		ERROR: Invalid addressing mode
+MOVE.W A2,D1	320A	-
+MOVE.W A2,A2	344A	-
+MOVE.W A2,(A3)	368A	-
+MOVE.W A2,(A4)+	38CA	-
+MOVE.W A2,-(A5)	3B0A	-
+MOVE.W A2,$10(A6)	3D4A0010	-
+MOVE.W A2,$10(A6,D7.W)	3D8A7010	-
+MOVE.W A2,$1234	31CA1234	-
+MOVE.W A2,$12345678	33CA12345678	-
+MOVE.W A2,FW	33CA00001F00	-
+MOVE.W A2,*+$10(PC)		ERROR: Invalid addressing mode
+MOVE.W A2,#1		ERROR: Invalid addressing mode
+MOVE.W A2,#$80		ERROR: Invalid addressing mode
+MOVE.W A2,#$1234		ERROR: Invalid addressing mode
+MOVE.W A2,#$12345678		ERROR: Invalid addressing mode
+MOVE.W A2,SR		ERROR: Invalid addressing mode
+MOVE.W A2,CCR		ERROR: Invalid addressing mode
+MOVE.W A2,USP	4E62	ERROR: Invalid size code
+MOVE.W (A3),D1	3213	-
+MOVE.W (A3),A2	3453	-
+MOVE.W (A3),(A3)	3693	-
+MOVE.W (A3),(A4)+	38D3	-
+MOVE.W (A3),-(A5)	3B13	-
+MOVE.W (A3),$10(A6)	3D530010	-
+MOVE.W (A3),$10(A6,D7.W)	3D937010	-
+MOVE.W (A3),$1234	31D31234	-
+MOVE.W (A3),$12345678	33D312345678	-
+MOVE.W (A3),FW	33D300001F00	-
+MOVE.W (A3),*+$10(PC)		ERROR: Invalid addressing mode
+MOVE.W (A3),#1		ERROR: Invalid addressing mode
+MOVE.W (A3),#$80		ERROR: Invalid addressing mode
+MOVE.W (A3),#$1234		ERROR: Invalid addressing mode
+MOVE.W (A3),#$12345678		ERROR: Invalid addressing mode
+MOVE.W (A3),SR	46D3	-
+MOVE.W (A3),CCR	44D3	-
+MOVE.W (A3),USP		ERROR: Invalid addressing mode
+MOVE.W (A4)+,D1	321C	-
+MOVE.W (A4)+,A2	345C	-
+MOVE.W (A4)+,(A3)	369C	-
+MOVE.W (A4)+,(A4)+	38DC	-
+MOVE.W (A4)+,-(A5)	3B1C	-
+MOVE.W (A4)+,$10(A6)	3D5C0010	-
+MOVE.W (A4)+,$10(A6,D7.W)	3D9C7010	-
+MOVE.W (A4)+,$1234	31DC1234	-
+MOVE.W (A4)+,$12345678	33DC12345678	-
+MOVE.W (A4)+,FW	33DC00001F00	-
+MOVE.W (A4)+,*+$10(PC)		ERROR: Invalid addressing mode
+MOVE.W (A4)+,#1		ERROR: Invalid addressing mode
+MOVE.W (A4)+,#$80		ERROR: Invalid addressing mode
+MOVE.W (A4)+,#$1234		ERROR: Invalid addressing mode
+MOVE.W (A4)+,#$12345678		ERROR: Invalid addressing mode
+MOVE.W (A4)+,SR	46DC	-
+MOVE.W (A4)+,CCR	44DC	-
+MOVE.W (A4)+,USP		ERROR: Invalid addressing mode
+MOVE.W -(A5),D1	3225	-
+MOVE.W -(A5),A2	3465	-
+MOVE.W -(A5),(A3)	36A5	-
+MOVE.W -(A5),(A4)+	38E5	-
+MOVE.W -(A5),-(A5)	3B25	-
+MOVE.W -(A5),$10(A6)	3D650010	-
+MOVE.W -(A5),$10(A6,D7.W)	3DA57010	-
+MOVE.W -(A5),$1234	31E51234	-
+MOVE.W -(A5),$12345678	33E512345678	-
+MOVE.W -(A5),FW	33E500001F00	-
+MOVE.W -(A5),*+$10(PC)		ERROR: Invalid addressing mode
+MOVE.W -(A5),#1		ERROR: Invalid addressing mode
+MOVE.W -(A5),#$80		ERROR: Invalid addressing mode
+MOVE.W -(A5),#$1234		ERROR: Invalid addressing mode
+MOVE.W -(A5),#$12345678		ERROR: Invalid addressing mode
+MOVE.W -(A5),SR	46E5	-
+MOVE.W -(A5),CCR	44E5	-
+MOVE.W -(A5),USP		ERROR: Invalid addressing mode
+MOVE.W $10(A6),D1	322E0010	-
+MOVE.W $10(A6),A2	346E0010	-
+MOVE.W $10(A6),(A3)	36AE0010	-
+MOVE.W $10(A6),(A4)+	38EE0010	-
+MOVE.W $10(A6),-(A5)	3B2E0010	-
+MOVE.W $10(A6),$10(A6)	3D6E00100010	-
+MOVE.W $10(A6),$10(A6,D7.W)	3DAE00107010	-
+MOVE.W $10(A6),$1234	31EE00101234	-
+MOVE.W $10(A6),$12345678	33EE001012345678	-
+MOVE.W $10(A6),FW	33EE001000001F00	-
+MOVE.W $10(A6),*+$10(PC)		ERROR: Invalid addressing mode
+MOVE.W $10(A6),#1		ERROR: Invalid addressing mode
+MOVE.W $10(A6),#$80		ERROR: Invalid addressing mode
+MOVE.W $10(A6),#$1234		ERROR: Invalid addressing mode
+MOVE.W $10(A6),#$12345678		ERROR: Invalid addressing mode
+MOVE.W $10(A6),SR	46EE0010	-
+MOVE.W $10(A6),CCR	44EE0010	-
+MOVE.W $10(A6),USP		ERROR: Invalid addressing mode
+MOVE.W $10(A6,D7.W),D1	32367010	-
+MOVE.W $10(A6,D7.W),A2	34767010	-
+MOVE.W $10(A6,D7.W),(A3)	36B67010	-
+MOVE.W $10(A6,D7.W),(A4)+	38F67010	-
+MOVE.W $10(A6,D7.W),-(A5)	3B367010	-
+MOVE.W $10(A6,D7.W),$10(A6)	3D7670100010	-
+MOVE.W $10(A6,D7.W),$10(A6,D7.W)	3DB670107010	-
+MOVE.W $10(A6,D7.W),$1234	31F670101234	-
+MOVE.W $10(A6,D7.W),$12345678	33F6701012345678	-
+MOVE.W $10(A6,D7.W),FW	33F6701000001F00	-
+MOVE.W $10(A6,D7.W),*+$10(PC)		ERROR: Invalid addressing mode
+MOVE.W $10(A6,D7.W),#1		ERROR: Invalid addressing mode
+MOVE.W $10(A6,D7.W),#$80		ERROR: Invalid addressing mode
+MOVE.W $10(A6,D7.W),#$1234		ERROR: Invalid addressing mode
+MOVE.W $10(A6,D7.W),#$12345678		ERROR: Invalid addressing mode
+MOVE.W $10(A6,D7.W),SR	46F67010	-
+MOVE.W $10(A6,D7.W),CCR	44F67010	-
+MOVE.W $10(A6,D7.W),USP		ERROR: Invalid addressing mode
+MOVE.W $1234,D1	32381234	-
+MOVE.W $1234,A2	34781234	-
+MOVE.W $1234,(A3)	36B81234	-
+MOVE.W $1234,(A4)+	38F81234	-
+MOVE.W $1234,-(A5)	3B381234	-
+MOVE.W $1234,$10(A6)	3D7812340010	-
+MOVE.W $1234,$10(A6,D7.W)	3DB812347010	-
+MOVE.W $1234,$1234	31F812341234	-
+MOVE.W $1234,$12345678	33F8123412345678	-
+MOVE.W $1234,FW	33F8123400001F00	-
+MOVE.W $1234,*+$10(PC)		ERROR: Invalid addressing mode
+MOVE.W $1234,#1		ERROR: Invalid addressing mode
+MOVE.W $1234,#$80		ERROR: Invalid addressing mode
+MOVE.W $1234,#$1234		ERROR: Invalid addressing mode
+MOVE.W $1234,#$12345678		ERROR: Invalid addressing mode
+MOVE.W $1234,SR	46F81234	-
+MOVE.W $1234,CCR	44F81234	-
+MOVE.W $1234,USP		ERROR: Invalid addressing mode
+MOVE.W $12345678,D1	323912345678	-
+MOVE.W $12345678,A2	347912345678	-
+MOVE.W $12345678,(A3)	36B912345678	-
+MOVE.W $12345678,(A4)+	38F912345678	-
+MOVE.W $12345678,-(A5)	3B3912345678	-
+MOVE.W $12345678,$10(A6)	3D79123456780010	-
+MOVE.W $12345678,$10(A6,D7.W)	3DB9123456787010	-
+MOVE.W $12345678,$1234	31F9123456781234	-
+MOVE.W $12345678,$12345678	33F91234567812345678	-
+MOVE.W $12345678,FW	33F91234567800001F00	-
+MOVE.W $12345678,*+$10(PC)		ERROR: Invalid addressing mode
+MOVE.W $12345678,#1		ERROR: Invalid addressing mode
+MOVE.W $12345678,#$80		ERROR: Invalid addressing mode
+MOVE.W $12345678,#$1234		ERROR: Invalid addressing mode
+MOVE.W $12345678,#$12345678		ERROR: Invalid addressing mode
+MOVE.W $12345678,SR	46F912345678	-
+MOVE.W $12345678,CCR	44F912345678	-
+MOVE.W $12345678,USP		ERROR: Invalid addressing mode
+MOVE.W FW,D1	323900001F00	-
+MOVE.W FW,A2	347900001F00	-
+MOVE.W FW,(A3)	36B900001F00	-
+MOVE.W FW,(A4)+	38F900001F00	-
+MOVE.W FW,-(A5)	3B3900001F00	-
+MOVE.W FW,$10(A6)	3D7900001F000010	-
+MOVE.W FW,$10(A6,D7.W)	3DB900001F007010	-
+MOVE.W FW,$1234	31F900001F001234	-
+MOVE.W FW,$12345678	33F900001F0012345678	-
+MOVE.W FW,FW	33F900001F0000001F00	-
+MOVE.W FW,*+$10(PC)		ERROR: Invalid addressing mode
+MOVE.W FW,#1		ERROR: Invalid addressing mode
+MOVE.W FW,#$80		ERROR: Invalid addressing mode
+MOVE.W FW,#$1234		ERROR: Invalid addressing mode
+MOVE.W FW,#$12345678		ERROR: Invalid addressing mode
+MOVE.W FW,SR	46F900001F00	-
+MOVE.W FW,CCR	44F900001F00	-
+MOVE.W FW,USP		ERROR: Invalid addressing mode
+MOVE.W *+$10(PC),D1	323A000E	-
+MOVE.W *+$10(PC),A2	347A000E	-
+MOVE.W *+$10(PC),(A3)	36BA000E	-
+MOVE.W *+$10(PC),(A4)+	38FA000E	-
+MOVE.W *+$10(PC),-(A5)	3B3A000E	-
+MOVE.W *+$10(PC),$10(A6)	3D7A000E0010	-
+MOVE.W *+$10(PC),$10(A6,D7.W)	3DBA000E7010	-
+MOVE.W *+$10(PC),$1234	31FA000E1234	-
+MOVE.W *+$10(PC),$12345678	33FA000E12345678	-
+MOVE.W *+$10(PC),FW	33FA000E00001F00	-
+MOVE.W *+$10(PC),*+$10(PC)		ERROR: Invalid addressing mode
+MOVE.W *+$10(PC),#1		ERROR: Invalid addressing mode
+MOVE.W *+$10(PC),#$80		ERROR: Invalid addressing mode
+MOVE.W *+$10(PC),#$1234		ERROR: Invalid addressing mode
+MOVE.W *+$10(PC),#$12345678		ERROR: Invalid addressing mode
+MOVE.W *+$10(PC),SR	46FA000E	-
+MOVE.W *+$10(PC),CCR	44FA000E	-
+MOVE.W *+$10(PC),USP		ERROR: Invalid addressing mode
+MOVE.W #1,D1	323C0001	-
+MOVE.W #1,A2	347C0001	-
+MOVE.W #1,(A3)	36BC0001	-
+MOVE.W #1,(A4)+	38FC0001	-
+MOVE.W #1,-(A5)	3B3C0001	-
+MOVE.W #1,$10(A6)	3D7C00010010	-
+MOVE.W #1,$10(A6,D7.W)	3DBC00017010	-
+MOVE.W #1,$1234	31FC00011234	-
+MOVE.W #1,$12345678	33FC000112345678	-
+MOVE.W #1,FW	33FC000100001F00	-
+MOVE.W #1,*+$10(PC)		ERROR: Invalid addressing mode
+MOVE.W #1,#1		ERROR: Invalid addressing mode
+MOVE.W #1,#$80		ERROR: Invalid addressing mode
+MOVE.W #1,#$1234		ERROR: Invalid addressing mode
+MOVE.W #1,#$12345678		ERROR: Invalid addressing mode
+MOVE.W #1,SR	46FC0001	-
+MOVE.W #1,CCR	44FC0001	-
+MOVE.W #1,USP		ERROR: Invalid addressing mode
+MOVE.W #$80,D1	323C0080	-
+MOVE.W #$80,A2	347C0080	-
+MOVE.W #$80,(A3)	36BC0080	-
+MOVE.W #$80,(A4)+	38FC0080	-
+MOVE.W #$80,-(A5)	3B3C0080	-
+MOVE.W #$80,$10(A6)	3D7C00800010	-
+MOVE.W #$80,$10(A6,D7.W)	3DBC00807010	-
+MOVE.W #$80,$1234	31FC00801234	-
+MOVE.W #$80,$12345678	33FC008012345678	-
+MOVE.W #$80,FW	33FC008000001F00	-
+MOVE.W #$80,*+$10(PC)		ERROR: Invalid addressing mode
+MOVE.W #$80,#1		ERROR: Invalid addressing mode
+MOVE.W #$80,#$80		ERROR: Invalid addressing mode
+MOVE.W #$80,#$1234		ERROR: Invalid addressing mode
+MOVE.W #$80,#$12345678		ERROR: Invalid addressing mode
+MOVE.W #$80,SR	46FC0080	-
+MOVE.W #$80,CCR	44FC0080	-
+MOVE.W #$80,USP		ERROR: Invalid addressing mode
+MOVE.W #$1234,D1	323C1234	-
+MOVE.W #$1234,A2	347C1234	-
+MOVE.W #$1234,(A3)	36BC1234	-
+MOVE.W #$1234,(A4)+	38FC1234	-
+MOVE.W #$1234,-(A5)	3B3C1234	-
+MOVE.W #$1234,$10(A6)	3D7C12340010	-
+MOVE.W #$1234,$10(A6,D7.W)	3DBC12347010	-
+MOVE.W #$1234,$1234	31FC12341234	-
+MOVE.W #$1234,$12345678	33FC123412345678	-
+MOVE.W #$1234,FW	33FC123400001F00	-
+MOVE.W #$1234,*+$10(PC)		ERROR: Invalid addressing mode
+MOVE.W #$1234,#1		ERROR: Invalid addressing mode
+MOVE.W #$1234,#$80		ERROR: Invalid addressing mode
+MOVE.W #$1234,#$1234		ERROR: Invalid addressing mode
+MOVE.W #$1234,#$12345678		ERROR: Invalid addressing mode
+MOVE.W #$1234,SR	46FC1234	-
+MOVE.W #$1234,CCR	44FC1234	-
+MOVE.W #$1234,USP		ERROR: Invalid addressing mode
+MOVE.W #$12345678,D1	323C5678	ERROR: Immediate data exceeds 16 bits
+MOVE.W #$12345678,A2	347C5678	ERROR: Immediate data exceeds 16 bits
+MOVE.W #$12345678,(A3)	36BC5678	ERROR: Immediate data exceeds 16 bits
+MOVE.W #$12345678,(A4)+	38FC5678	ERROR: Immediate data exceeds 16 bits
+MOVE.W #$12345678,-(A5)	3B3C5678	ERROR: Immediate data exceeds 16 bits
+MOVE.W #$12345678,$10(A6)	3D7C56780010	ERROR: Immediate data exceeds 16 bits
+MOVE.W #$12345678,$10(A6,D7.W)	3DBC56787010	ERROR: Immediate data exceeds 16 bits
+MOVE.W #$12345678,$1234	31FC56781234	ERROR: Immediate data exceeds 16 bits
+MOVE.W #$12345678,$12345678	33FC567812345678	ERROR: Immediate data exceeds 16 bits
+MOVE.W #$12345678,FW	33FC567800001F00	ERROR: Immediate data exceeds 16 bits
+MOVE.W #$12345678,*+$10(PC)		ERROR: Invalid addressing mode
+MOVE.W #$12345678,#1		ERROR: Invalid addressing mode
+MOVE.W #$12345678,#$80		ERROR: Invalid addressing mode
+MOVE.W #$12345678,#$1234		ERROR: Invalid addressing mode
+MOVE.W #$12345678,#$12345678		ERROR: Invalid addressing mode
+MOVE.W #$12345678,SR	46FC5678	ERROR: Immediate data exceeds 16 bits
+MOVE.W #$12345678,CCR	44FC5678	ERROR: Immediate data exceeds 16 bits
+MOVE.W #$12345678,USP		ERROR: Invalid addressing mode
+MOVE.W SR,D1	40C1	-
+MOVE.W SR,A2		ERROR: Invalid addressing mode
+MOVE.W SR,(A3)	40D3	-
+MOVE.W SR,(A4)+	40DC	-
+MOVE.W SR,-(A5)	40E5	-
+MOVE.W SR,$10(A6)	40EE0010	-
+MOVE.W SR,$10(A6,D7.W)	40F67010	-
+MOVE.W SR,$1234	40F81234	-
+MOVE.W SR,$12345678	40F912345678	-
+MOVE.W SR,FW	40F900001F00	-
+MOVE.W SR,*+$10(PC)		ERROR: Invalid addressing mode
+MOVE.W SR,#1		ERROR: Invalid addressing mode
+MOVE.W SR,#$80		ERROR: Invalid addressing mode
+MOVE.W SR,#$1234		ERROR: Invalid addressing mode
+MOVE.W SR,#$12345678		ERROR: Invalid addressing mode
+MOVE.W SR,SR		ERROR: Invalid addressing mode
+MOVE.W SR,CCR		ERROR: Invalid addressing mode
+MOVE.W SR,USP		ERROR: Invalid addressing mode
+MOVE.W CCR,D1		ERROR: Invalid addressing mode
+MOVE.W CCR,A2		ERROR: Invalid addressing mode
+MOVE.W CCR,(A3)		ERROR: Invalid addressing mode
+MOVE.W CCR,(A4)+		ERROR: Invalid addressing mode
+MOVE.W CCR,-(A5)		ERROR: Invalid addressing mode
+MOVE.W CCR,$10(A6)		ERROR: Invalid addressing mode
+MOVE.W CCR,$10(A6,D7.W)		ERROR: Invalid addressing mode
+MOVE.W CCR,$1234		ERROR: Invalid addressing mode
+MOVE.W CCR,$12345678		ERROR: Invalid addressing mode
+MOVE.W CCR,FW		ERROR: Invalid addressing mode
+MOVE.W CCR,*+$10(PC)		ERROR: Invalid addressing mode
+MOVE.W CCR,#1		ERROR: Invalid addressing mode
+MOVE.W CCR,#$80		ERROR: Invalid addressing mode
+MOVE.W CCR,#$1234		ERROR: Invalid addressing mode
+MOVE.W CCR,#$12345678		ERROR: Invalid addressing mode
+MOVE.W CCR,SR		ERROR: Invalid addressing mode
+MOVE.W CCR,CCR		ERROR: Invalid addressing mode
+MOVE.W CCR,USP		ERROR: Invalid addressing mode
+MOVE.W USP,D1		ERROR: Invalid addressing mode
+MOVE.W USP,A2	4E6A	ERROR: Invalid size code
+MOVE.W USP,(A3)		ERROR: Invalid addressing mode
+MOVE.W USP,(A4)+		ERROR: Invalid addressing mode
+MOVE.W USP,-(A5)		ERROR: Invalid addressing mode
+MOVE.W USP,$10(A6)		ERROR: Invalid addressing mode
+MOVE.W USP,$10(A6,D7.W)		ERROR: Invalid addressing mode
+MOVE.W USP,$1234		ERROR: Invalid addressing mode
+MOVE.W USP,$12345678		ERROR: Invalid addressing mode
+MOVE.W USP,FW		ERROR: Invalid addressing mode
+MOVE.W USP,*+$10(PC)		ERROR: Invalid addressing mode
+MOVE.W USP,#1		ERROR: Invalid addressing mode
+MOVE.W USP,#$80		ERROR: Invalid addressing mode
+MOVE.W USP,#$1234		ERROR: Invalid addressing mode
+MOVE.W USP,#$12345678		ERROR: Invalid addressing mode
+MOVE.W USP,SR		ERROR: Invalid addressing mode
+MOVE.W USP,CCR		ERROR: Invalid addressing mode
+MOVE.W USP,USP		ERROR: Invalid addressing mode
+MOVE.W SP,D1	320F	-
+MOVE.W SP,A2	344F	-
+MOVE.W D1,SP	3E41	-
+MOVE.W #$12,SP	3E7C0012	-
+MOVE.W -2(A0),D1	3228FFFE	-
+MOVE.W -2(A0),A2	3468FFFE	-
+MOVE.W D1,-2(A0)	3141FFFE	-
+MOVE.W #$12,-2(A0)	317C0012FFFE	-
+MOVE.W $12(A0,A1.L),D1	32309812	-
+MOVE.W $12(A0,A1.L),A2	34709812	-
+MOVE.W D1,$12(A0,A1.L)	31819812	-
+MOVE.W #$12,$12(A0,A1.L)	31BC00129812	-
+MOVE.W (A2,D3),D1	32323000	-
+MOVE.W (A2,D3),A2	34723000	-
+MOVE.W D1,(A2,D3)	35813000	-
+MOVE.W #$12,(A2,D3)	35BC00123000	-
+MOVE.W $1234.L,D1	323900001234	-
+MOVE.W $1234.L,A2	347900001234	-
+MOVE.W D1,$1234.L	33C100001234	-
+MOVE.W #$12,$1234.L	33FC001200001234	-
+MOVE.W $1234.W,D1	32381234	WARNING: Forcing SHORT addressing disables range checking of extension word
+MOVE.W $1234.W,A2	34781234	WARNING: Forcing SHORT addressing disables range checking of extension word
+MOVE.W D1,$1234.W	31C11234	WARNING: Forcing SHORT addressing disables range checking of extension word
+MOVE.W #$12,$1234.W	31FC00121234	WARNING: Forcing SHORT addressing disables range checking of extension word
+MOVE.W $8000,D1	323900008000	-
+MOVE.W $8000,A2	347900008000	-
+MOVE.W D1,$8000	33C100008000	-
+MOVE.W #$12,$8000	33FC001200008000	-
+MOVE.W BK,D1	32381F00	-
+MOVE.W BK,A2	34781F00	-
+MOVE.W D1,BK	31C11F00	-
+MOVE.W #$12,BK	31FC00121F00	-
+MOVE.W *(PC,D0.W),D1	323B00FE	-
+MOVE.W *(PC,D0.W),A2	347B00FE	-
+MOVE.W D1,*(PC,D0.W)		ERROR: Invalid addressing mode
+MOVE.W #$12,*(PC,D0.W)		ERROR: Invalid addressing mode
+MOVE.W BK(PC),D1	323A0EFE	-
+MOVE.W BK(PC),A2	347A0EFE	-
+MOVE.W D1,BK(PC)		ERROR: Invalid addressing mode
+MOVE.W #$12,BK(PC)		ERROR: Invalid addressing mode
+MOVE.W #8,D1	323C0008	-
+MOVE.W #8,A2	347C0008	-
+MOVE.W D1,#8		ERROR: Invalid addressing mode
+MOVE.W #$12,#8		ERROR: Invalid addressing mode
+MOVE.W #9,D1	323C0009	-
+MOVE.W #9,A2	347C0009	-
+MOVE.W D1,#9		ERROR: Invalid addressing mode
+MOVE.W #$12,#9		ERROR: Invalid addressing mode
+MOVE.W #0,D1	323C0000	-
+MOVE.W #0,A2	347C0000	-
+MOVE.W D1,#0		ERROR: Invalid addressing mode
+MOVE.W #$12,#0		ERROR: Invalid addressing mode
+MOVE.W #-1,D1	323CFFFF	-
+MOVE.W #-1,A2	347CFFFF	-
+MOVE.W D1,#-1		ERROR: Invalid addressing mode
+MOVE.W #$12,#-1		ERROR: Invalid addressing mode
+MOVE.W #$12345678.L,D1	323C5678	ERROR: Immediate data exceeds 16 bits
+MOVE.W #$12345678.L,A2	347C5678	ERROR: Immediate data exceeds 16 bits
+MOVE.W D1,#$12345678.L		ERROR: Invalid addressing mode
+MOVE.W #$12,#$12345678.L		ERROR: Invalid addressing mode
+MOVE.W #BK,D1	323C1F00	-
+MOVE.W #BK,A2	347C1F00	-
+MOVE.W D1,#BK		ERROR: Invalid addressing mode
+MOVE.W #$12,#BK		ERROR: Invalid addressing mode
+MOVE.W #FW,D1	323C1F00	-
+MOVE.W #FW,A2	347C1F00	-
+MOVE.W D1,#FW		ERROR: Invalid addressing mode
+MOVE.W #$12,#FW		ERROR: Invalid addressing mode
+MOVE.W #UNDEF,D1	323C561F	ERROR: Undefined symbol
+MOVE.W #UNDEF,A2	347C561F	ERROR: Undefined symbol
+MOVE.W D1,#UNDEF		ERROR: Invalid addressing mode
+MOVE.W #$12,#UNDEF		ERROR: Invalid addressing mode
+MOVE.W UNDEF,D1	32390000561F	ERROR: Undefined symbol
+MOVE.W UNDEF,A2	34790000561F	ERROR: Undefined symbol
+MOVE.W D1,UNDEF	33C100001F00	ERROR: Undefined symbol
+MOVE.W #$12,UNDEF	33FC001200001F00	ERROR: Undefined symbol
+MOVE.W D1,D2,D3		ERROR: Invalid syntax
+MOVE.L		ERROR: Invalid syntax
+MOVE.L D1		ERROR: Comma expected
+MOVE.L A2		ERROR: Comma expected
+MOVE.L SP		ERROR: Comma expected
+MOVE.L (A3)		ERROR: Comma expected
+MOVE.L (A4)+		ERROR: Comma expected
+MOVE.L -(A5)		ERROR: Comma expected
+MOVE.L $10(A6)		ERROR: Comma expected
+MOVE.L -2(A0)		ERROR: Comma expected
+MOVE.L $10(A6,D7.W)		ERROR: Comma expected
+MOVE.L $12(A0,A1.L)		ERROR: Comma expected
+MOVE.L (A2,D3)		ERROR: Comma expected
+MOVE.L $1234		ERROR: Comma expected
+MOVE.L $12345678		ERROR: Comma expected
+MOVE.L $1234.L		ERROR: Comma expected
+MOVE.L $1234.W		ERROR: Comma expected
+MOVE.L $8000		ERROR: Comma expected
+MOVE.L BK		ERROR: Comma expected
+MOVE.L FW		ERROR: Comma expected
+MOVE.L *+$10(PC)		ERROR: Comma expected
+MOVE.L *(PC,D0.W)		ERROR: Comma expected
+MOVE.L BK(PC)		ERROR: Comma expected
+MOVE.L #1		ERROR: Comma expected
+MOVE.L #8		ERROR: Comma expected
+MOVE.L #9		ERROR: Comma expected
+MOVE.L #0		ERROR: Comma expected
+MOVE.L #-1		ERROR: Comma expected
+MOVE.L #$80		ERROR: Comma expected
+MOVE.L #$1234		ERROR: Comma expected
+MOVE.L #$12345678		ERROR: Comma expected
+MOVE.L #$12345678.L		ERROR: Comma expected
+MOVE.L #BK		ERROR: Comma expected
+MOVE.L #FW		ERROR: Comma expected
+MOVE.L #UNDEF		ERROR: Comma expected
+MOVE.L UNDEF		ERROR: Comma expected
+MOVE.L SR		ERROR: Comma expected
+MOVE.L CCR		ERROR: Comma expected
+MOVE.L USP		ERROR: Comma expected
+MOVE.L D1,D1	2201	-
+MOVE.L D1,A2	2441	-
+MOVE.L D1,(A3)	2681	-
+MOVE.L D1,$10(A6)	2D410010	-
+MOVE.L D1,$1234	21C11234	-
+MOVE.L D1,FW	23C100001F00	-
+MOVE.L D1,#1		ERROR: Invalid addressing mode
+MOVE.L D1,#$1234		ERROR: Invalid addressing mode
+MOVE.L D1,CCR	44C1	ERROR: Invalid size code
+MOVE.L D1,SR	46C1	ERROR: Invalid size code
+MOVE.L A2,D1	220A	-
+MOVE.L A2,A2	244A	-
+MOVE.L A2,(A3)	268A	-
+MOVE.L A2,$10(A6)	2D4A0010	-
+MOVE.L A2,$1234	21CA1234	-
+MOVE.L A2,FW	23CA00001F00	-
+MOVE.L A2,#1		ERROR: Invalid addressing mode
+MOVE.L A2,#$1234		ERROR: Invalid addressing mode
+MOVE.L A2,CCR		ERROR: Invalid addressing mode
+MOVE.L A2,SR		ERROR: Invalid addressing mode
+MOVE.L (A3),D1	2213	-
+MOVE.L (A3),A2	2453	-
+MOVE.L (A3),(A3)	2693	-
+MOVE.L (A3),$10(A6)	2D530010	-
+MOVE.L (A3),$1234	21D31234	-
+MOVE.L (A3),FW	23D300001F00	-
+MOVE.L (A3),#1		ERROR: Invalid addressing mode
+MOVE.L (A3),#$1234		ERROR: Invalid addressing mode
+MOVE.L (A3),CCR	44D3	ERROR: Invalid size code
+MOVE.L (A3),SR	46D3	ERROR: Invalid size code
+MOVE.L $10(A6),D1	222E0010	-
+MOVE.L $10(A6),A2	246E0010	-
+MOVE.L $10(A6),(A3)	26AE0010	-
+MOVE.L $10(A6),$10(A6)	2D6E00100010	-
+MOVE.L $10(A6),$1234	21EE00101234	-
+MOVE.L $10(A6),FW	23EE001000001F00	-
+MOVE.L $10(A6),#1		ERROR: Invalid addressing mode
+MOVE.L $10(A6),#$1234		ERROR: Invalid addressing mode
+MOVE.L $10(A6),CCR	44EE0010	ERROR: Invalid size code
+MOVE.L $10(A6),SR	46EE0010	ERROR: Invalid size code
+MOVE.L $1234,D1	22381234	-
+MOVE.L $1234,A2	24781234	-
+MOVE.L $1234,(A3)	26B81234	-
+MOVE.L $1234,$10(A6)	2D7812340010	-
+MOVE.L $1234,$1234	21F812341234	-
+MOVE.L $1234,FW	23F8123400001F00	-
+MOVE.L $1234,#1		ERROR: Invalid addressing mode
+MOVE.L $1234,#$1234		ERROR: Invalid addressing mode
+MOVE.L $1234,CCR	44F81234	ERROR: Invalid size code
+MOVE.L $1234,SR	46F81234	ERROR: Invalid size code
+MOVE.L FW,D1	223900001F00	-
+MOVE.L FW,A2	247900001F00	-
+MOVE.L FW,(A3)	26B900001F00	-
+MOVE.L FW,$10(A6)	2D7900001F000010	-
+MOVE.L FW,$1234	21F900001F001234	-
+MOVE.L FW,FW	23F900001F0000001F00	-
+MOVE.L FW,#1		ERROR: Invalid addressing mode
+MOVE.L FW,#$1234		ERROR: Invalid addressing mode
+MOVE.L FW,CCR	44F900001F00	ERROR: Invalid size code
+MOVE.L FW,SR	46F900001F00	ERROR: Invalid size code
+MOVE.L #1,D1	7201	-
+MOVE.L #1,A2	247C00000001	-
+MOVE.L #1,(A3)	26BC00000001	-
+MOVE.L #1,$10(A6)	2D7C000000010010	-
+MOVE.L #1,$1234	21FC000000011234	-
+MOVE.L #1,FW	23FC0000000100001F00	-
+MOVE.L #1,#1		ERROR: Invalid addressing mode
+MOVE.L #1,#$1234		ERROR: Invalid addressing mode
+MOVE.L #1,CCR	44FC00000001	ERROR: Invalid size code
+MOVE.L #1,SR	46FC00000001	ERROR: Invalid size code
+MOVE.L #$1234,D1	223C00001234	-
+MOVE.L #$1234,A2	247C00001234	-
+MOVE.L #$1234,(A3)	26BC00001234	-
+MOVE.L #$1234,$10(A6)	2D7C000012340010	-
+MOVE.L #$1234,$1234	21FC000012341234	-
+MOVE.L #$1234,FW	23FC0000123400001F00	-
+MOVE.L #$1234,#1		ERROR: Invalid addressing mode
+MOVE.L #$1234,#$1234		ERROR: Invalid addressing mode
+MOVE.L #$1234,CCR	44FC00001234	ERROR: Invalid size code
+MOVE.L #$1234,SR	46FC00001234	ERROR: Invalid size code
+MOVE.L CCR,D1		ERROR: Invalid addressing mode
+MOVE.L CCR,A2		ERROR: Invalid addressing mode
+MOVE.L CCR,(A3)		ERROR: Invalid addressing mode
+MOVE.L CCR,$10(A6)		ERROR: Invalid addressing mode
+MOVE.L CCR,$1234		ERROR: Invalid addressing mode
+MOVE.L CCR,FW		ERROR: Invalid addressing mode
+MOVE.L CCR,#1		ERROR: Invalid addressing mode
+MOVE.L CCR,#$1234		ERROR: Invalid addressing mode
+MOVE.L CCR,CCR		ERROR: Invalid addressing mode
+MOVE.L CCR,SR		ERROR: Invalid addressing mode
+MOVE.L SR,D1	40C1	ERROR: Invalid size code
+MOVE.L SR,A2		ERROR: Invalid addressing mode
+MOVE.L SR,(A3)	40D3	ERROR: Invalid size code
+MOVE.L SR,$10(A6)	40EE0010	ERROR: Invalid size code
+MOVE.L SR,$1234	40F81234	ERROR: Invalid size code
+MOVE.L SR,FW	40F900001F00	ERROR: Invalid size code
+MOVE.L SR,#1		ERROR: Invalid addressing mode
+MOVE.L SR,#$1234		ERROR: Invalid addressing mode
+MOVE.L SR,CCR		ERROR: Invalid addressing mode
+MOVE.L SR,SR		ERROR: Invalid addressing mode
+MOVE.L SP,D1	220F	-
+MOVE.L SP,A2	244F	-
+MOVE.L D1,SP	2E41	-
+MOVE.L #$12,SP	2E7C00000012	-
+MOVE.L (A4)+,D1	221C	-
+MOVE.L (A4)+,A2	245C	-
+MOVE.L D1,(A4)+	28C1	-
+MOVE.L #$12,(A4)+	28FC00000012	-
+MOVE.L -(A5),D1	2225	-
+MOVE.L -(A5),A2	2465	-
+MOVE.L D1,-(A5)	2B01	-
+MOVE.L #$12,-(A5)	2B3C00000012	-
+MOVE.L -2(A0),D1	2228FFFE	-
+MOVE.L -2(A0),A2	2468FFFE	-
+MOVE.L D1,-2(A0)	2141FFFE	-
+MOVE.L #$12,-2(A0)	217C00000012FFFE	-
+MOVE.L $10(A6,D7.W),D1	22367010	-
+MOVE.L $10(A6,D7.W),A2	24767010	-
+MOVE.L D1,$10(A6,D7.W)	2D817010	-
+MOVE.L #$12,$10(A6,D7.W)	2DBC000000127010	-
+MOVE.L $12(A0,A1.L),D1	22309812	-
+MOVE.L $12(A0,A1.L),A2	24709812	-
+MOVE.L D1,$12(A0,A1.L)	21819812	-
+MOVE.L #$12,$12(A0,A1.L)	21BC000000129812	-
+MOVE.L (A2,D3),D1	22323000	-
+MOVE.L (A2,D3),A2	24723000	-
+MOVE.L D1,(A2,D3)	25813000	-
+MOVE.L #$12,(A2,D3)	25BC000000123000	-
+MOVE.L $12345678,D1	223912345678	-
+MOVE.L $12345678,A2	247912345678	-
+MOVE.L D1,$12345678	23C112345678	-
+MOVE.L #$12,$12345678	23FC0000001212345678	-
+MOVE.L $1234.L,D1	223900001234	-
+MOVE.L $1234.L,A2	247900001234	-
+MOVE.L D1,$1234.L	23C100001234	-
+MOVE.L #$12,$1234.L	23FC0000001200001234	-
+MOVE.L $1234.W,D1	22381234	WARNING: Forcing SHORT addressing disables range checking of extension word
+MOVE.L $1234.W,A2	24781234	WARNING: Forcing SHORT addressing disables range checking of extension word
+MOVE.L D1,$1234.W	21C11234	WARNING: Forcing SHORT addressing disables range checking of extension word
+MOVE.L #$12,$1234.W	21FC000000121234	WARNING: Forcing SHORT addressing disables range checking of extension word
+MOVE.L $8000,D1	223900008000	-
+MOVE.L $8000,A2	247900008000	-
+MOVE.L D1,$8000	23C100008000	-
+MOVE.L #$12,$8000	23FC0000001200008000	-
+MOVE.L BK,D1	22381F00	-
+MOVE.L BK,A2	24781F00	-
+MOVE.L D1,BK	21C11F00	-
+MOVE.L #$12,BK	21FC000000121F00	-
+MOVE.L *+$10(PC),D1	223A000E	-
+MOVE.L *+$10(PC),A2	247A000E	-
+MOVE.L D1,*+$10(PC)		ERROR: Invalid addressing mode
+MOVE.L #$12,*+$10(PC)		ERROR: Invalid addressing mode
+MOVE.L *(PC,D0.W),D1	223B00FE	-
+MOVE.L *(PC,D0.W),A2	247B00FE	-
+MOVE.L D1,*(PC,D0.W)		ERROR: Invalid addressing mode
+MOVE.L #$12,*(PC,D0.W)		ERROR: Invalid addressing mode
+MOVE.L BK(PC),D1	223A0EFE	-
+MOVE.L BK(PC),A2	247A0EFE	-
+MOVE.L D1,BK(PC)		ERROR: Invalid addressing mode
+MOVE.L #$12,BK(PC)		ERROR: Invalid addressing mode
+MOVE.L #8,D1	7208	-
+MOVE.L #8,A2	247C00000008	-
+MOVE.L D1,#8		ERROR: Invalid addressing mode
+MOVE.L #$12,#8		ERROR: Invalid addressing mode
+MOVE.L #9,D1	7209	-
+MOVE.L #9,A2	247C00000009	-
+MOVE.L D1,#9		ERROR: Invalid addressing mode
+MOVE.L #$12,#9		ERROR: Invalid addressing mode
+MOVE.L #0,D1	7200	-
+MOVE.L #0,A2	247C00000000	-
+MOVE.L D1,#0		ERROR: Invalid addressing mode
+MOVE.L #$12,#0		ERROR: Invalid addressing mode
+MOVE.L #-1,D1	72FF	-
+MOVE.L #-1,A2	247CFFFFFFFF	-
+MOVE.L D1,#-1		ERROR: Invalid addressing mode
+MOVE.L #$12,#-1		ERROR: Invalid addressing mode
+MOVE.L #$80,D1	223C00000080	-
+MOVE.L #$80,A2	247C00000080	-
+MOVE.L D1,#$80		ERROR: Invalid addressing mode
+MOVE.L #$12,#$80		ERROR: Invalid addressing mode
+MOVE.L #$12345678,D1	223C12345678	-
+MOVE.L #$12345678,A2	247C12345678	-
+MOVE.L D1,#$12345678		ERROR: Invalid addressing mode
+MOVE.L #$12,#$12345678		ERROR: Invalid addressing mode
+MOVE.L #$12345678.L,D1	223C12345678	-
+MOVE.L #$12345678.L,A2	247C12345678	-
+MOVE.L D1,#$12345678.L		ERROR: Invalid addressing mode
+MOVE.L #$12,#$12345678.L		ERROR: Invalid addressing mode
+MOVE.L #BK,D1	223C00001F00	-
+MOVE.L #BK,A2	247C00001F00	-
+MOVE.L D1,#BK		ERROR: Invalid addressing mode
+MOVE.L #$12,#BK		ERROR: Invalid addressing mode
+MOVE.L #FW,D1	223C00001F00	-
+MOVE.L #FW,A2	247C00001F00	-
+MOVE.L D1,#FW		ERROR: Invalid addressing mode
+MOVE.L #$12,#FW		ERROR: Invalid addressing mode
+MOVE.L #UNDEF,D1	223C0000561F	ERROR: Undefined symbol
+MOVE.L #UNDEF,A2	247C0000561F	ERROR: Undefined symbol
+MOVE.L D1,#UNDEF		ERROR: Invalid addressing mode
+MOVE.L #$12,#UNDEF		ERROR: Invalid addressing mode
+MOVE.L UNDEF,D1	22390000561F	ERROR: Undefined symbol
+MOVE.L UNDEF,A2	24790000561F	ERROR: Undefined symbol
+MOVE.L D1,UNDEF	23C100001F00	ERROR: Undefined symbol
+MOVE.L #$12,UNDEF	23FC0000001200001F00	ERROR: Undefined symbol
+MOVE.L USP,D1		ERROR: Invalid addressing mode
+MOVE.L USP,A2	4E6A	-
+MOVE.L D1,USP		ERROR: Invalid addressing mode
+MOVE.L #$12,USP		ERROR: Invalid addressing mode
+MOVE.L D1,D2,D3		ERROR: Invalid syntax
+MOVE.S		ERROR: Invalid syntax
+MOVE.S D1		ERROR: Comma expected
+MOVE.S A2		ERROR: Comma expected
+MOVE.S SP		ERROR: Comma expected
+MOVE.S (A3)		ERROR: Comma expected
+MOVE.S (A4)+		ERROR: Comma expected
+MOVE.S -(A5)		ERROR: Comma expected
+MOVE.S $10(A6)		ERROR: Comma expected
+MOVE.S -2(A0)		ERROR: Comma expected
+MOVE.S $10(A6,D7.W)		ERROR: Comma expected
+MOVE.S $12(A0,A1.L)		ERROR: Comma expected
+MOVE.S (A2,D3)		ERROR: Comma expected
+MOVE.S $1234		ERROR: Comma expected
+MOVE.S $12345678		ERROR: Comma expected
+MOVE.S $1234.L		ERROR: Comma expected
+MOVE.S $1234.W		ERROR: Comma expected
+MOVE.S $8000		ERROR: Comma expected
+MOVE.S BK		ERROR: Comma expected
+MOVE.S FW		ERROR: Comma expected
+MOVE.S *+$10(PC)		ERROR: Comma expected
+MOVE.S *(PC,D0.W)		ERROR: Comma expected
+MOVE.S BK(PC)		ERROR: Comma expected
+MOVE.S #1		ERROR: Comma expected
+MOVE.S #8		ERROR: Comma expected
+MOVE.S #9		ERROR: Comma expected
+MOVE.S #0		ERROR: Comma expected
+MOVE.S #-1		ERROR: Comma expected
+MOVE.S #$80		ERROR: Comma expected
+MOVE.S #$1234		ERROR: Comma expected
+MOVE.S #$12345678		ERROR: Comma expected
+MOVE.S #$12345678.L		ERROR: Comma expected
+MOVE.S #BK		ERROR: Comma expected
+MOVE.S #FW		ERROR: Comma expected
+MOVE.S #UNDEF		ERROR: Comma expected
+MOVE.S UNDEF		ERROR: Comma expected
+MOVE.S SR		ERROR: Comma expected
+MOVE.S CCR		ERROR: Comma expected
+MOVE.S USP		ERROR: Comma expected
+MOVE.S D1,D1	3201	ERROR: Invalid size code
+MOVE.S D1,A2	3441	ERROR: Invalid size code
+MOVE.S D1,(A3)	3681	ERROR: Invalid size code
+MOVE.S D1,$10(A6)	3D410010	ERROR: Invalid size code
+MOVE.S D1,$1234	31C11234	ERROR: Invalid size code
+MOVE.S D1,FW	33C100001F00	ERROR: Invalid size code
+MOVE.S D1,#1		ERROR: Invalid addressing mode
+MOVE.S D1,#$1234		ERROR: Invalid addressing mode
+MOVE.S D1,CCR	44C1	ERROR: Invalid size code
+MOVE.S D1,SR	46C1	ERROR: Invalid size code
+MOVE.S A2,D1	320A	ERROR: Invalid size code
+MOVE.S A2,A2	344A	ERROR: Invalid size code
+MOVE.S A2,(A3)	368A	ERROR: Invalid size code
+MOVE.S A2,$10(A6)	3D4A0010	ERROR: Invalid size code
+MOVE.S A2,$1234	31CA1234	ERROR: Invalid size code
+MOVE.S A2,FW	33CA00001F00	ERROR: Invalid size code
+MOVE.S A2,#1		ERROR: Invalid addressing mode
+MOVE.S A2,#$1234		ERROR: Invalid addressing mode
+MOVE.S A2,CCR		ERROR: Invalid addressing mode
+MOVE.S A2,SR		ERROR: Invalid addressing mode
+MOVE.S (A3),D1	3213	ERROR: Invalid size code
+MOVE.S (A3),A2	3453	ERROR: Invalid size code
+MOVE.S (A3),(A3)	3693	ERROR: Invalid size code
+MOVE.S (A3),$10(A6)	3D530010	ERROR: Invalid size code
+MOVE.S (A3),$1234	31D31234	ERROR: Invalid size code
+MOVE.S (A3),FW	33D300001F00	ERROR: Invalid size code
+MOVE.S (A3),#1		ERROR: Invalid addressing mode
+MOVE.S (A3),#$1234		ERROR: Invalid addressing mode
+MOVE.S (A3),CCR	44D3	ERROR: Invalid size code
+MOVE.S (A3),SR	46D3	ERROR: Invalid size code
+MOVE.S $10(A6),D1	322E0010	ERROR: Invalid size code
+MOVE.S $10(A6),A2	346E0010	ERROR: Invalid size code
+MOVE.S $10(A6),(A3)	36AE0010	ERROR: Invalid size code
+MOVE.S $10(A6),$10(A6)	3D6E00100010	ERROR: Invalid size code
+MOVE.S $10(A6),$1234	31EE00101234	ERROR: Invalid size code
+MOVE.S $10(A6),FW	33EE001000001F00	ERROR: Invalid size code
+MOVE.S $10(A6),#1		ERROR: Invalid addressing mode
+MOVE.S $10(A6),#$1234		ERROR: Invalid addressing mode
+MOVE.S $10(A6),CCR	44EE0010	ERROR: Invalid size code
+MOVE.S $10(A6),SR	46EE0010	ERROR: Invalid size code
+MOVE.S $1234,D1	32381234	ERROR: Invalid size code
+MOVE.S $1234,A2	34781234	ERROR: Invalid size code
+MOVE.S $1234,(A3)	36B81234	ERROR: Invalid size code
+MOVE.S $1234,$10(A6)	3D7812340010	ERROR: Invalid size code
+MOVE.S $1234,$1234	31F812341234	ERROR: Invalid size code
+MOVE.S $1234,FW	33F8123400001F00	ERROR: Invalid size code
+MOVE.S $1234,#1		ERROR: Invalid addressing mode
+MOVE.S $1234,#$1234		ERROR: Invalid addressing mode
+MOVE.S $1234,CCR	44F81234	ERROR: Invalid size code
+MOVE.S $1234,SR	46F81234	ERROR: Invalid size code
+MOVE.S FW,D1	323900001F00	ERROR: Invalid size code
+MOVE.S FW,A2	347900001F00	ERROR: Invalid size code
+MOVE.S FW,(A3)	36B900001F00	ERROR: Invalid size code
+MOVE.S FW,$10(A6)	3D7900001F000010	ERROR: Invalid size code
+MOVE.S FW,$1234	31F900001F001234	ERROR: Invalid size code
+MOVE.S FW,FW	33F900001F0000001F00	ERROR: Invalid size code
+MOVE.S FW,#1		ERROR: Invalid addressing mode
+MOVE.S FW,#$1234		ERROR: Invalid addressing mode
+MOVE.S FW,CCR	44F900001F00	ERROR: Invalid size code
+MOVE.S FW,SR	46F900001F00	ERROR: Invalid size code
+MOVE.S #1,D1	323C	ERROR: Invalid size code
+MOVE.S #1,A2	347C	ERROR: Invalid size code
+MOVE.S #1,(A3)	36BC	ERROR: Invalid size code
+MOVE.S #1,$10(A6)	3D7C0010	ERROR: Invalid size code
+MOVE.S #1,$1234	31FC1234	ERROR: Invalid size code
+MOVE.S #1,FW	33FC00001F00	ERROR: Invalid size code
+MOVE.S #1,#1		ERROR: Invalid addressing mode
+MOVE.S #1,#$1234		ERROR: Invalid addressing mode
+MOVE.S #1,CCR	44FC	ERROR: Invalid size code
+MOVE.S #1,SR	46FC	ERROR: Invalid size code
+MOVE.S #$1234,D1	323C	ERROR: Invalid size code
+MOVE.S #$1234,A2	347C	ERROR: Invalid size code
+MOVE.S #$1234,(A3)	36BC	ERROR: Invalid size code
+MOVE.S #$1234,$10(A6)	3D7C0010	ERROR: Invalid size code
+MOVE.S #$1234,$1234	31FC1234	ERROR: Invalid size code
+MOVE.S #$1234,FW	33FC00001F00	ERROR: Invalid size code
+MOVE.S #$1234,#1		ERROR: Invalid addressing mode
+MOVE.S #$1234,#$1234		ERROR: Invalid addressing mode
+MOVE.S #$1234,CCR	44FC	ERROR: Invalid size code
+MOVE.S #$1234,SR	46FC	ERROR: Invalid size code
+MOVE.S CCR,D1		ERROR: Invalid addressing mode
+MOVE.S CCR,A2		ERROR: Invalid addressing mode
+MOVE.S CCR,(A3)		ERROR: Invalid addressing mode
+MOVE.S CCR,$10(A6)		ERROR: Invalid addressing mode
+MOVE.S CCR,$1234		ERROR: Invalid addressing mode
+MOVE.S CCR,FW		ERROR: Invalid addressing mode
+MOVE.S CCR,#1		ERROR: Invalid addressing mode
+MOVE.S CCR,#$1234		ERROR: Invalid addressing mode
+MOVE.S CCR,CCR		ERROR: Invalid addressing mode
+MOVE.S CCR,SR		ERROR: Invalid addressing mode
+MOVE.S SR,D1	40C1	ERROR: Invalid size code
+MOVE.S SR,A2		ERROR: Invalid addressing mode
+MOVE.S SR,(A3)	40D3	ERROR: Invalid size code
+MOVE.S SR,$10(A6)	40EE0010	ERROR: Invalid size code
+MOVE.S SR,$1234	40F81234	ERROR: Invalid size code
+MOVE.S SR,FW	40F900001F00	ERROR: Invalid size code
+MOVE.S SR,#1		ERROR: Invalid addressing mode
+MOVE.S SR,#$1234		ERROR: Invalid addressing mode
+MOVE.S SR,CCR		ERROR: Invalid addressing mode
+MOVE.S SR,SR		ERROR: Invalid addressing mode
+MOVE.S SP,D1	320F	ERROR: Invalid size code
+MOVE.S SP,A2	344F	ERROR: Invalid size code
+MOVE.S D1,SP	3E41	ERROR: Invalid size code
+MOVE.S #$12,SP	3E7C	ERROR: Invalid size code
+MOVE.S (A4)+,D1	321C	ERROR: Invalid size code
+MOVE.S (A4)+,A2	345C	ERROR: Invalid size code
+MOVE.S D1,(A4)+	38C1	ERROR: Invalid size code
+MOVE.S #$12,(A4)+	38FC	ERROR: Invalid size code
+MOVE.S -(A5),D1	3225	ERROR: Invalid size code
+MOVE.S -(A5),A2	3465	ERROR: Invalid size code
+MOVE.S D1,-(A5)	3B01	ERROR: Invalid size code
+MOVE.S #$12,-(A5)	3B3C	ERROR: Invalid size code
+MOVE.S -2(A0),D1	3228FFFE	ERROR: Invalid size code
+MOVE.S -2(A0),A2	3468FFFE	ERROR: Invalid size code
+MOVE.S D1,-2(A0)	3141FFFE	ERROR: Invalid size code
+MOVE.S #$12,-2(A0)	317CFFFE	ERROR: Invalid size code
+MOVE.S $10(A6,D7.W),D1	32367010	ERROR: Invalid size code
+MOVE.S $10(A6,D7.W),A2	34767010	ERROR: Invalid size code
+MOVE.S D1,$10(A6,D7.W)	3D817010	ERROR: Invalid size code
+MOVE.S #$12,$10(A6,D7.W)	3DBC7010	ERROR: Invalid size code
+MOVE.S $12(A0,A1.L),D1	32309812	ERROR: Invalid size code
+MOVE.S $12(A0,A1.L),A2	34709812	ERROR: Invalid size code
+MOVE.S D1,$12(A0,A1.L)	31819812	ERROR: Invalid size code
+MOVE.S #$12,$12(A0,A1.L)	31BC9812	ERROR: Invalid size code
+MOVE.S (A2,D3),D1	32323000	ERROR: Invalid size code
+MOVE.S (A2,D3),A2	34723000	ERROR: Invalid size code
+MOVE.S D1,(A2,D3)	35813000	ERROR: Invalid size code
+MOVE.S #$12,(A2,D3)	35BC3000	ERROR: Invalid size code
+MOVE.S $12345678,D1	323912345678	ERROR: Invalid size code
+MOVE.S $12345678,A2	347912345678	ERROR: Invalid size code
+MOVE.S D1,$12345678	33C112345678	ERROR: Invalid size code
+MOVE.S #$12,$12345678	33FC12345678	ERROR: Invalid size code
+MOVE.S $1234.L,D1	323900001234	ERROR: Invalid size code
+MOVE.S $1234.L,A2	347900001234	ERROR: Invalid size code
+MOVE.S D1,$1234.L	33C100001234	ERROR: Invalid size code
+MOVE.S #$12,$1234.L	33FC00001234	ERROR: Invalid size code
+MOVE.S $1234.W,D1	32381234	ERROR: Invalid size code
+MOVE.S $1234.W,A2	34781234	ERROR: Invalid size code
+MOVE.S D1,$1234.W	31C11234	ERROR: Invalid size code
+MOVE.S #$12,$1234.W	31FC1234	ERROR: Invalid size code
+MOVE.S $8000,D1	323900008000	ERROR: Invalid size code
+MOVE.S $8000,A2	347900008000	ERROR: Invalid size code
+MOVE.S D1,$8000	33C100008000	ERROR: Invalid size code
+MOVE.S #$12,$8000	33FC00008000	ERROR: Invalid size code
+MOVE.S BK,D1	32381F00	ERROR: Invalid size code
+MOVE.S BK,A2	34781F00	ERROR: Invalid size code
+MOVE.S D1,BK	31C11F00	ERROR: Invalid size code
+MOVE.S #$12,BK	31FC1F00	ERROR: Invalid size code
+MOVE.S *+$10(PC),D1	323A000E	ERROR: Invalid size code
+MOVE.S *+$10(PC),A2	347A000E	ERROR: Invalid size code
+MOVE.S D1,*+$10(PC)		ERROR: Invalid addressing mode
+MOVE.S #$12,*+$10(PC)		ERROR: Invalid addressing mode
+MOVE.S *(PC,D0.W),D1	323B00FE	ERROR: Invalid size code
+MOVE.S *(PC,D0.W),A2	347B00FE	ERROR: Invalid size code
+MOVE.S D1,*(PC,D0.W)		ERROR: Invalid addressing mode
+MOVE.S #$12,*(PC,D0.W)		ERROR: Invalid addressing mode
+MOVE.S BK(PC),D1	323A0EFE	ERROR: Invalid size code
+MOVE.S BK(PC),A2	347A0EFE	ERROR: Invalid size code
+MOVE.S D1,BK(PC)		ERROR: Invalid addressing mode
+MOVE.S #$12,BK(PC)		ERROR: Invalid addressing mode
+MOVE.S #8,D1	323C	ERROR: Invalid size code
+MOVE.S #8,A2	347C	ERROR: Invalid size code
+MOVE.S D1,#8		ERROR: Invalid addressing mode
+MOVE.S #$12,#8		ERROR: Invalid addressing mode
+MOVE.S #9,D1	323C	ERROR: Invalid size code
+MOVE.S #9,A2	347C	ERROR: Invalid size code
+MOVE.S D1,#9		ERROR: Invalid addressing mode
+MOVE.S #$12,#9		ERROR: Invalid addressing mode
+MOVE.S #0,D1	323C	ERROR: Invalid size code
+MOVE.S #0,A2	347C	ERROR: Invalid size code
+MOVE.S D1,#0		ERROR: Invalid addressing mode
+MOVE.S #$12,#0		ERROR: Invalid addressing mode
+MOVE.S #-1,D1	323C	ERROR: Invalid size code
+MOVE.S #-1,A2	347C	ERROR: Invalid size code
+MOVE.S D1,#-1		ERROR: Invalid addressing mode
+MOVE.S #$12,#-1		ERROR: Invalid addressing mode
+MOVE.S #$80,D1	323C	ERROR: Invalid size code
+MOVE.S #$80,A2	347C	ERROR: Invalid size code
+MOVE.S D1,#$80		ERROR: Invalid addressing mode
+MOVE.S #$12,#$80		ERROR: Invalid addressing mode
+MOVE.S #$12345678,D1	323C	ERROR: Invalid size code
+MOVE.S #$12345678,A2	347C	ERROR: Invalid size code
+MOVE.S D1,#$12345678		ERROR: Invalid addressing mode
+MOVE.S #$12,#$12345678		ERROR: Invalid addressing mode
+MOVE.S #$12345678.L,D1	323C	ERROR: Invalid size code
+MOVE.S #$12345678.L,A2	347C	ERROR: Invalid size code
+MOVE.S D1,#$12345678.L		ERROR: Invalid addressing mode
+MOVE.S #$12,#$12345678.L		ERROR: Invalid addressing mode
+MOVE.S #BK,D1	323C	ERROR: Invalid size code
+MOVE.S #BK,A2	347C	ERROR: Invalid size code
+MOVE.S D1,#BK		ERROR: Invalid addressing mode
+MOVE.S #$12,#BK		ERROR: Invalid addressing mode
+MOVE.S #FW,D1	323C	ERROR: Invalid size code
+MOVE.S #FW,A2	347C	ERROR: Invalid size code
+MOVE.S D1,#FW		ERROR: Invalid addressing mode
+MOVE.S #$12,#FW		ERROR: Invalid addressing mode
+MOVE.S #UNDEF,D1	323C	ERROR: Undefined symbol
+MOVE.S #UNDEF,A2	347C	ERROR: Undefined symbol
+MOVE.S D1,#UNDEF		ERROR: Invalid addressing mode
+MOVE.S #$12,#UNDEF		ERROR: Invalid addressing mode
+MOVE.S UNDEF,D1	32390000561F	ERROR: Undefined symbol
+MOVE.S UNDEF,A2	34790000561F	ERROR: Undefined symbol
+MOVE.S D1,UNDEF	33C100001F00	ERROR: Undefined symbol
+MOVE.S #$12,UNDEF	33FC00001F00	ERROR: Undefined symbol
+MOVE.S USP,D1		ERROR: Invalid addressing mode
+MOVE.S USP,A2	4E6A	ERROR: Invalid size code
+MOVE.S D1,USP		ERROR: Invalid addressing mode
+MOVE.S #$12,USP		ERROR: Invalid addressing mode
+MOVE.S D1,D2,D3		ERROR: Invalid syntax
+MOVE.X D1,D2	3401	ERROR: Invalid size code
+MOVE.X #1		ERROR: Comma expected

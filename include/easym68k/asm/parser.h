@@ -60,13 +60,15 @@ inline bool HasMode(AddressMode modes, AddressMode test) {
 // Parsed operand descriptor
 struct Operand {
   AddressMode mode;
-  int32_t data;          // Immediate value, displacement, or absolute address
-  int32_t field;         // Bitfield instruction parameters
-  int reg;               // Principal register (0-7)
-  int index_reg;         // Index register (0-7 = D0-D7, 8-15 = A0-A7)
-  SizeSpec index_size;   // Size of index register
-  SizeSpec forced_size;  // Forced size for immediate/absolute
-  bool is_back_ref;      // True if value is known at this point
+  int32_t data;            // Immediate value, displacement, or absolute address
+  int32_t field;           // Bitfield instruction parameters
+  int reg;                 // Principal register (0-7)
+  int index_reg;           // Index register (0-7 = D0-D7, 8-15 = A0-A7)
+  SizeSpec index_size;     // Size of index register
+  SizeSpec forced_size;    // Forced size for immediate/absolute
+  bool is_back_ref;        // True if value is known at this point
+  bool has_field = false;  // Followed by a bit field {offset:width}
+  int field_status = 0;    // Original status of the {offset:width} parse
   std::string symbol_name;
 
   Operand()
@@ -90,6 +92,9 @@ struct ParsedLine {
   int line_number;
   bool has_error;
   std::string error_message;
+  int error_status = 0;  // Original status of the parse error (0: syntax)
+  int status = 0;        // Non-fatal original status of the operands (UNDEFINED)
+  int size_status = 0;   // INV_SIZE_CODE for an invalid size suffix
 
   ParsedLine() : size(SizeSpec::kNone), line_number(0), has_error(false) {}
 };
@@ -125,6 +130,8 @@ class Parser {
   int pass_;
   bool has_error_;
   std::string error_message_;
+  int error_status_ = 0;  // original status of the parse error, if known
+  int status_ = 0;        // non-fatal status of the current line (NEWERROR)
 
   std::vector<Token> tokens_;
   std::function<void(const ParsedLine&)> label_hook_;
@@ -160,6 +167,11 @@ class Parser {
   void ParseMemoryOperands(ParsedLine& line);
 
   bool EvaluateExpression(int32_t& value, bool& is_back_ref);
+
+  // Bit field {offset:width} support (ASSEMBLE.CPP fieldParse()).
+  static std::string ExtractBitFields(const std::string& line,
+                                      std::vector<std::pair<size_t, std::string>>* fields);
+  int ParseBitField(const std::string& text, int32_t* field);
 
   void Error(const std::string& message);
   static std::string ToUpper(const std::string& s);

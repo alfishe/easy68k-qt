@@ -1,0 +1,405 @@
+SVS		ERROR: Invalid syntax
+SVS D1	59C1	-
+SVS A2		ERROR: Invalid addressing mode
+SVS SP		ERROR: Invalid addressing mode
+SVS (A3)	59D3	-
+SVS (A4)+	59DC	-
+SVS -(A5)	59E5	-
+SVS $10(A6)	59EE0010	-
+SVS -2(A0)	59E8FFFE	-
+SVS $10(A6,D7.W)	59F67010	-
+SVS $12(A0,A1.L)	59F09812	-
+SVS (A2,D3)	59F23000	-
+SVS $1234	59F81234	-
+SVS $12345678	59F912345678	-
+SVS $1234.L	59F900001234	-
+SVS $1234.W	59F81234	WARNING: Forcing SHORT addressing disables range checking of extension word
+SVS $8000	59F900008000	-
+SVS BK	59F81F00	-
+SVS FW	59F900001F00	-
+SVS *+$10(PC)		ERROR: Invalid addressing mode
+SVS *(PC,D0.W)		ERROR: Invalid addressing mode
+SVS BK(PC)		ERROR: Invalid addressing mode
+SVS #1		ERROR: Invalid addressing mode
+SVS #8		ERROR: Invalid addressing mode
+SVS #9		ERROR: Invalid addressing mode
+SVS #0		ERROR: Invalid addressing mode
+SVS #-1		ERROR: Invalid addressing mode
+SVS #$80		ERROR: Invalid addressing mode
+SVS #$1234		ERROR: Invalid addressing mode
+SVS #$12345678		ERROR: Invalid addressing mode
+SVS #$12345678.L		ERROR: Invalid addressing mode
+SVS #BK		ERROR: Invalid addressing mode
+SVS #FW		ERROR: Invalid addressing mode
+SVS #UNDEF		ERROR: Invalid addressing mode
+SVS UNDEF	59F90000558F	ERROR: Undefined symbol
+SVS SR		ERROR: Invalid addressing mode
+SVS CCR		ERROR: Invalid addressing mode
+SVS USP		ERROR: Invalid addressing mode
+SVS D1,D1		ERROR: Invalid syntax
+SVS D1,A2		ERROR: Invalid syntax
+SVS D1,(A3)		ERROR: Invalid syntax
+SVS D1,$10(A6)		ERROR: Invalid syntax
+SVS D1,$1234		ERROR: Invalid syntax
+SVS D1,FW		ERROR: Invalid syntax
+SVS D1,#1		ERROR: Invalid syntax
+SVS D1,#$1234		ERROR: Invalid syntax
+SVS D1,CCR		ERROR: Invalid syntax
+SVS D1,SR		ERROR: Invalid syntax
+SVS A2,D1		ERROR: Invalid addressing mode
+SVS A2,A2		ERROR: Invalid addressing mode
+SVS A2,(A3)		ERROR: Invalid addressing mode
+SVS A2,$10(A6)		ERROR: Invalid addressing mode
+SVS A2,$1234		ERROR: Invalid addressing mode
+SVS A2,FW		ERROR: Invalid addressing mode
+SVS A2,#1		ERROR: Invalid addressing mode
+SVS A2,#$1234		ERROR: Invalid addressing mode
+SVS A2,CCR		ERROR: Invalid addressing mode
+SVS A2,SR		ERROR: Invalid addressing mode
+SVS (A3),D1		ERROR: Invalid syntax
+SVS (A3),A2		ERROR: Invalid syntax
+SVS (A3),(A3)		ERROR: Invalid syntax
+SVS (A3),$10(A6)		ERROR: Invalid syntax
+SVS (A3),$1234		ERROR: Invalid syntax
+SVS (A3),FW		ERROR: Invalid syntax
+SVS (A3),#1		ERROR: Invalid syntax
+SVS (A3),#$1234		ERROR: Invalid syntax
+SVS (A3),CCR		ERROR: Invalid syntax
+SVS (A3),SR		ERROR: Invalid syntax
+SVS $10(A6),D1		ERROR: Invalid syntax
+SVS $10(A6),A2		ERROR: Invalid syntax
+SVS $10(A6),(A3)		ERROR: Invalid syntax
+SVS $10(A6),$10(A6)		ERROR: Invalid syntax
+SVS $10(A6),$1234		ERROR: Invalid syntax
+SVS $10(A6),FW		ERROR: Invalid syntax
+SVS $10(A6),#1		ERROR: Invalid syntax
+SVS $10(A6),#$1234		ERROR: Invalid syntax
+SVS $10(A6),CCR		ERROR: Invalid syntax
+SVS $10(A6),SR		ERROR: Invalid syntax
+SVS $1234,D1		ERROR: Invalid syntax
+SVS $1234,A2		ERROR: Invalid syntax
+SVS $1234,(A3)		ERROR: Invalid syntax
+SVS $1234,$10(A6)		ERROR: Invalid syntax
+SVS $1234,$1234		ERROR: Invalid syntax
+SVS $1234,FW		ERROR: Invalid syntax
+SVS $1234,#1		ERROR: Invalid syntax
+SVS $1234,#$1234		ERROR: Invalid syntax
+SVS $1234,CCR		ERROR: Invalid syntax
+SVS $1234,SR		ERROR: Invalid syntax
+SVS FW,D1		ERROR: Invalid syntax
+SVS FW,A2		ERROR: Invalid syntax
+SVS FW,(A3)		ERROR: Invalid syntax
+SVS FW,$10(A6)		ERROR: Invalid syntax
+SVS FW,$1234		ERROR: Invalid syntax
+SVS FW,FW		ERROR: Invalid syntax
+SVS FW,#1		ERROR: Invalid syntax
+SVS FW,#$1234		ERROR: Invalid syntax
+SVS FW,CCR		ERROR: Invalid syntax
+SVS FW,SR		ERROR: Invalid syntax
+SVS #1,D1		ERROR: Invalid addressing mode
+SVS #1,A2		ERROR: Invalid addressing mode
+SVS #1,(A3)		ERROR: Invalid addressing mode
+SVS #1,$10(A6)		ERROR: Invalid addressing mode
+SVS #1,$1234		ERROR: Invalid addressing mode
+SVS #1,FW		ERROR: Invalid addressing mode
+SVS #1,#1		ERROR: Invalid addressing mode
+SVS #1,#$1234		ERROR: Invalid addressing mode
+SVS #1,CCR		ERROR: Invalid addressing mode
+SVS #1,SR		ERROR: Invalid addressing mode
+SVS #$1234,D1		ERROR: Invalid addressing mode
+SVS #$1234,A2		ERROR: Invalid addressing mode
+SVS #$1234,(A3)		ERROR: Invalid addressing mode
+SVS #$1234,$10(A6)		ERROR: Invalid addressing mode
+SVS #$1234,$1234		ERROR: Invalid addressing mode
+SVS #$1234,FW		ERROR: Invalid addressing mode
+SVS #$1234,#1		ERROR: Invalid addressing mode
+SVS #$1234,#$1234		ERROR: Invalid addressing mode
+SVS #$1234,CCR		ERROR: Invalid addressing mode
+SVS #$1234,SR		ERROR: Invalid addressing mode
+SVS CCR,D1		ERROR: Invalid addressing mode
+SVS CCR,A2		ERROR: Invalid addressing mode
+SVS CCR,(A3)		ERROR: Invalid addressing mode
+SVS CCR,$10(A6)		ERROR: Invalid addressing mode
+SVS CCR,$1234		ERROR: Invalid addressing mode
+SVS CCR,FW		ERROR: Invalid addressing mode
+SVS CCR,#1		ERROR: Invalid addressing mode
+SVS CCR,#$1234		ERROR: Invalid addressing mode
+SVS CCR,CCR		ERROR: Invalid addressing mode
+SVS CCR,SR		ERROR: Invalid addressing mode
+SVS SR,D1		ERROR: Invalid addressing mode
+SVS SR,A2		ERROR: Invalid addressing mode
+SVS SR,(A3)		ERROR: Invalid addressing mode
+SVS SR,$10(A6)		ERROR: Invalid addressing mode
+SVS SR,$1234		ERROR: Invalid addressing mode
+SVS SR,FW		ERROR: Invalid addressing mode
+SVS SR,#1		ERROR: Invalid addressing mode
+SVS SR,#$1234		ERROR: Invalid addressing mode
+SVS SR,CCR		ERROR: Invalid addressing mode
+SVS SR,SR		ERROR: Invalid addressing mode
+SVS SP,D1		ERROR: Invalid addressing mode
+SVS SP,A2		ERROR: Invalid addressing mode
+SVS D1,SP		ERROR: Invalid syntax
+SVS #$12,SP		ERROR: Invalid addressing mode
+SVS (A4)+,D1		ERROR: Invalid syntax
+SVS (A4)+,A2		ERROR: Invalid syntax
+SVS D1,(A4)+		ERROR: Invalid syntax
+SVS #$12,(A4)+		ERROR: Invalid addressing mode
+SVS -(A5),D1		ERROR: Invalid syntax
+SVS -(A5),A2		ERROR: Invalid syntax
+SVS D1,-(A5)		ERROR: Invalid syntax
+SVS #$12,-(A5)		ERROR: Invalid addressing mode
+SVS -2(A0),D1		ERROR: Invalid syntax
+SVS -2(A0),A2		ERROR: Invalid syntax
+SVS D1,-2(A0)		ERROR: Invalid syntax
+SVS #$12,-2(A0)		ERROR: Invalid addressing mode
+SVS $10(A6,D7.W),D1		ERROR: Invalid syntax
+SVS $10(A6,D7.W),A2		ERROR: Invalid syntax
+SVS D1,$10(A6,D7.W)		ERROR: Invalid syntax
+SVS #$12,$10(A6,D7.W)		ERROR: Invalid addressing mode
+SVS $12(A0,A1.L),D1		ERROR: Invalid syntax
+SVS $12(A0,A1.L),A2		ERROR: Invalid syntax
+SVS D1,$12(A0,A1.L)		ERROR: Invalid syntax
+SVS #$12,$12(A0,A1.L)		ERROR: Invalid addressing mode
+SVS (A2,D3),D1		ERROR: Invalid syntax
+SVS (A2,D3),A2		ERROR: Invalid syntax
+SVS D1,(A2,D3)		ERROR: Invalid syntax
+SVS #$12,(A2,D3)		ERROR: Invalid addressing mode
+SVS $12345678,D1		ERROR: Invalid syntax
+SVS $12345678,A2		ERROR: Invalid syntax
+SVS D1,$12345678		ERROR: Invalid syntax
+SVS #$12,$12345678		ERROR: Invalid addressing mode
+SVS $1234.L,D1		ERROR: Invalid syntax
+SVS $1234.L,A2		ERROR: Invalid syntax
+SVS D1,$1234.L		ERROR: Invalid syntax
+SVS #$12,$1234.L		ERROR: Invalid addressing mode
+SVS $1234.W,D1		ERROR: Invalid syntax
+SVS $1234.W,A2		ERROR: Invalid syntax
+SVS D1,$1234.W		ERROR: Invalid syntax
+SVS #$12,$1234.W		ERROR: Invalid addressing mode
+SVS $8000,D1		ERROR: Invalid syntax
+SVS $8000,A2		ERROR: Invalid syntax
+SVS D1,$8000		ERROR: Invalid syntax
+SVS #$12,$8000		ERROR: Invalid addressing mode
+SVS BK,D1		ERROR: Invalid syntax
+SVS BK,A2		ERROR: Invalid syntax
+SVS D1,BK		ERROR: Invalid syntax
+SVS #$12,BK		ERROR: Invalid addressing mode
+SVS *+$10(PC),D1		ERROR: Invalid addressing mode
+SVS *+$10(PC),A2		ERROR: Invalid addressing mode
+SVS D1,*+$10(PC)		ERROR: Invalid syntax
+SVS #$12,*+$10(PC)		ERROR: Invalid addressing mode
+SVS *(PC,D0.W),D1		ERROR: Invalid addressing mode
+SVS *(PC,D0.W),A2		ERROR: Invalid addressing mode
+SVS D1,*(PC,D0.W)		ERROR: Invalid syntax
+SVS #$12,*(PC,D0.W)		ERROR: Invalid addressing mode
+SVS BK(PC),D1		ERROR: Invalid addressing mode
+SVS BK(PC),A2		ERROR: Invalid addressing mode
+SVS D1,BK(PC)		ERROR: Invalid syntax
+SVS #$12,BK(PC)		ERROR: Invalid addressing mode
+SVS #8,D1		ERROR: Invalid addressing mode
+SVS #8,A2		ERROR: Invalid addressing mode
+SVS D1,#8		ERROR: Invalid syntax
+SVS #$12,#8		ERROR: Invalid addressing mode
+SVS #9,D1		ERROR: Invalid addressing mode
+SVS #9,A2		ERROR: Invalid addressing mode
+SVS D1,#9		ERROR: Invalid syntax
+SVS #$12,#9		ERROR: Invalid addressing mode
+SVS #0,D1		ERROR: Invalid addressing mode
+SVS #0,A2		ERROR: Invalid addressing mode
+SVS D1,#0		ERROR: Invalid syntax
+SVS #$12,#0		ERROR: Invalid addressing mode
+SVS #-1,D1		ERROR: Invalid addressing mode
+SVS #-1,A2		ERROR: Invalid addressing mode
+SVS D1,#-1		ERROR: Invalid syntax
+SVS #$12,#-1		ERROR: Invalid addressing mode
+SVS #$80,D1		ERROR: Invalid addressing mode
+SVS #$80,A2		ERROR: Invalid addressing mode
+SVS D1,#$80		ERROR: Invalid syntax
+SVS #$12,#$80		ERROR: Invalid addressing mode
+SVS #$12345678,D1		ERROR: Invalid addressing mode
+SVS #$12345678,A2		ERROR: Invalid addressing mode
+SVS D1,#$12345678		ERROR: Invalid syntax
+SVS #$12,#$12345678		ERROR: Invalid addressing mode
+SVS #$12345678.L,D1		ERROR: Invalid addressing mode
+SVS #$12345678.L,A2		ERROR: Invalid addressing mode
+SVS D1,#$12345678.L		ERROR: Invalid syntax
+SVS #$12,#$12345678.L		ERROR: Invalid addressing mode
+SVS #BK,D1		ERROR: Invalid addressing mode
+SVS #BK,A2		ERROR: Invalid addressing mode
+SVS D1,#BK		ERROR: Invalid syntax
+SVS #$12,#BK		ERROR: Invalid addressing mode
+SVS #FW,D1		ERROR: Invalid addressing mode
+SVS #FW,A2		ERROR: Invalid addressing mode
+SVS D1,#FW		ERROR: Invalid syntax
+SVS #$12,#FW		ERROR: Invalid addressing mode
+SVS #UNDEF,D1		ERROR: Invalid addressing mode
+SVS #UNDEF,A2		ERROR: Invalid addressing mode
+SVS D1,#UNDEF		ERROR: Invalid syntax
+SVS #$12,#UNDEF		ERROR: Invalid addressing mode
+SVS UNDEF,D1		ERROR: Invalid syntax
+SVS UNDEF,A2		ERROR: Invalid syntax
+SVS D1,UNDEF		ERROR: Invalid syntax
+SVS #$12,UNDEF		ERROR: Invalid addressing mode
+SVS USP,D1		ERROR: Invalid addressing mode
+SVS USP,A2		ERROR: Invalid addressing mode
+SVS D1,USP		ERROR: Invalid syntax
+SVS #$12,USP		ERROR: Invalid addressing mode
+SVS D1,D2,D3		ERROR: Invalid syntax
+SVS.B		ERROR: Invalid syntax
+SVS.B D1	59C1	-
+SVS.B A2		ERROR: Invalid addressing mode
+SVS.B SP		ERROR: Invalid addressing mode
+SVS.B (A3)	59D3	-
+SVS.B (A4)+	59DC	-
+SVS.B -(A5)	59E5	-
+SVS.B $10(A6)	59EE0010	-
+SVS.B -2(A0)	59E8FFFE	-
+SVS.B $10(A6,D7.W)	59F67010	-
+SVS.B $12(A0,A1.L)	59F09812	-
+SVS.B (A2,D3)	59F23000	-
+SVS.B $1234	59F81234	-
+SVS.B $12345678	59F912345678	-
+SVS.B $1234.L	59F900001234	-
+SVS.B $1234.W	59F81234	WARNING: Forcing SHORT addressing disables range checking of extension word
+SVS.B $8000	59F900008000	-
+SVS.B BK	59F81F00	-
+SVS.B FW	59F900001F00	-
+SVS.B *+$10(PC)		ERROR: Invalid addressing mode
+SVS.B *(PC,D0.W)		ERROR: Invalid addressing mode
+SVS.B BK(PC)		ERROR: Invalid addressing mode
+SVS.B #1		ERROR: Invalid addressing mode
+SVS.B #8		ERROR: Invalid addressing mode
+SVS.B #9		ERROR: Invalid addressing mode
+SVS.B #0		ERROR: Invalid addressing mode
+SVS.B #-1		ERROR: Invalid addressing mode
+SVS.B #$80		ERROR: Invalid addressing mode
+SVS.B #$1234		ERROR: Invalid addressing mode
+SVS.B #$12345678		ERROR: Invalid addressing mode
+SVS.B #$12345678.L		ERROR: Invalid addressing mode
+SVS.B #BK		ERROR: Invalid addressing mode
+SVS.B #FW		ERROR: Invalid addressing mode
+SVS.B #UNDEF		ERROR: Invalid addressing mode
+SVS.B UNDEF	59F90000558F	ERROR: Undefined symbol
+SVS.B SR		ERROR: Invalid addressing mode
+SVS.B CCR		ERROR: Invalid addressing mode
+SVS.B USP		ERROR: Invalid addressing mode
+SVS.B D1,D2,D3		ERROR: Invalid syntax
+SVS.W		ERROR: Invalid syntax
+SVS.W D1	59C1	ERROR: Invalid size code
+SVS.W A2		ERROR: Invalid addressing mode
+SVS.W SP		ERROR: Invalid addressing mode
+SVS.W (A3)	59D3	ERROR: Invalid size code
+SVS.W (A4)+	59DC	ERROR: Invalid size code
+SVS.W -(A5)	59E5	ERROR: Invalid size code
+SVS.W $10(A6)	59EE0010	ERROR: Invalid size code
+SVS.W -2(A0)	59E8FFFE	ERROR: Invalid size code
+SVS.W $10(A6,D7.W)	59F67010	ERROR: Invalid size code
+SVS.W $12(A0,A1.L)	59F09812	ERROR: Invalid size code
+SVS.W (A2,D3)	59F23000	ERROR: Invalid size code
+SVS.W $1234	59F81234	ERROR: Invalid size code
+SVS.W $12345678	59F912345678	ERROR: Invalid size code
+SVS.W $1234.L	59F900001234	ERROR: Invalid size code
+SVS.W $1234.W	59F81234	ERROR: Invalid size code
+SVS.W $8000	59F900008000	ERROR: Invalid size code
+SVS.W BK	59F81F00	ERROR: Invalid size code
+SVS.W FW	59F900001F00	ERROR: Invalid size code
+SVS.W *+$10(PC)		ERROR: Invalid addressing mode
+SVS.W *(PC,D0.W)		ERROR: Invalid addressing mode
+SVS.W BK(PC)		ERROR: Invalid addressing mode
+SVS.W #1		ERROR: Invalid addressing mode
+SVS.W #8		ERROR: Invalid addressing mode
+SVS.W #9		ERROR: Invalid addressing mode
+SVS.W #0		ERROR: Invalid addressing mode
+SVS.W #-1		ERROR: Invalid addressing mode
+SVS.W #$80		ERROR: Invalid addressing mode
+SVS.W #$1234		ERROR: Invalid addressing mode
+SVS.W #$12345678		ERROR: Invalid addressing mode
+SVS.W #$12345678.L		ERROR: Invalid addressing mode
+SVS.W #BK		ERROR: Invalid addressing mode
+SVS.W #FW		ERROR: Invalid addressing mode
+SVS.W #UNDEF		ERROR: Invalid addressing mode
+SVS.W UNDEF	59F90000558F	ERROR: Undefined symbol
+SVS.W SR		ERROR: Invalid addressing mode
+SVS.W CCR		ERROR: Invalid addressing mode
+SVS.W USP		ERROR: Invalid addressing mode
+SVS.W D1,D2,D3		ERROR: Invalid syntax
+SVS.L		ERROR: Invalid syntax
+SVS.L D1	59C1	ERROR: Invalid size code
+SVS.L A2		ERROR: Invalid addressing mode
+SVS.L SP		ERROR: Invalid addressing mode
+SVS.L (A3)	59D3	ERROR: Invalid size code
+SVS.L (A4)+	59DC	ERROR: Invalid size code
+SVS.L -(A5)	59E5	ERROR: Invalid size code
+SVS.L $10(A6)	59EE0010	ERROR: Invalid size code
+SVS.L -2(A0)	59E8FFFE	ERROR: Invalid size code
+SVS.L $10(A6,D7.W)	59F67010	ERROR: Invalid size code
+SVS.L $12(A0,A1.L)	59F09812	ERROR: Invalid size code
+SVS.L (A2,D3)	59F23000	ERROR: Invalid size code
+SVS.L $1234	59F81234	ERROR: Invalid size code
+SVS.L $12345678	59F912345678	ERROR: Invalid size code
+SVS.L $1234.L	59F900001234	ERROR: Invalid size code
+SVS.L $1234.W	59F81234	ERROR: Invalid size code
+SVS.L $8000	59F900008000	ERROR: Invalid size code
+SVS.L BK	59F81F00	ERROR: Invalid size code
+SVS.L FW	59F900001F00	ERROR: Invalid size code
+SVS.L *+$10(PC)		ERROR: Invalid addressing mode
+SVS.L *(PC,D0.W)		ERROR: Invalid addressing mode
+SVS.L BK(PC)		ERROR: Invalid addressing mode
+SVS.L #1		ERROR: Invalid addressing mode
+SVS.L #8		ERROR: Invalid addressing mode
+SVS.L #9		ERROR: Invalid addressing mode
+SVS.L #0		ERROR: Invalid addressing mode
+SVS.L #-1		ERROR: Invalid addressing mode
+SVS.L #$80		ERROR: Invalid addressing mode
+SVS.L #$1234		ERROR: Invalid addressing mode
+SVS.L #$12345678		ERROR: Invalid addressing mode
+SVS.L #$12345678.L		ERROR: Invalid addressing mode
+SVS.L #BK		ERROR: Invalid addressing mode
+SVS.L #FW		ERROR: Invalid addressing mode
+SVS.L #UNDEF		ERROR: Invalid addressing mode
+SVS.L UNDEF	59F90000558F	ERROR: Undefined symbol
+SVS.L SR		ERROR: Invalid addressing mode
+SVS.L CCR		ERROR: Invalid addressing mode
+SVS.L USP		ERROR: Invalid addressing mode
+SVS.L D1,D2,D3		ERROR: Invalid syntax
+SVS.S		ERROR: Invalid syntax
+SVS.S D1	59C1	ERROR: Invalid size code
+SVS.S A2		ERROR: Invalid addressing mode
+SVS.S SP		ERROR: Invalid addressing mode
+SVS.S (A3)	59D3	ERROR: Invalid size code
+SVS.S (A4)+	59DC	ERROR: Invalid size code
+SVS.S -(A5)	59E5	ERROR: Invalid size code
+SVS.S $10(A6)	59EE0010	ERROR: Invalid size code
+SVS.S -2(A0)	59E8FFFE	ERROR: Invalid size code
+SVS.S $10(A6,D7.W)	59F67010	ERROR: Invalid size code
+SVS.S $12(A0,A1.L)	59F09812	ERROR: Invalid size code
+SVS.S (A2,D3)	59F23000	ERROR: Invalid size code
+SVS.S $1234	59F81234	ERROR: Invalid size code
+SVS.S $12345678	59F912345678	ERROR: Invalid size code
+SVS.S $1234.L	59F900001234	ERROR: Invalid size code
+SVS.S $1234.W	59F81234	ERROR: Invalid size code
+SVS.S $8000	59F900008000	ERROR: Invalid size code
+SVS.S BK	59F81F00	ERROR: Invalid size code
+SVS.S FW	59F900001F00	ERROR: Invalid size code
+SVS.S *+$10(PC)		ERROR: Invalid addressing mode
+SVS.S *(PC,D0.W)		ERROR: Invalid addressing mode
+SVS.S BK(PC)		ERROR: Invalid addressing mode
+SVS.S #1		ERROR: Invalid addressing mode
+SVS.S #8		ERROR: Invalid addressing mode
+SVS.S #9		ERROR: Invalid addressing mode
+SVS.S #0		ERROR: Invalid addressing mode
+SVS.S #-1		ERROR: Invalid addressing mode
+SVS.S #$80		ERROR: Invalid addressing mode
+SVS.S #$1234		ERROR: Invalid addressing mode
+SVS.S #$12345678		ERROR: Invalid addressing mode
+SVS.S #$12345678.L		ERROR: Invalid addressing mode
+SVS.S #BK		ERROR: Invalid addressing mode
+SVS.S #FW		ERROR: Invalid addressing mode
+SVS.S #UNDEF		ERROR: Invalid addressing mode
+SVS.S UNDEF	59F90000558F	ERROR: Undefined symbol
+SVS.S SR		ERROR: Invalid addressing mode
+SVS.S CCR		ERROR: Invalid addressing mode
+SVS.S USP		ERROR: Invalid addressing mode
+SVS.S D1,D2,D3		ERROR: Invalid syntax
+SVS.X D1,D2		ERROR: Invalid syntax
+SVS.X #1		ERROR: Invalid addressing mode

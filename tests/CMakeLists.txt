@@ -30,8 +30,6 @@ add_executable(easym68k-asm-tests
   asm/symbol_table_test.cc
   asm/expression_test.cc
   asm/assembler_test.cc
-  asm/code_generator_test.cc
-  asm/instruction_table_test.cc
   asm/movem_test.cc
   asm/directives_test.cc
   asm/conditional_assembly_test.cc
@@ -41,6 +39,7 @@ add_executable(easym68k-asm-tests
   asm/listing_test.cc
   asm/srecord_test.cc
   asm/golden_assembly_test.cc
+  asm/instruction_matrix_test.cc
 )
 target_link_libraries(easym68k-asm-tests PRIVATE easym68k-asm GTest::gtest_main)
 add_test(NAME asm-tests COMMAND easym68k-asm-tests

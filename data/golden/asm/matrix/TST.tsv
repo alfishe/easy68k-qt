@@ -1,0 +1,405 @@
+TST		ERROR: Invalid syntax
+TST D1	4A41	-
+TST A2		ERROR: Invalid addressing mode
+TST SP		ERROR: Invalid addressing mode
+TST (A3)	4A53	-
+TST (A4)+	4A5C	-
+TST -(A5)	4A65	-
+TST $10(A6)	4A6E0010	-
+TST -2(A0)	4A68FFFE	-
+TST $10(A6,D7.W)	4A767010	-
+TST $12(A0,A1.L)	4A709812	-
+TST (A2,D3)	4A723000	-
+TST $1234	4A781234	-
+TST $12345678	4A7912345678	-
+TST $1234.L	4A7900001234	-
+TST $1234.W	4A781234	WARNING: Forcing SHORT addressing disables range checking of extension word
+TST $8000	4A7900008000	-
+TST BK	4A781F00	-
+TST FW	4A7900001F00	-
+TST *+$10(PC)		ERROR: Invalid addressing mode
+TST *(PC,D0.W)		ERROR: Invalid addressing mode
+TST BK(PC)		ERROR: Invalid addressing mode
+TST #1		ERROR: Invalid addressing mode
+TST #8		ERROR: Invalid addressing mode
+TST #9		ERROR: Invalid addressing mode
+TST #0		ERROR: Invalid addressing mode
+TST #-1		ERROR: Invalid addressing mode
+TST #$80		ERROR: Invalid addressing mode
+TST #$1234		ERROR: Invalid addressing mode
+TST #$12345678		ERROR: Invalid addressing mode
+TST #$12345678.L		ERROR: Invalid addressing mode
+TST #BK		ERROR: Invalid addressing mode
+TST #FW		ERROR: Invalid addressing mode
+TST #UNDEF		ERROR: Invalid addressing mode
+TST UNDEF	4A7900005560	ERROR: Undefined symbol
+TST SR		ERROR: Invalid addressing mode
+TST CCR		ERROR: Invalid addressing mode
+TST USP		ERROR: Invalid addressing mode
+TST D1,D1		ERROR: Invalid syntax
+TST D1,A2		ERROR: Invalid syntax
+TST D1,(A3)		ERROR: Invalid syntax
+TST D1,$10(A6)		ERROR: Invalid syntax
+TST D1,$1234		ERROR: Invalid syntax
+TST D1,FW		ERROR: Invalid syntax
+TST D1,#1		ERROR: Invalid syntax
+TST D1,#$1234		ERROR: Invalid syntax
+TST D1,CCR		ERROR: Invalid syntax
+TST D1,SR		ERROR: Invalid syntax
+TST A2,D1		ERROR: Invalid addressing mode
+TST A2,A2		ERROR: Invalid addressing mode
+TST A2,(A3)		ERROR: Invalid addressing mode
+TST A2,$10(A6)		ERROR: Invalid addressing mode
+TST A2,$1234		ERROR: Invalid addressing mode
+TST A2,FW		ERROR: Invalid addressing mode
+TST A2,#1		ERROR: Invalid addressing mode
+TST A2,#$1234		ERROR: Invalid addressing mode
+TST A2,CCR		ERROR: Invalid addressing mode
+TST A2,SR		ERROR: Invalid addressing mode
+TST (A3),D1		ERROR: Invalid syntax
+TST (A3),A2		ERROR: Invalid syntax
+TST (A3),(A3)		ERROR: Invalid syntax
+TST (A3),$10(A6)		ERROR: Invalid syntax
+TST (A3),$1234		ERROR: Invalid syntax
+TST (A3),FW		ERROR: Invalid syntax
+TST (A3),#1		ERROR: Invalid syntax
+TST (A3),#$1234		ERROR: Invalid syntax
+TST (A3),CCR		ERROR: Invalid syntax
+TST (A3),SR		ERROR: Invalid syntax
+TST $10(A6),D1		ERROR: Invalid syntax
+TST $10(A6),A2		ERROR: Invalid syntax
+TST $10(A6),(A3)		ERROR: Invalid syntax
+TST $10(A6),$10(A6)		ERROR: Invalid syntax
+TST $10(A6),$1234		ERROR: Invalid syntax
+TST $10(A6),FW		ERROR: Invalid syntax
+TST $10(A6),#1		ERROR: Invalid syntax
+TST $10(A6),#$1234		ERROR: Invalid syntax
+TST $10(A6),CCR		ERROR: Invalid syntax
+TST $10(A6),SR		ERROR: Invalid syntax
+TST $1234,D1		ERROR: Invalid syntax
+TST $1234,A2		ERROR: Invalid syntax
+TST $1234,(A3)		ERROR: Invalid syntax
+TST $1234,$10(A6)		ERROR: Invalid syntax
+TST $1234,$1234		ERROR: Invalid syntax
+TST $1234,FW		ERROR: Invalid syntax
+TST $1234,#1		ERROR: Invalid syntax
+TST $1234,#$1234		ERROR: Invalid syntax
+TST $1234,CCR		ERROR: Invalid syntax
+TST $1234,SR		ERROR: Invalid syntax
+TST FW,D1		ERROR: Invalid syntax
+TST FW,A2		ERROR: Invalid syntax
+TST FW,(A3)		ERROR: Invalid syntax
+TST FW,$10(A6)		ERROR: Invalid syntax
+TST FW,$1234		ERROR: Invalid syntax
+TST FW,FW		ERROR: Invalid syntax
+TST FW,#1		ERROR: Invalid syntax
+TST FW,#$1234		ERROR: Invalid syntax
+TST FW,CCR		ERROR: Invalid syntax
+TST FW,SR		ERROR: Invalid syntax
+TST #1,D1		ERROR: Invalid addressing mode
+TST #1,A2		ERROR: Invalid addressing mode
+TST #1,(A3)		ERROR: Invalid addressing mode
+TST #1,$10(A6)		ERROR: Invalid addressing mode
+TST #1,$1234		ERROR: Invalid addressing mode
+TST #1,FW		ERROR: Invalid addressing mode
+TST #1,#1		ERROR: Invalid addressing mode
+TST #1,#$1234		ERROR: Invalid addressing mode
+TST #1,CCR		ERROR: Invalid addressing mode
+TST #1,SR		ERROR: Invalid addressing mode
+TST #$1234,D1		ERROR: Invalid addressing mode
+TST #$1234,A2		ERROR: Invalid addressing mode
+TST #$1234,(A3)		ERROR: Invalid addressing mode
+TST #$1234,$10(A6)		ERROR: Invalid addressing mode
+TST #$1234,$1234		ERROR: Invalid addressing mode
+TST #$1234,FW		ERROR: Invalid addressing mode
+TST #$1234,#1		ERROR: Invalid addressing mode
+TST #$1234,#$1234		ERROR: Invalid addressing mode
+TST #$1234,CCR		ERROR: Invalid addressing mode
+TST #$1234,SR		ERROR: Invalid addressing mode
+TST CCR,D1		ERROR: Invalid addressing mode
+TST CCR,A2		ERROR: Invalid addressing mode
+TST CCR,(A3)		ERROR: Invalid addressing mode
+TST CCR,$10(A6)		ERROR: Invalid addressing mode
+TST CCR,$1234		ERROR: Invalid addressing mode
+TST CCR,FW		ERROR: Invalid addressing mode
+TST CCR,#1		ERROR: Invalid addressing mode
+TST CCR,#$1234		ERROR: Invalid addressing mode
+TST CCR,CCR		ERROR: Invalid addressing mode
+TST CCR,SR		ERROR: Invalid addressing mode
+TST SR,D1		ERROR: Invalid addressing mode
+TST SR,A2		ERROR: Invalid addressing mode
+TST SR,(A3)		ERROR: Invalid addressing mode
+TST SR,$10(A6)		ERROR: Invalid addressing mode
+TST SR,$1234		ERROR: Invalid addressing mode
+TST SR,FW		ERROR: Invalid addressing mode
+TST SR,#1		ERROR: Invalid addressing mode
+TST SR,#$1234		ERROR: Invalid addressing mode
+TST SR,CCR		ERROR: Invalid addressing mode
+TST SR,SR		ERROR: Invalid addressing mode
+TST SP,D1		ERROR: Invalid addressing mode
+TST SP,A2		ERROR: Invalid addressing mode
+TST D1,SP		ERROR: Invalid syntax
+TST #$12,SP		ERROR: Invalid addressing mode
+TST (A4)+,D1		ERROR: Invalid syntax
+TST (A4)+,A2		ERROR: Invalid syntax
+TST D1,(A4)+		ERROR: Invalid syntax
+TST #$12,(A4)+		ERROR: Invalid addressing mode
+TST -(A5),D1		ERROR: Invalid syntax
+TST -(A5),A2		ERROR: Invalid syntax
+TST D1,-(A5)		ERROR: Invalid syntax
+TST #$12,-(A5)		ERROR: Invalid addressing mode
+TST -2(A0),D1		ERROR: Invalid syntax
+TST -2(A0),A2		ERROR: Invalid syntax
+TST D1,-2(A0)		ERROR: Invalid syntax
+TST #$12,-2(A0)		ERROR: Invalid addressing mode
+TST $10(A6,D7.W),D1		ERROR: Invalid syntax
+TST $10(A6,D7.W),A2		ERROR: Invalid syntax
+TST D1,$10(A6,D7.W)		ERROR: Invalid syntax
+TST #$12,$10(A6,D7.W)		ERROR: Invalid addressing mode
+TST $12(A0,A1.L),D1		ERROR: Invalid syntax
+TST $12(A0,A1.L),A2		ERROR: Invalid syntax
+TST D1,$12(A0,A1.L)		ERROR: Invalid syntax
+TST #$12,$12(A0,A1.L)		ERROR: Invalid addressing mode
+TST (A2,D3),D1		ERROR: Invalid syntax
+TST (A2,D3),A2		ERROR: Invalid syntax
+TST D1,(A2,D3)		ERROR: Invalid syntax
+TST #$12,(A2,D3)		ERROR: Invalid addressing mode
+TST $12345678,D1		ERROR: Invalid syntax
+TST $12345678,A2		ERROR: Invalid syntax
+TST D1,$12345678		ERROR: Invalid syntax
+TST #$12,$12345678		ERROR: Invalid addressing mode
+TST $1234.L,D1		ERROR: Invalid syntax
+TST $1234.L,A2		ERROR: Invalid syntax
+TST D1,$1234.L		ERROR: Invalid syntax
+TST #$12,$1234.L		ERROR: Invalid addressing mode
+TST $1234.W,D1		ERROR: Invalid syntax
+TST $1234.W,A2		ERROR: Invalid syntax
+TST D1,$1234.W		ERROR: Invalid syntax
+TST #$12,$1234.W		ERROR: Invalid addressing mode
+TST $8000,D1		ERROR: Invalid syntax
+TST $8000,A2		ERROR: Invalid syntax
+TST D1,$8000		ERROR: Invalid syntax
+TST #$12,$8000		ERROR: Invalid addressing mode
+TST BK,D1		ERROR: Invalid syntax
+TST BK,A2		ERROR: Invalid syntax
+TST D1,BK		ERROR: Invalid syntax
+TST #$12,BK		ERROR: Invalid addressing mode
+TST *+$10(PC),D1		ERROR: Invalid addressing mode
+TST *+$10(PC),A2		ERROR: Invalid addressing mode
+TST D1,*+$10(PC)		ERROR: Invalid syntax
+TST #$12,*+$10(PC)		ERROR: Invalid addressing mode
+TST *(PC,D0.W),D1		ERROR: Invalid addressing mode
+TST *(PC,D0.W),A2		ERROR: Invalid addressing mode
+TST D1,*(PC,D0.W)		ERROR: Invalid syntax
+TST #$12,*(PC,D0.W)		ERROR: Invalid addressing mode
+TST BK(PC),D1		ERROR: Invalid addressing mode
+TST BK(PC),A2		ERROR: Invalid addressing mode
+TST D1,BK(PC)		ERROR: Invalid syntax
+TST #$12,BK(PC)		ERROR: Invalid addressing mode
+TST #8,D1		ERROR: Invalid addressing mode
+TST #8,A2		ERROR: Invalid addressing mode
+TST D1,#8		ERROR: Invalid syntax
+TST #$12,#8		ERROR: Invalid addressing mode
+TST #9,D1		ERROR: Invalid addressing mode
+TST #9,A2		ERROR: Invalid addressing mode
+TST D1,#9		ERROR: Invalid syntax
+TST #$12,#9		ERROR: Invalid addressing mode
+TST #0,D1		ERROR: Invalid addressing mode
+TST #0,A2		ERROR: Invalid addressing mode
+TST D1,#0		ERROR: Invalid syntax
+TST #$12,#0		ERROR: Invalid addressing mode
+TST #-1,D1		ERROR: Invalid addressing mode
+TST #-1,A2		ERROR: Invalid addressing mode
+TST D1,#-1		ERROR: Invalid syntax
+TST #$12,#-1		ERROR: Invalid addressing mode
+TST #$80,D1		ERROR: Invalid addressing mode
+TST #$80,A2		ERROR: Invalid addressing mode
+TST D1,#$80		ERROR: Invalid syntax
+TST #$12,#$80		ERROR: Invalid addressing mode
+TST #$12345678,D1		ERROR: Invalid addressing mode
+TST #$12345678,A2		ERROR: Invalid addressing mode
+TST D1,#$12345678		ERROR: Invalid syntax
+TST #$12,#$12345678		ERROR: Invalid addressing mode
+TST #$12345678.L,D1		ERROR: Invalid addressing mode
+TST #$12345678.L,A2		ERROR: Invalid addressing mode
+TST D1,#$12345678.L		ERROR: Invalid syntax
+TST #$12,#$12345678.L		ERROR: Invalid addressing mode
+TST #BK,D1		ERROR: Invalid addressing mode
+TST #BK,A2		ERROR: Invalid addressing mode
+TST D1,#BK		ERROR: Invalid syntax
+TST #$12,#BK		ERROR: Invalid addressing mode
+TST #FW,D1		ERROR: Invalid addressing mode
+TST #FW,A2		ERROR: Invalid addressing mode
+TST D1,#FW		ERROR: Invalid syntax
+TST #$12,#FW		ERROR: Invalid addressing mode
+TST #UNDEF,D1		ERROR: Invalid addressing mode
+TST #UNDEF,A2		ERROR: Invalid addressing mode
+TST D1,#UNDEF		ERROR: Invalid syntax
+TST #$12,#UNDEF		ERROR: Invalid addressing mode
+TST UNDEF,D1		ERROR: Invalid syntax
+TST UNDEF,A2		ERROR: Invalid syntax
+TST D1,UNDEF		ERROR: Invalid syntax
+TST #$12,UNDEF		ERROR: Invalid addressing mode
+TST USP,D1		ERROR: Invalid addressing mode
+TST USP,A2		ERROR: Invalid addressing mode
+TST D1,USP		ERROR: Invalid syntax
+TST #$12,USP		ERROR: Invalid addressing mode
+TST D1,D2,D3		ERROR: Invalid syntax
+TST.B		ERROR: Invalid syntax
+TST.B D1	4A01	-
+TST.B A2		ERROR: Invalid addressing mode
+TST.B SP		ERROR: Invalid addressing mode
+TST.B (A3)	4A13	-
+TST.B (A4)+	4A1C	-
+TST.B -(A5)	4A25	-
+TST.B $10(A6)	4A2E0010	-
+TST.B -2(A0)	4A28FFFE	-
+TST.B $10(A6,D7.W)	4A367010	-
+TST.B $12(A0,A1.L)	4A309812	-
+TST.B (A2,D3)	4A323000	-
+TST.B $1234	4A381234	-
+TST.B $12345678	4A3912345678	-
+TST.B $1234.L	4A3900001234	-
+TST.B $1234.W	4A381234	WARNING: Forcing SHORT addressing disables range checking of extension word
+TST.B $8000	4A3900008000	-
+TST.B BK	4A381F00	-
+TST.B FW	4A3900001F00	-
+TST.B *+$10(PC)		ERROR: Invalid addressing mode
+TST.B *(PC,D0.W)		ERROR: Invalid addressing mode
+TST.B BK(PC)		ERROR: Invalid addressing mode
+TST.B #1		ERROR: Invalid addressing mode
+TST.B #8		ERROR: Invalid addressing mode
+TST.B #9		ERROR: Invalid addressing mode
+TST.B #0		ERROR: Invalid addressing mode
+TST.B #-1		ERROR: Invalid addressing mode
+TST.B #$80		ERROR: Invalid addressing mode
+TST.B #$1234		ERROR: Invalid addressing mode
+TST.B #$12345678		ERROR: Invalid addressing mode
+TST.B #$12345678.L		ERROR: Invalid addressing mode
+TST.B #BK		ERROR: Invalid addressing mode
+TST.B #FW		ERROR: Invalid addressing mode
+TST.B #UNDEF		ERROR: Invalid addressing mode
+TST.B UNDEF	4A3900005560	ERROR: Undefined symbol
+TST.B SR		ERROR: Invalid addressing mode
+TST.B CCR		ERROR: Invalid addressing mode
+TST.B USP		ERROR: Invalid addressing mode
+TST.B D1,D2,D3		ERROR: Invalid syntax
+TST.W		ERROR: Invalid syntax
+TST.W D1	4A41	-
+TST.W A2		ERROR: Invalid addressing mode
+TST.W SP		ERROR: Invalid addressing mode
+TST.W (A3)	4A53	-
+TST.W (A4)+	4A5C	-
+TST.W -(A5)	4A65	-
+TST.W $10(A6)	4A6E0010	-
+TST.W -2(A0)	4A68FFFE	-
+TST.W $10(A6,D7.W)	4A767010	-
+TST.W $12(A0,A1.L)	4A709812	-
+TST.W (A2,D3)	4A723000	-
+TST.W $1234	4A781234	-
+TST.W $12345678	4A7912345678	-
+TST.W $1234.L	4A7900001234	-
+TST.W $1234.W	4A781234	WARNING: Forcing SHORT addressing disables range checking of extension word
+TST.W $8000	4A7900008000	-
+TST.W BK	4A781F00	-
+TST.W FW	4A7900001F00	-
+TST.W *+$10(PC)		ERROR: Invalid addressing mode
+TST.W *(PC,D0.W)		ERROR: Invalid addressing mode
+TST.W BK(PC)		ERROR: Invalid addressing mode
+TST.W #1		ERROR: Invalid addressing mode
+TST.W #8		ERROR: Invalid addressing mode
+TST.W #9		ERROR: Invalid addressing mode
+TST.W #0		ERROR: Invalid addressing mode
+TST.W #-1		ERROR: Invalid addressing mode
+TST.W #$80		ERROR: Invalid addressing mode
+TST.W #$1234		ERROR: Invalid addressing mode
+TST.W #$12345678		ERROR: Invalid addressing mode
+TST.W #$12345678.L		ERROR: Invalid addressing mode
+TST.W #BK		ERROR: Invalid addressing mode
+TST.W #FW		ERROR: Invalid addressing mode
+TST.W #UNDEF		ERROR: Invalid addressing mode
+TST.W UNDEF	4A7900005560	ERROR: Undefined symbol
+TST.W SR		ERROR: Invalid addressing mode
+TST.W CCR		ERROR: Invalid addressing mode
+TST.W USP		ERROR: Invalid addressing mode
+TST.W D1,D2,D3		ERROR: Invalid syntax
+TST.L		ERROR: Invalid syntax
+TST.L D1	4A81	-
+TST.L A2		ERROR: Invalid addressing mode
+TST.L SP		ERROR: Invalid addressing mode
+TST.L (A3)	4A93	-
+TST.L (A4)+	4A9C	-
+TST.L -(A5)	4AA5	-
+TST.L $10(A6)	4AAE0010	-
+TST.L -2(A0)	4AA8FFFE	-
+TST.L $10(A6,D7.W)	4AB67010	-
+TST.L $12(A0,A1.L)	4AB09812	-
+TST.L (A2,D3)	4AB23000	-
+TST.L $1234	4AB81234	-
+TST.L $12345678	4AB912345678	-
+TST.L $1234.L	4AB900001234	-
+TST.L $1234.W	4AB81234	WARNING: Forcing SHORT addressing disables range checking of extension word
+TST.L $8000	4AB900008000	-
+TST.L BK	4AB81F00	-
+TST.L FW	4AB900001F00	-
+TST.L *+$10(PC)		ERROR: Invalid addressing mode
+TST.L *(PC,D0.W)		ERROR: Invalid addressing mode
+TST.L BK(PC)		ERROR: Invalid addressing mode
+TST.L #1		ERROR: Invalid addressing mode
+TST.L #8		ERROR: Invalid addressing mode
+TST.L #9		ERROR: Invalid addressing mode
+TST.L #0		ERROR: Invalid addressing mode
+TST.L #-1		ERROR: Invalid addressing mode
+TST.L #$80		ERROR: Invalid addressing mode
+TST.L #$1234		ERROR: Invalid addressing mode
+TST.L #$12345678		ERROR: Invalid addressing mode
+TST.L #$12345678.L		ERROR: Invalid addressing mode
+TST.L #BK		ERROR: Invalid addressing mode
+TST.L #FW		ERROR: Invalid addressing mode
+TST.L #UNDEF		ERROR: Invalid addressing mode
+TST.L UNDEF	4AB900005560	ERROR: Undefined symbol
+TST.L SR		ERROR: Invalid addressing mode
+TST.L CCR		ERROR: Invalid addressing mode
+TST.L USP		ERROR: Invalid addressing mode
+TST.L D1,D2,D3		ERROR: Invalid syntax
+TST.S		ERROR: Invalid syntax
+TST.S D1	4A41	ERROR: Invalid size code
+TST.S A2		ERROR: Invalid addressing mode
+TST.S SP		ERROR: Invalid addressing mode
+TST.S (A3)	4A53	ERROR: Invalid size code
+TST.S (A4)+	4A5C	ERROR: Invalid size code
+TST.S -(A5)	4A65	ERROR: Invalid size code
+TST.S $10(A6)	4A6E0010	ERROR: Invalid size code
+TST.S -2(A0)	4A68FFFE	ERROR: Invalid size code
+TST.S $10(A6,D7.W)	4A767010	ERROR: Invalid size code
+TST.S $12(A0,A1.L)	4A709812	ERROR: Invalid size code
+TST.S (A2,D3)	4A723000	ERROR: Invalid size code
+TST.S $1234	4A781234	ERROR: Invalid size code
+TST.S $12345678	4A7912345678	ERROR: Invalid size code
+TST.S $1234.L	4A7900001234	ERROR: Invalid size code
+TST.S $1234.W	4A781234	ERROR: Invalid size code
+TST.S $8000	4A7900008000	ERROR: Invalid size code
+TST.S BK	4A781F00	ERROR: Invalid size code
+TST.S FW	4A7900001F00	ERROR: Invalid size code
+TST.S *+$10(PC)		ERROR: Invalid addressing mode
+TST.S *(PC,D0.W)		ERROR: Invalid addressing mode
+TST.S BK(PC)		ERROR: Invalid addressing mode
+TST.S #1		ERROR: Invalid addressing mode
+TST.S #8		ERROR: Invalid addressing mode
+TST.S #9		ERROR: Invalid addressing mode
+TST.S #0		ERROR: Invalid addressing mode
+TST.S #-1		ERROR: Invalid addressing mode
+TST.S #$80		ERROR: Invalid addressing mode
+TST.S #$1234		ERROR: Invalid addressing mode
+TST.S #$12345678		ERROR: Invalid addressing mode
+TST.S #$12345678.L		ERROR: Invalid addressing mode
+TST.S #BK		ERROR: Invalid addressing mode
+TST.S #FW		ERROR: Invalid addressing mode
+TST.S #UNDEF		ERROR: Invalid addressing mode
+TST.S UNDEF	4A7900005560	ERROR: Undefined symbol
+TST.S SR		ERROR: Invalid addressing mode
+TST.S CCR		ERROR: Invalid addressing mode
+TST.S USP		ERROR: Invalid addressing mode
+TST.S D1,D2,D3		ERROR: Invalid syntax
+TST.X D1,D2		ERROR: Invalid syntax
+TST.X #1		ERROR: Invalid addressing mode

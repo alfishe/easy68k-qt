@@ -1,0 +1,92 @@
+DBMI		ERROR: Invalid syntax
+DBMI D2,*+2	5BCA0000	-
+DBMI D2,*+4	5BCA0002	-
+DBMI D2,*+$80	5BCA007E	-
+DBMI D2,*+$82	5BCA0080	-
+DBMI D2,*-$7E	5BCAFF80	-
+DBMI D2,*-$80	5BCAFF7E	-
+DBMI D2,*+$8000	5BCA7FFE	-
+DBMI D2,*	5BCAFFFE	-
+DBMI D2,BK	5BCA0EFE	-
+DBMI D2,FW	5BCA0EFE	-
+DBMI D2,$1000	5BCAFFFE	-
+DBMI D2,$12345678	5BCA4676	ERROR: Branch instruction displacement is out of range or invalid
+DBMI D2,D1		ERROR: Invalid addressing mode
+DBMI D2,(A0)		ERROR: Invalid addressing mode
+DBMI D2,#4		ERROR: Invalid addressing mode
+DBMI A2,*		ERROR: Invalid addressing mode
+DBMI #1,*		ERROR: Invalid addressing mode
+DBMI.B		ERROR: Invalid syntax
+DBMI.B D2,*+2	5BCA0000	ERROR: Invalid size code
+DBMI.B D2,*+4	5BCA0002	ERROR: Invalid size code
+DBMI.B D2,*+$80	5BCA007E	ERROR: Invalid size code
+DBMI.B D2,*+$82	5BCA0080	ERROR: Invalid size code
+DBMI.B D2,*-$7E	5BCAFF80	ERROR: Invalid size code
+DBMI.B D2,*-$80	5BCAFF7E	ERROR: Invalid size code
+DBMI.B D2,*+$8000	5BCA7FFE	ERROR: Invalid size code
+DBMI.B D2,*	5BCAFFFE	ERROR: Invalid size code
+DBMI.B D2,BK	5BCA0EFE	ERROR: Invalid size code
+DBMI.B D2,FW	5BCA0EFE	ERROR: Invalid size code
+DBMI.B D2,$1000	5BCAFFFE	ERROR: Invalid size code
+DBMI.B D2,$12345678	5BCA4676	ERROR: Invalid size code
+DBMI.B D2,D1		ERROR: Invalid addressing mode
+DBMI.B D2,(A0)		ERROR: Invalid addressing mode
+DBMI.B D2,#4		ERROR: Invalid addressing mode
+DBMI.B A2,*		ERROR: Invalid addressing mode
+DBMI.B #1,*		ERROR: Invalid addressing mode
+DBMI.W		ERROR: Invalid syntax
+DBMI.W D2,*+2	5BCA0000	-
+DBMI.W D2,*+4	5BCA0002	-
+DBMI.W D2,*+$80	5BCA007E	-
+DBMI.W D2,*+$82	5BCA0080	-
+DBMI.W D2,*-$7E	5BCAFF80	-
+DBMI.W D2,*-$80	5BCAFF7E	-
+DBMI.W D2,*+$8000	5BCA7FFE	-
+DBMI.W D2,*	5BCAFFFE	-
+DBMI.W D2,BK	5BCA0EFE	-
+DBMI.W D2,FW	5BCA0EFE	-
+DBMI.W D2,$1000	5BCAFFFE	-
+DBMI.W D2,$12345678	5BCA4676	ERROR: Branch instruction displacement is out of range or invalid
+DBMI.W D2,D1		ERROR: Invalid addressing mode
+DBMI.W D2,(A0)		ERROR: Invalid addressing mode
+DBMI.W D2,#4		ERROR: Invalid addressing mode
+DBMI.W A2,*		ERROR: Invalid addressing mode
+DBMI.W #1,*		ERROR: Invalid addressing mode
+DBMI.L		ERROR: Invalid syntax
+DBMI.L D2,*+2	5BCA0000	ERROR: Invalid size code
+DBMI.L D2,*+4	5BCA0002	ERROR: Invalid size code
+DBMI.L D2,*+$80	5BCA007E	ERROR: Invalid size code
+DBMI.L D2,*+$82	5BCA0080	ERROR: Invalid size code
+DBMI.L D2,*-$7E	5BCAFF80	ERROR: Invalid size code
+DBMI.L D2,*-$80	5BCAFF7E	ERROR: Invalid size code
+DBMI.L D2,*+$8000	5BCA7FFE	ERROR: Invalid size code
+DBMI.L D2,*	5BCAFFFE	ERROR: Invalid size code
+DBMI.L D2,BK	5BCA0EFE	ERROR: Invalid size code
+DBMI.L D2,FW	5BCA0EFE	ERROR: Invalid size code
+DBMI.L D2,$1000	5BCAFFFE	ERROR: Invalid size code
+DBMI.L D2,$12345678	5BCA4676	ERROR: Invalid size code
+DBMI.L D2,D1		ERROR: Invalid addressing mode
+DBMI.L D2,(A0)		ERROR: Invalid addressing mode
+DBMI.L D2,#4		ERROR: Invalid addressing mode
+DBMI.L A2,*		ERROR: Invalid addressing mode
+DBMI.L #1,*		ERROR: Invalid addressing mode
+DBMI.S		ERROR: Invalid syntax
+DBMI.S D2,*+2	5BCA0000	ERROR: Invalid size code
+DBMI.S D2,*+4	5BCA0002	ERROR: Invalid size code
+DBMI.S D2,*+$80	5BCA007E	ERROR: Invalid size code
+DBMI.S D2,*+$82	5BCA0080	ERROR: Invalid size code
+DBMI.S D2,*-$7E	5BCAFF80	ERROR: Invalid size code
+DBMI.S D2,*-$80	5BCAFF7E	ERROR: Invalid size code
+DBMI.S D2,*+$8000	5BCA7FFE	ERROR: Invalid size code
+DBMI.S D2,*	5BCAFFFE	ERROR: Invalid size code
+DBMI.S D2,BK	5BCA0EFE	ERROR: Invalid size code
+DBMI.S D2,FW	5BCA0EFE	ERROR: Invalid size code
+DBMI.S D2,$1000	5BCAFFFE	ERROR: Invalid size code
+DBMI.S D2,$12345678	5BCA4676	ERROR: Invalid size code
+DBMI.S D2,D1		ERROR: Invalid addressing mode
+DBMI.S D2,(A0)		ERROR: Invalid addressing mode
+DBMI.S D2,#4		ERROR: Invalid addressing mode
+DBMI.S A2,*		ERROR: Invalid addressing mode
+DBMI.S #1,*		ERROR: Invalid addressing mode
+DBMI.X D1,D2		ERROR: Invalid addressing mode
+DBMI.X #1		ERROR: Comma expected

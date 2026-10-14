@@ -1,0 +1,356 @@
+BFTST D1{0:8}	E8C10008	-
+BFTST D1{31:32}	E8C107C0	-
+BFTST D1{D2:D3}	E8C108A3	-
+BFTST D1{4:D5}	E8C10125	-
+BFTST D1{D6:1}	E8C10981	-
+BFTST D1{32:1}		ERROR: Invalid bitfield
+BFTST D1{0:0}		ERROR: Invalid bitfield
+BFTST D1{BK:1}		ERROR: Invalid bitfield
+BFTST (A3){0:8}	E8D30008	-
+BFTST (A3){31:32}	E8D307C0	-
+BFTST (A3){D2:D3}	E8D308A3	-
+BFTST (A3){4:D5}	E8D30125	-
+BFTST (A3){D6:1}	E8D30981	-
+BFTST (A3){32:1}		ERROR: Invalid bitfield
+BFTST (A3){0:0}		ERROR: Invalid bitfield
+BFTST (A3){BK:1}		ERROR: Invalid bitfield
+BFTST $10(A6){0:8}	E8EE00080010	-
+BFTST $10(A6){31:32}	E8EE07C00010	-
+BFTST $10(A6){D2:D3}	E8EE08A30010	-
+BFTST $10(A6){4:D5}	E8EE01250010	-
+BFTST $10(A6){D6:1}	E8EE09810010	-
+BFTST $10(A6){32:1}		ERROR: Invalid bitfield
+BFTST $10(A6){0:0}		ERROR: Invalid bitfield
+BFTST $10(A6){BK:1}		ERROR: Invalid bitfield
+BFTST $10(A6,D7.W){0:8}	E8F600087010	-
+BFTST $10(A6,D7.W){31:32}	E8F607C07010	-
+BFTST $10(A6,D7.W){D2:D3}	E8F608A37010	-
+BFTST $10(A6,D7.W){4:D5}	E8F601257010	-
+BFTST $10(A6,D7.W){D6:1}	E8F609817010	-
+BFTST $10(A6,D7.W){32:1}		ERROR: Invalid bitfield
+BFTST $10(A6,D7.W){0:0}		ERROR: Invalid bitfield
+BFTST $10(A6,D7.W){BK:1}		ERROR: Invalid bitfield
+BFTST $1234{0:8}	E8F800081234	-
+BFTST $1234{31:32}	E8F807C01234	-
+BFTST $1234{D2:D3}	E8F808A31234	-
+BFTST $1234{4:D5}	E8F801251234	-
+BFTST $1234{D6:1}	E8F809811234	-
+BFTST $1234{32:1}		ERROR: Invalid bitfield
+BFTST $1234{0:0}		ERROR: Invalid bitfield
+BFTST $1234{BK:1}		ERROR: Invalid bitfield
+BFTST FW{0:8}	E8F9000800001F00	-
+BFTST FW{31:32}	E8F907C000001F00	-
+BFTST FW{D2:D3}	E8F908A300001F00	-
+BFTST FW{4:D5}	E8F9012500001F00	-
+BFTST FW{D6:1}	E8F9098100001F00	-
+BFTST FW{32:1}		ERROR: Invalid bitfield
+BFTST FW{0:0}		ERROR: Invalid bitfield
+BFTST FW{BK:1}		ERROR: Invalid bitfield
+BFTST *+$10(PC){0:8}	E8FA0008000C	-
+BFTST *+$10(PC){31:32}	E8FA07C0000C	-
+BFTST *+$10(PC){D2:D3}	E8FA08A3000C	-
+BFTST *+$10(PC){4:D5}	E8FA0125000C	-
+BFTST *+$10(PC){D6:1}	E8FA0981000C	-
+BFTST *+$10(PC){32:1}		ERROR: Invalid bitfield
+BFTST *+$10(PC){0:0}		ERROR: Invalid bitfield
+BFTST *+$10(PC){BK:1}		ERROR: Invalid bitfield
+BFTST (A4)+{0:8}		ERROR: Invalid addressing mode
+BFTST (A4)+{31:32}		ERROR: Invalid addressing mode
+BFTST (A4)+{D2:D3}		ERROR: Invalid addressing mode
+BFTST (A4)+{4:D5}		ERROR: Invalid addressing mode
+BFTST (A4)+{D6:1}		ERROR: Invalid addressing mode
+BFTST (A4)+{32:1}		ERROR: Invalid bitfield
+BFTST (A4)+{0:0}		ERROR: Invalid bitfield
+BFTST (A4)+{BK:1}		ERROR: Invalid bitfield
+BFTST -(A5){0:8}		ERROR: Invalid addressing mode
+BFTST -(A5){31:32}		ERROR: Invalid addressing mode
+BFTST -(A5){D2:D3}		ERROR: Invalid addressing mode
+BFTST -(A5){4:D5}		ERROR: Invalid addressing mode
+BFTST -(A5){D6:1}		ERROR: Invalid addressing mode
+BFTST -(A5){32:1}		ERROR: Invalid bitfield
+BFTST -(A5){0:0}		ERROR: Invalid bitfield
+BFTST -(A5){BK:1}		ERROR: Invalid bitfield
+BFTST A2{0:8}		ERROR: Invalid addressing mode
+BFTST A2{31:32}		ERROR: Invalid addressing mode
+BFTST A2{D2:D3}		ERROR: Invalid addressing mode
+BFTST A2{4:D5}		ERROR: Invalid addressing mode
+BFTST A2{D6:1}		ERROR: Invalid addressing mode
+BFTST A2{32:1}		ERROR: Invalid bitfield
+BFTST A2{0:0}		ERROR: Invalid bitfield
+BFTST A2{BK:1}		ERROR: Invalid bitfield
+BFTST #1{0:8}		ERROR: Invalid addressing mode
+BFTST #1{31:32}		ERROR: Invalid addressing mode
+BFTST #1{D2:D3}		ERROR: Invalid addressing mode
+BFTST #1{4:D5}		ERROR: Invalid addressing mode
+BFTST #1{D6:1}		ERROR: Invalid addressing mode
+BFTST #1{32:1}		ERROR: Invalid bitfield
+BFTST #1{0:0}		ERROR: Invalid bitfield
+BFTST #1{BK:1}		ERROR: Invalid bitfield
+BFTST D1		ERROR: Invalid bitfield
+BFTST.B D1{0:8}	E8C10008	-
+BFTST.B D1{31:32}	E8C107C0	-
+BFTST.B D1{D2:D3}	E8C108A3	-
+BFTST.B D1{4:D5}	E8C10125	-
+BFTST.B D1{D6:1}	E8C10981	-
+BFTST.B D1{32:1}		ERROR: Invalid bitfield
+BFTST.B D1{0:0}		ERROR: Invalid bitfield
+BFTST.B D1{BK:1}		ERROR: Invalid bitfield
+BFTST.B (A3){0:8}	E8D30008	-
+BFTST.B (A3){31:32}	E8D307C0	-
+BFTST.B (A3){D2:D3}	E8D308A3	-
+BFTST.B (A3){4:D5}	E8D30125	-
+BFTST.B (A3){D6:1}	E8D30981	-
+BFTST.B (A3){32:1}		ERROR: Invalid bitfield
+BFTST.B (A3){0:0}		ERROR: Invalid bitfield
+BFTST.B (A3){BK:1}		ERROR: Invalid bitfield
+BFTST.B $10(A6){0:8}	E8EE00080010	-
+BFTST.B $10(A6){31:32}	E8EE07C00010	-
+BFTST.B $10(A6){D2:D3}	E8EE08A30010	-
+BFTST.B $10(A6){4:D5}	E8EE01250010	-
+BFTST.B $10(A6){D6:1}	E8EE09810010	-
+BFTST.B $10(A6){32:1}		ERROR: Invalid bitfield
+BFTST.B $10(A6){0:0}		ERROR: Invalid bitfield
+BFTST.B $10(A6){BK:1}		ERROR: Invalid bitfield
+BFTST.B $10(A6,D7.W){0:8}	E8F600087010	-
+BFTST.B $10(A6,D7.W){31:32}	E8F607C07010	-
+BFTST.B $10(A6,D7.W){D2:D3}	E8F608A37010	-
+BFTST.B $10(A6,D7.W){4:D5}	E8F601257010	-
+BFTST.B $10(A6,D7.W){D6:1}	E8F609817010	-
+BFTST.B $10(A6,D7.W){32:1}		ERROR: Invalid bitfield
+BFTST.B $10(A6,D7.W){0:0}		ERROR: Invalid bitfield
+BFTST.B $10(A6,D7.W){BK:1}		ERROR: Invalid bitfield
+BFTST.B $1234{0:8}	E8F800081234	-
+BFTST.B $1234{31:32}	E8F807C01234	-
+BFTST.B $1234{D2:D3}	E8F808A31234	-
+BFTST.B $1234{4:D5}	E8F801251234	-
+BFTST.B $1234{D6:1}	E8F809811234	-
+BFTST.B $1234{32:1}		ERROR: Invalid bitfield
+BFTST.B $1234{0:0}		ERROR: Invalid bitfield
+BFTST.B $1234{BK:1}		ERROR: Invalid bitfield
+BFTST.B FW{0:8}	E8F9000800001F00	-
+BFTST.B FW{31:32}	E8F907C000001F00	-
+BFTST.B FW{D2:D3}	E8F908A300001F00	-
+BFTST.B FW{4:D5}	E8F9012500001F00	-
+BFTST.B FW{D6:1}	E8F9098100001F00	-
+BFTST.B FW{32:1}		ERROR: Invalid bitfield
+BFTST.B FW{0:0}		ERROR: Invalid bitfield
+BFTST.B FW{BK:1}		ERROR: Invalid bitfield
+BFTST.B *+$10(PC){0:8}	E8FA0008000C	-
+BFTST.B *+$10(PC){31:32}	E8FA07C0000C	-
+BFTST.B *+$10(PC){D2:D3}	E8FA08A3000C	-
+BFTST.B *+$10(PC){4:D5}	E8FA0125000C	-
+BFTST.B *+$10(PC){D6:1}	E8FA0981000C	-
+BFTST.B *+$10(PC){32:1}		ERROR: Invalid bitfield
+BFTST.B *+$10(PC){0:0}		ERROR: Invalid bitfield
+BFTST.B *+$10(PC){BK:1}		ERROR: Invalid bitfield
+BFTST.B (A4)+{0:8}		ERROR: Invalid addressing mode
+BFTST.B (A4)+{31:32}		ERROR: Invalid addressing mode
+BFTST.B (A4)+{D2:D3}		ERROR: Invalid addressing mode
+BFTST.B (A4)+{4:D5}		ERROR: Invalid addressing mode
+BFTST.B (A4)+{D6:1}		ERROR: Invalid addressing mode
+BFTST.B (A4)+{32:1}		ERROR: Invalid bitfield
+BFTST.B (A4)+{0:0}		ERROR: Invalid bitfield
+BFTST.B (A4)+{BK:1}		ERROR: Invalid bitfield
+BFTST.B -(A5){0:8}		ERROR: Invalid addressing mode
+BFTST.B -(A5){31:32}		ERROR: Invalid addressing mode
+BFTST.B -(A5){D2:D3}		ERROR: Invalid addressing mode
+BFTST.B -(A5){4:D5}		ERROR: Invalid addressing mode
+BFTST.B -(A5){D6:1}		ERROR: Invalid addressing mode
+BFTST.B -(A5){32:1}		ERROR: Invalid bitfield
+BFTST.B -(A5){0:0}		ERROR: Invalid bitfield
+BFTST.B -(A5){BK:1}		ERROR: Invalid bitfield
+BFTST.B A2{0:8}		ERROR: Invalid addressing mode
+BFTST.B A2{31:32}		ERROR: Invalid addressing mode
+BFTST.B A2{D2:D3}		ERROR: Invalid addressing mode
+BFTST.B A2{4:D5}		ERROR: Invalid addressing mode
+BFTST.B A2{D6:1}		ERROR: Invalid addressing mode
+BFTST.B A2{32:1}		ERROR: Invalid bitfield
+BFTST.B A2{0:0}		ERROR: Invalid bitfield
+BFTST.B A2{BK:1}		ERROR: Invalid bitfield
+BFTST.B #1{0:8}		ERROR: Invalid addressing mode
+BFTST.B #1{31:32}		ERROR: Invalid addressing mode
+BFTST.B #1{D2:D3}		ERROR: Invalid addressing mode
+BFTST.B #1{4:D5}		ERROR: Invalid addressing mode
+BFTST.B #1{D6:1}		ERROR: Invalid addressing mode
+BFTST.B #1{32:1}		ERROR: Invalid bitfield
+BFTST.B #1{0:0}		ERROR: Invalid bitfield
+BFTST.B #1{BK:1}		ERROR: Invalid bitfield
+BFTST.B D1		ERROR: Invalid bitfield
+BFTST.L D1{0:8}	E8C10008	-
+BFTST.L D1{31:32}	E8C107C0	-
+BFTST.L D1{D2:D3}	E8C108A3	-
+BFTST.L D1{4:D5}	E8C10125	-
+BFTST.L D1{D6:1}	E8C10981	-
+BFTST.L D1{32:1}		ERROR: Invalid bitfield
+BFTST.L D1{0:0}		ERROR: Invalid bitfield
+BFTST.L D1{BK:1}		ERROR: Invalid bitfield
+BFTST.L (A3){0:8}	E8D30008	-
+BFTST.L (A3){31:32}	E8D307C0	-
+BFTST.L (A3){D2:D3}	E8D308A3	-
+BFTST.L (A3){4:D5}	E8D30125	-
+BFTST.L (A3){D6:1}	E8D30981	-
+BFTST.L (A3){32:1}		ERROR: Invalid bitfield
+BFTST.L (A3){0:0}		ERROR: Invalid bitfield
+BFTST.L (A3){BK:1}		ERROR: Invalid bitfield
+BFTST.L $10(A6){0:8}	E8EE00080010	-
+BFTST.L $10(A6){31:32}	E8EE07C00010	-
+BFTST.L $10(A6){D2:D3}	E8EE08A30010	-
+BFTST.L $10(A6){4:D5}	E8EE01250010	-
+BFTST.L $10(A6){D6:1}	E8EE09810010	-
+BFTST.L $10(A6){32:1}		ERROR: Invalid bitfield
+BFTST.L $10(A6){0:0}		ERROR: Invalid bitfield
+BFTST.L $10(A6){BK:1}		ERROR: Invalid bitfield
+BFTST.L $10(A6,D7.W){0:8}	E8F600087010	-
+BFTST.L $10(A6,D7.W){31:32}	E8F607C07010	-
+BFTST.L $10(A6,D7.W){D2:D3}	E8F608A37010	-
+BFTST.L $10(A6,D7.W){4:D5}	E8F601257010	-
+BFTST.L $10(A6,D7.W){D6:1}	E8F609817010	-
+BFTST.L $10(A6,D7.W){32:1}		ERROR: Invalid bitfield
+BFTST.L $10(A6,D7.W){0:0}		ERROR: Invalid bitfield
+BFTST.L $10(A6,D7.W){BK:1}		ERROR: Invalid bitfield
+BFTST.L $1234{0:8}	E8F800081234	-
+BFTST.L $1234{31:32}	E8F807C01234	-
+BFTST.L $1234{D2:D3}	E8F808A31234	-
+BFTST.L $1234{4:D5}	E8F801251234	-
+BFTST.L $1234{D6:1}	E8F809811234	-
+BFTST.L $1234{32:1}		ERROR: Invalid bitfield
+BFTST.L $1234{0:0}		ERROR: Invalid bitfield
+BFTST.L $1234{BK:1}		ERROR: Invalid bitfield
+BFTST.L FW{0:8}	E8F9000800001F00	-
+BFTST.L FW{31:32}	E8F907C000001F00	-
+BFTST.L FW{D2:D3}	E8F908A300001F00	-
+BFTST.L FW{4:D5}	E8F9012500001F00	-
+BFTST.L FW{D6:1}	E8F9098100001F00	-
+BFTST.L FW{32:1}		ERROR: Invalid bitfield
+BFTST.L FW{0:0}		ERROR: Invalid bitfield
+BFTST.L FW{BK:1}		ERROR: Invalid bitfield
+BFTST.L *+$10(PC){0:8}	E8FA0008000C	-
+BFTST.L *+$10(PC){31:32}	E8FA07C0000C	-
+BFTST.L *+$10(PC){D2:D3}	E8FA08A3000C	-
+BFTST.L *+$10(PC){4:D5}	E8FA0125000C	-
+BFTST.L *+$10(PC){D6:1}	E8FA0981000C	-
+BFTST.L *+$10(PC){32:1}		ERROR: Invalid bitfield
+BFTST.L *+$10(PC){0:0}		ERROR: Invalid bitfield
+BFTST.L *+$10(PC){BK:1}		ERROR: Invalid bitfield
+BFTST.L (A4)+{0:8}		ERROR: Invalid addressing mode
+BFTST.L (A4)+{31:32}		ERROR: Invalid addressing mode
+BFTST.L (A4)+{D2:D3}		ERROR: Invalid addressing mode
+BFTST.L (A4)+{4:D5}		ERROR: Invalid addressing mode
+BFTST.L (A4)+{D6:1}		ERROR: Invalid addressing mode
+BFTST.L (A4)+{32:1}		ERROR: Invalid bitfield
+BFTST.L (A4)+{0:0}		ERROR: Invalid bitfield
+BFTST.L (A4)+{BK:1}		ERROR: Invalid bitfield
+BFTST.L -(A5){0:8}		ERROR: Invalid addressing mode
+BFTST.L -(A5){31:32}		ERROR: Invalid addressing mode
+BFTST.L -(A5){D2:D3}		ERROR: Invalid addressing mode
+BFTST.L -(A5){4:D5}		ERROR: Invalid addressing mode
+BFTST.L -(A5){D6:1}		ERROR: Invalid addressing mode
+BFTST.L -(A5){32:1}		ERROR: Invalid bitfield
+BFTST.L -(A5){0:0}		ERROR: Invalid bitfield
+BFTST.L -(A5){BK:1}		ERROR: Invalid bitfield
+BFTST.L A2{0:8}		ERROR: Invalid addressing mode
+BFTST.L A2{31:32}		ERROR: Invalid addressing mode
+BFTST.L A2{D2:D3}		ERROR: Invalid addressing mode
+BFTST.L A2{4:D5}		ERROR: Invalid addressing mode
+BFTST.L A2{D6:1}		ERROR: Invalid addressing mode
+BFTST.L A2{32:1}		ERROR: Invalid bitfield
+BFTST.L A2{0:0}		ERROR: Invalid bitfield
+BFTST.L A2{BK:1}		ERROR: Invalid bitfield
+BFTST.L #1{0:8}		ERROR: Invalid addressing mode
+BFTST.L #1{31:32}		ERROR: Invalid addressing mode
+BFTST.L #1{D2:D3}		ERROR: Invalid addressing mode
+BFTST.L #1{4:D5}		ERROR: Invalid addressing mode
+BFTST.L #1{D6:1}		ERROR: Invalid addressing mode
+BFTST.L #1{32:1}		ERROR: Invalid bitfield
+BFTST.L #1{0:0}		ERROR: Invalid bitfield
+BFTST.L #1{BK:1}		ERROR: Invalid bitfield
+BFTST.L D1		ERROR: Invalid bitfield
+BFTST.S D1{0:8}	E8C10008	-
+BFTST.S D1{31:32}	E8C107C0	-
+BFTST.S D1{D2:D3}	E8C108A3	-
+BFTST.S D1{4:D5}	E8C10125	-
+BFTST.S D1{D6:1}	E8C10981	-
+BFTST.S D1{32:1}		ERROR: Invalid bitfield
+BFTST.S D1{0:0}		ERROR: Invalid bitfield
+BFTST.S D1{BK:1}		ERROR: Invalid bitfield
+BFTST.S (A3){0:8}	E8D30008	-
+BFTST.S (A3){31:32}	E8D307C0	-
+BFTST.S (A3){D2:D3}	E8D308A3	-
+BFTST.S (A3){4:D5}	E8D30125	-
+BFTST.S (A3){D6:1}	E8D30981	-
+BFTST.S (A3){32:1}		ERROR: Invalid bitfield
+BFTST.S (A3){0:0}		ERROR: Invalid bitfield
+BFTST.S (A3){BK:1}		ERROR: Invalid bitfield
+BFTST.S $10(A6){0:8}	E8EE00080010	-
+BFTST.S $10(A6){31:32}	E8EE07C00010	-
+BFTST.S $10(A6){D2:D3}	E8EE08A30010	-
+BFTST.S $10(A6){4:D5}	E8EE01250010	-
+BFTST.S $10(A6){D6:1}	E8EE09810010	-
+BFTST.S $10(A6){32:1}		ERROR: Invalid bitfield
+BFTST.S $10(A6){0:0}		ERROR: Invalid bitfield
+BFTST.S $10(A6){BK:1}		ERROR: Invalid bitfield
+BFTST.S $10(A6,D7.W){0:8}	E8F600087010	-
+BFTST.S $10(A6,D7.W){31:32}	E8F607C07010	-
+BFTST.S $10(A6,D7.W){D2:D3}	E8F608A37010	-
+BFTST.S $10(A6,D7.W){4:D5}	E8F601257010	-
+BFTST.S $10(A6,D7.W){D6:1}	E8F609817010	-
+BFTST.S $10(A6,D7.W){32:1}		ERROR: Invalid bitfield
+BFTST.S $10(A6,D7.W){0:0}		ERROR: Invalid bitfield
+BFTST.S $10(A6,D7.W){BK:1}		ERROR: Invalid bitfield
+BFTST.S $1234{0:8}	E8F800081234	-
+BFTST.S $1234{31:32}	E8F807C01234	-
+BFTST.S $1234{D2:D3}	E8F808A31234	-
+BFTST.S $1234{4:D5}	E8F801251234	-
+BFTST.S $1234{D6:1}	E8F809811234	-
+BFTST.S $1234{32:1}		ERROR: Invalid bitfield
+BFTST.S $1234{0:0}		ERROR: Invalid bitfield
+BFTST.S $1234{BK:1}		ERROR: Invalid bitfield
+BFTST.S FW{0:8}	E8F9000800001F00	-
+BFTST.S FW{31:32}	E8F907C000001F00	-
+BFTST.S FW{D2:D3}	E8F908A300001F00	-
+BFTST.S FW{4:D5}	E8F9012500001F00	-
+BFTST.S FW{D6:1}	E8F9098100001F00	-
+BFTST.S FW{32:1}		ERROR: Invalid bitfield
+BFTST.S FW{0:0}		ERROR: Invalid bitfield
+BFTST.S FW{BK:1}		ERROR: Invalid bitfield
+BFTST.S *+$10(PC){0:8}	E8FA0008000C	-
+BFTST.S *+$10(PC){31:32}	E8FA07C0000C	-
+BFTST.S *+$10(PC){D2:D3}	E8FA08A3000C	-
+BFTST.S *+$10(PC){4:D5}	E8FA0125000C	-
+BFTST.S *+$10(PC){D6:1}	E8FA0981000C	-
+BFTST.S *+$10(PC){32:1}		ERROR: Invalid bitfield
+BFTST.S *+$10(PC){0:0}		ERROR: Invalid bitfield
+BFTST.S *+$10(PC){BK:1}		ERROR: Invalid bitfield
+BFTST.S (A4)+{0:8}		ERROR: Invalid addressing mode
+BFTST.S (A4)+{31:32}		ERROR: Invalid addressing mode
+BFTST.S (A4)+{D2:D3}		ERROR: Invalid addressing mode
+BFTST.S (A4)+{4:D5}		ERROR: Invalid addressing mode
+BFTST.S (A4)+{D6:1}		ERROR: Invalid addressing mode
+BFTST.S (A4)+{32:1}		ERROR: Invalid bitfield
+BFTST.S (A4)+{0:0}		ERROR: Invalid bitfield
+BFTST.S (A4)+{BK:1}		ERROR: Invalid bitfield
+BFTST.S -(A5){0:8}		ERROR: Invalid addressing mode
+BFTST.S -(A5){31:32}		ERROR: Invalid addressing mode
+BFTST.S -(A5){D2:D3}		ERROR: Invalid addressing mode
+BFTST.S -(A5){4:D5}		ERROR: Invalid addressing mode
+BFTST.S -(A5){D6:1}		ERROR: Invalid addressing mode
+BFTST.S -(A5){32:1}		ERROR: Invalid bitfield
+BFTST.S -(A5){0:0}		ERROR: Invalid bitfield
+BFTST.S -(A5){BK:1}		ERROR: Invalid bitfield
+BFTST.S A2{0:8}		ERROR: Invalid addressing mode
+BFTST.S A2{31:32}		ERROR: Invalid addressing mode
+BFTST.S A2{D2:D3}		ERROR: Invalid addressing mode
+BFTST.S A2{4:D5}		ERROR: Invalid addressing mode
+BFTST.S A2{D6:1}		ERROR: Invalid addressing mode
+BFTST.S A2{32:1}		ERROR: Invalid bitfield
+BFTST.S A2{0:0}		ERROR: Invalid bitfield
+BFTST.S A2{BK:1}		ERROR: Invalid bitfield
+BFTST.S #1{0:8}		ERROR: Invalid addressing mode
+BFTST.S #1{31:32}		ERROR: Invalid addressing mode
+BFTST.S #1{D2:D3}		ERROR: Invalid addressing mode
+BFTST.S #1{4:D5}		ERROR: Invalid addressing mode
+BFTST.S #1{D6:1}		ERROR: Invalid addressing mode
+BFTST.S #1{32:1}		ERROR: Invalid bitfield
+BFTST.S #1{0:0}		ERROR: Invalid bitfield
+BFTST.S #1{BK:1}		ERROR: Invalid bitfield
+BFTST.S D1		ERROR: Invalid bitfield

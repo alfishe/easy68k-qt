@@ -1,0 +1,405 @@
+SGE		ERROR: Invalid syntax
+SGE D1	5CC1	-
+SGE A2		ERROR: Invalid addressing mode
+SGE SP		ERROR: Invalid addressing mode
+SGE (A3)	5CD3	-
+SGE (A4)+	5CDC	-
+SGE -(A5)	5CE5	-
+SGE $10(A6)	5CEE0010	-
+SGE -2(A0)	5CE8FFFE	-
+SGE $10(A6,D7.W)	5CF67010	-
+SGE $12(A0,A1.L)	5CF09812	-
+SGE (A2,D3)	5CF23000	-
+SGE $1234	5CF81234	-
+SGE $12345678	5CF912345678	-
+SGE $1234.L	5CF900001234	-
+SGE $1234.W	5CF81234	WARNING: Forcing SHORT addressing disables range checking of extension word
+SGE $8000	5CF900008000	-
+SGE BK	5CF81F00	-
+SGE FW	5CF900001F00	-
+SGE *+$10(PC)		ERROR: Invalid addressing mode
+SGE *(PC,D0.W)		ERROR: Invalid addressing mode
+SGE BK(PC)		ERROR: Invalid addressing mode
+SGE #1		ERROR: Invalid addressing mode
+SGE #8		ERROR: Invalid addressing mode
+SGE #9		ERROR: Invalid addressing mode
+SGE #0		ERROR: Invalid addressing mode
+SGE #-1		ERROR: Invalid addressing mode
+SGE #$80		ERROR: Invalid addressing mode
+SGE #$1234		ERROR: Invalid addressing mode
+SGE #$12345678		ERROR: Invalid addressing mode
+SGE #$12345678.L		ERROR: Invalid addressing mode
+SGE #BK		ERROR: Invalid addressing mode
+SGE #FW		ERROR: Invalid addressing mode
+SGE #UNDEF		ERROR: Invalid addressing mode
+SGE UNDEF	5CF900005583	ERROR: Undefined symbol
+SGE SR		ERROR: Invalid addressing mode
+SGE CCR		ERROR: Invalid addressing mode
+SGE USP		ERROR: Invalid addressing mode
+SGE D1,D1		ERROR: Invalid syntax
+SGE D1,A2		ERROR: Invalid syntax
+SGE D1,(A3)		ERROR: Invalid syntax
+SGE D1,$10(A6)		ERROR: Invalid syntax
+SGE D1,$1234		ERROR: Invalid syntax
+SGE D1,FW		ERROR: Invalid syntax
+SGE D1,#1		ERROR: Invalid syntax
+SGE D1,#$1234		ERROR: Invalid syntax
+SGE D1,CCR		ERROR: Invalid syntax
+SGE D1,SR		ERROR: Invalid syntax
+SGE A2,D1		ERROR: Invalid addressing mode
+SGE A2,A2		ERROR: Invalid addressing mode
+SGE A2,(A3)		ERROR: Invalid addressing mode
+SGE A2,$10(A6)		ERROR: Invalid addressing mode
+SGE A2,$1234		ERROR: Invalid addressing mode
+SGE A2,FW		ERROR: Invalid addressing mode
+SGE A2,#1		ERROR: Invalid addressing mode
+SGE A2,#$1234		ERROR: Invalid addressing mode
+SGE A2,CCR		ERROR: Invalid addressing mode
+SGE A2,SR		ERROR: Invalid addressing mode
+SGE (A3),D1		ERROR: Invalid syntax
+SGE (A3),A2		ERROR: Invalid syntax
+SGE (A3),(A3)		ERROR: Invalid syntax
+SGE (A3),$10(A6)		ERROR: Invalid syntax
+SGE (A3),$1234		ERROR: Invalid syntax
+SGE (A3),FW		ERROR: Invalid syntax
+SGE (A3),#1		ERROR: Invalid syntax
+SGE (A3),#$1234		ERROR: Invalid syntax
+SGE (A3),CCR		ERROR: Invalid syntax
+SGE (A3),SR		ERROR: Invalid syntax
+SGE $10(A6),D1		ERROR: Invalid syntax
+SGE $10(A6),A2		ERROR: Invalid syntax
+SGE $10(A6),(A3)		ERROR: Invalid syntax
+SGE $10(A6),$10(A6)		ERROR: Invalid syntax
+SGE $10(A6),$1234		ERROR: Invalid syntax
+SGE $10(A6),FW		ERROR: Invalid syntax
+SGE $10(A6),#1		ERROR: Invalid syntax
+SGE $10(A6),#$1234		ERROR: Invalid syntax
+SGE $10(A6),CCR		ERROR: Invalid syntax
+SGE $10(A6),SR		ERROR: Invalid syntax
+SGE $1234,D1		ERROR: Invalid syntax
+SGE $1234,A2		ERROR: Invalid syntax
+SGE $1234,(A3)		ERROR: Invalid syntax
+SGE $1234,$10(A6)		ERROR: Invalid syntax
+SGE $1234,$1234		ERROR: Invalid syntax
+SGE $1234,FW		ERROR: Invalid syntax
+SGE $1234,#1		ERROR: Invalid syntax
+SGE $1234,#$1234		ERROR: Invalid syntax
+SGE $1234,CCR		ERROR: Invalid syntax
+SGE $1234,SR		ERROR: Invalid syntax
+SGE FW,D1		ERROR: Invalid syntax
+SGE FW,A2		ERROR: Invalid syntax
+SGE FW,(A3)		ERROR: Invalid syntax
+SGE FW,$10(A6)		ERROR: Invalid syntax
+SGE FW,$1234		ERROR: Invalid syntax
+SGE FW,FW		ERROR: Invalid syntax
+SGE FW,#1		ERROR: Invalid syntax
+SGE FW,#$1234		ERROR: Invalid syntax
+SGE FW,CCR		ERROR: Invalid syntax
+SGE FW,SR		ERROR: Invalid syntax
+SGE #1,D1		ERROR: Invalid addressing mode
+SGE #1,A2		ERROR: Invalid addressing mode
+SGE #1,(A3)		ERROR: Invalid addressing mode
+SGE #1,$10(A6)		ERROR: Invalid addressing mode
+SGE #1,$1234		ERROR: Invalid addressing mode
+SGE #1,FW		ERROR: Invalid addressing mode
+SGE #1,#1		ERROR: Invalid addressing mode
+SGE #1,#$1234		ERROR: Invalid addressing mode
+SGE #1,CCR		ERROR: Invalid addressing mode
+SGE #1,SR		ERROR: Invalid addressing mode
+SGE #$1234,D1		ERROR: Invalid addressing mode
+SGE #$1234,A2		ERROR: Invalid addressing mode
+SGE #$1234,(A3)		ERROR: Invalid addressing mode
+SGE #$1234,$10(A6)		ERROR: Invalid addressing mode
+SGE #$1234,$1234		ERROR: Invalid addressing mode
+SGE #$1234,FW		ERROR: Invalid addressing mode
+SGE #$1234,#1		ERROR: Invalid addressing mode
+SGE #$1234,#$1234		ERROR: Invalid addressing mode
+SGE #$1234,CCR		ERROR: Invalid addressing mode
+SGE #$1234,SR		ERROR: Invalid addressing mode
+SGE CCR,D1		ERROR: Invalid addressing mode
+SGE CCR,A2		ERROR: Invalid addressing mode
+SGE CCR,(A3)		ERROR: Invalid addressing mode
+SGE CCR,$10(A6)		ERROR: Invalid addressing mode
+SGE CCR,$1234		ERROR: Invalid addressing mode
+SGE CCR,FW		ERROR: Invalid addressing mode
+SGE CCR,#1		ERROR: Invalid addressing mode
+SGE CCR,#$1234		ERROR: Invalid addressing mode
+SGE CCR,CCR		ERROR: Invalid addressing mode
+SGE CCR,SR		ERROR: Invalid addressing mode
+SGE SR,D1		ERROR: Invalid addressing mode
+SGE SR,A2		ERROR: Invalid addressing mode
+SGE SR,(A3)		ERROR: Invalid addressing mode
+SGE SR,$10(A6)		ERROR: Invalid addressing mode
+SGE SR,$1234		ERROR: Invalid addressing mode
+SGE SR,FW		ERROR: Invalid addressing mode
+SGE SR,#1		ERROR: Invalid addressing mode
+SGE SR,#$1234		ERROR: Invalid addressing mode
+SGE SR,CCR		ERROR: Invalid addressing mode
+SGE SR,SR		ERROR: Invalid addressing mode
+SGE SP,D1		ERROR: Invalid addressing mode
+SGE SP,A2		ERROR: Invalid addressing mode
+SGE D1,SP		ERROR: Invalid syntax
+SGE #$12,SP		ERROR: Invalid addressing mode
+SGE (A4)+,D1		ERROR: Invalid syntax
+SGE (A4)+,A2		ERROR: Invalid syntax
+SGE D1,(A4)+		ERROR: Invalid syntax
+SGE #$12,(A4)+		ERROR: Invalid addressing mode
+SGE -(A5),D1		ERROR: Invalid syntax
+SGE -(A5),A2		ERROR: Invalid syntax
+SGE D1,-(A5)		ERROR: Invalid syntax
+SGE #$12,-(A5)		ERROR: Invalid addressing mode
+SGE -2(A0),D1		ERROR: Invalid syntax
+SGE -2(A0),A2		ERROR: Invalid syntax
+SGE D1,-2(A0)		ERROR: Invalid syntax
+SGE #$12,-2(A0)		ERROR: Invalid addressing mode
+SGE $10(A6,D7.W),D1		ERROR: Invalid syntax
+SGE $10(A6,D7.W),A2		ERROR: Invalid syntax
+SGE D1,$10(A6,D7.W)		ERROR: Invalid syntax
+SGE #$12,$10(A6,D7.W)		ERROR: Invalid addressing mode
+SGE $12(A0,A1.L),D1		ERROR: Invalid syntax
+SGE $12(A0,A1.L),A2		ERROR: Invalid syntax
+SGE D1,$12(A0,A1.L)		ERROR: Invalid syntax
+SGE #$12,$12(A0,A1.L)		ERROR: Invalid addressing mode
+SGE (A2,D3),D1		ERROR: Invalid syntax
+SGE (A2,D3),A2		ERROR: Invalid syntax
+SGE D1,(A2,D3)		ERROR: Invalid syntax
+SGE #$12,(A2,D3)		ERROR: Invalid addressing mode
+SGE $12345678,D1		ERROR: Invalid syntax
+SGE $12345678,A2		ERROR: Invalid syntax
+SGE D1,$12345678		ERROR: Invalid syntax
+SGE #$12,$12345678		ERROR: Invalid addressing mode
+SGE $1234.L,D1		ERROR: Invalid syntax
+SGE $1234.L,A2		ERROR: Invalid syntax
+SGE D1,$1234.L		ERROR: Invalid syntax
+SGE #$12,$1234.L		ERROR: Invalid addressing mode
+SGE $1234.W,D1		ERROR: Invalid syntax
+SGE $1234.W,A2		ERROR: Invalid syntax
+SGE D1,$1234.W		ERROR: Invalid syntax
+SGE #$12,$1234.W		ERROR: Invalid addressing mode
+SGE $8000,D1		ERROR: Invalid syntax
+SGE $8000,A2		ERROR: Invalid syntax
+SGE D1,$8000		ERROR: Invalid syntax
+SGE #$12,$8000		ERROR: Invalid addressing mode
+SGE BK,D1		ERROR: Invalid syntax
+SGE BK,A2		ERROR: Invalid syntax
+SGE D1,BK		ERROR: Invalid syntax
+SGE #$12,BK		ERROR: Invalid addressing mode
+SGE *+$10(PC),D1		ERROR: Invalid addressing mode
+SGE *+$10(PC),A2		ERROR: Invalid addressing mode
+SGE D1,*+$10(PC)		ERROR: Invalid syntax
+SGE #$12,*+$10(PC)		ERROR: Invalid addressing mode
+SGE *(PC,D0.W),D1		ERROR: Invalid addressing mode
+SGE *(PC,D0.W),A2		ERROR: Invalid addressing mode
+SGE D1,*(PC,D0.W)		ERROR: Invalid syntax
+SGE #$12,*(PC,D0.W)		ERROR: Invalid addressing mode
+SGE BK(PC),D1		ERROR: Invalid addressing mode
+SGE BK(PC),A2		ERROR: Invalid addressing mode
+SGE D1,BK(PC)		ERROR: Invalid syntax
+SGE #$12,BK(PC)		ERROR: Invalid addressing mode
+SGE #8,D1		ERROR: Invalid addressing mode
+SGE #8,A2		ERROR: Invalid addressing mode
+SGE D1,#8		ERROR: Invalid syntax
+SGE #$12,#8		ERROR: Invalid addressing mode
+SGE #9,D1		ERROR: Invalid addressing mode
+SGE #9,A2		ERROR: Invalid addressing mode
+SGE D1,#9		ERROR: Invalid syntax
+SGE #$12,#9		ERROR: Invalid addressing mode
+SGE #0,D1		ERROR: Invalid addressing mode
+SGE #0,A2		ERROR: Invalid addressing mode
+SGE D1,#0		ERROR: Invalid syntax
+SGE #$12,#0		ERROR: Invalid addressing mode
+SGE #-1,D1		ERROR: Invalid addressing mode
+SGE #-1,A2		ERROR: Invalid addressing mode
+SGE D1,#-1		ERROR: Invalid syntax
+SGE #$12,#-1		ERROR: Invalid addressing mode
+SGE #$80,D1		ERROR: Invalid addressing mode
+SGE #$80,A2		ERROR: Invalid addressing mode
+SGE D1,#$80		ERROR: Invalid syntax
+SGE #$12,#$80		ERROR: Invalid addressing mode
+SGE #$12345678,D1		ERROR: Invalid addressing mode
+SGE #$12345678,A2		ERROR: Invalid addressing mode
+SGE D1,#$12345678		ERROR: Invalid syntax
+SGE #$12,#$12345678		ERROR: Invalid addressing mode
+SGE #$12345678.L,D1		ERROR: Invalid addressing mode
+SGE #$12345678.L,A2		ERROR: Invalid addressing mode
+SGE D1,#$12345678.L		ERROR: Invalid syntax
+SGE #$12,#$12345678.L		ERROR: Invalid addressing mode
+SGE #BK,D1		ERROR: Invalid addressing mode
+SGE #BK,A2		ERROR: Invalid addressing mode
+SGE D1,#BK		ERROR: Invalid syntax
+SGE #$12,#BK		ERROR: Invalid addressing mode
+SGE #FW,D1		ERROR: Invalid addressing mode
+SGE #FW,A2		ERROR: Invalid addressing mode
+SGE D1,#FW		ERROR: Invalid syntax
+SGE #$12,#FW		ERROR: Invalid addressing mode
+SGE #UNDEF,D1		ERROR: Invalid addressing mode
+SGE #UNDEF,A2		ERROR: Invalid addressing mode
+SGE D1,#UNDEF		ERROR: Invalid syntax
+SGE #$12,#UNDEF		ERROR: Invalid addressing mode
+SGE UNDEF,D1		ERROR: Invalid syntax
+SGE UNDEF,A2		ERROR: Invalid syntax
+SGE D1,UNDEF		ERROR: Invalid syntax
+SGE #$12,UNDEF		ERROR: Invalid addressing mode
+SGE USP,D1		ERROR: Invalid addressing mode
+SGE USP,A2		ERROR: Invalid addressing mode
+SGE D1,USP		ERROR: Invalid syntax
+SGE #$12,USP		ERROR: Invalid addressing mode
+SGE D1,D2,D3		ERROR: Invalid syntax
+SGE.B		ERROR: Invalid syntax
+SGE.B D1	5CC1	-
+SGE.B A2		ERROR: Invalid addressing mode
+SGE.B SP		ERROR: Invalid addressing mode
+SGE.B (A3)	5CD3	-
+SGE.B (A4)+	5CDC	-
+SGE.B -(A5)	5CE5	-
+SGE.B $10(A6)	5CEE0010	-
+SGE.B -2(A0)	5CE8FFFE	-
+SGE.B $10(A6,D7.W)	5CF67010	-
+SGE.B $12(A0,A1.L)	5CF09812	-
+SGE.B (A2,D3)	5CF23000	-
+SGE.B $1234	5CF81234	-
+SGE.B $12345678	5CF912345678	-
+SGE.B $1234.L	5CF900001234	-
+SGE.B $1234.W	5CF81234	WARNING: Forcing SHORT addressing disables range checking of extension word
+SGE.B $8000	5CF900008000	-
+SGE.B BK	5CF81F00	-
+SGE.B FW	5CF900001F00	-
+SGE.B *+$10(PC)		ERROR: Invalid addressing mode
+SGE.B *(PC,D0.W)		ERROR: Invalid addressing mode
+SGE.B BK(PC)		ERROR: Invalid addressing mode
+SGE.B #1		ERROR: Invalid addressing mode
+SGE.B #8		ERROR: Invalid addressing mode
+SGE.B #9		ERROR: Invalid addressing mode
+SGE.B #0		ERROR: Invalid addressing mode
+SGE.B #-1		ERROR: Invalid addressing mode
+SGE.B #$80		ERROR: Invalid addressing mode
+SGE.B #$1234		ERROR: Invalid addressing mode
+SGE.B #$12345678		ERROR: Invalid addressing mode
+SGE.B #$12345678.L		ERROR: Invalid addressing mode
+SGE.B #BK		ERROR: Invalid addressing mode
+SGE.B #FW		ERROR: Invalid addressing mode
+SGE.B #UNDEF		ERROR: Invalid addressing mode
+SGE.B UNDEF	5CF900005583	ERROR: Undefined symbol
+SGE.B SR		ERROR: Invalid addressing mode
+SGE.B CCR		ERROR: Invalid addressing mode
+SGE.B USP		ERROR: Invalid addressing mode
+SGE.B D1,D2,D3		ERROR: Invalid syntax
+SGE.W		ERROR: Invalid syntax
+SGE.W D1	5CC1	ERROR: Invalid size code
+SGE.W A2		ERROR: Invalid addressing mode
+SGE.W SP		ERROR: Invalid addressing mode
+SGE.W (A3)	5CD3	ERROR: Invalid size code
+SGE.W (A4)+	5CDC	ERROR: Invalid size code
+SGE.W -(A5)	5CE5	ERROR: Invalid size code
+SGE.W $10(A6)	5CEE0010	ERROR: Invalid size code
+SGE.W -2(A0)	5CE8FFFE	ERROR: Invalid size code
+SGE.W $10(A6,D7.W)	5CF67010	ERROR: Invalid size code
+SGE.W $12(A0,A1.L)	5CF09812	ERROR: Invalid size code
+SGE.W (A2,D3)	5CF23000	ERROR: Invalid size code
+SGE.W $1234	5CF81234	ERROR: Invalid size code
+SGE.W $12345678	5CF912345678	ERROR: Invalid size code
+SGE.W $1234.L	5CF900001234	ERROR: Invalid size code
+SGE.W $1234.W	5CF81234	ERROR: Invalid size code
+SGE.W $8000	5CF900008000	ERROR: Invalid size code
+SGE.W BK	5CF81F00	ERROR: Invalid size code
+SGE.W FW	5CF900001F00	ERROR: Invalid size code
+SGE.W *+$10(PC)		ERROR: Invalid addressing mode
+SGE.W *(PC,D0.W)		ERROR: Invalid addressing mode
+SGE.W BK(PC)		ERROR: Invalid addressing mode
+SGE.W #1		ERROR: Invalid addressing mode
+SGE.W #8		ERROR: Invalid addressing mode
+SGE.W #9		ERROR: Invalid addressing mode
+SGE.W #0		ERROR: Invalid addressing mode
+SGE.W #-1		ERROR: Invalid addressing mode
+SGE.W #$80		ERROR: Invalid addressing mode
+SGE.W #$1234		ERROR: Invalid addressing mode
+SGE.W #$12345678		ERROR: Invalid addressing mode
+SGE.W #$12345678.L		ERROR: Invalid addressing mode
+SGE.W #BK		ERROR: Invalid addressing mode
+SGE.W #FW		ERROR: Invalid addressing mode
+SGE.W #UNDEF		ERROR: Invalid addressing mode
+SGE.W UNDEF	5CF900005583	ERROR: Undefined symbol
+SGE.W SR		ERROR: Invalid addressing mode
+SGE.W CCR		ERROR: Invalid addressing mode
+SGE.W USP		ERROR: Invalid addressing mode
+SGE.W D1,D2,D3		ERROR: Invalid syntax
+SGE.L		ERROR: Invalid syntax
+SGE.L D1	5CC1	ERROR: Invalid size code
+SGE.L A2		ERROR: Invalid addressing mode
+SGE.L SP		ERROR: Invalid addressing mode
+SGE.L (A3)	5CD3	ERROR: Invalid size code
+SGE.L (A4)+	5CDC	ERROR: Invalid size code
+SGE.L -(A5)	5CE5	ERROR: Invalid size code
+SGE.L $10(A6)	5CEE0010	ERROR: Invalid size code
+SGE.L -2(A0)	5CE8FFFE	ERROR: Invalid size code
+SGE.L $10(A6,D7.W)	5CF67010	ERROR: Invalid size code
+SGE.L $12(A0,A1.L)	5CF09812	ERROR: Invalid size code
+SGE.L (A2,D3)	5CF23000	ERROR: Invalid size code
+SGE.L $1234	5CF81234	ERROR: Invalid size code
+SGE.L $12345678	5CF912345678	ERROR: Invalid size code
+SGE.L $1234.L	5CF900001234	ERROR: Invalid size code
+SGE.L $1234.W	5CF81234	ERROR: Invalid size code
+SGE.L $8000	5CF900008000	ERROR: Invalid size code
+SGE.L BK	5CF81F00	ERROR: Invalid size code
+SGE.L FW	5CF900001F00	ERROR: Invalid size code
+SGE.L *+$10(PC)		ERROR: Invalid addressing mode
+SGE.L *(PC,D0.W)		ERROR: Invalid addressing mode
+SGE.L BK(PC)		ERROR: Invalid addressing mode
+SGE.L #1		ERROR: Invalid addressing mode
+SGE.L #8		ERROR: Invalid addressing mode
+SGE.L #9		ERROR: Invalid addressing mode
+SGE.L #0		ERROR: Invalid addressing mode
+SGE.L #-1		ERROR: Invalid addressing mode
+SGE.L #$80		ERROR: Invalid addressing mode
+SGE.L #$1234		ERROR: Invalid addressing mode
+SGE.L #$12345678		ERROR: Invalid addressing mode
+SGE.L #$12345678.L		ERROR: Invalid addressing mode
+SGE.L #BK		ERROR: Invalid addressing mode
+SGE.L #FW		ERROR: Invalid addressing mode
+SGE.L #UNDEF		ERROR: Invalid addressing mode
+SGE.L UNDEF	5CF900005583	ERROR: Undefined symbol
+SGE.L SR		ERROR: Invalid addressing mode
+SGE.L CCR		ERROR: Invalid addressing mode
+SGE.L USP		ERROR: Invalid addressing mode
+SGE.L D1,D2,D3		ERROR: Invalid syntax
+SGE.S		ERROR: Invalid syntax
+SGE.S D1	5CC1	ERROR: Invalid size code
+SGE.S A2		ERROR: Invalid addressing mode
+SGE.S SP		ERROR: Invalid addressing mode
+SGE.S (A3)	5CD3	ERROR: Invalid size code
+SGE.S (A4)+	5CDC	ERROR: Invalid size code
+SGE.S -(A5)	5CE5	ERROR: Invalid size code
+SGE.S $10(A6)	5CEE0010	ERROR: Invalid size code
+SGE.S -2(A0)	5CE8FFFE	ERROR: Invalid size code
+SGE.S $10(A6,D7.W)	5CF67010	ERROR: Invalid size code
+SGE.S $12(A0,A1.L)	5CF09812	ERROR: Invalid size code
+SGE.S (A2,D3)	5CF23000	ERROR: Invalid size code
+SGE.S $1234	5CF81234	ERROR: Invalid size code
+SGE.S $12345678	5CF912345678	ERROR: Invalid size code
+SGE.S $1234.L	5CF900001234	ERROR: Invalid size code
+SGE.S $1234.W	5CF81234	ERROR: Invalid size code
+SGE.S $8000	5CF900008000	ERROR: Invalid size code
+SGE.S BK	5CF81F00	ERROR: Invalid size code
+SGE.S FW	5CF900001F00	ERROR: Invalid size code
+SGE.S *+$10(PC)		ERROR: Invalid addressing mode
+SGE.S *(PC,D0.W)		ERROR: Invalid addressing mode
+SGE.S BK(PC)		ERROR: Invalid addressing mode
+SGE.S #1		ERROR: Invalid addressing mode
+SGE.S #8		ERROR: Invalid addressing mode
+SGE.S #9		ERROR: Invalid addressing mode
+SGE.S #0		ERROR: Invalid addressing mode
+SGE.S #-1		ERROR: Invalid addressing mode
+SGE.S #$80		ERROR: Invalid addressing mode
+SGE.S #$1234		ERROR: Invalid addressing mode
+SGE.S #$12345678		ERROR: Invalid addressing mode
+SGE.S #$12345678.L		ERROR: Invalid addressing mode
+SGE.S #BK		ERROR: Invalid addressing mode
+SGE.S #FW		ERROR: Invalid addressing mode
+SGE.S #UNDEF		ERROR: Invalid addressing mode
+SGE.S UNDEF	5CF900005583	ERROR: Undefined symbol
+SGE.S SR		ERROR: Invalid addressing mode
+SGE.S CCR		ERROR: Invalid addressing mode
+SGE.S USP		ERROR: Invalid addressing mode
+SGE.S D1,D2,D3		ERROR: Invalid syntax
+SGE.X D1,D2		ERROR: Invalid syntax
+SGE.X #1		ERROR: Invalid addressing mode

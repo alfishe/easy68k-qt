@@ -1,0 +1,92 @@
+DBVC		ERROR: Invalid syntax
+DBVC D2,*+2	58CA0000	-
+DBVC D2,*+4	58CA0002	-
+DBVC D2,*+$80	58CA007E	-
+DBVC D2,*+$82	58CA0080	-
+DBVC D2,*-$7E	58CAFF80	-
+DBVC D2,*-$80	58CAFF7E	-
+DBVC D2,*+$8000	58CA7FFE	-
+DBVC D2,*	58CAFFFE	-
+DBVC D2,BK	58CA0EFE	-
+DBVC D2,FW	58CA0EFE	-
+DBVC D2,$1000	58CAFFFE	-
+DBVC D2,$12345678	58CA4676	ERROR: Branch instruction displacement is out of range or invalid
+DBVC D2,D1		ERROR: Invalid addressing mode
+DBVC D2,(A0)		ERROR: Invalid addressing mode
+DBVC D2,#4		ERROR: Invalid addressing mode
+DBVC A2,*		ERROR: Invalid addressing mode
+DBVC #1,*		ERROR: Invalid addressing mode
+DBVC.B		ERROR: Invalid syntax
+DBVC.B D2,*+2	58CA0000	ERROR: Invalid size code
+DBVC.B D2,*+4	58CA0002	ERROR: Invalid size code
+DBVC.B D2,*+$80	58CA007E	ERROR: Invalid size code
+DBVC.B D2,*+$82	58CA0080	ERROR: Invalid size code
+DBVC.B D2,*-$7E	58CAFF80	ERROR: Invalid size code
+DBVC.B D2,*-$80	58CAFF7E	ERROR: Invalid size code
+DBVC.B D2,*+$8000	58CA7FFE	ERROR: Invalid size code
+DBVC.B D2,*	58CAFFFE	ERROR: Invalid size code
+DBVC.B D2,BK	58CA0EFE	ERROR: Invalid size code
+DBVC.B D2,FW	58CA0EFE	ERROR: Invalid size code
+DBVC.B D2,$1000	58CAFFFE	ERROR: Invalid size code
+DBVC.B D2,$12345678	58CA4676	ERROR: Invalid size code
+DBVC.B D2,D1		ERROR: Invalid addressing mode
+DBVC.B D2,(A0)		ERROR: Invalid addressing mode
+DBVC.B D2,#4		ERROR: Invalid addressing mode
+DBVC.B A2,*		ERROR: Invalid addressing mode
+DBVC.B #1,*		ERROR: Invalid addressing mode
+DBVC.W		ERROR: Invalid syntax
+DBVC.W D2,*+2	58CA0000	-
+DBVC.W D2,*+4	58CA0002	-
+DBVC.W D2,*+$80	58CA007E	-
+DBVC.W D2,*+$82	58CA0080	-
+DBVC.W D2,*-$7E	58CAFF80	-
+DBVC.W D2,*-$80	58CAFF7E	-
+DBVC.W D2,*+$8000	58CA7FFE	-
+DBVC.W D2,*	58CAFFFE	-
+DBVC.W D2,BK	58CA0EFE	-
+DBVC.W D2,FW	58CA0EFE	-
+DBVC.W D2,$1000	58CAFFFE	-
+DBVC.W D2,$12345678	58CA4676	ERROR: Branch instruction displacement is out of range or invalid
+DBVC.W D2,D1		ERROR: Invalid addressing mode
+DBVC.W D2,(A0)		ERROR: Invalid addressing mode
+DBVC.W D2,#4		ERROR: Invalid addressing mode
+DBVC.W A2,*		ERROR: Invalid addressing mode
+DBVC.W #1,*		ERROR: Invalid addressing mode
+DBVC.L		ERROR: Invalid syntax
+DBVC.L D2,*+2	58CA0000	ERROR: Invalid size code
+DBVC.L D2,*+4	58CA0002	ERROR: Invalid size code
+DBVC.L D2,*+$80	58CA007E	ERROR: Invalid size code
+DBVC.L D2,*+$82	58CA0080	ERROR: Invalid size code
+DBVC.L D2,*-$7E	58CAFF80	ERROR: Invalid size code
+DBVC.L D2,*-$80	58CAFF7E	ERROR: Invalid size code
+DBVC.L D2,*+$8000	58CA7FFE	ERROR: Invalid size code
+DBVC.L D2,*	58CAFFFE	ERROR: Invalid size code
+DBVC.L D2,BK	58CA0EFE	ERROR: Invalid size code
+DBVC.L D2,FW	58CA0EFE	ERROR: Invalid size code
+DBVC.L D2,$1000	58CAFFFE	ERROR: Invalid size code
+DBVC.L D2,$12345678	58CA4676	ERROR: Invalid size code
+DBVC.L D2,D1		ERROR: Invalid addressing mode
+DBVC.L D2,(A0)		ERROR: Invalid addressing mode
+DBVC.L D2,#4		ERROR: Invalid addressing mode
+DBVC.L A2,*		ERROR: Invalid addressing mode
+DBVC.L #1,*		ERROR: Invalid addressing mode
+DBVC.S		ERROR: Invalid syntax
+DBVC.S D2,*+2	58CA0000	ERROR: Invalid size code
+DBVC.S D2,*+4	58CA0002	ERROR: Invalid size code
+DBVC.S D2,*+$80	58CA007E	ERROR: Invalid size code
+DBVC.S D2,*+$82	58CA0080	ERROR: Invalid size code
+DBVC.S D2,*-$7E	58CAFF80	ERROR: Invalid size code
+DBVC.S D2,*-$80	58CAFF7E	ERROR: Invalid size code
+DBVC.S D2,*+$8000	58CA7FFE	ERROR: Invalid size code
+DBVC.S D2,*	58CAFFFE	ERROR: Invalid size code
+DBVC.S D2,BK	58CA0EFE	ERROR: Invalid size code
+DBVC.S D2,FW	58CA0EFE	ERROR: Invalid size code
+DBVC.S D2,$1000	58CAFFFE	ERROR: Invalid size code
+DBVC.S D2,$12345678	58CA4676	ERROR: Invalid size code
+DBVC.S D2,D1		ERROR: Invalid addressing mode
+DBVC.S D2,(A0)		ERROR: Invalid addressing mode
+DBVC.S D2,#4		ERROR: Invalid addressing mode
+DBVC.S A2,*		ERROR: Invalid addressing mode
+DBVC.S #1,*		ERROR: Invalid addressing mode
+DBVC.X D1,D2		ERROR: Invalid addressing mode
+DBVC.X #1		ERROR: Comma expected

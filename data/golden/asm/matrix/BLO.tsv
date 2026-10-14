@@ -1,0 +1,82 @@
+BLO		ERROR: Invalid syntax
+BLO *+2	65000000	-
+BLO *+4	6502	-
+BLO *+$80	657E	-
+BLO *+$82	65000080	-
+BLO *-$7E	6580	-
+BLO *-$80	6500FF7E	-
+BLO *+$8000	65007FFE	-
+BLO *	65FE	-
+BLO BK	65000EFE	-
+BLO FW	65000EFE	-
+BLO $1000	65FE	-
+BLO $12345678	65004676	ERROR: Branch instruction displacement is out of range or invalid
+BLO D1		ERROR: Invalid addressing mode
+BLO (A0)		ERROR: Invalid addressing mode
+BLO #4		ERROR: Invalid addressing mode
+BLO.B		ERROR: Invalid syntax
+BLO.B *+2	6500	ERROR: Branch instruction displacement is out of range or invalid
+BLO.B *+4	6502	-
+BLO.B *+$80	657E	-
+BLO.B *+$82	6580	ERROR: Branch instruction displacement is out of range or invalid
+BLO.B *-$7E	6580	-
+BLO.B *-$80	657E	ERROR: Branch instruction displacement is out of range or invalid
+BLO.B *+$8000	65FE	ERROR: Branch instruction displacement is out of range or invalid
+BLO.B *	65FE	-
+BLO.B BK	65FE	ERROR: Branch instruction displacement is out of range or invalid
+BLO.B FW	65FE	ERROR: Branch instruction displacement is out of range or invalid
+BLO.B $1000	65FE	-
+BLO.B $12345678	6576	ERROR: Branch instruction displacement is out of range or invalid
+BLO.B D1		ERROR: Invalid addressing mode
+BLO.B (A0)		ERROR: Invalid addressing mode
+BLO.B #4		ERROR: Invalid addressing mode
+BLO.W		ERROR: Invalid syntax
+BLO.W *+2	65000000	-
+BLO.W *+4	65000002	-
+BLO.W *+$80	6500007E	-
+BLO.W *+$82	65000080	-
+BLO.W *-$7E	6500FF80	-
+BLO.W *-$80	6500FF7E	-
+BLO.W *+$8000	65007FFE	-
+BLO.W *	6500FFFE	-
+BLO.W BK	65000EFE	-
+BLO.W FW	65000EFE	-
+BLO.W $1000	6500FFFE	-
+BLO.W $12345678	65004676	ERROR: Branch instruction displacement is out of range or invalid
+BLO.W D1		ERROR: Invalid addressing mode
+BLO.W (A0)		ERROR: Invalid addressing mode
+BLO.W #4		ERROR: Invalid addressing mode
+BLO.L		ERROR: Invalid syntax
+BLO.L *+2	65000000	-
+BLO.L *+4	65000002	-
+BLO.L *+$80	6500007E	-
+BLO.L *+$82	65000080	-
+BLO.L *-$7E	6500FF80	-
+BLO.L *-$80	6500FF7E	-
+BLO.L *+$8000	65007FFE	-
+BLO.L *	6500FFFE	-
+BLO.L BK	65000EFE	-
+BLO.L FW	65000EFE	-
+BLO.L $1000	6500FFFE	-
+BLO.L $12345678	65004676	ERROR: Branch instruction displacement is out of range or invalid
+BLO.L D1		ERROR: Invalid addressing mode
+BLO.L (A0)		ERROR: Invalid addressing mode
+BLO.L #4		ERROR: Invalid addressing mode
+BLO.S		ERROR: Invalid syntax
+BLO.S *+2	6500	ERROR: Branch instruction displacement is out of range or invalid
+BLO.S *+4	6502	-
+BLO.S *+$80	657E	-
+BLO.S *+$82	6580	ERROR: Branch instruction displacement is out of range or invalid
+BLO.S *-$7E	6580	-
+BLO.S *-$80	657E	ERROR: Branch instruction displacement is out of range or invalid
+BLO.S *+$8000	65FE	ERROR: Branch instruction displacement is out of range or invalid
+BLO.S *	65FE	-
+BLO.S BK	65FE	ERROR: Branch instruction displacement is out of range or invalid
+BLO.S FW	65FE	ERROR: Branch instruction displacement is out of range or invalid
+BLO.S $1000	65FE	-
+BLO.S $12345678	6576	ERROR: Branch instruction displacement is out of range or invalid
+BLO.S D1		ERROR: Invalid addressing mode
+BLO.S (A0)		ERROR: Invalid addressing mode
+BLO.S #4		ERROR: Invalid addressing mode
+BLO.X D1,D2		ERROR: Invalid addressing mode
+BLO.X #1		ERROR: Invalid addressing mode

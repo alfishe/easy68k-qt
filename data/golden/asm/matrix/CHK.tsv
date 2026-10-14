@@ -1,0 +1,1621 @@
+CHK		ERROR: Invalid syntax
+CHK D1		ERROR: Comma expected
+CHK A2		ERROR: Comma expected
+CHK SP		ERROR: Comma expected
+CHK (A3)		ERROR: Comma expected
+CHK (A4)+		ERROR: Comma expected
+CHK -(A5)		ERROR: Comma expected
+CHK $10(A6)		ERROR: Comma expected
+CHK -2(A0)		ERROR: Comma expected
+CHK $10(A6,D7.W)		ERROR: Comma expected
+CHK $12(A0,A1.L)		ERROR: Comma expected
+CHK (A2,D3)		ERROR: Comma expected
+CHK $1234		ERROR: Comma expected
+CHK $12345678		ERROR: Comma expected
+CHK $1234.L		ERROR: Comma expected
+CHK $1234.W		ERROR: Comma expected
+CHK $8000		ERROR: Comma expected
+CHK BK		ERROR: Comma expected
+CHK FW		ERROR: Comma expected
+CHK *+$10(PC)		ERROR: Comma expected
+CHK *(PC,D0.W)		ERROR: Comma expected
+CHK BK(PC)		ERROR: Comma expected
+CHK #1		ERROR: Comma expected
+CHK #8		ERROR: Comma expected
+CHK #9		ERROR: Comma expected
+CHK #0		ERROR: Comma expected
+CHK #-1		ERROR: Comma expected
+CHK #$80		ERROR: Comma expected
+CHK #$1234		ERROR: Comma expected
+CHK #$12345678		ERROR: Comma expected
+CHK #$12345678.L		ERROR: Comma expected
+CHK #BK		ERROR: Comma expected
+CHK #FW		ERROR: Comma expected
+CHK #UNDEF		ERROR: Comma expected
+CHK UNDEF		ERROR: Comma expected
+CHK SR		ERROR: Comma expected
+CHK CCR		ERROR: Comma expected
+CHK USP		ERROR: Comma expected
+CHK D1,D1	4381	-
+CHK D1,A2		ERROR: Invalid addressing mode
+CHK D1,(A3)		ERROR: Invalid addressing mode
+CHK D1,(A4)+		ERROR: Invalid addressing mode
+CHK D1,-(A5)		ERROR: Invalid addressing mode
+CHK D1,$10(A6)		ERROR: Invalid addressing mode
+CHK D1,$10(A6,D7.W)		ERROR: Invalid addressing mode
+CHK D1,$1234		ERROR: Invalid addressing mode
+CHK D1,$12345678		ERROR: Invalid addressing mode
+CHK D1,FW		ERROR: Invalid addressing mode
+CHK D1,*+$10(PC)		ERROR: Invalid addressing mode
+CHK D1,#1		ERROR: Invalid addressing mode
+CHK D1,#$80		ERROR: Invalid addressing mode
+CHK D1,#$1234		ERROR: Invalid addressing mode
+CHK D1,#$12345678		ERROR: Invalid addressing mode
+CHK D1,SR		ERROR: Invalid addressing mode
+CHK D1,CCR		ERROR: Invalid addressing mode
+CHK D1,USP		ERROR: Invalid addressing mode
+CHK A2,D1		ERROR: Invalid addressing mode
+CHK A2,A2		ERROR: Invalid addressing mode
+CHK A2,(A3)		ERROR: Invalid addressing mode
+CHK A2,(A4)+		ERROR: Invalid addressing mode
+CHK A2,-(A5)		ERROR: Invalid addressing mode
+CHK A2,$10(A6)		ERROR: Invalid addressing mode
+CHK A2,$10(A6,D7.W)		ERROR: Invalid addressing mode
+CHK A2,$1234		ERROR: Invalid addressing mode
+CHK A2,$12345678		ERROR: Invalid addressing mode
+CHK A2,FW		ERROR: Invalid addressing mode
+CHK A2,*+$10(PC)		ERROR: Invalid addressing mode
+CHK A2,#1		ERROR: Invalid addressing mode
+CHK A2,#$80		ERROR: Invalid addressing mode
+CHK A2,#$1234		ERROR: Invalid addressing mode
+CHK A2,#$12345678		ERROR: Invalid addressing mode
+CHK A2,SR		ERROR: Invalid addressing mode
+CHK A2,CCR		ERROR: Invalid addressing mode
+CHK A2,USP		ERROR: Invalid addressing mode
+CHK (A3),D1	4393	-
+CHK (A3),A2		ERROR: Invalid addressing mode
+CHK (A3),(A3)		ERROR: Invalid addressing mode
+CHK (A3),(A4)+		ERROR: Invalid addressing mode
+CHK (A3),-(A5)		ERROR: Invalid addressing mode
+CHK (A3),$10(A6)		ERROR: Invalid addressing mode
+CHK (A3),$10(A6,D7.W)		ERROR: Invalid addressing mode
+CHK (A3),$1234		ERROR: Invalid addressing mode
+CHK (A3),$12345678		ERROR: Invalid addressing mode
+CHK (A3),FW		ERROR: Invalid addressing mode
+CHK (A3),*+$10(PC)		ERROR: Invalid addressing mode
+CHK (A3),#1		ERROR: Invalid addressing mode
+CHK (A3),#$80		ERROR: Invalid addressing mode
+CHK (A3),#$1234		ERROR: Invalid addressing mode
+CHK (A3),#$12345678		ERROR: Invalid addressing mode
+CHK (A3),SR		ERROR: Invalid addressing mode
+CHK (A3),CCR		ERROR: Invalid addressing mode
+CHK (A3),USP		ERROR: Invalid addressing mode
+CHK (A4)+,D1	439C	-
+CHK (A4)+,A2		ERROR: Invalid addressing mode
+CHK (A4)+,(A3)		ERROR: Invalid addressing mode
+CHK (A4)+,(A4)+		ERROR: Invalid addressing mode
+CHK (A4)+,-(A5)		ERROR: Invalid addressing mode
+CHK (A4)+,$10(A6)		ERROR: Invalid addressing mode
+CHK (A4)+,$10(A6,D7.W)		ERROR: Invalid addressing mode
+CHK (A4)+,$1234		ERROR: Invalid addressing mode
+CHK (A4)+,$12345678		ERROR: Invalid addressing mode
+CHK (A4)+,FW		ERROR: Invalid addressing mode
+CHK (A4)+,*+$10(PC)		ERROR: Invalid addressing mode
+CHK (A4)+,#1		ERROR: Invalid addressing mode
+CHK (A4)+,#$80		ERROR: Invalid addressing mode
+CHK (A4)+,#$1234		ERROR: Invalid addressing mode
+CHK (A4)+,#$12345678		ERROR: Invalid addressing mode
+CHK (A4)+,SR		ERROR: Invalid addressing mode
+CHK (A4)+,CCR		ERROR: Invalid addressing mode
+CHK (A4)+,USP		ERROR: Invalid addressing mode
+CHK -(A5),D1	43A5	-
+CHK -(A5),A2		ERROR: Invalid addressing mode
+CHK -(A5),(A3)		ERROR: Invalid addressing mode
+CHK -(A5),(A4)+		ERROR: Invalid addressing mode
+CHK -(A5),-(A5)		ERROR: Invalid addressing mode
+CHK -(A5),$10(A6)		ERROR: Invalid addressing mode
+CHK -(A5),$10(A6,D7.W)		ERROR: Invalid addressing mode
+CHK -(A5),$1234		ERROR: Invalid addressing mode
+CHK -(A5),$12345678		ERROR: Invalid addressing mode
+CHK -(A5),FW		ERROR: Invalid addressing mode
+CHK -(A5),*+$10(PC)		ERROR: Invalid addressing mode
+CHK -(A5),#1		ERROR: Invalid addressing mode
+CHK -(A5),#$80		ERROR: Invalid addressing mode
+CHK -(A5),#$1234		ERROR: Invalid addressing mode
+CHK -(A5),#$12345678		ERROR: Invalid addressing mode
+CHK -(A5),SR		ERROR: Invalid addressing mode
+CHK -(A5),CCR		ERROR: Invalid addressing mode
+CHK -(A5),USP		ERROR: Invalid addressing mode
+CHK $10(A6),D1	43AE0010	-
+CHK $10(A6),A2		ERROR: Invalid addressing mode
+CHK $10(A6),(A3)		ERROR: Invalid addressing mode
+CHK $10(A6),(A4)+		ERROR: Invalid addressing mode
+CHK $10(A6),-(A5)		ERROR: Invalid addressing mode
+CHK $10(A6),$10(A6)		ERROR: Invalid addressing mode
+CHK $10(A6),$10(A6,D7.W)		ERROR: Invalid addressing mode
+CHK $10(A6),$1234		ERROR: Invalid addressing mode
+CHK $10(A6),$12345678		ERROR: Invalid addressing mode
+CHK $10(A6),FW		ERROR: Invalid addressing mode
+CHK $10(A6),*+$10(PC)		ERROR: Invalid addressing mode
+CHK $10(A6),#1		ERROR: Invalid addressing mode
+CHK $10(A6),#$80		ERROR: Invalid addressing mode
+CHK $10(A6),#$1234		ERROR: Invalid addressing mode
+CHK $10(A6),#$12345678		ERROR: Invalid addressing mode
+CHK $10(A6),SR		ERROR: Invalid addressing mode
+CHK $10(A6),CCR		ERROR: Invalid addressing mode
+CHK $10(A6),USP		ERROR: Invalid addressing mode
+CHK $10(A6,D7.W),D1	43B67010	-
+CHK $10(A6,D7.W),A2		ERROR: Invalid addressing mode
+CHK $10(A6,D7.W),(A3)		ERROR: Invalid addressing mode
+CHK $10(A6,D7.W),(A4)+		ERROR: Invalid addressing mode
+CHK $10(A6,D7.W),-(A5)		ERROR: Invalid addressing mode
+CHK $10(A6,D7.W),$10(A6)		ERROR: Invalid addressing mode
+CHK $10(A6,D7.W),$10(A6,D7.W)		ERROR: Invalid addressing mode
+CHK $10(A6,D7.W),$1234		ERROR: Invalid addressing mode
+CHK $10(A6,D7.W),$12345678		ERROR: Invalid addressing mode
+CHK $10(A6,D7.W),FW		ERROR: Invalid addressing mode
+CHK $10(A6,D7.W),*+$10(PC)		ERROR: Invalid addressing mode
+CHK $10(A6,D7.W),#1		ERROR: Invalid addressing mode
+CHK $10(A6,D7.W),#$80		ERROR: Invalid addressing mode
+CHK $10(A6,D7.W),#$1234		ERROR: Invalid addressing mode
+CHK $10(A6,D7.W),#$12345678		ERROR: Invalid addressing mode
+CHK $10(A6,D7.W),SR		ERROR: Invalid addressing mode
+CHK $10(A6,D7.W),CCR		ERROR: Invalid addressing mode
+CHK $10(A6,D7.W),USP		ERROR: Invalid addressing mode
+CHK $1234,D1	43B81234	-
+CHK $1234,A2		ERROR: Invalid addressing mode
+CHK $1234,(A3)		ERROR: Invalid addressing mode
+CHK $1234,(A4)+		ERROR: Invalid addressing mode
+CHK $1234,-(A5)		ERROR: Invalid addressing mode
+CHK $1234,$10(A6)		ERROR: Invalid addressing mode
+CHK $1234,$10(A6,D7.W)		ERROR: Invalid addressing mode
+CHK $1234,$1234		ERROR: Invalid addressing mode
+CHK $1234,$12345678		ERROR: Invalid addressing mode
+CHK $1234,FW		ERROR: Invalid addressing mode
+CHK $1234,*+$10(PC)		ERROR: Invalid addressing mode
+CHK $1234,#1		ERROR: Invalid addressing mode
+CHK $1234,#$80		ERROR: Invalid addressing mode
+CHK $1234,#$1234		ERROR: Invalid addressing mode
+CHK $1234,#$12345678		ERROR: Invalid addressing mode
+CHK $1234,SR		ERROR: Invalid addressing mode
+CHK $1234,CCR		ERROR: Invalid addressing mode
+CHK $1234,USP		ERROR: Invalid addressing mode
+CHK $12345678,D1	43B912345678	-
+CHK $12345678,A2		ERROR: Invalid addressing mode
+CHK $12345678,(A3)		ERROR: Invalid addressing mode
+CHK $12345678,(A4)+		ERROR: Invalid addressing mode
+CHK $12345678,-(A5)		ERROR: Invalid addressing mode
+CHK $12345678,$10(A6)		ERROR: Invalid addressing mode
+CHK $12345678,$10(A6,D7.W)		ERROR: Invalid addressing mode
+CHK $12345678,$1234		ERROR: Invalid addressing mode
+CHK $12345678,$12345678		ERROR: Invalid addressing mode
+CHK $12345678,FW		ERROR: Invalid addressing mode
+CHK $12345678,*+$10(PC)		ERROR: Invalid addressing mode
+CHK $12345678,#1		ERROR: Invalid addressing mode
+CHK $12345678,#$80		ERROR: Invalid addressing mode
+CHK $12345678,#$1234		ERROR: Invalid addressing mode
+CHK $12345678,#$12345678		ERROR: Invalid addressing mode
+CHK $12345678,SR		ERROR: Invalid addressing mode
+CHK $12345678,CCR		ERROR: Invalid addressing mode
+CHK $12345678,USP		ERROR: Invalid addressing mode
+CHK FW,D1	43B900001F00	-
+CHK FW,A2		ERROR: Invalid addressing mode
+CHK FW,(A3)		ERROR: Invalid addressing mode
+CHK FW,(A4)+		ERROR: Invalid addressing mode
+CHK FW,-(A5)		ERROR: Invalid addressing mode
+CHK FW,$10(A6)		ERROR: Invalid addressing mode
+CHK FW,$10(A6,D7.W)		ERROR: Invalid addressing mode
+CHK FW,$1234		ERROR: Invalid addressing mode
+CHK FW,$12345678		ERROR: Invalid addressing mode
+CHK FW,FW		ERROR: Invalid addressing mode
+CHK FW,*+$10(PC)		ERROR: Invalid addressing mode
+CHK FW,#1		ERROR: Invalid addressing mode
+CHK FW,#$80		ERROR: Invalid addressing mode
+CHK FW,#$1234		ERROR: Invalid addressing mode
+CHK FW,#$12345678		ERROR: Invalid addressing mode
+CHK FW,SR		ERROR: Invalid addressing mode
+CHK FW,CCR		ERROR: Invalid addressing mode
+CHK FW,USP		ERROR: Invalid addressing mode
+CHK *+$10(PC),D1	43BA000E	-
+CHK *+$10(PC),A2		ERROR: Invalid addressing mode
+CHK *+$10(PC),(A3)		ERROR: Invalid addressing mode
+CHK *+$10(PC),(A4)+		ERROR: Invalid addressing mode
+CHK *+$10(PC),-(A5)		ERROR: Invalid addressing mode
+CHK *+$10(PC),$10(A6)		ERROR: Invalid addressing mode
+CHK *+$10(PC),$10(A6,D7.W)		ERROR: Invalid addressing mode
+CHK *+$10(PC),$1234		ERROR: Invalid addressing mode
+CHK *+$10(PC),$12345678		ERROR: Invalid addressing mode
+CHK *+$10(PC),FW		ERROR: Invalid addressing mode
+CHK *+$10(PC),*+$10(PC)		ERROR: Invalid addressing mode
+CHK *+$10(PC),#1		ERROR: Invalid addressing mode
+CHK *+$10(PC),#$80		ERROR: Invalid addressing mode
+CHK *+$10(PC),#$1234		ERROR: Invalid addressing mode
+CHK *+$10(PC),#$12345678		ERROR: Invalid addressing mode
+CHK *+$10(PC),SR		ERROR: Invalid addressing mode
+CHK *+$10(PC),CCR		ERROR: Invalid addressing mode
+CHK *+$10(PC),USP		ERROR: Invalid addressing mode
+CHK #1,D1	43BC0001	-
+CHK #1,A2		ERROR: Invalid addressing mode
+CHK #1,(A3)		ERROR: Invalid addressing mode
+CHK #1,(A4)+		ERROR: Invalid addressing mode
+CHK #1,-(A5)		ERROR: Invalid addressing mode
+CHK #1,$10(A6)		ERROR: Invalid addressing mode
+CHK #1,$10(A6,D7.W)		ERROR: Invalid addressing mode
+CHK #1,$1234		ERROR: Invalid addressing mode
+CHK #1,$12345678		ERROR: Invalid addressing mode
+CHK #1,FW		ERROR: Invalid addressing mode
+CHK #1,*+$10(PC)		ERROR: Invalid addressing mode
+CHK #1,#1		ERROR: Invalid addressing mode
+CHK #1,#$80		ERROR: Invalid addressing mode
+CHK #1,#$1234		ERROR: Invalid addressing mode
+CHK #1,#$12345678		ERROR: Invalid addressing mode
+CHK #1,SR		ERROR: Invalid addressing mode
+CHK #1,CCR		ERROR: Invalid addressing mode
+CHK #1,USP		ERROR: Invalid addressing mode
+CHK #$80,D1	43BC0080	-
+CHK #$80,A2		ERROR: Invalid addressing mode
+CHK #$80,(A3)		ERROR: Invalid addressing mode
+CHK #$80,(A4)+		ERROR: Invalid addressing mode
+CHK #$80,-(A5)		ERROR: Invalid addressing mode
+CHK #$80,$10(A6)		ERROR: Invalid addressing mode
+CHK #$80,$10(A6,D7.W)		ERROR: Invalid addressing mode
+CHK #$80,$1234		ERROR: Invalid addressing mode
+CHK #$80,$12345678		ERROR: Invalid addressing mode
+CHK #$80,FW		ERROR: Invalid addressing mode
+CHK #$80,*+$10(PC)		ERROR: Invalid addressing mode
+CHK #$80,#1		ERROR: Invalid addressing mode
+CHK #$80,#$80		ERROR: Invalid addressing mode
+CHK #$80,#$1234		ERROR: Invalid addressing mode
+CHK #$80,#$12345678		ERROR: Invalid addressing mode
+CHK #$80,SR		ERROR: Invalid addressing mode
+CHK #$80,CCR		ERROR: Invalid addressing mode
+CHK #$80,USP		ERROR: Invalid addressing mode
+CHK #$1234,D1	43BC1234	-
+CHK #$1234,A2		ERROR: Invalid addressing mode
+CHK #$1234,(A3)		ERROR: Invalid addressing mode
+CHK #$1234,(A4)+		ERROR: Invalid addressing mode
+CHK #$1234,-(A5)		ERROR: Invalid addressing mode
+CHK #$1234,$10(A6)		ERROR: Invalid addressing mode
+CHK #$1234,$10(A6,D7.W)		ERROR: Invalid addressing mode
+CHK #$1234,$1234		ERROR: Invalid addressing mode
+CHK #$1234,$12345678		ERROR: Invalid addressing mode
+CHK #$1234,FW		ERROR: Invalid addressing mode
+CHK #$1234,*+$10(PC)		ERROR: Invalid addressing mode
+CHK #$1234,#1		ERROR: Invalid addressing mode
+CHK #$1234,#$80		ERROR: Invalid addressing mode
+CHK #$1234,#$1234		ERROR: Invalid addressing mode
+CHK #$1234,#$12345678		ERROR: Invalid addressing mode
+CHK #$1234,SR		ERROR: Invalid addressing mode
+CHK #$1234,CCR		ERROR: Invalid addressing mode
+CHK #$1234,USP		ERROR: Invalid addressing mode
+CHK #$12345678,D1	43BC5678	ERROR: Immediate data exceeds 16 bits
+CHK #$12345678,A2		ERROR: Invalid addressing mode
+CHK #$12345678,(A3)		ERROR: Invalid addressing mode
+CHK #$12345678,(A4)+		ERROR: Invalid addressing mode
+CHK #$12345678,-(A5)		ERROR: Invalid addressing mode
+CHK #$12345678,$10(A6)		ERROR: Invalid addressing mode
+CHK #$12345678,$10(A6,D7.W)		ERROR: Invalid addressing mode
+CHK #$12345678,$1234		ERROR: Invalid addressing mode
+CHK #$12345678,$12345678		ERROR: Invalid addressing mode
+CHK #$12345678,FW		ERROR: Invalid addressing mode
+CHK #$12345678,*+$10(PC)		ERROR: Invalid addressing mode
+CHK #$12345678,#1		ERROR: Invalid addressing mode
+CHK #$12345678,#$80		ERROR: Invalid addressing mode
+CHK #$12345678,#$1234		ERROR: Invalid addressing mode
+CHK #$12345678,#$12345678		ERROR: Invalid addressing mode
+CHK #$12345678,SR		ERROR: Invalid addressing mode
+CHK #$12345678,CCR		ERROR: Invalid addressing mode
+CHK #$12345678,USP		ERROR: Invalid addressing mode
+CHK SR,D1		ERROR: Invalid addressing mode
+CHK SR,A2		ERROR: Invalid addressing mode
+CHK SR,(A3)		ERROR: Invalid addressing mode
+CHK SR,(A4)+		ERROR: Invalid addressing mode
+CHK SR,-(A5)		ERROR: Invalid addressing mode
+CHK SR,$10(A6)		ERROR: Invalid addressing mode
+CHK SR,$10(A6,D7.W)		ERROR: Invalid addressing mode
+CHK SR,$1234		ERROR: Invalid addressing mode
+CHK SR,$12345678		ERROR: Invalid addressing mode
+CHK SR,FW		ERROR: Invalid addressing mode
+CHK SR,*+$10(PC)		ERROR: Invalid addressing mode
+CHK SR,#1		ERROR: Invalid addressing mode
+CHK SR,#$80		ERROR: Invalid addressing mode
+CHK SR,#$1234		ERROR: Invalid addressing mode
+CHK SR,#$12345678		ERROR: Invalid addressing mode
+CHK SR,SR		ERROR: Invalid addressing mode
+CHK SR,CCR		ERROR: Invalid addressing mode
+CHK SR,USP		ERROR: Invalid addressing mode
+CHK CCR,D1		ERROR: Invalid addressing mode
+CHK CCR,A2		ERROR: Invalid addressing mode
+CHK CCR,(A3)		ERROR: Invalid addressing mode
+CHK CCR,(A4)+		ERROR: Invalid addressing mode
+CHK CCR,-(A5)		ERROR: Invalid addressing mode
+CHK CCR,$10(A6)		ERROR: Invalid addressing mode
+CHK CCR,$10(A6,D7.W)		ERROR: Invalid addressing mode
+CHK CCR,$1234		ERROR: Invalid addressing mode
+CHK CCR,$12345678		ERROR: Invalid addressing mode
+CHK CCR,FW		ERROR: Invalid addressing mode
+CHK CCR,*+$10(PC)		ERROR: Invalid addressing mode
+CHK CCR,#1		ERROR: Invalid addressing mode
+CHK CCR,#$80		ERROR: Invalid addressing mode
+CHK CCR,#$1234		ERROR: Invalid addressing mode
+CHK CCR,#$12345678		ERROR: Invalid addressing mode
+CHK CCR,SR		ERROR: Invalid addressing mode
+CHK CCR,CCR		ERROR: Invalid addressing mode
+CHK CCR,USP		ERROR: Invalid addressing mode
+CHK USP,D1		ERROR: Invalid addressing mode
+CHK USP,A2		ERROR: Invalid addressing mode
+CHK USP,(A3)		ERROR: Invalid addressing mode
+CHK USP,(A4)+		ERROR: Invalid addressing mode
+CHK USP,-(A5)		ERROR: Invalid addressing mode
+CHK USP,$10(A6)		ERROR: Invalid addressing mode
+CHK USP,$10(A6,D7.W)		ERROR: Invalid addressing mode
+CHK USP,$1234		ERROR: Invalid addressing mode
+CHK USP,$12345678		ERROR: Invalid addressing mode
+CHK USP,FW		ERROR: Invalid addressing mode
+CHK USP,*+$10(PC)		ERROR: Invalid addressing mode
+CHK USP,#1		ERROR: Invalid addressing mode
+CHK USP,#$80		ERROR: Invalid addressing mode
+CHK USP,#$1234		ERROR: Invalid addressing mode
+CHK USP,#$12345678		ERROR: Invalid addressing mode
+CHK USP,SR		ERROR: Invalid addressing mode
+CHK USP,CCR		ERROR: Invalid addressing mode
+CHK USP,USP		ERROR: Invalid addressing mode
+CHK SP,D1		ERROR: Invalid addressing mode
+CHK SP,A2		ERROR: Invalid addressing mode
+CHK D1,SP		ERROR: Invalid addressing mode
+CHK #$12,SP		ERROR: Invalid addressing mode
+CHK -2(A0),D1	43A8FFFE	-
+CHK -2(A0),A2		ERROR: Invalid addressing mode
+CHK D1,-2(A0)		ERROR: Invalid addressing mode
+CHK #$12,-2(A0)		ERROR: Invalid addressing mode
+CHK $12(A0,A1.L),D1	43B09812	-
+CHK $12(A0,A1.L),A2		ERROR: Invalid addressing mode
+CHK D1,$12(A0,A1.L)		ERROR: Invalid addressing mode
+CHK #$12,$12(A0,A1.L)		ERROR: Invalid addressing mode
+CHK (A2,D3),D1	43B23000	-
+CHK (A2,D3),A2		ERROR: Invalid addressing mode
+CHK D1,(A2,D3)		ERROR: Invalid addressing mode
+CHK #$12,(A2,D3)		ERROR: Invalid addressing mode
+CHK $1234.L,D1	43B900001234	-
+CHK $1234.L,A2		ERROR: Invalid addressing mode
+CHK D1,$1234.L		ERROR: Invalid addressing mode
+CHK #$12,$1234.L		ERROR: Invalid addressing mode
+CHK $1234.W,D1	43B81234	WARNING: Forcing SHORT addressing disables range checking of extension word
+CHK $1234.W,A2		ERROR: Invalid addressing mode
+CHK D1,$1234.W		ERROR: Invalid addressing mode
+CHK #$12,$1234.W		ERROR: Invalid addressing mode
+CHK $8000,D1	43B900008000	-
+CHK $8000,A2		ERROR: Invalid addressing mode
+CHK D1,$8000		ERROR: Invalid addressing mode
+CHK #$12,$8000		ERROR: Invalid addressing mode
+CHK BK,D1	43B81F00	-
+CHK BK,A2		ERROR: Invalid addressing mode
+CHK D1,BK		ERROR: Invalid addressing mode
+CHK #$12,BK		ERROR: Invalid addressing mode
+CHK *(PC,D0.W),D1	43BB00FE	-
+CHK *(PC,D0.W),A2		ERROR: Invalid addressing mode
+CHK D1,*(PC,D0.W)		ERROR: Invalid addressing mode
+CHK #$12,*(PC,D0.W)		ERROR: Invalid addressing mode
+CHK BK(PC),D1	43BA0EFE	-
+CHK BK(PC),A2		ERROR: Invalid addressing mode
+CHK D1,BK(PC)		ERROR: Invalid addressing mode
+CHK #$12,BK(PC)		ERROR: Invalid addressing mode
+CHK #8,D1	43BC0008	-
+CHK #8,A2		ERROR: Invalid addressing mode
+CHK D1,#8		ERROR: Invalid addressing mode
+CHK #$12,#8		ERROR: Invalid addressing mode
+CHK #9,D1	43BC0009	-
+CHK #9,A2		ERROR: Invalid addressing mode
+CHK D1,#9		ERROR: Invalid addressing mode
+CHK #$12,#9		ERROR: Invalid addressing mode
+CHK #0,D1	43BC0000	-
+CHK #0,A2		ERROR: Invalid addressing mode
+CHK D1,#0		ERROR: Invalid addressing mode
+CHK #$12,#0		ERROR: Invalid addressing mode
+CHK #-1,D1	43BCFFFF	-
+CHK #-1,A2		ERROR: Invalid addressing mode
+CHK D1,#-1		ERROR: Invalid addressing mode
+CHK #$12,#-1		ERROR: Invalid addressing mode
+CHK #$12345678.L,D1	43BC5678	ERROR: Immediate data exceeds 16 bits
+CHK #$12345678.L,A2		ERROR: Invalid addressing mode
+CHK D1,#$12345678.L		ERROR: Invalid addressing mode
+CHK #$12,#$12345678.L		ERROR: Invalid addressing mode
+CHK #BK,D1	43BC1F00	-
+CHK #BK,A2		ERROR: Invalid addressing mode
+CHK D1,#BK		ERROR: Invalid addressing mode
+CHK #$12,#BK		ERROR: Invalid addressing mode
+CHK #FW,D1	43BC1F00	-
+CHK #FW,A2		ERROR: Invalid addressing mode
+CHK D1,#FW		ERROR: Invalid addressing mode
+CHK #$12,#FW		ERROR: Invalid addressing mode
+CHK #UNDEF,D1	43BC55AF	ERROR: Undefined symbol
+CHK #UNDEF,A2		ERROR: Invalid addressing mode
+CHK D1,#UNDEF		ERROR: Invalid addressing mode
+CHK #$12,#UNDEF		ERROR: Invalid addressing mode
+CHK UNDEF,D1	43B9000055AF	ERROR: Undefined symbol
+CHK UNDEF,A2		ERROR: Invalid addressing mode
+CHK D1,UNDEF		ERROR: Invalid addressing mode
+CHK #$12,UNDEF		ERROR: Invalid addressing mode
+CHK D1,D2,D3		ERROR: Invalid syntax
+CHK.B		ERROR: Invalid syntax
+CHK.B D1		ERROR: Comma expected
+CHK.B A2		ERROR: Comma expected
+CHK.B SP		ERROR: Comma expected
+CHK.B (A3)		ERROR: Comma expected
+CHK.B (A4)+		ERROR: Comma expected
+CHK.B -(A5)		ERROR: Comma expected
+CHK.B $10(A6)		ERROR: Comma expected
+CHK.B -2(A0)		ERROR: Comma expected
+CHK.B $10(A6,D7.W)		ERROR: Comma expected
+CHK.B $12(A0,A1.L)		ERROR: Comma expected
+CHK.B (A2,D3)		ERROR: Comma expected
+CHK.B $1234		ERROR: Comma expected
+CHK.B $12345678		ERROR: Comma expected
+CHK.B $1234.L		ERROR: Comma expected
+CHK.B $1234.W		ERROR: Comma expected
+CHK.B $8000		ERROR: Comma expected
+CHK.B BK		ERROR: Comma expected
+CHK.B FW		ERROR: Comma expected
+CHK.B *+$10(PC)		ERROR: Comma expected
+CHK.B *(PC,D0.W)		ERROR: Comma expected
+CHK.B BK(PC)		ERROR: Comma expected
+CHK.B #1		ERROR: Comma expected
+CHK.B #8		ERROR: Comma expected
+CHK.B #9		ERROR: Comma expected
+CHK.B #0		ERROR: Comma expected
+CHK.B #-1		ERROR: Comma expected
+CHK.B #$80		ERROR: Comma expected
+CHK.B #$1234		ERROR: Comma expected
+CHK.B #$12345678		ERROR: Comma expected
+CHK.B #$12345678.L		ERROR: Comma expected
+CHK.B #BK		ERROR: Comma expected
+CHK.B #FW		ERROR: Comma expected
+CHK.B #UNDEF		ERROR: Comma expected
+CHK.B UNDEF		ERROR: Comma expected
+CHK.B SR		ERROR: Comma expected
+CHK.B CCR		ERROR: Comma expected
+CHK.B USP		ERROR: Comma expected
+CHK.B D1,D1	4381	ERROR: Invalid size code
+CHK.B D1,A2		ERROR: Invalid addressing mode
+CHK.B D1,(A3)		ERROR: Invalid addressing mode
+CHK.B D1,$10(A6)		ERROR: Invalid addressing mode
+CHK.B D1,$1234		ERROR: Invalid addressing mode
+CHK.B D1,FW		ERROR: Invalid addressing mode
+CHK.B D1,#1		ERROR: Invalid addressing mode
+CHK.B D1,#$1234		ERROR: Invalid addressing mode
+CHK.B D1,CCR		ERROR: Invalid addressing mode
+CHK.B D1,SR		ERROR: Invalid addressing mode
+CHK.B A2,D1		ERROR: Invalid addressing mode
+CHK.B A2,A2		ERROR: Invalid addressing mode
+CHK.B A2,(A3)		ERROR: Invalid addressing mode
+CHK.B A2,$10(A6)		ERROR: Invalid addressing mode
+CHK.B A2,$1234		ERROR: Invalid addressing mode
+CHK.B A2,FW		ERROR: Invalid addressing mode
+CHK.B A2,#1		ERROR: Invalid addressing mode
+CHK.B A2,#$1234		ERROR: Invalid addressing mode
+CHK.B A2,CCR		ERROR: Invalid addressing mode
+CHK.B A2,SR		ERROR: Invalid addressing mode
+CHK.B (A3),D1	4393	ERROR: Invalid size code
+CHK.B (A3),A2		ERROR: Invalid addressing mode
+CHK.B (A3),(A3)		ERROR: Invalid addressing mode
+CHK.B (A3),$10(A6)		ERROR: Invalid addressing mode
+CHK.B (A3),$1234		ERROR: Invalid addressing mode
+CHK.B (A3),FW		ERROR: Invalid addressing mode
+CHK.B (A3),#1		ERROR: Invalid addressing mode
+CHK.B (A3),#$1234		ERROR: Invalid addressing mode
+CHK.B (A3),CCR		ERROR: Invalid addressing mode
+CHK.B (A3),SR		ERROR: Invalid addressing mode
+CHK.B $10(A6),D1	43AE0010	ERROR: Invalid size code
+CHK.B $10(A6),A2		ERROR: Invalid addressing mode
+CHK.B $10(A6),(A3)		ERROR: Invalid addressing mode
+CHK.B $10(A6),$10(A6)		ERROR: Invalid addressing mode
+CHK.B $10(A6),$1234		ERROR: Invalid addressing mode
+CHK.B $10(A6),FW		ERROR: Invalid addressing mode
+CHK.B $10(A6),#1		ERROR: Invalid addressing mode
+CHK.B $10(A6),#$1234		ERROR: Invalid addressing mode
+CHK.B $10(A6),CCR		ERROR: Invalid addressing mode
+CHK.B $10(A6),SR		ERROR: Invalid addressing mode
+CHK.B $1234,D1	43B81234	ERROR: Invalid size code
+CHK.B $1234,A2		ERROR: Invalid addressing mode
+CHK.B $1234,(A3)		ERROR: Invalid addressing mode
+CHK.B $1234,$10(A6)		ERROR: Invalid addressing mode
+CHK.B $1234,$1234		ERROR: Invalid addressing mode
+CHK.B $1234,FW		ERROR: Invalid addressing mode
+CHK.B $1234,#1		ERROR: Invalid addressing mode
+CHK.B $1234,#$1234		ERROR: Invalid addressing mode
+CHK.B $1234,CCR		ERROR: Invalid addressing mode
+CHK.B $1234,SR		ERROR: Invalid addressing mode
+CHK.B FW,D1	43B900001F00	ERROR: Invalid size code
+CHK.B FW,A2		ERROR: Invalid addressing mode
+CHK.B FW,(A3)		ERROR: Invalid addressing mode
+CHK.B FW,$10(A6)		ERROR: Invalid addressing mode
+CHK.B FW,$1234		ERROR: Invalid addressing mode
+CHK.B FW,FW		ERROR: Invalid addressing mode
+CHK.B FW,#1		ERROR: Invalid addressing mode
+CHK.B FW,#$1234		ERROR: Invalid addressing mode
+CHK.B FW,CCR		ERROR: Invalid addressing mode
+CHK.B FW,SR		ERROR: Invalid addressing mode
+CHK.B #1,D1	43BC0001	ERROR: Invalid size code
+CHK.B #1,A2		ERROR: Invalid addressing mode
+CHK.B #1,(A3)		ERROR: Invalid addressing mode
+CHK.B #1,$10(A6)		ERROR: Invalid addressing mode
+CHK.B #1,$1234		ERROR: Invalid addressing mode
+CHK.B #1,FW		ERROR: Invalid addressing mode
+CHK.B #1,#1		ERROR: Invalid addressing mode
+CHK.B #1,#$1234		ERROR: Invalid addressing mode
+CHK.B #1,CCR		ERROR: Invalid addressing mode
+CHK.B #1,SR		ERROR: Invalid addressing mode
+CHK.B #$1234,D1	43BC0034	ERROR: Invalid size code
+CHK.B #$1234,A2		ERROR: Invalid addressing mode
+CHK.B #$1234,(A3)		ERROR: Invalid addressing mode
+CHK.B #$1234,$10(A6)		ERROR: Invalid addressing mode
+CHK.B #$1234,$1234		ERROR: Invalid addressing mode
+CHK.B #$1234,FW		ERROR: Invalid addressing mode
+CHK.B #$1234,#1		ERROR: Invalid addressing mode
+CHK.B #$1234,#$1234		ERROR: Invalid addressing mode
+CHK.B #$1234,CCR		ERROR: Invalid addressing mode
+CHK.B #$1234,SR		ERROR: Invalid addressing mode
+CHK.B CCR,D1		ERROR: Invalid addressing mode
+CHK.B CCR,A2		ERROR: Invalid addressing mode
+CHK.B CCR,(A3)		ERROR: Invalid addressing mode
+CHK.B CCR,$10(A6)		ERROR: Invalid addressing mode
+CHK.B CCR,$1234		ERROR: Invalid addressing mode
+CHK.B CCR,FW		ERROR: Invalid addressing mode
+CHK.B CCR,#1		ERROR: Invalid addressing mode
+CHK.B CCR,#$1234		ERROR: Invalid addressing mode
+CHK.B CCR,CCR		ERROR: Invalid addressing mode
+CHK.B CCR,SR		ERROR: Invalid addressing mode
+CHK.B SR,D1		ERROR: Invalid addressing mode
+CHK.B SR,A2		ERROR: Invalid addressing mode
+CHK.B SR,(A3)		ERROR: Invalid addressing mode
+CHK.B SR,$10(A6)		ERROR: Invalid addressing mode
+CHK.B SR,$1234		ERROR: Invalid addressing mode
+CHK.B SR,FW		ERROR: Invalid addressing mode
+CHK.B SR,#1		ERROR: Invalid addressing mode
+CHK.B SR,#$1234		ERROR: Invalid addressing mode
+CHK.B SR,CCR		ERROR: Invalid addressing mode
+CHK.B SR,SR		ERROR: Invalid addressing mode
+CHK.B SP,D1		ERROR: Invalid addressing mode
+CHK.B SP,A2		ERROR: Invalid addressing mode
+CHK.B D1,SP		ERROR: Invalid addressing mode
+CHK.B #$12,SP		ERROR: Invalid addressing mode
+CHK.B (A4)+,D1	439C	ERROR: Invalid size code
+CHK.B (A4)+,A2		ERROR: Invalid addressing mode
+CHK.B D1,(A4)+		ERROR: Invalid addressing mode
+CHK.B #$12,(A4)+		ERROR: Invalid addressing mode
+CHK.B -(A5),D1	43A5	ERROR: Invalid size code
+CHK.B -(A5),A2		ERROR: Invalid addressing mode
+CHK.B D1,-(A5)		ERROR: Invalid addressing mode
+CHK.B #$12,-(A5)		ERROR: Invalid addressing mode
+CHK.B -2(A0),D1	43A8FFFE	ERROR: Invalid size code
+CHK.B -2(A0),A2		ERROR: Invalid addressing mode
+CHK.B D1,-2(A0)		ERROR: Invalid addressing mode
+CHK.B #$12,-2(A0)		ERROR: Invalid addressing mode
+CHK.B $10(A6,D7.W),D1	43B67010	ERROR: Invalid size code
+CHK.B $10(A6,D7.W),A2		ERROR: Invalid addressing mode
+CHK.B D1,$10(A6,D7.W)		ERROR: Invalid addressing mode
+CHK.B #$12,$10(A6,D7.W)		ERROR: Invalid addressing mode
+CHK.B $12(A0,A1.L),D1	43B09812	ERROR: Invalid size code
+CHK.B $12(A0,A1.L),A2		ERROR: Invalid addressing mode
+CHK.B D1,$12(A0,A1.L)		ERROR: Invalid addressing mode
+CHK.B #$12,$12(A0,A1.L)		ERROR: Invalid addressing mode
+CHK.B (A2,D3),D1	43B23000	ERROR: Invalid size code
+CHK.B (A2,D3),A2		ERROR: Invalid addressing mode
+CHK.B D1,(A2,D3)		ERROR: Invalid addressing mode
+CHK.B #$12,(A2,D3)		ERROR: Invalid addressing mode
+CHK.B $12345678,D1	43B912345678	ERROR: Invalid size code
+CHK.B $12345678,A2		ERROR: Invalid addressing mode
+CHK.B D1,$12345678		ERROR: Invalid addressing mode
+CHK.B #$12,$12345678		ERROR: Invalid addressing mode
+CHK.B $1234.L,D1	43B900001234	ERROR: Invalid size code
+CHK.B $1234.L,A2		ERROR: Invalid addressing mode
+CHK.B D1,$1234.L		ERROR: Invalid addressing mode
+CHK.B #$12,$1234.L		ERROR: Invalid addressing mode
+CHK.B $1234.W,D1	43B81234	ERROR: Invalid size code
+CHK.B $1234.W,A2		ERROR: Invalid addressing mode
+CHK.B D1,$1234.W		ERROR: Invalid addressing mode
+CHK.B #$12,$1234.W		ERROR: Invalid addressing mode
+CHK.B $8000,D1	43B900008000	ERROR: Invalid size code
+CHK.B $8000,A2		ERROR: Invalid addressing mode
+CHK.B D1,$8000		ERROR: Invalid addressing mode
+CHK.B #$12,$8000		ERROR: Invalid addressing mode
+CHK.B BK,D1	43B81F00	ERROR: Invalid size code
+CHK.B BK,A2		ERROR: Invalid addressing mode
+CHK.B D1,BK		ERROR: Invalid addressing mode
+CHK.B #$12,BK		ERROR: Invalid addressing mode
+CHK.B *+$10(PC),D1	43BA000E	ERROR: Invalid size code
+CHK.B *+$10(PC),A2		ERROR: Invalid addressing mode
+CHK.B D1,*+$10(PC)		ERROR: Invalid addressing mode
+CHK.B #$12,*+$10(PC)		ERROR: Invalid addressing mode
+CHK.B *(PC,D0.W),D1	43BB00FE	ERROR: Invalid size code
+CHK.B *(PC,D0.W),A2		ERROR: Invalid addressing mode
+CHK.B D1,*(PC,D0.W)		ERROR: Invalid addressing mode
+CHK.B #$12,*(PC,D0.W)		ERROR: Invalid addressing mode
+CHK.B BK(PC),D1	43BA0EFE	ERROR: Invalid size code
+CHK.B BK(PC),A2		ERROR: Invalid addressing mode
+CHK.B D1,BK(PC)		ERROR: Invalid addressing mode
+CHK.B #$12,BK(PC)		ERROR: Invalid addressing mode
+CHK.B #8,D1	43BC0008	ERROR: Invalid size code
+CHK.B #8,A2		ERROR: Invalid addressing mode
+CHK.B D1,#8		ERROR: Invalid addressing mode
+CHK.B #$12,#8		ERROR: Invalid addressing mode
+CHK.B #9,D1	43BC0009	ERROR: Invalid size code
+CHK.B #9,A2		ERROR: Invalid addressing mode
+CHK.B D1,#9		ERROR: Invalid addressing mode
+CHK.B #$12,#9		ERROR: Invalid addressing mode
+CHK.B #0,D1	43BC0000	ERROR: Invalid size code
+CHK.B #0,A2		ERROR: Invalid addressing mode
+CHK.B D1,#0		ERROR: Invalid addressing mode
+CHK.B #$12,#0		ERROR: Invalid addressing mode
+CHK.B #-1,D1	43BC00FF	ERROR: Invalid size code
+CHK.B #-1,A2		ERROR: Invalid addressing mode
+CHK.B D1,#-1		ERROR: Invalid addressing mode
+CHK.B #$12,#-1		ERROR: Invalid addressing mode
+CHK.B #$80,D1	43BC0080	ERROR: Invalid size code
+CHK.B #$80,A2		ERROR: Invalid addressing mode
+CHK.B D1,#$80		ERROR: Invalid addressing mode
+CHK.B #$12,#$80		ERROR: Invalid addressing mode
+CHK.B #$12345678,D1	43BC0078	ERROR: Invalid size code
+CHK.B #$12345678,A2		ERROR: Invalid addressing mode
+CHK.B D1,#$12345678		ERROR: Invalid addressing mode
+CHK.B #$12,#$12345678		ERROR: Invalid addressing mode
+CHK.B #$12345678.L,D1	43BC0078	ERROR: Invalid size code
+CHK.B #$12345678.L,A2		ERROR: Invalid addressing mode
+CHK.B D1,#$12345678.L		ERROR: Invalid addressing mode
+CHK.B #$12,#$12345678.L		ERROR: Invalid addressing mode
+CHK.B #BK,D1	43BC0000	ERROR: Invalid size code
+CHK.B #BK,A2		ERROR: Invalid addressing mode
+CHK.B D1,#BK		ERROR: Invalid addressing mode
+CHK.B #$12,#BK		ERROR: Invalid addressing mode
+CHK.B #FW,D1	43BC0000	ERROR: Invalid size code
+CHK.B #FW,A2		ERROR: Invalid addressing mode
+CHK.B D1,#FW		ERROR: Invalid addressing mode
+CHK.B #$12,#FW		ERROR: Invalid addressing mode
+CHK.B #UNDEF,D1	43BC00AF	ERROR: Undefined symbol
+CHK.B #UNDEF,A2		ERROR: Invalid addressing mode
+CHK.B D1,#UNDEF		ERROR: Invalid addressing mode
+CHK.B #$12,#UNDEF		ERROR: Invalid addressing mode
+CHK.B UNDEF,D1	43B9000055AF	ERROR: Undefined symbol
+CHK.B UNDEF,A2		ERROR: Invalid addressing mode
+CHK.B D1,UNDEF		ERROR: Invalid addressing mode
+CHK.B #$12,UNDEF		ERROR: Invalid addressing mode
+CHK.B USP,D1		ERROR: Invalid addressing mode
+CHK.B USP,A2		ERROR: Invalid addressing mode
+CHK.B D1,USP		ERROR: Invalid addressing mode
+CHK.B #$12,USP		ERROR: Invalid addressing mode
+CHK.B D1,D2,D3		ERROR: Invalid syntax
+CHK.W		ERROR: Invalid syntax
+CHK.W D1		ERROR: Comma expected
+CHK.W A2		ERROR: Comma expected
+CHK.W SP		ERROR: Comma expected
+CHK.W (A3)		ERROR: Comma expected
+CHK.W (A4)+		ERROR: Comma expected
+CHK.W -(A5)		ERROR: Comma expected
+CHK.W $10(A6)		ERROR: Comma expected
+CHK.W -2(A0)		ERROR: Comma expected
+CHK.W $10(A6,D7.W)		ERROR: Comma expected
+CHK.W $12(A0,A1.L)		ERROR: Comma expected
+CHK.W (A2,D3)		ERROR: Comma expected
+CHK.W $1234		ERROR: Comma expected
+CHK.W $12345678		ERROR: Comma expected
+CHK.W $1234.L		ERROR: Comma expected
+CHK.W $1234.W		ERROR: Comma expected
+CHK.W $8000		ERROR: Comma expected
+CHK.W BK		ERROR: Comma expected
+CHK.W FW		ERROR: Comma expected
+CHK.W *+$10(PC)		ERROR: Comma expected
+CHK.W *(PC,D0.W)		ERROR: Comma expected
+CHK.W BK(PC)		ERROR: Comma expected
+CHK.W #1		ERROR: Comma expected
+CHK.W #8		ERROR: Comma expected
+CHK.W #9		ERROR: Comma expected
+CHK.W #0		ERROR: Comma expected
+CHK.W #-1		ERROR: Comma expected
+CHK.W #$80		ERROR: Comma expected
+CHK.W #$1234		ERROR: Comma expected
+CHK.W #$12345678		ERROR: Comma expected
+CHK.W #$12345678.L		ERROR: Comma expected
+CHK.W #BK		ERROR: Comma expected
+CHK.W #FW		ERROR: Comma expected
+CHK.W #UNDEF		ERROR: Comma expected
+CHK.W UNDEF		ERROR: Comma expected
+CHK.W SR		ERROR: Comma expected
+CHK.W CCR		ERROR: Comma expected
+CHK.W USP		ERROR: Comma expected
+CHK.W D1,D1	4381	-
+CHK.W D1,A2		ERROR: Invalid addressing mode
+CHK.W D1,(A3)		ERROR: Invalid addressing mode
+CHK.W D1,(A4)+		ERROR: Invalid addressing mode
+CHK.W D1,-(A5)		ERROR: Invalid addressing mode
+CHK.W D1,$10(A6)		ERROR: Invalid addressing mode
+CHK.W D1,$10(A6,D7.W)		ERROR: Invalid addressing mode
+CHK.W D1,$1234		ERROR: Invalid addressing mode
+CHK.W D1,$12345678		ERROR: Invalid addressing mode
+CHK.W D1,FW		ERROR: Invalid addressing mode
+CHK.W D1,*+$10(PC)		ERROR: Invalid addressing mode
+CHK.W D1,#1		ERROR: Invalid addressing mode
+CHK.W D1,#$80		ERROR: Invalid addressing mode
+CHK.W D1,#$1234		ERROR: Invalid addressing mode
+CHK.W D1,#$12345678		ERROR: Invalid addressing mode
+CHK.W D1,SR		ERROR: Invalid addressing mode
+CHK.W D1,CCR		ERROR: Invalid addressing mode
+CHK.W D1,USP		ERROR: Invalid addressing mode
+CHK.W A2,D1		ERROR: Invalid addressing mode
+CHK.W A2,A2		ERROR: Invalid addressing mode
+CHK.W A2,(A3)		ERROR: Invalid addressing mode
+CHK.W A2,(A4)+		ERROR: Invalid addressing mode
+CHK.W A2,-(A5)		ERROR: Invalid addressing mode
+CHK.W A2,$10(A6)		ERROR: Invalid addressing mode
+CHK.W A2,$10(A6,D7.W)		ERROR: Invalid addressing mode
+CHK.W A2,$1234		ERROR: Invalid addressing mode
+CHK.W A2,$12345678		ERROR: Invalid addressing mode
+CHK.W A2,FW		ERROR: Invalid addressing mode
+CHK.W A2,*+$10(PC)		ERROR: Invalid addressing mode
+CHK.W A2,#1		ERROR: Invalid addressing mode
+CHK.W A2,#$80		ERROR: Invalid addressing mode
+CHK.W A2,#$1234		ERROR: Invalid addressing mode
+CHK.W A2,#$12345678		ERROR: Invalid addressing mode
+CHK.W A2,SR		ERROR: Invalid addressing mode
+CHK.W A2,CCR		ERROR: Invalid addressing mode
+CHK.W A2,USP		ERROR: Invalid addressing mode
+CHK.W (A3),D1	4393	-
+CHK.W (A3),A2		ERROR: Invalid addressing mode
+CHK.W (A3),(A3)		ERROR: Invalid addressing mode
+CHK.W (A3),(A4)+		ERROR: Invalid addressing mode
+CHK.W (A3),-(A5)		ERROR: Invalid addressing mode
+CHK.W (A3),$10(A6)		ERROR: Invalid addressing mode
+CHK.W (A3),$10(A6,D7.W)		ERROR: Invalid addressing mode
+CHK.W (A3),$1234		ERROR: Invalid addressing mode
+CHK.W (A3),$12345678		ERROR: Invalid addressing mode
+CHK.W (A3),FW		ERROR: Invalid addressing mode
+CHK.W (A3),*+$10(PC)		ERROR: Invalid addressing mode
+CHK.W (A3),#1		ERROR: Invalid addressing mode
+CHK.W (A3),#$80		ERROR: Invalid addressing mode
+CHK.W (A3),#$1234		ERROR: Invalid addressing mode
+CHK.W (A3),#$12345678		ERROR: Invalid addressing mode
+CHK.W (A3),SR		ERROR: Invalid addressing mode
+CHK.W (A3),CCR		ERROR: Invalid addressing mode
+CHK.W (A3),USP		ERROR: Invalid addressing mode
+CHK.W (A4)+,D1	439C	-
+CHK.W (A4)+,A2		ERROR: Invalid addressing mode
+CHK.W (A4)+,(A3)		ERROR: Invalid addressing mode
+CHK.W (A4)+,(A4)+		ERROR: Invalid addressing mode
+CHK.W (A4)+,-(A5)		ERROR: Invalid addressing mode
+CHK.W (A4)+,$10(A6)		ERROR: Invalid addressing mode
+CHK.W (A4)+,$10(A6,D7.W)		ERROR: Invalid addressing mode
+CHK.W (A4)+,$1234		ERROR: Invalid addressing mode
+CHK.W (A4)+,$12345678		ERROR: Invalid addressing mode
+CHK.W (A4)+,FW		ERROR: Invalid addressing mode
+CHK.W (A4)+,*+$10(PC)		ERROR: Invalid addressing mode
+CHK.W (A4)+,#1		ERROR: Invalid addressing mode
+CHK.W (A4)+,#$80		ERROR: Invalid addressing mode
+CHK.W (A4)+,#$1234		ERROR: Invalid addressing mode
+CHK.W (A4)+,#$12345678		ERROR: Invalid addressing mode
+CHK.W (A4)+,SR		ERROR: Invalid addressing mode
+CHK.W (A4)+,CCR		ERROR: Invalid addressing mode
+CHK.W (A4)+,USP		ERROR: Invalid addressing mode
+CHK.W -(A5),D1	43A5	-
+CHK.W -(A5),A2		ERROR: Invalid addressing mode
+CHK.W -(A5),(A3)		ERROR: Invalid addressing mode
+CHK.W -(A5),(A4)+		ERROR: Invalid addressing mode
+CHK.W -(A5),-(A5)		ERROR: Invalid addressing mode
+CHK.W -(A5),$10(A6)		ERROR: Invalid addressing mode
+CHK.W -(A5),$10(A6,D7.W)		ERROR: Invalid addressing mode
+CHK.W -(A5),$1234		ERROR: Invalid addressing mode
+CHK.W -(A5),$12345678		ERROR: Invalid addressing mode
+CHK.W -(A5),FW		ERROR: Invalid addressing mode
+CHK.W -(A5),*+$10(PC)		ERROR: Invalid addressing mode
+CHK.W -(A5),#1		ERROR: Invalid addressing mode
+CHK.W -(A5),#$80		ERROR: Invalid addressing mode
+CHK.W -(A5),#$1234		ERROR: Invalid addressing mode
+CHK.W -(A5),#$12345678		ERROR: Invalid addressing mode
+CHK.W -(A5),SR		ERROR: Invalid addressing mode
+CHK.W -(A5),CCR		ERROR: Invalid addressing mode
+CHK.W -(A5),USP		ERROR: Invalid addressing mode
+CHK.W $10(A6),D1	43AE0010	-
+CHK.W $10(A6),A2		ERROR: Invalid addressing mode
+CHK.W $10(A6),(A3)		ERROR: Invalid addressing mode
+CHK.W $10(A6),(A4)+		ERROR: Invalid addressing mode
+CHK.W $10(A6),-(A5)		ERROR: Invalid addressing mode
+CHK.W $10(A6),$10(A6)		ERROR: Invalid addressing mode
+CHK.W $10(A6),$10(A6,D7.W)		ERROR: Invalid addressing mode
+CHK.W $10(A6),$1234		ERROR: Invalid addressing mode
+CHK.W $10(A6),$12345678		ERROR: Invalid addressing mode
+CHK.W $10(A6),FW		ERROR: Invalid addressing mode
+CHK.W $10(A6),*+$10(PC)		ERROR: Invalid addressing mode
+CHK.W $10(A6),#1		ERROR: Invalid addressing mode
+CHK.W $10(A6),#$80		ERROR: Invalid addressing mode
+CHK.W $10(A6),#$1234		ERROR: Invalid addressing mode
+CHK.W $10(A6),#$12345678		ERROR: Invalid addressing mode
+CHK.W $10(A6),SR		ERROR: Invalid addressing mode
+CHK.W $10(A6),CCR		ERROR: Invalid addressing mode
+CHK.W $10(A6),USP		ERROR: Invalid addressing mode
+CHK.W $10(A6,D7.W),D1	43B67010	-
+CHK.W $10(A6,D7.W),A2		ERROR: Invalid addressing mode
+CHK.W $10(A6,D7.W),(A3)		ERROR: Invalid addressing mode
+CHK.W $10(A6,D7.W),(A4)+		ERROR: Invalid addressing mode
+CHK.W $10(A6,D7.W),-(A5)		ERROR: Invalid addressing mode
+CHK.W $10(A6,D7.W),$10(A6)		ERROR: Invalid addressing mode
+CHK.W $10(A6,D7.W),$10(A6,D7.W)		ERROR: Invalid addressing mode
+CHK.W $10(A6,D7.W),$1234		ERROR: Invalid addressing mode
+CHK.W $10(A6,D7.W),$12345678		ERROR: Invalid addressing mode
+CHK.W $10(A6,D7.W),FW		ERROR: Invalid addressing mode
+CHK.W $10(A6,D7.W),*+$10(PC)		ERROR: Invalid addressing mode
+CHK.W $10(A6,D7.W),#1		ERROR: Invalid addressing mode
+CHK.W $10(A6,D7.W),#$80		ERROR: Invalid addressing mode
+CHK.W $10(A6,D7.W),#$1234		ERROR: Invalid addressing mode
+CHK.W $10(A6,D7.W),#$12345678		ERROR: Invalid addressing mode
+CHK.W $10(A6,D7.W),SR		ERROR: Invalid addressing mode
+CHK.W $10(A6,D7.W),CCR		ERROR: Invalid addressing mode
+CHK.W $10(A6,D7.W),USP		ERROR: Invalid addressing mode
+CHK.W $1234,D1	43B81234	-
+CHK.W $1234,A2		ERROR: Invalid addressing mode
+CHK.W $1234,(A3)		ERROR: Invalid addressing mode
+CHK.W $1234,(A4)+		ERROR: Invalid addressing mode
+CHK.W $1234,-(A5)		ERROR: Invalid addressing mode
+CHK.W $1234,$10(A6)		ERROR: Invalid addressing mode
+CHK.W $1234,$10(A6,D7.W)		ERROR: Invalid addressing mode
+CHK.W $1234,$1234		ERROR: Invalid addressing mode
+CHK.W $1234,$12345678		ERROR: Invalid addressing mode
+CHK.W $1234,FW		ERROR: Invalid addressing mode
+CHK.W $1234,*+$10(PC)		ERROR: Invalid addressing mode
+CHK.W $1234,#1		ERROR: Invalid addressing mode
+CHK.W $1234,#$80		ERROR: Invalid addressing mode
+CHK.W $1234,#$1234		ERROR: Invalid addressing mode
+CHK.W $1234,#$12345678		ERROR: Invalid addressing mode
+CHK.W $1234,SR		ERROR: Invalid addressing mode
+CHK.W $1234,CCR		ERROR: Invalid addressing mode
+CHK.W $1234,USP		ERROR: Invalid addressing mode
+CHK.W $12345678,D1	43B912345678	-
+CHK.W $12345678,A2		ERROR: Invalid addressing mode
+CHK.W $12345678,(A3)		ERROR: Invalid addressing mode
+CHK.W $12345678,(A4)+		ERROR: Invalid addressing mode
+CHK.W $12345678,-(A5)		ERROR: Invalid addressing mode
+CHK.W $12345678,$10(A6)		ERROR: Invalid addressing mode
+CHK.W $12345678,$10(A6,D7.W)		ERROR: Invalid addressing mode
+CHK.W $12345678,$1234		ERROR: Invalid addressing mode
+CHK.W $12345678,$12345678		ERROR: Invalid addressing mode
+CHK.W $12345678,FW		ERROR: Invalid addressing mode
+CHK.W $12345678,*+$10(PC)		ERROR: Invalid addressing mode
+CHK.W $12345678,#1		ERROR: Invalid addressing mode
+CHK.W $12345678,#$80		ERROR: Invalid addressing mode
+CHK.W $12345678,#$1234		ERROR: Invalid addressing mode
+CHK.W $12345678,#$12345678		ERROR: Invalid addressing mode
+CHK.W $12345678,SR		ERROR: Invalid addressing mode
+CHK.W $12345678,CCR		ERROR: Invalid addressing mode
+CHK.W $12345678,USP		ERROR: Invalid addressing mode
+CHK.W FW,D1	43B900001F00	-
+CHK.W FW,A2		ERROR: Invalid addressing mode
+CHK.W FW,(A3)		ERROR: Invalid addressing mode
+CHK.W FW,(A4)+		ERROR: Invalid addressing mode
+CHK.W FW,-(A5)		ERROR: Invalid addressing mode
+CHK.W FW,$10(A6)		ERROR: Invalid addressing mode
+CHK.W FW,$10(A6,D7.W)		ERROR: Invalid addressing mode
+CHK.W FW,$1234		ERROR: Invalid addressing mode
+CHK.W FW,$12345678		ERROR: Invalid addressing mode
+CHK.W FW,FW		ERROR: Invalid addressing mode
+CHK.W FW,*+$10(PC)		ERROR: Invalid addressing mode
+CHK.W FW,#1		ERROR: Invalid addressing mode
+CHK.W FW,#$80		ERROR: Invalid addressing mode
+CHK.W FW,#$1234		ERROR: Invalid addressing mode
+CHK.W FW,#$12345678		ERROR: Invalid addressing mode
+CHK.W FW,SR		ERROR: Invalid addressing mode
+CHK.W FW,CCR		ERROR: Invalid addressing mode
+CHK.W FW,USP		ERROR: Invalid addressing mode
+CHK.W *+$10(PC),D1	43BA000E	-
+CHK.W *+$10(PC),A2		ERROR: Invalid addressing mode
+CHK.W *+$10(PC),(A3)		ERROR: Invalid addressing mode
+CHK.W *+$10(PC),(A4)+		ERROR: Invalid addressing mode
+CHK.W *+$10(PC),-(A5)		ERROR: Invalid addressing mode
+CHK.W *+$10(PC),$10(A6)		ERROR: Invalid addressing mode
+CHK.W *+$10(PC),$10(A6,D7.W)		ERROR: Invalid addressing mode
+CHK.W *+$10(PC),$1234		ERROR: Invalid addressing mode
+CHK.W *+$10(PC),$12345678		ERROR: Invalid addressing mode
+CHK.W *+$10(PC),FW		ERROR: Invalid addressing mode
+CHK.W *+$10(PC),*+$10(PC)		ERROR: Invalid addressing mode
+CHK.W *+$10(PC),#1		ERROR: Invalid addressing mode
+CHK.W *+$10(PC),#$80		ERROR: Invalid addressing mode
+CHK.W *+$10(PC),#$1234		ERROR: Invalid addressing mode
+CHK.W *+$10(PC),#$12345678		ERROR: Invalid addressing mode
+CHK.W *+$10(PC),SR		ERROR: Invalid addressing mode
+CHK.W *+$10(PC),CCR		ERROR: Invalid addressing mode
+CHK.W *+$10(PC),USP		ERROR: Invalid addressing mode
+CHK.W #1,D1	43BC0001	-
+CHK.W #1,A2		ERROR: Invalid addressing mode
+CHK.W #1,(A3)		ERROR: Invalid addressing mode
+CHK.W #1,(A4)+		ERROR: Invalid addressing mode
+CHK.W #1,-(A5)		ERROR: Invalid addressing mode
+CHK.W #1,$10(A6)		ERROR: Invalid addressing mode
+CHK.W #1,$10(A6,D7.W)		ERROR: Invalid addressing mode
+CHK.W #1,$1234		ERROR: Invalid addressing mode
+CHK.W #1,$12345678		ERROR: Invalid addressing mode
+CHK.W #1,FW		ERROR: Invalid addressing mode
+CHK.W #1,*+$10(PC)		ERROR: Invalid addressing mode
+CHK.W #1,#1		ERROR: Invalid addressing mode
+CHK.W #1,#$80		ERROR: Invalid addressing mode
+CHK.W #1,#$1234		ERROR: Invalid addressing mode
+CHK.W #1,#$12345678		ERROR: Invalid addressing mode
+CHK.W #1,SR		ERROR: Invalid addressing mode
+CHK.W #1,CCR		ERROR: Invalid addressing mode
+CHK.W #1,USP		ERROR: Invalid addressing mode
+CHK.W #$80,D1	43BC0080	-
+CHK.W #$80,A2		ERROR: Invalid addressing mode
+CHK.W #$80,(A3)		ERROR: Invalid addressing mode
+CHK.W #$80,(A4)+		ERROR: Invalid addressing mode
+CHK.W #$80,-(A5)		ERROR: Invalid addressing mode
+CHK.W #$80,$10(A6)		ERROR: Invalid addressing mode
+CHK.W #$80,$10(A6,D7.W)		ERROR: Invalid addressing mode
+CHK.W #$80,$1234		ERROR: Invalid addressing mode
+CHK.W #$80,$12345678		ERROR: Invalid addressing mode
+CHK.W #$80,FW		ERROR: Invalid addressing mode
+CHK.W #$80,*+$10(PC)		ERROR: Invalid addressing mode
+CHK.W #$80,#1		ERROR: Invalid addressing mode
+CHK.W #$80,#$80		ERROR: Invalid addressing mode
+CHK.W #$80,#$1234		ERROR: Invalid addressing mode
+CHK.W #$80,#$12345678		ERROR: Invalid addressing mode
+CHK.W #$80,SR		ERROR: Invalid addressing mode
+CHK.W #$80,CCR		ERROR: Invalid addressing mode
+CHK.W #$80,USP		ERROR: Invalid addressing mode
+CHK.W #$1234,D1	43BC1234	-
+CHK.W #$1234,A2		ERROR: Invalid addressing mode
+CHK.W #$1234,(A3)		ERROR: Invalid addressing mode
+CHK.W #$1234,(A4)+		ERROR: Invalid addressing mode
+CHK.W #$1234,-(A5)		ERROR: Invalid addressing mode
+CHK.W #$1234,$10(A6)		ERROR: Invalid addressing mode
+CHK.W #$1234,$10(A6,D7.W)		ERROR: Invalid addressing mode
+CHK.W #$1234,$1234		ERROR: Invalid addressing mode
+CHK.W #$1234,$12345678		ERROR: Invalid addressing mode
+CHK.W #$1234,FW		ERROR: Invalid addressing mode
+CHK.W #$1234,*+$10(PC)		ERROR: Invalid addressing mode
+CHK.W #$1234,#1		ERROR: Invalid addressing mode
+CHK.W #$1234,#$80		ERROR: Invalid addressing mode
+CHK.W #$1234,#$1234		ERROR: Invalid addressing mode
+CHK.W #$1234,#$12345678		ERROR: Invalid addressing mode
+CHK.W #$1234,SR		ERROR: Invalid addressing mode
+CHK.W #$1234,CCR		ERROR: Invalid addressing mode
+CHK.W #$1234,USP		ERROR: Invalid addressing mode
+CHK.W #$12345678,D1	43BC5678	ERROR: Immediate data exceeds 16 bits
+CHK.W #$12345678,A2		ERROR: Invalid addressing mode
+CHK.W #$12345678,(A3)		ERROR: Invalid addressing mode
+CHK.W #$12345678,(A4)+		ERROR: Invalid addressing mode
+CHK.W #$12345678,-(A5)		ERROR: Invalid addressing mode
+CHK.W #$12345678,$10(A6)		ERROR: Invalid addressing mode
+CHK.W #$12345678,$10(A6,D7.W)		ERROR: Invalid addressing mode
+CHK.W #$12345678,$1234		ERROR: Invalid addressing mode
+CHK.W #$12345678,$12345678		ERROR: Invalid addressing mode
+CHK.W #$12345678,FW		ERROR: Invalid addressing mode
+CHK.W #$12345678,*+$10(PC)		ERROR: Invalid addressing mode
+CHK.W #$12345678,#1		ERROR: Invalid addressing mode
+CHK.W #$12345678,#$80		ERROR: Invalid addressing mode
+CHK.W #$12345678,#$1234		ERROR: Invalid addressing mode
+CHK.W #$12345678,#$12345678		ERROR: Invalid addressing mode
+CHK.W #$12345678,SR		ERROR: Invalid addressing mode
+CHK.W #$12345678,CCR		ERROR: Invalid addressing mode
+CHK.W #$12345678,USP		ERROR: Invalid addressing mode
+CHK.W SR,D1		ERROR: Invalid addressing mode
+CHK.W SR,A2		ERROR: Invalid addressing mode
+CHK.W SR,(A3)		ERROR: Invalid addressing mode
+CHK.W SR,(A4)+		ERROR: Invalid addressing mode
+CHK.W SR,-(A5)		ERROR: Invalid addressing mode
+CHK.W SR,$10(A6)		ERROR: Invalid addressing mode
+CHK.W SR,$10(A6,D7.W)		ERROR: Invalid addressing mode
+CHK.W SR,$1234		ERROR: Invalid addressing mode
+CHK.W SR,$12345678		ERROR: Invalid addressing mode
+CHK.W SR,FW		ERROR: Invalid addressing mode
+CHK.W SR,*+$10(PC)		ERROR: Invalid addressing mode
+CHK.W SR,#1		ERROR: Invalid addressing mode
+CHK.W SR,#$80		ERROR: Invalid addressing mode
+CHK.W SR,#$1234		ERROR: Invalid addressing mode
+CHK.W SR,#$12345678		ERROR: Invalid addressing mode
+CHK.W SR,SR		ERROR: Invalid addressing mode
+CHK.W SR,CCR		ERROR: Invalid addressing mode
+CHK.W SR,USP		ERROR: Invalid addressing mode
+CHK.W CCR,D1		ERROR: Invalid addressing mode
+CHK.W CCR,A2		ERROR: Invalid addressing mode
+CHK.W CCR,(A3)		ERROR: Invalid addressing mode
+CHK.W CCR,(A4)+		ERROR: Invalid addressing mode
+CHK.W CCR,-(A5)		ERROR: Invalid addressing mode
+CHK.W CCR,$10(A6)		ERROR: Invalid addressing mode
+CHK.W CCR,$10(A6,D7.W)		ERROR: Invalid addressing mode
+CHK.W CCR,$1234		ERROR: Invalid addressing mode
+CHK.W CCR,$12345678		ERROR: Invalid addressing mode
+CHK.W CCR,FW		ERROR: Invalid addressing mode
+CHK.W CCR,*+$10(PC)		ERROR: Invalid addressing mode
+CHK.W CCR,#1		ERROR: Invalid addressing mode
+CHK.W CCR,#$80		ERROR: Invalid addressing mode
+CHK.W CCR,#$1234		ERROR: Invalid addressing mode
+CHK.W CCR,#$12345678		ERROR: Invalid addressing mode
+CHK.W CCR,SR		ERROR: Invalid addressing mode
+CHK.W CCR,CCR		ERROR: Invalid addressing mode
+CHK.W CCR,USP		ERROR: Invalid addressing mode
+CHK.W USP,D1		ERROR: Invalid addressing mode
+CHK.W USP,A2		ERROR: Invalid addressing mode
+CHK.W USP,(A3)		ERROR: Invalid addressing mode
+CHK.W USP,(A4)+		ERROR: Invalid addressing mode
+CHK.W USP,-(A5)		ERROR: Invalid addressing mode
+CHK.W USP,$10(A6)		ERROR: Invalid addressing mode
+CHK.W USP,$10(A6,D7.W)		ERROR: Invalid addressing mode
+CHK.W USP,$1234		ERROR: Invalid addressing mode
+CHK.W USP,$12345678		ERROR: Invalid addressing mode
+CHK.W USP,FW		ERROR: Invalid addressing mode
+CHK.W USP,*+$10(PC)		ERROR: Invalid addressing mode
+CHK.W USP,#1		ERROR: Invalid addressing mode
+CHK.W USP,#$80		ERROR: Invalid addressing mode
+CHK.W USP,#$1234		ERROR: Invalid addressing mode
+CHK.W USP,#$12345678		ERROR: Invalid addressing mode
+CHK.W USP,SR		ERROR: Invalid addressing mode
+CHK.W USP,CCR		ERROR: Invalid addressing mode
+CHK.W USP,USP		ERROR: Invalid addressing mode
+CHK.W SP,D1		ERROR: Invalid addressing mode
+CHK.W SP,A2		ERROR: Invalid addressing mode
+CHK.W D1,SP		ERROR: Invalid addressing mode
+CHK.W #$12,SP		ERROR: Invalid addressing mode
+CHK.W -2(A0),D1	43A8FFFE	-
+CHK.W -2(A0),A2		ERROR: Invalid addressing mode
+CHK.W D1,-2(A0)		ERROR: Invalid addressing mode
+CHK.W #$12,-2(A0)		ERROR: Invalid addressing mode
+CHK.W $12(A0,A1.L),D1	43B09812	-
+CHK.W $12(A0,A1.L),A2		ERROR: Invalid addressing mode
+CHK.W D1,$12(A0,A1.L)		ERROR: Invalid addressing mode
+CHK.W #$12,$12(A0,A1.L)		ERROR: Invalid addressing mode
+CHK.W (A2,D3),D1	43B23000	-
+CHK.W (A2,D3),A2		ERROR: Invalid addressing mode
+CHK.W D1,(A2,D3)		ERROR: Invalid addressing mode
+CHK.W #$12,(A2,D3)		ERROR: Invalid addressing mode
+CHK.W $1234.L,D1	43B900001234	-
+CHK.W $1234.L,A2		ERROR: Invalid addressing mode
+CHK.W D1,$1234.L		ERROR: Invalid addressing mode
+CHK.W #$12,$1234.L		ERROR: Invalid addressing mode
+CHK.W $1234.W,D1	43B81234	WARNING: Forcing SHORT addressing disables range checking of extension word
+CHK.W $1234.W,A2		ERROR: Invalid addressing mode
+CHK.W D1,$1234.W		ERROR: Invalid addressing mode
+CHK.W #$12,$1234.W		ERROR: Invalid addressing mode
+CHK.W $8000,D1	43B900008000	-
+CHK.W $8000,A2		ERROR: Invalid addressing mode
+CHK.W D1,$8000		ERROR: Invalid addressing mode
+CHK.W #$12,$8000		ERROR: Invalid addressing mode
+CHK.W BK,D1	43B81F00	-
+CHK.W BK,A2		ERROR: Invalid addressing mode
+CHK.W D1,BK		ERROR: Invalid addressing mode
+CHK.W #$12,BK		ERROR: Invalid addressing mode
+CHK.W *(PC,D0.W),D1	43BB00FE	-
+CHK.W *(PC,D0.W),A2		ERROR: Invalid addressing mode
+CHK.W D1,*(PC,D0.W)		ERROR: Invalid addressing mode
+CHK.W #$12,*(PC,D0.W)		ERROR: Invalid addressing mode
+CHK.W BK(PC),D1	43BA0EFE	-
+CHK.W BK(PC),A2		ERROR: Invalid addressing mode
+CHK.W D1,BK(PC)		ERROR: Invalid addressing mode
+CHK.W #$12,BK(PC)		ERROR: Invalid addressing mode
+CHK.W #8,D1	43BC0008	-
+CHK.W #8,A2		ERROR: Invalid addressing mode
+CHK.W D1,#8		ERROR: Invalid addressing mode
+CHK.W #$12,#8		ERROR: Invalid addressing mode
+CHK.W #9,D1	43BC0009	-
+CHK.W #9,A2		ERROR: Invalid addressing mode
+CHK.W D1,#9		ERROR: Invalid addressing mode
+CHK.W #$12,#9		ERROR: Invalid addressing mode
+CHK.W #0,D1	43BC0000	-
+CHK.W #0,A2		ERROR: Invalid addressing mode
+CHK.W D1,#0		ERROR: Invalid addressing mode
+CHK.W #$12,#0		ERROR: Invalid addressing mode
+CHK.W #-1,D1	43BCFFFF	-
+CHK.W #-1,A2		ERROR: Invalid addressing mode
+CHK.W D1,#-1		ERROR: Invalid addressing mode
+CHK.W #$12,#-1		ERROR: Invalid addressing mode
+CHK.W #$12345678.L,D1	43BC5678	ERROR: Immediate data exceeds 16 bits
+CHK.W #$12345678.L,A2		ERROR: Invalid addressing mode
+CHK.W D1,#$12345678.L		ERROR: Invalid addressing mode
+CHK.W #$12,#$12345678.L		ERROR: Invalid addressing mode
+CHK.W #BK,D1	43BC1F00	-
+CHK.W #BK,A2		ERROR: Invalid addressing mode
+CHK.W D1,#BK		ERROR: Invalid addressing mode
+CHK.W #$12,#BK		ERROR: Invalid addressing mode
+CHK.W #FW,D1	43BC1F00	-
+CHK.W #FW,A2		ERROR: Invalid addressing mode
+CHK.W D1,#FW		ERROR: Invalid addressing mode
+CHK.W #$12,#FW		ERROR: Invalid addressing mode
+CHK.W #UNDEF,D1	43BC55AF	ERROR: Undefined symbol
+CHK.W #UNDEF,A2		ERROR: Invalid addressing mode
+CHK.W D1,#UNDEF		ERROR: Invalid addressing mode
+CHK.W #$12,#UNDEF		ERROR: Invalid addressing mode
+CHK.W UNDEF,D1	43B9000055AF	ERROR: Undefined symbol
+CHK.W UNDEF,A2		ERROR: Invalid addressing mode
+CHK.W D1,UNDEF		ERROR: Invalid addressing mode
+CHK.W #$12,UNDEF		ERROR: Invalid addressing mode
+CHK.W D1,D2,D3		ERROR: Invalid syntax
+CHK.L		ERROR: Invalid syntax
+CHK.L D1		ERROR: Comma expected
+CHK.L A2		ERROR: Comma expected
+CHK.L SP		ERROR: Comma expected
+CHK.L (A3)		ERROR: Comma expected
+CHK.L (A4)+		ERROR: Comma expected
+CHK.L -(A5)		ERROR: Comma expected
+CHK.L $10(A6)		ERROR: Comma expected
+CHK.L -2(A0)		ERROR: Comma expected
+CHK.L $10(A6,D7.W)		ERROR: Comma expected
+CHK.L $12(A0,A1.L)		ERROR: Comma expected
+CHK.L (A2,D3)		ERROR: Comma expected
+CHK.L $1234		ERROR: Comma expected
+CHK.L $12345678		ERROR: Comma expected
+CHK.L $1234.L		ERROR: Comma expected
+CHK.L $1234.W		ERROR: Comma expected
+CHK.L $8000		ERROR: Comma expected
+CHK.L BK		ERROR: Comma expected
+CHK.L FW		ERROR: Comma expected
+CHK.L *+$10(PC)		ERROR: Comma expected
+CHK.L *(PC,D0.W)		ERROR: Comma expected
+CHK.L BK(PC)		ERROR: Comma expected
+CHK.L #1		ERROR: Comma expected
+CHK.L #8		ERROR: Comma expected
+CHK.L #9		ERROR: Comma expected
+CHK.L #0		ERROR: Comma expected
+CHK.L #-1		ERROR: Comma expected
+CHK.L #$80		ERROR: Comma expected
+CHK.L #$1234		ERROR: Comma expected
+CHK.L #$12345678		ERROR: Comma expected
+CHK.L #$12345678.L		ERROR: Comma expected
+CHK.L #BK		ERROR: Comma expected
+CHK.L #FW		ERROR: Comma expected
+CHK.L #UNDEF		ERROR: Comma expected
+CHK.L UNDEF		ERROR: Comma expected
+CHK.L SR		ERROR: Comma expected
+CHK.L CCR		ERROR: Comma expected
+CHK.L USP		ERROR: Comma expected
+CHK.L D1,D1	4381	ERROR: Invalid size code
+CHK.L D1,A2		ERROR: Invalid addressing mode
+CHK.L D1,(A3)		ERROR: Invalid addressing mode
+CHK.L D1,$10(A6)		ERROR: Invalid addressing mode
+CHK.L D1,$1234		ERROR: Invalid addressing mode
+CHK.L D1,FW		ERROR: Invalid addressing mode
+CHK.L D1,#1		ERROR: Invalid addressing mode
+CHK.L D1,#$1234		ERROR: Invalid addressing mode
+CHK.L D1,CCR		ERROR: Invalid addressing mode
+CHK.L D1,SR		ERROR: Invalid addressing mode
+CHK.L A2,D1		ERROR: Invalid addressing mode
+CHK.L A2,A2		ERROR: Invalid addressing mode
+CHK.L A2,(A3)		ERROR: Invalid addressing mode
+CHK.L A2,$10(A6)		ERROR: Invalid addressing mode
+CHK.L A2,$1234		ERROR: Invalid addressing mode
+CHK.L A2,FW		ERROR: Invalid addressing mode
+CHK.L A2,#1		ERROR: Invalid addressing mode
+CHK.L A2,#$1234		ERROR: Invalid addressing mode
+CHK.L A2,CCR		ERROR: Invalid addressing mode
+CHK.L A2,SR		ERROR: Invalid addressing mode
+CHK.L (A3),D1	4393	ERROR: Invalid size code
+CHK.L (A3),A2		ERROR: Invalid addressing mode
+CHK.L (A3),(A3)		ERROR: Invalid addressing mode
+CHK.L (A3),$10(A6)		ERROR: Invalid addressing mode
+CHK.L (A3),$1234		ERROR: Invalid addressing mode
+CHK.L (A3),FW		ERROR: Invalid addressing mode
+CHK.L (A3),#1		ERROR: Invalid addressing mode
+CHK.L (A3),#$1234		ERROR: Invalid addressing mode
+CHK.L (A3),CCR		ERROR: Invalid addressing mode
+CHK.L (A3),SR		ERROR: Invalid addressing mode
+CHK.L $10(A6),D1	43AE0010	ERROR: Invalid size code
+CHK.L $10(A6),A2		ERROR: Invalid addressing mode
+CHK.L $10(A6),(A3)		ERROR: Invalid addressing mode
+CHK.L $10(A6),$10(A6)		ERROR: Invalid addressing mode
+CHK.L $10(A6),$1234		ERROR: Invalid addressing mode
+CHK.L $10(A6),FW		ERROR: Invalid addressing mode
+CHK.L $10(A6),#1		ERROR: Invalid addressing mode
+CHK.L $10(A6),#$1234		ERROR: Invalid addressing mode
+CHK.L $10(A6),CCR		ERROR: Invalid addressing mode
+CHK.L $10(A6),SR		ERROR: Invalid addressing mode
+CHK.L $1234,D1	43B81234	ERROR: Invalid size code
+CHK.L $1234,A2		ERROR: Invalid addressing mode
+CHK.L $1234,(A3)		ERROR: Invalid addressing mode
+CHK.L $1234,$10(A6)		ERROR: Invalid addressing mode
+CHK.L $1234,$1234		ERROR: Invalid addressing mode
+CHK.L $1234,FW		ERROR: Invalid addressing mode
+CHK.L $1234,#1		ERROR: Invalid addressing mode
+CHK.L $1234,#$1234		ERROR: Invalid addressing mode
+CHK.L $1234,CCR		ERROR: Invalid addressing mode
+CHK.L $1234,SR		ERROR: Invalid addressing mode
+CHK.L FW,D1	43B900001F00	ERROR: Invalid size code
+CHK.L FW,A2		ERROR: Invalid addressing mode
+CHK.L FW,(A3)		ERROR: Invalid addressing mode
+CHK.L FW,$10(A6)		ERROR: Invalid addressing mode
+CHK.L FW,$1234		ERROR: Invalid addressing mode
+CHK.L FW,FW		ERROR: Invalid addressing mode
+CHK.L FW,#1		ERROR: Invalid addressing mode
+CHK.L FW,#$1234		ERROR: Invalid addressing mode
+CHK.L FW,CCR		ERROR: Invalid addressing mode
+CHK.L FW,SR		ERROR: Invalid addressing mode
+CHK.L #1,D1	43BC00000001	ERROR: Invalid size code
+CHK.L #1,A2		ERROR: Invalid addressing mode
+CHK.L #1,(A3)		ERROR: Invalid addressing mode
+CHK.L #1,$10(A6)		ERROR: Invalid addressing mode
+CHK.L #1,$1234		ERROR: Invalid addressing mode
+CHK.L #1,FW		ERROR: Invalid addressing mode
+CHK.L #1,#1		ERROR: Invalid addressing mode
+CHK.L #1,#$1234		ERROR: Invalid addressing mode
+CHK.L #1,CCR		ERROR: Invalid addressing mode
+CHK.L #1,SR		ERROR: Invalid addressing mode
+CHK.L #$1234,D1	43BC00001234	ERROR: Invalid size code
+CHK.L #$1234,A2		ERROR: Invalid addressing mode
+CHK.L #$1234,(A3)		ERROR: Invalid addressing mode
+CHK.L #$1234,$10(A6)		ERROR: Invalid addressing mode
+CHK.L #$1234,$1234		ERROR: Invalid addressing mode
+CHK.L #$1234,FW		ERROR: Invalid addressing mode
+CHK.L #$1234,#1		ERROR: Invalid addressing mode
+CHK.L #$1234,#$1234		ERROR: Invalid addressing mode
+CHK.L #$1234,CCR		ERROR: Invalid addressing mode
+CHK.L #$1234,SR		ERROR: Invalid addressing mode
+CHK.L CCR,D1		ERROR: Invalid addressing mode
+CHK.L CCR,A2		ERROR: Invalid addressing mode
+CHK.L CCR,(A3)		ERROR: Invalid addressing mode
+CHK.L CCR,$10(A6)		ERROR: Invalid addressing mode
+CHK.L CCR,$1234		ERROR: Invalid addressing mode
+CHK.L CCR,FW		ERROR: Invalid addressing mode
+CHK.L CCR,#1		ERROR: Invalid addressing mode
+CHK.L CCR,#$1234		ERROR: Invalid addressing mode
+CHK.L CCR,CCR		ERROR: Invalid addressing mode
+CHK.L CCR,SR		ERROR: Invalid addressing mode
+CHK.L SR,D1		ERROR: Invalid addressing mode
+CHK.L SR,A2		ERROR: Invalid addressing mode
+CHK.L SR,(A3)		ERROR: Invalid addressing mode
+CHK.L SR,$10(A6)		ERROR: Invalid addressing mode
+CHK.L SR,$1234		ERROR: Invalid addressing mode
+CHK.L SR,FW		ERROR: Invalid addressing mode
+CHK.L SR,#1		ERROR: Invalid addressing mode
+CHK.L SR,#$1234		ERROR: Invalid addressing mode
+CHK.L SR,CCR		ERROR: Invalid addressing mode
+CHK.L SR,SR		ERROR: Invalid addressing mode
+CHK.L SP,D1		ERROR: Invalid addressing mode
+CHK.L SP,A2		ERROR: Invalid addressing mode
+CHK.L D1,SP		ERROR: Invalid addressing mode
+CHK.L #$12,SP		ERROR: Invalid addressing mode
+CHK.L (A4)+,D1	439C	ERROR: Invalid size code
+CHK.L (A4)+,A2		ERROR: Invalid addressing mode
+CHK.L D1,(A4)+		ERROR: Invalid addressing mode
+CHK.L #$12,(A4)+		ERROR: Invalid addressing mode
+CHK.L -(A5),D1	43A5	ERROR: Invalid size code
+CHK.L -(A5),A2		ERROR: Invalid addressing mode
+CHK.L D1,-(A5)		ERROR: Invalid addressing mode
+CHK.L #$12,-(A5)		ERROR: Invalid addressing mode
+CHK.L -2(A0),D1	43A8FFFE	ERROR: Invalid size code
+CHK.L -2(A0),A2		ERROR: Invalid addressing mode
+CHK.L D1,-2(A0)		ERROR: Invalid addressing mode
+CHK.L #$12,-2(A0)		ERROR: Invalid addressing mode
+CHK.L $10(A6,D7.W),D1	43B67010	ERROR: Invalid size code
+CHK.L $10(A6,D7.W),A2		ERROR: Invalid addressing mode
+CHK.L D1,$10(A6,D7.W)		ERROR: Invalid addressing mode
+CHK.L #$12,$10(A6,D7.W)		ERROR: Invalid addressing mode
+CHK.L $12(A0,A1.L),D1	43B09812	ERROR: Invalid size code
+CHK.L $12(A0,A1.L),A2		ERROR: Invalid addressing mode
+CHK.L D1,$12(A0,A1.L)		ERROR: Invalid addressing mode
+CHK.L #$12,$12(A0,A1.L)		ERROR: Invalid addressing mode
+CHK.L (A2,D3),D1	43B23000	ERROR: Invalid size code
+CHK.L (A2,D3),A2		ERROR: Invalid addressing mode
+CHK.L D1,(A2,D3)		ERROR: Invalid addressing mode
+CHK.L #$12,(A2,D3)		ERROR: Invalid addressing mode
+CHK.L $12345678,D1	43B912345678	ERROR: Invalid size code
+CHK.L $12345678,A2		ERROR: Invalid addressing mode
+CHK.L D1,$12345678		ERROR: Invalid addressing mode
+CHK.L #$12,$12345678		ERROR: Invalid addressing mode
+CHK.L $1234.L,D1	43B900001234	ERROR: Invalid size code
+CHK.L $1234.L,A2		ERROR: Invalid addressing mode
+CHK.L D1,$1234.L		ERROR: Invalid addressing mode
+CHK.L #$12,$1234.L		ERROR: Invalid addressing mode
+CHK.L $1234.W,D1	43B81234	ERROR: Invalid size code
+CHK.L $1234.W,A2		ERROR: Invalid addressing mode
+CHK.L D1,$1234.W		ERROR: Invalid addressing mode
+CHK.L #$12,$1234.W		ERROR: Invalid addressing mode
+CHK.L $8000,D1	43B900008000	ERROR: Invalid size code
+CHK.L $8000,A2		ERROR: Invalid addressing mode
+CHK.L D1,$8000		ERROR: Invalid addressing mode
+CHK.L #$12,$8000		ERROR: Invalid addressing mode
+CHK.L BK,D1	43B81F00	ERROR: Invalid size code
+CHK.L BK,A2		ERROR: Invalid addressing mode
+CHK.L D1,BK		ERROR: Invalid addressing mode
+CHK.L #$12,BK		ERROR: Invalid addressing mode
+CHK.L *+$10(PC),D1	43BA000E	ERROR: Invalid size code
+CHK.L *+$10(PC),A2		ERROR: Invalid addressing mode
+CHK.L D1,*+$10(PC)		ERROR: Invalid addressing mode
+CHK.L #$12,*+$10(PC)		ERROR: Invalid addressing mode
+CHK.L *(PC,D0.W),D1	43BB00FE	ERROR: Invalid size code
+CHK.L *(PC,D0.W),A2		ERROR: Invalid addressing mode
+CHK.L D1,*(PC,D0.W)		ERROR: Invalid addressing mode
+CHK.L #$12,*(PC,D0.W)		ERROR: Invalid addressing mode
+CHK.L BK(PC),D1	43BA0EFE	ERROR: Invalid size code
+CHK.L BK(PC),A2		ERROR: Invalid addressing mode
+CHK.L D1,BK(PC)		ERROR: Invalid addressing mode
+CHK.L #$12,BK(PC)		ERROR: Invalid addressing mode
+CHK.L #8,D1	43BC00000008	ERROR: Invalid size code
+CHK.L #8,A2		ERROR: Invalid addressing mode
+CHK.L D1,#8		ERROR: Invalid addressing mode
+CHK.L #$12,#8		ERROR: Invalid addressing mode
+CHK.L #9,D1	43BC00000009	ERROR: Invalid size code
+CHK.L #9,A2		ERROR: Invalid addressing mode
+CHK.L D1,#9		ERROR: Invalid addressing mode
+CHK.L #$12,#9		ERROR: Invalid addressing mode
+CHK.L #0,D1	43BC00000000	ERROR: Invalid size code
+CHK.L #0,A2		ERROR: Invalid addressing mode
+CHK.L D1,#0		ERROR: Invalid addressing mode
+CHK.L #$12,#0		ERROR: Invalid addressing mode
+CHK.L #-1,D1	43BCFFFFFFFF	ERROR: Invalid size code
+CHK.L #-1,A2		ERROR: Invalid addressing mode
+CHK.L D1,#-1		ERROR: Invalid addressing mode
+CHK.L #$12,#-1		ERROR: Invalid addressing mode
+CHK.L #$80,D1	43BC00000080	ERROR: Invalid size code
+CHK.L #$80,A2		ERROR: Invalid addressing mode
+CHK.L D1,#$80		ERROR: Invalid addressing mode
+CHK.L #$12,#$80		ERROR: Invalid addressing mode
+CHK.L #$12345678,D1	43BC12345678	ERROR: Invalid size code
+CHK.L #$12345678,A2		ERROR: Invalid addressing mode
+CHK.L D1,#$12345678		ERROR: Invalid addressing mode
+CHK.L #$12,#$12345678		ERROR: Invalid addressing mode
+CHK.L #$12345678.L,D1	43BC12345678	ERROR: Invalid size code
+CHK.L #$12345678.L,A2		ERROR: Invalid addressing mode
+CHK.L D1,#$12345678.L		ERROR: Invalid addressing mode
+CHK.L #$12,#$12345678.L		ERROR: Invalid addressing mode
+CHK.L #BK,D1	43BC00001F00	ERROR: Invalid size code
+CHK.L #BK,A2		ERROR: Invalid addressing mode
+CHK.L D1,#BK		ERROR: Invalid addressing mode
+CHK.L #$12,#BK		ERROR: Invalid addressing mode
+CHK.L #FW,D1	43BC00001F00	ERROR: Invalid size code
+CHK.L #FW,A2		ERROR: Invalid addressing mode
+CHK.L D1,#FW		ERROR: Invalid addressing mode
+CHK.L #$12,#FW		ERROR: Invalid addressing mode
+CHK.L #UNDEF,D1	43BC000055AF	ERROR: Undefined symbol
+CHK.L #UNDEF,A2		ERROR: Invalid addressing mode
+CHK.L D1,#UNDEF		ERROR: Invalid addressing mode
+CHK.L #$12,#UNDEF		ERROR: Invalid addressing mode
+CHK.L UNDEF,D1	43B9000055AF	ERROR: Undefined symbol
+CHK.L UNDEF,A2		ERROR: Invalid addressing mode
+CHK.L D1,UNDEF		ERROR: Invalid addressing mode
+CHK.L #$12,UNDEF		ERROR: Invalid addressing mode
+CHK.L USP,D1		ERROR: Invalid addressing mode
+CHK.L USP,A2		ERROR: Invalid addressing mode
+CHK.L D1,USP		ERROR: Invalid addressing mode
+CHK.L #$12,USP		ERROR: Invalid addressing mode
+CHK.L D1,D2,D3		ERROR: Invalid syntax
+CHK.S		ERROR: Invalid syntax
+CHK.S D1		ERROR: Comma expected
+CHK.S A2		ERROR: Comma expected
+CHK.S SP		ERROR: Comma expected
+CHK.S (A3)		ERROR: Comma expected
+CHK.S (A4)+		ERROR: Comma expected
+CHK.S -(A5)		ERROR: Comma expected
+CHK.S $10(A6)		ERROR: Comma expected
+CHK.S -2(A0)		ERROR: Comma expected
+CHK.S $10(A6,D7.W)		ERROR: Comma expected
+CHK.S $12(A0,A1.L)		ERROR: Comma expected
+CHK.S (A2,D3)		ERROR: Comma expected
+CHK.S $1234		ERROR: Comma expected
+CHK.S $12345678		ERROR: Comma expected
+CHK.S $1234.L		ERROR: Comma expected
+CHK.S $1234.W		ERROR: Comma expected
+CHK.S $8000		ERROR: Comma expected
+CHK.S BK		ERROR: Comma expected
+CHK.S FW		ERROR: Comma expected
+CHK.S *+$10(PC)		ERROR: Comma expected
+CHK.S *(PC,D0.W)		ERROR: Comma expected
+CHK.S BK(PC)		ERROR: Comma expected
+CHK.S #1		ERROR: Comma expected
+CHK.S #8		ERROR: Comma expected
+CHK.S #9		ERROR: Comma expected
+CHK.S #0		ERROR: Comma expected
+CHK.S #-1		ERROR: Comma expected
+CHK.S #$80		ERROR: Comma expected
+CHK.S #$1234		ERROR: Comma expected
+CHK.S #$12345678		ERROR: Comma expected
+CHK.S #$12345678.L		ERROR: Comma expected
+CHK.S #BK		ERROR: Comma expected
+CHK.S #FW		ERROR: Comma expected
+CHK.S #UNDEF		ERROR: Comma expected
+CHK.S UNDEF		ERROR: Comma expected
+CHK.S SR		ERROR: Comma expected
+CHK.S CCR		ERROR: Comma expected
+CHK.S USP		ERROR: Comma expected
+CHK.S D1,D1	4381	ERROR: Invalid size code
+CHK.S D1,A2		ERROR: Invalid addressing mode
+CHK.S D1,(A3)		ERROR: Invalid addressing mode
+CHK.S D1,$10(A6)		ERROR: Invalid addressing mode
+CHK.S D1,$1234		ERROR: Invalid addressing mode
+CHK.S D1,FW		ERROR: Invalid addressing mode
+CHK.S D1,#1		ERROR: Invalid addressing mode
+CHK.S D1,#$1234		ERROR: Invalid addressing mode
+CHK.S D1,CCR		ERROR: Invalid addressing mode
+CHK.S D1,SR		ERROR: Invalid addressing mode
+CHK.S A2,D1		ERROR: Invalid addressing mode
+CHK.S A2,A2		ERROR: Invalid addressing mode
+CHK.S A2,(A3)		ERROR: Invalid addressing mode
+CHK.S A2,$10(A6)		ERROR: Invalid addressing mode
+CHK.S A2,$1234		ERROR: Invalid addressing mode
+CHK.S A2,FW		ERROR: Invalid addressing mode
+CHK.S A2,#1		ERROR: Invalid addressing mode
+CHK.S A2,#$1234		ERROR: Invalid addressing mode
+CHK.S A2,CCR		ERROR: Invalid addressing mode
+CHK.S A2,SR		ERROR: Invalid addressing mode
+CHK.S (A3),D1	4393	ERROR: Invalid size code
+CHK.S (A3),A2		ERROR: Invalid addressing mode
+CHK.S (A3),(A3)		ERROR: Invalid addressing mode
+CHK.S (A3),$10(A6)		ERROR: Invalid addressing mode
+CHK.S (A3),$1234		ERROR: Invalid addressing mode
+CHK.S (A3),FW		ERROR: Invalid addressing mode
+CHK.S (A3),#1		ERROR: Invalid addressing mode
+CHK.S (A3),#$1234		ERROR: Invalid addressing mode
+CHK.S (A3),CCR		ERROR: Invalid addressing mode
+CHK.S (A3),SR		ERROR: Invalid addressing mode
+CHK.S $10(A6),D1	43AE0010	ERROR: Invalid size code
+CHK.S $10(A6),A2		ERROR: Invalid addressing mode
+CHK.S $10(A6),(A3)		ERROR: Invalid addressing mode
+CHK.S $10(A6),$10(A6)		ERROR: Invalid addressing mode
+CHK.S $10(A6),$1234		ERROR: Invalid addressing mode
+CHK.S $10(A6),FW		ERROR: Invalid addressing mode
+CHK.S $10(A6),#1		ERROR: Invalid addressing mode
+CHK.S $10(A6),#$1234		ERROR: Invalid addressing mode
+CHK.S $10(A6),CCR		ERROR: Invalid addressing mode
+CHK.S $10(A6),SR		ERROR: Invalid addressing mode
+CHK.S $1234,D1	43B81234	ERROR: Invalid size code
+CHK.S $1234,A2		ERROR: Invalid addressing mode
+CHK.S $1234,(A3)		ERROR: Invalid addressing mode
+CHK.S $1234,$10(A6)		ERROR: Invalid addressing mode
+CHK.S $1234,$1234		ERROR: Invalid addressing mode
+CHK.S $1234,FW		ERROR: Invalid addressing mode
+CHK.S $1234,#1		ERROR: Invalid addressing mode
+CHK.S $1234,#$1234		ERROR: Invalid addressing mode
+CHK.S $1234,CCR		ERROR: Invalid addressing mode
+CHK.S $1234,SR		ERROR: Invalid addressing mode
+CHK.S FW,D1	43B900001F00	ERROR: Invalid size code
+CHK.S FW,A2		ERROR: Invalid addressing mode
+CHK.S FW,(A3)		ERROR: Invalid addressing mode
+CHK.S FW,$10(A6)		ERROR: Invalid addressing mode
+CHK.S FW,$1234		ERROR: Invalid addressing mode
+CHK.S FW,FW		ERROR: Invalid addressing mode
+CHK.S FW,#1		ERROR: Invalid addressing mode
+CHK.S FW,#$1234		ERROR: Invalid addressing mode
+CHK.S FW,CCR		ERROR: Invalid addressing mode
+CHK.S FW,SR		ERROR: Invalid addressing mode
+CHK.S #1,D1	43BC	ERROR: Invalid size code
+CHK.S #1,A2		ERROR: Invalid addressing mode
+CHK.S #1,(A3)		ERROR: Invalid addressing mode
+CHK.S #1,$10(A6)		ERROR: Invalid addressing mode
+CHK.S #1,$1234		ERROR: Invalid addressing mode
+CHK.S #1,FW		ERROR: Invalid addressing mode
+CHK.S #1,#1		ERROR: Invalid addressing mode
+CHK.S #1,#$1234		ERROR: Invalid addressing mode
+CHK.S #1,CCR		ERROR: Invalid addressing mode
+CHK.S #1,SR		ERROR: Invalid addressing mode
+CHK.S #$1234,D1	43BC	ERROR: Invalid size code
+CHK.S #$1234,A2		ERROR: Invalid addressing mode
+CHK.S #$1234,(A3)		ERROR: Invalid addressing mode
+CHK.S #$1234,$10(A6)		ERROR: Invalid addressing mode
+CHK.S #$1234,$1234		ERROR: Invalid addressing mode
+CHK.S #$1234,FW		ERROR: Invalid addressing mode
+CHK.S #$1234,#1		ERROR: Invalid addressing mode
+CHK.S #$1234,#$1234		ERROR: Invalid addressing mode
+CHK.S #$1234,CCR		ERROR: Invalid addressing mode
+CHK.S #$1234,SR		ERROR: Invalid addressing mode
+CHK.S CCR,D1		ERROR: Invalid addressing mode
+CHK.S CCR,A2		ERROR: Invalid addressing mode
+CHK.S CCR,(A3)		ERROR: Invalid addressing mode
+CHK.S CCR,$10(A6)		ERROR: Invalid addressing mode
+CHK.S CCR,$1234		ERROR: Invalid addressing mode
+CHK.S CCR,FW		ERROR: Invalid addressing mode
+CHK.S CCR,#1		ERROR: Invalid addressing mode
+CHK.S CCR,#$1234		ERROR: Invalid addressing mode
+CHK.S CCR,CCR		ERROR: Invalid addressing mode
+CHK.S CCR,SR		ERROR: Invalid addressing mode
+CHK.S SR,D1		ERROR: Invalid addressing mode
+CHK.S SR,A2		ERROR: Invalid addressing mode
+CHK.S SR,(A3)		ERROR: Invalid addressing mode
+CHK.S SR,$10(A6)		ERROR: Invalid addressing mode
+CHK.S SR,$1234		ERROR: Invalid addressing mode
+CHK.S SR,FW		ERROR: Invalid addressing mode
+CHK.S SR,#1		ERROR: Invalid addressing mode
+CHK.S SR,#$1234		ERROR: Invalid addressing mode
+CHK.S SR,CCR		ERROR: Invalid addressing mode
+CHK.S SR,SR		ERROR: Invalid addressing mode
+CHK.S SP,D1		ERROR: Invalid addressing mode
+CHK.S SP,A2		ERROR: Invalid addressing mode
+CHK.S D1,SP		ERROR: Invalid addressing mode
+CHK.S #$12,SP		ERROR: Invalid addressing mode
+CHK.S (A4)+,D1	439C	ERROR: Invalid size code
+CHK.S (A4)+,A2		ERROR: Invalid addressing mode
+CHK.S D1,(A4)+		ERROR: Invalid addressing mode
+CHK.S #$12,(A4)+		ERROR: Invalid addressing mode
+CHK.S -(A5),D1	43A5	ERROR: Invalid size code
+CHK.S -(A5),A2		ERROR: Invalid addressing mode
+CHK.S D1,-(A5)		ERROR: Invalid addressing mode
+CHK.S #$12,-(A5)		ERROR: Invalid addressing mode
+CHK.S -2(A0),D1	43A8FFFE	ERROR: Invalid size code
+CHK.S -2(A0),A2		ERROR: Invalid addressing mode
+CHK.S D1,-2(A0)		ERROR: Invalid addressing mode
+CHK.S #$12,-2(A0)		ERROR: Invalid addressing mode
+CHK.S $10(A6,D7.W),D1	43B67010	ERROR: Invalid size code
+CHK.S $10(A6,D7.W),A2		ERROR: Invalid addressing mode
+CHK.S D1,$10(A6,D7.W)		ERROR: Invalid addressing mode
+CHK.S #$12,$10(A6,D7.W)		ERROR: Invalid addressing mode
+CHK.S $12(A0,A1.L),D1	43B09812	ERROR: Invalid size code
+CHK.S $12(A0,A1.L),A2		ERROR: Invalid addressing mode
+CHK.S D1,$12(A0,A1.L)		ERROR: Invalid addressing mode
+CHK.S #$12,$12(A0,A1.L)		ERROR: Invalid addressing mode
+CHK.S (A2,D3),D1	43B23000	ERROR: Invalid size code
+CHK.S (A2,D3),A2		ERROR: Invalid addressing mode
+CHK.S D1,(A2,D3)		ERROR: Invalid addressing mode
+CHK.S #$12,(A2,D3)		ERROR: Invalid addressing mode
+CHK.S $12345678,D1	43B912345678	ERROR: Invalid size code
+CHK.S $12345678,A2		ERROR: Invalid addressing mode
+CHK.S D1,$12345678		ERROR: Invalid addressing mode
+CHK.S #$12,$12345678		ERROR: Invalid addressing mode
+CHK.S $1234.L,D1	43B900001234	ERROR: Invalid size code
+CHK.S $1234.L,A2		ERROR: Invalid addressing mode
+CHK.S D1,$1234.L		ERROR: Invalid addressing mode
+CHK.S #$12,$1234.L		ERROR: Invalid addressing mode
+CHK.S $1234.W,D1	43B81234	ERROR: Invalid size code
+CHK.S $1234.W,A2		ERROR: Invalid addressing mode
+CHK.S D1,$1234.W		ERROR: Invalid addressing mode
+CHK.S #$12,$1234.W		ERROR: Invalid addressing mode
+CHK.S $8000,D1	43B900008000	ERROR: Invalid size code
+CHK.S $8000,A2		ERROR: Invalid addressing mode
+CHK.S D1,$8000		ERROR: Invalid addressing mode
+CHK.S #$12,$8000		ERROR: Invalid addressing mode
+CHK.S BK,D1	43B81F00	ERROR: Invalid size code
+CHK.S BK,A2		ERROR: Invalid addressing mode
+CHK.S D1,BK		ERROR: Invalid addressing mode
+CHK.S #$12,BK		ERROR: Invalid addressing mode
+CHK.S *+$10(PC),D1	43BA000E	ERROR: Invalid size code
+CHK.S *+$10(PC),A2		ERROR: Invalid addressing mode
+CHK.S D1,*+$10(PC)		ERROR: Invalid addressing mode
+CHK.S #$12,*+$10(PC)		ERROR: Invalid addressing mode
+CHK.S *(PC,D0.W),D1	43BB00FE	ERROR: Invalid size code
+CHK.S *(PC,D0.W),A2		ERROR: Invalid addressing mode
+CHK.S D1,*(PC,D0.W)		ERROR: Invalid addressing mode
+CHK.S #$12,*(PC,D0.W)		ERROR: Invalid addressing mode
+CHK.S BK(PC),D1	43BA0EFE	ERROR: Invalid size code
+CHK.S BK(PC),A2		ERROR: Invalid addressing mode
+CHK.S D1,BK(PC)		ERROR: Invalid addressing mode
+CHK.S #$12,BK(PC)		ERROR: Invalid addressing mode
+CHK.S #8,D1	43BC	ERROR: Invalid size code
+CHK.S #8,A2		ERROR: Invalid addressing mode
+CHK.S D1,#8		ERROR: Invalid addressing mode
+CHK.S #$12,#8		ERROR: Invalid addressing mode
+CHK.S #9,D1	43BC	ERROR: Invalid size code
+CHK.S #9,A2		ERROR: Invalid addressing mode
+CHK.S D1,#9		ERROR: Invalid addressing mode
+CHK.S #$12,#9		ERROR: Invalid addressing mode
+CHK.S #0,D1	43BC	ERROR: Invalid size code
+CHK.S #0,A2		ERROR: Invalid addressing mode
+CHK.S D1,#0		ERROR: Invalid addressing mode
+CHK.S #$12,#0		ERROR: Invalid addressing mode
+CHK.S #-1,D1	43BC	ERROR: Invalid size code
+CHK.S #-1,A2		ERROR: Invalid addressing mode
+CHK.S D1,#-1		ERROR: Invalid addressing mode
+CHK.S #$12,#-1		ERROR: Invalid addressing mode
+CHK.S #$80,D1	43BC	ERROR: Invalid size code
+CHK.S #$80,A2		ERROR: Invalid addressing mode
+CHK.S D1,#$80		ERROR: Invalid addressing mode
+CHK.S #$12,#$80		ERROR: Invalid addressing mode
+CHK.S #$12345678,D1	43BC	ERROR: Invalid size code
+CHK.S #$12345678,A2		ERROR: Invalid addressing mode
+CHK.S D1,#$12345678		ERROR: Invalid addressing mode
+CHK.S #$12,#$12345678		ERROR: Invalid addressing mode
+CHK.S #$12345678.L,D1	43BC	ERROR: Invalid size code
+CHK.S #$12345678.L,A2		ERROR: Invalid addressing mode
+CHK.S D1,#$12345678.L		ERROR: Invalid addressing mode
+CHK.S #$12,#$12345678.L		ERROR: Invalid addressing mode
+CHK.S #BK,D1	43BC	ERROR: Invalid size code
+CHK.S #BK,A2		ERROR: Invalid addressing mode
+CHK.S D1,#BK		ERROR: Invalid addressing mode
+CHK.S #$12,#BK		ERROR: Invalid addressing mode
+CHK.S #FW,D1	43BC	ERROR: Invalid size code
+CHK.S #FW,A2		ERROR: Invalid addressing mode
+CHK.S D1,#FW		ERROR: Invalid addressing mode
+CHK.S #$12,#FW		ERROR: Invalid addressing mode
+CHK.S #UNDEF,D1	43BC	ERROR: Undefined symbol
+CHK.S #UNDEF,A2		ERROR: Invalid addressing mode
+CHK.S D1,#UNDEF		ERROR: Invalid addressing mode
+CHK.S #$12,#UNDEF		ERROR: Invalid addressing mode
+CHK.S UNDEF,D1	43B9000055AF	ERROR: Undefined symbol
+CHK.S UNDEF,A2		ERROR: Invalid addressing mode
+CHK.S D1,UNDEF		ERROR: Invalid addressing mode
+CHK.S #$12,UNDEF		ERROR: Invalid addressing mode
+CHK.S USP,D1		ERROR: Invalid addressing mode
+CHK.S USP,A2		ERROR: Invalid addressing mode
+CHK.S D1,USP		ERROR: Invalid addressing mode
+CHK.S #$12,USP		ERROR: Invalid addressing mode
+CHK.S D1,D2,D3		ERROR: Invalid syntax
+CHK.X D1,D2	4581	ERROR: Invalid size code
+CHK.X #1		ERROR: Comma expected

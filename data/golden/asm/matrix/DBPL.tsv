@@ -1,0 +1,92 @@
+DBPL		ERROR: Invalid syntax
+DBPL D2,*+2	5ACA0000	-
+DBPL D2,*+4	5ACA0002	-
+DBPL D2,*+$80	5ACA007E	-
+DBPL D2,*+$82	5ACA0080	-
+DBPL D2,*-$7E	5ACAFF80	-
+DBPL D2,*-$80	5ACAFF7E	-
+DBPL D2,*+$8000	5ACA7FFE	-
+DBPL D2,*	5ACAFFFE	-
+DBPL D2,BK	5ACA0EFE	-
+DBPL D2,FW	5ACA0EFE	-
+DBPL D2,$1000	5ACAFFFE	-
+DBPL D2,$12345678	5ACA4676	ERROR: Branch instruction displacement is out of range or invalid
+DBPL D2,D1		ERROR: Invalid addressing mode
+DBPL D2,(A0)		ERROR: Invalid addressing mode
+DBPL D2,#4		ERROR: Invalid addressing mode
+DBPL A2,*		ERROR: Invalid addressing mode
+DBPL #1,*		ERROR: Invalid addressing mode
+DBPL.B		ERROR: Invalid syntax
+DBPL.B D2,*+2	5ACA0000	ERROR: Invalid size code
+DBPL.B D2,*+4	5ACA0002	ERROR: Invalid size code
+DBPL.B D2,*+$80	5ACA007E	ERROR: Invalid size code
+DBPL.B D2,*+$82	5ACA0080	ERROR: Invalid size code
+DBPL.B D2,*-$7E	5ACAFF80	ERROR: Invalid size code
+DBPL.B D2,*-$80	5ACAFF7E	ERROR: Invalid size code
+DBPL.B D2,*+$8000	5ACA7FFE	ERROR: Invalid size code
+DBPL.B D2,*	5ACAFFFE	ERROR: Invalid size code
+DBPL.B D2,BK	5ACA0EFE	ERROR: Invalid size code
+DBPL.B D2,FW	5ACA0EFE	ERROR: Invalid size code
+DBPL.B D2,$1000	5ACAFFFE	ERROR: Invalid size code
+DBPL.B D2,$12345678	5ACA4676	ERROR: Invalid size code
+DBPL.B D2,D1		ERROR: Invalid addressing mode
+DBPL.B D2,(A0)		ERROR: Invalid addressing mode
+DBPL.B D2,#4		ERROR: Invalid addressing mode
+DBPL.B A2,*		ERROR: Invalid addressing mode
+DBPL.B #1,*		ERROR: Invalid addressing mode
+DBPL.W		ERROR: Invalid syntax
+DBPL.W D2,*+2	5ACA0000	-
+DBPL.W D2,*+4	5ACA0002	-
+DBPL.W D2,*+$80	5ACA007E	-
+DBPL.W D2,*+$82	5ACA0080	-
+DBPL.W D2,*-$7E	5ACAFF80	-
+DBPL.W D2,*-$80	5ACAFF7E	-
+DBPL.W D2,*+$8000	5ACA7FFE	-
+DBPL.W D2,*	5ACAFFFE	-
+DBPL.W D2,BK	5ACA0EFE	-
+DBPL.W D2,FW	5ACA0EFE	-
+DBPL.W D2,$1000	5ACAFFFE	-
+DBPL.W D2,$12345678	5ACA4676	ERROR: Branch instruction displacement is out of range or invalid
+DBPL.W D2,D1		ERROR: Invalid addressing mode
+DBPL.W D2,(A0)		ERROR: Invalid addressing mode
+DBPL.W D2,#4		ERROR: Invalid addressing mode
+DBPL.W A2,*		ERROR: Invalid addressing mode
+DBPL.W #1,*		ERROR: Invalid addressing mode
+DBPL.L		ERROR: Invalid syntax
+DBPL.L D2,*+2	5ACA0000	ERROR: Invalid size code
+DBPL.L D2,*+4	5ACA0002	ERROR: Invalid size code
+DBPL.L D2,*+$80	5ACA007E	ERROR: Invalid size code
+DBPL.L D2,*+$82	5ACA0080	ERROR: Invalid size code
+DBPL.L D2,*-$7E	5ACAFF80	ERROR: Invalid size code
+DBPL.L D2,*-$80	5ACAFF7E	ERROR: Invalid size code
+DBPL.L D2,*+$8000	5ACA7FFE	ERROR: Invalid size code
+DBPL.L D2,*	5ACAFFFE	ERROR: Invalid size code
+DBPL.L D2,BK	5ACA0EFE	ERROR: Invalid size code
+DBPL.L D2,FW	5ACA0EFE	ERROR: Invalid size code
+DBPL.L D2,$1000	5ACAFFFE	ERROR: Invalid size code
+DBPL.L D2,$12345678	5ACA4676	ERROR: Invalid size code
+DBPL.L D2,D1		ERROR: Invalid addressing mode
+DBPL.L D2,(A0)		ERROR: Invalid addressing mode
+DBPL.L D2,#4		ERROR: Invalid addressing mode
+DBPL.L A2,*		ERROR: Invalid addressing mode
+DBPL.L #1,*		ERROR: Invalid addressing mode
+DBPL.S		ERROR: Invalid syntax
+DBPL.S D2,*+2	5ACA0000	ERROR: Invalid size code
+DBPL.S D2,*+4	5ACA0002	ERROR: Invalid size code
+DBPL.S D2,*+$80	5ACA007E	ERROR: Invalid size code
+DBPL.S D2,*+$82	5ACA0080	ERROR: Invalid size code
+DBPL.S D2,*-$7E	5ACAFF80	ERROR: Invalid size code
+DBPL.S D2,*-$80	5ACAFF7E	ERROR: Invalid size code
+DBPL.S D2,*+$8000	5ACA7FFE	ERROR: Invalid size code
+DBPL.S D2,*	5ACAFFFE	ERROR: Invalid size code
+DBPL.S D2,BK	5ACA0EFE	ERROR: Invalid size code
+DBPL.S D2,FW	5ACA0EFE	ERROR: Invalid size code
+DBPL.S D2,$1000	5ACAFFFE	ERROR: Invalid size code
+DBPL.S D2,$12345678	5ACA4676	ERROR: Invalid size code
+DBPL.S D2,D1		ERROR: Invalid addressing mode
+DBPL.S D2,(A0)		ERROR: Invalid addressing mode
+DBPL.S D2,#4		ERROR: Invalid addressing mode
+DBPL.S A2,*		ERROR: Invalid addressing mode
+DBPL.S #1,*		ERROR: Invalid addressing mode
+DBPL.X D1,D2		ERROR: Invalid addressing mode
+DBPL.X #1		ERROR: Comma expected

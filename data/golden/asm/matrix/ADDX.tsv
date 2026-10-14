@@ -1,0 +1,1621 @@
+ADDX		ERROR: Invalid syntax
+ADDX D1		ERROR: Comma expected
+ADDX A2		ERROR: Comma expected
+ADDX SP		ERROR: Comma expected
+ADDX (A3)		ERROR: Comma expected
+ADDX (A4)+		ERROR: Comma expected
+ADDX -(A5)		ERROR: Comma expected
+ADDX $10(A6)		ERROR: Comma expected
+ADDX -2(A0)		ERROR: Comma expected
+ADDX $10(A6,D7.W)		ERROR: Comma expected
+ADDX $12(A0,A1.L)		ERROR: Comma expected
+ADDX (A2,D3)		ERROR: Comma expected
+ADDX $1234		ERROR: Comma expected
+ADDX $12345678		ERROR: Comma expected
+ADDX $1234.L		ERROR: Comma expected
+ADDX $1234.W		ERROR: Comma expected
+ADDX $8000		ERROR: Comma expected
+ADDX BK		ERROR: Comma expected
+ADDX FW		ERROR: Comma expected
+ADDX *+$10(PC)		ERROR: Comma expected
+ADDX *(PC,D0.W)		ERROR: Comma expected
+ADDX BK(PC)		ERROR: Comma expected
+ADDX #1		ERROR: Comma expected
+ADDX #8		ERROR: Comma expected
+ADDX #9		ERROR: Comma expected
+ADDX #0		ERROR: Comma expected
+ADDX #-1		ERROR: Comma expected
+ADDX #$80		ERROR: Comma expected
+ADDX #$1234		ERROR: Comma expected
+ADDX #$12345678		ERROR: Comma expected
+ADDX #$12345678.L		ERROR: Comma expected
+ADDX #BK		ERROR: Comma expected
+ADDX #FW		ERROR: Comma expected
+ADDX #UNDEF		ERROR: Comma expected
+ADDX UNDEF		ERROR: Comma expected
+ADDX SR		ERROR: Comma expected
+ADDX CCR		ERROR: Comma expected
+ADDX USP		ERROR: Comma expected
+ADDX D1,D1	D341	-
+ADDX D1,A2		ERROR: Invalid addressing mode
+ADDX D1,(A3)		ERROR: Invalid addressing mode
+ADDX D1,(A4)+		ERROR: Invalid addressing mode
+ADDX D1,-(A5)		ERROR: Invalid addressing mode
+ADDX D1,$10(A6)		ERROR: Invalid addressing mode
+ADDX D1,$10(A6,D7.W)		ERROR: Invalid addressing mode
+ADDX D1,$1234		ERROR: Invalid addressing mode
+ADDX D1,$12345678		ERROR: Invalid addressing mode
+ADDX D1,FW		ERROR: Invalid addressing mode
+ADDX D1,*+$10(PC)		ERROR: Invalid addressing mode
+ADDX D1,#1		ERROR: Invalid addressing mode
+ADDX D1,#$80		ERROR: Invalid addressing mode
+ADDX D1,#$1234		ERROR: Invalid addressing mode
+ADDX D1,#$12345678		ERROR: Invalid addressing mode
+ADDX D1,SR		ERROR: Invalid addressing mode
+ADDX D1,CCR		ERROR: Invalid addressing mode
+ADDX D1,USP		ERROR: Invalid addressing mode
+ADDX A2,D1		ERROR: Invalid addressing mode
+ADDX A2,A2		ERROR: Invalid addressing mode
+ADDX A2,(A3)		ERROR: Invalid addressing mode
+ADDX A2,(A4)+		ERROR: Invalid addressing mode
+ADDX A2,-(A5)		ERROR: Invalid addressing mode
+ADDX A2,$10(A6)		ERROR: Invalid addressing mode
+ADDX A2,$10(A6,D7.W)		ERROR: Invalid addressing mode
+ADDX A2,$1234		ERROR: Invalid addressing mode
+ADDX A2,$12345678		ERROR: Invalid addressing mode
+ADDX A2,FW		ERROR: Invalid addressing mode
+ADDX A2,*+$10(PC)		ERROR: Invalid addressing mode
+ADDX A2,#1		ERROR: Invalid addressing mode
+ADDX A2,#$80		ERROR: Invalid addressing mode
+ADDX A2,#$1234		ERROR: Invalid addressing mode
+ADDX A2,#$12345678		ERROR: Invalid addressing mode
+ADDX A2,SR		ERROR: Invalid addressing mode
+ADDX A2,CCR		ERROR: Invalid addressing mode
+ADDX A2,USP		ERROR: Invalid addressing mode
+ADDX (A3),D1		ERROR: Invalid addressing mode
+ADDX (A3),A2		ERROR: Invalid addressing mode
+ADDX (A3),(A3)		ERROR: Invalid addressing mode
+ADDX (A3),(A4)+		ERROR: Invalid addressing mode
+ADDX (A3),-(A5)		ERROR: Invalid addressing mode
+ADDX (A3),$10(A6)		ERROR: Invalid addressing mode
+ADDX (A3),$10(A6,D7.W)		ERROR: Invalid addressing mode
+ADDX (A3),$1234		ERROR: Invalid addressing mode
+ADDX (A3),$12345678		ERROR: Invalid addressing mode
+ADDX (A3),FW		ERROR: Invalid addressing mode
+ADDX (A3),*+$10(PC)		ERROR: Invalid addressing mode
+ADDX (A3),#1		ERROR: Invalid addressing mode
+ADDX (A3),#$80		ERROR: Invalid addressing mode
+ADDX (A3),#$1234		ERROR: Invalid addressing mode
+ADDX (A3),#$12345678		ERROR: Invalid addressing mode
+ADDX (A3),SR		ERROR: Invalid addressing mode
+ADDX (A3),CCR		ERROR: Invalid addressing mode
+ADDX (A3),USP		ERROR: Invalid addressing mode
+ADDX (A4)+,D1		ERROR: Invalid addressing mode
+ADDX (A4)+,A2		ERROR: Invalid addressing mode
+ADDX (A4)+,(A3)		ERROR: Invalid addressing mode
+ADDX (A4)+,(A4)+		ERROR: Invalid addressing mode
+ADDX (A4)+,-(A5)		ERROR: Invalid addressing mode
+ADDX (A4)+,$10(A6)		ERROR: Invalid addressing mode
+ADDX (A4)+,$10(A6,D7.W)		ERROR: Invalid addressing mode
+ADDX (A4)+,$1234		ERROR: Invalid addressing mode
+ADDX (A4)+,$12345678		ERROR: Invalid addressing mode
+ADDX (A4)+,FW		ERROR: Invalid addressing mode
+ADDX (A4)+,*+$10(PC)		ERROR: Invalid addressing mode
+ADDX (A4)+,#1		ERROR: Invalid addressing mode
+ADDX (A4)+,#$80		ERROR: Invalid addressing mode
+ADDX (A4)+,#$1234		ERROR: Invalid addressing mode
+ADDX (A4)+,#$12345678		ERROR: Invalid addressing mode
+ADDX (A4)+,SR		ERROR: Invalid addressing mode
+ADDX (A4)+,CCR		ERROR: Invalid addressing mode
+ADDX (A4)+,USP		ERROR: Invalid addressing mode
+ADDX -(A5),D1		ERROR: Invalid addressing mode
+ADDX -(A5),A2		ERROR: Invalid addressing mode
+ADDX -(A5),(A3)		ERROR: Invalid addressing mode
+ADDX -(A5),(A4)+		ERROR: Invalid addressing mode
+ADDX -(A5),-(A5)	DB4D	-
+ADDX -(A5),$10(A6)		ERROR: Invalid addressing mode
+ADDX -(A5),$10(A6,D7.W)		ERROR: Invalid addressing mode
+ADDX -(A5),$1234		ERROR: Invalid addressing mode
+ADDX -(A5),$12345678		ERROR: Invalid addressing mode
+ADDX -(A5),FW		ERROR: Invalid addressing mode
+ADDX -(A5),*+$10(PC)		ERROR: Invalid addressing mode
+ADDX -(A5),#1		ERROR: Invalid addressing mode
+ADDX -(A5),#$80		ERROR: Invalid addressing mode
+ADDX -(A5),#$1234		ERROR: Invalid addressing mode
+ADDX -(A5),#$12345678		ERROR: Invalid addressing mode
+ADDX -(A5),SR		ERROR: Invalid addressing mode
+ADDX -(A5),CCR		ERROR: Invalid addressing mode
+ADDX -(A5),USP		ERROR: Invalid addressing mode
+ADDX $10(A6),D1		ERROR: Invalid addressing mode
+ADDX $10(A6),A2		ERROR: Invalid addressing mode
+ADDX $10(A6),(A3)		ERROR: Invalid addressing mode
+ADDX $10(A6),(A4)+		ERROR: Invalid addressing mode
+ADDX $10(A6),-(A5)		ERROR: Invalid addressing mode
+ADDX $10(A6),$10(A6)		ERROR: Invalid addressing mode
+ADDX $10(A6),$10(A6,D7.W)		ERROR: Invalid addressing mode
+ADDX $10(A6),$1234		ERROR: Invalid addressing mode
+ADDX $10(A6),$12345678		ERROR: Invalid addressing mode
+ADDX $10(A6),FW		ERROR: Invalid addressing mode
+ADDX $10(A6),*+$10(PC)		ERROR: Invalid addressing mode
+ADDX $10(A6),#1		ERROR: Invalid addressing mode
+ADDX $10(A6),#$80		ERROR: Invalid addressing mode
+ADDX $10(A6),#$1234		ERROR: Invalid addressing mode
+ADDX $10(A6),#$12345678		ERROR: Invalid addressing mode
+ADDX $10(A6),SR		ERROR: Invalid addressing mode
+ADDX $10(A6),CCR		ERROR: Invalid addressing mode
+ADDX $10(A6),USP		ERROR: Invalid addressing mode
+ADDX $10(A6,D7.W),D1		ERROR: Invalid addressing mode
+ADDX $10(A6,D7.W),A2		ERROR: Invalid addressing mode
+ADDX $10(A6,D7.W),(A3)		ERROR: Invalid addressing mode
+ADDX $10(A6,D7.W),(A4)+		ERROR: Invalid addressing mode
+ADDX $10(A6,D7.W),-(A5)		ERROR: Invalid addressing mode
+ADDX $10(A6,D7.W),$10(A6)		ERROR: Invalid addressing mode
+ADDX $10(A6,D7.W),$10(A6,D7.W)		ERROR: Invalid addressing mode
+ADDX $10(A6,D7.W),$1234		ERROR: Invalid addressing mode
+ADDX $10(A6,D7.W),$12345678		ERROR: Invalid addressing mode
+ADDX $10(A6,D7.W),FW		ERROR: Invalid addressing mode
+ADDX $10(A6,D7.W),*+$10(PC)		ERROR: Invalid addressing mode
+ADDX $10(A6,D7.W),#1		ERROR: Invalid addressing mode
+ADDX $10(A6,D7.W),#$80		ERROR: Invalid addressing mode
+ADDX $10(A6,D7.W),#$1234		ERROR: Invalid addressing mode
+ADDX $10(A6,D7.W),#$12345678		ERROR: Invalid addressing mode
+ADDX $10(A6,D7.W),SR		ERROR: Invalid addressing mode
+ADDX $10(A6,D7.W),CCR		ERROR: Invalid addressing mode
+ADDX $10(A6,D7.W),USP		ERROR: Invalid addressing mode
+ADDX $1234,D1		ERROR: Invalid addressing mode
+ADDX $1234,A2		ERROR: Invalid addressing mode
+ADDX $1234,(A3)		ERROR: Invalid addressing mode
+ADDX $1234,(A4)+		ERROR: Invalid addressing mode
+ADDX $1234,-(A5)		ERROR: Invalid addressing mode
+ADDX $1234,$10(A6)		ERROR: Invalid addressing mode
+ADDX $1234,$10(A6,D7.W)		ERROR: Invalid addressing mode
+ADDX $1234,$1234		ERROR: Invalid addressing mode
+ADDX $1234,$12345678		ERROR: Invalid addressing mode
+ADDX $1234,FW		ERROR: Invalid addressing mode
+ADDX $1234,*+$10(PC)		ERROR: Invalid addressing mode
+ADDX $1234,#1		ERROR: Invalid addressing mode
+ADDX $1234,#$80		ERROR: Invalid addressing mode
+ADDX $1234,#$1234		ERROR: Invalid addressing mode
+ADDX $1234,#$12345678		ERROR: Invalid addressing mode
+ADDX $1234,SR		ERROR: Invalid addressing mode
+ADDX $1234,CCR		ERROR: Invalid addressing mode
+ADDX $1234,USP		ERROR: Invalid addressing mode
+ADDX $12345678,D1		ERROR: Invalid addressing mode
+ADDX $12345678,A2		ERROR: Invalid addressing mode
+ADDX $12345678,(A3)		ERROR: Invalid addressing mode
+ADDX $12345678,(A4)+		ERROR: Invalid addressing mode
+ADDX $12345678,-(A5)		ERROR: Invalid addressing mode
+ADDX $12345678,$10(A6)		ERROR: Invalid addressing mode
+ADDX $12345678,$10(A6,D7.W)		ERROR: Invalid addressing mode
+ADDX $12345678,$1234		ERROR: Invalid addressing mode
+ADDX $12345678,$12345678		ERROR: Invalid addressing mode
+ADDX $12345678,FW		ERROR: Invalid addressing mode
+ADDX $12345678,*+$10(PC)		ERROR: Invalid addressing mode
+ADDX $12345678,#1		ERROR: Invalid addressing mode
+ADDX $12345678,#$80		ERROR: Invalid addressing mode
+ADDX $12345678,#$1234		ERROR: Invalid addressing mode
+ADDX $12345678,#$12345678		ERROR: Invalid addressing mode
+ADDX $12345678,SR		ERROR: Invalid addressing mode
+ADDX $12345678,CCR		ERROR: Invalid addressing mode
+ADDX $12345678,USP		ERROR: Invalid addressing mode
+ADDX FW,D1		ERROR: Invalid addressing mode
+ADDX FW,A2		ERROR: Invalid addressing mode
+ADDX FW,(A3)		ERROR: Invalid addressing mode
+ADDX FW,(A4)+		ERROR: Invalid addressing mode
+ADDX FW,-(A5)		ERROR: Invalid addressing mode
+ADDX FW,$10(A6)		ERROR: Invalid addressing mode
+ADDX FW,$10(A6,D7.W)		ERROR: Invalid addressing mode
+ADDX FW,$1234		ERROR: Invalid addressing mode
+ADDX FW,$12345678		ERROR: Invalid addressing mode
+ADDX FW,FW		ERROR: Invalid addressing mode
+ADDX FW,*+$10(PC)		ERROR: Invalid addressing mode
+ADDX FW,#1		ERROR: Invalid addressing mode
+ADDX FW,#$80		ERROR: Invalid addressing mode
+ADDX FW,#$1234		ERROR: Invalid addressing mode
+ADDX FW,#$12345678		ERROR: Invalid addressing mode
+ADDX FW,SR		ERROR: Invalid addressing mode
+ADDX FW,CCR		ERROR: Invalid addressing mode
+ADDX FW,USP		ERROR: Invalid addressing mode
+ADDX *+$10(PC),D1		ERROR: Invalid addressing mode
+ADDX *+$10(PC),A2		ERROR: Invalid addressing mode
+ADDX *+$10(PC),(A3)		ERROR: Invalid addressing mode
+ADDX *+$10(PC),(A4)+		ERROR: Invalid addressing mode
+ADDX *+$10(PC),-(A5)		ERROR: Invalid addressing mode
+ADDX *+$10(PC),$10(A6)		ERROR: Invalid addressing mode
+ADDX *+$10(PC),$10(A6,D7.W)		ERROR: Invalid addressing mode
+ADDX *+$10(PC),$1234		ERROR: Invalid addressing mode
+ADDX *+$10(PC),$12345678		ERROR: Invalid addressing mode
+ADDX *+$10(PC),FW		ERROR: Invalid addressing mode
+ADDX *+$10(PC),*+$10(PC)		ERROR: Invalid addressing mode
+ADDX *+$10(PC),#1		ERROR: Invalid addressing mode
+ADDX *+$10(PC),#$80		ERROR: Invalid addressing mode
+ADDX *+$10(PC),#$1234		ERROR: Invalid addressing mode
+ADDX *+$10(PC),#$12345678		ERROR: Invalid addressing mode
+ADDX *+$10(PC),SR		ERROR: Invalid addressing mode
+ADDX *+$10(PC),CCR		ERROR: Invalid addressing mode
+ADDX *+$10(PC),USP		ERROR: Invalid addressing mode
+ADDX #1,D1		ERROR: Invalid addressing mode
+ADDX #1,A2		ERROR: Invalid addressing mode
+ADDX #1,(A3)		ERROR: Invalid addressing mode
+ADDX #1,(A4)+		ERROR: Invalid addressing mode
+ADDX #1,-(A5)		ERROR: Invalid addressing mode
+ADDX #1,$10(A6)		ERROR: Invalid addressing mode
+ADDX #1,$10(A6,D7.W)		ERROR: Invalid addressing mode
+ADDX #1,$1234		ERROR: Invalid addressing mode
+ADDX #1,$12345678		ERROR: Invalid addressing mode
+ADDX #1,FW		ERROR: Invalid addressing mode
+ADDX #1,*+$10(PC)		ERROR: Invalid addressing mode
+ADDX #1,#1		ERROR: Invalid addressing mode
+ADDX #1,#$80		ERROR: Invalid addressing mode
+ADDX #1,#$1234		ERROR: Invalid addressing mode
+ADDX #1,#$12345678		ERROR: Invalid addressing mode
+ADDX #1,SR		ERROR: Invalid addressing mode
+ADDX #1,CCR		ERROR: Invalid addressing mode
+ADDX #1,USP		ERROR: Invalid addressing mode
+ADDX #$80,D1		ERROR: Invalid addressing mode
+ADDX #$80,A2		ERROR: Invalid addressing mode
+ADDX #$80,(A3)		ERROR: Invalid addressing mode
+ADDX #$80,(A4)+		ERROR: Invalid addressing mode
+ADDX #$80,-(A5)		ERROR: Invalid addressing mode
+ADDX #$80,$10(A6)		ERROR: Invalid addressing mode
+ADDX #$80,$10(A6,D7.W)		ERROR: Invalid addressing mode
+ADDX #$80,$1234		ERROR: Invalid addressing mode
+ADDX #$80,$12345678		ERROR: Invalid addressing mode
+ADDX #$80,FW		ERROR: Invalid addressing mode
+ADDX #$80,*+$10(PC)		ERROR: Invalid addressing mode
+ADDX #$80,#1		ERROR: Invalid addressing mode
+ADDX #$80,#$80		ERROR: Invalid addressing mode
+ADDX #$80,#$1234		ERROR: Invalid addressing mode
+ADDX #$80,#$12345678		ERROR: Invalid addressing mode
+ADDX #$80,SR		ERROR: Invalid addressing mode
+ADDX #$80,CCR		ERROR: Invalid addressing mode
+ADDX #$80,USP		ERROR: Invalid addressing mode
+ADDX #$1234,D1		ERROR: Invalid addressing mode
+ADDX #$1234,A2		ERROR: Invalid addressing mode
+ADDX #$1234,(A3)		ERROR: Invalid addressing mode
+ADDX #$1234,(A4)+		ERROR: Invalid addressing mode
+ADDX #$1234,-(A5)		ERROR: Invalid addressing mode
+ADDX #$1234,$10(A6)		ERROR: Invalid addressing mode
+ADDX #$1234,$10(A6,D7.W)		ERROR: Invalid addressing mode
+ADDX #$1234,$1234		ERROR: Invalid addressing mode
+ADDX #$1234,$12345678		ERROR: Invalid addressing mode
+ADDX #$1234,FW		ERROR: Invalid addressing mode
+ADDX #$1234,*+$10(PC)		ERROR: Invalid addressing mode
+ADDX #$1234,#1		ERROR: Invalid addressing mode
+ADDX #$1234,#$80		ERROR: Invalid addressing mode
+ADDX #$1234,#$1234		ERROR: Invalid addressing mode
+ADDX #$1234,#$12345678		ERROR: Invalid addressing mode
+ADDX #$1234,SR		ERROR: Invalid addressing mode
+ADDX #$1234,CCR		ERROR: Invalid addressing mode
+ADDX #$1234,USP		ERROR: Invalid addressing mode
+ADDX #$12345678,D1		ERROR: Invalid addressing mode
+ADDX #$12345678,A2		ERROR: Invalid addressing mode
+ADDX #$12345678,(A3)		ERROR: Invalid addressing mode
+ADDX #$12345678,(A4)+		ERROR: Invalid addressing mode
+ADDX #$12345678,-(A5)		ERROR: Invalid addressing mode
+ADDX #$12345678,$10(A6)		ERROR: Invalid addressing mode
+ADDX #$12345678,$10(A6,D7.W)		ERROR: Invalid addressing mode
+ADDX #$12345678,$1234		ERROR: Invalid addressing mode
+ADDX #$12345678,$12345678		ERROR: Invalid addressing mode
+ADDX #$12345678,FW		ERROR: Invalid addressing mode
+ADDX #$12345678,*+$10(PC)		ERROR: Invalid addressing mode
+ADDX #$12345678,#1		ERROR: Invalid addressing mode
+ADDX #$12345678,#$80		ERROR: Invalid addressing mode
+ADDX #$12345678,#$1234		ERROR: Invalid addressing mode
+ADDX #$12345678,#$12345678		ERROR: Invalid addressing mode
+ADDX #$12345678,SR		ERROR: Invalid addressing mode
+ADDX #$12345678,CCR		ERROR: Invalid addressing mode
+ADDX #$12345678,USP		ERROR: Invalid addressing mode
+ADDX SR,D1		ERROR: Invalid addressing mode
+ADDX SR,A2		ERROR: Invalid addressing mode
+ADDX SR,(A3)		ERROR: Invalid addressing mode
+ADDX SR,(A4)+		ERROR: Invalid addressing mode
+ADDX SR,-(A5)		ERROR: Invalid addressing mode
+ADDX SR,$10(A6)		ERROR: Invalid addressing mode
+ADDX SR,$10(A6,D7.W)		ERROR: Invalid addressing mode
+ADDX SR,$1234		ERROR: Invalid addressing mode
+ADDX SR,$12345678		ERROR: Invalid addressing mode
+ADDX SR,FW		ERROR: Invalid addressing mode
+ADDX SR,*+$10(PC)		ERROR: Invalid addressing mode
+ADDX SR,#1		ERROR: Invalid addressing mode
+ADDX SR,#$80		ERROR: Invalid addressing mode
+ADDX SR,#$1234		ERROR: Invalid addressing mode
+ADDX SR,#$12345678		ERROR: Invalid addressing mode
+ADDX SR,SR		ERROR: Invalid addressing mode
+ADDX SR,CCR		ERROR: Invalid addressing mode
+ADDX SR,USP		ERROR: Invalid addressing mode
+ADDX CCR,D1		ERROR: Invalid addressing mode
+ADDX CCR,A2		ERROR: Invalid addressing mode
+ADDX CCR,(A3)		ERROR: Invalid addressing mode
+ADDX CCR,(A4)+		ERROR: Invalid addressing mode
+ADDX CCR,-(A5)		ERROR: Invalid addressing mode
+ADDX CCR,$10(A6)		ERROR: Invalid addressing mode
+ADDX CCR,$10(A6,D7.W)		ERROR: Invalid addressing mode
+ADDX CCR,$1234		ERROR: Invalid addressing mode
+ADDX CCR,$12345678		ERROR: Invalid addressing mode
+ADDX CCR,FW		ERROR: Invalid addressing mode
+ADDX CCR,*+$10(PC)		ERROR: Invalid addressing mode
+ADDX CCR,#1		ERROR: Invalid addressing mode
+ADDX CCR,#$80		ERROR: Invalid addressing mode
+ADDX CCR,#$1234		ERROR: Invalid addressing mode
+ADDX CCR,#$12345678		ERROR: Invalid addressing mode
+ADDX CCR,SR		ERROR: Invalid addressing mode
+ADDX CCR,CCR		ERROR: Invalid addressing mode
+ADDX CCR,USP		ERROR: Invalid addressing mode
+ADDX USP,D1		ERROR: Invalid addressing mode
+ADDX USP,A2		ERROR: Invalid addressing mode
+ADDX USP,(A3)		ERROR: Invalid addressing mode
+ADDX USP,(A4)+		ERROR: Invalid addressing mode
+ADDX USP,-(A5)		ERROR: Invalid addressing mode
+ADDX USP,$10(A6)		ERROR: Invalid addressing mode
+ADDX USP,$10(A6,D7.W)		ERROR: Invalid addressing mode
+ADDX USP,$1234		ERROR: Invalid addressing mode
+ADDX USP,$12345678		ERROR: Invalid addressing mode
+ADDX USP,FW		ERROR: Invalid addressing mode
+ADDX USP,*+$10(PC)		ERROR: Invalid addressing mode
+ADDX USP,#1		ERROR: Invalid addressing mode
+ADDX USP,#$80		ERROR: Invalid addressing mode
+ADDX USP,#$1234		ERROR: Invalid addressing mode
+ADDX USP,#$12345678		ERROR: Invalid addressing mode
+ADDX USP,SR		ERROR: Invalid addressing mode
+ADDX USP,CCR		ERROR: Invalid addressing mode
+ADDX USP,USP		ERROR: Invalid addressing mode
+ADDX SP,D1		ERROR: Invalid addressing mode
+ADDX SP,A2		ERROR: Invalid addressing mode
+ADDX D1,SP		ERROR: Invalid addressing mode
+ADDX #$12,SP		ERROR: Invalid addressing mode
+ADDX -2(A0),D1		ERROR: Invalid addressing mode
+ADDX -2(A0),A2		ERROR: Invalid addressing mode
+ADDX D1,-2(A0)		ERROR: Invalid addressing mode
+ADDX #$12,-2(A0)		ERROR: Invalid addressing mode
+ADDX $12(A0,A1.L),D1		ERROR: Invalid addressing mode
+ADDX $12(A0,A1.L),A2		ERROR: Invalid addressing mode
+ADDX D1,$12(A0,A1.L)		ERROR: Invalid addressing mode
+ADDX #$12,$12(A0,A1.L)		ERROR: Invalid addressing mode
+ADDX (A2,D3),D1		ERROR: Invalid addressing mode
+ADDX (A2,D3),A2		ERROR: Invalid addressing mode
+ADDX D1,(A2,D3)		ERROR: Invalid addressing mode
+ADDX #$12,(A2,D3)		ERROR: Invalid addressing mode
+ADDX $1234.L,D1		ERROR: Invalid addressing mode
+ADDX $1234.L,A2		ERROR: Invalid addressing mode
+ADDX D1,$1234.L		ERROR: Invalid addressing mode
+ADDX #$12,$1234.L		ERROR: Invalid addressing mode
+ADDX $1234.W,D1		ERROR: Invalid addressing mode
+ADDX $1234.W,A2		ERROR: Invalid addressing mode
+ADDX D1,$1234.W		ERROR: Invalid addressing mode
+ADDX #$12,$1234.W		ERROR: Invalid addressing mode
+ADDX $8000,D1		ERROR: Invalid addressing mode
+ADDX $8000,A2		ERROR: Invalid addressing mode
+ADDX D1,$8000		ERROR: Invalid addressing mode
+ADDX #$12,$8000		ERROR: Invalid addressing mode
+ADDX BK,D1		ERROR: Invalid addressing mode
+ADDX BK,A2		ERROR: Invalid addressing mode
+ADDX D1,BK		ERROR: Invalid addressing mode
+ADDX #$12,BK		ERROR: Invalid addressing mode
+ADDX *(PC,D0.W),D1		ERROR: Invalid addressing mode
+ADDX *(PC,D0.W),A2		ERROR: Invalid addressing mode
+ADDX D1,*(PC,D0.W)		ERROR: Invalid addressing mode
+ADDX #$12,*(PC,D0.W)		ERROR: Invalid addressing mode
+ADDX BK(PC),D1		ERROR: Invalid addressing mode
+ADDX BK(PC),A2		ERROR: Invalid addressing mode
+ADDX D1,BK(PC)		ERROR: Invalid addressing mode
+ADDX #$12,BK(PC)		ERROR: Invalid addressing mode
+ADDX #8,D1		ERROR: Invalid addressing mode
+ADDX #8,A2		ERROR: Invalid addressing mode
+ADDX D1,#8		ERROR: Invalid addressing mode
+ADDX #$12,#8		ERROR: Invalid addressing mode
+ADDX #9,D1		ERROR: Invalid addressing mode
+ADDX #9,A2		ERROR: Invalid addressing mode
+ADDX D1,#9		ERROR: Invalid addressing mode
+ADDX #$12,#9		ERROR: Invalid addressing mode
+ADDX #0,D1		ERROR: Invalid addressing mode
+ADDX #0,A2		ERROR: Invalid addressing mode
+ADDX D1,#0		ERROR: Invalid addressing mode
+ADDX #$12,#0		ERROR: Invalid addressing mode
+ADDX #-1,D1		ERROR: Invalid addressing mode
+ADDX #-1,A2		ERROR: Invalid addressing mode
+ADDX D1,#-1		ERROR: Invalid addressing mode
+ADDX #$12,#-1		ERROR: Invalid addressing mode
+ADDX #$12345678.L,D1		ERROR: Invalid addressing mode
+ADDX #$12345678.L,A2		ERROR: Invalid addressing mode
+ADDX D1,#$12345678.L		ERROR: Invalid addressing mode
+ADDX #$12,#$12345678.L		ERROR: Invalid addressing mode
+ADDX #BK,D1		ERROR: Invalid addressing mode
+ADDX #BK,A2		ERROR: Invalid addressing mode
+ADDX D1,#BK		ERROR: Invalid addressing mode
+ADDX #$12,#BK		ERROR: Invalid addressing mode
+ADDX #FW,D1		ERROR: Invalid addressing mode
+ADDX #FW,A2		ERROR: Invalid addressing mode
+ADDX D1,#FW		ERROR: Invalid addressing mode
+ADDX #$12,#FW		ERROR: Invalid addressing mode
+ADDX #UNDEF,D1		ERROR: Invalid addressing mode
+ADDX #UNDEF,A2		ERROR: Invalid addressing mode
+ADDX D1,#UNDEF		ERROR: Invalid addressing mode
+ADDX #$12,#UNDEF		ERROR: Invalid addressing mode
+ADDX UNDEF,D1		ERROR: Invalid addressing mode
+ADDX UNDEF,A2		ERROR: Invalid addressing mode
+ADDX D1,UNDEF		ERROR: Invalid addressing mode
+ADDX #$12,UNDEF		ERROR: Invalid addressing mode
+ADDX D1,D2,D3		ERROR: Invalid syntax
+ADDX.B		ERROR: Invalid syntax
+ADDX.B D1		ERROR: Comma expected
+ADDX.B A2		ERROR: Comma expected
+ADDX.B SP		ERROR: Comma expected
+ADDX.B (A3)		ERROR: Comma expected
+ADDX.B (A4)+		ERROR: Comma expected
+ADDX.B -(A5)		ERROR: Comma expected
+ADDX.B $10(A6)		ERROR: Comma expected
+ADDX.B -2(A0)		ERROR: Comma expected
+ADDX.B $10(A6,D7.W)		ERROR: Comma expected
+ADDX.B $12(A0,A1.L)		ERROR: Comma expected
+ADDX.B (A2,D3)		ERROR: Comma expected
+ADDX.B $1234		ERROR: Comma expected
+ADDX.B $12345678		ERROR: Comma expected
+ADDX.B $1234.L		ERROR: Comma expected
+ADDX.B $1234.W		ERROR: Comma expected
+ADDX.B $8000		ERROR: Comma expected
+ADDX.B BK		ERROR: Comma expected
+ADDX.B FW		ERROR: Comma expected
+ADDX.B *+$10(PC)		ERROR: Comma expected
+ADDX.B *(PC,D0.W)		ERROR: Comma expected
+ADDX.B BK(PC)		ERROR: Comma expected
+ADDX.B #1		ERROR: Comma expected
+ADDX.B #8		ERROR: Comma expected
+ADDX.B #9		ERROR: Comma expected
+ADDX.B #0		ERROR: Comma expected
+ADDX.B #-1		ERROR: Comma expected
+ADDX.B #$80		ERROR: Comma expected
+ADDX.B #$1234		ERROR: Comma expected
+ADDX.B #$12345678		ERROR: Comma expected
+ADDX.B #$12345678.L		ERROR: Comma expected
+ADDX.B #BK		ERROR: Comma expected
+ADDX.B #FW		ERROR: Comma expected
+ADDX.B #UNDEF		ERROR: Comma expected
+ADDX.B UNDEF		ERROR: Comma expected
+ADDX.B SR		ERROR: Comma expected
+ADDX.B CCR		ERROR: Comma expected
+ADDX.B USP		ERROR: Comma expected
+ADDX.B D1,D1	D301	-
+ADDX.B D1,A2		ERROR: Invalid addressing mode
+ADDX.B D1,(A3)		ERROR: Invalid addressing mode
+ADDX.B D1,$10(A6)		ERROR: Invalid addressing mode
+ADDX.B D1,$1234		ERROR: Invalid addressing mode
+ADDX.B D1,FW		ERROR: Invalid addressing mode
+ADDX.B D1,#1		ERROR: Invalid addressing mode
+ADDX.B D1,#$1234		ERROR: Invalid addressing mode
+ADDX.B D1,CCR		ERROR: Invalid addressing mode
+ADDX.B D1,SR		ERROR: Invalid addressing mode
+ADDX.B A2,D1		ERROR: Invalid addressing mode
+ADDX.B A2,A2		ERROR: Invalid addressing mode
+ADDX.B A2,(A3)		ERROR: Invalid addressing mode
+ADDX.B A2,$10(A6)		ERROR: Invalid addressing mode
+ADDX.B A2,$1234		ERROR: Invalid addressing mode
+ADDX.B A2,FW		ERROR: Invalid addressing mode
+ADDX.B A2,#1		ERROR: Invalid addressing mode
+ADDX.B A2,#$1234		ERROR: Invalid addressing mode
+ADDX.B A2,CCR		ERROR: Invalid addressing mode
+ADDX.B A2,SR		ERROR: Invalid addressing mode
+ADDX.B (A3),D1		ERROR: Invalid addressing mode
+ADDX.B (A3),A2		ERROR: Invalid addressing mode
+ADDX.B (A3),(A3)		ERROR: Invalid addressing mode
+ADDX.B (A3),$10(A6)		ERROR: Invalid addressing mode
+ADDX.B (A3),$1234		ERROR: Invalid addressing mode
+ADDX.B (A3),FW		ERROR: Invalid addressing mode
+ADDX.B (A3),#1		ERROR: Invalid addressing mode
+ADDX.B (A3),#$1234		ERROR: Invalid addressing mode
+ADDX.B (A3),CCR		ERROR: Invalid addressing mode
+ADDX.B (A3),SR		ERROR: Invalid addressing mode
+ADDX.B $10(A6),D1		ERROR: Invalid addressing mode
+ADDX.B $10(A6),A2		ERROR: Invalid addressing mode
+ADDX.B $10(A6),(A3)		ERROR: Invalid addressing mode
+ADDX.B $10(A6),$10(A6)		ERROR: Invalid addressing mode
+ADDX.B $10(A6),$1234		ERROR: Invalid addressing mode
+ADDX.B $10(A6),FW		ERROR: Invalid addressing mode
+ADDX.B $10(A6),#1		ERROR: Invalid addressing mode
+ADDX.B $10(A6),#$1234		ERROR: Invalid addressing mode
+ADDX.B $10(A6),CCR		ERROR: Invalid addressing mode
+ADDX.B $10(A6),SR		ERROR: Invalid addressing mode
+ADDX.B $1234,D1		ERROR: Invalid addressing mode
+ADDX.B $1234,A2		ERROR: Invalid addressing mode
+ADDX.B $1234,(A3)		ERROR: Invalid addressing mode
+ADDX.B $1234,$10(A6)		ERROR: Invalid addressing mode
+ADDX.B $1234,$1234		ERROR: Invalid addressing mode
+ADDX.B $1234,FW		ERROR: Invalid addressing mode
+ADDX.B $1234,#1		ERROR: Invalid addressing mode
+ADDX.B $1234,#$1234		ERROR: Invalid addressing mode
+ADDX.B $1234,CCR		ERROR: Invalid addressing mode
+ADDX.B $1234,SR		ERROR: Invalid addressing mode
+ADDX.B FW,D1		ERROR: Invalid addressing mode
+ADDX.B FW,A2		ERROR: Invalid addressing mode
+ADDX.B FW,(A3)		ERROR: Invalid addressing mode
+ADDX.B FW,$10(A6)		ERROR: Invalid addressing mode
+ADDX.B FW,$1234		ERROR: Invalid addressing mode
+ADDX.B FW,FW		ERROR: Invalid addressing mode
+ADDX.B FW,#1		ERROR: Invalid addressing mode
+ADDX.B FW,#$1234		ERROR: Invalid addressing mode
+ADDX.B FW,CCR		ERROR: Invalid addressing mode
+ADDX.B FW,SR		ERROR: Invalid addressing mode
+ADDX.B #1,D1		ERROR: Invalid addressing mode
+ADDX.B #1,A2		ERROR: Invalid addressing mode
+ADDX.B #1,(A3)		ERROR: Invalid addressing mode
+ADDX.B #1,$10(A6)		ERROR: Invalid addressing mode
+ADDX.B #1,$1234		ERROR: Invalid addressing mode
+ADDX.B #1,FW		ERROR: Invalid addressing mode
+ADDX.B #1,#1		ERROR: Invalid addressing mode
+ADDX.B #1,#$1234		ERROR: Invalid addressing mode
+ADDX.B #1,CCR		ERROR: Invalid addressing mode
+ADDX.B #1,SR		ERROR: Invalid addressing mode
+ADDX.B #$1234,D1		ERROR: Invalid addressing mode
+ADDX.B #$1234,A2		ERROR: Invalid addressing mode
+ADDX.B #$1234,(A3)		ERROR: Invalid addressing mode
+ADDX.B #$1234,$10(A6)		ERROR: Invalid addressing mode
+ADDX.B #$1234,$1234		ERROR: Invalid addressing mode
+ADDX.B #$1234,FW		ERROR: Invalid addressing mode
+ADDX.B #$1234,#1		ERROR: Invalid addressing mode
+ADDX.B #$1234,#$1234		ERROR: Invalid addressing mode
+ADDX.B #$1234,CCR		ERROR: Invalid addressing mode
+ADDX.B #$1234,SR		ERROR: Invalid addressing mode
+ADDX.B CCR,D1		ERROR: Invalid addressing mode
+ADDX.B CCR,A2		ERROR: Invalid addressing mode
+ADDX.B CCR,(A3)		ERROR: Invalid addressing mode
+ADDX.B CCR,$10(A6)		ERROR: Invalid addressing mode
+ADDX.B CCR,$1234		ERROR: Invalid addressing mode
+ADDX.B CCR,FW		ERROR: Invalid addressing mode
+ADDX.B CCR,#1		ERROR: Invalid addressing mode
+ADDX.B CCR,#$1234		ERROR: Invalid addressing mode
+ADDX.B CCR,CCR		ERROR: Invalid addressing mode
+ADDX.B CCR,SR		ERROR: Invalid addressing mode
+ADDX.B SR,D1		ERROR: Invalid addressing mode
+ADDX.B SR,A2		ERROR: Invalid addressing mode
+ADDX.B SR,(A3)		ERROR: Invalid addressing mode
+ADDX.B SR,$10(A6)		ERROR: Invalid addressing mode
+ADDX.B SR,$1234		ERROR: Invalid addressing mode
+ADDX.B SR,FW		ERROR: Invalid addressing mode
+ADDX.B SR,#1		ERROR: Invalid addressing mode
+ADDX.B SR,#$1234		ERROR: Invalid addressing mode
+ADDX.B SR,CCR		ERROR: Invalid addressing mode
+ADDX.B SR,SR		ERROR: Invalid addressing mode
+ADDX.B SP,D1		ERROR: Invalid addressing mode
+ADDX.B SP,A2		ERROR: Invalid addressing mode
+ADDX.B D1,SP		ERROR: Invalid addressing mode
+ADDX.B #$12,SP		ERROR: Invalid addressing mode
+ADDX.B (A4)+,D1		ERROR: Invalid addressing mode
+ADDX.B (A4)+,A2		ERROR: Invalid addressing mode
+ADDX.B D1,(A4)+		ERROR: Invalid addressing mode
+ADDX.B #$12,(A4)+		ERROR: Invalid addressing mode
+ADDX.B -(A5),D1		ERROR: Invalid addressing mode
+ADDX.B -(A5),A2		ERROR: Invalid addressing mode
+ADDX.B D1,-(A5)		ERROR: Invalid addressing mode
+ADDX.B #$12,-(A5)		ERROR: Invalid addressing mode
+ADDX.B -2(A0),D1		ERROR: Invalid addressing mode
+ADDX.B -2(A0),A2		ERROR: Invalid addressing mode
+ADDX.B D1,-2(A0)		ERROR: Invalid addressing mode
+ADDX.B #$12,-2(A0)		ERROR: Invalid addressing mode
+ADDX.B $10(A6,D7.W),D1		ERROR: Invalid addressing mode
+ADDX.B $10(A6,D7.W),A2		ERROR: Invalid addressing mode
+ADDX.B D1,$10(A6,D7.W)		ERROR: Invalid addressing mode
+ADDX.B #$12,$10(A6,D7.W)		ERROR: Invalid addressing mode
+ADDX.B $12(A0,A1.L),D1		ERROR: Invalid addressing mode
+ADDX.B $12(A0,A1.L),A2		ERROR: Invalid addressing mode
+ADDX.B D1,$12(A0,A1.L)		ERROR: Invalid addressing mode
+ADDX.B #$12,$12(A0,A1.L)		ERROR: Invalid addressing mode
+ADDX.B (A2,D3),D1		ERROR: Invalid addressing mode
+ADDX.B (A2,D3),A2		ERROR: Invalid addressing mode
+ADDX.B D1,(A2,D3)		ERROR: Invalid addressing mode
+ADDX.B #$12,(A2,D3)		ERROR: Invalid addressing mode
+ADDX.B $12345678,D1		ERROR: Invalid addressing mode
+ADDX.B $12345678,A2		ERROR: Invalid addressing mode
+ADDX.B D1,$12345678		ERROR: Invalid addressing mode
+ADDX.B #$12,$12345678		ERROR: Invalid addressing mode
+ADDX.B $1234.L,D1		ERROR: Invalid addressing mode
+ADDX.B $1234.L,A2		ERROR: Invalid addressing mode
+ADDX.B D1,$1234.L		ERROR: Invalid addressing mode
+ADDX.B #$12,$1234.L		ERROR: Invalid addressing mode
+ADDX.B $1234.W,D1		ERROR: Invalid addressing mode
+ADDX.B $1234.W,A2		ERROR: Invalid addressing mode
+ADDX.B D1,$1234.W		ERROR: Invalid addressing mode
+ADDX.B #$12,$1234.W		ERROR: Invalid addressing mode
+ADDX.B $8000,D1		ERROR: Invalid addressing mode
+ADDX.B $8000,A2		ERROR: Invalid addressing mode
+ADDX.B D1,$8000		ERROR: Invalid addressing mode
+ADDX.B #$12,$8000		ERROR: Invalid addressing mode
+ADDX.B BK,D1		ERROR: Invalid addressing mode
+ADDX.B BK,A2		ERROR: Invalid addressing mode
+ADDX.B D1,BK		ERROR: Invalid addressing mode
+ADDX.B #$12,BK		ERROR: Invalid addressing mode
+ADDX.B *+$10(PC),D1		ERROR: Invalid addressing mode
+ADDX.B *+$10(PC),A2		ERROR: Invalid addressing mode
+ADDX.B D1,*+$10(PC)		ERROR: Invalid addressing mode
+ADDX.B #$12,*+$10(PC)		ERROR: Invalid addressing mode
+ADDX.B *(PC,D0.W),D1		ERROR: Invalid addressing mode
+ADDX.B *(PC,D0.W),A2		ERROR: Invalid addressing mode
+ADDX.B D1,*(PC,D0.W)		ERROR: Invalid addressing mode
+ADDX.B #$12,*(PC,D0.W)		ERROR: Invalid addressing mode
+ADDX.B BK(PC),D1		ERROR: Invalid addressing mode
+ADDX.B BK(PC),A2		ERROR: Invalid addressing mode
+ADDX.B D1,BK(PC)		ERROR: Invalid addressing mode
+ADDX.B #$12,BK(PC)		ERROR: Invalid addressing mode
+ADDX.B #8,D1		ERROR: Invalid addressing mode
+ADDX.B #8,A2		ERROR: Invalid addressing mode
+ADDX.B D1,#8		ERROR: Invalid addressing mode
+ADDX.B #$12,#8		ERROR: Invalid addressing mode
+ADDX.B #9,D1		ERROR: Invalid addressing mode
+ADDX.B #9,A2		ERROR: Invalid addressing mode
+ADDX.B D1,#9		ERROR: Invalid addressing mode
+ADDX.B #$12,#9		ERROR: Invalid addressing mode
+ADDX.B #0,D1		ERROR: Invalid addressing mode
+ADDX.B #0,A2		ERROR: Invalid addressing mode
+ADDX.B D1,#0		ERROR: Invalid addressing mode
+ADDX.B #$12,#0		ERROR: Invalid addressing mode
+ADDX.B #-1,D1		ERROR: Invalid addressing mode
+ADDX.B #-1,A2		ERROR: Invalid addressing mode
+ADDX.B D1,#-1		ERROR: Invalid addressing mode
+ADDX.B #$12,#-1		ERROR: Invalid addressing mode
+ADDX.B #$80,D1		ERROR: Invalid addressing mode
+ADDX.B #$80,A2		ERROR: Invalid addressing mode
+ADDX.B D1,#$80		ERROR: Invalid addressing mode
+ADDX.B #$12,#$80		ERROR: Invalid addressing mode
+ADDX.B #$12345678,D1		ERROR: Invalid addressing mode
+ADDX.B #$12345678,A2		ERROR: Invalid addressing mode
+ADDX.B D1,#$12345678		ERROR: Invalid addressing mode
+ADDX.B #$12,#$12345678		ERROR: Invalid addressing mode
+ADDX.B #$12345678.L,D1		ERROR: Invalid addressing mode
+ADDX.B #$12345678.L,A2		ERROR: Invalid addressing mode
+ADDX.B D1,#$12345678.L		ERROR: Invalid addressing mode
+ADDX.B #$12,#$12345678.L		ERROR: Invalid addressing mode
+ADDX.B #BK,D1		ERROR: Invalid addressing mode
+ADDX.B #BK,A2		ERROR: Invalid addressing mode
+ADDX.B D1,#BK		ERROR: Invalid addressing mode
+ADDX.B #$12,#BK		ERROR: Invalid addressing mode
+ADDX.B #FW,D1		ERROR: Invalid addressing mode
+ADDX.B #FW,A2		ERROR: Invalid addressing mode
+ADDX.B D1,#FW		ERROR: Invalid addressing mode
+ADDX.B #$12,#FW		ERROR: Invalid addressing mode
+ADDX.B #UNDEF,D1		ERROR: Invalid addressing mode
+ADDX.B #UNDEF,A2		ERROR: Invalid addressing mode
+ADDX.B D1,#UNDEF		ERROR: Invalid addressing mode
+ADDX.B #$12,#UNDEF		ERROR: Invalid addressing mode
+ADDX.B UNDEF,D1		ERROR: Invalid addressing mode
+ADDX.B UNDEF,A2		ERROR: Invalid addressing mode
+ADDX.B D1,UNDEF		ERROR: Invalid addressing mode
+ADDX.B #$12,UNDEF		ERROR: Invalid addressing mode
+ADDX.B USP,D1		ERROR: Invalid addressing mode
+ADDX.B USP,A2		ERROR: Invalid addressing mode
+ADDX.B D1,USP		ERROR: Invalid addressing mode
+ADDX.B #$12,USP		ERROR: Invalid addressing mode
+ADDX.B D1,D2,D3		ERROR: Invalid syntax
+ADDX.W		ERROR: Invalid syntax
+ADDX.W D1		ERROR: Comma expected
+ADDX.W A2		ERROR: Comma expected
+ADDX.W SP		ERROR: Comma expected
+ADDX.W (A3)		ERROR: Comma expected
+ADDX.W (A4)+		ERROR: Comma expected
+ADDX.W -(A5)		ERROR: Comma expected
+ADDX.W $10(A6)		ERROR: Comma expected
+ADDX.W -2(A0)		ERROR: Comma expected
+ADDX.W $10(A6,D7.W)		ERROR: Comma expected
+ADDX.W $12(A0,A1.L)		ERROR: Comma expected
+ADDX.W (A2,D3)		ERROR: Comma expected
+ADDX.W $1234		ERROR: Comma expected
+ADDX.W $12345678		ERROR: Comma expected
+ADDX.W $1234.L		ERROR: Comma expected
+ADDX.W $1234.W		ERROR: Comma expected
+ADDX.W $8000		ERROR: Comma expected
+ADDX.W BK		ERROR: Comma expected
+ADDX.W FW		ERROR: Comma expected
+ADDX.W *+$10(PC)		ERROR: Comma expected
+ADDX.W *(PC,D0.W)		ERROR: Comma expected
+ADDX.W BK(PC)		ERROR: Comma expected
+ADDX.W #1		ERROR: Comma expected
+ADDX.W #8		ERROR: Comma expected
+ADDX.W #9		ERROR: Comma expected
+ADDX.W #0		ERROR: Comma expected
+ADDX.W #-1		ERROR: Comma expected
+ADDX.W #$80		ERROR: Comma expected
+ADDX.W #$1234		ERROR: Comma expected
+ADDX.W #$12345678		ERROR: Comma expected
+ADDX.W #$12345678.L		ERROR: Comma expected
+ADDX.W #BK		ERROR: Comma expected
+ADDX.W #FW		ERROR: Comma expected
+ADDX.W #UNDEF		ERROR: Comma expected
+ADDX.W UNDEF		ERROR: Comma expected
+ADDX.W SR		ERROR: Comma expected
+ADDX.W CCR		ERROR: Comma expected
+ADDX.W USP		ERROR: Comma expected
+ADDX.W D1,D1	D341	-
+ADDX.W D1,A2		ERROR: Invalid addressing mode
+ADDX.W D1,(A3)		ERROR: Invalid addressing mode
+ADDX.W D1,(A4)+		ERROR: Invalid addressing mode
+ADDX.W D1,-(A5)		ERROR: Invalid addressing mode
+ADDX.W D1,$10(A6)		ERROR: Invalid addressing mode
+ADDX.W D1,$10(A6,D7.W)		ERROR: Invalid addressing mode
+ADDX.W D1,$1234		ERROR: Invalid addressing mode
+ADDX.W D1,$12345678		ERROR: Invalid addressing mode
+ADDX.W D1,FW		ERROR: Invalid addressing mode
+ADDX.W D1,*+$10(PC)		ERROR: Invalid addressing mode
+ADDX.W D1,#1		ERROR: Invalid addressing mode
+ADDX.W D1,#$80		ERROR: Invalid addressing mode
+ADDX.W D1,#$1234		ERROR: Invalid addressing mode
+ADDX.W D1,#$12345678		ERROR: Invalid addressing mode
+ADDX.W D1,SR		ERROR: Invalid addressing mode
+ADDX.W D1,CCR		ERROR: Invalid addressing mode
+ADDX.W D1,USP		ERROR: Invalid addressing mode
+ADDX.W A2,D1		ERROR: Invalid addressing mode
+ADDX.W A2,A2		ERROR: Invalid addressing mode
+ADDX.W A2,(A3)		ERROR: Invalid addressing mode
+ADDX.W A2,(A4)+		ERROR: Invalid addressing mode
+ADDX.W A2,-(A5)		ERROR: Invalid addressing mode
+ADDX.W A2,$10(A6)		ERROR: Invalid addressing mode
+ADDX.W A2,$10(A6,D7.W)		ERROR: Invalid addressing mode
+ADDX.W A2,$1234		ERROR: Invalid addressing mode
+ADDX.W A2,$12345678		ERROR: Invalid addressing mode
+ADDX.W A2,FW		ERROR: Invalid addressing mode
+ADDX.W A2,*+$10(PC)		ERROR: Invalid addressing mode
+ADDX.W A2,#1		ERROR: Invalid addressing mode
+ADDX.W A2,#$80		ERROR: Invalid addressing mode
+ADDX.W A2,#$1234		ERROR: Invalid addressing mode
+ADDX.W A2,#$12345678		ERROR: Invalid addressing mode
+ADDX.W A2,SR		ERROR: Invalid addressing mode
+ADDX.W A2,CCR		ERROR: Invalid addressing mode
+ADDX.W A2,USP		ERROR: Invalid addressing mode
+ADDX.W (A3),D1		ERROR: Invalid addressing mode
+ADDX.W (A3),A2		ERROR: Invalid addressing mode
+ADDX.W (A3),(A3)		ERROR: Invalid addressing mode
+ADDX.W (A3),(A4)+		ERROR: Invalid addressing mode
+ADDX.W (A3),-(A5)		ERROR: Invalid addressing mode
+ADDX.W (A3),$10(A6)		ERROR: Invalid addressing mode
+ADDX.W (A3),$10(A6,D7.W)		ERROR: Invalid addressing mode
+ADDX.W (A3),$1234		ERROR: Invalid addressing mode
+ADDX.W (A3),$12345678		ERROR: Invalid addressing mode
+ADDX.W (A3),FW		ERROR: Invalid addressing mode
+ADDX.W (A3),*+$10(PC)		ERROR: Invalid addressing mode
+ADDX.W (A3),#1		ERROR: Invalid addressing mode
+ADDX.W (A3),#$80		ERROR: Invalid addressing mode
+ADDX.W (A3),#$1234		ERROR: Invalid addressing mode
+ADDX.W (A3),#$12345678		ERROR: Invalid addressing mode
+ADDX.W (A3),SR		ERROR: Invalid addressing mode
+ADDX.W (A3),CCR		ERROR: Invalid addressing mode
+ADDX.W (A3),USP		ERROR: Invalid addressing mode
+ADDX.W (A4)+,D1		ERROR: Invalid addressing mode
+ADDX.W (A4)+,A2		ERROR: Invalid addressing mode
+ADDX.W (A4)+,(A3)		ERROR: Invalid addressing mode
+ADDX.W (A4)+,(A4)+		ERROR: Invalid addressing mode
+ADDX.W (A4)+,-(A5)		ERROR: Invalid addressing mode
+ADDX.W (A4)+,$10(A6)		ERROR: Invalid addressing mode
+ADDX.W (A4)+,$10(A6,D7.W)		ERROR: Invalid addressing mode
+ADDX.W (A4)+,$1234		ERROR: Invalid addressing mode
+ADDX.W (A4)+,$12345678		ERROR: Invalid addressing mode
+ADDX.W (A4)+,FW		ERROR: Invalid addressing mode
+ADDX.W (A4)+,*+$10(PC)		ERROR: Invalid addressing mode
+ADDX.W (A4)+,#1		ERROR: Invalid addressing mode
+ADDX.W (A4)+,#$80		ERROR: Invalid addressing mode
+ADDX.W (A4)+,#$1234		ERROR: Invalid addressing mode
+ADDX.W (A4)+,#$12345678		ERROR: Invalid addressing mode
+ADDX.W (A4)+,SR		ERROR: Invalid addressing mode
+ADDX.W (A4)+,CCR		ERROR: Invalid addressing mode
+ADDX.W (A4)+,USP		ERROR: Invalid addressing mode
+ADDX.W -(A5),D1		ERROR: Invalid addressing mode
+ADDX.W -(A5),A2		ERROR: Invalid addressing mode
+ADDX.W -(A5),(A3)		ERROR: Invalid addressing mode
+ADDX.W -(A5),(A4)+		ERROR: Invalid addressing mode
+ADDX.W -(A5),-(A5)	DB4D	-
+ADDX.W -(A5),$10(A6)		ERROR: Invalid addressing mode
+ADDX.W -(A5),$10(A6,D7.W)		ERROR: Invalid addressing mode
+ADDX.W -(A5),$1234		ERROR: Invalid addressing mode
+ADDX.W -(A5),$12345678		ERROR: Invalid addressing mode
+ADDX.W -(A5),FW		ERROR: Invalid addressing mode
+ADDX.W -(A5),*+$10(PC)		ERROR: Invalid addressing mode
+ADDX.W -(A5),#1		ERROR: Invalid addressing mode
+ADDX.W -(A5),#$80		ERROR: Invalid addressing mode
+ADDX.W -(A5),#$1234		ERROR: Invalid addressing mode
+ADDX.W -(A5),#$12345678		ERROR: Invalid addressing mode
+ADDX.W -(A5),SR		ERROR: Invalid addressing mode
+ADDX.W -(A5),CCR		ERROR: Invalid addressing mode
+ADDX.W -(A5),USP		ERROR: Invalid addressing mode
+ADDX.W $10(A6),D1		ERROR: Invalid addressing mode
+ADDX.W $10(A6),A2		ERROR: Invalid addressing mode
+ADDX.W $10(A6),(A3)		ERROR: Invalid addressing mode
+ADDX.W $10(A6),(A4)+		ERROR: Invalid addressing mode
+ADDX.W $10(A6),-(A5)		ERROR: Invalid addressing mode
+ADDX.W $10(A6),$10(A6)		ERROR: Invalid addressing mode
+ADDX.W $10(A6),$10(A6,D7.W)		ERROR: Invalid addressing mode
+ADDX.W $10(A6),$1234		ERROR: Invalid addressing mode
+ADDX.W $10(A6),$12345678		ERROR: Invalid addressing mode
+ADDX.W $10(A6),FW		ERROR: Invalid addressing mode
+ADDX.W $10(A6),*+$10(PC)		ERROR: Invalid addressing mode
+ADDX.W $10(A6),#1		ERROR: Invalid addressing mode
+ADDX.W $10(A6),#$80		ERROR: Invalid addressing mode
+ADDX.W $10(A6),#$1234		ERROR: Invalid addressing mode
+ADDX.W $10(A6),#$12345678		ERROR: Invalid addressing mode
+ADDX.W $10(A6),SR		ERROR: Invalid addressing mode
+ADDX.W $10(A6),CCR		ERROR: Invalid addressing mode
+ADDX.W $10(A6),USP		ERROR: Invalid addressing mode
+ADDX.W $10(A6,D7.W),D1		ERROR: Invalid addressing mode
+ADDX.W $10(A6,D7.W),A2		ERROR: Invalid addressing mode
+ADDX.W $10(A6,D7.W),(A3)		ERROR: Invalid addressing mode
+ADDX.W $10(A6,D7.W),(A4)+		ERROR: Invalid addressing mode
+ADDX.W $10(A6,D7.W),-(A5)		ERROR: Invalid addressing mode
+ADDX.W $10(A6,D7.W),$10(A6)		ERROR: Invalid addressing mode
+ADDX.W $10(A6,D7.W),$10(A6,D7.W)		ERROR: Invalid addressing mode
+ADDX.W $10(A6,D7.W),$1234		ERROR: Invalid addressing mode
+ADDX.W $10(A6,D7.W),$12345678		ERROR: Invalid addressing mode
+ADDX.W $10(A6,D7.W),FW		ERROR: Invalid addressing mode
+ADDX.W $10(A6,D7.W),*+$10(PC)		ERROR: Invalid addressing mode
+ADDX.W $10(A6,D7.W),#1		ERROR: Invalid addressing mode
+ADDX.W $10(A6,D7.W),#$80		ERROR: Invalid addressing mode
+ADDX.W $10(A6,D7.W),#$1234		ERROR: Invalid addressing mode
+ADDX.W $10(A6,D7.W),#$12345678		ERROR: Invalid addressing mode
+ADDX.W $10(A6,D7.W),SR		ERROR: Invalid addressing mode
+ADDX.W $10(A6,D7.W),CCR		ERROR: Invalid addressing mode
+ADDX.W $10(A6,D7.W),USP		ERROR: Invalid addressing mode
+ADDX.W $1234,D1		ERROR: Invalid addressing mode
+ADDX.W $1234,A2		ERROR: Invalid addressing mode
+ADDX.W $1234,(A3)		ERROR: Invalid addressing mode
+ADDX.W $1234,(A4)+		ERROR: Invalid addressing mode
+ADDX.W $1234,-(A5)		ERROR: Invalid addressing mode
+ADDX.W $1234,$10(A6)		ERROR: Invalid addressing mode
+ADDX.W $1234,$10(A6,D7.W)		ERROR: Invalid addressing mode
+ADDX.W $1234,$1234		ERROR: Invalid addressing mode
+ADDX.W $1234,$12345678		ERROR: Invalid addressing mode
+ADDX.W $1234,FW		ERROR: Invalid addressing mode
+ADDX.W $1234,*+$10(PC)		ERROR: Invalid addressing mode
+ADDX.W $1234,#1		ERROR: Invalid addressing mode
+ADDX.W $1234,#$80		ERROR: Invalid addressing mode
+ADDX.W $1234,#$1234		ERROR: Invalid addressing mode
+ADDX.W $1234,#$12345678		ERROR: Invalid addressing mode
+ADDX.W $1234,SR		ERROR: Invalid addressing mode
+ADDX.W $1234,CCR		ERROR: Invalid addressing mode
+ADDX.W $1234,USP		ERROR: Invalid addressing mode
+ADDX.W $12345678,D1		ERROR: Invalid addressing mode
+ADDX.W $12345678,A2		ERROR: Invalid addressing mode
+ADDX.W $12345678,(A3)		ERROR: Invalid addressing mode
+ADDX.W $12345678,(A4)+		ERROR: Invalid addressing mode
+ADDX.W $12345678,-(A5)		ERROR: Invalid addressing mode
+ADDX.W $12345678,$10(A6)		ERROR: Invalid addressing mode
+ADDX.W $12345678,$10(A6,D7.W)		ERROR: Invalid addressing mode
+ADDX.W $12345678,$1234		ERROR: Invalid addressing mode
+ADDX.W $12345678,$12345678		ERROR: Invalid addressing mode
+ADDX.W $12345678,FW		ERROR: Invalid addressing mode
+ADDX.W $12345678,*+$10(PC)		ERROR: Invalid addressing mode
+ADDX.W $12345678,#1		ERROR: Invalid addressing mode
+ADDX.W $12345678,#$80		ERROR: Invalid addressing mode
+ADDX.W $12345678,#$1234		ERROR: Invalid addressing mode
+ADDX.W $12345678,#$12345678		ERROR: Invalid addressing mode
+ADDX.W $12345678,SR		ERROR: Invalid addressing mode
+ADDX.W $12345678,CCR		ERROR: Invalid addressing mode
+ADDX.W $12345678,USP		ERROR: Invalid addressing mode
+ADDX.W FW,D1		ERROR: Invalid addressing mode
+ADDX.W FW,A2		ERROR: Invalid addressing mode
+ADDX.W FW,(A3)		ERROR: Invalid addressing mode
+ADDX.W FW,(A4)+		ERROR: Invalid addressing mode
+ADDX.W FW,-(A5)		ERROR: Invalid addressing mode
+ADDX.W FW,$10(A6)		ERROR: Invalid addressing mode
+ADDX.W FW,$10(A6,D7.W)		ERROR: Invalid addressing mode
+ADDX.W FW,$1234		ERROR: Invalid addressing mode
+ADDX.W FW,$12345678		ERROR: Invalid addressing mode
+ADDX.W FW,FW		ERROR: Invalid addressing mode
+ADDX.W FW,*+$10(PC)		ERROR: Invalid addressing mode
+ADDX.W FW,#1		ERROR: Invalid addressing mode
+ADDX.W FW,#$80		ERROR: Invalid addressing mode
+ADDX.W FW,#$1234		ERROR: Invalid addressing mode
+ADDX.W FW,#$12345678		ERROR: Invalid addressing mode
+ADDX.W FW,SR		ERROR: Invalid addressing mode
+ADDX.W FW,CCR		ERROR: Invalid addressing mode
+ADDX.W FW,USP		ERROR: Invalid addressing mode
+ADDX.W *+$10(PC),D1		ERROR: Invalid addressing mode
+ADDX.W *+$10(PC),A2		ERROR: Invalid addressing mode
+ADDX.W *+$10(PC),(A3)		ERROR: Invalid addressing mode
+ADDX.W *+$10(PC),(A4)+		ERROR: Invalid addressing mode
+ADDX.W *+$10(PC),-(A5)		ERROR: Invalid addressing mode
+ADDX.W *+$10(PC),$10(A6)		ERROR: Invalid addressing mode
+ADDX.W *+$10(PC),$10(A6,D7.W)		ERROR: Invalid addressing mode
+ADDX.W *+$10(PC),$1234		ERROR: Invalid addressing mode
+ADDX.W *+$10(PC),$12345678		ERROR: Invalid addressing mode
+ADDX.W *+$10(PC),FW		ERROR: Invalid addressing mode
+ADDX.W *+$10(PC),*+$10(PC)		ERROR: Invalid addressing mode
+ADDX.W *+$10(PC),#1		ERROR: Invalid addressing mode
+ADDX.W *+$10(PC),#$80		ERROR: Invalid addressing mode
+ADDX.W *+$10(PC),#$1234		ERROR: Invalid addressing mode
+ADDX.W *+$10(PC),#$12345678		ERROR: Invalid addressing mode
+ADDX.W *+$10(PC),SR		ERROR: Invalid addressing mode
+ADDX.W *+$10(PC),CCR		ERROR: Invalid addressing mode
+ADDX.W *+$10(PC),USP		ERROR: Invalid addressing mode
+ADDX.W #1,D1		ERROR: Invalid addressing mode
+ADDX.W #1,A2		ERROR: Invalid addressing mode
+ADDX.W #1,(A3)		ERROR: Invalid addressing mode
+ADDX.W #1,(A4)+		ERROR: Invalid addressing mode
+ADDX.W #1,-(A5)		ERROR: Invalid addressing mode
+ADDX.W #1,$10(A6)		ERROR: Invalid addressing mode
+ADDX.W #1,$10(A6,D7.W)		ERROR: Invalid addressing mode
+ADDX.W #1,$1234		ERROR: Invalid addressing mode
+ADDX.W #1,$12345678		ERROR: Invalid addressing mode
+ADDX.W #1,FW		ERROR: Invalid addressing mode
+ADDX.W #1,*+$10(PC)		ERROR: Invalid addressing mode
+ADDX.W #1,#1		ERROR: Invalid addressing mode
+ADDX.W #1,#$80		ERROR: Invalid addressing mode
+ADDX.W #1,#$1234		ERROR: Invalid addressing mode
+ADDX.W #1,#$12345678		ERROR: Invalid addressing mode
+ADDX.W #1,SR		ERROR: Invalid addressing mode
+ADDX.W #1,CCR		ERROR: Invalid addressing mode
+ADDX.W #1,USP		ERROR: Invalid addressing mode
+ADDX.W #$80,D1		ERROR: Invalid addressing mode
+ADDX.W #$80,A2		ERROR: Invalid addressing mode
+ADDX.W #$80,(A3)		ERROR: Invalid addressing mode
+ADDX.W #$80,(A4)+		ERROR: Invalid addressing mode
+ADDX.W #$80,-(A5)		ERROR: Invalid addressing mode
+ADDX.W #$80,$10(A6)		ERROR: Invalid addressing mode
+ADDX.W #$80,$10(A6,D7.W)		ERROR: Invalid addressing mode
+ADDX.W #$80,$1234		ERROR: Invalid addressing mode
+ADDX.W #$80,$12345678		ERROR: Invalid addressing mode
+ADDX.W #$80,FW		ERROR: Invalid addressing mode
+ADDX.W #$80,*+$10(PC)		ERROR: Invalid addressing mode
+ADDX.W #$80,#1		ERROR: Invalid addressing mode
+ADDX.W #$80,#$80		ERROR: Invalid addressing mode
+ADDX.W #$80,#$1234		ERROR: Invalid addressing mode
+ADDX.W #$80,#$12345678		ERROR: Invalid addressing mode
+ADDX.W #$80,SR		ERROR: Invalid addressing mode
+ADDX.W #$80,CCR		ERROR: Invalid addressing mode
+ADDX.W #$80,USP		ERROR: Invalid addressing mode
+ADDX.W #$1234,D1		ERROR: Invalid addressing mode
+ADDX.W #$1234,A2		ERROR: Invalid addressing mode
+ADDX.W #$1234,(A3)		ERROR: Invalid addressing mode
+ADDX.W #$1234,(A4)+		ERROR: Invalid addressing mode
+ADDX.W #$1234,-(A5)		ERROR: Invalid addressing mode
+ADDX.W #$1234,$10(A6)		ERROR: Invalid addressing mode
+ADDX.W #$1234,$10(A6,D7.W)		ERROR: Invalid addressing mode
+ADDX.W #$1234,$1234		ERROR: Invalid addressing mode
+ADDX.W #$1234,$12345678		ERROR: Invalid addressing mode
+ADDX.W #$1234,FW		ERROR: Invalid addressing mode
+ADDX.W #$1234,*+$10(PC)		ERROR: Invalid addressing mode
+ADDX.W #$1234,#1		ERROR: Invalid addressing mode
+ADDX.W #$1234,#$80		ERROR: Invalid addressing mode
+ADDX.W #$1234,#$1234		ERROR: Invalid addressing mode
+ADDX.W #$1234,#$12345678		ERROR: Invalid addressing mode
+ADDX.W #$1234,SR		ERROR: Invalid addressing mode
+ADDX.W #$1234,CCR		ERROR: Invalid addressing mode
+ADDX.W #$1234,USP		ERROR: Invalid addressing mode
+ADDX.W #$12345678,D1		ERROR: Invalid addressing mode
+ADDX.W #$12345678,A2		ERROR: Invalid addressing mode
+ADDX.W #$12345678,(A3)		ERROR: Invalid addressing mode
+ADDX.W #$12345678,(A4)+		ERROR: Invalid addressing mode
+ADDX.W #$12345678,-(A5)		ERROR: Invalid addressing mode
+ADDX.W #$12345678,$10(A6)		ERROR: Invalid addressing mode
+ADDX.W #$12345678,$10(A6,D7.W)		ERROR: Invalid addressing mode
+ADDX.W #$12345678,$1234		ERROR: Invalid addressing mode
+ADDX.W #$12345678,$12345678		ERROR: Invalid addressing mode
+ADDX.W #$12345678,FW		ERROR: Invalid addressing mode
+ADDX.W #$12345678,*+$10(PC)		ERROR: Invalid addressing mode
+ADDX.W #$12345678,#1		ERROR: Invalid addressing mode
+ADDX.W #$12345678,#$80		ERROR: Invalid addressing mode
+ADDX.W #$12345678,#$1234		ERROR: Invalid addressing mode
+ADDX.W #$12345678,#$12345678		ERROR: Invalid addressing mode
+ADDX.W #$12345678,SR		ERROR: Invalid addressing mode
+ADDX.W #$12345678,CCR		ERROR: Invalid addressing mode
+ADDX.W #$12345678,USP		ERROR: Invalid addressing mode
+ADDX.W SR,D1		ERROR: Invalid addressing mode
+ADDX.W SR,A2		ERROR: Invalid addressing mode
+ADDX.W SR,(A3)		ERROR: Invalid addressing mode
+ADDX.W SR,(A4)+		ERROR: Invalid addressing mode
+ADDX.W SR,-(A5)		ERROR: Invalid addressing mode
+ADDX.W SR,$10(A6)		ERROR: Invalid addressing mode
+ADDX.W SR,$10(A6,D7.W)		ERROR: Invalid addressing mode
+ADDX.W SR,$1234		ERROR: Invalid addressing mode
+ADDX.W SR,$12345678		ERROR: Invalid addressing mode
+ADDX.W SR,FW		ERROR: Invalid addressing mode
+ADDX.W SR,*+$10(PC)		ERROR: Invalid addressing mode
+ADDX.W SR,#1		ERROR: Invalid addressing mode
+ADDX.W SR,#$80		ERROR: Invalid addressing mode
+ADDX.W SR,#$1234		ERROR: Invalid addressing mode
+ADDX.W SR,#$12345678		ERROR: Invalid addressing mode
+ADDX.W SR,SR		ERROR: Invalid addressing mode
+ADDX.W SR,CCR		ERROR: Invalid addressing mode
+ADDX.W SR,USP		ERROR: Invalid addressing mode
+ADDX.W CCR,D1		ERROR: Invalid addressing mode
+ADDX.W CCR,A2		ERROR: Invalid addressing mode
+ADDX.W CCR,(A3)		ERROR: Invalid addressing mode
+ADDX.W CCR,(A4)+		ERROR: Invalid addressing mode
+ADDX.W CCR,-(A5)		ERROR: Invalid addressing mode
+ADDX.W CCR,$10(A6)		ERROR: Invalid addressing mode
+ADDX.W CCR,$10(A6,D7.W)		ERROR: Invalid addressing mode
+ADDX.W CCR,$1234		ERROR: Invalid addressing mode
+ADDX.W CCR,$12345678		ERROR: Invalid addressing mode
+ADDX.W CCR,FW		ERROR: Invalid addressing mode
+ADDX.W CCR,*+$10(PC)		ERROR: Invalid addressing mode
+ADDX.W CCR,#1		ERROR: Invalid addressing mode
+ADDX.W CCR,#$80		ERROR: Invalid addressing mode
+ADDX.W CCR,#$1234		ERROR: Invalid addressing mode
+ADDX.W CCR,#$12345678		ERROR: Invalid addressing mode
+ADDX.W CCR,SR		ERROR: Invalid addressing mode
+ADDX.W CCR,CCR		ERROR: Invalid addressing mode
+ADDX.W CCR,USP		ERROR: Invalid addressing mode
+ADDX.W USP,D1		ERROR: Invalid addressing mode
+ADDX.W USP,A2		ERROR: Invalid addressing mode
+ADDX.W USP,(A3)		ERROR: Invalid addressing mode
+ADDX.W USP,(A4)+		ERROR: Invalid addressing mode
+ADDX.W USP,-(A5)		ERROR: Invalid addressing mode
+ADDX.W USP,$10(A6)		ERROR: Invalid addressing mode
+ADDX.W USP,$10(A6,D7.W)		ERROR: Invalid addressing mode
+ADDX.W USP,$1234		ERROR: Invalid addressing mode
+ADDX.W USP,$12345678		ERROR: Invalid addressing mode
+ADDX.W USP,FW		ERROR: Invalid addressing mode
+ADDX.W USP,*+$10(PC)		ERROR: Invalid addressing mode
+ADDX.W USP,#1		ERROR: Invalid addressing mode
+ADDX.W USP,#$80		ERROR: Invalid addressing mode
+ADDX.W USP,#$1234		ERROR: Invalid addressing mode
+ADDX.W USP,#$12345678		ERROR: Invalid addressing mode
+ADDX.W USP,SR		ERROR: Invalid addressing mode
+ADDX.W USP,CCR		ERROR: Invalid addressing mode
+ADDX.W USP,USP		ERROR: Invalid addressing mode
+ADDX.W SP,D1		ERROR: Invalid addressing mode
+ADDX.W SP,A2		ERROR: Invalid addressing mode
+ADDX.W D1,SP		ERROR: Invalid addressing mode
+ADDX.W #$12,SP		ERROR: Invalid addressing mode
+ADDX.W -2(A0),D1		ERROR: Invalid addressing mode
+ADDX.W -2(A0),A2		ERROR: Invalid addressing mode
+ADDX.W D1,-2(A0)		ERROR: Invalid addressing mode
+ADDX.W #$12,-2(A0)		ERROR: Invalid addressing mode
+ADDX.W $12(A0,A1.L),D1		ERROR: Invalid addressing mode
+ADDX.W $12(A0,A1.L),A2		ERROR: Invalid addressing mode
+ADDX.W D1,$12(A0,A1.L)		ERROR: Invalid addressing mode
+ADDX.W #$12,$12(A0,A1.L)		ERROR: Invalid addressing mode
+ADDX.W (A2,D3),D1		ERROR: Invalid addressing mode
+ADDX.W (A2,D3),A2		ERROR: Invalid addressing mode
+ADDX.W D1,(A2,D3)		ERROR: Invalid addressing mode
+ADDX.W #$12,(A2,D3)		ERROR: Invalid addressing mode
+ADDX.W $1234.L,D1		ERROR: Invalid addressing mode
+ADDX.W $1234.L,A2		ERROR: Invalid addressing mode
+ADDX.W D1,$1234.L		ERROR: Invalid addressing mode
+ADDX.W #$12,$1234.L		ERROR: Invalid addressing mode
+ADDX.W $1234.W,D1		ERROR: Invalid addressing mode
+ADDX.W $1234.W,A2		ERROR: Invalid addressing mode
+ADDX.W D1,$1234.W		ERROR: Invalid addressing mode
+ADDX.W #$12,$1234.W		ERROR: Invalid addressing mode
+ADDX.W $8000,D1		ERROR: Invalid addressing mode
+ADDX.W $8000,A2		ERROR: Invalid addressing mode
+ADDX.W D1,$8000		ERROR: Invalid addressing mode
+ADDX.W #$12,$8000		ERROR: Invalid addressing mode
+ADDX.W BK,D1		ERROR: Invalid addressing mode
+ADDX.W BK,A2		ERROR: Invalid addressing mode
+ADDX.W D1,BK		ERROR: Invalid addressing mode
+ADDX.W #$12,BK		ERROR: Invalid addressing mode
+ADDX.W *(PC,D0.W),D1		ERROR: Invalid addressing mode
+ADDX.W *(PC,D0.W),A2		ERROR: Invalid addressing mode
+ADDX.W D1,*(PC,D0.W)		ERROR: Invalid addressing mode
+ADDX.W #$12,*(PC,D0.W)		ERROR: Invalid addressing mode
+ADDX.W BK(PC),D1		ERROR: Invalid addressing mode
+ADDX.W BK(PC),A2		ERROR: Invalid addressing mode
+ADDX.W D1,BK(PC)		ERROR: Invalid addressing mode
+ADDX.W #$12,BK(PC)		ERROR: Invalid addressing mode
+ADDX.W #8,D1		ERROR: Invalid addressing mode
+ADDX.W #8,A2		ERROR: Invalid addressing mode
+ADDX.W D1,#8		ERROR: Invalid addressing mode
+ADDX.W #$12,#8		ERROR: Invalid addressing mode
+ADDX.W #9,D1		ERROR: Invalid addressing mode
+ADDX.W #9,A2		ERROR: Invalid addressing mode
+ADDX.W D1,#9		ERROR: Invalid addressing mode
+ADDX.W #$12,#9		ERROR: Invalid addressing mode
+ADDX.W #0,D1		ERROR: Invalid addressing mode
+ADDX.W #0,A2		ERROR: Invalid addressing mode
+ADDX.W D1,#0		ERROR: Invalid addressing mode
+ADDX.W #$12,#0		ERROR: Invalid addressing mode
+ADDX.W #-1,D1		ERROR: Invalid addressing mode
+ADDX.W #-1,A2		ERROR: Invalid addressing mode
+ADDX.W D1,#-1		ERROR: Invalid addressing mode
+ADDX.W #$12,#-1		ERROR: Invalid addressing mode
+ADDX.W #$12345678.L,D1		ERROR: Invalid addressing mode
+ADDX.W #$12345678.L,A2		ERROR: Invalid addressing mode
+ADDX.W D1,#$12345678.L		ERROR: Invalid addressing mode
+ADDX.W #$12,#$12345678.L		ERROR: Invalid addressing mode
+ADDX.W #BK,D1		ERROR: Invalid addressing mode
+ADDX.W #BK,A2		ERROR: Invalid addressing mode
+ADDX.W D1,#BK		ERROR: Invalid addressing mode
+ADDX.W #$12,#BK		ERROR: Invalid addressing mode
+ADDX.W #FW,D1		ERROR: Invalid addressing mode
+ADDX.W #FW,A2		ERROR: Invalid addressing mode
+ADDX.W D1,#FW		ERROR: Invalid addressing mode
+ADDX.W #$12,#FW		ERROR: Invalid addressing mode
+ADDX.W #UNDEF,D1		ERROR: Invalid addressing mode
+ADDX.W #UNDEF,A2		ERROR: Invalid addressing mode
+ADDX.W D1,#UNDEF		ERROR: Invalid addressing mode
+ADDX.W #$12,#UNDEF		ERROR: Invalid addressing mode
+ADDX.W UNDEF,D1		ERROR: Invalid addressing mode
+ADDX.W UNDEF,A2		ERROR: Invalid addressing mode
+ADDX.W D1,UNDEF		ERROR: Invalid addressing mode
+ADDX.W #$12,UNDEF		ERROR: Invalid addressing mode
+ADDX.W D1,D2,D3		ERROR: Invalid syntax
+ADDX.L		ERROR: Invalid syntax
+ADDX.L D1		ERROR: Comma expected
+ADDX.L A2		ERROR: Comma expected
+ADDX.L SP		ERROR: Comma expected
+ADDX.L (A3)		ERROR: Comma expected
+ADDX.L (A4)+		ERROR: Comma expected
+ADDX.L -(A5)		ERROR: Comma expected
+ADDX.L $10(A6)		ERROR: Comma expected
+ADDX.L -2(A0)		ERROR: Comma expected
+ADDX.L $10(A6,D7.W)		ERROR: Comma expected
+ADDX.L $12(A0,A1.L)		ERROR: Comma expected
+ADDX.L (A2,D3)		ERROR: Comma expected
+ADDX.L $1234		ERROR: Comma expected
+ADDX.L $12345678		ERROR: Comma expected
+ADDX.L $1234.L		ERROR: Comma expected
+ADDX.L $1234.W		ERROR: Comma expected
+ADDX.L $8000		ERROR: Comma expected
+ADDX.L BK		ERROR: Comma expected
+ADDX.L FW		ERROR: Comma expected
+ADDX.L *+$10(PC)		ERROR: Comma expected
+ADDX.L *(PC,D0.W)		ERROR: Comma expected
+ADDX.L BK(PC)		ERROR: Comma expected
+ADDX.L #1		ERROR: Comma expected
+ADDX.L #8		ERROR: Comma expected
+ADDX.L #9		ERROR: Comma expected
+ADDX.L #0		ERROR: Comma expected
+ADDX.L #-1		ERROR: Comma expected
+ADDX.L #$80		ERROR: Comma expected
+ADDX.L #$1234		ERROR: Comma expected
+ADDX.L #$12345678		ERROR: Comma expected
+ADDX.L #$12345678.L		ERROR: Comma expected
+ADDX.L #BK		ERROR: Comma expected
+ADDX.L #FW		ERROR: Comma expected
+ADDX.L #UNDEF		ERROR: Comma expected
+ADDX.L UNDEF		ERROR: Comma expected
+ADDX.L SR		ERROR: Comma expected
+ADDX.L CCR		ERROR: Comma expected
+ADDX.L USP		ERROR: Comma expected
+ADDX.L D1,D1	D381	-
+ADDX.L D1,A2		ERROR: Invalid addressing mode
+ADDX.L D1,(A3)		ERROR: Invalid addressing mode
+ADDX.L D1,$10(A6)		ERROR: Invalid addressing mode
+ADDX.L D1,$1234		ERROR: Invalid addressing mode
+ADDX.L D1,FW		ERROR: Invalid addressing mode
+ADDX.L D1,#1		ERROR: Invalid addressing mode
+ADDX.L D1,#$1234		ERROR: Invalid addressing mode
+ADDX.L D1,CCR		ERROR: Invalid addressing mode
+ADDX.L D1,SR		ERROR: Invalid addressing mode
+ADDX.L A2,D1		ERROR: Invalid addressing mode
+ADDX.L A2,A2		ERROR: Invalid addressing mode
+ADDX.L A2,(A3)		ERROR: Invalid addressing mode
+ADDX.L A2,$10(A6)		ERROR: Invalid addressing mode
+ADDX.L A2,$1234		ERROR: Invalid addressing mode
+ADDX.L A2,FW		ERROR: Invalid addressing mode
+ADDX.L A2,#1		ERROR: Invalid addressing mode
+ADDX.L A2,#$1234		ERROR: Invalid addressing mode
+ADDX.L A2,CCR		ERROR: Invalid addressing mode
+ADDX.L A2,SR		ERROR: Invalid addressing mode
+ADDX.L (A3),D1		ERROR: Invalid addressing mode
+ADDX.L (A3),A2		ERROR: Invalid addressing mode
+ADDX.L (A3),(A3)		ERROR: Invalid addressing mode
+ADDX.L (A3),$10(A6)		ERROR: Invalid addressing mode
+ADDX.L (A3),$1234		ERROR: Invalid addressing mode
+ADDX.L (A3),FW		ERROR: Invalid addressing mode
+ADDX.L (A3),#1		ERROR: Invalid addressing mode
+ADDX.L (A3),#$1234		ERROR: Invalid addressing mode
+ADDX.L (A3),CCR		ERROR: Invalid addressing mode
+ADDX.L (A3),SR		ERROR: Invalid addressing mode
+ADDX.L $10(A6),D1		ERROR: Invalid addressing mode
+ADDX.L $10(A6),A2		ERROR: Invalid addressing mode
+ADDX.L $10(A6),(A3)		ERROR: Invalid addressing mode
+ADDX.L $10(A6),$10(A6)		ERROR: Invalid addressing mode
+ADDX.L $10(A6),$1234		ERROR: Invalid addressing mode
+ADDX.L $10(A6),FW		ERROR: Invalid addressing mode
+ADDX.L $10(A6),#1		ERROR: Invalid addressing mode
+ADDX.L $10(A6),#$1234		ERROR: Invalid addressing mode
+ADDX.L $10(A6),CCR		ERROR: Invalid addressing mode
+ADDX.L $10(A6),SR		ERROR: Invalid addressing mode
+ADDX.L $1234,D1		ERROR: Invalid addressing mode
+ADDX.L $1234,A2		ERROR: Invalid addressing mode
+ADDX.L $1234,(A3)		ERROR: Invalid addressing mode
+ADDX.L $1234,$10(A6)		ERROR: Invalid addressing mode
+ADDX.L $1234,$1234		ERROR: Invalid addressing mode
+ADDX.L $1234,FW		ERROR: Invalid addressing mode
+ADDX.L $1234,#1		ERROR: Invalid addressing mode
+ADDX.L $1234,#$1234		ERROR: Invalid addressing mode
+ADDX.L $1234,CCR		ERROR: Invalid addressing mode
+ADDX.L $1234,SR		ERROR: Invalid addressing mode
+ADDX.L FW,D1		ERROR: Invalid addressing mode
+ADDX.L FW,A2		ERROR: Invalid addressing mode
+ADDX.L FW,(A3)		ERROR: Invalid addressing mode
+ADDX.L FW,$10(A6)		ERROR: Invalid addressing mode
+ADDX.L FW,$1234		ERROR: Invalid addressing mode
+ADDX.L FW,FW		ERROR: Invalid addressing mode
+ADDX.L FW,#1		ERROR: Invalid addressing mode
+ADDX.L FW,#$1234		ERROR: Invalid addressing mode
+ADDX.L FW,CCR		ERROR: Invalid addressing mode
+ADDX.L FW,SR		ERROR: Invalid addressing mode
+ADDX.L #1,D1		ERROR: Invalid addressing mode
+ADDX.L #1,A2		ERROR: Invalid addressing mode
+ADDX.L #1,(A3)		ERROR: Invalid addressing mode
+ADDX.L #1,$10(A6)		ERROR: Invalid addressing mode
+ADDX.L #1,$1234		ERROR: Invalid addressing mode
+ADDX.L #1,FW		ERROR: Invalid addressing mode
+ADDX.L #1,#1		ERROR: Invalid addressing mode
+ADDX.L #1,#$1234		ERROR: Invalid addressing mode
+ADDX.L #1,CCR		ERROR: Invalid addressing mode
+ADDX.L #1,SR		ERROR: Invalid addressing mode
+ADDX.L #$1234,D1		ERROR: Invalid addressing mode
+ADDX.L #$1234,A2		ERROR: Invalid addressing mode
+ADDX.L #$1234,(A3)		ERROR: Invalid addressing mode
+ADDX.L #$1234,$10(A6)		ERROR: Invalid addressing mode
+ADDX.L #$1234,$1234		ERROR: Invalid addressing mode
+ADDX.L #$1234,FW		ERROR: Invalid addressing mode
+ADDX.L #$1234,#1		ERROR: Invalid addressing mode
+ADDX.L #$1234,#$1234		ERROR: Invalid addressing mode
+ADDX.L #$1234,CCR		ERROR: Invalid addressing mode
+ADDX.L #$1234,SR		ERROR: Invalid addressing mode
+ADDX.L CCR,D1		ERROR: Invalid addressing mode
+ADDX.L CCR,A2		ERROR: Invalid addressing mode
+ADDX.L CCR,(A3)		ERROR: Invalid addressing mode
+ADDX.L CCR,$10(A6)		ERROR: Invalid addressing mode
+ADDX.L CCR,$1234		ERROR: Invalid addressing mode
+ADDX.L CCR,FW		ERROR: Invalid addressing mode
+ADDX.L CCR,#1		ERROR: Invalid addressing mode
+ADDX.L CCR,#$1234		ERROR: Invalid addressing mode
+ADDX.L CCR,CCR		ERROR: Invalid addressing mode
+ADDX.L CCR,SR		ERROR: Invalid addressing mode
+ADDX.L SR,D1		ERROR: Invalid addressing mode
+ADDX.L SR,A2		ERROR: Invalid addressing mode
+ADDX.L SR,(A3)		ERROR: Invalid addressing mode
+ADDX.L SR,$10(A6)		ERROR: Invalid addressing mode
+ADDX.L SR,$1234		ERROR: Invalid addressing mode
+ADDX.L SR,FW		ERROR: Invalid addressing mode
+ADDX.L SR,#1		ERROR: Invalid addressing mode
+ADDX.L SR,#$1234		ERROR: Invalid addressing mode
+ADDX.L SR,CCR		ERROR: Invalid addressing mode
+ADDX.L SR,SR		ERROR: Invalid addressing mode
+ADDX.L SP,D1		ERROR: Invalid addressing mode
+ADDX.L SP,A2		ERROR: Invalid addressing mode
+ADDX.L D1,SP		ERROR: Invalid addressing mode
+ADDX.L #$12,SP		ERROR: Invalid addressing mode
+ADDX.L (A4)+,D1		ERROR: Invalid addressing mode
+ADDX.L (A4)+,A2		ERROR: Invalid addressing mode
+ADDX.L D1,(A4)+		ERROR: Invalid addressing mode
+ADDX.L #$12,(A4)+		ERROR: Invalid addressing mode
+ADDX.L -(A5),D1		ERROR: Invalid addressing mode
+ADDX.L -(A5),A2		ERROR: Invalid addressing mode
+ADDX.L D1,-(A5)		ERROR: Invalid addressing mode
+ADDX.L #$12,-(A5)		ERROR: Invalid addressing mode
+ADDX.L -2(A0),D1		ERROR: Invalid addressing mode
+ADDX.L -2(A0),A2		ERROR: Invalid addressing mode
+ADDX.L D1,-2(A0)		ERROR: Invalid addressing mode
+ADDX.L #$12,-2(A0)		ERROR: Invalid addressing mode
+ADDX.L $10(A6,D7.W),D1		ERROR: Invalid addressing mode
+ADDX.L $10(A6,D7.W),A2		ERROR: Invalid addressing mode
+ADDX.L D1,$10(A6,D7.W)		ERROR: Invalid addressing mode
+ADDX.L #$12,$10(A6,D7.W)		ERROR: Invalid addressing mode
+ADDX.L $12(A0,A1.L),D1		ERROR: Invalid addressing mode
+ADDX.L $12(A0,A1.L),A2		ERROR: Invalid addressing mode
+ADDX.L D1,$12(A0,A1.L)		ERROR: Invalid addressing mode
+ADDX.L #$12,$12(A0,A1.L)		ERROR: Invalid addressing mode
+ADDX.L (A2,D3),D1		ERROR: Invalid addressing mode
+ADDX.L (A2,D3),A2		ERROR: Invalid addressing mode
+ADDX.L D1,(A2,D3)		ERROR: Invalid addressing mode
+ADDX.L #$12,(A2,D3)		ERROR: Invalid addressing mode
+ADDX.L $12345678,D1		ERROR: Invalid addressing mode
+ADDX.L $12345678,A2		ERROR: Invalid addressing mode
+ADDX.L D1,$12345678		ERROR: Invalid addressing mode
+ADDX.L #$12,$12345678		ERROR: Invalid addressing mode
+ADDX.L $1234.L,D1		ERROR: Invalid addressing mode
+ADDX.L $1234.L,A2		ERROR: Invalid addressing mode
+ADDX.L D1,$1234.L		ERROR: Invalid addressing mode
+ADDX.L #$12,$1234.L		ERROR: Invalid addressing mode
+ADDX.L $1234.W,D1		ERROR: Invalid addressing mode
+ADDX.L $1234.W,A2		ERROR: Invalid addressing mode
+ADDX.L D1,$1234.W		ERROR: Invalid addressing mode
+ADDX.L #$12,$1234.W		ERROR: Invalid addressing mode
+ADDX.L $8000,D1		ERROR: Invalid addressing mode
+ADDX.L $8000,A2		ERROR: Invalid addressing mode
+ADDX.L D1,$8000		ERROR: Invalid addressing mode
+ADDX.L #$12,$8000		ERROR: Invalid addressing mode
+ADDX.L BK,D1		ERROR: Invalid addressing mode
+ADDX.L BK,A2		ERROR: Invalid addressing mode
+ADDX.L D1,BK		ERROR: Invalid addressing mode
+ADDX.L #$12,BK		ERROR: Invalid addressing mode
+ADDX.L *+$10(PC),D1		ERROR: Invalid addressing mode
+ADDX.L *+$10(PC),A2		ERROR: Invalid addressing mode
+ADDX.L D1,*+$10(PC)		ERROR: Invalid addressing mode
+ADDX.L #$12,*+$10(PC)		ERROR: Invalid addressing mode
+ADDX.L *(PC,D0.W),D1		ERROR: Invalid addressing mode
+ADDX.L *(PC,D0.W),A2		ERROR: Invalid addressing mode
+ADDX.L D1,*(PC,D0.W)		ERROR: Invalid addressing mode
+ADDX.L #$12,*(PC,D0.W)		ERROR: Invalid addressing mode
+ADDX.L BK(PC),D1		ERROR: Invalid addressing mode
+ADDX.L BK(PC),A2		ERROR: Invalid addressing mode
+ADDX.L D1,BK(PC)		ERROR: Invalid addressing mode
+ADDX.L #$12,BK(PC)		ERROR: Invalid addressing mode
+ADDX.L #8,D1		ERROR: Invalid addressing mode
+ADDX.L #8,A2		ERROR: Invalid addressing mode
+ADDX.L D1,#8		ERROR: Invalid addressing mode
+ADDX.L #$12,#8		ERROR: Invalid addressing mode
+ADDX.L #9,D1		ERROR: Invalid addressing mode
+ADDX.L #9,A2		ERROR: Invalid addressing mode
+ADDX.L D1,#9		ERROR: Invalid addressing mode
+ADDX.L #$12,#9		ERROR: Invalid addressing mode
+ADDX.L #0,D1		ERROR: Invalid addressing mode
+ADDX.L #0,A2		ERROR: Invalid addressing mode
+ADDX.L D1,#0		ERROR: Invalid addressing mode
+ADDX.L #$12,#0		ERROR: Invalid addressing mode
+ADDX.L #-1,D1		ERROR: Invalid addressing mode
+ADDX.L #-1,A2		ERROR: Invalid addressing mode
+ADDX.L D1,#-1		ERROR: Invalid addressing mode
+ADDX.L #$12,#-1		ERROR: Invalid addressing mode
+ADDX.L #$80,D1		ERROR: Invalid addressing mode
+ADDX.L #$80,A2		ERROR: Invalid addressing mode
+ADDX.L D1,#$80		ERROR: Invalid addressing mode
+ADDX.L #$12,#$80		ERROR: Invalid addressing mode
+ADDX.L #$12345678,D1		ERROR: Invalid addressing mode
+ADDX.L #$12345678,A2		ERROR: Invalid addressing mode
+ADDX.L D1,#$12345678		ERROR: Invalid addressing mode
+ADDX.L #$12,#$12345678		ERROR: Invalid addressing mode
+ADDX.L #$12345678.L,D1		ERROR: Invalid addressing mode
+ADDX.L #$12345678.L,A2		ERROR: Invalid addressing mode
+ADDX.L D1,#$12345678.L		ERROR: Invalid addressing mode
+ADDX.L #$12,#$12345678.L		ERROR: Invalid addressing mode
+ADDX.L #BK,D1		ERROR: Invalid addressing mode
+ADDX.L #BK,A2		ERROR: Invalid addressing mode
+ADDX.L D1,#BK		ERROR: Invalid addressing mode
+ADDX.L #$12,#BK		ERROR: Invalid addressing mode
+ADDX.L #FW,D1		ERROR: Invalid addressing mode
+ADDX.L #FW,A2		ERROR: Invalid addressing mode
+ADDX.L D1,#FW		ERROR: Invalid addressing mode
+ADDX.L #$12,#FW		ERROR: Invalid addressing mode
+ADDX.L #UNDEF,D1		ERROR: Invalid addressing mode
+ADDX.L #UNDEF,A2		ERROR: Invalid addressing mode
+ADDX.L D1,#UNDEF		ERROR: Invalid addressing mode
+ADDX.L #$12,#UNDEF		ERROR: Invalid addressing mode
+ADDX.L UNDEF,D1		ERROR: Invalid addressing mode
+ADDX.L UNDEF,A2		ERROR: Invalid addressing mode
+ADDX.L D1,UNDEF		ERROR: Invalid addressing mode
+ADDX.L #$12,UNDEF		ERROR: Invalid addressing mode
+ADDX.L USP,D1		ERROR: Invalid addressing mode
+ADDX.L USP,A2		ERROR: Invalid addressing mode
+ADDX.L D1,USP		ERROR: Invalid addressing mode
+ADDX.L #$12,USP		ERROR: Invalid addressing mode
+ADDX.L D1,D2,D3		ERROR: Invalid syntax
+ADDX.S		ERROR: Invalid syntax
+ADDX.S D1		ERROR: Comma expected
+ADDX.S A2		ERROR: Comma expected
+ADDX.S SP		ERROR: Comma expected
+ADDX.S (A3)		ERROR: Comma expected
+ADDX.S (A4)+		ERROR: Comma expected
+ADDX.S -(A5)		ERROR: Comma expected
+ADDX.S $10(A6)		ERROR: Comma expected
+ADDX.S -2(A0)		ERROR: Comma expected
+ADDX.S $10(A6,D7.W)		ERROR: Comma expected
+ADDX.S $12(A0,A1.L)		ERROR: Comma expected
+ADDX.S (A2,D3)		ERROR: Comma expected
+ADDX.S $1234		ERROR: Comma expected
+ADDX.S $12345678		ERROR: Comma expected
+ADDX.S $1234.L		ERROR: Comma expected
+ADDX.S $1234.W		ERROR: Comma expected
+ADDX.S $8000		ERROR: Comma expected
+ADDX.S BK		ERROR: Comma expected
+ADDX.S FW		ERROR: Comma expected
+ADDX.S *+$10(PC)		ERROR: Comma expected
+ADDX.S *(PC,D0.W)		ERROR: Comma expected
+ADDX.S BK(PC)		ERROR: Comma expected
+ADDX.S #1		ERROR: Comma expected
+ADDX.S #8		ERROR: Comma expected
+ADDX.S #9		ERROR: Comma expected
+ADDX.S #0		ERROR: Comma expected
+ADDX.S #-1		ERROR: Comma expected
+ADDX.S #$80		ERROR: Comma expected
+ADDX.S #$1234		ERROR: Comma expected
+ADDX.S #$12345678		ERROR: Comma expected
+ADDX.S #$12345678.L		ERROR: Comma expected
+ADDX.S #BK		ERROR: Comma expected
+ADDX.S #FW		ERROR: Comma expected
+ADDX.S #UNDEF		ERROR: Comma expected
+ADDX.S UNDEF		ERROR: Comma expected
+ADDX.S SR		ERROR: Comma expected
+ADDX.S CCR		ERROR: Comma expected
+ADDX.S USP		ERROR: Comma expected
+ADDX.S D1,D1	D341	ERROR: Invalid size code
+ADDX.S D1,A2		ERROR: Invalid addressing mode
+ADDX.S D1,(A3)		ERROR: Invalid addressing mode
+ADDX.S D1,$10(A6)		ERROR: Invalid addressing mode
+ADDX.S D1,$1234		ERROR: Invalid addressing mode
+ADDX.S D1,FW		ERROR: Invalid addressing mode
+ADDX.S D1,#1		ERROR: Invalid addressing mode
+ADDX.S D1,#$1234		ERROR: Invalid addressing mode
+ADDX.S D1,CCR		ERROR: Invalid addressing mode
+ADDX.S D1,SR		ERROR: Invalid addressing mode
+ADDX.S A2,D1		ERROR: Invalid addressing mode
+ADDX.S A2,A2		ERROR: Invalid addressing mode
+ADDX.S A2,(A3)		ERROR: Invalid addressing mode
+ADDX.S A2,$10(A6)		ERROR: Invalid addressing mode
+ADDX.S A2,$1234		ERROR: Invalid addressing mode
+ADDX.S A2,FW		ERROR: Invalid addressing mode
+ADDX.S A2,#1		ERROR: Invalid addressing mode
+ADDX.S A2,#$1234		ERROR: Invalid addressing mode
+ADDX.S A2,CCR		ERROR: Invalid addressing mode
+ADDX.S A2,SR		ERROR: Invalid addressing mode
+ADDX.S (A3),D1		ERROR: Invalid addressing mode
+ADDX.S (A3),A2		ERROR: Invalid addressing mode
+ADDX.S (A3),(A3)		ERROR: Invalid addressing mode
+ADDX.S (A3),$10(A6)		ERROR: Invalid addressing mode
+ADDX.S (A3),$1234		ERROR: Invalid addressing mode
+ADDX.S (A3),FW		ERROR: Invalid addressing mode
+ADDX.S (A3),#1		ERROR: Invalid addressing mode
+ADDX.S (A3),#$1234		ERROR: Invalid addressing mode
+ADDX.S (A3),CCR		ERROR: Invalid addressing mode
+ADDX.S (A3),SR		ERROR: Invalid addressing mode
+ADDX.S $10(A6),D1		ERROR: Invalid addressing mode
+ADDX.S $10(A6),A2		ERROR: Invalid addressing mode
+ADDX.S $10(A6),(A3)		ERROR: Invalid addressing mode
+ADDX.S $10(A6),$10(A6)		ERROR: Invalid addressing mode
+ADDX.S $10(A6),$1234		ERROR: Invalid addressing mode
+ADDX.S $10(A6),FW		ERROR: Invalid addressing mode
+ADDX.S $10(A6),#1		ERROR: Invalid addressing mode
+ADDX.S $10(A6),#$1234		ERROR: Invalid addressing mode
+ADDX.S $10(A6),CCR		ERROR: Invalid addressing mode
+ADDX.S $10(A6),SR		ERROR: Invalid addressing mode
+ADDX.S $1234,D1		ERROR: Invalid addressing mode
+ADDX.S $1234,A2		ERROR: Invalid addressing mode
+ADDX.S $1234,(A3)		ERROR: Invalid addressing mode
+ADDX.S $1234,$10(A6)		ERROR: Invalid addressing mode
+ADDX.S $1234,$1234		ERROR: Invalid addressing mode
+ADDX.S $1234,FW		ERROR: Invalid addressing mode
+ADDX.S $1234,#1		ERROR: Invalid addressing mode
+ADDX.S $1234,#$1234		ERROR: Invalid addressing mode
+ADDX.S $1234,CCR		ERROR: Invalid addressing mode
+ADDX.S $1234,SR		ERROR: Invalid addressing mode
+ADDX.S FW,D1		ERROR: Invalid addressing mode
+ADDX.S FW,A2		ERROR: Invalid addressing mode
+ADDX.S FW,(A3)		ERROR: Invalid addressing mode
+ADDX.S FW,$10(A6)		ERROR: Invalid addressing mode
+ADDX.S FW,$1234		ERROR: Invalid addressing mode
+ADDX.S FW,FW		ERROR: Invalid addressing mode
+ADDX.S FW,#1		ERROR: Invalid addressing mode
+ADDX.S FW,#$1234		ERROR: Invalid addressing mode
+ADDX.S FW,CCR		ERROR: Invalid addressing mode
+ADDX.S FW,SR		ERROR: Invalid addressing mode
+ADDX.S #1,D1		ERROR: Invalid addressing mode
+ADDX.S #1,A2		ERROR: Invalid addressing mode
+ADDX.S #1,(A3)		ERROR: Invalid addressing mode
+ADDX.S #1,$10(A6)		ERROR: Invalid addressing mode
+ADDX.S #1,$1234		ERROR: Invalid addressing mode
+ADDX.S #1,FW		ERROR: Invalid addressing mode
+ADDX.S #1,#1		ERROR: Invalid addressing mode
+ADDX.S #1,#$1234		ERROR: Invalid addressing mode
+ADDX.S #1,CCR		ERROR: Invalid addressing mode
+ADDX.S #1,SR		ERROR: Invalid addressing mode
+ADDX.S #$1234,D1		ERROR: Invalid addressing mode
+ADDX.S #$1234,A2		ERROR: Invalid addressing mode
+ADDX.S #$1234,(A3)		ERROR: Invalid addressing mode
+ADDX.S #$1234,$10(A6)		ERROR: Invalid addressing mode
+ADDX.S #$1234,$1234		ERROR: Invalid addressing mode
+ADDX.S #$1234,FW		ERROR: Invalid addressing mode
+ADDX.S #$1234,#1		ERROR: Invalid addressing mode
+ADDX.S #$1234,#$1234		ERROR: Invalid addressing mode
+ADDX.S #$1234,CCR		ERROR: Invalid addressing mode
+ADDX.S #$1234,SR		ERROR: Invalid addressing mode
+ADDX.S CCR,D1		ERROR: Invalid addressing mode
+ADDX.S CCR,A2		ERROR: Invalid addressing mode
+ADDX.S CCR,(A3)		ERROR: Invalid addressing mode
+ADDX.S CCR,$10(A6)		ERROR: Invalid addressing mode
+ADDX.S CCR,$1234		ERROR: Invalid addressing mode
+ADDX.S CCR,FW		ERROR: Invalid addressing mode
+ADDX.S CCR,#1		ERROR: Invalid addressing mode
+ADDX.S CCR,#$1234		ERROR: Invalid addressing mode
+ADDX.S CCR,CCR		ERROR: Invalid addressing mode
+ADDX.S CCR,SR		ERROR: Invalid addressing mode
+ADDX.S SR,D1		ERROR: Invalid addressing mode
+ADDX.S SR,A2		ERROR: Invalid addressing mode
+ADDX.S SR,(A3)		ERROR: Invalid addressing mode
+ADDX.S SR,$10(A6)		ERROR: Invalid addressing mode
+ADDX.S SR,$1234		ERROR: Invalid addressing mode
+ADDX.S SR,FW		ERROR: Invalid addressing mode
+ADDX.S SR,#1		ERROR: Invalid addressing mode
+ADDX.S SR,#$1234		ERROR: Invalid addressing mode
+ADDX.S SR,CCR		ERROR: Invalid addressing mode
+ADDX.S SR,SR		ERROR: Invalid addressing mode
+ADDX.S SP,D1		ERROR: Invalid addressing mode
+ADDX.S SP,A2		ERROR: Invalid addressing mode
+ADDX.S D1,SP		ERROR: Invalid addressing mode
+ADDX.S #$12,SP		ERROR: Invalid addressing mode
+ADDX.S (A4)+,D1		ERROR: Invalid addressing mode
+ADDX.S (A4)+,A2		ERROR: Invalid addressing mode
+ADDX.S D1,(A4)+		ERROR: Invalid addressing mode
+ADDX.S #$12,(A4)+		ERROR: Invalid addressing mode
+ADDX.S -(A5),D1		ERROR: Invalid addressing mode
+ADDX.S -(A5),A2		ERROR: Invalid addressing mode
+ADDX.S D1,-(A5)		ERROR: Invalid addressing mode
+ADDX.S #$12,-(A5)		ERROR: Invalid addressing mode
+ADDX.S -2(A0),D1		ERROR: Invalid addressing mode
+ADDX.S -2(A0),A2		ERROR: Invalid addressing mode
+ADDX.S D1,-2(A0)		ERROR: Invalid addressing mode
+ADDX.S #$12,-2(A0)		ERROR: Invalid addressing mode
+ADDX.S $10(A6,D7.W),D1		ERROR: Invalid addressing mode
+ADDX.S $10(A6,D7.W),A2		ERROR: Invalid addressing mode
+ADDX.S D1,$10(A6,D7.W)		ERROR: Invalid addressing mode
+ADDX.S #$12,$10(A6,D7.W)		ERROR: Invalid addressing mode
+ADDX.S $12(A0,A1.L),D1		ERROR: Invalid addressing mode
+ADDX.S $12(A0,A1.L),A2		ERROR: Invalid addressing mode
+ADDX.S D1,$12(A0,A1.L)		ERROR: Invalid addressing mode
+ADDX.S #$12,$12(A0,A1.L)		ERROR: Invalid addressing mode
+ADDX.S (A2,D3),D1		ERROR: Invalid addressing mode
+ADDX.S (A2,D3),A2		ERROR: Invalid addressing mode
+ADDX.S D1,(A2,D3)		ERROR: Invalid addressing mode
+ADDX.S #$12,(A2,D3)		ERROR: Invalid addressing mode
+ADDX.S $12345678,D1		ERROR: Invalid addressing mode
+ADDX.S $12345678,A2		ERROR: Invalid addressing mode
+ADDX.S D1,$12345678		ERROR: Invalid addressing mode
+ADDX.S #$12,$12345678		ERROR: Invalid addressing mode
+ADDX.S $1234.L,D1		ERROR: Invalid addressing mode
+ADDX.S $1234.L,A2		ERROR: Invalid addressing mode
+ADDX.S D1,$1234.L		ERROR: Invalid addressing mode
+ADDX.S #$12,$1234.L		ERROR: Invalid addressing mode
+ADDX.S $1234.W,D1		ERROR: Invalid addressing mode
+ADDX.S $1234.W,A2		ERROR: Invalid addressing mode
+ADDX.S D1,$1234.W		ERROR: Invalid addressing mode
+ADDX.S #$12,$1234.W		ERROR: Invalid addressing mode
+ADDX.S $8000,D1		ERROR: Invalid addressing mode
+ADDX.S $8000,A2		ERROR: Invalid addressing mode
+ADDX.S D1,$8000		ERROR: Invalid addressing mode
+ADDX.S #$12,$8000		ERROR: Invalid addressing mode
+ADDX.S BK,D1		ERROR: Invalid addressing mode
+ADDX.S BK,A2		ERROR: Invalid addressing mode
+ADDX.S D1,BK		ERROR: Invalid addressing mode
+ADDX.S #$12,BK		ERROR: Invalid addressing mode
+ADDX.S *+$10(PC),D1		ERROR: Invalid addressing mode
+ADDX.S *+$10(PC),A2		ERROR: Invalid addressing mode
+ADDX.S D1,*+$10(PC)		ERROR: Invalid addressing mode
+ADDX.S #$12,*+$10(PC)		ERROR: Invalid addressing mode
+ADDX.S *(PC,D0.W),D1		ERROR: Invalid addressing mode
+ADDX.S *(PC,D0.W),A2		ERROR: Invalid addressing mode
+ADDX.S D1,*(PC,D0.W)		ERROR: Invalid addressing mode
+ADDX.S #$12,*(PC,D0.W)		ERROR: Invalid addressing mode
+ADDX.S BK(PC),D1		ERROR: Invalid addressing mode
+ADDX.S BK(PC),A2		ERROR: Invalid addressing mode
+ADDX.S D1,BK(PC)		ERROR: Invalid addressing mode
+ADDX.S #$12,BK(PC)		ERROR: Invalid addressing mode
+ADDX.S #8,D1		ERROR: Invalid addressing mode
+ADDX.S #8,A2		ERROR: Invalid addressing mode
+ADDX.S D1,#8		ERROR: Invalid addressing mode
+ADDX.S #$12,#8		ERROR: Invalid addressing mode
+ADDX.S #9,D1		ERROR: Invalid addressing mode
+ADDX.S #9,A2		ERROR: Invalid addressing mode
+ADDX.S D1,#9		ERROR: Invalid addressing mode
+ADDX.S #$12,#9		ERROR: Invalid addressing mode
+ADDX.S #0,D1		ERROR: Invalid addressing mode
+ADDX.S #0,A2		ERROR: Invalid addressing mode
+ADDX.S D1,#0		ERROR: Invalid addressing mode
+ADDX.S #$12,#0		ERROR: Invalid addressing mode
+ADDX.S #-1,D1		ERROR: Invalid addressing mode
+ADDX.S #-1,A2		ERROR: Invalid addressing mode
+ADDX.S D1,#-1		ERROR: Invalid addressing mode
+ADDX.S #$12,#-1		ERROR: Invalid addressing mode
+ADDX.S #$80,D1		ERROR: Invalid addressing mode
+ADDX.S #$80,A2		ERROR: Invalid addressing mode
+ADDX.S D1,#$80		ERROR: Invalid addressing mode
+ADDX.S #$12,#$80		ERROR: Invalid addressing mode
+ADDX.S #$12345678,D1		ERROR: Invalid addressing mode
+ADDX.S #$12345678,A2		ERROR: Invalid addressing mode
+ADDX.S D1,#$12345678		ERROR: Invalid addressing mode
+ADDX.S #$12,#$12345678		ERROR: Invalid addressing mode
+ADDX.S #$12345678.L,D1		ERROR: Invalid addressing mode
+ADDX.S #$12345678.L,A2		ERROR: Invalid addressing mode
+ADDX.S D1,#$12345678.L		ERROR: Invalid addressing mode
+ADDX.S #$12,#$12345678.L		ERROR: Invalid addressing mode
+ADDX.S #BK,D1		ERROR: Invalid addressing mode
+ADDX.S #BK,A2		ERROR: Invalid addressing mode
+ADDX.S D1,#BK		ERROR: Invalid addressing mode
+ADDX.S #$12,#BK		ERROR: Invalid addressing mode
+ADDX.S #FW,D1		ERROR: Invalid addressing mode
+ADDX.S #FW,A2		ERROR: Invalid addressing mode
+ADDX.S D1,#FW		ERROR: Invalid addressing mode
+ADDX.S #$12,#FW		ERROR: Invalid addressing mode
+ADDX.S #UNDEF,D1		ERROR: Invalid addressing mode
+ADDX.S #UNDEF,A2		ERROR: Invalid addressing mode
+ADDX.S D1,#UNDEF		ERROR: Invalid addressing mode
+ADDX.S #$12,#UNDEF		ERROR: Invalid addressing mode
+ADDX.S UNDEF,D1		ERROR: Invalid addressing mode
+ADDX.S UNDEF,A2		ERROR: Invalid addressing mode
+ADDX.S D1,UNDEF		ERROR: Invalid addressing mode
+ADDX.S #$12,UNDEF		ERROR: Invalid addressing mode
+ADDX.S USP,D1		ERROR: Invalid addressing mode
+ADDX.S USP,A2		ERROR: Invalid addressing mode
+ADDX.S D1,USP		ERROR: Invalid addressing mode
+ADDX.S #$12,USP		ERROR: Invalid addressing mode
+ADDX.S D1,D2,D3		ERROR: Invalid syntax
+ADDX.X D1,D2	D541	ERROR: Invalid size code
+ADDX.X #1		ERROR: Comma expected

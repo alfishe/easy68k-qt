@@ -1,0 +1,82 @@
+BPL		ERROR: Invalid syntax
+BPL *+2	6A000000	-
+BPL *+4	6A02	-
+BPL *+$80	6A7E	-
+BPL *+$82	6A000080	-
+BPL *-$7E	6A80	-
+BPL *-$80	6A00FF7E	-
+BPL *+$8000	6A007FFE	-
+BPL *	6AFE	-
+BPL BK	6A000EFE	-
+BPL FW	6A000EFE	-
+BPL $1000	6AFE	-
+BPL $12345678	6A004676	ERROR: Branch instruction displacement is out of range or invalid
+BPL D1		ERROR: Invalid addressing mode
+BPL (A0)		ERROR: Invalid addressing mode
+BPL #4		ERROR: Invalid addressing mode
+BPL.B		ERROR: Invalid syntax
+BPL.B *+2	6A00	ERROR: Branch instruction displacement is out of range or invalid
+BPL.B *+4	6A02	-
+BPL.B *+$80	6A7E	-
+BPL.B *+$82	6A80	ERROR: Branch instruction displacement is out of range or invalid
+BPL.B *-$7E	6A80	-
+BPL.B *-$80	6A7E	ERROR: Branch instruction displacement is out of range or invalid
+BPL.B *+$8000	6AFE	ERROR: Branch instruction displacement is out of range or invalid
+BPL.B *	6AFE	-
+BPL.B BK	6AFE	ERROR: Branch instruction displacement is out of range or invalid
+BPL.B FW	6AFE	ERROR: Branch instruction displacement is out of range or invalid
+BPL.B $1000	6AFE	-
+BPL.B $12345678	6A76	ERROR: Branch instruction displacement is out of range or invalid
+BPL.B D1		ERROR: Invalid addressing mode
+BPL.B (A0)		ERROR: Invalid addressing mode
+BPL.B #4		ERROR: Invalid addressing mode
+BPL.W		ERROR: Invalid syntax
+BPL.W *+2	6A000000	-
+BPL.W *+4	6A000002	-
+BPL.W *+$80	6A00007E	-
+BPL.W *+$82	6A000080	-
+BPL.W *-$7E	6A00FF80	-
+BPL.W *-$80	6A00FF7E	-
+BPL.W *+$8000	6A007FFE	-
+BPL.W *	6A00FFFE	-
+BPL.W BK	6A000EFE	-
+BPL.W FW	6A000EFE	-
+BPL.W $1000	6A00FFFE	-
+BPL.W $12345678	6A004676	ERROR: Branch instruction displacement is out of range or invalid
+BPL.W D1		ERROR: Invalid addressing mode
+BPL.W (A0)		ERROR: Invalid addressing mode
+BPL.W #4		ERROR: Invalid addressing mode
+BPL.L		ERROR: Invalid syntax
+BPL.L *+2	6A000000	-
+BPL.L *+4	6A000002	-
+BPL.L *+$80	6A00007E	-
+BPL.L *+$82	6A000080	-
+BPL.L *-$7E	6A00FF80	-
+BPL.L *-$80	6A00FF7E	-
+BPL.L *+$8000	6A007FFE	-
+BPL.L *	6A00FFFE	-
+BPL.L BK	6A000EFE	-
+BPL.L FW	6A000EFE	-
+BPL.L $1000	6A00FFFE	-
+BPL.L $12345678	6A004676	ERROR: Branch instruction displacement is out of range or invalid
+BPL.L D1		ERROR: Invalid addressing mode
+BPL.L (A0)		ERROR: Invalid addressing mode
+BPL.L #4		ERROR: Invalid addressing mode
+BPL.S		ERROR: Invalid syntax
+BPL.S *+2	6A00	ERROR: Branch instruction displacement is out of range or invalid
+BPL.S *+4	6A02	-
+BPL.S *+$80	6A7E	-
+BPL.S *+$82	6A80	ERROR: Branch instruction displacement is out of range or invalid
+BPL.S *-$7E	6A80	-
+BPL.S *-$80	6A7E	ERROR: Branch instruction displacement is out of range or invalid
+BPL.S *+$8000	6AFE	ERROR: Branch instruction displacement is out of range or invalid
+BPL.S *	6AFE	-
+BPL.S BK	6AFE	ERROR: Branch instruction displacement is out of range or invalid
+BPL.S FW	6AFE	ERROR: Branch instruction displacement is out of range or invalid
+BPL.S $1000	6AFE	-
+BPL.S $12345678	6A76	ERROR: Branch instruction displacement is out of range or invalid
+BPL.S D1		ERROR: Invalid addressing mode
+BPL.S (A0)		ERROR: Invalid addressing mode
+BPL.S #4		ERROR: Invalid addressing mode
+BPL.X D1,D2		ERROR: Invalid addressing mode
+BPL.X #1		ERROR: Invalid addressing mode

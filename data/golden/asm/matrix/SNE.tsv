@@ -1,0 +1,405 @@
+SNE		ERROR: Invalid syntax
+SNE D1	56C1	-
+SNE A2		ERROR: Invalid addressing mode
+SNE SP		ERROR: Invalid addressing mode
+SNE (A3)	56D3	-
+SNE (A4)+	56DC	-
+SNE -(A5)	56E5	-
+SNE $10(A6)	56EE0010	-
+SNE -2(A0)	56E8FFFE	-
+SNE $10(A6,D7.W)	56F67010	-
+SNE $12(A0,A1.L)	56F09812	-
+SNE (A2,D3)	56F23000	-
+SNE $1234	56F81234	-
+SNE $12345678	56F912345678	-
+SNE $1234.L	56F900001234	-
+SNE $1234.W	56F81234	WARNING: Forcing SHORT addressing disables range checking of extension word
+SNE $8000	56F900008000	-
+SNE BK	56F81F00	-
+SNE FW	56F900001F00	-
+SNE *+$10(PC)		ERROR: Invalid addressing mode
+SNE *(PC,D0.W)		ERROR: Invalid addressing mode
+SNE BK(PC)		ERROR: Invalid addressing mode
+SNE #1		ERROR: Invalid addressing mode
+SNE #8		ERROR: Invalid addressing mode
+SNE #9		ERROR: Invalid addressing mode
+SNE #0		ERROR: Invalid addressing mode
+SNE #-1		ERROR: Invalid addressing mode
+SNE #$80		ERROR: Invalid addressing mode
+SNE #$1234		ERROR: Invalid addressing mode
+SNE #$12345678		ERROR: Invalid addressing mode
+SNE #$12345678.L		ERROR: Invalid addressing mode
+SNE #BK		ERROR: Invalid addressing mode
+SNE #FW		ERROR: Invalid addressing mode
+SNE #UNDEF		ERROR: Invalid addressing mode
+SNE UNDEF	56F900005572	ERROR: Undefined symbol
+SNE SR		ERROR: Invalid addressing mode
+SNE CCR		ERROR: Invalid addressing mode
+SNE USP		ERROR: Invalid addressing mode
+SNE D1,D1		ERROR: Invalid syntax
+SNE D1,A2		ERROR: Invalid syntax
+SNE D1,(A3)		ERROR: Invalid syntax
+SNE D1,$10(A6)		ERROR: Invalid syntax
+SNE D1,$1234		ERROR: Invalid syntax
+SNE D1,FW		ERROR: Invalid syntax
+SNE D1,#1		ERROR: Invalid syntax
+SNE D1,#$1234		ERROR: Invalid syntax
+SNE D1,CCR		ERROR: Invalid syntax
+SNE D1,SR		ERROR: Invalid syntax
+SNE A2,D1		ERROR: Invalid addressing mode
+SNE A2,A2		ERROR: Invalid addressing mode
+SNE A2,(A3)		ERROR: Invalid addressing mode
+SNE A2,$10(A6)		ERROR: Invalid addressing mode
+SNE A2,$1234		ERROR: Invalid addressing mode
+SNE A2,FW		ERROR: Invalid addressing mode
+SNE A2,#1		ERROR: Invalid addressing mode
+SNE A2,#$1234		ERROR: Invalid addressing mode
+SNE A2,CCR		ERROR: Invalid addressing mode
+SNE A2,SR		ERROR: Invalid addressing mode
+SNE (A3),D1		ERROR: Invalid syntax
+SNE (A3),A2		ERROR: Invalid syntax
+SNE (A3),(A3)		ERROR: Invalid syntax
+SNE (A3),$10(A6)		ERROR: Invalid syntax
+SNE (A3),$1234		ERROR: Invalid syntax
+SNE (A3),FW		ERROR: Invalid syntax
+SNE (A3),#1		ERROR: Invalid syntax
+SNE (A3),#$1234		ERROR: Invalid syntax
+SNE (A3),CCR		ERROR: Invalid syntax
+SNE (A3),SR		ERROR: Invalid syntax
+SNE $10(A6),D1		ERROR: Invalid syntax
+SNE $10(A6),A2		ERROR: Invalid syntax
+SNE $10(A6),(A3)		ERROR: Invalid syntax
+SNE $10(A6),$10(A6)		ERROR: Invalid syntax
+SNE $10(A6),$1234		ERROR: Invalid syntax
+SNE $10(A6),FW		ERROR: Invalid syntax
+SNE $10(A6),#1		ERROR: Invalid syntax
+SNE $10(A6),#$1234		ERROR: Invalid syntax
+SNE $10(A6),CCR		ERROR: Invalid syntax
+SNE $10(A6),SR		ERROR: Invalid syntax
+SNE $1234,D1		ERROR: Invalid syntax
+SNE $1234,A2		ERROR: Invalid syntax
+SNE $1234,(A3)		ERROR: Invalid syntax
+SNE $1234,$10(A6)		ERROR: Invalid syntax
+SNE $1234,$1234		ERROR: Invalid syntax
+SNE $1234,FW		ERROR: Invalid syntax
+SNE $1234,#1		ERROR: Invalid syntax
+SNE $1234,#$1234		ERROR: Invalid syntax
+SNE $1234,CCR		ERROR: Invalid syntax
+SNE $1234,SR		ERROR: Invalid syntax
+SNE FW,D1		ERROR: Invalid syntax
+SNE FW,A2		ERROR: Invalid syntax
+SNE FW,(A3)		ERROR: Invalid syntax
+SNE FW,$10(A6)		ERROR: Invalid syntax
+SNE FW,$1234		ERROR: Invalid syntax
+SNE FW,FW		ERROR: Invalid syntax
+SNE FW,#1		ERROR: Invalid syntax
+SNE FW,#$1234		ERROR: Invalid syntax
+SNE FW,CCR		ERROR: Invalid syntax
+SNE FW,SR		ERROR: Invalid syntax
+SNE #1,D1		ERROR: Invalid addressing mode
+SNE #1,A2		ERROR: Invalid addressing mode
+SNE #1,(A3)		ERROR: Invalid addressing mode
+SNE #1,$10(A6)		ERROR: Invalid addressing mode
+SNE #1,$1234		ERROR: Invalid addressing mode
+SNE #1,FW		ERROR: Invalid addressing mode
+SNE #1,#1		ERROR: Invalid addressing mode
+SNE #1,#$1234		ERROR: Invalid addressing mode
+SNE #1,CCR		ERROR: Invalid addressing mode
+SNE #1,SR		ERROR: Invalid addressing mode
+SNE #$1234,D1		ERROR: Invalid addressing mode
+SNE #$1234,A2		ERROR: Invalid addressing mode
+SNE #$1234,(A3)		ERROR: Invalid addressing mode
+SNE #$1234,$10(A6)		ERROR: Invalid addressing mode
+SNE #$1234,$1234		ERROR: Invalid addressing mode
+SNE #$1234,FW		ERROR: Invalid addressing mode
+SNE #$1234,#1		ERROR: Invalid addressing mode
+SNE #$1234,#$1234		ERROR: Invalid addressing mode
+SNE #$1234,CCR		ERROR: Invalid addressing mode
+SNE #$1234,SR		ERROR: Invalid addressing mode
+SNE CCR,D1		ERROR: Invalid addressing mode
+SNE CCR,A2		ERROR: Invalid addressing mode
+SNE CCR,(A3)		ERROR: Invalid addressing mode
+SNE CCR,$10(A6)		ERROR: Invalid addressing mode
+SNE CCR,$1234		ERROR: Invalid addressing mode
+SNE CCR,FW		ERROR: Invalid addressing mode
+SNE CCR,#1		ERROR: Invalid addressing mode
+SNE CCR,#$1234		ERROR: Invalid addressing mode
+SNE CCR,CCR		ERROR: Invalid addressing mode
+SNE CCR,SR		ERROR: Invalid addressing mode
+SNE SR,D1		ERROR: Invalid addressing mode
+SNE SR,A2		ERROR: Invalid addressing mode
+SNE SR,(A3)		ERROR: Invalid addressing mode
+SNE SR,$10(A6)		ERROR: Invalid addressing mode
+SNE SR,$1234		ERROR: Invalid addressing mode
+SNE SR,FW		ERROR: Invalid addressing mode
+SNE SR,#1		ERROR: Invalid addressing mode
+SNE SR,#$1234		ERROR: Invalid addressing mode
+SNE SR,CCR		ERROR: Invalid addressing mode
+SNE SR,SR		ERROR: Invalid addressing mode
+SNE SP,D1		ERROR: Invalid addressing mode
+SNE SP,A2		ERROR: Invalid addressing mode
+SNE D1,SP		ERROR: Invalid syntax
+SNE #$12,SP		ERROR: Invalid addressing mode
+SNE (A4)+,D1		ERROR: Invalid syntax
+SNE (A4)+,A2		ERROR: Invalid syntax
+SNE D1,(A4)+		ERROR: Invalid syntax
+SNE #$12,(A4)+		ERROR: Invalid addressing mode
+SNE -(A5),D1		ERROR: Invalid syntax
+SNE -(A5),A2		ERROR: Invalid syntax
+SNE D1,-(A5)		ERROR: Invalid syntax
+SNE #$12,-(A5)		ERROR: Invalid addressing mode
+SNE -2(A0),D1		ERROR: Invalid syntax
+SNE -2(A0),A2		ERROR: Invalid syntax
+SNE D1,-2(A0)		ERROR: Invalid syntax
+SNE #$12,-2(A0)		ERROR: Invalid addressing mode
+SNE $10(A6,D7.W),D1		ERROR: Invalid syntax
+SNE $10(A6,D7.W),A2		ERROR: Invalid syntax
+SNE D1,$10(A6,D7.W)		ERROR: Invalid syntax
+SNE #$12,$10(A6,D7.W)		ERROR: Invalid addressing mode
+SNE $12(A0,A1.L),D1		ERROR: Invalid syntax
+SNE $12(A0,A1.L),A2		ERROR: Invalid syntax
+SNE D1,$12(A0,A1.L)		ERROR: Invalid syntax
+SNE #$12,$12(A0,A1.L)		ERROR: Invalid addressing mode
+SNE (A2,D3),D1		ERROR: Invalid syntax
+SNE (A2,D3),A2		ERROR: Invalid syntax
+SNE D1,(A2,D3)		ERROR: Invalid syntax
+SNE #$12,(A2,D3)		ERROR: Invalid addressing mode
+SNE $12345678,D1		ERROR: Invalid syntax
+SNE $12345678,A2		ERROR: Invalid syntax
+SNE D1,$12345678		ERROR: Invalid syntax
+SNE #$12,$12345678		ERROR: Invalid addressing mode
+SNE $1234.L,D1		ERROR: Invalid syntax
+SNE $1234.L,A2		ERROR: Invalid syntax
+SNE D1,$1234.L		ERROR: Invalid syntax
+SNE #$12,$1234.L		ERROR: Invalid addressing mode
+SNE $1234.W,D1		ERROR: Invalid syntax
+SNE $1234.W,A2		ERROR: Invalid syntax
+SNE D1,$1234.W		ERROR: Invalid syntax
+SNE #$12,$1234.W		ERROR: Invalid addressing mode
+SNE $8000,D1		ERROR: Invalid syntax
+SNE $8000,A2		ERROR: Invalid syntax
+SNE D1,$8000		ERROR: Invalid syntax
+SNE #$12,$8000		ERROR: Invalid addressing mode
+SNE BK,D1		ERROR: Invalid syntax
+SNE BK,A2		ERROR: Invalid syntax
+SNE D1,BK		ERROR: Invalid syntax
+SNE #$12,BK		ERROR: Invalid addressing mode
+SNE *+$10(PC),D1		ERROR: Invalid addressing mode
+SNE *+$10(PC),A2		ERROR: Invalid addressing mode
+SNE D1,*+$10(PC)		ERROR: Invalid syntax
+SNE #$12,*+$10(PC)		ERROR: Invalid addressing mode
+SNE *(PC,D0.W),D1		ERROR: Invalid addressing mode
+SNE *(PC,D0.W),A2		ERROR: Invalid addressing mode
+SNE D1,*(PC,D0.W)		ERROR: Invalid syntax
+SNE #$12,*(PC,D0.W)		ERROR: Invalid addressing mode
+SNE BK(PC),D1		ERROR: Invalid addressing mode
+SNE BK(PC),A2		ERROR: Invalid addressing mode
+SNE D1,BK(PC)		ERROR: Invalid syntax
+SNE #$12,BK(PC)		ERROR: Invalid addressing mode
+SNE #8,D1		ERROR: Invalid addressing mode
+SNE #8,A2		ERROR: Invalid addressing mode
+SNE D1,#8		ERROR: Invalid syntax
+SNE #$12,#8		ERROR: Invalid addressing mode
+SNE #9,D1		ERROR: Invalid addressing mode
+SNE #9,A2		ERROR: Invalid addressing mode
+SNE D1,#9		ERROR: Invalid syntax
+SNE #$12,#9		ERROR: Invalid addressing mode
+SNE #0,D1		ERROR: Invalid addressing mode
+SNE #0,A2		ERROR: Invalid addressing mode
+SNE D1,#0		ERROR: Invalid syntax
+SNE #$12,#0		ERROR: Invalid addressing mode
+SNE #-1,D1		ERROR: Invalid addressing mode
+SNE #-1,A2		ERROR: Invalid addressing mode
+SNE D1,#-1		ERROR: Invalid syntax
+SNE #$12,#-1		ERROR: Invalid addressing mode
+SNE #$80,D1		ERROR: Invalid addressing mode
+SNE #$80,A2		ERROR: Invalid addressing mode
+SNE D1,#$80		ERROR: Invalid syntax
+SNE #$12,#$80		ERROR: Invalid addressing mode
+SNE #$12345678,D1		ERROR: Invalid addressing mode
+SNE #$12345678,A2		ERROR: Invalid addressing mode
+SNE D1,#$12345678		ERROR: Invalid syntax
+SNE #$12,#$12345678		ERROR: Invalid addressing mode
+SNE #$12345678.L,D1		ERROR: Invalid addressing mode
+SNE #$12345678.L,A2		ERROR: Invalid addressing mode
+SNE D1,#$12345678.L		ERROR: Invalid syntax
+SNE #$12,#$12345678.L		ERROR: Invalid addressing mode
+SNE #BK,D1		ERROR: Invalid addressing mode
+SNE #BK,A2		ERROR: Invalid addressing mode
+SNE D1,#BK		ERROR: Invalid syntax
+SNE #$12,#BK		ERROR: Invalid addressing mode
+SNE #FW,D1		ERROR: Invalid addressing mode
+SNE #FW,A2		ERROR: Invalid addressing mode
+SNE D1,#FW		ERROR: Invalid syntax
+SNE #$12,#FW		ERROR: Invalid addressing mode
+SNE #UNDEF,D1		ERROR: Invalid addressing mode
+SNE #UNDEF,A2		ERROR: Invalid addressing mode
+SNE D1,#UNDEF		ERROR: Invalid syntax
+SNE #$12,#UNDEF		ERROR: Invalid addressing mode
+SNE UNDEF,D1		ERROR: Invalid syntax
+SNE UNDEF,A2		ERROR: Invalid syntax
+SNE D1,UNDEF		ERROR: Invalid syntax
+SNE #$12,UNDEF		ERROR: Invalid addressing mode
+SNE USP,D1		ERROR: Invalid addressing mode
+SNE USP,A2		ERROR: Invalid addressing mode
+SNE D1,USP		ERROR: Invalid syntax
+SNE #$12,USP		ERROR: Invalid addressing mode
+SNE D1,D2,D3		ERROR: Invalid syntax
+SNE.B		ERROR: Invalid syntax
+SNE.B D1	56C1	-
+SNE.B A2		ERROR: Invalid addressing mode
+SNE.B SP		ERROR: Invalid addressing mode
+SNE.B (A3)	56D3	-
+SNE.B (A4)+	56DC	-
+SNE.B -(A5)	56E5	-
+SNE.B $10(A6)	56EE0010	-
+SNE.B -2(A0)	56E8FFFE	-
+SNE.B $10(A6,D7.W)	56F67010	-
+SNE.B $12(A0,A1.L)	56F09812	-
+SNE.B (A2,D3)	56F23000	-
+SNE.B $1234	56F81234	-
+SNE.B $12345678	56F912345678	-
+SNE.B $1234.L	56F900001234	-
+SNE.B $1234.W	56F81234	WARNING: Forcing SHORT addressing disables range checking of extension word
+SNE.B $8000	56F900008000	-
+SNE.B BK	56F81F00	-
+SNE.B FW	56F900001F00	-
+SNE.B *+$10(PC)		ERROR: Invalid addressing mode
+SNE.B *(PC,D0.W)		ERROR: Invalid addressing mode
+SNE.B BK(PC)		ERROR: Invalid addressing mode
+SNE.B #1		ERROR: Invalid addressing mode
+SNE.B #8		ERROR: Invalid addressing mode
+SNE.B #9		ERROR: Invalid addressing mode
+SNE.B #0		ERROR: Invalid addressing mode
+SNE.B #-1		ERROR: Invalid addressing mode
+SNE.B #$80		ERROR: Invalid addressing mode
+SNE.B #$1234		ERROR: Invalid addressing mode
+SNE.B #$12345678		ERROR: Invalid addressing mode
+SNE.B #$12345678.L		ERROR: Invalid addressing mode
+SNE.B #BK		ERROR: Invalid addressing mode
+SNE.B #FW		ERROR: Invalid addressing mode
+SNE.B #UNDEF		ERROR: Invalid addressing mode
+SNE.B UNDEF	56F900005572	ERROR: Undefined symbol
+SNE.B SR		ERROR: Invalid addressing mode
+SNE.B CCR		ERROR: Invalid addressing mode
+SNE.B USP		ERROR: Invalid addressing mode
+SNE.B D1,D2,D3		ERROR: Invalid syntax
+SNE.W		ERROR: Invalid syntax
+SNE.W D1	56C1	ERROR: Invalid size code
+SNE.W A2		ERROR: Invalid addressing mode
+SNE.W SP		ERROR: Invalid addressing mode
+SNE.W (A3)	56D3	ERROR: Invalid size code
+SNE.W (A4)+	56DC	ERROR: Invalid size code
+SNE.W -(A5)	56E5	ERROR: Invalid size code
+SNE.W $10(A6)	56EE0010	ERROR: Invalid size code
+SNE.W -2(A0)	56E8FFFE	ERROR: Invalid size code
+SNE.W $10(A6,D7.W)	56F67010	ERROR: Invalid size code
+SNE.W $12(A0,A1.L)	56F09812	ERROR: Invalid size code
+SNE.W (A2,D3)	56F23000	ERROR: Invalid size code
+SNE.W $1234	56F81234	ERROR: Invalid size code
+SNE.W $12345678	56F912345678	ERROR: Invalid size code
+SNE.W $1234.L	56F900001234	ERROR: Invalid size code
+SNE.W $1234.W	56F81234	ERROR: Invalid size code
+SNE.W $8000	56F900008000	ERROR: Invalid size code
+SNE.W BK	56F81F00	ERROR: Invalid size code
+SNE.W FW	56F900001F00	ERROR: Invalid size code
+SNE.W *+$10(PC)		ERROR: Invalid addressing mode
+SNE.W *(PC,D0.W)		ERROR: Invalid addressing mode
+SNE.W BK(PC)		ERROR: Invalid addressing mode
+SNE.W #1		ERROR: Invalid addressing mode
+SNE.W #8		ERROR: Invalid addressing mode
+SNE.W #9		ERROR: Invalid addressing mode
+SNE.W #0		ERROR: Invalid addressing mode
+SNE.W #-1		ERROR: Invalid addressing mode
+SNE.W #$80		ERROR: Invalid addressing mode
+SNE.W #$1234		ERROR: Invalid addressing mode
+SNE.W #$12345678		ERROR: Invalid addressing mode
+SNE.W #$12345678.L		ERROR: Invalid addressing mode
+SNE.W #BK		ERROR: Invalid addressing mode
+SNE.W #FW		ERROR: Invalid addressing mode
+SNE.W #UNDEF		ERROR: Invalid addressing mode
+SNE.W UNDEF	56F900005572	ERROR: Undefined symbol
+SNE.W SR		ERROR: Invalid addressing mode
+SNE.W CCR		ERROR: Invalid addressing mode
+SNE.W USP		ERROR: Invalid addressing mode
+SNE.W D1,D2,D3		ERROR: Invalid syntax
+SNE.L		ERROR: Invalid syntax
+SNE.L D1	56C1	ERROR: Invalid size code
+SNE.L A2		ERROR: Invalid addressing mode
+SNE.L SP		ERROR: Invalid addressing mode
+SNE.L (A3)	56D3	ERROR: Invalid size code
+SNE.L (A4)+	56DC	ERROR: Invalid size code
+SNE.L -(A5)	56E5	ERROR: Invalid size code
+SNE.L $10(A6)	56EE0010	ERROR: Invalid size code
+SNE.L -2(A0)	56E8FFFE	ERROR: Invalid size code
+SNE.L $10(A6,D7.W)	56F67010	ERROR: Invalid size code
+SNE.L $12(A0,A1.L)	56F09812	ERROR: Invalid size code
+SNE.L (A2,D3)	56F23000	ERROR: Invalid size code
+SNE.L $1234	56F81234	ERROR: Invalid size code
+SNE.L $12345678	56F912345678	ERROR: Invalid size code
+SNE.L $1234.L	56F900001234	ERROR: Invalid size code
+SNE.L $1234.W	56F81234	ERROR: Invalid size code
+SNE.L $8000	56F900008000	ERROR: Invalid size code
+SNE.L BK	56F81F00	ERROR: Invalid size code
+SNE.L FW	56F900001F00	ERROR: Invalid size code
+SNE.L *+$10(PC)		ERROR: Invalid addressing mode
+SNE.L *(PC,D0.W)		ERROR: Invalid addressing mode
+SNE.L BK(PC)		ERROR: Invalid addressing mode
+SNE.L #1		ERROR: Invalid addressing mode
+SNE.L #8		ERROR: Invalid addressing mode
+SNE.L #9		ERROR: Invalid addressing mode
+SNE.L #0		ERROR: Invalid addressing mode
+SNE.L #-1		ERROR: Invalid addressing mode
+SNE.L #$80		ERROR: Invalid addressing mode
+SNE.L #$1234		ERROR: Invalid addressing mode
+SNE.L #$12345678		ERROR: Invalid addressing mode
+SNE.L #$12345678.L		ERROR: Invalid addressing mode
+SNE.L #BK		ERROR: Invalid addressing mode
+SNE.L #FW		ERROR: Invalid addressing mode
+SNE.L #UNDEF		ERROR: Invalid addressing mode
+SNE.L UNDEF	56F900005572	ERROR: Undefined symbol
+SNE.L SR		ERROR: Invalid addressing mode
+SNE.L CCR		ERROR: Invalid addressing mode
+SNE.L USP		ERROR: Invalid addressing mode
+SNE.L D1,D2,D3		ERROR: Invalid syntax
+SNE.S		ERROR: Invalid syntax
+SNE.S D1	56C1	ERROR: Invalid size code
+SNE.S A2		ERROR: Invalid addressing mode
+SNE.S SP		ERROR: Invalid addressing mode
+SNE.S (A3)	56D3	ERROR: Invalid size code
+SNE.S (A4)+	56DC	ERROR: Invalid size code
+SNE.S -(A5)	56E5	ERROR: Invalid size code
+SNE.S $10(A6)	56EE0010	ERROR: Invalid size code
+SNE.S -2(A0)	56E8FFFE	ERROR: Invalid size code
+SNE.S $10(A6,D7.W)	56F67010	ERROR: Invalid size code
+SNE.S $12(A0,A1.L)	56F09812	ERROR: Invalid size code
+SNE.S (A2,D3)	56F23000	ERROR: Invalid size code
+SNE.S $1234	56F81234	ERROR: Invalid size code
+SNE.S $12345678	56F912345678	ERROR: Invalid size code
+SNE.S $1234.L	56F900001234	ERROR: Invalid size code
+SNE.S $1234.W	56F81234	ERROR: Invalid size code
+SNE.S $8000	56F900008000	ERROR: Invalid size code
+SNE.S BK	56F81F00	ERROR: Invalid size code
+SNE.S FW	56F900001F00	ERROR: Invalid size code
+SNE.S *+$10(PC)		ERROR: Invalid addressing mode
+SNE.S *(PC,D0.W)		ERROR: Invalid addressing mode
+SNE.S BK(PC)		ERROR: Invalid addressing mode
+SNE.S #1		ERROR: Invalid addressing mode
+SNE.S #8		ERROR: Invalid addressing mode
+SNE.S #9		ERROR: Invalid addressing mode
+SNE.S #0		ERROR: Invalid addressing mode
+SNE.S #-1		ERROR: Invalid addressing mode
+SNE.S #$80		ERROR: Invalid addressing mode
+SNE.S #$1234		ERROR: Invalid addressing mode
+SNE.S #$12345678		ERROR: Invalid addressing mode
+SNE.S #$12345678.L		ERROR: Invalid addressing mode
+SNE.S #BK		ERROR: Invalid addressing mode
+SNE.S #FW		ERROR: Invalid addressing mode
+SNE.S #UNDEF		ERROR: Invalid addressing mode
+SNE.S UNDEF	56F900005572	ERROR: Undefined symbol
+SNE.S SR		ERROR: Invalid addressing mode
+SNE.S CCR		ERROR: Invalid addressing mode
+SNE.S USP		ERROR: Invalid addressing mode
+SNE.S D1,D2,D3		ERROR: Invalid syntax
+SNE.X D1,D2		ERROR: Invalid syntax
+SNE.X #1		ERROR: Invalid addressing mode

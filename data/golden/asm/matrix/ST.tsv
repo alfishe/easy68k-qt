@@ -1,0 +1,405 @@
+ST		ERROR: Invalid syntax
+ST D1	50C1	-
+ST A2		ERROR: Invalid addressing mode
+ST SP		ERROR: Invalid addressing mode
+ST (A3)	50D3	-
+ST (A4)+	50DC	-
+ST -(A5)	50E5	-
+ST $10(A6)	50EE0010	-
+ST -2(A0)	50E8FFFE	-
+ST $10(A6,D7.W)	50F67010	-
+ST $12(A0,A1.L)	50F09812	-
+ST (A2,D3)	50F23000	-
+ST $1234	50F81234	-
+ST $12345678	50F912345678	-
+ST $1234.L	50F900001234	-
+ST $1234.W	50F81234	WARNING: Forcing SHORT addressing disables range checking of extension word
+ST $8000	50F900008000	-
+ST BK	50F81F00	-
+ST FW	50F900001F00	-
+ST *+$10(PC)		ERROR: Invalid addressing mode
+ST *(PC,D0.W)		ERROR: Invalid addressing mode
+ST BK(PC)		ERROR: Invalid addressing mode
+ST #1		ERROR: Invalid addressing mode
+ST #8		ERROR: Invalid addressing mode
+ST #9		ERROR: Invalid addressing mode
+ST #0		ERROR: Invalid addressing mode
+ST #-1		ERROR: Invalid addressing mode
+ST #$80		ERROR: Invalid addressing mode
+ST #$1234		ERROR: Invalid addressing mode
+ST #$12345678		ERROR: Invalid addressing mode
+ST #$12345678.L		ERROR: Invalid addressing mode
+ST #BK		ERROR: Invalid addressing mode
+ST #FW		ERROR: Invalid addressing mode
+ST #UNDEF		ERROR: Invalid addressing mode
+ST UNDEF	50F900005629	ERROR: Undefined symbol
+ST SR		ERROR: Invalid addressing mode
+ST CCR		ERROR: Invalid addressing mode
+ST USP		ERROR: Invalid addressing mode
+ST D1,D1		ERROR: Invalid syntax
+ST D1,A2		ERROR: Invalid syntax
+ST D1,(A3)		ERROR: Invalid syntax
+ST D1,$10(A6)		ERROR: Invalid syntax
+ST D1,$1234		ERROR: Invalid syntax
+ST D1,FW		ERROR: Invalid syntax
+ST D1,#1		ERROR: Invalid syntax
+ST D1,#$1234		ERROR: Invalid syntax
+ST D1,CCR		ERROR: Invalid syntax
+ST D1,SR		ERROR: Invalid syntax
+ST A2,D1		ERROR: Invalid addressing mode
+ST A2,A2		ERROR: Invalid addressing mode
+ST A2,(A3)		ERROR: Invalid addressing mode
+ST A2,$10(A6)		ERROR: Invalid addressing mode
+ST A2,$1234		ERROR: Invalid addressing mode
+ST A2,FW		ERROR: Invalid addressing mode
+ST A2,#1		ERROR: Invalid addressing mode
+ST A2,#$1234		ERROR: Invalid addressing mode
+ST A2,CCR		ERROR: Invalid addressing mode
+ST A2,SR		ERROR: Invalid addressing mode
+ST (A3),D1		ERROR: Invalid syntax
+ST (A3),A2		ERROR: Invalid syntax
+ST (A3),(A3)		ERROR: Invalid syntax
+ST (A3),$10(A6)		ERROR: Invalid syntax
+ST (A3),$1234		ERROR: Invalid syntax
+ST (A3),FW		ERROR: Invalid syntax
+ST (A3),#1		ERROR: Invalid syntax
+ST (A3),#$1234		ERROR: Invalid syntax
+ST (A3),CCR		ERROR: Invalid syntax
+ST (A3),SR		ERROR: Invalid syntax
+ST $10(A6),D1		ERROR: Invalid syntax
+ST $10(A6),A2		ERROR: Invalid syntax
+ST $10(A6),(A3)		ERROR: Invalid syntax
+ST $10(A6),$10(A6)		ERROR: Invalid syntax
+ST $10(A6),$1234		ERROR: Invalid syntax
+ST $10(A6),FW		ERROR: Invalid syntax
+ST $10(A6),#1		ERROR: Invalid syntax
+ST $10(A6),#$1234		ERROR: Invalid syntax
+ST $10(A6),CCR		ERROR: Invalid syntax
+ST $10(A6),SR		ERROR: Invalid syntax
+ST $1234,D1		ERROR: Invalid syntax
+ST $1234,A2		ERROR: Invalid syntax
+ST $1234,(A3)		ERROR: Invalid syntax
+ST $1234,$10(A6)		ERROR: Invalid syntax
+ST $1234,$1234		ERROR: Invalid syntax
+ST $1234,FW		ERROR: Invalid syntax
+ST $1234,#1		ERROR: Invalid syntax
+ST $1234,#$1234		ERROR: Invalid syntax
+ST $1234,CCR		ERROR: Invalid syntax
+ST $1234,SR		ERROR: Invalid syntax
+ST FW,D1		ERROR: Invalid syntax
+ST FW,A2		ERROR: Invalid syntax
+ST FW,(A3)		ERROR: Invalid syntax
+ST FW,$10(A6)		ERROR: Invalid syntax
+ST FW,$1234		ERROR: Invalid syntax
+ST FW,FW		ERROR: Invalid syntax
+ST FW,#1		ERROR: Invalid syntax
+ST FW,#$1234		ERROR: Invalid syntax
+ST FW,CCR		ERROR: Invalid syntax
+ST FW,SR		ERROR: Invalid syntax
+ST #1,D1		ERROR: Invalid addressing mode
+ST #1,A2		ERROR: Invalid addressing mode
+ST #1,(A3)		ERROR: Invalid addressing mode
+ST #1,$10(A6)		ERROR: Invalid addressing mode
+ST #1,$1234		ERROR: Invalid addressing mode
+ST #1,FW		ERROR: Invalid addressing mode
+ST #1,#1		ERROR: Invalid addressing mode
+ST #1,#$1234		ERROR: Invalid addressing mode
+ST #1,CCR		ERROR: Invalid addressing mode
+ST #1,SR		ERROR: Invalid addressing mode
+ST #$1234,D1		ERROR: Invalid addressing mode
+ST #$1234,A2		ERROR: Invalid addressing mode
+ST #$1234,(A3)		ERROR: Invalid addressing mode
+ST #$1234,$10(A6)		ERROR: Invalid addressing mode
+ST #$1234,$1234		ERROR: Invalid addressing mode
+ST #$1234,FW		ERROR: Invalid addressing mode
+ST #$1234,#1		ERROR: Invalid addressing mode
+ST #$1234,#$1234		ERROR: Invalid addressing mode
+ST #$1234,CCR		ERROR: Invalid addressing mode
+ST #$1234,SR		ERROR: Invalid addressing mode
+ST CCR,D1		ERROR: Invalid addressing mode
+ST CCR,A2		ERROR: Invalid addressing mode
+ST CCR,(A3)		ERROR: Invalid addressing mode
+ST CCR,$10(A6)		ERROR: Invalid addressing mode
+ST CCR,$1234		ERROR: Invalid addressing mode
+ST CCR,FW		ERROR: Invalid addressing mode
+ST CCR,#1		ERROR: Invalid addressing mode
+ST CCR,#$1234		ERROR: Invalid addressing mode
+ST CCR,CCR		ERROR: Invalid addressing mode
+ST CCR,SR		ERROR: Invalid addressing mode
+ST SR,D1		ERROR: Invalid addressing mode
+ST SR,A2		ERROR: Invalid addressing mode
+ST SR,(A3)		ERROR: Invalid addressing mode
+ST SR,$10(A6)		ERROR: Invalid addressing mode
+ST SR,$1234		ERROR: Invalid addressing mode
+ST SR,FW		ERROR: Invalid addressing mode
+ST SR,#1		ERROR: Invalid addressing mode
+ST SR,#$1234		ERROR: Invalid addressing mode
+ST SR,CCR		ERROR: Invalid addressing mode
+ST SR,SR		ERROR: Invalid addressing mode
+ST SP,D1		ERROR: Invalid addressing mode
+ST SP,A2		ERROR: Invalid addressing mode
+ST D1,SP		ERROR: Invalid syntax
+ST #$12,SP		ERROR: Invalid addressing mode
+ST (A4)+,D1		ERROR: Invalid syntax
+ST (A4)+,A2		ERROR: Invalid syntax
+ST D1,(A4)+		ERROR: Invalid syntax
+ST #$12,(A4)+		ERROR: Invalid addressing mode
+ST -(A5),D1		ERROR: Invalid syntax
+ST -(A5),A2		ERROR: Invalid syntax
+ST D1,-(A5)		ERROR: Invalid syntax
+ST #$12,-(A5)		ERROR: Invalid addressing mode
+ST -2(A0),D1		ERROR: Invalid syntax
+ST -2(A0),A2		ERROR: Invalid syntax
+ST D1,-2(A0)		ERROR: Invalid syntax
+ST #$12,-2(A0)		ERROR: Invalid addressing mode
+ST $10(A6,D7.W),D1		ERROR: Invalid syntax
+ST $10(A6,D7.W),A2		ERROR: Invalid syntax
+ST D1,$10(A6,D7.W)		ERROR: Invalid syntax
+ST #$12,$10(A6,D7.W)		ERROR: Invalid addressing mode
+ST $12(A0,A1.L),D1		ERROR: Invalid syntax
+ST $12(A0,A1.L),A2		ERROR: Invalid syntax
+ST D1,$12(A0,A1.L)		ERROR: Invalid syntax
+ST #$12,$12(A0,A1.L)		ERROR: Invalid addressing mode
+ST (A2,D3),D1		ERROR: Invalid syntax
+ST (A2,D3),A2		ERROR: Invalid syntax
+ST D1,(A2,D3)		ERROR: Invalid syntax
+ST #$12,(A2,D3)		ERROR: Invalid addressing mode
+ST $12345678,D1		ERROR: Invalid syntax
+ST $12345678,A2		ERROR: Invalid syntax
+ST D1,$12345678		ERROR: Invalid syntax
+ST #$12,$12345678		ERROR: Invalid addressing mode
+ST $1234.L,D1		ERROR: Invalid syntax
+ST $1234.L,A2		ERROR: Invalid syntax
+ST D1,$1234.L		ERROR: Invalid syntax
+ST #$12,$1234.L		ERROR: Invalid addressing mode
+ST $1234.W,D1		ERROR: Invalid syntax
+ST $1234.W,A2		ERROR: Invalid syntax
+ST D1,$1234.W		ERROR: Invalid syntax
+ST #$12,$1234.W		ERROR: Invalid addressing mode
+ST $8000,D1		ERROR: Invalid syntax
+ST $8000,A2		ERROR: Invalid syntax
+ST D1,$8000		ERROR: Invalid syntax
+ST #$12,$8000		ERROR: Invalid addressing mode
+ST BK,D1		ERROR: Invalid syntax
+ST BK,A2		ERROR: Invalid syntax
+ST D1,BK		ERROR: Invalid syntax
+ST #$12,BK		ERROR: Invalid addressing mode
+ST *+$10(PC),D1		ERROR: Invalid addressing mode
+ST *+$10(PC),A2		ERROR: Invalid addressing mode
+ST D1,*+$10(PC)		ERROR: Invalid syntax
+ST #$12,*+$10(PC)		ERROR: Invalid addressing mode
+ST *(PC,D0.W),D1		ERROR: Invalid addressing mode
+ST *(PC,D0.W),A2		ERROR: Invalid addressing mode
+ST D1,*(PC,D0.W)		ERROR: Invalid syntax
+ST #$12,*(PC,D0.W)		ERROR: Invalid addressing mode
+ST BK(PC),D1		ERROR: Invalid addressing mode
+ST BK(PC),A2		ERROR: Invalid addressing mode
+ST D1,BK(PC)		ERROR: Invalid syntax
+ST #$12,BK(PC)		ERROR: Invalid addressing mode
+ST #8,D1		ERROR: Invalid addressing mode
+ST #8,A2		ERROR: Invalid addressing mode
+ST D1,#8		ERROR: Invalid syntax
+ST #$12,#8		ERROR: Invalid addressing mode
+ST #9,D1		ERROR: Invalid addressing mode
+ST #9,A2		ERROR: Invalid addressing mode
+ST D1,#9		ERROR: Invalid syntax
+ST #$12,#9		ERROR: Invalid addressing mode
+ST #0,D1		ERROR: Invalid addressing mode
+ST #0,A2		ERROR: Invalid addressing mode
+ST D1,#0		ERROR: Invalid syntax
+ST #$12,#0		ERROR: Invalid addressing mode
+ST #-1,D1		ERROR: Invalid addressing mode
+ST #-1,A2		ERROR: Invalid addressing mode
+ST D1,#-1		ERROR: Invalid syntax
+ST #$12,#-1		ERROR: Invalid addressing mode
+ST #$80,D1		ERROR: Invalid addressing mode
+ST #$80,A2		ERROR: Invalid addressing mode
+ST D1,#$80		ERROR: Invalid syntax
+ST #$12,#$80		ERROR: Invalid addressing mode
+ST #$12345678,D1		ERROR: Invalid addressing mode
+ST #$12345678,A2		ERROR: Invalid addressing mode
+ST D1,#$12345678		ERROR: Invalid syntax
+ST #$12,#$12345678		ERROR: Invalid addressing mode
+ST #$12345678.L,D1		ERROR: Invalid addressing mode
+ST #$12345678.L,A2		ERROR: Invalid addressing mode
+ST D1,#$12345678.L		ERROR: Invalid syntax
+ST #$12,#$12345678.L		ERROR: Invalid addressing mode
+ST #BK,D1		ERROR: Invalid addressing mode
+ST #BK,A2		ERROR: Invalid addressing mode
+ST D1,#BK		ERROR: Invalid syntax
+ST #$12,#BK		ERROR: Invalid addressing mode
+ST #FW,D1		ERROR: Invalid addressing mode
+ST #FW,A2		ERROR: Invalid addressing mode
+ST D1,#FW		ERROR: Invalid syntax
+ST #$12,#FW		ERROR: Invalid addressing mode
+ST #UNDEF,D1		ERROR: Invalid addressing mode
+ST #UNDEF,A2		ERROR: Invalid addressing mode
+ST D1,#UNDEF		ERROR: Invalid syntax
+ST #$12,#UNDEF		ERROR: Invalid addressing mode
+ST UNDEF,D1		ERROR: Invalid syntax
+ST UNDEF,A2		ERROR: Invalid syntax
+ST D1,UNDEF		ERROR: Invalid syntax
+ST #$12,UNDEF		ERROR: Invalid addressing mode
+ST USP,D1		ERROR: Invalid addressing mode
+ST USP,A2		ERROR: Invalid addressing mode
+ST D1,USP		ERROR: Invalid syntax
+ST #$12,USP		ERROR: Invalid addressing mode
+ST D1,D2,D3		ERROR: Invalid syntax
+ST.B		ERROR: Invalid syntax
+ST.B D1	50C1	-
+ST.B A2		ERROR: Invalid addressing mode
+ST.B SP		ERROR: Invalid addressing mode
+ST.B (A3)	50D3	-
+ST.B (A4)+	50DC	-
+ST.B -(A5)	50E5	-
+ST.B $10(A6)	50EE0010	-
+ST.B -2(A0)	50E8FFFE	-
+ST.B $10(A6,D7.W)	50F67010	-
+ST.B $12(A0,A1.L)	50F09812	-
+ST.B (A2,D3)	50F23000	-
+ST.B $1234	50F81234	-
+ST.B $12345678	50F912345678	-
+ST.B $1234.L	50F900001234	-
+ST.B $1234.W	50F81234	WARNING: Forcing SHORT addressing disables range checking of extension word
+ST.B $8000	50F900008000	-
+ST.B BK	50F81F00	-
+ST.B FW	50F900001F00	-
+ST.B *+$10(PC)		ERROR: Invalid addressing mode
+ST.B *(PC,D0.W)		ERROR: Invalid addressing mode
+ST.B BK(PC)		ERROR: Invalid addressing mode
+ST.B #1		ERROR: Invalid addressing mode
+ST.B #8		ERROR: Invalid addressing mode
+ST.B #9		ERROR: Invalid addressing mode
+ST.B #0		ERROR: Invalid addressing mode
+ST.B #-1		ERROR: Invalid addressing mode
+ST.B #$80		ERROR: Invalid addressing mode
+ST.B #$1234		ERROR: Invalid addressing mode
+ST.B #$12345678		ERROR: Invalid addressing mode
+ST.B #$12345678.L		ERROR: Invalid addressing mode
+ST.B #BK		ERROR: Invalid addressing mode
+ST.B #FW		ERROR: Invalid addressing mode
+ST.B #UNDEF		ERROR: Invalid addressing mode
+ST.B UNDEF	50F900005629	ERROR: Undefined symbol
+ST.B SR		ERROR: Invalid addressing mode
+ST.B CCR		ERROR: Invalid addressing mode
+ST.B USP		ERROR: Invalid addressing mode
+ST.B D1,D2,D3		ERROR: Invalid syntax
+ST.W		ERROR: Invalid syntax
+ST.W D1	50C1	ERROR: Invalid size code
+ST.W A2		ERROR: Invalid addressing mode
+ST.W SP		ERROR: Invalid addressing mode
+ST.W (A3)	50D3	ERROR: Invalid size code
+ST.W (A4)+	50DC	ERROR: Invalid size code
+ST.W -(A5)	50E5	ERROR: Invalid size code
+ST.W $10(A6)	50EE0010	ERROR: Invalid size code
+ST.W -2(A0)	50E8FFFE	ERROR: Invalid size code
+ST.W $10(A6,D7.W)	50F67010	ERROR: Invalid size code
+ST.W $12(A0,A1.L)	50F09812	ERROR: Invalid size code
+ST.W (A2,D3)	50F23000	ERROR: Invalid size code
+ST.W $1234	50F81234	ERROR: Invalid size code
+ST.W $12345678	50F912345678	ERROR: Invalid size code
+ST.W $1234.L	50F900001234	ERROR: Invalid size code
+ST.W $1234.W	50F81234	ERROR: Invalid size code
+ST.W $8000	50F900008000	ERROR: Invalid size code
+ST.W BK	50F81F00	ERROR: Invalid size code
+ST.W FW	50F900001F00	ERROR: Invalid size code
+ST.W *+$10(PC)		ERROR: Invalid addressing mode
+ST.W *(PC,D0.W)		ERROR: Invalid addressing mode
+ST.W BK(PC)		ERROR: Invalid addressing mode
+ST.W #1		ERROR: Invalid addressing mode
+ST.W #8		ERROR: Invalid addressing mode
+ST.W #9		ERROR: Invalid addressing mode
+ST.W #0		ERROR: Invalid addressing mode
+ST.W #-1		ERROR: Invalid addressing mode
+ST.W #$80		ERROR: Invalid addressing mode
+ST.W #$1234		ERROR: Invalid addressing mode
+ST.W #$12345678		ERROR: Invalid addressing mode
+ST.W #$12345678.L		ERROR: Invalid addressing mode
+ST.W #BK		ERROR: Invalid addressing mode
+ST.W #FW		ERROR: Invalid addressing mode
+ST.W #UNDEF		ERROR: Invalid addressing mode
+ST.W UNDEF	50F900005629	ERROR: Undefined symbol
+ST.W SR		ERROR: Invalid addressing mode
+ST.W CCR		ERROR: Invalid addressing mode
+ST.W USP		ERROR: Invalid addressing mode
+ST.W D1,D2,D3		ERROR: Invalid syntax
+ST.L		ERROR: Invalid syntax
+ST.L D1	50C1	ERROR: Invalid size code
+ST.L A2		ERROR: Invalid addressing mode
+ST.L SP		ERROR: Invalid addressing mode
+ST.L (A3)	50D3	ERROR: Invalid size code
+ST.L (A4)+	50DC	ERROR: Invalid size code
+ST.L -(A5)	50E5	ERROR: Invalid size code
+ST.L $10(A6)	50EE0010	ERROR: Invalid size code
+ST.L -2(A0)	50E8FFFE	ERROR: Invalid size code
+ST.L $10(A6,D7.W)	50F67010	ERROR: Invalid size code
+ST.L $12(A0,A1.L)	50F09812	ERROR: Invalid size code
+ST.L (A2,D3)	50F23000	ERROR: Invalid size code
+ST.L $1234	50F81234	ERROR: Invalid size code
+ST.L $12345678	50F912345678	ERROR: Invalid size code
+ST.L $1234.L	50F900001234	ERROR: Invalid size code
+ST.L $1234.W	50F81234	ERROR: Invalid size code
+ST.L $8000	50F900008000	ERROR: Invalid size code
+ST.L BK	50F81F00	ERROR: Invalid size code
+ST.L FW	50F900001F00	ERROR: Invalid size code
+ST.L *+$10(PC)		ERROR: Invalid addressing mode
+ST.L *(PC,D0.W)		ERROR: Invalid addressing mode
+ST.L BK(PC)		ERROR: Invalid addressing mode
+ST.L #1		ERROR: Invalid addressing mode
+ST.L #8		ERROR: Invalid addressing mode
+ST.L #9		ERROR: Invalid addressing mode
+ST.L #0		ERROR: Invalid addressing mode
+ST.L #-1		ERROR: Invalid addressing mode
+ST.L #$80		ERROR: Invalid addressing mode
+ST.L #$1234		ERROR: Invalid addressing mode
+ST.L #$12345678		ERROR: Invalid addressing mode
+ST.L #$12345678.L		ERROR: Invalid addressing mode
+ST.L #BK		ERROR: Invalid addressing mode
+ST.L #FW		ERROR: Invalid addressing mode
+ST.L #UNDEF		ERROR: Invalid addressing mode
+ST.L UNDEF	50F900005629	ERROR: Undefined symbol
+ST.L SR		ERROR: Invalid addressing mode
+ST.L CCR		ERROR: Invalid addressing mode
+ST.L USP		ERROR: Invalid addressing mode
+ST.L D1,D2,D3		ERROR: Invalid syntax
+ST.S		ERROR: Invalid syntax
+ST.S D1	50C1	ERROR: Invalid size code
+ST.S A2		ERROR: Invalid addressing mode
+ST.S SP		ERROR: Invalid addressing mode
+ST.S (A3)	50D3	ERROR: Invalid size code
+ST.S (A4)+	50DC	ERROR: Invalid size code
+ST.S -(A5)	50E5	ERROR: Invalid size code
+ST.S $10(A6)	50EE0010	ERROR: Invalid size code
+ST.S -2(A0)	50E8FFFE	ERROR: Invalid size code
+ST.S $10(A6,D7.W)	50F67010	ERROR: Invalid size code
+ST.S $12(A0,A1.L)	50F09812	ERROR: Invalid size code
+ST.S (A2,D3)	50F23000	ERROR: Invalid size code
+ST.S $1234	50F81234	ERROR: Invalid size code
+ST.S $12345678	50F912345678	ERROR: Invalid size code
+ST.S $1234.L	50F900001234	ERROR: Invalid size code
+ST.S $1234.W	50F81234	ERROR: Invalid size code
+ST.S $8000	50F900008000	ERROR: Invalid size code
+ST.S BK	50F81F00	ERROR: Invalid size code
+ST.S FW	50F900001F00	ERROR: Invalid size code
+ST.S *+$10(PC)		ERROR: Invalid addressing mode
+ST.S *(PC,D0.W)		ERROR: Invalid addressing mode
+ST.S BK(PC)		ERROR: Invalid addressing mode
+ST.S #1		ERROR: Invalid addressing mode
+ST.S #8		ERROR: Invalid addressing mode
+ST.S #9		ERROR: Invalid addressing mode
+ST.S #0		ERROR: Invalid addressing mode
+ST.S #-1		ERROR: Invalid addressing mode
+ST.S #$80		ERROR: Invalid addressing mode
+ST.S #$1234		ERROR: Invalid addressing mode
+ST.S #$12345678		ERROR: Invalid addressing mode
+ST.S #$12345678.L		ERROR: Invalid addressing mode
+ST.S #BK		ERROR: Invalid addressing mode
+ST.S #FW		ERROR: Invalid addressing mode
+ST.S #UNDEF		ERROR: Invalid addressing mode
+ST.S UNDEF	50F900005629	ERROR: Undefined symbol
+ST.S SR		ERROR: Invalid addressing mode
+ST.S CCR		ERROR: Invalid addressing mode
+ST.S USP		ERROR: Invalid addressing mode
+ST.S D1,D2,D3		ERROR: Invalid syntax
+ST.X D1,D2		ERROR: Invalid syntax
+ST.X #1		ERROR: Invalid addressing mode

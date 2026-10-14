@@ -1,0 +1,82 @@
+BGT		ERROR: Invalid syntax
+BGT *+2	6E000000	-
+BGT *+4	6E02	-
+BGT *+$80	6E7E	-
+BGT *+$82	6E000080	-
+BGT *-$7E	6E80	-
+BGT *-$80	6E00FF7E	-
+BGT *+$8000	6E007FFE	-
+BGT *	6EFE	-
+BGT BK	6E000EFE	-
+BGT FW	6E000EFE	-
+BGT $1000	6EFE	-
+BGT $12345678	6E004676	ERROR: Branch instruction displacement is out of range or invalid
+BGT D1		ERROR: Invalid addressing mode
+BGT (A0)		ERROR: Invalid addressing mode
+BGT #4		ERROR: Invalid addressing mode
+BGT.B		ERROR: Invalid syntax
+BGT.B *+2	6E00	ERROR: Branch instruction displacement is out of range or invalid
+BGT.B *+4	6E02	-
+BGT.B *+$80	6E7E	-
+BGT.B *+$82	6E80	ERROR: Branch instruction displacement is out of range or invalid
+BGT.B *-$7E	6E80	-
+BGT.B *-$80	6E7E	ERROR: Branch instruction displacement is out of range or invalid
+BGT.B *+$8000	6EFE	ERROR: Branch instruction displacement is out of range or invalid
+BGT.B *	6EFE	-
+BGT.B BK	6EFE	ERROR: Branch instruction displacement is out of range or invalid
+BGT.B FW	6EFE	ERROR: Branch instruction displacement is out of range or invalid
+BGT.B $1000	6EFE	-
+BGT.B $12345678	6E76	ERROR: Branch instruction displacement is out of range or invalid
+BGT.B D1		ERROR: Invalid addressing mode
+BGT.B (A0)		ERROR: Invalid addressing mode
+BGT.B #4		ERROR: Invalid addressing mode
+BGT.W		ERROR: Invalid syntax
+BGT.W *+2	6E000000	-
+BGT.W *+4	6E000002	-
+BGT.W *+$80	6E00007E	-
+BGT.W *+$82	6E000080	-
+BGT.W *-$7E	6E00FF80	-
+BGT.W *-$80	6E00FF7E	-
+BGT.W *+$8000	6E007FFE	-
+BGT.W *	6E00FFFE	-
+BGT.W BK	6E000EFE	-
+BGT.W FW	6E000EFE	-
+BGT.W $1000	6E00FFFE	-
+BGT.W $12345678	6E004676	ERROR: Branch instruction displacement is out of range or invalid
+BGT.W D1		ERROR: Invalid addressing mode
+BGT.W (A0)		ERROR: Invalid addressing mode
+BGT.W #4		ERROR: Invalid addressing mode
+BGT.L		ERROR: Invalid syntax
+BGT.L *+2	6E000000	-
+BGT.L *+4	6E000002	-
+BGT.L *+$80	6E00007E	-
+BGT.L *+$82	6E000080	-
+BGT.L *-$7E	6E00FF80	-
+BGT.L *-$80	6E00FF7E	-
+BGT.L *+$8000	6E007FFE	-
+BGT.L *	6E00FFFE	-
+BGT.L BK	6E000EFE	-
+BGT.L FW	6E000EFE	-
+BGT.L $1000	6E00FFFE	-
+BGT.L $12345678	6E004676	ERROR: Branch instruction displacement is out of range or invalid
+BGT.L D1		ERROR: Invalid addressing mode
+BGT.L (A0)		ERROR: Invalid addressing mode
+BGT.L #4		ERROR: Invalid addressing mode
+BGT.S		ERROR: Invalid syntax
+BGT.S *+2	6E00	ERROR: Branch instruction displacement is out of range or invalid
+BGT.S *+4	6E02	-
+BGT.S *+$80	6E7E	-
+BGT.S *+$82	6E80	ERROR: Branch instruction displacement is out of range or invalid
+BGT.S *-$7E	6E80	-
+BGT.S *-$80	6E7E	ERROR: Branch instruction displacement is out of range or invalid
+BGT.S *+$8000	6EFE	ERROR: Branch instruction displacement is out of range or invalid
+BGT.S *	6EFE	-
+BGT.S BK	6EFE	ERROR: Branch instruction displacement is out of range or invalid
+BGT.S FW	6EFE	ERROR: Branch instruction displacement is out of range or invalid
+BGT.S $1000	6EFE	-
+BGT.S $12345678	6E76	ERROR: Branch instruction displacement is out of range or invalid
+BGT.S D1		ERROR: Invalid addressing mode
+BGT.S (A0)		ERROR: Invalid addressing mode
+BGT.S #4		ERROR: Invalid addressing mode
+BGT.X D1,D2		ERROR: Invalid addressing mode
+BGT.X #1		ERROR: Invalid addressing mode

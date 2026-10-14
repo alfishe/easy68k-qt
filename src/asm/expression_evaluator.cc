@@ -129,8 +129,14 @@ ExpressionResult ExpressionEvaluator::ParsePrimary() {
     if (symbols_) {
       SymbolInfo info;
       if (symbols_->Lookup(token.text, info)) {
-        if (HasFlag(info.flags, SymbolFlags::kRegisterList))
+        if (HasFlag(info.flags, SymbolFlags::kRegisterList)) {
+          if (lenient_undefined_) {  // EVAL.CPP: value 0, REG_LIST_SPEC
+            result.value = 0;
+            result.status = 0x20B;
+            return result;
+          }
           return MakeError("Register list symbol not valid in expression: " + token.text);
+        }
         result.value = info.value;
         // EVAL.CPP evalNumber(): in pass 1 any known symbol is a backward
         // reference; in pass 2 only symbols whose definition has already been
@@ -149,6 +155,11 @@ ExpressionResult ExpressionEvaluator::ParsePrimary() {
             return MakeError("ENDF expected");
           if (token.text == ".3")
             return MakeError("REPEAT expected");
+          if (lenient_undefined_) {
+            result.value = 0;
+            result.status = 0x301;  // UNDEFINED (asm.h)
+            return result;
+          }
           return MakeError("Undefined symbol: " + token.text);
         }
         result.value = 0;
@@ -195,6 +206,8 @@ ExpressionResult ExpressionEvaluator::ParseExprPrec(int min_prec) {
       return rhs;
 
     lhs.is_back_ref = lhs.is_back_ref && rhs.is_back_ref;
+    if ((rhs.status & 0xF00) > lhs.status)  // NEWERROR
+      lhs.status = rhs.status;
 
     std::string op = op_tok.text;
     if (op_tok.type == TokenType::kPlus) {

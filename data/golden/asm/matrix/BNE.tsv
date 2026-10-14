@@ -1,0 +1,82 @@
+BNE		ERROR: Invalid syntax
+BNE *+2	66000000	-
+BNE *+4	6602	-
+BNE *+$80	667E	-
+BNE *+$82	66000080	-
+BNE *-$7E	6680	-
+BNE *-$80	6600FF7E	-
+BNE *+$8000	66007FFE	-
+BNE *	66FE	-
+BNE BK	66000EFE	-
+BNE FW	66000EFE	-
+BNE $1000	66FE	-
+BNE $12345678	66004676	ERROR: Branch instruction displacement is out of range or invalid
+BNE D1		ERROR: Invalid addressing mode
+BNE (A0)		ERROR: Invalid addressing mode
+BNE #4		ERROR: Invalid addressing mode
+BNE.B		ERROR: Invalid syntax
+BNE.B *+2	6600	ERROR: Branch instruction displacement is out of range or invalid
+BNE.B *+4	6602	-
+BNE.B *+$80	667E	-
+BNE.B *+$82	6680	ERROR: Branch instruction displacement is out of range or invalid
+BNE.B *-$7E	6680	-
+BNE.B *-$80	667E	ERROR: Branch instruction displacement is out of range or invalid
+BNE.B *+$8000	66FE	ERROR: Branch instruction displacement is out of range or invalid
+BNE.B *	66FE	-
+BNE.B BK	66FE	ERROR: Branch instruction displacement is out of range or invalid
+BNE.B FW	66FE	ERROR: Branch instruction displacement is out of range or invalid
+BNE.B $1000	66FE	-
+BNE.B $12345678	6676	ERROR: Branch instruction displacement is out of range or invalid
+BNE.B D1		ERROR: Invalid addressing mode
+BNE.B (A0)		ERROR: Invalid addressing mode
+BNE.B #4		ERROR: Invalid addressing mode
+BNE.W		ERROR: Invalid syntax
+BNE.W *+2	66000000	-
+BNE.W *+4	66000002	-
+BNE.W *+$80	6600007E	-
+BNE.W *+$82	66000080	-
+BNE.W *-$7E	6600FF80	-
+BNE.W *-$80	6600FF7E	-
+BNE.W *+$8000	66007FFE	-
+BNE.W *	6600FFFE	-
+BNE.W BK	66000EFE	-
+BNE.W FW	66000EFE	-
+BNE.W $1000	6600FFFE	-
+BNE.W $12345678	66004676	ERROR: Branch instruction displacement is out of range or invalid
+BNE.W D1		ERROR: Invalid addressing mode
+BNE.W (A0)		ERROR: Invalid addressing mode
+BNE.W #4		ERROR: Invalid addressing mode
+BNE.L		ERROR: Invalid syntax
+BNE.L *+2	66000000	-
+BNE.L *+4	66000002	-
+BNE.L *+$80	6600007E	-
+BNE.L *+$82	66000080	-
+BNE.L *-$7E	6600FF80	-
+BNE.L *-$80	6600FF7E	-
+BNE.L *+$8000	66007FFE	-
+BNE.L *	6600FFFE	-
+BNE.L BK	66000EFE	-
+BNE.L FW	66000EFE	-
+BNE.L $1000	6600FFFE	-
+BNE.L $12345678	66004676	ERROR: Branch instruction displacement is out of range or invalid
+BNE.L D1		ERROR: Invalid addressing mode
+BNE.L (A0)		ERROR: Invalid addressing mode
+BNE.L #4		ERROR: Invalid addressing mode
+BNE.S		ERROR: Invalid syntax
+BNE.S *+2	6600	ERROR: Branch instruction displacement is out of range or invalid
+BNE.S *+4	6602	-
+BNE.S *+$80	667E	-
+BNE.S *+$82	6680	ERROR: Branch instruction displacement is out of range or invalid
+BNE.S *-$7E	6680	-
+BNE.S *-$80	667E	ERROR: Branch instruction displacement is out of range or invalid
+BNE.S *+$8000	66FE	ERROR: Branch instruction displacement is out of range or invalid
+BNE.S *	66FE	-
+BNE.S BK	66FE	ERROR: Branch instruction displacement is out of range or invalid
+BNE.S FW	66FE	ERROR: Branch instruction displacement is out of range or invalid
+BNE.S $1000	66FE	-
+BNE.S $12345678	6676	ERROR: Branch instruction displacement is out of range or invalid
+BNE.S D1		ERROR: Invalid addressing mode
+BNE.S (A0)		ERROR: Invalid addressing mode
+BNE.S #4		ERROR: Invalid addressing mode
+BNE.X D1,D2		ERROR: Invalid addressing mode
+BNE.X #1		ERROR: Invalid addressing mode

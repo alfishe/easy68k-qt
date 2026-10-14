@@ -1,0 +1,356 @@
+BFEXTU D1{0:8},D4	E9C14008	-
+BFEXTU D1{31:32},D4	E9C147C0	-
+BFEXTU D1{D2:D3},D4	E9C148A3	-
+BFEXTU D1{4:D5},D4	E9C14125	-
+BFEXTU D1{D6:1},D4	E9C14981	-
+BFEXTU D1{32:1},D4		ERROR: Invalid bitfield
+BFEXTU D1{0:0},D4		ERROR: Invalid bitfield
+BFEXTU D1{BK:1},D4		ERROR: Invalid bitfield
+BFEXTU (A3){0:8},D4	E9D34008	-
+BFEXTU (A3){31:32},D4	E9D347C0	-
+BFEXTU (A3){D2:D3},D4	E9D348A3	-
+BFEXTU (A3){4:D5},D4	E9D34125	-
+BFEXTU (A3){D6:1},D4	E9D34981	-
+BFEXTU (A3){32:1},D4		ERROR: Invalid bitfield
+BFEXTU (A3){0:0},D4		ERROR: Invalid bitfield
+BFEXTU (A3){BK:1},D4		ERROR: Invalid bitfield
+BFEXTU $10(A6){0:8},D4	E9EE40080010	-
+BFEXTU $10(A6){31:32},D4	E9EE47C00010	-
+BFEXTU $10(A6){D2:D3},D4	E9EE48A30010	-
+BFEXTU $10(A6){4:D5},D4	E9EE41250010	-
+BFEXTU $10(A6){D6:1},D4	E9EE49810010	-
+BFEXTU $10(A6){32:1},D4		ERROR: Invalid bitfield
+BFEXTU $10(A6){0:0},D4		ERROR: Invalid bitfield
+BFEXTU $10(A6){BK:1},D4		ERROR: Invalid bitfield
+BFEXTU $10(A6,D7.W){0:8},D4	E9F640087010	-
+BFEXTU $10(A6,D7.W){31:32},D4	E9F647C07010	-
+BFEXTU $10(A6,D7.W){D2:D3},D4	E9F648A37010	-
+BFEXTU $10(A6,D7.W){4:D5},D4	E9F641257010	-
+BFEXTU $10(A6,D7.W){D6:1},D4	E9F649817010	-
+BFEXTU $10(A6,D7.W){32:1},D4		ERROR: Invalid bitfield
+BFEXTU $10(A6,D7.W){0:0},D4		ERROR: Invalid bitfield
+BFEXTU $10(A6,D7.W){BK:1},D4		ERROR: Invalid bitfield
+BFEXTU $1234{0:8},D4	E9F840081234	-
+BFEXTU $1234{31:32},D4	E9F847C01234	-
+BFEXTU $1234{D2:D3},D4	E9F848A31234	-
+BFEXTU $1234{4:D5},D4	E9F841251234	-
+BFEXTU $1234{D6:1},D4	E9F849811234	-
+BFEXTU $1234{32:1},D4		ERROR: Invalid bitfield
+BFEXTU $1234{0:0},D4		ERROR: Invalid bitfield
+BFEXTU $1234{BK:1},D4		ERROR: Invalid bitfield
+BFEXTU FW{0:8},D4	E9F9400800001F00	-
+BFEXTU FW{31:32},D4	E9F947C000001F00	-
+BFEXTU FW{D2:D3},D4	E9F948A300001F00	-
+BFEXTU FW{4:D5},D4	E9F9412500001F00	-
+BFEXTU FW{D6:1},D4	E9F9498100001F00	-
+BFEXTU FW{32:1},D4		ERROR: Invalid bitfield
+BFEXTU FW{0:0},D4		ERROR: Invalid bitfield
+BFEXTU FW{BK:1},D4		ERROR: Invalid bitfield
+BFEXTU *+$10(PC){0:8},D4	E9FA4008000C	-
+BFEXTU *+$10(PC){31:32},D4	E9FA47C0000C	-
+BFEXTU *+$10(PC){D2:D3},D4	E9FA48A3000C	-
+BFEXTU *+$10(PC){4:D5},D4	E9FA4125000C	-
+BFEXTU *+$10(PC){D6:1},D4	E9FA4981000C	-
+BFEXTU *+$10(PC){32:1},D4		ERROR: Invalid bitfield
+BFEXTU *+$10(PC){0:0},D4		ERROR: Invalid bitfield
+BFEXTU *+$10(PC){BK:1},D4		ERROR: Invalid bitfield
+BFEXTU (A4)+{0:8},D4		ERROR: Invalid addressing mode
+BFEXTU (A4)+{31:32},D4		ERROR: Invalid addressing mode
+BFEXTU (A4)+{D2:D3},D4		ERROR: Invalid addressing mode
+BFEXTU (A4)+{4:D5},D4		ERROR: Invalid addressing mode
+BFEXTU (A4)+{D6:1},D4		ERROR: Invalid addressing mode
+BFEXTU (A4)+{32:1},D4		ERROR: Invalid bitfield
+BFEXTU (A4)+{0:0},D4		ERROR: Invalid bitfield
+BFEXTU (A4)+{BK:1},D4		ERROR: Invalid bitfield
+BFEXTU -(A5){0:8},D4		ERROR: Invalid addressing mode
+BFEXTU -(A5){31:32},D4		ERROR: Invalid addressing mode
+BFEXTU -(A5){D2:D3},D4		ERROR: Invalid addressing mode
+BFEXTU -(A5){4:D5},D4		ERROR: Invalid addressing mode
+BFEXTU -(A5){D6:1},D4		ERROR: Invalid addressing mode
+BFEXTU -(A5){32:1},D4		ERROR: Invalid bitfield
+BFEXTU -(A5){0:0},D4		ERROR: Invalid bitfield
+BFEXTU -(A5){BK:1},D4		ERROR: Invalid bitfield
+BFEXTU A2{0:8},D4		ERROR: Invalid addressing mode
+BFEXTU A2{31:32},D4		ERROR: Invalid addressing mode
+BFEXTU A2{D2:D3},D4		ERROR: Invalid addressing mode
+BFEXTU A2{4:D5},D4		ERROR: Invalid addressing mode
+BFEXTU A2{D6:1},D4		ERROR: Invalid addressing mode
+BFEXTU A2{32:1},D4		ERROR: Invalid bitfield
+BFEXTU A2{0:0},D4		ERROR: Invalid bitfield
+BFEXTU A2{BK:1},D4		ERROR: Invalid bitfield
+BFEXTU #1{0:8},D4		ERROR: Invalid addressing mode
+BFEXTU #1{31:32},D4		ERROR: Invalid addressing mode
+BFEXTU #1{D2:D3},D4		ERROR: Invalid addressing mode
+BFEXTU #1{4:D5},D4		ERROR: Invalid addressing mode
+BFEXTU #1{D6:1},D4		ERROR: Invalid addressing mode
+BFEXTU #1{32:1},D4		ERROR: Invalid bitfield
+BFEXTU #1{0:0},D4		ERROR: Invalid bitfield
+BFEXTU #1{BK:1},D4		ERROR: Invalid bitfield
+BFEXTU D1		ERROR: Invalid bitfield
+BFEXTU.B D1{0:8},D4	E9C14008	-
+BFEXTU.B D1{31:32},D4	E9C147C0	-
+BFEXTU.B D1{D2:D3},D4	E9C148A3	-
+BFEXTU.B D1{4:D5},D4	E9C14125	-
+BFEXTU.B D1{D6:1},D4	E9C14981	-
+BFEXTU.B D1{32:1},D4		ERROR: Invalid bitfield
+BFEXTU.B D1{0:0},D4		ERROR: Invalid bitfield
+BFEXTU.B D1{BK:1},D4		ERROR: Invalid bitfield
+BFEXTU.B (A3){0:8},D4	E9D34008	-
+BFEXTU.B (A3){31:32},D4	E9D347C0	-
+BFEXTU.B (A3){D2:D3},D4	E9D348A3	-
+BFEXTU.B (A3){4:D5},D4	E9D34125	-
+BFEXTU.B (A3){D6:1},D4	E9D34981	-
+BFEXTU.B (A3){32:1},D4		ERROR: Invalid bitfield
+BFEXTU.B (A3){0:0},D4		ERROR: Invalid bitfield
+BFEXTU.B (A3){BK:1},D4		ERROR: Invalid bitfield
+BFEXTU.B $10(A6){0:8},D4	E9EE40080010	-
+BFEXTU.B $10(A6){31:32},D4	E9EE47C00010	-
+BFEXTU.B $10(A6){D2:D3},D4	E9EE48A30010	-
+BFEXTU.B $10(A6){4:D5},D4	E9EE41250010	-
+BFEXTU.B $10(A6){D6:1},D4	E9EE49810010	-
+BFEXTU.B $10(A6){32:1},D4		ERROR: Invalid bitfield
+BFEXTU.B $10(A6){0:0},D4		ERROR: Invalid bitfield
+BFEXTU.B $10(A6){BK:1},D4		ERROR: Invalid bitfield
+BFEXTU.B $10(A6,D7.W){0:8},D4	E9F640087010	-
+BFEXTU.B $10(A6,D7.W){31:32},D4	E9F647C07010	-
+BFEXTU.B $10(A6,D7.W){D2:D3},D4	E9F648A37010	-
+BFEXTU.B $10(A6,D7.W){4:D5},D4	E9F641257010	-
+BFEXTU.B $10(A6,D7.W){D6:1},D4	E9F649817010	-
+BFEXTU.B $10(A6,D7.W){32:1},D4		ERROR: Invalid bitfield
+BFEXTU.B $10(A6,D7.W){0:0},D4		ERROR: Invalid bitfield
+BFEXTU.B $10(A6,D7.W){BK:1},D4		ERROR: Invalid bitfield
+BFEXTU.B $1234{0:8},D4	E9F840081234	-
+BFEXTU.B $1234{31:32},D4	E9F847C01234	-
+BFEXTU.B $1234{D2:D3},D4	E9F848A31234	-
+BFEXTU.B $1234{4:D5},D4	E9F841251234	-
+BFEXTU.B $1234{D6:1},D4	E9F849811234	-
+BFEXTU.B $1234{32:1},D4		ERROR: Invalid bitfield
+BFEXTU.B $1234{0:0},D4		ERROR: Invalid bitfield
+BFEXTU.B $1234{BK:1},D4		ERROR: Invalid bitfield
+BFEXTU.B FW{0:8},D4	E9F9400800001F00	-
+BFEXTU.B FW{31:32},D4	E9F947C000001F00	-
+BFEXTU.B FW{D2:D3},D4	E9F948A300001F00	-
+BFEXTU.B FW{4:D5},D4	E9F9412500001F00	-
+BFEXTU.B FW{D6:1},D4	E9F9498100001F00	-
+BFEXTU.B FW{32:1},D4		ERROR: Invalid bitfield
+BFEXTU.B FW{0:0},D4		ERROR: Invalid bitfield
+BFEXTU.B FW{BK:1},D4		ERROR: Invalid bitfield
+BFEXTU.B *+$10(PC){0:8},D4	E9FA4008000C	-
+BFEXTU.B *+$10(PC){31:32},D4	E9FA47C0000C	-
+BFEXTU.B *+$10(PC){D2:D3},D4	E9FA48A3000C	-
+BFEXTU.B *+$10(PC){4:D5},D4	E9FA4125000C	-
+BFEXTU.B *+$10(PC){D6:1},D4	E9FA4981000C	-
+BFEXTU.B *+$10(PC){32:1},D4		ERROR: Invalid bitfield
+BFEXTU.B *+$10(PC){0:0},D4		ERROR: Invalid bitfield
+BFEXTU.B *+$10(PC){BK:1},D4		ERROR: Invalid bitfield
+BFEXTU.B (A4)+{0:8},D4		ERROR: Invalid addressing mode
+BFEXTU.B (A4)+{31:32},D4		ERROR: Invalid addressing mode
+BFEXTU.B (A4)+{D2:D3},D4		ERROR: Invalid addressing mode
+BFEXTU.B (A4)+{4:D5},D4		ERROR: Invalid addressing mode
+BFEXTU.B (A4)+{D6:1},D4		ERROR: Invalid addressing mode
+BFEXTU.B (A4)+{32:1},D4		ERROR: Invalid bitfield
+BFEXTU.B (A4)+{0:0},D4		ERROR: Invalid bitfield
+BFEXTU.B (A4)+{BK:1},D4		ERROR: Invalid bitfield
+BFEXTU.B -(A5){0:8},D4		ERROR: Invalid addressing mode
+BFEXTU.B -(A5){31:32},D4		ERROR: Invalid addressing mode
+BFEXTU.B -(A5){D2:D3},D4		ERROR: Invalid addressing mode
+BFEXTU.B -(A5){4:D5},D4		ERROR: Invalid addressing mode
+BFEXTU.B -(A5){D6:1},D4		ERROR: Invalid addressing mode
+BFEXTU.B -(A5){32:1},D4		ERROR: Invalid bitfield
+BFEXTU.B -(A5){0:0},D4		ERROR: Invalid bitfield
+BFEXTU.B -(A5){BK:1},D4		ERROR: Invalid bitfield
+BFEXTU.B A2{0:8},D4		ERROR: Invalid addressing mode
+BFEXTU.B A2{31:32},D4		ERROR: Invalid addressing mode
+BFEXTU.B A2{D2:D3},D4		ERROR: Invalid addressing mode
+BFEXTU.B A2{4:D5},D4		ERROR: Invalid addressing mode
+BFEXTU.B A2{D6:1},D4		ERROR: Invalid addressing mode
+BFEXTU.B A2{32:1},D4		ERROR: Invalid bitfield
+BFEXTU.B A2{0:0},D4		ERROR: Invalid bitfield
+BFEXTU.B A2{BK:1},D4		ERROR: Invalid bitfield
+BFEXTU.B #1{0:8},D4		ERROR: Invalid addressing mode
+BFEXTU.B #1{31:32},D4		ERROR: Invalid addressing mode
+BFEXTU.B #1{D2:D3},D4		ERROR: Invalid addressing mode
+BFEXTU.B #1{4:D5},D4		ERROR: Invalid addressing mode
+BFEXTU.B #1{D6:1},D4		ERROR: Invalid addressing mode
+BFEXTU.B #1{32:1},D4		ERROR: Invalid bitfield
+BFEXTU.B #1{0:0},D4		ERROR: Invalid bitfield
+BFEXTU.B #1{BK:1},D4		ERROR: Invalid bitfield
+BFEXTU.B D1		ERROR: Invalid bitfield
+BFEXTU.L D1{0:8},D4	E9C14008	-
+BFEXTU.L D1{31:32},D4	E9C147C0	-
+BFEXTU.L D1{D2:D3},D4	E9C148A3	-
+BFEXTU.L D1{4:D5},D4	E9C14125	-
+BFEXTU.L D1{D6:1},D4	E9C14981	-
+BFEXTU.L D1{32:1},D4		ERROR: Invalid bitfield
+BFEXTU.L D1{0:0},D4		ERROR: Invalid bitfield
+BFEXTU.L D1{BK:1},D4		ERROR: Invalid bitfield
+BFEXTU.L (A3){0:8},D4	E9D34008	-
+BFEXTU.L (A3){31:32},D4	E9D347C0	-
+BFEXTU.L (A3){D2:D3},D4	E9D348A3	-
+BFEXTU.L (A3){4:D5},D4	E9D34125	-
+BFEXTU.L (A3){D6:1},D4	E9D34981	-
+BFEXTU.L (A3){32:1},D4		ERROR: Invalid bitfield
+BFEXTU.L (A3){0:0},D4		ERROR: Invalid bitfield
+BFEXTU.L (A3){BK:1},D4		ERROR: Invalid bitfield
+BFEXTU.L $10(A6){0:8},D4	E9EE40080010	-
+BFEXTU.L $10(A6){31:32},D4	E9EE47C00010	-
+BFEXTU.L $10(A6){D2:D3},D4	E9EE48A30010	-
+BFEXTU.L $10(A6){4:D5},D4	E9EE41250010	-
+BFEXTU.L $10(A6){D6:1},D4	E9EE49810010	-
+BFEXTU.L $10(A6){32:1},D4		ERROR: Invalid bitfield
+BFEXTU.L $10(A6){0:0},D4		ERROR: Invalid bitfield
+BFEXTU.L $10(A6){BK:1},D4		ERROR: Invalid bitfield
+BFEXTU.L $10(A6,D7.W){0:8},D4	E9F640087010	-
+BFEXTU.L $10(A6,D7.W){31:32},D4	E9F647C07010	-
+BFEXTU.L $10(A6,D7.W){D2:D3},D4	E9F648A37010	-
+BFEXTU.L $10(A6,D7.W){4:D5},D4	E9F641257010	-
+BFEXTU.L $10(A6,D7.W){D6:1},D4	E9F649817010	-
+BFEXTU.L $10(A6,D7.W){32:1},D4		ERROR: Invalid bitfield
+BFEXTU.L $10(A6,D7.W){0:0},D4		ERROR: Invalid bitfield
+BFEXTU.L $10(A6,D7.W){BK:1},D4		ERROR: Invalid bitfield
+BFEXTU.L $1234{0:8},D4	E9F840081234	-
+BFEXTU.L $1234{31:32},D4	E9F847C01234	-
+BFEXTU.L $1234{D2:D3},D4	E9F848A31234	-
+BFEXTU.L $1234{4:D5},D4	E9F841251234	-
+BFEXTU.L $1234{D6:1},D4	E9F849811234	-
+BFEXTU.L $1234{32:1},D4		ERROR: Invalid bitfield
+BFEXTU.L $1234{0:0},D4		ERROR: Invalid bitfield
+BFEXTU.L $1234{BK:1},D4		ERROR: Invalid bitfield
+BFEXTU.L FW{0:8},D4	E9F9400800001F00	-
+BFEXTU.L FW{31:32},D4	E9F947C000001F00	-
+BFEXTU.L FW{D2:D3},D4	E9F948A300001F00	-
+BFEXTU.L FW{4:D5},D4	E9F9412500001F00	-
+BFEXTU.L FW{D6:1},D4	E9F9498100001F00	-
+BFEXTU.L FW{32:1},D4		ERROR: Invalid bitfield
+BFEXTU.L FW{0:0},D4		ERROR: Invalid bitfield
+BFEXTU.L FW{BK:1},D4		ERROR: Invalid bitfield
+BFEXTU.L *+$10(PC){0:8},D4	E9FA4008000C	-
+BFEXTU.L *+$10(PC){31:32},D4	E9FA47C0000C	-
+BFEXTU.L *+$10(PC){D2:D3},D4	E9FA48A3000C	-
+BFEXTU.L *+$10(PC){4:D5},D4	E9FA4125000C	-
+BFEXTU.L *+$10(PC){D6:1},D4	E9FA4981000C	-
+BFEXTU.L *+$10(PC){32:1},D4		ERROR: Invalid bitfield
+BFEXTU.L *+$10(PC){0:0},D4		ERROR: Invalid bitfield
+BFEXTU.L *+$10(PC){BK:1},D4		ERROR: Invalid bitfield
+BFEXTU.L (A4)+{0:8},D4		ERROR: Invalid addressing mode
+BFEXTU.L (A4)+{31:32},D4		ERROR: Invalid addressing mode
+BFEXTU.L (A4)+{D2:D3},D4		ERROR: Invalid addressing mode
+BFEXTU.L (A4)+{4:D5},D4		ERROR: Invalid addressing mode
+BFEXTU.L (A4)+{D6:1},D4		ERROR: Invalid addressing mode
+BFEXTU.L (A4)+{32:1},D4		ERROR: Invalid bitfield
+BFEXTU.L (A4)+{0:0},D4		ERROR: Invalid bitfield
+BFEXTU.L (A4)+{BK:1},D4		ERROR: Invalid bitfield
+BFEXTU.L -(A5){0:8},D4		ERROR: Invalid addressing mode
+BFEXTU.L -(A5){31:32},D4		ERROR: Invalid addressing mode
+BFEXTU.L -(A5){D2:D3},D4		ERROR: Invalid addressing mode
+BFEXTU.L -(A5){4:D5},D4		ERROR: Invalid addressing mode
+BFEXTU.L -(A5){D6:1},D4		ERROR: Invalid addressing mode
+BFEXTU.L -(A5){32:1},D4		ERROR: Invalid bitfield
+BFEXTU.L -(A5){0:0},D4		ERROR: Invalid bitfield
+BFEXTU.L -(A5){BK:1},D4		ERROR: Invalid bitfield
+BFEXTU.L A2{0:8},D4		ERROR: Invalid addressing mode
+BFEXTU.L A2{31:32},D4		ERROR: Invalid addressing mode
+BFEXTU.L A2{D2:D3},D4		ERROR: Invalid addressing mode
+BFEXTU.L A2{4:D5},D4		ERROR: Invalid addressing mode
+BFEXTU.L A2{D6:1},D4		ERROR: Invalid addressing mode
+BFEXTU.L A2{32:1},D4		ERROR: Invalid bitfield
+BFEXTU.L A2{0:0},D4		ERROR: Invalid bitfield
+BFEXTU.L A2{BK:1},D4		ERROR: Invalid bitfield
+BFEXTU.L #1{0:8},D4		ERROR: Invalid addressing mode
+BFEXTU.L #1{31:32},D4		ERROR: Invalid addressing mode
+BFEXTU.L #1{D2:D3},D4		ERROR: Invalid addressing mode
+BFEXTU.L #1{4:D5},D4		ERROR: Invalid addressing mode
+BFEXTU.L #1{D6:1},D4		ERROR: Invalid addressing mode
+BFEXTU.L #1{32:1},D4		ERROR: Invalid bitfield
+BFEXTU.L #1{0:0},D4		ERROR: Invalid bitfield
+BFEXTU.L #1{BK:1},D4		ERROR: Invalid bitfield
+BFEXTU.L D1		ERROR: Invalid bitfield
+BFEXTU.S D1{0:8},D4	E9C14008	-
+BFEXTU.S D1{31:32},D4	E9C147C0	-
+BFEXTU.S D1{D2:D3},D4	E9C148A3	-
+BFEXTU.S D1{4:D5},D4	E9C14125	-
+BFEXTU.S D1{D6:1},D4	E9C14981	-
+BFEXTU.S D1{32:1},D4		ERROR: Invalid bitfield
+BFEXTU.S D1{0:0},D4		ERROR: Invalid bitfield
+BFEXTU.S D1{BK:1},D4		ERROR: Invalid bitfield
+BFEXTU.S (A3){0:8},D4	E9D34008	-
+BFEXTU.S (A3){31:32},D4	E9D347C0	-
+BFEXTU.S (A3){D2:D3},D4	E9D348A3	-
+BFEXTU.S (A3){4:D5},D4	E9D34125	-
+BFEXTU.S (A3){D6:1},D4	E9D34981	-
+BFEXTU.S (A3){32:1},D4		ERROR: Invalid bitfield
+BFEXTU.S (A3){0:0},D4		ERROR: Invalid bitfield
+BFEXTU.S (A3){BK:1},D4		ERROR: Invalid bitfield
+BFEXTU.S $10(A6){0:8},D4	E9EE40080010	-
+BFEXTU.S $10(A6){31:32},D4	E9EE47C00010	-
+BFEXTU.S $10(A6){D2:D3},D4	E9EE48A30010	-
+BFEXTU.S $10(A6){4:D5},D4	E9EE41250010	-
+BFEXTU.S $10(A6){D6:1},D4	E9EE49810010	-
+BFEXTU.S $10(A6){32:1},D4		ERROR: Invalid bitfield
+BFEXTU.S $10(A6){0:0},D4		ERROR: Invalid bitfield
+BFEXTU.S $10(A6){BK:1},D4		ERROR: Invalid bitfield
+BFEXTU.S $10(A6,D7.W){0:8},D4	E9F640087010	-
+BFEXTU.S $10(A6,D7.W){31:32},D4	E9F647C07010	-
+BFEXTU.S $10(A6,D7.W){D2:D3},D4	E9F648A37010	-
+BFEXTU.S $10(A6,D7.W){4:D5},D4	E9F641257010	-
+BFEXTU.S $10(A6,D7.W){D6:1},D4	E9F649817010	-
+BFEXTU.S $10(A6,D7.W){32:1},D4		ERROR: Invalid bitfield
+BFEXTU.S $10(A6,D7.W){0:0},D4		ERROR: Invalid bitfield
+BFEXTU.S $10(A6,D7.W){BK:1},D4		ERROR: Invalid bitfield
+BFEXTU.S $1234{0:8},D4	E9F840081234	-
+BFEXTU.S $1234{31:32},D4	E9F847C01234	-
+BFEXTU.S $1234{D2:D3},D4	E9F848A31234	-
+BFEXTU.S $1234{4:D5},D4	E9F841251234	-
+BFEXTU.S $1234{D6:1},D4	E9F849811234	-
+BFEXTU.S $1234{32:1},D4		ERROR: Invalid bitfield
+BFEXTU.S $1234{0:0},D4		ERROR: Invalid bitfield
+BFEXTU.S $1234{BK:1},D4		ERROR: Invalid bitfield
+BFEXTU.S FW{0:8},D4	E9F9400800001F00	-
+BFEXTU.S FW{31:32},D4	E9F947C000001F00	-
+BFEXTU.S FW{D2:D3},D4	E9F948A300001F00	-
+BFEXTU.S FW{4:D5},D4	E9F9412500001F00	-
+BFEXTU.S FW{D6:1},D4	E9F9498100001F00	-
+BFEXTU.S FW{32:1},D4		ERROR: Invalid bitfield
+BFEXTU.S FW{0:0},D4		ERROR: Invalid bitfield
+BFEXTU.S FW{BK:1},D4		ERROR: Invalid bitfield
+BFEXTU.S *+$10(PC){0:8},D4	E9FA4008000C	-
+BFEXTU.S *+$10(PC){31:32},D4	E9FA47C0000C	-
+BFEXTU.S *+$10(PC){D2:D3},D4	E9FA48A3000C	-
+BFEXTU.S *+$10(PC){4:D5},D4	E9FA4125000C	-
+BFEXTU.S *+$10(PC){D6:1},D4	E9FA4981000C	-
+BFEXTU.S *+$10(PC){32:1},D4		ERROR: Invalid bitfield
+BFEXTU.S *+$10(PC){0:0},D4		ERROR: Invalid bitfield
+BFEXTU.S *+$10(PC){BK:1},D4		ERROR: Invalid bitfield
+BFEXTU.S (A4)+{0:8},D4		ERROR: Invalid addressing mode
+BFEXTU.S (A4)+{31:32},D4		ERROR: Invalid addressing mode
+BFEXTU.S (A4)+{D2:D3},D4		ERROR: Invalid addressing mode
+BFEXTU.S (A4)+{4:D5},D4		ERROR: Invalid addressing mode
+BFEXTU.S (A4)+{D6:1},D4		ERROR: Invalid addressing mode
+BFEXTU.S (A4)+{32:1},D4		ERROR: Invalid bitfield
+BFEXTU.S (A4)+{0:0},D4		ERROR: Invalid bitfield
+BFEXTU.S (A4)+{BK:1},D4		ERROR: Invalid bitfield
+BFEXTU.S -(A5){0:8},D4		ERROR: Invalid addressing mode
+BFEXTU.S -(A5){31:32},D4		ERROR: Invalid addressing mode
+BFEXTU.S -(A5){D2:D3},D4		ERROR: Invalid addressing mode
+BFEXTU.S -(A5){4:D5},D4		ERROR: Invalid addressing mode
+BFEXTU.S -(A5){D6:1},D4		ERROR: Invalid addressing mode
+BFEXTU.S -(A5){32:1},D4		ERROR: Invalid bitfield
+BFEXTU.S -(A5){0:0},D4		ERROR: Invalid bitfield
+BFEXTU.S -(A5){BK:1},D4		ERROR: Invalid bitfield
+BFEXTU.S A2{0:8},D4		ERROR: Invalid addressing mode
+BFEXTU.S A2{31:32},D4		ERROR: Invalid addressing mode
+BFEXTU.S A2{D2:D3},D4		ERROR: Invalid addressing mode
+BFEXTU.S A2{4:D5},D4		ERROR: Invalid addressing mode
+BFEXTU.S A2{D6:1},D4		ERROR: Invalid addressing mode
+BFEXTU.S A2{32:1},D4		ERROR: Invalid bitfield
+BFEXTU.S A2{0:0},D4		ERROR: Invalid bitfield
+BFEXTU.S A2{BK:1},D4		ERROR: Invalid bitfield
+BFEXTU.S #1{0:8},D4		ERROR: Invalid addressing mode
+BFEXTU.S #1{31:32},D4		ERROR: Invalid addressing mode
+BFEXTU.S #1{D2:D3},D4		ERROR: Invalid addressing mode
+BFEXTU.S #1{4:D5},D4		ERROR: Invalid addressing mode
+BFEXTU.S #1{D6:1},D4		ERROR: Invalid addressing mode
+BFEXTU.S #1{32:1},D4		ERROR: Invalid bitfield
+BFEXTU.S #1{0:0},D4		ERROR: Invalid bitfield
+BFEXTU.S #1{BK:1},D4		ERROR: Invalid bitfield
+BFEXTU.S D1		ERROR: Invalid bitfield

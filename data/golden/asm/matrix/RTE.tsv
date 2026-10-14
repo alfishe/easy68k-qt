@@ -1,0 +1,405 @@
+RTE	4E73	-
+RTE D1	4E73	-
+RTE A2	4E73	-
+RTE SP	4E73	-
+RTE (A3)	4E73	-
+RTE (A4)+	4E73	-
+RTE -(A5)	4E73	-
+RTE $10(A6)	4E73	-
+RTE -2(A0)	4E73	-
+RTE $10(A6,D7.W)	4E73	-
+RTE $12(A0,A1.L)	4E73	-
+RTE (A2,D3)	4E73	-
+RTE $1234	4E73	-
+RTE $12345678	4E73	-
+RTE $1234.L	4E73	-
+RTE $1234.W	4E73	-
+RTE $8000	4E73	-
+RTE BK	4E73	-
+RTE FW	4E73	-
+RTE *+$10(PC)	4E73	-
+RTE *(PC,D0.W)	4E73	-
+RTE BK(PC)	4E73	-
+RTE #1	4E73	-
+RTE #8	4E73	-
+RTE #9	4E73	-
+RTE #0	4E73	-
+RTE #-1	4E73	-
+RTE #$80	4E73	-
+RTE #$1234	4E73	-
+RTE #$12345678	4E73	-
+RTE #$12345678.L	4E73	-
+RTE #BK	4E73	-
+RTE #FW	4E73	-
+RTE #UNDEF	4E73	-
+RTE UNDEF	4E73	-
+RTE SR	4E73	-
+RTE CCR	4E73	-
+RTE USP	4E73	-
+RTE D1,D1	4E73	-
+RTE D1,A2	4E73	-
+RTE D1,(A3)	4E73	-
+RTE D1,$10(A6)	4E73	-
+RTE D1,$1234	4E73	-
+RTE D1,FW	4E73	-
+RTE D1,#1	4E73	-
+RTE D1,#$1234	4E73	-
+RTE D1,CCR	4E73	-
+RTE D1,SR	4E73	-
+RTE A2,D1	4E73	-
+RTE A2,A2	4E73	-
+RTE A2,(A3)	4E73	-
+RTE A2,$10(A6)	4E73	-
+RTE A2,$1234	4E73	-
+RTE A2,FW	4E73	-
+RTE A2,#1	4E73	-
+RTE A2,#$1234	4E73	-
+RTE A2,CCR	4E73	-
+RTE A2,SR	4E73	-
+RTE (A3),D1	4E73	-
+RTE (A3),A2	4E73	-
+RTE (A3),(A3)	4E73	-
+RTE (A3),$10(A6)	4E73	-
+RTE (A3),$1234	4E73	-
+RTE (A3),FW	4E73	-
+RTE (A3),#1	4E73	-
+RTE (A3),#$1234	4E73	-
+RTE (A3),CCR	4E73	-
+RTE (A3),SR	4E73	-
+RTE $10(A6),D1	4E73	-
+RTE $10(A6),A2	4E73	-
+RTE $10(A6),(A3)	4E73	-
+RTE $10(A6),$10(A6)	4E73	-
+RTE $10(A6),$1234	4E73	-
+RTE $10(A6),FW	4E73	-
+RTE $10(A6),#1	4E73	-
+RTE $10(A6),#$1234	4E73	-
+RTE $10(A6),CCR	4E73	-
+RTE $10(A6),SR	4E73	-
+RTE $1234,D1	4E73	-
+RTE $1234,A2	4E73	-
+RTE $1234,(A3)	4E73	-
+RTE $1234,$10(A6)	4E73	-
+RTE $1234,$1234	4E73	-
+RTE $1234,FW	4E73	-
+RTE $1234,#1	4E73	-
+RTE $1234,#$1234	4E73	-
+RTE $1234,CCR	4E73	-
+RTE $1234,SR	4E73	-
+RTE FW,D1	4E73	-
+RTE FW,A2	4E73	-
+RTE FW,(A3)	4E73	-
+RTE FW,$10(A6)	4E73	-
+RTE FW,$1234	4E73	-
+RTE FW,FW	4E73	-
+RTE FW,#1	4E73	-
+RTE FW,#$1234	4E73	-
+RTE FW,CCR	4E73	-
+RTE FW,SR	4E73	-
+RTE #1,D1	4E73	-
+RTE #1,A2	4E73	-
+RTE #1,(A3)	4E73	-
+RTE #1,$10(A6)	4E73	-
+RTE #1,$1234	4E73	-
+RTE #1,FW	4E73	-
+RTE #1,#1	4E73	-
+RTE #1,#$1234	4E73	-
+RTE #1,CCR	4E73	-
+RTE #1,SR	4E73	-
+RTE #$1234,D1	4E73	-
+RTE #$1234,A2	4E73	-
+RTE #$1234,(A3)	4E73	-
+RTE #$1234,$10(A6)	4E73	-
+RTE #$1234,$1234	4E73	-
+RTE #$1234,FW	4E73	-
+RTE #$1234,#1	4E73	-
+RTE #$1234,#$1234	4E73	-
+RTE #$1234,CCR	4E73	-
+RTE #$1234,SR	4E73	-
+RTE CCR,D1	4E73	-
+RTE CCR,A2	4E73	-
+RTE CCR,(A3)	4E73	-
+RTE CCR,$10(A6)	4E73	-
+RTE CCR,$1234	4E73	-
+RTE CCR,FW	4E73	-
+RTE CCR,#1	4E73	-
+RTE CCR,#$1234	4E73	-
+RTE CCR,CCR	4E73	-
+RTE CCR,SR	4E73	-
+RTE SR,D1	4E73	-
+RTE SR,A2	4E73	-
+RTE SR,(A3)	4E73	-
+RTE SR,$10(A6)	4E73	-
+RTE SR,$1234	4E73	-
+RTE SR,FW	4E73	-
+RTE SR,#1	4E73	-
+RTE SR,#$1234	4E73	-
+RTE SR,CCR	4E73	-
+RTE SR,SR	4E73	-
+RTE SP,D1	4E73	-
+RTE SP,A2	4E73	-
+RTE D1,SP	4E73	-
+RTE #$12,SP	4E73	-
+RTE (A4)+,D1	4E73	-
+RTE (A4)+,A2	4E73	-
+RTE D1,(A4)+	4E73	-
+RTE #$12,(A4)+	4E73	-
+RTE -(A5),D1	4E73	-
+RTE -(A5),A2	4E73	-
+RTE D1,-(A5)	4E73	-
+RTE #$12,-(A5)	4E73	-
+RTE -2(A0),D1	4E73	-
+RTE -2(A0),A2	4E73	-
+RTE D1,-2(A0)	4E73	-
+RTE #$12,-2(A0)	4E73	-
+RTE $10(A6,D7.W),D1	4E73	-
+RTE $10(A6,D7.W),A2	4E73	-
+RTE D1,$10(A6,D7.W)	4E73	-
+RTE #$12,$10(A6,D7.W)	4E73	-
+RTE $12(A0,A1.L),D1	4E73	-
+RTE $12(A0,A1.L),A2	4E73	-
+RTE D1,$12(A0,A1.L)	4E73	-
+RTE #$12,$12(A0,A1.L)	4E73	-
+RTE (A2,D3),D1	4E73	-
+RTE (A2,D3),A2	4E73	-
+RTE D1,(A2,D3)	4E73	-
+RTE #$12,(A2,D3)	4E73	-
+RTE $12345678,D1	4E73	-
+RTE $12345678,A2	4E73	-
+RTE D1,$12345678	4E73	-
+RTE #$12,$12345678	4E73	-
+RTE $1234.L,D1	4E73	-
+RTE $1234.L,A2	4E73	-
+RTE D1,$1234.L	4E73	-
+RTE #$12,$1234.L	4E73	-
+RTE $1234.W,D1	4E73	-
+RTE $1234.W,A2	4E73	-
+RTE D1,$1234.W	4E73	-
+RTE #$12,$1234.W	4E73	-
+RTE $8000,D1	4E73	-
+RTE $8000,A2	4E73	-
+RTE D1,$8000	4E73	-
+RTE #$12,$8000	4E73	-
+RTE BK,D1	4E73	-
+RTE BK,A2	4E73	-
+RTE D1,BK	4E73	-
+RTE #$12,BK	4E73	-
+RTE *+$10(PC),D1	4E73	-
+RTE *+$10(PC),A2	4E73	-
+RTE D1,*+$10(PC)	4E73	-
+RTE #$12,*+$10(PC)	4E73	-
+RTE *(PC,D0.W),D1	4E73	-
+RTE *(PC,D0.W),A2	4E73	-
+RTE D1,*(PC,D0.W)	4E73	-
+RTE #$12,*(PC,D0.W)	4E73	-
+RTE BK(PC),D1	4E73	-
+RTE BK(PC),A2	4E73	-
+RTE D1,BK(PC)	4E73	-
+RTE #$12,BK(PC)	4E73	-
+RTE #8,D1	4E73	-
+RTE #8,A2	4E73	-
+RTE D1,#8	4E73	-
+RTE #$12,#8	4E73	-
+RTE #9,D1	4E73	-
+RTE #9,A2	4E73	-
+RTE D1,#9	4E73	-
+RTE #$12,#9	4E73	-
+RTE #0,D1	4E73	-
+RTE #0,A2	4E73	-
+RTE D1,#0	4E73	-
+RTE #$12,#0	4E73	-
+RTE #-1,D1	4E73	-
+RTE #-1,A2	4E73	-
+RTE D1,#-1	4E73	-
+RTE #$12,#-1	4E73	-
+RTE #$80,D1	4E73	-
+RTE #$80,A2	4E73	-
+RTE D1,#$80	4E73	-
+RTE #$12,#$80	4E73	-
+RTE #$12345678,D1	4E73	-
+RTE #$12345678,A2	4E73	-
+RTE D1,#$12345678	4E73	-
+RTE #$12,#$12345678	4E73	-
+RTE #$12345678.L,D1	4E73	-
+RTE #$12345678.L,A2	4E73	-
+RTE D1,#$12345678.L	4E73	-
+RTE #$12,#$12345678.L	4E73	-
+RTE #BK,D1	4E73	-
+RTE #BK,A2	4E73	-
+RTE D1,#BK	4E73	-
+RTE #$12,#BK	4E73	-
+RTE #FW,D1	4E73	-
+RTE #FW,A2	4E73	-
+RTE D1,#FW	4E73	-
+RTE #$12,#FW	4E73	-
+RTE #UNDEF,D1	4E73	-
+RTE #UNDEF,A2	4E73	-
+RTE D1,#UNDEF	4E73	-
+RTE #$12,#UNDEF	4E73	-
+RTE UNDEF,D1	4E73	-
+RTE UNDEF,A2	4E73	-
+RTE D1,UNDEF	4E73	-
+RTE #$12,UNDEF	4E73	-
+RTE USP,D1	4E73	-
+RTE USP,A2	4E73	-
+RTE D1,USP	4E73	-
+RTE #$12,USP	4E73	-
+RTE D1,D2,D3	4E73	-
+RTE.B	4E73	ERROR: Invalid size code
+RTE.B D1	4E73	ERROR: Invalid size code
+RTE.B A2	4E73	ERROR: Invalid size code
+RTE.B SP	4E73	ERROR: Invalid size code
+RTE.B (A3)	4E73	ERROR: Invalid size code
+RTE.B (A4)+	4E73	ERROR: Invalid size code
+RTE.B -(A5)	4E73	ERROR: Invalid size code
+RTE.B $10(A6)	4E73	ERROR: Invalid size code
+RTE.B -2(A0)	4E73	ERROR: Invalid size code
+RTE.B $10(A6,D7.W)	4E73	ERROR: Invalid size code
+RTE.B $12(A0,A1.L)	4E73	ERROR: Invalid size code
+RTE.B (A2,D3)	4E73	ERROR: Invalid size code
+RTE.B $1234	4E73	ERROR: Invalid size code
+RTE.B $12345678	4E73	ERROR: Invalid size code
+RTE.B $1234.L	4E73	ERROR: Invalid size code
+RTE.B $1234.W	4E73	ERROR: Invalid size code
+RTE.B $8000	4E73	ERROR: Invalid size code
+RTE.B BK	4E73	ERROR: Invalid size code
+RTE.B FW	4E73	ERROR: Invalid size code
+RTE.B *+$10(PC)	4E73	ERROR: Invalid size code
+RTE.B *(PC,D0.W)	4E73	ERROR: Invalid size code
+RTE.B BK(PC)	4E73	ERROR: Invalid size code
+RTE.B #1	4E73	ERROR: Invalid size code
+RTE.B #8	4E73	ERROR: Invalid size code
+RTE.B #9	4E73	ERROR: Invalid size code
+RTE.B #0	4E73	ERROR: Invalid size code
+RTE.B #-1	4E73	ERROR: Invalid size code
+RTE.B #$80	4E73	ERROR: Invalid size code
+RTE.B #$1234	4E73	ERROR: Invalid size code
+RTE.B #$12345678	4E73	ERROR: Invalid size code
+RTE.B #$12345678.L	4E73	ERROR: Invalid size code
+RTE.B #BK	4E73	ERROR: Invalid size code
+RTE.B #FW	4E73	ERROR: Invalid size code
+RTE.B #UNDEF	4E73	ERROR: Invalid size code
+RTE.B UNDEF	4E73	ERROR: Invalid size code
+RTE.B SR	4E73	ERROR: Invalid size code
+RTE.B CCR	4E73	ERROR: Invalid size code
+RTE.B USP	4E73	ERROR: Invalid size code
+RTE.B D1,D2,D3	4E73	ERROR: Invalid size code
+RTE.W	4E73	ERROR: Invalid size code
+RTE.W D1	4E73	ERROR: Invalid size code
+RTE.W A2	4E73	ERROR: Invalid size code
+RTE.W SP	4E73	ERROR: Invalid size code
+RTE.W (A3)	4E73	ERROR: Invalid size code
+RTE.W (A4)+	4E73	ERROR: Invalid size code
+RTE.W -(A5)	4E73	ERROR: Invalid size code
+RTE.W $10(A6)	4E73	ERROR: Invalid size code
+RTE.W -2(A0)	4E73	ERROR: Invalid size code
+RTE.W $10(A6,D7.W)	4E73	ERROR: Invalid size code
+RTE.W $12(A0,A1.L)	4E73	ERROR: Invalid size code
+RTE.W (A2,D3)	4E73	ERROR: Invalid size code
+RTE.W $1234	4E73	ERROR: Invalid size code
+RTE.W $12345678	4E73	ERROR: Invalid size code
+RTE.W $1234.L	4E73	ERROR: Invalid size code
+RTE.W $1234.W	4E73	ERROR: Invalid size code
+RTE.W $8000	4E73	ERROR: Invalid size code
+RTE.W BK	4E73	ERROR: Invalid size code
+RTE.W FW	4E73	ERROR: Invalid size code
+RTE.W *+$10(PC)	4E73	ERROR: Invalid size code
+RTE.W *(PC,D0.W)	4E73	ERROR: Invalid size code
+RTE.W BK(PC)	4E73	ERROR: Invalid size code
+RTE.W #1	4E73	ERROR: Invalid size code
+RTE.W #8	4E73	ERROR: Invalid size code
+RTE.W #9	4E73	ERROR: Invalid size code
+RTE.W #0	4E73	ERROR: Invalid size code
+RTE.W #-1	4E73	ERROR: Invalid size code
+RTE.W #$80	4E73	ERROR: Invalid size code
+RTE.W #$1234	4E73	ERROR: Invalid size code
+RTE.W #$12345678	4E73	ERROR: Invalid size code
+RTE.W #$12345678.L	4E73	ERROR: Invalid size code
+RTE.W #BK	4E73	ERROR: Invalid size code
+RTE.W #FW	4E73	ERROR: Invalid size code
+RTE.W #UNDEF	4E73	ERROR: Invalid size code
+RTE.W UNDEF	4E73	ERROR: Invalid size code
+RTE.W SR	4E73	ERROR: Invalid size code
+RTE.W CCR	4E73	ERROR: Invalid size code
+RTE.W USP	4E73	ERROR: Invalid size code
+RTE.W D1,D2,D3	4E73	ERROR: Invalid size code
+RTE.L	4E73	ERROR: Invalid size code
+RTE.L D1	4E73	ERROR: Invalid size code
+RTE.L A2	4E73	ERROR: Invalid size code
+RTE.L SP	4E73	ERROR: Invalid size code
+RTE.L (A3)	4E73	ERROR: Invalid size code
+RTE.L (A4)+	4E73	ERROR: Invalid size code
+RTE.L -(A5)	4E73	ERROR: Invalid size code
+RTE.L $10(A6)	4E73	ERROR: Invalid size code
+RTE.L -2(A0)	4E73	ERROR: Invalid size code
+RTE.L $10(A6,D7.W)	4E73	ERROR: Invalid size code
+RTE.L $12(A0,A1.L)	4E73	ERROR: Invalid size code
+RTE.L (A2,D3)	4E73	ERROR: Invalid size code
+RTE.L $1234	4E73	ERROR: Invalid size code
+RTE.L $12345678	4E73	ERROR: Invalid size code
+RTE.L $1234.L	4E73	ERROR: Invalid size code
+RTE.L $1234.W	4E73	ERROR: Invalid size code
+RTE.L $8000	4E73	ERROR: Invalid size code
+RTE.L BK	4E73	ERROR: Invalid size code
+RTE.L FW	4E73	ERROR: Invalid size code
+RTE.L *+$10(PC)	4E73	ERROR: Invalid size code
+RTE.L *(PC,D0.W)	4E73	ERROR: Invalid size code
+RTE.L BK(PC)	4E73	ERROR: Invalid size code
+RTE.L #1	4E73	ERROR: Invalid size code
+RTE.L #8	4E73	ERROR: Invalid size code
+RTE.L #9	4E73	ERROR: Invalid size code
+RTE.L #0	4E73	ERROR: Invalid size code
+RTE.L #-1	4E73	ERROR: Invalid size code
+RTE.L #$80	4E73	ERROR: Invalid size code
+RTE.L #$1234	4E73	ERROR: Invalid size code
+RTE.L #$12345678	4E73	ERROR: Invalid size code
+RTE.L #$12345678.L	4E73	ERROR: Invalid size code
+RTE.L #BK	4E73	ERROR: Invalid size code
+RTE.L #FW	4E73	ERROR: Invalid size code
+RTE.L #UNDEF	4E73	ERROR: Invalid size code
+RTE.L UNDEF	4E73	ERROR: Invalid size code
+RTE.L SR	4E73	ERROR: Invalid size code
+RTE.L CCR	4E73	ERROR: Invalid size code
+RTE.L USP	4E73	ERROR: Invalid size code
+RTE.L D1,D2,D3	4E73	ERROR: Invalid size code
+RTE.S	4E73	ERROR: Invalid size code
+RTE.S D1	4E73	ERROR: Invalid size code
+RTE.S A2	4E73	ERROR: Invalid size code
+RTE.S SP	4E73	ERROR: Invalid size code
+RTE.S (A3)	4E73	ERROR: Invalid size code
+RTE.S (A4)+	4E73	ERROR: Invalid size code
+RTE.S -(A5)	4E73	ERROR: Invalid size code
+RTE.S $10(A6)	4E73	ERROR: Invalid size code
+RTE.S -2(A0)	4E73	ERROR: Invalid size code
+RTE.S $10(A6,D7.W)	4E73	ERROR: Invalid size code
+RTE.S $12(A0,A1.L)	4E73	ERROR: Invalid size code
+RTE.S (A2,D3)	4E73	ERROR: Invalid size code
+RTE.S $1234	4E73	ERROR: Invalid size code
+RTE.S $12345678	4E73	ERROR: Invalid size code
+RTE.S $1234.L	4E73	ERROR: Invalid size code
+RTE.S $1234.W	4E73	ERROR: Invalid size code
+RTE.S $8000	4E73	ERROR: Invalid size code
+RTE.S BK	4E73	ERROR: Invalid size code
+RTE.S FW	4E73	ERROR: Invalid size code
+RTE.S *+$10(PC)	4E73	ERROR: Invalid size code
+RTE.S *(PC,D0.W)	4E73	ERROR: Invalid size code
+RTE.S BK(PC)	4E73	ERROR: Invalid size code
+RTE.S #1	4E73	ERROR: Invalid size code
+RTE.S #8	4E73	ERROR: Invalid size code
+RTE.S #9	4E73	ERROR: Invalid size code
+RTE.S #0	4E73	ERROR: Invalid size code
+RTE.S #-1	4E73	ERROR: Invalid size code
+RTE.S #$80	4E73	ERROR: Invalid size code
+RTE.S #$1234	4E73	ERROR: Invalid size code
+RTE.S #$12345678	4E73	ERROR: Invalid size code
+RTE.S #$12345678.L	4E73	ERROR: Invalid size code
+RTE.S #BK	4E73	ERROR: Invalid size code
+RTE.S #FW	4E73	ERROR: Invalid size code
+RTE.S #UNDEF	4E73	ERROR: Invalid size code
+RTE.S UNDEF	4E73	ERROR: Invalid size code
+RTE.S SR	4E73	ERROR: Invalid size code
+RTE.S CCR	4E73	ERROR: Invalid size code
+RTE.S USP	4E73	ERROR: Invalid size code
+RTE.S D1,D2,D3	4E73	ERROR: Invalid size code
+RTE.X D1,D2	4E73	ERROR: Invalid size code
+RTE.X #1	4E73	ERROR: Invalid size code

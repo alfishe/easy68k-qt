@@ -1,0 +1,356 @@
+BFINS D4,D1{0:8}	EFC14008	-
+BFINS D4,D1{31:32}	EFC147C0	-
+BFINS D4,D1{D2:D3}	EFC148A3	-
+BFINS D4,D1{4:D5}	EFC14125	-
+BFINS D4,D1{D6:1}	EFC14981	-
+BFINS D4,D1{32:1}		ERROR: Invalid bitfield
+BFINS D4,D1{0:0}		ERROR: Invalid bitfield
+BFINS D4,D1{BK:1}		ERROR: Invalid bitfield
+BFINS D4,(A3){0:8}	EFD34008	-
+BFINS D4,(A3){31:32}	EFD347C0	-
+BFINS D4,(A3){D2:D3}	EFD348A3	-
+BFINS D4,(A3){4:D5}	EFD34125	-
+BFINS D4,(A3){D6:1}	EFD34981	-
+BFINS D4,(A3){32:1}		ERROR: Invalid bitfield
+BFINS D4,(A3){0:0}		ERROR: Invalid bitfield
+BFINS D4,(A3){BK:1}		ERROR: Invalid bitfield
+BFINS D4,$10(A6){0:8}	EFEE40080010	-
+BFINS D4,$10(A6){31:32}	EFEE47C00010	-
+BFINS D4,$10(A6){D2:D3}	EFEE48A30010	-
+BFINS D4,$10(A6){4:D5}	EFEE41250010	-
+BFINS D4,$10(A6){D6:1}	EFEE49810010	-
+BFINS D4,$10(A6){32:1}		ERROR: Invalid bitfield
+BFINS D4,$10(A6){0:0}		ERROR: Invalid bitfield
+BFINS D4,$10(A6){BK:1}		ERROR: Invalid bitfield
+BFINS D4,$10(A6,D7.W){0:8}	EFF640087010	-
+BFINS D4,$10(A6,D7.W){31:32}	EFF647C07010	-
+BFINS D4,$10(A6,D7.W){D2:D3}	EFF648A37010	-
+BFINS D4,$10(A6,D7.W){4:D5}	EFF641257010	-
+BFINS D4,$10(A6,D7.W){D6:1}	EFF649817010	-
+BFINS D4,$10(A6,D7.W){32:1}		ERROR: Invalid bitfield
+BFINS D4,$10(A6,D7.W){0:0}		ERROR: Invalid bitfield
+BFINS D4,$10(A6,D7.W){BK:1}		ERROR: Invalid bitfield
+BFINS D4,$1234{0:8}	EFF840081234	-
+BFINS D4,$1234{31:32}	EFF847C01234	-
+BFINS D4,$1234{D2:D3}	EFF848A31234	-
+BFINS D4,$1234{4:D5}	EFF841251234	-
+BFINS D4,$1234{D6:1}	EFF849811234	-
+BFINS D4,$1234{32:1}		ERROR: Invalid bitfield
+BFINS D4,$1234{0:0}		ERROR: Invalid bitfield
+BFINS D4,$1234{BK:1}		ERROR: Invalid bitfield
+BFINS D4,FW{0:8}	EFF9400800001F00	-
+BFINS D4,FW{31:32}	EFF947C000001F00	-
+BFINS D4,FW{D2:D3}	EFF948A300001F00	-
+BFINS D4,FW{4:D5}	EFF9412500001F00	-
+BFINS D4,FW{D6:1}	EFF9498100001F00	-
+BFINS D4,FW{32:1}		ERROR: Invalid bitfield
+BFINS D4,FW{0:0}		ERROR: Invalid bitfield
+BFINS D4,FW{BK:1}		ERROR: Invalid bitfield
+BFINS D4,*+$10(PC){0:8}		ERROR: Invalid addressing mode
+BFINS D4,*+$10(PC){31:32}		ERROR: Invalid addressing mode
+BFINS D4,*+$10(PC){D2:D3}		ERROR: Invalid addressing mode
+BFINS D4,*+$10(PC){4:D5}		ERROR: Invalid addressing mode
+BFINS D4,*+$10(PC){D6:1}		ERROR: Invalid addressing mode
+BFINS D4,*+$10(PC){32:1}		ERROR: Invalid bitfield
+BFINS D4,*+$10(PC){0:0}		ERROR: Invalid bitfield
+BFINS D4,*+$10(PC){BK:1}		ERROR: Invalid bitfield
+BFINS D4,(A4)+{0:8}		ERROR: Invalid addressing mode
+BFINS D4,(A4)+{31:32}		ERROR: Invalid addressing mode
+BFINS D4,(A4)+{D2:D3}		ERROR: Invalid addressing mode
+BFINS D4,(A4)+{4:D5}		ERROR: Invalid addressing mode
+BFINS D4,(A4)+{D6:1}		ERROR: Invalid addressing mode
+BFINS D4,(A4)+{32:1}		ERROR: Invalid bitfield
+BFINS D4,(A4)+{0:0}		ERROR: Invalid bitfield
+BFINS D4,(A4)+{BK:1}		ERROR: Invalid bitfield
+BFINS D4,-(A5){0:8}		ERROR: Invalid addressing mode
+BFINS D4,-(A5){31:32}		ERROR: Invalid addressing mode
+BFINS D4,-(A5){D2:D3}		ERROR: Invalid addressing mode
+BFINS D4,-(A5){4:D5}		ERROR: Invalid addressing mode
+BFINS D4,-(A5){D6:1}		ERROR: Invalid addressing mode
+BFINS D4,-(A5){32:1}		ERROR: Invalid bitfield
+BFINS D4,-(A5){0:0}		ERROR: Invalid bitfield
+BFINS D4,-(A5){BK:1}		ERROR: Invalid bitfield
+BFINS D4,A2{0:8}		ERROR: Invalid addressing mode
+BFINS D4,A2{31:32}		ERROR: Invalid addressing mode
+BFINS D4,A2{D2:D3}		ERROR: Invalid addressing mode
+BFINS D4,A2{4:D5}		ERROR: Invalid addressing mode
+BFINS D4,A2{D6:1}		ERROR: Invalid addressing mode
+BFINS D4,A2{32:1}		ERROR: Invalid bitfield
+BFINS D4,A2{0:0}		ERROR: Invalid bitfield
+BFINS D4,A2{BK:1}		ERROR: Invalid bitfield
+BFINS D4,#1{0:8}		ERROR: Invalid addressing mode
+BFINS D4,#1{31:32}		ERROR: Invalid addressing mode
+BFINS D4,#1{D2:D3}		ERROR: Invalid addressing mode
+BFINS D4,#1{4:D5}		ERROR: Invalid addressing mode
+BFINS D4,#1{D6:1}		ERROR: Invalid addressing mode
+BFINS D4,#1{32:1}		ERROR: Invalid bitfield
+BFINS D4,#1{0:0}		ERROR: Invalid bitfield
+BFINS D4,#1{BK:1}		ERROR: Invalid bitfield
+BFINS D1		ERROR: Invalid bitfield
+BFINS.B D4,D1{0:8}	EFC14008	-
+BFINS.B D4,D1{31:32}	EFC147C0	-
+BFINS.B D4,D1{D2:D3}	EFC148A3	-
+BFINS.B D4,D1{4:D5}	EFC14125	-
+BFINS.B D4,D1{D6:1}	EFC14981	-
+BFINS.B D4,D1{32:1}		ERROR: Invalid bitfield
+BFINS.B D4,D1{0:0}		ERROR: Invalid bitfield
+BFINS.B D4,D1{BK:1}		ERROR: Invalid bitfield
+BFINS.B D4,(A3){0:8}	EFD34008	-
+BFINS.B D4,(A3){31:32}	EFD347C0	-
+BFINS.B D4,(A3){D2:D3}	EFD348A3	-
+BFINS.B D4,(A3){4:D5}	EFD34125	-
+BFINS.B D4,(A3){D6:1}	EFD34981	-
+BFINS.B D4,(A3){32:1}		ERROR: Invalid bitfield
+BFINS.B D4,(A3){0:0}		ERROR: Invalid bitfield
+BFINS.B D4,(A3){BK:1}		ERROR: Invalid bitfield
+BFINS.B D4,$10(A6){0:8}	EFEE40080010	-
+BFINS.B D4,$10(A6){31:32}	EFEE47C00010	-
+BFINS.B D4,$10(A6){D2:D3}	EFEE48A30010	-
+BFINS.B D4,$10(A6){4:D5}	EFEE41250010	-
+BFINS.B D4,$10(A6){D6:1}	EFEE49810010	-
+BFINS.B D4,$10(A6){32:1}		ERROR: Invalid bitfield
+BFINS.B D4,$10(A6){0:0}		ERROR: Invalid bitfield
+BFINS.B D4,$10(A6){BK:1}		ERROR: Invalid bitfield
+BFINS.B D4,$10(A6,D7.W){0:8}	EFF640087010	-
+BFINS.B D4,$10(A6,D7.W){31:32}	EFF647C07010	-
+BFINS.B D4,$10(A6,D7.W){D2:D3}	EFF648A37010	-
+BFINS.B D4,$10(A6,D7.W){4:D5}	EFF641257010	-
+BFINS.B D4,$10(A6,D7.W){D6:1}	EFF649817010	-
+BFINS.B D4,$10(A6,D7.W){32:1}		ERROR: Invalid bitfield
+BFINS.B D4,$10(A6,D7.W){0:0}		ERROR: Invalid bitfield
+BFINS.B D4,$10(A6,D7.W){BK:1}		ERROR: Invalid bitfield
+BFINS.B D4,$1234{0:8}	EFF840081234	-
+BFINS.B D4,$1234{31:32}	EFF847C01234	-
+BFINS.B D4,$1234{D2:D3}	EFF848A31234	-
+BFINS.B D4,$1234{4:D5}	EFF841251234	-
+BFINS.B D4,$1234{D6:1}	EFF849811234	-
+BFINS.B D4,$1234{32:1}		ERROR: Invalid bitfield
+BFINS.B D4,$1234{0:0}		ERROR: Invalid bitfield
+BFINS.B D4,$1234{BK:1}		ERROR: Invalid bitfield
+BFINS.B D4,FW{0:8}	EFF9400800001F00	-
+BFINS.B D4,FW{31:32}	EFF947C000001F00	-
+BFINS.B D4,FW{D2:D3}	EFF948A300001F00	-
+BFINS.B D4,FW{4:D5}	EFF9412500001F00	-
+BFINS.B D4,FW{D6:1}	EFF9498100001F00	-
+BFINS.B D4,FW{32:1}		ERROR: Invalid bitfield
+BFINS.B D4,FW{0:0}		ERROR: Invalid bitfield
+BFINS.B D4,FW{BK:1}		ERROR: Invalid bitfield
+BFINS.B D4,*+$10(PC){0:8}		ERROR: Invalid addressing mode
+BFINS.B D4,*+$10(PC){31:32}		ERROR: Invalid addressing mode
+BFINS.B D4,*+$10(PC){D2:D3}		ERROR: Invalid addressing mode
+BFINS.B D4,*+$10(PC){4:D5}		ERROR: Invalid addressing mode
+BFINS.B D4,*+$10(PC){D6:1}		ERROR: Invalid addressing mode
+BFINS.B D4,*+$10(PC){32:1}		ERROR: Invalid bitfield
+BFINS.B D4,*+$10(PC){0:0}		ERROR: Invalid bitfield
+BFINS.B D4,*+$10(PC){BK:1}		ERROR: Invalid bitfield
+BFINS.B D4,(A4)+{0:8}		ERROR: Invalid addressing mode
+BFINS.B D4,(A4)+{31:32}		ERROR: Invalid addressing mode
+BFINS.B D4,(A4)+{D2:D3}		ERROR: Invalid addressing mode
+BFINS.B D4,(A4)+{4:D5}		ERROR: Invalid addressing mode
+BFINS.B D4,(A4)+{D6:1}		ERROR: Invalid addressing mode
+BFINS.B D4,(A4)+{32:1}		ERROR: Invalid bitfield
+BFINS.B D4,(A4)+{0:0}		ERROR: Invalid bitfield
+BFINS.B D4,(A4)+{BK:1}		ERROR: Invalid bitfield
+BFINS.B D4,-(A5){0:8}		ERROR: Invalid addressing mode
+BFINS.B D4,-(A5){31:32}		ERROR: Invalid addressing mode
+BFINS.B D4,-(A5){D2:D3}		ERROR: Invalid addressing mode
+BFINS.B D4,-(A5){4:D5}		ERROR: Invalid addressing mode
+BFINS.B D4,-(A5){D6:1}		ERROR: Invalid addressing mode
+BFINS.B D4,-(A5){32:1}		ERROR: Invalid bitfield
+BFINS.B D4,-(A5){0:0}		ERROR: Invalid bitfield
+BFINS.B D4,-(A5){BK:1}		ERROR: Invalid bitfield
+BFINS.B D4,A2{0:8}		ERROR: Invalid addressing mode
+BFINS.B D4,A2{31:32}		ERROR: Invalid addressing mode
+BFINS.B D4,A2{D2:D3}		ERROR: Invalid addressing mode
+BFINS.B D4,A2{4:D5}		ERROR: Invalid addressing mode
+BFINS.B D4,A2{D6:1}		ERROR: Invalid addressing mode
+BFINS.B D4,A2{32:1}		ERROR: Invalid bitfield
+BFINS.B D4,A2{0:0}		ERROR: Invalid bitfield
+BFINS.B D4,A2{BK:1}		ERROR: Invalid bitfield
+BFINS.B D4,#1{0:8}		ERROR: Invalid addressing mode
+BFINS.B D4,#1{31:32}		ERROR: Invalid addressing mode
+BFINS.B D4,#1{D2:D3}		ERROR: Invalid addressing mode
+BFINS.B D4,#1{4:D5}		ERROR: Invalid addressing mode
+BFINS.B D4,#1{D6:1}		ERROR: Invalid addressing mode
+BFINS.B D4,#1{32:1}		ERROR: Invalid bitfield
+BFINS.B D4,#1{0:0}		ERROR: Invalid bitfield
+BFINS.B D4,#1{BK:1}		ERROR: Invalid bitfield
+BFINS.B D1		ERROR: Invalid bitfield
+BFINS.L D4,D1{0:8}	EFC14008	-
+BFINS.L D4,D1{31:32}	EFC147C0	-
+BFINS.L D4,D1{D2:D3}	EFC148A3	-
+BFINS.L D4,D1{4:D5}	EFC14125	-
+BFINS.L D4,D1{D6:1}	EFC14981	-
+BFINS.L D4,D1{32:1}		ERROR: Invalid bitfield
+BFINS.L D4,D1{0:0}		ERROR: Invalid bitfield
+BFINS.L D4,D1{BK:1}		ERROR: Invalid bitfield
+BFINS.L D4,(A3){0:8}	EFD34008	-
+BFINS.L D4,(A3){31:32}	EFD347C0	-
+BFINS.L D4,(A3){D2:D3}	EFD348A3	-
+BFINS.L D4,(A3){4:D5}	EFD34125	-
+BFINS.L D4,(A3){D6:1}	EFD34981	-
+BFINS.L D4,(A3){32:1}		ERROR: Invalid bitfield
+BFINS.L D4,(A3){0:0}		ERROR: Invalid bitfield
+BFINS.L D4,(A3){BK:1}		ERROR: Invalid bitfield
+BFINS.L D4,$10(A6){0:8}	EFEE40080010	-
+BFINS.L D4,$10(A6){31:32}	EFEE47C00010	-
+BFINS.L D4,$10(A6){D2:D3}	EFEE48A30010	-
+BFINS.L D4,$10(A6){4:D5}	EFEE41250010	-
+BFINS.L D4,$10(A6){D6:1}	EFEE49810010	-
+BFINS.L D4,$10(A6){32:1}		ERROR: Invalid bitfield
+BFINS.L D4,$10(A6){0:0}		ERROR: Invalid bitfield
+BFINS.L D4,$10(A6){BK:1}		ERROR: Invalid bitfield
+BFINS.L D4,$10(A6,D7.W){0:8}	EFF640087010	-
+BFINS.L D4,$10(A6,D7.W){31:32}	EFF647C07010	-
+BFINS.L D4,$10(A6,D7.W){D2:D3}	EFF648A37010	-
+BFINS.L D4,$10(A6,D7.W){4:D5}	EFF641257010	-
+BFINS.L D4,$10(A6,D7.W){D6:1}	EFF649817010	-
+BFINS.L D4,$10(A6,D7.W){32:1}		ERROR: Invalid bitfield
+BFINS.L D4,$10(A6,D7.W){0:0}		ERROR: Invalid bitfield
+BFINS.L D4,$10(A6,D7.W){BK:1}		ERROR: Invalid bitfield
+BFINS.L D4,$1234{0:8}	EFF840081234	-
+BFINS.L D4,$1234{31:32}	EFF847C01234	-
+BFINS.L D4,$1234{D2:D3}	EFF848A31234	-
+BFINS.L D4,$1234{4:D5}	EFF841251234	-
+BFINS.L D4,$1234{D6:1}	EFF849811234	-
+BFINS.L D4,$1234{32:1}		ERROR: Invalid bitfield
+BFINS.L D4,$1234{0:0}		ERROR: Invalid bitfield
+BFINS.L D4,$1234{BK:1}		ERROR: Invalid bitfield
+BFINS.L D4,FW{0:8}	EFF9400800001F00	-
+BFINS.L D4,FW{31:32}	EFF947C000001F00	-
+BFINS.L D4,FW{D2:D3}	EFF948A300001F00	-
+BFINS.L D4,FW{4:D5}	EFF9412500001F00	-
+BFINS.L D4,FW{D6:1}	EFF9498100001F00	-
+BFINS.L D4,FW{32:1}		ERROR: Invalid bitfield
+BFINS.L D4,FW{0:0}		ERROR: Invalid bitfield
+BFINS.L D4,FW{BK:1}		ERROR: Invalid bitfield
+BFINS.L D4,*+$10(PC){0:8}		ERROR: Invalid addressing mode
+BFINS.L D4,*+$10(PC){31:32}		ERROR: Invalid addressing mode
+BFINS.L D4,*+$10(PC){D2:D3}		ERROR: Invalid addressing mode
+BFINS.L D4,*+$10(PC){4:D5}		ERROR: Invalid addressing mode
+BFINS.L D4,*+$10(PC){D6:1}		ERROR: Invalid addressing mode
+BFINS.L D4,*+$10(PC){32:1}		ERROR: Invalid bitfield
+BFINS.L D4,*+$10(PC){0:0}		ERROR: Invalid bitfield
+BFINS.L D4,*+$10(PC){BK:1}		ERROR: Invalid bitfield
+BFINS.L D4,(A4)+{0:8}		ERROR: Invalid addressing mode
+BFINS.L D4,(A4)+{31:32}		ERROR: Invalid addressing mode
+BFINS.L D4,(A4)+{D2:D3}		ERROR: Invalid addressing mode
+BFINS.L D4,(A4)+{4:D5}		ERROR: Invalid addressing mode
+BFINS.L D4,(A4)+{D6:1}		ERROR: Invalid addressing mode
+BFINS.L D4,(A4)+{32:1}		ERROR: Invalid bitfield
+BFINS.L D4,(A4)+{0:0}		ERROR: Invalid bitfield
+BFINS.L D4,(A4)+{BK:1}		ERROR: Invalid bitfield
+BFINS.L D4,-(A5){0:8}		ERROR: Invalid addressing mode
+BFINS.L D4,-(A5){31:32}		ERROR: Invalid addressing mode
+BFINS.L D4,-(A5){D2:D3}		ERROR: Invalid addressing mode
+BFINS.L D4,-(A5){4:D5}		ERROR: Invalid addressing mode
+BFINS.L D4,-(A5){D6:1}		ERROR: Invalid addressing mode
+BFINS.L D4,-(A5){32:1}		ERROR: Invalid bitfield
+BFINS.L D4,-(A5){0:0}		ERROR: Invalid bitfield
+BFINS.L D4,-(A5){BK:1}		ERROR: Invalid bitfield
+BFINS.L D4,A2{0:8}		ERROR: Invalid addressing mode
+BFINS.L D4,A2{31:32}		ERROR: Invalid addressing mode
+BFINS.L D4,A2{D2:D3}		ERROR: Invalid addressing mode
+BFINS.L D4,A2{4:D5}		ERROR: Invalid addressing mode
+BFINS.L D4,A2{D6:1}		ERROR: Invalid addressing mode
+BFINS.L D4,A2{32:1}		ERROR: Invalid bitfield
+BFINS.L D4,A2{0:0}		ERROR: Invalid bitfield
+BFINS.L D4,A2{BK:1}		ERROR: Invalid bitfield
+BFINS.L D4,#1{0:8}		ERROR: Invalid addressing mode
+BFINS.L D4,#1{31:32}		ERROR: Invalid addressing mode
+BFINS.L D4,#1{D2:D3}		ERROR: Invalid addressing mode
+BFINS.L D4,#1{4:D5}		ERROR: Invalid addressing mode
+BFINS.L D4,#1{D6:1}		ERROR: Invalid addressing mode
+BFINS.L D4,#1{32:1}		ERROR: Invalid bitfield
+BFINS.L D4,#1{0:0}		ERROR: Invalid bitfield
+BFINS.L D4,#1{BK:1}		ERROR: Invalid bitfield
+BFINS.L D1		ERROR: Invalid bitfield
+BFINS.S D4,D1{0:8}	EFC14008	-
+BFINS.S D4,D1{31:32}	EFC147C0	-
+BFINS.S D4,D1{D2:D3}	EFC148A3	-
+BFINS.S D4,D1{4:D5}	EFC14125	-
+BFINS.S D4,D1{D6:1}	EFC14981	-
+BFINS.S D4,D1{32:1}		ERROR: Invalid bitfield
+BFINS.S D4,D1{0:0}		ERROR: Invalid bitfield
+BFINS.S D4,D1{BK:1}		ERROR: Invalid bitfield
+BFINS.S D4,(A3){0:8}	EFD34008	-
+BFINS.S D4,(A3){31:32}	EFD347C0	-
+BFINS.S D4,(A3){D2:D3}	EFD348A3	-
+BFINS.S D4,(A3){4:D5}	EFD34125	-
+BFINS.S D4,(A3){D6:1}	EFD34981	-
+BFINS.S D4,(A3){32:1}		ERROR: Invalid bitfield
+BFINS.S D4,(A3){0:0}		ERROR: Invalid bitfield
+BFINS.S D4,(A3){BK:1}		ERROR: Invalid bitfield
+BFINS.S D4,$10(A6){0:8}	EFEE40080010	-
+BFINS.S D4,$10(A6){31:32}	EFEE47C00010	-
+BFINS.S D4,$10(A6){D2:D3}	EFEE48A30010	-
+BFINS.S D4,$10(A6){4:D5}	EFEE41250010	-
+BFINS.S D4,$10(A6){D6:1}	EFEE49810010	-
+BFINS.S D4,$10(A6){32:1}		ERROR: Invalid bitfield
+BFINS.S D4,$10(A6){0:0}		ERROR: Invalid bitfield
+BFINS.S D4,$10(A6){BK:1}		ERROR: Invalid bitfield
+BFINS.S D4,$10(A6,D7.W){0:8}	EFF640087010	-
+BFINS.S D4,$10(A6,D7.W){31:32}	EFF647C07010	-
+BFINS.S D4,$10(A6,D7.W){D2:D3}	EFF648A37010	-
+BFINS.S D4,$10(A6,D7.W){4:D5}	EFF641257010	-
+BFINS.S D4,$10(A6,D7.W){D6:1}	EFF649817010	-
+BFINS.S D4,$10(A6,D7.W){32:1}		ERROR: Invalid bitfield
+BFINS.S D4,$10(A6,D7.W){0:0}		ERROR: Invalid bitfield
+BFINS.S D4,$10(A6,D7.W){BK:1}		ERROR: Invalid bitfield
+BFINS.S D4,$1234{0:8}	EFF840081234	-
+BFINS.S D4,$1234{31:32}	EFF847C01234	-
+BFINS.S D4,$1234{D2:D3}	EFF848A31234	-
+BFINS.S D4,$1234{4:D5}	EFF841251234	-
+BFINS.S D4,$1234{D6:1}	EFF849811234	-
+BFINS.S D4,$1234{32:1}		ERROR: Invalid bitfield
+BFINS.S D4,$1234{0:0}		ERROR: Invalid bitfield
+BFINS.S D4,$1234{BK:1}		ERROR: Invalid bitfield
+BFINS.S D4,FW{0:8}	EFF9400800001F00	-
+BFINS.S D4,FW{31:32}	EFF947C000001F00	-
+BFINS.S D4,FW{D2:D3}	EFF948A300001F00	-
+BFINS.S D4,FW{4:D5}	EFF9412500001F00	-
+BFINS.S D4,FW{D6:1}	EFF9498100001F00	-
+BFINS.S D4,FW{32:1}		ERROR: Invalid bitfield
+BFINS.S D4,FW{0:0}		ERROR: Invalid bitfield
+BFINS.S D4,FW{BK:1}		ERROR: Invalid bitfield
+BFINS.S D4,*+$10(PC){0:8}		ERROR: Invalid addressing mode
+BFINS.S D4,*+$10(PC){31:32}		ERROR: Invalid addressing mode
+BFINS.S D4,*+$10(PC){D2:D3}		ERROR: Invalid addressing mode
+BFINS.S D4,*+$10(PC){4:D5}		ERROR: Invalid addressing mode
+BFINS.S D4,*+$10(PC){D6:1}		ERROR: Invalid addressing mode
+BFINS.S D4,*+$10(PC){32:1}		ERROR: Invalid bitfield
+BFINS.S D4,*+$10(PC){0:0}		ERROR: Invalid bitfield
+BFINS.S D4,*+$10(PC){BK:1}		ERROR: Invalid bitfield
+BFINS.S D4,(A4)+{0:8}		ERROR: Invalid addressing mode
+BFINS.S D4,(A4)+{31:32}		ERROR: Invalid addressing mode
+BFINS.S D4,(A4)+{D2:D3}		ERROR: Invalid addressing mode
+BFINS.S D4,(A4)+{4:D5}		ERROR: Invalid addressing mode
+BFINS.S D4,(A4)+{D6:1}		ERROR: Invalid addressing mode
+BFINS.S D4,(A4)+{32:1}		ERROR: Invalid bitfield
+BFINS.S D4,(A4)+{0:0}		ERROR: Invalid bitfield
+BFINS.S D4,(A4)+{BK:1}		ERROR: Invalid bitfield
+BFINS.S D4,-(A5){0:8}		ERROR: Invalid addressing mode
+BFINS.S D4,-(A5){31:32}		ERROR: Invalid addressing mode
+BFINS.S D4,-(A5){D2:D3}		ERROR: Invalid addressing mode
+BFINS.S D4,-(A5){4:D5}		ERROR: Invalid addressing mode
+BFINS.S D4,-(A5){D6:1}		ERROR: Invalid addressing mode
+BFINS.S D4,-(A5){32:1}		ERROR: Invalid bitfield
+BFINS.S D4,-(A5){0:0}		ERROR: Invalid bitfield
+BFINS.S D4,-(A5){BK:1}		ERROR: Invalid bitfield
+BFINS.S D4,A2{0:8}		ERROR: Invalid addressing mode
+BFINS.S D4,A2{31:32}		ERROR: Invalid addressing mode
+BFINS.S D4,A2{D2:D3}		ERROR: Invalid addressing mode
+BFINS.S D4,A2{4:D5}		ERROR: Invalid addressing mode
+BFINS.S D4,A2{D6:1}		ERROR: Invalid addressing mode
+BFINS.S D4,A2{32:1}		ERROR: Invalid bitfield
+BFINS.S D4,A2{0:0}		ERROR: Invalid bitfield
+BFINS.S D4,A2{BK:1}		ERROR: Invalid bitfield
+BFINS.S D4,#1{0:8}		ERROR: Invalid addressing mode
+BFINS.S D4,#1{31:32}		ERROR: Invalid addressing mode
+BFINS.S D4,#1{D2:D3}		ERROR: Invalid addressing mode
+BFINS.S D4,#1{4:D5}		ERROR: Invalid addressing mode
+BFINS.S D4,#1{D6:1}		ERROR: Invalid addressing mode
+BFINS.S D4,#1{32:1}		ERROR: Invalid bitfield
+BFINS.S D4,#1{0:0}		ERROR: Invalid bitfield
+BFINS.S D4,#1{BK:1}		ERROR: Invalid bitfield
+BFINS.S D1		ERROR: Invalid bitfield

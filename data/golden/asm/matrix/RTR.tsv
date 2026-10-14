@@ -1,0 +1,405 @@
+RTR	4E77	-
+RTR D1	4E77	-
+RTR A2	4E77	-
+RTR SP	4E77	-
+RTR (A3)	4E77	-
+RTR (A4)+	4E77	-
+RTR -(A5)	4E77	-
+RTR $10(A6)	4E77	-
+RTR -2(A0)	4E77	-
+RTR $10(A6,D7.W)	4E77	-
+RTR $12(A0,A1.L)	4E77	-
+RTR (A2,D3)	4E77	-
+RTR $1234	4E77	-
+RTR $12345678	4E77	-
+RTR $1234.L	4E77	-
+RTR $1234.W	4E77	-
+RTR $8000	4E77	-
+RTR BK	4E77	-
+RTR FW	4E77	-
+RTR *+$10(PC)	4E77	-
+RTR *(PC,D0.W)	4E77	-
+RTR BK(PC)	4E77	-
+RTR #1	4E77	-
+RTR #8	4E77	-
+RTR #9	4E77	-
+RTR #0	4E77	-
+RTR #-1	4E77	-
+RTR #$80	4E77	-
+RTR #$1234	4E77	-
+RTR #$12345678	4E77	-
+RTR #$12345678.L	4E77	-
+RTR #BK	4E77	-
+RTR #FW	4E77	-
+RTR #UNDEF	4E77	-
+RTR UNDEF	4E77	-
+RTR SR	4E77	-
+RTR CCR	4E77	-
+RTR USP	4E77	-
+RTR D1,D1	4E77	-
+RTR D1,A2	4E77	-
+RTR D1,(A3)	4E77	-
+RTR D1,$10(A6)	4E77	-
+RTR D1,$1234	4E77	-
+RTR D1,FW	4E77	-
+RTR D1,#1	4E77	-
+RTR D1,#$1234	4E77	-
+RTR D1,CCR	4E77	-
+RTR D1,SR	4E77	-
+RTR A2,D1	4E77	-
+RTR A2,A2	4E77	-
+RTR A2,(A3)	4E77	-
+RTR A2,$10(A6)	4E77	-
+RTR A2,$1234	4E77	-
+RTR A2,FW	4E77	-
+RTR A2,#1	4E77	-
+RTR A2,#$1234	4E77	-
+RTR A2,CCR	4E77	-
+RTR A2,SR	4E77	-
+RTR (A3),D1	4E77	-
+RTR (A3),A2	4E77	-
+RTR (A3),(A3)	4E77	-
+RTR (A3),$10(A6)	4E77	-
+RTR (A3),$1234	4E77	-
+RTR (A3),FW	4E77	-
+RTR (A3),#1	4E77	-
+RTR (A3),#$1234	4E77	-
+RTR (A3),CCR	4E77	-
+RTR (A3),SR	4E77	-
+RTR $10(A6),D1	4E77	-
+RTR $10(A6),A2	4E77	-
+RTR $10(A6),(A3)	4E77	-
+RTR $10(A6),$10(A6)	4E77	-
+RTR $10(A6),$1234	4E77	-
+RTR $10(A6),FW	4E77	-
+RTR $10(A6),#1	4E77	-
+RTR $10(A6),#$1234	4E77	-
+RTR $10(A6),CCR	4E77	-
+RTR $10(A6),SR	4E77	-
+RTR $1234,D1	4E77	-
+RTR $1234,A2	4E77	-
+RTR $1234,(A3)	4E77	-
+RTR $1234,$10(A6)	4E77	-
+RTR $1234,$1234	4E77	-
+RTR $1234,FW	4E77	-
+RTR $1234,#1	4E77	-
+RTR $1234,#$1234	4E77	-
+RTR $1234,CCR	4E77	-
+RTR $1234,SR	4E77	-
+RTR FW,D1	4E77	-
+RTR FW,A2	4E77	-
+RTR FW,(A3)	4E77	-
+RTR FW,$10(A6)	4E77	-
+RTR FW,$1234	4E77	-
+RTR FW,FW	4E77	-
+RTR FW,#1	4E77	-
+RTR FW,#$1234	4E77	-
+RTR FW,CCR	4E77	-
+RTR FW,SR	4E77	-
+RTR #1,D1	4E77	-
+RTR #1,A2	4E77	-
+RTR #1,(A3)	4E77	-
+RTR #1,$10(A6)	4E77	-
+RTR #1,$1234	4E77	-
+RTR #1,FW	4E77	-
+RTR #1,#1	4E77	-
+RTR #1,#$1234	4E77	-
+RTR #1,CCR	4E77	-
+RTR #1,SR	4E77	-
+RTR #$1234,D1	4E77	-
+RTR #$1234,A2	4E77	-
+RTR #$1234,(A3)	4E77	-
+RTR #$1234,$10(A6)	4E77	-
+RTR #$1234,$1234	4E77	-
+RTR #$1234,FW	4E77	-
+RTR #$1234,#1	4E77	-
+RTR #$1234,#$1234	4E77	-
+RTR #$1234,CCR	4E77	-
+RTR #$1234,SR	4E77	-
+RTR CCR,D1	4E77	-
+RTR CCR,A2	4E77	-
+RTR CCR,(A3)	4E77	-
+RTR CCR,$10(A6)	4E77	-
+RTR CCR,$1234	4E77	-
+RTR CCR,FW	4E77	-
+RTR CCR,#1	4E77	-
+RTR CCR,#$1234	4E77	-
+RTR CCR,CCR	4E77	-
+RTR CCR,SR	4E77	-
+RTR SR,D1	4E77	-
+RTR SR,A2	4E77	-
+RTR SR,(A3)	4E77	-
+RTR SR,$10(A6)	4E77	-
+RTR SR,$1234	4E77	-
+RTR SR,FW	4E77	-
+RTR SR,#1	4E77	-
+RTR SR,#$1234	4E77	-
+RTR SR,CCR	4E77	-
+RTR SR,SR	4E77	-
+RTR SP,D1	4E77	-
+RTR SP,A2	4E77	-
+RTR D1,SP	4E77	-
+RTR #$12,SP	4E77	-
+RTR (A4)+,D1	4E77	-
+RTR (A4)+,A2	4E77	-
+RTR D1,(A4)+	4E77	-
+RTR #$12,(A4)+	4E77	-
+RTR -(A5),D1	4E77	-
+RTR -(A5),A2	4E77	-
+RTR D1,-(A5)	4E77	-
+RTR #$12,-(A5)	4E77	-
+RTR -2(A0),D1	4E77	-
+RTR -2(A0),A2	4E77	-
+RTR D1,-2(A0)	4E77	-
+RTR #$12,-2(A0)	4E77	-
+RTR $10(A6,D7.W),D1	4E77	-
+RTR $10(A6,D7.W),A2	4E77	-
+RTR D1,$10(A6,D7.W)	4E77	-
+RTR #$12,$10(A6,D7.W)	4E77	-
+RTR $12(A0,A1.L),D1	4E77	-
+RTR $12(A0,A1.L),A2	4E77	-
+RTR D1,$12(A0,A1.L)	4E77	-
+RTR #$12,$12(A0,A1.L)	4E77	-
+RTR (A2,D3),D1	4E77	-
+RTR (A2,D3),A2	4E77	-
+RTR D1,(A2,D3)	4E77	-
+RTR #$12,(A2,D3)	4E77	-
+RTR $12345678,D1	4E77	-
+RTR $12345678,A2	4E77	-
+RTR D1,$12345678	4E77	-
+RTR #$12,$12345678	4E77	-
+RTR $1234.L,D1	4E77	-
+RTR $1234.L,A2	4E77	-
+RTR D1,$1234.L	4E77	-
+RTR #$12,$1234.L	4E77	-
+RTR $1234.W,D1	4E77	-
+RTR $1234.W,A2	4E77	-
+RTR D1,$1234.W	4E77	-
+RTR #$12,$1234.W	4E77	-
+RTR $8000,D1	4E77	-
+RTR $8000,A2	4E77	-
+RTR D1,$8000	4E77	-
+RTR #$12,$8000	4E77	-
+RTR BK,D1	4E77	-
+RTR BK,A2	4E77	-
+RTR D1,BK	4E77	-
+RTR #$12,BK	4E77	-
+RTR *+$10(PC),D1	4E77	-
+RTR *+$10(PC),A2	4E77	-
+RTR D1,*+$10(PC)	4E77	-
+RTR #$12,*+$10(PC)	4E77	-
+RTR *(PC,D0.W),D1	4E77	-
+RTR *(PC,D0.W),A2	4E77	-
+RTR D1,*(PC,D0.W)	4E77	-
+RTR #$12,*(PC,D0.W)	4E77	-
+RTR BK(PC),D1	4E77	-
+RTR BK(PC),A2	4E77	-
+RTR D1,BK(PC)	4E77	-
+RTR #$12,BK(PC)	4E77	-
+RTR #8,D1	4E77	-
+RTR #8,A2	4E77	-
+RTR D1,#8	4E77	-
+RTR #$12,#8	4E77	-
+RTR #9,D1	4E77	-
+RTR #9,A2	4E77	-
+RTR D1,#9	4E77	-
+RTR #$12,#9	4E77	-
+RTR #0,D1	4E77	-
+RTR #0,A2	4E77	-
+RTR D1,#0	4E77	-
+RTR #$12,#0	4E77	-
+RTR #-1,D1	4E77	-
+RTR #-1,A2	4E77	-
+RTR D1,#-1	4E77	-
+RTR #$12,#-1	4E77	-
+RTR #$80,D1	4E77	-
+RTR #$80,A2	4E77	-
+RTR D1,#$80	4E77	-
+RTR #$12,#$80	4E77	-
+RTR #$12345678,D1	4E77	-
+RTR #$12345678,A2	4E77	-
+RTR D1,#$12345678	4E77	-
+RTR #$12,#$12345678	4E77	-
+RTR #$12345678.L,D1	4E77	-
+RTR #$12345678.L,A2	4E77	-
+RTR D1,#$12345678.L	4E77	-
+RTR #$12,#$12345678.L	4E77	-
+RTR #BK,D1	4E77	-
+RTR #BK,A2	4E77	-
+RTR D1,#BK	4E77	-
+RTR #$12,#BK	4E77	-
+RTR #FW,D1	4E77	-
+RTR #FW,A2	4E77	-
+RTR D1,#FW	4E77	-
+RTR #$12,#FW	4E77	-
+RTR #UNDEF,D1	4E77	-
+RTR #UNDEF,A2	4E77	-
+RTR D1,#UNDEF	4E77	-
+RTR #$12,#UNDEF	4E77	-
+RTR UNDEF,D1	4E77	-
+RTR UNDEF,A2	4E77	-
+RTR D1,UNDEF	4E77	-
+RTR #$12,UNDEF	4E77	-
+RTR USP,D1	4E77	-
+RTR USP,A2	4E77	-
+RTR D1,USP	4E77	-
+RTR #$12,USP	4E77	-
+RTR D1,D2,D3	4E77	-
+RTR.B	4E77	ERROR: Invalid size code
+RTR.B D1	4E77	ERROR: Invalid size code
+RTR.B A2	4E77	ERROR: Invalid size code
+RTR.B SP	4E77	ERROR: Invalid size code
+RTR.B (A3)	4E77	ERROR: Invalid size code
+RTR.B (A4)+	4E77	ERROR: Invalid size code
+RTR.B -(A5)	4E77	ERROR: Invalid size code
+RTR.B $10(A6)	4E77	ERROR: Invalid size code
+RTR.B -2(A0)	4E77	ERROR: Invalid size code
+RTR.B $10(A6,D7.W)	4E77	ERROR: Invalid size code
+RTR.B $12(A0,A1.L)	4E77	ERROR: Invalid size code
+RTR.B (A2,D3)	4E77	ERROR: Invalid size code
+RTR.B $1234	4E77	ERROR: Invalid size code
+RTR.B $12345678	4E77	ERROR: Invalid size code
+RTR.B $1234.L	4E77	ERROR: Invalid size code
+RTR.B $1234.W	4E77	ERROR: Invalid size code
+RTR.B $8000	4E77	ERROR: Invalid size code
+RTR.B BK	4E77	ERROR: Invalid size code
+RTR.B FW	4E77	ERROR: Invalid size code
+RTR.B *+$10(PC)	4E77	ERROR: Invalid size code
+RTR.B *(PC,D0.W)	4E77	ERROR: Invalid size code
+RTR.B BK(PC)	4E77	ERROR: Invalid size code
+RTR.B #1	4E77	ERROR: Invalid size code
+RTR.B #8	4E77	ERROR: Invalid size code
+RTR.B #9	4E77	ERROR: Invalid size code
+RTR.B #0	4E77	ERROR: Invalid size code
+RTR.B #-1	4E77	ERROR: Invalid size code
+RTR.B #$80	4E77	ERROR: Invalid size code
+RTR.B #$1234	4E77	ERROR: Invalid size code
+RTR.B #$12345678	4E77	ERROR: Invalid size code
+RTR.B #$12345678.L	4E77	ERROR: Invalid size code
+RTR.B #BK	4E77	ERROR: Invalid size code
+RTR.B #FW	4E77	ERROR: Invalid size code
+RTR.B #UNDEF	4E77	ERROR: Invalid size code
+RTR.B UNDEF	4E77	ERROR: Invalid size code
+RTR.B SR	4E77	ERROR: Invalid size code
+RTR.B CCR	4E77	ERROR: Invalid size code
+RTR.B USP	4E77	ERROR: Invalid size code
+RTR.B D1,D2,D3	4E77	ERROR: Invalid size code
+RTR.W	4E77	ERROR: Invalid size code
+RTR.W D1	4E77	ERROR: Invalid size code
+RTR.W A2	4E77	ERROR: Invalid size code
+RTR.W SP	4E77	ERROR: Invalid size code
+RTR.W (A3)	4E77	ERROR: Invalid size code
+RTR.W (A4)+	4E77	ERROR: Invalid size code
+RTR.W -(A5)	4E77	ERROR: Invalid size code
+RTR.W $10(A6)	4E77	ERROR: Invalid size code
+RTR.W -2(A0)	4E77	ERROR: Invalid size code
+RTR.W $10(A6,D7.W)	4E77	ERROR: Invalid size code
+RTR.W $12(A0,A1.L)	4E77	ERROR: Invalid size code
+RTR.W (A2,D3)	4E77	ERROR: Invalid size code
+RTR.W $1234	4E77	ERROR: Invalid size code
+RTR.W $12345678	4E77	ERROR: Invalid size code
+RTR.W $1234.L	4E77	ERROR: Invalid size code
+RTR.W $1234.W	4E77	ERROR: Invalid size code
+RTR.W $8000	4E77	ERROR: Invalid size code
+RTR.W BK	4E77	ERROR: Invalid size code
+RTR.W FW	4E77	ERROR: Invalid size code
+RTR.W *+$10(PC)	4E77	ERROR: Invalid size code
+RTR.W *(PC,D0.W)	4E77	ERROR: Invalid size code
+RTR.W BK(PC)	4E77	ERROR: Invalid size code
+RTR.W #1	4E77	ERROR: Invalid size code
+RTR.W #8	4E77	ERROR: Invalid size code
+RTR.W #9	4E77	ERROR: Invalid size code
+RTR.W #0	4E77	ERROR: Invalid size code
+RTR.W #-1	4E77	ERROR: Invalid size code
+RTR.W #$80	4E77	ERROR: Invalid size code
+RTR.W #$1234	4E77	ERROR: Invalid size code
+RTR.W #$12345678	4E77	ERROR: Invalid size code
+RTR.W #$12345678.L	4E77	ERROR: Invalid size code
+RTR.W #BK	4E77	ERROR: Invalid size code
+RTR.W #FW	4E77	ERROR: Invalid size code
+RTR.W #UNDEF	4E77	ERROR: Invalid size code
+RTR.W UNDEF	4E77	ERROR: Invalid size code
+RTR.W SR	4E77	ERROR: Invalid size code
+RTR.W CCR	4E77	ERROR: Invalid size code
+RTR.W USP	4E77	ERROR: Invalid size code
+RTR.W D1,D2,D3	4E77	ERROR: Invalid size code
+RTR.L	4E77	ERROR: Invalid size code
+RTR.L D1	4E77	ERROR: Invalid size code
+RTR.L A2	4E77	ERROR: Invalid size code
+RTR.L SP	4E77	ERROR: Invalid size code
+RTR.L (A3)	4E77	ERROR: Invalid size code
+RTR.L (A4)+	4E77	ERROR: Invalid size code
+RTR.L -(A5)	4E77	ERROR: Invalid size code
+RTR.L $10(A6)	4E77	ERROR: Invalid size code
+RTR.L -2(A0)	4E77	ERROR: Invalid size code
+RTR.L $10(A6,D7.W)	4E77	ERROR: Invalid size code
+RTR.L $12(A0,A1.L)	4E77	ERROR: Invalid size code
+RTR.L (A2,D3)	4E77	ERROR: Invalid size code
+RTR.L $1234	4E77	ERROR: Invalid size code
+RTR.L $12345678	4E77	ERROR: Invalid size code
+RTR.L $1234.L	4E77	ERROR: Invalid size code
+RTR.L $1234.W	4E77	ERROR: Invalid size code
+RTR.L $8000	4E77	ERROR: Invalid size code
+RTR.L BK	4E77	ERROR: Invalid size code
+RTR.L FW	4E77	ERROR: Invalid size code
+RTR.L *+$10(PC)	4E77	ERROR: Invalid size code
+RTR.L *(PC,D0.W)	4E77	ERROR: Invalid size code
+RTR.L BK(PC)	4E77	ERROR: Invalid size code
+RTR.L #1	4E77	ERROR: Invalid size code
+RTR.L #8	4E77	ERROR: Invalid size code
+RTR.L #9	4E77	ERROR: Invalid size code
+RTR.L #0	4E77	ERROR: Invalid size code
+RTR.L #-1	4E77	ERROR: Invalid size code
+RTR.L #$80	4E77	ERROR: Invalid size code
+RTR.L #$1234	4E77	ERROR: Invalid size code
+RTR.L #$12345678	4E77	ERROR: Invalid size code
+RTR.L #$12345678.L	4E77	ERROR: Invalid size code
+RTR.L #BK	4E77	ERROR: Invalid size code
+RTR.L #FW	4E77	ERROR: Invalid size code
+RTR.L #UNDEF	4E77	ERROR: Invalid size code
+RTR.L UNDEF	4E77	ERROR: Invalid size code
+RTR.L SR	4E77	ERROR: Invalid size code
+RTR.L CCR	4E77	ERROR: Invalid size code
+RTR.L USP	4E77	ERROR: Invalid size code
+RTR.L D1,D2,D3	4E77	ERROR: Invalid size code
+RTR.S	4E77	ERROR: Invalid size code
+RTR.S D1	4E77	ERROR: Invalid size code
+RTR.S A2	4E77	ERROR: Invalid size code
+RTR.S SP	4E77	ERROR: Invalid size code
+RTR.S (A3)	4E77	ERROR: Invalid size code
+RTR.S (A4)+	4E77	ERROR: Invalid size code
+RTR.S -(A5)	4E77	ERROR: Invalid size code
+RTR.S $10(A6)	4E77	ERROR: Invalid size code
+RTR.S -2(A0)	4E77	ERROR: Invalid size code
+RTR.S $10(A6,D7.W)	4E77	ERROR: Invalid size code
+RTR.S $12(A0,A1.L)	4E77	ERROR: Invalid size code
+RTR.S (A2,D3)	4E77	ERROR: Invalid size code
+RTR.S $1234	4E77	ERROR: Invalid size code
+RTR.S $12345678	4E77	ERROR: Invalid size code
+RTR.S $1234.L	4E77	ERROR: Invalid size code
+RTR.S $1234.W	4E77	ERROR: Invalid size code
+RTR.S $8000	4E77	ERROR: Invalid size code
+RTR.S BK	4E77	ERROR: Invalid size code
+RTR.S FW	4E77	ERROR: Invalid size code
+RTR.S *+$10(PC)	4E77	ERROR: Invalid size code
+RTR.S *(PC,D0.W)	4E77	ERROR: Invalid size code
+RTR.S BK(PC)	4E77	ERROR: Invalid size code
+RTR.S #1	4E77	ERROR: Invalid size code
+RTR.S #8	4E77	ERROR: Invalid size code
+RTR.S #9	4E77	ERROR: Invalid size code
+RTR.S #0	4E77	ERROR: Invalid size code
+RTR.S #-1	4E77	ERROR: Invalid size code
+RTR.S #$80	4E77	ERROR: Invalid size code
+RTR.S #$1234	4E77	ERROR: Invalid size code
+RTR.S #$12345678	4E77	ERROR: Invalid size code
+RTR.S #$12345678.L	4E77	ERROR: Invalid size code
+RTR.S #BK	4E77	ERROR: Invalid size code
+RTR.S #FW	4E77	ERROR: Invalid size code
+RTR.S #UNDEF	4E77	ERROR: Invalid size code
+RTR.S UNDEF	4E77	ERROR: Invalid size code
+RTR.S SR	4E77	ERROR: Invalid size code
+RTR.S CCR	4E77	ERROR: Invalid size code
+RTR.S USP	4E77	ERROR: Invalid size code
+RTR.S D1,D2,D3	4E77	ERROR: Invalid size code
+RTR.X D1,D2	4E77	ERROR: Invalid size code
+RTR.X #1	4E77	ERROR: Invalid size code

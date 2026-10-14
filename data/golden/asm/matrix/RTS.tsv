@@ -1,0 +1,405 @@
+RTS	4E75	-
+RTS D1	4E75	-
+RTS A2	4E75	-
+RTS SP	4E75	-
+RTS (A3)	4E75	-
+RTS (A4)+	4E75	-
+RTS -(A5)	4E75	-
+RTS $10(A6)	4E75	-
+RTS -2(A0)	4E75	-
+RTS $10(A6,D7.W)	4E75	-
+RTS $12(A0,A1.L)	4E75	-
+RTS (A2,D3)	4E75	-
+RTS $1234	4E75	-
+RTS $12345678	4E75	-
+RTS $1234.L	4E75	-
+RTS $1234.W	4E75	-
+RTS $8000	4E75	-
+RTS BK	4E75	-
+RTS FW	4E75	-
+RTS *+$10(PC)	4E75	-
+RTS *(PC,D0.W)	4E75	-
+RTS BK(PC)	4E75	-
+RTS #1	4E75	-
+RTS #8	4E75	-
+RTS #9	4E75	-
+RTS #0	4E75	-
+RTS #-1	4E75	-
+RTS #$80	4E75	-
+RTS #$1234	4E75	-
+RTS #$12345678	4E75	-
+RTS #$12345678.L	4E75	-
+RTS #BK	4E75	-
+RTS #FW	4E75	-
+RTS #UNDEF	4E75	-
+RTS UNDEF	4E75	-
+RTS SR	4E75	-
+RTS CCR	4E75	-
+RTS USP	4E75	-
+RTS D1,D1	4E75	-
+RTS D1,A2	4E75	-
+RTS D1,(A3)	4E75	-
+RTS D1,$10(A6)	4E75	-
+RTS D1,$1234	4E75	-
+RTS D1,FW	4E75	-
+RTS D1,#1	4E75	-
+RTS D1,#$1234	4E75	-
+RTS D1,CCR	4E75	-
+RTS D1,SR	4E75	-
+RTS A2,D1	4E75	-
+RTS A2,A2	4E75	-
+RTS A2,(A3)	4E75	-
+RTS A2,$10(A6)	4E75	-
+RTS A2,$1234	4E75	-
+RTS A2,FW	4E75	-
+RTS A2,#1	4E75	-
+RTS A2,#$1234	4E75	-
+RTS A2,CCR	4E75	-
+RTS A2,SR	4E75	-
+RTS (A3),D1	4E75	-
+RTS (A3),A2	4E75	-
+RTS (A3),(A3)	4E75	-
+RTS (A3),$10(A6)	4E75	-
+RTS (A3),$1234	4E75	-
+RTS (A3),FW	4E75	-
+RTS (A3),#1	4E75	-
+RTS (A3),#$1234	4E75	-
+RTS (A3),CCR	4E75	-
+RTS (A3),SR	4E75	-
+RTS $10(A6),D1	4E75	-
+RTS $10(A6),A2	4E75	-
+RTS $10(A6),(A3)	4E75	-
+RTS $10(A6),$10(A6)	4E75	-
+RTS $10(A6),$1234	4E75	-
+RTS $10(A6),FW	4E75	-
+RTS $10(A6),#1	4E75	-
+RTS $10(A6),#$1234	4E75	-
+RTS $10(A6),CCR	4E75	-
+RTS $10(A6),SR	4E75	-
+RTS $1234,D1	4E75	-
+RTS $1234,A2	4E75	-
+RTS $1234,(A3)	4E75	-
+RTS $1234,$10(A6)	4E75	-
+RTS $1234,$1234	4E75	-
+RTS $1234,FW	4E75	-
+RTS $1234,#1	4E75	-
+RTS $1234,#$1234	4E75	-
+RTS $1234,CCR	4E75	-
+RTS $1234,SR	4E75	-
+RTS FW,D1	4E75	-
+RTS FW,A2	4E75	-
+RTS FW,(A3)	4E75	-
+RTS FW,$10(A6)	4E75	-
+RTS FW,$1234	4E75	-
+RTS FW,FW	4E75	-
+RTS FW,#1	4E75	-
+RTS FW,#$1234	4E75	-
+RTS FW,CCR	4E75	-
+RTS FW,SR	4E75	-
+RTS #1,D1	4E75	-
+RTS #1,A2	4E75	-
+RTS #1,(A3)	4E75	-
+RTS #1,$10(A6)	4E75	-
+RTS #1,$1234	4E75	-
+RTS #1,FW	4E75	-
+RTS #1,#1	4E75	-
+RTS #1,#$1234	4E75	-
+RTS #1,CCR	4E75	-
+RTS #1,SR	4E75	-
+RTS #$1234,D1	4E75	-
+RTS #$1234,A2	4E75	-
+RTS #$1234,(A3)	4E75	-
+RTS #$1234,$10(A6)	4E75	-
+RTS #$1234,$1234	4E75	-
+RTS #$1234,FW	4E75	-
+RTS #$1234,#1	4E75	-
+RTS #$1234,#$1234	4E75	-
+RTS #$1234,CCR	4E75	-
+RTS #$1234,SR	4E75	-
+RTS CCR,D1	4E75	-
+RTS CCR,A2	4E75	-
+RTS CCR,(A3)	4E75	-
+RTS CCR,$10(A6)	4E75	-
+RTS CCR,$1234	4E75	-
+RTS CCR,FW	4E75	-
+RTS CCR,#1	4E75	-
+RTS CCR,#$1234	4E75	-
+RTS CCR,CCR	4E75	-
+RTS CCR,SR	4E75	-
+RTS SR,D1	4E75	-
+RTS SR,A2	4E75	-
+RTS SR,(A3)	4E75	-
+RTS SR,$10(A6)	4E75	-
+RTS SR,$1234	4E75	-
+RTS SR,FW	4E75	-
+RTS SR,#1	4E75	-
+RTS SR,#$1234	4E75	-
+RTS SR,CCR	4E75	-
+RTS SR,SR	4E75	-
+RTS SP,D1	4E75	-
+RTS SP,A2	4E75	-
+RTS D1,SP	4E75	-
+RTS #$12,SP	4E75	-
+RTS (A4)+,D1	4E75	-
+RTS (A4)+,A2	4E75	-
+RTS D1,(A4)+	4E75	-
+RTS #$12,(A4)+	4E75	-
+RTS -(A5),D1	4E75	-
+RTS -(A5),A2	4E75	-
+RTS D1,-(A5)	4E75	-
+RTS #$12,-(A5)	4E75	-
+RTS -2(A0),D1	4E75	-
+RTS -2(A0),A2	4E75	-
+RTS D1,-2(A0)	4E75	-
+RTS #$12,-2(A0)	4E75	-
+RTS $10(A6,D7.W),D1	4E75	-
+RTS $10(A6,D7.W),A2	4E75	-
+RTS D1,$10(A6,D7.W)	4E75	-
+RTS #$12,$10(A6,D7.W)	4E75	-
+RTS $12(A0,A1.L),D1	4E75	-
+RTS $12(A0,A1.L),A2	4E75	-
+RTS D1,$12(A0,A1.L)	4E75	-
+RTS #$12,$12(A0,A1.L)	4E75	-
+RTS (A2,D3),D1	4E75	-
+RTS (A2,D3),A2	4E75	-
+RTS D1,(A2,D3)	4E75	-
+RTS #$12,(A2,D3)	4E75	-
+RTS $12345678,D1	4E75	-
+RTS $12345678,A2	4E75	-
+RTS D1,$12345678	4E75	-
+RTS #$12,$12345678	4E75	-
+RTS $1234.L,D1	4E75	-
+RTS $1234.L,A2	4E75	-
+RTS D1,$1234.L	4E75	-
+RTS #$12,$1234.L	4E75	-
+RTS $1234.W,D1	4E75	-
+RTS $1234.W,A2	4E75	-
+RTS D1,$1234.W	4E75	-
+RTS #$12,$1234.W	4E75	-
+RTS $8000,D1	4E75	-
+RTS $8000,A2	4E75	-
+RTS D1,$8000	4E75	-
+RTS #$12,$8000	4E75	-
+RTS BK,D1	4E75	-
+RTS BK,A2	4E75	-
+RTS D1,BK	4E75	-
+RTS #$12,BK	4E75	-
+RTS *+$10(PC),D1	4E75	-
+RTS *+$10(PC),A2	4E75	-
+RTS D1,*+$10(PC)	4E75	-
+RTS #$12,*+$10(PC)	4E75	-
+RTS *(PC,D0.W),D1	4E75	-
+RTS *(PC,D0.W),A2	4E75	-
+RTS D1,*(PC,D0.W)	4E75	-
+RTS #$12,*(PC,D0.W)	4E75	-
+RTS BK(PC),D1	4E75	-
+RTS BK(PC),A2	4E75	-
+RTS D1,BK(PC)	4E75	-
+RTS #$12,BK(PC)	4E75	-
+RTS #8,D1	4E75	-
+RTS #8,A2	4E75	-
+RTS D1,#8	4E75	-
+RTS #$12,#8	4E75	-
+RTS #9,D1	4E75	-
+RTS #9,A2	4E75	-
+RTS D1,#9	4E75	-
+RTS #$12,#9	4E75	-
+RTS #0,D1	4E75	-
+RTS #0,A2	4E75	-
+RTS D1,#0	4E75	-
+RTS #$12,#0	4E75	-
+RTS #-1,D1	4E75	-
+RTS #-1,A2	4E75	-
+RTS D1,#-1	4E75	-
+RTS #$12,#-1	4E75	-
+RTS #$80,D1	4E75	-
+RTS #$80,A2	4E75	-
+RTS D1,#$80	4E75	-
+RTS #$12,#$80	4E75	-
+RTS #$12345678,D1	4E75	-
+RTS #$12345678,A2	4E75	-
+RTS D1,#$12345678	4E75	-
+RTS #$12,#$12345678	4E75	-
+RTS #$12345678.L,D1	4E75	-
+RTS #$12345678.L,A2	4E75	-
+RTS D1,#$12345678.L	4E75	-
+RTS #$12,#$12345678.L	4E75	-
+RTS #BK,D1	4E75	-
+RTS #BK,A2	4E75	-
+RTS D1,#BK	4E75	-
+RTS #$12,#BK	4E75	-
+RTS #FW,D1	4E75	-
+RTS #FW,A2	4E75	-
+RTS D1,#FW	4E75	-
+RTS #$12,#FW	4E75	-
+RTS #UNDEF,D1	4E75	-
+RTS #UNDEF,A2	4E75	-
+RTS D1,#UNDEF	4E75	-
+RTS #$12,#UNDEF	4E75	-
+RTS UNDEF,D1	4E75	-
+RTS UNDEF,A2	4E75	-
+RTS D1,UNDEF	4E75	-
+RTS #$12,UNDEF	4E75	-
+RTS USP,D1	4E75	-
+RTS USP,A2	4E75	-
+RTS D1,USP	4E75	-
+RTS #$12,USP	4E75	-
+RTS D1,D2,D3	4E75	-
+RTS.B	4E75	ERROR: Invalid size code
+RTS.B D1	4E75	ERROR: Invalid size code
+RTS.B A2	4E75	ERROR: Invalid size code
+RTS.B SP	4E75	ERROR: Invalid size code
+RTS.B (A3)	4E75	ERROR: Invalid size code
+RTS.B (A4)+	4E75	ERROR: Invalid size code
+RTS.B -(A5)	4E75	ERROR: Invalid size code
+RTS.B $10(A6)	4E75	ERROR: Invalid size code
+RTS.B -2(A0)	4E75	ERROR: Invalid size code
+RTS.B $10(A6,D7.W)	4E75	ERROR: Invalid size code
+RTS.B $12(A0,A1.L)	4E75	ERROR: Invalid size code
+RTS.B (A2,D3)	4E75	ERROR: Invalid size code
+RTS.B $1234	4E75	ERROR: Invalid size code
+RTS.B $12345678	4E75	ERROR: Invalid size code
+RTS.B $1234.L	4E75	ERROR: Invalid size code
+RTS.B $1234.W	4E75	ERROR: Invalid size code
+RTS.B $8000	4E75	ERROR: Invalid size code
+RTS.B BK	4E75	ERROR: Invalid size code
+RTS.B FW	4E75	ERROR: Invalid size code
+RTS.B *+$10(PC)	4E75	ERROR: Invalid size code
+RTS.B *(PC,D0.W)	4E75	ERROR: Invalid size code
+RTS.B BK(PC)	4E75	ERROR: Invalid size code
+RTS.B #1	4E75	ERROR: Invalid size code
+RTS.B #8	4E75	ERROR: Invalid size code
+RTS.B #9	4E75	ERROR: Invalid size code
+RTS.B #0	4E75	ERROR: Invalid size code
+RTS.B #-1	4E75	ERROR: Invalid size code
+RTS.B #$80	4E75	ERROR: Invalid size code
+RTS.B #$1234	4E75	ERROR: Invalid size code
+RTS.B #$12345678	4E75	ERROR: Invalid size code
+RTS.B #$12345678.L	4E75	ERROR: Invalid size code
+RTS.B #BK	4E75	ERROR: Invalid size code
+RTS.B #FW	4E75	ERROR: Invalid size code
+RTS.B #UNDEF	4E75	ERROR: Invalid size code
+RTS.B UNDEF	4E75	ERROR: Invalid size code
+RTS.B SR	4E75	ERROR: Invalid size code
+RTS.B CCR	4E75	ERROR: Invalid size code
+RTS.B USP	4E75	ERROR: Invalid size code
+RTS.B D1,D2,D3	4E75	ERROR: Invalid size code
+RTS.W	4E75	ERROR: Invalid size code
+RTS.W D1	4E75	ERROR: Invalid size code
+RTS.W A2	4E75	ERROR: Invalid size code
+RTS.W SP	4E75	ERROR: Invalid size code
+RTS.W (A3)	4E75	ERROR: Invalid size code
+RTS.W (A4)+	4E75	ERROR: Invalid size code
+RTS.W -(A5)	4E75	ERROR: Invalid size code
+RTS.W $10(A6)	4E75	ERROR: Invalid size code
+RTS.W -2(A0)	4E75	ERROR: Invalid size code
+RTS.W $10(A6,D7.W)	4E75	ERROR: Invalid size code
+RTS.W $12(A0,A1.L)	4E75	ERROR: Invalid size code
+RTS.W (A2,D3)	4E75	ERROR: Invalid size code
+RTS.W $1234	4E75	ERROR: Invalid size code
+RTS.W $12345678	4E75	ERROR: Invalid size code
+RTS.W $1234.L	4E75	ERROR: Invalid size code
+RTS.W $1234.W	4E75	ERROR: Invalid size code
+RTS.W $8000	4E75	ERROR: Invalid size code
+RTS.W BK	4E75	ERROR: Invalid size code
+RTS.W FW	4E75	ERROR: Invalid size code
+RTS.W *+$10(PC)	4E75	ERROR: Invalid size code
+RTS.W *(PC,D0.W)	4E75	ERROR: Invalid size code
+RTS.W BK(PC)	4E75	ERROR: Invalid size code
+RTS.W #1	4E75	ERROR: Invalid size code
+RTS.W #8	4E75	ERROR: Invalid size code
+RTS.W #9	4E75	ERROR: Invalid size code
+RTS.W #0	4E75	ERROR: Invalid size code
+RTS.W #-1	4E75	ERROR: Invalid size code
+RTS.W #$80	4E75	ERROR: Invalid size code
+RTS.W #$1234	4E75	ERROR: Invalid size code
+RTS.W #$12345678	4E75	ERROR: Invalid size code
+RTS.W #$12345678.L	4E75	ERROR: Invalid size code
+RTS.W #BK	4E75	ERROR: Invalid size code
+RTS.W #FW	4E75	ERROR: Invalid size code
+RTS.W #UNDEF	4E75	ERROR: Invalid size code
+RTS.W UNDEF	4E75	ERROR: Invalid size code
+RTS.W SR	4E75	ERROR: Invalid size code
+RTS.W CCR	4E75	ERROR: Invalid size code
+RTS.W USP	4E75	ERROR: Invalid size code
+RTS.W D1,D2,D3	4E75	ERROR: Invalid size code
+RTS.L	4E75	ERROR: Invalid size code
+RTS.L D1	4E75	ERROR: Invalid size code
+RTS.L A2	4E75	ERROR: Invalid size code
+RTS.L SP	4E75	ERROR: Invalid size code
+RTS.L (A3)	4E75	ERROR: Invalid size code
+RTS.L (A4)+	4E75	ERROR: Invalid size code
+RTS.L -(A5)	4E75	ERROR: Invalid size code
+RTS.L $10(A6)	4E75	ERROR: Invalid size code
+RTS.L -2(A0)	4E75	ERROR: Invalid size code
+RTS.L $10(A6,D7.W)	4E75	ERROR: Invalid size code
+RTS.L $12(A0,A1.L)	4E75	ERROR: Invalid size code
+RTS.L (A2,D3)	4E75	ERROR: Invalid size code
+RTS.L $1234	4E75	ERROR: Invalid size code
+RTS.L $12345678	4E75	ERROR: Invalid size code
+RTS.L $1234.L	4E75	ERROR: Invalid size code
+RTS.L $1234.W	4E75	ERROR: Invalid size code
+RTS.L $8000	4E75	ERROR: Invalid size code
+RTS.L BK	4E75	ERROR: Invalid size code
+RTS.L FW	4E75	ERROR: Invalid size code
+RTS.L *+$10(PC)	4E75	ERROR: Invalid size code
+RTS.L *(PC,D0.W)	4E75	ERROR: Invalid size code
+RTS.L BK(PC)	4E75	ERROR: Invalid size code
+RTS.L #1	4E75	ERROR: Invalid size code
+RTS.L #8	4E75	ERROR: Invalid size code
+RTS.L #9	4E75	ERROR: Invalid size code
+RTS.L #0	4E75	ERROR: Invalid size code
+RTS.L #-1	4E75	ERROR: Invalid size code
+RTS.L #$80	4E75	ERROR: Invalid size code
+RTS.L #$1234	4E75	ERROR: Invalid size code
+RTS.L #$12345678	4E75	ERROR: Invalid size code
+RTS.L #$12345678.L	4E75	ERROR: Invalid size code
+RTS.L #BK	4E75	ERROR: Invalid size code
+RTS.L #FW	4E75	ERROR: Invalid size code
+RTS.L #UNDEF	4E75	ERROR: Invalid size code
+RTS.L UNDEF	4E75	ERROR: Invalid size code
+RTS.L SR	4E75	ERROR: Invalid size code
+RTS.L CCR	4E75	ERROR: Invalid size code
+RTS.L USP	4E75	ERROR: Invalid size code
+RTS.L D1,D2,D3	4E75	ERROR: Invalid size code
+RTS.S	4E75	ERROR: Invalid size code
+RTS.S D1	4E75	ERROR: Invalid size code
+RTS.S A2	4E75	ERROR: Invalid size code
+RTS.S SP	4E75	ERROR: Invalid size code
+RTS.S (A3)	4E75	ERROR: Invalid size code
+RTS.S (A4)+	4E75	ERROR: Invalid size code
+RTS.S -(A5)	4E75	ERROR: Invalid size code
+RTS.S $10(A6)	4E75	ERROR: Invalid size code
+RTS.S -2(A0)	4E75	ERROR: Invalid size code
+RTS.S $10(A6,D7.W)	4E75	ERROR: Invalid size code
+RTS.S $12(A0,A1.L)	4E75	ERROR: Invalid size code
+RTS.S (A2,D3)	4E75	ERROR: Invalid size code
+RTS.S $1234	4E75	ERROR: Invalid size code
+RTS.S $12345678	4E75	ERROR: Invalid size code
+RTS.S $1234.L	4E75	ERROR: Invalid size code
+RTS.S $1234.W	4E75	ERROR: Invalid size code
+RTS.S $8000	4E75	ERROR: Invalid size code
+RTS.S BK	4E75	ERROR: Invalid size code
+RTS.S FW	4E75	ERROR: Invalid size code
+RTS.S *+$10(PC)	4E75	ERROR: Invalid size code
+RTS.S *(PC,D0.W)	4E75	ERROR: Invalid size code
+RTS.S BK(PC)	4E75	ERROR: Invalid size code
+RTS.S #1	4E75	ERROR: Invalid size code
+RTS.S #8	4E75	ERROR: Invalid size code
+RTS.S #9	4E75	ERROR: Invalid size code
+RTS.S #0	4E75	ERROR: Invalid size code
+RTS.S #-1	4E75	ERROR: Invalid size code
+RTS.S #$80	4E75	ERROR: Invalid size code
+RTS.S #$1234	4E75	ERROR: Invalid size code
+RTS.S #$12345678	4E75	ERROR: Invalid size code
+RTS.S #$12345678.L	4E75	ERROR: Invalid size code
+RTS.S #BK	4E75	ERROR: Invalid size code
+RTS.S #FW	4E75	ERROR: Invalid size code
+RTS.S #UNDEF	4E75	ERROR: Invalid size code
+RTS.S UNDEF	4E75	ERROR: Invalid size code
+RTS.S SR	4E75	ERROR: Invalid size code
+RTS.S CCR	4E75	ERROR: Invalid size code
+RTS.S USP	4E75	ERROR: Invalid size code
+RTS.S D1,D2,D3	4E75	ERROR: Invalid size code
+RTS.X D1,D2	4E75	ERROR: Invalid size code
+RTS.X #1	4E75	ERROR: Invalid size code

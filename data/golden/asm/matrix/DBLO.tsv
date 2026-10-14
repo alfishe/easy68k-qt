@@ -1,0 +1,92 @@
+DBLO		ERROR: Invalid syntax
+DBLO D2,*+2	55CA0000	-
+DBLO D2,*+4	55CA0002	-
+DBLO D2,*+$80	55CA007E	-
+DBLO D2,*+$82	55CA0080	-
+DBLO D2,*-$7E	55CAFF80	-
+DBLO D2,*-$80	55CAFF7E	-
+DBLO D2,*+$8000	55CA7FFE	-
+DBLO D2,*	55CAFFFE	-
+DBLO D2,BK	55CA0EFE	-
+DBLO D2,FW	55CA0EFE	-
+DBLO D2,$1000	55CAFFFE	-
+DBLO D2,$12345678	55CA4676	ERROR: Branch instruction displacement is out of range or invalid
+DBLO D2,D1		ERROR: Invalid addressing mode
+DBLO D2,(A0)		ERROR: Invalid addressing mode
+DBLO D2,#4		ERROR: Invalid addressing mode
+DBLO A2,*		ERROR: Invalid addressing mode
+DBLO #1,*		ERROR: Invalid addressing mode
+DBLO.B		ERROR: Invalid syntax
+DBLO.B D2,*+2	55CA0000	ERROR: Invalid size code
+DBLO.B D2,*+4	55CA0002	ERROR: Invalid size code
+DBLO.B D2,*+$80	55CA007E	ERROR: Invalid size code
+DBLO.B D2,*+$82	55CA0080	ERROR: Invalid size code
+DBLO.B D2,*-$7E	55CAFF80	ERROR: Invalid size code
+DBLO.B D2,*-$80	55CAFF7E	ERROR: Invalid size code
+DBLO.B D2,*+$8000	55CA7FFE	ERROR: Invalid size code
+DBLO.B D2,*	55CAFFFE	ERROR: Invalid size code
+DBLO.B D2,BK	55CA0EFE	ERROR: Invalid size code
+DBLO.B D2,FW	55CA0EFE	ERROR: Invalid size code
+DBLO.B D2,$1000	55CAFFFE	ERROR: Invalid size code
+DBLO.B D2,$12345678	55CA4676	ERROR: Invalid size code
+DBLO.B D2,D1		ERROR: Invalid addressing mode
+DBLO.B D2,(A0)		ERROR: Invalid addressing mode
+DBLO.B D2,#4		ERROR: Invalid addressing mode
+DBLO.B A2,*		ERROR: Invalid addressing mode
+DBLO.B #1,*		ERROR: Invalid addressing mode
+DBLO.W		ERROR: Invalid syntax
+DBLO.W D2,*+2	55CA0000	-
+DBLO.W D2,*+4	55CA0002	-
+DBLO.W D2,*+$80	55CA007E	-
+DBLO.W D2,*+$82	55CA0080	-
+DBLO.W D2,*-$7E	55CAFF80	-
+DBLO.W D2,*-$80	55CAFF7E	-
+DBLO.W D2,*+$8000	55CA7FFE	-
+DBLO.W D2,*	55CAFFFE	-
+DBLO.W D2,BK	55CA0EFE	-
+DBLO.W D2,FW	55CA0EFE	-
+DBLO.W D2,$1000	55CAFFFE	-
+DBLO.W D2,$12345678	55CA4676	ERROR: Branch instruction displacement is out of range or invalid
+DBLO.W D2,D1		ERROR: Invalid addressing mode
+DBLO.W D2,(A0)		ERROR: Invalid addressing mode
+DBLO.W D2,#4		ERROR: Invalid addressing mode
+DBLO.W A2,*		ERROR: Invalid addressing mode
+DBLO.W #1,*		ERROR: Invalid addressing mode
+DBLO.L		ERROR: Invalid syntax
+DBLO.L D2,*+2	55CA0000	ERROR: Invalid size code
+DBLO.L D2,*+4	55CA0002	ERROR: Invalid size code
+DBLO.L D2,*+$80	55CA007E	ERROR: Invalid size code
+DBLO.L D2,*+$82	55CA0080	ERROR: Invalid size code
+DBLO.L D2,*-$7E	55CAFF80	ERROR: Invalid size code
+DBLO.L D2,*-$80	55CAFF7E	ERROR: Invalid size code
+DBLO.L D2,*+$8000	55CA7FFE	ERROR: Invalid size code
+DBLO.L D2,*	55CAFFFE	ERROR: Invalid size code
+DBLO.L D2,BK	55CA0EFE	ERROR: Invalid size code
+DBLO.L D2,FW	55CA0EFE	ERROR: Invalid size code
+DBLO.L D2,$1000	55CAFFFE	ERROR: Invalid size code
+DBLO.L D2,$12345678	55CA4676	ERROR: Invalid size code
+DBLO.L D2,D1		ERROR: Invalid addressing mode
+DBLO.L D2,(A0)		ERROR: Invalid addressing mode
+DBLO.L D2,#4		ERROR: Invalid addressing mode
+DBLO.L A2,*		ERROR: Invalid addressing mode
+DBLO.L #1,*		ERROR: Invalid addressing mode
+DBLO.S		ERROR: Invalid syntax
+DBLO.S D2,*+2	55CA0000	ERROR: Invalid size code
+DBLO.S D2,*+4	55CA0002	ERROR: Invalid size code
+DBLO.S D2,*+$80	55CA007E	ERROR: Invalid size code
+DBLO.S D2,*+$82	55CA0080	ERROR: Invalid size code
+DBLO.S D2,*-$7E	55CAFF80	ERROR: Invalid size code
+DBLO.S D2,*-$80	55CAFF7E	ERROR: Invalid size code
+DBLO.S D2,*+$8000	55CA7FFE	ERROR: Invalid size code
+DBLO.S D2,*	55CAFFFE	ERROR: Invalid size code
+DBLO.S D2,BK	55CA0EFE	ERROR: Invalid size code
+DBLO.S D2,FW	55CA0EFE	ERROR: Invalid size code
+DBLO.S D2,$1000	55CAFFFE	ERROR: Invalid size code
+DBLO.S D2,$12345678	55CA4676	ERROR: Invalid size code
+DBLO.S D2,D1		ERROR: Invalid addressing mode
+DBLO.S D2,(A0)		ERROR: Invalid addressing mode
+DBLO.S D2,#4		ERROR: Invalid addressing mode
+DBLO.S A2,*		ERROR: Invalid addressing mode
+DBLO.S #1,*		ERROR: Invalid addressing mode
+DBLO.X D1,D2		ERROR: Invalid addressing mode
+DBLO.X #1		ERROR: Comma expected

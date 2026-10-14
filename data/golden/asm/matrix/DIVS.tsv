@@ -1,0 +1,1621 @@
+DIVS		ERROR: Invalid syntax
+DIVS D1		ERROR: Comma expected
+DIVS A2		ERROR: Comma expected
+DIVS SP		ERROR: Comma expected
+DIVS (A3)		ERROR: Comma expected
+DIVS (A4)+		ERROR: Comma expected
+DIVS -(A5)		ERROR: Comma expected
+DIVS $10(A6)		ERROR: Comma expected
+DIVS -2(A0)		ERROR: Comma expected
+DIVS $10(A6,D7.W)		ERROR: Comma expected
+DIVS $12(A0,A1.L)		ERROR: Comma expected
+DIVS (A2,D3)		ERROR: Comma expected
+DIVS $1234		ERROR: Comma expected
+DIVS $12345678		ERROR: Comma expected
+DIVS $1234.L		ERROR: Comma expected
+DIVS $1234.W		ERROR: Comma expected
+DIVS $8000		ERROR: Comma expected
+DIVS BK		ERROR: Comma expected
+DIVS FW		ERROR: Comma expected
+DIVS *+$10(PC)		ERROR: Comma expected
+DIVS *(PC,D0.W)		ERROR: Comma expected
+DIVS BK(PC)		ERROR: Comma expected
+DIVS #1		ERROR: Comma expected
+DIVS #8		ERROR: Comma expected
+DIVS #9		ERROR: Comma expected
+DIVS #0		ERROR: Comma expected
+DIVS #-1		ERROR: Comma expected
+DIVS #$80		ERROR: Comma expected
+DIVS #$1234		ERROR: Comma expected
+DIVS #$12345678		ERROR: Comma expected
+DIVS #$12345678.L		ERROR: Comma expected
+DIVS #BK		ERROR: Comma expected
+DIVS #FW		ERROR: Comma expected
+DIVS #UNDEF		ERROR: Comma expected
+DIVS UNDEF		ERROR: Comma expected
+DIVS SR		ERROR: Comma expected
+DIVS CCR		ERROR: Comma expected
+DIVS USP		ERROR: Comma expected
+DIVS D1,D1	83C1	-
+DIVS D1,A2		ERROR: Invalid addressing mode
+DIVS D1,(A3)		ERROR: Invalid addressing mode
+DIVS D1,(A4)+		ERROR: Invalid addressing mode
+DIVS D1,-(A5)		ERROR: Invalid addressing mode
+DIVS D1,$10(A6)		ERROR: Invalid addressing mode
+DIVS D1,$10(A6,D7.W)		ERROR: Invalid addressing mode
+DIVS D1,$1234		ERROR: Invalid addressing mode
+DIVS D1,$12345678		ERROR: Invalid addressing mode
+DIVS D1,FW		ERROR: Invalid addressing mode
+DIVS D1,*+$10(PC)		ERROR: Invalid addressing mode
+DIVS D1,#1		ERROR: Invalid addressing mode
+DIVS D1,#$80		ERROR: Invalid addressing mode
+DIVS D1,#$1234		ERROR: Invalid addressing mode
+DIVS D1,#$12345678		ERROR: Invalid addressing mode
+DIVS D1,SR		ERROR: Invalid addressing mode
+DIVS D1,CCR		ERROR: Invalid addressing mode
+DIVS D1,USP		ERROR: Invalid addressing mode
+DIVS A2,D1		ERROR: Invalid addressing mode
+DIVS A2,A2		ERROR: Invalid addressing mode
+DIVS A2,(A3)		ERROR: Invalid addressing mode
+DIVS A2,(A4)+		ERROR: Invalid addressing mode
+DIVS A2,-(A5)		ERROR: Invalid addressing mode
+DIVS A2,$10(A6)		ERROR: Invalid addressing mode
+DIVS A2,$10(A6,D7.W)		ERROR: Invalid addressing mode
+DIVS A2,$1234		ERROR: Invalid addressing mode
+DIVS A2,$12345678		ERROR: Invalid addressing mode
+DIVS A2,FW		ERROR: Invalid addressing mode
+DIVS A2,*+$10(PC)		ERROR: Invalid addressing mode
+DIVS A2,#1		ERROR: Invalid addressing mode
+DIVS A2,#$80		ERROR: Invalid addressing mode
+DIVS A2,#$1234		ERROR: Invalid addressing mode
+DIVS A2,#$12345678		ERROR: Invalid addressing mode
+DIVS A2,SR		ERROR: Invalid addressing mode
+DIVS A2,CCR		ERROR: Invalid addressing mode
+DIVS A2,USP		ERROR: Invalid addressing mode
+DIVS (A3),D1	83D3	-
+DIVS (A3),A2		ERROR: Invalid addressing mode
+DIVS (A3),(A3)		ERROR: Invalid addressing mode
+DIVS (A3),(A4)+		ERROR: Invalid addressing mode
+DIVS (A3),-(A5)		ERROR: Invalid addressing mode
+DIVS (A3),$10(A6)		ERROR: Invalid addressing mode
+DIVS (A3),$10(A6,D7.W)		ERROR: Invalid addressing mode
+DIVS (A3),$1234		ERROR: Invalid addressing mode
+DIVS (A3),$12345678		ERROR: Invalid addressing mode
+DIVS (A3),FW		ERROR: Invalid addressing mode
+DIVS (A3),*+$10(PC)		ERROR: Invalid addressing mode
+DIVS (A3),#1		ERROR: Invalid addressing mode
+DIVS (A3),#$80		ERROR: Invalid addressing mode
+DIVS (A3),#$1234		ERROR: Invalid addressing mode
+DIVS (A3),#$12345678		ERROR: Invalid addressing mode
+DIVS (A3),SR		ERROR: Invalid addressing mode
+DIVS (A3),CCR		ERROR: Invalid addressing mode
+DIVS (A3),USP		ERROR: Invalid addressing mode
+DIVS (A4)+,D1	83DC	-
+DIVS (A4)+,A2		ERROR: Invalid addressing mode
+DIVS (A4)+,(A3)		ERROR: Invalid addressing mode
+DIVS (A4)+,(A4)+		ERROR: Invalid addressing mode
+DIVS (A4)+,-(A5)		ERROR: Invalid addressing mode
+DIVS (A4)+,$10(A6)		ERROR: Invalid addressing mode
+DIVS (A4)+,$10(A6,D7.W)		ERROR: Invalid addressing mode
+DIVS (A4)+,$1234		ERROR: Invalid addressing mode
+DIVS (A4)+,$12345678		ERROR: Invalid addressing mode
+DIVS (A4)+,FW		ERROR: Invalid addressing mode
+DIVS (A4)+,*+$10(PC)		ERROR: Invalid addressing mode
+DIVS (A4)+,#1		ERROR: Invalid addressing mode
+DIVS (A4)+,#$80		ERROR: Invalid addressing mode
+DIVS (A4)+,#$1234		ERROR: Invalid addressing mode
+DIVS (A4)+,#$12345678		ERROR: Invalid addressing mode
+DIVS (A4)+,SR		ERROR: Invalid addressing mode
+DIVS (A4)+,CCR		ERROR: Invalid addressing mode
+DIVS (A4)+,USP		ERROR: Invalid addressing mode
+DIVS -(A5),D1	83E5	-
+DIVS -(A5),A2		ERROR: Invalid addressing mode
+DIVS -(A5),(A3)		ERROR: Invalid addressing mode
+DIVS -(A5),(A4)+		ERROR: Invalid addressing mode
+DIVS -(A5),-(A5)		ERROR: Invalid addressing mode
+DIVS -(A5),$10(A6)		ERROR: Invalid addressing mode
+DIVS -(A5),$10(A6,D7.W)		ERROR: Invalid addressing mode
+DIVS -(A5),$1234		ERROR: Invalid addressing mode
+DIVS -(A5),$12345678		ERROR: Invalid addressing mode
+DIVS -(A5),FW		ERROR: Invalid addressing mode
+DIVS -(A5),*+$10(PC)		ERROR: Invalid addressing mode
+DIVS -(A5),#1		ERROR: Invalid addressing mode
+DIVS -(A5),#$80		ERROR: Invalid addressing mode
+DIVS -(A5),#$1234		ERROR: Invalid addressing mode
+DIVS -(A5),#$12345678		ERROR: Invalid addressing mode
+DIVS -(A5),SR		ERROR: Invalid addressing mode
+DIVS -(A5),CCR		ERROR: Invalid addressing mode
+DIVS -(A5),USP		ERROR: Invalid addressing mode
+DIVS $10(A6),D1	83EE0010	-
+DIVS $10(A6),A2		ERROR: Invalid addressing mode
+DIVS $10(A6),(A3)		ERROR: Invalid addressing mode
+DIVS $10(A6),(A4)+		ERROR: Invalid addressing mode
+DIVS $10(A6),-(A5)		ERROR: Invalid addressing mode
+DIVS $10(A6),$10(A6)		ERROR: Invalid addressing mode
+DIVS $10(A6),$10(A6,D7.W)		ERROR: Invalid addressing mode
+DIVS $10(A6),$1234		ERROR: Invalid addressing mode
+DIVS $10(A6),$12345678		ERROR: Invalid addressing mode
+DIVS $10(A6),FW		ERROR: Invalid addressing mode
+DIVS $10(A6),*+$10(PC)		ERROR: Invalid addressing mode
+DIVS $10(A6),#1		ERROR: Invalid addressing mode
+DIVS $10(A6),#$80		ERROR: Invalid addressing mode
+DIVS $10(A6),#$1234		ERROR: Invalid addressing mode
+DIVS $10(A6),#$12345678		ERROR: Invalid addressing mode
+DIVS $10(A6),SR		ERROR: Invalid addressing mode
+DIVS $10(A6),CCR		ERROR: Invalid addressing mode
+DIVS $10(A6),USP		ERROR: Invalid addressing mode
+DIVS $10(A6,D7.W),D1	83F67010	-
+DIVS $10(A6,D7.W),A2		ERROR: Invalid addressing mode
+DIVS $10(A6,D7.W),(A3)		ERROR: Invalid addressing mode
+DIVS $10(A6,D7.W),(A4)+		ERROR: Invalid addressing mode
+DIVS $10(A6,D7.W),-(A5)		ERROR: Invalid addressing mode
+DIVS $10(A6,D7.W),$10(A6)		ERROR: Invalid addressing mode
+DIVS $10(A6,D7.W),$10(A6,D7.W)		ERROR: Invalid addressing mode
+DIVS $10(A6,D7.W),$1234		ERROR: Invalid addressing mode
+DIVS $10(A6,D7.W),$12345678		ERROR: Invalid addressing mode
+DIVS $10(A6,D7.W),FW		ERROR: Invalid addressing mode
+DIVS $10(A6,D7.W),*+$10(PC)		ERROR: Invalid addressing mode
+DIVS $10(A6,D7.W),#1		ERROR: Invalid addressing mode
+DIVS $10(A6,D7.W),#$80		ERROR: Invalid addressing mode
+DIVS $10(A6,D7.W),#$1234		ERROR: Invalid addressing mode
+DIVS $10(A6,D7.W),#$12345678		ERROR: Invalid addressing mode
+DIVS $10(A6,D7.W),SR		ERROR: Invalid addressing mode
+DIVS $10(A6,D7.W),CCR		ERROR: Invalid addressing mode
+DIVS $10(A6,D7.W),USP		ERROR: Invalid addressing mode
+DIVS $1234,D1	83F81234	-
+DIVS $1234,A2		ERROR: Invalid addressing mode
+DIVS $1234,(A3)		ERROR: Invalid addressing mode
+DIVS $1234,(A4)+		ERROR: Invalid addressing mode
+DIVS $1234,-(A5)		ERROR: Invalid addressing mode
+DIVS $1234,$10(A6)		ERROR: Invalid addressing mode
+DIVS $1234,$10(A6,D7.W)		ERROR: Invalid addressing mode
+DIVS $1234,$1234		ERROR: Invalid addressing mode
+DIVS $1234,$12345678		ERROR: Invalid addressing mode
+DIVS $1234,FW		ERROR: Invalid addressing mode
+DIVS $1234,*+$10(PC)		ERROR: Invalid addressing mode
+DIVS $1234,#1		ERROR: Invalid addressing mode
+DIVS $1234,#$80		ERROR: Invalid addressing mode
+DIVS $1234,#$1234		ERROR: Invalid addressing mode
+DIVS $1234,#$12345678		ERROR: Invalid addressing mode
+DIVS $1234,SR		ERROR: Invalid addressing mode
+DIVS $1234,CCR		ERROR: Invalid addressing mode
+DIVS $1234,USP		ERROR: Invalid addressing mode
+DIVS $12345678,D1	83F912345678	-
+DIVS $12345678,A2		ERROR: Invalid addressing mode
+DIVS $12345678,(A3)		ERROR: Invalid addressing mode
+DIVS $12345678,(A4)+		ERROR: Invalid addressing mode
+DIVS $12345678,-(A5)		ERROR: Invalid addressing mode
+DIVS $12345678,$10(A6)		ERROR: Invalid addressing mode
+DIVS $12345678,$10(A6,D7.W)		ERROR: Invalid addressing mode
+DIVS $12345678,$1234		ERROR: Invalid addressing mode
+DIVS $12345678,$12345678		ERROR: Invalid addressing mode
+DIVS $12345678,FW		ERROR: Invalid addressing mode
+DIVS $12345678,*+$10(PC)		ERROR: Invalid addressing mode
+DIVS $12345678,#1		ERROR: Invalid addressing mode
+DIVS $12345678,#$80		ERROR: Invalid addressing mode
+DIVS $12345678,#$1234		ERROR: Invalid addressing mode
+DIVS $12345678,#$12345678		ERROR: Invalid addressing mode
+DIVS $12345678,SR		ERROR: Invalid addressing mode
+DIVS $12345678,CCR		ERROR: Invalid addressing mode
+DIVS $12345678,USP		ERROR: Invalid addressing mode
+DIVS FW,D1	83F900001F00	-
+DIVS FW,A2		ERROR: Invalid addressing mode
+DIVS FW,(A3)		ERROR: Invalid addressing mode
+DIVS FW,(A4)+		ERROR: Invalid addressing mode
+DIVS FW,-(A5)		ERROR: Invalid addressing mode
+DIVS FW,$10(A6)		ERROR: Invalid addressing mode
+DIVS FW,$10(A6,D7.W)		ERROR: Invalid addressing mode
+DIVS FW,$1234		ERROR: Invalid addressing mode
+DIVS FW,$12345678		ERROR: Invalid addressing mode
+DIVS FW,FW		ERROR: Invalid addressing mode
+DIVS FW,*+$10(PC)		ERROR: Invalid addressing mode
+DIVS FW,#1		ERROR: Invalid addressing mode
+DIVS FW,#$80		ERROR: Invalid addressing mode
+DIVS FW,#$1234		ERROR: Invalid addressing mode
+DIVS FW,#$12345678		ERROR: Invalid addressing mode
+DIVS FW,SR		ERROR: Invalid addressing mode
+DIVS FW,CCR		ERROR: Invalid addressing mode
+DIVS FW,USP		ERROR: Invalid addressing mode
+DIVS *+$10(PC),D1	83FA000E	-
+DIVS *+$10(PC),A2		ERROR: Invalid addressing mode
+DIVS *+$10(PC),(A3)		ERROR: Invalid addressing mode
+DIVS *+$10(PC),(A4)+		ERROR: Invalid addressing mode
+DIVS *+$10(PC),-(A5)		ERROR: Invalid addressing mode
+DIVS *+$10(PC),$10(A6)		ERROR: Invalid addressing mode
+DIVS *+$10(PC),$10(A6,D7.W)		ERROR: Invalid addressing mode
+DIVS *+$10(PC),$1234		ERROR: Invalid addressing mode
+DIVS *+$10(PC),$12345678		ERROR: Invalid addressing mode
+DIVS *+$10(PC),FW		ERROR: Invalid addressing mode
+DIVS *+$10(PC),*+$10(PC)		ERROR: Invalid addressing mode
+DIVS *+$10(PC),#1		ERROR: Invalid addressing mode
+DIVS *+$10(PC),#$80		ERROR: Invalid addressing mode
+DIVS *+$10(PC),#$1234		ERROR: Invalid addressing mode
+DIVS *+$10(PC),#$12345678		ERROR: Invalid addressing mode
+DIVS *+$10(PC),SR		ERROR: Invalid addressing mode
+DIVS *+$10(PC),CCR		ERROR: Invalid addressing mode
+DIVS *+$10(PC),USP		ERROR: Invalid addressing mode
+DIVS #1,D1	83FC0001	-
+DIVS #1,A2		ERROR: Invalid addressing mode
+DIVS #1,(A3)		ERROR: Invalid addressing mode
+DIVS #1,(A4)+		ERROR: Invalid addressing mode
+DIVS #1,-(A5)		ERROR: Invalid addressing mode
+DIVS #1,$10(A6)		ERROR: Invalid addressing mode
+DIVS #1,$10(A6,D7.W)		ERROR: Invalid addressing mode
+DIVS #1,$1234		ERROR: Invalid addressing mode
+DIVS #1,$12345678		ERROR: Invalid addressing mode
+DIVS #1,FW		ERROR: Invalid addressing mode
+DIVS #1,*+$10(PC)		ERROR: Invalid addressing mode
+DIVS #1,#1		ERROR: Invalid addressing mode
+DIVS #1,#$80		ERROR: Invalid addressing mode
+DIVS #1,#$1234		ERROR: Invalid addressing mode
+DIVS #1,#$12345678		ERROR: Invalid addressing mode
+DIVS #1,SR		ERROR: Invalid addressing mode
+DIVS #1,CCR		ERROR: Invalid addressing mode
+DIVS #1,USP		ERROR: Invalid addressing mode
+DIVS #$80,D1	83FC0080	-
+DIVS #$80,A2		ERROR: Invalid addressing mode
+DIVS #$80,(A3)		ERROR: Invalid addressing mode
+DIVS #$80,(A4)+		ERROR: Invalid addressing mode
+DIVS #$80,-(A5)		ERROR: Invalid addressing mode
+DIVS #$80,$10(A6)		ERROR: Invalid addressing mode
+DIVS #$80,$10(A6,D7.W)		ERROR: Invalid addressing mode
+DIVS #$80,$1234		ERROR: Invalid addressing mode
+DIVS #$80,$12345678		ERROR: Invalid addressing mode
+DIVS #$80,FW		ERROR: Invalid addressing mode
+DIVS #$80,*+$10(PC)		ERROR: Invalid addressing mode
+DIVS #$80,#1		ERROR: Invalid addressing mode
+DIVS #$80,#$80		ERROR: Invalid addressing mode
+DIVS #$80,#$1234		ERROR: Invalid addressing mode
+DIVS #$80,#$12345678		ERROR: Invalid addressing mode
+DIVS #$80,SR		ERROR: Invalid addressing mode
+DIVS #$80,CCR		ERROR: Invalid addressing mode
+DIVS #$80,USP		ERROR: Invalid addressing mode
+DIVS #$1234,D1	83FC1234	-
+DIVS #$1234,A2		ERROR: Invalid addressing mode
+DIVS #$1234,(A3)		ERROR: Invalid addressing mode
+DIVS #$1234,(A4)+		ERROR: Invalid addressing mode
+DIVS #$1234,-(A5)		ERROR: Invalid addressing mode
+DIVS #$1234,$10(A6)		ERROR: Invalid addressing mode
+DIVS #$1234,$10(A6,D7.W)		ERROR: Invalid addressing mode
+DIVS #$1234,$1234		ERROR: Invalid addressing mode
+DIVS #$1234,$12345678		ERROR: Invalid addressing mode
+DIVS #$1234,FW		ERROR: Invalid addressing mode
+DIVS #$1234,*+$10(PC)		ERROR: Invalid addressing mode
+DIVS #$1234,#1		ERROR: Invalid addressing mode
+DIVS #$1234,#$80		ERROR: Invalid addressing mode
+DIVS #$1234,#$1234		ERROR: Invalid addressing mode
+DIVS #$1234,#$12345678		ERROR: Invalid addressing mode
+DIVS #$1234,SR		ERROR: Invalid addressing mode
+DIVS #$1234,CCR		ERROR: Invalid addressing mode
+DIVS #$1234,USP		ERROR: Invalid addressing mode
+DIVS #$12345678,D1	83FC5678	ERROR: Immediate data exceeds 16 bits
+DIVS #$12345678,A2		ERROR: Invalid addressing mode
+DIVS #$12345678,(A3)		ERROR: Invalid addressing mode
+DIVS #$12345678,(A4)+		ERROR: Invalid addressing mode
+DIVS #$12345678,-(A5)		ERROR: Invalid addressing mode
+DIVS #$12345678,$10(A6)		ERROR: Invalid addressing mode
+DIVS #$12345678,$10(A6,D7.W)		ERROR: Invalid addressing mode
+DIVS #$12345678,$1234		ERROR: Invalid addressing mode
+DIVS #$12345678,$12345678		ERROR: Invalid addressing mode
+DIVS #$12345678,FW		ERROR: Invalid addressing mode
+DIVS #$12345678,*+$10(PC)		ERROR: Invalid addressing mode
+DIVS #$12345678,#1		ERROR: Invalid addressing mode
+DIVS #$12345678,#$80		ERROR: Invalid addressing mode
+DIVS #$12345678,#$1234		ERROR: Invalid addressing mode
+DIVS #$12345678,#$12345678		ERROR: Invalid addressing mode
+DIVS #$12345678,SR		ERROR: Invalid addressing mode
+DIVS #$12345678,CCR		ERROR: Invalid addressing mode
+DIVS #$12345678,USP		ERROR: Invalid addressing mode
+DIVS SR,D1		ERROR: Invalid addressing mode
+DIVS SR,A2		ERROR: Invalid addressing mode
+DIVS SR,(A3)		ERROR: Invalid addressing mode
+DIVS SR,(A4)+		ERROR: Invalid addressing mode
+DIVS SR,-(A5)		ERROR: Invalid addressing mode
+DIVS SR,$10(A6)		ERROR: Invalid addressing mode
+DIVS SR,$10(A6,D7.W)		ERROR: Invalid addressing mode
+DIVS SR,$1234		ERROR: Invalid addressing mode
+DIVS SR,$12345678		ERROR: Invalid addressing mode
+DIVS SR,FW		ERROR: Invalid addressing mode
+DIVS SR,*+$10(PC)		ERROR: Invalid addressing mode
+DIVS SR,#1		ERROR: Invalid addressing mode
+DIVS SR,#$80		ERROR: Invalid addressing mode
+DIVS SR,#$1234		ERROR: Invalid addressing mode
+DIVS SR,#$12345678		ERROR: Invalid addressing mode
+DIVS SR,SR		ERROR: Invalid addressing mode
+DIVS SR,CCR		ERROR: Invalid addressing mode
+DIVS SR,USP		ERROR: Invalid addressing mode
+DIVS CCR,D1		ERROR: Invalid addressing mode
+DIVS CCR,A2		ERROR: Invalid addressing mode
+DIVS CCR,(A3)		ERROR: Invalid addressing mode
+DIVS CCR,(A4)+		ERROR: Invalid addressing mode
+DIVS CCR,-(A5)		ERROR: Invalid addressing mode
+DIVS CCR,$10(A6)		ERROR: Invalid addressing mode
+DIVS CCR,$10(A6,D7.W)		ERROR: Invalid addressing mode
+DIVS CCR,$1234		ERROR: Invalid addressing mode
+DIVS CCR,$12345678		ERROR: Invalid addressing mode
+DIVS CCR,FW		ERROR: Invalid addressing mode
+DIVS CCR,*+$10(PC)		ERROR: Invalid addressing mode
+DIVS CCR,#1		ERROR: Invalid addressing mode
+DIVS CCR,#$80		ERROR: Invalid addressing mode
+DIVS CCR,#$1234		ERROR: Invalid addressing mode
+DIVS CCR,#$12345678		ERROR: Invalid addressing mode
+DIVS CCR,SR		ERROR: Invalid addressing mode
+DIVS CCR,CCR		ERROR: Invalid addressing mode
+DIVS CCR,USP		ERROR: Invalid addressing mode
+DIVS USP,D1		ERROR: Invalid addressing mode
+DIVS USP,A2		ERROR: Invalid addressing mode
+DIVS USP,(A3)		ERROR: Invalid addressing mode
+DIVS USP,(A4)+		ERROR: Invalid addressing mode
+DIVS USP,-(A5)		ERROR: Invalid addressing mode
+DIVS USP,$10(A6)		ERROR: Invalid addressing mode
+DIVS USP,$10(A6,D7.W)		ERROR: Invalid addressing mode
+DIVS USP,$1234		ERROR: Invalid addressing mode
+DIVS USP,$12345678		ERROR: Invalid addressing mode
+DIVS USP,FW		ERROR: Invalid addressing mode
+DIVS USP,*+$10(PC)		ERROR: Invalid addressing mode
+DIVS USP,#1		ERROR: Invalid addressing mode
+DIVS USP,#$80		ERROR: Invalid addressing mode
+DIVS USP,#$1234		ERROR: Invalid addressing mode
+DIVS USP,#$12345678		ERROR: Invalid addressing mode
+DIVS USP,SR		ERROR: Invalid addressing mode
+DIVS USP,CCR		ERROR: Invalid addressing mode
+DIVS USP,USP		ERROR: Invalid addressing mode
+DIVS SP,D1		ERROR: Invalid addressing mode
+DIVS SP,A2		ERROR: Invalid addressing mode
+DIVS D1,SP		ERROR: Invalid addressing mode
+DIVS #$12,SP		ERROR: Invalid addressing mode
+DIVS -2(A0),D1	83E8FFFE	-
+DIVS -2(A0),A2		ERROR: Invalid addressing mode
+DIVS D1,-2(A0)		ERROR: Invalid addressing mode
+DIVS #$12,-2(A0)		ERROR: Invalid addressing mode
+DIVS $12(A0,A1.L),D1	83F09812	-
+DIVS $12(A0,A1.L),A2		ERROR: Invalid addressing mode
+DIVS D1,$12(A0,A1.L)		ERROR: Invalid addressing mode
+DIVS #$12,$12(A0,A1.L)		ERROR: Invalid addressing mode
+DIVS (A2,D3),D1	83F23000	-
+DIVS (A2,D3),A2		ERROR: Invalid addressing mode
+DIVS D1,(A2,D3)		ERROR: Invalid addressing mode
+DIVS #$12,(A2,D3)		ERROR: Invalid addressing mode
+DIVS $1234.L,D1	83F900001234	-
+DIVS $1234.L,A2		ERROR: Invalid addressing mode
+DIVS D1,$1234.L		ERROR: Invalid addressing mode
+DIVS #$12,$1234.L		ERROR: Invalid addressing mode
+DIVS $1234.W,D1	83F81234	WARNING: Forcing SHORT addressing disables range checking of extension word
+DIVS $1234.W,A2		ERROR: Invalid addressing mode
+DIVS D1,$1234.W		ERROR: Invalid addressing mode
+DIVS #$12,$1234.W		ERROR: Invalid addressing mode
+DIVS $8000,D1	83F900008000	-
+DIVS $8000,A2		ERROR: Invalid addressing mode
+DIVS D1,$8000		ERROR: Invalid addressing mode
+DIVS #$12,$8000		ERROR: Invalid addressing mode
+DIVS BK,D1	83F81F00	-
+DIVS BK,A2		ERROR: Invalid addressing mode
+DIVS D1,BK		ERROR: Invalid addressing mode
+DIVS #$12,BK		ERROR: Invalid addressing mode
+DIVS *(PC,D0.W),D1	83FB00FE	-
+DIVS *(PC,D0.W),A2		ERROR: Invalid addressing mode
+DIVS D1,*(PC,D0.W)		ERROR: Invalid addressing mode
+DIVS #$12,*(PC,D0.W)		ERROR: Invalid addressing mode
+DIVS BK(PC),D1	83FA0EFE	-
+DIVS BK(PC),A2		ERROR: Invalid addressing mode
+DIVS D1,BK(PC)		ERROR: Invalid addressing mode
+DIVS #$12,BK(PC)		ERROR: Invalid addressing mode
+DIVS #8,D1	83FC0008	-
+DIVS #8,A2		ERROR: Invalid addressing mode
+DIVS D1,#8		ERROR: Invalid addressing mode
+DIVS #$12,#8		ERROR: Invalid addressing mode
+DIVS #9,D1	83FC0009	-
+DIVS #9,A2		ERROR: Invalid addressing mode
+DIVS D1,#9		ERROR: Invalid addressing mode
+DIVS #$12,#9		ERROR: Invalid addressing mode
+DIVS #0,D1	83FC0000	-
+DIVS #0,A2		ERROR: Invalid addressing mode
+DIVS D1,#0		ERROR: Invalid addressing mode
+DIVS #$12,#0		ERROR: Invalid addressing mode
+DIVS #-1,D1	83FCFFFF	-
+DIVS #-1,A2		ERROR: Invalid addressing mode
+DIVS D1,#-1		ERROR: Invalid addressing mode
+DIVS #$12,#-1		ERROR: Invalid addressing mode
+DIVS #$12345678.L,D1	83FC5678	ERROR: Immediate data exceeds 16 bits
+DIVS #$12345678.L,A2		ERROR: Invalid addressing mode
+DIVS D1,#$12345678.L		ERROR: Invalid addressing mode
+DIVS #$12,#$12345678.L		ERROR: Invalid addressing mode
+DIVS #BK,D1	83FC1F00	-
+DIVS #BK,A2		ERROR: Invalid addressing mode
+DIVS D1,#BK		ERROR: Invalid addressing mode
+DIVS #$12,#BK		ERROR: Invalid addressing mode
+DIVS #FW,D1	83FC1F00	-
+DIVS #FW,A2		ERROR: Invalid addressing mode
+DIVS D1,#FW		ERROR: Invalid addressing mode
+DIVS #$12,#FW		ERROR: Invalid addressing mode
+DIVS #UNDEF,D1	83FC561E	ERROR: Undefined symbol
+DIVS #UNDEF,A2		ERROR: Invalid addressing mode
+DIVS D1,#UNDEF		ERROR: Invalid addressing mode
+DIVS #$12,#UNDEF		ERROR: Invalid addressing mode
+DIVS UNDEF,D1	83F90000561E	ERROR: Undefined symbol
+DIVS UNDEF,A2		ERROR: Invalid addressing mode
+DIVS D1,UNDEF		ERROR: Invalid addressing mode
+DIVS #$12,UNDEF		ERROR: Invalid addressing mode
+DIVS D1,D2,D3		ERROR: Invalid syntax
+DIVS.B		ERROR: Invalid syntax
+DIVS.B D1		ERROR: Comma expected
+DIVS.B A2		ERROR: Comma expected
+DIVS.B SP		ERROR: Comma expected
+DIVS.B (A3)		ERROR: Comma expected
+DIVS.B (A4)+		ERROR: Comma expected
+DIVS.B -(A5)		ERROR: Comma expected
+DIVS.B $10(A6)		ERROR: Comma expected
+DIVS.B -2(A0)		ERROR: Comma expected
+DIVS.B $10(A6,D7.W)		ERROR: Comma expected
+DIVS.B $12(A0,A1.L)		ERROR: Comma expected
+DIVS.B (A2,D3)		ERROR: Comma expected
+DIVS.B $1234		ERROR: Comma expected
+DIVS.B $12345678		ERROR: Comma expected
+DIVS.B $1234.L		ERROR: Comma expected
+DIVS.B $1234.W		ERROR: Comma expected
+DIVS.B $8000		ERROR: Comma expected
+DIVS.B BK		ERROR: Comma expected
+DIVS.B FW		ERROR: Comma expected
+DIVS.B *+$10(PC)		ERROR: Comma expected
+DIVS.B *(PC,D0.W)		ERROR: Comma expected
+DIVS.B BK(PC)		ERROR: Comma expected
+DIVS.B #1		ERROR: Comma expected
+DIVS.B #8		ERROR: Comma expected
+DIVS.B #9		ERROR: Comma expected
+DIVS.B #0		ERROR: Comma expected
+DIVS.B #-1		ERROR: Comma expected
+DIVS.B #$80		ERROR: Comma expected
+DIVS.B #$1234		ERROR: Comma expected
+DIVS.B #$12345678		ERROR: Comma expected
+DIVS.B #$12345678.L		ERROR: Comma expected
+DIVS.B #BK		ERROR: Comma expected
+DIVS.B #FW		ERROR: Comma expected
+DIVS.B #UNDEF		ERROR: Comma expected
+DIVS.B UNDEF		ERROR: Comma expected
+DIVS.B SR		ERROR: Comma expected
+DIVS.B CCR		ERROR: Comma expected
+DIVS.B USP		ERROR: Comma expected
+DIVS.B D1,D1	83C1	ERROR: Invalid size code
+DIVS.B D1,A2		ERROR: Invalid addressing mode
+DIVS.B D1,(A3)		ERROR: Invalid addressing mode
+DIVS.B D1,$10(A6)		ERROR: Invalid addressing mode
+DIVS.B D1,$1234		ERROR: Invalid addressing mode
+DIVS.B D1,FW		ERROR: Invalid addressing mode
+DIVS.B D1,#1		ERROR: Invalid addressing mode
+DIVS.B D1,#$1234		ERROR: Invalid addressing mode
+DIVS.B D1,CCR		ERROR: Invalid addressing mode
+DIVS.B D1,SR		ERROR: Invalid addressing mode
+DIVS.B A2,D1		ERROR: Invalid addressing mode
+DIVS.B A2,A2		ERROR: Invalid addressing mode
+DIVS.B A2,(A3)		ERROR: Invalid addressing mode
+DIVS.B A2,$10(A6)		ERROR: Invalid addressing mode
+DIVS.B A2,$1234		ERROR: Invalid addressing mode
+DIVS.B A2,FW		ERROR: Invalid addressing mode
+DIVS.B A2,#1		ERROR: Invalid addressing mode
+DIVS.B A2,#$1234		ERROR: Invalid addressing mode
+DIVS.B A2,CCR		ERROR: Invalid addressing mode
+DIVS.B A2,SR		ERROR: Invalid addressing mode
+DIVS.B (A3),D1	83D3	ERROR: Invalid size code
+DIVS.B (A3),A2		ERROR: Invalid addressing mode
+DIVS.B (A3),(A3)		ERROR: Invalid addressing mode
+DIVS.B (A3),$10(A6)		ERROR: Invalid addressing mode
+DIVS.B (A3),$1234		ERROR: Invalid addressing mode
+DIVS.B (A3),FW		ERROR: Invalid addressing mode
+DIVS.B (A3),#1		ERROR: Invalid addressing mode
+DIVS.B (A3),#$1234		ERROR: Invalid addressing mode
+DIVS.B (A3),CCR		ERROR: Invalid addressing mode
+DIVS.B (A3),SR		ERROR: Invalid addressing mode
+DIVS.B $10(A6),D1	83EE0010	ERROR: Invalid size code
+DIVS.B $10(A6),A2		ERROR: Invalid addressing mode
+DIVS.B $10(A6),(A3)		ERROR: Invalid addressing mode
+DIVS.B $10(A6),$10(A6)		ERROR: Invalid addressing mode
+DIVS.B $10(A6),$1234		ERROR: Invalid addressing mode
+DIVS.B $10(A6),FW		ERROR: Invalid addressing mode
+DIVS.B $10(A6),#1		ERROR: Invalid addressing mode
+DIVS.B $10(A6),#$1234		ERROR: Invalid addressing mode
+DIVS.B $10(A6),CCR		ERROR: Invalid addressing mode
+DIVS.B $10(A6),SR		ERROR: Invalid addressing mode
+DIVS.B $1234,D1	83F81234	ERROR: Invalid size code
+DIVS.B $1234,A2		ERROR: Invalid addressing mode
+DIVS.B $1234,(A3)		ERROR: Invalid addressing mode
+DIVS.B $1234,$10(A6)		ERROR: Invalid addressing mode
+DIVS.B $1234,$1234		ERROR: Invalid addressing mode
+DIVS.B $1234,FW		ERROR: Invalid addressing mode
+DIVS.B $1234,#1		ERROR: Invalid addressing mode
+DIVS.B $1234,#$1234		ERROR: Invalid addressing mode
+DIVS.B $1234,CCR		ERROR: Invalid addressing mode
+DIVS.B $1234,SR		ERROR: Invalid addressing mode
+DIVS.B FW,D1	83F900001F00	ERROR: Invalid size code
+DIVS.B FW,A2		ERROR: Invalid addressing mode
+DIVS.B FW,(A3)		ERROR: Invalid addressing mode
+DIVS.B FW,$10(A6)		ERROR: Invalid addressing mode
+DIVS.B FW,$1234		ERROR: Invalid addressing mode
+DIVS.B FW,FW		ERROR: Invalid addressing mode
+DIVS.B FW,#1		ERROR: Invalid addressing mode
+DIVS.B FW,#$1234		ERROR: Invalid addressing mode
+DIVS.B FW,CCR		ERROR: Invalid addressing mode
+DIVS.B FW,SR		ERROR: Invalid addressing mode
+DIVS.B #1,D1	83FC0001	ERROR: Invalid size code
+DIVS.B #1,A2		ERROR: Invalid addressing mode
+DIVS.B #1,(A3)		ERROR: Invalid addressing mode
+DIVS.B #1,$10(A6)		ERROR: Invalid addressing mode
+DIVS.B #1,$1234		ERROR: Invalid addressing mode
+DIVS.B #1,FW		ERROR: Invalid addressing mode
+DIVS.B #1,#1		ERROR: Invalid addressing mode
+DIVS.B #1,#$1234		ERROR: Invalid addressing mode
+DIVS.B #1,CCR		ERROR: Invalid addressing mode
+DIVS.B #1,SR		ERROR: Invalid addressing mode
+DIVS.B #$1234,D1	83FC0034	ERROR: Invalid size code
+DIVS.B #$1234,A2		ERROR: Invalid addressing mode
+DIVS.B #$1234,(A3)		ERROR: Invalid addressing mode
+DIVS.B #$1234,$10(A6)		ERROR: Invalid addressing mode
+DIVS.B #$1234,$1234		ERROR: Invalid addressing mode
+DIVS.B #$1234,FW		ERROR: Invalid addressing mode
+DIVS.B #$1234,#1		ERROR: Invalid addressing mode
+DIVS.B #$1234,#$1234		ERROR: Invalid addressing mode
+DIVS.B #$1234,CCR		ERROR: Invalid addressing mode
+DIVS.B #$1234,SR		ERROR: Invalid addressing mode
+DIVS.B CCR,D1		ERROR: Invalid addressing mode
+DIVS.B CCR,A2		ERROR: Invalid addressing mode
+DIVS.B CCR,(A3)		ERROR: Invalid addressing mode
+DIVS.B CCR,$10(A6)		ERROR: Invalid addressing mode
+DIVS.B CCR,$1234		ERROR: Invalid addressing mode
+DIVS.B CCR,FW		ERROR: Invalid addressing mode
+DIVS.B CCR,#1		ERROR: Invalid addressing mode
+DIVS.B CCR,#$1234		ERROR: Invalid addressing mode
+DIVS.B CCR,CCR		ERROR: Invalid addressing mode
+DIVS.B CCR,SR		ERROR: Invalid addressing mode
+DIVS.B SR,D1		ERROR: Invalid addressing mode
+DIVS.B SR,A2		ERROR: Invalid addressing mode
+DIVS.B SR,(A3)		ERROR: Invalid addressing mode
+DIVS.B SR,$10(A6)		ERROR: Invalid addressing mode
+DIVS.B SR,$1234		ERROR: Invalid addressing mode
+DIVS.B SR,FW		ERROR: Invalid addressing mode
+DIVS.B SR,#1		ERROR: Invalid addressing mode
+DIVS.B SR,#$1234		ERROR: Invalid addressing mode
+DIVS.B SR,CCR		ERROR: Invalid addressing mode
+DIVS.B SR,SR		ERROR: Invalid addressing mode
+DIVS.B SP,D1		ERROR: Invalid addressing mode
+DIVS.B SP,A2		ERROR: Invalid addressing mode
+DIVS.B D1,SP		ERROR: Invalid addressing mode
+DIVS.B #$12,SP		ERROR: Invalid addressing mode
+DIVS.B (A4)+,D1	83DC	ERROR: Invalid size code
+DIVS.B (A4)+,A2		ERROR: Invalid addressing mode
+DIVS.B D1,(A4)+		ERROR: Invalid addressing mode
+DIVS.B #$12,(A4)+		ERROR: Invalid addressing mode
+DIVS.B -(A5),D1	83E5	ERROR: Invalid size code
+DIVS.B -(A5),A2		ERROR: Invalid addressing mode
+DIVS.B D1,-(A5)		ERROR: Invalid addressing mode
+DIVS.B #$12,-(A5)		ERROR: Invalid addressing mode
+DIVS.B -2(A0),D1	83E8FFFE	ERROR: Invalid size code
+DIVS.B -2(A0),A2		ERROR: Invalid addressing mode
+DIVS.B D1,-2(A0)		ERROR: Invalid addressing mode
+DIVS.B #$12,-2(A0)		ERROR: Invalid addressing mode
+DIVS.B $10(A6,D7.W),D1	83F67010	ERROR: Invalid size code
+DIVS.B $10(A6,D7.W),A2		ERROR: Invalid addressing mode
+DIVS.B D1,$10(A6,D7.W)		ERROR: Invalid addressing mode
+DIVS.B #$12,$10(A6,D7.W)		ERROR: Invalid addressing mode
+DIVS.B $12(A0,A1.L),D1	83F09812	ERROR: Invalid size code
+DIVS.B $12(A0,A1.L),A2		ERROR: Invalid addressing mode
+DIVS.B D1,$12(A0,A1.L)		ERROR: Invalid addressing mode
+DIVS.B #$12,$12(A0,A1.L)		ERROR: Invalid addressing mode
+DIVS.B (A2,D3),D1	83F23000	ERROR: Invalid size code
+DIVS.B (A2,D3),A2		ERROR: Invalid addressing mode
+DIVS.B D1,(A2,D3)		ERROR: Invalid addressing mode
+DIVS.B #$12,(A2,D3)		ERROR: Invalid addressing mode
+DIVS.B $12345678,D1	83F912345678	ERROR: Invalid size code
+DIVS.B $12345678,A2		ERROR: Invalid addressing mode
+DIVS.B D1,$12345678		ERROR: Invalid addressing mode
+DIVS.B #$12,$12345678		ERROR: Invalid addressing mode
+DIVS.B $1234.L,D1	83F900001234	ERROR: Invalid size code
+DIVS.B $1234.L,A2		ERROR: Invalid addressing mode
+DIVS.B D1,$1234.L		ERROR: Invalid addressing mode
+DIVS.B #$12,$1234.L		ERROR: Invalid addressing mode
+DIVS.B $1234.W,D1	83F81234	ERROR: Invalid size code
+DIVS.B $1234.W,A2		ERROR: Invalid addressing mode
+DIVS.B D1,$1234.W		ERROR: Invalid addressing mode
+DIVS.B #$12,$1234.W		ERROR: Invalid addressing mode
+DIVS.B $8000,D1	83F900008000	ERROR: Invalid size code
+DIVS.B $8000,A2		ERROR: Invalid addressing mode
+DIVS.B D1,$8000		ERROR: Invalid addressing mode
+DIVS.B #$12,$8000		ERROR: Invalid addressing mode
+DIVS.B BK,D1	83F81F00	ERROR: Invalid size code
+DIVS.B BK,A2		ERROR: Invalid addressing mode
+DIVS.B D1,BK		ERROR: Invalid addressing mode
+DIVS.B #$12,BK		ERROR: Invalid addressing mode
+DIVS.B *+$10(PC),D1	83FA000E	ERROR: Invalid size code
+DIVS.B *+$10(PC),A2		ERROR: Invalid addressing mode
+DIVS.B D1,*+$10(PC)		ERROR: Invalid addressing mode
+DIVS.B #$12,*+$10(PC)		ERROR: Invalid addressing mode
+DIVS.B *(PC,D0.W),D1	83FB00FE	ERROR: Invalid size code
+DIVS.B *(PC,D0.W),A2		ERROR: Invalid addressing mode
+DIVS.B D1,*(PC,D0.W)		ERROR: Invalid addressing mode
+DIVS.B #$12,*(PC,D0.W)		ERROR: Invalid addressing mode
+DIVS.B BK(PC),D1	83FA0EFE	ERROR: Invalid size code
+DIVS.B BK(PC),A2		ERROR: Invalid addressing mode
+DIVS.B D1,BK(PC)		ERROR: Invalid addressing mode
+DIVS.B #$12,BK(PC)		ERROR: Invalid addressing mode
+DIVS.B #8,D1	83FC0008	ERROR: Invalid size code
+DIVS.B #8,A2		ERROR: Invalid addressing mode
+DIVS.B D1,#8		ERROR: Invalid addressing mode
+DIVS.B #$12,#8		ERROR: Invalid addressing mode
+DIVS.B #9,D1	83FC0009	ERROR: Invalid size code
+DIVS.B #9,A2		ERROR: Invalid addressing mode
+DIVS.B D1,#9		ERROR: Invalid addressing mode
+DIVS.B #$12,#9		ERROR: Invalid addressing mode
+DIVS.B #0,D1	83FC0000	ERROR: Invalid size code
+DIVS.B #0,A2		ERROR: Invalid addressing mode
+DIVS.B D1,#0		ERROR: Invalid addressing mode
+DIVS.B #$12,#0		ERROR: Invalid addressing mode
+DIVS.B #-1,D1	83FC00FF	ERROR: Invalid size code
+DIVS.B #-1,A2		ERROR: Invalid addressing mode
+DIVS.B D1,#-1		ERROR: Invalid addressing mode
+DIVS.B #$12,#-1		ERROR: Invalid addressing mode
+DIVS.B #$80,D1	83FC0080	ERROR: Invalid size code
+DIVS.B #$80,A2		ERROR: Invalid addressing mode
+DIVS.B D1,#$80		ERROR: Invalid addressing mode
+DIVS.B #$12,#$80		ERROR: Invalid addressing mode
+DIVS.B #$12345678,D1	83FC0078	ERROR: Invalid size code
+DIVS.B #$12345678,A2		ERROR: Invalid addressing mode
+DIVS.B D1,#$12345678		ERROR: Invalid addressing mode
+DIVS.B #$12,#$12345678		ERROR: Invalid addressing mode
+DIVS.B #$12345678.L,D1	83FC0078	ERROR: Invalid size code
+DIVS.B #$12345678.L,A2		ERROR: Invalid addressing mode
+DIVS.B D1,#$12345678.L		ERROR: Invalid addressing mode
+DIVS.B #$12,#$12345678.L		ERROR: Invalid addressing mode
+DIVS.B #BK,D1	83FC0000	ERROR: Invalid size code
+DIVS.B #BK,A2		ERROR: Invalid addressing mode
+DIVS.B D1,#BK		ERROR: Invalid addressing mode
+DIVS.B #$12,#BK		ERROR: Invalid addressing mode
+DIVS.B #FW,D1	83FC0000	ERROR: Invalid size code
+DIVS.B #FW,A2		ERROR: Invalid addressing mode
+DIVS.B D1,#FW		ERROR: Invalid addressing mode
+DIVS.B #$12,#FW		ERROR: Invalid addressing mode
+DIVS.B #UNDEF,D1	83FC001E	ERROR: Undefined symbol
+DIVS.B #UNDEF,A2		ERROR: Invalid addressing mode
+DIVS.B D1,#UNDEF		ERROR: Invalid addressing mode
+DIVS.B #$12,#UNDEF		ERROR: Invalid addressing mode
+DIVS.B UNDEF,D1	83F90000561E	ERROR: Undefined symbol
+DIVS.B UNDEF,A2		ERROR: Invalid addressing mode
+DIVS.B D1,UNDEF		ERROR: Invalid addressing mode
+DIVS.B #$12,UNDEF		ERROR: Invalid addressing mode
+DIVS.B USP,D1		ERROR: Invalid addressing mode
+DIVS.B USP,A2		ERROR: Invalid addressing mode
+DIVS.B D1,USP		ERROR: Invalid addressing mode
+DIVS.B #$12,USP		ERROR: Invalid addressing mode
+DIVS.B D1,D2,D3		ERROR: Invalid syntax
+DIVS.W		ERROR: Invalid syntax
+DIVS.W D1		ERROR: Comma expected
+DIVS.W A2		ERROR: Comma expected
+DIVS.W SP		ERROR: Comma expected
+DIVS.W (A3)		ERROR: Comma expected
+DIVS.W (A4)+		ERROR: Comma expected
+DIVS.W -(A5)		ERROR: Comma expected
+DIVS.W $10(A6)		ERROR: Comma expected
+DIVS.W -2(A0)		ERROR: Comma expected
+DIVS.W $10(A6,D7.W)		ERROR: Comma expected
+DIVS.W $12(A0,A1.L)		ERROR: Comma expected
+DIVS.W (A2,D3)		ERROR: Comma expected
+DIVS.W $1234		ERROR: Comma expected
+DIVS.W $12345678		ERROR: Comma expected
+DIVS.W $1234.L		ERROR: Comma expected
+DIVS.W $1234.W		ERROR: Comma expected
+DIVS.W $8000		ERROR: Comma expected
+DIVS.W BK		ERROR: Comma expected
+DIVS.W FW		ERROR: Comma expected
+DIVS.W *+$10(PC)		ERROR: Comma expected
+DIVS.W *(PC,D0.W)		ERROR: Comma expected
+DIVS.W BK(PC)		ERROR: Comma expected
+DIVS.W #1		ERROR: Comma expected
+DIVS.W #8		ERROR: Comma expected
+DIVS.W #9		ERROR: Comma expected
+DIVS.W #0		ERROR: Comma expected
+DIVS.W #-1		ERROR: Comma expected
+DIVS.W #$80		ERROR: Comma expected
+DIVS.W #$1234		ERROR: Comma expected
+DIVS.W #$12345678		ERROR: Comma expected
+DIVS.W #$12345678.L		ERROR: Comma expected
+DIVS.W #BK		ERROR: Comma expected
+DIVS.W #FW		ERROR: Comma expected
+DIVS.W #UNDEF		ERROR: Comma expected
+DIVS.W UNDEF		ERROR: Comma expected
+DIVS.W SR		ERROR: Comma expected
+DIVS.W CCR		ERROR: Comma expected
+DIVS.W USP		ERROR: Comma expected
+DIVS.W D1,D1	83C1	-
+DIVS.W D1,A2		ERROR: Invalid addressing mode
+DIVS.W D1,(A3)		ERROR: Invalid addressing mode
+DIVS.W D1,(A4)+		ERROR: Invalid addressing mode
+DIVS.W D1,-(A5)		ERROR: Invalid addressing mode
+DIVS.W D1,$10(A6)		ERROR: Invalid addressing mode
+DIVS.W D1,$10(A6,D7.W)		ERROR: Invalid addressing mode
+DIVS.W D1,$1234		ERROR: Invalid addressing mode
+DIVS.W D1,$12345678		ERROR: Invalid addressing mode
+DIVS.W D1,FW		ERROR: Invalid addressing mode
+DIVS.W D1,*+$10(PC)		ERROR: Invalid addressing mode
+DIVS.W D1,#1		ERROR: Invalid addressing mode
+DIVS.W D1,#$80		ERROR: Invalid addressing mode
+DIVS.W D1,#$1234		ERROR: Invalid addressing mode
+DIVS.W D1,#$12345678		ERROR: Invalid addressing mode
+DIVS.W D1,SR		ERROR: Invalid addressing mode
+DIVS.W D1,CCR		ERROR: Invalid addressing mode
+DIVS.W D1,USP		ERROR: Invalid addressing mode
+DIVS.W A2,D1		ERROR: Invalid addressing mode
+DIVS.W A2,A2		ERROR: Invalid addressing mode
+DIVS.W A2,(A3)		ERROR: Invalid addressing mode
+DIVS.W A2,(A4)+		ERROR: Invalid addressing mode
+DIVS.W A2,-(A5)		ERROR: Invalid addressing mode
+DIVS.W A2,$10(A6)		ERROR: Invalid addressing mode
+DIVS.W A2,$10(A6,D7.W)		ERROR: Invalid addressing mode
+DIVS.W A2,$1234		ERROR: Invalid addressing mode
+DIVS.W A2,$12345678		ERROR: Invalid addressing mode
+DIVS.W A2,FW		ERROR: Invalid addressing mode
+DIVS.W A2,*+$10(PC)		ERROR: Invalid addressing mode
+DIVS.W A2,#1		ERROR: Invalid addressing mode
+DIVS.W A2,#$80		ERROR: Invalid addressing mode
+DIVS.W A2,#$1234		ERROR: Invalid addressing mode
+DIVS.W A2,#$12345678		ERROR: Invalid addressing mode
+DIVS.W A2,SR		ERROR: Invalid addressing mode
+DIVS.W A2,CCR		ERROR: Invalid addressing mode
+DIVS.W A2,USP		ERROR: Invalid addressing mode
+DIVS.W (A3),D1	83D3	-
+DIVS.W (A3),A2		ERROR: Invalid addressing mode
+DIVS.W (A3),(A3)		ERROR: Invalid addressing mode
+DIVS.W (A3),(A4)+		ERROR: Invalid addressing mode
+DIVS.W (A3),-(A5)		ERROR: Invalid addressing mode
+DIVS.W (A3),$10(A6)		ERROR: Invalid addressing mode
+DIVS.W (A3),$10(A6,D7.W)		ERROR: Invalid addressing mode
+DIVS.W (A3),$1234		ERROR: Invalid addressing mode
+DIVS.W (A3),$12345678		ERROR: Invalid addressing mode
+DIVS.W (A3),FW		ERROR: Invalid addressing mode
+DIVS.W (A3),*+$10(PC)		ERROR: Invalid addressing mode
+DIVS.W (A3),#1		ERROR: Invalid addressing mode
+DIVS.W (A3),#$80		ERROR: Invalid addressing mode
+DIVS.W (A3),#$1234		ERROR: Invalid addressing mode
+DIVS.W (A3),#$12345678		ERROR: Invalid addressing mode
+DIVS.W (A3),SR		ERROR: Invalid addressing mode
+DIVS.W (A3),CCR		ERROR: Invalid addressing mode
+DIVS.W (A3),USP		ERROR: Invalid addressing mode
+DIVS.W (A4)+,D1	83DC	-
+DIVS.W (A4)+,A2		ERROR: Invalid addressing mode
+DIVS.W (A4)+,(A3)		ERROR: Invalid addressing mode
+DIVS.W (A4)+,(A4)+		ERROR: Invalid addressing mode
+DIVS.W (A4)+,-(A5)		ERROR: Invalid addressing mode
+DIVS.W (A4)+,$10(A6)		ERROR: Invalid addressing mode
+DIVS.W (A4)+,$10(A6,D7.W)		ERROR: Invalid addressing mode
+DIVS.W (A4)+,$1234		ERROR: Invalid addressing mode
+DIVS.W (A4)+,$12345678		ERROR: Invalid addressing mode
+DIVS.W (A4)+,FW		ERROR: Invalid addressing mode
+DIVS.W (A4)+,*+$10(PC)		ERROR: Invalid addressing mode
+DIVS.W (A4)+,#1		ERROR: Invalid addressing mode
+DIVS.W (A4)+,#$80		ERROR: Invalid addressing mode
+DIVS.W (A4)+,#$1234		ERROR: Invalid addressing mode
+DIVS.W (A4)+,#$12345678		ERROR: Invalid addressing mode
+DIVS.W (A4)+,SR		ERROR: Invalid addressing mode
+DIVS.W (A4)+,CCR		ERROR: Invalid addressing mode
+DIVS.W (A4)+,USP		ERROR: Invalid addressing mode
+DIVS.W -(A5),D1	83E5	-
+DIVS.W -(A5),A2		ERROR: Invalid addressing mode
+DIVS.W -(A5),(A3)		ERROR: Invalid addressing mode
+DIVS.W -(A5),(A4)+		ERROR: Invalid addressing mode
+DIVS.W -(A5),-(A5)		ERROR: Invalid addressing mode
+DIVS.W -(A5),$10(A6)		ERROR: Invalid addressing mode
+DIVS.W -(A5),$10(A6,D7.W)		ERROR: Invalid addressing mode
+DIVS.W -(A5),$1234		ERROR: Invalid addressing mode
+DIVS.W -(A5),$12345678		ERROR: Invalid addressing mode
+DIVS.W -(A5),FW		ERROR: Invalid addressing mode
+DIVS.W -(A5),*+$10(PC)		ERROR: Invalid addressing mode
+DIVS.W -(A5),#1		ERROR: Invalid addressing mode
+DIVS.W -(A5),#$80		ERROR: Invalid addressing mode
+DIVS.W -(A5),#$1234		ERROR: Invalid addressing mode
+DIVS.W -(A5),#$12345678		ERROR: Invalid addressing mode
+DIVS.W -(A5),SR		ERROR: Invalid addressing mode
+DIVS.W -(A5),CCR		ERROR: Invalid addressing mode
+DIVS.W -(A5),USP		ERROR: Invalid addressing mode
+DIVS.W $10(A6),D1	83EE0010	-
+DIVS.W $10(A6),A2		ERROR: Invalid addressing mode
+DIVS.W $10(A6),(A3)		ERROR: Invalid addressing mode
+DIVS.W $10(A6),(A4)+		ERROR: Invalid addressing mode
+DIVS.W $10(A6),-(A5)		ERROR: Invalid addressing mode
+DIVS.W $10(A6),$10(A6)		ERROR: Invalid addressing mode
+DIVS.W $10(A6),$10(A6,D7.W)		ERROR: Invalid addressing mode
+DIVS.W $10(A6),$1234		ERROR: Invalid addressing mode
+DIVS.W $10(A6),$12345678		ERROR: Invalid addressing mode
+DIVS.W $10(A6),FW		ERROR: Invalid addressing mode
+DIVS.W $10(A6),*+$10(PC)		ERROR: Invalid addressing mode
+DIVS.W $10(A6),#1		ERROR: Invalid addressing mode
+DIVS.W $10(A6),#$80		ERROR: Invalid addressing mode
+DIVS.W $10(A6),#$1234		ERROR: Invalid addressing mode
+DIVS.W $10(A6),#$12345678		ERROR: Invalid addressing mode
+DIVS.W $10(A6),SR		ERROR: Invalid addressing mode
+DIVS.W $10(A6),CCR		ERROR: Invalid addressing mode
+DIVS.W $10(A6),USP		ERROR: Invalid addressing mode
+DIVS.W $10(A6,D7.W),D1	83F67010	-
+DIVS.W $10(A6,D7.W),A2		ERROR: Invalid addressing mode
+DIVS.W $10(A6,D7.W),(A3)		ERROR: Invalid addressing mode
+DIVS.W $10(A6,D7.W),(A4)+		ERROR: Invalid addressing mode
+DIVS.W $10(A6,D7.W),-(A5)		ERROR: Invalid addressing mode
+DIVS.W $10(A6,D7.W),$10(A6)		ERROR: Invalid addressing mode
+DIVS.W $10(A6,D7.W),$10(A6,D7.W)		ERROR: Invalid addressing mode
+DIVS.W $10(A6,D7.W),$1234		ERROR: Invalid addressing mode
+DIVS.W $10(A6,D7.W),$12345678		ERROR: Invalid addressing mode
+DIVS.W $10(A6,D7.W),FW		ERROR: Invalid addressing mode
+DIVS.W $10(A6,D7.W),*+$10(PC)		ERROR: Invalid addressing mode
+DIVS.W $10(A6,D7.W),#1		ERROR: Invalid addressing mode
+DIVS.W $10(A6,D7.W),#$80		ERROR: Invalid addressing mode
+DIVS.W $10(A6,D7.W),#$1234		ERROR: Invalid addressing mode
+DIVS.W $10(A6,D7.W),#$12345678		ERROR: Invalid addressing mode
+DIVS.W $10(A6,D7.W),SR		ERROR: Invalid addressing mode
+DIVS.W $10(A6,D7.W),CCR		ERROR: Invalid addressing mode
+DIVS.W $10(A6,D7.W),USP		ERROR: Invalid addressing mode
+DIVS.W $1234,D1	83F81234	-
+DIVS.W $1234,A2		ERROR: Invalid addressing mode
+DIVS.W $1234,(A3)		ERROR: Invalid addressing mode
+DIVS.W $1234,(A4)+		ERROR: Invalid addressing mode
+DIVS.W $1234,-(A5)		ERROR: Invalid addressing mode
+DIVS.W $1234,$10(A6)		ERROR: Invalid addressing mode
+DIVS.W $1234,$10(A6,D7.W)		ERROR: Invalid addressing mode
+DIVS.W $1234,$1234		ERROR: Invalid addressing mode
+DIVS.W $1234,$12345678		ERROR: Invalid addressing mode
+DIVS.W $1234,FW		ERROR: Invalid addressing mode
+DIVS.W $1234,*+$10(PC)		ERROR: Invalid addressing mode
+DIVS.W $1234,#1		ERROR: Invalid addressing mode
+DIVS.W $1234,#$80		ERROR: Invalid addressing mode
+DIVS.W $1234,#$1234		ERROR: Invalid addressing mode
+DIVS.W $1234,#$12345678		ERROR: Invalid addressing mode
+DIVS.W $1234,SR		ERROR: Invalid addressing mode
+DIVS.W $1234,CCR		ERROR: Invalid addressing mode
+DIVS.W $1234,USP		ERROR: Invalid addressing mode
+DIVS.W $12345678,D1	83F912345678	-
+DIVS.W $12345678,A2		ERROR: Invalid addressing mode
+DIVS.W $12345678,(A3)		ERROR: Invalid addressing mode
+DIVS.W $12345678,(A4)+		ERROR: Invalid addressing mode
+DIVS.W $12345678,-(A5)		ERROR: Invalid addressing mode
+DIVS.W $12345678,$10(A6)		ERROR: Invalid addressing mode
+DIVS.W $12345678,$10(A6,D7.W)		ERROR: Invalid addressing mode
+DIVS.W $12345678,$1234		ERROR: Invalid addressing mode
+DIVS.W $12345678,$12345678		ERROR: Invalid addressing mode
+DIVS.W $12345678,FW		ERROR: Invalid addressing mode
+DIVS.W $12345678,*+$10(PC)		ERROR: Invalid addressing mode
+DIVS.W $12345678,#1		ERROR: Invalid addressing mode
+DIVS.W $12345678,#$80		ERROR: Invalid addressing mode
+DIVS.W $12345678,#$1234		ERROR: Invalid addressing mode
+DIVS.W $12345678,#$12345678		ERROR: Invalid addressing mode
+DIVS.W $12345678,SR		ERROR: Invalid addressing mode
+DIVS.W $12345678,CCR		ERROR: Invalid addressing mode
+DIVS.W $12345678,USP		ERROR: Invalid addressing mode
+DIVS.W FW,D1	83F900001F00	-
+DIVS.W FW,A2		ERROR: Invalid addressing mode
+DIVS.W FW,(A3)		ERROR: Invalid addressing mode
+DIVS.W FW,(A4)+		ERROR: Invalid addressing mode
+DIVS.W FW,-(A5)		ERROR: Invalid addressing mode
+DIVS.W FW,$10(A6)		ERROR: Invalid addressing mode
+DIVS.W FW,$10(A6,D7.W)		ERROR: Invalid addressing mode
+DIVS.W FW,$1234		ERROR: Invalid addressing mode
+DIVS.W FW,$12345678		ERROR: Invalid addressing mode
+DIVS.W FW,FW		ERROR: Invalid addressing mode
+DIVS.W FW,*+$10(PC)		ERROR: Invalid addressing mode
+DIVS.W FW,#1		ERROR: Invalid addressing mode
+DIVS.W FW,#$80		ERROR: Invalid addressing mode
+DIVS.W FW,#$1234		ERROR: Invalid addressing mode
+DIVS.W FW,#$12345678		ERROR: Invalid addressing mode
+DIVS.W FW,SR		ERROR: Invalid addressing mode
+DIVS.W FW,CCR		ERROR: Invalid addressing mode
+DIVS.W FW,USP		ERROR: Invalid addressing mode
+DIVS.W *+$10(PC),D1	83FA000E	-
+DIVS.W *+$10(PC),A2		ERROR: Invalid addressing mode
+DIVS.W *+$10(PC),(A3)		ERROR: Invalid addressing mode
+DIVS.W *+$10(PC),(A4)+		ERROR: Invalid addressing mode
+DIVS.W *+$10(PC),-(A5)		ERROR: Invalid addressing mode
+DIVS.W *+$10(PC),$10(A6)		ERROR: Invalid addressing mode
+DIVS.W *+$10(PC),$10(A6,D7.W)		ERROR: Invalid addressing mode
+DIVS.W *+$10(PC),$1234		ERROR: Invalid addressing mode
+DIVS.W *+$10(PC),$12345678		ERROR: Invalid addressing mode
+DIVS.W *+$10(PC),FW		ERROR: Invalid addressing mode
+DIVS.W *+$10(PC),*+$10(PC)		ERROR: Invalid addressing mode
+DIVS.W *+$10(PC),#1		ERROR: Invalid addressing mode
+DIVS.W *+$10(PC),#$80		ERROR: Invalid addressing mode
+DIVS.W *+$10(PC),#$1234		ERROR: Invalid addressing mode
+DIVS.W *+$10(PC),#$12345678		ERROR: Invalid addressing mode
+DIVS.W *+$10(PC),SR		ERROR: Invalid addressing mode
+DIVS.W *+$10(PC),CCR		ERROR: Invalid addressing mode
+DIVS.W *+$10(PC),USP		ERROR: Invalid addressing mode
+DIVS.W #1,D1	83FC0001	-
+DIVS.W #1,A2		ERROR: Invalid addressing mode
+DIVS.W #1,(A3)		ERROR: Invalid addressing mode
+DIVS.W #1,(A4)+		ERROR: Invalid addressing mode
+DIVS.W #1,-(A5)		ERROR: Invalid addressing mode
+DIVS.W #1,$10(A6)		ERROR: Invalid addressing mode
+DIVS.W #1,$10(A6,D7.W)		ERROR: Invalid addressing mode
+DIVS.W #1,$1234		ERROR: Invalid addressing mode
+DIVS.W #1,$12345678		ERROR: Invalid addressing mode
+DIVS.W #1,FW		ERROR: Invalid addressing mode
+DIVS.W #1,*+$10(PC)		ERROR: Invalid addressing mode
+DIVS.W #1,#1		ERROR: Invalid addressing mode
+DIVS.W #1,#$80		ERROR: Invalid addressing mode
+DIVS.W #1,#$1234		ERROR: Invalid addressing mode
+DIVS.W #1,#$12345678		ERROR: Invalid addressing mode
+DIVS.W #1,SR		ERROR: Invalid addressing mode
+DIVS.W #1,CCR		ERROR: Invalid addressing mode
+DIVS.W #1,USP		ERROR: Invalid addressing mode
+DIVS.W #$80,D1	83FC0080	-
+DIVS.W #$80,A2		ERROR: Invalid addressing mode
+DIVS.W #$80,(A3)		ERROR: Invalid addressing mode
+DIVS.W #$80,(A4)+		ERROR: Invalid addressing mode
+DIVS.W #$80,-(A5)		ERROR: Invalid addressing mode
+DIVS.W #$80,$10(A6)		ERROR: Invalid addressing mode
+DIVS.W #$80,$10(A6,D7.W)		ERROR: Invalid addressing mode
+DIVS.W #$80,$1234		ERROR: Invalid addressing mode
+DIVS.W #$80,$12345678		ERROR: Invalid addressing mode
+DIVS.W #$80,FW		ERROR: Invalid addressing mode
+DIVS.W #$80,*+$10(PC)		ERROR: Invalid addressing mode
+DIVS.W #$80,#1		ERROR: Invalid addressing mode
+DIVS.W #$80,#$80		ERROR: Invalid addressing mode
+DIVS.W #$80,#$1234		ERROR: Invalid addressing mode
+DIVS.W #$80,#$12345678		ERROR: Invalid addressing mode
+DIVS.W #$80,SR		ERROR: Invalid addressing mode
+DIVS.W #$80,CCR		ERROR: Invalid addressing mode
+DIVS.W #$80,USP		ERROR: Invalid addressing mode
+DIVS.W #$1234,D1	83FC1234	-
+DIVS.W #$1234,A2		ERROR: Invalid addressing mode
+DIVS.W #$1234,(A3)		ERROR: Invalid addressing mode
+DIVS.W #$1234,(A4)+		ERROR: Invalid addressing mode
+DIVS.W #$1234,-(A5)		ERROR: Invalid addressing mode
+DIVS.W #$1234,$10(A6)		ERROR: Invalid addressing mode
+DIVS.W #$1234,$10(A6,D7.W)		ERROR: Invalid addressing mode
+DIVS.W #$1234,$1234		ERROR: Invalid addressing mode
+DIVS.W #$1234,$12345678		ERROR: Invalid addressing mode
+DIVS.W #$1234,FW		ERROR: Invalid addressing mode
+DIVS.W #$1234,*+$10(PC)		ERROR: Invalid addressing mode
+DIVS.W #$1234,#1		ERROR: Invalid addressing mode
+DIVS.W #$1234,#$80		ERROR: Invalid addressing mode
+DIVS.W #$1234,#$1234		ERROR: Invalid addressing mode
+DIVS.W #$1234,#$12345678		ERROR: Invalid addressing mode
+DIVS.W #$1234,SR		ERROR: Invalid addressing mode
+DIVS.W #$1234,CCR		ERROR: Invalid addressing mode
+DIVS.W #$1234,USP		ERROR: Invalid addressing mode
+DIVS.W #$12345678,D1	83FC5678	ERROR: Immediate data exceeds 16 bits
+DIVS.W #$12345678,A2		ERROR: Invalid addressing mode
+DIVS.W #$12345678,(A3)		ERROR: Invalid addressing mode
+DIVS.W #$12345678,(A4)+		ERROR: Invalid addressing mode
+DIVS.W #$12345678,-(A5)		ERROR: Invalid addressing mode
+DIVS.W #$12345678,$10(A6)		ERROR: Invalid addressing mode
+DIVS.W #$12345678,$10(A6,D7.W)		ERROR: Invalid addressing mode
+DIVS.W #$12345678,$1234		ERROR: Invalid addressing mode
+DIVS.W #$12345678,$12345678		ERROR: Invalid addressing mode
+DIVS.W #$12345678,FW		ERROR: Invalid addressing mode
+DIVS.W #$12345678,*+$10(PC)		ERROR: Invalid addressing mode
+DIVS.W #$12345678,#1		ERROR: Invalid addressing mode
+DIVS.W #$12345678,#$80		ERROR: Invalid addressing mode
+DIVS.W #$12345678,#$1234		ERROR: Invalid addressing mode
+DIVS.W #$12345678,#$12345678		ERROR: Invalid addressing mode
+DIVS.W #$12345678,SR		ERROR: Invalid addressing mode
+DIVS.W #$12345678,CCR		ERROR: Invalid addressing mode
+DIVS.W #$12345678,USP		ERROR: Invalid addressing mode
+DIVS.W SR,D1		ERROR: Invalid addressing mode
+DIVS.W SR,A2		ERROR: Invalid addressing mode
+DIVS.W SR,(A3)		ERROR: Invalid addressing mode
+DIVS.W SR,(A4)+		ERROR: Invalid addressing mode
+DIVS.W SR,-(A5)		ERROR: Invalid addressing mode
+DIVS.W SR,$10(A6)		ERROR: Invalid addressing mode
+DIVS.W SR,$10(A6,D7.W)		ERROR: Invalid addressing mode
+DIVS.W SR,$1234		ERROR: Invalid addressing mode
+DIVS.W SR,$12345678		ERROR: Invalid addressing mode
+DIVS.W SR,FW		ERROR: Invalid addressing mode
+DIVS.W SR,*+$10(PC)		ERROR: Invalid addressing mode
+DIVS.W SR,#1		ERROR: Invalid addressing mode
+DIVS.W SR,#$80		ERROR: Invalid addressing mode
+DIVS.W SR,#$1234		ERROR: Invalid addressing mode
+DIVS.W SR,#$12345678		ERROR: Invalid addressing mode
+DIVS.W SR,SR		ERROR: Invalid addressing mode
+DIVS.W SR,CCR		ERROR: Invalid addressing mode
+DIVS.W SR,USP		ERROR: Invalid addressing mode
+DIVS.W CCR,D1		ERROR: Invalid addressing mode
+DIVS.W CCR,A2		ERROR: Invalid addressing mode
+DIVS.W CCR,(A3)		ERROR: Invalid addressing mode
+DIVS.W CCR,(A4)+		ERROR: Invalid addressing mode
+DIVS.W CCR,-(A5)		ERROR: Invalid addressing mode
+DIVS.W CCR,$10(A6)		ERROR: Invalid addressing mode
+DIVS.W CCR,$10(A6,D7.W)		ERROR: Invalid addressing mode
+DIVS.W CCR,$1234		ERROR: Invalid addressing mode
+DIVS.W CCR,$12345678		ERROR: Invalid addressing mode
+DIVS.W CCR,FW		ERROR: Invalid addressing mode
+DIVS.W CCR,*+$10(PC)		ERROR: Invalid addressing mode
+DIVS.W CCR,#1		ERROR: Invalid addressing mode
+DIVS.W CCR,#$80		ERROR: Invalid addressing mode
+DIVS.W CCR,#$1234		ERROR: Invalid addressing mode
+DIVS.W CCR,#$12345678		ERROR: Invalid addressing mode
+DIVS.W CCR,SR		ERROR: Invalid addressing mode
+DIVS.W CCR,CCR		ERROR: Invalid addressing mode
+DIVS.W CCR,USP		ERROR: Invalid addressing mode
+DIVS.W USP,D1		ERROR: Invalid addressing mode
+DIVS.W USP,A2		ERROR: Invalid addressing mode
+DIVS.W USP,(A3)		ERROR: Invalid addressing mode
+DIVS.W USP,(A4)+		ERROR: Invalid addressing mode
+DIVS.W USP,-(A5)		ERROR: Invalid addressing mode
+DIVS.W USP,$10(A6)		ERROR: Invalid addressing mode
+DIVS.W USP,$10(A6,D7.W)		ERROR: Invalid addressing mode
+DIVS.W USP,$1234		ERROR: Invalid addressing mode
+DIVS.W USP,$12345678		ERROR: Invalid addressing mode
+DIVS.W USP,FW		ERROR: Invalid addressing mode
+DIVS.W USP,*+$10(PC)		ERROR: Invalid addressing mode
+DIVS.W USP,#1		ERROR: Invalid addressing mode
+DIVS.W USP,#$80		ERROR: Invalid addressing mode
+DIVS.W USP,#$1234		ERROR: Invalid addressing mode
+DIVS.W USP,#$12345678		ERROR: Invalid addressing mode
+DIVS.W USP,SR		ERROR: Invalid addressing mode
+DIVS.W USP,CCR		ERROR: Invalid addressing mode
+DIVS.W USP,USP		ERROR: Invalid addressing mode
+DIVS.W SP,D1		ERROR: Invalid addressing mode
+DIVS.W SP,A2		ERROR: Invalid addressing mode
+DIVS.W D1,SP		ERROR: Invalid addressing mode
+DIVS.W #$12,SP		ERROR: Invalid addressing mode
+DIVS.W -2(A0),D1	83E8FFFE	-
+DIVS.W -2(A0),A2		ERROR: Invalid addressing mode
+DIVS.W D1,-2(A0)		ERROR: Invalid addressing mode
+DIVS.W #$12,-2(A0)		ERROR: Invalid addressing mode
+DIVS.W $12(A0,A1.L),D1	83F09812	-
+DIVS.W $12(A0,A1.L),A2		ERROR: Invalid addressing mode
+DIVS.W D1,$12(A0,A1.L)		ERROR: Invalid addressing mode
+DIVS.W #$12,$12(A0,A1.L)		ERROR: Invalid addressing mode
+DIVS.W (A2,D3),D1	83F23000	-
+DIVS.W (A2,D3),A2		ERROR: Invalid addressing mode
+DIVS.W D1,(A2,D3)		ERROR: Invalid addressing mode
+DIVS.W #$12,(A2,D3)		ERROR: Invalid addressing mode
+DIVS.W $1234.L,D1	83F900001234	-
+DIVS.W $1234.L,A2		ERROR: Invalid addressing mode
+DIVS.W D1,$1234.L		ERROR: Invalid addressing mode
+DIVS.W #$12,$1234.L		ERROR: Invalid addressing mode
+DIVS.W $1234.W,D1	83F81234	WARNING: Forcing SHORT addressing disables range checking of extension word
+DIVS.W $1234.W,A2		ERROR: Invalid addressing mode
+DIVS.W D1,$1234.W		ERROR: Invalid addressing mode
+DIVS.W #$12,$1234.W		ERROR: Invalid addressing mode
+DIVS.W $8000,D1	83F900008000	-
+DIVS.W $8000,A2		ERROR: Invalid addressing mode
+DIVS.W D1,$8000		ERROR: Invalid addressing mode
+DIVS.W #$12,$8000		ERROR: Invalid addressing mode
+DIVS.W BK,D1	83F81F00	-
+DIVS.W BK,A2		ERROR: Invalid addressing mode
+DIVS.W D1,BK		ERROR: Invalid addressing mode
+DIVS.W #$12,BK		ERROR: Invalid addressing mode
+DIVS.W *(PC,D0.W),D1	83FB00FE	-
+DIVS.W *(PC,D0.W),A2		ERROR: Invalid addressing mode
+DIVS.W D1,*(PC,D0.W)		ERROR: Invalid addressing mode
+DIVS.W #$12,*(PC,D0.W)		ERROR: Invalid addressing mode
+DIVS.W BK(PC),D1	83FA0EFE	-
+DIVS.W BK(PC),A2		ERROR: Invalid addressing mode
+DIVS.W D1,BK(PC)		ERROR: Invalid addressing mode
+DIVS.W #$12,BK(PC)		ERROR: Invalid addressing mode
+DIVS.W #8,D1	83FC0008	-
+DIVS.W #8,A2		ERROR: Invalid addressing mode
+DIVS.W D1,#8		ERROR: Invalid addressing mode
+DIVS.W #$12,#8		ERROR: Invalid addressing mode
+DIVS.W #9,D1	83FC0009	-
+DIVS.W #9,A2		ERROR: Invalid addressing mode
+DIVS.W D1,#9		ERROR: Invalid addressing mode
+DIVS.W #$12,#9		ERROR: Invalid addressing mode
+DIVS.W #0,D1	83FC0000	-
+DIVS.W #0,A2		ERROR: Invalid addressing mode
+DIVS.W D1,#0		ERROR: Invalid addressing mode
+DIVS.W #$12,#0		ERROR: Invalid addressing mode
+DIVS.W #-1,D1	83FCFFFF	-
+DIVS.W #-1,A2		ERROR: Invalid addressing mode
+DIVS.W D1,#-1		ERROR: Invalid addressing mode
+DIVS.W #$12,#-1		ERROR: Invalid addressing mode
+DIVS.W #$12345678.L,D1	83FC5678	ERROR: Immediate data exceeds 16 bits
+DIVS.W #$12345678.L,A2		ERROR: Invalid addressing mode
+DIVS.W D1,#$12345678.L		ERROR: Invalid addressing mode
+DIVS.W #$12,#$12345678.L		ERROR: Invalid addressing mode
+DIVS.W #BK,D1	83FC1F00	-
+DIVS.W #BK,A2		ERROR: Invalid addressing mode
+DIVS.W D1,#BK		ERROR: Invalid addressing mode
+DIVS.W #$12,#BK		ERROR: Invalid addressing mode
+DIVS.W #FW,D1	83FC1F00	-
+DIVS.W #FW,A2		ERROR: Invalid addressing mode
+DIVS.W D1,#FW		ERROR: Invalid addressing mode
+DIVS.W #$12,#FW		ERROR: Invalid addressing mode
+DIVS.W #UNDEF,D1	83FC561E	ERROR: Undefined symbol
+DIVS.W #UNDEF,A2		ERROR: Invalid addressing mode
+DIVS.W D1,#UNDEF		ERROR: Invalid addressing mode
+DIVS.W #$12,#UNDEF		ERROR: Invalid addressing mode
+DIVS.W UNDEF,D1	83F90000561E	ERROR: Undefined symbol
+DIVS.W UNDEF,A2		ERROR: Invalid addressing mode
+DIVS.W D1,UNDEF		ERROR: Invalid addressing mode
+DIVS.W #$12,UNDEF		ERROR: Invalid addressing mode
+DIVS.W D1,D2,D3		ERROR: Invalid syntax
+DIVS.L		ERROR: Invalid syntax
+DIVS.L D1		ERROR: Comma expected
+DIVS.L A2		ERROR: Comma expected
+DIVS.L SP		ERROR: Comma expected
+DIVS.L (A3)		ERROR: Comma expected
+DIVS.L (A4)+		ERROR: Comma expected
+DIVS.L -(A5)		ERROR: Comma expected
+DIVS.L $10(A6)		ERROR: Comma expected
+DIVS.L -2(A0)		ERROR: Comma expected
+DIVS.L $10(A6,D7.W)		ERROR: Comma expected
+DIVS.L $12(A0,A1.L)		ERROR: Comma expected
+DIVS.L (A2,D3)		ERROR: Comma expected
+DIVS.L $1234		ERROR: Comma expected
+DIVS.L $12345678		ERROR: Comma expected
+DIVS.L $1234.L		ERROR: Comma expected
+DIVS.L $1234.W		ERROR: Comma expected
+DIVS.L $8000		ERROR: Comma expected
+DIVS.L BK		ERROR: Comma expected
+DIVS.L FW		ERROR: Comma expected
+DIVS.L *+$10(PC)		ERROR: Comma expected
+DIVS.L *(PC,D0.W)		ERROR: Comma expected
+DIVS.L BK(PC)		ERROR: Comma expected
+DIVS.L #1		ERROR: Comma expected
+DIVS.L #8		ERROR: Comma expected
+DIVS.L #9		ERROR: Comma expected
+DIVS.L #0		ERROR: Comma expected
+DIVS.L #-1		ERROR: Comma expected
+DIVS.L #$80		ERROR: Comma expected
+DIVS.L #$1234		ERROR: Comma expected
+DIVS.L #$12345678		ERROR: Comma expected
+DIVS.L #$12345678.L		ERROR: Comma expected
+DIVS.L #BK		ERROR: Comma expected
+DIVS.L #FW		ERROR: Comma expected
+DIVS.L #UNDEF		ERROR: Comma expected
+DIVS.L UNDEF		ERROR: Comma expected
+DIVS.L SR		ERROR: Comma expected
+DIVS.L CCR		ERROR: Comma expected
+DIVS.L USP		ERROR: Comma expected
+DIVS.L D1,D1	83C1	ERROR: Invalid size code
+DIVS.L D1,A2		ERROR: Invalid addressing mode
+DIVS.L D1,(A3)		ERROR: Invalid addressing mode
+DIVS.L D1,$10(A6)		ERROR: Invalid addressing mode
+DIVS.L D1,$1234		ERROR: Invalid addressing mode
+DIVS.L D1,FW		ERROR: Invalid addressing mode
+DIVS.L D1,#1		ERROR: Invalid addressing mode
+DIVS.L D1,#$1234		ERROR: Invalid addressing mode
+DIVS.L D1,CCR		ERROR: Invalid addressing mode
+DIVS.L D1,SR		ERROR: Invalid addressing mode
+DIVS.L A2,D1		ERROR: Invalid addressing mode
+DIVS.L A2,A2		ERROR: Invalid addressing mode
+DIVS.L A2,(A3)		ERROR: Invalid addressing mode
+DIVS.L A2,$10(A6)		ERROR: Invalid addressing mode
+DIVS.L A2,$1234		ERROR: Invalid addressing mode
+DIVS.L A2,FW		ERROR: Invalid addressing mode
+DIVS.L A2,#1		ERROR: Invalid addressing mode
+DIVS.L A2,#$1234		ERROR: Invalid addressing mode
+DIVS.L A2,CCR		ERROR: Invalid addressing mode
+DIVS.L A2,SR		ERROR: Invalid addressing mode
+DIVS.L (A3),D1	83D3	ERROR: Invalid size code
+DIVS.L (A3),A2		ERROR: Invalid addressing mode
+DIVS.L (A3),(A3)		ERROR: Invalid addressing mode
+DIVS.L (A3),$10(A6)		ERROR: Invalid addressing mode
+DIVS.L (A3),$1234		ERROR: Invalid addressing mode
+DIVS.L (A3),FW		ERROR: Invalid addressing mode
+DIVS.L (A3),#1		ERROR: Invalid addressing mode
+DIVS.L (A3),#$1234		ERROR: Invalid addressing mode
+DIVS.L (A3),CCR		ERROR: Invalid addressing mode
+DIVS.L (A3),SR		ERROR: Invalid addressing mode
+DIVS.L $10(A6),D1	83EE0010	ERROR: Invalid size code
+DIVS.L $10(A6),A2		ERROR: Invalid addressing mode
+DIVS.L $10(A6),(A3)		ERROR: Invalid addressing mode
+DIVS.L $10(A6),$10(A6)		ERROR: Invalid addressing mode
+DIVS.L $10(A6),$1234		ERROR: Invalid addressing mode
+DIVS.L $10(A6),FW		ERROR: Invalid addressing mode
+DIVS.L $10(A6),#1		ERROR: Invalid addressing mode
+DIVS.L $10(A6),#$1234		ERROR: Invalid addressing mode
+DIVS.L $10(A6),CCR		ERROR: Invalid addressing mode
+DIVS.L $10(A6),SR		ERROR: Invalid addressing mode
+DIVS.L $1234,D1	83F81234	ERROR: Invalid size code
+DIVS.L $1234,A2		ERROR: Invalid addressing mode
+DIVS.L $1234,(A3)		ERROR: Invalid addressing mode
+DIVS.L $1234,$10(A6)		ERROR: Invalid addressing mode
+DIVS.L $1234,$1234		ERROR: Invalid addressing mode
+DIVS.L $1234,FW		ERROR: Invalid addressing mode
+DIVS.L $1234,#1		ERROR: Invalid addressing mode
+DIVS.L $1234,#$1234		ERROR: Invalid addressing mode
+DIVS.L $1234,CCR		ERROR: Invalid addressing mode
+DIVS.L $1234,SR		ERROR: Invalid addressing mode
+DIVS.L FW,D1	83F900001F00	ERROR: Invalid size code
+DIVS.L FW,A2		ERROR: Invalid addressing mode
+DIVS.L FW,(A3)		ERROR: Invalid addressing mode
+DIVS.L FW,$10(A6)		ERROR: Invalid addressing mode
+DIVS.L FW,$1234		ERROR: Invalid addressing mode
+DIVS.L FW,FW		ERROR: Invalid addressing mode
+DIVS.L FW,#1		ERROR: Invalid addressing mode
+DIVS.L FW,#$1234		ERROR: Invalid addressing mode
+DIVS.L FW,CCR		ERROR: Invalid addressing mode
+DIVS.L FW,SR		ERROR: Invalid addressing mode
+DIVS.L #1,D1	83FC00000001	ERROR: Invalid size code
+DIVS.L #1,A2		ERROR: Invalid addressing mode
+DIVS.L #1,(A3)		ERROR: Invalid addressing mode
+DIVS.L #1,$10(A6)		ERROR: Invalid addressing mode
+DIVS.L #1,$1234		ERROR: Invalid addressing mode
+DIVS.L #1,FW		ERROR: Invalid addressing mode
+DIVS.L #1,#1		ERROR: Invalid addressing mode
+DIVS.L #1,#$1234		ERROR: Invalid addressing mode
+DIVS.L #1,CCR		ERROR: Invalid addressing mode
+DIVS.L #1,SR		ERROR: Invalid addressing mode
+DIVS.L #$1234,D1	83FC00001234	ERROR: Invalid size code
+DIVS.L #$1234,A2		ERROR: Invalid addressing mode
+DIVS.L #$1234,(A3)		ERROR: Invalid addressing mode
+DIVS.L #$1234,$10(A6)		ERROR: Invalid addressing mode
+DIVS.L #$1234,$1234		ERROR: Invalid addressing mode
+DIVS.L #$1234,FW		ERROR: Invalid addressing mode
+DIVS.L #$1234,#1		ERROR: Invalid addressing mode
+DIVS.L #$1234,#$1234		ERROR: Invalid addressing mode
+DIVS.L #$1234,CCR		ERROR: Invalid addressing mode
+DIVS.L #$1234,SR		ERROR: Invalid addressing mode
+DIVS.L CCR,D1		ERROR: Invalid addressing mode
+DIVS.L CCR,A2		ERROR: Invalid addressing mode
+DIVS.L CCR,(A3)		ERROR: Invalid addressing mode
+DIVS.L CCR,$10(A6)		ERROR: Invalid addressing mode
+DIVS.L CCR,$1234		ERROR: Invalid addressing mode
+DIVS.L CCR,FW		ERROR: Invalid addressing mode
+DIVS.L CCR,#1		ERROR: Invalid addressing mode
+DIVS.L CCR,#$1234		ERROR: Invalid addressing mode
+DIVS.L CCR,CCR		ERROR: Invalid addressing mode
+DIVS.L CCR,SR		ERROR: Invalid addressing mode
+DIVS.L SR,D1		ERROR: Invalid addressing mode
+DIVS.L SR,A2		ERROR: Invalid addressing mode
+DIVS.L SR,(A3)		ERROR: Invalid addressing mode
+DIVS.L SR,$10(A6)		ERROR: Invalid addressing mode
+DIVS.L SR,$1234		ERROR: Invalid addressing mode
+DIVS.L SR,FW		ERROR: Invalid addressing mode
+DIVS.L SR,#1		ERROR: Invalid addressing mode
+DIVS.L SR,#$1234		ERROR: Invalid addressing mode
+DIVS.L SR,CCR		ERROR: Invalid addressing mode
+DIVS.L SR,SR		ERROR: Invalid addressing mode
+DIVS.L SP,D1		ERROR: Invalid addressing mode
+DIVS.L SP,A2		ERROR: Invalid addressing mode
+DIVS.L D1,SP		ERROR: Invalid addressing mode
+DIVS.L #$12,SP		ERROR: Invalid addressing mode
+DIVS.L (A4)+,D1	83DC	ERROR: Invalid size code
+DIVS.L (A4)+,A2		ERROR: Invalid addressing mode
+DIVS.L D1,(A4)+		ERROR: Invalid addressing mode
+DIVS.L #$12,(A4)+		ERROR: Invalid addressing mode
+DIVS.L -(A5),D1	83E5	ERROR: Invalid size code
+DIVS.L -(A5),A2		ERROR: Invalid addressing mode
+DIVS.L D1,-(A5)		ERROR: Invalid addressing mode
+DIVS.L #$12,-(A5)		ERROR: Invalid addressing mode
+DIVS.L -2(A0),D1	83E8FFFE	ERROR: Invalid size code
+DIVS.L -2(A0),A2		ERROR: Invalid addressing mode
+DIVS.L D1,-2(A0)		ERROR: Invalid addressing mode
+DIVS.L #$12,-2(A0)		ERROR: Invalid addressing mode
+DIVS.L $10(A6,D7.W),D1	83F67010	ERROR: Invalid size code
+DIVS.L $10(A6,D7.W),A2		ERROR: Invalid addressing mode
+DIVS.L D1,$10(A6,D7.W)		ERROR: Invalid addressing mode
+DIVS.L #$12,$10(A6,D7.W)		ERROR: Invalid addressing mode
+DIVS.L $12(A0,A1.L),D1	83F09812	ERROR: Invalid size code
+DIVS.L $12(A0,A1.L),A2		ERROR: Invalid addressing mode
+DIVS.L D1,$12(A0,A1.L)		ERROR: Invalid addressing mode
+DIVS.L #$12,$12(A0,A1.L)		ERROR: Invalid addressing mode
+DIVS.L (A2,D3),D1	83F23000	ERROR: Invalid size code
+DIVS.L (A2,D3),A2		ERROR: Invalid addressing mode
+DIVS.L D1,(A2,D3)		ERROR: Invalid addressing mode
+DIVS.L #$12,(A2,D3)		ERROR: Invalid addressing mode
+DIVS.L $12345678,D1	83F912345678	ERROR: Invalid size code
+DIVS.L $12345678,A2		ERROR: Invalid addressing mode
+DIVS.L D1,$12345678		ERROR: Invalid addressing mode
+DIVS.L #$12,$12345678		ERROR: Invalid addressing mode
+DIVS.L $1234.L,D1	83F900001234	ERROR: Invalid size code
+DIVS.L $1234.L,A2		ERROR: Invalid addressing mode
+DIVS.L D1,$1234.L		ERROR: Invalid addressing mode
+DIVS.L #$12,$1234.L		ERROR: Invalid addressing mode
+DIVS.L $1234.W,D1	83F81234	ERROR: Invalid size code
+DIVS.L $1234.W,A2		ERROR: Invalid addressing mode
+DIVS.L D1,$1234.W		ERROR: Invalid addressing mode
+DIVS.L #$12,$1234.W		ERROR: Invalid addressing mode
+DIVS.L $8000,D1	83F900008000	ERROR: Invalid size code
+DIVS.L $8000,A2		ERROR: Invalid addressing mode
+DIVS.L D1,$8000		ERROR: Invalid addressing mode
+DIVS.L #$12,$8000		ERROR: Invalid addressing mode
+DIVS.L BK,D1	83F81F00	ERROR: Invalid size code
+DIVS.L BK,A2		ERROR: Invalid addressing mode
+DIVS.L D1,BK		ERROR: Invalid addressing mode
+DIVS.L #$12,BK		ERROR: Invalid addressing mode
+DIVS.L *+$10(PC),D1	83FA000E	ERROR: Invalid size code
+DIVS.L *+$10(PC),A2		ERROR: Invalid addressing mode
+DIVS.L D1,*+$10(PC)		ERROR: Invalid addressing mode
+DIVS.L #$12,*+$10(PC)		ERROR: Invalid addressing mode
+DIVS.L *(PC,D0.W),D1	83FB00FE	ERROR: Invalid size code
+DIVS.L *(PC,D0.W),A2		ERROR: Invalid addressing mode
+DIVS.L D1,*(PC,D0.W)		ERROR: Invalid addressing mode
+DIVS.L #$12,*(PC,D0.W)		ERROR: Invalid addressing mode
+DIVS.L BK(PC),D1	83FA0EFE	ERROR: Invalid size code
+DIVS.L BK(PC),A2		ERROR: Invalid addressing mode
+DIVS.L D1,BK(PC)		ERROR: Invalid addressing mode
+DIVS.L #$12,BK(PC)		ERROR: Invalid addressing mode
+DIVS.L #8,D1	83FC00000008	ERROR: Invalid size code
+DIVS.L #8,A2		ERROR: Invalid addressing mode
+DIVS.L D1,#8		ERROR: Invalid addressing mode
+DIVS.L #$12,#8		ERROR: Invalid addressing mode
+DIVS.L #9,D1	83FC00000009	ERROR: Invalid size code
+DIVS.L #9,A2		ERROR: Invalid addressing mode
+DIVS.L D1,#9		ERROR: Invalid addressing mode
+DIVS.L #$12,#9		ERROR: Invalid addressing mode
+DIVS.L #0,D1	83FC00000000	ERROR: Invalid size code
+DIVS.L #0,A2		ERROR: Invalid addressing mode
+DIVS.L D1,#0		ERROR: Invalid addressing mode
+DIVS.L #$12,#0		ERROR: Invalid addressing mode
+DIVS.L #-1,D1	83FCFFFFFFFF	ERROR: Invalid size code
+DIVS.L #-1,A2		ERROR: Invalid addressing mode
+DIVS.L D1,#-1		ERROR: Invalid addressing mode
+DIVS.L #$12,#-1		ERROR: Invalid addressing mode
+DIVS.L #$80,D1	83FC00000080	ERROR: Invalid size code
+DIVS.L #$80,A2		ERROR: Invalid addressing mode
+DIVS.L D1,#$80		ERROR: Invalid addressing mode
+DIVS.L #$12,#$80		ERROR: Invalid addressing mode
+DIVS.L #$12345678,D1	83FC12345678	ERROR: Invalid size code
+DIVS.L #$12345678,A2		ERROR: Invalid addressing mode
+DIVS.L D1,#$12345678		ERROR: Invalid addressing mode
+DIVS.L #$12,#$12345678		ERROR: Invalid addressing mode
+DIVS.L #$12345678.L,D1	83FC12345678	ERROR: Invalid size code
+DIVS.L #$12345678.L,A2		ERROR: Invalid addressing mode
+DIVS.L D1,#$12345678.L		ERROR: Invalid addressing mode
+DIVS.L #$12,#$12345678.L		ERROR: Invalid addressing mode
+DIVS.L #BK,D1	83FC00001F00	ERROR: Invalid size code
+DIVS.L #BK,A2		ERROR: Invalid addressing mode
+DIVS.L D1,#BK		ERROR: Invalid addressing mode
+DIVS.L #$12,#BK		ERROR: Invalid addressing mode
+DIVS.L #FW,D1	83FC00001F00	ERROR: Invalid size code
+DIVS.L #FW,A2		ERROR: Invalid addressing mode
+DIVS.L D1,#FW		ERROR: Invalid addressing mode
+DIVS.L #$12,#FW		ERROR: Invalid addressing mode
+DIVS.L #UNDEF,D1	83FC0000561E	ERROR: Undefined symbol
+DIVS.L #UNDEF,A2		ERROR: Invalid addressing mode
+DIVS.L D1,#UNDEF		ERROR: Invalid addressing mode
+DIVS.L #$12,#UNDEF		ERROR: Invalid addressing mode
+DIVS.L UNDEF,D1	83F90000561E	ERROR: Undefined symbol
+DIVS.L UNDEF,A2		ERROR: Invalid addressing mode
+DIVS.L D1,UNDEF		ERROR: Invalid addressing mode
+DIVS.L #$12,UNDEF		ERROR: Invalid addressing mode
+DIVS.L USP,D1		ERROR: Invalid addressing mode
+DIVS.L USP,A2		ERROR: Invalid addressing mode
+DIVS.L D1,USP		ERROR: Invalid addressing mode
+DIVS.L #$12,USP		ERROR: Invalid addressing mode
+DIVS.L D1,D2,D3		ERROR: Invalid syntax
+DIVS.S		ERROR: Invalid syntax
+DIVS.S D1		ERROR: Comma expected
+DIVS.S A2		ERROR: Comma expected
+DIVS.S SP		ERROR: Comma expected
+DIVS.S (A3)		ERROR: Comma expected
+DIVS.S (A4)+		ERROR: Comma expected
+DIVS.S -(A5)		ERROR: Comma expected
+DIVS.S $10(A6)		ERROR: Comma expected
+DIVS.S -2(A0)		ERROR: Comma expected
+DIVS.S $10(A6,D7.W)		ERROR: Comma expected
+DIVS.S $12(A0,A1.L)		ERROR: Comma expected
+DIVS.S (A2,D3)		ERROR: Comma expected
+DIVS.S $1234		ERROR: Comma expected
+DIVS.S $12345678		ERROR: Comma expected
+DIVS.S $1234.L		ERROR: Comma expected
+DIVS.S $1234.W		ERROR: Comma expected
+DIVS.S $8000		ERROR: Comma expected
+DIVS.S BK		ERROR: Comma expected
+DIVS.S FW		ERROR: Comma expected
+DIVS.S *+$10(PC)		ERROR: Comma expected
+DIVS.S *(PC,D0.W)		ERROR: Comma expected
+DIVS.S BK(PC)		ERROR: Comma expected
+DIVS.S #1		ERROR: Comma expected
+DIVS.S #8		ERROR: Comma expected
+DIVS.S #9		ERROR: Comma expected
+DIVS.S #0		ERROR: Comma expected
+DIVS.S #-1		ERROR: Comma expected
+DIVS.S #$80		ERROR: Comma expected
+DIVS.S #$1234		ERROR: Comma expected
+DIVS.S #$12345678		ERROR: Comma expected
+DIVS.S #$12345678.L		ERROR: Comma expected
+DIVS.S #BK		ERROR: Comma expected
+DIVS.S #FW		ERROR: Comma expected
+DIVS.S #UNDEF		ERROR: Comma expected
+DIVS.S UNDEF		ERROR: Comma expected
+DIVS.S SR		ERROR: Comma expected
+DIVS.S CCR		ERROR: Comma expected
+DIVS.S USP		ERROR: Comma expected
+DIVS.S D1,D1	83C1	ERROR: Invalid size code
+DIVS.S D1,A2		ERROR: Invalid addressing mode
+DIVS.S D1,(A3)		ERROR: Invalid addressing mode
+DIVS.S D1,$10(A6)		ERROR: Invalid addressing mode
+DIVS.S D1,$1234		ERROR: Invalid addressing mode
+DIVS.S D1,FW		ERROR: Invalid addressing mode
+DIVS.S D1,#1		ERROR: Invalid addressing mode
+DIVS.S D1,#$1234		ERROR: Invalid addressing mode
+DIVS.S D1,CCR		ERROR: Invalid addressing mode
+DIVS.S D1,SR		ERROR: Invalid addressing mode
+DIVS.S A2,D1		ERROR: Invalid addressing mode
+DIVS.S A2,A2		ERROR: Invalid addressing mode
+DIVS.S A2,(A3)		ERROR: Invalid addressing mode
+DIVS.S A2,$10(A6)		ERROR: Invalid addressing mode
+DIVS.S A2,$1234		ERROR: Invalid addressing mode
+DIVS.S A2,FW		ERROR: Invalid addressing mode
+DIVS.S A2,#1		ERROR: Invalid addressing mode
+DIVS.S A2,#$1234		ERROR: Invalid addressing mode
+DIVS.S A2,CCR		ERROR: Invalid addressing mode
+DIVS.S A2,SR		ERROR: Invalid addressing mode
+DIVS.S (A3),D1	83D3	ERROR: Invalid size code
+DIVS.S (A3),A2		ERROR: Invalid addressing mode
+DIVS.S (A3),(A3)		ERROR: Invalid addressing mode
+DIVS.S (A3),$10(A6)		ERROR: Invalid addressing mode
+DIVS.S (A3),$1234		ERROR: Invalid addressing mode
+DIVS.S (A3),FW		ERROR: Invalid addressing mode
+DIVS.S (A3),#1		ERROR: Invalid addressing mode
+DIVS.S (A3),#$1234		ERROR: Invalid addressing mode
+DIVS.S (A3),CCR		ERROR: Invalid addressing mode
+DIVS.S (A3),SR		ERROR: Invalid addressing mode
+DIVS.S $10(A6),D1	83EE0010	ERROR: Invalid size code
+DIVS.S $10(A6),A2		ERROR: Invalid addressing mode
+DIVS.S $10(A6),(A3)		ERROR: Invalid addressing mode
+DIVS.S $10(A6),$10(A6)		ERROR: Invalid addressing mode
+DIVS.S $10(A6),$1234		ERROR: Invalid addressing mode
+DIVS.S $10(A6),FW		ERROR: Invalid addressing mode
+DIVS.S $10(A6),#1		ERROR: Invalid addressing mode
+DIVS.S $10(A6),#$1234		ERROR: Invalid addressing mode
+DIVS.S $10(A6),CCR		ERROR: Invalid addressing mode
+DIVS.S $10(A6),SR		ERROR: Invalid addressing mode
+DIVS.S $1234,D1	83F81234	ERROR: Invalid size code
+DIVS.S $1234,A2		ERROR: Invalid addressing mode
+DIVS.S $1234,(A3)		ERROR: Invalid addressing mode
+DIVS.S $1234,$10(A6)		ERROR: Invalid addressing mode
+DIVS.S $1234,$1234		ERROR: Invalid addressing mode
+DIVS.S $1234,FW		ERROR: Invalid addressing mode
+DIVS.S $1234,#1		ERROR: Invalid addressing mode
+DIVS.S $1234,#$1234		ERROR: Invalid addressing mode
+DIVS.S $1234,CCR		ERROR: Invalid addressing mode
+DIVS.S $1234,SR		ERROR: Invalid addressing mode
+DIVS.S FW,D1	83F900001F00	ERROR: Invalid size code
+DIVS.S FW,A2		ERROR: Invalid addressing mode
+DIVS.S FW,(A3)		ERROR: Invalid addressing mode
+DIVS.S FW,$10(A6)		ERROR: Invalid addressing mode
+DIVS.S FW,$1234		ERROR: Invalid addressing mode
+DIVS.S FW,FW		ERROR: Invalid addressing mode
+DIVS.S FW,#1		ERROR: Invalid addressing mode
+DIVS.S FW,#$1234		ERROR: Invalid addressing mode
+DIVS.S FW,CCR		ERROR: Invalid addressing mode
+DIVS.S FW,SR		ERROR: Invalid addressing mode
+DIVS.S #1,D1	83FC	ERROR: Invalid size code
+DIVS.S #1,A2		ERROR: Invalid addressing mode
+DIVS.S #1,(A3)		ERROR: Invalid addressing mode
+DIVS.S #1,$10(A6)		ERROR: Invalid addressing mode
+DIVS.S #1,$1234		ERROR: Invalid addressing mode
+DIVS.S #1,FW		ERROR: Invalid addressing mode
+DIVS.S #1,#1		ERROR: Invalid addressing mode
+DIVS.S #1,#$1234		ERROR: Invalid addressing mode
+DIVS.S #1,CCR		ERROR: Invalid addressing mode
+DIVS.S #1,SR		ERROR: Invalid addressing mode
+DIVS.S #$1234,D1	83FC	ERROR: Invalid size code
+DIVS.S #$1234,A2		ERROR: Invalid addressing mode
+DIVS.S #$1234,(A3)		ERROR: Invalid addressing mode
+DIVS.S #$1234,$10(A6)		ERROR: Invalid addressing mode
+DIVS.S #$1234,$1234		ERROR: Invalid addressing mode
+DIVS.S #$1234,FW		ERROR: Invalid addressing mode
+DIVS.S #$1234,#1		ERROR: Invalid addressing mode
+DIVS.S #$1234,#$1234		ERROR: Invalid addressing mode
+DIVS.S #$1234,CCR		ERROR: Invalid addressing mode
+DIVS.S #$1234,SR		ERROR: Invalid addressing mode
+DIVS.S CCR,D1		ERROR: Invalid addressing mode
+DIVS.S CCR,A2		ERROR: Invalid addressing mode
+DIVS.S CCR,(A3)		ERROR: Invalid addressing mode
+DIVS.S CCR,$10(A6)		ERROR: Invalid addressing mode
+DIVS.S CCR,$1234		ERROR: Invalid addressing mode
+DIVS.S CCR,FW		ERROR: Invalid addressing mode
+DIVS.S CCR,#1		ERROR: Invalid addressing mode
+DIVS.S CCR,#$1234		ERROR: Invalid addressing mode
+DIVS.S CCR,CCR		ERROR: Invalid addressing mode
+DIVS.S CCR,SR		ERROR: Invalid addressing mode
+DIVS.S SR,D1		ERROR: Invalid addressing mode
+DIVS.S SR,A2		ERROR: Invalid addressing mode
+DIVS.S SR,(A3)		ERROR: Invalid addressing mode
+DIVS.S SR,$10(A6)		ERROR: Invalid addressing mode
+DIVS.S SR,$1234		ERROR: Invalid addressing mode
+DIVS.S SR,FW		ERROR: Invalid addressing mode
+DIVS.S SR,#1		ERROR: Invalid addressing mode
+DIVS.S SR,#$1234		ERROR: Invalid addressing mode
+DIVS.S SR,CCR		ERROR: Invalid addressing mode
+DIVS.S SR,SR		ERROR: Invalid addressing mode
+DIVS.S SP,D1		ERROR: Invalid addressing mode
+DIVS.S SP,A2		ERROR: Invalid addressing mode
+DIVS.S D1,SP		ERROR: Invalid addressing mode
+DIVS.S #$12,SP		ERROR: Invalid addressing mode
+DIVS.S (A4)+,D1	83DC	ERROR: Invalid size code
+DIVS.S (A4)+,A2		ERROR: Invalid addressing mode
+DIVS.S D1,(A4)+		ERROR: Invalid addressing mode
+DIVS.S #$12,(A4)+		ERROR: Invalid addressing mode
+DIVS.S -(A5),D1	83E5	ERROR: Invalid size code
+DIVS.S -(A5),A2		ERROR: Invalid addressing mode
+DIVS.S D1,-(A5)		ERROR: Invalid addressing mode
+DIVS.S #$12,-(A5)		ERROR: Invalid addressing mode
+DIVS.S -2(A0),D1	83E8FFFE	ERROR: Invalid size code
+DIVS.S -2(A0),A2		ERROR: Invalid addressing mode
+DIVS.S D1,-2(A0)		ERROR: Invalid addressing mode
+DIVS.S #$12,-2(A0)		ERROR: Invalid addressing mode
+DIVS.S $10(A6,D7.W),D1	83F67010	ERROR: Invalid size code
+DIVS.S $10(A6,D7.W),A2		ERROR: Invalid addressing mode
+DIVS.S D1,$10(A6,D7.W)		ERROR: Invalid addressing mode
+DIVS.S #$12,$10(A6,D7.W)		ERROR: Invalid addressing mode
+DIVS.S $12(A0,A1.L),D1	83F09812	ERROR: Invalid size code
+DIVS.S $12(A0,A1.L),A2		ERROR: Invalid addressing mode
+DIVS.S D1,$12(A0,A1.L)		ERROR: Invalid addressing mode
+DIVS.S #$12,$12(A0,A1.L)		ERROR: Invalid addressing mode
+DIVS.S (A2,D3),D1	83F23000	ERROR: Invalid size code
+DIVS.S (A2,D3),A2		ERROR: Invalid addressing mode
+DIVS.S D1,(A2,D3)		ERROR: Invalid addressing mode
+DIVS.S #$12,(A2,D3)		ERROR: Invalid addressing mode
+DIVS.S $12345678,D1	83F912345678	ERROR: Invalid size code
+DIVS.S $12345678,A2		ERROR: Invalid addressing mode
+DIVS.S D1,$12345678		ERROR: Invalid addressing mode
+DIVS.S #$12,$12345678		ERROR: Invalid addressing mode
+DIVS.S $1234.L,D1	83F900001234	ERROR: Invalid size code
+DIVS.S $1234.L,A2		ERROR: Invalid addressing mode
+DIVS.S D1,$1234.L		ERROR: Invalid addressing mode
+DIVS.S #$12,$1234.L		ERROR: Invalid addressing mode
+DIVS.S $1234.W,D1	83F81234	ERROR: Invalid size code
+DIVS.S $1234.W,A2		ERROR: Invalid addressing mode
+DIVS.S D1,$1234.W		ERROR: Invalid addressing mode
+DIVS.S #$12,$1234.W		ERROR: Invalid addressing mode
+DIVS.S $8000,D1	83F900008000	ERROR: Invalid size code
+DIVS.S $8000,A2		ERROR: Invalid addressing mode
+DIVS.S D1,$8000		ERROR: Invalid addressing mode
+DIVS.S #$12,$8000		ERROR: Invalid addressing mode
+DIVS.S BK,D1	83F81F00	ERROR: Invalid size code
+DIVS.S BK,A2		ERROR: Invalid addressing mode
+DIVS.S D1,BK		ERROR: Invalid addressing mode
+DIVS.S #$12,BK		ERROR: Invalid addressing mode
+DIVS.S *+$10(PC),D1	83FA000E	ERROR: Invalid size code
+DIVS.S *+$10(PC),A2		ERROR: Invalid addressing mode
+DIVS.S D1,*+$10(PC)		ERROR: Invalid addressing mode
+DIVS.S #$12,*+$10(PC)		ERROR: Invalid addressing mode
+DIVS.S *(PC,D0.W),D1	83FB00FE	ERROR: Invalid size code
+DIVS.S *(PC,D0.W),A2		ERROR: Invalid addressing mode
+DIVS.S D1,*(PC,D0.W)		ERROR: Invalid addressing mode
+DIVS.S #$12,*(PC,D0.W)		ERROR: Invalid addressing mode
+DIVS.S BK(PC),D1	83FA0EFE	ERROR: Invalid size code
+DIVS.S BK(PC),A2		ERROR: Invalid addressing mode
+DIVS.S D1,BK(PC)		ERROR: Invalid addressing mode
+DIVS.S #$12,BK(PC)		ERROR: Invalid addressing mode
+DIVS.S #8,D1	83FC	ERROR: Invalid size code
+DIVS.S #8,A2		ERROR: Invalid addressing mode
+DIVS.S D1,#8		ERROR: Invalid addressing mode
+DIVS.S #$12,#8		ERROR: Invalid addressing mode
+DIVS.S #9,D1	83FC	ERROR: Invalid size code
+DIVS.S #9,A2		ERROR: Invalid addressing mode
+DIVS.S D1,#9		ERROR: Invalid addressing mode
+DIVS.S #$12,#9		ERROR: Invalid addressing mode
+DIVS.S #0,D1	83FC	ERROR: Invalid size code
+DIVS.S #0,A2		ERROR: Invalid addressing mode
+DIVS.S D1,#0		ERROR: Invalid addressing mode
+DIVS.S #$12,#0		ERROR: Invalid addressing mode
+DIVS.S #-1,D1	83FC	ERROR: Invalid size code
+DIVS.S #-1,A2		ERROR: Invalid addressing mode
+DIVS.S D1,#-1		ERROR: Invalid addressing mode
+DIVS.S #$12,#-1		ERROR: Invalid addressing mode
+DIVS.S #$80,D1	83FC	ERROR: Invalid size code
+DIVS.S #$80,A2		ERROR: Invalid addressing mode
+DIVS.S D1,#$80		ERROR: Invalid addressing mode
+DIVS.S #$12,#$80		ERROR: Invalid addressing mode
+DIVS.S #$12345678,D1	83FC	ERROR: Invalid size code
+DIVS.S #$12345678,A2		ERROR: Invalid addressing mode
+DIVS.S D1,#$12345678		ERROR: Invalid addressing mode
+DIVS.S #$12,#$12345678		ERROR: Invalid addressing mode
+DIVS.S #$12345678.L,D1	83FC	ERROR: Invalid size code
+DIVS.S #$12345678.L,A2		ERROR: Invalid addressing mode
+DIVS.S D1,#$12345678.L		ERROR: Invalid addressing mode
+DIVS.S #$12,#$12345678.L		ERROR: Invalid addressing mode
+DIVS.S #BK,D1	83FC	ERROR: Invalid size code
+DIVS.S #BK,A2		ERROR: Invalid addressing mode
+DIVS.S D1,#BK		ERROR: Invalid addressing mode
+DIVS.S #$12,#BK		ERROR: Invalid addressing mode
+DIVS.S #FW,D1	83FC	ERROR: Invalid size code
+DIVS.S #FW,A2		ERROR: Invalid addressing mode
+DIVS.S D1,#FW		ERROR: Invalid addressing mode
+DIVS.S #$12,#FW		ERROR: Invalid addressing mode
+DIVS.S #UNDEF,D1	83FC	ERROR: Undefined symbol
+DIVS.S #UNDEF,A2		ERROR: Invalid addressing mode
+DIVS.S D1,#UNDEF		ERROR: Invalid addressing mode
+DIVS.S #$12,#UNDEF		ERROR: Invalid addressing mode
+DIVS.S UNDEF,D1	83F90000561E	ERROR: Undefined symbol
+DIVS.S UNDEF,A2		ERROR: Invalid addressing mode
+DIVS.S D1,UNDEF		ERROR: Invalid addressing mode
+DIVS.S #$12,UNDEF		ERROR: Invalid addressing mode
+DIVS.S USP,D1		ERROR: Invalid addressing mode
+DIVS.S USP,A2		ERROR: Invalid addressing mode
+DIVS.S D1,USP		ERROR: Invalid addressing mode
+DIVS.S #$12,USP		ERROR: Invalid addressing mode
+DIVS.S D1,D2,D3		ERROR: Invalid syntax
+DIVS.X D1,D2	85C1	ERROR: Invalid size code
+DIVS.X #1		ERROR: Comma expected

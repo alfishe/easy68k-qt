@@ -1,0 +1,405 @@
+CLR		ERROR: Invalid syntax
+CLR D1	4241	-
+CLR A2		ERROR: Invalid addressing mode
+CLR SP		ERROR: Invalid addressing mode
+CLR (A3)	4253	-
+CLR (A4)+	425C	-
+CLR -(A5)	4265	-
+CLR $10(A6)	426E0010	-
+CLR -2(A0)	4268FFFE	-
+CLR $10(A6,D7.W)	42767010	-
+CLR $12(A0,A1.L)	42709812	-
+CLR (A2,D3)	42723000	-
+CLR $1234	42781234	-
+CLR $12345678	427912345678	-
+CLR $1234.L	427900001234	-
+CLR $1234.W	42781234	WARNING: Forcing SHORT addressing disables range checking of extension word
+CLR $8000	427900008000	-
+CLR BK	42781F00	-
+CLR FW	427900001F00	-
+CLR *+$10(PC)		ERROR: Invalid addressing mode
+CLR *(PC,D0.W)		ERROR: Invalid addressing mode
+CLR BK(PC)		ERROR: Invalid addressing mode
+CLR #1		ERROR: Invalid addressing mode
+CLR #8		ERROR: Invalid addressing mode
+CLR #9		ERROR: Invalid addressing mode
+CLR #0		ERROR: Invalid addressing mode
+CLR #-1		ERROR: Invalid addressing mode
+CLR #$80		ERROR: Invalid addressing mode
+CLR #$1234		ERROR: Invalid addressing mode
+CLR #$12345678		ERROR: Invalid addressing mode
+CLR #$12345678.L		ERROR: Invalid addressing mode
+CLR #BK		ERROR: Invalid addressing mode
+CLR #FW		ERROR: Invalid addressing mode
+CLR #UNDEF		ERROR: Invalid addressing mode
+CLR UNDEF	427900005579	ERROR: Undefined symbol
+CLR SR		ERROR: Invalid addressing mode
+CLR CCR		ERROR: Invalid addressing mode
+CLR USP		ERROR: Invalid addressing mode
+CLR D1,D1		ERROR: Invalid syntax
+CLR D1,A2		ERROR: Invalid syntax
+CLR D1,(A3)		ERROR: Invalid syntax
+CLR D1,$10(A6)		ERROR: Invalid syntax
+CLR D1,$1234		ERROR: Invalid syntax
+CLR D1,FW		ERROR: Invalid syntax
+CLR D1,#1		ERROR: Invalid syntax
+CLR D1,#$1234		ERROR: Invalid syntax
+CLR D1,CCR		ERROR: Invalid syntax
+CLR D1,SR		ERROR: Invalid syntax
+CLR A2,D1		ERROR: Invalid addressing mode
+CLR A2,A2		ERROR: Invalid addressing mode
+CLR A2,(A3)		ERROR: Invalid addressing mode
+CLR A2,$10(A6)		ERROR: Invalid addressing mode
+CLR A2,$1234		ERROR: Invalid addressing mode
+CLR A2,FW		ERROR: Invalid addressing mode
+CLR A2,#1		ERROR: Invalid addressing mode
+CLR A2,#$1234		ERROR: Invalid addressing mode
+CLR A2,CCR		ERROR: Invalid addressing mode
+CLR A2,SR		ERROR: Invalid addressing mode
+CLR (A3),D1		ERROR: Invalid syntax
+CLR (A3),A2		ERROR: Invalid syntax
+CLR (A3),(A3)		ERROR: Invalid syntax
+CLR (A3),$10(A6)		ERROR: Invalid syntax
+CLR (A3),$1234		ERROR: Invalid syntax
+CLR (A3),FW		ERROR: Invalid syntax
+CLR (A3),#1		ERROR: Invalid syntax
+CLR (A3),#$1234		ERROR: Invalid syntax
+CLR (A3),CCR		ERROR: Invalid syntax
+CLR (A3),SR		ERROR: Invalid syntax
+CLR $10(A6),D1		ERROR: Invalid syntax
+CLR $10(A6),A2		ERROR: Invalid syntax
+CLR $10(A6),(A3)		ERROR: Invalid syntax
+CLR $10(A6),$10(A6)		ERROR: Invalid syntax
+CLR $10(A6),$1234		ERROR: Invalid syntax
+CLR $10(A6),FW		ERROR: Invalid syntax
+CLR $10(A6),#1		ERROR: Invalid syntax
+CLR $10(A6),#$1234		ERROR: Invalid syntax
+CLR $10(A6),CCR		ERROR: Invalid syntax
+CLR $10(A6),SR		ERROR: Invalid syntax
+CLR $1234,D1		ERROR: Invalid syntax
+CLR $1234,A2		ERROR: Invalid syntax
+CLR $1234,(A3)		ERROR: Invalid syntax
+CLR $1234,$10(A6)		ERROR: Invalid syntax
+CLR $1234,$1234		ERROR: Invalid syntax
+CLR $1234,FW		ERROR: Invalid syntax
+CLR $1234,#1		ERROR: Invalid syntax
+CLR $1234,#$1234		ERROR: Invalid syntax
+CLR $1234,CCR		ERROR: Invalid syntax
+CLR $1234,SR		ERROR: Invalid syntax
+CLR FW,D1		ERROR: Invalid syntax
+CLR FW,A2		ERROR: Invalid syntax
+CLR FW,(A3)		ERROR: Invalid syntax
+CLR FW,$10(A6)		ERROR: Invalid syntax
+CLR FW,$1234		ERROR: Invalid syntax
+CLR FW,FW		ERROR: Invalid syntax
+CLR FW,#1		ERROR: Invalid syntax
+CLR FW,#$1234		ERROR: Invalid syntax
+CLR FW,CCR		ERROR: Invalid syntax
+CLR FW,SR		ERROR: Invalid syntax
+CLR #1,D1		ERROR: Invalid addressing mode
+CLR #1,A2		ERROR: Invalid addressing mode
+CLR #1,(A3)		ERROR: Invalid addressing mode
+CLR #1,$10(A6)		ERROR: Invalid addressing mode
+CLR #1,$1234		ERROR: Invalid addressing mode
+CLR #1,FW		ERROR: Invalid addressing mode
+CLR #1,#1		ERROR: Invalid addressing mode
+CLR #1,#$1234		ERROR: Invalid addressing mode
+CLR #1,CCR		ERROR: Invalid addressing mode
+CLR #1,SR		ERROR: Invalid addressing mode
+CLR #$1234,D1		ERROR: Invalid addressing mode
+CLR #$1234,A2		ERROR: Invalid addressing mode
+CLR #$1234,(A3)		ERROR: Invalid addressing mode
+CLR #$1234,$10(A6)		ERROR: Invalid addressing mode
+CLR #$1234,$1234		ERROR: Invalid addressing mode
+CLR #$1234,FW		ERROR: Invalid addressing mode
+CLR #$1234,#1		ERROR: Invalid addressing mode
+CLR #$1234,#$1234		ERROR: Invalid addressing mode
+CLR #$1234,CCR		ERROR: Invalid addressing mode
+CLR #$1234,SR		ERROR: Invalid addressing mode
+CLR CCR,D1		ERROR: Invalid addressing mode
+CLR CCR,A2		ERROR: Invalid addressing mode
+CLR CCR,(A3)		ERROR: Invalid addressing mode
+CLR CCR,$10(A6)		ERROR: Invalid addressing mode
+CLR CCR,$1234		ERROR: Invalid addressing mode
+CLR CCR,FW		ERROR: Invalid addressing mode
+CLR CCR,#1		ERROR: Invalid addressing mode
+CLR CCR,#$1234		ERROR: Invalid addressing mode
+CLR CCR,CCR		ERROR: Invalid addressing mode
+CLR CCR,SR		ERROR: Invalid addressing mode
+CLR SR,D1		ERROR: Invalid addressing mode
+CLR SR,A2		ERROR: Invalid addressing mode
+CLR SR,(A3)		ERROR: Invalid addressing mode
+CLR SR,$10(A6)		ERROR: Invalid addressing mode
+CLR SR,$1234		ERROR: Invalid addressing mode
+CLR SR,FW		ERROR: Invalid addressing mode
+CLR SR,#1		ERROR: Invalid addressing mode
+CLR SR,#$1234		ERROR: Invalid addressing mode
+CLR SR,CCR		ERROR: Invalid addressing mode
+CLR SR,SR		ERROR: Invalid addressing mode
+CLR SP,D1		ERROR: Invalid addressing mode
+CLR SP,A2		ERROR: Invalid addressing mode
+CLR D1,SP		ERROR: Invalid syntax
+CLR #$12,SP		ERROR: Invalid addressing mode
+CLR (A4)+,D1		ERROR: Invalid syntax
+CLR (A4)+,A2		ERROR: Invalid syntax
+CLR D1,(A4)+		ERROR: Invalid syntax
+CLR #$12,(A4)+		ERROR: Invalid addressing mode
+CLR -(A5),D1		ERROR: Invalid syntax
+CLR -(A5),A2		ERROR: Invalid syntax
+CLR D1,-(A5)		ERROR: Invalid syntax
+CLR #$12,-(A5)		ERROR: Invalid addressing mode
+CLR -2(A0),D1		ERROR: Invalid syntax
+CLR -2(A0),A2		ERROR: Invalid syntax
+CLR D1,-2(A0)		ERROR: Invalid syntax
+CLR #$12,-2(A0)		ERROR: Invalid addressing mode
+CLR $10(A6,D7.W),D1		ERROR: Invalid syntax
+CLR $10(A6,D7.W),A2		ERROR: Invalid syntax
+CLR D1,$10(A6,D7.W)		ERROR: Invalid syntax
+CLR #$12,$10(A6,D7.W)		ERROR: Invalid addressing mode
+CLR $12(A0,A1.L),D1		ERROR: Invalid syntax
+CLR $12(A0,A1.L),A2		ERROR: Invalid syntax
+CLR D1,$12(A0,A1.L)		ERROR: Invalid syntax
+CLR #$12,$12(A0,A1.L)		ERROR: Invalid addressing mode
+CLR (A2,D3),D1		ERROR: Invalid syntax
+CLR (A2,D3),A2		ERROR: Invalid syntax
+CLR D1,(A2,D3)		ERROR: Invalid syntax
+CLR #$12,(A2,D3)		ERROR: Invalid addressing mode
+CLR $12345678,D1		ERROR: Invalid syntax
+CLR $12345678,A2		ERROR: Invalid syntax
+CLR D1,$12345678		ERROR: Invalid syntax
+CLR #$12,$12345678		ERROR: Invalid addressing mode
+CLR $1234.L,D1		ERROR: Invalid syntax
+CLR $1234.L,A2		ERROR: Invalid syntax
+CLR D1,$1234.L		ERROR: Invalid syntax
+CLR #$12,$1234.L		ERROR: Invalid addressing mode
+CLR $1234.W,D1		ERROR: Invalid syntax
+CLR $1234.W,A2		ERROR: Invalid syntax
+CLR D1,$1234.W		ERROR: Invalid syntax
+CLR #$12,$1234.W		ERROR: Invalid addressing mode
+CLR $8000,D1		ERROR: Invalid syntax
+CLR $8000,A2		ERROR: Invalid syntax
+CLR D1,$8000		ERROR: Invalid syntax
+CLR #$12,$8000		ERROR: Invalid addressing mode
+CLR BK,D1		ERROR: Invalid syntax
+CLR BK,A2		ERROR: Invalid syntax
+CLR D1,BK		ERROR: Invalid syntax
+CLR #$12,BK		ERROR: Invalid addressing mode
+CLR *+$10(PC),D1		ERROR: Invalid addressing mode
+CLR *+$10(PC),A2		ERROR: Invalid addressing mode
+CLR D1,*+$10(PC)		ERROR: Invalid syntax
+CLR #$12,*+$10(PC)		ERROR: Invalid addressing mode
+CLR *(PC,D0.W),D1		ERROR: Invalid addressing mode
+CLR *(PC,D0.W),A2		ERROR: Invalid addressing mode
+CLR D1,*(PC,D0.W)		ERROR: Invalid syntax
+CLR #$12,*(PC,D0.W)		ERROR: Invalid addressing mode
+CLR BK(PC),D1		ERROR: Invalid addressing mode
+CLR BK(PC),A2		ERROR: Invalid addressing mode
+CLR D1,BK(PC)		ERROR: Invalid syntax
+CLR #$12,BK(PC)		ERROR: Invalid addressing mode
+CLR #8,D1		ERROR: Invalid addressing mode
+CLR #8,A2		ERROR: Invalid addressing mode
+CLR D1,#8		ERROR: Invalid syntax
+CLR #$12,#8		ERROR: Invalid addressing mode
+CLR #9,D1		ERROR: Invalid addressing mode
+CLR #9,A2		ERROR: Invalid addressing mode
+CLR D1,#9		ERROR: Invalid syntax
+CLR #$12,#9		ERROR: Invalid addressing mode
+CLR #0,D1		ERROR: Invalid addressing mode
+CLR #0,A2		ERROR: Invalid addressing mode
+CLR D1,#0		ERROR: Invalid syntax
+CLR #$12,#0		ERROR: Invalid addressing mode
+CLR #-1,D1		ERROR: Invalid addressing mode
+CLR #-1,A2		ERROR: Invalid addressing mode
+CLR D1,#-1		ERROR: Invalid syntax
+CLR #$12,#-1		ERROR: Invalid addressing mode
+CLR #$80,D1		ERROR: Invalid addressing mode
+CLR #$80,A2		ERROR: Invalid addressing mode
+CLR D1,#$80		ERROR: Invalid syntax
+CLR #$12,#$80		ERROR: Invalid addressing mode
+CLR #$12345678,D1		ERROR: Invalid addressing mode
+CLR #$12345678,A2		ERROR: Invalid addressing mode
+CLR D1,#$12345678		ERROR: Invalid syntax
+CLR #$12,#$12345678		ERROR: Invalid addressing mode
+CLR #$12345678.L,D1		ERROR: Invalid addressing mode
+CLR #$12345678.L,A2		ERROR: Invalid addressing mode
+CLR D1,#$12345678.L		ERROR: Invalid syntax
+CLR #$12,#$12345678.L		ERROR: Invalid addressing mode
+CLR #BK,D1		ERROR: Invalid addressing mode
+CLR #BK,A2		ERROR: Invalid addressing mode
+CLR D1,#BK		ERROR: Invalid syntax
+CLR #$12,#BK		ERROR: Invalid addressing mode
+CLR #FW,D1		ERROR: Invalid addressing mode
+CLR #FW,A2		ERROR: Invalid addressing mode
+CLR D1,#FW		ERROR: Invalid syntax
+CLR #$12,#FW		ERROR: Invalid addressing mode
+CLR #UNDEF,D1		ERROR: Invalid addressing mode
+CLR #UNDEF,A2		ERROR: Invalid addressing mode
+CLR D1,#UNDEF		ERROR: Invalid syntax
+CLR #$12,#UNDEF		ERROR: Invalid addressing mode
+CLR UNDEF,D1		ERROR: Invalid syntax
+CLR UNDEF,A2		ERROR: Invalid syntax
+CLR D1,UNDEF		ERROR: Invalid syntax
+CLR #$12,UNDEF		ERROR: Invalid addressing mode
+CLR USP,D1		ERROR: Invalid addressing mode
+CLR USP,A2		ERROR: Invalid addressing mode
+CLR D1,USP		ERROR: Invalid syntax
+CLR #$12,USP		ERROR: Invalid addressing mode
+CLR D1,D2,D3		ERROR: Invalid syntax
+CLR.B		ERROR: Invalid syntax
+CLR.B D1	4201	-
+CLR.B A2		ERROR: Invalid addressing mode
+CLR.B SP		ERROR: Invalid addressing mode
+CLR.B (A3)	4213	-
+CLR.B (A4)+	421C	-
+CLR.B -(A5)	4225	-
+CLR.B $10(A6)	422E0010	-
+CLR.B -2(A0)	4228FFFE	-
+CLR.B $10(A6,D7.W)	42367010	-
+CLR.B $12(A0,A1.L)	42309812	-
+CLR.B (A2,D3)	42323000	-
+CLR.B $1234	42381234	-
+CLR.B $12345678	423912345678	-
+CLR.B $1234.L	423900001234	-
+CLR.B $1234.W	42381234	WARNING: Forcing SHORT addressing disables range checking of extension word
+CLR.B $8000	423900008000	-
+CLR.B BK	42381F00	-
+CLR.B FW	423900001F00	-
+CLR.B *+$10(PC)		ERROR: Invalid addressing mode
+CLR.B *(PC,D0.W)		ERROR: Invalid addressing mode
+CLR.B BK(PC)		ERROR: Invalid addressing mode
+CLR.B #1		ERROR: Invalid addressing mode
+CLR.B #8		ERROR: Invalid addressing mode
+CLR.B #9		ERROR: Invalid addressing mode
+CLR.B #0		ERROR: Invalid addressing mode
+CLR.B #-1		ERROR: Invalid addressing mode
+CLR.B #$80		ERROR: Invalid addressing mode
+CLR.B #$1234		ERROR: Invalid addressing mode
+CLR.B #$12345678		ERROR: Invalid addressing mode
+CLR.B #$12345678.L		ERROR: Invalid addressing mode
+CLR.B #BK		ERROR: Invalid addressing mode
+CLR.B #FW		ERROR: Invalid addressing mode
+CLR.B #UNDEF		ERROR: Invalid addressing mode
+CLR.B UNDEF	423900005579	ERROR: Undefined symbol
+CLR.B SR		ERROR: Invalid addressing mode
+CLR.B CCR		ERROR: Invalid addressing mode
+CLR.B USP		ERROR: Invalid addressing mode
+CLR.B D1,D2,D3		ERROR: Invalid syntax
+CLR.W		ERROR: Invalid syntax
+CLR.W D1	4241	-
+CLR.W A2		ERROR: Invalid addressing mode
+CLR.W SP		ERROR: Invalid addressing mode
+CLR.W (A3)	4253	-
+CLR.W (A4)+	425C	-
+CLR.W -(A5)	4265	-
+CLR.W $10(A6)	426E0010	-
+CLR.W -2(A0)	4268FFFE	-
+CLR.W $10(A6,D7.W)	42767010	-
+CLR.W $12(A0,A1.L)	42709812	-
+CLR.W (A2,D3)	42723000	-
+CLR.W $1234	42781234	-
+CLR.W $12345678	427912345678	-
+CLR.W $1234.L	427900001234	-
+CLR.W $1234.W	42781234	WARNING: Forcing SHORT addressing disables range checking of extension word
+CLR.W $8000	427900008000	-
+CLR.W BK	42781F00	-
+CLR.W FW	427900001F00	-
+CLR.W *+$10(PC)		ERROR: Invalid addressing mode
+CLR.W *(PC,D0.W)		ERROR: Invalid addressing mode
+CLR.W BK(PC)		ERROR: Invalid addressing mode
+CLR.W #1		ERROR: Invalid addressing mode
+CLR.W #8		ERROR: Invalid addressing mode
+CLR.W #9		ERROR: Invalid addressing mode
+CLR.W #0		ERROR: Invalid addressing mode
+CLR.W #-1		ERROR: Invalid addressing mode
+CLR.W #$80		ERROR: Invalid addressing mode
+CLR.W #$1234		ERROR: Invalid addressing mode
+CLR.W #$12345678		ERROR: Invalid addressing mode
+CLR.W #$12345678.L		ERROR: Invalid addressing mode
+CLR.W #BK		ERROR: Invalid addressing mode
+CLR.W #FW		ERROR: Invalid addressing mode
+CLR.W #UNDEF		ERROR: Invalid addressing mode
+CLR.W UNDEF	427900005579	ERROR: Undefined symbol
+CLR.W SR		ERROR: Invalid addressing mode
+CLR.W CCR		ERROR: Invalid addressing mode
+CLR.W USP		ERROR: Invalid addressing mode
+CLR.W D1,D2,D3		ERROR: Invalid syntax
+CLR.L		ERROR: Invalid syntax
+CLR.L D1	4281	-
+CLR.L A2		ERROR: Invalid addressing mode
+CLR.L SP		ERROR: Invalid addressing mode
+CLR.L (A3)	4293	-
+CLR.L (A4)+	429C	-
+CLR.L -(A5)	42A5	-
+CLR.L $10(A6)	42AE0010	-
+CLR.L -2(A0)	42A8FFFE	-
+CLR.L $10(A6,D7.W)	42B67010	-
+CLR.L $12(A0,A1.L)	42B09812	-
+CLR.L (A2,D3)	42B23000	-
+CLR.L $1234	42B81234	-
+CLR.L $12345678	42B912345678	-
+CLR.L $1234.L	42B900001234	-
+CLR.L $1234.W	42B81234	WARNING: Forcing SHORT addressing disables range checking of extension word
+CLR.L $8000	42B900008000	-
+CLR.L BK	42B81F00	-
+CLR.L FW	42B900001F00	-
+CLR.L *+$10(PC)		ERROR: Invalid addressing mode
+CLR.L *(PC,D0.W)		ERROR: Invalid addressing mode
+CLR.L BK(PC)		ERROR: Invalid addressing mode
+CLR.L #1		ERROR: Invalid addressing mode
+CLR.L #8		ERROR: Invalid addressing mode
+CLR.L #9		ERROR: Invalid addressing mode
+CLR.L #0		ERROR: Invalid addressing mode
+CLR.L #-1		ERROR: Invalid addressing mode
+CLR.L #$80		ERROR: Invalid addressing mode
+CLR.L #$1234		ERROR: Invalid addressing mode
+CLR.L #$12345678		ERROR: Invalid addressing mode
+CLR.L #$12345678.L		ERROR: Invalid addressing mode
+CLR.L #BK		ERROR: Invalid addressing mode
+CLR.L #FW		ERROR: Invalid addressing mode
+CLR.L #UNDEF		ERROR: Invalid addressing mode
+CLR.L UNDEF	42B900005579	ERROR: Undefined symbol
+CLR.L SR		ERROR: Invalid addressing mode
+CLR.L CCR		ERROR: Invalid addressing mode
+CLR.L USP		ERROR: Invalid addressing mode
+CLR.L D1,D2,D3		ERROR: Invalid syntax
+CLR.S		ERROR: Invalid syntax
+CLR.S D1	4241	ERROR: Invalid size code
+CLR.S A2		ERROR: Invalid addressing mode
+CLR.S SP		ERROR: Invalid addressing mode
+CLR.S (A3)	4253	ERROR: Invalid size code
+CLR.S (A4)+	425C	ERROR: Invalid size code
+CLR.S -(A5)	4265	ERROR: Invalid size code
+CLR.S $10(A6)	426E0010	ERROR: Invalid size code
+CLR.S -2(A0)	4268FFFE	ERROR: Invalid size code
+CLR.S $10(A6,D7.W)	42767010	ERROR: Invalid size code
+CLR.S $12(A0,A1.L)	42709812	ERROR: Invalid size code
+CLR.S (A2,D3)	42723000	ERROR: Invalid size code
+CLR.S $1234	42781234	ERROR: Invalid size code
+CLR.S $12345678	427912345678	ERROR: Invalid size code
+CLR.S $1234.L	427900001234	ERROR: Invalid size code
+CLR.S $1234.W	42781234	ERROR: Invalid size code
+CLR.S $8000	427900008000	ERROR: Invalid size code
+CLR.S BK	42781F00	ERROR: Invalid size code
+CLR.S FW	427900001F00	ERROR: Invalid size code
+CLR.S *+$10(PC)		ERROR: Invalid addressing mode
+CLR.S *(PC,D0.W)		ERROR: Invalid addressing mode
+CLR.S BK(PC)		ERROR: Invalid addressing mode
+CLR.S #1		ERROR: Invalid addressing mode
+CLR.S #8		ERROR: Invalid addressing mode
+CLR.S #9		ERROR: Invalid addressing mode
+CLR.S #0		ERROR: Invalid addressing mode
+CLR.S #-1		ERROR: Invalid addressing mode
+CLR.S #$80		ERROR: Invalid addressing mode
+CLR.S #$1234		ERROR: Invalid addressing mode
+CLR.S #$12345678		ERROR: Invalid addressing mode
+CLR.S #$12345678.L		ERROR: Invalid addressing mode
+CLR.S #BK		ERROR: Invalid addressing mode
+CLR.S #FW		ERROR: Invalid addressing mode
+CLR.S #UNDEF		ERROR: Invalid addressing mode
+CLR.S UNDEF	427900005579	ERROR: Undefined symbol
+CLR.S SR		ERROR: Invalid addressing mode
+CLR.S CCR		ERROR: Invalid addressing mode
+CLR.S USP		ERROR: Invalid addressing mode
+CLR.S D1,D2,D3		ERROR: Invalid syntax
+CLR.X D1,D2		ERROR: Invalid syntax
+CLR.X #1		ERROR: Invalid addressing mode

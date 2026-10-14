@@ -47,7 +47,7 @@ tests), all 27 GUI source files are still 1-line stubs.
 | A1 | Full instruction set, directives, macros, conditional + structured assembly | Edit68K/*.CPP | Done | 8.x |
 | A2 | Listing (.L68) and S-Record (.S68) output | LISTING.CPP, BUILD.CPP | Done (golden byte-identical) | 8.5.10-11, 8.6 |
 | A3 | Error/warning reporting, max errors | ERROR.CPP | Done | 8.5.9 |
-| A4 | **Bit-field instruction encoding** (Assembler Options → Assemble Bit Field Instructions) | CODEGEN.CPP, INSTTABL.CPP | **Gap**: lexer knows mnemonics, no encoding | **NEW 8.7** |
+| A4 | **Bit-field instruction encoding** (Assembler Options → Assemble Bit Field Instructions) | CODEGEN.CPP, INSTTABL.CPP | Done (8.7/8.12); option switch pending (8.9) | **NEW 8.7** |
 | A5 | OPT CRE: cross-reference / symbol table appended to listing | LISTING.CPP optCRE() | **Gap** | **NEW 8.8** |
 | A6 | OPT MEX / SEX / CEX listing expansion (macros, structured, constants) | LISTING.CPP | Partial: only CEX wired (`cex_flag`) | **NEW 8.8** |
 | A7 | Show-warnings option; auto-save before assemble; generate list / S-record toggles | optionsS.cpp | Gap (option plumbing) | **NEW 8.9** (AssemblerOptions struct) |

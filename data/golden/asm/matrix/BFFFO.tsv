@@ -1,0 +1,356 @@
+BFFFO D1{0:8},D4	EDC14008	-
+BFFFO D1{31:32},D4	EDC147C0	-
+BFFFO D1{D2:D3},D4	EDC148A3	-
+BFFFO D1{4:D5},D4	EDC14125	-
+BFFFO D1{D6:1},D4	EDC14981	-
+BFFFO D1{32:1},D4		ERROR: Invalid bitfield
+BFFFO D1{0:0},D4		ERROR: Invalid bitfield
+BFFFO D1{BK:1},D4		ERROR: Invalid bitfield
+BFFFO (A3){0:8},D4	EDD34008	-
+BFFFO (A3){31:32},D4	EDD347C0	-
+BFFFO (A3){D2:D3},D4	EDD348A3	-
+BFFFO (A3){4:D5},D4	EDD34125	-
+BFFFO (A3){D6:1},D4	EDD34981	-
+BFFFO (A3){32:1},D4		ERROR: Invalid bitfield
+BFFFO (A3){0:0},D4		ERROR: Invalid bitfield
+BFFFO (A3){BK:1},D4		ERROR: Invalid bitfield
+BFFFO $10(A6){0:8},D4	EDEE40080010	-
+BFFFO $10(A6){31:32},D4	EDEE47C00010	-
+BFFFO $10(A6){D2:D3},D4	EDEE48A30010	-
+BFFFO $10(A6){4:D5},D4	EDEE41250010	-
+BFFFO $10(A6){D6:1},D4	EDEE49810010	-
+BFFFO $10(A6){32:1},D4		ERROR: Invalid bitfield
+BFFFO $10(A6){0:0},D4		ERROR: Invalid bitfield
+BFFFO $10(A6){BK:1},D4		ERROR: Invalid bitfield
+BFFFO $10(A6,D7.W){0:8},D4	EDF640087010	-
+BFFFO $10(A6,D7.W){31:32},D4	EDF647C07010	-
+BFFFO $10(A6,D7.W){D2:D3},D4	EDF648A37010	-
+BFFFO $10(A6,D7.W){4:D5},D4	EDF641257010	-
+BFFFO $10(A6,D7.W){D6:1},D4	EDF649817010	-
+BFFFO $10(A6,D7.W){32:1},D4		ERROR: Invalid bitfield
+BFFFO $10(A6,D7.W){0:0},D4		ERROR: Invalid bitfield
+BFFFO $10(A6,D7.W){BK:1},D4		ERROR: Invalid bitfield
+BFFFO $1234{0:8},D4	EDF840081234	-
+BFFFO $1234{31:32},D4	EDF847C01234	-
+BFFFO $1234{D2:D3},D4	EDF848A31234	-
+BFFFO $1234{4:D5},D4	EDF841251234	-
+BFFFO $1234{D6:1},D4	EDF849811234	-
+BFFFO $1234{32:1},D4		ERROR: Invalid bitfield
+BFFFO $1234{0:0},D4		ERROR: Invalid bitfield
+BFFFO $1234{BK:1},D4		ERROR: Invalid bitfield
+BFFFO FW{0:8},D4	EDF9400800001F00	-
+BFFFO FW{31:32},D4	EDF947C000001F00	-
+BFFFO FW{D2:D3},D4	EDF948A300001F00	-
+BFFFO FW{4:D5},D4	EDF9412500001F00	-
+BFFFO FW{D6:1},D4	EDF9498100001F00	-
+BFFFO FW{32:1},D4		ERROR: Invalid bitfield
+BFFFO FW{0:0},D4		ERROR: Invalid bitfield
+BFFFO FW{BK:1},D4		ERROR: Invalid bitfield
+BFFFO *+$10(PC){0:8},D4	EDFA4008000C	-
+BFFFO *+$10(PC){31:32},D4	EDFA47C0000C	-
+BFFFO *+$10(PC){D2:D3},D4	EDFA48A3000C	-
+BFFFO *+$10(PC){4:D5},D4	EDFA4125000C	-
+BFFFO *+$10(PC){D6:1},D4	EDFA4981000C	-
+BFFFO *+$10(PC){32:1},D4		ERROR: Invalid bitfield
+BFFFO *+$10(PC){0:0},D4		ERROR: Invalid bitfield
+BFFFO *+$10(PC){BK:1},D4		ERROR: Invalid bitfield
+BFFFO (A4)+{0:8},D4		ERROR: Invalid addressing mode
+BFFFO (A4)+{31:32},D4		ERROR: Invalid addressing mode
+BFFFO (A4)+{D2:D3},D4		ERROR: Invalid addressing mode
+BFFFO (A4)+{4:D5},D4		ERROR: Invalid addressing mode
+BFFFO (A4)+{D6:1},D4		ERROR: Invalid addressing mode
+BFFFO (A4)+{32:1},D4		ERROR: Invalid bitfield
+BFFFO (A4)+{0:0},D4		ERROR: Invalid bitfield
+BFFFO (A4)+{BK:1},D4		ERROR: Invalid bitfield
+BFFFO -(A5){0:8},D4		ERROR: Invalid addressing mode
+BFFFO -(A5){31:32},D4		ERROR: Invalid addressing mode
+BFFFO -(A5){D2:D3},D4		ERROR: Invalid addressing mode
+BFFFO -(A5){4:D5},D4		ERROR: Invalid addressing mode
+BFFFO -(A5){D6:1},D4		ERROR: Invalid addressing mode
+BFFFO -(A5){32:1},D4		ERROR: Invalid bitfield
+BFFFO -(A5){0:0},D4		ERROR: Invalid bitfield
+BFFFO -(A5){BK:1},D4		ERROR: Invalid bitfield
+BFFFO A2{0:8},D4		ERROR: Invalid addressing mode
+BFFFO A2{31:32},D4		ERROR: Invalid addressing mode
+BFFFO A2{D2:D3},D4		ERROR: Invalid addressing mode
+BFFFO A2{4:D5},D4		ERROR: Invalid addressing mode
+BFFFO A2{D6:1},D4		ERROR: Invalid addressing mode
+BFFFO A2{32:1},D4		ERROR: Invalid bitfield
+BFFFO A2{0:0},D4		ERROR: Invalid bitfield
+BFFFO A2{BK:1},D4		ERROR: Invalid bitfield
+BFFFO #1{0:8},D4		ERROR: Invalid addressing mode
+BFFFO #1{31:32},D4		ERROR: Invalid addressing mode
+BFFFO #1{D2:D3},D4		ERROR: Invalid addressing mode
+BFFFO #1{4:D5},D4		ERROR: Invalid addressing mode
+BFFFO #1{D6:1},D4		ERROR: Invalid addressing mode
+BFFFO #1{32:1},D4		ERROR: Invalid bitfield
+BFFFO #1{0:0},D4		ERROR: Invalid bitfield
+BFFFO #1{BK:1},D4		ERROR: Invalid bitfield
+BFFFO D1		ERROR: Invalid bitfield
+BFFFO.B D1{0:8},D4	EDC14008	-
+BFFFO.B D1{31:32},D4	EDC147C0	-
+BFFFO.B D1{D2:D3},D4	EDC148A3	-
+BFFFO.B D1{4:D5},D4	EDC14125	-
+BFFFO.B D1{D6:1},D4	EDC14981	-
+BFFFO.B D1{32:1},D4		ERROR: Invalid bitfield
+BFFFO.B D1{0:0},D4		ERROR: Invalid bitfield
+BFFFO.B D1{BK:1},D4		ERROR: Invalid bitfield
+BFFFO.B (A3){0:8},D4	EDD34008	-
+BFFFO.B (A3){31:32},D4	EDD347C0	-
+BFFFO.B (A3){D2:D3},D4	EDD348A3	-
+BFFFO.B (A3){4:D5},D4	EDD34125	-
+BFFFO.B (A3){D6:1},D4	EDD34981	-
+BFFFO.B (A3){32:1},D4		ERROR: Invalid bitfield
+BFFFO.B (A3){0:0},D4		ERROR: Invalid bitfield
+BFFFO.B (A3){BK:1},D4		ERROR: Invalid bitfield
+BFFFO.B $10(A6){0:8},D4	EDEE40080010	-
+BFFFO.B $10(A6){31:32},D4	EDEE47C00010	-
+BFFFO.B $10(A6){D2:D3},D4	EDEE48A30010	-
+BFFFO.B $10(A6){4:D5},D4	EDEE41250010	-
+BFFFO.B $10(A6){D6:1},D4	EDEE49810010	-
+BFFFO.B $10(A6){32:1},D4		ERROR: Invalid bitfield
+BFFFO.B $10(A6){0:0},D4		ERROR: Invalid bitfield
+BFFFO.B $10(A6){BK:1},D4		ERROR: Invalid bitfield
+BFFFO.B $10(A6,D7.W){0:8},D4	EDF640087010	-
+BFFFO.B $10(A6,D7.W){31:32},D4	EDF647C07010	-
+BFFFO.B $10(A6,D7.W){D2:D3},D4	EDF648A37010	-
+BFFFO.B $10(A6,D7.W){4:D5},D4	EDF641257010	-
+BFFFO.B $10(A6,D7.W){D6:1},D4	EDF649817010	-
+BFFFO.B $10(A6,D7.W){32:1},D4		ERROR: Invalid bitfield
+BFFFO.B $10(A6,D7.W){0:0},D4		ERROR: Invalid bitfield
+BFFFO.B $10(A6,D7.W){BK:1},D4		ERROR: Invalid bitfield
+BFFFO.B $1234{0:8},D4	EDF840081234	-
+BFFFO.B $1234{31:32},D4	EDF847C01234	-
+BFFFO.B $1234{D2:D3},D4	EDF848A31234	-
+BFFFO.B $1234{4:D5},D4	EDF841251234	-
+BFFFO.B $1234{D6:1},D4	EDF849811234	-
+BFFFO.B $1234{32:1},D4		ERROR: Invalid bitfield
+BFFFO.B $1234{0:0},D4		ERROR: Invalid bitfield
+BFFFO.B $1234{BK:1},D4		ERROR: Invalid bitfield
+BFFFO.B FW{0:8},D4	EDF9400800001F00	-
+BFFFO.B FW{31:32},D4	EDF947C000001F00	-
+BFFFO.B FW{D2:D3},D4	EDF948A300001F00	-
+BFFFO.B FW{4:D5},D4	EDF9412500001F00	-
+BFFFO.B FW{D6:1},D4	EDF9498100001F00	-
+BFFFO.B FW{32:1},D4		ERROR: Invalid bitfield
+BFFFO.B FW{0:0},D4		ERROR: Invalid bitfield
+BFFFO.B FW{BK:1},D4		ERROR: Invalid bitfield
+BFFFO.B *+$10(PC){0:8},D4	EDFA4008000C	-
+BFFFO.B *+$10(PC){31:32},D4	EDFA47C0000C	-
+BFFFO.B *+$10(PC){D2:D3},D4	EDFA48A3000C	-
+BFFFO.B *+$10(PC){4:D5},D4	EDFA4125000C	-
+BFFFO.B *+$10(PC){D6:1},D4	EDFA4981000C	-
+BFFFO.B *+$10(PC){32:1},D4		ERROR: Invalid bitfield
+BFFFO.B *+$10(PC){0:0},D4		ERROR: Invalid bitfield
+BFFFO.B *+$10(PC){BK:1},D4		ERROR: Invalid bitfield
+BFFFO.B (A4)+{0:8},D4		ERROR: Invalid addressing mode
+BFFFO.B (A4)+{31:32},D4		ERROR: Invalid addressing mode
+BFFFO.B (A4)+{D2:D3},D4		ERROR: Invalid addressing mode
+BFFFO.B (A4)+{4:D5},D4		ERROR: Invalid addressing mode
+BFFFO.B (A4)+{D6:1},D4		ERROR: Invalid addressing mode
+BFFFO.B (A4)+{32:1},D4		ERROR: Invalid bitfield
+BFFFO.B (A4)+{0:0},D4		ERROR: Invalid bitfield
+BFFFO.B (A4)+{BK:1},D4		ERROR: Invalid bitfield
+BFFFO.B -(A5){0:8},D4		ERROR: Invalid addressing mode
+BFFFO.B -(A5){31:32},D4		ERROR: Invalid addressing mode
+BFFFO.B -(A5){D2:D3},D4		ERROR: Invalid addressing mode
+BFFFO.B -(A5){4:D5},D4		ERROR: Invalid addressing mode
+BFFFO.B -(A5){D6:1},D4		ERROR: Invalid addressing mode
+BFFFO.B -(A5){32:1},D4		ERROR: Invalid bitfield
+BFFFO.B -(A5){0:0},D4		ERROR: Invalid bitfield
+BFFFO.B -(A5){BK:1},D4		ERROR: Invalid bitfield
+BFFFO.B A2{0:8},D4		ERROR: Invalid addressing mode
+BFFFO.B A2{31:32},D4		ERROR: Invalid addressing mode
+BFFFO.B A2{D2:D3},D4		ERROR: Invalid addressing mode
+BFFFO.B A2{4:D5},D4		ERROR: Invalid addressing mode
+BFFFO.B A2{D6:1},D4		ERROR: Invalid addressing mode
+BFFFO.B A2{32:1},D4		ERROR: Invalid bitfield
+BFFFO.B A2{0:0},D4		ERROR: Invalid bitfield
+BFFFO.B A2{BK:1},D4		ERROR: Invalid bitfield
+BFFFO.B #1{0:8},D4		ERROR: Invalid addressing mode
+BFFFO.B #1{31:32},D4		ERROR: Invalid addressing mode
+BFFFO.B #1{D2:D3},D4		ERROR: Invalid addressing mode
+BFFFO.B #1{4:D5},D4		ERROR: Invalid addressing mode
+BFFFO.B #1{D6:1},D4		ERROR: Invalid addressing mode
+BFFFO.B #1{32:1},D4		ERROR: Invalid bitfield
+BFFFO.B #1{0:0},D4		ERROR: Invalid bitfield
+BFFFO.B #1{BK:1},D4		ERROR: Invalid bitfield
+BFFFO.B D1		ERROR: Invalid bitfield
+BFFFO.L D1{0:8},D4	EDC14008	-
+BFFFO.L D1{31:32},D4	EDC147C0	-
+BFFFO.L D1{D2:D3},D4	EDC148A3	-
+BFFFO.L D1{4:D5},D4	EDC14125	-
+BFFFO.L D1{D6:1},D4	EDC14981	-
+BFFFO.L D1{32:1},D4		ERROR: Invalid bitfield
+BFFFO.L D1{0:0},D4		ERROR: Invalid bitfield
+BFFFO.L D1{BK:1},D4		ERROR: Invalid bitfield
+BFFFO.L (A3){0:8},D4	EDD34008	-
+BFFFO.L (A3){31:32},D4	EDD347C0	-
+BFFFO.L (A3){D2:D3},D4	EDD348A3	-
+BFFFO.L (A3){4:D5},D4	EDD34125	-
+BFFFO.L (A3){D6:1},D4	EDD34981	-
+BFFFO.L (A3){32:1},D4		ERROR: Invalid bitfield
+BFFFO.L (A3){0:0},D4		ERROR: Invalid bitfield
+BFFFO.L (A3){BK:1},D4		ERROR: Invalid bitfield
+BFFFO.L $10(A6){0:8},D4	EDEE40080010	-
+BFFFO.L $10(A6){31:32},D4	EDEE47C00010	-
+BFFFO.L $10(A6){D2:D3},D4	EDEE48A30010	-
+BFFFO.L $10(A6){4:D5},D4	EDEE41250010	-
+BFFFO.L $10(A6){D6:1},D4	EDEE49810010	-
+BFFFO.L $10(A6){32:1},D4		ERROR: Invalid bitfield
+BFFFO.L $10(A6){0:0},D4		ERROR: Invalid bitfield
+BFFFO.L $10(A6){BK:1},D4		ERROR: Invalid bitfield
+BFFFO.L $10(A6,D7.W){0:8},D4	EDF640087010	-
+BFFFO.L $10(A6,D7.W){31:32},D4	EDF647C07010	-
+BFFFO.L $10(A6,D7.W){D2:D3},D4	EDF648A37010	-
+BFFFO.L $10(A6,D7.W){4:D5},D4	EDF641257010	-
+BFFFO.L $10(A6,D7.W){D6:1},D4	EDF649817010	-
+BFFFO.L $10(A6,D7.W){32:1},D4		ERROR: Invalid bitfield
+BFFFO.L $10(A6,D7.W){0:0},D4		ERROR: Invalid bitfield
+BFFFO.L $10(A6,D7.W){BK:1},D4		ERROR: Invalid bitfield
+BFFFO.L $1234{0:8},D4	EDF840081234	-
+BFFFO.L $1234{31:32},D4	EDF847C01234	-
+BFFFO.L $1234{D2:D3},D4	EDF848A31234	-
+BFFFO.L $1234{4:D5},D4	EDF841251234	-
+BFFFO.L $1234{D6:1},D4	EDF849811234	-
+BFFFO.L $1234{32:1},D4		ERROR: Invalid bitfield
+BFFFO.L $1234{0:0},D4		ERROR: Invalid bitfield
+BFFFO.L $1234{BK:1},D4		ERROR: Invalid bitfield
+BFFFO.L FW{0:8},D4	EDF9400800001F00	-
+BFFFO.L FW{31:32},D4	EDF947C000001F00	-
+BFFFO.L FW{D2:D3},D4	EDF948A300001F00	-
+BFFFO.L FW{4:D5},D4	EDF9412500001F00	-
+BFFFO.L FW{D6:1},D4	EDF9498100001F00	-
+BFFFO.L FW{32:1},D4		ERROR: Invalid bitfield
+BFFFO.L FW{0:0},D4		ERROR: Invalid bitfield
+BFFFO.L FW{BK:1},D4		ERROR: Invalid bitfield
+BFFFO.L *+$10(PC){0:8},D4	EDFA4008000C	-
+BFFFO.L *+$10(PC){31:32},D4	EDFA47C0000C	-
+BFFFO.L *+$10(PC){D2:D3},D4	EDFA48A3000C	-
+BFFFO.L *+$10(PC){4:D5},D4	EDFA4125000C	-
+BFFFO.L *+$10(PC){D6:1},D4	EDFA4981000C	-
+BFFFO.L *+$10(PC){32:1},D4		ERROR: Invalid bitfield
+BFFFO.L *+$10(PC){0:0},D4		ERROR: Invalid bitfield
+BFFFO.L *+$10(PC){BK:1},D4		ERROR: Invalid bitfield
+BFFFO.L (A4)+{0:8},D4		ERROR: Invalid addressing mode
+BFFFO.L (A4)+{31:32},D4		ERROR: Invalid addressing mode
+BFFFO.L (A4)+{D2:D3},D4		ERROR: Invalid addressing mode
+BFFFO.L (A4)+{4:D5},D4		ERROR: Invalid addressing mode
+BFFFO.L (A4)+{D6:1},D4		ERROR: Invalid addressing mode
+BFFFO.L (A4)+{32:1},D4		ERROR: Invalid bitfield
+BFFFO.L (A4)+{0:0},D4		ERROR: Invalid bitfield
+BFFFO.L (A4)+{BK:1},D4		ERROR: Invalid bitfield
+BFFFO.L -(A5){0:8},D4		ERROR: Invalid addressing mode
+BFFFO.L -(A5){31:32},D4		ERROR: Invalid addressing mode
+BFFFO.L -(A5){D2:D3},D4		ERROR: Invalid addressing mode
+BFFFO.L -(A5){4:D5},D4		ERROR: Invalid addressing mode
+BFFFO.L -(A5){D6:1},D4		ERROR: Invalid addressing mode
+BFFFO.L -(A5){32:1},D4		ERROR: Invalid bitfield
+BFFFO.L -(A5){0:0},D4		ERROR: Invalid bitfield
+BFFFO.L -(A5){BK:1},D4		ERROR: Invalid bitfield
+BFFFO.L A2{0:8},D4		ERROR: Invalid addressing mode
+BFFFO.L A2{31:32},D4		ERROR: Invalid addressing mode
+BFFFO.L A2{D2:D3},D4		ERROR: Invalid addressing mode
+BFFFO.L A2{4:D5},D4		ERROR: Invalid addressing mode
+BFFFO.L A2{D6:1},D4		ERROR: Invalid addressing mode
+BFFFO.L A2{32:1},D4		ERROR: Invalid bitfield
+BFFFO.L A2{0:0},D4		ERROR: Invalid bitfield
+BFFFO.L A2{BK:1},D4		ERROR: Invalid bitfield
+BFFFO.L #1{0:8},D4		ERROR: Invalid addressing mode
+BFFFO.L #1{31:32},D4		ERROR: Invalid addressing mode
+BFFFO.L #1{D2:D3},D4		ERROR: Invalid addressing mode
+BFFFO.L #1{4:D5},D4		ERROR: Invalid addressing mode
+BFFFO.L #1{D6:1},D4		ERROR: Invalid addressing mode
+BFFFO.L #1{32:1},D4		ERROR: Invalid bitfield
+BFFFO.L #1{0:0},D4		ERROR: Invalid bitfield
+BFFFO.L #1{BK:1},D4		ERROR: Invalid bitfield
+BFFFO.L D1		ERROR: Invalid bitfield
+BFFFO.S D1{0:8},D4	EDC14008	-
+BFFFO.S D1{31:32},D4	EDC147C0	-
+BFFFO.S D1{D2:D3},D4	EDC148A3	-
+BFFFO.S D1{4:D5},D4	EDC14125	-
+BFFFO.S D1{D6:1},D4	EDC14981	-
+BFFFO.S D1{32:1},D4		ERROR: Invalid bitfield
+BFFFO.S D1{0:0},D4		ERROR: Invalid bitfield
+BFFFO.S D1{BK:1},D4		ERROR: Invalid bitfield
+BFFFO.S (A3){0:8},D4	EDD34008	-
+BFFFO.S (A3){31:32},D4	EDD347C0	-
+BFFFO.S (A3){D2:D3},D4	EDD348A3	-
+BFFFO.S (A3){4:D5},D4	EDD34125	-
+BFFFO.S (A3){D6:1},D4	EDD34981	-
+BFFFO.S (A3){32:1},D4		ERROR: Invalid bitfield
+BFFFO.S (A3){0:0},D4		ERROR: Invalid bitfield
+BFFFO.S (A3){BK:1},D4		ERROR: Invalid bitfield
+BFFFO.S $10(A6){0:8},D4	EDEE40080010	-
+BFFFO.S $10(A6){31:32},D4	EDEE47C00010	-
+BFFFO.S $10(A6){D2:D3},D4	EDEE48A30010	-
+BFFFO.S $10(A6){4:D5},D4	EDEE41250010	-
+BFFFO.S $10(A6){D6:1},D4	EDEE49810010	-
+BFFFO.S $10(A6){32:1},D4		ERROR: Invalid bitfield
+BFFFO.S $10(A6){0:0},D4		ERROR: Invalid bitfield
+BFFFO.S $10(A6){BK:1},D4		ERROR: Invalid bitfield
+BFFFO.S $10(A6,D7.W){0:8},D4	EDF640087010	-
+BFFFO.S $10(A6,D7.W){31:32},D4	EDF647C07010	-
+BFFFO.S $10(A6,D7.W){D2:D3},D4	EDF648A37010	-
+BFFFO.S $10(A6,D7.W){4:D5},D4	EDF641257010	-
+BFFFO.S $10(A6,D7.W){D6:1},D4	EDF649817010	-
+BFFFO.S $10(A6,D7.W){32:1},D4		ERROR: Invalid bitfield
+BFFFO.S $10(A6,D7.W){0:0},D4		ERROR: Invalid bitfield
+BFFFO.S $10(A6,D7.W){BK:1},D4		ERROR: Invalid bitfield
+BFFFO.S $1234{0:8},D4	EDF840081234	-
+BFFFO.S $1234{31:32},D4	EDF847C01234	-
+BFFFO.S $1234{D2:D3},D4	EDF848A31234	-
+BFFFO.S $1234{4:D5},D4	EDF841251234	-
+BFFFO.S $1234{D6:1},D4	EDF849811234	-
+BFFFO.S $1234{32:1},D4		ERROR: Invalid bitfield
+BFFFO.S $1234{0:0},D4		ERROR: Invalid bitfield
+BFFFO.S $1234{BK:1},D4		ERROR: Invalid bitfield
+BFFFO.S FW{0:8},D4	EDF9400800001F00	-
+BFFFO.S FW{31:32},D4	EDF947C000001F00	-
+BFFFO.S FW{D2:D3},D4	EDF948A300001F00	-
+BFFFO.S FW{4:D5},D4	EDF9412500001F00	-
+BFFFO.S FW{D6:1},D4	EDF9498100001F00	-
+BFFFO.S FW{32:1},D4		ERROR: Invalid bitfield
+BFFFO.S FW{0:0},D4		ERROR: Invalid bitfield
+BFFFO.S FW{BK:1},D4		ERROR: Invalid bitfield
+BFFFO.S *+$10(PC){0:8},D4	EDFA4008000C	-
+BFFFO.S *+$10(PC){31:32},D4	EDFA47C0000C	-
+BFFFO.S *+$10(PC){D2:D3},D4	EDFA48A3000C	-
+BFFFO.S *+$10(PC){4:D5},D4	EDFA4125000C	-
+BFFFO.S *+$10(PC){D6:1},D4	EDFA4981000C	-
+BFFFO.S *+$10(PC){32:1},D4		ERROR: Invalid bitfield
+BFFFO.S *+$10(PC){0:0},D4		ERROR: Invalid bitfield
+BFFFO.S *+$10(PC){BK:1},D4		ERROR: Invalid bitfield
+BFFFO.S (A4)+{0:8},D4		ERROR: Invalid addressing mode
+BFFFO.S (A4)+{31:32},D4		ERROR: Invalid addressing mode
+BFFFO.S (A4)+{D2:D3},D4		ERROR: Invalid addressing mode
+BFFFO.S (A4)+{4:D5},D4		ERROR: Invalid addressing mode
+BFFFO.S (A4)+{D6:1},D4		ERROR: Invalid addressing mode
+BFFFO.S (A4)+{32:1},D4		ERROR: Invalid bitfield
+BFFFO.S (A4)+{0:0},D4		ERROR: Invalid bitfield
+BFFFO.S (A4)+{BK:1},D4		ERROR: Invalid bitfield
+BFFFO.S -(A5){0:8},D4		ERROR: Invalid addressing mode
+BFFFO.S -(A5){31:32},D4		ERROR: Invalid addressing mode
+BFFFO.S -(A5){D2:D3},D4		ERROR: Invalid addressing mode
+BFFFO.S -(A5){4:D5},D4		ERROR: Invalid addressing mode
+BFFFO.S -(A5){D6:1},D4		ERROR: Invalid addressing mode
+BFFFO.S -(A5){32:1},D4		ERROR: Invalid bitfield
+BFFFO.S -(A5){0:0},D4		ERROR: Invalid bitfield
+BFFFO.S -(A5){BK:1},D4		ERROR: Invalid bitfield
+BFFFO.S A2{0:8},D4		ERROR: Invalid addressing mode
+BFFFO.S A2{31:32},D4		ERROR: Invalid addressing mode
+BFFFO.S A2{D2:D3},D4		ERROR: Invalid addressing mode
+BFFFO.S A2{4:D5},D4		ERROR: Invalid addressing mode
+BFFFO.S A2{D6:1},D4		ERROR: Invalid addressing mode
+BFFFO.S A2{32:1},D4		ERROR: Invalid bitfield
+BFFFO.S A2{0:0},D4		ERROR: Invalid bitfield
+BFFFO.S A2{BK:1},D4		ERROR: Invalid bitfield
+BFFFO.S #1{0:8},D4		ERROR: Invalid addressing mode
+BFFFO.S #1{31:32},D4		ERROR: Invalid addressing mode
+BFFFO.S #1{D2:D3},D4		ERROR: Invalid addressing mode
+BFFFO.S #1{4:D5},D4		ERROR: Invalid addressing mode
+BFFFO.S #1{D6:1},D4		ERROR: Invalid addressing mode
+BFFFO.S #1{32:1},D4		ERROR: Invalid bitfield
+BFFFO.S #1{0:0},D4		ERROR: Invalid bitfield
+BFFFO.S #1{BK:1},D4		ERROR: Invalid bitfield
+BFFFO.S D1		ERROR: Invalid bitfield

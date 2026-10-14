@@ -1,0 +1,405 @@
+SHI		ERROR: Invalid syntax
+SHI D1	52C1	-
+SHI A2		ERROR: Invalid addressing mode
+SHI SP		ERROR: Invalid addressing mode
+SHI (A3)	52D3	-
+SHI (A4)+	52DC	-
+SHI -(A5)	52E5	-
+SHI $10(A6)	52EE0010	-
+SHI -2(A0)	52E8FFFE	-
+SHI $10(A6,D7.W)	52F67010	-
+SHI $12(A0,A1.L)	52F09812	-
+SHI (A2,D3)	52F23000	-
+SHI $1234	52F81234	-
+SHI $12345678	52F912345678	-
+SHI $1234.L	52F900001234	-
+SHI $1234.W	52F81234	WARNING: Forcing SHORT addressing disables range checking of extension word
+SHI $8000	52F900008000	-
+SHI BK	52F81F00	-
+SHI FW	52F900001F00	-
+SHI *+$10(PC)		ERROR: Invalid addressing mode
+SHI *(PC,D0.W)		ERROR: Invalid addressing mode
+SHI BK(PC)		ERROR: Invalid addressing mode
+SHI #1		ERROR: Invalid addressing mode
+SHI #8		ERROR: Invalid addressing mode
+SHI #9		ERROR: Invalid addressing mode
+SHI #0		ERROR: Invalid addressing mode
+SHI #-1		ERROR: Invalid addressing mode
+SHI #$80		ERROR: Invalid addressing mode
+SHI #$1234		ERROR: Invalid addressing mode
+SHI #$12345678		ERROR: Invalid addressing mode
+SHI #$12345678.L		ERROR: Invalid addressing mode
+SHI #BK		ERROR: Invalid addressing mode
+SHI #FW		ERROR: Invalid addressing mode
+SHI #UNDEF		ERROR: Invalid addressing mode
+SHI UNDEF	52F90000558E	ERROR: Undefined symbol
+SHI SR		ERROR: Invalid addressing mode
+SHI CCR		ERROR: Invalid addressing mode
+SHI USP		ERROR: Invalid addressing mode
+SHI D1,D1		ERROR: Invalid syntax
+SHI D1,A2		ERROR: Invalid syntax
+SHI D1,(A3)		ERROR: Invalid syntax
+SHI D1,$10(A6)		ERROR: Invalid syntax
+SHI D1,$1234		ERROR: Invalid syntax
+SHI D1,FW		ERROR: Invalid syntax
+SHI D1,#1		ERROR: Invalid syntax
+SHI D1,#$1234		ERROR: Invalid syntax
+SHI D1,CCR		ERROR: Invalid syntax
+SHI D1,SR		ERROR: Invalid syntax
+SHI A2,D1		ERROR: Invalid addressing mode
+SHI A2,A2		ERROR: Invalid addressing mode
+SHI A2,(A3)		ERROR: Invalid addressing mode
+SHI A2,$10(A6)		ERROR: Invalid addressing mode
+SHI A2,$1234		ERROR: Invalid addressing mode
+SHI A2,FW		ERROR: Invalid addressing mode
+SHI A2,#1		ERROR: Invalid addressing mode
+SHI A2,#$1234		ERROR: Invalid addressing mode
+SHI A2,CCR		ERROR: Invalid addressing mode
+SHI A2,SR		ERROR: Invalid addressing mode
+SHI (A3),D1		ERROR: Invalid syntax
+SHI (A3),A2		ERROR: Invalid syntax
+SHI (A3),(A3)		ERROR: Invalid syntax
+SHI (A3),$10(A6)		ERROR: Invalid syntax
+SHI (A3),$1234		ERROR: Invalid syntax
+SHI (A3),FW		ERROR: Invalid syntax
+SHI (A3),#1		ERROR: Invalid syntax
+SHI (A3),#$1234		ERROR: Invalid syntax
+SHI (A3),CCR		ERROR: Invalid syntax
+SHI (A3),SR		ERROR: Invalid syntax
+SHI $10(A6),D1		ERROR: Invalid syntax
+SHI $10(A6),A2		ERROR: Invalid syntax
+SHI $10(A6),(A3)		ERROR: Invalid syntax
+SHI $10(A6),$10(A6)		ERROR: Invalid syntax
+SHI $10(A6),$1234		ERROR: Invalid syntax
+SHI $10(A6),FW		ERROR: Invalid syntax
+SHI $10(A6),#1		ERROR: Invalid syntax
+SHI $10(A6),#$1234		ERROR: Invalid syntax
+SHI $10(A6),CCR		ERROR: Invalid syntax
+SHI $10(A6),SR		ERROR: Invalid syntax
+SHI $1234,D1		ERROR: Invalid syntax
+SHI $1234,A2		ERROR: Invalid syntax
+SHI $1234,(A3)		ERROR: Invalid syntax
+SHI $1234,$10(A6)		ERROR: Invalid syntax
+SHI $1234,$1234		ERROR: Invalid syntax
+SHI $1234,FW		ERROR: Invalid syntax
+SHI $1234,#1		ERROR: Invalid syntax
+SHI $1234,#$1234		ERROR: Invalid syntax
+SHI $1234,CCR		ERROR: Invalid syntax
+SHI $1234,SR		ERROR: Invalid syntax
+SHI FW,D1		ERROR: Invalid syntax
+SHI FW,A2		ERROR: Invalid syntax
+SHI FW,(A3)		ERROR: Invalid syntax
+SHI FW,$10(A6)		ERROR: Invalid syntax
+SHI FW,$1234		ERROR: Invalid syntax
+SHI FW,FW		ERROR: Invalid syntax
+SHI FW,#1		ERROR: Invalid syntax
+SHI FW,#$1234		ERROR: Invalid syntax
+SHI FW,CCR		ERROR: Invalid syntax
+SHI FW,SR		ERROR: Invalid syntax
+SHI #1,D1		ERROR: Invalid addressing mode
+SHI #1,A2		ERROR: Invalid addressing mode
+SHI #1,(A3)		ERROR: Invalid addressing mode
+SHI #1,$10(A6)		ERROR: Invalid addressing mode
+SHI #1,$1234		ERROR: Invalid addressing mode
+SHI #1,FW		ERROR: Invalid addressing mode
+SHI #1,#1		ERROR: Invalid addressing mode
+SHI #1,#$1234		ERROR: Invalid addressing mode
+SHI #1,CCR		ERROR: Invalid addressing mode
+SHI #1,SR		ERROR: Invalid addressing mode
+SHI #$1234,D1		ERROR: Invalid addressing mode
+SHI #$1234,A2		ERROR: Invalid addressing mode
+SHI #$1234,(A3)		ERROR: Invalid addressing mode
+SHI #$1234,$10(A6)		ERROR: Invalid addressing mode
+SHI #$1234,$1234		ERROR: Invalid addressing mode
+SHI #$1234,FW		ERROR: Invalid addressing mode
+SHI #$1234,#1		ERROR: Invalid addressing mode
+SHI #$1234,#$1234		ERROR: Invalid addressing mode
+SHI #$1234,CCR		ERROR: Invalid addressing mode
+SHI #$1234,SR		ERROR: Invalid addressing mode
+SHI CCR,D1		ERROR: Invalid addressing mode
+SHI CCR,A2		ERROR: Invalid addressing mode
+SHI CCR,(A3)		ERROR: Invalid addressing mode
+SHI CCR,$10(A6)		ERROR: Invalid addressing mode
+SHI CCR,$1234		ERROR: Invalid addressing mode
+SHI CCR,FW		ERROR: Invalid addressing mode
+SHI CCR,#1		ERROR: Invalid addressing mode
+SHI CCR,#$1234		ERROR: Invalid addressing mode
+SHI CCR,CCR		ERROR: Invalid addressing mode
+SHI CCR,SR		ERROR: Invalid addressing mode
+SHI SR,D1		ERROR: Invalid addressing mode
+SHI SR,A2		ERROR: Invalid addressing mode
+SHI SR,(A3)		ERROR: Invalid addressing mode
+SHI SR,$10(A6)		ERROR: Invalid addressing mode
+SHI SR,$1234		ERROR: Invalid addressing mode
+SHI SR,FW		ERROR: Invalid addressing mode
+SHI SR,#1		ERROR: Invalid addressing mode
+SHI SR,#$1234		ERROR: Invalid addressing mode
+SHI SR,CCR		ERROR: Invalid addressing mode
+SHI SR,SR		ERROR: Invalid addressing mode
+SHI SP,D1		ERROR: Invalid addressing mode
+SHI SP,A2		ERROR: Invalid addressing mode
+SHI D1,SP		ERROR: Invalid syntax
+SHI #$12,SP		ERROR: Invalid addressing mode
+SHI (A4)+,D1		ERROR: Invalid syntax
+SHI (A4)+,A2		ERROR: Invalid syntax
+SHI D1,(A4)+		ERROR: Invalid syntax
+SHI #$12,(A4)+		ERROR: Invalid addressing mode
+SHI -(A5),D1		ERROR: Invalid syntax
+SHI -(A5),A2		ERROR: Invalid syntax
+SHI D1,-(A5)		ERROR: Invalid syntax
+SHI #$12,-(A5)		ERROR: Invalid addressing mode
+SHI -2(A0),D1		ERROR: Invalid syntax
+SHI -2(A0),A2		ERROR: Invalid syntax
+SHI D1,-2(A0)		ERROR: Invalid syntax
+SHI #$12,-2(A0)		ERROR: Invalid addressing mode
+SHI $10(A6,D7.W),D1		ERROR: Invalid syntax
+SHI $10(A6,D7.W),A2		ERROR: Invalid syntax
+SHI D1,$10(A6,D7.W)		ERROR: Invalid syntax
+SHI #$12,$10(A6,D7.W)		ERROR: Invalid addressing mode
+SHI $12(A0,A1.L),D1		ERROR: Invalid syntax
+SHI $12(A0,A1.L),A2		ERROR: Invalid syntax
+SHI D1,$12(A0,A1.L)		ERROR: Invalid syntax
+SHI #$12,$12(A0,A1.L)		ERROR: Invalid addressing mode
+SHI (A2,D3),D1		ERROR: Invalid syntax
+SHI (A2,D3),A2		ERROR: Invalid syntax
+SHI D1,(A2,D3)		ERROR: Invalid syntax
+SHI #$12,(A2,D3)		ERROR: Invalid addressing mode
+SHI $12345678,D1		ERROR: Invalid syntax
+SHI $12345678,A2		ERROR: Invalid syntax
+SHI D1,$12345678		ERROR: Invalid syntax
+SHI #$12,$12345678		ERROR: Invalid addressing mode
+SHI $1234.L,D1		ERROR: Invalid syntax
+SHI $1234.L,A2		ERROR: Invalid syntax
+SHI D1,$1234.L		ERROR: Invalid syntax
+SHI #$12,$1234.L		ERROR: Invalid addressing mode
+SHI $1234.W,D1		ERROR: Invalid syntax
+SHI $1234.W,A2		ERROR: Invalid syntax
+SHI D1,$1234.W		ERROR: Invalid syntax
+SHI #$12,$1234.W		ERROR: Invalid addressing mode
+SHI $8000,D1		ERROR: Invalid syntax
+SHI $8000,A2		ERROR: Invalid syntax
+SHI D1,$8000		ERROR: Invalid syntax
+SHI #$12,$8000		ERROR: Invalid addressing mode
+SHI BK,D1		ERROR: Invalid syntax
+SHI BK,A2		ERROR: Invalid syntax
+SHI D1,BK		ERROR: Invalid syntax
+SHI #$12,BK		ERROR: Invalid addressing mode
+SHI *+$10(PC),D1		ERROR: Invalid addressing mode
+SHI *+$10(PC),A2		ERROR: Invalid addressing mode
+SHI D1,*+$10(PC)		ERROR: Invalid syntax
+SHI #$12,*+$10(PC)		ERROR: Invalid addressing mode
+SHI *(PC,D0.W),D1		ERROR: Invalid addressing mode
+SHI *(PC,D0.W),A2		ERROR: Invalid addressing mode
+SHI D1,*(PC,D0.W)		ERROR: Invalid syntax
+SHI #$12,*(PC,D0.W)		ERROR: Invalid addressing mode
+SHI BK(PC),D1		ERROR: Invalid addressing mode
+SHI BK(PC),A2		ERROR: Invalid addressing mode
+SHI D1,BK(PC)		ERROR: Invalid syntax
+SHI #$12,BK(PC)		ERROR: Invalid addressing mode
+SHI #8,D1		ERROR: Invalid addressing mode
+SHI #8,A2		ERROR: Invalid addressing mode
+SHI D1,#8		ERROR: Invalid syntax
+SHI #$12,#8		ERROR: Invalid addressing mode
+SHI #9,D1		ERROR: Invalid addressing mode
+SHI #9,A2		ERROR: Invalid addressing mode
+SHI D1,#9		ERROR: Invalid syntax
+SHI #$12,#9		ERROR: Invalid addressing mode
+SHI #0,D1		ERROR: Invalid addressing mode
+SHI #0,A2		ERROR: Invalid addressing mode
+SHI D1,#0		ERROR: Invalid syntax
+SHI #$12,#0		ERROR: Invalid addressing mode
+SHI #-1,D1		ERROR: Invalid addressing mode
+SHI #-1,A2		ERROR: Invalid addressing mode
+SHI D1,#-1		ERROR: Invalid syntax
+SHI #$12,#-1		ERROR: Invalid addressing mode
+SHI #$80,D1		ERROR: Invalid addressing mode
+SHI #$80,A2		ERROR: Invalid addressing mode
+SHI D1,#$80		ERROR: Invalid syntax
+SHI #$12,#$80		ERROR: Invalid addressing mode
+SHI #$12345678,D1		ERROR: Invalid addressing mode
+SHI #$12345678,A2		ERROR: Invalid addressing mode
+SHI D1,#$12345678		ERROR: Invalid syntax
+SHI #$12,#$12345678		ERROR: Invalid addressing mode
+SHI #$12345678.L,D1		ERROR: Invalid addressing mode
+SHI #$12345678.L,A2		ERROR: Invalid addressing mode
+SHI D1,#$12345678.L		ERROR: Invalid syntax
+SHI #$12,#$12345678.L		ERROR: Invalid addressing mode
+SHI #BK,D1		ERROR: Invalid addressing mode
+SHI #BK,A2		ERROR: Invalid addressing mode
+SHI D1,#BK		ERROR: Invalid syntax
+SHI #$12,#BK		ERROR: Invalid addressing mode
+SHI #FW,D1		ERROR: Invalid addressing mode
+SHI #FW,A2		ERROR: Invalid addressing mode
+SHI D1,#FW		ERROR: Invalid syntax
+SHI #$12,#FW		ERROR: Invalid addressing mode
+SHI #UNDEF,D1		ERROR: Invalid addressing mode
+SHI #UNDEF,A2		ERROR: Invalid addressing mode
+SHI D1,#UNDEF		ERROR: Invalid syntax
+SHI #$12,#UNDEF		ERROR: Invalid addressing mode
+SHI UNDEF,D1		ERROR: Invalid syntax
+SHI UNDEF,A2		ERROR: Invalid syntax
+SHI D1,UNDEF		ERROR: Invalid syntax
+SHI #$12,UNDEF		ERROR: Invalid addressing mode
+SHI USP,D1		ERROR: Invalid addressing mode
+SHI USP,A2		ERROR: Invalid addressing mode
+SHI D1,USP		ERROR: Invalid syntax
+SHI #$12,USP		ERROR: Invalid addressing mode
+SHI D1,D2,D3		ERROR: Invalid syntax
+SHI.B		ERROR: Invalid syntax
+SHI.B D1	52C1	-
+SHI.B A2		ERROR: Invalid addressing mode
+SHI.B SP		ERROR: Invalid addressing mode
+SHI.B (A3)	52D3	-
+SHI.B (A4)+	52DC	-
+SHI.B -(A5)	52E5	-
+SHI.B $10(A6)	52EE0010	-
+SHI.B -2(A0)	52E8FFFE	-
+SHI.B $10(A6,D7.W)	52F67010	-
+SHI.B $12(A0,A1.L)	52F09812	-
+SHI.B (A2,D3)	52F23000	-
+SHI.B $1234	52F81234	-
+SHI.B $12345678	52F912345678	-
+SHI.B $1234.L	52F900001234	-
+SHI.B $1234.W	52F81234	WARNING: Forcing SHORT addressing disables range checking of extension word
+SHI.B $8000	52F900008000	-
+SHI.B BK	52F81F00	-
+SHI.B FW	52F900001F00	-
+SHI.B *+$10(PC)		ERROR: Invalid addressing mode
+SHI.B *(PC,D0.W)		ERROR: Invalid addressing mode
+SHI.B BK(PC)		ERROR: Invalid addressing mode
+SHI.B #1		ERROR: Invalid addressing mode
+SHI.B #8		ERROR: Invalid addressing mode
+SHI.B #9		ERROR: Invalid addressing mode
+SHI.B #0		ERROR: Invalid addressing mode
+SHI.B #-1		ERROR: Invalid addressing mode
+SHI.B #$80		ERROR: Invalid addressing mode
+SHI.B #$1234		ERROR: Invalid addressing mode
+SHI.B #$12345678		ERROR: Invalid addressing mode
+SHI.B #$12345678.L		ERROR: Invalid addressing mode
+SHI.B #BK		ERROR: Invalid addressing mode
+SHI.B #FW		ERROR: Invalid addressing mode
+SHI.B #UNDEF		ERROR: Invalid addressing mode
+SHI.B UNDEF	52F90000558E	ERROR: Undefined symbol
+SHI.B SR		ERROR: Invalid addressing mode
+SHI.B CCR		ERROR: Invalid addressing mode
+SHI.B USP		ERROR: Invalid addressing mode
+SHI.B D1,D2,D3		ERROR: Invalid syntax
+SHI.W		ERROR: Invalid syntax
+SHI.W D1	52C1	ERROR: Invalid size code
+SHI.W A2		ERROR: Invalid addressing mode
+SHI.W SP		ERROR: Invalid addressing mode
+SHI.W (A3)	52D3	ERROR: Invalid size code
+SHI.W (A4)+	52DC	ERROR: Invalid size code
+SHI.W -(A5)	52E5	ERROR: Invalid size code
+SHI.W $10(A6)	52EE0010	ERROR: Invalid size code
+SHI.W -2(A0)	52E8FFFE	ERROR: Invalid size code
+SHI.W $10(A6,D7.W)	52F67010	ERROR: Invalid size code
+SHI.W $12(A0,A1.L)	52F09812	ERROR: Invalid size code
+SHI.W (A2,D3)	52F23000	ERROR: Invalid size code
+SHI.W $1234	52F81234	ERROR: Invalid size code
+SHI.W $12345678	52F912345678	ERROR: Invalid size code
+SHI.W $1234.L	52F900001234	ERROR: Invalid size code
+SHI.W $1234.W	52F81234	ERROR: Invalid size code
+SHI.W $8000	52F900008000	ERROR: Invalid size code
+SHI.W BK	52F81F00	ERROR: Invalid size code
+SHI.W FW	52F900001F00	ERROR: Invalid size code
+SHI.W *+$10(PC)		ERROR: Invalid addressing mode
+SHI.W *(PC,D0.W)		ERROR: Invalid addressing mode
+SHI.W BK(PC)		ERROR: Invalid addressing mode
+SHI.W #1		ERROR: Invalid addressing mode
+SHI.W #8		ERROR: Invalid addressing mode
+SHI.W #9		ERROR: Invalid addressing mode
+SHI.W #0		ERROR: Invalid addressing mode
+SHI.W #-1		ERROR: Invalid addressing mode
+SHI.W #$80		ERROR: Invalid addressing mode
+SHI.W #$1234		ERROR: Invalid addressing mode
+SHI.W #$12345678		ERROR: Invalid addressing mode
+SHI.W #$12345678.L		ERROR: Invalid addressing mode
+SHI.W #BK		ERROR: Invalid addressing mode
+SHI.W #FW		ERROR: Invalid addressing mode
+SHI.W #UNDEF		ERROR: Invalid addressing mode
+SHI.W UNDEF	52F90000558E	ERROR: Undefined symbol
+SHI.W SR		ERROR: Invalid addressing mode
+SHI.W CCR		ERROR: Invalid addressing mode
+SHI.W USP		ERROR: Invalid addressing mode
+SHI.W D1,D2,D3		ERROR: Invalid syntax
+SHI.L		ERROR: Invalid syntax
+SHI.L D1	52C1	ERROR: Invalid size code
+SHI.L A2		ERROR: Invalid addressing mode
+SHI.L SP		ERROR: Invalid addressing mode
+SHI.L (A3)	52D3	ERROR: Invalid size code
+SHI.L (A4)+	52DC	ERROR: Invalid size code
+SHI.L -(A5)	52E5	ERROR: Invalid size code
+SHI.L $10(A6)	52EE0010	ERROR: Invalid size code
+SHI.L -2(A0)	52E8FFFE	ERROR: Invalid size code
+SHI.L $10(A6,D7.W)	52F67010	ERROR: Invalid size code
+SHI.L $12(A0,A1.L)	52F09812	ERROR: Invalid size code
+SHI.L (A2,D3)	52F23000	ERROR: Invalid size code
+SHI.L $1234	52F81234	ERROR: Invalid size code
+SHI.L $12345678	52F912345678	ERROR: Invalid size code
+SHI.L $1234.L	52F900001234	ERROR: Invalid size code
+SHI.L $1234.W	52F81234	ERROR: Invalid size code
+SHI.L $8000	52F900008000	ERROR: Invalid size code
+SHI.L BK	52F81F00	ERROR: Invalid size code
+SHI.L FW	52F900001F00	ERROR: Invalid size code
+SHI.L *+$10(PC)		ERROR: Invalid addressing mode
+SHI.L *(PC,D0.W)		ERROR: Invalid addressing mode
+SHI.L BK(PC)		ERROR: Invalid addressing mode
+SHI.L #1		ERROR: Invalid addressing mode
+SHI.L #8		ERROR: Invalid addressing mode
+SHI.L #9		ERROR: Invalid addressing mode
+SHI.L #0		ERROR: Invalid addressing mode
+SHI.L #-1		ERROR: Invalid addressing mode
+SHI.L #$80		ERROR: Invalid addressing mode
+SHI.L #$1234		ERROR: Invalid addressing mode
+SHI.L #$12345678		ERROR: Invalid addressing mode
+SHI.L #$12345678.L		ERROR: Invalid addressing mode
+SHI.L #BK		ERROR: Invalid addressing mode
+SHI.L #FW		ERROR: Invalid addressing mode
+SHI.L #UNDEF		ERROR: Invalid addressing mode
+SHI.L UNDEF	52F90000558E	ERROR: Undefined symbol
+SHI.L SR		ERROR: Invalid addressing mode
+SHI.L CCR		ERROR: Invalid addressing mode
+SHI.L USP		ERROR: Invalid addressing mode
+SHI.L D1,D2,D3		ERROR: Invalid syntax
+SHI.S		ERROR: Invalid syntax
+SHI.S D1	52C1	ERROR: Invalid size code
+SHI.S A2		ERROR: Invalid addressing mode
+SHI.S SP		ERROR: Invalid addressing mode
+SHI.S (A3)	52D3	ERROR: Invalid size code
+SHI.S (A4)+	52DC	ERROR: Invalid size code
+SHI.S -(A5)	52E5	ERROR: Invalid size code
+SHI.S $10(A6)	52EE0010	ERROR: Invalid size code
+SHI.S -2(A0)	52E8FFFE	ERROR: Invalid size code
+SHI.S $10(A6,D7.W)	52F67010	ERROR: Invalid size code
+SHI.S $12(A0,A1.L)	52F09812	ERROR: Invalid size code
+SHI.S (A2,D3)	52F23000	ERROR: Invalid size code
+SHI.S $1234	52F81234	ERROR: Invalid size code
+SHI.S $12345678	52F912345678	ERROR: Invalid size code
+SHI.S $1234.L	52F900001234	ERROR: Invalid size code
+SHI.S $1234.W	52F81234	ERROR: Invalid size code
+SHI.S $8000	52F900008000	ERROR: Invalid size code
+SHI.S BK	52F81F00	ERROR: Invalid size code
+SHI.S FW	52F900001F00	ERROR: Invalid size code
+SHI.S *+$10(PC)		ERROR: Invalid addressing mode
+SHI.S *(PC,D0.W)		ERROR: Invalid addressing mode
+SHI.S BK(PC)		ERROR: Invalid addressing mode
+SHI.S #1		ERROR: Invalid addressing mode
+SHI.S #8		ERROR: Invalid addressing mode
+SHI.S #9		ERROR: Invalid addressing mode
+SHI.S #0		ERROR: Invalid addressing mode
+SHI.S #-1		ERROR: Invalid addressing mode
+SHI.S #$80		ERROR: Invalid addressing mode
+SHI.S #$1234		ERROR: Invalid addressing mode
+SHI.S #$12345678		ERROR: Invalid addressing mode
+SHI.S #$12345678.L		ERROR: Invalid addressing mode
+SHI.S #BK		ERROR: Invalid addressing mode
+SHI.S #FW		ERROR: Invalid addressing mode
+SHI.S #UNDEF		ERROR: Invalid addressing mode
+SHI.S UNDEF	52F90000558E	ERROR: Undefined symbol
+SHI.S SR		ERROR: Invalid addressing mode
+SHI.S CCR		ERROR: Invalid addressing mode
+SHI.S USP		ERROR: Invalid addressing mode
+SHI.S D1,D2,D3		ERROR: Invalid syntax
+SHI.X D1,D2		ERROR: Invalid syntax
+SHI.X #1		ERROR: Invalid addressing mode

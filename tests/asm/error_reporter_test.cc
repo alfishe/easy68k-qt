@@ -220,11 +220,12 @@ TEST(ErrorReporterTest, UnknownInstructionCode) {
   EXPECT_TRUE(found);
 }
 
-TEST(ErrorReporterTest, UnknownInstructionMessageContainsName) {
+TEST(ErrorReporterTest, UnknownInstructionMessageIsOriginal) {
+  // ERROR.CPP: INV_OPCODE -> "Invalid opcode" (the mnemonic is not quoted).
   Assembler a;
   auto r = a.Assemble("  ORG $1000\n  MYZAP D0\n");
   ASSERT_FALSE(r.errors.empty());
-  EXPECT_NE(r.errors[0].message.find("MYZAP"), std::string::npos);
+  EXPECT_EQ(r.errors[0].message, "Invalid opcode");
 }
 
 TEST(ErrorReporterTest, EndmOutsideMacroCode) {

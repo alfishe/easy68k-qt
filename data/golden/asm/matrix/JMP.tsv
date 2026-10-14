@@ -1,0 +1,405 @@
+JMP		ERROR: Invalid syntax
+JMP D1		ERROR: Invalid addressing mode
+JMP A2		ERROR: Invalid addressing mode
+JMP SP		ERROR: Invalid addressing mode
+JMP (A3)	4ED3	-
+JMP (A4)+		ERROR: Invalid addressing mode
+JMP -(A5)		ERROR: Invalid addressing mode
+JMP $10(A6)	4EEE0010	-
+JMP -2(A0)	4EE8FFFE	-
+JMP $10(A6,D7.W)	4EF67010	-
+JMP $12(A0,A1.L)	4EF09812	-
+JMP (A2,D3)	4EF23000	-
+JMP $1234	4EF81234	-
+JMP $12345678	4EF912345678	-
+JMP $1234.L	4EF900001234	-
+JMP $1234.W	4EF81234	WARNING: Forcing SHORT addressing disables range checking of extension word
+JMP $8000	4EF900008000	-
+JMP BK	4EF81F00	-
+JMP FW	4EF900001F00	-
+JMP *+$10(PC)	4EFA000E	-
+JMP *(PC,D0.W)	4EFB00FE	-
+JMP BK(PC)	4EFA0EFE	-
+JMP #1		ERROR: Invalid addressing mode
+JMP #8		ERROR: Invalid addressing mode
+JMP #9		ERROR: Invalid addressing mode
+JMP #0		ERROR: Invalid addressing mode
+JMP #-1		ERROR: Invalid addressing mode
+JMP #$80		ERROR: Invalid addressing mode
+JMP #$1234		ERROR: Invalid addressing mode
+JMP #$12345678		ERROR: Invalid addressing mode
+JMP #$12345678.L		ERROR: Invalid addressing mode
+JMP #BK		ERROR: Invalid addressing mode
+JMP #FW		ERROR: Invalid addressing mode
+JMP #UNDEF		ERROR: Invalid addressing mode
+JMP UNDEF	4EF9000055CA	ERROR: Undefined symbol
+JMP SR		ERROR: Invalid addressing mode
+JMP CCR		ERROR: Invalid addressing mode
+JMP USP		ERROR: Invalid addressing mode
+JMP D1,D1		ERROR: Invalid addressing mode
+JMP D1,A2		ERROR: Invalid addressing mode
+JMP D1,(A3)		ERROR: Invalid addressing mode
+JMP D1,$10(A6)		ERROR: Invalid addressing mode
+JMP D1,$1234		ERROR: Invalid addressing mode
+JMP D1,FW		ERROR: Invalid addressing mode
+JMP D1,#1		ERROR: Invalid addressing mode
+JMP D1,#$1234		ERROR: Invalid addressing mode
+JMP D1,CCR		ERROR: Invalid addressing mode
+JMP D1,SR		ERROR: Invalid addressing mode
+JMP A2,D1		ERROR: Invalid addressing mode
+JMP A2,A2		ERROR: Invalid addressing mode
+JMP A2,(A3)		ERROR: Invalid addressing mode
+JMP A2,$10(A6)		ERROR: Invalid addressing mode
+JMP A2,$1234		ERROR: Invalid addressing mode
+JMP A2,FW		ERROR: Invalid addressing mode
+JMP A2,#1		ERROR: Invalid addressing mode
+JMP A2,#$1234		ERROR: Invalid addressing mode
+JMP A2,CCR		ERROR: Invalid addressing mode
+JMP A2,SR		ERROR: Invalid addressing mode
+JMP (A3),D1		ERROR: Invalid syntax
+JMP (A3),A2		ERROR: Invalid syntax
+JMP (A3),(A3)		ERROR: Invalid syntax
+JMP (A3),$10(A6)		ERROR: Invalid syntax
+JMP (A3),$1234		ERROR: Invalid syntax
+JMP (A3),FW		ERROR: Invalid syntax
+JMP (A3),#1		ERROR: Invalid syntax
+JMP (A3),#$1234		ERROR: Invalid syntax
+JMP (A3),CCR		ERROR: Invalid syntax
+JMP (A3),SR		ERROR: Invalid syntax
+JMP $10(A6),D1		ERROR: Invalid syntax
+JMP $10(A6),A2		ERROR: Invalid syntax
+JMP $10(A6),(A3)		ERROR: Invalid syntax
+JMP $10(A6),$10(A6)		ERROR: Invalid syntax
+JMP $10(A6),$1234		ERROR: Invalid syntax
+JMP $10(A6),FW		ERROR: Invalid syntax
+JMP $10(A6),#1		ERROR: Invalid syntax
+JMP $10(A6),#$1234		ERROR: Invalid syntax
+JMP $10(A6),CCR		ERROR: Invalid syntax
+JMP $10(A6),SR		ERROR: Invalid syntax
+JMP $1234,D1		ERROR: Invalid syntax
+JMP $1234,A2		ERROR: Invalid syntax
+JMP $1234,(A3)		ERROR: Invalid syntax
+JMP $1234,$10(A6)		ERROR: Invalid syntax
+JMP $1234,$1234		ERROR: Invalid syntax
+JMP $1234,FW		ERROR: Invalid syntax
+JMP $1234,#1		ERROR: Invalid syntax
+JMP $1234,#$1234		ERROR: Invalid syntax
+JMP $1234,CCR		ERROR: Invalid syntax
+JMP $1234,SR		ERROR: Invalid syntax
+JMP FW,D1		ERROR: Invalid syntax
+JMP FW,A2		ERROR: Invalid syntax
+JMP FW,(A3)		ERROR: Invalid syntax
+JMP FW,$10(A6)		ERROR: Invalid syntax
+JMP FW,$1234		ERROR: Invalid syntax
+JMP FW,FW		ERROR: Invalid syntax
+JMP FW,#1		ERROR: Invalid syntax
+JMP FW,#$1234		ERROR: Invalid syntax
+JMP FW,CCR		ERROR: Invalid syntax
+JMP FW,SR		ERROR: Invalid syntax
+JMP #1,D1		ERROR: Invalid addressing mode
+JMP #1,A2		ERROR: Invalid addressing mode
+JMP #1,(A3)		ERROR: Invalid addressing mode
+JMP #1,$10(A6)		ERROR: Invalid addressing mode
+JMP #1,$1234		ERROR: Invalid addressing mode
+JMP #1,FW		ERROR: Invalid addressing mode
+JMP #1,#1		ERROR: Invalid addressing mode
+JMP #1,#$1234		ERROR: Invalid addressing mode
+JMP #1,CCR		ERROR: Invalid addressing mode
+JMP #1,SR		ERROR: Invalid addressing mode
+JMP #$1234,D1		ERROR: Invalid addressing mode
+JMP #$1234,A2		ERROR: Invalid addressing mode
+JMP #$1234,(A3)		ERROR: Invalid addressing mode
+JMP #$1234,$10(A6)		ERROR: Invalid addressing mode
+JMP #$1234,$1234		ERROR: Invalid addressing mode
+JMP #$1234,FW		ERROR: Invalid addressing mode
+JMP #$1234,#1		ERROR: Invalid addressing mode
+JMP #$1234,#$1234		ERROR: Invalid addressing mode
+JMP #$1234,CCR		ERROR: Invalid addressing mode
+JMP #$1234,SR		ERROR: Invalid addressing mode
+JMP CCR,D1		ERROR: Invalid addressing mode
+JMP CCR,A2		ERROR: Invalid addressing mode
+JMP CCR,(A3)		ERROR: Invalid addressing mode
+JMP CCR,$10(A6)		ERROR: Invalid addressing mode
+JMP CCR,$1234		ERROR: Invalid addressing mode
+JMP CCR,FW		ERROR: Invalid addressing mode
+JMP CCR,#1		ERROR: Invalid addressing mode
+JMP CCR,#$1234		ERROR: Invalid addressing mode
+JMP CCR,CCR		ERROR: Invalid addressing mode
+JMP CCR,SR		ERROR: Invalid addressing mode
+JMP SR,D1		ERROR: Invalid addressing mode
+JMP SR,A2		ERROR: Invalid addressing mode
+JMP SR,(A3)		ERROR: Invalid addressing mode
+JMP SR,$10(A6)		ERROR: Invalid addressing mode
+JMP SR,$1234		ERROR: Invalid addressing mode
+JMP SR,FW		ERROR: Invalid addressing mode
+JMP SR,#1		ERROR: Invalid addressing mode
+JMP SR,#$1234		ERROR: Invalid addressing mode
+JMP SR,CCR		ERROR: Invalid addressing mode
+JMP SR,SR		ERROR: Invalid addressing mode
+JMP SP,D1		ERROR: Invalid addressing mode
+JMP SP,A2		ERROR: Invalid addressing mode
+JMP D1,SP		ERROR: Invalid addressing mode
+JMP #$12,SP		ERROR: Invalid addressing mode
+JMP (A4)+,D1		ERROR: Invalid addressing mode
+JMP (A4)+,A2		ERROR: Invalid addressing mode
+JMP D1,(A4)+		ERROR: Invalid addressing mode
+JMP #$12,(A4)+		ERROR: Invalid addressing mode
+JMP -(A5),D1		ERROR: Invalid addressing mode
+JMP -(A5),A2		ERROR: Invalid addressing mode
+JMP D1,-(A5)		ERROR: Invalid addressing mode
+JMP #$12,-(A5)		ERROR: Invalid addressing mode
+JMP -2(A0),D1		ERROR: Invalid syntax
+JMP -2(A0),A2		ERROR: Invalid syntax
+JMP D1,-2(A0)		ERROR: Invalid addressing mode
+JMP #$12,-2(A0)		ERROR: Invalid addressing mode
+JMP $10(A6,D7.W),D1		ERROR: Invalid syntax
+JMP $10(A6,D7.W),A2		ERROR: Invalid syntax
+JMP D1,$10(A6,D7.W)		ERROR: Invalid addressing mode
+JMP #$12,$10(A6,D7.W)		ERROR: Invalid addressing mode
+JMP $12(A0,A1.L),D1		ERROR: Invalid syntax
+JMP $12(A0,A1.L),A2		ERROR: Invalid syntax
+JMP D1,$12(A0,A1.L)		ERROR: Invalid addressing mode
+JMP #$12,$12(A0,A1.L)		ERROR: Invalid addressing mode
+JMP (A2,D3),D1		ERROR: Invalid syntax
+JMP (A2,D3),A2		ERROR: Invalid syntax
+JMP D1,(A2,D3)		ERROR: Invalid addressing mode
+JMP #$12,(A2,D3)		ERROR: Invalid addressing mode
+JMP $12345678,D1		ERROR: Invalid syntax
+JMP $12345678,A2		ERROR: Invalid syntax
+JMP D1,$12345678		ERROR: Invalid addressing mode
+JMP #$12,$12345678		ERROR: Invalid addressing mode
+JMP $1234.L,D1		ERROR: Invalid syntax
+JMP $1234.L,A2		ERROR: Invalid syntax
+JMP D1,$1234.L		ERROR: Invalid addressing mode
+JMP #$12,$1234.L		ERROR: Invalid addressing mode
+JMP $1234.W,D1		ERROR: Invalid syntax
+JMP $1234.W,A2		ERROR: Invalid syntax
+JMP D1,$1234.W		ERROR: Invalid addressing mode
+JMP #$12,$1234.W		ERROR: Invalid addressing mode
+JMP $8000,D1		ERROR: Invalid syntax
+JMP $8000,A2		ERROR: Invalid syntax
+JMP D1,$8000		ERROR: Invalid addressing mode
+JMP #$12,$8000		ERROR: Invalid addressing mode
+JMP BK,D1		ERROR: Invalid syntax
+JMP BK,A2		ERROR: Invalid syntax
+JMP D1,BK		ERROR: Invalid addressing mode
+JMP #$12,BK		ERROR: Invalid addressing mode
+JMP *+$10(PC),D1		ERROR: Invalid syntax
+JMP *+$10(PC),A2		ERROR: Invalid syntax
+JMP D1,*+$10(PC)		ERROR: Invalid addressing mode
+JMP #$12,*+$10(PC)		ERROR: Invalid addressing mode
+JMP *(PC,D0.W),D1		ERROR: Invalid syntax
+JMP *(PC,D0.W),A2		ERROR: Invalid syntax
+JMP D1,*(PC,D0.W)		ERROR: Invalid addressing mode
+JMP #$12,*(PC,D0.W)		ERROR: Invalid addressing mode
+JMP BK(PC),D1		ERROR: Invalid syntax
+JMP BK(PC),A2		ERROR: Invalid syntax
+JMP D1,BK(PC)		ERROR: Invalid addressing mode
+JMP #$12,BK(PC)		ERROR: Invalid addressing mode
+JMP #8,D1		ERROR: Invalid addressing mode
+JMP #8,A2		ERROR: Invalid addressing mode
+JMP D1,#8		ERROR: Invalid addressing mode
+JMP #$12,#8		ERROR: Invalid addressing mode
+JMP #9,D1		ERROR: Invalid addressing mode
+JMP #9,A2		ERROR: Invalid addressing mode
+JMP D1,#9		ERROR: Invalid addressing mode
+JMP #$12,#9		ERROR: Invalid addressing mode
+JMP #0,D1		ERROR: Invalid addressing mode
+JMP #0,A2		ERROR: Invalid addressing mode
+JMP D1,#0		ERROR: Invalid addressing mode
+JMP #$12,#0		ERROR: Invalid addressing mode
+JMP #-1,D1		ERROR: Invalid addressing mode
+JMP #-1,A2		ERROR: Invalid addressing mode
+JMP D1,#-1		ERROR: Invalid addressing mode
+JMP #$12,#-1		ERROR: Invalid addressing mode
+JMP #$80,D1		ERROR: Invalid addressing mode
+JMP #$80,A2		ERROR: Invalid addressing mode
+JMP D1,#$80		ERROR: Invalid addressing mode
+JMP #$12,#$80		ERROR: Invalid addressing mode
+JMP #$12345678,D1		ERROR: Invalid addressing mode
+JMP #$12345678,A2		ERROR: Invalid addressing mode
+JMP D1,#$12345678		ERROR: Invalid addressing mode
+JMP #$12,#$12345678		ERROR: Invalid addressing mode
+JMP #$12345678.L,D1		ERROR: Invalid addressing mode
+JMP #$12345678.L,A2		ERROR: Invalid addressing mode
+JMP D1,#$12345678.L		ERROR: Invalid addressing mode
+JMP #$12,#$12345678.L		ERROR: Invalid addressing mode
+JMP #BK,D1		ERROR: Invalid addressing mode
+JMP #BK,A2		ERROR: Invalid addressing mode
+JMP D1,#BK		ERROR: Invalid addressing mode
+JMP #$12,#BK		ERROR: Invalid addressing mode
+JMP #FW,D1		ERROR: Invalid addressing mode
+JMP #FW,A2		ERROR: Invalid addressing mode
+JMP D1,#FW		ERROR: Invalid addressing mode
+JMP #$12,#FW		ERROR: Invalid addressing mode
+JMP #UNDEF,D1		ERROR: Invalid addressing mode
+JMP #UNDEF,A2		ERROR: Invalid addressing mode
+JMP D1,#UNDEF		ERROR: Invalid addressing mode
+JMP #$12,#UNDEF		ERROR: Invalid addressing mode
+JMP UNDEF,D1		ERROR: Invalid syntax
+JMP UNDEF,A2		ERROR: Invalid syntax
+JMP D1,UNDEF		ERROR: Invalid addressing mode
+JMP #$12,UNDEF		ERROR: Invalid addressing mode
+JMP USP,D1		ERROR: Invalid addressing mode
+JMP USP,A2		ERROR: Invalid addressing mode
+JMP D1,USP		ERROR: Invalid addressing mode
+JMP #$12,USP		ERROR: Invalid addressing mode
+JMP D1,D2,D3		ERROR: Invalid addressing mode
+JMP.B		ERROR: Invalid syntax
+JMP.B D1		ERROR: Invalid addressing mode
+JMP.B A2		ERROR: Invalid addressing mode
+JMP.B SP		ERROR: Invalid addressing mode
+JMP.B (A3)	4ED3	ERROR: Invalid size code
+JMP.B (A4)+		ERROR: Invalid addressing mode
+JMP.B -(A5)		ERROR: Invalid addressing mode
+JMP.B $10(A6)	4EEE0010	ERROR: Invalid size code
+JMP.B -2(A0)	4EE8FFFE	ERROR: Invalid size code
+JMP.B $10(A6,D7.W)	4EF67010	ERROR: Invalid size code
+JMP.B $12(A0,A1.L)	4EF09812	ERROR: Invalid size code
+JMP.B (A2,D3)	4EF23000	ERROR: Invalid size code
+JMP.B $1234	4EF81234	ERROR: Invalid size code
+JMP.B $12345678	4EF912345678	ERROR: Invalid size code
+JMP.B $1234.L	4EF900001234	ERROR: Invalid size code
+JMP.B $1234.W	4EF81234	ERROR: Invalid size code
+JMP.B $8000	4EF900008000	ERROR: Invalid size code
+JMP.B BK	4EF81F00	ERROR: Invalid size code
+JMP.B FW	4EF900001F00	ERROR: Invalid size code
+JMP.B *+$10(PC)	4EFA000E	ERROR: Invalid size code
+JMP.B *(PC,D0.W)	4EFB00FE	ERROR: Invalid size code
+JMP.B BK(PC)	4EFA0EFE	ERROR: Invalid size code
+JMP.B #1		ERROR: Invalid addressing mode
+JMP.B #8		ERROR: Invalid addressing mode
+JMP.B #9		ERROR: Invalid addressing mode
+JMP.B #0		ERROR: Invalid addressing mode
+JMP.B #-1		ERROR: Invalid addressing mode
+JMP.B #$80		ERROR: Invalid addressing mode
+JMP.B #$1234		ERROR: Invalid addressing mode
+JMP.B #$12345678		ERROR: Invalid addressing mode
+JMP.B #$12345678.L		ERROR: Invalid addressing mode
+JMP.B #BK		ERROR: Invalid addressing mode
+JMP.B #FW		ERROR: Invalid addressing mode
+JMP.B #UNDEF		ERROR: Invalid addressing mode
+JMP.B UNDEF	4EF9000055CA	ERROR: Undefined symbol
+JMP.B SR		ERROR: Invalid addressing mode
+JMP.B CCR		ERROR: Invalid addressing mode
+JMP.B USP		ERROR: Invalid addressing mode
+JMP.B D1,D2,D3		ERROR: Invalid addressing mode
+JMP.W		ERROR: Invalid syntax
+JMP.W D1		ERROR: Invalid addressing mode
+JMP.W A2		ERROR: Invalid addressing mode
+JMP.W SP		ERROR: Invalid addressing mode
+JMP.W (A3)	4ED3	ERROR: Invalid size code
+JMP.W (A4)+		ERROR: Invalid addressing mode
+JMP.W -(A5)		ERROR: Invalid addressing mode
+JMP.W $10(A6)	4EEE0010	ERROR: Invalid size code
+JMP.W -2(A0)	4EE8FFFE	ERROR: Invalid size code
+JMP.W $10(A6,D7.W)	4EF67010	ERROR: Invalid size code
+JMP.W $12(A0,A1.L)	4EF09812	ERROR: Invalid size code
+JMP.W (A2,D3)	4EF23000	ERROR: Invalid size code
+JMP.W $1234	4EF81234	ERROR: Invalid size code
+JMP.W $12345678	4EF912345678	ERROR: Invalid size code
+JMP.W $1234.L	4EF900001234	ERROR: Invalid size code
+JMP.W $1234.W	4EF81234	ERROR: Invalid size code
+JMP.W $8000	4EF900008000	ERROR: Invalid size code
+JMP.W BK	4EF81F00	ERROR: Invalid size code
+JMP.W FW	4EF900001F00	ERROR: Invalid size code
+JMP.W *+$10(PC)	4EFA000E	ERROR: Invalid size code
+JMP.W *(PC,D0.W)	4EFB00FE	ERROR: Invalid size code
+JMP.W BK(PC)	4EFA0EFE	ERROR: Invalid size code
+JMP.W #1		ERROR: Invalid addressing mode
+JMP.W #8		ERROR: Invalid addressing mode
+JMP.W #9		ERROR: Invalid addressing mode
+JMP.W #0		ERROR: Invalid addressing mode
+JMP.W #-1		ERROR: Invalid addressing mode
+JMP.W #$80		ERROR: Invalid addressing mode
+JMP.W #$1234		ERROR: Invalid addressing mode
+JMP.W #$12345678		ERROR: Invalid addressing mode
+JMP.W #$12345678.L		ERROR: Invalid addressing mode
+JMP.W #BK		ERROR: Invalid addressing mode
+JMP.W #FW		ERROR: Invalid addressing mode
+JMP.W #UNDEF		ERROR: Invalid addressing mode
+JMP.W UNDEF	4EF9000055CA	ERROR: Undefined symbol
+JMP.W SR		ERROR: Invalid addressing mode
+JMP.W CCR		ERROR: Invalid addressing mode
+JMP.W USP		ERROR: Invalid addressing mode
+JMP.W D1,D2,D3		ERROR: Invalid addressing mode
+JMP.L		ERROR: Invalid syntax
+JMP.L D1		ERROR: Invalid addressing mode
+JMP.L A2		ERROR: Invalid addressing mode
+JMP.L SP		ERROR: Invalid addressing mode
+JMP.L (A3)	4ED3	ERROR: Invalid size code
+JMP.L (A4)+		ERROR: Invalid addressing mode
+JMP.L -(A5)		ERROR: Invalid addressing mode
+JMP.L $10(A6)	4EEE0010	ERROR: Invalid size code
+JMP.L -2(A0)	4EE8FFFE	ERROR: Invalid size code
+JMP.L $10(A6,D7.W)	4EF67010	ERROR: Invalid size code
+JMP.L $12(A0,A1.L)	4EF09812	ERROR: Invalid size code
+JMP.L (A2,D3)	4EF23000	ERROR: Invalid size code
+JMP.L $1234	4EF81234	ERROR: Invalid size code
+JMP.L $12345678	4EF912345678	ERROR: Invalid size code
+JMP.L $1234.L	4EF900001234	ERROR: Invalid size code
+JMP.L $1234.W	4EF81234	ERROR: Invalid size code
+JMP.L $8000	4EF900008000	ERROR: Invalid size code
+JMP.L BK	4EF81F00	ERROR: Invalid size code
+JMP.L FW	4EF900001F00	ERROR: Invalid size code
+JMP.L *+$10(PC)	4EFA000E	ERROR: Invalid size code
+JMP.L *(PC,D0.W)	4EFB00FE	ERROR: Invalid size code
+JMP.L BK(PC)	4EFA0EFE	ERROR: Invalid size code
+JMP.L #1		ERROR: Invalid addressing mode
+JMP.L #8		ERROR: Invalid addressing mode
+JMP.L #9		ERROR: Invalid addressing mode
+JMP.L #0		ERROR: Invalid addressing mode
+JMP.L #-1		ERROR: Invalid addressing mode
+JMP.L #$80		ERROR: Invalid addressing mode
+JMP.L #$1234		ERROR: Invalid addressing mode
+JMP.L #$12345678		ERROR: Invalid addressing mode
+JMP.L #$12345678.L		ERROR: Invalid addressing mode
+JMP.L #BK		ERROR: Invalid addressing mode
+JMP.L #FW		ERROR: Invalid addressing mode
+JMP.L #UNDEF		ERROR: Invalid addressing mode
+JMP.L UNDEF	4EF9000055CA	ERROR: Undefined symbol
+JMP.L SR		ERROR: Invalid addressing mode
+JMP.L CCR		ERROR: Invalid addressing mode
+JMP.L USP		ERROR: Invalid addressing mode
+JMP.L D1,D2,D3		ERROR: Invalid addressing mode
+JMP.S		ERROR: Invalid syntax
+JMP.S D1		ERROR: Invalid addressing mode
+JMP.S A2		ERROR: Invalid addressing mode
+JMP.S SP		ERROR: Invalid addressing mode
+JMP.S (A3)	4ED3	ERROR: Invalid size code
+JMP.S (A4)+		ERROR: Invalid addressing mode
+JMP.S -(A5)		ERROR: Invalid addressing mode
+JMP.S $10(A6)	4EEE0010	ERROR: Invalid size code
+JMP.S -2(A0)	4EE8FFFE	ERROR: Invalid size code
+JMP.S $10(A6,D7.W)	4EF67010	ERROR: Invalid size code
+JMP.S $12(A0,A1.L)	4EF09812	ERROR: Invalid size code
+JMP.S (A2,D3)	4EF23000	ERROR: Invalid size code
+JMP.S $1234	4EF81234	ERROR: Invalid size code
+JMP.S $12345678	4EF912345678	ERROR: Invalid size code
+JMP.S $1234.L	4EF900001234	ERROR: Invalid size code
+JMP.S $1234.W	4EF81234	ERROR: Invalid size code
+JMP.S $8000	4EF900008000	ERROR: Invalid size code
+JMP.S BK	4EF81F00	ERROR: Invalid size code
+JMP.S FW	4EF900001F00	ERROR: Invalid size code
+JMP.S *+$10(PC)	4EFA000E	ERROR: Invalid size code
+JMP.S *(PC,D0.W)	4EFB00FE	ERROR: Invalid size code
+JMP.S BK(PC)	4EFA0EFE	ERROR: Invalid size code
+JMP.S #1		ERROR: Invalid addressing mode
+JMP.S #8		ERROR: Invalid addressing mode
+JMP.S #9		ERROR: Invalid addressing mode
+JMP.S #0		ERROR: Invalid addressing mode
+JMP.S #-1		ERROR: Invalid addressing mode
+JMP.S #$80		ERROR: Invalid addressing mode
+JMP.S #$1234		ERROR: Invalid addressing mode
+JMP.S #$12345678		ERROR: Invalid addressing mode
+JMP.S #$12345678.L		ERROR: Invalid addressing mode
+JMP.S #BK		ERROR: Invalid addressing mode
+JMP.S #FW		ERROR: Invalid addressing mode
+JMP.S #UNDEF		ERROR: Invalid addressing mode
+JMP.S UNDEF	4EF9000055CA	ERROR: Undefined symbol
+JMP.S SR		ERROR: Invalid addressing mode
+JMP.S CCR		ERROR: Invalid addressing mode
+JMP.S USP		ERROR: Invalid addressing mode
+JMP.S D1,D2,D3		ERROR: Invalid addressing mode
+JMP.X D1,D2		ERROR: Invalid addressing mode
+JMP.X #1		ERROR: Invalid addressing mode

@@ -421,7 +421,8 @@ TEST(AssemblerTest, UnknownInstructionError) {
   auto r = a.Assemble("    ORG $1000\n    BOGUS\n");
   EXPECT_FALSE(r.success);
   ASSERT_FALSE(r.errors.empty());
-  EXPECT_NE(r.errors[0].message.find("BOGUS"), std::string::npos);
+  // ERROR.CPP: INV_OPCODE is reported as "Invalid opcode" (no mnemonic).
+  EXPECT_EQ(r.errors[0].message, "Invalid opcode");
 }
 
 TEST(AssemblerTest, EmptySourceSucceeds) {

@@ -1,0 +1,1621 @@
+CMP		ERROR: Invalid syntax
+CMP D1		ERROR: Comma expected
+CMP A2		ERROR: Comma expected
+CMP SP		ERROR: Comma expected
+CMP (A3)		ERROR: Comma expected
+CMP (A4)+		ERROR: Comma expected
+CMP -(A5)		ERROR: Comma expected
+CMP $10(A6)		ERROR: Comma expected
+CMP -2(A0)		ERROR: Comma expected
+CMP $10(A6,D7.W)		ERROR: Comma expected
+CMP $12(A0,A1.L)		ERROR: Comma expected
+CMP (A2,D3)		ERROR: Comma expected
+CMP $1234		ERROR: Comma expected
+CMP $12345678		ERROR: Comma expected
+CMP $1234.L		ERROR: Comma expected
+CMP $1234.W		ERROR: Comma expected
+CMP $8000		ERROR: Comma expected
+CMP BK		ERROR: Comma expected
+CMP FW		ERROR: Comma expected
+CMP *+$10(PC)		ERROR: Comma expected
+CMP *(PC,D0.W)		ERROR: Comma expected
+CMP BK(PC)		ERROR: Comma expected
+CMP #1		ERROR: Comma expected
+CMP #8		ERROR: Comma expected
+CMP #9		ERROR: Comma expected
+CMP #0		ERROR: Comma expected
+CMP #-1		ERROR: Comma expected
+CMP #$80		ERROR: Comma expected
+CMP #$1234		ERROR: Comma expected
+CMP #$12345678		ERROR: Comma expected
+CMP #$12345678.L		ERROR: Comma expected
+CMP #BK		ERROR: Comma expected
+CMP #FW		ERROR: Comma expected
+CMP #UNDEF		ERROR: Comma expected
+CMP UNDEF		ERROR: Comma expected
+CMP SR		ERROR: Comma expected
+CMP CCR		ERROR: Comma expected
+CMP USP		ERROR: Comma expected
+CMP D1,D1	B241	-
+CMP D1,A2	B4C1	-
+CMP D1,(A3)		ERROR: Invalid addressing mode
+CMP D1,(A4)+		ERROR: Invalid addressing mode
+CMP D1,-(A5)		ERROR: Invalid addressing mode
+CMP D1,$10(A6)		ERROR: Invalid addressing mode
+CMP D1,$10(A6,D7.W)		ERROR: Invalid addressing mode
+CMP D1,$1234		ERROR: Invalid addressing mode
+CMP D1,$12345678		ERROR: Invalid addressing mode
+CMP D1,FW		ERROR: Invalid addressing mode
+CMP D1,*+$10(PC)		ERROR: Invalid addressing mode
+CMP D1,#1		ERROR: Invalid addressing mode
+CMP D1,#$80		ERROR: Invalid addressing mode
+CMP D1,#$1234		ERROR: Invalid addressing mode
+CMP D1,#$12345678		ERROR: Invalid addressing mode
+CMP D1,SR		ERROR: Invalid addressing mode
+CMP D1,CCR		ERROR: Invalid addressing mode
+CMP D1,USP		ERROR: Invalid addressing mode
+CMP A2,D1	B24A	-
+CMP A2,A2	B4CA	-
+CMP A2,(A3)		ERROR: Invalid addressing mode
+CMP A2,(A4)+		ERROR: Invalid addressing mode
+CMP A2,-(A5)		ERROR: Invalid addressing mode
+CMP A2,$10(A6)		ERROR: Invalid addressing mode
+CMP A2,$10(A6,D7.W)		ERROR: Invalid addressing mode
+CMP A2,$1234		ERROR: Invalid addressing mode
+CMP A2,$12345678		ERROR: Invalid addressing mode
+CMP A2,FW		ERROR: Invalid addressing mode
+CMP A2,*+$10(PC)		ERROR: Invalid addressing mode
+CMP A2,#1		ERROR: Invalid addressing mode
+CMP A2,#$80		ERROR: Invalid addressing mode
+CMP A2,#$1234		ERROR: Invalid addressing mode
+CMP A2,#$12345678		ERROR: Invalid addressing mode
+CMP A2,SR		ERROR: Invalid addressing mode
+CMP A2,CCR		ERROR: Invalid addressing mode
+CMP A2,USP		ERROR: Invalid addressing mode
+CMP (A3),D1	B253	-
+CMP (A3),A2	B4D3	-
+CMP (A3),(A3)		ERROR: Invalid addressing mode
+CMP (A3),(A4)+		ERROR: Invalid addressing mode
+CMP (A3),-(A5)		ERROR: Invalid addressing mode
+CMP (A3),$10(A6)		ERROR: Invalid addressing mode
+CMP (A3),$10(A6,D7.W)		ERROR: Invalid addressing mode
+CMP (A3),$1234		ERROR: Invalid addressing mode
+CMP (A3),$12345678		ERROR: Invalid addressing mode
+CMP (A3),FW		ERROR: Invalid addressing mode
+CMP (A3),*+$10(PC)		ERROR: Invalid addressing mode
+CMP (A3),#1		ERROR: Invalid addressing mode
+CMP (A3),#$80		ERROR: Invalid addressing mode
+CMP (A3),#$1234		ERROR: Invalid addressing mode
+CMP (A3),#$12345678		ERROR: Invalid addressing mode
+CMP (A3),SR		ERROR: Invalid addressing mode
+CMP (A3),CCR		ERROR: Invalid addressing mode
+CMP (A3),USP		ERROR: Invalid addressing mode
+CMP (A4)+,D1	B25C	-
+CMP (A4)+,A2	B4DC	-
+CMP (A4)+,(A3)		ERROR: Invalid addressing mode
+CMP (A4)+,(A4)+	B94C	-
+CMP (A4)+,-(A5)		ERROR: Invalid addressing mode
+CMP (A4)+,$10(A6)		ERROR: Invalid addressing mode
+CMP (A4)+,$10(A6,D7.W)		ERROR: Invalid addressing mode
+CMP (A4)+,$1234		ERROR: Invalid addressing mode
+CMP (A4)+,$12345678		ERROR: Invalid addressing mode
+CMP (A4)+,FW		ERROR: Invalid addressing mode
+CMP (A4)+,*+$10(PC)		ERROR: Invalid addressing mode
+CMP (A4)+,#1		ERROR: Invalid addressing mode
+CMP (A4)+,#$80		ERROR: Invalid addressing mode
+CMP (A4)+,#$1234		ERROR: Invalid addressing mode
+CMP (A4)+,#$12345678		ERROR: Invalid addressing mode
+CMP (A4)+,SR		ERROR: Invalid addressing mode
+CMP (A4)+,CCR		ERROR: Invalid addressing mode
+CMP (A4)+,USP		ERROR: Invalid addressing mode
+CMP -(A5),D1	B265	-
+CMP -(A5),A2	B4E5	-
+CMP -(A5),(A3)		ERROR: Invalid addressing mode
+CMP -(A5),(A4)+		ERROR: Invalid addressing mode
+CMP -(A5),-(A5)		ERROR: Invalid addressing mode
+CMP -(A5),$10(A6)		ERROR: Invalid addressing mode
+CMP -(A5),$10(A6,D7.W)		ERROR: Invalid addressing mode
+CMP -(A5),$1234		ERROR: Invalid addressing mode
+CMP -(A5),$12345678		ERROR: Invalid addressing mode
+CMP -(A5),FW		ERROR: Invalid addressing mode
+CMP -(A5),*+$10(PC)		ERROR: Invalid addressing mode
+CMP -(A5),#1		ERROR: Invalid addressing mode
+CMP -(A5),#$80		ERROR: Invalid addressing mode
+CMP -(A5),#$1234		ERROR: Invalid addressing mode
+CMP -(A5),#$12345678		ERROR: Invalid addressing mode
+CMP -(A5),SR		ERROR: Invalid addressing mode
+CMP -(A5),CCR		ERROR: Invalid addressing mode
+CMP -(A5),USP		ERROR: Invalid addressing mode
+CMP $10(A6),D1	B26E0010	-
+CMP $10(A6),A2	B4EE0010	-
+CMP $10(A6),(A3)		ERROR: Invalid addressing mode
+CMP $10(A6),(A4)+		ERROR: Invalid addressing mode
+CMP $10(A6),-(A5)		ERROR: Invalid addressing mode
+CMP $10(A6),$10(A6)		ERROR: Invalid addressing mode
+CMP $10(A6),$10(A6,D7.W)		ERROR: Invalid addressing mode
+CMP $10(A6),$1234		ERROR: Invalid addressing mode
+CMP $10(A6),$12345678		ERROR: Invalid addressing mode
+CMP $10(A6),FW		ERROR: Invalid addressing mode
+CMP $10(A6),*+$10(PC)		ERROR: Invalid addressing mode
+CMP $10(A6),#1		ERROR: Invalid addressing mode
+CMP $10(A6),#$80		ERROR: Invalid addressing mode
+CMP $10(A6),#$1234		ERROR: Invalid addressing mode
+CMP $10(A6),#$12345678		ERROR: Invalid addressing mode
+CMP $10(A6),SR		ERROR: Invalid addressing mode
+CMP $10(A6),CCR		ERROR: Invalid addressing mode
+CMP $10(A6),USP		ERROR: Invalid addressing mode
+CMP $10(A6,D7.W),D1	B2767010	-
+CMP $10(A6,D7.W),A2	B4F67010	-
+CMP $10(A6,D7.W),(A3)		ERROR: Invalid addressing mode
+CMP $10(A6,D7.W),(A4)+		ERROR: Invalid addressing mode
+CMP $10(A6,D7.W),-(A5)		ERROR: Invalid addressing mode
+CMP $10(A6,D7.W),$10(A6)		ERROR: Invalid addressing mode
+CMP $10(A6,D7.W),$10(A6,D7.W)		ERROR: Invalid addressing mode
+CMP $10(A6,D7.W),$1234		ERROR: Invalid addressing mode
+CMP $10(A6,D7.W),$12345678		ERROR: Invalid addressing mode
+CMP $10(A6,D7.W),FW		ERROR: Invalid addressing mode
+CMP $10(A6,D7.W),*+$10(PC)		ERROR: Invalid addressing mode
+CMP $10(A6,D7.W),#1		ERROR: Invalid addressing mode
+CMP $10(A6,D7.W),#$80		ERROR: Invalid addressing mode
+CMP $10(A6,D7.W),#$1234		ERROR: Invalid addressing mode
+CMP $10(A6,D7.W),#$12345678		ERROR: Invalid addressing mode
+CMP $10(A6,D7.W),SR		ERROR: Invalid addressing mode
+CMP $10(A6,D7.W),CCR		ERROR: Invalid addressing mode
+CMP $10(A6,D7.W),USP		ERROR: Invalid addressing mode
+CMP $1234,D1	B2781234	-
+CMP $1234,A2	B4F81234	-
+CMP $1234,(A3)		ERROR: Invalid addressing mode
+CMP $1234,(A4)+		ERROR: Invalid addressing mode
+CMP $1234,-(A5)		ERROR: Invalid addressing mode
+CMP $1234,$10(A6)		ERROR: Invalid addressing mode
+CMP $1234,$10(A6,D7.W)		ERROR: Invalid addressing mode
+CMP $1234,$1234		ERROR: Invalid addressing mode
+CMP $1234,$12345678		ERROR: Invalid addressing mode
+CMP $1234,FW		ERROR: Invalid addressing mode
+CMP $1234,*+$10(PC)		ERROR: Invalid addressing mode
+CMP $1234,#1		ERROR: Invalid addressing mode
+CMP $1234,#$80		ERROR: Invalid addressing mode
+CMP $1234,#$1234		ERROR: Invalid addressing mode
+CMP $1234,#$12345678		ERROR: Invalid addressing mode
+CMP $1234,SR		ERROR: Invalid addressing mode
+CMP $1234,CCR		ERROR: Invalid addressing mode
+CMP $1234,USP		ERROR: Invalid addressing mode
+CMP $12345678,D1	B27912345678	-
+CMP $12345678,A2	B4F912345678	-
+CMP $12345678,(A3)		ERROR: Invalid addressing mode
+CMP $12345678,(A4)+		ERROR: Invalid addressing mode
+CMP $12345678,-(A5)		ERROR: Invalid addressing mode
+CMP $12345678,$10(A6)		ERROR: Invalid addressing mode
+CMP $12345678,$10(A6,D7.W)		ERROR: Invalid addressing mode
+CMP $12345678,$1234		ERROR: Invalid addressing mode
+CMP $12345678,$12345678		ERROR: Invalid addressing mode
+CMP $12345678,FW		ERROR: Invalid addressing mode
+CMP $12345678,*+$10(PC)		ERROR: Invalid addressing mode
+CMP $12345678,#1		ERROR: Invalid addressing mode
+CMP $12345678,#$80		ERROR: Invalid addressing mode
+CMP $12345678,#$1234		ERROR: Invalid addressing mode
+CMP $12345678,#$12345678		ERROR: Invalid addressing mode
+CMP $12345678,SR		ERROR: Invalid addressing mode
+CMP $12345678,CCR		ERROR: Invalid addressing mode
+CMP $12345678,USP		ERROR: Invalid addressing mode
+CMP FW,D1	B27900001F00	-
+CMP FW,A2	B4F900001F00	-
+CMP FW,(A3)		ERROR: Invalid addressing mode
+CMP FW,(A4)+		ERROR: Invalid addressing mode
+CMP FW,-(A5)		ERROR: Invalid addressing mode
+CMP FW,$10(A6)		ERROR: Invalid addressing mode
+CMP FW,$10(A6,D7.W)		ERROR: Invalid addressing mode
+CMP FW,$1234		ERROR: Invalid addressing mode
+CMP FW,$12345678		ERROR: Invalid addressing mode
+CMP FW,FW		ERROR: Invalid addressing mode
+CMP FW,*+$10(PC)		ERROR: Invalid addressing mode
+CMP FW,#1		ERROR: Invalid addressing mode
+CMP FW,#$80		ERROR: Invalid addressing mode
+CMP FW,#$1234		ERROR: Invalid addressing mode
+CMP FW,#$12345678		ERROR: Invalid addressing mode
+CMP FW,SR		ERROR: Invalid addressing mode
+CMP FW,CCR		ERROR: Invalid addressing mode
+CMP FW,USP		ERROR: Invalid addressing mode
+CMP *+$10(PC),D1	B27A000E	-
+CMP *+$10(PC),A2	B4FA000E	-
+CMP *+$10(PC),(A3)		ERROR: Invalid addressing mode
+CMP *+$10(PC),(A4)+		ERROR: Invalid addressing mode
+CMP *+$10(PC),-(A5)		ERROR: Invalid addressing mode
+CMP *+$10(PC),$10(A6)		ERROR: Invalid addressing mode
+CMP *+$10(PC),$10(A6,D7.W)		ERROR: Invalid addressing mode
+CMP *+$10(PC),$1234		ERROR: Invalid addressing mode
+CMP *+$10(PC),$12345678		ERROR: Invalid addressing mode
+CMP *+$10(PC),FW		ERROR: Invalid addressing mode
+CMP *+$10(PC),*+$10(PC)		ERROR: Invalid addressing mode
+CMP *+$10(PC),#1		ERROR: Invalid addressing mode
+CMP *+$10(PC),#$80		ERROR: Invalid addressing mode
+CMP *+$10(PC),#$1234		ERROR: Invalid addressing mode
+CMP *+$10(PC),#$12345678		ERROR: Invalid addressing mode
+CMP *+$10(PC),SR		ERROR: Invalid addressing mode
+CMP *+$10(PC),CCR		ERROR: Invalid addressing mode
+CMP *+$10(PC),USP		ERROR: Invalid addressing mode
+CMP #1,D1	B27C0001	-
+CMP #1,A2	B4FC0001	-
+CMP #1,(A3)	0C530001	-
+CMP #1,(A4)+	0C5C0001	-
+CMP #1,-(A5)	0C650001	-
+CMP #1,$10(A6)	0C6E00010010	-
+CMP #1,$10(A6,D7.W)	0C7600017010	-
+CMP #1,$1234	0C7800011234	-
+CMP #1,$12345678	0C79000112345678	-
+CMP #1,FW	0C79000100001F00	-
+CMP #1,*+$10(PC)		ERROR: Invalid addressing mode
+CMP #1,#1		ERROR: Invalid addressing mode
+CMP #1,#$80		ERROR: Invalid addressing mode
+CMP #1,#$1234		ERROR: Invalid addressing mode
+CMP #1,#$12345678		ERROR: Invalid addressing mode
+CMP #1,SR		ERROR: Invalid addressing mode
+CMP #1,CCR		ERROR: Invalid addressing mode
+CMP #1,USP		ERROR: Invalid addressing mode
+CMP #$80,D1	B27C0080	-
+CMP #$80,A2	B4FC0080	-
+CMP #$80,(A3)	0C530080	-
+CMP #$80,(A4)+	0C5C0080	-
+CMP #$80,-(A5)	0C650080	-
+CMP #$80,$10(A6)	0C6E00800010	-
+CMP #$80,$10(A6,D7.W)	0C7600807010	-
+CMP #$80,$1234	0C7800801234	-
+CMP #$80,$12345678	0C79008012345678	-
+CMP #$80,FW	0C79008000001F00	-
+CMP #$80,*+$10(PC)		ERROR: Invalid addressing mode
+CMP #$80,#1		ERROR: Invalid addressing mode
+CMP #$80,#$80		ERROR: Invalid addressing mode
+CMP #$80,#$1234		ERROR: Invalid addressing mode
+CMP #$80,#$12345678		ERROR: Invalid addressing mode
+CMP #$80,SR		ERROR: Invalid addressing mode
+CMP #$80,CCR		ERROR: Invalid addressing mode
+CMP #$80,USP		ERROR: Invalid addressing mode
+CMP #$1234,D1	B27C1234	-
+CMP #$1234,A2	B4FC1234	-
+CMP #$1234,(A3)	0C531234	-
+CMP #$1234,(A4)+	0C5C1234	-
+CMP #$1234,-(A5)	0C651234	-
+CMP #$1234,$10(A6)	0C6E12340010	-
+CMP #$1234,$10(A6,D7.W)	0C7612347010	-
+CMP #$1234,$1234	0C7812341234	-
+CMP #$1234,$12345678	0C79123412345678	-
+CMP #$1234,FW	0C79123400001F00	-
+CMP #$1234,*+$10(PC)		ERROR: Invalid addressing mode
+CMP #$1234,#1		ERROR: Invalid addressing mode
+CMP #$1234,#$80		ERROR: Invalid addressing mode
+CMP #$1234,#$1234		ERROR: Invalid addressing mode
+CMP #$1234,#$12345678		ERROR: Invalid addressing mode
+CMP #$1234,SR		ERROR: Invalid addressing mode
+CMP #$1234,CCR		ERROR: Invalid addressing mode
+CMP #$1234,USP		ERROR: Invalid addressing mode
+CMP #$12345678,D1	B27C5678	ERROR: Immediate data exceeds 16 bits
+CMP #$12345678,A2	B4FC5678	ERROR: Immediate data exceeds 16 bits
+CMP #$12345678,(A3)	0C535678	ERROR: Immediate data exceeds 16 bits
+CMP #$12345678,(A4)+	0C5C5678	ERROR: Immediate data exceeds 16 bits
+CMP #$12345678,-(A5)	0C655678	ERROR: Immediate data exceeds 16 bits
+CMP #$12345678,$10(A6)	0C6E56780010	ERROR: Immediate data exceeds 16 bits
+CMP #$12345678,$10(A6,D7.W)	0C7656787010	ERROR: Immediate data exceeds 16 bits
+CMP #$12345678,$1234	0C7856781234	ERROR: Immediate data exceeds 16 bits
+CMP #$12345678,$12345678	0C79567812345678	ERROR: Immediate data exceeds 16 bits
+CMP #$12345678,FW	0C79567800001F00	ERROR: Immediate data exceeds 16 bits
+CMP #$12345678,*+$10(PC)		ERROR: Invalid addressing mode
+CMP #$12345678,#1		ERROR: Invalid addressing mode
+CMP #$12345678,#$80		ERROR: Invalid addressing mode
+CMP #$12345678,#$1234		ERROR: Invalid addressing mode
+CMP #$12345678,#$12345678		ERROR: Invalid addressing mode
+CMP #$12345678,SR		ERROR: Invalid addressing mode
+CMP #$12345678,CCR		ERROR: Invalid addressing mode
+CMP #$12345678,USP		ERROR: Invalid addressing mode
+CMP SR,D1		ERROR: Invalid addressing mode
+CMP SR,A2		ERROR: Invalid addressing mode
+CMP SR,(A3)		ERROR: Invalid addressing mode
+CMP SR,(A4)+		ERROR: Invalid addressing mode
+CMP SR,-(A5)		ERROR: Invalid addressing mode
+CMP SR,$10(A6)		ERROR: Invalid addressing mode
+CMP SR,$10(A6,D7.W)		ERROR: Invalid addressing mode
+CMP SR,$1234		ERROR: Invalid addressing mode
+CMP SR,$12345678		ERROR: Invalid addressing mode
+CMP SR,FW		ERROR: Invalid addressing mode
+CMP SR,*+$10(PC)		ERROR: Invalid addressing mode
+CMP SR,#1		ERROR: Invalid addressing mode
+CMP SR,#$80		ERROR: Invalid addressing mode
+CMP SR,#$1234		ERROR: Invalid addressing mode
+CMP SR,#$12345678		ERROR: Invalid addressing mode
+CMP SR,SR		ERROR: Invalid addressing mode
+CMP SR,CCR		ERROR: Invalid addressing mode
+CMP SR,USP		ERROR: Invalid addressing mode
+CMP CCR,D1		ERROR: Invalid addressing mode
+CMP CCR,A2		ERROR: Invalid addressing mode
+CMP CCR,(A3)		ERROR: Invalid addressing mode
+CMP CCR,(A4)+		ERROR: Invalid addressing mode
+CMP CCR,-(A5)		ERROR: Invalid addressing mode
+CMP CCR,$10(A6)		ERROR: Invalid addressing mode
+CMP CCR,$10(A6,D7.W)		ERROR: Invalid addressing mode
+CMP CCR,$1234		ERROR: Invalid addressing mode
+CMP CCR,$12345678		ERROR: Invalid addressing mode
+CMP CCR,FW		ERROR: Invalid addressing mode
+CMP CCR,*+$10(PC)		ERROR: Invalid addressing mode
+CMP CCR,#1		ERROR: Invalid addressing mode
+CMP CCR,#$80		ERROR: Invalid addressing mode
+CMP CCR,#$1234		ERROR: Invalid addressing mode
+CMP CCR,#$12345678		ERROR: Invalid addressing mode
+CMP CCR,SR		ERROR: Invalid addressing mode
+CMP CCR,CCR		ERROR: Invalid addressing mode
+CMP CCR,USP		ERROR: Invalid addressing mode
+CMP USP,D1		ERROR: Invalid addressing mode
+CMP USP,A2		ERROR: Invalid addressing mode
+CMP USP,(A3)		ERROR: Invalid addressing mode
+CMP USP,(A4)+		ERROR: Invalid addressing mode
+CMP USP,-(A5)		ERROR: Invalid addressing mode
+CMP USP,$10(A6)		ERROR: Invalid addressing mode
+CMP USP,$10(A6,D7.W)		ERROR: Invalid addressing mode
+CMP USP,$1234		ERROR: Invalid addressing mode
+CMP USP,$12345678		ERROR: Invalid addressing mode
+CMP USP,FW		ERROR: Invalid addressing mode
+CMP USP,*+$10(PC)		ERROR: Invalid addressing mode
+CMP USP,#1		ERROR: Invalid addressing mode
+CMP USP,#$80		ERROR: Invalid addressing mode
+CMP USP,#$1234		ERROR: Invalid addressing mode
+CMP USP,#$12345678		ERROR: Invalid addressing mode
+CMP USP,SR		ERROR: Invalid addressing mode
+CMP USP,CCR		ERROR: Invalid addressing mode
+CMP USP,USP		ERROR: Invalid addressing mode
+CMP SP,D1	B24F	-
+CMP SP,A2	B4CF	-
+CMP D1,SP	BEC1	-
+CMP #$12,SP	BEFC0012	-
+CMP -2(A0),D1	B268FFFE	-
+CMP -2(A0),A2	B4E8FFFE	-
+CMP D1,-2(A0)		ERROR: Invalid addressing mode
+CMP #$12,-2(A0)	0C680012FFFE	-
+CMP $12(A0,A1.L),D1	B2709812	-
+CMP $12(A0,A1.L),A2	B4F09812	-
+CMP D1,$12(A0,A1.L)		ERROR: Invalid addressing mode
+CMP #$12,$12(A0,A1.L)	0C7000129812	-
+CMP (A2,D3),D1	B2723000	-
+CMP (A2,D3),A2	B4F23000	-
+CMP D1,(A2,D3)		ERROR: Invalid addressing mode
+CMP #$12,(A2,D3)	0C7200123000	-
+CMP $1234.L,D1	B27900001234	-
+CMP $1234.L,A2	B4F900001234	-
+CMP D1,$1234.L		ERROR: Invalid addressing mode
+CMP #$12,$1234.L	0C79001200001234	-
+CMP $1234.W,D1	B2781234	WARNING: Forcing SHORT addressing disables range checking of extension word
+CMP $1234.W,A2	B4F81234	WARNING: Forcing SHORT addressing disables range checking of extension word
+CMP D1,$1234.W		ERROR: Invalid addressing mode
+CMP #$12,$1234.W	0C7800121234	WARNING: Forcing SHORT addressing disables range checking of extension word
+CMP $8000,D1	B27900008000	-
+CMP $8000,A2	B4F900008000	-
+CMP D1,$8000		ERROR: Invalid addressing mode
+CMP #$12,$8000	0C79001200008000	-
+CMP BK,D1	B2781F00	-
+CMP BK,A2	B4F81F00	-
+CMP D1,BK		ERROR: Invalid addressing mode
+CMP #$12,BK	0C7800121F00	-
+CMP *(PC,D0.W),D1	B27B00FE	-
+CMP *(PC,D0.W),A2	B4FB00FE	-
+CMP D1,*(PC,D0.W)		ERROR: Invalid addressing mode
+CMP #$12,*(PC,D0.W)		ERROR: Invalid addressing mode
+CMP BK(PC),D1	B27A0EFE	-
+CMP BK(PC),A2	B4FA0EFE	-
+CMP D1,BK(PC)		ERROR: Invalid addressing mode
+CMP #$12,BK(PC)		ERROR: Invalid addressing mode
+CMP #8,D1	B27C0008	-
+CMP #8,A2	B4FC0008	-
+CMP D1,#8		ERROR: Invalid addressing mode
+CMP #$12,#8		ERROR: Invalid addressing mode
+CMP #9,D1	B27C0009	-
+CMP #9,A2	B4FC0009	-
+CMP D1,#9		ERROR: Invalid addressing mode
+CMP #$12,#9		ERROR: Invalid addressing mode
+CMP #0,D1	B27C0000	-
+CMP #0,A2	B4FC0000	-
+CMP D1,#0		ERROR: Invalid addressing mode
+CMP #$12,#0		ERROR: Invalid addressing mode
+CMP #-1,D1	B27CFFFF	-
+CMP #-1,A2	B4FCFFFF	-
+CMP D1,#-1		ERROR: Invalid addressing mode
+CMP #$12,#-1		ERROR: Invalid addressing mode
+CMP #$12345678.L,D1	B27C5678	ERROR: Immediate data exceeds 16 bits
+CMP #$12345678.L,A2	B4FC5678	ERROR: Immediate data exceeds 16 bits
+CMP D1,#$12345678.L		ERROR: Invalid addressing mode
+CMP #$12,#$12345678.L		ERROR: Invalid addressing mode
+CMP #BK,D1	B27C1F00	-
+CMP #BK,A2	B4FC1F00	-
+CMP D1,#BK		ERROR: Invalid addressing mode
+CMP #$12,#BK		ERROR: Invalid addressing mode
+CMP #FW,D1	B27C1F00	-
+CMP #FW,A2	B4FC1F00	-
+CMP D1,#FW		ERROR: Invalid addressing mode
+CMP #$12,#FW		ERROR: Invalid addressing mode
+CMP #UNDEF,D1	B27C5621	ERROR: Undefined symbol
+CMP #UNDEF,A2	B4FC5621	ERROR: Undefined symbol
+CMP D1,#UNDEF		ERROR: Invalid addressing mode
+CMP #$12,#UNDEF		ERROR: Invalid addressing mode
+CMP UNDEF,D1	B27900005621	ERROR: Undefined symbol
+CMP UNDEF,A2	B4F900005621	ERROR: Undefined symbol
+CMP D1,UNDEF		ERROR: Invalid addressing mode
+CMP #$12,UNDEF	0C79001200001F00	ERROR: Undefined symbol
+CMP D1,D2,D3		ERROR: Invalid syntax
+CMP.B		ERROR: Invalid syntax
+CMP.B D1		ERROR: Comma expected
+CMP.B A2		ERROR: Comma expected
+CMP.B SP		ERROR: Comma expected
+CMP.B (A3)		ERROR: Comma expected
+CMP.B (A4)+		ERROR: Comma expected
+CMP.B -(A5)		ERROR: Comma expected
+CMP.B $10(A6)		ERROR: Comma expected
+CMP.B -2(A0)		ERROR: Comma expected
+CMP.B $10(A6,D7.W)		ERROR: Comma expected
+CMP.B $12(A0,A1.L)		ERROR: Comma expected
+CMP.B (A2,D3)		ERROR: Comma expected
+CMP.B $1234		ERROR: Comma expected
+CMP.B $12345678		ERROR: Comma expected
+CMP.B $1234.L		ERROR: Comma expected
+CMP.B $1234.W		ERROR: Comma expected
+CMP.B $8000		ERROR: Comma expected
+CMP.B BK		ERROR: Comma expected
+CMP.B FW		ERROR: Comma expected
+CMP.B *+$10(PC)		ERROR: Comma expected
+CMP.B *(PC,D0.W)		ERROR: Comma expected
+CMP.B BK(PC)		ERROR: Comma expected
+CMP.B #1		ERROR: Comma expected
+CMP.B #8		ERROR: Comma expected
+CMP.B #9		ERROR: Comma expected
+CMP.B #0		ERROR: Comma expected
+CMP.B #-1		ERROR: Comma expected
+CMP.B #$80		ERROR: Comma expected
+CMP.B #$1234		ERROR: Comma expected
+CMP.B #$12345678		ERROR: Comma expected
+CMP.B #$12345678.L		ERROR: Comma expected
+CMP.B #BK		ERROR: Comma expected
+CMP.B #FW		ERROR: Comma expected
+CMP.B #UNDEF		ERROR: Comma expected
+CMP.B UNDEF		ERROR: Comma expected
+CMP.B SR		ERROR: Comma expected
+CMP.B CCR		ERROR: Comma expected
+CMP.B USP		ERROR: Comma expected
+CMP.B D1,D1	B201	-
+CMP.B D1,A2	B4C1	ERROR: Invalid size code
+CMP.B D1,(A3)		ERROR: Invalid addressing mode
+CMP.B D1,$10(A6)		ERROR: Invalid addressing mode
+CMP.B D1,$1234		ERROR: Invalid addressing mode
+CMP.B D1,FW		ERROR: Invalid addressing mode
+CMP.B D1,#1		ERROR: Invalid addressing mode
+CMP.B D1,#$1234		ERROR: Invalid addressing mode
+CMP.B D1,CCR		ERROR: Invalid addressing mode
+CMP.B D1,SR		ERROR: Invalid addressing mode
+CMP.B A2,D1	B24A	ERROR: Invalid size code
+CMP.B A2,A2	B4CA	ERROR: Invalid size code
+CMP.B A2,(A3)		ERROR: Invalid addressing mode
+CMP.B A2,$10(A6)		ERROR: Invalid addressing mode
+CMP.B A2,$1234		ERROR: Invalid addressing mode
+CMP.B A2,FW		ERROR: Invalid addressing mode
+CMP.B A2,#1		ERROR: Invalid addressing mode
+CMP.B A2,#$1234		ERROR: Invalid addressing mode
+CMP.B A2,CCR		ERROR: Invalid addressing mode
+CMP.B A2,SR		ERROR: Invalid addressing mode
+CMP.B (A3),D1	B213	-
+CMP.B (A3),A2	B4D3	ERROR: Invalid size code
+CMP.B (A3),(A3)		ERROR: Invalid addressing mode
+CMP.B (A3),$10(A6)		ERROR: Invalid addressing mode
+CMP.B (A3),$1234		ERROR: Invalid addressing mode
+CMP.B (A3),FW		ERROR: Invalid addressing mode
+CMP.B (A3),#1		ERROR: Invalid addressing mode
+CMP.B (A3),#$1234		ERROR: Invalid addressing mode
+CMP.B (A3),CCR		ERROR: Invalid addressing mode
+CMP.B (A3),SR		ERROR: Invalid addressing mode
+CMP.B $10(A6),D1	B22E0010	-
+CMP.B $10(A6),A2	B4EE0010	ERROR: Invalid size code
+CMP.B $10(A6),(A3)		ERROR: Invalid addressing mode
+CMP.B $10(A6),$10(A6)		ERROR: Invalid addressing mode
+CMP.B $10(A6),$1234		ERROR: Invalid addressing mode
+CMP.B $10(A6),FW		ERROR: Invalid addressing mode
+CMP.B $10(A6),#1		ERROR: Invalid addressing mode
+CMP.B $10(A6),#$1234		ERROR: Invalid addressing mode
+CMP.B $10(A6),CCR		ERROR: Invalid addressing mode
+CMP.B $10(A6),SR		ERROR: Invalid addressing mode
+CMP.B $1234,D1	B2381234	-
+CMP.B $1234,A2	B4F81234	ERROR: Invalid size code
+CMP.B $1234,(A3)		ERROR: Invalid addressing mode
+CMP.B $1234,$10(A6)		ERROR: Invalid addressing mode
+CMP.B $1234,$1234		ERROR: Invalid addressing mode
+CMP.B $1234,FW		ERROR: Invalid addressing mode
+CMP.B $1234,#1		ERROR: Invalid addressing mode
+CMP.B $1234,#$1234		ERROR: Invalid addressing mode
+CMP.B $1234,CCR		ERROR: Invalid addressing mode
+CMP.B $1234,SR		ERROR: Invalid addressing mode
+CMP.B FW,D1	B23900001F00	-
+CMP.B FW,A2	B4F900001F00	ERROR: Invalid size code
+CMP.B FW,(A3)		ERROR: Invalid addressing mode
+CMP.B FW,$10(A6)		ERROR: Invalid addressing mode
+CMP.B FW,$1234		ERROR: Invalid addressing mode
+CMP.B FW,FW		ERROR: Invalid addressing mode
+CMP.B FW,#1		ERROR: Invalid addressing mode
+CMP.B FW,#$1234		ERROR: Invalid addressing mode
+CMP.B FW,CCR		ERROR: Invalid addressing mode
+CMP.B FW,SR		ERROR: Invalid addressing mode
+CMP.B #1,D1	B23C0001	-
+CMP.B #1,A2	B4FC0001	ERROR: Invalid size code
+CMP.B #1,(A3)	0C130001	-
+CMP.B #1,$10(A6)	0C2E00010010	-
+CMP.B #1,$1234	0C3800011234	-
+CMP.B #1,FW	0C39000100001F00	-
+CMP.B #1,#1		ERROR: Invalid addressing mode
+CMP.B #1,#$1234		ERROR: Invalid addressing mode
+CMP.B #1,CCR		ERROR: Invalid addressing mode
+CMP.B #1,SR		ERROR: Invalid addressing mode
+CMP.B #$1234,D1	B23C0034	ERROR: Immediate data exceeds 8 bits
+CMP.B #$1234,A2	B4FC0034	ERROR: Invalid size code
+CMP.B #$1234,(A3)	0C130034	ERROR: Immediate data exceeds 8 bits
+CMP.B #$1234,$10(A6)	0C2E00340010	ERROR: Immediate data exceeds 8 bits
+CMP.B #$1234,$1234	0C3800341234	ERROR: Immediate data exceeds 8 bits
+CMP.B #$1234,FW	0C39003400001F00	ERROR: Immediate data exceeds 8 bits
+CMP.B #$1234,#1		ERROR: Invalid addressing mode
+CMP.B #$1234,#$1234		ERROR: Invalid addressing mode
+CMP.B #$1234,CCR		ERROR: Invalid addressing mode
+CMP.B #$1234,SR		ERROR: Invalid addressing mode
+CMP.B CCR,D1		ERROR: Invalid addressing mode
+CMP.B CCR,A2		ERROR: Invalid addressing mode
+CMP.B CCR,(A3)		ERROR: Invalid addressing mode
+CMP.B CCR,$10(A6)		ERROR: Invalid addressing mode
+CMP.B CCR,$1234		ERROR: Invalid addressing mode
+CMP.B CCR,FW		ERROR: Invalid addressing mode
+CMP.B CCR,#1		ERROR: Invalid addressing mode
+CMP.B CCR,#$1234		ERROR: Invalid addressing mode
+CMP.B CCR,CCR		ERROR: Invalid addressing mode
+CMP.B CCR,SR		ERROR: Invalid addressing mode
+CMP.B SR,D1		ERROR: Invalid addressing mode
+CMP.B SR,A2		ERROR: Invalid addressing mode
+CMP.B SR,(A3)		ERROR: Invalid addressing mode
+CMP.B SR,$10(A6)		ERROR: Invalid addressing mode
+CMP.B SR,$1234		ERROR: Invalid addressing mode
+CMP.B SR,FW		ERROR: Invalid addressing mode
+CMP.B SR,#1		ERROR: Invalid addressing mode
+CMP.B SR,#$1234		ERROR: Invalid addressing mode
+CMP.B SR,CCR		ERROR: Invalid addressing mode
+CMP.B SR,SR		ERROR: Invalid addressing mode
+CMP.B SP,D1	B24F	ERROR: Invalid size code
+CMP.B SP,A2	B4CF	ERROR: Invalid size code
+CMP.B D1,SP	BEC1	ERROR: Invalid size code
+CMP.B #$12,SP	BEFC0012	ERROR: Invalid size code
+CMP.B (A4)+,D1	B21C	-
+CMP.B (A4)+,A2	B4DC	ERROR: Invalid size code
+CMP.B D1,(A4)+		ERROR: Invalid addressing mode
+CMP.B #$12,(A4)+	0C1C0012	-
+CMP.B -(A5),D1	B225	-
+CMP.B -(A5),A2	B4E5	ERROR: Invalid size code
+CMP.B D1,-(A5)		ERROR: Invalid addressing mode
+CMP.B #$12,-(A5)	0C250012	-
+CMP.B -2(A0),D1	B228FFFE	-
+CMP.B -2(A0),A2	B4E8FFFE	ERROR: Invalid size code
+CMP.B D1,-2(A0)		ERROR: Invalid addressing mode
+CMP.B #$12,-2(A0)	0C280012FFFE	-
+CMP.B $10(A6,D7.W),D1	B2367010	-
+CMP.B $10(A6,D7.W),A2	B4F67010	ERROR: Invalid size code
+CMP.B D1,$10(A6,D7.W)		ERROR: Invalid addressing mode
+CMP.B #$12,$10(A6,D7.W)	0C3600127010	-
+CMP.B $12(A0,A1.L),D1	B2309812	-
+CMP.B $12(A0,A1.L),A2	B4F09812	ERROR: Invalid size code
+CMP.B D1,$12(A0,A1.L)		ERROR: Invalid addressing mode
+CMP.B #$12,$12(A0,A1.L)	0C3000129812	-
+CMP.B (A2,D3),D1	B2323000	-
+CMP.B (A2,D3),A2	B4F23000	ERROR: Invalid size code
+CMP.B D1,(A2,D3)		ERROR: Invalid addressing mode
+CMP.B #$12,(A2,D3)	0C3200123000	-
+CMP.B $12345678,D1	B23912345678	-
+CMP.B $12345678,A2	B4F912345678	ERROR: Invalid size code
+CMP.B D1,$12345678		ERROR: Invalid addressing mode
+CMP.B #$12,$12345678	0C39001212345678	-
+CMP.B $1234.L,D1	B23900001234	-
+CMP.B $1234.L,A2	B4F900001234	ERROR: Invalid size code
+CMP.B D1,$1234.L		ERROR: Invalid addressing mode
+CMP.B #$12,$1234.L	0C39001200001234	-
+CMP.B $1234.W,D1	B2381234	WARNING: Forcing SHORT addressing disables range checking of extension word
+CMP.B $1234.W,A2	B4F81234	ERROR: Invalid size code
+CMP.B D1,$1234.W		ERROR: Invalid addressing mode
+CMP.B #$12,$1234.W	0C3800121234	WARNING: Forcing SHORT addressing disables range checking of extension word
+CMP.B $8000,D1	B23900008000	-
+CMP.B $8000,A2	B4F900008000	ERROR: Invalid size code
+CMP.B D1,$8000		ERROR: Invalid addressing mode
+CMP.B #$12,$8000	0C39001200008000	-
+CMP.B BK,D1	B2381F00	-
+CMP.B BK,A2	B4F81F00	ERROR: Invalid size code
+CMP.B D1,BK		ERROR: Invalid addressing mode
+CMP.B #$12,BK	0C3800121F00	-
+CMP.B *+$10(PC),D1	B23A000E	-
+CMP.B *+$10(PC),A2	B4FA000E	ERROR: Invalid size code
+CMP.B D1,*+$10(PC)		ERROR: Invalid addressing mode
+CMP.B #$12,*+$10(PC)		ERROR: Invalid addressing mode
+CMP.B *(PC,D0.W),D1	B23B00FE	-
+CMP.B *(PC,D0.W),A2	B4FB00FE	ERROR: Invalid size code
+CMP.B D1,*(PC,D0.W)		ERROR: Invalid addressing mode
+CMP.B #$12,*(PC,D0.W)		ERROR: Invalid addressing mode
+CMP.B BK(PC),D1	B23A0EFE	-
+CMP.B BK(PC),A2	B4FA0EFE	ERROR: Invalid size code
+CMP.B D1,BK(PC)		ERROR: Invalid addressing mode
+CMP.B #$12,BK(PC)		ERROR: Invalid addressing mode
+CMP.B #8,D1	B23C0008	-
+CMP.B #8,A2	B4FC0008	ERROR: Invalid size code
+CMP.B D1,#8		ERROR: Invalid addressing mode
+CMP.B #$12,#8		ERROR: Invalid addressing mode
+CMP.B #9,D1	B23C0009	-
+CMP.B #9,A2	B4FC0009	ERROR: Invalid size code
+CMP.B D1,#9		ERROR: Invalid addressing mode
+CMP.B #$12,#9		ERROR: Invalid addressing mode
+CMP.B #0,D1	B23C0000	-
+CMP.B #0,A2	B4FC0000	ERROR: Invalid size code
+CMP.B D1,#0		ERROR: Invalid addressing mode
+CMP.B #$12,#0		ERROR: Invalid addressing mode
+CMP.B #-1,D1	B23C00FF	-
+CMP.B #-1,A2	B4FC00FF	ERROR: Invalid size code
+CMP.B D1,#-1		ERROR: Invalid addressing mode
+CMP.B #$12,#-1		ERROR: Invalid addressing mode
+CMP.B #$80,D1	B23C0080	-
+CMP.B #$80,A2	B4FC0080	ERROR: Invalid size code
+CMP.B D1,#$80		ERROR: Invalid addressing mode
+CMP.B #$12,#$80		ERROR: Invalid addressing mode
+CMP.B #$12345678,D1	B23C0078	ERROR: Immediate data exceeds 8 bits
+CMP.B #$12345678,A2	B4FC0078	ERROR: Invalid size code
+CMP.B D1,#$12345678		ERROR: Invalid addressing mode
+CMP.B #$12,#$12345678		ERROR: Invalid addressing mode
+CMP.B #$12345678.L,D1	B23C0078	ERROR: Immediate data exceeds 8 bits
+CMP.B #$12345678.L,A2	B4FC0078	ERROR: Invalid size code
+CMP.B D1,#$12345678.L		ERROR: Invalid addressing mode
+CMP.B #$12,#$12345678.L		ERROR: Invalid addressing mode
+CMP.B #BK,D1	B23C0000	ERROR: Immediate data exceeds 8 bits
+CMP.B #BK,A2	B4FC0000	ERROR: Invalid size code
+CMP.B D1,#BK		ERROR: Invalid addressing mode
+CMP.B #$12,#BK		ERROR: Invalid addressing mode
+CMP.B #FW,D1	B23C0000	ERROR: Immediate data exceeds 8 bits
+CMP.B #FW,A2	B4FC0000	ERROR: Invalid size code
+CMP.B D1,#FW		ERROR: Invalid addressing mode
+CMP.B #$12,#FW		ERROR: Invalid addressing mode
+CMP.B #UNDEF,D1	B23C0021	ERROR: Undefined symbol
+CMP.B #UNDEF,A2	B4FC0021	ERROR: Undefined symbol
+CMP.B D1,#UNDEF		ERROR: Invalid addressing mode
+CMP.B #$12,#UNDEF		ERROR: Invalid addressing mode
+CMP.B UNDEF,D1	B23900005621	ERROR: Undefined symbol
+CMP.B UNDEF,A2	B4F900005621	ERROR: Undefined symbol
+CMP.B D1,UNDEF		ERROR: Invalid addressing mode
+CMP.B #$12,UNDEF	0C39001200001F00	ERROR: Undefined symbol
+CMP.B USP,D1		ERROR: Invalid addressing mode
+CMP.B USP,A2		ERROR: Invalid addressing mode
+CMP.B D1,USP		ERROR: Invalid addressing mode
+CMP.B #$12,USP		ERROR: Invalid addressing mode
+CMP.B D1,D2,D3		ERROR: Invalid syntax
+CMP.W		ERROR: Invalid syntax
+CMP.W D1		ERROR: Comma expected
+CMP.W A2		ERROR: Comma expected
+CMP.W SP		ERROR: Comma expected
+CMP.W (A3)		ERROR: Comma expected
+CMP.W (A4)+		ERROR: Comma expected
+CMP.W -(A5)		ERROR: Comma expected
+CMP.W $10(A6)		ERROR: Comma expected
+CMP.W -2(A0)		ERROR: Comma expected
+CMP.W $10(A6,D7.W)		ERROR: Comma expected
+CMP.W $12(A0,A1.L)		ERROR: Comma expected
+CMP.W (A2,D3)		ERROR: Comma expected
+CMP.W $1234		ERROR: Comma expected
+CMP.W $12345678		ERROR: Comma expected
+CMP.W $1234.L		ERROR: Comma expected
+CMP.W $1234.W		ERROR: Comma expected
+CMP.W $8000		ERROR: Comma expected
+CMP.W BK		ERROR: Comma expected
+CMP.W FW		ERROR: Comma expected
+CMP.W *+$10(PC)		ERROR: Comma expected
+CMP.W *(PC,D0.W)		ERROR: Comma expected
+CMP.W BK(PC)		ERROR: Comma expected
+CMP.W #1		ERROR: Comma expected
+CMP.W #8		ERROR: Comma expected
+CMP.W #9		ERROR: Comma expected
+CMP.W #0		ERROR: Comma expected
+CMP.W #-1		ERROR: Comma expected
+CMP.W #$80		ERROR: Comma expected
+CMP.W #$1234		ERROR: Comma expected
+CMP.W #$12345678		ERROR: Comma expected
+CMP.W #$12345678.L		ERROR: Comma expected
+CMP.W #BK		ERROR: Comma expected
+CMP.W #FW		ERROR: Comma expected
+CMP.W #UNDEF		ERROR: Comma expected
+CMP.W UNDEF		ERROR: Comma expected
+CMP.W SR		ERROR: Comma expected
+CMP.W CCR		ERROR: Comma expected
+CMP.W USP		ERROR: Comma expected
+CMP.W D1,D1	B241	-
+CMP.W D1,A2	B4C1	-
+CMP.W D1,(A3)		ERROR: Invalid addressing mode
+CMP.W D1,(A4)+		ERROR: Invalid addressing mode
+CMP.W D1,-(A5)		ERROR: Invalid addressing mode
+CMP.W D1,$10(A6)		ERROR: Invalid addressing mode
+CMP.W D1,$10(A6,D7.W)		ERROR: Invalid addressing mode
+CMP.W D1,$1234		ERROR: Invalid addressing mode
+CMP.W D1,$12345678		ERROR: Invalid addressing mode
+CMP.W D1,FW		ERROR: Invalid addressing mode
+CMP.W D1,*+$10(PC)		ERROR: Invalid addressing mode
+CMP.W D1,#1		ERROR: Invalid addressing mode
+CMP.W D1,#$80		ERROR: Invalid addressing mode
+CMP.W D1,#$1234		ERROR: Invalid addressing mode
+CMP.W D1,#$12345678		ERROR: Invalid addressing mode
+CMP.W D1,SR		ERROR: Invalid addressing mode
+CMP.W D1,CCR		ERROR: Invalid addressing mode
+CMP.W D1,USP		ERROR: Invalid addressing mode
+CMP.W A2,D1	B24A	-
+CMP.W A2,A2	B4CA	-
+CMP.W A2,(A3)		ERROR: Invalid addressing mode
+CMP.W A2,(A4)+		ERROR: Invalid addressing mode
+CMP.W A2,-(A5)		ERROR: Invalid addressing mode
+CMP.W A2,$10(A6)		ERROR: Invalid addressing mode
+CMP.W A2,$10(A6,D7.W)		ERROR: Invalid addressing mode
+CMP.W A2,$1234		ERROR: Invalid addressing mode
+CMP.W A2,$12345678		ERROR: Invalid addressing mode
+CMP.W A2,FW		ERROR: Invalid addressing mode
+CMP.W A2,*+$10(PC)		ERROR: Invalid addressing mode
+CMP.W A2,#1		ERROR: Invalid addressing mode
+CMP.W A2,#$80		ERROR: Invalid addressing mode
+CMP.W A2,#$1234		ERROR: Invalid addressing mode
+CMP.W A2,#$12345678		ERROR: Invalid addressing mode
+CMP.W A2,SR		ERROR: Invalid addressing mode
+CMP.W A2,CCR		ERROR: Invalid addressing mode
+CMP.W A2,USP		ERROR: Invalid addressing mode
+CMP.W (A3),D1	B253	-
+CMP.W (A3),A2	B4D3	-
+CMP.W (A3),(A3)		ERROR: Invalid addressing mode
+CMP.W (A3),(A4)+		ERROR: Invalid addressing mode
+CMP.W (A3),-(A5)		ERROR: Invalid addressing mode
+CMP.W (A3),$10(A6)		ERROR: Invalid addressing mode
+CMP.W (A3),$10(A6,D7.W)		ERROR: Invalid addressing mode
+CMP.W (A3),$1234		ERROR: Invalid addressing mode
+CMP.W (A3),$12345678		ERROR: Invalid addressing mode
+CMP.W (A3),FW		ERROR: Invalid addressing mode
+CMP.W (A3),*+$10(PC)		ERROR: Invalid addressing mode
+CMP.W (A3),#1		ERROR: Invalid addressing mode
+CMP.W (A3),#$80		ERROR: Invalid addressing mode
+CMP.W (A3),#$1234		ERROR: Invalid addressing mode
+CMP.W (A3),#$12345678		ERROR: Invalid addressing mode
+CMP.W (A3),SR		ERROR: Invalid addressing mode
+CMP.W (A3),CCR		ERROR: Invalid addressing mode
+CMP.W (A3),USP		ERROR: Invalid addressing mode
+CMP.W (A4)+,D1	B25C	-
+CMP.W (A4)+,A2	B4DC	-
+CMP.W (A4)+,(A3)		ERROR: Invalid addressing mode
+CMP.W (A4)+,(A4)+	B94C	-
+CMP.W (A4)+,-(A5)		ERROR: Invalid addressing mode
+CMP.W (A4)+,$10(A6)		ERROR: Invalid addressing mode
+CMP.W (A4)+,$10(A6,D7.W)		ERROR: Invalid addressing mode
+CMP.W (A4)+,$1234		ERROR: Invalid addressing mode
+CMP.W (A4)+,$12345678		ERROR: Invalid addressing mode
+CMP.W (A4)+,FW		ERROR: Invalid addressing mode
+CMP.W (A4)+,*+$10(PC)		ERROR: Invalid addressing mode
+CMP.W (A4)+,#1		ERROR: Invalid addressing mode
+CMP.W (A4)+,#$80		ERROR: Invalid addressing mode
+CMP.W (A4)+,#$1234		ERROR: Invalid addressing mode
+CMP.W (A4)+,#$12345678		ERROR: Invalid addressing mode
+CMP.W (A4)+,SR		ERROR: Invalid addressing mode
+CMP.W (A4)+,CCR		ERROR: Invalid addressing mode
+CMP.W (A4)+,USP		ERROR: Invalid addressing mode
+CMP.W -(A5),D1	B265	-
+CMP.W -(A5),A2	B4E5	-
+CMP.W -(A5),(A3)		ERROR: Invalid addressing mode
+CMP.W -(A5),(A4)+		ERROR: Invalid addressing mode
+CMP.W -(A5),-(A5)		ERROR: Invalid addressing mode
+CMP.W -(A5),$10(A6)		ERROR: Invalid addressing mode
+CMP.W -(A5),$10(A6,D7.W)		ERROR: Invalid addressing mode
+CMP.W -(A5),$1234		ERROR: Invalid addressing mode
+CMP.W -(A5),$12345678		ERROR: Invalid addressing mode
+CMP.W -(A5),FW		ERROR: Invalid addressing mode
+CMP.W -(A5),*+$10(PC)		ERROR: Invalid addressing mode
+CMP.W -(A5),#1		ERROR: Invalid addressing mode
+CMP.W -(A5),#$80		ERROR: Invalid addressing mode
+CMP.W -(A5),#$1234		ERROR: Invalid addressing mode
+CMP.W -(A5),#$12345678		ERROR: Invalid addressing mode
+CMP.W -(A5),SR		ERROR: Invalid addressing mode
+CMP.W -(A5),CCR		ERROR: Invalid addressing mode
+CMP.W -(A5),USP		ERROR: Invalid addressing mode
+CMP.W $10(A6),D1	B26E0010	-
+CMP.W $10(A6),A2	B4EE0010	-
+CMP.W $10(A6),(A3)		ERROR: Invalid addressing mode
+CMP.W $10(A6),(A4)+		ERROR: Invalid addressing mode
+CMP.W $10(A6),-(A5)		ERROR: Invalid addressing mode
+CMP.W $10(A6),$10(A6)		ERROR: Invalid addressing mode
+CMP.W $10(A6),$10(A6,D7.W)		ERROR: Invalid addressing mode
+CMP.W $10(A6),$1234		ERROR: Invalid addressing mode
+CMP.W $10(A6),$12345678		ERROR: Invalid addressing mode
+CMP.W $10(A6),FW		ERROR: Invalid addressing mode
+CMP.W $10(A6),*+$10(PC)		ERROR: Invalid addressing mode
+CMP.W $10(A6),#1		ERROR: Invalid addressing mode
+CMP.W $10(A6),#$80		ERROR: Invalid addressing mode
+CMP.W $10(A6),#$1234		ERROR: Invalid addressing mode
+CMP.W $10(A6),#$12345678		ERROR: Invalid addressing mode
+CMP.W $10(A6),SR		ERROR: Invalid addressing mode
+CMP.W $10(A6),CCR		ERROR: Invalid addressing mode
+CMP.W $10(A6),USP		ERROR: Invalid addressing mode
+CMP.W $10(A6,D7.W),D1	B2767010	-
+CMP.W $10(A6,D7.W),A2	B4F67010	-
+CMP.W $10(A6,D7.W),(A3)		ERROR: Invalid addressing mode
+CMP.W $10(A6,D7.W),(A4)+		ERROR: Invalid addressing mode
+CMP.W $10(A6,D7.W),-(A5)		ERROR: Invalid addressing mode
+CMP.W $10(A6,D7.W),$10(A6)		ERROR: Invalid addressing mode
+CMP.W $10(A6,D7.W),$10(A6,D7.W)		ERROR: Invalid addressing mode
+CMP.W $10(A6,D7.W),$1234		ERROR: Invalid addressing mode
+CMP.W $10(A6,D7.W),$12345678		ERROR: Invalid addressing mode
+CMP.W $10(A6,D7.W),FW		ERROR: Invalid addressing mode
+CMP.W $10(A6,D7.W),*+$10(PC)		ERROR: Invalid addressing mode
+CMP.W $10(A6,D7.W),#1		ERROR: Invalid addressing mode
+CMP.W $10(A6,D7.W),#$80		ERROR: Invalid addressing mode
+CMP.W $10(A6,D7.W),#$1234		ERROR: Invalid addressing mode
+CMP.W $10(A6,D7.W),#$12345678		ERROR: Invalid addressing mode
+CMP.W $10(A6,D7.W),SR		ERROR: Invalid addressing mode
+CMP.W $10(A6,D7.W),CCR		ERROR: Invalid addressing mode
+CMP.W $10(A6,D7.W),USP		ERROR: Invalid addressing mode
+CMP.W $1234,D1	B2781234	-
+CMP.W $1234,A2	B4F81234	-
+CMP.W $1234,(A3)		ERROR: Invalid addressing mode
+CMP.W $1234,(A4)+		ERROR: Invalid addressing mode
+CMP.W $1234,-(A5)		ERROR: Invalid addressing mode
+CMP.W $1234,$10(A6)		ERROR: Invalid addressing mode
+CMP.W $1234,$10(A6,D7.W)		ERROR: Invalid addressing mode
+CMP.W $1234,$1234		ERROR: Invalid addressing mode
+CMP.W $1234,$12345678		ERROR: Invalid addressing mode
+CMP.W $1234,FW		ERROR: Invalid addressing mode
+CMP.W $1234,*+$10(PC)		ERROR: Invalid addressing mode
+CMP.W $1234,#1		ERROR: Invalid addressing mode
+CMP.W $1234,#$80		ERROR: Invalid addressing mode
+CMP.W $1234,#$1234		ERROR: Invalid addressing mode
+CMP.W $1234,#$12345678		ERROR: Invalid addressing mode
+CMP.W $1234,SR		ERROR: Invalid addressing mode
+CMP.W $1234,CCR		ERROR: Invalid addressing mode
+CMP.W $1234,USP		ERROR: Invalid addressing mode
+CMP.W $12345678,D1	B27912345678	-
+CMP.W $12345678,A2	B4F912345678	-
+CMP.W $12345678,(A3)		ERROR: Invalid addressing mode
+CMP.W $12345678,(A4)+		ERROR: Invalid addressing mode
+CMP.W $12345678,-(A5)		ERROR: Invalid addressing mode
+CMP.W $12345678,$10(A6)		ERROR: Invalid addressing mode
+CMP.W $12345678,$10(A6,D7.W)		ERROR: Invalid addressing mode
+CMP.W $12345678,$1234		ERROR: Invalid addressing mode
+CMP.W $12345678,$12345678		ERROR: Invalid addressing mode
+CMP.W $12345678,FW		ERROR: Invalid addressing mode
+CMP.W $12345678,*+$10(PC)		ERROR: Invalid addressing mode
+CMP.W $12345678,#1		ERROR: Invalid addressing mode
+CMP.W $12345678,#$80		ERROR: Invalid addressing mode
+CMP.W $12345678,#$1234		ERROR: Invalid addressing mode
+CMP.W $12345678,#$12345678		ERROR: Invalid addressing mode
+CMP.W $12345678,SR		ERROR: Invalid addressing mode
+CMP.W $12345678,CCR		ERROR: Invalid addressing mode
+CMP.W $12345678,USP		ERROR: Invalid addressing mode
+CMP.W FW,D1	B27900001F00	-
+CMP.W FW,A2	B4F900001F00	-
+CMP.W FW,(A3)		ERROR: Invalid addressing mode
+CMP.W FW,(A4)+		ERROR: Invalid addressing mode
+CMP.W FW,-(A5)		ERROR: Invalid addressing mode
+CMP.W FW,$10(A6)		ERROR: Invalid addressing mode
+CMP.W FW,$10(A6,D7.W)		ERROR: Invalid addressing mode
+CMP.W FW,$1234		ERROR: Invalid addressing mode
+CMP.W FW,$12345678		ERROR: Invalid addressing mode
+CMP.W FW,FW		ERROR: Invalid addressing mode
+CMP.W FW,*+$10(PC)		ERROR: Invalid addressing mode
+CMP.W FW,#1		ERROR: Invalid addressing mode
+CMP.W FW,#$80		ERROR: Invalid addressing mode
+CMP.W FW,#$1234		ERROR: Invalid addressing mode
+CMP.W FW,#$12345678		ERROR: Invalid addressing mode
+CMP.W FW,SR		ERROR: Invalid addressing mode
+CMP.W FW,CCR		ERROR: Invalid addressing mode
+CMP.W FW,USP		ERROR: Invalid addressing mode
+CMP.W *+$10(PC),D1	B27A000E	-
+CMP.W *+$10(PC),A2	B4FA000E	-
+CMP.W *+$10(PC),(A3)		ERROR: Invalid addressing mode
+CMP.W *+$10(PC),(A4)+		ERROR: Invalid addressing mode
+CMP.W *+$10(PC),-(A5)		ERROR: Invalid addressing mode
+CMP.W *+$10(PC),$10(A6)		ERROR: Invalid addressing mode
+CMP.W *+$10(PC),$10(A6,D7.W)		ERROR: Invalid addressing mode
+CMP.W *+$10(PC),$1234		ERROR: Invalid addressing mode
+CMP.W *+$10(PC),$12345678		ERROR: Invalid addressing mode
+CMP.W *+$10(PC),FW		ERROR: Invalid addressing mode
+CMP.W *+$10(PC),*+$10(PC)		ERROR: Invalid addressing mode
+CMP.W *+$10(PC),#1		ERROR: Invalid addressing mode
+CMP.W *+$10(PC),#$80		ERROR: Invalid addressing mode
+CMP.W *+$10(PC),#$1234		ERROR: Invalid addressing mode
+CMP.W *+$10(PC),#$12345678		ERROR: Invalid addressing mode
+CMP.W *+$10(PC),SR		ERROR: Invalid addressing mode
+CMP.W *+$10(PC),CCR		ERROR: Invalid addressing mode
+CMP.W *+$10(PC),USP		ERROR: Invalid addressing mode
+CMP.W #1,D1	B27C0001	-
+CMP.W #1,A2	B4FC0001	-
+CMP.W #1,(A3)	0C530001	-
+CMP.W #1,(A4)+	0C5C0001	-
+CMP.W #1,-(A5)	0C650001	-
+CMP.W #1,$10(A6)	0C6E00010010	-
+CMP.W #1,$10(A6,D7.W)	0C7600017010	-
+CMP.W #1,$1234	0C7800011234	-
+CMP.W #1,$12345678	0C79000112345678	-
+CMP.W #1,FW	0C79000100001F00	-
+CMP.W #1,*+$10(PC)		ERROR: Invalid addressing mode
+CMP.W #1,#1		ERROR: Invalid addressing mode
+CMP.W #1,#$80		ERROR: Invalid addressing mode
+CMP.W #1,#$1234		ERROR: Invalid addressing mode
+CMP.W #1,#$12345678		ERROR: Invalid addressing mode
+CMP.W #1,SR		ERROR: Invalid addressing mode
+CMP.W #1,CCR		ERROR: Invalid addressing mode
+CMP.W #1,USP		ERROR: Invalid addressing mode
+CMP.W #$80,D1	B27C0080	-
+CMP.W #$80,A2	B4FC0080	-
+CMP.W #$80,(A3)	0C530080	-
+CMP.W #$80,(A4)+	0C5C0080	-
+CMP.W #$80,-(A5)	0C650080	-
+CMP.W #$80,$10(A6)	0C6E00800010	-
+CMP.W #$80,$10(A6,D7.W)	0C7600807010	-
+CMP.W #$80,$1234	0C7800801234	-
+CMP.W #$80,$12345678	0C79008012345678	-
+CMP.W #$80,FW	0C79008000001F00	-
+CMP.W #$80,*+$10(PC)		ERROR: Invalid addressing mode
+CMP.W #$80,#1		ERROR: Invalid addressing mode
+CMP.W #$80,#$80		ERROR: Invalid addressing mode
+CMP.W #$80,#$1234		ERROR: Invalid addressing mode
+CMP.W #$80,#$12345678		ERROR: Invalid addressing mode
+CMP.W #$80,SR		ERROR: Invalid addressing mode
+CMP.W #$80,CCR		ERROR: Invalid addressing mode
+CMP.W #$80,USP		ERROR: Invalid addressing mode
+CMP.W #$1234,D1	B27C1234	-
+CMP.W #$1234,A2	B4FC1234	-
+CMP.W #$1234,(A3)	0C531234	-
+CMP.W #$1234,(A4)+	0C5C1234	-
+CMP.W #$1234,-(A5)	0C651234	-
+CMP.W #$1234,$10(A6)	0C6E12340010	-
+CMP.W #$1234,$10(A6,D7.W)	0C7612347010	-
+CMP.W #$1234,$1234	0C7812341234	-
+CMP.W #$1234,$12345678	0C79123412345678	-
+CMP.W #$1234,FW	0C79123400001F00	-
+CMP.W #$1234,*+$10(PC)		ERROR: Invalid addressing mode
+CMP.W #$1234,#1		ERROR: Invalid addressing mode
+CMP.W #$1234,#$80		ERROR: Invalid addressing mode
+CMP.W #$1234,#$1234		ERROR: Invalid addressing mode
+CMP.W #$1234,#$12345678		ERROR: Invalid addressing mode
+CMP.W #$1234,SR		ERROR: Invalid addressing mode
+CMP.W #$1234,CCR		ERROR: Invalid addressing mode
+CMP.W #$1234,USP		ERROR: Invalid addressing mode
+CMP.W #$12345678,D1	B27C5678	ERROR: Immediate data exceeds 16 bits
+CMP.W #$12345678,A2	B4FC5678	ERROR: Immediate data exceeds 16 bits
+CMP.W #$12345678,(A3)	0C535678	ERROR: Immediate data exceeds 16 bits
+CMP.W #$12345678,(A4)+	0C5C5678	ERROR: Immediate data exceeds 16 bits
+CMP.W #$12345678,-(A5)	0C655678	ERROR: Immediate data exceeds 16 bits
+CMP.W #$12345678,$10(A6)	0C6E56780010	ERROR: Immediate data exceeds 16 bits
+CMP.W #$12345678,$10(A6,D7.W)	0C7656787010	ERROR: Immediate data exceeds 16 bits
+CMP.W #$12345678,$1234	0C7856781234	ERROR: Immediate data exceeds 16 bits
+CMP.W #$12345678,$12345678	0C79567812345678	ERROR: Immediate data exceeds 16 bits
+CMP.W #$12345678,FW	0C79567800001F00	ERROR: Immediate data exceeds 16 bits
+CMP.W #$12345678,*+$10(PC)		ERROR: Invalid addressing mode
+CMP.W #$12345678,#1		ERROR: Invalid addressing mode
+CMP.W #$12345678,#$80		ERROR: Invalid addressing mode
+CMP.W #$12345678,#$1234		ERROR: Invalid addressing mode
+CMP.W #$12345678,#$12345678		ERROR: Invalid addressing mode
+CMP.W #$12345678,SR		ERROR: Invalid addressing mode
+CMP.W #$12345678,CCR		ERROR: Invalid addressing mode
+CMP.W #$12345678,USP		ERROR: Invalid addressing mode
+CMP.W SR,D1		ERROR: Invalid addressing mode
+CMP.W SR,A2		ERROR: Invalid addressing mode
+CMP.W SR,(A3)		ERROR: Invalid addressing mode
+CMP.W SR,(A4)+		ERROR: Invalid addressing mode
+CMP.W SR,-(A5)		ERROR: Invalid addressing mode
+CMP.W SR,$10(A6)		ERROR: Invalid addressing mode
+CMP.W SR,$10(A6,D7.W)		ERROR: Invalid addressing mode
+CMP.W SR,$1234		ERROR: Invalid addressing mode
+CMP.W SR,$12345678		ERROR: Invalid addressing mode
+CMP.W SR,FW		ERROR: Invalid addressing mode
+CMP.W SR,*+$10(PC)		ERROR: Invalid addressing mode
+CMP.W SR,#1		ERROR: Invalid addressing mode
+CMP.W SR,#$80		ERROR: Invalid addressing mode
+CMP.W SR,#$1234		ERROR: Invalid addressing mode
+CMP.W SR,#$12345678		ERROR: Invalid addressing mode
+CMP.W SR,SR		ERROR: Invalid addressing mode
+CMP.W SR,CCR		ERROR: Invalid addressing mode
+CMP.W SR,USP		ERROR: Invalid addressing mode
+CMP.W CCR,D1		ERROR: Invalid addressing mode
+CMP.W CCR,A2		ERROR: Invalid addressing mode
+CMP.W CCR,(A3)		ERROR: Invalid addressing mode
+CMP.W CCR,(A4)+		ERROR: Invalid addressing mode
+CMP.W CCR,-(A5)		ERROR: Invalid addressing mode
+CMP.W CCR,$10(A6)		ERROR: Invalid addressing mode
+CMP.W CCR,$10(A6,D7.W)		ERROR: Invalid addressing mode
+CMP.W CCR,$1234		ERROR: Invalid addressing mode
+CMP.W CCR,$12345678		ERROR: Invalid addressing mode
+CMP.W CCR,FW		ERROR: Invalid addressing mode
+CMP.W CCR,*+$10(PC)		ERROR: Invalid addressing mode
+CMP.W CCR,#1		ERROR: Invalid addressing mode
+CMP.W CCR,#$80		ERROR: Invalid addressing mode
+CMP.W CCR,#$1234		ERROR: Invalid addressing mode
+CMP.W CCR,#$12345678		ERROR: Invalid addressing mode
+CMP.W CCR,SR		ERROR: Invalid addressing mode
+CMP.W CCR,CCR		ERROR: Invalid addressing mode
+CMP.W CCR,USP		ERROR: Invalid addressing mode
+CMP.W USP,D1		ERROR: Invalid addressing mode
+CMP.W USP,A2		ERROR: Invalid addressing mode
+CMP.W USP,(A3)		ERROR: Invalid addressing mode
+CMP.W USP,(A4)+		ERROR: Invalid addressing mode
+CMP.W USP,-(A5)		ERROR: Invalid addressing mode
+CMP.W USP,$10(A6)		ERROR: Invalid addressing mode
+CMP.W USP,$10(A6,D7.W)		ERROR: Invalid addressing mode
+CMP.W USP,$1234		ERROR: Invalid addressing mode
+CMP.W USP,$12345678		ERROR: Invalid addressing mode
+CMP.W USP,FW		ERROR: Invalid addressing mode
+CMP.W USP,*+$10(PC)		ERROR: Invalid addressing mode
+CMP.W USP,#1		ERROR: Invalid addressing mode
+CMP.W USP,#$80		ERROR: Invalid addressing mode
+CMP.W USP,#$1234		ERROR: Invalid addressing mode
+CMP.W USP,#$12345678		ERROR: Invalid addressing mode
+CMP.W USP,SR		ERROR: Invalid addressing mode
+CMP.W USP,CCR		ERROR: Invalid addressing mode
+CMP.W USP,USP		ERROR: Invalid addressing mode
+CMP.W SP,D1	B24F	-
+CMP.W SP,A2	B4CF	-
+CMP.W D1,SP	BEC1	-
+CMP.W #$12,SP	BEFC0012	-
+CMP.W -2(A0),D1	B268FFFE	-
+CMP.W -2(A0),A2	B4E8FFFE	-
+CMP.W D1,-2(A0)		ERROR: Invalid addressing mode
+CMP.W #$12,-2(A0)	0C680012FFFE	-
+CMP.W $12(A0,A1.L),D1	B2709812	-
+CMP.W $12(A0,A1.L),A2	B4F09812	-
+CMP.W D1,$12(A0,A1.L)		ERROR: Invalid addressing mode
+CMP.W #$12,$12(A0,A1.L)	0C7000129812	-
+CMP.W (A2,D3),D1	B2723000	-
+CMP.W (A2,D3),A2	B4F23000	-
+CMP.W D1,(A2,D3)		ERROR: Invalid addressing mode
+CMP.W #$12,(A2,D3)	0C7200123000	-
+CMP.W $1234.L,D1	B27900001234	-
+CMP.W $1234.L,A2	B4F900001234	-
+CMP.W D1,$1234.L		ERROR: Invalid addressing mode
+CMP.W #$12,$1234.L	0C79001200001234	-
+CMP.W $1234.W,D1	B2781234	WARNING: Forcing SHORT addressing disables range checking of extension word
+CMP.W $1234.W,A2	B4F81234	WARNING: Forcing SHORT addressing disables range checking of extension word
+CMP.W D1,$1234.W		ERROR: Invalid addressing mode
+CMP.W #$12,$1234.W	0C7800121234	WARNING: Forcing SHORT addressing disables range checking of extension word
+CMP.W $8000,D1	B27900008000	-
+CMP.W $8000,A2	B4F900008000	-
+CMP.W D1,$8000		ERROR: Invalid addressing mode
+CMP.W #$12,$8000	0C79001200008000	-
+CMP.W BK,D1	B2781F00	-
+CMP.W BK,A2	B4F81F00	-
+CMP.W D1,BK		ERROR: Invalid addressing mode
+CMP.W #$12,BK	0C7800121F00	-
+CMP.W *(PC,D0.W),D1	B27B00FE	-
+CMP.W *(PC,D0.W),A2	B4FB00FE	-
+CMP.W D1,*(PC,D0.W)		ERROR: Invalid addressing mode
+CMP.W #$12,*(PC,D0.W)		ERROR: Invalid addressing mode
+CMP.W BK(PC),D1	B27A0EFE	-
+CMP.W BK(PC),A2	B4FA0EFE	-
+CMP.W D1,BK(PC)		ERROR: Invalid addressing mode
+CMP.W #$12,BK(PC)		ERROR: Invalid addressing mode
+CMP.W #8,D1	B27C0008	-
+CMP.W #8,A2	B4FC0008	-
+CMP.W D1,#8		ERROR: Invalid addressing mode
+CMP.W #$12,#8		ERROR: Invalid addressing mode
+CMP.W #9,D1	B27C0009	-
+CMP.W #9,A2	B4FC0009	-
+CMP.W D1,#9		ERROR: Invalid addressing mode
+CMP.W #$12,#9		ERROR: Invalid addressing mode
+CMP.W #0,D1	B27C0000	-
+CMP.W #0,A2	B4FC0000	-
+CMP.W D1,#0		ERROR: Invalid addressing mode
+CMP.W #$12,#0		ERROR: Invalid addressing mode
+CMP.W #-1,D1	B27CFFFF	-
+CMP.W #-1,A2	B4FCFFFF	-
+CMP.W D1,#-1		ERROR: Invalid addressing mode
+CMP.W #$12,#-1		ERROR: Invalid addressing mode
+CMP.W #$12345678.L,D1	B27C5678	ERROR: Immediate data exceeds 16 bits
+CMP.W #$12345678.L,A2	B4FC5678	ERROR: Immediate data exceeds 16 bits
+CMP.W D1,#$12345678.L		ERROR: Invalid addressing mode
+CMP.W #$12,#$12345678.L		ERROR: Invalid addressing mode
+CMP.W #BK,D1	B27C1F00	-
+CMP.W #BK,A2	B4FC1F00	-
+CMP.W D1,#BK		ERROR: Invalid addressing mode
+CMP.W #$12,#BK		ERROR: Invalid addressing mode
+CMP.W #FW,D1	B27C1F00	-
+CMP.W #FW,A2	B4FC1F00	-
+CMP.W D1,#FW		ERROR: Invalid addressing mode
+CMP.W #$12,#FW		ERROR: Invalid addressing mode
+CMP.W #UNDEF,D1	B27C5621	ERROR: Undefined symbol
+CMP.W #UNDEF,A2	B4FC5621	ERROR: Undefined symbol
+CMP.W D1,#UNDEF		ERROR: Invalid addressing mode
+CMP.W #$12,#UNDEF		ERROR: Invalid addressing mode
+CMP.W UNDEF,D1	B27900005621	ERROR: Undefined symbol
+CMP.W UNDEF,A2	B4F900005621	ERROR: Undefined symbol
+CMP.W D1,UNDEF		ERROR: Invalid addressing mode
+CMP.W #$12,UNDEF	0C79001200001F00	ERROR: Undefined symbol
+CMP.W D1,D2,D3		ERROR: Invalid syntax
+CMP.L		ERROR: Invalid syntax
+CMP.L D1		ERROR: Comma expected
+CMP.L A2		ERROR: Comma expected
+CMP.L SP		ERROR: Comma expected
+CMP.L (A3)		ERROR: Comma expected
+CMP.L (A4)+		ERROR: Comma expected
+CMP.L -(A5)		ERROR: Comma expected
+CMP.L $10(A6)		ERROR: Comma expected
+CMP.L -2(A0)		ERROR: Comma expected
+CMP.L $10(A6,D7.W)		ERROR: Comma expected
+CMP.L $12(A0,A1.L)		ERROR: Comma expected
+CMP.L (A2,D3)		ERROR: Comma expected
+CMP.L $1234		ERROR: Comma expected
+CMP.L $12345678		ERROR: Comma expected
+CMP.L $1234.L		ERROR: Comma expected
+CMP.L $1234.W		ERROR: Comma expected
+CMP.L $8000		ERROR: Comma expected
+CMP.L BK		ERROR: Comma expected
+CMP.L FW		ERROR: Comma expected
+CMP.L *+$10(PC)		ERROR: Comma expected
+CMP.L *(PC,D0.W)		ERROR: Comma expected
+CMP.L BK(PC)		ERROR: Comma expected
+CMP.L #1		ERROR: Comma expected
+CMP.L #8		ERROR: Comma expected
+CMP.L #9		ERROR: Comma expected
+CMP.L #0		ERROR: Comma expected
+CMP.L #-1		ERROR: Comma expected
+CMP.L #$80		ERROR: Comma expected
+CMP.L #$1234		ERROR: Comma expected
+CMP.L #$12345678		ERROR: Comma expected
+CMP.L #$12345678.L		ERROR: Comma expected
+CMP.L #BK		ERROR: Comma expected
+CMP.L #FW		ERROR: Comma expected
+CMP.L #UNDEF		ERROR: Comma expected
+CMP.L UNDEF		ERROR: Comma expected
+CMP.L SR		ERROR: Comma expected
+CMP.L CCR		ERROR: Comma expected
+CMP.L USP		ERROR: Comma expected
+CMP.L D1,D1	B281	-
+CMP.L D1,A2	B5C1	-
+CMP.L D1,(A3)		ERROR: Invalid addressing mode
+CMP.L D1,$10(A6)		ERROR: Invalid addressing mode
+CMP.L D1,$1234		ERROR: Invalid addressing mode
+CMP.L D1,FW		ERROR: Invalid addressing mode
+CMP.L D1,#1		ERROR: Invalid addressing mode
+CMP.L D1,#$1234		ERROR: Invalid addressing mode
+CMP.L D1,CCR		ERROR: Invalid addressing mode
+CMP.L D1,SR		ERROR: Invalid addressing mode
+CMP.L A2,D1	B28A	-
+CMP.L A2,A2	B5CA	-
+CMP.L A2,(A3)		ERROR: Invalid addressing mode
+CMP.L A2,$10(A6)		ERROR: Invalid addressing mode
+CMP.L A2,$1234		ERROR: Invalid addressing mode
+CMP.L A2,FW		ERROR: Invalid addressing mode
+CMP.L A2,#1		ERROR: Invalid addressing mode
+CMP.L A2,#$1234		ERROR: Invalid addressing mode
+CMP.L A2,CCR		ERROR: Invalid addressing mode
+CMP.L A2,SR		ERROR: Invalid addressing mode
+CMP.L (A3),D1	B293	-
+CMP.L (A3),A2	B5D3	-
+CMP.L (A3),(A3)		ERROR: Invalid addressing mode
+CMP.L (A3),$10(A6)		ERROR: Invalid addressing mode
+CMP.L (A3),$1234		ERROR: Invalid addressing mode
+CMP.L (A3),FW		ERROR: Invalid addressing mode
+CMP.L (A3),#1		ERROR: Invalid addressing mode
+CMP.L (A3),#$1234		ERROR: Invalid addressing mode
+CMP.L (A3),CCR		ERROR: Invalid addressing mode
+CMP.L (A3),SR		ERROR: Invalid addressing mode
+CMP.L $10(A6),D1	B2AE0010	-
+CMP.L $10(A6),A2	B5EE0010	-
+CMP.L $10(A6),(A3)		ERROR: Invalid addressing mode
+CMP.L $10(A6),$10(A6)		ERROR: Invalid addressing mode
+CMP.L $10(A6),$1234		ERROR: Invalid addressing mode
+CMP.L $10(A6),FW		ERROR: Invalid addressing mode
+CMP.L $10(A6),#1		ERROR: Invalid addressing mode
+CMP.L $10(A6),#$1234		ERROR: Invalid addressing mode
+CMP.L $10(A6),CCR		ERROR: Invalid addressing mode
+CMP.L $10(A6),SR		ERROR: Invalid addressing mode
+CMP.L $1234,D1	B2B81234	-
+CMP.L $1234,A2	B5F81234	-
+CMP.L $1234,(A3)		ERROR: Invalid addressing mode
+CMP.L $1234,$10(A6)		ERROR: Invalid addressing mode
+CMP.L $1234,$1234		ERROR: Invalid addressing mode
+CMP.L $1234,FW		ERROR: Invalid addressing mode
+CMP.L $1234,#1		ERROR: Invalid addressing mode
+CMP.L $1234,#$1234		ERROR: Invalid addressing mode
+CMP.L $1234,CCR		ERROR: Invalid addressing mode
+CMP.L $1234,SR		ERROR: Invalid addressing mode
+CMP.L FW,D1	B2B900001F00	-
+CMP.L FW,A2	B5F900001F00	-
+CMP.L FW,(A3)		ERROR: Invalid addressing mode
+CMP.L FW,$10(A6)		ERROR: Invalid addressing mode
+CMP.L FW,$1234		ERROR: Invalid addressing mode
+CMP.L FW,FW		ERROR: Invalid addressing mode
+CMP.L FW,#1		ERROR: Invalid addressing mode
+CMP.L FW,#$1234		ERROR: Invalid addressing mode
+CMP.L FW,CCR		ERROR: Invalid addressing mode
+CMP.L FW,SR		ERROR: Invalid addressing mode
+CMP.L #1,D1	B2BC00000001	-
+CMP.L #1,A2	B5FC00000001	-
+CMP.L #1,(A3)	0C9300000001	-
+CMP.L #1,$10(A6)	0CAE000000010010	-
+CMP.L #1,$1234	0CB8000000011234	-
+CMP.L #1,FW	0CB90000000100001F00	-
+CMP.L #1,#1		ERROR: Invalid addressing mode
+CMP.L #1,#$1234		ERROR: Invalid addressing mode
+CMP.L #1,CCR		ERROR: Invalid addressing mode
+CMP.L #1,SR		ERROR: Invalid addressing mode
+CMP.L #$1234,D1	B2BC00001234	-
+CMP.L #$1234,A2	B5FC00001234	-
+CMP.L #$1234,(A3)	0C9300001234	-
+CMP.L #$1234,$10(A6)	0CAE000012340010	-
+CMP.L #$1234,$1234	0CB8000012341234	-
+CMP.L #$1234,FW	0CB90000123400001F00	-
+CMP.L #$1234,#1		ERROR: Invalid addressing mode
+CMP.L #$1234,#$1234		ERROR: Invalid addressing mode
+CMP.L #$1234,CCR		ERROR: Invalid addressing mode
+CMP.L #$1234,SR		ERROR: Invalid addressing mode
+CMP.L CCR,D1		ERROR: Invalid addressing mode
+CMP.L CCR,A2		ERROR: Invalid addressing mode
+CMP.L CCR,(A3)		ERROR: Invalid addressing mode
+CMP.L CCR,$10(A6)		ERROR: Invalid addressing mode
+CMP.L CCR,$1234		ERROR: Invalid addressing mode
+CMP.L CCR,FW		ERROR: Invalid addressing mode
+CMP.L CCR,#1		ERROR: Invalid addressing mode
+CMP.L CCR,#$1234		ERROR: Invalid addressing mode
+CMP.L CCR,CCR		ERROR: Invalid addressing mode
+CMP.L CCR,SR		ERROR: Invalid addressing mode
+CMP.L SR,D1		ERROR: Invalid addressing mode
+CMP.L SR,A2		ERROR: Invalid addressing mode
+CMP.L SR,(A3)		ERROR: Invalid addressing mode
+CMP.L SR,$10(A6)		ERROR: Invalid addressing mode
+CMP.L SR,$1234		ERROR: Invalid addressing mode
+CMP.L SR,FW		ERROR: Invalid addressing mode
+CMP.L SR,#1		ERROR: Invalid addressing mode
+CMP.L SR,#$1234		ERROR: Invalid addressing mode
+CMP.L SR,CCR		ERROR: Invalid addressing mode
+CMP.L SR,SR		ERROR: Invalid addressing mode
+CMP.L SP,D1	B28F	-
+CMP.L SP,A2	B5CF	-
+CMP.L D1,SP	BFC1	-
+CMP.L #$12,SP	BFFC00000012	-
+CMP.L (A4)+,D1	B29C	-
+CMP.L (A4)+,A2	B5DC	-
+CMP.L D1,(A4)+		ERROR: Invalid addressing mode
+CMP.L #$12,(A4)+	0C9C00000012	-
+CMP.L -(A5),D1	B2A5	-
+CMP.L -(A5),A2	B5E5	-
+CMP.L D1,-(A5)		ERROR: Invalid addressing mode
+CMP.L #$12,-(A5)	0CA500000012	-
+CMP.L -2(A0),D1	B2A8FFFE	-
+CMP.L -2(A0),A2	B5E8FFFE	-
+CMP.L D1,-2(A0)		ERROR: Invalid addressing mode
+CMP.L #$12,-2(A0)	0CA800000012FFFE	-
+CMP.L $10(A6,D7.W),D1	B2B67010	-
+CMP.L $10(A6,D7.W),A2	B5F67010	-
+CMP.L D1,$10(A6,D7.W)		ERROR: Invalid addressing mode
+CMP.L #$12,$10(A6,D7.W)	0CB6000000127010	-
+CMP.L $12(A0,A1.L),D1	B2B09812	-
+CMP.L $12(A0,A1.L),A2	B5F09812	-
+CMP.L D1,$12(A0,A1.L)		ERROR: Invalid addressing mode
+CMP.L #$12,$12(A0,A1.L)	0CB0000000129812	-
+CMP.L (A2,D3),D1	B2B23000	-
+CMP.L (A2,D3),A2	B5F23000	-
+CMP.L D1,(A2,D3)		ERROR: Invalid addressing mode
+CMP.L #$12,(A2,D3)	0CB2000000123000	-
+CMP.L $12345678,D1	B2B912345678	-
+CMP.L $12345678,A2	B5F912345678	-
+CMP.L D1,$12345678		ERROR: Invalid addressing mode
+CMP.L #$12,$12345678	0CB90000001212345678	-
+CMP.L $1234.L,D1	B2B900001234	-
+CMP.L $1234.L,A2	B5F900001234	-
+CMP.L D1,$1234.L		ERROR: Invalid addressing mode
+CMP.L #$12,$1234.L	0CB90000001200001234	-
+CMP.L $1234.W,D1	B2B81234	WARNING: Forcing SHORT addressing disables range checking of extension word
+CMP.L $1234.W,A2	B5F81234	WARNING: Forcing SHORT addressing disables range checking of extension word
+CMP.L D1,$1234.W		ERROR: Invalid addressing mode
+CMP.L #$12,$1234.W	0CB8000000121234	WARNING: Forcing SHORT addressing disables range checking of extension word
+CMP.L $8000,D1	B2B900008000	-
+CMP.L $8000,A2	B5F900008000	-
+CMP.L D1,$8000		ERROR: Invalid addressing mode
+CMP.L #$12,$8000	0CB90000001200008000	-
+CMP.L BK,D1	B2B81F00	-
+CMP.L BK,A2	B5F81F00	-
+CMP.L D1,BK		ERROR: Invalid addressing mode
+CMP.L #$12,BK	0CB8000000121F00	-
+CMP.L *+$10(PC),D1	B2BA000E	-
+CMP.L *+$10(PC),A2	B5FA000E	-
+CMP.L D1,*+$10(PC)		ERROR: Invalid addressing mode
+CMP.L #$12,*+$10(PC)		ERROR: Invalid addressing mode
+CMP.L *(PC,D0.W),D1	B2BB00FE	-
+CMP.L *(PC,D0.W),A2	B5FB00FE	-
+CMP.L D1,*(PC,D0.W)		ERROR: Invalid addressing mode
+CMP.L #$12,*(PC,D0.W)		ERROR: Invalid addressing mode
+CMP.L BK(PC),D1	B2BA0EFE	-
+CMP.L BK(PC),A2	B5FA0EFE	-
+CMP.L D1,BK(PC)		ERROR: Invalid addressing mode
+CMP.L #$12,BK(PC)		ERROR: Invalid addressing mode
+CMP.L #8,D1	B2BC00000008	-
+CMP.L #8,A2	B5FC00000008	-
+CMP.L D1,#8		ERROR: Invalid addressing mode
+CMP.L #$12,#8		ERROR: Invalid addressing mode
+CMP.L #9,D1	B2BC00000009	-
+CMP.L #9,A2	B5FC00000009	-
+CMP.L D1,#9		ERROR: Invalid addressing mode
+CMP.L #$12,#9		ERROR: Invalid addressing mode
+CMP.L #0,D1	B2BC00000000	-
+CMP.L #0,A2	B5FC00000000	-
+CMP.L D1,#0		ERROR: Invalid addressing mode
+CMP.L #$12,#0		ERROR: Invalid addressing mode
+CMP.L #-1,D1	B2BCFFFFFFFF	-
+CMP.L #-1,A2	B5FCFFFFFFFF	-
+CMP.L D1,#-1		ERROR: Invalid addressing mode
+CMP.L #$12,#-1		ERROR: Invalid addressing mode
+CMP.L #$80,D1	B2BC00000080	-
+CMP.L #$80,A2	B5FC00000080	-
+CMP.L D1,#$80		ERROR: Invalid addressing mode
+CMP.L #$12,#$80		ERROR: Invalid addressing mode
+CMP.L #$12345678,D1	B2BC12345678	-
+CMP.L #$12345678,A2	B5FC12345678	-
+CMP.L D1,#$12345678		ERROR: Invalid addressing mode
+CMP.L #$12,#$12345678		ERROR: Invalid addressing mode
+CMP.L #$12345678.L,D1	B2BC12345678	-
+CMP.L #$12345678.L,A2	B5FC12345678	-
+CMP.L D1,#$12345678.L		ERROR: Invalid addressing mode
+CMP.L #$12,#$12345678.L		ERROR: Invalid addressing mode
+CMP.L #BK,D1	B2BC00001F00	-
+CMP.L #BK,A2	B5FC00001F00	-
+CMP.L D1,#BK		ERROR: Invalid addressing mode
+CMP.L #$12,#BK		ERROR: Invalid addressing mode
+CMP.L #FW,D1	B2BC00001F00	-
+CMP.L #FW,A2	B5FC00001F00	-
+CMP.L D1,#FW		ERROR: Invalid addressing mode
+CMP.L #$12,#FW		ERROR: Invalid addressing mode
+CMP.L #UNDEF,D1	B2BC00005621	ERROR: Undefined symbol
+CMP.L #UNDEF,A2	B5FC00005621	ERROR: Undefined symbol
+CMP.L D1,#UNDEF		ERROR: Invalid addressing mode
+CMP.L #$12,#UNDEF		ERROR: Invalid addressing mode
+CMP.L UNDEF,D1	B2B900005621	ERROR: Undefined symbol
+CMP.L UNDEF,A2	B5F900005621	ERROR: Undefined symbol
+CMP.L D1,UNDEF		ERROR: Invalid addressing mode
+CMP.L #$12,UNDEF	0CB90000001200001F00	ERROR: Undefined symbol
+CMP.L USP,D1		ERROR: Invalid addressing mode
+CMP.L USP,A2		ERROR: Invalid addressing mode
+CMP.L D1,USP		ERROR: Invalid addressing mode
+CMP.L #$12,USP		ERROR: Invalid addressing mode
+CMP.L D1,D2,D3		ERROR: Invalid syntax
+CMP.S		ERROR: Invalid syntax
+CMP.S D1		ERROR: Comma expected
+CMP.S A2		ERROR: Comma expected
+CMP.S SP		ERROR: Comma expected
+CMP.S (A3)		ERROR: Comma expected
+CMP.S (A4)+		ERROR: Comma expected
+CMP.S -(A5)		ERROR: Comma expected
+CMP.S $10(A6)		ERROR: Comma expected
+CMP.S -2(A0)		ERROR: Comma expected
+CMP.S $10(A6,D7.W)		ERROR: Comma expected
+CMP.S $12(A0,A1.L)		ERROR: Comma expected
+CMP.S (A2,D3)		ERROR: Comma expected
+CMP.S $1234		ERROR: Comma expected
+CMP.S $12345678		ERROR: Comma expected
+CMP.S $1234.L		ERROR: Comma expected
+CMP.S $1234.W		ERROR: Comma expected
+CMP.S $8000		ERROR: Comma expected
+CMP.S BK		ERROR: Comma expected
+CMP.S FW		ERROR: Comma expected
+CMP.S *+$10(PC)		ERROR: Comma expected
+CMP.S *(PC,D0.W)		ERROR: Comma expected
+CMP.S BK(PC)		ERROR: Comma expected
+CMP.S #1		ERROR: Comma expected
+CMP.S #8		ERROR: Comma expected
+CMP.S #9		ERROR: Comma expected
+CMP.S #0		ERROR: Comma expected
+CMP.S #-1		ERROR: Comma expected
+CMP.S #$80		ERROR: Comma expected
+CMP.S #$1234		ERROR: Comma expected
+CMP.S #$12345678		ERROR: Comma expected
+CMP.S #$12345678.L		ERROR: Comma expected
+CMP.S #BK		ERROR: Comma expected
+CMP.S #FW		ERROR: Comma expected
+CMP.S #UNDEF		ERROR: Comma expected
+CMP.S UNDEF		ERROR: Comma expected
+CMP.S SR		ERROR: Comma expected
+CMP.S CCR		ERROR: Comma expected
+CMP.S USP		ERROR: Comma expected
+CMP.S D1,D1	B241	ERROR: Invalid size code
+CMP.S D1,A2	B4C1	ERROR: Invalid size code
+CMP.S D1,(A3)		ERROR: Invalid addressing mode
+CMP.S D1,$10(A6)		ERROR: Invalid addressing mode
+CMP.S D1,$1234		ERROR: Invalid addressing mode
+CMP.S D1,FW		ERROR: Invalid addressing mode
+CMP.S D1,#1		ERROR: Invalid addressing mode
+CMP.S D1,#$1234		ERROR: Invalid addressing mode
+CMP.S D1,CCR		ERROR: Invalid addressing mode
+CMP.S D1,SR		ERROR: Invalid addressing mode
+CMP.S A2,D1	B24A	ERROR: Invalid size code
+CMP.S A2,A2	B4CA	ERROR: Invalid size code
+CMP.S A2,(A3)		ERROR: Invalid addressing mode
+CMP.S A2,$10(A6)		ERROR: Invalid addressing mode
+CMP.S A2,$1234		ERROR: Invalid addressing mode
+CMP.S A2,FW		ERROR: Invalid addressing mode
+CMP.S A2,#1		ERROR: Invalid addressing mode
+CMP.S A2,#$1234		ERROR: Invalid addressing mode
+CMP.S A2,CCR		ERROR: Invalid addressing mode
+CMP.S A2,SR		ERROR: Invalid addressing mode
+CMP.S (A3),D1	B253	ERROR: Invalid size code
+CMP.S (A3),A2	B4D3	ERROR: Invalid size code
+CMP.S (A3),(A3)		ERROR: Invalid addressing mode
+CMP.S (A3),$10(A6)		ERROR: Invalid addressing mode
+CMP.S (A3),$1234		ERROR: Invalid addressing mode
+CMP.S (A3),FW		ERROR: Invalid addressing mode
+CMP.S (A3),#1		ERROR: Invalid addressing mode
+CMP.S (A3),#$1234		ERROR: Invalid addressing mode
+CMP.S (A3),CCR		ERROR: Invalid addressing mode
+CMP.S (A3),SR		ERROR: Invalid addressing mode
+CMP.S $10(A6),D1	B26E0010	ERROR: Invalid size code
+CMP.S $10(A6),A2	B4EE0010	ERROR: Invalid size code
+CMP.S $10(A6),(A3)		ERROR: Invalid addressing mode
+CMP.S $10(A6),$10(A6)		ERROR: Invalid addressing mode
+CMP.S $10(A6),$1234		ERROR: Invalid addressing mode
+CMP.S $10(A6),FW		ERROR: Invalid addressing mode
+CMP.S $10(A6),#1		ERROR: Invalid addressing mode
+CMP.S $10(A6),#$1234		ERROR: Invalid addressing mode
+CMP.S $10(A6),CCR		ERROR: Invalid addressing mode
+CMP.S $10(A6),SR		ERROR: Invalid addressing mode
+CMP.S $1234,D1	B2781234	ERROR: Invalid size code
+CMP.S $1234,A2	B4F81234	ERROR: Invalid size code
+CMP.S $1234,(A3)		ERROR: Invalid addressing mode
+CMP.S $1234,$10(A6)		ERROR: Invalid addressing mode
+CMP.S $1234,$1234		ERROR: Invalid addressing mode
+CMP.S $1234,FW		ERROR: Invalid addressing mode
+CMP.S $1234,#1		ERROR: Invalid addressing mode
+CMP.S $1234,#$1234		ERROR: Invalid addressing mode
+CMP.S $1234,CCR		ERROR: Invalid addressing mode
+CMP.S $1234,SR		ERROR: Invalid addressing mode
+CMP.S FW,D1	B27900001F00	ERROR: Invalid size code
+CMP.S FW,A2	B4F900001F00	ERROR: Invalid size code
+CMP.S FW,(A3)		ERROR: Invalid addressing mode
+CMP.S FW,$10(A6)		ERROR: Invalid addressing mode
+CMP.S FW,$1234		ERROR: Invalid addressing mode
+CMP.S FW,FW		ERROR: Invalid addressing mode
+CMP.S FW,#1		ERROR: Invalid addressing mode
+CMP.S FW,#$1234		ERROR: Invalid addressing mode
+CMP.S FW,CCR		ERROR: Invalid addressing mode
+CMP.S FW,SR		ERROR: Invalid addressing mode
+CMP.S #1,D1	B27C	ERROR: Invalid size code
+CMP.S #1,A2	B4FC	ERROR: Invalid size code
+CMP.S #1,(A3)	0C53	ERROR: Invalid size code
+CMP.S #1,$10(A6)	0C6E0010	ERROR: Invalid size code
+CMP.S #1,$1234	0C781234	ERROR: Invalid size code
+CMP.S #1,FW	0C7900001F00	ERROR: Invalid size code
+CMP.S #1,#1		ERROR: Invalid addressing mode
+CMP.S #1,#$1234		ERROR: Invalid addressing mode
+CMP.S #1,CCR		ERROR: Invalid addressing mode
+CMP.S #1,SR		ERROR: Invalid addressing mode
+CMP.S #$1234,D1	B27C	ERROR: Invalid size code
+CMP.S #$1234,A2	B4FC	ERROR: Invalid size code
+CMP.S #$1234,(A3)	0C53	ERROR: Invalid size code
+CMP.S #$1234,$10(A6)	0C6E0010	ERROR: Invalid size code
+CMP.S #$1234,$1234	0C781234	ERROR: Invalid size code
+CMP.S #$1234,FW	0C7900001F00	ERROR: Invalid size code
+CMP.S #$1234,#1		ERROR: Invalid addressing mode
+CMP.S #$1234,#$1234		ERROR: Invalid addressing mode
+CMP.S #$1234,CCR		ERROR: Invalid addressing mode
+CMP.S #$1234,SR		ERROR: Invalid addressing mode
+CMP.S CCR,D1		ERROR: Invalid addressing mode
+CMP.S CCR,A2		ERROR: Invalid addressing mode
+CMP.S CCR,(A3)		ERROR: Invalid addressing mode
+CMP.S CCR,$10(A6)		ERROR: Invalid addressing mode
+CMP.S CCR,$1234		ERROR: Invalid addressing mode
+CMP.S CCR,FW		ERROR: Invalid addressing mode
+CMP.S CCR,#1		ERROR: Invalid addressing mode
+CMP.S CCR,#$1234		ERROR: Invalid addressing mode
+CMP.S CCR,CCR		ERROR: Invalid addressing mode
+CMP.S CCR,SR		ERROR: Invalid addressing mode
+CMP.S SR,D1		ERROR: Invalid addressing mode
+CMP.S SR,A2		ERROR: Invalid addressing mode
+CMP.S SR,(A3)		ERROR: Invalid addressing mode
+CMP.S SR,$10(A6)		ERROR: Invalid addressing mode
+CMP.S SR,$1234		ERROR: Invalid addressing mode
+CMP.S SR,FW		ERROR: Invalid addressing mode
+CMP.S SR,#1		ERROR: Invalid addressing mode
+CMP.S SR,#$1234		ERROR: Invalid addressing mode
+CMP.S SR,CCR		ERROR: Invalid addressing mode
+CMP.S SR,SR		ERROR: Invalid addressing mode
+CMP.S SP,D1	B24F	ERROR: Invalid size code
+CMP.S SP,A2	B4CF	ERROR: Invalid size code
+CMP.S D1,SP	BEC1	ERROR: Invalid size code
+CMP.S #$12,SP	BEFC	ERROR: Invalid size code
+CMP.S (A4)+,D1	B25C	ERROR: Invalid size code
+CMP.S (A4)+,A2	B4DC	ERROR: Invalid size code
+CMP.S D1,(A4)+		ERROR: Invalid addressing mode
+CMP.S #$12,(A4)+	0C5C	ERROR: Invalid size code
+CMP.S -(A5),D1	B265	ERROR: Invalid size code
+CMP.S -(A5),A2	B4E5	ERROR: Invalid size code
+CMP.S D1,-(A5)		ERROR: Invalid addressing mode
+CMP.S #$12,-(A5)	0C65	ERROR: Invalid size code
+CMP.S -2(A0),D1	B268FFFE	ERROR: Invalid size code
+CMP.S -2(A0),A2	B4E8FFFE	ERROR: Invalid size code
+CMP.S D1,-2(A0)		ERROR: Invalid addressing mode
+CMP.S #$12,-2(A0)	0C68FFFE	ERROR: Invalid size code
+CMP.S $10(A6,D7.W),D1	B2767010	ERROR: Invalid size code
+CMP.S $10(A6,D7.W),A2	B4F67010	ERROR: Invalid size code
+CMP.S D1,$10(A6,D7.W)		ERROR: Invalid addressing mode
+CMP.S #$12,$10(A6,D7.W)	0C767010	ERROR: Invalid size code
+CMP.S $12(A0,A1.L),D1	B2709812	ERROR: Invalid size code
+CMP.S $12(A0,A1.L),A2	B4F09812	ERROR: Invalid size code
+CMP.S D1,$12(A0,A1.L)		ERROR: Invalid addressing mode
+CMP.S #$12,$12(A0,A1.L)	0C709812	ERROR: Invalid size code
+CMP.S (A2,D3),D1	B2723000	ERROR: Invalid size code
+CMP.S (A2,D3),A2	B4F23000	ERROR: Invalid size code
+CMP.S D1,(A2,D3)		ERROR: Invalid addressing mode
+CMP.S #$12,(A2,D3)	0C723000	ERROR: Invalid size code
+CMP.S $12345678,D1	B27912345678	ERROR: Invalid size code
+CMP.S $12345678,A2	B4F912345678	ERROR: Invalid size code
+CMP.S D1,$12345678		ERROR: Invalid addressing mode
+CMP.S #$12,$12345678	0C7912345678	ERROR: Invalid size code
+CMP.S $1234.L,D1	B27900001234	ERROR: Invalid size code
+CMP.S $1234.L,A2	B4F900001234	ERROR: Invalid size code
+CMP.S D1,$1234.L		ERROR: Invalid addressing mode
+CMP.S #$12,$1234.L	0C7900001234	ERROR: Invalid size code
+CMP.S $1234.W,D1	B2781234	ERROR: Invalid size code
+CMP.S $1234.W,A2	B4F81234	ERROR: Invalid size code
+CMP.S D1,$1234.W		ERROR: Invalid addressing mode
+CMP.S #$12,$1234.W	0C781234	ERROR: Invalid size code
+CMP.S $8000,D1	B27900008000	ERROR: Invalid size code
+CMP.S $8000,A2	B4F900008000	ERROR: Invalid size code
+CMP.S D1,$8000		ERROR: Invalid addressing mode
+CMP.S #$12,$8000	0C7900008000	ERROR: Invalid size code
+CMP.S BK,D1	B2781F00	ERROR: Invalid size code
+CMP.S BK,A2	B4F81F00	ERROR: Invalid size code
+CMP.S D1,BK		ERROR: Invalid addressing mode
+CMP.S #$12,BK	0C781F00	ERROR: Invalid size code
+CMP.S *+$10(PC),D1	B27A000E	ERROR: Invalid size code
+CMP.S *+$10(PC),A2	B4FA000E	ERROR: Invalid size code
+CMP.S D1,*+$10(PC)		ERROR: Invalid addressing mode
+CMP.S #$12,*+$10(PC)		ERROR: Invalid addressing mode
+CMP.S *(PC,D0.W),D1	B27B00FE	ERROR: Invalid size code
+CMP.S *(PC,D0.W),A2	B4FB00FE	ERROR: Invalid size code
+CMP.S D1,*(PC,D0.W)		ERROR: Invalid addressing mode
+CMP.S #$12,*(PC,D0.W)		ERROR: Invalid addressing mode
+CMP.S BK(PC),D1	B27A0EFE	ERROR: Invalid size code
+CMP.S BK(PC),A2	B4FA0EFE	ERROR: Invalid size code
+CMP.S D1,BK(PC)		ERROR: Invalid addressing mode
+CMP.S #$12,BK(PC)		ERROR: Invalid addressing mode
+CMP.S #8,D1	B27C	ERROR: Invalid size code
+CMP.S #8,A2	B4FC	ERROR: Invalid size code
+CMP.S D1,#8		ERROR: Invalid addressing mode
+CMP.S #$12,#8		ERROR: Invalid addressing mode
+CMP.S #9,D1	B27C	ERROR: Invalid size code
+CMP.S #9,A2	B4FC	ERROR: Invalid size code
+CMP.S D1,#9		ERROR: Invalid addressing mode
+CMP.S #$12,#9		ERROR: Invalid addressing mode
+CMP.S #0,D1	B27C	ERROR: Invalid size code
+CMP.S #0,A2	B4FC	ERROR: Invalid size code
+CMP.S D1,#0		ERROR: Invalid addressing mode
+CMP.S #$12,#0		ERROR: Invalid addressing mode
+CMP.S #-1,D1	B27C	ERROR: Invalid size code
+CMP.S #-1,A2	B4FC	ERROR: Invalid size code
+CMP.S D1,#-1		ERROR: Invalid addressing mode
+CMP.S #$12,#-1		ERROR: Invalid addressing mode
+CMP.S #$80,D1	B27C	ERROR: Invalid size code
+CMP.S #$80,A2	B4FC	ERROR: Invalid size code
+CMP.S D1,#$80		ERROR: Invalid addressing mode
+CMP.S #$12,#$80		ERROR: Invalid addressing mode
+CMP.S #$12345678,D1	B27C	ERROR: Invalid size code
+CMP.S #$12345678,A2	B4FC	ERROR: Invalid size code
+CMP.S D1,#$12345678		ERROR: Invalid addressing mode
+CMP.S #$12,#$12345678		ERROR: Invalid addressing mode
+CMP.S #$12345678.L,D1	B27C	ERROR: Invalid size code
+CMP.S #$12345678.L,A2	B4FC	ERROR: Invalid size code
+CMP.S D1,#$12345678.L		ERROR: Invalid addressing mode
+CMP.S #$12,#$12345678.L		ERROR: Invalid addressing mode
+CMP.S #BK,D1	B27C	ERROR: Invalid size code
+CMP.S #BK,A2	B4FC	ERROR: Invalid size code
+CMP.S D1,#BK		ERROR: Invalid addressing mode
+CMP.S #$12,#BK		ERROR: Invalid addressing mode
+CMP.S #FW,D1	B27C	ERROR: Invalid size code
+CMP.S #FW,A2	B4FC	ERROR: Invalid size code
+CMP.S D1,#FW		ERROR: Invalid addressing mode
+CMP.S #$12,#FW		ERROR: Invalid addressing mode
+CMP.S #UNDEF,D1	B27C	ERROR: Undefined symbol
+CMP.S #UNDEF,A2	B4FC	ERROR: Undefined symbol
+CMP.S D1,#UNDEF		ERROR: Invalid addressing mode
+CMP.S #$12,#UNDEF		ERROR: Invalid addressing mode
+CMP.S UNDEF,D1	B27900005621	ERROR: Undefined symbol
+CMP.S UNDEF,A2	B4F900005621	ERROR: Undefined symbol
+CMP.S D1,UNDEF		ERROR: Invalid addressing mode
+CMP.S #$12,UNDEF	0C7900001F00	ERROR: Undefined symbol
+CMP.S USP,D1		ERROR: Invalid addressing mode
+CMP.S USP,A2		ERROR: Invalid addressing mode
+CMP.S D1,USP		ERROR: Invalid addressing mode
+CMP.S #$12,USP		ERROR: Invalid addressing mode
+CMP.S D1,D2,D3		ERROR: Invalid syntax
+CMP.X D1,D2	B441	ERROR: Invalid size code
+CMP.X #1		ERROR: Comma expected

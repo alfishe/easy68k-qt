@@ -1,0 +1,1621 @@
+SUBA		ERROR: Invalid syntax
+SUBA D1		ERROR: Comma expected
+SUBA A2		ERROR: Comma expected
+SUBA SP		ERROR: Comma expected
+SUBA (A3)		ERROR: Comma expected
+SUBA (A4)+		ERROR: Comma expected
+SUBA -(A5)		ERROR: Comma expected
+SUBA $10(A6)		ERROR: Comma expected
+SUBA -2(A0)		ERROR: Comma expected
+SUBA $10(A6,D7.W)		ERROR: Comma expected
+SUBA $12(A0,A1.L)		ERROR: Comma expected
+SUBA (A2,D3)		ERROR: Comma expected
+SUBA $1234		ERROR: Comma expected
+SUBA $12345678		ERROR: Comma expected
+SUBA $1234.L		ERROR: Comma expected
+SUBA $1234.W		ERROR: Comma expected
+SUBA $8000		ERROR: Comma expected
+SUBA BK		ERROR: Comma expected
+SUBA FW		ERROR: Comma expected
+SUBA *+$10(PC)		ERROR: Comma expected
+SUBA *(PC,D0.W)		ERROR: Comma expected
+SUBA BK(PC)		ERROR: Comma expected
+SUBA #1		ERROR: Comma expected
+SUBA #8		ERROR: Comma expected
+SUBA #9		ERROR: Comma expected
+SUBA #0		ERROR: Comma expected
+SUBA #-1		ERROR: Comma expected
+SUBA #$80		ERROR: Comma expected
+SUBA #$1234		ERROR: Comma expected
+SUBA #$12345678		ERROR: Comma expected
+SUBA #$12345678.L		ERROR: Comma expected
+SUBA #BK		ERROR: Comma expected
+SUBA #FW		ERROR: Comma expected
+SUBA #UNDEF		ERROR: Comma expected
+SUBA UNDEF		ERROR: Comma expected
+SUBA SR		ERROR: Comma expected
+SUBA CCR		ERROR: Comma expected
+SUBA USP		ERROR: Comma expected
+SUBA D1,D1		ERROR: Invalid addressing mode
+SUBA D1,A2	94C1	-
+SUBA D1,(A3)		ERROR: Invalid addressing mode
+SUBA D1,(A4)+		ERROR: Invalid addressing mode
+SUBA D1,-(A5)		ERROR: Invalid addressing mode
+SUBA D1,$10(A6)		ERROR: Invalid addressing mode
+SUBA D1,$10(A6,D7.W)		ERROR: Invalid addressing mode
+SUBA D1,$1234		ERROR: Invalid addressing mode
+SUBA D1,$12345678		ERROR: Invalid addressing mode
+SUBA D1,FW		ERROR: Invalid addressing mode
+SUBA D1,*+$10(PC)		ERROR: Invalid addressing mode
+SUBA D1,#1		ERROR: Invalid addressing mode
+SUBA D1,#$80		ERROR: Invalid addressing mode
+SUBA D1,#$1234		ERROR: Invalid addressing mode
+SUBA D1,#$12345678		ERROR: Invalid addressing mode
+SUBA D1,SR		ERROR: Invalid addressing mode
+SUBA D1,CCR		ERROR: Invalid addressing mode
+SUBA D1,USP		ERROR: Invalid addressing mode
+SUBA A2,D1		ERROR: Invalid addressing mode
+SUBA A2,A2	94CA	-
+SUBA A2,(A3)		ERROR: Invalid addressing mode
+SUBA A2,(A4)+		ERROR: Invalid addressing mode
+SUBA A2,-(A5)		ERROR: Invalid addressing mode
+SUBA A2,$10(A6)		ERROR: Invalid addressing mode
+SUBA A2,$10(A6,D7.W)		ERROR: Invalid addressing mode
+SUBA A2,$1234		ERROR: Invalid addressing mode
+SUBA A2,$12345678		ERROR: Invalid addressing mode
+SUBA A2,FW		ERROR: Invalid addressing mode
+SUBA A2,*+$10(PC)		ERROR: Invalid addressing mode
+SUBA A2,#1		ERROR: Invalid addressing mode
+SUBA A2,#$80		ERROR: Invalid addressing mode
+SUBA A2,#$1234		ERROR: Invalid addressing mode
+SUBA A2,#$12345678		ERROR: Invalid addressing mode
+SUBA A2,SR		ERROR: Invalid addressing mode
+SUBA A2,CCR		ERROR: Invalid addressing mode
+SUBA A2,USP		ERROR: Invalid addressing mode
+SUBA (A3),D1		ERROR: Invalid addressing mode
+SUBA (A3),A2	94D3	-
+SUBA (A3),(A3)		ERROR: Invalid addressing mode
+SUBA (A3),(A4)+		ERROR: Invalid addressing mode
+SUBA (A3),-(A5)		ERROR: Invalid addressing mode
+SUBA (A3),$10(A6)		ERROR: Invalid addressing mode
+SUBA (A3),$10(A6,D7.W)		ERROR: Invalid addressing mode
+SUBA (A3),$1234		ERROR: Invalid addressing mode
+SUBA (A3),$12345678		ERROR: Invalid addressing mode
+SUBA (A3),FW		ERROR: Invalid addressing mode
+SUBA (A3),*+$10(PC)		ERROR: Invalid addressing mode
+SUBA (A3),#1		ERROR: Invalid addressing mode
+SUBA (A3),#$80		ERROR: Invalid addressing mode
+SUBA (A3),#$1234		ERROR: Invalid addressing mode
+SUBA (A3),#$12345678		ERROR: Invalid addressing mode
+SUBA (A3),SR		ERROR: Invalid addressing mode
+SUBA (A3),CCR		ERROR: Invalid addressing mode
+SUBA (A3),USP		ERROR: Invalid addressing mode
+SUBA (A4)+,D1		ERROR: Invalid addressing mode
+SUBA (A4)+,A2	94DC	-
+SUBA (A4)+,(A3)		ERROR: Invalid addressing mode
+SUBA (A4)+,(A4)+		ERROR: Invalid addressing mode
+SUBA (A4)+,-(A5)		ERROR: Invalid addressing mode
+SUBA (A4)+,$10(A6)		ERROR: Invalid addressing mode
+SUBA (A4)+,$10(A6,D7.W)		ERROR: Invalid addressing mode
+SUBA (A4)+,$1234		ERROR: Invalid addressing mode
+SUBA (A4)+,$12345678		ERROR: Invalid addressing mode
+SUBA (A4)+,FW		ERROR: Invalid addressing mode
+SUBA (A4)+,*+$10(PC)		ERROR: Invalid addressing mode
+SUBA (A4)+,#1		ERROR: Invalid addressing mode
+SUBA (A4)+,#$80		ERROR: Invalid addressing mode
+SUBA (A4)+,#$1234		ERROR: Invalid addressing mode
+SUBA (A4)+,#$12345678		ERROR: Invalid addressing mode
+SUBA (A4)+,SR		ERROR: Invalid addressing mode
+SUBA (A4)+,CCR		ERROR: Invalid addressing mode
+SUBA (A4)+,USP		ERROR: Invalid addressing mode
+SUBA -(A5),D1		ERROR: Invalid addressing mode
+SUBA -(A5),A2	94E5	-
+SUBA -(A5),(A3)		ERROR: Invalid addressing mode
+SUBA -(A5),(A4)+		ERROR: Invalid addressing mode
+SUBA -(A5),-(A5)		ERROR: Invalid addressing mode
+SUBA -(A5),$10(A6)		ERROR: Invalid addressing mode
+SUBA -(A5),$10(A6,D7.W)		ERROR: Invalid addressing mode
+SUBA -(A5),$1234		ERROR: Invalid addressing mode
+SUBA -(A5),$12345678		ERROR: Invalid addressing mode
+SUBA -(A5),FW		ERROR: Invalid addressing mode
+SUBA -(A5),*+$10(PC)		ERROR: Invalid addressing mode
+SUBA -(A5),#1		ERROR: Invalid addressing mode
+SUBA -(A5),#$80		ERROR: Invalid addressing mode
+SUBA -(A5),#$1234		ERROR: Invalid addressing mode
+SUBA -(A5),#$12345678		ERROR: Invalid addressing mode
+SUBA -(A5),SR		ERROR: Invalid addressing mode
+SUBA -(A5),CCR		ERROR: Invalid addressing mode
+SUBA -(A5),USP		ERROR: Invalid addressing mode
+SUBA $10(A6),D1		ERROR: Invalid addressing mode
+SUBA $10(A6),A2	94EE0010	-
+SUBA $10(A6),(A3)		ERROR: Invalid addressing mode
+SUBA $10(A6),(A4)+		ERROR: Invalid addressing mode
+SUBA $10(A6),-(A5)		ERROR: Invalid addressing mode
+SUBA $10(A6),$10(A6)		ERROR: Invalid addressing mode
+SUBA $10(A6),$10(A6,D7.W)		ERROR: Invalid addressing mode
+SUBA $10(A6),$1234		ERROR: Invalid addressing mode
+SUBA $10(A6),$12345678		ERROR: Invalid addressing mode
+SUBA $10(A6),FW		ERROR: Invalid addressing mode
+SUBA $10(A6),*+$10(PC)		ERROR: Invalid addressing mode
+SUBA $10(A6),#1		ERROR: Invalid addressing mode
+SUBA $10(A6),#$80		ERROR: Invalid addressing mode
+SUBA $10(A6),#$1234		ERROR: Invalid addressing mode
+SUBA $10(A6),#$12345678		ERROR: Invalid addressing mode
+SUBA $10(A6),SR		ERROR: Invalid addressing mode
+SUBA $10(A6),CCR		ERROR: Invalid addressing mode
+SUBA $10(A6),USP		ERROR: Invalid addressing mode
+SUBA $10(A6,D7.W),D1		ERROR: Invalid addressing mode
+SUBA $10(A6,D7.W),A2	94F67010	-
+SUBA $10(A6,D7.W),(A3)		ERROR: Invalid addressing mode
+SUBA $10(A6,D7.W),(A4)+		ERROR: Invalid addressing mode
+SUBA $10(A6,D7.W),-(A5)		ERROR: Invalid addressing mode
+SUBA $10(A6,D7.W),$10(A6)		ERROR: Invalid addressing mode
+SUBA $10(A6,D7.W),$10(A6,D7.W)		ERROR: Invalid addressing mode
+SUBA $10(A6,D7.W),$1234		ERROR: Invalid addressing mode
+SUBA $10(A6,D7.W),$12345678		ERROR: Invalid addressing mode
+SUBA $10(A6,D7.W),FW		ERROR: Invalid addressing mode
+SUBA $10(A6,D7.W),*+$10(PC)		ERROR: Invalid addressing mode
+SUBA $10(A6,D7.W),#1		ERROR: Invalid addressing mode
+SUBA $10(A6,D7.W),#$80		ERROR: Invalid addressing mode
+SUBA $10(A6,D7.W),#$1234		ERROR: Invalid addressing mode
+SUBA $10(A6,D7.W),#$12345678		ERROR: Invalid addressing mode
+SUBA $10(A6,D7.W),SR		ERROR: Invalid addressing mode
+SUBA $10(A6,D7.W),CCR		ERROR: Invalid addressing mode
+SUBA $10(A6,D7.W),USP		ERROR: Invalid addressing mode
+SUBA $1234,D1		ERROR: Invalid addressing mode
+SUBA $1234,A2	94F81234	-
+SUBA $1234,(A3)		ERROR: Invalid addressing mode
+SUBA $1234,(A4)+		ERROR: Invalid addressing mode
+SUBA $1234,-(A5)		ERROR: Invalid addressing mode
+SUBA $1234,$10(A6)		ERROR: Invalid addressing mode
+SUBA $1234,$10(A6,D7.W)		ERROR: Invalid addressing mode
+SUBA $1234,$1234		ERROR: Invalid addressing mode
+SUBA $1234,$12345678		ERROR: Invalid addressing mode
+SUBA $1234,FW		ERROR: Invalid addressing mode
+SUBA $1234,*+$10(PC)		ERROR: Invalid addressing mode
+SUBA $1234,#1		ERROR: Invalid addressing mode
+SUBA $1234,#$80		ERROR: Invalid addressing mode
+SUBA $1234,#$1234		ERROR: Invalid addressing mode
+SUBA $1234,#$12345678		ERROR: Invalid addressing mode
+SUBA $1234,SR		ERROR: Invalid addressing mode
+SUBA $1234,CCR		ERROR: Invalid addressing mode
+SUBA $1234,USP		ERROR: Invalid addressing mode
+SUBA $12345678,D1		ERROR: Invalid addressing mode
+SUBA $12345678,A2	94F912345678	-
+SUBA $12345678,(A3)		ERROR: Invalid addressing mode
+SUBA $12345678,(A4)+		ERROR: Invalid addressing mode
+SUBA $12345678,-(A5)		ERROR: Invalid addressing mode
+SUBA $12345678,$10(A6)		ERROR: Invalid addressing mode
+SUBA $12345678,$10(A6,D7.W)		ERROR: Invalid addressing mode
+SUBA $12345678,$1234		ERROR: Invalid addressing mode
+SUBA $12345678,$12345678		ERROR: Invalid addressing mode
+SUBA $12345678,FW		ERROR: Invalid addressing mode
+SUBA $12345678,*+$10(PC)		ERROR: Invalid addressing mode
+SUBA $12345678,#1		ERROR: Invalid addressing mode
+SUBA $12345678,#$80		ERROR: Invalid addressing mode
+SUBA $12345678,#$1234		ERROR: Invalid addressing mode
+SUBA $12345678,#$12345678		ERROR: Invalid addressing mode
+SUBA $12345678,SR		ERROR: Invalid addressing mode
+SUBA $12345678,CCR		ERROR: Invalid addressing mode
+SUBA $12345678,USP		ERROR: Invalid addressing mode
+SUBA FW,D1		ERROR: Invalid addressing mode
+SUBA FW,A2	94F900001F00	-
+SUBA FW,(A3)		ERROR: Invalid addressing mode
+SUBA FW,(A4)+		ERROR: Invalid addressing mode
+SUBA FW,-(A5)		ERROR: Invalid addressing mode
+SUBA FW,$10(A6)		ERROR: Invalid addressing mode
+SUBA FW,$10(A6,D7.W)		ERROR: Invalid addressing mode
+SUBA FW,$1234		ERROR: Invalid addressing mode
+SUBA FW,$12345678		ERROR: Invalid addressing mode
+SUBA FW,FW		ERROR: Invalid addressing mode
+SUBA FW,*+$10(PC)		ERROR: Invalid addressing mode
+SUBA FW,#1		ERROR: Invalid addressing mode
+SUBA FW,#$80		ERROR: Invalid addressing mode
+SUBA FW,#$1234		ERROR: Invalid addressing mode
+SUBA FW,#$12345678		ERROR: Invalid addressing mode
+SUBA FW,SR		ERROR: Invalid addressing mode
+SUBA FW,CCR		ERROR: Invalid addressing mode
+SUBA FW,USP		ERROR: Invalid addressing mode
+SUBA *+$10(PC),D1		ERROR: Invalid addressing mode
+SUBA *+$10(PC),A2	94FA000E	-
+SUBA *+$10(PC),(A3)		ERROR: Invalid addressing mode
+SUBA *+$10(PC),(A4)+		ERROR: Invalid addressing mode
+SUBA *+$10(PC),-(A5)		ERROR: Invalid addressing mode
+SUBA *+$10(PC),$10(A6)		ERROR: Invalid addressing mode
+SUBA *+$10(PC),$10(A6,D7.W)		ERROR: Invalid addressing mode
+SUBA *+$10(PC),$1234		ERROR: Invalid addressing mode
+SUBA *+$10(PC),$12345678		ERROR: Invalid addressing mode
+SUBA *+$10(PC),FW		ERROR: Invalid addressing mode
+SUBA *+$10(PC),*+$10(PC)		ERROR: Invalid addressing mode
+SUBA *+$10(PC),#1		ERROR: Invalid addressing mode
+SUBA *+$10(PC),#$80		ERROR: Invalid addressing mode
+SUBA *+$10(PC),#$1234		ERROR: Invalid addressing mode
+SUBA *+$10(PC),#$12345678		ERROR: Invalid addressing mode
+SUBA *+$10(PC),SR		ERROR: Invalid addressing mode
+SUBA *+$10(PC),CCR		ERROR: Invalid addressing mode
+SUBA *+$10(PC),USP		ERROR: Invalid addressing mode
+SUBA #1,D1		ERROR: Invalid addressing mode
+SUBA #1,A2	534A	-
+SUBA #1,(A3)		ERROR: Invalid addressing mode
+SUBA #1,(A4)+		ERROR: Invalid addressing mode
+SUBA #1,-(A5)		ERROR: Invalid addressing mode
+SUBA #1,$10(A6)		ERROR: Invalid addressing mode
+SUBA #1,$10(A6,D7.W)		ERROR: Invalid addressing mode
+SUBA #1,$1234		ERROR: Invalid addressing mode
+SUBA #1,$12345678		ERROR: Invalid addressing mode
+SUBA #1,FW		ERROR: Invalid addressing mode
+SUBA #1,*+$10(PC)		ERROR: Invalid addressing mode
+SUBA #1,#1		ERROR: Invalid addressing mode
+SUBA #1,#$80		ERROR: Invalid addressing mode
+SUBA #1,#$1234		ERROR: Invalid addressing mode
+SUBA #1,#$12345678		ERROR: Invalid addressing mode
+SUBA #1,SR		ERROR: Invalid addressing mode
+SUBA #1,CCR		ERROR: Invalid addressing mode
+SUBA #1,USP		ERROR: Invalid addressing mode
+SUBA #$80,D1		ERROR: Invalid addressing mode
+SUBA #$80,A2	94FC0080	-
+SUBA #$80,(A3)		ERROR: Invalid addressing mode
+SUBA #$80,(A4)+		ERROR: Invalid addressing mode
+SUBA #$80,-(A5)		ERROR: Invalid addressing mode
+SUBA #$80,$10(A6)		ERROR: Invalid addressing mode
+SUBA #$80,$10(A6,D7.W)		ERROR: Invalid addressing mode
+SUBA #$80,$1234		ERROR: Invalid addressing mode
+SUBA #$80,$12345678		ERROR: Invalid addressing mode
+SUBA #$80,FW		ERROR: Invalid addressing mode
+SUBA #$80,*+$10(PC)		ERROR: Invalid addressing mode
+SUBA #$80,#1		ERROR: Invalid addressing mode
+SUBA #$80,#$80		ERROR: Invalid addressing mode
+SUBA #$80,#$1234		ERROR: Invalid addressing mode
+SUBA #$80,#$12345678		ERROR: Invalid addressing mode
+SUBA #$80,SR		ERROR: Invalid addressing mode
+SUBA #$80,CCR		ERROR: Invalid addressing mode
+SUBA #$80,USP		ERROR: Invalid addressing mode
+SUBA #$1234,D1		ERROR: Invalid addressing mode
+SUBA #$1234,A2	94FC1234	-
+SUBA #$1234,(A3)		ERROR: Invalid addressing mode
+SUBA #$1234,(A4)+		ERROR: Invalid addressing mode
+SUBA #$1234,-(A5)		ERROR: Invalid addressing mode
+SUBA #$1234,$10(A6)		ERROR: Invalid addressing mode
+SUBA #$1234,$10(A6,D7.W)		ERROR: Invalid addressing mode
+SUBA #$1234,$1234		ERROR: Invalid addressing mode
+SUBA #$1234,$12345678		ERROR: Invalid addressing mode
+SUBA #$1234,FW		ERROR: Invalid addressing mode
+SUBA #$1234,*+$10(PC)		ERROR: Invalid addressing mode
+SUBA #$1234,#1		ERROR: Invalid addressing mode
+SUBA #$1234,#$80		ERROR: Invalid addressing mode
+SUBA #$1234,#$1234		ERROR: Invalid addressing mode
+SUBA #$1234,#$12345678		ERROR: Invalid addressing mode
+SUBA #$1234,SR		ERROR: Invalid addressing mode
+SUBA #$1234,CCR		ERROR: Invalid addressing mode
+SUBA #$1234,USP		ERROR: Invalid addressing mode
+SUBA #$12345678,D1		ERROR: Invalid addressing mode
+SUBA #$12345678,A2	94FC5678	ERROR: Immediate data exceeds 16 bits
+SUBA #$12345678,(A3)		ERROR: Invalid addressing mode
+SUBA #$12345678,(A4)+		ERROR: Invalid addressing mode
+SUBA #$12345678,-(A5)		ERROR: Invalid addressing mode
+SUBA #$12345678,$10(A6)		ERROR: Invalid addressing mode
+SUBA #$12345678,$10(A6,D7.W)		ERROR: Invalid addressing mode
+SUBA #$12345678,$1234		ERROR: Invalid addressing mode
+SUBA #$12345678,$12345678		ERROR: Invalid addressing mode
+SUBA #$12345678,FW		ERROR: Invalid addressing mode
+SUBA #$12345678,*+$10(PC)		ERROR: Invalid addressing mode
+SUBA #$12345678,#1		ERROR: Invalid addressing mode
+SUBA #$12345678,#$80		ERROR: Invalid addressing mode
+SUBA #$12345678,#$1234		ERROR: Invalid addressing mode
+SUBA #$12345678,#$12345678		ERROR: Invalid addressing mode
+SUBA #$12345678,SR		ERROR: Invalid addressing mode
+SUBA #$12345678,CCR		ERROR: Invalid addressing mode
+SUBA #$12345678,USP		ERROR: Invalid addressing mode
+SUBA SR,D1		ERROR: Invalid addressing mode
+SUBA SR,A2		ERROR: Invalid addressing mode
+SUBA SR,(A3)		ERROR: Invalid addressing mode
+SUBA SR,(A4)+		ERROR: Invalid addressing mode
+SUBA SR,-(A5)		ERROR: Invalid addressing mode
+SUBA SR,$10(A6)		ERROR: Invalid addressing mode
+SUBA SR,$10(A6,D7.W)		ERROR: Invalid addressing mode
+SUBA SR,$1234		ERROR: Invalid addressing mode
+SUBA SR,$12345678		ERROR: Invalid addressing mode
+SUBA SR,FW		ERROR: Invalid addressing mode
+SUBA SR,*+$10(PC)		ERROR: Invalid addressing mode
+SUBA SR,#1		ERROR: Invalid addressing mode
+SUBA SR,#$80		ERROR: Invalid addressing mode
+SUBA SR,#$1234		ERROR: Invalid addressing mode
+SUBA SR,#$12345678		ERROR: Invalid addressing mode
+SUBA SR,SR		ERROR: Invalid addressing mode
+SUBA SR,CCR		ERROR: Invalid addressing mode
+SUBA SR,USP		ERROR: Invalid addressing mode
+SUBA CCR,D1		ERROR: Invalid addressing mode
+SUBA CCR,A2		ERROR: Invalid addressing mode
+SUBA CCR,(A3)		ERROR: Invalid addressing mode
+SUBA CCR,(A4)+		ERROR: Invalid addressing mode
+SUBA CCR,-(A5)		ERROR: Invalid addressing mode
+SUBA CCR,$10(A6)		ERROR: Invalid addressing mode
+SUBA CCR,$10(A6,D7.W)		ERROR: Invalid addressing mode
+SUBA CCR,$1234		ERROR: Invalid addressing mode
+SUBA CCR,$12345678		ERROR: Invalid addressing mode
+SUBA CCR,FW		ERROR: Invalid addressing mode
+SUBA CCR,*+$10(PC)		ERROR: Invalid addressing mode
+SUBA CCR,#1		ERROR: Invalid addressing mode
+SUBA CCR,#$80		ERROR: Invalid addressing mode
+SUBA CCR,#$1234		ERROR: Invalid addressing mode
+SUBA CCR,#$12345678		ERROR: Invalid addressing mode
+SUBA CCR,SR		ERROR: Invalid addressing mode
+SUBA CCR,CCR		ERROR: Invalid addressing mode
+SUBA CCR,USP		ERROR: Invalid addressing mode
+SUBA USP,D1		ERROR: Invalid addressing mode
+SUBA USP,A2		ERROR: Invalid addressing mode
+SUBA USP,(A3)		ERROR: Invalid addressing mode
+SUBA USP,(A4)+		ERROR: Invalid addressing mode
+SUBA USP,-(A5)		ERROR: Invalid addressing mode
+SUBA USP,$10(A6)		ERROR: Invalid addressing mode
+SUBA USP,$10(A6,D7.W)		ERROR: Invalid addressing mode
+SUBA USP,$1234		ERROR: Invalid addressing mode
+SUBA USP,$12345678		ERROR: Invalid addressing mode
+SUBA USP,FW		ERROR: Invalid addressing mode
+SUBA USP,*+$10(PC)		ERROR: Invalid addressing mode
+SUBA USP,#1		ERROR: Invalid addressing mode
+SUBA USP,#$80		ERROR: Invalid addressing mode
+SUBA USP,#$1234		ERROR: Invalid addressing mode
+SUBA USP,#$12345678		ERROR: Invalid addressing mode
+SUBA USP,SR		ERROR: Invalid addressing mode
+SUBA USP,CCR		ERROR: Invalid addressing mode
+SUBA USP,USP		ERROR: Invalid addressing mode
+SUBA SP,D1		ERROR: Invalid addressing mode
+SUBA SP,A2	94CF	-
+SUBA D1,SP	9EC1	-
+SUBA #$12,SP	9EFC0012	-
+SUBA -2(A0),D1		ERROR: Invalid addressing mode
+SUBA -2(A0),A2	94E8FFFE	-
+SUBA D1,-2(A0)		ERROR: Invalid addressing mode
+SUBA #$12,-2(A0)		ERROR: Invalid addressing mode
+SUBA $12(A0,A1.L),D1		ERROR: Invalid addressing mode
+SUBA $12(A0,A1.L),A2	94F09812	-
+SUBA D1,$12(A0,A1.L)		ERROR: Invalid addressing mode
+SUBA #$12,$12(A0,A1.L)		ERROR: Invalid addressing mode
+SUBA (A2,D3),D1		ERROR: Invalid addressing mode
+SUBA (A2,D3),A2	94F23000	-
+SUBA D1,(A2,D3)		ERROR: Invalid addressing mode
+SUBA #$12,(A2,D3)		ERROR: Invalid addressing mode
+SUBA $1234.L,D1		ERROR: Invalid addressing mode
+SUBA $1234.L,A2	94F900001234	-
+SUBA D1,$1234.L		ERROR: Invalid addressing mode
+SUBA #$12,$1234.L		ERROR: Invalid addressing mode
+SUBA $1234.W,D1		ERROR: Invalid addressing mode
+SUBA $1234.W,A2	94F81234	WARNING: Forcing SHORT addressing disables range checking of extension word
+SUBA D1,$1234.W		ERROR: Invalid addressing mode
+SUBA #$12,$1234.W		ERROR: Invalid addressing mode
+SUBA $8000,D1		ERROR: Invalid addressing mode
+SUBA $8000,A2	94F900008000	-
+SUBA D1,$8000		ERROR: Invalid addressing mode
+SUBA #$12,$8000		ERROR: Invalid addressing mode
+SUBA BK,D1		ERROR: Invalid addressing mode
+SUBA BK,A2	94F81F00	-
+SUBA D1,BK		ERROR: Invalid addressing mode
+SUBA #$12,BK		ERROR: Invalid addressing mode
+SUBA *(PC,D0.W),D1		ERROR: Invalid addressing mode
+SUBA *(PC,D0.W),A2	94FB00FE	-
+SUBA D1,*(PC,D0.W)		ERROR: Invalid addressing mode
+SUBA #$12,*(PC,D0.W)		ERROR: Invalid addressing mode
+SUBA BK(PC),D1		ERROR: Invalid addressing mode
+SUBA BK(PC),A2	94FA0EFE	-
+SUBA D1,BK(PC)		ERROR: Invalid addressing mode
+SUBA #$12,BK(PC)		ERROR: Invalid addressing mode
+SUBA #8,D1		ERROR: Invalid addressing mode
+SUBA #8,A2	514A	-
+SUBA D1,#8		ERROR: Invalid addressing mode
+SUBA #$12,#8		ERROR: Invalid addressing mode
+SUBA #9,D1		ERROR: Invalid addressing mode
+SUBA #9,A2	94FC0009	-
+SUBA D1,#9		ERROR: Invalid addressing mode
+SUBA #$12,#9		ERROR: Invalid addressing mode
+SUBA #0,D1		ERROR: Invalid addressing mode
+SUBA #0,A2	94FC0000	-
+SUBA D1,#0		ERROR: Invalid addressing mode
+SUBA #$12,#0		ERROR: Invalid addressing mode
+SUBA #-1,D1		ERROR: Invalid addressing mode
+SUBA #-1,A2	94FCFFFF	-
+SUBA D1,#-1		ERROR: Invalid addressing mode
+SUBA #$12,#-1		ERROR: Invalid addressing mode
+SUBA #$12345678.L,D1		ERROR: Invalid addressing mode
+SUBA #$12345678.L,A2	94FC5678	ERROR: Immediate data exceeds 16 bits
+SUBA D1,#$12345678.L		ERROR: Invalid addressing mode
+SUBA #$12,#$12345678.L		ERROR: Invalid addressing mode
+SUBA #BK,D1		ERROR: Invalid addressing mode
+SUBA #BK,A2	94FC1F00	-
+SUBA D1,#BK		ERROR: Invalid addressing mode
+SUBA #$12,#BK		ERROR: Invalid addressing mode
+SUBA #FW,D1		ERROR: Invalid addressing mode
+SUBA #FW,A2	94FC1F00	-
+SUBA D1,#FW		ERROR: Invalid addressing mode
+SUBA #$12,#FW		ERROR: Invalid addressing mode
+SUBA #UNDEF,D1		ERROR: Invalid addressing mode
+SUBA #UNDEF,A2	94FC5623	ERROR: Undefined symbol
+SUBA D1,#UNDEF		ERROR: Invalid addressing mode
+SUBA #$12,#UNDEF		ERROR: Invalid addressing mode
+SUBA UNDEF,D1		ERROR: Invalid addressing mode
+SUBA UNDEF,A2	94F900005623	ERROR: Undefined symbol
+SUBA D1,UNDEF		ERROR: Invalid addressing mode
+SUBA #$12,UNDEF		ERROR: Invalid addressing mode
+SUBA D1,D2,D3		ERROR: Invalid syntax
+SUBA.B		ERROR: Invalid syntax
+SUBA.B D1		ERROR: Comma expected
+SUBA.B A2		ERROR: Comma expected
+SUBA.B SP		ERROR: Comma expected
+SUBA.B (A3)		ERROR: Comma expected
+SUBA.B (A4)+		ERROR: Comma expected
+SUBA.B -(A5)		ERROR: Comma expected
+SUBA.B $10(A6)		ERROR: Comma expected
+SUBA.B -2(A0)		ERROR: Comma expected
+SUBA.B $10(A6,D7.W)		ERROR: Comma expected
+SUBA.B $12(A0,A1.L)		ERROR: Comma expected
+SUBA.B (A2,D3)		ERROR: Comma expected
+SUBA.B $1234		ERROR: Comma expected
+SUBA.B $12345678		ERROR: Comma expected
+SUBA.B $1234.L		ERROR: Comma expected
+SUBA.B $1234.W		ERROR: Comma expected
+SUBA.B $8000		ERROR: Comma expected
+SUBA.B BK		ERROR: Comma expected
+SUBA.B FW		ERROR: Comma expected
+SUBA.B *+$10(PC)		ERROR: Comma expected
+SUBA.B *(PC,D0.W)		ERROR: Comma expected
+SUBA.B BK(PC)		ERROR: Comma expected
+SUBA.B #1		ERROR: Comma expected
+SUBA.B #8		ERROR: Comma expected
+SUBA.B #9		ERROR: Comma expected
+SUBA.B #0		ERROR: Comma expected
+SUBA.B #-1		ERROR: Comma expected
+SUBA.B #$80		ERROR: Comma expected
+SUBA.B #$1234		ERROR: Comma expected
+SUBA.B #$12345678		ERROR: Comma expected
+SUBA.B #$12345678.L		ERROR: Comma expected
+SUBA.B #BK		ERROR: Comma expected
+SUBA.B #FW		ERROR: Comma expected
+SUBA.B #UNDEF		ERROR: Comma expected
+SUBA.B UNDEF		ERROR: Comma expected
+SUBA.B SR		ERROR: Comma expected
+SUBA.B CCR		ERROR: Comma expected
+SUBA.B USP		ERROR: Comma expected
+SUBA.B D1,D1		ERROR: Invalid addressing mode
+SUBA.B D1,A2	94C1	ERROR: Invalid size code
+SUBA.B D1,(A3)		ERROR: Invalid addressing mode
+SUBA.B D1,$10(A6)		ERROR: Invalid addressing mode
+SUBA.B D1,$1234		ERROR: Invalid addressing mode
+SUBA.B D1,FW		ERROR: Invalid addressing mode
+SUBA.B D1,#1		ERROR: Invalid addressing mode
+SUBA.B D1,#$1234		ERROR: Invalid addressing mode
+SUBA.B D1,CCR		ERROR: Invalid addressing mode
+SUBA.B D1,SR		ERROR: Invalid addressing mode
+SUBA.B A2,D1		ERROR: Invalid addressing mode
+SUBA.B A2,A2	94CA	ERROR: Invalid size code
+SUBA.B A2,(A3)		ERROR: Invalid addressing mode
+SUBA.B A2,$10(A6)		ERROR: Invalid addressing mode
+SUBA.B A2,$1234		ERROR: Invalid addressing mode
+SUBA.B A2,FW		ERROR: Invalid addressing mode
+SUBA.B A2,#1		ERROR: Invalid addressing mode
+SUBA.B A2,#$1234		ERROR: Invalid addressing mode
+SUBA.B A2,CCR		ERROR: Invalid addressing mode
+SUBA.B A2,SR		ERROR: Invalid addressing mode
+SUBA.B (A3),D1		ERROR: Invalid addressing mode
+SUBA.B (A3),A2	94D3	ERROR: Invalid size code
+SUBA.B (A3),(A3)		ERROR: Invalid addressing mode
+SUBA.B (A3),$10(A6)		ERROR: Invalid addressing mode
+SUBA.B (A3),$1234		ERROR: Invalid addressing mode
+SUBA.B (A3),FW		ERROR: Invalid addressing mode
+SUBA.B (A3),#1		ERROR: Invalid addressing mode
+SUBA.B (A3),#$1234		ERROR: Invalid addressing mode
+SUBA.B (A3),CCR		ERROR: Invalid addressing mode
+SUBA.B (A3),SR		ERROR: Invalid addressing mode
+SUBA.B $10(A6),D1		ERROR: Invalid addressing mode
+SUBA.B $10(A6),A2	94EE0010	ERROR: Invalid size code
+SUBA.B $10(A6),(A3)		ERROR: Invalid addressing mode
+SUBA.B $10(A6),$10(A6)		ERROR: Invalid addressing mode
+SUBA.B $10(A6),$1234		ERROR: Invalid addressing mode
+SUBA.B $10(A6),FW		ERROR: Invalid addressing mode
+SUBA.B $10(A6),#1		ERROR: Invalid addressing mode
+SUBA.B $10(A6),#$1234		ERROR: Invalid addressing mode
+SUBA.B $10(A6),CCR		ERROR: Invalid addressing mode
+SUBA.B $10(A6),SR		ERROR: Invalid addressing mode
+SUBA.B $1234,D1		ERROR: Invalid addressing mode
+SUBA.B $1234,A2	94F81234	ERROR: Invalid size code
+SUBA.B $1234,(A3)		ERROR: Invalid addressing mode
+SUBA.B $1234,$10(A6)		ERROR: Invalid addressing mode
+SUBA.B $1234,$1234		ERROR: Invalid addressing mode
+SUBA.B $1234,FW		ERROR: Invalid addressing mode
+SUBA.B $1234,#1		ERROR: Invalid addressing mode
+SUBA.B $1234,#$1234		ERROR: Invalid addressing mode
+SUBA.B $1234,CCR		ERROR: Invalid addressing mode
+SUBA.B $1234,SR		ERROR: Invalid addressing mode
+SUBA.B FW,D1		ERROR: Invalid addressing mode
+SUBA.B FW,A2	94F900001F00	ERROR: Invalid size code
+SUBA.B FW,(A3)		ERROR: Invalid addressing mode
+SUBA.B FW,$10(A6)		ERROR: Invalid addressing mode
+SUBA.B FW,$1234		ERROR: Invalid addressing mode
+SUBA.B FW,FW		ERROR: Invalid addressing mode
+SUBA.B FW,#1		ERROR: Invalid addressing mode
+SUBA.B FW,#$1234		ERROR: Invalid addressing mode
+SUBA.B FW,CCR		ERROR: Invalid addressing mode
+SUBA.B FW,SR		ERROR: Invalid addressing mode
+SUBA.B #1,D1		ERROR: Invalid addressing mode
+SUBA.B #1,A2	94FC0001	ERROR: Invalid size code
+SUBA.B #1,(A3)		ERROR: Invalid addressing mode
+SUBA.B #1,$10(A6)		ERROR: Invalid addressing mode
+SUBA.B #1,$1234		ERROR: Invalid addressing mode
+SUBA.B #1,FW		ERROR: Invalid addressing mode
+SUBA.B #1,#1		ERROR: Invalid addressing mode
+SUBA.B #1,#$1234		ERROR: Invalid addressing mode
+SUBA.B #1,CCR		ERROR: Invalid addressing mode
+SUBA.B #1,SR		ERROR: Invalid addressing mode
+SUBA.B #$1234,D1		ERROR: Invalid addressing mode
+SUBA.B #$1234,A2	94FC0034	ERROR: Invalid size code
+SUBA.B #$1234,(A3)		ERROR: Invalid addressing mode
+SUBA.B #$1234,$10(A6)		ERROR: Invalid addressing mode
+SUBA.B #$1234,$1234		ERROR: Invalid addressing mode
+SUBA.B #$1234,FW		ERROR: Invalid addressing mode
+SUBA.B #$1234,#1		ERROR: Invalid addressing mode
+SUBA.B #$1234,#$1234		ERROR: Invalid addressing mode
+SUBA.B #$1234,CCR		ERROR: Invalid addressing mode
+SUBA.B #$1234,SR		ERROR: Invalid addressing mode
+SUBA.B CCR,D1		ERROR: Invalid addressing mode
+SUBA.B CCR,A2		ERROR: Invalid addressing mode
+SUBA.B CCR,(A3)		ERROR: Invalid addressing mode
+SUBA.B CCR,$10(A6)		ERROR: Invalid addressing mode
+SUBA.B CCR,$1234		ERROR: Invalid addressing mode
+SUBA.B CCR,FW		ERROR: Invalid addressing mode
+SUBA.B CCR,#1		ERROR: Invalid addressing mode
+SUBA.B CCR,#$1234		ERROR: Invalid addressing mode
+SUBA.B CCR,CCR		ERROR: Invalid addressing mode
+SUBA.B CCR,SR		ERROR: Invalid addressing mode
+SUBA.B SR,D1		ERROR: Invalid addressing mode
+SUBA.B SR,A2		ERROR: Invalid addressing mode
+SUBA.B SR,(A3)		ERROR: Invalid addressing mode
+SUBA.B SR,$10(A6)		ERROR: Invalid addressing mode
+SUBA.B SR,$1234		ERROR: Invalid addressing mode
+SUBA.B SR,FW		ERROR: Invalid addressing mode
+SUBA.B SR,#1		ERROR: Invalid addressing mode
+SUBA.B SR,#$1234		ERROR: Invalid addressing mode
+SUBA.B SR,CCR		ERROR: Invalid addressing mode
+SUBA.B SR,SR		ERROR: Invalid addressing mode
+SUBA.B SP,D1		ERROR: Invalid addressing mode
+SUBA.B SP,A2	94CF	ERROR: Invalid size code
+SUBA.B D1,SP	9EC1	ERROR: Invalid size code
+SUBA.B #$12,SP	9EFC0012	ERROR: Invalid size code
+SUBA.B (A4)+,D1		ERROR: Invalid addressing mode
+SUBA.B (A4)+,A2	94DC	ERROR: Invalid size code
+SUBA.B D1,(A4)+		ERROR: Invalid addressing mode
+SUBA.B #$12,(A4)+		ERROR: Invalid addressing mode
+SUBA.B -(A5),D1		ERROR: Invalid addressing mode
+SUBA.B -(A5),A2	94E5	ERROR: Invalid size code
+SUBA.B D1,-(A5)		ERROR: Invalid addressing mode
+SUBA.B #$12,-(A5)		ERROR: Invalid addressing mode
+SUBA.B -2(A0),D1		ERROR: Invalid addressing mode
+SUBA.B -2(A0),A2	94E8FFFE	ERROR: Invalid size code
+SUBA.B D1,-2(A0)		ERROR: Invalid addressing mode
+SUBA.B #$12,-2(A0)		ERROR: Invalid addressing mode
+SUBA.B $10(A6,D7.W),D1		ERROR: Invalid addressing mode
+SUBA.B $10(A6,D7.W),A2	94F67010	ERROR: Invalid size code
+SUBA.B D1,$10(A6,D7.W)		ERROR: Invalid addressing mode
+SUBA.B #$12,$10(A6,D7.W)		ERROR: Invalid addressing mode
+SUBA.B $12(A0,A1.L),D1		ERROR: Invalid addressing mode
+SUBA.B $12(A0,A1.L),A2	94F09812	ERROR: Invalid size code
+SUBA.B D1,$12(A0,A1.L)		ERROR: Invalid addressing mode
+SUBA.B #$12,$12(A0,A1.L)		ERROR: Invalid addressing mode
+SUBA.B (A2,D3),D1		ERROR: Invalid addressing mode
+SUBA.B (A2,D3),A2	94F23000	ERROR: Invalid size code
+SUBA.B D1,(A2,D3)		ERROR: Invalid addressing mode
+SUBA.B #$12,(A2,D3)		ERROR: Invalid addressing mode
+SUBA.B $12345678,D1		ERROR: Invalid addressing mode
+SUBA.B $12345678,A2	94F912345678	ERROR: Invalid size code
+SUBA.B D1,$12345678		ERROR: Invalid addressing mode
+SUBA.B #$12,$12345678		ERROR: Invalid addressing mode
+SUBA.B $1234.L,D1		ERROR: Invalid addressing mode
+SUBA.B $1234.L,A2	94F900001234	ERROR: Invalid size code
+SUBA.B D1,$1234.L		ERROR: Invalid addressing mode
+SUBA.B #$12,$1234.L		ERROR: Invalid addressing mode
+SUBA.B $1234.W,D1		ERROR: Invalid addressing mode
+SUBA.B $1234.W,A2	94F81234	ERROR: Invalid size code
+SUBA.B D1,$1234.W		ERROR: Invalid addressing mode
+SUBA.B #$12,$1234.W		ERROR: Invalid addressing mode
+SUBA.B $8000,D1		ERROR: Invalid addressing mode
+SUBA.B $8000,A2	94F900008000	ERROR: Invalid size code
+SUBA.B D1,$8000		ERROR: Invalid addressing mode
+SUBA.B #$12,$8000		ERROR: Invalid addressing mode
+SUBA.B BK,D1		ERROR: Invalid addressing mode
+SUBA.B BK,A2	94F81F00	ERROR: Invalid size code
+SUBA.B D1,BK		ERROR: Invalid addressing mode
+SUBA.B #$12,BK		ERROR: Invalid addressing mode
+SUBA.B *+$10(PC),D1		ERROR: Invalid addressing mode
+SUBA.B *+$10(PC),A2	94FA000E	ERROR: Invalid size code
+SUBA.B D1,*+$10(PC)		ERROR: Invalid addressing mode
+SUBA.B #$12,*+$10(PC)		ERROR: Invalid addressing mode
+SUBA.B *(PC,D0.W),D1		ERROR: Invalid addressing mode
+SUBA.B *(PC,D0.W),A2	94FB00FE	ERROR: Invalid size code
+SUBA.B D1,*(PC,D0.W)		ERROR: Invalid addressing mode
+SUBA.B #$12,*(PC,D0.W)		ERROR: Invalid addressing mode
+SUBA.B BK(PC),D1		ERROR: Invalid addressing mode
+SUBA.B BK(PC),A2	94FA0EFE	ERROR: Invalid size code
+SUBA.B D1,BK(PC)		ERROR: Invalid addressing mode
+SUBA.B #$12,BK(PC)		ERROR: Invalid addressing mode
+SUBA.B #8,D1		ERROR: Invalid addressing mode
+SUBA.B #8,A2	94FC0008	ERROR: Invalid size code
+SUBA.B D1,#8		ERROR: Invalid addressing mode
+SUBA.B #$12,#8		ERROR: Invalid addressing mode
+SUBA.B #9,D1		ERROR: Invalid addressing mode
+SUBA.B #9,A2	94FC0009	ERROR: Invalid size code
+SUBA.B D1,#9		ERROR: Invalid addressing mode
+SUBA.B #$12,#9		ERROR: Invalid addressing mode
+SUBA.B #0,D1		ERROR: Invalid addressing mode
+SUBA.B #0,A2	94FC0000	ERROR: Invalid size code
+SUBA.B D1,#0		ERROR: Invalid addressing mode
+SUBA.B #$12,#0		ERROR: Invalid addressing mode
+SUBA.B #-1,D1		ERROR: Invalid addressing mode
+SUBA.B #-1,A2	94FC00FF	ERROR: Invalid size code
+SUBA.B D1,#-1		ERROR: Invalid addressing mode
+SUBA.B #$12,#-1		ERROR: Invalid addressing mode
+SUBA.B #$80,D1		ERROR: Invalid addressing mode
+SUBA.B #$80,A2	94FC0080	ERROR: Invalid size code
+SUBA.B D1,#$80		ERROR: Invalid addressing mode
+SUBA.B #$12,#$80		ERROR: Invalid addressing mode
+SUBA.B #$12345678,D1		ERROR: Invalid addressing mode
+SUBA.B #$12345678,A2	94FC0078	ERROR: Invalid size code
+SUBA.B D1,#$12345678		ERROR: Invalid addressing mode
+SUBA.B #$12,#$12345678		ERROR: Invalid addressing mode
+SUBA.B #$12345678.L,D1		ERROR: Invalid addressing mode
+SUBA.B #$12345678.L,A2	94FC0078	ERROR: Invalid size code
+SUBA.B D1,#$12345678.L		ERROR: Invalid addressing mode
+SUBA.B #$12,#$12345678.L		ERROR: Invalid addressing mode
+SUBA.B #BK,D1		ERROR: Invalid addressing mode
+SUBA.B #BK,A2	94FC0000	ERROR: Invalid size code
+SUBA.B D1,#BK		ERROR: Invalid addressing mode
+SUBA.B #$12,#BK		ERROR: Invalid addressing mode
+SUBA.B #FW,D1		ERROR: Invalid addressing mode
+SUBA.B #FW,A2	94FC0000	ERROR: Invalid size code
+SUBA.B D1,#FW		ERROR: Invalid addressing mode
+SUBA.B #$12,#FW		ERROR: Invalid addressing mode
+SUBA.B #UNDEF,D1		ERROR: Invalid addressing mode
+SUBA.B #UNDEF,A2	94FC0023	ERROR: Undefined symbol
+SUBA.B D1,#UNDEF		ERROR: Invalid addressing mode
+SUBA.B #$12,#UNDEF		ERROR: Invalid addressing mode
+SUBA.B UNDEF,D1		ERROR: Invalid addressing mode
+SUBA.B UNDEF,A2	94F900005623	ERROR: Undefined symbol
+SUBA.B D1,UNDEF		ERROR: Invalid addressing mode
+SUBA.B #$12,UNDEF		ERROR: Invalid addressing mode
+SUBA.B USP,D1		ERROR: Invalid addressing mode
+SUBA.B USP,A2		ERROR: Invalid addressing mode
+SUBA.B D1,USP		ERROR: Invalid addressing mode
+SUBA.B #$12,USP		ERROR: Invalid addressing mode
+SUBA.B D1,D2,D3		ERROR: Invalid syntax
+SUBA.W		ERROR: Invalid syntax
+SUBA.W D1		ERROR: Comma expected
+SUBA.W A2		ERROR: Comma expected
+SUBA.W SP		ERROR: Comma expected
+SUBA.W (A3)		ERROR: Comma expected
+SUBA.W (A4)+		ERROR: Comma expected
+SUBA.W -(A5)		ERROR: Comma expected
+SUBA.W $10(A6)		ERROR: Comma expected
+SUBA.W -2(A0)		ERROR: Comma expected
+SUBA.W $10(A6,D7.W)		ERROR: Comma expected
+SUBA.W $12(A0,A1.L)		ERROR: Comma expected
+SUBA.W (A2,D3)		ERROR: Comma expected
+SUBA.W $1234		ERROR: Comma expected
+SUBA.W $12345678		ERROR: Comma expected
+SUBA.W $1234.L		ERROR: Comma expected
+SUBA.W $1234.W		ERROR: Comma expected
+SUBA.W $8000		ERROR: Comma expected
+SUBA.W BK		ERROR: Comma expected
+SUBA.W FW		ERROR: Comma expected
+SUBA.W *+$10(PC)		ERROR: Comma expected
+SUBA.W *(PC,D0.W)		ERROR: Comma expected
+SUBA.W BK(PC)		ERROR: Comma expected
+SUBA.W #1		ERROR: Comma expected
+SUBA.W #8		ERROR: Comma expected
+SUBA.W #9		ERROR: Comma expected
+SUBA.W #0		ERROR: Comma expected
+SUBA.W #-1		ERROR: Comma expected
+SUBA.W #$80		ERROR: Comma expected
+SUBA.W #$1234		ERROR: Comma expected
+SUBA.W #$12345678		ERROR: Comma expected
+SUBA.W #$12345678.L		ERROR: Comma expected
+SUBA.W #BK		ERROR: Comma expected
+SUBA.W #FW		ERROR: Comma expected
+SUBA.W #UNDEF		ERROR: Comma expected
+SUBA.W UNDEF		ERROR: Comma expected
+SUBA.W SR		ERROR: Comma expected
+SUBA.W CCR		ERROR: Comma expected
+SUBA.W USP		ERROR: Comma expected
+SUBA.W D1,D1		ERROR: Invalid addressing mode
+SUBA.W D1,A2	94C1	-
+SUBA.W D1,(A3)		ERROR: Invalid addressing mode
+SUBA.W D1,(A4)+		ERROR: Invalid addressing mode
+SUBA.W D1,-(A5)		ERROR: Invalid addressing mode
+SUBA.W D1,$10(A6)		ERROR: Invalid addressing mode
+SUBA.W D1,$10(A6,D7.W)		ERROR: Invalid addressing mode
+SUBA.W D1,$1234		ERROR: Invalid addressing mode
+SUBA.W D1,$12345678		ERROR: Invalid addressing mode
+SUBA.W D1,FW		ERROR: Invalid addressing mode
+SUBA.W D1,*+$10(PC)		ERROR: Invalid addressing mode
+SUBA.W D1,#1		ERROR: Invalid addressing mode
+SUBA.W D1,#$80		ERROR: Invalid addressing mode
+SUBA.W D1,#$1234		ERROR: Invalid addressing mode
+SUBA.W D1,#$12345678		ERROR: Invalid addressing mode
+SUBA.W D1,SR		ERROR: Invalid addressing mode
+SUBA.W D1,CCR		ERROR: Invalid addressing mode
+SUBA.W D1,USP		ERROR: Invalid addressing mode
+SUBA.W A2,D1		ERROR: Invalid addressing mode
+SUBA.W A2,A2	94CA	-
+SUBA.W A2,(A3)		ERROR: Invalid addressing mode
+SUBA.W A2,(A4)+		ERROR: Invalid addressing mode
+SUBA.W A2,-(A5)		ERROR: Invalid addressing mode
+SUBA.W A2,$10(A6)		ERROR: Invalid addressing mode
+SUBA.W A2,$10(A6,D7.W)		ERROR: Invalid addressing mode
+SUBA.W A2,$1234		ERROR: Invalid addressing mode
+SUBA.W A2,$12345678		ERROR: Invalid addressing mode
+SUBA.W A2,FW		ERROR: Invalid addressing mode
+SUBA.W A2,*+$10(PC)		ERROR: Invalid addressing mode
+SUBA.W A2,#1		ERROR: Invalid addressing mode
+SUBA.W A2,#$80		ERROR: Invalid addressing mode
+SUBA.W A2,#$1234		ERROR: Invalid addressing mode
+SUBA.W A2,#$12345678		ERROR: Invalid addressing mode
+SUBA.W A2,SR		ERROR: Invalid addressing mode
+SUBA.W A2,CCR		ERROR: Invalid addressing mode
+SUBA.W A2,USP		ERROR: Invalid addressing mode
+SUBA.W (A3),D1		ERROR: Invalid addressing mode
+SUBA.W (A3),A2	94D3	-
+SUBA.W (A3),(A3)		ERROR: Invalid addressing mode
+SUBA.W (A3),(A4)+		ERROR: Invalid addressing mode
+SUBA.W (A3),-(A5)		ERROR: Invalid addressing mode
+SUBA.W (A3),$10(A6)		ERROR: Invalid addressing mode
+SUBA.W (A3),$10(A6,D7.W)		ERROR: Invalid addressing mode
+SUBA.W (A3),$1234		ERROR: Invalid addressing mode
+SUBA.W (A3),$12345678		ERROR: Invalid addressing mode
+SUBA.W (A3),FW		ERROR: Invalid addressing mode
+SUBA.W (A3),*+$10(PC)		ERROR: Invalid addressing mode
+SUBA.W (A3),#1		ERROR: Invalid addressing mode
+SUBA.W (A3),#$80		ERROR: Invalid addressing mode
+SUBA.W (A3),#$1234		ERROR: Invalid addressing mode
+SUBA.W (A3),#$12345678		ERROR: Invalid addressing mode
+SUBA.W (A3),SR		ERROR: Invalid addressing mode
+SUBA.W (A3),CCR		ERROR: Invalid addressing mode
+SUBA.W (A3),USP		ERROR: Invalid addressing mode
+SUBA.W (A4)+,D1		ERROR: Invalid addressing mode
+SUBA.W (A4)+,A2	94DC	-
+SUBA.W (A4)+,(A3)		ERROR: Invalid addressing mode
+SUBA.W (A4)+,(A4)+		ERROR: Invalid addressing mode
+SUBA.W (A4)+,-(A5)		ERROR: Invalid addressing mode
+SUBA.W (A4)+,$10(A6)		ERROR: Invalid addressing mode
+SUBA.W (A4)+,$10(A6,D7.W)		ERROR: Invalid addressing mode
+SUBA.W (A4)+,$1234		ERROR: Invalid addressing mode
+SUBA.W (A4)+,$12345678		ERROR: Invalid addressing mode
+SUBA.W (A4)+,FW		ERROR: Invalid addressing mode
+SUBA.W (A4)+,*+$10(PC)		ERROR: Invalid addressing mode
+SUBA.W (A4)+,#1		ERROR: Invalid addressing mode
+SUBA.W (A4)+,#$80		ERROR: Invalid addressing mode
+SUBA.W (A4)+,#$1234		ERROR: Invalid addressing mode
+SUBA.W (A4)+,#$12345678		ERROR: Invalid addressing mode
+SUBA.W (A4)+,SR		ERROR: Invalid addressing mode
+SUBA.W (A4)+,CCR		ERROR: Invalid addressing mode
+SUBA.W (A4)+,USP		ERROR: Invalid addressing mode
+SUBA.W -(A5),D1		ERROR: Invalid addressing mode
+SUBA.W -(A5),A2	94E5	-
+SUBA.W -(A5),(A3)		ERROR: Invalid addressing mode
+SUBA.W -(A5),(A4)+		ERROR: Invalid addressing mode
+SUBA.W -(A5),-(A5)		ERROR: Invalid addressing mode
+SUBA.W -(A5),$10(A6)		ERROR: Invalid addressing mode
+SUBA.W -(A5),$10(A6,D7.W)		ERROR: Invalid addressing mode
+SUBA.W -(A5),$1234		ERROR: Invalid addressing mode
+SUBA.W -(A5),$12345678		ERROR: Invalid addressing mode
+SUBA.W -(A5),FW		ERROR: Invalid addressing mode
+SUBA.W -(A5),*+$10(PC)		ERROR: Invalid addressing mode
+SUBA.W -(A5),#1		ERROR: Invalid addressing mode
+SUBA.W -(A5),#$80		ERROR: Invalid addressing mode
+SUBA.W -(A5),#$1234		ERROR: Invalid addressing mode
+SUBA.W -(A5),#$12345678		ERROR: Invalid addressing mode
+SUBA.W -(A5),SR		ERROR: Invalid addressing mode
+SUBA.W -(A5),CCR		ERROR: Invalid addressing mode
+SUBA.W -(A5),USP		ERROR: Invalid addressing mode
+SUBA.W $10(A6),D1		ERROR: Invalid addressing mode
+SUBA.W $10(A6),A2	94EE0010	-
+SUBA.W $10(A6),(A3)		ERROR: Invalid addressing mode
+SUBA.W $10(A6),(A4)+		ERROR: Invalid addressing mode
+SUBA.W $10(A6),-(A5)		ERROR: Invalid addressing mode
+SUBA.W $10(A6),$10(A6)		ERROR: Invalid addressing mode
+SUBA.W $10(A6),$10(A6,D7.W)		ERROR: Invalid addressing mode
+SUBA.W $10(A6),$1234		ERROR: Invalid addressing mode
+SUBA.W $10(A6),$12345678		ERROR: Invalid addressing mode
+SUBA.W $10(A6),FW		ERROR: Invalid addressing mode
+SUBA.W $10(A6),*+$10(PC)		ERROR: Invalid addressing mode
+SUBA.W $10(A6),#1		ERROR: Invalid addressing mode
+SUBA.W $10(A6),#$80		ERROR: Invalid addressing mode
+SUBA.W $10(A6),#$1234		ERROR: Invalid addressing mode
+SUBA.W $10(A6),#$12345678		ERROR: Invalid addressing mode
+SUBA.W $10(A6),SR		ERROR: Invalid addressing mode
+SUBA.W $10(A6),CCR		ERROR: Invalid addressing mode
+SUBA.W $10(A6),USP		ERROR: Invalid addressing mode
+SUBA.W $10(A6,D7.W),D1		ERROR: Invalid addressing mode
+SUBA.W $10(A6,D7.W),A2	94F67010	-
+SUBA.W $10(A6,D7.W),(A3)		ERROR: Invalid addressing mode
+SUBA.W $10(A6,D7.W),(A4)+		ERROR: Invalid addressing mode
+SUBA.W $10(A6,D7.W),-(A5)		ERROR: Invalid addressing mode
+SUBA.W $10(A6,D7.W),$10(A6)		ERROR: Invalid addressing mode
+SUBA.W $10(A6,D7.W),$10(A6,D7.W)		ERROR: Invalid addressing mode
+SUBA.W $10(A6,D7.W),$1234		ERROR: Invalid addressing mode
+SUBA.W $10(A6,D7.W),$12345678		ERROR: Invalid addressing mode
+SUBA.W $10(A6,D7.W),FW		ERROR: Invalid addressing mode
+SUBA.W $10(A6,D7.W),*+$10(PC)		ERROR: Invalid addressing mode
+SUBA.W $10(A6,D7.W),#1		ERROR: Invalid addressing mode
+SUBA.W $10(A6,D7.W),#$80		ERROR: Invalid addressing mode
+SUBA.W $10(A6,D7.W),#$1234		ERROR: Invalid addressing mode
+SUBA.W $10(A6,D7.W),#$12345678		ERROR: Invalid addressing mode
+SUBA.W $10(A6,D7.W),SR		ERROR: Invalid addressing mode
+SUBA.W $10(A6,D7.W),CCR		ERROR: Invalid addressing mode
+SUBA.W $10(A6,D7.W),USP		ERROR: Invalid addressing mode
+SUBA.W $1234,D1		ERROR: Invalid addressing mode
+SUBA.W $1234,A2	94F81234	-
+SUBA.W $1234,(A3)		ERROR: Invalid addressing mode
+SUBA.W $1234,(A4)+		ERROR: Invalid addressing mode
+SUBA.W $1234,-(A5)		ERROR: Invalid addressing mode
+SUBA.W $1234,$10(A6)		ERROR: Invalid addressing mode
+SUBA.W $1234,$10(A6,D7.W)		ERROR: Invalid addressing mode
+SUBA.W $1234,$1234		ERROR: Invalid addressing mode
+SUBA.W $1234,$12345678		ERROR: Invalid addressing mode
+SUBA.W $1234,FW		ERROR: Invalid addressing mode
+SUBA.W $1234,*+$10(PC)		ERROR: Invalid addressing mode
+SUBA.W $1234,#1		ERROR: Invalid addressing mode
+SUBA.W $1234,#$80		ERROR: Invalid addressing mode
+SUBA.W $1234,#$1234		ERROR: Invalid addressing mode
+SUBA.W $1234,#$12345678		ERROR: Invalid addressing mode
+SUBA.W $1234,SR		ERROR: Invalid addressing mode
+SUBA.W $1234,CCR		ERROR: Invalid addressing mode
+SUBA.W $1234,USP		ERROR: Invalid addressing mode
+SUBA.W $12345678,D1		ERROR: Invalid addressing mode
+SUBA.W $12345678,A2	94F912345678	-
+SUBA.W $12345678,(A3)		ERROR: Invalid addressing mode
+SUBA.W $12345678,(A4)+		ERROR: Invalid addressing mode
+SUBA.W $12345678,-(A5)		ERROR: Invalid addressing mode
+SUBA.W $12345678,$10(A6)		ERROR: Invalid addressing mode
+SUBA.W $12345678,$10(A6,D7.W)		ERROR: Invalid addressing mode
+SUBA.W $12345678,$1234		ERROR: Invalid addressing mode
+SUBA.W $12345678,$12345678		ERROR: Invalid addressing mode
+SUBA.W $12345678,FW		ERROR: Invalid addressing mode
+SUBA.W $12345678,*+$10(PC)		ERROR: Invalid addressing mode
+SUBA.W $12345678,#1		ERROR: Invalid addressing mode
+SUBA.W $12345678,#$80		ERROR: Invalid addressing mode
+SUBA.W $12345678,#$1234		ERROR: Invalid addressing mode
+SUBA.W $12345678,#$12345678		ERROR: Invalid addressing mode
+SUBA.W $12345678,SR		ERROR: Invalid addressing mode
+SUBA.W $12345678,CCR		ERROR: Invalid addressing mode
+SUBA.W $12345678,USP		ERROR: Invalid addressing mode
+SUBA.W FW,D1		ERROR: Invalid addressing mode
+SUBA.W FW,A2	94F900001F00	-
+SUBA.W FW,(A3)		ERROR: Invalid addressing mode
+SUBA.W FW,(A4)+		ERROR: Invalid addressing mode
+SUBA.W FW,-(A5)		ERROR: Invalid addressing mode
+SUBA.W FW,$10(A6)		ERROR: Invalid addressing mode
+SUBA.W FW,$10(A6,D7.W)		ERROR: Invalid addressing mode
+SUBA.W FW,$1234		ERROR: Invalid addressing mode
+SUBA.W FW,$12345678		ERROR: Invalid addressing mode
+SUBA.W FW,FW		ERROR: Invalid addressing mode
+SUBA.W FW,*+$10(PC)		ERROR: Invalid addressing mode
+SUBA.W FW,#1		ERROR: Invalid addressing mode
+SUBA.W FW,#$80		ERROR: Invalid addressing mode
+SUBA.W FW,#$1234		ERROR: Invalid addressing mode
+SUBA.W FW,#$12345678		ERROR: Invalid addressing mode
+SUBA.W FW,SR		ERROR: Invalid addressing mode
+SUBA.W FW,CCR		ERROR: Invalid addressing mode
+SUBA.W FW,USP		ERROR: Invalid addressing mode
+SUBA.W *+$10(PC),D1		ERROR: Invalid addressing mode
+SUBA.W *+$10(PC),A2	94FA000E	-
+SUBA.W *+$10(PC),(A3)		ERROR: Invalid addressing mode
+SUBA.W *+$10(PC),(A4)+		ERROR: Invalid addressing mode
+SUBA.W *+$10(PC),-(A5)		ERROR: Invalid addressing mode
+SUBA.W *+$10(PC),$10(A6)		ERROR: Invalid addressing mode
+SUBA.W *+$10(PC),$10(A6,D7.W)		ERROR: Invalid addressing mode
+SUBA.W *+$10(PC),$1234		ERROR: Invalid addressing mode
+SUBA.W *+$10(PC),$12345678		ERROR: Invalid addressing mode
+SUBA.W *+$10(PC),FW		ERROR: Invalid addressing mode
+SUBA.W *+$10(PC),*+$10(PC)		ERROR: Invalid addressing mode
+SUBA.W *+$10(PC),#1		ERROR: Invalid addressing mode
+SUBA.W *+$10(PC),#$80		ERROR: Invalid addressing mode
+SUBA.W *+$10(PC),#$1234		ERROR: Invalid addressing mode
+SUBA.W *+$10(PC),#$12345678		ERROR: Invalid addressing mode
+SUBA.W *+$10(PC),SR		ERROR: Invalid addressing mode
+SUBA.W *+$10(PC),CCR		ERROR: Invalid addressing mode
+SUBA.W *+$10(PC),USP		ERROR: Invalid addressing mode
+SUBA.W #1,D1		ERROR: Invalid addressing mode
+SUBA.W #1,A2	534A	-
+SUBA.W #1,(A3)		ERROR: Invalid addressing mode
+SUBA.W #1,(A4)+		ERROR: Invalid addressing mode
+SUBA.W #1,-(A5)		ERROR: Invalid addressing mode
+SUBA.W #1,$10(A6)		ERROR: Invalid addressing mode
+SUBA.W #1,$10(A6,D7.W)		ERROR: Invalid addressing mode
+SUBA.W #1,$1234		ERROR: Invalid addressing mode
+SUBA.W #1,$12345678		ERROR: Invalid addressing mode
+SUBA.W #1,FW		ERROR: Invalid addressing mode
+SUBA.W #1,*+$10(PC)		ERROR: Invalid addressing mode
+SUBA.W #1,#1		ERROR: Invalid addressing mode
+SUBA.W #1,#$80		ERROR: Invalid addressing mode
+SUBA.W #1,#$1234		ERROR: Invalid addressing mode
+SUBA.W #1,#$12345678		ERROR: Invalid addressing mode
+SUBA.W #1,SR		ERROR: Invalid addressing mode
+SUBA.W #1,CCR		ERROR: Invalid addressing mode
+SUBA.W #1,USP		ERROR: Invalid addressing mode
+SUBA.W #$80,D1		ERROR: Invalid addressing mode
+SUBA.W #$80,A2	94FC0080	-
+SUBA.W #$80,(A3)		ERROR: Invalid addressing mode
+SUBA.W #$80,(A4)+		ERROR: Invalid addressing mode
+SUBA.W #$80,-(A5)		ERROR: Invalid addressing mode
+SUBA.W #$80,$10(A6)		ERROR: Invalid addressing mode
+SUBA.W #$80,$10(A6,D7.W)		ERROR: Invalid addressing mode
+SUBA.W #$80,$1234		ERROR: Invalid addressing mode
+SUBA.W #$80,$12345678		ERROR: Invalid addressing mode
+SUBA.W #$80,FW		ERROR: Invalid addressing mode
+SUBA.W #$80,*+$10(PC)		ERROR: Invalid addressing mode
+SUBA.W #$80,#1		ERROR: Invalid addressing mode
+SUBA.W #$80,#$80		ERROR: Invalid addressing mode
+SUBA.W #$80,#$1234		ERROR: Invalid addressing mode
+SUBA.W #$80,#$12345678		ERROR: Invalid addressing mode
+SUBA.W #$80,SR		ERROR: Invalid addressing mode
+SUBA.W #$80,CCR		ERROR: Invalid addressing mode
+SUBA.W #$80,USP		ERROR: Invalid addressing mode
+SUBA.W #$1234,D1		ERROR: Invalid addressing mode
+SUBA.W #$1234,A2	94FC1234	-
+SUBA.W #$1234,(A3)		ERROR: Invalid addressing mode
+SUBA.W #$1234,(A4)+		ERROR: Invalid addressing mode
+SUBA.W #$1234,-(A5)		ERROR: Invalid addressing mode
+SUBA.W #$1234,$10(A6)		ERROR: Invalid addressing mode
+SUBA.W #$1234,$10(A6,D7.W)		ERROR: Invalid addressing mode
+SUBA.W #$1234,$1234		ERROR: Invalid addressing mode
+SUBA.W #$1234,$12345678		ERROR: Invalid addressing mode
+SUBA.W #$1234,FW		ERROR: Invalid addressing mode
+SUBA.W #$1234,*+$10(PC)		ERROR: Invalid addressing mode
+SUBA.W #$1234,#1		ERROR: Invalid addressing mode
+SUBA.W #$1234,#$80		ERROR: Invalid addressing mode
+SUBA.W #$1234,#$1234		ERROR: Invalid addressing mode
+SUBA.W #$1234,#$12345678		ERROR: Invalid addressing mode
+SUBA.W #$1234,SR		ERROR: Invalid addressing mode
+SUBA.W #$1234,CCR		ERROR: Invalid addressing mode
+SUBA.W #$1234,USP		ERROR: Invalid addressing mode
+SUBA.W #$12345678,D1		ERROR: Invalid addressing mode
+SUBA.W #$12345678,A2	94FC5678	ERROR: Immediate data exceeds 16 bits
+SUBA.W #$12345678,(A3)		ERROR: Invalid addressing mode
+SUBA.W #$12345678,(A4)+		ERROR: Invalid addressing mode
+SUBA.W #$12345678,-(A5)		ERROR: Invalid addressing mode
+SUBA.W #$12345678,$10(A6)		ERROR: Invalid addressing mode
+SUBA.W #$12345678,$10(A6,D7.W)		ERROR: Invalid addressing mode
+SUBA.W #$12345678,$1234		ERROR: Invalid addressing mode
+SUBA.W #$12345678,$12345678		ERROR: Invalid addressing mode
+SUBA.W #$12345678,FW		ERROR: Invalid addressing mode
+SUBA.W #$12345678,*+$10(PC)		ERROR: Invalid addressing mode
+SUBA.W #$12345678,#1		ERROR: Invalid addressing mode
+SUBA.W #$12345678,#$80		ERROR: Invalid addressing mode
+SUBA.W #$12345678,#$1234		ERROR: Invalid addressing mode
+SUBA.W #$12345678,#$12345678		ERROR: Invalid addressing mode
+SUBA.W #$12345678,SR		ERROR: Invalid addressing mode
+SUBA.W #$12345678,CCR		ERROR: Invalid addressing mode
+SUBA.W #$12345678,USP		ERROR: Invalid addressing mode
+SUBA.W SR,D1		ERROR: Invalid addressing mode
+SUBA.W SR,A2		ERROR: Invalid addressing mode
+SUBA.W SR,(A3)		ERROR: Invalid addressing mode
+SUBA.W SR,(A4)+		ERROR: Invalid addressing mode
+SUBA.W SR,-(A5)		ERROR: Invalid addressing mode
+SUBA.W SR,$10(A6)		ERROR: Invalid addressing mode
+SUBA.W SR,$10(A6,D7.W)		ERROR: Invalid addressing mode
+SUBA.W SR,$1234		ERROR: Invalid addressing mode
+SUBA.W SR,$12345678		ERROR: Invalid addressing mode
+SUBA.W SR,FW		ERROR: Invalid addressing mode
+SUBA.W SR,*+$10(PC)		ERROR: Invalid addressing mode
+SUBA.W SR,#1		ERROR: Invalid addressing mode
+SUBA.W SR,#$80		ERROR: Invalid addressing mode
+SUBA.W SR,#$1234		ERROR: Invalid addressing mode
+SUBA.W SR,#$12345678		ERROR: Invalid addressing mode
+SUBA.W SR,SR		ERROR: Invalid addressing mode
+SUBA.W SR,CCR		ERROR: Invalid addressing mode
+SUBA.W SR,USP		ERROR: Invalid addressing mode
+SUBA.W CCR,D1		ERROR: Invalid addressing mode
+SUBA.W CCR,A2		ERROR: Invalid addressing mode
+SUBA.W CCR,(A3)		ERROR: Invalid addressing mode
+SUBA.W CCR,(A4)+		ERROR: Invalid addressing mode
+SUBA.W CCR,-(A5)		ERROR: Invalid addressing mode
+SUBA.W CCR,$10(A6)		ERROR: Invalid addressing mode
+SUBA.W CCR,$10(A6,D7.W)		ERROR: Invalid addressing mode
+SUBA.W CCR,$1234		ERROR: Invalid addressing mode
+SUBA.W CCR,$12345678		ERROR: Invalid addressing mode
+SUBA.W CCR,FW		ERROR: Invalid addressing mode
+SUBA.W CCR,*+$10(PC)		ERROR: Invalid addressing mode
+SUBA.W CCR,#1		ERROR: Invalid addressing mode
+SUBA.W CCR,#$80		ERROR: Invalid addressing mode
+SUBA.W CCR,#$1234		ERROR: Invalid addressing mode
+SUBA.W CCR,#$12345678		ERROR: Invalid addressing mode
+SUBA.W CCR,SR		ERROR: Invalid addressing mode
+SUBA.W CCR,CCR		ERROR: Invalid addressing mode
+SUBA.W CCR,USP		ERROR: Invalid addressing mode
+SUBA.W USP,D1		ERROR: Invalid addressing mode
+SUBA.W USP,A2		ERROR: Invalid addressing mode
+SUBA.W USP,(A3)		ERROR: Invalid addressing mode
+SUBA.W USP,(A4)+		ERROR: Invalid addressing mode
+SUBA.W USP,-(A5)		ERROR: Invalid addressing mode
+SUBA.W USP,$10(A6)		ERROR: Invalid addressing mode
+SUBA.W USP,$10(A6,D7.W)		ERROR: Invalid addressing mode
+SUBA.W USP,$1234		ERROR: Invalid addressing mode
+SUBA.W USP,$12345678		ERROR: Invalid addressing mode
+SUBA.W USP,FW		ERROR: Invalid addressing mode
+SUBA.W USP,*+$10(PC)		ERROR: Invalid addressing mode
+SUBA.W USP,#1		ERROR: Invalid addressing mode
+SUBA.W USP,#$80		ERROR: Invalid addressing mode
+SUBA.W USP,#$1234		ERROR: Invalid addressing mode
+SUBA.W USP,#$12345678		ERROR: Invalid addressing mode
+SUBA.W USP,SR		ERROR: Invalid addressing mode
+SUBA.W USP,CCR		ERROR: Invalid addressing mode
+SUBA.W USP,USP		ERROR: Invalid addressing mode
+SUBA.W SP,D1		ERROR: Invalid addressing mode
+SUBA.W SP,A2	94CF	-
+SUBA.W D1,SP	9EC1	-
+SUBA.W #$12,SP	9EFC0012	-
+SUBA.W -2(A0),D1		ERROR: Invalid addressing mode
+SUBA.W -2(A0),A2	94E8FFFE	-
+SUBA.W D1,-2(A0)		ERROR: Invalid addressing mode
+SUBA.W #$12,-2(A0)		ERROR: Invalid addressing mode
+SUBA.W $12(A0,A1.L),D1		ERROR: Invalid addressing mode
+SUBA.W $12(A0,A1.L),A2	94F09812	-
+SUBA.W D1,$12(A0,A1.L)		ERROR: Invalid addressing mode
+SUBA.W #$12,$12(A0,A1.L)		ERROR: Invalid addressing mode
+SUBA.W (A2,D3),D1		ERROR: Invalid addressing mode
+SUBA.W (A2,D3),A2	94F23000	-
+SUBA.W D1,(A2,D3)		ERROR: Invalid addressing mode
+SUBA.W #$12,(A2,D3)		ERROR: Invalid addressing mode
+SUBA.W $1234.L,D1		ERROR: Invalid addressing mode
+SUBA.W $1234.L,A2	94F900001234	-
+SUBA.W D1,$1234.L		ERROR: Invalid addressing mode
+SUBA.W #$12,$1234.L		ERROR: Invalid addressing mode
+SUBA.W $1234.W,D1		ERROR: Invalid addressing mode
+SUBA.W $1234.W,A2	94F81234	WARNING: Forcing SHORT addressing disables range checking of extension word
+SUBA.W D1,$1234.W		ERROR: Invalid addressing mode
+SUBA.W #$12,$1234.W		ERROR: Invalid addressing mode
+SUBA.W $8000,D1		ERROR: Invalid addressing mode
+SUBA.W $8000,A2	94F900008000	-
+SUBA.W D1,$8000		ERROR: Invalid addressing mode
+SUBA.W #$12,$8000		ERROR: Invalid addressing mode
+SUBA.W BK,D1		ERROR: Invalid addressing mode
+SUBA.W BK,A2	94F81F00	-
+SUBA.W D1,BK		ERROR: Invalid addressing mode
+SUBA.W #$12,BK		ERROR: Invalid addressing mode
+SUBA.W *(PC,D0.W),D1		ERROR: Invalid addressing mode
+SUBA.W *(PC,D0.W),A2	94FB00FE	-
+SUBA.W D1,*(PC,D0.W)		ERROR: Invalid addressing mode
+SUBA.W #$12,*(PC,D0.W)		ERROR: Invalid addressing mode
+SUBA.W BK(PC),D1		ERROR: Invalid addressing mode
+SUBA.W BK(PC),A2	94FA0EFE	-
+SUBA.W D1,BK(PC)		ERROR: Invalid addressing mode
+SUBA.W #$12,BK(PC)		ERROR: Invalid addressing mode
+SUBA.W #8,D1		ERROR: Invalid addressing mode
+SUBA.W #8,A2	514A	-
+SUBA.W D1,#8		ERROR: Invalid addressing mode
+SUBA.W #$12,#8		ERROR: Invalid addressing mode
+SUBA.W #9,D1		ERROR: Invalid addressing mode
+SUBA.W #9,A2	94FC0009	-
+SUBA.W D1,#9		ERROR: Invalid addressing mode
+SUBA.W #$12,#9		ERROR: Invalid addressing mode
+SUBA.W #0,D1		ERROR: Invalid addressing mode
+SUBA.W #0,A2	94FC0000	-
+SUBA.W D1,#0		ERROR: Invalid addressing mode
+SUBA.W #$12,#0		ERROR: Invalid addressing mode
+SUBA.W #-1,D1		ERROR: Invalid addressing mode
+SUBA.W #-1,A2	94FCFFFF	-
+SUBA.W D1,#-1		ERROR: Invalid addressing mode
+SUBA.W #$12,#-1		ERROR: Invalid addressing mode
+SUBA.W #$12345678.L,D1		ERROR: Invalid addressing mode
+SUBA.W #$12345678.L,A2	94FC5678	ERROR: Immediate data exceeds 16 bits
+SUBA.W D1,#$12345678.L		ERROR: Invalid addressing mode
+SUBA.W #$12,#$12345678.L		ERROR: Invalid addressing mode
+SUBA.W #BK,D1		ERROR: Invalid addressing mode
+SUBA.W #BK,A2	94FC1F00	-
+SUBA.W D1,#BK		ERROR: Invalid addressing mode
+SUBA.W #$12,#BK		ERROR: Invalid addressing mode
+SUBA.W #FW,D1		ERROR: Invalid addressing mode
+SUBA.W #FW,A2	94FC1F00	-
+SUBA.W D1,#FW		ERROR: Invalid addressing mode
+SUBA.W #$12,#FW		ERROR: Invalid addressing mode
+SUBA.W #UNDEF,D1		ERROR: Invalid addressing mode
+SUBA.W #UNDEF,A2	94FC5623	ERROR: Undefined symbol
+SUBA.W D1,#UNDEF		ERROR: Invalid addressing mode
+SUBA.W #$12,#UNDEF		ERROR: Invalid addressing mode
+SUBA.W UNDEF,D1		ERROR: Invalid addressing mode
+SUBA.W UNDEF,A2	94F900005623	ERROR: Undefined symbol
+SUBA.W D1,UNDEF		ERROR: Invalid addressing mode
+SUBA.W #$12,UNDEF		ERROR: Invalid addressing mode
+SUBA.W D1,D2,D3		ERROR: Invalid syntax
+SUBA.L		ERROR: Invalid syntax
+SUBA.L D1		ERROR: Comma expected
+SUBA.L A2		ERROR: Comma expected
+SUBA.L SP		ERROR: Comma expected
+SUBA.L (A3)		ERROR: Comma expected
+SUBA.L (A4)+		ERROR: Comma expected
+SUBA.L -(A5)		ERROR: Comma expected
+SUBA.L $10(A6)		ERROR: Comma expected
+SUBA.L -2(A0)		ERROR: Comma expected
+SUBA.L $10(A6,D7.W)		ERROR: Comma expected
+SUBA.L $12(A0,A1.L)		ERROR: Comma expected
+SUBA.L (A2,D3)		ERROR: Comma expected
+SUBA.L $1234		ERROR: Comma expected
+SUBA.L $12345678		ERROR: Comma expected
+SUBA.L $1234.L		ERROR: Comma expected
+SUBA.L $1234.W		ERROR: Comma expected
+SUBA.L $8000		ERROR: Comma expected
+SUBA.L BK		ERROR: Comma expected
+SUBA.L FW		ERROR: Comma expected
+SUBA.L *+$10(PC)		ERROR: Comma expected
+SUBA.L *(PC,D0.W)		ERROR: Comma expected
+SUBA.L BK(PC)		ERROR: Comma expected
+SUBA.L #1		ERROR: Comma expected
+SUBA.L #8		ERROR: Comma expected
+SUBA.L #9		ERROR: Comma expected
+SUBA.L #0		ERROR: Comma expected
+SUBA.L #-1		ERROR: Comma expected
+SUBA.L #$80		ERROR: Comma expected
+SUBA.L #$1234		ERROR: Comma expected
+SUBA.L #$12345678		ERROR: Comma expected
+SUBA.L #$12345678.L		ERROR: Comma expected
+SUBA.L #BK		ERROR: Comma expected
+SUBA.L #FW		ERROR: Comma expected
+SUBA.L #UNDEF		ERROR: Comma expected
+SUBA.L UNDEF		ERROR: Comma expected
+SUBA.L SR		ERROR: Comma expected
+SUBA.L CCR		ERROR: Comma expected
+SUBA.L USP		ERROR: Comma expected
+SUBA.L D1,D1		ERROR: Invalid addressing mode
+SUBA.L D1,A2	95C1	-
+SUBA.L D1,(A3)		ERROR: Invalid addressing mode
+SUBA.L D1,$10(A6)		ERROR: Invalid addressing mode
+SUBA.L D1,$1234		ERROR: Invalid addressing mode
+SUBA.L D1,FW		ERROR: Invalid addressing mode
+SUBA.L D1,#1		ERROR: Invalid addressing mode
+SUBA.L D1,#$1234		ERROR: Invalid addressing mode
+SUBA.L D1,CCR		ERROR: Invalid addressing mode
+SUBA.L D1,SR		ERROR: Invalid addressing mode
+SUBA.L A2,D1		ERROR: Invalid addressing mode
+SUBA.L A2,A2	95CA	-
+SUBA.L A2,(A3)		ERROR: Invalid addressing mode
+SUBA.L A2,$10(A6)		ERROR: Invalid addressing mode
+SUBA.L A2,$1234		ERROR: Invalid addressing mode
+SUBA.L A2,FW		ERROR: Invalid addressing mode
+SUBA.L A2,#1		ERROR: Invalid addressing mode
+SUBA.L A2,#$1234		ERROR: Invalid addressing mode
+SUBA.L A2,CCR		ERROR: Invalid addressing mode
+SUBA.L A2,SR		ERROR: Invalid addressing mode
+SUBA.L (A3),D1		ERROR: Invalid addressing mode
+SUBA.L (A3),A2	95D3	-
+SUBA.L (A3),(A3)		ERROR: Invalid addressing mode
+SUBA.L (A3),$10(A6)		ERROR: Invalid addressing mode
+SUBA.L (A3),$1234		ERROR: Invalid addressing mode
+SUBA.L (A3),FW		ERROR: Invalid addressing mode
+SUBA.L (A3),#1		ERROR: Invalid addressing mode
+SUBA.L (A3),#$1234		ERROR: Invalid addressing mode
+SUBA.L (A3),CCR		ERROR: Invalid addressing mode
+SUBA.L (A3),SR		ERROR: Invalid addressing mode
+SUBA.L $10(A6),D1		ERROR: Invalid addressing mode
+SUBA.L $10(A6),A2	95EE0010	-
+SUBA.L $10(A6),(A3)		ERROR: Invalid addressing mode
+SUBA.L $10(A6),$10(A6)		ERROR: Invalid addressing mode
+SUBA.L $10(A6),$1234		ERROR: Invalid addressing mode
+SUBA.L $10(A6),FW		ERROR: Invalid addressing mode
+SUBA.L $10(A6),#1		ERROR: Invalid addressing mode
+SUBA.L $10(A6),#$1234		ERROR: Invalid addressing mode
+SUBA.L $10(A6),CCR		ERROR: Invalid addressing mode
+SUBA.L $10(A6),SR		ERROR: Invalid addressing mode
+SUBA.L $1234,D1		ERROR: Invalid addressing mode
+SUBA.L $1234,A2	95F81234	-
+SUBA.L $1234,(A3)		ERROR: Invalid addressing mode
+SUBA.L $1234,$10(A6)		ERROR: Invalid addressing mode
+SUBA.L $1234,$1234		ERROR: Invalid addressing mode
+SUBA.L $1234,FW		ERROR: Invalid addressing mode
+SUBA.L $1234,#1		ERROR: Invalid addressing mode
+SUBA.L $1234,#$1234		ERROR: Invalid addressing mode
+SUBA.L $1234,CCR		ERROR: Invalid addressing mode
+SUBA.L $1234,SR		ERROR: Invalid addressing mode
+SUBA.L FW,D1		ERROR: Invalid addressing mode
+SUBA.L FW,A2	95F900001F00	-
+SUBA.L FW,(A3)		ERROR: Invalid addressing mode
+SUBA.L FW,$10(A6)		ERROR: Invalid addressing mode
+SUBA.L FW,$1234		ERROR: Invalid addressing mode
+SUBA.L FW,FW		ERROR: Invalid addressing mode
+SUBA.L FW,#1		ERROR: Invalid addressing mode
+SUBA.L FW,#$1234		ERROR: Invalid addressing mode
+SUBA.L FW,CCR		ERROR: Invalid addressing mode
+SUBA.L FW,SR		ERROR: Invalid addressing mode
+SUBA.L #1,D1		ERROR: Invalid addressing mode
+SUBA.L #1,A2	538A	-
+SUBA.L #1,(A3)		ERROR: Invalid addressing mode
+SUBA.L #1,$10(A6)		ERROR: Invalid addressing mode
+SUBA.L #1,$1234		ERROR: Invalid addressing mode
+SUBA.L #1,FW		ERROR: Invalid addressing mode
+SUBA.L #1,#1		ERROR: Invalid addressing mode
+SUBA.L #1,#$1234		ERROR: Invalid addressing mode
+SUBA.L #1,CCR		ERROR: Invalid addressing mode
+SUBA.L #1,SR		ERROR: Invalid addressing mode
+SUBA.L #$1234,D1		ERROR: Invalid addressing mode
+SUBA.L #$1234,A2	95FC00001234	-
+SUBA.L #$1234,(A3)		ERROR: Invalid addressing mode
+SUBA.L #$1234,$10(A6)		ERROR: Invalid addressing mode
+SUBA.L #$1234,$1234		ERROR: Invalid addressing mode
+SUBA.L #$1234,FW		ERROR: Invalid addressing mode
+SUBA.L #$1234,#1		ERROR: Invalid addressing mode
+SUBA.L #$1234,#$1234		ERROR: Invalid addressing mode
+SUBA.L #$1234,CCR		ERROR: Invalid addressing mode
+SUBA.L #$1234,SR		ERROR: Invalid addressing mode
+SUBA.L CCR,D1		ERROR: Invalid addressing mode
+SUBA.L CCR,A2		ERROR: Invalid addressing mode
+SUBA.L CCR,(A3)		ERROR: Invalid addressing mode
+SUBA.L CCR,$10(A6)		ERROR: Invalid addressing mode
+SUBA.L CCR,$1234		ERROR: Invalid addressing mode
+SUBA.L CCR,FW		ERROR: Invalid addressing mode
+SUBA.L CCR,#1		ERROR: Invalid addressing mode
+SUBA.L CCR,#$1234		ERROR: Invalid addressing mode
+SUBA.L CCR,CCR		ERROR: Invalid addressing mode
+SUBA.L CCR,SR		ERROR: Invalid addressing mode
+SUBA.L SR,D1		ERROR: Invalid addressing mode
+SUBA.L SR,A2		ERROR: Invalid addressing mode
+SUBA.L SR,(A3)		ERROR: Invalid addressing mode
+SUBA.L SR,$10(A6)		ERROR: Invalid addressing mode
+SUBA.L SR,$1234		ERROR: Invalid addressing mode
+SUBA.L SR,FW		ERROR: Invalid addressing mode
+SUBA.L SR,#1		ERROR: Invalid addressing mode
+SUBA.L SR,#$1234		ERROR: Invalid addressing mode
+SUBA.L SR,CCR		ERROR: Invalid addressing mode
+SUBA.L SR,SR		ERROR: Invalid addressing mode
+SUBA.L SP,D1		ERROR: Invalid addressing mode
+SUBA.L SP,A2	95CF	-
+SUBA.L D1,SP	9FC1	-
+SUBA.L #$12,SP	9FFC00000012	-
+SUBA.L (A4)+,D1		ERROR: Invalid addressing mode
+SUBA.L (A4)+,A2	95DC	-
+SUBA.L D1,(A4)+		ERROR: Invalid addressing mode
+SUBA.L #$12,(A4)+		ERROR: Invalid addressing mode
+SUBA.L -(A5),D1		ERROR: Invalid addressing mode
+SUBA.L -(A5),A2	95E5	-
+SUBA.L D1,-(A5)		ERROR: Invalid addressing mode
+SUBA.L #$12,-(A5)		ERROR: Invalid addressing mode
+SUBA.L -2(A0),D1		ERROR: Invalid addressing mode
+SUBA.L -2(A0),A2	95E8FFFE	-
+SUBA.L D1,-2(A0)		ERROR: Invalid addressing mode
+SUBA.L #$12,-2(A0)		ERROR: Invalid addressing mode
+SUBA.L $10(A6,D7.W),D1		ERROR: Invalid addressing mode
+SUBA.L $10(A6,D7.W),A2	95F67010	-
+SUBA.L D1,$10(A6,D7.W)		ERROR: Invalid addressing mode
+SUBA.L #$12,$10(A6,D7.W)		ERROR: Invalid addressing mode
+SUBA.L $12(A0,A1.L),D1		ERROR: Invalid addressing mode
+SUBA.L $12(A0,A1.L),A2	95F09812	-
+SUBA.L D1,$12(A0,A1.L)		ERROR: Invalid addressing mode
+SUBA.L #$12,$12(A0,A1.L)		ERROR: Invalid addressing mode
+SUBA.L (A2,D3),D1		ERROR: Invalid addressing mode
+SUBA.L (A2,D3),A2	95F23000	-
+SUBA.L D1,(A2,D3)		ERROR: Invalid addressing mode
+SUBA.L #$12,(A2,D3)		ERROR: Invalid addressing mode
+SUBA.L $12345678,D1		ERROR: Invalid addressing mode
+SUBA.L $12345678,A2	95F912345678	-
+SUBA.L D1,$12345678		ERROR: Invalid addressing mode
+SUBA.L #$12,$12345678		ERROR: Invalid addressing mode
+SUBA.L $1234.L,D1		ERROR: Invalid addressing mode
+SUBA.L $1234.L,A2	95F900001234	-
+SUBA.L D1,$1234.L		ERROR: Invalid addressing mode
+SUBA.L #$12,$1234.L		ERROR: Invalid addressing mode
+SUBA.L $1234.W,D1		ERROR: Invalid addressing mode
+SUBA.L $1234.W,A2	95F81234	WARNING: Forcing SHORT addressing disables range checking of extension word
+SUBA.L D1,$1234.W		ERROR: Invalid addressing mode
+SUBA.L #$12,$1234.W		ERROR: Invalid addressing mode
+SUBA.L $8000,D1		ERROR: Invalid addressing mode
+SUBA.L $8000,A2	95F900008000	-
+SUBA.L D1,$8000		ERROR: Invalid addressing mode
+SUBA.L #$12,$8000		ERROR: Invalid addressing mode
+SUBA.L BK,D1		ERROR: Invalid addressing mode
+SUBA.L BK,A2	95F81F00	-
+SUBA.L D1,BK		ERROR: Invalid addressing mode
+SUBA.L #$12,BK		ERROR: Invalid addressing mode
+SUBA.L *+$10(PC),D1		ERROR: Invalid addressing mode
+SUBA.L *+$10(PC),A2	95FA000E	-
+SUBA.L D1,*+$10(PC)		ERROR: Invalid addressing mode
+SUBA.L #$12,*+$10(PC)		ERROR: Invalid addressing mode
+SUBA.L *(PC,D0.W),D1		ERROR: Invalid addressing mode
+SUBA.L *(PC,D0.W),A2	95FB00FE	-
+SUBA.L D1,*(PC,D0.W)		ERROR: Invalid addressing mode
+SUBA.L #$12,*(PC,D0.W)		ERROR: Invalid addressing mode
+SUBA.L BK(PC),D1		ERROR: Invalid addressing mode
+SUBA.L BK(PC),A2	95FA0EFE	-
+SUBA.L D1,BK(PC)		ERROR: Invalid addressing mode
+SUBA.L #$12,BK(PC)		ERROR: Invalid addressing mode
+SUBA.L #8,D1		ERROR: Invalid addressing mode
+SUBA.L #8,A2	518A	-
+SUBA.L D1,#8		ERROR: Invalid addressing mode
+SUBA.L #$12,#8		ERROR: Invalid addressing mode
+SUBA.L #9,D1		ERROR: Invalid addressing mode
+SUBA.L #9,A2	95FC00000009	-
+SUBA.L D1,#9		ERROR: Invalid addressing mode
+SUBA.L #$12,#9		ERROR: Invalid addressing mode
+SUBA.L #0,D1		ERROR: Invalid addressing mode
+SUBA.L #0,A2	95FC00000000	-
+SUBA.L D1,#0		ERROR: Invalid addressing mode
+SUBA.L #$12,#0		ERROR: Invalid addressing mode
+SUBA.L #-1,D1		ERROR: Invalid addressing mode
+SUBA.L #-1,A2	95FCFFFFFFFF	-
+SUBA.L D1,#-1		ERROR: Invalid addressing mode
+SUBA.L #$12,#-1		ERROR: Invalid addressing mode
+SUBA.L #$80,D1		ERROR: Invalid addressing mode
+SUBA.L #$80,A2	95FC00000080	-
+SUBA.L D1,#$80		ERROR: Invalid addressing mode
+SUBA.L #$12,#$80		ERROR: Invalid addressing mode
+SUBA.L #$12345678,D1		ERROR: Invalid addressing mode
+SUBA.L #$12345678,A2	95FC12345678	-
+SUBA.L D1,#$12345678		ERROR: Invalid addressing mode
+SUBA.L #$12,#$12345678		ERROR: Invalid addressing mode
+SUBA.L #$12345678.L,D1		ERROR: Invalid addressing mode
+SUBA.L #$12345678.L,A2	95FC12345678	-
+SUBA.L D1,#$12345678.L		ERROR: Invalid addressing mode
+SUBA.L #$12,#$12345678.L		ERROR: Invalid addressing mode
+SUBA.L #BK,D1		ERROR: Invalid addressing mode
+SUBA.L #BK,A2	95FC00001F00	-
+SUBA.L D1,#BK		ERROR: Invalid addressing mode
+SUBA.L #$12,#BK		ERROR: Invalid addressing mode
+SUBA.L #FW,D1		ERROR: Invalid addressing mode
+SUBA.L #FW,A2	95FC00001F00	-
+SUBA.L D1,#FW		ERROR: Invalid addressing mode
+SUBA.L #$12,#FW		ERROR: Invalid addressing mode
+SUBA.L #UNDEF,D1		ERROR: Invalid addressing mode
+SUBA.L #UNDEF,A2	95FC00005623	ERROR: Undefined symbol
+SUBA.L D1,#UNDEF		ERROR: Invalid addressing mode
+SUBA.L #$12,#UNDEF		ERROR: Invalid addressing mode
+SUBA.L UNDEF,D1		ERROR: Invalid addressing mode
+SUBA.L UNDEF,A2	95F900005623	ERROR: Undefined symbol
+SUBA.L D1,UNDEF		ERROR: Invalid addressing mode
+SUBA.L #$12,UNDEF		ERROR: Invalid addressing mode
+SUBA.L USP,D1		ERROR: Invalid addressing mode
+SUBA.L USP,A2		ERROR: Invalid addressing mode
+SUBA.L D1,USP		ERROR: Invalid addressing mode
+SUBA.L #$12,USP		ERROR: Invalid addressing mode
+SUBA.L D1,D2,D3		ERROR: Invalid syntax
+SUBA.S		ERROR: Invalid syntax
+SUBA.S D1		ERROR: Comma expected
+SUBA.S A2		ERROR: Comma expected
+SUBA.S SP		ERROR: Comma expected
+SUBA.S (A3)		ERROR: Comma expected
+SUBA.S (A4)+		ERROR: Comma expected
+SUBA.S -(A5)		ERROR: Comma expected
+SUBA.S $10(A6)		ERROR: Comma expected
+SUBA.S -2(A0)		ERROR: Comma expected
+SUBA.S $10(A6,D7.W)		ERROR: Comma expected
+SUBA.S $12(A0,A1.L)		ERROR: Comma expected
+SUBA.S (A2,D3)		ERROR: Comma expected
+SUBA.S $1234		ERROR: Comma expected
+SUBA.S $12345678		ERROR: Comma expected
+SUBA.S $1234.L		ERROR: Comma expected
+SUBA.S $1234.W		ERROR: Comma expected
+SUBA.S $8000		ERROR: Comma expected
+SUBA.S BK		ERROR: Comma expected
+SUBA.S FW		ERROR: Comma expected
+SUBA.S *+$10(PC)		ERROR: Comma expected
+SUBA.S *(PC,D0.W)		ERROR: Comma expected
+SUBA.S BK(PC)		ERROR: Comma expected
+SUBA.S #1		ERROR: Comma expected
+SUBA.S #8		ERROR: Comma expected
+SUBA.S #9		ERROR: Comma expected
+SUBA.S #0		ERROR: Comma expected
+SUBA.S #-1		ERROR: Comma expected
+SUBA.S #$80		ERROR: Comma expected
+SUBA.S #$1234		ERROR: Comma expected
+SUBA.S #$12345678		ERROR: Comma expected
+SUBA.S #$12345678.L		ERROR: Comma expected
+SUBA.S #BK		ERROR: Comma expected
+SUBA.S #FW		ERROR: Comma expected
+SUBA.S #UNDEF		ERROR: Comma expected
+SUBA.S UNDEF		ERROR: Comma expected
+SUBA.S SR		ERROR: Comma expected
+SUBA.S CCR		ERROR: Comma expected
+SUBA.S USP		ERROR: Comma expected
+SUBA.S D1,D1		ERROR: Invalid addressing mode
+SUBA.S D1,A2	94C1	ERROR: Invalid size code
+SUBA.S D1,(A3)		ERROR: Invalid addressing mode
+SUBA.S D1,$10(A6)		ERROR: Invalid addressing mode
+SUBA.S D1,$1234		ERROR: Invalid addressing mode
+SUBA.S D1,FW		ERROR: Invalid addressing mode
+SUBA.S D1,#1		ERROR: Invalid addressing mode
+SUBA.S D1,#$1234		ERROR: Invalid addressing mode
+SUBA.S D1,CCR		ERROR: Invalid addressing mode
+SUBA.S D1,SR		ERROR: Invalid addressing mode
+SUBA.S A2,D1		ERROR: Invalid addressing mode
+SUBA.S A2,A2	94CA	ERROR: Invalid size code
+SUBA.S A2,(A3)		ERROR: Invalid addressing mode
+SUBA.S A2,$10(A6)		ERROR: Invalid addressing mode
+SUBA.S A2,$1234		ERROR: Invalid addressing mode
+SUBA.S A2,FW		ERROR: Invalid addressing mode
+SUBA.S A2,#1		ERROR: Invalid addressing mode
+SUBA.S A2,#$1234		ERROR: Invalid addressing mode
+SUBA.S A2,CCR		ERROR: Invalid addressing mode
+SUBA.S A2,SR		ERROR: Invalid addressing mode
+SUBA.S (A3),D1		ERROR: Invalid addressing mode
+SUBA.S (A3),A2	94D3	ERROR: Invalid size code
+SUBA.S (A3),(A3)		ERROR: Invalid addressing mode
+SUBA.S (A3),$10(A6)		ERROR: Invalid addressing mode
+SUBA.S (A3),$1234		ERROR: Invalid addressing mode
+SUBA.S (A3),FW		ERROR: Invalid addressing mode
+SUBA.S (A3),#1		ERROR: Invalid addressing mode
+SUBA.S (A3),#$1234		ERROR: Invalid addressing mode
+SUBA.S (A3),CCR		ERROR: Invalid addressing mode
+SUBA.S (A3),SR		ERROR: Invalid addressing mode
+SUBA.S $10(A6),D1		ERROR: Invalid addressing mode
+SUBA.S $10(A6),A2	94EE0010	ERROR: Invalid size code
+SUBA.S $10(A6),(A3)		ERROR: Invalid addressing mode
+SUBA.S $10(A6),$10(A6)		ERROR: Invalid addressing mode
+SUBA.S $10(A6),$1234		ERROR: Invalid addressing mode
+SUBA.S $10(A6),FW		ERROR: Invalid addressing mode
+SUBA.S $10(A6),#1		ERROR: Invalid addressing mode
+SUBA.S $10(A6),#$1234		ERROR: Invalid addressing mode
+SUBA.S $10(A6),CCR		ERROR: Invalid addressing mode
+SUBA.S $10(A6),SR		ERROR: Invalid addressing mode
+SUBA.S $1234,D1		ERROR: Invalid addressing mode
+SUBA.S $1234,A2	94F81234	ERROR: Invalid size code
+SUBA.S $1234,(A3)		ERROR: Invalid addressing mode
+SUBA.S $1234,$10(A6)		ERROR: Invalid addressing mode
+SUBA.S $1234,$1234		ERROR: Invalid addressing mode
+SUBA.S $1234,FW		ERROR: Invalid addressing mode
+SUBA.S $1234,#1		ERROR: Invalid addressing mode
+SUBA.S $1234,#$1234		ERROR: Invalid addressing mode
+SUBA.S $1234,CCR		ERROR: Invalid addressing mode
+SUBA.S $1234,SR		ERROR: Invalid addressing mode
+SUBA.S FW,D1		ERROR: Invalid addressing mode
+SUBA.S FW,A2	94F900001F00	ERROR: Invalid size code
+SUBA.S FW,(A3)		ERROR: Invalid addressing mode
+SUBA.S FW,$10(A6)		ERROR: Invalid addressing mode
+SUBA.S FW,$1234		ERROR: Invalid addressing mode
+SUBA.S FW,FW		ERROR: Invalid addressing mode
+SUBA.S FW,#1		ERROR: Invalid addressing mode
+SUBA.S FW,#$1234		ERROR: Invalid addressing mode
+SUBA.S FW,CCR		ERROR: Invalid addressing mode
+SUBA.S FW,SR		ERROR: Invalid addressing mode
+SUBA.S #1,D1		ERROR: Invalid addressing mode
+SUBA.S #1,A2	534A	ERROR: Invalid size code
+SUBA.S #1,(A3)		ERROR: Invalid addressing mode
+SUBA.S #1,$10(A6)		ERROR: Invalid addressing mode
+SUBA.S #1,$1234		ERROR: Invalid addressing mode
+SUBA.S #1,FW		ERROR: Invalid addressing mode
+SUBA.S #1,#1		ERROR: Invalid addressing mode
+SUBA.S #1,#$1234		ERROR: Invalid addressing mode
+SUBA.S #1,CCR		ERROR: Invalid addressing mode
+SUBA.S #1,SR		ERROR: Invalid addressing mode
+SUBA.S #$1234,D1		ERROR: Invalid addressing mode
+SUBA.S #$1234,A2	94FC	ERROR: Invalid size code
+SUBA.S #$1234,(A3)		ERROR: Invalid addressing mode
+SUBA.S #$1234,$10(A6)		ERROR: Invalid addressing mode
+SUBA.S #$1234,$1234		ERROR: Invalid addressing mode
+SUBA.S #$1234,FW		ERROR: Invalid addressing mode
+SUBA.S #$1234,#1		ERROR: Invalid addressing mode
+SUBA.S #$1234,#$1234		ERROR: Invalid addressing mode
+SUBA.S #$1234,CCR		ERROR: Invalid addressing mode
+SUBA.S #$1234,SR		ERROR: Invalid addressing mode
+SUBA.S CCR,D1		ERROR: Invalid addressing mode
+SUBA.S CCR,A2		ERROR: Invalid addressing mode
+SUBA.S CCR,(A3)		ERROR: Invalid addressing mode
+SUBA.S CCR,$10(A6)		ERROR: Invalid addressing mode
+SUBA.S CCR,$1234		ERROR: Invalid addressing mode
+SUBA.S CCR,FW		ERROR: Invalid addressing mode
+SUBA.S CCR,#1		ERROR: Invalid addressing mode
+SUBA.S CCR,#$1234		ERROR: Invalid addressing mode
+SUBA.S CCR,CCR		ERROR: Invalid addressing mode
+SUBA.S CCR,SR		ERROR: Invalid addressing mode
+SUBA.S SR,D1		ERROR: Invalid addressing mode
+SUBA.S SR,A2		ERROR: Invalid addressing mode
+SUBA.S SR,(A3)		ERROR: Invalid addressing mode
+SUBA.S SR,$10(A6)		ERROR: Invalid addressing mode
+SUBA.S SR,$1234		ERROR: Invalid addressing mode
+SUBA.S SR,FW		ERROR: Invalid addressing mode
+SUBA.S SR,#1		ERROR: Invalid addressing mode
+SUBA.S SR,#$1234		ERROR: Invalid addressing mode
+SUBA.S SR,CCR		ERROR: Invalid addressing mode
+SUBA.S SR,SR		ERROR: Invalid addressing mode
+SUBA.S SP,D1		ERROR: Invalid addressing mode
+SUBA.S SP,A2	94CF	ERROR: Invalid size code
+SUBA.S D1,SP	9EC1	ERROR: Invalid size code
+SUBA.S #$12,SP	9EFC	ERROR: Invalid size code
+SUBA.S (A4)+,D1		ERROR: Invalid addressing mode
+SUBA.S (A4)+,A2	94DC	ERROR: Invalid size code
+SUBA.S D1,(A4)+		ERROR: Invalid addressing mode
+SUBA.S #$12,(A4)+		ERROR: Invalid addressing mode
+SUBA.S -(A5),D1		ERROR: Invalid addressing mode
+SUBA.S -(A5),A2	94E5	ERROR: Invalid size code
+SUBA.S D1,-(A5)		ERROR: Invalid addressing mode
+SUBA.S #$12,-(A5)		ERROR: Invalid addressing mode
+SUBA.S -2(A0),D1		ERROR: Invalid addressing mode
+SUBA.S -2(A0),A2	94E8FFFE	ERROR: Invalid size code
+SUBA.S D1,-2(A0)		ERROR: Invalid addressing mode
+SUBA.S #$12,-2(A0)		ERROR: Invalid addressing mode
+SUBA.S $10(A6,D7.W),D1		ERROR: Invalid addressing mode
+SUBA.S $10(A6,D7.W),A2	94F67010	ERROR: Invalid size code
+SUBA.S D1,$10(A6,D7.W)		ERROR: Invalid addressing mode
+SUBA.S #$12,$10(A6,D7.W)		ERROR: Invalid addressing mode
+SUBA.S $12(A0,A1.L),D1		ERROR: Invalid addressing mode
+SUBA.S $12(A0,A1.L),A2	94F09812	ERROR: Invalid size code
+SUBA.S D1,$12(A0,A1.L)		ERROR: Invalid addressing mode
+SUBA.S #$12,$12(A0,A1.L)		ERROR: Invalid addressing mode
+SUBA.S (A2,D3),D1		ERROR: Invalid addressing mode
+SUBA.S (A2,D3),A2	94F23000	ERROR: Invalid size code
+SUBA.S D1,(A2,D3)		ERROR: Invalid addressing mode
+SUBA.S #$12,(A2,D3)		ERROR: Invalid addressing mode
+SUBA.S $12345678,D1		ERROR: Invalid addressing mode
+SUBA.S $12345678,A2	94F912345678	ERROR: Invalid size code
+SUBA.S D1,$12345678		ERROR: Invalid addressing mode
+SUBA.S #$12,$12345678		ERROR: Invalid addressing mode
+SUBA.S $1234.L,D1		ERROR: Invalid addressing mode
+SUBA.S $1234.L,A2	94F900001234	ERROR: Invalid size code
+SUBA.S D1,$1234.L		ERROR: Invalid addressing mode
+SUBA.S #$12,$1234.L		ERROR: Invalid addressing mode
+SUBA.S $1234.W,D1		ERROR: Invalid addressing mode
+SUBA.S $1234.W,A2	94F81234	ERROR: Invalid size code
+SUBA.S D1,$1234.W		ERROR: Invalid addressing mode
+SUBA.S #$12,$1234.W		ERROR: Invalid addressing mode
+SUBA.S $8000,D1		ERROR: Invalid addressing mode
+SUBA.S $8000,A2	94F900008000	ERROR: Invalid size code
+SUBA.S D1,$8000		ERROR: Invalid addressing mode
+SUBA.S #$12,$8000		ERROR: Invalid addressing mode
+SUBA.S BK,D1		ERROR: Invalid addressing mode
+SUBA.S BK,A2	94F81F00	ERROR: Invalid size code
+SUBA.S D1,BK		ERROR: Invalid addressing mode
+SUBA.S #$12,BK		ERROR: Invalid addressing mode
+SUBA.S *+$10(PC),D1		ERROR: Invalid addressing mode
+SUBA.S *+$10(PC),A2	94FA000E	ERROR: Invalid size code
+SUBA.S D1,*+$10(PC)		ERROR: Invalid addressing mode
+SUBA.S #$12,*+$10(PC)		ERROR: Invalid addressing mode
+SUBA.S *(PC,D0.W),D1		ERROR: Invalid addressing mode
+SUBA.S *(PC,D0.W),A2	94FB00FE	ERROR: Invalid size code
+SUBA.S D1,*(PC,D0.W)		ERROR: Invalid addressing mode
+SUBA.S #$12,*(PC,D0.W)		ERROR: Invalid addressing mode
+SUBA.S BK(PC),D1		ERROR: Invalid addressing mode
+SUBA.S BK(PC),A2	94FA0EFE	ERROR: Invalid size code
+SUBA.S D1,BK(PC)		ERROR: Invalid addressing mode
+SUBA.S #$12,BK(PC)		ERROR: Invalid addressing mode
+SUBA.S #8,D1		ERROR: Invalid addressing mode
+SUBA.S #8,A2	514A	ERROR: Invalid size code
+SUBA.S D1,#8		ERROR: Invalid addressing mode
+SUBA.S #$12,#8		ERROR: Invalid addressing mode
+SUBA.S #9,D1		ERROR: Invalid addressing mode
+SUBA.S #9,A2	94FC	ERROR: Invalid size code
+SUBA.S D1,#9		ERROR: Invalid addressing mode
+SUBA.S #$12,#9		ERROR: Invalid addressing mode
+SUBA.S #0,D1		ERROR: Invalid addressing mode
+SUBA.S #0,A2	94FC	ERROR: Invalid size code
+SUBA.S D1,#0		ERROR: Invalid addressing mode
+SUBA.S #$12,#0		ERROR: Invalid addressing mode
+SUBA.S #-1,D1		ERROR: Invalid addressing mode
+SUBA.S #-1,A2	94FC	ERROR: Invalid size code
+SUBA.S D1,#-1		ERROR: Invalid addressing mode
+SUBA.S #$12,#-1		ERROR: Invalid addressing mode
+SUBA.S #$80,D1		ERROR: Invalid addressing mode
+SUBA.S #$80,A2	94FC	ERROR: Invalid size code
+SUBA.S D1,#$80		ERROR: Invalid addressing mode
+SUBA.S #$12,#$80		ERROR: Invalid addressing mode
+SUBA.S #$12345678,D1		ERROR: Invalid addressing mode
+SUBA.S #$12345678,A2	94FC	ERROR: Invalid size code
+SUBA.S D1,#$12345678		ERROR: Invalid addressing mode
+SUBA.S #$12,#$12345678		ERROR: Invalid addressing mode
+SUBA.S #$12345678.L,D1		ERROR: Invalid addressing mode
+SUBA.S #$12345678.L,A2	94FC	ERROR: Invalid size code
+SUBA.S D1,#$12345678.L		ERROR: Invalid addressing mode
+SUBA.S #$12,#$12345678.L		ERROR: Invalid addressing mode
+SUBA.S #BK,D1		ERROR: Invalid addressing mode
+SUBA.S #BK,A2	94FC	ERROR: Invalid size code
+SUBA.S D1,#BK		ERROR: Invalid addressing mode
+SUBA.S #$12,#BK		ERROR: Invalid addressing mode
+SUBA.S #FW,D1		ERROR: Invalid addressing mode
+SUBA.S #FW,A2	94FC	ERROR: Invalid size code
+SUBA.S D1,#FW		ERROR: Invalid addressing mode
+SUBA.S #$12,#FW		ERROR: Invalid addressing mode
+SUBA.S #UNDEF,D1		ERROR: Invalid addressing mode
+SUBA.S #UNDEF,A2	94FC	ERROR: Undefined symbol
+SUBA.S D1,#UNDEF		ERROR: Invalid addressing mode
+SUBA.S #$12,#UNDEF		ERROR: Invalid addressing mode
+SUBA.S UNDEF,D1		ERROR: Invalid addressing mode
+SUBA.S UNDEF,A2	94F900005623	ERROR: Undefined symbol
+SUBA.S D1,UNDEF		ERROR: Invalid addressing mode
+SUBA.S #$12,UNDEF		ERROR: Invalid addressing mode
+SUBA.S USP,D1		ERROR: Invalid addressing mode
+SUBA.S USP,A2		ERROR: Invalid addressing mode
+SUBA.S D1,USP		ERROR: Invalid addressing mode
+SUBA.S #$12,USP		ERROR: Invalid addressing mode
+SUBA.S D1,D2,D3		ERROR: Invalid syntax
+SUBA.X D1,D2		ERROR: Invalid addressing mode
+SUBA.X #1		ERROR: Comma expected

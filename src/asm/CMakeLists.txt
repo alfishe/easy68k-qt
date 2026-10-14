@@ -5,9 +5,9 @@ add_library(easym68k-asm STATIC
   symbol_table.cc
   expression_evaluator.cc
   error_reporter.cc
-  code_generator.cc
   directives.cc
-  instruction_table.cc
+  instruction_set.cc
+  original_status.cc
   listing_generator.cc
   macro_processor.cc
   srecord_generator.cc

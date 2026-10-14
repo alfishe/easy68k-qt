@@ -1,0 +1,1621 @@
+BCHG		ERROR: Invalid syntax
+BCHG D1		ERROR: Comma expected
+BCHG A2		ERROR: Comma expected
+BCHG SP		ERROR: Comma expected
+BCHG (A3)		ERROR: Comma expected
+BCHG (A4)+		ERROR: Comma expected
+BCHG -(A5)		ERROR: Comma expected
+BCHG $10(A6)		ERROR: Comma expected
+BCHG -2(A0)		ERROR: Comma expected
+BCHG $10(A6,D7.W)		ERROR: Comma expected
+BCHG $12(A0,A1.L)		ERROR: Comma expected
+BCHG (A2,D3)		ERROR: Comma expected
+BCHG $1234		ERROR: Comma expected
+BCHG $12345678		ERROR: Comma expected
+BCHG $1234.L		ERROR: Comma expected
+BCHG $1234.W		ERROR: Comma expected
+BCHG $8000		ERROR: Comma expected
+BCHG BK		ERROR: Comma expected
+BCHG FW		ERROR: Comma expected
+BCHG *+$10(PC)		ERROR: Comma expected
+BCHG *(PC,D0.W)		ERROR: Comma expected
+BCHG BK(PC)		ERROR: Comma expected
+BCHG #1		ERROR: Comma expected
+BCHG #8		ERROR: Comma expected
+BCHG #9		ERROR: Comma expected
+BCHG #0		ERROR: Comma expected
+BCHG #-1		ERROR: Comma expected
+BCHG #$80		ERROR: Comma expected
+BCHG #$1234		ERROR: Comma expected
+BCHG #$12345678		ERROR: Comma expected
+BCHG #$12345678.L		ERROR: Comma expected
+BCHG #BK		ERROR: Comma expected
+BCHG #FW		ERROR: Comma expected
+BCHG #UNDEF		ERROR: Comma expected
+BCHG UNDEF		ERROR: Comma expected
+BCHG SR		ERROR: Comma expected
+BCHG CCR		ERROR: Comma expected
+BCHG USP		ERROR: Comma expected
+BCHG D1,D1	0341	-
+BCHG D1,A2		ERROR: Invalid addressing mode
+BCHG D1,(A3)	0353	-
+BCHG D1,(A4)+	035C	-
+BCHG D1,-(A5)	0365	-
+BCHG D1,$10(A6)	036E0010	-
+BCHG D1,$10(A6,D7.W)	03767010	-
+BCHG D1,$1234	03781234	-
+BCHG D1,$12345678	037912345678	-
+BCHG D1,FW	037900001F00	-
+BCHG D1,*+$10(PC)		ERROR: Invalid addressing mode
+BCHG D1,#1		ERROR: Invalid addressing mode
+BCHG D1,#$80		ERROR: Invalid addressing mode
+BCHG D1,#$1234		ERROR: Invalid addressing mode
+BCHG D1,#$12345678		ERROR: Invalid addressing mode
+BCHG D1,SR		ERROR: Invalid addressing mode
+BCHG D1,CCR		ERROR: Invalid addressing mode
+BCHG D1,USP		ERROR: Invalid addressing mode
+BCHG A2,D1		ERROR: Invalid addressing mode
+BCHG A2,A2		ERROR: Invalid addressing mode
+BCHG A2,(A3)		ERROR: Invalid addressing mode
+BCHG A2,(A4)+		ERROR: Invalid addressing mode
+BCHG A2,-(A5)		ERROR: Invalid addressing mode
+BCHG A2,$10(A6)		ERROR: Invalid addressing mode
+BCHG A2,$10(A6,D7.W)		ERROR: Invalid addressing mode
+BCHG A2,$1234		ERROR: Invalid addressing mode
+BCHG A2,$12345678		ERROR: Invalid addressing mode
+BCHG A2,FW		ERROR: Invalid addressing mode
+BCHG A2,*+$10(PC)		ERROR: Invalid addressing mode
+BCHG A2,#1		ERROR: Invalid addressing mode
+BCHG A2,#$80		ERROR: Invalid addressing mode
+BCHG A2,#$1234		ERROR: Invalid addressing mode
+BCHG A2,#$12345678		ERROR: Invalid addressing mode
+BCHG A2,SR		ERROR: Invalid addressing mode
+BCHG A2,CCR		ERROR: Invalid addressing mode
+BCHG A2,USP		ERROR: Invalid addressing mode
+BCHG (A3),D1		ERROR: Invalid addressing mode
+BCHG (A3),A2		ERROR: Invalid addressing mode
+BCHG (A3),(A3)		ERROR: Invalid addressing mode
+BCHG (A3),(A4)+		ERROR: Invalid addressing mode
+BCHG (A3),-(A5)		ERROR: Invalid addressing mode
+BCHG (A3),$10(A6)		ERROR: Invalid addressing mode
+BCHG (A3),$10(A6,D7.W)		ERROR: Invalid addressing mode
+BCHG (A3),$1234		ERROR: Invalid addressing mode
+BCHG (A3),$12345678		ERROR: Invalid addressing mode
+BCHG (A3),FW		ERROR: Invalid addressing mode
+BCHG (A3),*+$10(PC)		ERROR: Invalid addressing mode
+BCHG (A3),#1		ERROR: Invalid addressing mode
+BCHG (A3),#$80		ERROR: Invalid addressing mode
+BCHG (A3),#$1234		ERROR: Invalid addressing mode
+BCHG (A3),#$12345678		ERROR: Invalid addressing mode
+BCHG (A3),SR		ERROR: Invalid addressing mode
+BCHG (A3),CCR		ERROR: Invalid addressing mode
+BCHG (A3),USP		ERROR: Invalid addressing mode
+BCHG (A4)+,D1		ERROR: Invalid addressing mode
+BCHG (A4)+,A2		ERROR: Invalid addressing mode
+BCHG (A4)+,(A3)		ERROR: Invalid addressing mode
+BCHG (A4)+,(A4)+		ERROR: Invalid addressing mode
+BCHG (A4)+,-(A5)		ERROR: Invalid addressing mode
+BCHG (A4)+,$10(A6)		ERROR: Invalid addressing mode
+BCHG (A4)+,$10(A6,D7.W)		ERROR: Invalid addressing mode
+BCHG (A4)+,$1234		ERROR: Invalid addressing mode
+BCHG (A4)+,$12345678		ERROR: Invalid addressing mode
+BCHG (A4)+,FW		ERROR: Invalid addressing mode
+BCHG (A4)+,*+$10(PC)		ERROR: Invalid addressing mode
+BCHG (A4)+,#1		ERROR: Invalid addressing mode
+BCHG (A4)+,#$80		ERROR: Invalid addressing mode
+BCHG (A4)+,#$1234		ERROR: Invalid addressing mode
+BCHG (A4)+,#$12345678		ERROR: Invalid addressing mode
+BCHG (A4)+,SR		ERROR: Invalid addressing mode
+BCHG (A4)+,CCR		ERROR: Invalid addressing mode
+BCHG (A4)+,USP		ERROR: Invalid addressing mode
+BCHG -(A5),D1		ERROR: Invalid addressing mode
+BCHG -(A5),A2		ERROR: Invalid addressing mode
+BCHG -(A5),(A3)		ERROR: Invalid addressing mode
+BCHG -(A5),(A4)+		ERROR: Invalid addressing mode
+BCHG -(A5),-(A5)		ERROR: Invalid addressing mode
+BCHG -(A5),$10(A6)		ERROR: Invalid addressing mode
+BCHG -(A5),$10(A6,D7.W)		ERROR: Invalid addressing mode
+BCHG -(A5),$1234		ERROR: Invalid addressing mode
+BCHG -(A5),$12345678		ERROR: Invalid addressing mode
+BCHG -(A5),FW		ERROR: Invalid addressing mode
+BCHG -(A5),*+$10(PC)		ERROR: Invalid addressing mode
+BCHG -(A5),#1		ERROR: Invalid addressing mode
+BCHG -(A5),#$80		ERROR: Invalid addressing mode
+BCHG -(A5),#$1234		ERROR: Invalid addressing mode
+BCHG -(A5),#$12345678		ERROR: Invalid addressing mode
+BCHG -(A5),SR		ERROR: Invalid addressing mode
+BCHG -(A5),CCR		ERROR: Invalid addressing mode
+BCHG -(A5),USP		ERROR: Invalid addressing mode
+BCHG $10(A6),D1		ERROR: Invalid addressing mode
+BCHG $10(A6),A2		ERROR: Invalid addressing mode
+BCHG $10(A6),(A3)		ERROR: Invalid addressing mode
+BCHG $10(A6),(A4)+		ERROR: Invalid addressing mode
+BCHG $10(A6),-(A5)		ERROR: Invalid addressing mode
+BCHG $10(A6),$10(A6)		ERROR: Invalid addressing mode
+BCHG $10(A6),$10(A6,D7.W)		ERROR: Invalid addressing mode
+BCHG $10(A6),$1234		ERROR: Invalid addressing mode
+BCHG $10(A6),$12345678		ERROR: Invalid addressing mode
+BCHG $10(A6),FW		ERROR: Invalid addressing mode
+BCHG $10(A6),*+$10(PC)		ERROR: Invalid addressing mode
+BCHG $10(A6),#1		ERROR: Invalid addressing mode
+BCHG $10(A6),#$80		ERROR: Invalid addressing mode
+BCHG $10(A6),#$1234		ERROR: Invalid addressing mode
+BCHG $10(A6),#$12345678		ERROR: Invalid addressing mode
+BCHG $10(A6),SR		ERROR: Invalid addressing mode
+BCHG $10(A6),CCR		ERROR: Invalid addressing mode
+BCHG $10(A6),USP		ERROR: Invalid addressing mode
+BCHG $10(A6,D7.W),D1		ERROR: Invalid addressing mode
+BCHG $10(A6,D7.W),A2		ERROR: Invalid addressing mode
+BCHG $10(A6,D7.W),(A3)		ERROR: Invalid addressing mode
+BCHG $10(A6,D7.W),(A4)+		ERROR: Invalid addressing mode
+BCHG $10(A6,D7.W),-(A5)		ERROR: Invalid addressing mode
+BCHG $10(A6,D7.W),$10(A6)		ERROR: Invalid addressing mode
+BCHG $10(A6,D7.W),$10(A6,D7.W)		ERROR: Invalid addressing mode
+BCHG $10(A6,D7.W),$1234		ERROR: Invalid addressing mode
+BCHG $10(A6,D7.W),$12345678		ERROR: Invalid addressing mode
+BCHG $10(A6,D7.W),FW		ERROR: Invalid addressing mode
+BCHG $10(A6,D7.W),*+$10(PC)		ERROR: Invalid addressing mode
+BCHG $10(A6,D7.W),#1		ERROR: Invalid addressing mode
+BCHG $10(A6,D7.W),#$80		ERROR: Invalid addressing mode
+BCHG $10(A6,D7.W),#$1234		ERROR: Invalid addressing mode
+BCHG $10(A6,D7.W),#$12345678		ERROR: Invalid addressing mode
+BCHG $10(A6,D7.W),SR		ERROR: Invalid addressing mode
+BCHG $10(A6,D7.W),CCR		ERROR: Invalid addressing mode
+BCHG $10(A6,D7.W),USP		ERROR: Invalid addressing mode
+BCHG $1234,D1		ERROR: Invalid addressing mode
+BCHG $1234,A2		ERROR: Invalid addressing mode
+BCHG $1234,(A3)		ERROR: Invalid addressing mode
+BCHG $1234,(A4)+		ERROR: Invalid addressing mode
+BCHG $1234,-(A5)		ERROR: Invalid addressing mode
+BCHG $1234,$10(A6)		ERROR: Invalid addressing mode
+BCHG $1234,$10(A6,D7.W)		ERROR: Invalid addressing mode
+BCHG $1234,$1234		ERROR: Invalid addressing mode
+BCHG $1234,$12345678		ERROR: Invalid addressing mode
+BCHG $1234,FW		ERROR: Invalid addressing mode
+BCHG $1234,*+$10(PC)		ERROR: Invalid addressing mode
+BCHG $1234,#1		ERROR: Invalid addressing mode
+BCHG $1234,#$80		ERROR: Invalid addressing mode
+BCHG $1234,#$1234		ERROR: Invalid addressing mode
+BCHG $1234,#$12345678		ERROR: Invalid addressing mode
+BCHG $1234,SR		ERROR: Invalid addressing mode
+BCHG $1234,CCR		ERROR: Invalid addressing mode
+BCHG $1234,USP		ERROR: Invalid addressing mode
+BCHG $12345678,D1		ERROR: Invalid addressing mode
+BCHG $12345678,A2		ERROR: Invalid addressing mode
+BCHG $12345678,(A3)		ERROR: Invalid addressing mode
+BCHG $12345678,(A4)+		ERROR: Invalid addressing mode
+BCHG $12345678,-(A5)		ERROR: Invalid addressing mode
+BCHG $12345678,$10(A6)		ERROR: Invalid addressing mode
+BCHG $12345678,$10(A6,D7.W)		ERROR: Invalid addressing mode
+BCHG $12345678,$1234		ERROR: Invalid addressing mode
+BCHG $12345678,$12345678		ERROR: Invalid addressing mode
+BCHG $12345678,FW		ERROR: Invalid addressing mode
+BCHG $12345678,*+$10(PC)		ERROR: Invalid addressing mode
+BCHG $12345678,#1		ERROR: Invalid addressing mode
+BCHG $12345678,#$80		ERROR: Invalid addressing mode
+BCHG $12345678,#$1234		ERROR: Invalid addressing mode
+BCHG $12345678,#$12345678		ERROR: Invalid addressing mode
+BCHG $12345678,SR		ERROR: Invalid addressing mode
+BCHG $12345678,CCR		ERROR: Invalid addressing mode
+BCHG $12345678,USP		ERROR: Invalid addressing mode
+BCHG FW,D1		ERROR: Invalid addressing mode
+BCHG FW,A2		ERROR: Invalid addressing mode
+BCHG FW,(A3)		ERROR: Invalid addressing mode
+BCHG FW,(A4)+		ERROR: Invalid addressing mode
+BCHG FW,-(A5)		ERROR: Invalid addressing mode
+BCHG FW,$10(A6)		ERROR: Invalid addressing mode
+BCHG FW,$10(A6,D7.W)		ERROR: Invalid addressing mode
+BCHG FW,$1234		ERROR: Invalid addressing mode
+BCHG FW,$12345678		ERROR: Invalid addressing mode
+BCHG FW,FW		ERROR: Invalid addressing mode
+BCHG FW,*+$10(PC)		ERROR: Invalid addressing mode
+BCHG FW,#1		ERROR: Invalid addressing mode
+BCHG FW,#$80		ERROR: Invalid addressing mode
+BCHG FW,#$1234		ERROR: Invalid addressing mode
+BCHG FW,#$12345678		ERROR: Invalid addressing mode
+BCHG FW,SR		ERROR: Invalid addressing mode
+BCHG FW,CCR		ERROR: Invalid addressing mode
+BCHG FW,USP		ERROR: Invalid addressing mode
+BCHG *+$10(PC),D1		ERROR: Invalid addressing mode
+BCHG *+$10(PC),A2		ERROR: Invalid addressing mode
+BCHG *+$10(PC),(A3)		ERROR: Invalid addressing mode
+BCHG *+$10(PC),(A4)+		ERROR: Invalid addressing mode
+BCHG *+$10(PC),-(A5)		ERROR: Invalid addressing mode
+BCHG *+$10(PC),$10(A6)		ERROR: Invalid addressing mode
+BCHG *+$10(PC),$10(A6,D7.W)		ERROR: Invalid addressing mode
+BCHG *+$10(PC),$1234		ERROR: Invalid addressing mode
+BCHG *+$10(PC),$12345678		ERROR: Invalid addressing mode
+BCHG *+$10(PC),FW		ERROR: Invalid addressing mode
+BCHG *+$10(PC),*+$10(PC)		ERROR: Invalid addressing mode
+BCHG *+$10(PC),#1		ERROR: Invalid addressing mode
+BCHG *+$10(PC),#$80		ERROR: Invalid addressing mode
+BCHG *+$10(PC),#$1234		ERROR: Invalid addressing mode
+BCHG *+$10(PC),#$12345678		ERROR: Invalid addressing mode
+BCHG *+$10(PC),SR		ERROR: Invalid addressing mode
+BCHG *+$10(PC),CCR		ERROR: Invalid addressing mode
+BCHG *+$10(PC),USP		ERROR: Invalid addressing mode
+BCHG #1,D1	08410001	-
+BCHG #1,A2		ERROR: Invalid addressing mode
+BCHG #1,(A3)	08530001	-
+BCHG #1,(A4)+	085C0001	-
+BCHG #1,-(A5)	08650001	-
+BCHG #1,$10(A6)	086E00010010	-
+BCHG #1,$10(A6,D7.W)	087600017010	-
+BCHG #1,$1234	087800011234	-
+BCHG #1,$12345678	0879000112345678	-
+BCHG #1,FW	0879000100001F00	-
+BCHG #1,*+$10(PC)		ERROR: Invalid addressing mode
+BCHG #1,#1		ERROR: Invalid addressing mode
+BCHG #1,#$80		ERROR: Invalid addressing mode
+BCHG #1,#$1234		ERROR: Invalid addressing mode
+BCHG #1,#$12345678		ERROR: Invalid addressing mode
+BCHG #1,SR		ERROR: Invalid addressing mode
+BCHG #1,CCR		ERROR: Invalid addressing mode
+BCHG #1,USP		ERROR: Invalid addressing mode
+BCHG #$80,D1	08410080	-
+BCHG #$80,A2		ERROR: Invalid addressing mode
+BCHG #$80,(A3)	08530080	-
+BCHG #$80,(A4)+	085C0080	-
+BCHG #$80,-(A5)	08650080	-
+BCHG #$80,$10(A6)	086E00800010	-
+BCHG #$80,$10(A6,D7.W)	087600807010	-
+BCHG #$80,$1234	087800801234	-
+BCHG #$80,$12345678	0879008012345678	-
+BCHG #$80,FW	0879008000001F00	-
+BCHG #$80,*+$10(PC)		ERROR: Invalid addressing mode
+BCHG #$80,#1		ERROR: Invalid addressing mode
+BCHG #$80,#$80		ERROR: Invalid addressing mode
+BCHG #$80,#$1234		ERROR: Invalid addressing mode
+BCHG #$80,#$12345678		ERROR: Invalid addressing mode
+BCHG #$80,SR		ERROR: Invalid addressing mode
+BCHG #$80,CCR		ERROR: Invalid addressing mode
+BCHG #$80,USP		ERROR: Invalid addressing mode
+BCHG #$1234,D1	08410034	-
+BCHG #$1234,A2		ERROR: Invalid addressing mode
+BCHG #$1234,(A3)	08530034	-
+BCHG #$1234,(A4)+	085C0034	-
+BCHG #$1234,-(A5)	08650034	-
+BCHG #$1234,$10(A6)	086E00340010	-
+BCHG #$1234,$10(A6,D7.W)	087600347010	-
+BCHG #$1234,$1234	087800341234	-
+BCHG #$1234,$12345678	0879003412345678	-
+BCHG #$1234,FW	0879003400001F00	-
+BCHG #$1234,*+$10(PC)		ERROR: Invalid addressing mode
+BCHG #$1234,#1		ERROR: Invalid addressing mode
+BCHG #$1234,#$80		ERROR: Invalid addressing mode
+BCHG #$1234,#$1234		ERROR: Invalid addressing mode
+BCHG #$1234,#$12345678		ERROR: Invalid addressing mode
+BCHG #$1234,SR		ERROR: Invalid addressing mode
+BCHG #$1234,CCR		ERROR: Invalid addressing mode
+BCHG #$1234,USP		ERROR: Invalid addressing mode
+BCHG #$12345678,D1	08410078	-
+BCHG #$12345678,A2		ERROR: Invalid addressing mode
+BCHG #$12345678,(A3)	08530078	-
+BCHG #$12345678,(A4)+	085C0078	-
+BCHG #$12345678,-(A5)	08650078	-
+BCHG #$12345678,$10(A6)	086E00780010	-
+BCHG #$12345678,$10(A6,D7.W)	087600787010	-
+BCHG #$12345678,$1234	087800781234	-
+BCHG #$12345678,$12345678	0879007812345678	-
+BCHG #$12345678,FW	0879007800001F00	-
+BCHG #$12345678,*+$10(PC)		ERROR: Invalid addressing mode
+BCHG #$12345678,#1		ERROR: Invalid addressing mode
+BCHG #$12345678,#$80		ERROR: Invalid addressing mode
+BCHG #$12345678,#$1234		ERROR: Invalid addressing mode
+BCHG #$12345678,#$12345678		ERROR: Invalid addressing mode
+BCHG #$12345678,SR		ERROR: Invalid addressing mode
+BCHG #$12345678,CCR		ERROR: Invalid addressing mode
+BCHG #$12345678,USP		ERROR: Invalid addressing mode
+BCHG SR,D1		ERROR: Invalid addressing mode
+BCHG SR,A2		ERROR: Invalid addressing mode
+BCHG SR,(A3)		ERROR: Invalid addressing mode
+BCHG SR,(A4)+		ERROR: Invalid addressing mode
+BCHG SR,-(A5)		ERROR: Invalid addressing mode
+BCHG SR,$10(A6)		ERROR: Invalid addressing mode
+BCHG SR,$10(A6,D7.W)		ERROR: Invalid addressing mode
+BCHG SR,$1234		ERROR: Invalid addressing mode
+BCHG SR,$12345678		ERROR: Invalid addressing mode
+BCHG SR,FW		ERROR: Invalid addressing mode
+BCHG SR,*+$10(PC)		ERROR: Invalid addressing mode
+BCHG SR,#1		ERROR: Invalid addressing mode
+BCHG SR,#$80		ERROR: Invalid addressing mode
+BCHG SR,#$1234		ERROR: Invalid addressing mode
+BCHG SR,#$12345678		ERROR: Invalid addressing mode
+BCHG SR,SR		ERROR: Invalid addressing mode
+BCHG SR,CCR		ERROR: Invalid addressing mode
+BCHG SR,USP		ERROR: Invalid addressing mode
+BCHG CCR,D1		ERROR: Invalid addressing mode
+BCHG CCR,A2		ERROR: Invalid addressing mode
+BCHG CCR,(A3)		ERROR: Invalid addressing mode
+BCHG CCR,(A4)+		ERROR: Invalid addressing mode
+BCHG CCR,-(A5)		ERROR: Invalid addressing mode
+BCHG CCR,$10(A6)		ERROR: Invalid addressing mode
+BCHG CCR,$10(A6,D7.W)		ERROR: Invalid addressing mode
+BCHG CCR,$1234		ERROR: Invalid addressing mode
+BCHG CCR,$12345678		ERROR: Invalid addressing mode
+BCHG CCR,FW		ERROR: Invalid addressing mode
+BCHG CCR,*+$10(PC)		ERROR: Invalid addressing mode
+BCHG CCR,#1		ERROR: Invalid addressing mode
+BCHG CCR,#$80		ERROR: Invalid addressing mode
+BCHG CCR,#$1234		ERROR: Invalid addressing mode
+BCHG CCR,#$12345678		ERROR: Invalid addressing mode
+BCHG CCR,SR		ERROR: Invalid addressing mode
+BCHG CCR,CCR		ERROR: Invalid addressing mode
+BCHG CCR,USP		ERROR: Invalid addressing mode
+BCHG USP,D1		ERROR: Invalid addressing mode
+BCHG USP,A2		ERROR: Invalid addressing mode
+BCHG USP,(A3)		ERROR: Invalid addressing mode
+BCHG USP,(A4)+		ERROR: Invalid addressing mode
+BCHG USP,-(A5)		ERROR: Invalid addressing mode
+BCHG USP,$10(A6)		ERROR: Invalid addressing mode
+BCHG USP,$10(A6,D7.W)		ERROR: Invalid addressing mode
+BCHG USP,$1234		ERROR: Invalid addressing mode
+BCHG USP,$12345678		ERROR: Invalid addressing mode
+BCHG USP,FW		ERROR: Invalid addressing mode
+BCHG USP,*+$10(PC)		ERROR: Invalid addressing mode
+BCHG USP,#1		ERROR: Invalid addressing mode
+BCHG USP,#$80		ERROR: Invalid addressing mode
+BCHG USP,#$1234		ERROR: Invalid addressing mode
+BCHG USP,#$12345678		ERROR: Invalid addressing mode
+BCHG USP,SR		ERROR: Invalid addressing mode
+BCHG USP,CCR		ERROR: Invalid addressing mode
+BCHG USP,USP		ERROR: Invalid addressing mode
+BCHG SP,D1		ERROR: Invalid addressing mode
+BCHG SP,A2		ERROR: Invalid addressing mode
+BCHG D1,SP		ERROR: Invalid addressing mode
+BCHG #$12,SP		ERROR: Invalid addressing mode
+BCHG -2(A0),D1		ERROR: Invalid addressing mode
+BCHG -2(A0),A2		ERROR: Invalid addressing mode
+BCHG D1,-2(A0)	0368FFFE	-
+BCHG #$12,-2(A0)	08680012FFFE	-
+BCHG $12(A0,A1.L),D1		ERROR: Invalid addressing mode
+BCHG $12(A0,A1.L),A2		ERROR: Invalid addressing mode
+BCHG D1,$12(A0,A1.L)	03709812	-
+BCHG #$12,$12(A0,A1.L)	087000129812	-
+BCHG (A2,D3),D1		ERROR: Invalid addressing mode
+BCHG (A2,D3),A2		ERROR: Invalid addressing mode
+BCHG D1,(A2,D3)	03723000	-
+BCHG #$12,(A2,D3)	087200123000	-
+BCHG $1234.L,D1		ERROR: Invalid addressing mode
+BCHG $1234.L,A2		ERROR: Invalid addressing mode
+BCHG D1,$1234.L	037900001234	-
+BCHG #$12,$1234.L	0879001200001234	-
+BCHG $1234.W,D1		ERROR: Invalid addressing mode
+BCHG $1234.W,A2		ERROR: Invalid addressing mode
+BCHG D1,$1234.W	03781234	WARNING: Forcing SHORT addressing disables range checking of extension word
+BCHG #$12,$1234.W	087800121234	WARNING: Forcing SHORT addressing disables range checking of extension word
+BCHG $8000,D1		ERROR: Invalid addressing mode
+BCHG $8000,A2		ERROR: Invalid addressing mode
+BCHG D1,$8000	037900008000	-
+BCHG #$12,$8000	0879001200008000	-
+BCHG BK,D1		ERROR: Invalid addressing mode
+BCHG BK,A2		ERROR: Invalid addressing mode
+BCHG D1,BK	03781F00	-
+BCHG #$12,BK	087800121F00	-
+BCHG *(PC,D0.W),D1		ERROR: Invalid addressing mode
+BCHG *(PC,D0.W),A2		ERROR: Invalid addressing mode
+BCHG D1,*(PC,D0.W)		ERROR: Invalid addressing mode
+BCHG #$12,*(PC,D0.W)		ERROR: Invalid addressing mode
+BCHG BK(PC),D1		ERROR: Invalid addressing mode
+BCHG BK(PC),A2		ERROR: Invalid addressing mode
+BCHG D1,BK(PC)		ERROR: Invalid addressing mode
+BCHG #$12,BK(PC)		ERROR: Invalid addressing mode
+BCHG #8,D1	08410008	-
+BCHG #8,A2		ERROR: Invalid addressing mode
+BCHG D1,#8		ERROR: Invalid addressing mode
+BCHG #$12,#8		ERROR: Invalid addressing mode
+BCHG #9,D1	08410009	-
+BCHG #9,A2		ERROR: Invalid addressing mode
+BCHG D1,#9		ERROR: Invalid addressing mode
+BCHG #$12,#9		ERROR: Invalid addressing mode
+BCHG #0,D1	08410000	-
+BCHG #0,A2		ERROR: Invalid addressing mode
+BCHG D1,#0		ERROR: Invalid addressing mode
+BCHG #$12,#0		ERROR: Invalid addressing mode
+BCHG #-1,D1	084100FF	-
+BCHG #-1,A2		ERROR: Invalid addressing mode
+BCHG D1,#-1		ERROR: Invalid addressing mode
+BCHG #$12,#-1		ERROR: Invalid addressing mode
+BCHG #$12345678.L,D1	08410078	-
+BCHG #$12345678.L,A2		ERROR: Invalid addressing mode
+BCHG D1,#$12345678.L		ERROR: Invalid addressing mode
+BCHG #$12,#$12345678.L		ERROR: Invalid addressing mode
+BCHG #BK,D1	08410000	-
+BCHG #BK,A2		ERROR: Invalid addressing mode
+BCHG D1,#BK		ERROR: Invalid addressing mode
+BCHG #$12,#BK		ERROR: Invalid addressing mode
+BCHG #FW,D1	08410000	-
+BCHG #FW,A2		ERROR: Invalid addressing mode
+BCHG D1,#FW		ERROR: Invalid addressing mode
+BCHG #$12,#FW		ERROR: Invalid addressing mode
+BCHG #UNDEF,D1	08410069	ERROR: Undefined symbol
+BCHG #UNDEF,A2		ERROR: Invalid addressing mode
+BCHG D1,#UNDEF		ERROR: Invalid addressing mode
+BCHG #$12,#UNDEF		ERROR: Invalid addressing mode
+BCHG UNDEF,D1		ERROR: Invalid addressing mode
+BCHG UNDEF,A2		ERROR: Invalid addressing mode
+BCHG D1,UNDEF	037900001F00	ERROR: Undefined symbol
+BCHG #$12,UNDEF	0879001200001F00	ERROR: Undefined symbol
+BCHG D1,D2,D3		ERROR: Invalid syntax
+BCHG.B		ERROR: Invalid syntax
+BCHG.B D1		ERROR: Comma expected
+BCHG.B A2		ERROR: Comma expected
+BCHG.B SP		ERROR: Comma expected
+BCHG.B (A3)		ERROR: Comma expected
+BCHG.B (A4)+		ERROR: Comma expected
+BCHG.B -(A5)		ERROR: Comma expected
+BCHG.B $10(A6)		ERROR: Comma expected
+BCHG.B -2(A0)		ERROR: Comma expected
+BCHG.B $10(A6,D7.W)		ERROR: Comma expected
+BCHG.B $12(A0,A1.L)		ERROR: Comma expected
+BCHG.B (A2,D3)		ERROR: Comma expected
+BCHG.B $1234		ERROR: Comma expected
+BCHG.B $12345678		ERROR: Comma expected
+BCHG.B $1234.L		ERROR: Comma expected
+BCHG.B $1234.W		ERROR: Comma expected
+BCHG.B $8000		ERROR: Comma expected
+BCHG.B BK		ERROR: Comma expected
+BCHG.B FW		ERROR: Comma expected
+BCHG.B *+$10(PC)		ERROR: Comma expected
+BCHG.B *(PC,D0.W)		ERROR: Comma expected
+BCHG.B BK(PC)		ERROR: Comma expected
+BCHG.B #1		ERROR: Comma expected
+BCHG.B #8		ERROR: Comma expected
+BCHG.B #9		ERROR: Comma expected
+BCHG.B #0		ERROR: Comma expected
+BCHG.B #-1		ERROR: Comma expected
+BCHG.B #$80		ERROR: Comma expected
+BCHG.B #$1234		ERROR: Comma expected
+BCHG.B #$12345678		ERROR: Comma expected
+BCHG.B #$12345678.L		ERROR: Comma expected
+BCHG.B #BK		ERROR: Comma expected
+BCHG.B #FW		ERROR: Comma expected
+BCHG.B #UNDEF		ERROR: Comma expected
+BCHG.B UNDEF		ERROR: Comma expected
+BCHG.B SR		ERROR: Comma expected
+BCHG.B CCR		ERROR: Comma expected
+BCHG.B USP		ERROR: Comma expected
+BCHG.B D1,D1	0341	ERROR: Invalid size code
+BCHG.B D1,A2		ERROR: Invalid addressing mode
+BCHG.B D1,(A3)	0353	-
+BCHG.B D1,$10(A6)	036E0010	-
+BCHG.B D1,$1234	03781234	-
+BCHG.B D1,FW	037900001F00	-
+BCHG.B D1,#1		ERROR: Invalid addressing mode
+BCHG.B D1,#$1234		ERROR: Invalid addressing mode
+BCHG.B D1,CCR		ERROR: Invalid addressing mode
+BCHG.B D1,SR		ERROR: Invalid addressing mode
+BCHG.B A2,D1		ERROR: Invalid addressing mode
+BCHG.B A2,A2		ERROR: Invalid addressing mode
+BCHG.B A2,(A3)		ERROR: Invalid addressing mode
+BCHG.B A2,$10(A6)		ERROR: Invalid addressing mode
+BCHG.B A2,$1234		ERROR: Invalid addressing mode
+BCHG.B A2,FW		ERROR: Invalid addressing mode
+BCHG.B A2,#1		ERROR: Invalid addressing mode
+BCHG.B A2,#$1234		ERROR: Invalid addressing mode
+BCHG.B A2,CCR		ERROR: Invalid addressing mode
+BCHG.B A2,SR		ERROR: Invalid addressing mode
+BCHG.B (A3),D1		ERROR: Invalid addressing mode
+BCHG.B (A3),A2		ERROR: Invalid addressing mode
+BCHG.B (A3),(A3)		ERROR: Invalid addressing mode
+BCHG.B (A3),$10(A6)		ERROR: Invalid addressing mode
+BCHG.B (A3),$1234		ERROR: Invalid addressing mode
+BCHG.B (A3),FW		ERROR: Invalid addressing mode
+BCHG.B (A3),#1		ERROR: Invalid addressing mode
+BCHG.B (A3),#$1234		ERROR: Invalid addressing mode
+BCHG.B (A3),CCR		ERROR: Invalid addressing mode
+BCHG.B (A3),SR		ERROR: Invalid addressing mode
+BCHG.B $10(A6),D1		ERROR: Invalid addressing mode
+BCHG.B $10(A6),A2		ERROR: Invalid addressing mode
+BCHG.B $10(A6),(A3)		ERROR: Invalid addressing mode
+BCHG.B $10(A6),$10(A6)		ERROR: Invalid addressing mode
+BCHG.B $10(A6),$1234		ERROR: Invalid addressing mode
+BCHG.B $10(A6),FW		ERROR: Invalid addressing mode
+BCHG.B $10(A6),#1		ERROR: Invalid addressing mode
+BCHG.B $10(A6),#$1234		ERROR: Invalid addressing mode
+BCHG.B $10(A6),CCR		ERROR: Invalid addressing mode
+BCHG.B $10(A6),SR		ERROR: Invalid addressing mode
+BCHG.B $1234,D1		ERROR: Invalid addressing mode
+BCHG.B $1234,A2		ERROR: Invalid addressing mode
+BCHG.B $1234,(A3)		ERROR: Invalid addressing mode
+BCHG.B $1234,$10(A6)		ERROR: Invalid addressing mode
+BCHG.B $1234,$1234		ERROR: Invalid addressing mode
+BCHG.B $1234,FW		ERROR: Invalid addressing mode
+BCHG.B $1234,#1		ERROR: Invalid addressing mode
+BCHG.B $1234,#$1234		ERROR: Invalid addressing mode
+BCHG.B $1234,CCR		ERROR: Invalid addressing mode
+BCHG.B $1234,SR		ERROR: Invalid addressing mode
+BCHG.B FW,D1		ERROR: Invalid addressing mode
+BCHG.B FW,A2		ERROR: Invalid addressing mode
+BCHG.B FW,(A3)		ERROR: Invalid addressing mode
+BCHG.B FW,$10(A6)		ERROR: Invalid addressing mode
+BCHG.B FW,$1234		ERROR: Invalid addressing mode
+BCHG.B FW,FW		ERROR: Invalid addressing mode
+BCHG.B FW,#1		ERROR: Invalid addressing mode
+BCHG.B FW,#$1234		ERROR: Invalid addressing mode
+BCHG.B FW,CCR		ERROR: Invalid addressing mode
+BCHG.B FW,SR		ERROR: Invalid addressing mode
+BCHG.B #1,D1	08410001	ERROR: Invalid size code
+BCHG.B #1,A2		ERROR: Invalid addressing mode
+BCHG.B #1,(A3)	08530001	-
+BCHG.B #1,$10(A6)	086E00010010	-
+BCHG.B #1,$1234	087800011234	-
+BCHG.B #1,FW	0879000100001F00	-
+BCHG.B #1,#1		ERROR: Invalid addressing mode
+BCHG.B #1,#$1234		ERROR: Invalid addressing mode
+BCHG.B #1,CCR		ERROR: Invalid addressing mode
+BCHG.B #1,SR		ERROR: Invalid addressing mode
+BCHG.B #$1234,D1	08410034	ERROR: Invalid size code
+BCHG.B #$1234,A2		ERROR: Invalid addressing mode
+BCHG.B #$1234,(A3)	08530034	-
+BCHG.B #$1234,$10(A6)	086E00340010	-
+BCHG.B #$1234,$1234	087800341234	-
+BCHG.B #$1234,FW	0879003400001F00	-
+BCHG.B #$1234,#1		ERROR: Invalid addressing mode
+BCHG.B #$1234,#$1234		ERROR: Invalid addressing mode
+BCHG.B #$1234,CCR		ERROR: Invalid addressing mode
+BCHG.B #$1234,SR		ERROR: Invalid addressing mode
+BCHG.B CCR,D1		ERROR: Invalid addressing mode
+BCHG.B CCR,A2		ERROR: Invalid addressing mode
+BCHG.B CCR,(A3)		ERROR: Invalid addressing mode
+BCHG.B CCR,$10(A6)		ERROR: Invalid addressing mode
+BCHG.B CCR,$1234		ERROR: Invalid addressing mode
+BCHG.B CCR,FW		ERROR: Invalid addressing mode
+BCHG.B CCR,#1		ERROR: Invalid addressing mode
+BCHG.B CCR,#$1234		ERROR: Invalid addressing mode
+BCHG.B CCR,CCR		ERROR: Invalid addressing mode
+BCHG.B CCR,SR		ERROR: Invalid addressing mode
+BCHG.B SR,D1		ERROR: Invalid addressing mode
+BCHG.B SR,A2		ERROR: Invalid addressing mode
+BCHG.B SR,(A3)		ERROR: Invalid addressing mode
+BCHG.B SR,$10(A6)		ERROR: Invalid addressing mode
+BCHG.B SR,$1234		ERROR: Invalid addressing mode
+BCHG.B SR,FW		ERROR: Invalid addressing mode
+BCHG.B SR,#1		ERROR: Invalid addressing mode
+BCHG.B SR,#$1234		ERROR: Invalid addressing mode
+BCHG.B SR,CCR		ERROR: Invalid addressing mode
+BCHG.B SR,SR		ERROR: Invalid addressing mode
+BCHG.B SP,D1		ERROR: Invalid addressing mode
+BCHG.B SP,A2		ERROR: Invalid addressing mode
+BCHG.B D1,SP		ERROR: Invalid addressing mode
+BCHG.B #$12,SP		ERROR: Invalid addressing mode
+BCHG.B (A4)+,D1		ERROR: Invalid addressing mode
+BCHG.B (A4)+,A2		ERROR: Invalid addressing mode
+BCHG.B D1,(A4)+	035C	-
+BCHG.B #$12,(A4)+	085C0012	-
+BCHG.B -(A5),D1		ERROR: Invalid addressing mode
+BCHG.B -(A5),A2		ERROR: Invalid addressing mode
+BCHG.B D1,-(A5)	0365	-
+BCHG.B #$12,-(A5)	08650012	-
+BCHG.B -2(A0),D1		ERROR: Invalid addressing mode
+BCHG.B -2(A0),A2		ERROR: Invalid addressing mode
+BCHG.B D1,-2(A0)	0368FFFE	-
+BCHG.B #$12,-2(A0)	08680012FFFE	-
+BCHG.B $10(A6,D7.W),D1		ERROR: Invalid addressing mode
+BCHG.B $10(A6,D7.W),A2		ERROR: Invalid addressing mode
+BCHG.B D1,$10(A6,D7.W)	03767010	-
+BCHG.B #$12,$10(A6,D7.W)	087600127010	-
+BCHG.B $12(A0,A1.L),D1		ERROR: Invalid addressing mode
+BCHG.B $12(A0,A1.L),A2		ERROR: Invalid addressing mode
+BCHG.B D1,$12(A0,A1.L)	03709812	-
+BCHG.B #$12,$12(A0,A1.L)	087000129812	-
+BCHG.B (A2,D3),D1		ERROR: Invalid addressing mode
+BCHG.B (A2,D3),A2		ERROR: Invalid addressing mode
+BCHG.B D1,(A2,D3)	03723000	-
+BCHG.B #$12,(A2,D3)	087200123000	-
+BCHG.B $12345678,D1		ERROR: Invalid addressing mode
+BCHG.B $12345678,A2		ERROR: Invalid addressing mode
+BCHG.B D1,$12345678	037912345678	-
+BCHG.B #$12,$12345678	0879001212345678	-
+BCHG.B $1234.L,D1		ERROR: Invalid addressing mode
+BCHG.B $1234.L,A2		ERROR: Invalid addressing mode
+BCHG.B D1,$1234.L	037900001234	-
+BCHG.B #$12,$1234.L	0879001200001234	-
+BCHG.B $1234.W,D1		ERROR: Invalid addressing mode
+BCHG.B $1234.W,A2		ERROR: Invalid addressing mode
+BCHG.B D1,$1234.W	03781234	WARNING: Forcing SHORT addressing disables range checking of extension word
+BCHG.B #$12,$1234.W	087800121234	WARNING: Forcing SHORT addressing disables range checking of extension word
+BCHG.B $8000,D1		ERROR: Invalid addressing mode
+BCHG.B $8000,A2		ERROR: Invalid addressing mode
+BCHG.B D1,$8000	037900008000	-
+BCHG.B #$12,$8000	0879001200008000	-
+BCHG.B BK,D1		ERROR: Invalid addressing mode
+BCHG.B BK,A2		ERROR: Invalid addressing mode
+BCHG.B D1,BK	03781F00	-
+BCHG.B #$12,BK	087800121F00	-
+BCHG.B *+$10(PC),D1		ERROR: Invalid addressing mode
+BCHG.B *+$10(PC),A2		ERROR: Invalid addressing mode
+BCHG.B D1,*+$10(PC)		ERROR: Invalid addressing mode
+BCHG.B #$12,*+$10(PC)		ERROR: Invalid addressing mode
+BCHG.B *(PC,D0.W),D1		ERROR: Invalid addressing mode
+BCHG.B *(PC,D0.W),A2		ERROR: Invalid addressing mode
+BCHG.B D1,*(PC,D0.W)		ERROR: Invalid addressing mode
+BCHG.B #$12,*(PC,D0.W)		ERROR: Invalid addressing mode
+BCHG.B BK(PC),D1		ERROR: Invalid addressing mode
+BCHG.B BK(PC),A2		ERROR: Invalid addressing mode
+BCHG.B D1,BK(PC)		ERROR: Invalid addressing mode
+BCHG.B #$12,BK(PC)		ERROR: Invalid addressing mode
+BCHG.B #8,D1	08410008	ERROR: Invalid size code
+BCHG.B #8,A2		ERROR: Invalid addressing mode
+BCHG.B D1,#8		ERROR: Invalid addressing mode
+BCHG.B #$12,#8		ERROR: Invalid addressing mode
+BCHG.B #9,D1	08410009	ERROR: Invalid size code
+BCHG.B #9,A2		ERROR: Invalid addressing mode
+BCHG.B D1,#9		ERROR: Invalid addressing mode
+BCHG.B #$12,#9		ERROR: Invalid addressing mode
+BCHG.B #0,D1	08410000	ERROR: Invalid size code
+BCHG.B #0,A2		ERROR: Invalid addressing mode
+BCHG.B D1,#0		ERROR: Invalid addressing mode
+BCHG.B #$12,#0		ERROR: Invalid addressing mode
+BCHG.B #-1,D1	084100FF	ERROR: Invalid size code
+BCHG.B #-1,A2		ERROR: Invalid addressing mode
+BCHG.B D1,#-1		ERROR: Invalid addressing mode
+BCHG.B #$12,#-1		ERROR: Invalid addressing mode
+BCHG.B #$80,D1	08410080	ERROR: Invalid size code
+BCHG.B #$80,A2		ERROR: Invalid addressing mode
+BCHG.B D1,#$80		ERROR: Invalid addressing mode
+BCHG.B #$12,#$80		ERROR: Invalid addressing mode
+BCHG.B #$12345678,D1	08410078	ERROR: Invalid size code
+BCHG.B #$12345678,A2		ERROR: Invalid addressing mode
+BCHG.B D1,#$12345678		ERROR: Invalid addressing mode
+BCHG.B #$12,#$12345678		ERROR: Invalid addressing mode
+BCHG.B #$12345678.L,D1	08410078	ERROR: Invalid size code
+BCHG.B #$12345678.L,A2		ERROR: Invalid addressing mode
+BCHG.B D1,#$12345678.L		ERROR: Invalid addressing mode
+BCHG.B #$12,#$12345678.L		ERROR: Invalid addressing mode
+BCHG.B #BK,D1	08410000	ERROR: Invalid size code
+BCHG.B #BK,A2		ERROR: Invalid addressing mode
+BCHG.B D1,#BK		ERROR: Invalid addressing mode
+BCHG.B #$12,#BK		ERROR: Invalid addressing mode
+BCHG.B #FW,D1	08410000	ERROR: Invalid size code
+BCHG.B #FW,A2		ERROR: Invalid addressing mode
+BCHG.B D1,#FW		ERROR: Invalid addressing mode
+BCHG.B #$12,#FW		ERROR: Invalid addressing mode
+BCHG.B #UNDEF,D1	08410069	ERROR: Undefined symbol
+BCHG.B #UNDEF,A2		ERROR: Invalid addressing mode
+BCHG.B D1,#UNDEF		ERROR: Invalid addressing mode
+BCHG.B #$12,#UNDEF		ERROR: Invalid addressing mode
+BCHG.B UNDEF,D1		ERROR: Invalid addressing mode
+BCHG.B UNDEF,A2		ERROR: Invalid addressing mode
+BCHG.B D1,UNDEF	037900001F00	ERROR: Undefined symbol
+BCHG.B #$12,UNDEF	0879001200001F00	ERROR: Undefined symbol
+BCHG.B USP,D1		ERROR: Invalid addressing mode
+BCHG.B USP,A2		ERROR: Invalid addressing mode
+BCHG.B D1,USP		ERROR: Invalid addressing mode
+BCHG.B #$12,USP		ERROR: Invalid addressing mode
+BCHG.B D1,D2,D3		ERROR: Invalid syntax
+BCHG.W		ERROR: Invalid syntax
+BCHG.W D1		ERROR: Comma expected
+BCHG.W A2		ERROR: Comma expected
+BCHG.W SP		ERROR: Comma expected
+BCHG.W (A3)		ERROR: Comma expected
+BCHG.W (A4)+		ERROR: Comma expected
+BCHG.W -(A5)		ERROR: Comma expected
+BCHG.W $10(A6)		ERROR: Comma expected
+BCHG.W -2(A0)		ERROR: Comma expected
+BCHG.W $10(A6,D7.W)		ERROR: Comma expected
+BCHG.W $12(A0,A1.L)		ERROR: Comma expected
+BCHG.W (A2,D3)		ERROR: Comma expected
+BCHG.W $1234		ERROR: Comma expected
+BCHG.W $12345678		ERROR: Comma expected
+BCHG.W $1234.L		ERROR: Comma expected
+BCHG.W $1234.W		ERROR: Comma expected
+BCHG.W $8000		ERROR: Comma expected
+BCHG.W BK		ERROR: Comma expected
+BCHG.W FW		ERROR: Comma expected
+BCHG.W *+$10(PC)		ERROR: Comma expected
+BCHG.W *(PC,D0.W)		ERROR: Comma expected
+BCHG.W BK(PC)		ERROR: Comma expected
+BCHG.W #1		ERROR: Comma expected
+BCHG.W #8		ERROR: Comma expected
+BCHG.W #9		ERROR: Comma expected
+BCHG.W #0		ERROR: Comma expected
+BCHG.W #-1		ERROR: Comma expected
+BCHG.W #$80		ERROR: Comma expected
+BCHG.W #$1234		ERROR: Comma expected
+BCHG.W #$12345678		ERROR: Comma expected
+BCHG.W #$12345678.L		ERROR: Comma expected
+BCHG.W #BK		ERROR: Comma expected
+BCHG.W #FW		ERROR: Comma expected
+BCHG.W #UNDEF		ERROR: Comma expected
+BCHG.W UNDEF		ERROR: Comma expected
+BCHG.W SR		ERROR: Comma expected
+BCHG.W CCR		ERROR: Comma expected
+BCHG.W USP		ERROR: Comma expected
+BCHG.W D1,D1	0341	ERROR: Invalid size code
+BCHG.W D1,A2		ERROR: Invalid addressing mode
+BCHG.W D1,(A3)	0353	ERROR: Invalid size code
+BCHG.W D1,(A4)+	035C	ERROR: Invalid size code
+BCHG.W D1,-(A5)	0365	ERROR: Invalid size code
+BCHG.W D1,$10(A6)	036E0010	ERROR: Invalid size code
+BCHG.W D1,$10(A6,D7.W)	03767010	ERROR: Invalid size code
+BCHG.W D1,$1234	03781234	ERROR: Invalid size code
+BCHG.W D1,$12345678	037912345678	ERROR: Invalid size code
+BCHG.W D1,FW	037900001F00	ERROR: Invalid size code
+BCHG.W D1,*+$10(PC)		ERROR: Invalid addressing mode
+BCHG.W D1,#1		ERROR: Invalid addressing mode
+BCHG.W D1,#$80		ERROR: Invalid addressing mode
+BCHG.W D1,#$1234		ERROR: Invalid addressing mode
+BCHG.W D1,#$12345678		ERROR: Invalid addressing mode
+BCHG.W D1,SR		ERROR: Invalid addressing mode
+BCHG.W D1,CCR		ERROR: Invalid addressing mode
+BCHG.W D1,USP		ERROR: Invalid addressing mode
+BCHG.W A2,D1		ERROR: Invalid addressing mode
+BCHG.W A2,A2		ERROR: Invalid addressing mode
+BCHG.W A2,(A3)		ERROR: Invalid addressing mode
+BCHG.W A2,(A4)+		ERROR: Invalid addressing mode
+BCHG.W A2,-(A5)		ERROR: Invalid addressing mode
+BCHG.W A2,$10(A6)		ERROR: Invalid addressing mode
+BCHG.W A2,$10(A6,D7.W)		ERROR: Invalid addressing mode
+BCHG.W A2,$1234		ERROR: Invalid addressing mode
+BCHG.W A2,$12345678		ERROR: Invalid addressing mode
+BCHG.W A2,FW		ERROR: Invalid addressing mode
+BCHG.W A2,*+$10(PC)		ERROR: Invalid addressing mode
+BCHG.W A2,#1		ERROR: Invalid addressing mode
+BCHG.W A2,#$80		ERROR: Invalid addressing mode
+BCHG.W A2,#$1234		ERROR: Invalid addressing mode
+BCHG.W A2,#$12345678		ERROR: Invalid addressing mode
+BCHG.W A2,SR		ERROR: Invalid addressing mode
+BCHG.W A2,CCR		ERROR: Invalid addressing mode
+BCHG.W A2,USP		ERROR: Invalid addressing mode
+BCHG.W (A3),D1		ERROR: Invalid addressing mode
+BCHG.W (A3),A2		ERROR: Invalid addressing mode
+BCHG.W (A3),(A3)		ERROR: Invalid addressing mode
+BCHG.W (A3),(A4)+		ERROR: Invalid addressing mode
+BCHG.W (A3),-(A5)		ERROR: Invalid addressing mode
+BCHG.W (A3),$10(A6)		ERROR: Invalid addressing mode
+BCHG.W (A3),$10(A6,D7.W)		ERROR: Invalid addressing mode
+BCHG.W (A3),$1234		ERROR: Invalid addressing mode
+BCHG.W (A3),$12345678		ERROR: Invalid addressing mode
+BCHG.W (A3),FW		ERROR: Invalid addressing mode
+BCHG.W (A3),*+$10(PC)		ERROR: Invalid addressing mode
+BCHG.W (A3),#1		ERROR: Invalid addressing mode
+BCHG.W (A3),#$80		ERROR: Invalid addressing mode
+BCHG.W (A3),#$1234		ERROR: Invalid addressing mode
+BCHG.W (A3),#$12345678		ERROR: Invalid addressing mode
+BCHG.W (A3),SR		ERROR: Invalid addressing mode
+BCHG.W (A3),CCR		ERROR: Invalid addressing mode
+BCHG.W (A3),USP		ERROR: Invalid addressing mode
+BCHG.W (A4)+,D1		ERROR: Invalid addressing mode
+BCHG.W (A4)+,A2		ERROR: Invalid addressing mode
+BCHG.W (A4)+,(A3)		ERROR: Invalid addressing mode
+BCHG.W (A4)+,(A4)+		ERROR: Invalid addressing mode
+BCHG.W (A4)+,-(A5)		ERROR: Invalid addressing mode
+BCHG.W (A4)+,$10(A6)		ERROR: Invalid addressing mode
+BCHG.W (A4)+,$10(A6,D7.W)		ERROR: Invalid addressing mode
+BCHG.W (A4)+,$1234		ERROR: Invalid addressing mode
+BCHG.W (A4)+,$12345678		ERROR: Invalid addressing mode
+BCHG.W (A4)+,FW		ERROR: Invalid addressing mode
+BCHG.W (A4)+,*+$10(PC)		ERROR: Invalid addressing mode
+BCHG.W (A4)+,#1		ERROR: Invalid addressing mode
+BCHG.W (A4)+,#$80		ERROR: Invalid addressing mode
+BCHG.W (A4)+,#$1234		ERROR: Invalid addressing mode
+BCHG.W (A4)+,#$12345678		ERROR: Invalid addressing mode
+BCHG.W (A4)+,SR		ERROR: Invalid addressing mode
+BCHG.W (A4)+,CCR		ERROR: Invalid addressing mode
+BCHG.W (A4)+,USP		ERROR: Invalid addressing mode
+BCHG.W -(A5),D1		ERROR: Invalid addressing mode
+BCHG.W -(A5),A2		ERROR: Invalid addressing mode
+BCHG.W -(A5),(A3)		ERROR: Invalid addressing mode
+BCHG.W -(A5),(A4)+		ERROR: Invalid addressing mode
+BCHG.W -(A5),-(A5)		ERROR: Invalid addressing mode
+BCHG.W -(A5),$10(A6)		ERROR: Invalid addressing mode
+BCHG.W -(A5),$10(A6,D7.W)		ERROR: Invalid addressing mode
+BCHG.W -(A5),$1234		ERROR: Invalid addressing mode
+BCHG.W -(A5),$12345678		ERROR: Invalid addressing mode
+BCHG.W -(A5),FW		ERROR: Invalid addressing mode
+BCHG.W -(A5),*+$10(PC)		ERROR: Invalid addressing mode
+BCHG.W -(A5),#1		ERROR: Invalid addressing mode
+BCHG.W -(A5),#$80		ERROR: Invalid addressing mode
+BCHG.W -(A5),#$1234		ERROR: Invalid addressing mode
+BCHG.W -(A5),#$12345678		ERROR: Invalid addressing mode
+BCHG.W -(A5),SR		ERROR: Invalid addressing mode
+BCHG.W -(A5),CCR		ERROR: Invalid addressing mode
+BCHG.W -(A5),USP		ERROR: Invalid addressing mode
+BCHG.W $10(A6),D1		ERROR: Invalid addressing mode
+BCHG.W $10(A6),A2		ERROR: Invalid addressing mode
+BCHG.W $10(A6),(A3)		ERROR: Invalid addressing mode
+BCHG.W $10(A6),(A4)+		ERROR: Invalid addressing mode
+BCHG.W $10(A6),-(A5)		ERROR: Invalid addressing mode
+BCHG.W $10(A6),$10(A6)		ERROR: Invalid addressing mode
+BCHG.W $10(A6),$10(A6,D7.W)		ERROR: Invalid addressing mode
+BCHG.W $10(A6),$1234		ERROR: Invalid addressing mode
+BCHG.W $10(A6),$12345678		ERROR: Invalid addressing mode
+BCHG.W $10(A6),FW		ERROR: Invalid addressing mode
+BCHG.W $10(A6),*+$10(PC)		ERROR: Invalid addressing mode
+BCHG.W $10(A6),#1		ERROR: Invalid addressing mode
+BCHG.W $10(A6),#$80		ERROR: Invalid addressing mode
+BCHG.W $10(A6),#$1234		ERROR: Invalid addressing mode
+BCHG.W $10(A6),#$12345678		ERROR: Invalid addressing mode
+BCHG.W $10(A6),SR		ERROR: Invalid addressing mode
+BCHG.W $10(A6),CCR		ERROR: Invalid addressing mode
+BCHG.W $10(A6),USP		ERROR: Invalid addressing mode
+BCHG.W $10(A6,D7.W),D1		ERROR: Invalid addressing mode
+BCHG.W $10(A6,D7.W),A2		ERROR: Invalid addressing mode
+BCHG.W $10(A6,D7.W),(A3)		ERROR: Invalid addressing mode
+BCHG.W $10(A6,D7.W),(A4)+		ERROR: Invalid addressing mode
+BCHG.W $10(A6,D7.W),-(A5)		ERROR: Invalid addressing mode
+BCHG.W $10(A6,D7.W),$10(A6)		ERROR: Invalid addressing mode
+BCHG.W $10(A6,D7.W),$10(A6,D7.W)		ERROR: Invalid addressing mode
+BCHG.W $10(A6,D7.W),$1234		ERROR: Invalid addressing mode
+BCHG.W $10(A6,D7.W),$12345678		ERROR: Invalid addressing mode
+BCHG.W $10(A6,D7.W),FW		ERROR: Invalid addressing mode
+BCHG.W $10(A6,D7.W),*+$10(PC)		ERROR: Invalid addressing mode
+BCHG.W $10(A6,D7.W),#1		ERROR: Invalid addressing mode
+BCHG.W $10(A6,D7.W),#$80		ERROR: Invalid addressing mode
+BCHG.W $10(A6,D7.W),#$1234		ERROR: Invalid addressing mode
+BCHG.W $10(A6,D7.W),#$12345678		ERROR: Invalid addressing mode
+BCHG.W $10(A6,D7.W),SR		ERROR: Invalid addressing mode
+BCHG.W $10(A6,D7.W),CCR		ERROR: Invalid addressing mode
+BCHG.W $10(A6,D7.W),USP		ERROR: Invalid addressing mode
+BCHG.W $1234,D1		ERROR: Invalid addressing mode
+BCHG.W $1234,A2		ERROR: Invalid addressing mode
+BCHG.W $1234,(A3)		ERROR: Invalid addressing mode
+BCHG.W $1234,(A4)+		ERROR: Invalid addressing mode
+BCHG.W $1234,-(A5)		ERROR: Invalid addressing mode
+BCHG.W $1234,$10(A6)		ERROR: Invalid addressing mode
+BCHG.W $1234,$10(A6,D7.W)		ERROR: Invalid addressing mode
+BCHG.W $1234,$1234		ERROR: Invalid addressing mode
+BCHG.W $1234,$12345678		ERROR: Invalid addressing mode
+BCHG.W $1234,FW		ERROR: Invalid addressing mode
+BCHG.W $1234,*+$10(PC)		ERROR: Invalid addressing mode
+BCHG.W $1234,#1		ERROR: Invalid addressing mode
+BCHG.W $1234,#$80		ERROR: Invalid addressing mode
+BCHG.W $1234,#$1234		ERROR: Invalid addressing mode
+BCHG.W $1234,#$12345678		ERROR: Invalid addressing mode
+BCHG.W $1234,SR		ERROR: Invalid addressing mode
+BCHG.W $1234,CCR		ERROR: Invalid addressing mode
+BCHG.W $1234,USP		ERROR: Invalid addressing mode
+BCHG.W $12345678,D1		ERROR: Invalid addressing mode
+BCHG.W $12345678,A2		ERROR: Invalid addressing mode
+BCHG.W $12345678,(A3)		ERROR: Invalid addressing mode
+BCHG.W $12345678,(A4)+		ERROR: Invalid addressing mode
+BCHG.W $12345678,-(A5)		ERROR: Invalid addressing mode
+BCHG.W $12345678,$10(A6)		ERROR: Invalid addressing mode
+BCHG.W $12345678,$10(A6,D7.W)		ERROR: Invalid addressing mode
+BCHG.W $12345678,$1234		ERROR: Invalid addressing mode
+BCHG.W $12345678,$12345678		ERROR: Invalid addressing mode
+BCHG.W $12345678,FW		ERROR: Invalid addressing mode
+BCHG.W $12345678,*+$10(PC)		ERROR: Invalid addressing mode
+BCHG.W $12345678,#1		ERROR: Invalid addressing mode
+BCHG.W $12345678,#$80		ERROR: Invalid addressing mode
+BCHG.W $12345678,#$1234		ERROR: Invalid addressing mode
+BCHG.W $12345678,#$12345678		ERROR: Invalid addressing mode
+BCHG.W $12345678,SR		ERROR: Invalid addressing mode
+BCHG.W $12345678,CCR		ERROR: Invalid addressing mode
+BCHG.W $12345678,USP		ERROR: Invalid addressing mode
+BCHG.W FW,D1		ERROR: Invalid addressing mode
+BCHG.W FW,A2		ERROR: Invalid addressing mode
+BCHG.W FW,(A3)		ERROR: Invalid addressing mode
+BCHG.W FW,(A4)+		ERROR: Invalid addressing mode
+BCHG.W FW,-(A5)		ERROR: Invalid addressing mode
+BCHG.W FW,$10(A6)		ERROR: Invalid addressing mode
+BCHG.W FW,$10(A6,D7.W)		ERROR: Invalid addressing mode
+BCHG.W FW,$1234		ERROR: Invalid addressing mode
+BCHG.W FW,$12345678		ERROR: Invalid addressing mode
+BCHG.W FW,FW		ERROR: Invalid addressing mode
+BCHG.W FW,*+$10(PC)		ERROR: Invalid addressing mode
+BCHG.W FW,#1		ERROR: Invalid addressing mode
+BCHG.W FW,#$80		ERROR: Invalid addressing mode
+BCHG.W FW,#$1234		ERROR: Invalid addressing mode
+BCHG.W FW,#$12345678		ERROR: Invalid addressing mode
+BCHG.W FW,SR		ERROR: Invalid addressing mode
+BCHG.W FW,CCR		ERROR: Invalid addressing mode
+BCHG.W FW,USP		ERROR: Invalid addressing mode
+BCHG.W *+$10(PC),D1		ERROR: Invalid addressing mode
+BCHG.W *+$10(PC),A2		ERROR: Invalid addressing mode
+BCHG.W *+$10(PC),(A3)		ERROR: Invalid addressing mode
+BCHG.W *+$10(PC),(A4)+		ERROR: Invalid addressing mode
+BCHG.W *+$10(PC),-(A5)		ERROR: Invalid addressing mode
+BCHG.W *+$10(PC),$10(A6)		ERROR: Invalid addressing mode
+BCHG.W *+$10(PC),$10(A6,D7.W)		ERROR: Invalid addressing mode
+BCHG.W *+$10(PC),$1234		ERROR: Invalid addressing mode
+BCHG.W *+$10(PC),$12345678		ERROR: Invalid addressing mode
+BCHG.W *+$10(PC),FW		ERROR: Invalid addressing mode
+BCHG.W *+$10(PC),*+$10(PC)		ERROR: Invalid addressing mode
+BCHG.W *+$10(PC),#1		ERROR: Invalid addressing mode
+BCHG.W *+$10(PC),#$80		ERROR: Invalid addressing mode
+BCHG.W *+$10(PC),#$1234		ERROR: Invalid addressing mode
+BCHG.W *+$10(PC),#$12345678		ERROR: Invalid addressing mode
+BCHG.W *+$10(PC),SR		ERROR: Invalid addressing mode
+BCHG.W *+$10(PC),CCR		ERROR: Invalid addressing mode
+BCHG.W *+$10(PC),USP		ERROR: Invalid addressing mode
+BCHG.W #1,D1	08410001	ERROR: Invalid size code
+BCHG.W #1,A2		ERROR: Invalid addressing mode
+BCHG.W #1,(A3)	08530001	ERROR: Invalid size code
+BCHG.W #1,(A4)+	085C0001	ERROR: Invalid size code
+BCHG.W #1,-(A5)	08650001	ERROR: Invalid size code
+BCHG.W #1,$10(A6)	086E00010010	ERROR: Invalid size code
+BCHG.W #1,$10(A6,D7.W)	087600017010	ERROR: Invalid size code
+BCHG.W #1,$1234	087800011234	ERROR: Invalid size code
+BCHG.W #1,$12345678	0879000112345678	ERROR: Invalid size code
+BCHG.W #1,FW	0879000100001F00	ERROR: Invalid size code
+BCHG.W #1,*+$10(PC)		ERROR: Invalid addressing mode
+BCHG.W #1,#1		ERROR: Invalid addressing mode
+BCHG.W #1,#$80		ERROR: Invalid addressing mode
+BCHG.W #1,#$1234		ERROR: Invalid addressing mode
+BCHG.W #1,#$12345678		ERROR: Invalid addressing mode
+BCHG.W #1,SR		ERROR: Invalid addressing mode
+BCHG.W #1,CCR		ERROR: Invalid addressing mode
+BCHG.W #1,USP		ERROR: Invalid addressing mode
+BCHG.W #$80,D1	08410080	ERROR: Invalid size code
+BCHG.W #$80,A2		ERROR: Invalid addressing mode
+BCHG.W #$80,(A3)	08530080	ERROR: Invalid size code
+BCHG.W #$80,(A4)+	085C0080	ERROR: Invalid size code
+BCHG.W #$80,-(A5)	08650080	ERROR: Invalid size code
+BCHG.W #$80,$10(A6)	086E00800010	ERROR: Invalid size code
+BCHG.W #$80,$10(A6,D7.W)	087600807010	ERROR: Invalid size code
+BCHG.W #$80,$1234	087800801234	ERROR: Invalid size code
+BCHG.W #$80,$12345678	0879008012345678	ERROR: Invalid size code
+BCHG.W #$80,FW	0879008000001F00	ERROR: Invalid size code
+BCHG.W #$80,*+$10(PC)		ERROR: Invalid addressing mode
+BCHG.W #$80,#1		ERROR: Invalid addressing mode
+BCHG.W #$80,#$80		ERROR: Invalid addressing mode
+BCHG.W #$80,#$1234		ERROR: Invalid addressing mode
+BCHG.W #$80,#$12345678		ERROR: Invalid addressing mode
+BCHG.W #$80,SR		ERROR: Invalid addressing mode
+BCHG.W #$80,CCR		ERROR: Invalid addressing mode
+BCHG.W #$80,USP		ERROR: Invalid addressing mode
+BCHG.W #$1234,D1	08410034	ERROR: Invalid size code
+BCHG.W #$1234,A2		ERROR: Invalid addressing mode
+BCHG.W #$1234,(A3)	08530034	ERROR: Invalid size code
+BCHG.W #$1234,(A4)+	085C0034	ERROR: Invalid size code
+BCHG.W #$1234,-(A5)	08650034	ERROR: Invalid size code
+BCHG.W #$1234,$10(A6)	086E00340010	ERROR: Invalid size code
+BCHG.W #$1234,$10(A6,D7.W)	087600347010	ERROR: Invalid size code
+BCHG.W #$1234,$1234	087800341234	ERROR: Invalid size code
+BCHG.W #$1234,$12345678	0879003412345678	ERROR: Invalid size code
+BCHG.W #$1234,FW	0879003400001F00	ERROR: Invalid size code
+BCHG.W #$1234,*+$10(PC)		ERROR: Invalid addressing mode
+BCHG.W #$1234,#1		ERROR: Invalid addressing mode
+BCHG.W #$1234,#$80		ERROR: Invalid addressing mode
+BCHG.W #$1234,#$1234		ERROR: Invalid addressing mode
+BCHG.W #$1234,#$12345678		ERROR: Invalid addressing mode
+BCHG.W #$1234,SR		ERROR: Invalid addressing mode
+BCHG.W #$1234,CCR		ERROR: Invalid addressing mode
+BCHG.W #$1234,USP		ERROR: Invalid addressing mode
+BCHG.W #$12345678,D1	08410078	ERROR: Invalid size code
+BCHG.W #$12345678,A2		ERROR: Invalid addressing mode
+BCHG.W #$12345678,(A3)	08530078	ERROR: Invalid size code
+BCHG.W #$12345678,(A4)+	085C0078	ERROR: Invalid size code
+BCHG.W #$12345678,-(A5)	08650078	ERROR: Invalid size code
+BCHG.W #$12345678,$10(A6)	086E00780010	ERROR: Invalid size code
+BCHG.W #$12345678,$10(A6,D7.W)	087600787010	ERROR: Invalid size code
+BCHG.W #$12345678,$1234	087800781234	ERROR: Invalid size code
+BCHG.W #$12345678,$12345678	0879007812345678	ERROR: Invalid size code
+BCHG.W #$12345678,FW	0879007800001F00	ERROR: Invalid size code
+BCHG.W #$12345678,*+$10(PC)		ERROR: Invalid addressing mode
+BCHG.W #$12345678,#1		ERROR: Invalid addressing mode
+BCHG.W #$12345678,#$80		ERROR: Invalid addressing mode
+BCHG.W #$12345678,#$1234		ERROR: Invalid addressing mode
+BCHG.W #$12345678,#$12345678		ERROR: Invalid addressing mode
+BCHG.W #$12345678,SR		ERROR: Invalid addressing mode
+BCHG.W #$12345678,CCR		ERROR: Invalid addressing mode
+BCHG.W #$12345678,USP		ERROR: Invalid addressing mode
+BCHG.W SR,D1		ERROR: Invalid addressing mode
+BCHG.W SR,A2		ERROR: Invalid addressing mode
+BCHG.W SR,(A3)		ERROR: Invalid addressing mode
+BCHG.W SR,(A4)+		ERROR: Invalid addressing mode
+BCHG.W SR,-(A5)		ERROR: Invalid addressing mode
+BCHG.W SR,$10(A6)		ERROR: Invalid addressing mode
+BCHG.W SR,$10(A6,D7.W)		ERROR: Invalid addressing mode
+BCHG.W SR,$1234		ERROR: Invalid addressing mode
+BCHG.W SR,$12345678		ERROR: Invalid addressing mode
+BCHG.W SR,FW		ERROR: Invalid addressing mode
+BCHG.W SR,*+$10(PC)		ERROR: Invalid addressing mode
+BCHG.W SR,#1		ERROR: Invalid addressing mode
+BCHG.W SR,#$80		ERROR: Invalid addressing mode
+BCHG.W SR,#$1234		ERROR: Invalid addressing mode
+BCHG.W SR,#$12345678		ERROR: Invalid addressing mode
+BCHG.W SR,SR		ERROR: Invalid addressing mode
+BCHG.W SR,CCR		ERROR: Invalid addressing mode
+BCHG.W SR,USP		ERROR: Invalid addressing mode
+BCHG.W CCR,D1		ERROR: Invalid addressing mode
+BCHG.W CCR,A2		ERROR: Invalid addressing mode
+BCHG.W CCR,(A3)		ERROR: Invalid addressing mode
+BCHG.W CCR,(A4)+		ERROR: Invalid addressing mode
+BCHG.W CCR,-(A5)		ERROR: Invalid addressing mode
+BCHG.W CCR,$10(A6)		ERROR: Invalid addressing mode
+BCHG.W CCR,$10(A6,D7.W)		ERROR: Invalid addressing mode
+BCHG.W CCR,$1234		ERROR: Invalid addressing mode
+BCHG.W CCR,$12345678		ERROR: Invalid addressing mode
+BCHG.W CCR,FW		ERROR: Invalid addressing mode
+BCHG.W CCR,*+$10(PC)		ERROR: Invalid addressing mode
+BCHG.W CCR,#1		ERROR: Invalid addressing mode
+BCHG.W CCR,#$80		ERROR: Invalid addressing mode
+BCHG.W CCR,#$1234		ERROR: Invalid addressing mode
+BCHG.W CCR,#$12345678		ERROR: Invalid addressing mode
+BCHG.W CCR,SR		ERROR: Invalid addressing mode
+BCHG.W CCR,CCR		ERROR: Invalid addressing mode
+BCHG.W CCR,USP		ERROR: Invalid addressing mode
+BCHG.W USP,D1		ERROR: Invalid addressing mode
+BCHG.W USP,A2		ERROR: Invalid addressing mode
+BCHG.W USP,(A3)		ERROR: Invalid addressing mode
+BCHG.W USP,(A4)+		ERROR: Invalid addressing mode
+BCHG.W USP,-(A5)		ERROR: Invalid addressing mode
+BCHG.W USP,$10(A6)		ERROR: Invalid addressing mode
+BCHG.W USP,$10(A6,D7.W)		ERROR: Invalid addressing mode
+BCHG.W USP,$1234		ERROR: Invalid addressing mode
+BCHG.W USP,$12345678		ERROR: Invalid addressing mode
+BCHG.W USP,FW		ERROR: Invalid addressing mode
+BCHG.W USP,*+$10(PC)		ERROR: Invalid addressing mode
+BCHG.W USP,#1		ERROR: Invalid addressing mode
+BCHG.W USP,#$80		ERROR: Invalid addressing mode
+BCHG.W USP,#$1234		ERROR: Invalid addressing mode
+BCHG.W USP,#$12345678		ERROR: Invalid addressing mode
+BCHG.W USP,SR		ERROR: Invalid addressing mode
+BCHG.W USP,CCR		ERROR: Invalid addressing mode
+BCHG.W USP,USP		ERROR: Invalid addressing mode
+BCHG.W SP,D1		ERROR: Invalid addressing mode
+BCHG.W SP,A2		ERROR: Invalid addressing mode
+BCHG.W D1,SP		ERROR: Invalid addressing mode
+BCHG.W #$12,SP		ERROR: Invalid addressing mode
+BCHG.W -2(A0),D1		ERROR: Invalid addressing mode
+BCHG.W -2(A0),A2		ERROR: Invalid addressing mode
+BCHG.W D1,-2(A0)	0368FFFE	ERROR: Invalid size code
+BCHG.W #$12,-2(A0)	08680012FFFE	ERROR: Invalid size code
+BCHG.W $12(A0,A1.L),D1		ERROR: Invalid addressing mode
+BCHG.W $12(A0,A1.L),A2		ERROR: Invalid addressing mode
+BCHG.W D1,$12(A0,A1.L)	03709812	ERROR: Invalid size code
+BCHG.W #$12,$12(A0,A1.L)	087000129812	ERROR: Invalid size code
+BCHG.W (A2,D3),D1		ERROR: Invalid addressing mode
+BCHG.W (A2,D3),A2		ERROR: Invalid addressing mode
+BCHG.W D1,(A2,D3)	03723000	ERROR: Invalid size code
+BCHG.W #$12,(A2,D3)	087200123000	ERROR: Invalid size code
+BCHG.W $1234.L,D1		ERROR: Invalid addressing mode
+BCHG.W $1234.L,A2		ERROR: Invalid addressing mode
+BCHG.W D1,$1234.L	037900001234	ERROR: Invalid size code
+BCHG.W #$12,$1234.L	0879001200001234	ERROR: Invalid size code
+BCHG.W $1234.W,D1		ERROR: Invalid addressing mode
+BCHG.W $1234.W,A2		ERROR: Invalid addressing mode
+BCHG.W D1,$1234.W	03781234	ERROR: Invalid size code
+BCHG.W #$12,$1234.W	087800121234	ERROR: Invalid size code
+BCHG.W $8000,D1		ERROR: Invalid addressing mode
+BCHG.W $8000,A2		ERROR: Invalid addressing mode
+BCHG.W D1,$8000	037900008000	ERROR: Invalid size code
+BCHG.W #$12,$8000	0879001200008000	ERROR: Invalid size code
+BCHG.W BK,D1		ERROR: Invalid addressing mode
+BCHG.W BK,A2		ERROR: Invalid addressing mode
+BCHG.W D1,BK	03781F00	ERROR: Invalid size code
+BCHG.W #$12,BK	087800121F00	ERROR: Invalid size code
+BCHG.W *(PC,D0.W),D1		ERROR: Invalid addressing mode
+BCHG.W *(PC,D0.W),A2		ERROR: Invalid addressing mode
+BCHG.W D1,*(PC,D0.W)		ERROR: Invalid addressing mode
+BCHG.W #$12,*(PC,D0.W)		ERROR: Invalid addressing mode
+BCHG.W BK(PC),D1		ERROR: Invalid addressing mode
+BCHG.W BK(PC),A2		ERROR: Invalid addressing mode
+BCHG.W D1,BK(PC)		ERROR: Invalid addressing mode
+BCHG.W #$12,BK(PC)		ERROR: Invalid addressing mode
+BCHG.W #8,D1	08410008	ERROR: Invalid size code
+BCHG.W #8,A2		ERROR: Invalid addressing mode
+BCHG.W D1,#8		ERROR: Invalid addressing mode
+BCHG.W #$12,#8		ERROR: Invalid addressing mode
+BCHG.W #9,D1	08410009	ERROR: Invalid size code
+BCHG.W #9,A2		ERROR: Invalid addressing mode
+BCHG.W D1,#9		ERROR: Invalid addressing mode
+BCHG.W #$12,#9		ERROR: Invalid addressing mode
+BCHG.W #0,D1	08410000	ERROR: Invalid size code
+BCHG.W #0,A2		ERROR: Invalid addressing mode
+BCHG.W D1,#0		ERROR: Invalid addressing mode
+BCHG.W #$12,#0		ERROR: Invalid addressing mode
+BCHG.W #-1,D1	084100FF	ERROR: Invalid size code
+BCHG.W #-1,A2		ERROR: Invalid addressing mode
+BCHG.W D1,#-1		ERROR: Invalid addressing mode
+BCHG.W #$12,#-1		ERROR: Invalid addressing mode
+BCHG.W #$12345678.L,D1	08410078	ERROR: Invalid size code
+BCHG.W #$12345678.L,A2		ERROR: Invalid addressing mode
+BCHG.W D1,#$12345678.L		ERROR: Invalid addressing mode
+BCHG.W #$12,#$12345678.L		ERROR: Invalid addressing mode
+BCHG.W #BK,D1	08410000	ERROR: Invalid size code
+BCHG.W #BK,A2		ERROR: Invalid addressing mode
+BCHG.W D1,#BK		ERROR: Invalid addressing mode
+BCHG.W #$12,#BK		ERROR: Invalid addressing mode
+BCHG.W #FW,D1	08410000	ERROR: Invalid size code
+BCHG.W #FW,A2		ERROR: Invalid addressing mode
+BCHG.W D1,#FW		ERROR: Invalid addressing mode
+BCHG.W #$12,#FW		ERROR: Invalid addressing mode
+BCHG.W #UNDEF,D1	08410069	ERROR: Undefined symbol
+BCHG.W #UNDEF,A2		ERROR: Invalid addressing mode
+BCHG.W D1,#UNDEF		ERROR: Invalid addressing mode
+BCHG.W #$12,#UNDEF		ERROR: Invalid addressing mode
+BCHG.W UNDEF,D1		ERROR: Invalid addressing mode
+BCHG.W UNDEF,A2		ERROR: Invalid addressing mode
+BCHG.W D1,UNDEF	037900001F00	ERROR: Undefined symbol
+BCHG.W #$12,UNDEF	0879001200001F00	ERROR: Undefined symbol
+BCHG.W D1,D2,D3		ERROR: Invalid syntax
+BCHG.L		ERROR: Invalid syntax
+BCHG.L D1		ERROR: Comma expected
+BCHG.L A2		ERROR: Comma expected
+BCHG.L SP		ERROR: Comma expected
+BCHG.L (A3)		ERROR: Comma expected
+BCHG.L (A4)+		ERROR: Comma expected
+BCHG.L -(A5)		ERROR: Comma expected
+BCHG.L $10(A6)		ERROR: Comma expected
+BCHG.L -2(A0)		ERROR: Comma expected
+BCHG.L $10(A6,D7.W)		ERROR: Comma expected
+BCHG.L $12(A0,A1.L)		ERROR: Comma expected
+BCHG.L (A2,D3)		ERROR: Comma expected
+BCHG.L $1234		ERROR: Comma expected
+BCHG.L $12345678		ERROR: Comma expected
+BCHG.L $1234.L		ERROR: Comma expected
+BCHG.L $1234.W		ERROR: Comma expected
+BCHG.L $8000		ERROR: Comma expected
+BCHG.L BK		ERROR: Comma expected
+BCHG.L FW		ERROR: Comma expected
+BCHG.L *+$10(PC)		ERROR: Comma expected
+BCHG.L *(PC,D0.W)		ERROR: Comma expected
+BCHG.L BK(PC)		ERROR: Comma expected
+BCHG.L #1		ERROR: Comma expected
+BCHG.L #8		ERROR: Comma expected
+BCHG.L #9		ERROR: Comma expected
+BCHG.L #0		ERROR: Comma expected
+BCHG.L #-1		ERROR: Comma expected
+BCHG.L #$80		ERROR: Comma expected
+BCHG.L #$1234		ERROR: Comma expected
+BCHG.L #$12345678		ERROR: Comma expected
+BCHG.L #$12345678.L		ERROR: Comma expected
+BCHG.L #BK		ERROR: Comma expected
+BCHG.L #FW		ERROR: Comma expected
+BCHG.L #UNDEF		ERROR: Comma expected
+BCHG.L UNDEF		ERROR: Comma expected
+BCHG.L SR		ERROR: Comma expected
+BCHG.L CCR		ERROR: Comma expected
+BCHG.L USP		ERROR: Comma expected
+BCHG.L D1,D1	0341	-
+BCHG.L D1,A2		ERROR: Invalid addressing mode
+BCHG.L D1,(A3)	0353	ERROR: Invalid size code
+BCHG.L D1,$10(A6)	036E0010	ERROR: Invalid size code
+BCHG.L D1,$1234	03781234	ERROR: Invalid size code
+BCHG.L D1,FW	037900001F00	ERROR: Invalid size code
+BCHG.L D1,#1		ERROR: Invalid addressing mode
+BCHG.L D1,#$1234		ERROR: Invalid addressing mode
+BCHG.L D1,CCR		ERROR: Invalid addressing mode
+BCHG.L D1,SR		ERROR: Invalid addressing mode
+BCHG.L A2,D1		ERROR: Invalid addressing mode
+BCHG.L A2,A2		ERROR: Invalid addressing mode
+BCHG.L A2,(A3)		ERROR: Invalid addressing mode
+BCHG.L A2,$10(A6)		ERROR: Invalid addressing mode
+BCHG.L A2,$1234		ERROR: Invalid addressing mode
+BCHG.L A2,FW		ERROR: Invalid addressing mode
+BCHG.L A2,#1		ERROR: Invalid addressing mode
+BCHG.L A2,#$1234		ERROR: Invalid addressing mode
+BCHG.L A2,CCR		ERROR: Invalid addressing mode
+BCHG.L A2,SR		ERROR: Invalid addressing mode
+BCHG.L (A3),D1		ERROR: Invalid addressing mode
+BCHG.L (A3),A2		ERROR: Invalid addressing mode
+BCHG.L (A3),(A3)		ERROR: Invalid addressing mode
+BCHG.L (A3),$10(A6)		ERROR: Invalid addressing mode
+BCHG.L (A3),$1234		ERROR: Invalid addressing mode
+BCHG.L (A3),FW		ERROR: Invalid addressing mode
+BCHG.L (A3),#1		ERROR: Invalid addressing mode
+BCHG.L (A3),#$1234		ERROR: Invalid addressing mode
+BCHG.L (A3),CCR		ERROR: Invalid addressing mode
+BCHG.L (A3),SR		ERROR: Invalid addressing mode
+BCHG.L $10(A6),D1		ERROR: Invalid addressing mode
+BCHG.L $10(A6),A2		ERROR: Invalid addressing mode
+BCHG.L $10(A6),(A3)		ERROR: Invalid addressing mode
+BCHG.L $10(A6),$10(A6)		ERROR: Invalid addressing mode
+BCHG.L $10(A6),$1234		ERROR: Invalid addressing mode
+BCHG.L $10(A6),FW		ERROR: Invalid addressing mode
+BCHG.L $10(A6),#1		ERROR: Invalid addressing mode
+BCHG.L $10(A6),#$1234		ERROR: Invalid addressing mode
+BCHG.L $10(A6),CCR		ERROR: Invalid addressing mode
+BCHG.L $10(A6),SR		ERROR: Invalid addressing mode
+BCHG.L $1234,D1		ERROR: Invalid addressing mode
+BCHG.L $1234,A2		ERROR: Invalid addressing mode
+BCHG.L $1234,(A3)		ERROR: Invalid addressing mode
+BCHG.L $1234,$10(A6)		ERROR: Invalid addressing mode
+BCHG.L $1234,$1234		ERROR: Invalid addressing mode
+BCHG.L $1234,FW		ERROR: Invalid addressing mode
+BCHG.L $1234,#1		ERROR: Invalid addressing mode
+BCHG.L $1234,#$1234		ERROR: Invalid addressing mode
+BCHG.L $1234,CCR		ERROR: Invalid addressing mode
+BCHG.L $1234,SR		ERROR: Invalid addressing mode
+BCHG.L FW,D1		ERROR: Invalid addressing mode
+BCHG.L FW,A2		ERROR: Invalid addressing mode
+BCHG.L FW,(A3)		ERROR: Invalid addressing mode
+BCHG.L FW,$10(A6)		ERROR: Invalid addressing mode
+BCHG.L FW,$1234		ERROR: Invalid addressing mode
+BCHG.L FW,FW		ERROR: Invalid addressing mode
+BCHG.L FW,#1		ERROR: Invalid addressing mode
+BCHG.L FW,#$1234		ERROR: Invalid addressing mode
+BCHG.L FW,CCR		ERROR: Invalid addressing mode
+BCHG.L FW,SR		ERROR: Invalid addressing mode
+BCHG.L #1,D1	08410001	-
+BCHG.L #1,A2		ERROR: Invalid addressing mode
+BCHG.L #1,(A3)	08530001	ERROR: Invalid size code
+BCHG.L #1,$10(A6)	086E00010010	ERROR: Invalid size code
+BCHG.L #1,$1234	087800011234	ERROR: Invalid size code
+BCHG.L #1,FW	0879000100001F00	ERROR: Invalid size code
+BCHG.L #1,#1		ERROR: Invalid addressing mode
+BCHG.L #1,#$1234		ERROR: Invalid addressing mode
+BCHG.L #1,CCR		ERROR: Invalid addressing mode
+BCHG.L #1,SR		ERROR: Invalid addressing mode
+BCHG.L #$1234,D1	08410034	-
+BCHG.L #$1234,A2		ERROR: Invalid addressing mode
+BCHG.L #$1234,(A3)	08530034	ERROR: Invalid size code
+BCHG.L #$1234,$10(A6)	086E00340010	ERROR: Invalid size code
+BCHG.L #$1234,$1234	087800341234	ERROR: Invalid size code
+BCHG.L #$1234,FW	0879003400001F00	ERROR: Invalid size code
+BCHG.L #$1234,#1		ERROR: Invalid addressing mode
+BCHG.L #$1234,#$1234		ERROR: Invalid addressing mode
+BCHG.L #$1234,CCR		ERROR: Invalid addressing mode
+BCHG.L #$1234,SR		ERROR: Invalid addressing mode
+BCHG.L CCR,D1		ERROR: Invalid addressing mode
+BCHG.L CCR,A2		ERROR: Invalid addressing mode
+BCHG.L CCR,(A3)		ERROR: Invalid addressing mode
+BCHG.L CCR,$10(A6)		ERROR: Invalid addressing mode
+BCHG.L CCR,$1234		ERROR: Invalid addressing mode
+BCHG.L CCR,FW		ERROR: Invalid addressing mode
+BCHG.L CCR,#1		ERROR: Invalid addressing mode
+BCHG.L CCR,#$1234		ERROR: Invalid addressing mode
+BCHG.L CCR,CCR		ERROR: Invalid addressing mode
+BCHG.L CCR,SR		ERROR: Invalid addressing mode
+BCHG.L SR,D1		ERROR: Invalid addressing mode
+BCHG.L SR,A2		ERROR: Invalid addressing mode
+BCHG.L SR,(A3)		ERROR: Invalid addressing mode
+BCHG.L SR,$10(A6)		ERROR: Invalid addressing mode
+BCHG.L SR,$1234		ERROR: Invalid addressing mode
+BCHG.L SR,FW		ERROR: Invalid addressing mode
+BCHG.L SR,#1		ERROR: Invalid addressing mode
+BCHG.L SR,#$1234		ERROR: Invalid addressing mode
+BCHG.L SR,CCR		ERROR: Invalid addressing mode
+BCHG.L SR,SR		ERROR: Invalid addressing mode
+BCHG.L SP,D1		ERROR: Invalid addressing mode
+BCHG.L SP,A2		ERROR: Invalid addressing mode
+BCHG.L D1,SP		ERROR: Invalid addressing mode
+BCHG.L #$12,SP		ERROR: Invalid addressing mode
+BCHG.L (A4)+,D1		ERROR: Invalid addressing mode
+BCHG.L (A4)+,A2		ERROR: Invalid addressing mode
+BCHG.L D1,(A4)+	035C	ERROR: Invalid size code
+BCHG.L #$12,(A4)+	085C0012	ERROR: Invalid size code
+BCHG.L -(A5),D1		ERROR: Invalid addressing mode
+BCHG.L -(A5),A2		ERROR: Invalid addressing mode
+BCHG.L D1,-(A5)	0365	ERROR: Invalid size code
+BCHG.L #$12,-(A5)	08650012	ERROR: Invalid size code
+BCHG.L -2(A0),D1		ERROR: Invalid addressing mode
+BCHG.L -2(A0),A2		ERROR: Invalid addressing mode
+BCHG.L D1,-2(A0)	0368FFFE	ERROR: Invalid size code
+BCHG.L #$12,-2(A0)	08680012FFFE	ERROR: Invalid size code
+BCHG.L $10(A6,D7.W),D1		ERROR: Invalid addressing mode
+BCHG.L $10(A6,D7.W),A2		ERROR: Invalid addressing mode
+BCHG.L D1,$10(A6,D7.W)	03767010	ERROR: Invalid size code
+BCHG.L #$12,$10(A6,D7.W)	087600127010	ERROR: Invalid size code
+BCHG.L $12(A0,A1.L),D1		ERROR: Invalid addressing mode
+BCHG.L $12(A0,A1.L),A2		ERROR: Invalid addressing mode
+BCHG.L D1,$12(A0,A1.L)	03709812	ERROR: Invalid size code
+BCHG.L #$12,$12(A0,A1.L)	087000129812	ERROR: Invalid size code
+BCHG.L (A2,D3),D1		ERROR: Invalid addressing mode
+BCHG.L (A2,D3),A2		ERROR: Invalid addressing mode
+BCHG.L D1,(A2,D3)	03723000	ERROR: Invalid size code
+BCHG.L #$12,(A2,D3)	087200123000	ERROR: Invalid size code
+BCHG.L $12345678,D1		ERROR: Invalid addressing mode
+BCHG.L $12345678,A2		ERROR: Invalid addressing mode
+BCHG.L D1,$12345678	037912345678	ERROR: Invalid size code
+BCHG.L #$12,$12345678	0879001212345678	ERROR: Invalid size code
+BCHG.L $1234.L,D1		ERROR: Invalid addressing mode
+BCHG.L $1234.L,A2		ERROR: Invalid addressing mode
+BCHG.L D1,$1234.L	037900001234	ERROR: Invalid size code
+BCHG.L #$12,$1234.L	0879001200001234	ERROR: Invalid size code
+BCHG.L $1234.W,D1		ERROR: Invalid addressing mode
+BCHG.L $1234.W,A2		ERROR: Invalid addressing mode
+BCHG.L D1,$1234.W	03781234	ERROR: Invalid size code
+BCHG.L #$12,$1234.W	087800121234	ERROR: Invalid size code
+BCHG.L $8000,D1		ERROR: Invalid addressing mode
+BCHG.L $8000,A2		ERROR: Invalid addressing mode
+BCHG.L D1,$8000	037900008000	ERROR: Invalid size code
+BCHG.L #$12,$8000	0879001200008000	ERROR: Invalid size code
+BCHG.L BK,D1		ERROR: Invalid addressing mode
+BCHG.L BK,A2		ERROR: Invalid addressing mode
+BCHG.L D1,BK	03781F00	ERROR: Invalid size code
+BCHG.L #$12,BK	087800121F00	ERROR: Invalid size code
+BCHG.L *+$10(PC),D1		ERROR: Invalid addressing mode
+BCHG.L *+$10(PC),A2		ERROR: Invalid addressing mode
+BCHG.L D1,*+$10(PC)		ERROR: Invalid addressing mode
+BCHG.L #$12,*+$10(PC)		ERROR: Invalid addressing mode
+BCHG.L *(PC,D0.W),D1		ERROR: Invalid addressing mode
+BCHG.L *(PC,D0.W),A2		ERROR: Invalid addressing mode
+BCHG.L D1,*(PC,D0.W)		ERROR: Invalid addressing mode
+BCHG.L #$12,*(PC,D0.W)		ERROR: Invalid addressing mode
+BCHG.L BK(PC),D1		ERROR: Invalid addressing mode
+BCHG.L BK(PC),A2		ERROR: Invalid addressing mode
+BCHG.L D1,BK(PC)		ERROR: Invalid addressing mode
+BCHG.L #$12,BK(PC)		ERROR: Invalid addressing mode
+BCHG.L #8,D1	08410008	-
+BCHG.L #8,A2		ERROR: Invalid addressing mode
+BCHG.L D1,#8		ERROR: Invalid addressing mode
+BCHG.L #$12,#8		ERROR: Invalid addressing mode
+BCHG.L #9,D1	08410009	-
+BCHG.L #9,A2		ERROR: Invalid addressing mode
+BCHG.L D1,#9		ERROR: Invalid addressing mode
+BCHG.L #$12,#9		ERROR: Invalid addressing mode
+BCHG.L #0,D1	08410000	-
+BCHG.L #0,A2		ERROR: Invalid addressing mode
+BCHG.L D1,#0		ERROR: Invalid addressing mode
+BCHG.L #$12,#0		ERROR: Invalid addressing mode
+BCHG.L #-1,D1	084100FF	-
+BCHG.L #-1,A2		ERROR: Invalid addressing mode
+BCHG.L D1,#-1		ERROR: Invalid addressing mode
+BCHG.L #$12,#-1		ERROR: Invalid addressing mode
+BCHG.L #$80,D1	08410080	-
+BCHG.L #$80,A2		ERROR: Invalid addressing mode
+BCHG.L D1,#$80		ERROR: Invalid addressing mode
+BCHG.L #$12,#$80		ERROR: Invalid addressing mode
+BCHG.L #$12345678,D1	08410078	-
+BCHG.L #$12345678,A2		ERROR: Invalid addressing mode
+BCHG.L D1,#$12345678		ERROR: Invalid addressing mode
+BCHG.L #$12,#$12345678		ERROR: Invalid addressing mode
+BCHG.L #$12345678.L,D1	08410078	-
+BCHG.L #$12345678.L,A2		ERROR: Invalid addressing mode
+BCHG.L D1,#$12345678.L		ERROR: Invalid addressing mode
+BCHG.L #$12,#$12345678.L		ERROR: Invalid addressing mode
+BCHG.L #BK,D1	08410000	-
+BCHG.L #BK,A2		ERROR: Invalid addressing mode
+BCHG.L D1,#BK		ERROR: Invalid addressing mode
+BCHG.L #$12,#BK		ERROR: Invalid addressing mode
+BCHG.L #FW,D1	08410000	-
+BCHG.L #FW,A2		ERROR: Invalid addressing mode
+BCHG.L D1,#FW		ERROR: Invalid addressing mode
+BCHG.L #$12,#FW		ERROR: Invalid addressing mode
+BCHG.L #UNDEF,D1	08410069	ERROR: Undefined symbol
+BCHG.L #UNDEF,A2		ERROR: Invalid addressing mode
+BCHG.L D1,#UNDEF		ERROR: Invalid addressing mode
+BCHG.L #$12,#UNDEF		ERROR: Invalid addressing mode
+BCHG.L UNDEF,D1		ERROR: Invalid addressing mode
+BCHG.L UNDEF,A2		ERROR: Invalid addressing mode
+BCHG.L D1,UNDEF	037900001F00	ERROR: Undefined symbol
+BCHG.L #$12,UNDEF	0879001200001F00	ERROR: Undefined symbol
+BCHG.L USP,D1		ERROR: Invalid addressing mode
+BCHG.L USP,A2		ERROR: Invalid addressing mode
+BCHG.L D1,USP		ERROR: Invalid addressing mode
+BCHG.L #$12,USP		ERROR: Invalid addressing mode
+BCHG.L D1,D2,D3		ERROR: Invalid syntax
+BCHG.S		ERROR: Invalid syntax
+BCHG.S D1		ERROR: Comma expected
+BCHG.S A2		ERROR: Comma expected
+BCHG.S SP		ERROR: Comma expected
+BCHG.S (A3)		ERROR: Comma expected
+BCHG.S (A4)+		ERROR: Comma expected
+BCHG.S -(A5)		ERROR: Comma expected
+BCHG.S $10(A6)		ERROR: Comma expected
+BCHG.S -2(A0)		ERROR: Comma expected
+BCHG.S $10(A6,D7.W)		ERROR: Comma expected
+BCHG.S $12(A0,A1.L)		ERROR: Comma expected
+BCHG.S (A2,D3)		ERROR: Comma expected
+BCHG.S $1234		ERROR: Comma expected
+BCHG.S $12345678		ERROR: Comma expected
+BCHG.S $1234.L		ERROR: Comma expected
+BCHG.S $1234.W		ERROR: Comma expected
+BCHG.S $8000		ERROR: Comma expected
+BCHG.S BK		ERROR: Comma expected
+BCHG.S FW		ERROR: Comma expected
+BCHG.S *+$10(PC)		ERROR: Comma expected
+BCHG.S *(PC,D0.W)		ERROR: Comma expected
+BCHG.S BK(PC)		ERROR: Comma expected
+BCHG.S #1		ERROR: Comma expected
+BCHG.S #8		ERROR: Comma expected
+BCHG.S #9		ERROR: Comma expected
+BCHG.S #0		ERROR: Comma expected
+BCHG.S #-1		ERROR: Comma expected
+BCHG.S #$80		ERROR: Comma expected
+BCHG.S #$1234		ERROR: Comma expected
+BCHG.S #$12345678		ERROR: Comma expected
+BCHG.S #$12345678.L		ERROR: Comma expected
+BCHG.S #BK		ERROR: Comma expected
+BCHG.S #FW		ERROR: Comma expected
+BCHG.S #UNDEF		ERROR: Comma expected
+BCHG.S UNDEF		ERROR: Comma expected
+BCHG.S SR		ERROR: Comma expected
+BCHG.S CCR		ERROR: Comma expected
+BCHG.S USP		ERROR: Comma expected
+BCHG.S D1,D1	0341	ERROR: Invalid size code
+BCHG.S D1,A2		ERROR: Invalid addressing mode
+BCHG.S D1,(A3)	0353	ERROR: Invalid size code
+BCHG.S D1,$10(A6)	036E0010	ERROR: Invalid size code
+BCHG.S D1,$1234	03781234	ERROR: Invalid size code
+BCHG.S D1,FW	037900001F00	ERROR: Invalid size code
+BCHG.S D1,#1		ERROR: Invalid addressing mode
+BCHG.S D1,#$1234		ERROR: Invalid addressing mode
+BCHG.S D1,CCR		ERROR: Invalid addressing mode
+BCHG.S D1,SR		ERROR: Invalid addressing mode
+BCHG.S A2,D1		ERROR: Invalid addressing mode
+BCHG.S A2,A2		ERROR: Invalid addressing mode
+BCHG.S A2,(A3)		ERROR: Invalid addressing mode
+BCHG.S A2,$10(A6)		ERROR: Invalid addressing mode
+BCHG.S A2,$1234		ERROR: Invalid addressing mode
+BCHG.S A2,FW		ERROR: Invalid addressing mode
+BCHG.S A2,#1		ERROR: Invalid addressing mode
+BCHG.S A2,#$1234		ERROR: Invalid addressing mode
+BCHG.S A2,CCR		ERROR: Invalid addressing mode
+BCHG.S A2,SR		ERROR: Invalid addressing mode
+BCHG.S (A3),D1		ERROR: Invalid addressing mode
+BCHG.S (A3),A2		ERROR: Invalid addressing mode
+BCHG.S (A3),(A3)		ERROR: Invalid addressing mode
+BCHG.S (A3),$10(A6)		ERROR: Invalid addressing mode
+BCHG.S (A3),$1234		ERROR: Invalid addressing mode
+BCHG.S (A3),FW		ERROR: Invalid addressing mode
+BCHG.S (A3),#1		ERROR: Invalid addressing mode
+BCHG.S (A3),#$1234		ERROR: Invalid addressing mode
+BCHG.S (A3),CCR		ERROR: Invalid addressing mode
+BCHG.S (A3),SR		ERROR: Invalid addressing mode
+BCHG.S $10(A6),D1		ERROR: Invalid addressing mode
+BCHG.S $10(A6),A2		ERROR: Invalid addressing mode
+BCHG.S $10(A6),(A3)		ERROR: Invalid addressing mode
+BCHG.S $10(A6),$10(A6)		ERROR: Invalid addressing mode
+BCHG.S $10(A6),$1234		ERROR: Invalid addressing mode
+BCHG.S $10(A6),FW		ERROR: Invalid addressing mode
+BCHG.S $10(A6),#1		ERROR: Invalid addressing mode
+BCHG.S $10(A6),#$1234		ERROR: Invalid addressing mode
+BCHG.S $10(A6),CCR		ERROR: Invalid addressing mode
+BCHG.S $10(A6),SR		ERROR: Invalid addressing mode
+BCHG.S $1234,D1		ERROR: Invalid addressing mode
+BCHG.S $1234,A2		ERROR: Invalid addressing mode
+BCHG.S $1234,(A3)		ERROR: Invalid addressing mode
+BCHG.S $1234,$10(A6)		ERROR: Invalid addressing mode
+BCHG.S $1234,$1234		ERROR: Invalid addressing mode
+BCHG.S $1234,FW		ERROR: Invalid addressing mode
+BCHG.S $1234,#1		ERROR: Invalid addressing mode
+BCHG.S $1234,#$1234		ERROR: Invalid addressing mode
+BCHG.S $1234,CCR		ERROR: Invalid addressing mode
+BCHG.S $1234,SR		ERROR: Invalid addressing mode
+BCHG.S FW,D1		ERROR: Invalid addressing mode
+BCHG.S FW,A2		ERROR: Invalid addressing mode
+BCHG.S FW,(A3)		ERROR: Invalid addressing mode
+BCHG.S FW,$10(A6)		ERROR: Invalid addressing mode
+BCHG.S FW,$1234		ERROR: Invalid addressing mode
+BCHG.S FW,FW		ERROR: Invalid addressing mode
+BCHG.S FW,#1		ERROR: Invalid addressing mode
+BCHG.S FW,#$1234		ERROR: Invalid addressing mode
+BCHG.S FW,CCR		ERROR: Invalid addressing mode
+BCHG.S FW,SR		ERROR: Invalid addressing mode
+BCHG.S #1,D1	08410001	ERROR: Invalid size code
+BCHG.S #1,A2		ERROR: Invalid addressing mode
+BCHG.S #1,(A3)	08530001	ERROR: Invalid size code
+BCHG.S #1,$10(A6)	086E00010010	ERROR: Invalid size code
+BCHG.S #1,$1234	087800011234	ERROR: Invalid size code
+BCHG.S #1,FW	0879000100001F00	ERROR: Invalid size code
+BCHG.S #1,#1		ERROR: Invalid addressing mode
+BCHG.S #1,#$1234		ERROR: Invalid addressing mode
+BCHG.S #1,CCR		ERROR: Invalid addressing mode
+BCHG.S #1,SR		ERROR: Invalid addressing mode
+BCHG.S #$1234,D1	08410034	ERROR: Invalid size code
+BCHG.S #$1234,A2		ERROR: Invalid addressing mode
+BCHG.S #$1234,(A3)	08530034	ERROR: Invalid size code
+BCHG.S #$1234,$10(A6)	086E00340010	ERROR: Invalid size code
+BCHG.S #$1234,$1234	087800341234	ERROR: Invalid size code
+BCHG.S #$1234,FW	0879003400001F00	ERROR: Invalid size code
+BCHG.S #$1234,#1		ERROR: Invalid addressing mode
+BCHG.S #$1234,#$1234		ERROR: Invalid addressing mode
+BCHG.S #$1234,CCR		ERROR: Invalid addressing mode
+BCHG.S #$1234,SR		ERROR: Invalid addressing mode
+BCHG.S CCR,D1		ERROR: Invalid addressing mode
+BCHG.S CCR,A2		ERROR: Invalid addressing mode
+BCHG.S CCR,(A3)		ERROR: Invalid addressing mode
+BCHG.S CCR,$10(A6)		ERROR: Invalid addressing mode
+BCHG.S CCR,$1234		ERROR: Invalid addressing mode
+BCHG.S CCR,FW		ERROR: Invalid addressing mode
+BCHG.S CCR,#1		ERROR: Invalid addressing mode
+BCHG.S CCR,#$1234		ERROR: Invalid addressing mode
+BCHG.S CCR,CCR		ERROR: Invalid addressing mode
+BCHG.S CCR,SR		ERROR: Invalid addressing mode
+BCHG.S SR,D1		ERROR: Invalid addressing mode
+BCHG.S SR,A2		ERROR: Invalid addressing mode
+BCHG.S SR,(A3)		ERROR: Invalid addressing mode
+BCHG.S SR,$10(A6)		ERROR: Invalid addressing mode
+BCHG.S SR,$1234		ERROR: Invalid addressing mode
+BCHG.S SR,FW		ERROR: Invalid addressing mode
+BCHG.S SR,#1		ERROR: Invalid addressing mode
+BCHG.S SR,#$1234		ERROR: Invalid addressing mode
+BCHG.S SR,CCR		ERROR: Invalid addressing mode
+BCHG.S SR,SR		ERROR: Invalid addressing mode
+BCHG.S SP,D1		ERROR: Invalid addressing mode
+BCHG.S SP,A2		ERROR: Invalid addressing mode
+BCHG.S D1,SP		ERROR: Invalid addressing mode
+BCHG.S #$12,SP		ERROR: Invalid addressing mode
+BCHG.S (A4)+,D1		ERROR: Invalid addressing mode
+BCHG.S (A4)+,A2		ERROR: Invalid addressing mode
+BCHG.S D1,(A4)+	035C	ERROR: Invalid size code
+BCHG.S #$12,(A4)+	085C0012	ERROR: Invalid size code
+BCHG.S -(A5),D1		ERROR: Invalid addressing mode
+BCHG.S -(A5),A2		ERROR: Invalid addressing mode
+BCHG.S D1,-(A5)	0365	ERROR: Invalid size code
+BCHG.S #$12,-(A5)	08650012	ERROR: Invalid size code
+BCHG.S -2(A0),D1		ERROR: Invalid addressing mode
+BCHG.S -2(A0),A2		ERROR: Invalid addressing mode
+BCHG.S D1,-2(A0)	0368FFFE	ERROR: Invalid size code
+BCHG.S #$12,-2(A0)	08680012FFFE	ERROR: Invalid size code
+BCHG.S $10(A6,D7.W),D1		ERROR: Invalid addressing mode
+BCHG.S $10(A6,D7.W),A2		ERROR: Invalid addressing mode
+BCHG.S D1,$10(A6,D7.W)	03767010	ERROR: Invalid size code
+BCHG.S #$12,$10(A6,D7.W)	087600127010	ERROR: Invalid size code
+BCHG.S $12(A0,A1.L),D1		ERROR: Invalid addressing mode
+BCHG.S $12(A0,A1.L),A2		ERROR: Invalid addressing mode
+BCHG.S D1,$12(A0,A1.L)	03709812	ERROR: Invalid size code
+BCHG.S #$12,$12(A0,A1.L)	087000129812	ERROR: Invalid size code
+BCHG.S (A2,D3),D1		ERROR: Invalid addressing mode
+BCHG.S (A2,D3),A2		ERROR: Invalid addressing mode
+BCHG.S D1,(A2,D3)	03723000	ERROR: Invalid size code
+BCHG.S #$12,(A2,D3)	087200123000	ERROR: Invalid size code
+BCHG.S $12345678,D1		ERROR: Invalid addressing mode
+BCHG.S $12345678,A2		ERROR: Invalid addressing mode
+BCHG.S D1,$12345678	037912345678	ERROR: Invalid size code
+BCHG.S #$12,$12345678	0879001212345678	ERROR: Invalid size code
+BCHG.S $1234.L,D1		ERROR: Invalid addressing mode
+BCHG.S $1234.L,A2		ERROR: Invalid addressing mode
+BCHG.S D1,$1234.L	037900001234	ERROR: Invalid size code
+BCHG.S #$12,$1234.L	0879001200001234	ERROR: Invalid size code
+BCHG.S $1234.W,D1		ERROR: Invalid addressing mode
+BCHG.S $1234.W,A2		ERROR: Invalid addressing mode
+BCHG.S D1,$1234.W	03781234	ERROR: Invalid size code
+BCHG.S #$12,$1234.W	087800121234	ERROR: Invalid size code
+BCHG.S $8000,D1		ERROR: Invalid addressing mode
+BCHG.S $8000,A2		ERROR: Invalid addressing mode
+BCHG.S D1,$8000	037900008000	ERROR: Invalid size code
+BCHG.S #$12,$8000	0879001200008000	ERROR: Invalid size code
+BCHG.S BK,D1		ERROR: Invalid addressing mode
+BCHG.S BK,A2		ERROR: Invalid addressing mode
+BCHG.S D1,BK	03781F00	ERROR: Invalid size code
+BCHG.S #$12,BK	087800121F00	ERROR: Invalid size code
+BCHG.S *+$10(PC),D1		ERROR: Invalid addressing mode
+BCHG.S *+$10(PC),A2		ERROR: Invalid addressing mode
+BCHG.S D1,*+$10(PC)		ERROR: Invalid addressing mode
+BCHG.S #$12,*+$10(PC)		ERROR: Invalid addressing mode
+BCHG.S *(PC,D0.W),D1		ERROR: Invalid addressing mode
+BCHG.S *(PC,D0.W),A2		ERROR: Invalid addressing mode
+BCHG.S D1,*(PC,D0.W)		ERROR: Invalid addressing mode
+BCHG.S #$12,*(PC,D0.W)		ERROR: Invalid addressing mode
+BCHG.S BK(PC),D1		ERROR: Invalid addressing mode
+BCHG.S BK(PC),A2		ERROR: Invalid addressing mode
+BCHG.S D1,BK(PC)		ERROR: Invalid addressing mode
+BCHG.S #$12,BK(PC)		ERROR: Invalid addressing mode
+BCHG.S #8,D1	08410008	ERROR: Invalid size code
+BCHG.S #8,A2		ERROR: Invalid addressing mode
+BCHG.S D1,#8		ERROR: Invalid addressing mode
+BCHG.S #$12,#8		ERROR: Invalid addressing mode
+BCHG.S #9,D1	08410009	ERROR: Invalid size code
+BCHG.S #9,A2		ERROR: Invalid addressing mode
+BCHG.S D1,#9		ERROR: Invalid addressing mode
+BCHG.S #$12,#9		ERROR: Invalid addressing mode
+BCHG.S #0,D1	08410000	ERROR: Invalid size code
+BCHG.S #0,A2		ERROR: Invalid addressing mode
+BCHG.S D1,#0		ERROR: Invalid addressing mode
+BCHG.S #$12,#0		ERROR: Invalid addressing mode
+BCHG.S #-1,D1	084100FF	ERROR: Invalid size code
+BCHG.S #-1,A2		ERROR: Invalid addressing mode
+BCHG.S D1,#-1		ERROR: Invalid addressing mode
+BCHG.S #$12,#-1		ERROR: Invalid addressing mode
+BCHG.S #$80,D1	08410080	ERROR: Invalid size code
+BCHG.S #$80,A2		ERROR: Invalid addressing mode
+BCHG.S D1,#$80		ERROR: Invalid addressing mode
+BCHG.S #$12,#$80		ERROR: Invalid addressing mode
+BCHG.S #$12345678,D1	08410078	ERROR: Invalid size code
+BCHG.S #$12345678,A2		ERROR: Invalid addressing mode
+BCHG.S D1,#$12345678		ERROR: Invalid addressing mode
+BCHG.S #$12,#$12345678		ERROR: Invalid addressing mode
+BCHG.S #$12345678.L,D1	08410078	ERROR: Invalid size code
+BCHG.S #$12345678.L,A2		ERROR: Invalid addressing mode
+BCHG.S D1,#$12345678.L		ERROR: Invalid addressing mode
+BCHG.S #$12,#$12345678.L		ERROR: Invalid addressing mode
+BCHG.S #BK,D1	08410000	ERROR: Invalid size code
+BCHG.S #BK,A2		ERROR: Invalid addressing mode
+BCHG.S D1,#BK		ERROR: Invalid addressing mode
+BCHG.S #$12,#BK		ERROR: Invalid addressing mode
+BCHG.S #FW,D1	08410000	ERROR: Invalid size code
+BCHG.S #FW,A2		ERROR: Invalid addressing mode
+BCHG.S D1,#FW		ERROR: Invalid addressing mode
+BCHG.S #$12,#FW		ERROR: Invalid addressing mode
+BCHG.S #UNDEF,D1	08410069	ERROR: Undefined symbol
+BCHG.S #UNDEF,A2		ERROR: Invalid addressing mode
+BCHG.S D1,#UNDEF		ERROR: Invalid addressing mode
+BCHG.S #$12,#UNDEF		ERROR: Invalid addressing mode
+BCHG.S UNDEF,D1		ERROR: Invalid addressing mode
+BCHG.S UNDEF,A2		ERROR: Invalid addressing mode
+BCHG.S D1,UNDEF	037900001F00	ERROR: Undefined symbol
+BCHG.S #$12,UNDEF	0879001200001F00	ERROR: Undefined symbol
+BCHG.S USP,D1		ERROR: Invalid addressing mode
+BCHG.S USP,A2		ERROR: Invalid addressing mode
+BCHG.S D1,USP		ERROR: Invalid addressing mode
+BCHG.S #$12,USP		ERROR: Invalid addressing mode
+BCHG.S D1,D2,D3		ERROR: Invalid syntax
+BCHG.X D1,D2	0342	ERROR: Invalid size code
+BCHG.X #1		ERROR: Comma expected

@@ -1,0 +1,405 @@
+PEA		ERROR: Invalid syntax
+PEA D1		ERROR: Invalid addressing mode
+PEA A2		ERROR: Invalid addressing mode
+PEA SP		ERROR: Invalid addressing mode
+PEA (A3)	4853	-
+PEA (A4)+		ERROR: Invalid addressing mode
+PEA -(A5)		ERROR: Invalid addressing mode
+PEA $10(A6)	486E0010	-
+PEA -2(A0)	4868FFFE	-
+PEA $10(A6,D7.W)	48767010	-
+PEA $12(A0,A1.L)	48709812	-
+PEA (A2,D3)	48723000	-
+PEA $1234	48781234	-
+PEA $12345678	487912345678	-
+PEA $1234.L	487900001234	-
+PEA $1234.W	48781234	WARNING: Forcing SHORT addressing disables range checking of extension word
+PEA $8000	487900008000	-
+PEA BK	48781F00	-
+PEA FW	487900001F00	-
+PEA *+$10(PC)	487A000E	-
+PEA *(PC,D0.W)	487B00FE	-
+PEA BK(PC)	487A0EFE	-
+PEA #1		ERROR: Invalid addressing mode
+PEA #8		ERROR: Invalid addressing mode
+PEA #9		ERROR: Invalid addressing mode
+PEA #0		ERROR: Invalid addressing mode
+PEA #-1		ERROR: Invalid addressing mode
+PEA #$80		ERROR: Invalid addressing mode
+PEA #$1234		ERROR: Invalid addressing mode
+PEA #$12345678		ERROR: Invalid addressing mode
+PEA #$12345678.L		ERROR: Invalid addressing mode
+PEA #BK		ERROR: Invalid addressing mode
+PEA #FW		ERROR: Invalid addressing mode
+PEA #UNDEF		ERROR: Invalid addressing mode
+PEA UNDEF	487900005618	ERROR: Undefined symbol
+PEA SR		ERROR: Invalid addressing mode
+PEA CCR		ERROR: Invalid addressing mode
+PEA USP		ERROR: Invalid addressing mode
+PEA D1,D1		ERROR: Invalid addressing mode
+PEA D1,A2		ERROR: Invalid addressing mode
+PEA D1,(A3)		ERROR: Invalid addressing mode
+PEA D1,$10(A6)		ERROR: Invalid addressing mode
+PEA D1,$1234		ERROR: Invalid addressing mode
+PEA D1,FW		ERROR: Invalid addressing mode
+PEA D1,#1		ERROR: Invalid addressing mode
+PEA D1,#$1234		ERROR: Invalid addressing mode
+PEA D1,CCR		ERROR: Invalid addressing mode
+PEA D1,SR		ERROR: Invalid addressing mode
+PEA A2,D1		ERROR: Invalid addressing mode
+PEA A2,A2		ERROR: Invalid addressing mode
+PEA A2,(A3)		ERROR: Invalid addressing mode
+PEA A2,$10(A6)		ERROR: Invalid addressing mode
+PEA A2,$1234		ERROR: Invalid addressing mode
+PEA A2,FW		ERROR: Invalid addressing mode
+PEA A2,#1		ERROR: Invalid addressing mode
+PEA A2,#$1234		ERROR: Invalid addressing mode
+PEA A2,CCR		ERROR: Invalid addressing mode
+PEA A2,SR		ERROR: Invalid addressing mode
+PEA (A3),D1		ERROR: Invalid syntax
+PEA (A3),A2		ERROR: Invalid syntax
+PEA (A3),(A3)		ERROR: Invalid syntax
+PEA (A3),$10(A6)		ERROR: Invalid syntax
+PEA (A3),$1234		ERROR: Invalid syntax
+PEA (A3),FW		ERROR: Invalid syntax
+PEA (A3),#1		ERROR: Invalid syntax
+PEA (A3),#$1234		ERROR: Invalid syntax
+PEA (A3),CCR		ERROR: Invalid syntax
+PEA (A3),SR		ERROR: Invalid syntax
+PEA $10(A6),D1		ERROR: Invalid syntax
+PEA $10(A6),A2		ERROR: Invalid syntax
+PEA $10(A6),(A3)		ERROR: Invalid syntax
+PEA $10(A6),$10(A6)		ERROR: Invalid syntax
+PEA $10(A6),$1234		ERROR: Invalid syntax
+PEA $10(A6),FW		ERROR: Invalid syntax
+PEA $10(A6),#1		ERROR: Invalid syntax
+PEA $10(A6),#$1234		ERROR: Invalid syntax
+PEA $10(A6),CCR		ERROR: Invalid syntax
+PEA $10(A6),SR		ERROR: Invalid syntax
+PEA $1234,D1		ERROR: Invalid syntax
+PEA $1234,A2		ERROR: Invalid syntax
+PEA $1234,(A3)		ERROR: Invalid syntax
+PEA $1234,$10(A6)		ERROR: Invalid syntax
+PEA $1234,$1234		ERROR: Invalid syntax
+PEA $1234,FW		ERROR: Invalid syntax
+PEA $1234,#1		ERROR: Invalid syntax
+PEA $1234,#$1234		ERROR: Invalid syntax
+PEA $1234,CCR		ERROR: Invalid syntax
+PEA $1234,SR		ERROR: Invalid syntax
+PEA FW,D1		ERROR: Invalid syntax
+PEA FW,A2		ERROR: Invalid syntax
+PEA FW,(A3)		ERROR: Invalid syntax
+PEA FW,$10(A6)		ERROR: Invalid syntax
+PEA FW,$1234		ERROR: Invalid syntax
+PEA FW,FW		ERROR: Invalid syntax
+PEA FW,#1		ERROR: Invalid syntax
+PEA FW,#$1234		ERROR: Invalid syntax
+PEA FW,CCR		ERROR: Invalid syntax
+PEA FW,SR		ERROR: Invalid syntax
+PEA #1,D1		ERROR: Invalid addressing mode
+PEA #1,A2		ERROR: Invalid addressing mode
+PEA #1,(A3)		ERROR: Invalid addressing mode
+PEA #1,$10(A6)		ERROR: Invalid addressing mode
+PEA #1,$1234		ERROR: Invalid addressing mode
+PEA #1,FW		ERROR: Invalid addressing mode
+PEA #1,#1		ERROR: Invalid addressing mode
+PEA #1,#$1234		ERROR: Invalid addressing mode
+PEA #1,CCR		ERROR: Invalid addressing mode
+PEA #1,SR		ERROR: Invalid addressing mode
+PEA #$1234,D1		ERROR: Invalid addressing mode
+PEA #$1234,A2		ERROR: Invalid addressing mode
+PEA #$1234,(A3)		ERROR: Invalid addressing mode
+PEA #$1234,$10(A6)		ERROR: Invalid addressing mode
+PEA #$1234,$1234		ERROR: Invalid addressing mode
+PEA #$1234,FW		ERROR: Invalid addressing mode
+PEA #$1234,#1		ERROR: Invalid addressing mode
+PEA #$1234,#$1234		ERROR: Invalid addressing mode
+PEA #$1234,CCR		ERROR: Invalid addressing mode
+PEA #$1234,SR		ERROR: Invalid addressing mode
+PEA CCR,D1		ERROR: Invalid addressing mode
+PEA CCR,A2		ERROR: Invalid addressing mode
+PEA CCR,(A3)		ERROR: Invalid addressing mode
+PEA CCR,$10(A6)		ERROR: Invalid addressing mode
+PEA CCR,$1234		ERROR: Invalid addressing mode
+PEA CCR,FW		ERROR: Invalid addressing mode
+PEA CCR,#1		ERROR: Invalid addressing mode
+PEA CCR,#$1234		ERROR: Invalid addressing mode
+PEA CCR,CCR		ERROR: Invalid addressing mode
+PEA CCR,SR		ERROR: Invalid addressing mode
+PEA SR,D1		ERROR: Invalid addressing mode
+PEA SR,A2		ERROR: Invalid addressing mode
+PEA SR,(A3)		ERROR: Invalid addressing mode
+PEA SR,$10(A6)		ERROR: Invalid addressing mode
+PEA SR,$1234		ERROR: Invalid addressing mode
+PEA SR,FW		ERROR: Invalid addressing mode
+PEA SR,#1		ERROR: Invalid addressing mode
+PEA SR,#$1234		ERROR: Invalid addressing mode
+PEA SR,CCR		ERROR: Invalid addressing mode
+PEA SR,SR		ERROR: Invalid addressing mode
+PEA SP,D1		ERROR: Invalid addressing mode
+PEA SP,A2		ERROR: Invalid addressing mode
+PEA D1,SP		ERROR: Invalid addressing mode
+PEA #$12,SP		ERROR: Invalid addressing mode
+PEA (A4)+,D1		ERROR: Invalid addressing mode
+PEA (A4)+,A2		ERROR: Invalid addressing mode
+PEA D1,(A4)+		ERROR: Invalid addressing mode
+PEA #$12,(A4)+		ERROR: Invalid addressing mode
+PEA -(A5),D1		ERROR: Invalid addressing mode
+PEA -(A5),A2		ERROR: Invalid addressing mode
+PEA D1,-(A5)		ERROR: Invalid addressing mode
+PEA #$12,-(A5)		ERROR: Invalid addressing mode
+PEA -2(A0),D1		ERROR: Invalid syntax
+PEA -2(A0),A2		ERROR: Invalid syntax
+PEA D1,-2(A0)		ERROR: Invalid addressing mode
+PEA #$12,-2(A0)		ERROR: Invalid addressing mode
+PEA $10(A6,D7.W),D1		ERROR: Invalid syntax
+PEA $10(A6,D7.W),A2		ERROR: Invalid syntax
+PEA D1,$10(A6,D7.W)		ERROR: Invalid addressing mode
+PEA #$12,$10(A6,D7.W)		ERROR: Invalid addressing mode
+PEA $12(A0,A1.L),D1		ERROR: Invalid syntax
+PEA $12(A0,A1.L),A2		ERROR: Invalid syntax
+PEA D1,$12(A0,A1.L)		ERROR: Invalid addressing mode
+PEA #$12,$12(A0,A1.L)		ERROR: Invalid addressing mode
+PEA (A2,D3),D1		ERROR: Invalid syntax
+PEA (A2,D3),A2		ERROR: Invalid syntax
+PEA D1,(A2,D3)		ERROR: Invalid addressing mode
+PEA #$12,(A2,D3)		ERROR: Invalid addressing mode
+PEA $12345678,D1		ERROR: Invalid syntax
+PEA $12345678,A2		ERROR: Invalid syntax
+PEA D1,$12345678		ERROR: Invalid addressing mode
+PEA #$12,$12345678		ERROR: Invalid addressing mode
+PEA $1234.L,D1		ERROR: Invalid syntax
+PEA $1234.L,A2		ERROR: Invalid syntax
+PEA D1,$1234.L		ERROR: Invalid addressing mode
+PEA #$12,$1234.L		ERROR: Invalid addressing mode
+PEA $1234.W,D1		ERROR: Invalid syntax
+PEA $1234.W,A2		ERROR: Invalid syntax
+PEA D1,$1234.W		ERROR: Invalid addressing mode
+PEA #$12,$1234.W		ERROR: Invalid addressing mode
+PEA $8000,D1		ERROR: Invalid syntax
+PEA $8000,A2		ERROR: Invalid syntax
+PEA D1,$8000		ERROR: Invalid addressing mode
+PEA #$12,$8000		ERROR: Invalid addressing mode
+PEA BK,D1		ERROR: Invalid syntax
+PEA BK,A2		ERROR: Invalid syntax
+PEA D1,BK		ERROR: Invalid addressing mode
+PEA #$12,BK		ERROR: Invalid addressing mode
+PEA *+$10(PC),D1		ERROR: Invalid syntax
+PEA *+$10(PC),A2		ERROR: Invalid syntax
+PEA D1,*+$10(PC)		ERROR: Invalid addressing mode
+PEA #$12,*+$10(PC)		ERROR: Invalid addressing mode
+PEA *(PC,D0.W),D1		ERROR: Invalid syntax
+PEA *(PC,D0.W),A2		ERROR: Invalid syntax
+PEA D1,*(PC,D0.W)		ERROR: Invalid addressing mode
+PEA #$12,*(PC,D0.W)		ERROR: Invalid addressing mode
+PEA BK(PC),D1		ERROR: Invalid syntax
+PEA BK(PC),A2		ERROR: Invalid syntax
+PEA D1,BK(PC)		ERROR: Invalid addressing mode
+PEA #$12,BK(PC)		ERROR: Invalid addressing mode
+PEA #8,D1		ERROR: Invalid addressing mode
+PEA #8,A2		ERROR: Invalid addressing mode
+PEA D1,#8		ERROR: Invalid addressing mode
+PEA #$12,#8		ERROR: Invalid addressing mode
+PEA #9,D1		ERROR: Invalid addressing mode
+PEA #9,A2		ERROR: Invalid addressing mode
+PEA D1,#9		ERROR: Invalid addressing mode
+PEA #$12,#9		ERROR: Invalid addressing mode
+PEA #0,D1		ERROR: Invalid addressing mode
+PEA #0,A2		ERROR: Invalid addressing mode
+PEA D1,#0		ERROR: Invalid addressing mode
+PEA #$12,#0		ERROR: Invalid addressing mode
+PEA #-1,D1		ERROR: Invalid addressing mode
+PEA #-1,A2		ERROR: Invalid addressing mode
+PEA D1,#-1		ERROR: Invalid addressing mode
+PEA #$12,#-1		ERROR: Invalid addressing mode
+PEA #$80,D1		ERROR: Invalid addressing mode
+PEA #$80,A2		ERROR: Invalid addressing mode
+PEA D1,#$80		ERROR: Invalid addressing mode
+PEA #$12,#$80		ERROR: Invalid addressing mode
+PEA #$12345678,D1		ERROR: Invalid addressing mode
+PEA #$12345678,A2		ERROR: Invalid addressing mode
+PEA D1,#$12345678		ERROR: Invalid addressing mode
+PEA #$12,#$12345678		ERROR: Invalid addressing mode
+PEA #$12345678.L,D1		ERROR: Invalid addressing mode
+PEA #$12345678.L,A2		ERROR: Invalid addressing mode
+PEA D1,#$12345678.L		ERROR: Invalid addressing mode
+PEA #$12,#$12345678.L		ERROR: Invalid addressing mode
+PEA #BK,D1		ERROR: Invalid addressing mode
+PEA #BK,A2		ERROR: Invalid addressing mode
+PEA D1,#BK		ERROR: Invalid addressing mode
+PEA #$12,#BK		ERROR: Invalid addressing mode
+PEA #FW,D1		ERROR: Invalid addressing mode
+PEA #FW,A2		ERROR: Invalid addressing mode
+PEA D1,#FW		ERROR: Invalid addressing mode
+PEA #$12,#FW		ERROR: Invalid addressing mode
+PEA #UNDEF,D1		ERROR: Invalid addressing mode
+PEA #UNDEF,A2		ERROR: Invalid addressing mode
+PEA D1,#UNDEF		ERROR: Invalid addressing mode
+PEA #$12,#UNDEF		ERROR: Invalid addressing mode
+PEA UNDEF,D1		ERROR: Invalid syntax
+PEA UNDEF,A2		ERROR: Invalid syntax
+PEA D1,UNDEF		ERROR: Invalid addressing mode
+PEA #$12,UNDEF		ERROR: Invalid addressing mode
+PEA USP,D1		ERROR: Invalid addressing mode
+PEA USP,A2		ERROR: Invalid addressing mode
+PEA D1,USP		ERROR: Invalid addressing mode
+PEA #$12,USP		ERROR: Invalid addressing mode
+PEA D1,D2,D3		ERROR: Invalid addressing mode
+PEA.B		ERROR: Invalid syntax
+PEA.B D1		ERROR: Invalid addressing mode
+PEA.B A2		ERROR: Invalid addressing mode
+PEA.B SP		ERROR: Invalid addressing mode
+PEA.B (A3)	4853	ERROR: Invalid size code
+PEA.B (A4)+		ERROR: Invalid addressing mode
+PEA.B -(A5)		ERROR: Invalid addressing mode
+PEA.B $10(A6)	486E0010	ERROR: Invalid size code
+PEA.B -2(A0)	4868FFFE	ERROR: Invalid size code
+PEA.B $10(A6,D7.W)	48767010	ERROR: Invalid size code
+PEA.B $12(A0,A1.L)	48709812	ERROR: Invalid size code
+PEA.B (A2,D3)	48723000	ERROR: Invalid size code
+PEA.B $1234	48781234	ERROR: Invalid size code
+PEA.B $12345678	487912345678	ERROR: Invalid size code
+PEA.B $1234.L	487900001234	ERROR: Invalid size code
+PEA.B $1234.W	48781234	ERROR: Invalid size code
+PEA.B $8000	487900008000	ERROR: Invalid size code
+PEA.B BK	48781F00	ERROR: Invalid size code
+PEA.B FW	487900001F00	ERROR: Invalid size code
+PEA.B *+$10(PC)	487A000E	ERROR: Invalid size code
+PEA.B *(PC,D0.W)	487B00FE	ERROR: Invalid size code
+PEA.B BK(PC)	487A0EFE	ERROR: Invalid size code
+PEA.B #1		ERROR: Invalid addressing mode
+PEA.B #8		ERROR: Invalid addressing mode
+PEA.B #9		ERROR: Invalid addressing mode
+PEA.B #0		ERROR: Invalid addressing mode
+PEA.B #-1		ERROR: Invalid addressing mode
+PEA.B #$80		ERROR: Invalid addressing mode
+PEA.B #$1234		ERROR: Invalid addressing mode
+PEA.B #$12345678		ERROR: Invalid addressing mode
+PEA.B #$12345678.L		ERROR: Invalid addressing mode
+PEA.B #BK		ERROR: Invalid addressing mode
+PEA.B #FW		ERROR: Invalid addressing mode
+PEA.B #UNDEF		ERROR: Invalid addressing mode
+PEA.B UNDEF	487900005618	ERROR: Undefined symbol
+PEA.B SR		ERROR: Invalid addressing mode
+PEA.B CCR		ERROR: Invalid addressing mode
+PEA.B USP		ERROR: Invalid addressing mode
+PEA.B D1,D2,D3		ERROR: Invalid addressing mode
+PEA.W		ERROR: Invalid syntax
+PEA.W D1		ERROR: Invalid addressing mode
+PEA.W A2		ERROR: Invalid addressing mode
+PEA.W SP		ERROR: Invalid addressing mode
+PEA.W (A3)	4853	ERROR: Invalid size code
+PEA.W (A4)+		ERROR: Invalid addressing mode
+PEA.W -(A5)		ERROR: Invalid addressing mode
+PEA.W $10(A6)	486E0010	ERROR: Invalid size code
+PEA.W -2(A0)	4868FFFE	ERROR: Invalid size code
+PEA.W $10(A6,D7.W)	48767010	ERROR: Invalid size code
+PEA.W $12(A0,A1.L)	48709812	ERROR: Invalid size code
+PEA.W (A2,D3)	48723000	ERROR: Invalid size code
+PEA.W $1234	48781234	ERROR: Invalid size code
+PEA.W $12345678	487912345678	ERROR: Invalid size code
+PEA.W $1234.L	487900001234	ERROR: Invalid size code
+PEA.W $1234.W	48781234	ERROR: Invalid size code
+PEA.W $8000	487900008000	ERROR: Invalid size code
+PEA.W BK	48781F00	ERROR: Invalid size code
+PEA.W FW	487900001F00	ERROR: Invalid size code
+PEA.W *+$10(PC)	487A000E	ERROR: Invalid size code
+PEA.W *(PC,D0.W)	487B00FE	ERROR: Invalid size code
+PEA.W BK(PC)	487A0EFE	ERROR: Invalid size code
+PEA.W #1		ERROR: Invalid addressing mode
+PEA.W #8		ERROR: Invalid addressing mode
+PEA.W #9		ERROR: Invalid addressing mode
+PEA.W #0		ERROR: Invalid addressing mode
+PEA.W #-1		ERROR: Invalid addressing mode
+PEA.W #$80		ERROR: Invalid addressing mode
+PEA.W #$1234		ERROR: Invalid addressing mode
+PEA.W #$12345678		ERROR: Invalid addressing mode
+PEA.W #$12345678.L		ERROR: Invalid addressing mode
+PEA.W #BK		ERROR: Invalid addressing mode
+PEA.W #FW		ERROR: Invalid addressing mode
+PEA.W #UNDEF		ERROR: Invalid addressing mode
+PEA.W UNDEF	487900005618	ERROR: Undefined symbol
+PEA.W SR		ERROR: Invalid addressing mode
+PEA.W CCR		ERROR: Invalid addressing mode
+PEA.W USP		ERROR: Invalid addressing mode
+PEA.W D1,D2,D3		ERROR: Invalid addressing mode
+PEA.L		ERROR: Invalid syntax
+PEA.L D1		ERROR: Invalid addressing mode
+PEA.L A2		ERROR: Invalid addressing mode
+PEA.L SP		ERROR: Invalid addressing mode
+PEA.L (A3)	4853	-
+PEA.L (A4)+		ERROR: Invalid addressing mode
+PEA.L -(A5)		ERROR: Invalid addressing mode
+PEA.L $10(A6)	486E0010	-
+PEA.L -2(A0)	4868FFFE	-
+PEA.L $10(A6,D7.W)	48767010	-
+PEA.L $12(A0,A1.L)	48709812	-
+PEA.L (A2,D3)	48723000	-
+PEA.L $1234	48781234	-
+PEA.L $12345678	487912345678	-
+PEA.L $1234.L	487900001234	-
+PEA.L $1234.W	48781234	WARNING: Forcing SHORT addressing disables range checking of extension word
+PEA.L $8000	487900008000	-
+PEA.L BK	48781F00	-
+PEA.L FW	487900001F00	-
+PEA.L *+$10(PC)	487A000E	-
+PEA.L *(PC,D0.W)	487B00FE	-
+PEA.L BK(PC)	487A0EFE	-
+PEA.L #1		ERROR: Invalid addressing mode
+PEA.L #8		ERROR: Invalid addressing mode
+PEA.L #9		ERROR: Invalid addressing mode
+PEA.L #0		ERROR: Invalid addressing mode
+PEA.L #-1		ERROR: Invalid addressing mode
+PEA.L #$80		ERROR: Invalid addressing mode
+PEA.L #$1234		ERROR: Invalid addressing mode
+PEA.L #$12345678		ERROR: Invalid addressing mode
+PEA.L #$12345678.L		ERROR: Invalid addressing mode
+PEA.L #BK		ERROR: Invalid addressing mode
+PEA.L #FW		ERROR: Invalid addressing mode
+PEA.L #UNDEF		ERROR: Invalid addressing mode
+PEA.L UNDEF	487900005618	ERROR: Undefined symbol
+PEA.L SR		ERROR: Invalid addressing mode
+PEA.L CCR		ERROR: Invalid addressing mode
+PEA.L USP		ERROR: Invalid addressing mode
+PEA.L D1,D2,D3		ERROR: Invalid addressing mode
+PEA.S		ERROR: Invalid syntax
+PEA.S D1		ERROR: Invalid addressing mode
+PEA.S A2		ERROR: Invalid addressing mode
+PEA.S SP		ERROR: Invalid addressing mode
+PEA.S (A3)	4853	ERROR: Invalid size code
+PEA.S (A4)+		ERROR: Invalid addressing mode
+PEA.S -(A5)		ERROR: Invalid addressing mode
+PEA.S $10(A6)	486E0010	ERROR: Invalid size code
+PEA.S -2(A0)	4868FFFE	ERROR: Invalid size code
+PEA.S $10(A6,D7.W)	48767010	ERROR: Invalid size code
+PEA.S $12(A0,A1.L)	48709812	ERROR: Invalid size code
+PEA.S (A2,D3)	48723000	ERROR: Invalid size code
+PEA.S $1234	48781234	ERROR: Invalid size code
+PEA.S $12345678	487912345678	ERROR: Invalid size code
+PEA.S $1234.L	487900001234	ERROR: Invalid size code
+PEA.S $1234.W	48781234	ERROR: Invalid size code
+PEA.S $8000	487900008000	ERROR: Invalid size code
+PEA.S BK	48781F00	ERROR: Invalid size code
+PEA.S FW	487900001F00	ERROR: Invalid size code
+PEA.S *+$10(PC)	487A000E	ERROR: Invalid size code
+PEA.S *(PC,D0.W)	487B00FE	ERROR: Invalid size code
+PEA.S BK(PC)	487A0EFE	ERROR: Invalid size code
+PEA.S #1		ERROR: Invalid addressing mode
+PEA.S #8		ERROR: Invalid addressing mode
+PEA.S #9		ERROR: Invalid addressing mode
+PEA.S #0		ERROR: Invalid addressing mode
+PEA.S #-1		ERROR: Invalid addressing mode
+PEA.S #$80		ERROR: Invalid addressing mode
+PEA.S #$1234		ERROR: Invalid addressing mode
+PEA.S #$12345678		ERROR: Invalid addressing mode
+PEA.S #$12345678.L		ERROR: Invalid addressing mode
+PEA.S #BK		ERROR: Invalid addressing mode
+PEA.S #FW		ERROR: Invalid addressing mode
+PEA.S #UNDEF		ERROR: Invalid addressing mode
+PEA.S UNDEF	487900005618	ERROR: Undefined symbol
+PEA.S SR		ERROR: Invalid addressing mode
+PEA.S CCR		ERROR: Invalid addressing mode
+PEA.S USP		ERROR: Invalid addressing mode
+PEA.S D1,D2,D3		ERROR: Invalid addressing mode
+PEA.X D1,D2		ERROR: Invalid addressing mode
+PEA.X #1		ERROR: Invalid addressing mode

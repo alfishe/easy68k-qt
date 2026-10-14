@@ -1,0 +1,1621 @@
+EORI		ERROR: Invalid syntax
+EORI D1		ERROR: Comma expected
+EORI A2		ERROR: Comma expected
+EORI SP		ERROR: Comma expected
+EORI (A3)		ERROR: Comma expected
+EORI (A4)+		ERROR: Comma expected
+EORI -(A5)		ERROR: Comma expected
+EORI $10(A6)		ERROR: Comma expected
+EORI -2(A0)		ERROR: Comma expected
+EORI $10(A6,D7.W)		ERROR: Comma expected
+EORI $12(A0,A1.L)		ERROR: Comma expected
+EORI (A2,D3)		ERROR: Comma expected
+EORI $1234		ERROR: Comma expected
+EORI $12345678		ERROR: Comma expected
+EORI $1234.L		ERROR: Comma expected
+EORI $1234.W		ERROR: Comma expected
+EORI $8000		ERROR: Comma expected
+EORI BK		ERROR: Comma expected
+EORI FW		ERROR: Comma expected
+EORI *+$10(PC)		ERROR: Comma expected
+EORI *(PC,D0.W)		ERROR: Comma expected
+EORI BK(PC)		ERROR: Comma expected
+EORI #1		ERROR: Comma expected
+EORI #8		ERROR: Comma expected
+EORI #9		ERROR: Comma expected
+EORI #0		ERROR: Comma expected
+EORI #-1		ERROR: Comma expected
+EORI #$80		ERROR: Comma expected
+EORI #$1234		ERROR: Comma expected
+EORI #$12345678		ERROR: Comma expected
+EORI #$12345678.L		ERROR: Comma expected
+EORI #BK		ERROR: Comma expected
+EORI #FW		ERROR: Comma expected
+EORI #UNDEF		ERROR: Comma expected
+EORI UNDEF		ERROR: Comma expected
+EORI SR		ERROR: Comma expected
+EORI CCR		ERROR: Comma expected
+EORI USP		ERROR: Comma expected
+EORI D1,D1		ERROR: Invalid addressing mode
+EORI D1,A2		ERROR: Invalid addressing mode
+EORI D1,(A3)		ERROR: Invalid addressing mode
+EORI D1,(A4)+		ERROR: Invalid addressing mode
+EORI D1,-(A5)		ERROR: Invalid addressing mode
+EORI D1,$10(A6)		ERROR: Invalid addressing mode
+EORI D1,$10(A6,D7.W)		ERROR: Invalid addressing mode
+EORI D1,$1234		ERROR: Invalid addressing mode
+EORI D1,$12345678		ERROR: Invalid addressing mode
+EORI D1,FW		ERROR: Invalid addressing mode
+EORI D1,*+$10(PC)		ERROR: Invalid addressing mode
+EORI D1,#1		ERROR: Invalid addressing mode
+EORI D1,#$80		ERROR: Invalid addressing mode
+EORI D1,#$1234		ERROR: Invalid addressing mode
+EORI D1,#$12345678		ERROR: Invalid addressing mode
+EORI D1,SR		ERROR: Invalid addressing mode
+EORI D1,CCR		ERROR: Invalid addressing mode
+EORI D1,USP		ERROR: Invalid addressing mode
+EORI A2,D1		ERROR: Invalid addressing mode
+EORI A2,A2		ERROR: Invalid addressing mode
+EORI A2,(A3)		ERROR: Invalid addressing mode
+EORI A2,(A4)+		ERROR: Invalid addressing mode
+EORI A2,-(A5)		ERROR: Invalid addressing mode
+EORI A2,$10(A6)		ERROR: Invalid addressing mode
+EORI A2,$10(A6,D7.W)		ERROR: Invalid addressing mode
+EORI A2,$1234		ERROR: Invalid addressing mode
+EORI A2,$12345678		ERROR: Invalid addressing mode
+EORI A2,FW		ERROR: Invalid addressing mode
+EORI A2,*+$10(PC)		ERROR: Invalid addressing mode
+EORI A2,#1		ERROR: Invalid addressing mode
+EORI A2,#$80		ERROR: Invalid addressing mode
+EORI A2,#$1234		ERROR: Invalid addressing mode
+EORI A2,#$12345678		ERROR: Invalid addressing mode
+EORI A2,SR		ERROR: Invalid addressing mode
+EORI A2,CCR		ERROR: Invalid addressing mode
+EORI A2,USP		ERROR: Invalid addressing mode
+EORI (A3),D1		ERROR: Invalid addressing mode
+EORI (A3),A2		ERROR: Invalid addressing mode
+EORI (A3),(A3)		ERROR: Invalid addressing mode
+EORI (A3),(A4)+		ERROR: Invalid addressing mode
+EORI (A3),-(A5)		ERROR: Invalid addressing mode
+EORI (A3),$10(A6)		ERROR: Invalid addressing mode
+EORI (A3),$10(A6,D7.W)		ERROR: Invalid addressing mode
+EORI (A3),$1234		ERROR: Invalid addressing mode
+EORI (A3),$12345678		ERROR: Invalid addressing mode
+EORI (A3),FW		ERROR: Invalid addressing mode
+EORI (A3),*+$10(PC)		ERROR: Invalid addressing mode
+EORI (A3),#1		ERROR: Invalid addressing mode
+EORI (A3),#$80		ERROR: Invalid addressing mode
+EORI (A3),#$1234		ERROR: Invalid addressing mode
+EORI (A3),#$12345678		ERROR: Invalid addressing mode
+EORI (A3),SR		ERROR: Invalid addressing mode
+EORI (A3),CCR		ERROR: Invalid addressing mode
+EORI (A3),USP		ERROR: Invalid addressing mode
+EORI (A4)+,D1		ERROR: Invalid addressing mode
+EORI (A4)+,A2		ERROR: Invalid addressing mode
+EORI (A4)+,(A3)		ERROR: Invalid addressing mode
+EORI (A4)+,(A4)+		ERROR: Invalid addressing mode
+EORI (A4)+,-(A5)		ERROR: Invalid addressing mode
+EORI (A4)+,$10(A6)		ERROR: Invalid addressing mode
+EORI (A4)+,$10(A6,D7.W)		ERROR: Invalid addressing mode
+EORI (A4)+,$1234		ERROR: Invalid addressing mode
+EORI (A4)+,$12345678		ERROR: Invalid addressing mode
+EORI (A4)+,FW		ERROR: Invalid addressing mode
+EORI (A4)+,*+$10(PC)		ERROR: Invalid addressing mode
+EORI (A4)+,#1		ERROR: Invalid addressing mode
+EORI (A4)+,#$80		ERROR: Invalid addressing mode
+EORI (A4)+,#$1234		ERROR: Invalid addressing mode
+EORI (A4)+,#$12345678		ERROR: Invalid addressing mode
+EORI (A4)+,SR		ERROR: Invalid addressing mode
+EORI (A4)+,CCR		ERROR: Invalid addressing mode
+EORI (A4)+,USP		ERROR: Invalid addressing mode
+EORI -(A5),D1		ERROR: Invalid addressing mode
+EORI -(A5),A2		ERROR: Invalid addressing mode
+EORI -(A5),(A3)		ERROR: Invalid addressing mode
+EORI -(A5),(A4)+		ERROR: Invalid addressing mode
+EORI -(A5),-(A5)		ERROR: Invalid addressing mode
+EORI -(A5),$10(A6)		ERROR: Invalid addressing mode
+EORI -(A5),$10(A6,D7.W)		ERROR: Invalid addressing mode
+EORI -(A5),$1234		ERROR: Invalid addressing mode
+EORI -(A5),$12345678		ERROR: Invalid addressing mode
+EORI -(A5),FW		ERROR: Invalid addressing mode
+EORI -(A5),*+$10(PC)		ERROR: Invalid addressing mode
+EORI -(A5),#1		ERROR: Invalid addressing mode
+EORI -(A5),#$80		ERROR: Invalid addressing mode
+EORI -(A5),#$1234		ERROR: Invalid addressing mode
+EORI -(A5),#$12345678		ERROR: Invalid addressing mode
+EORI -(A5),SR		ERROR: Invalid addressing mode
+EORI -(A5),CCR		ERROR: Invalid addressing mode
+EORI -(A5),USP		ERROR: Invalid addressing mode
+EORI $10(A6),D1		ERROR: Invalid addressing mode
+EORI $10(A6),A2		ERROR: Invalid addressing mode
+EORI $10(A6),(A3)		ERROR: Invalid addressing mode
+EORI $10(A6),(A4)+		ERROR: Invalid addressing mode
+EORI $10(A6),-(A5)		ERROR: Invalid addressing mode
+EORI $10(A6),$10(A6)		ERROR: Invalid addressing mode
+EORI $10(A6),$10(A6,D7.W)		ERROR: Invalid addressing mode
+EORI $10(A6),$1234		ERROR: Invalid addressing mode
+EORI $10(A6),$12345678		ERROR: Invalid addressing mode
+EORI $10(A6),FW		ERROR: Invalid addressing mode
+EORI $10(A6),*+$10(PC)		ERROR: Invalid addressing mode
+EORI $10(A6),#1		ERROR: Invalid addressing mode
+EORI $10(A6),#$80		ERROR: Invalid addressing mode
+EORI $10(A6),#$1234		ERROR: Invalid addressing mode
+EORI $10(A6),#$12345678		ERROR: Invalid addressing mode
+EORI $10(A6),SR		ERROR: Invalid addressing mode
+EORI $10(A6),CCR		ERROR: Invalid addressing mode
+EORI $10(A6),USP		ERROR: Invalid addressing mode
+EORI $10(A6,D7.W),D1		ERROR: Invalid addressing mode
+EORI $10(A6,D7.W),A2		ERROR: Invalid addressing mode
+EORI $10(A6,D7.W),(A3)		ERROR: Invalid addressing mode
+EORI $10(A6,D7.W),(A4)+		ERROR: Invalid addressing mode
+EORI $10(A6,D7.W),-(A5)		ERROR: Invalid addressing mode
+EORI $10(A6,D7.W),$10(A6)		ERROR: Invalid addressing mode
+EORI $10(A6,D7.W),$10(A6,D7.W)		ERROR: Invalid addressing mode
+EORI $10(A6,D7.W),$1234		ERROR: Invalid addressing mode
+EORI $10(A6,D7.W),$12345678		ERROR: Invalid addressing mode
+EORI $10(A6,D7.W),FW		ERROR: Invalid addressing mode
+EORI $10(A6,D7.W),*+$10(PC)		ERROR: Invalid addressing mode
+EORI $10(A6,D7.W),#1		ERROR: Invalid addressing mode
+EORI $10(A6,D7.W),#$80		ERROR: Invalid addressing mode
+EORI $10(A6,D7.W),#$1234		ERROR: Invalid addressing mode
+EORI $10(A6,D7.W),#$12345678		ERROR: Invalid addressing mode
+EORI $10(A6,D7.W),SR		ERROR: Invalid addressing mode
+EORI $10(A6,D7.W),CCR		ERROR: Invalid addressing mode
+EORI $10(A6,D7.W),USP		ERROR: Invalid addressing mode
+EORI $1234,D1		ERROR: Invalid addressing mode
+EORI $1234,A2		ERROR: Invalid addressing mode
+EORI $1234,(A3)		ERROR: Invalid addressing mode
+EORI $1234,(A4)+		ERROR: Invalid addressing mode
+EORI $1234,-(A5)		ERROR: Invalid addressing mode
+EORI $1234,$10(A6)		ERROR: Invalid addressing mode
+EORI $1234,$10(A6,D7.W)		ERROR: Invalid addressing mode
+EORI $1234,$1234		ERROR: Invalid addressing mode
+EORI $1234,$12345678		ERROR: Invalid addressing mode
+EORI $1234,FW		ERROR: Invalid addressing mode
+EORI $1234,*+$10(PC)		ERROR: Invalid addressing mode
+EORI $1234,#1		ERROR: Invalid addressing mode
+EORI $1234,#$80		ERROR: Invalid addressing mode
+EORI $1234,#$1234		ERROR: Invalid addressing mode
+EORI $1234,#$12345678		ERROR: Invalid addressing mode
+EORI $1234,SR		ERROR: Invalid addressing mode
+EORI $1234,CCR		ERROR: Invalid addressing mode
+EORI $1234,USP		ERROR: Invalid addressing mode
+EORI $12345678,D1		ERROR: Invalid addressing mode
+EORI $12345678,A2		ERROR: Invalid addressing mode
+EORI $12345678,(A3)		ERROR: Invalid addressing mode
+EORI $12345678,(A4)+		ERROR: Invalid addressing mode
+EORI $12345678,-(A5)		ERROR: Invalid addressing mode
+EORI $12345678,$10(A6)		ERROR: Invalid addressing mode
+EORI $12345678,$10(A6,D7.W)		ERROR: Invalid addressing mode
+EORI $12345678,$1234		ERROR: Invalid addressing mode
+EORI $12345678,$12345678		ERROR: Invalid addressing mode
+EORI $12345678,FW		ERROR: Invalid addressing mode
+EORI $12345678,*+$10(PC)		ERROR: Invalid addressing mode
+EORI $12345678,#1		ERROR: Invalid addressing mode
+EORI $12345678,#$80		ERROR: Invalid addressing mode
+EORI $12345678,#$1234		ERROR: Invalid addressing mode
+EORI $12345678,#$12345678		ERROR: Invalid addressing mode
+EORI $12345678,SR		ERROR: Invalid addressing mode
+EORI $12345678,CCR		ERROR: Invalid addressing mode
+EORI $12345678,USP		ERROR: Invalid addressing mode
+EORI FW,D1		ERROR: Invalid addressing mode
+EORI FW,A2		ERROR: Invalid addressing mode
+EORI FW,(A3)		ERROR: Invalid addressing mode
+EORI FW,(A4)+		ERROR: Invalid addressing mode
+EORI FW,-(A5)		ERROR: Invalid addressing mode
+EORI FW,$10(A6)		ERROR: Invalid addressing mode
+EORI FW,$10(A6,D7.W)		ERROR: Invalid addressing mode
+EORI FW,$1234		ERROR: Invalid addressing mode
+EORI FW,$12345678		ERROR: Invalid addressing mode
+EORI FW,FW		ERROR: Invalid addressing mode
+EORI FW,*+$10(PC)		ERROR: Invalid addressing mode
+EORI FW,#1		ERROR: Invalid addressing mode
+EORI FW,#$80		ERROR: Invalid addressing mode
+EORI FW,#$1234		ERROR: Invalid addressing mode
+EORI FW,#$12345678		ERROR: Invalid addressing mode
+EORI FW,SR		ERROR: Invalid addressing mode
+EORI FW,CCR		ERROR: Invalid addressing mode
+EORI FW,USP		ERROR: Invalid addressing mode
+EORI *+$10(PC),D1		ERROR: Invalid addressing mode
+EORI *+$10(PC),A2		ERROR: Invalid addressing mode
+EORI *+$10(PC),(A3)		ERROR: Invalid addressing mode
+EORI *+$10(PC),(A4)+		ERROR: Invalid addressing mode
+EORI *+$10(PC),-(A5)		ERROR: Invalid addressing mode
+EORI *+$10(PC),$10(A6)		ERROR: Invalid addressing mode
+EORI *+$10(PC),$10(A6,D7.W)		ERROR: Invalid addressing mode
+EORI *+$10(PC),$1234		ERROR: Invalid addressing mode
+EORI *+$10(PC),$12345678		ERROR: Invalid addressing mode
+EORI *+$10(PC),FW		ERROR: Invalid addressing mode
+EORI *+$10(PC),*+$10(PC)		ERROR: Invalid addressing mode
+EORI *+$10(PC),#1		ERROR: Invalid addressing mode
+EORI *+$10(PC),#$80		ERROR: Invalid addressing mode
+EORI *+$10(PC),#$1234		ERROR: Invalid addressing mode
+EORI *+$10(PC),#$12345678		ERROR: Invalid addressing mode
+EORI *+$10(PC),SR		ERROR: Invalid addressing mode
+EORI *+$10(PC),CCR		ERROR: Invalid addressing mode
+EORI *+$10(PC),USP		ERROR: Invalid addressing mode
+EORI #1,D1	0A410001	-
+EORI #1,A2		ERROR: Invalid addressing mode
+EORI #1,(A3)	0A530001	-
+EORI #1,(A4)+	0A5C0001	-
+EORI #1,-(A5)	0A650001	-
+EORI #1,$10(A6)	0A6E00010010	-
+EORI #1,$10(A6,D7.W)	0A7600017010	-
+EORI #1,$1234	0A7800011234	-
+EORI #1,$12345678	0A79000112345678	-
+EORI #1,FW	0A79000100001F00	-
+EORI #1,*+$10(PC)		ERROR: Invalid addressing mode
+EORI #1,#1		ERROR: Invalid addressing mode
+EORI #1,#$80		ERROR: Invalid addressing mode
+EORI #1,#$1234		ERROR: Invalid addressing mode
+EORI #1,#$12345678		ERROR: Invalid addressing mode
+EORI #1,SR	0A7C0001	-
+EORI #1,CCR	0A3C0001	-
+EORI #1,USP		ERROR: Invalid addressing mode
+EORI #$80,D1	0A410080	-
+EORI #$80,A2		ERROR: Invalid addressing mode
+EORI #$80,(A3)	0A530080	-
+EORI #$80,(A4)+	0A5C0080	-
+EORI #$80,-(A5)	0A650080	-
+EORI #$80,$10(A6)	0A6E00800010	-
+EORI #$80,$10(A6,D7.W)	0A7600807010	-
+EORI #$80,$1234	0A7800801234	-
+EORI #$80,$12345678	0A79008012345678	-
+EORI #$80,FW	0A79008000001F00	-
+EORI #$80,*+$10(PC)		ERROR: Invalid addressing mode
+EORI #$80,#1		ERROR: Invalid addressing mode
+EORI #$80,#$80		ERROR: Invalid addressing mode
+EORI #$80,#$1234		ERROR: Invalid addressing mode
+EORI #$80,#$12345678		ERROR: Invalid addressing mode
+EORI #$80,SR	0A7C0080	-
+EORI #$80,CCR	0A3C0080	-
+EORI #$80,USP		ERROR: Invalid addressing mode
+EORI #$1234,D1	0A411234	-
+EORI #$1234,A2		ERROR: Invalid addressing mode
+EORI #$1234,(A3)	0A531234	-
+EORI #$1234,(A4)+	0A5C1234	-
+EORI #$1234,-(A5)	0A651234	-
+EORI #$1234,$10(A6)	0A6E12340010	-
+EORI #$1234,$10(A6,D7.W)	0A7612347010	-
+EORI #$1234,$1234	0A7812341234	-
+EORI #$1234,$12345678	0A79123412345678	-
+EORI #$1234,FW	0A79123400001F00	-
+EORI #$1234,*+$10(PC)		ERROR: Invalid addressing mode
+EORI #$1234,#1		ERROR: Invalid addressing mode
+EORI #$1234,#$80		ERROR: Invalid addressing mode
+EORI #$1234,#$1234		ERROR: Invalid addressing mode
+EORI #$1234,#$12345678		ERROR: Invalid addressing mode
+EORI #$1234,SR	0A7C1234	-
+EORI #$1234,CCR	0A3C0034	ERROR: Immediate data exceeds 8 bits
+EORI #$1234,USP		ERROR: Invalid addressing mode
+EORI #$12345678,D1	0A415678	ERROR: Immediate data exceeds 16 bits
+EORI #$12345678,A2		ERROR: Invalid addressing mode
+EORI #$12345678,(A3)	0A535678	ERROR: Immediate data exceeds 16 bits
+EORI #$12345678,(A4)+	0A5C5678	ERROR: Immediate data exceeds 16 bits
+EORI #$12345678,-(A5)	0A655678	ERROR: Immediate data exceeds 16 bits
+EORI #$12345678,$10(A6)	0A6E56780010	ERROR: Immediate data exceeds 16 bits
+EORI #$12345678,$10(A6,D7.W)	0A7656787010	ERROR: Immediate data exceeds 16 bits
+EORI #$12345678,$1234	0A7856781234	ERROR: Immediate data exceeds 16 bits
+EORI #$12345678,$12345678	0A79567812345678	ERROR: Immediate data exceeds 16 bits
+EORI #$12345678,FW	0A79567800001F00	ERROR: Immediate data exceeds 16 bits
+EORI #$12345678,*+$10(PC)		ERROR: Invalid addressing mode
+EORI #$12345678,#1		ERROR: Invalid addressing mode
+EORI #$12345678,#$80		ERROR: Invalid addressing mode
+EORI #$12345678,#$1234		ERROR: Invalid addressing mode
+EORI #$12345678,#$12345678		ERROR: Invalid addressing mode
+EORI #$12345678,SR	0A7C5678	ERROR: Immediate data exceeds 16 bits
+EORI #$12345678,CCR	0A3C0078	ERROR: Immediate data exceeds 8 bits
+EORI #$12345678,USP		ERROR: Invalid addressing mode
+EORI SR,D1		ERROR: Invalid addressing mode
+EORI SR,A2		ERROR: Invalid addressing mode
+EORI SR,(A3)		ERROR: Invalid addressing mode
+EORI SR,(A4)+		ERROR: Invalid addressing mode
+EORI SR,-(A5)		ERROR: Invalid addressing mode
+EORI SR,$10(A6)		ERROR: Invalid addressing mode
+EORI SR,$10(A6,D7.W)		ERROR: Invalid addressing mode
+EORI SR,$1234		ERROR: Invalid addressing mode
+EORI SR,$12345678		ERROR: Invalid addressing mode
+EORI SR,FW		ERROR: Invalid addressing mode
+EORI SR,*+$10(PC)		ERROR: Invalid addressing mode
+EORI SR,#1		ERROR: Invalid addressing mode
+EORI SR,#$80		ERROR: Invalid addressing mode
+EORI SR,#$1234		ERROR: Invalid addressing mode
+EORI SR,#$12345678		ERROR: Invalid addressing mode
+EORI SR,SR		ERROR: Invalid addressing mode
+EORI SR,CCR		ERROR: Invalid addressing mode
+EORI SR,USP		ERROR: Invalid addressing mode
+EORI CCR,D1		ERROR: Invalid addressing mode
+EORI CCR,A2		ERROR: Invalid addressing mode
+EORI CCR,(A3)		ERROR: Invalid addressing mode
+EORI CCR,(A4)+		ERROR: Invalid addressing mode
+EORI CCR,-(A5)		ERROR: Invalid addressing mode
+EORI CCR,$10(A6)		ERROR: Invalid addressing mode
+EORI CCR,$10(A6,D7.W)		ERROR: Invalid addressing mode
+EORI CCR,$1234		ERROR: Invalid addressing mode
+EORI CCR,$12345678		ERROR: Invalid addressing mode
+EORI CCR,FW		ERROR: Invalid addressing mode
+EORI CCR,*+$10(PC)		ERROR: Invalid addressing mode
+EORI CCR,#1		ERROR: Invalid addressing mode
+EORI CCR,#$80		ERROR: Invalid addressing mode
+EORI CCR,#$1234		ERROR: Invalid addressing mode
+EORI CCR,#$12345678		ERROR: Invalid addressing mode
+EORI CCR,SR		ERROR: Invalid addressing mode
+EORI CCR,CCR		ERROR: Invalid addressing mode
+EORI CCR,USP		ERROR: Invalid addressing mode
+EORI USP,D1		ERROR: Invalid addressing mode
+EORI USP,A2		ERROR: Invalid addressing mode
+EORI USP,(A3)		ERROR: Invalid addressing mode
+EORI USP,(A4)+		ERROR: Invalid addressing mode
+EORI USP,-(A5)		ERROR: Invalid addressing mode
+EORI USP,$10(A6)		ERROR: Invalid addressing mode
+EORI USP,$10(A6,D7.W)		ERROR: Invalid addressing mode
+EORI USP,$1234		ERROR: Invalid addressing mode
+EORI USP,$12345678		ERROR: Invalid addressing mode
+EORI USP,FW		ERROR: Invalid addressing mode
+EORI USP,*+$10(PC)		ERROR: Invalid addressing mode
+EORI USP,#1		ERROR: Invalid addressing mode
+EORI USP,#$80		ERROR: Invalid addressing mode
+EORI USP,#$1234		ERROR: Invalid addressing mode
+EORI USP,#$12345678		ERROR: Invalid addressing mode
+EORI USP,SR		ERROR: Invalid addressing mode
+EORI USP,CCR		ERROR: Invalid addressing mode
+EORI USP,USP		ERROR: Invalid addressing mode
+EORI SP,D1		ERROR: Invalid addressing mode
+EORI SP,A2		ERROR: Invalid addressing mode
+EORI D1,SP		ERROR: Invalid addressing mode
+EORI #$12,SP		ERROR: Invalid addressing mode
+EORI -2(A0),D1		ERROR: Invalid addressing mode
+EORI -2(A0),A2		ERROR: Invalid addressing mode
+EORI D1,-2(A0)		ERROR: Invalid addressing mode
+EORI #$12,-2(A0)	0A680012FFFE	-
+EORI $12(A0,A1.L),D1		ERROR: Invalid addressing mode
+EORI $12(A0,A1.L),A2		ERROR: Invalid addressing mode
+EORI D1,$12(A0,A1.L)		ERROR: Invalid addressing mode
+EORI #$12,$12(A0,A1.L)	0A7000129812	-
+EORI (A2,D3),D1		ERROR: Invalid addressing mode
+EORI (A2,D3),A2		ERROR: Invalid addressing mode
+EORI D1,(A2,D3)		ERROR: Invalid addressing mode
+EORI #$12,(A2,D3)	0A7200123000	-
+EORI $1234.L,D1		ERROR: Invalid addressing mode
+EORI $1234.L,A2		ERROR: Invalid addressing mode
+EORI D1,$1234.L		ERROR: Invalid addressing mode
+EORI #$12,$1234.L	0A79001200001234	-
+EORI $1234.W,D1		ERROR: Invalid addressing mode
+EORI $1234.W,A2		ERROR: Invalid addressing mode
+EORI D1,$1234.W		ERROR: Invalid addressing mode
+EORI #$12,$1234.W	0A7800121234	WARNING: Forcing SHORT addressing disables range checking of extension word
+EORI $8000,D1		ERROR: Invalid addressing mode
+EORI $8000,A2		ERROR: Invalid addressing mode
+EORI D1,$8000		ERROR: Invalid addressing mode
+EORI #$12,$8000	0A79001200008000	-
+EORI BK,D1		ERROR: Invalid addressing mode
+EORI BK,A2		ERROR: Invalid addressing mode
+EORI D1,BK		ERROR: Invalid addressing mode
+EORI #$12,BK	0A7800121F00	-
+EORI *(PC,D0.W),D1		ERROR: Invalid addressing mode
+EORI *(PC,D0.W),A2		ERROR: Invalid addressing mode
+EORI D1,*(PC,D0.W)		ERROR: Invalid addressing mode
+EORI #$12,*(PC,D0.W)		ERROR: Invalid addressing mode
+EORI BK(PC),D1		ERROR: Invalid addressing mode
+EORI BK(PC),A2		ERROR: Invalid addressing mode
+EORI D1,BK(PC)		ERROR: Invalid addressing mode
+EORI #$12,BK(PC)		ERROR: Invalid addressing mode
+EORI #8,D1	0A410008	-
+EORI #8,A2		ERROR: Invalid addressing mode
+EORI D1,#8		ERROR: Invalid addressing mode
+EORI #$12,#8		ERROR: Invalid addressing mode
+EORI #9,D1	0A410009	-
+EORI #9,A2		ERROR: Invalid addressing mode
+EORI D1,#9		ERROR: Invalid addressing mode
+EORI #$12,#9		ERROR: Invalid addressing mode
+EORI #0,D1	0A410000	-
+EORI #0,A2		ERROR: Invalid addressing mode
+EORI D1,#0		ERROR: Invalid addressing mode
+EORI #$12,#0		ERROR: Invalid addressing mode
+EORI #-1,D1	0A41FFFF	-
+EORI #-1,A2		ERROR: Invalid addressing mode
+EORI D1,#-1		ERROR: Invalid addressing mode
+EORI #$12,#-1		ERROR: Invalid addressing mode
+EORI #$12345678.L,D1	0A415678	ERROR: Immediate data exceeds 16 bits
+EORI #$12345678.L,A2		ERROR: Invalid addressing mode
+EORI D1,#$12345678.L		ERROR: Invalid addressing mode
+EORI #$12,#$12345678.L		ERROR: Invalid addressing mode
+EORI #BK,D1	0A411F00	-
+EORI #BK,A2		ERROR: Invalid addressing mode
+EORI D1,#BK		ERROR: Invalid addressing mode
+EORI #$12,#BK		ERROR: Invalid addressing mode
+EORI #FW,D1	0A411F00	-
+EORI #FW,A2		ERROR: Invalid addressing mode
+EORI D1,#FW		ERROR: Invalid addressing mode
+EORI #$12,#FW		ERROR: Invalid addressing mode
+EORI #UNDEF,D1	0A4155F9	ERROR: Undefined symbol
+EORI #UNDEF,A2		ERROR: Invalid addressing mode
+EORI D1,#UNDEF		ERROR: Invalid addressing mode
+EORI #$12,#UNDEF		ERROR: Invalid addressing mode
+EORI UNDEF,D1		ERROR: Invalid addressing mode
+EORI UNDEF,A2		ERROR: Invalid addressing mode
+EORI D1,UNDEF		ERROR: Invalid addressing mode
+EORI #$12,UNDEF	0A79001200001F00	ERROR: Undefined symbol
+EORI D1,D2,D3		ERROR: Invalid syntax
+EORI.B		ERROR: Invalid syntax
+EORI.B D1		ERROR: Comma expected
+EORI.B A2		ERROR: Comma expected
+EORI.B SP		ERROR: Comma expected
+EORI.B (A3)		ERROR: Comma expected
+EORI.B (A4)+		ERROR: Comma expected
+EORI.B -(A5)		ERROR: Comma expected
+EORI.B $10(A6)		ERROR: Comma expected
+EORI.B -2(A0)		ERROR: Comma expected
+EORI.B $10(A6,D7.W)		ERROR: Comma expected
+EORI.B $12(A0,A1.L)		ERROR: Comma expected
+EORI.B (A2,D3)		ERROR: Comma expected
+EORI.B $1234		ERROR: Comma expected
+EORI.B $12345678		ERROR: Comma expected
+EORI.B $1234.L		ERROR: Comma expected
+EORI.B $1234.W		ERROR: Comma expected
+EORI.B $8000		ERROR: Comma expected
+EORI.B BK		ERROR: Comma expected
+EORI.B FW		ERROR: Comma expected
+EORI.B *+$10(PC)		ERROR: Comma expected
+EORI.B *(PC,D0.W)		ERROR: Comma expected
+EORI.B BK(PC)		ERROR: Comma expected
+EORI.B #1		ERROR: Comma expected
+EORI.B #8		ERROR: Comma expected
+EORI.B #9		ERROR: Comma expected
+EORI.B #0		ERROR: Comma expected
+EORI.B #-1		ERROR: Comma expected
+EORI.B #$80		ERROR: Comma expected
+EORI.B #$1234		ERROR: Comma expected
+EORI.B #$12345678		ERROR: Comma expected
+EORI.B #$12345678.L		ERROR: Comma expected
+EORI.B #BK		ERROR: Comma expected
+EORI.B #FW		ERROR: Comma expected
+EORI.B #UNDEF		ERROR: Comma expected
+EORI.B UNDEF		ERROR: Comma expected
+EORI.B SR		ERROR: Comma expected
+EORI.B CCR		ERROR: Comma expected
+EORI.B USP		ERROR: Comma expected
+EORI.B D1,D1		ERROR: Invalid addressing mode
+EORI.B D1,A2		ERROR: Invalid addressing mode
+EORI.B D1,(A3)		ERROR: Invalid addressing mode
+EORI.B D1,$10(A6)		ERROR: Invalid addressing mode
+EORI.B D1,$1234		ERROR: Invalid addressing mode
+EORI.B D1,FW		ERROR: Invalid addressing mode
+EORI.B D1,#1		ERROR: Invalid addressing mode
+EORI.B D1,#$1234		ERROR: Invalid addressing mode
+EORI.B D1,CCR		ERROR: Invalid addressing mode
+EORI.B D1,SR		ERROR: Invalid addressing mode
+EORI.B A2,D1		ERROR: Invalid addressing mode
+EORI.B A2,A2		ERROR: Invalid addressing mode
+EORI.B A2,(A3)		ERROR: Invalid addressing mode
+EORI.B A2,$10(A6)		ERROR: Invalid addressing mode
+EORI.B A2,$1234		ERROR: Invalid addressing mode
+EORI.B A2,FW		ERROR: Invalid addressing mode
+EORI.B A2,#1		ERROR: Invalid addressing mode
+EORI.B A2,#$1234		ERROR: Invalid addressing mode
+EORI.B A2,CCR		ERROR: Invalid addressing mode
+EORI.B A2,SR		ERROR: Invalid addressing mode
+EORI.B (A3),D1		ERROR: Invalid addressing mode
+EORI.B (A3),A2		ERROR: Invalid addressing mode
+EORI.B (A3),(A3)		ERROR: Invalid addressing mode
+EORI.B (A3),$10(A6)		ERROR: Invalid addressing mode
+EORI.B (A3),$1234		ERROR: Invalid addressing mode
+EORI.B (A3),FW		ERROR: Invalid addressing mode
+EORI.B (A3),#1		ERROR: Invalid addressing mode
+EORI.B (A3),#$1234		ERROR: Invalid addressing mode
+EORI.B (A3),CCR		ERROR: Invalid addressing mode
+EORI.B (A3),SR		ERROR: Invalid addressing mode
+EORI.B $10(A6),D1		ERROR: Invalid addressing mode
+EORI.B $10(A6),A2		ERROR: Invalid addressing mode
+EORI.B $10(A6),(A3)		ERROR: Invalid addressing mode
+EORI.B $10(A6),$10(A6)		ERROR: Invalid addressing mode
+EORI.B $10(A6),$1234		ERROR: Invalid addressing mode
+EORI.B $10(A6),FW		ERROR: Invalid addressing mode
+EORI.B $10(A6),#1		ERROR: Invalid addressing mode
+EORI.B $10(A6),#$1234		ERROR: Invalid addressing mode
+EORI.B $10(A6),CCR		ERROR: Invalid addressing mode
+EORI.B $10(A6),SR		ERROR: Invalid addressing mode
+EORI.B $1234,D1		ERROR: Invalid addressing mode
+EORI.B $1234,A2		ERROR: Invalid addressing mode
+EORI.B $1234,(A3)		ERROR: Invalid addressing mode
+EORI.B $1234,$10(A6)		ERROR: Invalid addressing mode
+EORI.B $1234,$1234		ERROR: Invalid addressing mode
+EORI.B $1234,FW		ERROR: Invalid addressing mode
+EORI.B $1234,#1		ERROR: Invalid addressing mode
+EORI.B $1234,#$1234		ERROR: Invalid addressing mode
+EORI.B $1234,CCR		ERROR: Invalid addressing mode
+EORI.B $1234,SR		ERROR: Invalid addressing mode
+EORI.B FW,D1		ERROR: Invalid addressing mode
+EORI.B FW,A2		ERROR: Invalid addressing mode
+EORI.B FW,(A3)		ERROR: Invalid addressing mode
+EORI.B FW,$10(A6)		ERROR: Invalid addressing mode
+EORI.B FW,$1234		ERROR: Invalid addressing mode
+EORI.B FW,FW		ERROR: Invalid addressing mode
+EORI.B FW,#1		ERROR: Invalid addressing mode
+EORI.B FW,#$1234		ERROR: Invalid addressing mode
+EORI.B FW,CCR		ERROR: Invalid addressing mode
+EORI.B FW,SR		ERROR: Invalid addressing mode
+EORI.B #1,D1	0A010001	-
+EORI.B #1,A2		ERROR: Invalid addressing mode
+EORI.B #1,(A3)	0A130001	-
+EORI.B #1,$10(A6)	0A2E00010010	-
+EORI.B #1,$1234	0A3800011234	-
+EORI.B #1,FW	0A39000100001F00	-
+EORI.B #1,#1		ERROR: Invalid addressing mode
+EORI.B #1,#$1234		ERROR: Invalid addressing mode
+EORI.B #1,CCR	0A3C0001	-
+EORI.B #1,SR	0A7C0001	ERROR: Invalid size code
+EORI.B #$1234,D1	0A010034	ERROR: Immediate data exceeds 8 bits
+EORI.B #$1234,A2		ERROR: Invalid addressing mode
+EORI.B #$1234,(A3)	0A130034	ERROR: Immediate data exceeds 8 bits
+EORI.B #$1234,$10(A6)	0A2E00340010	ERROR: Immediate data exceeds 8 bits
+EORI.B #$1234,$1234	0A3800341234	ERROR: Immediate data exceeds 8 bits
+EORI.B #$1234,FW	0A39003400001F00	ERROR: Immediate data exceeds 8 bits
+EORI.B #$1234,#1		ERROR: Invalid addressing mode
+EORI.B #$1234,#$1234		ERROR: Invalid addressing mode
+EORI.B #$1234,CCR	0A3C0034	ERROR: Immediate data exceeds 8 bits
+EORI.B #$1234,SR	0A7C1234	ERROR: Invalid size code
+EORI.B CCR,D1		ERROR: Invalid addressing mode
+EORI.B CCR,A2		ERROR: Invalid addressing mode
+EORI.B CCR,(A3)		ERROR: Invalid addressing mode
+EORI.B CCR,$10(A6)		ERROR: Invalid addressing mode
+EORI.B CCR,$1234		ERROR: Invalid addressing mode
+EORI.B CCR,FW		ERROR: Invalid addressing mode
+EORI.B CCR,#1		ERROR: Invalid addressing mode
+EORI.B CCR,#$1234		ERROR: Invalid addressing mode
+EORI.B CCR,CCR		ERROR: Invalid addressing mode
+EORI.B CCR,SR		ERROR: Invalid addressing mode
+EORI.B SR,D1		ERROR: Invalid addressing mode
+EORI.B SR,A2		ERROR: Invalid addressing mode
+EORI.B SR,(A3)		ERROR: Invalid addressing mode
+EORI.B SR,$10(A6)		ERROR: Invalid addressing mode
+EORI.B SR,$1234		ERROR: Invalid addressing mode
+EORI.B SR,FW		ERROR: Invalid addressing mode
+EORI.B SR,#1		ERROR: Invalid addressing mode
+EORI.B SR,#$1234		ERROR: Invalid addressing mode
+EORI.B SR,CCR		ERROR: Invalid addressing mode
+EORI.B SR,SR		ERROR: Invalid addressing mode
+EORI.B SP,D1		ERROR: Invalid addressing mode
+EORI.B SP,A2		ERROR: Invalid addressing mode
+EORI.B D1,SP		ERROR: Invalid addressing mode
+EORI.B #$12,SP		ERROR: Invalid addressing mode
+EORI.B (A4)+,D1		ERROR: Invalid addressing mode
+EORI.B (A4)+,A2		ERROR: Invalid addressing mode
+EORI.B D1,(A4)+		ERROR: Invalid addressing mode
+EORI.B #$12,(A4)+	0A1C0012	-
+EORI.B -(A5),D1		ERROR: Invalid addressing mode
+EORI.B -(A5),A2		ERROR: Invalid addressing mode
+EORI.B D1,-(A5)		ERROR: Invalid addressing mode
+EORI.B #$12,-(A5)	0A250012	-
+EORI.B -2(A0),D1		ERROR: Invalid addressing mode
+EORI.B -2(A0),A2		ERROR: Invalid addressing mode
+EORI.B D1,-2(A0)		ERROR: Invalid addressing mode
+EORI.B #$12,-2(A0)	0A280012FFFE	-
+EORI.B $10(A6,D7.W),D1		ERROR: Invalid addressing mode
+EORI.B $10(A6,D7.W),A2		ERROR: Invalid addressing mode
+EORI.B D1,$10(A6,D7.W)		ERROR: Invalid addressing mode
+EORI.B #$12,$10(A6,D7.W)	0A3600127010	-
+EORI.B $12(A0,A1.L),D1		ERROR: Invalid addressing mode
+EORI.B $12(A0,A1.L),A2		ERROR: Invalid addressing mode
+EORI.B D1,$12(A0,A1.L)		ERROR: Invalid addressing mode
+EORI.B #$12,$12(A0,A1.L)	0A3000129812	-
+EORI.B (A2,D3),D1		ERROR: Invalid addressing mode
+EORI.B (A2,D3),A2		ERROR: Invalid addressing mode
+EORI.B D1,(A2,D3)		ERROR: Invalid addressing mode
+EORI.B #$12,(A2,D3)	0A3200123000	-
+EORI.B $12345678,D1		ERROR: Invalid addressing mode
+EORI.B $12345678,A2		ERROR: Invalid addressing mode
+EORI.B D1,$12345678		ERROR: Invalid addressing mode
+EORI.B #$12,$12345678	0A39001212345678	-
+EORI.B $1234.L,D1		ERROR: Invalid addressing mode
+EORI.B $1234.L,A2		ERROR: Invalid addressing mode
+EORI.B D1,$1234.L		ERROR: Invalid addressing mode
+EORI.B #$12,$1234.L	0A39001200001234	-
+EORI.B $1234.W,D1		ERROR: Invalid addressing mode
+EORI.B $1234.W,A2		ERROR: Invalid addressing mode
+EORI.B D1,$1234.W		ERROR: Invalid addressing mode
+EORI.B #$12,$1234.W	0A3800121234	WARNING: Forcing SHORT addressing disables range checking of extension word
+EORI.B $8000,D1		ERROR: Invalid addressing mode
+EORI.B $8000,A2		ERROR: Invalid addressing mode
+EORI.B D1,$8000		ERROR: Invalid addressing mode
+EORI.B #$12,$8000	0A39001200008000	-
+EORI.B BK,D1		ERROR: Invalid addressing mode
+EORI.B BK,A2		ERROR: Invalid addressing mode
+EORI.B D1,BK		ERROR: Invalid addressing mode
+EORI.B #$12,BK	0A3800121F00	-
+EORI.B *+$10(PC),D1		ERROR: Invalid addressing mode
+EORI.B *+$10(PC),A2		ERROR: Invalid addressing mode
+EORI.B D1,*+$10(PC)		ERROR: Invalid addressing mode
+EORI.B #$12,*+$10(PC)		ERROR: Invalid addressing mode
+EORI.B *(PC,D0.W),D1		ERROR: Invalid addressing mode
+EORI.B *(PC,D0.W),A2		ERROR: Invalid addressing mode
+EORI.B D1,*(PC,D0.W)		ERROR: Invalid addressing mode
+EORI.B #$12,*(PC,D0.W)		ERROR: Invalid addressing mode
+EORI.B BK(PC),D1		ERROR: Invalid addressing mode
+EORI.B BK(PC),A2		ERROR: Invalid addressing mode
+EORI.B D1,BK(PC)		ERROR: Invalid addressing mode
+EORI.B #$12,BK(PC)		ERROR: Invalid addressing mode
+EORI.B #8,D1	0A010008	-
+EORI.B #8,A2		ERROR: Invalid addressing mode
+EORI.B D1,#8		ERROR: Invalid addressing mode
+EORI.B #$12,#8		ERROR: Invalid addressing mode
+EORI.B #9,D1	0A010009	-
+EORI.B #9,A2		ERROR: Invalid addressing mode
+EORI.B D1,#9		ERROR: Invalid addressing mode
+EORI.B #$12,#9		ERROR: Invalid addressing mode
+EORI.B #0,D1	0A010000	-
+EORI.B #0,A2		ERROR: Invalid addressing mode
+EORI.B D1,#0		ERROR: Invalid addressing mode
+EORI.B #$12,#0		ERROR: Invalid addressing mode
+EORI.B #-1,D1	0A0100FF	-
+EORI.B #-1,A2		ERROR: Invalid addressing mode
+EORI.B D1,#-1		ERROR: Invalid addressing mode
+EORI.B #$12,#-1		ERROR: Invalid addressing mode
+EORI.B #$80,D1	0A010080	-
+EORI.B #$80,A2		ERROR: Invalid addressing mode
+EORI.B D1,#$80		ERROR: Invalid addressing mode
+EORI.B #$12,#$80		ERROR: Invalid addressing mode
+EORI.B #$12345678,D1	0A010078	ERROR: Immediate data exceeds 8 bits
+EORI.B #$12345678,A2		ERROR: Invalid addressing mode
+EORI.B D1,#$12345678		ERROR: Invalid addressing mode
+EORI.B #$12,#$12345678		ERROR: Invalid addressing mode
+EORI.B #$12345678.L,D1	0A010078	ERROR: Immediate data exceeds 8 bits
+EORI.B #$12345678.L,A2		ERROR: Invalid addressing mode
+EORI.B D1,#$12345678.L		ERROR: Invalid addressing mode
+EORI.B #$12,#$12345678.L		ERROR: Invalid addressing mode
+EORI.B #BK,D1	0A010000	ERROR: Immediate data exceeds 8 bits
+EORI.B #BK,A2		ERROR: Invalid addressing mode
+EORI.B D1,#BK		ERROR: Invalid addressing mode
+EORI.B #$12,#BK		ERROR: Invalid addressing mode
+EORI.B #FW,D1	0A010000	ERROR: Immediate data exceeds 8 bits
+EORI.B #FW,A2		ERROR: Invalid addressing mode
+EORI.B D1,#FW		ERROR: Invalid addressing mode
+EORI.B #$12,#FW		ERROR: Invalid addressing mode
+EORI.B #UNDEF,D1	0A0100F9	ERROR: Undefined symbol
+EORI.B #UNDEF,A2		ERROR: Invalid addressing mode
+EORI.B D1,#UNDEF		ERROR: Invalid addressing mode
+EORI.B #$12,#UNDEF		ERROR: Invalid addressing mode
+EORI.B UNDEF,D1		ERROR: Invalid addressing mode
+EORI.B UNDEF,A2		ERROR: Invalid addressing mode
+EORI.B D1,UNDEF		ERROR: Invalid addressing mode
+EORI.B #$12,UNDEF	0A39001200001F00	ERROR: Undefined symbol
+EORI.B USP,D1		ERROR: Invalid addressing mode
+EORI.B USP,A2		ERROR: Invalid addressing mode
+EORI.B D1,USP		ERROR: Invalid addressing mode
+EORI.B #$12,USP		ERROR: Invalid addressing mode
+EORI.B D1,D2,D3		ERROR: Invalid syntax
+EORI.W		ERROR: Invalid syntax
+EORI.W D1		ERROR: Comma expected
+EORI.W A2		ERROR: Comma expected
+EORI.W SP		ERROR: Comma expected
+EORI.W (A3)		ERROR: Comma expected
+EORI.W (A4)+		ERROR: Comma expected
+EORI.W -(A5)		ERROR: Comma expected
+EORI.W $10(A6)		ERROR: Comma expected
+EORI.W -2(A0)		ERROR: Comma expected
+EORI.W $10(A6,D7.W)		ERROR: Comma expected
+EORI.W $12(A0,A1.L)		ERROR: Comma expected
+EORI.W (A2,D3)		ERROR: Comma expected
+EORI.W $1234		ERROR: Comma expected
+EORI.W $12345678		ERROR: Comma expected
+EORI.W $1234.L		ERROR: Comma expected
+EORI.W $1234.W		ERROR: Comma expected
+EORI.W $8000		ERROR: Comma expected
+EORI.W BK		ERROR: Comma expected
+EORI.W FW		ERROR: Comma expected
+EORI.W *+$10(PC)		ERROR: Comma expected
+EORI.W *(PC,D0.W)		ERROR: Comma expected
+EORI.W BK(PC)		ERROR: Comma expected
+EORI.W #1		ERROR: Comma expected
+EORI.W #8		ERROR: Comma expected
+EORI.W #9		ERROR: Comma expected
+EORI.W #0		ERROR: Comma expected
+EORI.W #-1		ERROR: Comma expected
+EORI.W #$80		ERROR: Comma expected
+EORI.W #$1234		ERROR: Comma expected
+EORI.W #$12345678		ERROR: Comma expected
+EORI.W #$12345678.L		ERROR: Comma expected
+EORI.W #BK		ERROR: Comma expected
+EORI.W #FW		ERROR: Comma expected
+EORI.W #UNDEF		ERROR: Comma expected
+EORI.W UNDEF		ERROR: Comma expected
+EORI.W SR		ERROR: Comma expected
+EORI.W CCR		ERROR: Comma expected
+EORI.W USP		ERROR: Comma expected
+EORI.W D1,D1		ERROR: Invalid addressing mode
+EORI.W D1,A2		ERROR: Invalid addressing mode
+EORI.W D1,(A3)		ERROR: Invalid addressing mode
+EORI.W D1,(A4)+		ERROR: Invalid addressing mode
+EORI.W D1,-(A5)		ERROR: Invalid addressing mode
+EORI.W D1,$10(A6)		ERROR: Invalid addressing mode
+EORI.W D1,$10(A6,D7.W)		ERROR: Invalid addressing mode
+EORI.W D1,$1234		ERROR: Invalid addressing mode
+EORI.W D1,$12345678		ERROR: Invalid addressing mode
+EORI.W D1,FW		ERROR: Invalid addressing mode
+EORI.W D1,*+$10(PC)		ERROR: Invalid addressing mode
+EORI.W D1,#1		ERROR: Invalid addressing mode
+EORI.W D1,#$80		ERROR: Invalid addressing mode
+EORI.W D1,#$1234		ERROR: Invalid addressing mode
+EORI.W D1,#$12345678		ERROR: Invalid addressing mode
+EORI.W D1,SR		ERROR: Invalid addressing mode
+EORI.W D1,CCR		ERROR: Invalid addressing mode
+EORI.W D1,USP		ERROR: Invalid addressing mode
+EORI.W A2,D1		ERROR: Invalid addressing mode
+EORI.W A2,A2		ERROR: Invalid addressing mode
+EORI.W A2,(A3)		ERROR: Invalid addressing mode
+EORI.W A2,(A4)+		ERROR: Invalid addressing mode
+EORI.W A2,-(A5)		ERROR: Invalid addressing mode
+EORI.W A2,$10(A6)		ERROR: Invalid addressing mode
+EORI.W A2,$10(A6,D7.W)		ERROR: Invalid addressing mode
+EORI.W A2,$1234		ERROR: Invalid addressing mode
+EORI.W A2,$12345678		ERROR: Invalid addressing mode
+EORI.W A2,FW		ERROR: Invalid addressing mode
+EORI.W A2,*+$10(PC)		ERROR: Invalid addressing mode
+EORI.W A2,#1		ERROR: Invalid addressing mode
+EORI.W A2,#$80		ERROR: Invalid addressing mode
+EORI.W A2,#$1234		ERROR: Invalid addressing mode
+EORI.W A2,#$12345678		ERROR: Invalid addressing mode
+EORI.W A2,SR		ERROR: Invalid addressing mode
+EORI.W A2,CCR		ERROR: Invalid addressing mode
+EORI.W A2,USP		ERROR: Invalid addressing mode
+EORI.W (A3),D1		ERROR: Invalid addressing mode
+EORI.W (A3),A2		ERROR: Invalid addressing mode
+EORI.W (A3),(A3)		ERROR: Invalid addressing mode
+EORI.W (A3),(A4)+		ERROR: Invalid addressing mode
+EORI.W (A3),-(A5)		ERROR: Invalid addressing mode
+EORI.W (A3),$10(A6)		ERROR: Invalid addressing mode
+EORI.W (A3),$10(A6,D7.W)		ERROR: Invalid addressing mode
+EORI.W (A3),$1234		ERROR: Invalid addressing mode
+EORI.W (A3),$12345678		ERROR: Invalid addressing mode
+EORI.W (A3),FW		ERROR: Invalid addressing mode
+EORI.W (A3),*+$10(PC)		ERROR: Invalid addressing mode
+EORI.W (A3),#1		ERROR: Invalid addressing mode
+EORI.W (A3),#$80		ERROR: Invalid addressing mode
+EORI.W (A3),#$1234		ERROR: Invalid addressing mode
+EORI.W (A3),#$12345678		ERROR: Invalid addressing mode
+EORI.W (A3),SR		ERROR: Invalid addressing mode
+EORI.W (A3),CCR		ERROR: Invalid addressing mode
+EORI.W (A3),USP		ERROR: Invalid addressing mode
+EORI.W (A4)+,D1		ERROR: Invalid addressing mode
+EORI.W (A4)+,A2		ERROR: Invalid addressing mode
+EORI.W (A4)+,(A3)		ERROR: Invalid addressing mode
+EORI.W (A4)+,(A4)+		ERROR: Invalid addressing mode
+EORI.W (A4)+,-(A5)		ERROR: Invalid addressing mode
+EORI.W (A4)+,$10(A6)		ERROR: Invalid addressing mode
+EORI.W (A4)+,$10(A6,D7.W)		ERROR: Invalid addressing mode
+EORI.W (A4)+,$1234		ERROR: Invalid addressing mode
+EORI.W (A4)+,$12345678		ERROR: Invalid addressing mode
+EORI.W (A4)+,FW		ERROR: Invalid addressing mode
+EORI.W (A4)+,*+$10(PC)		ERROR: Invalid addressing mode
+EORI.W (A4)+,#1		ERROR: Invalid addressing mode
+EORI.W (A4)+,#$80		ERROR: Invalid addressing mode
+EORI.W (A4)+,#$1234		ERROR: Invalid addressing mode
+EORI.W (A4)+,#$12345678		ERROR: Invalid addressing mode
+EORI.W (A4)+,SR		ERROR: Invalid addressing mode
+EORI.W (A4)+,CCR		ERROR: Invalid addressing mode
+EORI.W (A4)+,USP		ERROR: Invalid addressing mode
+EORI.W -(A5),D1		ERROR: Invalid addressing mode
+EORI.W -(A5),A2		ERROR: Invalid addressing mode
+EORI.W -(A5),(A3)		ERROR: Invalid addressing mode
+EORI.W -(A5),(A4)+		ERROR: Invalid addressing mode
+EORI.W -(A5),-(A5)		ERROR: Invalid addressing mode
+EORI.W -(A5),$10(A6)		ERROR: Invalid addressing mode
+EORI.W -(A5),$10(A6,D7.W)		ERROR: Invalid addressing mode
+EORI.W -(A5),$1234		ERROR: Invalid addressing mode
+EORI.W -(A5),$12345678		ERROR: Invalid addressing mode
+EORI.W -(A5),FW		ERROR: Invalid addressing mode
+EORI.W -(A5),*+$10(PC)		ERROR: Invalid addressing mode
+EORI.W -(A5),#1		ERROR: Invalid addressing mode
+EORI.W -(A5),#$80		ERROR: Invalid addressing mode
+EORI.W -(A5),#$1234		ERROR: Invalid addressing mode
+EORI.W -(A5),#$12345678		ERROR: Invalid addressing mode
+EORI.W -(A5),SR		ERROR: Invalid addressing mode
+EORI.W -(A5),CCR		ERROR: Invalid addressing mode
+EORI.W -(A5),USP		ERROR: Invalid addressing mode
+EORI.W $10(A6),D1		ERROR: Invalid addressing mode
+EORI.W $10(A6),A2		ERROR: Invalid addressing mode
+EORI.W $10(A6),(A3)		ERROR: Invalid addressing mode
+EORI.W $10(A6),(A4)+		ERROR: Invalid addressing mode
+EORI.W $10(A6),-(A5)		ERROR: Invalid addressing mode
+EORI.W $10(A6),$10(A6)		ERROR: Invalid addressing mode
+EORI.W $10(A6),$10(A6,D7.W)		ERROR: Invalid addressing mode
+EORI.W $10(A6),$1234		ERROR: Invalid addressing mode
+EORI.W $10(A6),$12345678		ERROR: Invalid addressing mode
+EORI.W $10(A6),FW		ERROR: Invalid addressing mode
+EORI.W $10(A6),*+$10(PC)		ERROR: Invalid addressing mode
+EORI.W $10(A6),#1		ERROR: Invalid addressing mode
+EORI.W $10(A6),#$80		ERROR: Invalid addressing mode
+EORI.W $10(A6),#$1234		ERROR: Invalid addressing mode
+EORI.W $10(A6),#$12345678		ERROR: Invalid addressing mode
+EORI.W $10(A6),SR		ERROR: Invalid addressing mode
+EORI.W $10(A6),CCR		ERROR: Invalid addressing mode
+EORI.W $10(A6),USP		ERROR: Invalid addressing mode
+EORI.W $10(A6,D7.W),D1		ERROR: Invalid addressing mode
+EORI.W $10(A6,D7.W),A2		ERROR: Invalid addressing mode
+EORI.W $10(A6,D7.W),(A3)		ERROR: Invalid addressing mode
+EORI.W $10(A6,D7.W),(A4)+		ERROR: Invalid addressing mode
+EORI.W $10(A6,D7.W),-(A5)		ERROR: Invalid addressing mode
+EORI.W $10(A6,D7.W),$10(A6)		ERROR: Invalid addressing mode
+EORI.W $10(A6,D7.W),$10(A6,D7.W)		ERROR: Invalid addressing mode
+EORI.W $10(A6,D7.W),$1234		ERROR: Invalid addressing mode
+EORI.W $10(A6,D7.W),$12345678		ERROR: Invalid addressing mode
+EORI.W $10(A6,D7.W),FW		ERROR: Invalid addressing mode
+EORI.W $10(A6,D7.W),*+$10(PC)		ERROR: Invalid addressing mode
+EORI.W $10(A6,D7.W),#1		ERROR: Invalid addressing mode
+EORI.W $10(A6,D7.W),#$80		ERROR: Invalid addressing mode
+EORI.W $10(A6,D7.W),#$1234		ERROR: Invalid addressing mode
+EORI.W $10(A6,D7.W),#$12345678		ERROR: Invalid addressing mode
+EORI.W $10(A6,D7.W),SR		ERROR: Invalid addressing mode
+EORI.W $10(A6,D7.W),CCR		ERROR: Invalid addressing mode
+EORI.W $10(A6,D7.W),USP		ERROR: Invalid addressing mode
+EORI.W $1234,D1		ERROR: Invalid addressing mode
+EORI.W $1234,A2		ERROR: Invalid addressing mode
+EORI.W $1234,(A3)		ERROR: Invalid addressing mode
+EORI.W $1234,(A4)+		ERROR: Invalid addressing mode
+EORI.W $1234,-(A5)		ERROR: Invalid addressing mode
+EORI.W $1234,$10(A6)		ERROR: Invalid addressing mode
+EORI.W $1234,$10(A6,D7.W)		ERROR: Invalid addressing mode
+EORI.W $1234,$1234		ERROR: Invalid addressing mode
+EORI.W $1234,$12345678		ERROR: Invalid addressing mode
+EORI.W $1234,FW		ERROR: Invalid addressing mode
+EORI.W $1234,*+$10(PC)		ERROR: Invalid addressing mode
+EORI.W $1234,#1		ERROR: Invalid addressing mode
+EORI.W $1234,#$80		ERROR: Invalid addressing mode
+EORI.W $1234,#$1234		ERROR: Invalid addressing mode
+EORI.W $1234,#$12345678		ERROR: Invalid addressing mode
+EORI.W $1234,SR		ERROR: Invalid addressing mode
+EORI.W $1234,CCR		ERROR: Invalid addressing mode
+EORI.W $1234,USP		ERROR: Invalid addressing mode
+EORI.W $12345678,D1		ERROR: Invalid addressing mode
+EORI.W $12345678,A2		ERROR: Invalid addressing mode
+EORI.W $12345678,(A3)		ERROR: Invalid addressing mode
+EORI.W $12345678,(A4)+		ERROR: Invalid addressing mode
+EORI.W $12345678,-(A5)		ERROR: Invalid addressing mode
+EORI.W $12345678,$10(A6)		ERROR: Invalid addressing mode
+EORI.W $12345678,$10(A6,D7.W)		ERROR: Invalid addressing mode
+EORI.W $12345678,$1234		ERROR: Invalid addressing mode
+EORI.W $12345678,$12345678		ERROR: Invalid addressing mode
+EORI.W $12345678,FW		ERROR: Invalid addressing mode
+EORI.W $12345678,*+$10(PC)		ERROR: Invalid addressing mode
+EORI.W $12345678,#1		ERROR: Invalid addressing mode
+EORI.W $12345678,#$80		ERROR: Invalid addressing mode
+EORI.W $12345678,#$1234		ERROR: Invalid addressing mode
+EORI.W $12345678,#$12345678		ERROR: Invalid addressing mode
+EORI.W $12345678,SR		ERROR: Invalid addressing mode
+EORI.W $12345678,CCR		ERROR: Invalid addressing mode
+EORI.W $12345678,USP		ERROR: Invalid addressing mode
+EORI.W FW,D1		ERROR: Invalid addressing mode
+EORI.W FW,A2		ERROR: Invalid addressing mode
+EORI.W FW,(A3)		ERROR: Invalid addressing mode
+EORI.W FW,(A4)+		ERROR: Invalid addressing mode
+EORI.W FW,-(A5)		ERROR: Invalid addressing mode
+EORI.W FW,$10(A6)		ERROR: Invalid addressing mode
+EORI.W FW,$10(A6,D7.W)		ERROR: Invalid addressing mode
+EORI.W FW,$1234		ERROR: Invalid addressing mode
+EORI.W FW,$12345678		ERROR: Invalid addressing mode
+EORI.W FW,FW		ERROR: Invalid addressing mode
+EORI.W FW,*+$10(PC)		ERROR: Invalid addressing mode
+EORI.W FW,#1		ERROR: Invalid addressing mode
+EORI.W FW,#$80		ERROR: Invalid addressing mode
+EORI.W FW,#$1234		ERROR: Invalid addressing mode
+EORI.W FW,#$12345678		ERROR: Invalid addressing mode
+EORI.W FW,SR		ERROR: Invalid addressing mode
+EORI.W FW,CCR		ERROR: Invalid addressing mode
+EORI.W FW,USP		ERROR: Invalid addressing mode
+EORI.W *+$10(PC),D1		ERROR: Invalid addressing mode
+EORI.W *+$10(PC),A2		ERROR: Invalid addressing mode
+EORI.W *+$10(PC),(A3)		ERROR: Invalid addressing mode
+EORI.W *+$10(PC),(A4)+		ERROR: Invalid addressing mode
+EORI.W *+$10(PC),-(A5)		ERROR: Invalid addressing mode
+EORI.W *+$10(PC),$10(A6)		ERROR: Invalid addressing mode
+EORI.W *+$10(PC),$10(A6,D7.W)		ERROR: Invalid addressing mode
+EORI.W *+$10(PC),$1234		ERROR: Invalid addressing mode
+EORI.W *+$10(PC),$12345678		ERROR: Invalid addressing mode
+EORI.W *+$10(PC),FW		ERROR: Invalid addressing mode
+EORI.W *+$10(PC),*+$10(PC)		ERROR: Invalid addressing mode
+EORI.W *+$10(PC),#1		ERROR: Invalid addressing mode
+EORI.W *+$10(PC),#$80		ERROR: Invalid addressing mode
+EORI.W *+$10(PC),#$1234		ERROR: Invalid addressing mode
+EORI.W *+$10(PC),#$12345678		ERROR: Invalid addressing mode
+EORI.W *+$10(PC),SR		ERROR: Invalid addressing mode
+EORI.W *+$10(PC),CCR		ERROR: Invalid addressing mode
+EORI.W *+$10(PC),USP		ERROR: Invalid addressing mode
+EORI.W #1,D1	0A410001	-
+EORI.W #1,A2		ERROR: Invalid addressing mode
+EORI.W #1,(A3)	0A530001	-
+EORI.W #1,(A4)+	0A5C0001	-
+EORI.W #1,-(A5)	0A650001	-
+EORI.W #1,$10(A6)	0A6E00010010	-
+EORI.W #1,$10(A6,D7.W)	0A7600017010	-
+EORI.W #1,$1234	0A7800011234	-
+EORI.W #1,$12345678	0A79000112345678	-
+EORI.W #1,FW	0A79000100001F00	-
+EORI.W #1,*+$10(PC)		ERROR: Invalid addressing mode
+EORI.W #1,#1		ERROR: Invalid addressing mode
+EORI.W #1,#$80		ERROR: Invalid addressing mode
+EORI.W #1,#$1234		ERROR: Invalid addressing mode
+EORI.W #1,#$12345678		ERROR: Invalid addressing mode
+EORI.W #1,SR	0A7C0001	-
+EORI.W #1,CCR	0A3C0001	ERROR: Invalid size code
+EORI.W #1,USP		ERROR: Invalid addressing mode
+EORI.W #$80,D1	0A410080	-
+EORI.W #$80,A2		ERROR: Invalid addressing mode
+EORI.W #$80,(A3)	0A530080	-
+EORI.W #$80,(A4)+	0A5C0080	-
+EORI.W #$80,-(A5)	0A650080	-
+EORI.W #$80,$10(A6)	0A6E00800010	-
+EORI.W #$80,$10(A6,D7.W)	0A7600807010	-
+EORI.W #$80,$1234	0A7800801234	-
+EORI.W #$80,$12345678	0A79008012345678	-
+EORI.W #$80,FW	0A79008000001F00	-
+EORI.W #$80,*+$10(PC)		ERROR: Invalid addressing mode
+EORI.W #$80,#1		ERROR: Invalid addressing mode
+EORI.W #$80,#$80		ERROR: Invalid addressing mode
+EORI.W #$80,#$1234		ERROR: Invalid addressing mode
+EORI.W #$80,#$12345678		ERROR: Invalid addressing mode
+EORI.W #$80,SR	0A7C0080	-
+EORI.W #$80,CCR	0A3C0080	ERROR: Invalid size code
+EORI.W #$80,USP		ERROR: Invalid addressing mode
+EORI.W #$1234,D1	0A411234	-
+EORI.W #$1234,A2		ERROR: Invalid addressing mode
+EORI.W #$1234,(A3)	0A531234	-
+EORI.W #$1234,(A4)+	0A5C1234	-
+EORI.W #$1234,-(A5)	0A651234	-
+EORI.W #$1234,$10(A6)	0A6E12340010	-
+EORI.W #$1234,$10(A6,D7.W)	0A7612347010	-
+EORI.W #$1234,$1234	0A7812341234	-
+EORI.W #$1234,$12345678	0A79123412345678	-
+EORI.W #$1234,FW	0A79123400001F00	-
+EORI.W #$1234,*+$10(PC)		ERROR: Invalid addressing mode
+EORI.W #$1234,#1		ERROR: Invalid addressing mode
+EORI.W #$1234,#$80		ERROR: Invalid addressing mode
+EORI.W #$1234,#$1234		ERROR: Invalid addressing mode
+EORI.W #$1234,#$12345678		ERROR: Invalid addressing mode
+EORI.W #$1234,SR	0A7C1234	-
+EORI.W #$1234,CCR	0A3C0034	ERROR: Invalid size code
+EORI.W #$1234,USP		ERROR: Invalid addressing mode
+EORI.W #$12345678,D1	0A415678	ERROR: Immediate data exceeds 16 bits
+EORI.W #$12345678,A2		ERROR: Invalid addressing mode
+EORI.W #$12345678,(A3)	0A535678	ERROR: Immediate data exceeds 16 bits
+EORI.W #$12345678,(A4)+	0A5C5678	ERROR: Immediate data exceeds 16 bits
+EORI.W #$12345678,-(A5)	0A655678	ERROR: Immediate data exceeds 16 bits
+EORI.W #$12345678,$10(A6)	0A6E56780010	ERROR: Immediate data exceeds 16 bits
+EORI.W #$12345678,$10(A6,D7.W)	0A7656787010	ERROR: Immediate data exceeds 16 bits
+EORI.W #$12345678,$1234	0A7856781234	ERROR: Immediate data exceeds 16 bits
+EORI.W #$12345678,$12345678	0A79567812345678	ERROR: Immediate data exceeds 16 bits
+EORI.W #$12345678,FW	0A79567800001F00	ERROR: Immediate data exceeds 16 bits
+EORI.W #$12345678,*+$10(PC)		ERROR: Invalid addressing mode
+EORI.W #$12345678,#1		ERROR: Invalid addressing mode
+EORI.W #$12345678,#$80		ERROR: Invalid addressing mode
+EORI.W #$12345678,#$1234		ERROR: Invalid addressing mode
+EORI.W #$12345678,#$12345678		ERROR: Invalid addressing mode
+EORI.W #$12345678,SR	0A7C5678	ERROR: Immediate data exceeds 16 bits
+EORI.W #$12345678,CCR	0A3C0078	ERROR: Invalid size code
+EORI.W #$12345678,USP		ERROR: Invalid addressing mode
+EORI.W SR,D1		ERROR: Invalid addressing mode
+EORI.W SR,A2		ERROR: Invalid addressing mode
+EORI.W SR,(A3)		ERROR: Invalid addressing mode
+EORI.W SR,(A4)+		ERROR: Invalid addressing mode
+EORI.W SR,-(A5)		ERROR: Invalid addressing mode
+EORI.W SR,$10(A6)		ERROR: Invalid addressing mode
+EORI.W SR,$10(A6,D7.W)		ERROR: Invalid addressing mode
+EORI.W SR,$1234		ERROR: Invalid addressing mode
+EORI.W SR,$12345678		ERROR: Invalid addressing mode
+EORI.W SR,FW		ERROR: Invalid addressing mode
+EORI.W SR,*+$10(PC)		ERROR: Invalid addressing mode
+EORI.W SR,#1		ERROR: Invalid addressing mode
+EORI.W SR,#$80		ERROR: Invalid addressing mode
+EORI.W SR,#$1234		ERROR: Invalid addressing mode
+EORI.W SR,#$12345678		ERROR: Invalid addressing mode
+EORI.W SR,SR		ERROR: Invalid addressing mode
+EORI.W SR,CCR		ERROR: Invalid addressing mode
+EORI.W SR,USP		ERROR: Invalid addressing mode
+EORI.W CCR,D1		ERROR: Invalid addressing mode
+EORI.W CCR,A2		ERROR: Invalid addressing mode
+EORI.W CCR,(A3)		ERROR: Invalid addressing mode
+EORI.W CCR,(A4)+		ERROR: Invalid addressing mode
+EORI.W CCR,-(A5)		ERROR: Invalid addressing mode
+EORI.W CCR,$10(A6)		ERROR: Invalid addressing mode
+EORI.W CCR,$10(A6,D7.W)		ERROR: Invalid addressing mode
+EORI.W CCR,$1234		ERROR: Invalid addressing mode
+EORI.W CCR,$12345678		ERROR: Invalid addressing mode
+EORI.W CCR,FW		ERROR: Invalid addressing mode
+EORI.W CCR,*+$10(PC)		ERROR: Invalid addressing mode
+EORI.W CCR,#1		ERROR: Invalid addressing mode
+EORI.W CCR,#$80		ERROR: Invalid addressing mode
+EORI.W CCR,#$1234		ERROR: Invalid addressing mode
+EORI.W CCR,#$12345678		ERROR: Invalid addressing mode
+EORI.W CCR,SR		ERROR: Invalid addressing mode
+EORI.W CCR,CCR		ERROR: Invalid addressing mode
+EORI.W CCR,USP		ERROR: Invalid addressing mode
+EORI.W USP,D1		ERROR: Invalid addressing mode
+EORI.W USP,A2		ERROR: Invalid addressing mode
+EORI.W USP,(A3)		ERROR: Invalid addressing mode
+EORI.W USP,(A4)+		ERROR: Invalid addressing mode
+EORI.W USP,-(A5)		ERROR: Invalid addressing mode
+EORI.W USP,$10(A6)		ERROR: Invalid addressing mode
+EORI.W USP,$10(A6,D7.W)		ERROR: Invalid addressing mode
+EORI.W USP,$1234		ERROR: Invalid addressing mode
+EORI.W USP,$12345678		ERROR: Invalid addressing mode
+EORI.W USP,FW		ERROR: Invalid addressing mode
+EORI.W USP,*+$10(PC)		ERROR: Invalid addressing mode
+EORI.W USP,#1		ERROR: Invalid addressing mode
+EORI.W USP,#$80		ERROR: Invalid addressing mode
+EORI.W USP,#$1234		ERROR: Invalid addressing mode
+EORI.W USP,#$12345678		ERROR: Invalid addressing mode
+EORI.W USP,SR		ERROR: Invalid addressing mode
+EORI.W USP,CCR		ERROR: Invalid addressing mode
+EORI.W USP,USP		ERROR: Invalid addressing mode
+EORI.W SP,D1		ERROR: Invalid addressing mode
+EORI.W SP,A2		ERROR: Invalid addressing mode
+EORI.W D1,SP		ERROR: Invalid addressing mode
+EORI.W #$12,SP		ERROR: Invalid addressing mode
+EORI.W -2(A0),D1		ERROR: Invalid addressing mode
+EORI.W -2(A0),A2		ERROR: Invalid addressing mode
+EORI.W D1,-2(A0)		ERROR: Invalid addressing mode
+EORI.W #$12,-2(A0)	0A680012FFFE	-
+EORI.W $12(A0,A1.L),D1		ERROR: Invalid addressing mode
+EORI.W $12(A0,A1.L),A2		ERROR: Invalid addressing mode
+EORI.W D1,$12(A0,A1.L)		ERROR: Invalid addressing mode
+EORI.W #$12,$12(A0,A1.L)	0A7000129812	-
+EORI.W (A2,D3),D1		ERROR: Invalid addressing mode
+EORI.W (A2,D3),A2		ERROR: Invalid addressing mode
+EORI.W D1,(A2,D3)		ERROR: Invalid addressing mode
+EORI.W #$12,(A2,D3)	0A7200123000	-
+EORI.W $1234.L,D1		ERROR: Invalid addressing mode
+EORI.W $1234.L,A2		ERROR: Invalid addressing mode
+EORI.W D1,$1234.L		ERROR: Invalid addressing mode
+EORI.W #$12,$1234.L	0A79001200001234	-
+EORI.W $1234.W,D1		ERROR: Invalid addressing mode
+EORI.W $1234.W,A2		ERROR: Invalid addressing mode
+EORI.W D1,$1234.W		ERROR: Invalid addressing mode
+EORI.W #$12,$1234.W	0A7800121234	WARNING: Forcing SHORT addressing disables range checking of extension word
+EORI.W $8000,D1		ERROR: Invalid addressing mode
+EORI.W $8000,A2		ERROR: Invalid addressing mode
+EORI.W D1,$8000		ERROR: Invalid addressing mode
+EORI.W #$12,$8000	0A79001200008000	-
+EORI.W BK,D1		ERROR: Invalid addressing mode
+EORI.W BK,A2		ERROR: Invalid addressing mode
+EORI.W D1,BK		ERROR: Invalid addressing mode
+EORI.W #$12,BK	0A7800121F00	-
+EORI.W *(PC,D0.W),D1		ERROR: Invalid addressing mode
+EORI.W *(PC,D0.W),A2		ERROR: Invalid addressing mode
+EORI.W D1,*(PC,D0.W)		ERROR: Invalid addressing mode
+EORI.W #$12,*(PC,D0.W)		ERROR: Invalid addressing mode
+EORI.W BK(PC),D1		ERROR: Invalid addressing mode
+EORI.W BK(PC),A2		ERROR: Invalid addressing mode
+EORI.W D1,BK(PC)		ERROR: Invalid addressing mode
+EORI.W #$12,BK(PC)		ERROR: Invalid addressing mode
+EORI.W #8,D1	0A410008	-
+EORI.W #8,A2		ERROR: Invalid addressing mode
+EORI.W D1,#8		ERROR: Invalid addressing mode
+EORI.W #$12,#8		ERROR: Invalid addressing mode
+EORI.W #9,D1	0A410009	-
+EORI.W #9,A2		ERROR: Invalid addressing mode
+EORI.W D1,#9		ERROR: Invalid addressing mode
+EORI.W #$12,#9		ERROR: Invalid addressing mode
+EORI.W #0,D1	0A410000	-
+EORI.W #0,A2		ERROR: Invalid addressing mode
+EORI.W D1,#0		ERROR: Invalid addressing mode
+EORI.W #$12,#0		ERROR: Invalid addressing mode
+EORI.W #-1,D1	0A41FFFF	-
+EORI.W #-1,A2		ERROR: Invalid addressing mode
+EORI.W D1,#-1		ERROR: Invalid addressing mode
+EORI.W #$12,#-1		ERROR: Invalid addressing mode
+EORI.W #$12345678.L,D1	0A415678	ERROR: Immediate data exceeds 16 bits
+EORI.W #$12345678.L,A2		ERROR: Invalid addressing mode
+EORI.W D1,#$12345678.L		ERROR: Invalid addressing mode
+EORI.W #$12,#$12345678.L		ERROR: Invalid addressing mode
+EORI.W #BK,D1	0A411F00	-
+EORI.W #BK,A2		ERROR: Invalid addressing mode
+EORI.W D1,#BK		ERROR: Invalid addressing mode
+EORI.W #$12,#BK		ERROR: Invalid addressing mode
+EORI.W #FW,D1	0A411F00	-
+EORI.W #FW,A2		ERROR: Invalid addressing mode
+EORI.W D1,#FW		ERROR: Invalid addressing mode
+EORI.W #$12,#FW		ERROR: Invalid addressing mode
+EORI.W #UNDEF,D1	0A4155F9	ERROR: Undefined symbol
+EORI.W #UNDEF,A2		ERROR: Invalid addressing mode
+EORI.W D1,#UNDEF		ERROR: Invalid addressing mode
+EORI.W #$12,#UNDEF		ERROR: Invalid addressing mode
+EORI.W UNDEF,D1		ERROR: Invalid addressing mode
+EORI.W UNDEF,A2		ERROR: Invalid addressing mode
+EORI.W D1,UNDEF		ERROR: Invalid addressing mode
+EORI.W #$12,UNDEF	0A79001200001F00	ERROR: Undefined symbol
+EORI.W D1,D2,D3		ERROR: Invalid syntax
+EORI.L		ERROR: Invalid syntax
+EORI.L D1		ERROR: Comma expected
+EORI.L A2		ERROR: Comma expected
+EORI.L SP		ERROR: Comma expected
+EORI.L (A3)		ERROR: Comma expected
+EORI.L (A4)+		ERROR: Comma expected
+EORI.L -(A5)		ERROR: Comma expected
+EORI.L $10(A6)		ERROR: Comma expected
+EORI.L -2(A0)		ERROR: Comma expected
+EORI.L $10(A6,D7.W)		ERROR: Comma expected
+EORI.L $12(A0,A1.L)		ERROR: Comma expected
+EORI.L (A2,D3)		ERROR: Comma expected
+EORI.L $1234		ERROR: Comma expected
+EORI.L $12345678		ERROR: Comma expected
+EORI.L $1234.L		ERROR: Comma expected
+EORI.L $1234.W		ERROR: Comma expected
+EORI.L $8000		ERROR: Comma expected
+EORI.L BK		ERROR: Comma expected
+EORI.L FW		ERROR: Comma expected
+EORI.L *+$10(PC)		ERROR: Comma expected
+EORI.L *(PC,D0.W)		ERROR: Comma expected
+EORI.L BK(PC)		ERROR: Comma expected
+EORI.L #1		ERROR: Comma expected
+EORI.L #8		ERROR: Comma expected
+EORI.L #9		ERROR: Comma expected
+EORI.L #0		ERROR: Comma expected
+EORI.L #-1		ERROR: Comma expected
+EORI.L #$80		ERROR: Comma expected
+EORI.L #$1234		ERROR: Comma expected
+EORI.L #$12345678		ERROR: Comma expected
+EORI.L #$12345678.L		ERROR: Comma expected
+EORI.L #BK		ERROR: Comma expected
+EORI.L #FW		ERROR: Comma expected
+EORI.L #UNDEF		ERROR: Comma expected
+EORI.L UNDEF		ERROR: Comma expected
+EORI.L SR		ERROR: Comma expected
+EORI.L CCR		ERROR: Comma expected
+EORI.L USP		ERROR: Comma expected
+EORI.L D1,D1		ERROR: Invalid addressing mode
+EORI.L D1,A2		ERROR: Invalid addressing mode
+EORI.L D1,(A3)		ERROR: Invalid addressing mode
+EORI.L D1,$10(A6)		ERROR: Invalid addressing mode
+EORI.L D1,$1234		ERROR: Invalid addressing mode
+EORI.L D1,FW		ERROR: Invalid addressing mode
+EORI.L D1,#1		ERROR: Invalid addressing mode
+EORI.L D1,#$1234		ERROR: Invalid addressing mode
+EORI.L D1,CCR		ERROR: Invalid addressing mode
+EORI.L D1,SR		ERROR: Invalid addressing mode
+EORI.L A2,D1		ERROR: Invalid addressing mode
+EORI.L A2,A2		ERROR: Invalid addressing mode
+EORI.L A2,(A3)		ERROR: Invalid addressing mode
+EORI.L A2,$10(A6)		ERROR: Invalid addressing mode
+EORI.L A2,$1234		ERROR: Invalid addressing mode
+EORI.L A2,FW		ERROR: Invalid addressing mode
+EORI.L A2,#1		ERROR: Invalid addressing mode
+EORI.L A2,#$1234		ERROR: Invalid addressing mode
+EORI.L A2,CCR		ERROR: Invalid addressing mode
+EORI.L A2,SR		ERROR: Invalid addressing mode
+EORI.L (A3),D1		ERROR: Invalid addressing mode
+EORI.L (A3),A2		ERROR: Invalid addressing mode
+EORI.L (A3),(A3)		ERROR: Invalid addressing mode
+EORI.L (A3),$10(A6)		ERROR: Invalid addressing mode
+EORI.L (A3),$1234		ERROR: Invalid addressing mode
+EORI.L (A3),FW		ERROR: Invalid addressing mode
+EORI.L (A3),#1		ERROR: Invalid addressing mode
+EORI.L (A3),#$1234		ERROR: Invalid addressing mode
+EORI.L (A3),CCR		ERROR: Invalid addressing mode
+EORI.L (A3),SR		ERROR: Invalid addressing mode
+EORI.L $10(A6),D1		ERROR: Invalid addressing mode
+EORI.L $10(A6),A2		ERROR: Invalid addressing mode
+EORI.L $10(A6),(A3)		ERROR: Invalid addressing mode
+EORI.L $10(A6),$10(A6)		ERROR: Invalid addressing mode
+EORI.L $10(A6),$1234		ERROR: Invalid addressing mode
+EORI.L $10(A6),FW		ERROR: Invalid addressing mode
+EORI.L $10(A6),#1		ERROR: Invalid addressing mode
+EORI.L $10(A6),#$1234		ERROR: Invalid addressing mode
+EORI.L $10(A6),CCR		ERROR: Invalid addressing mode
+EORI.L $10(A6),SR		ERROR: Invalid addressing mode
+EORI.L $1234,D1		ERROR: Invalid addressing mode
+EORI.L $1234,A2		ERROR: Invalid addressing mode
+EORI.L $1234,(A3)		ERROR: Invalid addressing mode
+EORI.L $1234,$10(A6)		ERROR: Invalid addressing mode
+EORI.L $1234,$1234		ERROR: Invalid addressing mode
+EORI.L $1234,FW		ERROR: Invalid addressing mode
+EORI.L $1234,#1		ERROR: Invalid addressing mode
+EORI.L $1234,#$1234		ERROR: Invalid addressing mode
+EORI.L $1234,CCR		ERROR: Invalid addressing mode
+EORI.L $1234,SR		ERROR: Invalid addressing mode
+EORI.L FW,D1		ERROR: Invalid addressing mode
+EORI.L FW,A2		ERROR: Invalid addressing mode
+EORI.L FW,(A3)		ERROR: Invalid addressing mode
+EORI.L FW,$10(A6)		ERROR: Invalid addressing mode
+EORI.L FW,$1234		ERROR: Invalid addressing mode
+EORI.L FW,FW		ERROR: Invalid addressing mode
+EORI.L FW,#1		ERROR: Invalid addressing mode
+EORI.L FW,#$1234		ERROR: Invalid addressing mode
+EORI.L FW,CCR		ERROR: Invalid addressing mode
+EORI.L FW,SR		ERROR: Invalid addressing mode
+EORI.L #1,D1	0A8100000001	-
+EORI.L #1,A2		ERROR: Invalid addressing mode
+EORI.L #1,(A3)	0A9300000001	-
+EORI.L #1,$10(A6)	0AAE000000010010	-
+EORI.L #1,$1234	0AB8000000011234	-
+EORI.L #1,FW	0AB90000000100001F00	-
+EORI.L #1,#1		ERROR: Invalid addressing mode
+EORI.L #1,#$1234		ERROR: Invalid addressing mode
+EORI.L #1,CCR	0A3C0001	ERROR: Invalid size code
+EORI.L #1,SR	0A7C0001	ERROR: Invalid size code
+EORI.L #$1234,D1	0A8100001234	-
+EORI.L #$1234,A2		ERROR: Invalid addressing mode
+EORI.L #$1234,(A3)	0A9300001234	-
+EORI.L #$1234,$10(A6)	0AAE000012340010	-
+EORI.L #$1234,$1234	0AB8000012341234	-
+EORI.L #$1234,FW	0AB90000123400001F00	-
+EORI.L #$1234,#1		ERROR: Invalid addressing mode
+EORI.L #$1234,#$1234		ERROR: Invalid addressing mode
+EORI.L #$1234,CCR	0A3C0034	ERROR: Invalid size code
+EORI.L #$1234,SR	0A7C1234	ERROR: Invalid size code
+EORI.L CCR,D1		ERROR: Invalid addressing mode
+EORI.L CCR,A2		ERROR: Invalid addressing mode
+EORI.L CCR,(A3)		ERROR: Invalid addressing mode
+EORI.L CCR,$10(A6)		ERROR: Invalid addressing mode
+EORI.L CCR,$1234		ERROR: Invalid addressing mode
+EORI.L CCR,FW		ERROR: Invalid addressing mode
+EORI.L CCR,#1		ERROR: Invalid addressing mode
+EORI.L CCR,#$1234		ERROR: Invalid addressing mode
+EORI.L CCR,CCR		ERROR: Invalid addressing mode
+EORI.L CCR,SR		ERROR: Invalid addressing mode
+EORI.L SR,D1		ERROR: Invalid addressing mode
+EORI.L SR,A2		ERROR: Invalid addressing mode
+EORI.L SR,(A3)		ERROR: Invalid addressing mode
+EORI.L SR,$10(A6)		ERROR: Invalid addressing mode
+EORI.L SR,$1234		ERROR: Invalid addressing mode
+EORI.L SR,FW		ERROR: Invalid addressing mode
+EORI.L SR,#1		ERROR: Invalid addressing mode
+EORI.L SR,#$1234		ERROR: Invalid addressing mode
+EORI.L SR,CCR		ERROR: Invalid addressing mode
+EORI.L SR,SR		ERROR: Invalid addressing mode
+EORI.L SP,D1		ERROR: Invalid addressing mode
+EORI.L SP,A2		ERROR: Invalid addressing mode
+EORI.L D1,SP		ERROR: Invalid addressing mode
+EORI.L #$12,SP		ERROR: Invalid addressing mode
+EORI.L (A4)+,D1		ERROR: Invalid addressing mode
+EORI.L (A4)+,A2		ERROR: Invalid addressing mode
+EORI.L D1,(A4)+		ERROR: Invalid addressing mode
+EORI.L #$12,(A4)+	0A9C00000012	-
+EORI.L -(A5),D1		ERROR: Invalid addressing mode
+EORI.L -(A5),A2		ERROR: Invalid addressing mode
+EORI.L D1,-(A5)		ERROR: Invalid addressing mode
+EORI.L #$12,-(A5)	0AA500000012	-
+EORI.L -2(A0),D1		ERROR: Invalid addressing mode
+EORI.L -2(A0),A2		ERROR: Invalid addressing mode
+EORI.L D1,-2(A0)		ERROR: Invalid addressing mode
+EORI.L #$12,-2(A0)	0AA800000012FFFE	-
+EORI.L $10(A6,D7.W),D1		ERROR: Invalid addressing mode
+EORI.L $10(A6,D7.W),A2		ERROR: Invalid addressing mode
+EORI.L D1,$10(A6,D7.W)		ERROR: Invalid addressing mode
+EORI.L #$12,$10(A6,D7.W)	0AB6000000127010	-
+EORI.L $12(A0,A1.L),D1		ERROR: Invalid addressing mode
+EORI.L $12(A0,A1.L),A2		ERROR: Invalid addressing mode
+EORI.L D1,$12(A0,A1.L)		ERROR: Invalid addressing mode
+EORI.L #$12,$12(A0,A1.L)	0AB0000000129812	-
+EORI.L (A2,D3),D1		ERROR: Invalid addressing mode
+EORI.L (A2,D3),A2		ERROR: Invalid addressing mode
+EORI.L D1,(A2,D3)		ERROR: Invalid addressing mode
+EORI.L #$12,(A2,D3)	0AB2000000123000	-
+EORI.L $12345678,D1		ERROR: Invalid addressing mode
+EORI.L $12345678,A2		ERROR: Invalid addressing mode
+EORI.L D1,$12345678		ERROR: Invalid addressing mode
+EORI.L #$12,$12345678	0AB90000001212345678	-
+EORI.L $1234.L,D1		ERROR: Invalid addressing mode
+EORI.L $1234.L,A2		ERROR: Invalid addressing mode
+EORI.L D1,$1234.L		ERROR: Invalid addressing mode
+EORI.L #$12,$1234.L	0AB90000001200001234	-
+EORI.L $1234.W,D1		ERROR: Invalid addressing mode
+EORI.L $1234.W,A2		ERROR: Invalid addressing mode
+EORI.L D1,$1234.W		ERROR: Invalid addressing mode
+EORI.L #$12,$1234.W	0AB8000000121234	WARNING: Forcing SHORT addressing disables range checking of extension word
+EORI.L $8000,D1		ERROR: Invalid addressing mode
+EORI.L $8000,A2		ERROR: Invalid addressing mode
+EORI.L D1,$8000		ERROR: Invalid addressing mode
+EORI.L #$12,$8000	0AB90000001200008000	-
+EORI.L BK,D1		ERROR: Invalid addressing mode
+EORI.L BK,A2		ERROR: Invalid addressing mode
+EORI.L D1,BK		ERROR: Invalid addressing mode
+EORI.L #$12,BK	0AB8000000121F00	-
+EORI.L *+$10(PC),D1		ERROR: Invalid addressing mode
+EORI.L *+$10(PC),A2		ERROR: Invalid addressing mode
+EORI.L D1,*+$10(PC)		ERROR: Invalid addressing mode
+EORI.L #$12,*+$10(PC)		ERROR: Invalid addressing mode
+EORI.L *(PC,D0.W),D1		ERROR: Invalid addressing mode
+EORI.L *(PC,D0.W),A2		ERROR: Invalid addressing mode
+EORI.L D1,*(PC,D0.W)		ERROR: Invalid addressing mode
+EORI.L #$12,*(PC,D0.W)		ERROR: Invalid addressing mode
+EORI.L BK(PC),D1		ERROR: Invalid addressing mode
+EORI.L BK(PC),A2		ERROR: Invalid addressing mode
+EORI.L D1,BK(PC)		ERROR: Invalid addressing mode
+EORI.L #$12,BK(PC)		ERROR: Invalid addressing mode
+EORI.L #8,D1	0A8100000008	-
+EORI.L #8,A2		ERROR: Invalid addressing mode
+EORI.L D1,#8		ERROR: Invalid addressing mode
+EORI.L #$12,#8		ERROR: Invalid addressing mode
+EORI.L #9,D1	0A8100000009	-
+EORI.L #9,A2		ERROR: Invalid addressing mode
+EORI.L D1,#9		ERROR: Invalid addressing mode
+EORI.L #$12,#9		ERROR: Invalid addressing mode
+EORI.L #0,D1	0A8100000000	-
+EORI.L #0,A2		ERROR: Invalid addressing mode
+EORI.L D1,#0		ERROR: Invalid addressing mode
+EORI.L #$12,#0		ERROR: Invalid addressing mode
+EORI.L #-1,D1	0A81FFFFFFFF	-
+EORI.L #-1,A2		ERROR: Invalid addressing mode
+EORI.L D1,#-1		ERROR: Invalid addressing mode
+EORI.L #$12,#-1		ERROR: Invalid addressing mode
+EORI.L #$80,D1	0A8100000080	-
+EORI.L #$80,A2		ERROR: Invalid addressing mode
+EORI.L D1,#$80		ERROR: Invalid addressing mode
+EORI.L #$12,#$80		ERROR: Invalid addressing mode
+EORI.L #$12345678,D1	0A8112345678	-
+EORI.L #$12345678,A2		ERROR: Invalid addressing mode
+EORI.L D1,#$12345678		ERROR: Invalid addressing mode
+EORI.L #$12,#$12345678		ERROR: Invalid addressing mode
+EORI.L #$12345678.L,D1	0A8112345678	-
+EORI.L #$12345678.L,A2		ERROR: Invalid addressing mode
+EORI.L D1,#$12345678.L		ERROR: Invalid addressing mode
+EORI.L #$12,#$12345678.L		ERROR: Invalid addressing mode
+EORI.L #BK,D1	0A8100001F00	-
+EORI.L #BK,A2		ERROR: Invalid addressing mode
+EORI.L D1,#BK		ERROR: Invalid addressing mode
+EORI.L #$12,#BK		ERROR: Invalid addressing mode
+EORI.L #FW,D1	0A8100001F00	-
+EORI.L #FW,A2		ERROR: Invalid addressing mode
+EORI.L D1,#FW		ERROR: Invalid addressing mode
+EORI.L #$12,#FW		ERROR: Invalid addressing mode
+EORI.L #UNDEF,D1	0A81000055F9	ERROR: Undefined symbol
+EORI.L #UNDEF,A2		ERROR: Invalid addressing mode
+EORI.L D1,#UNDEF		ERROR: Invalid addressing mode
+EORI.L #$12,#UNDEF		ERROR: Invalid addressing mode
+EORI.L UNDEF,D1		ERROR: Invalid addressing mode
+EORI.L UNDEF,A2		ERROR: Invalid addressing mode
+EORI.L D1,UNDEF		ERROR: Invalid addressing mode
+EORI.L #$12,UNDEF	0AB90000001200001F00	ERROR: Undefined symbol
+EORI.L USP,D1		ERROR: Invalid addressing mode
+EORI.L USP,A2		ERROR: Invalid addressing mode
+EORI.L D1,USP		ERROR: Invalid addressing mode
+EORI.L #$12,USP		ERROR: Invalid addressing mode
+EORI.L D1,D2,D3		ERROR: Invalid syntax
+EORI.S		ERROR: Invalid syntax
+EORI.S D1		ERROR: Comma expected
+EORI.S A2		ERROR: Comma expected
+EORI.S SP		ERROR: Comma expected
+EORI.S (A3)		ERROR: Comma expected
+EORI.S (A4)+		ERROR: Comma expected
+EORI.S -(A5)		ERROR: Comma expected
+EORI.S $10(A6)		ERROR: Comma expected
+EORI.S -2(A0)		ERROR: Comma expected
+EORI.S $10(A6,D7.W)		ERROR: Comma expected
+EORI.S $12(A0,A1.L)		ERROR: Comma expected
+EORI.S (A2,D3)		ERROR: Comma expected
+EORI.S $1234		ERROR: Comma expected
+EORI.S $12345678		ERROR: Comma expected
+EORI.S $1234.L		ERROR: Comma expected
+EORI.S $1234.W		ERROR: Comma expected
+EORI.S $8000		ERROR: Comma expected
+EORI.S BK		ERROR: Comma expected
+EORI.S FW		ERROR: Comma expected
+EORI.S *+$10(PC)		ERROR: Comma expected
+EORI.S *(PC,D0.W)		ERROR: Comma expected
+EORI.S BK(PC)		ERROR: Comma expected
+EORI.S #1		ERROR: Comma expected
+EORI.S #8		ERROR: Comma expected
+EORI.S #9		ERROR: Comma expected
+EORI.S #0		ERROR: Comma expected
+EORI.S #-1		ERROR: Comma expected
+EORI.S #$80		ERROR: Comma expected
+EORI.S #$1234		ERROR: Comma expected
+EORI.S #$12345678		ERROR: Comma expected
+EORI.S #$12345678.L		ERROR: Comma expected
+EORI.S #BK		ERROR: Comma expected
+EORI.S #FW		ERROR: Comma expected
+EORI.S #UNDEF		ERROR: Comma expected
+EORI.S UNDEF		ERROR: Comma expected
+EORI.S SR		ERROR: Comma expected
+EORI.S CCR		ERROR: Comma expected
+EORI.S USP		ERROR: Comma expected
+EORI.S D1,D1		ERROR: Invalid addressing mode
+EORI.S D1,A2		ERROR: Invalid addressing mode
+EORI.S D1,(A3)		ERROR: Invalid addressing mode
+EORI.S D1,$10(A6)		ERROR: Invalid addressing mode
+EORI.S D1,$1234		ERROR: Invalid addressing mode
+EORI.S D1,FW		ERROR: Invalid addressing mode
+EORI.S D1,#1		ERROR: Invalid addressing mode
+EORI.S D1,#$1234		ERROR: Invalid addressing mode
+EORI.S D1,CCR		ERROR: Invalid addressing mode
+EORI.S D1,SR		ERROR: Invalid addressing mode
+EORI.S A2,D1		ERROR: Invalid addressing mode
+EORI.S A2,A2		ERROR: Invalid addressing mode
+EORI.S A2,(A3)		ERROR: Invalid addressing mode
+EORI.S A2,$10(A6)		ERROR: Invalid addressing mode
+EORI.S A2,$1234		ERROR: Invalid addressing mode
+EORI.S A2,FW		ERROR: Invalid addressing mode
+EORI.S A2,#1		ERROR: Invalid addressing mode
+EORI.S A2,#$1234		ERROR: Invalid addressing mode
+EORI.S A2,CCR		ERROR: Invalid addressing mode
+EORI.S A2,SR		ERROR: Invalid addressing mode
+EORI.S (A3),D1		ERROR: Invalid addressing mode
+EORI.S (A3),A2		ERROR: Invalid addressing mode
+EORI.S (A3),(A3)		ERROR: Invalid addressing mode
+EORI.S (A3),$10(A6)		ERROR: Invalid addressing mode
+EORI.S (A3),$1234		ERROR: Invalid addressing mode
+EORI.S (A3),FW		ERROR: Invalid addressing mode
+EORI.S (A3),#1		ERROR: Invalid addressing mode
+EORI.S (A3),#$1234		ERROR: Invalid addressing mode
+EORI.S (A3),CCR		ERROR: Invalid addressing mode
+EORI.S (A3),SR		ERROR: Invalid addressing mode
+EORI.S $10(A6),D1		ERROR: Invalid addressing mode
+EORI.S $10(A6),A2		ERROR: Invalid addressing mode
+EORI.S $10(A6),(A3)		ERROR: Invalid addressing mode
+EORI.S $10(A6),$10(A6)		ERROR: Invalid addressing mode
+EORI.S $10(A6),$1234		ERROR: Invalid addressing mode
+EORI.S $10(A6),FW		ERROR: Invalid addressing mode
+EORI.S $10(A6),#1		ERROR: Invalid addressing mode
+EORI.S $10(A6),#$1234		ERROR: Invalid addressing mode
+EORI.S $10(A6),CCR		ERROR: Invalid addressing mode
+EORI.S $10(A6),SR		ERROR: Invalid addressing mode
+EORI.S $1234,D1		ERROR: Invalid addressing mode
+EORI.S $1234,A2		ERROR: Invalid addressing mode
+EORI.S $1234,(A3)		ERROR: Invalid addressing mode
+EORI.S $1234,$10(A6)		ERROR: Invalid addressing mode
+EORI.S $1234,$1234		ERROR: Invalid addressing mode
+EORI.S $1234,FW		ERROR: Invalid addressing mode
+EORI.S $1234,#1		ERROR: Invalid addressing mode
+EORI.S $1234,#$1234		ERROR: Invalid addressing mode
+EORI.S $1234,CCR		ERROR: Invalid addressing mode
+EORI.S $1234,SR		ERROR: Invalid addressing mode
+EORI.S FW,D1		ERROR: Invalid addressing mode
+EORI.S FW,A2		ERROR: Invalid addressing mode
+EORI.S FW,(A3)		ERROR: Invalid addressing mode
+EORI.S FW,$10(A6)		ERROR: Invalid addressing mode
+EORI.S FW,$1234		ERROR: Invalid addressing mode
+EORI.S FW,FW		ERROR: Invalid addressing mode
+EORI.S FW,#1		ERROR: Invalid addressing mode
+EORI.S FW,#$1234		ERROR: Invalid addressing mode
+EORI.S FW,CCR		ERROR: Invalid addressing mode
+EORI.S FW,SR		ERROR: Invalid addressing mode
+EORI.S #1,D1	0A41	ERROR: Invalid size code
+EORI.S #1,A2		ERROR: Invalid addressing mode
+EORI.S #1,(A3)	0A53	ERROR: Invalid size code
+EORI.S #1,$10(A6)	0A6E0010	ERROR: Invalid size code
+EORI.S #1,$1234	0A781234	ERROR: Invalid size code
+EORI.S #1,FW	0A7900001F00	ERROR: Invalid size code
+EORI.S #1,#1		ERROR: Invalid addressing mode
+EORI.S #1,#$1234		ERROR: Invalid addressing mode
+EORI.S #1,CCR	0A3C0001	ERROR: Invalid size code
+EORI.S #1,SR	0A7C0001	ERROR: Invalid size code
+EORI.S #$1234,D1	0A41	ERROR: Invalid size code
+EORI.S #$1234,A2		ERROR: Invalid addressing mode
+EORI.S #$1234,(A3)	0A53	ERROR: Invalid size code
+EORI.S #$1234,$10(A6)	0A6E0010	ERROR: Invalid size code
+EORI.S #$1234,$1234	0A781234	ERROR: Invalid size code
+EORI.S #$1234,FW	0A7900001F00	ERROR: Invalid size code
+EORI.S #$1234,#1		ERROR: Invalid addressing mode
+EORI.S #$1234,#$1234		ERROR: Invalid addressing mode
+EORI.S #$1234,CCR	0A3C0034	ERROR: Invalid size code
+EORI.S #$1234,SR	0A7C1234	ERROR: Invalid size code
+EORI.S CCR,D1		ERROR: Invalid addressing mode
+EORI.S CCR,A2		ERROR: Invalid addressing mode
+EORI.S CCR,(A3)		ERROR: Invalid addressing mode
+EORI.S CCR,$10(A6)		ERROR: Invalid addressing mode
+EORI.S CCR,$1234		ERROR: Invalid addressing mode
+EORI.S CCR,FW		ERROR: Invalid addressing mode
+EORI.S CCR,#1		ERROR: Invalid addressing mode
+EORI.S CCR,#$1234		ERROR: Invalid addressing mode
+EORI.S CCR,CCR		ERROR: Invalid addressing mode
+EORI.S CCR,SR		ERROR: Invalid addressing mode
+EORI.S SR,D1		ERROR: Invalid addressing mode
+EORI.S SR,A2		ERROR: Invalid addressing mode
+EORI.S SR,(A3)		ERROR: Invalid addressing mode
+EORI.S SR,$10(A6)		ERROR: Invalid addressing mode
+EORI.S SR,$1234		ERROR: Invalid addressing mode
+EORI.S SR,FW		ERROR: Invalid addressing mode
+EORI.S SR,#1		ERROR: Invalid addressing mode
+EORI.S SR,#$1234		ERROR: Invalid addressing mode
+EORI.S SR,CCR		ERROR: Invalid addressing mode
+EORI.S SR,SR		ERROR: Invalid addressing mode
+EORI.S SP,D1		ERROR: Invalid addressing mode
+EORI.S SP,A2		ERROR: Invalid addressing mode
+EORI.S D1,SP		ERROR: Invalid addressing mode
+EORI.S #$12,SP		ERROR: Invalid addressing mode
+EORI.S (A4)+,D1		ERROR: Invalid addressing mode
+EORI.S (A4)+,A2		ERROR: Invalid addressing mode
+EORI.S D1,(A4)+		ERROR: Invalid addressing mode
+EORI.S #$12,(A4)+	0A5C	ERROR: Invalid size code
+EORI.S -(A5),D1		ERROR: Invalid addressing mode
+EORI.S -(A5),A2		ERROR: Invalid addressing mode
+EORI.S D1,-(A5)		ERROR: Invalid addressing mode
+EORI.S #$12,-(A5)	0A65	ERROR: Invalid size code
+EORI.S -2(A0),D1		ERROR: Invalid addressing mode
+EORI.S -2(A0),A2		ERROR: Invalid addressing mode
+EORI.S D1,-2(A0)		ERROR: Invalid addressing mode
+EORI.S #$12,-2(A0)	0A68FFFE	ERROR: Invalid size code
+EORI.S $10(A6,D7.W),D1		ERROR: Invalid addressing mode
+EORI.S $10(A6,D7.W),A2		ERROR: Invalid addressing mode
+EORI.S D1,$10(A6,D7.W)		ERROR: Invalid addressing mode
+EORI.S #$12,$10(A6,D7.W)	0A767010	ERROR: Invalid size code
+EORI.S $12(A0,A1.L),D1		ERROR: Invalid addressing mode
+EORI.S $12(A0,A1.L),A2		ERROR: Invalid addressing mode
+EORI.S D1,$12(A0,A1.L)		ERROR: Invalid addressing mode
+EORI.S #$12,$12(A0,A1.L)	0A709812	ERROR: Invalid size code
+EORI.S (A2,D3),D1		ERROR: Invalid addressing mode
+EORI.S (A2,D3),A2		ERROR: Invalid addressing mode
+EORI.S D1,(A2,D3)		ERROR: Invalid addressing mode
+EORI.S #$12,(A2,D3)	0A723000	ERROR: Invalid size code
+EORI.S $12345678,D1		ERROR: Invalid addressing mode
+EORI.S $12345678,A2		ERROR: Invalid addressing mode
+EORI.S D1,$12345678		ERROR: Invalid addressing mode
+EORI.S #$12,$12345678	0A7912345678	ERROR: Invalid size code
+EORI.S $1234.L,D1		ERROR: Invalid addressing mode
+EORI.S $1234.L,A2		ERROR: Invalid addressing mode
+EORI.S D1,$1234.L		ERROR: Invalid addressing mode
+EORI.S #$12,$1234.L	0A7900001234	ERROR: Invalid size code
+EORI.S $1234.W,D1		ERROR: Invalid addressing mode
+EORI.S $1234.W,A2		ERROR: Invalid addressing mode
+EORI.S D1,$1234.W		ERROR: Invalid addressing mode
+EORI.S #$12,$1234.W	0A781234	ERROR: Invalid size code
+EORI.S $8000,D1		ERROR: Invalid addressing mode
+EORI.S $8000,A2		ERROR: Invalid addressing mode
+EORI.S D1,$8000		ERROR: Invalid addressing mode
+EORI.S #$12,$8000	0A7900008000	ERROR: Invalid size code
+EORI.S BK,D1		ERROR: Invalid addressing mode
+EORI.S BK,A2		ERROR: Invalid addressing mode
+EORI.S D1,BK		ERROR: Invalid addressing mode
+EORI.S #$12,BK	0A781F00	ERROR: Invalid size code
+EORI.S *+$10(PC),D1		ERROR: Invalid addressing mode
+EORI.S *+$10(PC),A2		ERROR: Invalid addressing mode
+EORI.S D1,*+$10(PC)		ERROR: Invalid addressing mode
+EORI.S #$12,*+$10(PC)		ERROR: Invalid addressing mode
+EORI.S *(PC,D0.W),D1		ERROR: Invalid addressing mode
+EORI.S *(PC,D0.W),A2		ERROR: Invalid addressing mode
+EORI.S D1,*(PC,D0.W)		ERROR: Invalid addressing mode
+EORI.S #$12,*(PC,D0.W)		ERROR: Invalid addressing mode
+EORI.S BK(PC),D1		ERROR: Invalid addressing mode
+EORI.S BK(PC),A2		ERROR: Invalid addressing mode
+EORI.S D1,BK(PC)		ERROR: Invalid addressing mode
+EORI.S #$12,BK(PC)		ERROR: Invalid addressing mode
+EORI.S #8,D1	0A41	ERROR: Invalid size code
+EORI.S #8,A2		ERROR: Invalid addressing mode
+EORI.S D1,#8		ERROR: Invalid addressing mode
+EORI.S #$12,#8		ERROR: Invalid addressing mode
+EORI.S #9,D1	0A41	ERROR: Invalid size code
+EORI.S #9,A2		ERROR: Invalid addressing mode
+EORI.S D1,#9		ERROR: Invalid addressing mode
+EORI.S #$12,#9		ERROR: Invalid addressing mode
+EORI.S #0,D1	0A41	ERROR: Invalid size code
+EORI.S #0,A2		ERROR: Invalid addressing mode
+EORI.S D1,#0		ERROR: Invalid addressing mode
+EORI.S #$12,#0		ERROR: Invalid addressing mode
+EORI.S #-1,D1	0A41	ERROR: Invalid size code
+EORI.S #-1,A2		ERROR: Invalid addressing mode
+EORI.S D1,#-1		ERROR: Invalid addressing mode
+EORI.S #$12,#-1		ERROR: Invalid addressing mode
+EORI.S #$80,D1	0A41	ERROR: Invalid size code
+EORI.S #$80,A2		ERROR: Invalid addressing mode
+EORI.S D1,#$80		ERROR: Invalid addressing mode
+EORI.S #$12,#$80		ERROR: Invalid addressing mode
+EORI.S #$12345678,D1	0A41	ERROR: Invalid size code
+EORI.S #$12345678,A2		ERROR: Invalid addressing mode
+EORI.S D1,#$12345678		ERROR: Invalid addressing mode
+EORI.S #$12,#$12345678		ERROR: Invalid addressing mode
+EORI.S #$12345678.L,D1	0A41	ERROR: Invalid size code
+EORI.S #$12345678.L,A2		ERROR: Invalid addressing mode
+EORI.S D1,#$12345678.L		ERROR: Invalid addressing mode
+EORI.S #$12,#$12345678.L		ERROR: Invalid addressing mode
+EORI.S #BK,D1	0A41	ERROR: Invalid size code
+EORI.S #BK,A2		ERROR: Invalid addressing mode
+EORI.S D1,#BK		ERROR: Invalid addressing mode
+EORI.S #$12,#BK		ERROR: Invalid addressing mode
+EORI.S #FW,D1	0A41	ERROR: Invalid size code
+EORI.S #FW,A2		ERROR: Invalid addressing mode
+EORI.S D1,#FW		ERROR: Invalid addressing mode
+EORI.S #$12,#FW		ERROR: Invalid addressing mode
+EORI.S #UNDEF,D1	0A41	ERROR: Undefined symbol
+EORI.S #UNDEF,A2		ERROR: Invalid addressing mode
+EORI.S D1,#UNDEF		ERROR: Invalid addressing mode
+EORI.S #$12,#UNDEF		ERROR: Invalid addressing mode
+EORI.S UNDEF,D1		ERROR: Invalid addressing mode
+EORI.S UNDEF,A2		ERROR: Invalid addressing mode
+EORI.S D1,UNDEF		ERROR: Invalid addressing mode
+EORI.S #$12,UNDEF	0A7900001F00	ERROR: Undefined symbol
+EORI.S USP,D1		ERROR: Invalid addressing mode
+EORI.S USP,A2		ERROR: Invalid addressing mode
+EORI.S D1,USP		ERROR: Invalid addressing mode
+EORI.S #$12,USP		ERROR: Invalid addressing mode
+EORI.S D1,D2,D3		ERROR: Invalid syntax
+EORI.X D1,D2		ERROR: Invalid addressing mode
+EORI.X #1		ERROR: Comma expected

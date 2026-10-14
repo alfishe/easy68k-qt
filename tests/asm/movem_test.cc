@@ -275,16 +275,21 @@ TEST(MovemTest, PostIncLongToReglist) {
 // D0/A7 in a register list — A7 and SP are the same physical register.
 // mask: D0=bit0, A7=bit15 → 0x8001; reversed for -(SP): 0x8001 reversed = 0x8001.
 // Actually: 0x8001 = 1000 0000 0000 0001, reversed = 1000 0000 0000 0001 = 0x8001
-TEST(MovemTest, A7AndSPSameRegister) {
+TEST(MovemTest, SPIsNotARegisterListRegister) {
+  // MOVEM.CPP evalList() accepts only An/Dn by number: D0/SP is not a register
+  // list, and the original then reports "Comma expected" (reference oracle).
   auto b1 = Asm("        MOVEM.W D0/A7,-(SP)");
-  auto b2 = Asm("        MOVEM.W D0/SP,-(SP)");
   ASSERT_EQ(b1.size(), 4u);
-  ASSERT_EQ(b2.size(), 4u);
-  // Both should produce the same bytes (A7 = SP, reg_num = 7)
-  EXPECT_EQ(b1, b2);
   // mask D0 (bit0) + A7 (bit15) = 0x8001; reversed: bit0→bit15, bit15→bit0 = 0x8001
   EXPECT_EQ(b1[2], 0x80);
   EXPECT_EQ(b1[3], 0x01);
+
+  Assembler a;
+  auto r = a.Assemble("        ORG $1000\n        MOVEM.W D0/SP,-(SP)\n");
+  EXPECT_FALSE(r.success);
+  ASSERT_FALSE(r.errors.empty());
+  EXPECT_EQ(r.errors[0].message, "Comma expected");
+  EXPECT_TRUE(r.code.empty());
 }
 
 // -----------------------------------------------------------------------

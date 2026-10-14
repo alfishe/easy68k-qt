@@ -21,6 +21,8 @@ struct ExpressionResult {
   bool is_valid;
   bool is_back_ref;  // True if all symbols are backward references
   std::string error_message;
+  // Non-fatal original status (e.g. UNDEFINED in lenient mode), 0 if none.
+  int status = 0;
 
   ExpressionResult() : value(0), is_valid(true), is_back_ref(true) {}
 };
@@ -36,6 +38,11 @@ class ExpressionEvaluator {
   void SetSymbolTable(SymbolTable* symbols);
   void SetLocationCounter(uint32_t loc);
   void SetPass(int pass);
+  // Lenient mode (instruction operands): an undefined symbol in pass 2 is
+  // not a parse failure but evaluates to 0 (not a backward reference) with
+  // status UNDEFINED, as EVAL.CPP evalNumber() does, so the instruction is
+  // still built and keeps the size it had in pass 1.
+  void SetLenientUndefined(bool lenient) { lenient_undefined_ = lenient; }
 
   // Tokenize expr and evaluate the entire string as one expression.
   ExpressionResult Evaluate(const std::string& expr);
@@ -48,6 +55,7 @@ class ExpressionEvaluator {
   SymbolTable* symbols_;
   uint32_t location_counter_;
   int pass_;
+  bool lenient_undefined_ = false;
 
   std::vector<Token> tokens_;
   size_t pos_;

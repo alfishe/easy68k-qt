@@ -1,0 +1,1621 @@
+OR		ERROR: Invalid syntax
+OR D1		ERROR: Comma expected
+OR A2		ERROR: Comma expected
+OR SP		ERROR: Comma expected
+OR (A3)		ERROR: Comma expected
+OR (A4)+		ERROR: Comma expected
+OR -(A5)		ERROR: Comma expected
+OR $10(A6)		ERROR: Comma expected
+OR -2(A0)		ERROR: Comma expected
+OR $10(A6,D7.W)		ERROR: Comma expected
+OR $12(A0,A1.L)		ERROR: Comma expected
+OR (A2,D3)		ERROR: Comma expected
+OR $1234		ERROR: Comma expected
+OR $12345678		ERROR: Comma expected
+OR $1234.L		ERROR: Comma expected
+OR $1234.W		ERROR: Comma expected
+OR $8000		ERROR: Comma expected
+OR BK		ERROR: Comma expected
+OR FW		ERROR: Comma expected
+OR *+$10(PC)		ERROR: Comma expected
+OR *(PC,D0.W)		ERROR: Comma expected
+OR BK(PC)		ERROR: Comma expected
+OR #1		ERROR: Comma expected
+OR #8		ERROR: Comma expected
+OR #9		ERROR: Comma expected
+OR #0		ERROR: Comma expected
+OR #-1		ERROR: Comma expected
+OR #$80		ERROR: Comma expected
+OR #$1234		ERROR: Comma expected
+OR #$12345678		ERROR: Comma expected
+OR #$12345678.L		ERROR: Comma expected
+OR #BK		ERROR: Comma expected
+OR #FW		ERROR: Comma expected
+OR #UNDEF		ERROR: Comma expected
+OR UNDEF		ERROR: Comma expected
+OR SR		ERROR: Comma expected
+OR CCR		ERROR: Comma expected
+OR USP		ERROR: Comma expected
+OR D1,D1	8241	-
+OR D1,A2		ERROR: Invalid addressing mode
+OR D1,(A3)	8353	-
+OR D1,(A4)+	835C	-
+OR D1,-(A5)	8365	-
+OR D1,$10(A6)	836E0010	-
+OR D1,$10(A6,D7.W)	83767010	-
+OR D1,$1234	83781234	-
+OR D1,$12345678	837912345678	-
+OR D1,FW	837900001F00	-
+OR D1,*+$10(PC)		ERROR: Invalid addressing mode
+OR D1,#1		ERROR: Invalid addressing mode
+OR D1,#$80		ERROR: Invalid addressing mode
+OR D1,#$1234		ERROR: Invalid addressing mode
+OR D1,#$12345678		ERROR: Invalid addressing mode
+OR D1,SR		ERROR: Invalid addressing mode
+OR D1,CCR		ERROR: Invalid addressing mode
+OR D1,USP		ERROR: Invalid addressing mode
+OR A2,D1		ERROR: Invalid addressing mode
+OR A2,A2		ERROR: Invalid addressing mode
+OR A2,(A3)		ERROR: Invalid addressing mode
+OR A2,(A4)+		ERROR: Invalid addressing mode
+OR A2,-(A5)		ERROR: Invalid addressing mode
+OR A2,$10(A6)		ERROR: Invalid addressing mode
+OR A2,$10(A6,D7.W)		ERROR: Invalid addressing mode
+OR A2,$1234		ERROR: Invalid addressing mode
+OR A2,$12345678		ERROR: Invalid addressing mode
+OR A2,FW		ERROR: Invalid addressing mode
+OR A2,*+$10(PC)		ERROR: Invalid addressing mode
+OR A2,#1		ERROR: Invalid addressing mode
+OR A2,#$80		ERROR: Invalid addressing mode
+OR A2,#$1234		ERROR: Invalid addressing mode
+OR A2,#$12345678		ERROR: Invalid addressing mode
+OR A2,SR		ERROR: Invalid addressing mode
+OR A2,CCR		ERROR: Invalid addressing mode
+OR A2,USP		ERROR: Invalid addressing mode
+OR (A3),D1	8253	-
+OR (A3),A2		ERROR: Invalid addressing mode
+OR (A3),(A3)		ERROR: Invalid addressing mode
+OR (A3),(A4)+		ERROR: Invalid addressing mode
+OR (A3),-(A5)		ERROR: Invalid addressing mode
+OR (A3),$10(A6)		ERROR: Invalid addressing mode
+OR (A3),$10(A6,D7.W)		ERROR: Invalid addressing mode
+OR (A3),$1234		ERROR: Invalid addressing mode
+OR (A3),$12345678		ERROR: Invalid addressing mode
+OR (A3),FW		ERROR: Invalid addressing mode
+OR (A3),*+$10(PC)		ERROR: Invalid addressing mode
+OR (A3),#1		ERROR: Invalid addressing mode
+OR (A3),#$80		ERROR: Invalid addressing mode
+OR (A3),#$1234		ERROR: Invalid addressing mode
+OR (A3),#$12345678		ERROR: Invalid addressing mode
+OR (A3),SR		ERROR: Invalid addressing mode
+OR (A3),CCR		ERROR: Invalid addressing mode
+OR (A3),USP		ERROR: Invalid addressing mode
+OR (A4)+,D1	825C	-
+OR (A4)+,A2		ERROR: Invalid addressing mode
+OR (A4)+,(A3)		ERROR: Invalid addressing mode
+OR (A4)+,(A4)+		ERROR: Invalid addressing mode
+OR (A4)+,-(A5)		ERROR: Invalid addressing mode
+OR (A4)+,$10(A6)		ERROR: Invalid addressing mode
+OR (A4)+,$10(A6,D7.W)		ERROR: Invalid addressing mode
+OR (A4)+,$1234		ERROR: Invalid addressing mode
+OR (A4)+,$12345678		ERROR: Invalid addressing mode
+OR (A4)+,FW		ERROR: Invalid addressing mode
+OR (A4)+,*+$10(PC)		ERROR: Invalid addressing mode
+OR (A4)+,#1		ERROR: Invalid addressing mode
+OR (A4)+,#$80		ERROR: Invalid addressing mode
+OR (A4)+,#$1234		ERROR: Invalid addressing mode
+OR (A4)+,#$12345678		ERROR: Invalid addressing mode
+OR (A4)+,SR		ERROR: Invalid addressing mode
+OR (A4)+,CCR		ERROR: Invalid addressing mode
+OR (A4)+,USP		ERROR: Invalid addressing mode
+OR -(A5),D1	8265	-
+OR -(A5),A2		ERROR: Invalid addressing mode
+OR -(A5),(A3)		ERROR: Invalid addressing mode
+OR -(A5),(A4)+		ERROR: Invalid addressing mode
+OR -(A5),-(A5)		ERROR: Invalid addressing mode
+OR -(A5),$10(A6)		ERROR: Invalid addressing mode
+OR -(A5),$10(A6,D7.W)		ERROR: Invalid addressing mode
+OR -(A5),$1234		ERROR: Invalid addressing mode
+OR -(A5),$12345678		ERROR: Invalid addressing mode
+OR -(A5),FW		ERROR: Invalid addressing mode
+OR -(A5),*+$10(PC)		ERROR: Invalid addressing mode
+OR -(A5),#1		ERROR: Invalid addressing mode
+OR -(A5),#$80		ERROR: Invalid addressing mode
+OR -(A5),#$1234		ERROR: Invalid addressing mode
+OR -(A5),#$12345678		ERROR: Invalid addressing mode
+OR -(A5),SR		ERROR: Invalid addressing mode
+OR -(A5),CCR		ERROR: Invalid addressing mode
+OR -(A5),USP		ERROR: Invalid addressing mode
+OR $10(A6),D1	826E0010	-
+OR $10(A6),A2		ERROR: Invalid addressing mode
+OR $10(A6),(A3)		ERROR: Invalid addressing mode
+OR $10(A6),(A4)+		ERROR: Invalid addressing mode
+OR $10(A6),-(A5)		ERROR: Invalid addressing mode
+OR $10(A6),$10(A6)		ERROR: Invalid addressing mode
+OR $10(A6),$10(A6,D7.W)		ERROR: Invalid addressing mode
+OR $10(A6),$1234		ERROR: Invalid addressing mode
+OR $10(A6),$12345678		ERROR: Invalid addressing mode
+OR $10(A6),FW		ERROR: Invalid addressing mode
+OR $10(A6),*+$10(PC)		ERROR: Invalid addressing mode
+OR $10(A6),#1		ERROR: Invalid addressing mode
+OR $10(A6),#$80		ERROR: Invalid addressing mode
+OR $10(A6),#$1234		ERROR: Invalid addressing mode
+OR $10(A6),#$12345678		ERROR: Invalid addressing mode
+OR $10(A6),SR		ERROR: Invalid addressing mode
+OR $10(A6),CCR		ERROR: Invalid addressing mode
+OR $10(A6),USP		ERROR: Invalid addressing mode
+OR $10(A6,D7.W),D1	82767010	-
+OR $10(A6,D7.W),A2		ERROR: Invalid addressing mode
+OR $10(A6,D7.W),(A3)		ERROR: Invalid addressing mode
+OR $10(A6,D7.W),(A4)+		ERROR: Invalid addressing mode
+OR $10(A6,D7.W),-(A5)		ERROR: Invalid addressing mode
+OR $10(A6,D7.W),$10(A6)		ERROR: Invalid addressing mode
+OR $10(A6,D7.W),$10(A6,D7.W)		ERROR: Invalid addressing mode
+OR $10(A6,D7.W),$1234		ERROR: Invalid addressing mode
+OR $10(A6,D7.W),$12345678		ERROR: Invalid addressing mode
+OR $10(A6,D7.W),FW		ERROR: Invalid addressing mode
+OR $10(A6,D7.W),*+$10(PC)		ERROR: Invalid addressing mode
+OR $10(A6,D7.W),#1		ERROR: Invalid addressing mode
+OR $10(A6,D7.W),#$80		ERROR: Invalid addressing mode
+OR $10(A6,D7.W),#$1234		ERROR: Invalid addressing mode
+OR $10(A6,D7.W),#$12345678		ERROR: Invalid addressing mode
+OR $10(A6,D7.W),SR		ERROR: Invalid addressing mode
+OR $10(A6,D7.W),CCR		ERROR: Invalid addressing mode
+OR $10(A6,D7.W),USP		ERROR: Invalid addressing mode
+OR $1234,D1	82781234	-
+OR $1234,A2		ERROR: Invalid addressing mode
+OR $1234,(A3)		ERROR: Invalid addressing mode
+OR $1234,(A4)+		ERROR: Invalid addressing mode
+OR $1234,-(A5)		ERROR: Invalid addressing mode
+OR $1234,$10(A6)		ERROR: Invalid addressing mode
+OR $1234,$10(A6,D7.W)		ERROR: Invalid addressing mode
+OR $1234,$1234		ERROR: Invalid addressing mode
+OR $1234,$12345678		ERROR: Invalid addressing mode
+OR $1234,FW		ERROR: Invalid addressing mode
+OR $1234,*+$10(PC)		ERROR: Invalid addressing mode
+OR $1234,#1		ERROR: Invalid addressing mode
+OR $1234,#$80		ERROR: Invalid addressing mode
+OR $1234,#$1234		ERROR: Invalid addressing mode
+OR $1234,#$12345678		ERROR: Invalid addressing mode
+OR $1234,SR		ERROR: Invalid addressing mode
+OR $1234,CCR		ERROR: Invalid addressing mode
+OR $1234,USP		ERROR: Invalid addressing mode
+OR $12345678,D1	827912345678	-
+OR $12345678,A2		ERROR: Invalid addressing mode
+OR $12345678,(A3)		ERROR: Invalid addressing mode
+OR $12345678,(A4)+		ERROR: Invalid addressing mode
+OR $12345678,-(A5)		ERROR: Invalid addressing mode
+OR $12345678,$10(A6)		ERROR: Invalid addressing mode
+OR $12345678,$10(A6,D7.W)		ERROR: Invalid addressing mode
+OR $12345678,$1234		ERROR: Invalid addressing mode
+OR $12345678,$12345678		ERROR: Invalid addressing mode
+OR $12345678,FW		ERROR: Invalid addressing mode
+OR $12345678,*+$10(PC)		ERROR: Invalid addressing mode
+OR $12345678,#1		ERROR: Invalid addressing mode
+OR $12345678,#$80		ERROR: Invalid addressing mode
+OR $12345678,#$1234		ERROR: Invalid addressing mode
+OR $12345678,#$12345678		ERROR: Invalid addressing mode
+OR $12345678,SR		ERROR: Invalid addressing mode
+OR $12345678,CCR		ERROR: Invalid addressing mode
+OR $12345678,USP		ERROR: Invalid addressing mode
+OR FW,D1	827900001F00	-
+OR FW,A2		ERROR: Invalid addressing mode
+OR FW,(A3)		ERROR: Invalid addressing mode
+OR FW,(A4)+		ERROR: Invalid addressing mode
+OR FW,-(A5)		ERROR: Invalid addressing mode
+OR FW,$10(A6)		ERROR: Invalid addressing mode
+OR FW,$10(A6,D7.W)		ERROR: Invalid addressing mode
+OR FW,$1234		ERROR: Invalid addressing mode
+OR FW,$12345678		ERROR: Invalid addressing mode
+OR FW,FW		ERROR: Invalid addressing mode
+OR FW,*+$10(PC)		ERROR: Invalid addressing mode
+OR FW,#1		ERROR: Invalid addressing mode
+OR FW,#$80		ERROR: Invalid addressing mode
+OR FW,#$1234		ERROR: Invalid addressing mode
+OR FW,#$12345678		ERROR: Invalid addressing mode
+OR FW,SR		ERROR: Invalid addressing mode
+OR FW,CCR		ERROR: Invalid addressing mode
+OR FW,USP		ERROR: Invalid addressing mode
+OR *+$10(PC),D1	827A000E	-
+OR *+$10(PC),A2		ERROR: Invalid addressing mode
+OR *+$10(PC),(A3)		ERROR: Invalid addressing mode
+OR *+$10(PC),(A4)+		ERROR: Invalid addressing mode
+OR *+$10(PC),-(A5)		ERROR: Invalid addressing mode
+OR *+$10(PC),$10(A6)		ERROR: Invalid addressing mode
+OR *+$10(PC),$10(A6,D7.W)		ERROR: Invalid addressing mode
+OR *+$10(PC),$1234		ERROR: Invalid addressing mode
+OR *+$10(PC),$12345678		ERROR: Invalid addressing mode
+OR *+$10(PC),FW		ERROR: Invalid addressing mode
+OR *+$10(PC),*+$10(PC)		ERROR: Invalid addressing mode
+OR *+$10(PC),#1		ERROR: Invalid addressing mode
+OR *+$10(PC),#$80		ERROR: Invalid addressing mode
+OR *+$10(PC),#$1234		ERROR: Invalid addressing mode
+OR *+$10(PC),#$12345678		ERROR: Invalid addressing mode
+OR *+$10(PC),SR		ERROR: Invalid addressing mode
+OR *+$10(PC),CCR		ERROR: Invalid addressing mode
+OR *+$10(PC),USP		ERROR: Invalid addressing mode
+OR #1,D1	827C0001	-
+OR #1,A2		ERROR: Invalid addressing mode
+OR #1,(A3)	00530001	-
+OR #1,(A4)+	005C0001	-
+OR #1,-(A5)	00650001	-
+OR #1,$10(A6)	006E00010010	-
+OR #1,$10(A6,D7.W)	007600017010	-
+OR #1,$1234	007800011234	-
+OR #1,$12345678	0079000112345678	-
+OR #1,FW	0079000100001F00	-
+OR #1,*+$10(PC)		ERROR: Invalid addressing mode
+OR #1,#1		ERROR: Invalid addressing mode
+OR #1,#$80		ERROR: Invalid addressing mode
+OR #1,#$1234		ERROR: Invalid addressing mode
+OR #1,#$12345678		ERROR: Invalid addressing mode
+OR #1,SR	007C0001	-
+OR #1,CCR	003C0001	-
+OR #1,USP		ERROR: Invalid addressing mode
+OR #$80,D1	827C0080	-
+OR #$80,A2		ERROR: Invalid addressing mode
+OR #$80,(A3)	00530080	-
+OR #$80,(A4)+	005C0080	-
+OR #$80,-(A5)	00650080	-
+OR #$80,$10(A6)	006E00800010	-
+OR #$80,$10(A6,D7.W)	007600807010	-
+OR #$80,$1234	007800801234	-
+OR #$80,$12345678	0079008012345678	-
+OR #$80,FW	0079008000001F00	-
+OR #$80,*+$10(PC)		ERROR: Invalid addressing mode
+OR #$80,#1		ERROR: Invalid addressing mode
+OR #$80,#$80		ERROR: Invalid addressing mode
+OR #$80,#$1234		ERROR: Invalid addressing mode
+OR #$80,#$12345678		ERROR: Invalid addressing mode
+OR #$80,SR	007C0080	-
+OR #$80,CCR	003C0080	-
+OR #$80,USP		ERROR: Invalid addressing mode
+OR #$1234,D1	827C1234	-
+OR #$1234,A2		ERROR: Invalid addressing mode
+OR #$1234,(A3)	00531234	-
+OR #$1234,(A4)+	005C1234	-
+OR #$1234,-(A5)	00651234	-
+OR #$1234,$10(A6)	006E12340010	-
+OR #$1234,$10(A6,D7.W)	007612347010	-
+OR #$1234,$1234	007812341234	-
+OR #$1234,$12345678	0079123412345678	-
+OR #$1234,FW	0079123400001F00	-
+OR #$1234,*+$10(PC)		ERROR: Invalid addressing mode
+OR #$1234,#1		ERROR: Invalid addressing mode
+OR #$1234,#$80		ERROR: Invalid addressing mode
+OR #$1234,#$1234		ERROR: Invalid addressing mode
+OR #$1234,#$12345678		ERROR: Invalid addressing mode
+OR #$1234,SR	007C1234	-
+OR #$1234,CCR	003C0034	ERROR: Immediate data exceeds 8 bits
+OR #$1234,USP		ERROR: Invalid addressing mode
+OR #$12345678,D1	827C5678	ERROR: Immediate data exceeds 16 bits
+OR #$12345678,A2		ERROR: Invalid addressing mode
+OR #$12345678,(A3)	00535678	ERROR: Immediate data exceeds 16 bits
+OR #$12345678,(A4)+	005C5678	ERROR: Immediate data exceeds 16 bits
+OR #$12345678,-(A5)	00655678	ERROR: Immediate data exceeds 16 bits
+OR #$12345678,$10(A6)	006E56780010	ERROR: Immediate data exceeds 16 bits
+OR #$12345678,$10(A6,D7.W)	007656787010	ERROR: Immediate data exceeds 16 bits
+OR #$12345678,$1234	007856781234	ERROR: Immediate data exceeds 16 bits
+OR #$12345678,$12345678	0079567812345678	ERROR: Immediate data exceeds 16 bits
+OR #$12345678,FW	0079567800001F00	ERROR: Immediate data exceeds 16 bits
+OR #$12345678,*+$10(PC)		ERROR: Invalid addressing mode
+OR #$12345678,#1		ERROR: Invalid addressing mode
+OR #$12345678,#$80		ERROR: Invalid addressing mode
+OR #$12345678,#$1234		ERROR: Invalid addressing mode
+OR #$12345678,#$12345678		ERROR: Invalid addressing mode
+OR #$12345678,SR	007C5678	ERROR: Immediate data exceeds 16 bits
+OR #$12345678,CCR	003C0078	ERROR: Immediate data exceeds 8 bits
+OR #$12345678,USP		ERROR: Invalid addressing mode
+OR SR,D1		ERROR: Invalid addressing mode
+OR SR,A2		ERROR: Invalid addressing mode
+OR SR,(A3)		ERROR: Invalid addressing mode
+OR SR,(A4)+		ERROR: Invalid addressing mode
+OR SR,-(A5)		ERROR: Invalid addressing mode
+OR SR,$10(A6)		ERROR: Invalid addressing mode
+OR SR,$10(A6,D7.W)		ERROR: Invalid addressing mode
+OR SR,$1234		ERROR: Invalid addressing mode
+OR SR,$12345678		ERROR: Invalid addressing mode
+OR SR,FW		ERROR: Invalid addressing mode
+OR SR,*+$10(PC)		ERROR: Invalid addressing mode
+OR SR,#1		ERROR: Invalid addressing mode
+OR SR,#$80		ERROR: Invalid addressing mode
+OR SR,#$1234		ERROR: Invalid addressing mode
+OR SR,#$12345678		ERROR: Invalid addressing mode
+OR SR,SR		ERROR: Invalid addressing mode
+OR SR,CCR		ERROR: Invalid addressing mode
+OR SR,USP		ERROR: Invalid addressing mode
+OR CCR,D1		ERROR: Invalid addressing mode
+OR CCR,A2		ERROR: Invalid addressing mode
+OR CCR,(A3)		ERROR: Invalid addressing mode
+OR CCR,(A4)+		ERROR: Invalid addressing mode
+OR CCR,-(A5)		ERROR: Invalid addressing mode
+OR CCR,$10(A6)		ERROR: Invalid addressing mode
+OR CCR,$10(A6,D7.W)		ERROR: Invalid addressing mode
+OR CCR,$1234		ERROR: Invalid addressing mode
+OR CCR,$12345678		ERROR: Invalid addressing mode
+OR CCR,FW		ERROR: Invalid addressing mode
+OR CCR,*+$10(PC)		ERROR: Invalid addressing mode
+OR CCR,#1		ERROR: Invalid addressing mode
+OR CCR,#$80		ERROR: Invalid addressing mode
+OR CCR,#$1234		ERROR: Invalid addressing mode
+OR CCR,#$12345678		ERROR: Invalid addressing mode
+OR CCR,SR		ERROR: Invalid addressing mode
+OR CCR,CCR		ERROR: Invalid addressing mode
+OR CCR,USP		ERROR: Invalid addressing mode
+OR USP,D1		ERROR: Invalid addressing mode
+OR USP,A2		ERROR: Invalid addressing mode
+OR USP,(A3)		ERROR: Invalid addressing mode
+OR USP,(A4)+		ERROR: Invalid addressing mode
+OR USP,-(A5)		ERROR: Invalid addressing mode
+OR USP,$10(A6)		ERROR: Invalid addressing mode
+OR USP,$10(A6,D7.W)		ERROR: Invalid addressing mode
+OR USP,$1234		ERROR: Invalid addressing mode
+OR USP,$12345678		ERROR: Invalid addressing mode
+OR USP,FW		ERROR: Invalid addressing mode
+OR USP,*+$10(PC)		ERROR: Invalid addressing mode
+OR USP,#1		ERROR: Invalid addressing mode
+OR USP,#$80		ERROR: Invalid addressing mode
+OR USP,#$1234		ERROR: Invalid addressing mode
+OR USP,#$12345678		ERROR: Invalid addressing mode
+OR USP,SR		ERROR: Invalid addressing mode
+OR USP,CCR		ERROR: Invalid addressing mode
+OR USP,USP		ERROR: Invalid addressing mode
+OR SP,D1		ERROR: Invalid addressing mode
+OR SP,A2		ERROR: Invalid addressing mode
+OR D1,SP		ERROR: Invalid addressing mode
+OR #$12,SP		ERROR: Invalid addressing mode
+OR -2(A0),D1	8268FFFE	-
+OR -2(A0),A2		ERROR: Invalid addressing mode
+OR D1,-2(A0)	8368FFFE	-
+OR #$12,-2(A0)	00680012FFFE	-
+OR $12(A0,A1.L),D1	82709812	-
+OR $12(A0,A1.L),A2		ERROR: Invalid addressing mode
+OR D1,$12(A0,A1.L)	83709812	-
+OR #$12,$12(A0,A1.L)	007000129812	-
+OR (A2,D3),D1	82723000	-
+OR (A2,D3),A2		ERROR: Invalid addressing mode
+OR D1,(A2,D3)	83723000	-
+OR #$12,(A2,D3)	007200123000	-
+OR $1234.L,D1	827900001234	-
+OR $1234.L,A2		ERROR: Invalid addressing mode
+OR D1,$1234.L	837900001234	-
+OR #$12,$1234.L	0079001200001234	-
+OR $1234.W,D1	82781234	WARNING: Forcing SHORT addressing disables range checking of extension word
+OR $1234.W,A2		ERROR: Invalid addressing mode
+OR D1,$1234.W	83781234	WARNING: Forcing SHORT addressing disables range checking of extension word
+OR #$12,$1234.W	007800121234	WARNING: Forcing SHORT addressing disables range checking of extension word
+OR $8000,D1	827900008000	-
+OR $8000,A2		ERROR: Invalid addressing mode
+OR D1,$8000	837900008000	-
+OR #$12,$8000	0079001200008000	-
+OR BK,D1	82781F00	-
+OR BK,A2		ERROR: Invalid addressing mode
+OR D1,BK	83781F00	-
+OR #$12,BK	007800121F00	-
+OR *(PC,D0.W),D1	827B00FE	-
+OR *(PC,D0.W),A2		ERROR: Invalid addressing mode
+OR D1,*(PC,D0.W)		ERROR: Invalid addressing mode
+OR #$12,*(PC,D0.W)		ERROR: Invalid addressing mode
+OR BK(PC),D1	827A0EFE	-
+OR BK(PC),A2		ERROR: Invalid addressing mode
+OR D1,BK(PC)		ERROR: Invalid addressing mode
+OR #$12,BK(PC)		ERROR: Invalid addressing mode
+OR #8,D1	827C0008	-
+OR #8,A2		ERROR: Invalid addressing mode
+OR D1,#8		ERROR: Invalid addressing mode
+OR #$12,#8		ERROR: Invalid addressing mode
+OR #9,D1	827C0009	-
+OR #9,A2		ERROR: Invalid addressing mode
+OR D1,#9		ERROR: Invalid addressing mode
+OR #$12,#9		ERROR: Invalid addressing mode
+OR #0,D1	827C0000	-
+OR #0,A2		ERROR: Invalid addressing mode
+OR D1,#0		ERROR: Invalid addressing mode
+OR #$12,#0		ERROR: Invalid addressing mode
+OR #-1,D1	827CFFFF	-
+OR #-1,A2		ERROR: Invalid addressing mode
+OR D1,#-1		ERROR: Invalid addressing mode
+OR #$12,#-1		ERROR: Invalid addressing mode
+OR #$12345678.L,D1	827C5678	ERROR: Immediate data exceeds 16 bits
+OR #$12345678.L,A2		ERROR: Invalid addressing mode
+OR D1,#$12345678.L		ERROR: Invalid addressing mode
+OR #$12,#$12345678.L		ERROR: Invalid addressing mode
+OR #BK,D1	827C1F00	-
+OR #BK,A2		ERROR: Invalid addressing mode
+OR D1,#BK		ERROR: Invalid addressing mode
+OR #$12,#BK		ERROR: Invalid addressing mode
+OR #FW,D1	827C1F00	-
+OR #FW,A2		ERROR: Invalid addressing mode
+OR D1,#FW		ERROR: Invalid addressing mode
+OR #$12,#FW		ERROR: Invalid addressing mode
+OR #UNDEF,D1	827C558A	ERROR: Undefined symbol
+OR #UNDEF,A2		ERROR: Invalid addressing mode
+OR D1,#UNDEF		ERROR: Invalid addressing mode
+OR #$12,#UNDEF		ERROR: Invalid addressing mode
+OR UNDEF,D1	82790000558A	ERROR: Undefined symbol
+OR UNDEF,A2		ERROR: Invalid addressing mode
+OR D1,UNDEF	837900001F00	ERROR: Undefined symbol
+OR #$12,UNDEF	0079001200001F00	ERROR: Undefined symbol
+OR D1,D2,D3		ERROR: Invalid syntax
+OR.B		ERROR: Invalid syntax
+OR.B D1		ERROR: Comma expected
+OR.B A2		ERROR: Comma expected
+OR.B SP		ERROR: Comma expected
+OR.B (A3)		ERROR: Comma expected
+OR.B (A4)+		ERROR: Comma expected
+OR.B -(A5)		ERROR: Comma expected
+OR.B $10(A6)		ERROR: Comma expected
+OR.B -2(A0)		ERROR: Comma expected
+OR.B $10(A6,D7.W)		ERROR: Comma expected
+OR.B $12(A0,A1.L)		ERROR: Comma expected
+OR.B (A2,D3)		ERROR: Comma expected
+OR.B $1234		ERROR: Comma expected
+OR.B $12345678		ERROR: Comma expected
+OR.B $1234.L		ERROR: Comma expected
+OR.B $1234.W		ERROR: Comma expected
+OR.B $8000		ERROR: Comma expected
+OR.B BK		ERROR: Comma expected
+OR.B FW		ERROR: Comma expected
+OR.B *+$10(PC)		ERROR: Comma expected
+OR.B *(PC,D0.W)		ERROR: Comma expected
+OR.B BK(PC)		ERROR: Comma expected
+OR.B #1		ERROR: Comma expected
+OR.B #8		ERROR: Comma expected
+OR.B #9		ERROR: Comma expected
+OR.B #0		ERROR: Comma expected
+OR.B #-1		ERROR: Comma expected
+OR.B #$80		ERROR: Comma expected
+OR.B #$1234		ERROR: Comma expected
+OR.B #$12345678		ERROR: Comma expected
+OR.B #$12345678.L		ERROR: Comma expected
+OR.B #BK		ERROR: Comma expected
+OR.B #FW		ERROR: Comma expected
+OR.B #UNDEF		ERROR: Comma expected
+OR.B UNDEF		ERROR: Comma expected
+OR.B SR		ERROR: Comma expected
+OR.B CCR		ERROR: Comma expected
+OR.B USP		ERROR: Comma expected
+OR.B D1,D1	8201	-
+OR.B D1,A2		ERROR: Invalid addressing mode
+OR.B D1,(A3)	8313	-
+OR.B D1,$10(A6)	832E0010	-
+OR.B D1,$1234	83381234	-
+OR.B D1,FW	833900001F00	-
+OR.B D1,#1		ERROR: Invalid addressing mode
+OR.B D1,#$1234		ERROR: Invalid addressing mode
+OR.B D1,CCR		ERROR: Invalid addressing mode
+OR.B D1,SR		ERROR: Invalid addressing mode
+OR.B A2,D1		ERROR: Invalid addressing mode
+OR.B A2,A2		ERROR: Invalid addressing mode
+OR.B A2,(A3)		ERROR: Invalid addressing mode
+OR.B A2,$10(A6)		ERROR: Invalid addressing mode
+OR.B A2,$1234		ERROR: Invalid addressing mode
+OR.B A2,FW		ERROR: Invalid addressing mode
+OR.B A2,#1		ERROR: Invalid addressing mode
+OR.B A2,#$1234		ERROR: Invalid addressing mode
+OR.B A2,CCR		ERROR: Invalid addressing mode
+OR.B A2,SR		ERROR: Invalid addressing mode
+OR.B (A3),D1	8213	-
+OR.B (A3),A2		ERROR: Invalid addressing mode
+OR.B (A3),(A3)		ERROR: Invalid addressing mode
+OR.B (A3),$10(A6)		ERROR: Invalid addressing mode
+OR.B (A3),$1234		ERROR: Invalid addressing mode
+OR.B (A3),FW		ERROR: Invalid addressing mode
+OR.B (A3),#1		ERROR: Invalid addressing mode
+OR.B (A3),#$1234		ERROR: Invalid addressing mode
+OR.B (A3),CCR		ERROR: Invalid addressing mode
+OR.B (A3),SR		ERROR: Invalid addressing mode
+OR.B $10(A6),D1	822E0010	-
+OR.B $10(A6),A2		ERROR: Invalid addressing mode
+OR.B $10(A6),(A3)		ERROR: Invalid addressing mode
+OR.B $10(A6),$10(A6)		ERROR: Invalid addressing mode
+OR.B $10(A6),$1234		ERROR: Invalid addressing mode
+OR.B $10(A6),FW		ERROR: Invalid addressing mode
+OR.B $10(A6),#1		ERROR: Invalid addressing mode
+OR.B $10(A6),#$1234		ERROR: Invalid addressing mode
+OR.B $10(A6),CCR		ERROR: Invalid addressing mode
+OR.B $10(A6),SR		ERROR: Invalid addressing mode
+OR.B $1234,D1	82381234	-
+OR.B $1234,A2		ERROR: Invalid addressing mode
+OR.B $1234,(A3)		ERROR: Invalid addressing mode
+OR.B $1234,$10(A6)		ERROR: Invalid addressing mode
+OR.B $1234,$1234		ERROR: Invalid addressing mode
+OR.B $1234,FW		ERROR: Invalid addressing mode
+OR.B $1234,#1		ERROR: Invalid addressing mode
+OR.B $1234,#$1234		ERROR: Invalid addressing mode
+OR.B $1234,CCR		ERROR: Invalid addressing mode
+OR.B $1234,SR		ERROR: Invalid addressing mode
+OR.B FW,D1	823900001F00	-
+OR.B FW,A2		ERROR: Invalid addressing mode
+OR.B FW,(A3)		ERROR: Invalid addressing mode
+OR.B FW,$10(A6)		ERROR: Invalid addressing mode
+OR.B FW,$1234		ERROR: Invalid addressing mode
+OR.B FW,FW		ERROR: Invalid addressing mode
+OR.B FW,#1		ERROR: Invalid addressing mode
+OR.B FW,#$1234		ERROR: Invalid addressing mode
+OR.B FW,CCR		ERROR: Invalid addressing mode
+OR.B FW,SR		ERROR: Invalid addressing mode
+OR.B #1,D1	823C0001	-
+OR.B #1,A2		ERROR: Invalid addressing mode
+OR.B #1,(A3)	00130001	-
+OR.B #1,$10(A6)	002E00010010	-
+OR.B #1,$1234	003800011234	-
+OR.B #1,FW	0039000100001F00	-
+OR.B #1,#1		ERROR: Invalid addressing mode
+OR.B #1,#$1234		ERROR: Invalid addressing mode
+OR.B #1,CCR	003C0001	-
+OR.B #1,SR	007C0001	ERROR: Invalid size code
+OR.B #$1234,D1	823C0034	ERROR: Immediate data exceeds 8 bits
+OR.B #$1234,A2		ERROR: Invalid addressing mode
+OR.B #$1234,(A3)	00130034	ERROR: Immediate data exceeds 8 bits
+OR.B #$1234,$10(A6)	002E00340010	ERROR: Immediate data exceeds 8 bits
+OR.B #$1234,$1234	003800341234	ERROR: Immediate data exceeds 8 bits
+OR.B #$1234,FW	0039003400001F00	ERROR: Immediate data exceeds 8 bits
+OR.B #$1234,#1		ERROR: Invalid addressing mode
+OR.B #$1234,#$1234		ERROR: Invalid addressing mode
+OR.B #$1234,CCR	003C0034	ERROR: Immediate data exceeds 8 bits
+OR.B #$1234,SR	007C1234	ERROR: Invalid size code
+OR.B CCR,D1		ERROR: Invalid addressing mode
+OR.B CCR,A2		ERROR: Invalid addressing mode
+OR.B CCR,(A3)		ERROR: Invalid addressing mode
+OR.B CCR,$10(A6)		ERROR: Invalid addressing mode
+OR.B CCR,$1234		ERROR: Invalid addressing mode
+OR.B CCR,FW		ERROR: Invalid addressing mode
+OR.B CCR,#1		ERROR: Invalid addressing mode
+OR.B CCR,#$1234		ERROR: Invalid addressing mode
+OR.B CCR,CCR		ERROR: Invalid addressing mode
+OR.B CCR,SR		ERROR: Invalid addressing mode
+OR.B SR,D1		ERROR: Invalid addressing mode
+OR.B SR,A2		ERROR: Invalid addressing mode
+OR.B SR,(A3)		ERROR: Invalid addressing mode
+OR.B SR,$10(A6)		ERROR: Invalid addressing mode
+OR.B SR,$1234		ERROR: Invalid addressing mode
+OR.B SR,FW		ERROR: Invalid addressing mode
+OR.B SR,#1		ERROR: Invalid addressing mode
+OR.B SR,#$1234		ERROR: Invalid addressing mode
+OR.B SR,CCR		ERROR: Invalid addressing mode
+OR.B SR,SR		ERROR: Invalid addressing mode
+OR.B SP,D1		ERROR: Invalid addressing mode
+OR.B SP,A2		ERROR: Invalid addressing mode
+OR.B D1,SP		ERROR: Invalid addressing mode
+OR.B #$12,SP		ERROR: Invalid addressing mode
+OR.B (A4)+,D1	821C	-
+OR.B (A4)+,A2		ERROR: Invalid addressing mode
+OR.B D1,(A4)+	831C	-
+OR.B #$12,(A4)+	001C0012	-
+OR.B -(A5),D1	8225	-
+OR.B -(A5),A2		ERROR: Invalid addressing mode
+OR.B D1,-(A5)	8325	-
+OR.B #$12,-(A5)	00250012	-
+OR.B -2(A0),D1	8228FFFE	-
+OR.B -2(A0),A2		ERROR: Invalid addressing mode
+OR.B D1,-2(A0)	8328FFFE	-
+OR.B #$12,-2(A0)	00280012FFFE	-
+OR.B $10(A6,D7.W),D1	82367010	-
+OR.B $10(A6,D7.W),A2		ERROR: Invalid addressing mode
+OR.B D1,$10(A6,D7.W)	83367010	-
+OR.B #$12,$10(A6,D7.W)	003600127010	-
+OR.B $12(A0,A1.L),D1	82309812	-
+OR.B $12(A0,A1.L),A2		ERROR: Invalid addressing mode
+OR.B D1,$12(A0,A1.L)	83309812	-
+OR.B #$12,$12(A0,A1.L)	003000129812	-
+OR.B (A2,D3),D1	82323000	-
+OR.B (A2,D3),A2		ERROR: Invalid addressing mode
+OR.B D1,(A2,D3)	83323000	-
+OR.B #$12,(A2,D3)	003200123000	-
+OR.B $12345678,D1	823912345678	-
+OR.B $12345678,A2		ERROR: Invalid addressing mode
+OR.B D1,$12345678	833912345678	-
+OR.B #$12,$12345678	0039001212345678	-
+OR.B $1234.L,D1	823900001234	-
+OR.B $1234.L,A2		ERROR: Invalid addressing mode
+OR.B D1,$1234.L	833900001234	-
+OR.B #$12,$1234.L	0039001200001234	-
+OR.B $1234.W,D1	82381234	WARNING: Forcing SHORT addressing disables range checking of extension word
+OR.B $1234.W,A2		ERROR: Invalid addressing mode
+OR.B D1,$1234.W	83381234	WARNING: Forcing SHORT addressing disables range checking of extension word
+OR.B #$12,$1234.W	003800121234	WARNING: Forcing SHORT addressing disables range checking of extension word
+OR.B $8000,D1	823900008000	-
+OR.B $8000,A2		ERROR: Invalid addressing mode
+OR.B D1,$8000	833900008000	-
+OR.B #$12,$8000	0039001200008000	-
+OR.B BK,D1	82381F00	-
+OR.B BK,A2		ERROR: Invalid addressing mode
+OR.B D1,BK	83381F00	-
+OR.B #$12,BK	003800121F00	-
+OR.B *+$10(PC),D1	823A000E	-
+OR.B *+$10(PC),A2		ERROR: Invalid addressing mode
+OR.B D1,*+$10(PC)		ERROR: Invalid addressing mode
+OR.B #$12,*+$10(PC)		ERROR: Invalid addressing mode
+OR.B *(PC,D0.W),D1	823B00FE	-
+OR.B *(PC,D0.W),A2		ERROR: Invalid addressing mode
+OR.B D1,*(PC,D0.W)		ERROR: Invalid addressing mode
+OR.B #$12,*(PC,D0.W)		ERROR: Invalid addressing mode
+OR.B BK(PC),D1	823A0EFE	-
+OR.B BK(PC),A2		ERROR: Invalid addressing mode
+OR.B D1,BK(PC)		ERROR: Invalid addressing mode
+OR.B #$12,BK(PC)		ERROR: Invalid addressing mode
+OR.B #8,D1	823C0008	-
+OR.B #8,A2		ERROR: Invalid addressing mode
+OR.B D1,#8		ERROR: Invalid addressing mode
+OR.B #$12,#8		ERROR: Invalid addressing mode
+OR.B #9,D1	823C0009	-
+OR.B #9,A2		ERROR: Invalid addressing mode
+OR.B D1,#9		ERROR: Invalid addressing mode
+OR.B #$12,#9		ERROR: Invalid addressing mode
+OR.B #0,D1	823C0000	-
+OR.B #0,A2		ERROR: Invalid addressing mode
+OR.B D1,#0		ERROR: Invalid addressing mode
+OR.B #$12,#0		ERROR: Invalid addressing mode
+OR.B #-1,D1	823C00FF	-
+OR.B #-1,A2		ERROR: Invalid addressing mode
+OR.B D1,#-1		ERROR: Invalid addressing mode
+OR.B #$12,#-1		ERROR: Invalid addressing mode
+OR.B #$80,D1	823C0080	-
+OR.B #$80,A2		ERROR: Invalid addressing mode
+OR.B D1,#$80		ERROR: Invalid addressing mode
+OR.B #$12,#$80		ERROR: Invalid addressing mode
+OR.B #$12345678,D1	823C0078	ERROR: Immediate data exceeds 8 bits
+OR.B #$12345678,A2		ERROR: Invalid addressing mode
+OR.B D1,#$12345678		ERROR: Invalid addressing mode
+OR.B #$12,#$12345678		ERROR: Invalid addressing mode
+OR.B #$12345678.L,D1	823C0078	ERROR: Immediate data exceeds 8 bits
+OR.B #$12345678.L,A2		ERROR: Invalid addressing mode
+OR.B D1,#$12345678.L		ERROR: Invalid addressing mode
+OR.B #$12,#$12345678.L		ERROR: Invalid addressing mode
+OR.B #BK,D1	823C0000	ERROR: Immediate data exceeds 8 bits
+OR.B #BK,A2		ERROR: Invalid addressing mode
+OR.B D1,#BK		ERROR: Invalid addressing mode
+OR.B #$12,#BK		ERROR: Invalid addressing mode
+OR.B #FW,D1	823C0000	ERROR: Immediate data exceeds 8 bits
+OR.B #FW,A2		ERROR: Invalid addressing mode
+OR.B D1,#FW		ERROR: Invalid addressing mode
+OR.B #$12,#FW		ERROR: Invalid addressing mode
+OR.B #UNDEF,D1	823C008A	ERROR: Undefined symbol
+OR.B #UNDEF,A2		ERROR: Invalid addressing mode
+OR.B D1,#UNDEF		ERROR: Invalid addressing mode
+OR.B #$12,#UNDEF		ERROR: Invalid addressing mode
+OR.B UNDEF,D1	82390000558A	ERROR: Undefined symbol
+OR.B UNDEF,A2		ERROR: Invalid addressing mode
+OR.B D1,UNDEF	833900001F00	ERROR: Undefined symbol
+OR.B #$12,UNDEF	0039001200001F00	ERROR: Undefined symbol
+OR.B USP,D1		ERROR: Invalid addressing mode
+OR.B USP,A2		ERROR: Invalid addressing mode
+OR.B D1,USP		ERROR: Invalid addressing mode
+OR.B #$12,USP		ERROR: Invalid addressing mode
+OR.B D1,D2,D3		ERROR: Invalid syntax
+OR.W		ERROR: Invalid syntax
+OR.W D1		ERROR: Comma expected
+OR.W A2		ERROR: Comma expected
+OR.W SP		ERROR: Comma expected
+OR.W (A3)		ERROR: Comma expected
+OR.W (A4)+		ERROR: Comma expected
+OR.W -(A5)		ERROR: Comma expected
+OR.W $10(A6)		ERROR: Comma expected
+OR.W -2(A0)		ERROR: Comma expected
+OR.W $10(A6,D7.W)		ERROR: Comma expected
+OR.W $12(A0,A1.L)		ERROR: Comma expected
+OR.W (A2,D3)		ERROR: Comma expected
+OR.W $1234		ERROR: Comma expected
+OR.W $12345678		ERROR: Comma expected
+OR.W $1234.L		ERROR: Comma expected
+OR.W $1234.W		ERROR: Comma expected
+OR.W $8000		ERROR: Comma expected
+OR.W BK		ERROR: Comma expected
+OR.W FW		ERROR: Comma expected
+OR.W *+$10(PC)		ERROR: Comma expected
+OR.W *(PC,D0.W)		ERROR: Comma expected
+OR.W BK(PC)		ERROR: Comma expected
+OR.W #1		ERROR: Comma expected
+OR.W #8		ERROR: Comma expected
+OR.W #9		ERROR: Comma expected
+OR.W #0		ERROR: Comma expected
+OR.W #-1		ERROR: Comma expected
+OR.W #$80		ERROR: Comma expected
+OR.W #$1234		ERROR: Comma expected
+OR.W #$12345678		ERROR: Comma expected
+OR.W #$12345678.L		ERROR: Comma expected
+OR.W #BK		ERROR: Comma expected
+OR.W #FW		ERROR: Comma expected
+OR.W #UNDEF		ERROR: Comma expected
+OR.W UNDEF		ERROR: Comma expected
+OR.W SR		ERROR: Comma expected
+OR.W CCR		ERROR: Comma expected
+OR.W USP		ERROR: Comma expected
+OR.W D1,D1	8241	-
+OR.W D1,A2		ERROR: Invalid addressing mode
+OR.W D1,(A3)	8353	-
+OR.W D1,(A4)+	835C	-
+OR.W D1,-(A5)	8365	-
+OR.W D1,$10(A6)	836E0010	-
+OR.W D1,$10(A6,D7.W)	83767010	-
+OR.W D1,$1234	83781234	-
+OR.W D1,$12345678	837912345678	-
+OR.W D1,FW	837900001F00	-
+OR.W D1,*+$10(PC)		ERROR: Invalid addressing mode
+OR.W D1,#1		ERROR: Invalid addressing mode
+OR.W D1,#$80		ERROR: Invalid addressing mode
+OR.W D1,#$1234		ERROR: Invalid addressing mode
+OR.W D1,#$12345678		ERROR: Invalid addressing mode
+OR.W D1,SR		ERROR: Invalid addressing mode
+OR.W D1,CCR		ERROR: Invalid addressing mode
+OR.W D1,USP		ERROR: Invalid addressing mode
+OR.W A2,D1		ERROR: Invalid addressing mode
+OR.W A2,A2		ERROR: Invalid addressing mode
+OR.W A2,(A3)		ERROR: Invalid addressing mode
+OR.W A2,(A4)+		ERROR: Invalid addressing mode
+OR.W A2,-(A5)		ERROR: Invalid addressing mode
+OR.W A2,$10(A6)		ERROR: Invalid addressing mode
+OR.W A2,$10(A6,D7.W)		ERROR: Invalid addressing mode
+OR.W A2,$1234		ERROR: Invalid addressing mode
+OR.W A2,$12345678		ERROR: Invalid addressing mode
+OR.W A2,FW		ERROR: Invalid addressing mode
+OR.W A2,*+$10(PC)		ERROR: Invalid addressing mode
+OR.W A2,#1		ERROR: Invalid addressing mode
+OR.W A2,#$80		ERROR: Invalid addressing mode
+OR.W A2,#$1234		ERROR: Invalid addressing mode
+OR.W A2,#$12345678		ERROR: Invalid addressing mode
+OR.W A2,SR		ERROR: Invalid addressing mode
+OR.W A2,CCR		ERROR: Invalid addressing mode
+OR.W A2,USP		ERROR: Invalid addressing mode
+OR.W (A3),D1	8253	-
+OR.W (A3),A2		ERROR: Invalid addressing mode
+OR.W (A3),(A3)		ERROR: Invalid addressing mode
+OR.W (A3),(A4)+		ERROR: Invalid addressing mode
+OR.W (A3),-(A5)		ERROR: Invalid addressing mode
+OR.W (A3),$10(A6)		ERROR: Invalid addressing mode
+OR.W (A3),$10(A6,D7.W)		ERROR: Invalid addressing mode
+OR.W (A3),$1234		ERROR: Invalid addressing mode
+OR.W (A3),$12345678		ERROR: Invalid addressing mode
+OR.W (A3),FW		ERROR: Invalid addressing mode
+OR.W (A3),*+$10(PC)		ERROR: Invalid addressing mode
+OR.W (A3),#1		ERROR: Invalid addressing mode
+OR.W (A3),#$80		ERROR: Invalid addressing mode
+OR.W (A3),#$1234		ERROR: Invalid addressing mode
+OR.W (A3),#$12345678		ERROR: Invalid addressing mode
+OR.W (A3),SR		ERROR: Invalid addressing mode
+OR.W (A3),CCR		ERROR: Invalid addressing mode
+OR.W (A3),USP		ERROR: Invalid addressing mode
+OR.W (A4)+,D1	825C	-
+OR.W (A4)+,A2		ERROR: Invalid addressing mode
+OR.W (A4)+,(A3)		ERROR: Invalid addressing mode
+OR.W (A4)+,(A4)+		ERROR: Invalid addressing mode
+OR.W (A4)+,-(A5)		ERROR: Invalid addressing mode
+OR.W (A4)+,$10(A6)		ERROR: Invalid addressing mode
+OR.W (A4)+,$10(A6,D7.W)		ERROR: Invalid addressing mode
+OR.W (A4)+,$1234		ERROR: Invalid addressing mode
+OR.W (A4)+,$12345678		ERROR: Invalid addressing mode
+OR.W (A4)+,FW		ERROR: Invalid addressing mode
+OR.W (A4)+,*+$10(PC)		ERROR: Invalid addressing mode
+OR.W (A4)+,#1		ERROR: Invalid addressing mode
+OR.W (A4)+,#$80		ERROR: Invalid addressing mode
+OR.W (A4)+,#$1234		ERROR: Invalid addressing mode
+OR.W (A4)+,#$12345678		ERROR: Invalid addressing mode
+OR.W (A4)+,SR		ERROR: Invalid addressing mode
+OR.W (A4)+,CCR		ERROR: Invalid addressing mode
+OR.W (A4)+,USP		ERROR: Invalid addressing mode
+OR.W -(A5),D1	8265	-
+OR.W -(A5),A2		ERROR: Invalid addressing mode
+OR.W -(A5),(A3)		ERROR: Invalid addressing mode
+OR.W -(A5),(A4)+		ERROR: Invalid addressing mode
+OR.W -(A5),-(A5)		ERROR: Invalid addressing mode
+OR.W -(A5),$10(A6)		ERROR: Invalid addressing mode
+OR.W -(A5),$10(A6,D7.W)		ERROR: Invalid addressing mode
+OR.W -(A5),$1234		ERROR: Invalid addressing mode
+OR.W -(A5),$12345678		ERROR: Invalid addressing mode
+OR.W -(A5),FW		ERROR: Invalid addressing mode
+OR.W -(A5),*+$10(PC)		ERROR: Invalid addressing mode
+OR.W -(A5),#1		ERROR: Invalid addressing mode
+OR.W -(A5),#$80		ERROR: Invalid addressing mode
+OR.W -(A5),#$1234		ERROR: Invalid addressing mode
+OR.W -(A5),#$12345678		ERROR: Invalid addressing mode
+OR.W -(A5),SR		ERROR: Invalid addressing mode
+OR.W -(A5),CCR		ERROR: Invalid addressing mode
+OR.W -(A5),USP		ERROR: Invalid addressing mode
+OR.W $10(A6),D1	826E0010	-
+OR.W $10(A6),A2		ERROR: Invalid addressing mode
+OR.W $10(A6),(A3)		ERROR: Invalid addressing mode
+OR.W $10(A6),(A4)+		ERROR: Invalid addressing mode
+OR.W $10(A6),-(A5)		ERROR: Invalid addressing mode
+OR.W $10(A6),$10(A6)		ERROR: Invalid addressing mode
+OR.W $10(A6),$10(A6,D7.W)		ERROR: Invalid addressing mode
+OR.W $10(A6),$1234		ERROR: Invalid addressing mode
+OR.W $10(A6),$12345678		ERROR: Invalid addressing mode
+OR.W $10(A6),FW		ERROR: Invalid addressing mode
+OR.W $10(A6),*+$10(PC)		ERROR: Invalid addressing mode
+OR.W $10(A6),#1		ERROR: Invalid addressing mode
+OR.W $10(A6),#$80		ERROR: Invalid addressing mode
+OR.W $10(A6),#$1234		ERROR: Invalid addressing mode
+OR.W $10(A6),#$12345678		ERROR: Invalid addressing mode
+OR.W $10(A6),SR		ERROR: Invalid addressing mode
+OR.W $10(A6),CCR		ERROR: Invalid addressing mode
+OR.W $10(A6),USP		ERROR: Invalid addressing mode
+OR.W $10(A6,D7.W),D1	82767010	-
+OR.W $10(A6,D7.W),A2		ERROR: Invalid addressing mode
+OR.W $10(A6,D7.W),(A3)		ERROR: Invalid addressing mode
+OR.W $10(A6,D7.W),(A4)+		ERROR: Invalid addressing mode
+OR.W $10(A6,D7.W),-(A5)		ERROR: Invalid addressing mode
+OR.W $10(A6,D7.W),$10(A6)		ERROR: Invalid addressing mode
+OR.W $10(A6,D7.W),$10(A6,D7.W)		ERROR: Invalid addressing mode
+OR.W $10(A6,D7.W),$1234		ERROR: Invalid addressing mode
+OR.W $10(A6,D7.W),$12345678		ERROR: Invalid addressing mode
+OR.W $10(A6,D7.W),FW		ERROR: Invalid addressing mode
+OR.W $10(A6,D7.W),*+$10(PC)		ERROR: Invalid addressing mode
+OR.W $10(A6,D7.W),#1		ERROR: Invalid addressing mode
+OR.W $10(A6,D7.W),#$80		ERROR: Invalid addressing mode
+OR.W $10(A6,D7.W),#$1234		ERROR: Invalid addressing mode
+OR.W $10(A6,D7.W),#$12345678		ERROR: Invalid addressing mode
+OR.W $10(A6,D7.W),SR		ERROR: Invalid addressing mode
+OR.W $10(A6,D7.W),CCR		ERROR: Invalid addressing mode
+OR.W $10(A6,D7.W),USP		ERROR: Invalid addressing mode
+OR.W $1234,D1	82781234	-
+OR.W $1234,A2		ERROR: Invalid addressing mode
+OR.W $1234,(A3)		ERROR: Invalid addressing mode
+OR.W $1234,(A4)+		ERROR: Invalid addressing mode
+OR.W $1234,-(A5)		ERROR: Invalid addressing mode
+OR.W $1234,$10(A6)		ERROR: Invalid addressing mode
+OR.W $1234,$10(A6,D7.W)		ERROR: Invalid addressing mode
+OR.W $1234,$1234		ERROR: Invalid addressing mode
+OR.W $1234,$12345678		ERROR: Invalid addressing mode
+OR.W $1234,FW		ERROR: Invalid addressing mode
+OR.W $1234,*+$10(PC)		ERROR: Invalid addressing mode
+OR.W $1234,#1		ERROR: Invalid addressing mode
+OR.W $1234,#$80		ERROR: Invalid addressing mode
+OR.W $1234,#$1234		ERROR: Invalid addressing mode
+OR.W $1234,#$12345678		ERROR: Invalid addressing mode
+OR.W $1234,SR		ERROR: Invalid addressing mode
+OR.W $1234,CCR		ERROR: Invalid addressing mode
+OR.W $1234,USP		ERROR: Invalid addressing mode
+OR.W $12345678,D1	827912345678	-
+OR.W $12345678,A2		ERROR: Invalid addressing mode
+OR.W $12345678,(A3)		ERROR: Invalid addressing mode
+OR.W $12345678,(A4)+		ERROR: Invalid addressing mode
+OR.W $12345678,-(A5)		ERROR: Invalid addressing mode
+OR.W $12345678,$10(A6)		ERROR: Invalid addressing mode
+OR.W $12345678,$10(A6,D7.W)		ERROR: Invalid addressing mode
+OR.W $12345678,$1234		ERROR: Invalid addressing mode
+OR.W $12345678,$12345678		ERROR: Invalid addressing mode
+OR.W $12345678,FW		ERROR: Invalid addressing mode
+OR.W $12345678,*+$10(PC)		ERROR: Invalid addressing mode
+OR.W $12345678,#1		ERROR: Invalid addressing mode
+OR.W $12345678,#$80		ERROR: Invalid addressing mode
+OR.W $12345678,#$1234		ERROR: Invalid addressing mode
+OR.W $12345678,#$12345678		ERROR: Invalid addressing mode
+OR.W $12345678,SR		ERROR: Invalid addressing mode
+OR.W $12345678,CCR		ERROR: Invalid addressing mode
+OR.W $12345678,USP		ERROR: Invalid addressing mode
+OR.W FW,D1	827900001F00	-
+OR.W FW,A2		ERROR: Invalid addressing mode
+OR.W FW,(A3)		ERROR: Invalid addressing mode
+OR.W FW,(A4)+		ERROR: Invalid addressing mode
+OR.W FW,-(A5)		ERROR: Invalid addressing mode
+OR.W FW,$10(A6)		ERROR: Invalid addressing mode
+OR.W FW,$10(A6,D7.W)		ERROR: Invalid addressing mode
+OR.W FW,$1234		ERROR: Invalid addressing mode
+OR.W FW,$12345678		ERROR: Invalid addressing mode
+OR.W FW,FW		ERROR: Invalid addressing mode
+OR.W FW,*+$10(PC)		ERROR: Invalid addressing mode
+OR.W FW,#1		ERROR: Invalid addressing mode
+OR.W FW,#$80		ERROR: Invalid addressing mode
+OR.W FW,#$1234		ERROR: Invalid addressing mode
+OR.W FW,#$12345678		ERROR: Invalid addressing mode
+OR.W FW,SR		ERROR: Invalid addressing mode
+OR.W FW,CCR		ERROR: Invalid addressing mode
+OR.W FW,USP		ERROR: Invalid addressing mode
+OR.W *+$10(PC),D1	827A000E	-
+OR.W *+$10(PC),A2		ERROR: Invalid addressing mode
+OR.W *+$10(PC),(A3)		ERROR: Invalid addressing mode
+OR.W *+$10(PC),(A4)+		ERROR: Invalid addressing mode
+OR.W *+$10(PC),-(A5)		ERROR: Invalid addressing mode
+OR.W *+$10(PC),$10(A6)		ERROR: Invalid addressing mode
+OR.W *+$10(PC),$10(A6,D7.W)		ERROR: Invalid addressing mode
+OR.W *+$10(PC),$1234		ERROR: Invalid addressing mode
+OR.W *+$10(PC),$12345678		ERROR: Invalid addressing mode
+OR.W *+$10(PC),FW		ERROR: Invalid addressing mode
+OR.W *+$10(PC),*+$10(PC)		ERROR: Invalid addressing mode
+OR.W *+$10(PC),#1		ERROR: Invalid addressing mode
+OR.W *+$10(PC),#$80		ERROR: Invalid addressing mode
+OR.W *+$10(PC),#$1234		ERROR: Invalid addressing mode
+OR.W *+$10(PC),#$12345678		ERROR: Invalid addressing mode
+OR.W *+$10(PC),SR		ERROR: Invalid addressing mode
+OR.W *+$10(PC),CCR		ERROR: Invalid addressing mode
+OR.W *+$10(PC),USP		ERROR: Invalid addressing mode
+OR.W #1,D1	827C0001	-
+OR.W #1,A2		ERROR: Invalid addressing mode
+OR.W #1,(A3)	00530001	-
+OR.W #1,(A4)+	005C0001	-
+OR.W #1,-(A5)	00650001	-
+OR.W #1,$10(A6)	006E00010010	-
+OR.W #1,$10(A6,D7.W)	007600017010	-
+OR.W #1,$1234	007800011234	-
+OR.W #1,$12345678	0079000112345678	-
+OR.W #1,FW	0079000100001F00	-
+OR.W #1,*+$10(PC)		ERROR: Invalid addressing mode
+OR.W #1,#1		ERROR: Invalid addressing mode
+OR.W #1,#$80		ERROR: Invalid addressing mode
+OR.W #1,#$1234		ERROR: Invalid addressing mode
+OR.W #1,#$12345678		ERROR: Invalid addressing mode
+OR.W #1,SR	007C0001	-
+OR.W #1,CCR	003C0001	ERROR: Invalid size code
+OR.W #1,USP		ERROR: Invalid addressing mode
+OR.W #$80,D1	827C0080	-
+OR.W #$80,A2		ERROR: Invalid addressing mode
+OR.W #$80,(A3)	00530080	-
+OR.W #$80,(A4)+	005C0080	-
+OR.W #$80,-(A5)	00650080	-
+OR.W #$80,$10(A6)	006E00800010	-
+OR.W #$80,$10(A6,D7.W)	007600807010	-
+OR.W #$80,$1234	007800801234	-
+OR.W #$80,$12345678	0079008012345678	-
+OR.W #$80,FW	0079008000001F00	-
+OR.W #$80,*+$10(PC)		ERROR: Invalid addressing mode
+OR.W #$80,#1		ERROR: Invalid addressing mode
+OR.W #$80,#$80		ERROR: Invalid addressing mode
+OR.W #$80,#$1234		ERROR: Invalid addressing mode
+OR.W #$80,#$12345678		ERROR: Invalid addressing mode
+OR.W #$80,SR	007C0080	-
+OR.W #$80,CCR	003C0080	ERROR: Invalid size code
+OR.W #$80,USP		ERROR: Invalid addressing mode
+OR.W #$1234,D1	827C1234	-
+OR.W #$1234,A2		ERROR: Invalid addressing mode
+OR.W #$1234,(A3)	00531234	-
+OR.W #$1234,(A4)+	005C1234	-
+OR.W #$1234,-(A5)	00651234	-
+OR.W #$1234,$10(A6)	006E12340010	-
+OR.W #$1234,$10(A6,D7.W)	007612347010	-
+OR.W #$1234,$1234	007812341234	-
+OR.W #$1234,$12345678	0079123412345678	-
+OR.W #$1234,FW	0079123400001F00	-
+OR.W #$1234,*+$10(PC)		ERROR: Invalid addressing mode
+OR.W #$1234,#1		ERROR: Invalid addressing mode
+OR.W #$1234,#$80		ERROR: Invalid addressing mode
+OR.W #$1234,#$1234		ERROR: Invalid addressing mode
+OR.W #$1234,#$12345678		ERROR: Invalid addressing mode
+OR.W #$1234,SR	007C1234	-
+OR.W #$1234,CCR	003C0034	ERROR: Invalid size code
+OR.W #$1234,USP		ERROR: Invalid addressing mode
+OR.W #$12345678,D1	827C5678	ERROR: Immediate data exceeds 16 bits
+OR.W #$12345678,A2		ERROR: Invalid addressing mode
+OR.W #$12345678,(A3)	00535678	ERROR: Immediate data exceeds 16 bits
+OR.W #$12345678,(A4)+	005C5678	ERROR: Immediate data exceeds 16 bits
+OR.W #$12345678,-(A5)	00655678	ERROR: Immediate data exceeds 16 bits
+OR.W #$12345678,$10(A6)	006E56780010	ERROR: Immediate data exceeds 16 bits
+OR.W #$12345678,$10(A6,D7.W)	007656787010	ERROR: Immediate data exceeds 16 bits
+OR.W #$12345678,$1234	007856781234	ERROR: Immediate data exceeds 16 bits
+OR.W #$12345678,$12345678	0079567812345678	ERROR: Immediate data exceeds 16 bits
+OR.W #$12345678,FW	0079567800001F00	ERROR: Immediate data exceeds 16 bits
+OR.W #$12345678,*+$10(PC)		ERROR: Invalid addressing mode
+OR.W #$12345678,#1		ERROR: Invalid addressing mode
+OR.W #$12345678,#$80		ERROR: Invalid addressing mode
+OR.W #$12345678,#$1234		ERROR: Invalid addressing mode
+OR.W #$12345678,#$12345678		ERROR: Invalid addressing mode
+OR.W #$12345678,SR	007C5678	ERROR: Immediate data exceeds 16 bits
+OR.W #$12345678,CCR	003C0078	ERROR: Invalid size code
+OR.W #$12345678,USP		ERROR: Invalid addressing mode
+OR.W SR,D1		ERROR: Invalid addressing mode
+OR.W SR,A2		ERROR: Invalid addressing mode
+OR.W SR,(A3)		ERROR: Invalid addressing mode
+OR.W SR,(A4)+		ERROR: Invalid addressing mode
+OR.W SR,-(A5)		ERROR: Invalid addressing mode
+OR.W SR,$10(A6)		ERROR: Invalid addressing mode
+OR.W SR,$10(A6,D7.W)		ERROR: Invalid addressing mode
+OR.W SR,$1234		ERROR: Invalid addressing mode
+OR.W SR,$12345678		ERROR: Invalid addressing mode
+OR.W SR,FW		ERROR: Invalid addressing mode
+OR.W SR,*+$10(PC)		ERROR: Invalid addressing mode
+OR.W SR,#1		ERROR: Invalid addressing mode
+OR.W SR,#$80		ERROR: Invalid addressing mode
+OR.W SR,#$1234		ERROR: Invalid addressing mode
+OR.W SR,#$12345678		ERROR: Invalid addressing mode
+OR.W SR,SR		ERROR: Invalid addressing mode
+OR.W SR,CCR		ERROR: Invalid addressing mode
+OR.W SR,USP		ERROR: Invalid addressing mode
+OR.W CCR,D1		ERROR: Invalid addressing mode
+OR.W CCR,A2		ERROR: Invalid addressing mode
+OR.W CCR,(A3)		ERROR: Invalid addressing mode
+OR.W CCR,(A4)+		ERROR: Invalid addressing mode
+OR.W CCR,-(A5)		ERROR: Invalid addressing mode
+OR.W CCR,$10(A6)		ERROR: Invalid addressing mode
+OR.W CCR,$10(A6,D7.W)		ERROR: Invalid addressing mode
+OR.W CCR,$1234		ERROR: Invalid addressing mode
+OR.W CCR,$12345678		ERROR: Invalid addressing mode
+OR.W CCR,FW		ERROR: Invalid addressing mode
+OR.W CCR,*+$10(PC)		ERROR: Invalid addressing mode
+OR.W CCR,#1		ERROR: Invalid addressing mode
+OR.W CCR,#$80		ERROR: Invalid addressing mode
+OR.W CCR,#$1234		ERROR: Invalid addressing mode
+OR.W CCR,#$12345678		ERROR: Invalid addressing mode
+OR.W CCR,SR		ERROR: Invalid addressing mode
+OR.W CCR,CCR		ERROR: Invalid addressing mode
+OR.W CCR,USP		ERROR: Invalid addressing mode
+OR.W USP,D1		ERROR: Invalid addressing mode
+OR.W USP,A2		ERROR: Invalid addressing mode
+OR.W USP,(A3)		ERROR: Invalid addressing mode
+OR.W USP,(A4)+		ERROR: Invalid addressing mode
+OR.W USP,-(A5)		ERROR: Invalid addressing mode
+OR.W USP,$10(A6)		ERROR: Invalid addressing mode
+OR.W USP,$10(A6,D7.W)		ERROR: Invalid addressing mode
+OR.W USP,$1234		ERROR: Invalid addressing mode
+OR.W USP,$12345678		ERROR: Invalid addressing mode
+OR.W USP,FW		ERROR: Invalid addressing mode
+OR.W USP,*+$10(PC)		ERROR: Invalid addressing mode
+OR.W USP,#1		ERROR: Invalid addressing mode
+OR.W USP,#$80		ERROR: Invalid addressing mode
+OR.W USP,#$1234		ERROR: Invalid addressing mode
+OR.W USP,#$12345678		ERROR: Invalid addressing mode
+OR.W USP,SR		ERROR: Invalid addressing mode
+OR.W USP,CCR		ERROR: Invalid addressing mode
+OR.W USP,USP		ERROR: Invalid addressing mode
+OR.W SP,D1		ERROR: Invalid addressing mode
+OR.W SP,A2		ERROR: Invalid addressing mode
+OR.W D1,SP		ERROR: Invalid addressing mode
+OR.W #$12,SP		ERROR: Invalid addressing mode
+OR.W -2(A0),D1	8268FFFE	-
+OR.W -2(A0),A2		ERROR: Invalid addressing mode
+OR.W D1,-2(A0)	8368FFFE	-
+OR.W #$12,-2(A0)	00680012FFFE	-
+OR.W $12(A0,A1.L),D1	82709812	-
+OR.W $12(A0,A1.L),A2		ERROR: Invalid addressing mode
+OR.W D1,$12(A0,A1.L)	83709812	-
+OR.W #$12,$12(A0,A1.L)	007000129812	-
+OR.W (A2,D3),D1	82723000	-
+OR.W (A2,D3),A2		ERROR: Invalid addressing mode
+OR.W D1,(A2,D3)	83723000	-
+OR.W #$12,(A2,D3)	007200123000	-
+OR.W $1234.L,D1	827900001234	-
+OR.W $1234.L,A2		ERROR: Invalid addressing mode
+OR.W D1,$1234.L	837900001234	-
+OR.W #$12,$1234.L	0079001200001234	-
+OR.W $1234.W,D1	82781234	WARNING: Forcing SHORT addressing disables range checking of extension word
+OR.W $1234.W,A2		ERROR: Invalid addressing mode
+OR.W D1,$1234.W	83781234	WARNING: Forcing SHORT addressing disables range checking of extension word
+OR.W #$12,$1234.W	007800121234	WARNING: Forcing SHORT addressing disables range checking of extension word
+OR.W $8000,D1	827900008000	-
+OR.W $8000,A2		ERROR: Invalid addressing mode
+OR.W D1,$8000	837900008000	-
+OR.W #$12,$8000	0079001200008000	-
+OR.W BK,D1	82781F00	-
+OR.W BK,A2		ERROR: Invalid addressing mode
+OR.W D1,BK	83781F00	-
+OR.W #$12,BK	007800121F00	-
+OR.W *(PC,D0.W),D1	827B00FE	-
+OR.W *(PC,D0.W),A2		ERROR: Invalid addressing mode
+OR.W D1,*(PC,D0.W)		ERROR: Invalid addressing mode
+OR.W #$12,*(PC,D0.W)		ERROR: Invalid addressing mode
+OR.W BK(PC),D1	827A0EFE	-
+OR.W BK(PC),A2		ERROR: Invalid addressing mode
+OR.W D1,BK(PC)		ERROR: Invalid addressing mode
+OR.W #$12,BK(PC)		ERROR: Invalid addressing mode
+OR.W #8,D1	827C0008	-
+OR.W #8,A2		ERROR: Invalid addressing mode
+OR.W D1,#8		ERROR: Invalid addressing mode
+OR.W #$12,#8		ERROR: Invalid addressing mode
+OR.W #9,D1	827C0009	-
+OR.W #9,A2		ERROR: Invalid addressing mode
+OR.W D1,#9		ERROR: Invalid addressing mode
+OR.W #$12,#9		ERROR: Invalid addressing mode
+OR.W #0,D1	827C0000	-
+OR.W #0,A2		ERROR: Invalid addressing mode
+OR.W D1,#0		ERROR: Invalid addressing mode
+OR.W #$12,#0		ERROR: Invalid addressing mode
+OR.W #-1,D1	827CFFFF	-
+OR.W #-1,A2		ERROR: Invalid addressing mode
+OR.W D1,#-1		ERROR: Invalid addressing mode
+OR.W #$12,#-1		ERROR: Invalid addressing mode
+OR.W #$12345678.L,D1	827C5678	ERROR: Immediate data exceeds 16 bits
+OR.W #$12345678.L,A2		ERROR: Invalid addressing mode
+OR.W D1,#$12345678.L		ERROR: Invalid addressing mode
+OR.W #$12,#$12345678.L		ERROR: Invalid addressing mode
+OR.W #BK,D1	827C1F00	-
+OR.W #BK,A2		ERROR: Invalid addressing mode
+OR.W D1,#BK		ERROR: Invalid addressing mode
+OR.W #$12,#BK		ERROR: Invalid addressing mode
+OR.W #FW,D1	827C1F00	-
+OR.W #FW,A2		ERROR: Invalid addressing mode
+OR.W D1,#FW		ERROR: Invalid addressing mode
+OR.W #$12,#FW		ERROR: Invalid addressing mode
+OR.W #UNDEF,D1	827C558A	ERROR: Undefined symbol
+OR.W #UNDEF,A2		ERROR: Invalid addressing mode
+OR.W D1,#UNDEF		ERROR: Invalid addressing mode
+OR.W #$12,#UNDEF		ERROR: Invalid addressing mode
+OR.W UNDEF,D1	82790000558A	ERROR: Undefined symbol
+OR.W UNDEF,A2		ERROR: Invalid addressing mode
+OR.W D1,UNDEF	837900001F00	ERROR: Undefined symbol
+OR.W #$12,UNDEF	0079001200001F00	ERROR: Undefined symbol
+OR.W D1,D2,D3		ERROR: Invalid syntax
+OR.L		ERROR: Invalid syntax
+OR.L D1		ERROR: Comma expected
+OR.L A2		ERROR: Comma expected
+OR.L SP		ERROR: Comma expected
+OR.L (A3)		ERROR: Comma expected
+OR.L (A4)+		ERROR: Comma expected
+OR.L -(A5)		ERROR: Comma expected
+OR.L $10(A6)		ERROR: Comma expected
+OR.L -2(A0)		ERROR: Comma expected
+OR.L $10(A6,D7.W)		ERROR: Comma expected
+OR.L $12(A0,A1.L)		ERROR: Comma expected
+OR.L (A2,D3)		ERROR: Comma expected
+OR.L $1234		ERROR: Comma expected
+OR.L $12345678		ERROR: Comma expected
+OR.L $1234.L		ERROR: Comma expected
+OR.L $1234.W		ERROR: Comma expected
+OR.L $8000		ERROR: Comma expected
+OR.L BK		ERROR: Comma expected
+OR.L FW		ERROR: Comma expected
+OR.L *+$10(PC)		ERROR: Comma expected
+OR.L *(PC,D0.W)		ERROR: Comma expected
+OR.L BK(PC)		ERROR: Comma expected
+OR.L #1		ERROR: Comma expected
+OR.L #8		ERROR: Comma expected
+OR.L #9		ERROR: Comma expected
+OR.L #0		ERROR: Comma expected
+OR.L #-1		ERROR: Comma expected
+OR.L #$80		ERROR: Comma expected
+OR.L #$1234		ERROR: Comma expected
+OR.L #$12345678		ERROR: Comma expected
+OR.L #$12345678.L		ERROR: Comma expected
+OR.L #BK		ERROR: Comma expected
+OR.L #FW		ERROR: Comma expected
+OR.L #UNDEF		ERROR: Comma expected
+OR.L UNDEF		ERROR: Comma expected
+OR.L SR		ERROR: Comma expected
+OR.L CCR		ERROR: Comma expected
+OR.L USP		ERROR: Comma expected
+OR.L D1,D1	8281	-
+OR.L D1,A2		ERROR: Invalid addressing mode
+OR.L D1,(A3)	8393	-
+OR.L D1,$10(A6)	83AE0010	-
+OR.L D1,$1234	83B81234	-
+OR.L D1,FW	83B900001F00	-
+OR.L D1,#1		ERROR: Invalid addressing mode
+OR.L D1,#$1234		ERROR: Invalid addressing mode
+OR.L D1,CCR		ERROR: Invalid addressing mode
+OR.L D1,SR		ERROR: Invalid addressing mode
+OR.L A2,D1		ERROR: Invalid addressing mode
+OR.L A2,A2		ERROR: Invalid addressing mode
+OR.L A2,(A3)		ERROR: Invalid addressing mode
+OR.L A2,$10(A6)		ERROR: Invalid addressing mode
+OR.L A2,$1234		ERROR: Invalid addressing mode
+OR.L A2,FW		ERROR: Invalid addressing mode
+OR.L A2,#1		ERROR: Invalid addressing mode
+OR.L A2,#$1234		ERROR: Invalid addressing mode
+OR.L A2,CCR		ERROR: Invalid addressing mode
+OR.L A2,SR		ERROR: Invalid addressing mode
+OR.L (A3),D1	8293	-
+OR.L (A3),A2		ERROR: Invalid addressing mode
+OR.L (A3),(A3)		ERROR: Invalid addressing mode
+OR.L (A3),$10(A6)		ERROR: Invalid addressing mode
+OR.L (A3),$1234		ERROR: Invalid addressing mode
+OR.L (A3),FW		ERROR: Invalid addressing mode
+OR.L (A3),#1		ERROR: Invalid addressing mode
+OR.L (A3),#$1234		ERROR: Invalid addressing mode
+OR.L (A3),CCR		ERROR: Invalid addressing mode
+OR.L (A3),SR		ERROR: Invalid addressing mode
+OR.L $10(A6),D1	82AE0010	-
+OR.L $10(A6),A2		ERROR: Invalid addressing mode
+OR.L $10(A6),(A3)		ERROR: Invalid addressing mode
+OR.L $10(A6),$10(A6)		ERROR: Invalid addressing mode
+OR.L $10(A6),$1234		ERROR: Invalid addressing mode
+OR.L $10(A6),FW		ERROR: Invalid addressing mode
+OR.L $10(A6),#1		ERROR: Invalid addressing mode
+OR.L $10(A6),#$1234		ERROR: Invalid addressing mode
+OR.L $10(A6),CCR		ERROR: Invalid addressing mode
+OR.L $10(A6),SR		ERROR: Invalid addressing mode
+OR.L $1234,D1	82B81234	-
+OR.L $1234,A2		ERROR: Invalid addressing mode
+OR.L $1234,(A3)		ERROR: Invalid addressing mode
+OR.L $1234,$10(A6)		ERROR: Invalid addressing mode
+OR.L $1234,$1234		ERROR: Invalid addressing mode
+OR.L $1234,FW		ERROR: Invalid addressing mode
+OR.L $1234,#1		ERROR: Invalid addressing mode
+OR.L $1234,#$1234		ERROR: Invalid addressing mode
+OR.L $1234,CCR		ERROR: Invalid addressing mode
+OR.L $1234,SR		ERROR: Invalid addressing mode
+OR.L FW,D1	82B900001F00	-
+OR.L FW,A2		ERROR: Invalid addressing mode
+OR.L FW,(A3)		ERROR: Invalid addressing mode
+OR.L FW,$10(A6)		ERROR: Invalid addressing mode
+OR.L FW,$1234		ERROR: Invalid addressing mode
+OR.L FW,FW		ERROR: Invalid addressing mode
+OR.L FW,#1		ERROR: Invalid addressing mode
+OR.L FW,#$1234		ERROR: Invalid addressing mode
+OR.L FW,CCR		ERROR: Invalid addressing mode
+OR.L FW,SR		ERROR: Invalid addressing mode
+OR.L #1,D1	82BC00000001	-
+OR.L #1,A2		ERROR: Invalid addressing mode
+OR.L #1,(A3)	009300000001	-
+OR.L #1,$10(A6)	00AE000000010010	-
+OR.L #1,$1234	00B8000000011234	-
+OR.L #1,FW	00B90000000100001F00	-
+OR.L #1,#1		ERROR: Invalid addressing mode
+OR.L #1,#$1234		ERROR: Invalid addressing mode
+OR.L #1,CCR	003C0001	ERROR: Invalid size code
+OR.L #1,SR	007C0001	ERROR: Invalid size code
+OR.L #$1234,D1	82BC00001234	-
+OR.L #$1234,A2		ERROR: Invalid addressing mode
+OR.L #$1234,(A3)	009300001234	-
+OR.L #$1234,$10(A6)	00AE000012340010	-
+OR.L #$1234,$1234	00B8000012341234	-
+OR.L #$1234,FW	00B90000123400001F00	-
+OR.L #$1234,#1		ERROR: Invalid addressing mode
+OR.L #$1234,#$1234		ERROR: Invalid addressing mode
+OR.L #$1234,CCR	003C0034	ERROR: Invalid size code
+OR.L #$1234,SR	007C1234	ERROR: Invalid size code
+OR.L CCR,D1		ERROR: Invalid addressing mode
+OR.L CCR,A2		ERROR: Invalid addressing mode
+OR.L CCR,(A3)		ERROR: Invalid addressing mode
+OR.L CCR,$10(A6)		ERROR: Invalid addressing mode
+OR.L CCR,$1234		ERROR: Invalid addressing mode
+OR.L CCR,FW		ERROR: Invalid addressing mode
+OR.L CCR,#1		ERROR: Invalid addressing mode
+OR.L CCR,#$1234		ERROR: Invalid addressing mode
+OR.L CCR,CCR		ERROR: Invalid addressing mode
+OR.L CCR,SR		ERROR: Invalid addressing mode
+OR.L SR,D1		ERROR: Invalid addressing mode
+OR.L SR,A2		ERROR: Invalid addressing mode
+OR.L SR,(A3)		ERROR: Invalid addressing mode
+OR.L SR,$10(A6)		ERROR: Invalid addressing mode
+OR.L SR,$1234		ERROR: Invalid addressing mode
+OR.L SR,FW		ERROR: Invalid addressing mode
+OR.L SR,#1		ERROR: Invalid addressing mode
+OR.L SR,#$1234		ERROR: Invalid addressing mode
+OR.L SR,CCR		ERROR: Invalid addressing mode
+OR.L SR,SR		ERROR: Invalid addressing mode
+OR.L SP,D1		ERROR: Invalid addressing mode
+OR.L SP,A2		ERROR: Invalid addressing mode
+OR.L D1,SP		ERROR: Invalid addressing mode
+OR.L #$12,SP		ERROR: Invalid addressing mode
+OR.L (A4)+,D1	829C	-
+OR.L (A4)+,A2		ERROR: Invalid addressing mode
+OR.L D1,(A4)+	839C	-
+OR.L #$12,(A4)+	009C00000012	-
+OR.L -(A5),D1	82A5	-
+OR.L -(A5),A2		ERROR: Invalid addressing mode
+OR.L D1,-(A5)	83A5	-
+OR.L #$12,-(A5)	00A500000012	-
+OR.L -2(A0),D1	82A8FFFE	-
+OR.L -2(A0),A2		ERROR: Invalid addressing mode
+OR.L D1,-2(A0)	83A8FFFE	-
+OR.L #$12,-2(A0)	00A800000012FFFE	-
+OR.L $10(A6,D7.W),D1	82B67010	-
+OR.L $10(A6,D7.W),A2		ERROR: Invalid addressing mode
+OR.L D1,$10(A6,D7.W)	83B67010	-
+OR.L #$12,$10(A6,D7.W)	00B6000000127010	-
+OR.L $12(A0,A1.L),D1	82B09812	-
+OR.L $12(A0,A1.L),A2		ERROR: Invalid addressing mode
+OR.L D1,$12(A0,A1.L)	83B09812	-
+OR.L #$12,$12(A0,A1.L)	00B0000000129812	-
+OR.L (A2,D3),D1	82B23000	-
+OR.L (A2,D3),A2		ERROR: Invalid addressing mode
+OR.L D1,(A2,D3)	83B23000	-
+OR.L #$12,(A2,D3)	00B2000000123000	-
+OR.L $12345678,D1	82B912345678	-
+OR.L $12345678,A2		ERROR: Invalid addressing mode
+OR.L D1,$12345678	83B912345678	-
+OR.L #$12,$12345678	00B90000001212345678	-
+OR.L $1234.L,D1	82B900001234	-
+OR.L $1234.L,A2		ERROR: Invalid addressing mode
+OR.L D1,$1234.L	83B900001234	-
+OR.L #$12,$1234.L	00B90000001200001234	-
+OR.L $1234.W,D1	82B81234	WARNING: Forcing SHORT addressing disables range checking of extension word
+OR.L $1234.W,A2		ERROR: Invalid addressing mode
+OR.L D1,$1234.W	83B81234	WARNING: Forcing SHORT addressing disables range checking of extension word
+OR.L #$12,$1234.W	00B8000000121234	WARNING: Forcing SHORT addressing disables range checking of extension word
+OR.L $8000,D1	82B900008000	-
+OR.L $8000,A2		ERROR: Invalid addressing mode
+OR.L D1,$8000	83B900008000	-
+OR.L #$12,$8000	00B90000001200008000	-
+OR.L BK,D1	82B81F00	-
+OR.L BK,A2		ERROR: Invalid addressing mode
+OR.L D1,BK	83B81F00	-
+OR.L #$12,BK	00B8000000121F00	-
+OR.L *+$10(PC),D1	82BA000E	-
+OR.L *+$10(PC),A2		ERROR: Invalid addressing mode
+OR.L D1,*+$10(PC)		ERROR: Invalid addressing mode
+OR.L #$12,*+$10(PC)		ERROR: Invalid addressing mode
+OR.L *(PC,D0.W),D1	82BB00FE	-
+OR.L *(PC,D0.W),A2		ERROR: Invalid addressing mode
+OR.L D1,*(PC,D0.W)		ERROR: Invalid addressing mode
+OR.L #$12,*(PC,D0.W)		ERROR: Invalid addressing mode
+OR.L BK(PC),D1	82BA0EFE	-
+OR.L BK(PC),A2		ERROR: Invalid addressing mode
+OR.L D1,BK(PC)		ERROR: Invalid addressing mode
+OR.L #$12,BK(PC)		ERROR: Invalid addressing mode
+OR.L #8,D1	82BC00000008	-
+OR.L #8,A2		ERROR: Invalid addressing mode
+OR.L D1,#8		ERROR: Invalid addressing mode
+OR.L #$12,#8		ERROR: Invalid addressing mode
+OR.L #9,D1	82BC00000009	-
+OR.L #9,A2		ERROR: Invalid addressing mode
+OR.L D1,#9		ERROR: Invalid addressing mode
+OR.L #$12,#9		ERROR: Invalid addressing mode
+OR.L #0,D1	82BC00000000	-
+OR.L #0,A2		ERROR: Invalid addressing mode
+OR.L D1,#0		ERROR: Invalid addressing mode
+OR.L #$12,#0		ERROR: Invalid addressing mode
+OR.L #-1,D1	82BCFFFFFFFF	-
+OR.L #-1,A2		ERROR: Invalid addressing mode
+OR.L D1,#-1		ERROR: Invalid addressing mode
+OR.L #$12,#-1		ERROR: Invalid addressing mode
+OR.L #$80,D1	82BC00000080	-
+OR.L #$80,A2		ERROR: Invalid addressing mode
+OR.L D1,#$80		ERROR: Invalid addressing mode
+OR.L #$12,#$80		ERROR: Invalid addressing mode
+OR.L #$12345678,D1	82BC12345678	-
+OR.L #$12345678,A2		ERROR: Invalid addressing mode
+OR.L D1,#$12345678		ERROR: Invalid addressing mode
+OR.L #$12,#$12345678		ERROR: Invalid addressing mode
+OR.L #$12345678.L,D1	82BC12345678	-
+OR.L #$12345678.L,A2		ERROR: Invalid addressing mode
+OR.L D1,#$12345678.L		ERROR: Invalid addressing mode
+OR.L #$12,#$12345678.L		ERROR: Invalid addressing mode
+OR.L #BK,D1	82BC00001F00	-
+OR.L #BK,A2		ERROR: Invalid addressing mode
+OR.L D1,#BK		ERROR: Invalid addressing mode
+OR.L #$12,#BK		ERROR: Invalid addressing mode
+OR.L #FW,D1	82BC00001F00	-
+OR.L #FW,A2		ERROR: Invalid addressing mode
+OR.L D1,#FW		ERROR: Invalid addressing mode
+OR.L #$12,#FW		ERROR: Invalid addressing mode
+OR.L #UNDEF,D1	82BC0000558A	ERROR: Undefined symbol
+OR.L #UNDEF,A2		ERROR: Invalid addressing mode
+OR.L D1,#UNDEF		ERROR: Invalid addressing mode
+OR.L #$12,#UNDEF		ERROR: Invalid addressing mode
+OR.L UNDEF,D1	82B90000558A	ERROR: Undefined symbol
+OR.L UNDEF,A2		ERROR: Invalid addressing mode
+OR.L D1,UNDEF	83B900001F00	ERROR: Undefined symbol
+OR.L #$12,UNDEF	00B90000001200001F00	ERROR: Undefined symbol
+OR.L USP,D1		ERROR: Invalid addressing mode
+OR.L USP,A2		ERROR: Invalid addressing mode
+OR.L D1,USP		ERROR: Invalid addressing mode
+OR.L #$12,USP		ERROR: Invalid addressing mode
+OR.L D1,D2,D3		ERROR: Invalid syntax
+OR.S		ERROR: Invalid syntax
+OR.S D1		ERROR: Comma expected
+OR.S A2		ERROR: Comma expected
+OR.S SP		ERROR: Comma expected
+OR.S (A3)		ERROR: Comma expected
+OR.S (A4)+		ERROR: Comma expected
+OR.S -(A5)		ERROR: Comma expected
+OR.S $10(A6)		ERROR: Comma expected
+OR.S -2(A0)		ERROR: Comma expected
+OR.S $10(A6,D7.W)		ERROR: Comma expected
+OR.S $12(A0,A1.L)		ERROR: Comma expected
+OR.S (A2,D3)		ERROR: Comma expected
+OR.S $1234		ERROR: Comma expected
+OR.S $12345678		ERROR: Comma expected
+OR.S $1234.L		ERROR: Comma expected
+OR.S $1234.W		ERROR: Comma expected
+OR.S $8000		ERROR: Comma expected
+OR.S BK		ERROR: Comma expected
+OR.S FW		ERROR: Comma expected
+OR.S *+$10(PC)		ERROR: Comma expected
+OR.S *(PC,D0.W)		ERROR: Comma expected
+OR.S BK(PC)		ERROR: Comma expected
+OR.S #1		ERROR: Comma expected
+OR.S #8		ERROR: Comma expected
+OR.S #9		ERROR: Comma expected
+OR.S #0		ERROR: Comma expected
+OR.S #-1		ERROR: Comma expected
+OR.S #$80		ERROR: Comma expected
+OR.S #$1234		ERROR: Comma expected
+OR.S #$12345678		ERROR: Comma expected
+OR.S #$12345678.L		ERROR: Comma expected
+OR.S #BK		ERROR: Comma expected
+OR.S #FW		ERROR: Comma expected
+OR.S #UNDEF		ERROR: Comma expected
+OR.S UNDEF		ERROR: Comma expected
+OR.S SR		ERROR: Comma expected
+OR.S CCR		ERROR: Comma expected
+OR.S USP		ERROR: Comma expected
+OR.S D1,D1	8241	ERROR: Invalid size code
+OR.S D1,A2		ERROR: Invalid addressing mode
+OR.S D1,(A3)	8353	ERROR: Invalid size code
+OR.S D1,$10(A6)	836E0010	ERROR: Invalid size code
+OR.S D1,$1234	83781234	ERROR: Invalid size code
+OR.S D1,FW	837900001F00	ERROR: Invalid size code
+OR.S D1,#1		ERROR: Invalid addressing mode
+OR.S D1,#$1234		ERROR: Invalid addressing mode
+OR.S D1,CCR		ERROR: Invalid addressing mode
+OR.S D1,SR		ERROR: Invalid addressing mode
+OR.S A2,D1		ERROR: Invalid addressing mode
+OR.S A2,A2		ERROR: Invalid addressing mode
+OR.S A2,(A3)		ERROR: Invalid addressing mode
+OR.S A2,$10(A6)		ERROR: Invalid addressing mode
+OR.S A2,$1234		ERROR: Invalid addressing mode
+OR.S A2,FW		ERROR: Invalid addressing mode
+OR.S A2,#1		ERROR: Invalid addressing mode
+OR.S A2,#$1234		ERROR: Invalid addressing mode
+OR.S A2,CCR		ERROR: Invalid addressing mode
+OR.S A2,SR		ERROR: Invalid addressing mode
+OR.S (A3),D1	8253	ERROR: Invalid size code
+OR.S (A3),A2		ERROR: Invalid addressing mode
+OR.S (A3),(A3)		ERROR: Invalid addressing mode
+OR.S (A3),$10(A6)		ERROR: Invalid addressing mode
+OR.S (A3),$1234		ERROR: Invalid addressing mode
+OR.S (A3),FW		ERROR: Invalid addressing mode
+OR.S (A3),#1		ERROR: Invalid addressing mode
+OR.S (A3),#$1234		ERROR: Invalid addressing mode
+OR.S (A3),CCR		ERROR: Invalid addressing mode
+OR.S (A3),SR		ERROR: Invalid addressing mode
+OR.S $10(A6),D1	826E0010	ERROR: Invalid size code
+OR.S $10(A6),A2		ERROR: Invalid addressing mode
+OR.S $10(A6),(A3)		ERROR: Invalid addressing mode
+OR.S $10(A6),$10(A6)		ERROR: Invalid addressing mode
+OR.S $10(A6),$1234		ERROR: Invalid addressing mode
+OR.S $10(A6),FW		ERROR: Invalid addressing mode
+OR.S $10(A6),#1		ERROR: Invalid addressing mode
+OR.S $10(A6),#$1234		ERROR: Invalid addressing mode
+OR.S $10(A6),CCR		ERROR: Invalid addressing mode
+OR.S $10(A6),SR		ERROR: Invalid addressing mode
+OR.S $1234,D1	82781234	ERROR: Invalid size code
+OR.S $1234,A2		ERROR: Invalid addressing mode
+OR.S $1234,(A3)		ERROR: Invalid addressing mode
+OR.S $1234,$10(A6)		ERROR: Invalid addressing mode
+OR.S $1234,$1234		ERROR: Invalid addressing mode
+OR.S $1234,FW		ERROR: Invalid addressing mode
+OR.S $1234,#1		ERROR: Invalid addressing mode
+OR.S $1234,#$1234		ERROR: Invalid addressing mode
+OR.S $1234,CCR		ERROR: Invalid addressing mode
+OR.S $1234,SR		ERROR: Invalid addressing mode
+OR.S FW,D1	827900001F00	ERROR: Invalid size code
+OR.S FW,A2		ERROR: Invalid addressing mode
+OR.S FW,(A3)		ERROR: Invalid addressing mode
+OR.S FW,$10(A6)		ERROR: Invalid addressing mode
+OR.S FW,$1234		ERROR: Invalid addressing mode
+OR.S FW,FW		ERROR: Invalid addressing mode
+OR.S FW,#1		ERROR: Invalid addressing mode
+OR.S FW,#$1234		ERROR: Invalid addressing mode
+OR.S FW,CCR		ERROR: Invalid addressing mode
+OR.S FW,SR		ERROR: Invalid addressing mode
+OR.S #1,D1	827C	ERROR: Invalid size code
+OR.S #1,A2		ERROR: Invalid addressing mode
+OR.S #1,(A3)	0053	ERROR: Invalid size code
+OR.S #1,$10(A6)	006E0010	ERROR: Invalid size code
+OR.S #1,$1234	00781234	ERROR: Invalid size code
+OR.S #1,FW	007900001F00	ERROR: Invalid size code
+OR.S #1,#1		ERROR: Invalid addressing mode
+OR.S #1,#$1234		ERROR: Invalid addressing mode
+OR.S #1,CCR	003C0001	ERROR: Invalid size code
+OR.S #1,SR	007C0001	ERROR: Invalid size code
+OR.S #$1234,D1	827C	ERROR: Invalid size code
+OR.S #$1234,A2		ERROR: Invalid addressing mode
+OR.S #$1234,(A3)	0053	ERROR: Invalid size code
+OR.S #$1234,$10(A6)	006E0010	ERROR: Invalid size code
+OR.S #$1234,$1234	00781234	ERROR: Invalid size code
+OR.S #$1234,FW	007900001F00	ERROR: Invalid size code
+OR.S #$1234,#1		ERROR: Invalid addressing mode
+OR.S #$1234,#$1234		ERROR: Invalid addressing mode
+OR.S #$1234,CCR	003C0034	ERROR: Invalid size code
+OR.S #$1234,SR	007C1234	ERROR: Invalid size code
+OR.S CCR,D1		ERROR: Invalid addressing mode
+OR.S CCR,A2		ERROR: Invalid addressing mode
+OR.S CCR,(A3)		ERROR: Invalid addressing mode
+OR.S CCR,$10(A6)		ERROR: Invalid addressing mode
+OR.S CCR,$1234		ERROR: Invalid addressing mode
+OR.S CCR,FW		ERROR: Invalid addressing mode
+OR.S CCR,#1		ERROR: Invalid addressing mode
+OR.S CCR,#$1234		ERROR: Invalid addressing mode
+OR.S CCR,CCR		ERROR: Invalid addressing mode
+OR.S CCR,SR		ERROR: Invalid addressing mode
+OR.S SR,D1		ERROR: Invalid addressing mode
+OR.S SR,A2		ERROR: Invalid addressing mode
+OR.S SR,(A3)		ERROR: Invalid addressing mode
+OR.S SR,$10(A6)		ERROR: Invalid addressing mode
+OR.S SR,$1234		ERROR: Invalid addressing mode
+OR.S SR,FW		ERROR: Invalid addressing mode
+OR.S SR,#1		ERROR: Invalid addressing mode
+OR.S SR,#$1234		ERROR: Invalid addressing mode
+OR.S SR,CCR		ERROR: Invalid addressing mode
+OR.S SR,SR		ERROR: Invalid addressing mode
+OR.S SP,D1		ERROR: Invalid addressing mode
+OR.S SP,A2		ERROR: Invalid addressing mode
+OR.S D1,SP		ERROR: Invalid addressing mode
+OR.S #$12,SP		ERROR: Invalid addressing mode
+OR.S (A4)+,D1	825C	ERROR: Invalid size code
+OR.S (A4)+,A2		ERROR: Invalid addressing mode
+OR.S D1,(A4)+	835C	ERROR: Invalid size code
+OR.S #$12,(A4)+	005C	ERROR: Invalid size code
+OR.S -(A5),D1	8265	ERROR: Invalid size code
+OR.S -(A5),A2		ERROR: Invalid addressing mode
+OR.S D1,-(A5)	8365	ERROR: Invalid size code
+OR.S #$12,-(A5)	0065	ERROR: Invalid size code
+OR.S -2(A0),D1	8268FFFE	ERROR: Invalid size code
+OR.S -2(A0),A2		ERROR: Invalid addressing mode
+OR.S D1,-2(A0)	8368FFFE	ERROR: Invalid size code
+OR.S #$12,-2(A0)	0068FFFE	ERROR: Invalid size code
+OR.S $10(A6,D7.W),D1	82767010	ERROR: Invalid size code
+OR.S $10(A6,D7.W),A2		ERROR: Invalid addressing mode
+OR.S D1,$10(A6,D7.W)	83767010	ERROR: Invalid size code
+OR.S #$12,$10(A6,D7.W)	00767010	ERROR: Invalid size code
+OR.S $12(A0,A1.L),D1	82709812	ERROR: Invalid size code
+OR.S $12(A0,A1.L),A2		ERROR: Invalid addressing mode
+OR.S D1,$12(A0,A1.L)	83709812	ERROR: Invalid size code
+OR.S #$12,$12(A0,A1.L)	00709812	ERROR: Invalid size code
+OR.S (A2,D3),D1	82723000	ERROR: Invalid size code
+OR.S (A2,D3),A2		ERROR: Invalid addressing mode
+OR.S D1,(A2,D3)	83723000	ERROR: Invalid size code
+OR.S #$12,(A2,D3)	00723000	ERROR: Invalid size code
+OR.S $12345678,D1	827912345678	ERROR: Invalid size code
+OR.S $12345678,A2		ERROR: Invalid addressing mode
+OR.S D1,$12345678	837912345678	ERROR: Invalid size code
+OR.S #$12,$12345678	007912345678	ERROR: Invalid size code
+OR.S $1234.L,D1	827900001234	ERROR: Invalid size code
+OR.S $1234.L,A2		ERROR: Invalid addressing mode
+OR.S D1,$1234.L	837900001234	ERROR: Invalid size code
+OR.S #$12,$1234.L	007900001234	ERROR: Invalid size code
+OR.S $1234.W,D1	82781234	ERROR: Invalid size code
+OR.S $1234.W,A2		ERROR: Invalid addressing mode
+OR.S D1,$1234.W	83781234	ERROR: Invalid size code
+OR.S #$12,$1234.W	00781234	ERROR: Invalid size code
+OR.S $8000,D1	827900008000	ERROR: Invalid size code
+OR.S $8000,A2		ERROR: Invalid addressing mode
+OR.S D1,$8000	837900008000	ERROR: Invalid size code
+OR.S #$12,$8000	007900008000	ERROR: Invalid size code
+OR.S BK,D1	82781F00	ERROR: Invalid size code
+OR.S BK,A2		ERROR: Invalid addressing mode
+OR.S D1,BK	83781F00	ERROR: Invalid size code
+OR.S #$12,BK	00781F00	ERROR: Invalid size code
+OR.S *+$10(PC),D1	827A000E	ERROR: Invalid size code
+OR.S *+$10(PC),A2		ERROR: Invalid addressing mode
+OR.S D1,*+$10(PC)		ERROR: Invalid addressing mode
+OR.S #$12,*+$10(PC)		ERROR: Invalid addressing mode
+OR.S *(PC,D0.W),D1	827B00FE	ERROR: Invalid size code
+OR.S *(PC,D0.W),A2		ERROR: Invalid addressing mode
+OR.S D1,*(PC,D0.W)		ERROR: Invalid addressing mode
+OR.S #$12,*(PC,D0.W)		ERROR: Invalid addressing mode
+OR.S BK(PC),D1	827A0EFE	ERROR: Invalid size code
+OR.S BK(PC),A2		ERROR: Invalid addressing mode
+OR.S D1,BK(PC)		ERROR: Invalid addressing mode
+OR.S #$12,BK(PC)		ERROR: Invalid addressing mode
+OR.S #8,D1	827C	ERROR: Invalid size code
+OR.S #8,A2		ERROR: Invalid addressing mode
+OR.S D1,#8		ERROR: Invalid addressing mode
+OR.S #$12,#8		ERROR: Invalid addressing mode
+OR.S #9,D1	827C	ERROR: Invalid size code
+OR.S #9,A2		ERROR: Invalid addressing mode
+OR.S D1,#9		ERROR: Invalid addressing mode
+OR.S #$12,#9		ERROR: Invalid addressing mode
+OR.S #0,D1	827C	ERROR: Invalid size code
+OR.S #0,A2		ERROR: Invalid addressing mode
+OR.S D1,#0		ERROR: Invalid addressing mode
+OR.S #$12,#0		ERROR: Invalid addressing mode
+OR.S #-1,D1	827C	ERROR: Invalid size code
+OR.S #-1,A2		ERROR: Invalid addressing mode
+OR.S D1,#-1		ERROR: Invalid addressing mode
+OR.S #$12,#-1		ERROR: Invalid addressing mode
+OR.S #$80,D1	827C	ERROR: Invalid size code
+OR.S #$80,A2		ERROR: Invalid addressing mode
+OR.S D1,#$80		ERROR: Invalid addressing mode
+OR.S #$12,#$80		ERROR: Invalid addressing mode
+OR.S #$12345678,D1	827C	ERROR: Invalid size code
+OR.S #$12345678,A2		ERROR: Invalid addressing mode
+OR.S D1,#$12345678		ERROR: Invalid addressing mode
+OR.S #$12,#$12345678		ERROR: Invalid addressing mode
+OR.S #$12345678.L,D1	827C	ERROR: Invalid size code
+OR.S #$12345678.L,A2		ERROR: Invalid addressing mode
+OR.S D1,#$12345678.L		ERROR: Invalid addressing mode
+OR.S #$12,#$12345678.L		ERROR: Invalid addressing mode
+OR.S #BK,D1	827C	ERROR: Invalid size code
+OR.S #BK,A2		ERROR: Invalid addressing mode
+OR.S D1,#BK		ERROR: Invalid addressing mode
+OR.S #$12,#BK		ERROR: Invalid addressing mode
+OR.S #FW,D1	827C	ERROR: Invalid size code
+OR.S #FW,A2		ERROR: Invalid addressing mode
+OR.S D1,#FW		ERROR: Invalid addressing mode
+OR.S #$12,#FW		ERROR: Invalid addressing mode
+OR.S #UNDEF,D1	827C	ERROR: Undefined symbol
+OR.S #UNDEF,A2		ERROR: Invalid addressing mode
+OR.S D1,#UNDEF		ERROR: Invalid addressing mode
+OR.S #$12,#UNDEF		ERROR: Invalid addressing mode
+OR.S UNDEF,D1	82790000558A	ERROR: Undefined symbol
+OR.S UNDEF,A2		ERROR: Invalid addressing mode
+OR.S D1,UNDEF	837900001F00	ERROR: Undefined symbol
+OR.S #$12,UNDEF	007900001F00	ERROR: Undefined symbol
+OR.S USP,D1		ERROR: Invalid addressing mode
+OR.S USP,A2		ERROR: Invalid addressing mode
+OR.S D1,USP		ERROR: Invalid addressing mode
+OR.S #$12,USP		ERROR: Invalid addressing mode
+OR.S D1,D2,D3		ERROR: Invalid syntax
+OR.X D1,D2	8441	ERROR: Invalid size code
+OR.X #1		ERROR: Comma expected

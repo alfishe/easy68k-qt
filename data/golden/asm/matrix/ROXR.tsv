@@ -1,0 +1,1621 @@
+ROXR		ERROR: Invalid syntax
+ROXR D1		ERROR: Comma expected
+ROXR A2		ERROR: Comma expected
+ROXR SP		ERROR: Comma expected
+ROXR (A3)	E4D3	-
+ROXR (A4)+	E4DC	-
+ROXR -(A5)	E4E5	-
+ROXR $10(A6)	E4EE0010	-
+ROXR -2(A0)	E4E8FFFE	-
+ROXR $10(A6,D7.W)	E4F67010	-
+ROXR $12(A0,A1.L)	E4F09812	-
+ROXR (A2,D3)	E4F23000	-
+ROXR $1234	E4F81234	-
+ROXR $12345678	E4F912345678	-
+ROXR $1234.L	E4F900001234	-
+ROXR $1234.W	E4F81234	WARNING: Forcing SHORT addressing disables range checking of extension word
+ROXR $8000	E4F900008000	-
+ROXR BK	E4F81F00	-
+ROXR FW	E4F900001F00	-
+ROXR *+$10(PC)		ERROR: Comma expected
+ROXR *(PC,D0.W)		ERROR: Comma expected
+ROXR BK(PC)		ERROR: Comma expected
+ROXR #1		ERROR: Comma expected
+ROXR #8		ERROR: Comma expected
+ROXR #9		ERROR: Comma expected
+ROXR #0		ERROR: Comma expected
+ROXR #-1		ERROR: Comma expected
+ROXR #$80		ERROR: Comma expected
+ROXR #$1234		ERROR: Comma expected
+ROXR #$12345678		ERROR: Comma expected
+ROXR #$12345678.L		ERROR: Comma expected
+ROXR #BK		ERROR: Comma expected
+ROXR #FW		ERROR: Comma expected
+ROXR #UNDEF		ERROR: Comma expected
+ROXR UNDEF	E4F90000555D	ERROR: Undefined symbol
+ROXR SR		ERROR: Comma expected
+ROXR CCR		ERROR: Comma expected
+ROXR USP		ERROR: Comma expected
+ROXR D1,D1	E271	-
+ROXR D1,A2		ERROR: Invalid addressing mode
+ROXR D1,(A3)		ERROR: Invalid addressing mode
+ROXR D1,(A4)+		ERROR: Invalid addressing mode
+ROXR D1,-(A5)		ERROR: Invalid addressing mode
+ROXR D1,$10(A6)		ERROR: Invalid addressing mode
+ROXR D1,$10(A6,D7.W)		ERROR: Invalid addressing mode
+ROXR D1,$1234		ERROR: Invalid addressing mode
+ROXR D1,$12345678		ERROR: Invalid addressing mode
+ROXR D1,FW		ERROR: Invalid addressing mode
+ROXR D1,*+$10(PC)		ERROR: Invalid addressing mode
+ROXR D1,#1		ERROR: Invalid addressing mode
+ROXR D1,#$80		ERROR: Invalid addressing mode
+ROXR D1,#$1234		ERROR: Invalid addressing mode
+ROXR D1,#$12345678		ERROR: Invalid addressing mode
+ROXR D1,SR		ERROR: Invalid addressing mode
+ROXR D1,CCR		ERROR: Invalid addressing mode
+ROXR D1,USP		ERROR: Invalid addressing mode
+ROXR A2,D1		ERROR: Invalid addressing mode
+ROXR A2,A2		ERROR: Invalid addressing mode
+ROXR A2,(A3)		ERROR: Invalid addressing mode
+ROXR A2,(A4)+		ERROR: Invalid addressing mode
+ROXR A2,-(A5)		ERROR: Invalid addressing mode
+ROXR A2,$10(A6)		ERROR: Invalid addressing mode
+ROXR A2,$10(A6,D7.W)		ERROR: Invalid addressing mode
+ROXR A2,$1234		ERROR: Invalid addressing mode
+ROXR A2,$12345678		ERROR: Invalid addressing mode
+ROXR A2,FW		ERROR: Invalid addressing mode
+ROXR A2,*+$10(PC)		ERROR: Invalid addressing mode
+ROXR A2,#1		ERROR: Invalid addressing mode
+ROXR A2,#$80		ERROR: Invalid addressing mode
+ROXR A2,#$1234		ERROR: Invalid addressing mode
+ROXR A2,#$12345678		ERROR: Invalid addressing mode
+ROXR A2,SR		ERROR: Invalid addressing mode
+ROXR A2,CCR		ERROR: Invalid addressing mode
+ROXR A2,USP		ERROR: Invalid addressing mode
+ROXR (A3),D1		ERROR: Invalid syntax
+ROXR (A3),A2		ERROR: Invalid syntax
+ROXR (A3),(A3)		ERROR: Invalid syntax
+ROXR (A3),(A4)+		ERROR: Invalid syntax
+ROXR (A3),-(A5)		ERROR: Invalid syntax
+ROXR (A3),$10(A6)		ERROR: Invalid syntax
+ROXR (A3),$10(A6,D7.W)		ERROR: Invalid syntax
+ROXR (A3),$1234		ERROR: Invalid syntax
+ROXR (A3),$12345678		ERROR: Invalid syntax
+ROXR (A3),FW		ERROR: Invalid syntax
+ROXR (A3),*+$10(PC)		ERROR: Invalid syntax
+ROXR (A3),#1		ERROR: Invalid syntax
+ROXR (A3),#$80		ERROR: Invalid syntax
+ROXR (A3),#$1234		ERROR: Invalid syntax
+ROXR (A3),#$12345678		ERROR: Invalid syntax
+ROXR (A3),SR		ERROR: Invalid syntax
+ROXR (A3),CCR		ERROR: Invalid syntax
+ROXR (A3),USP		ERROR: Invalid syntax
+ROXR (A4)+,D1		ERROR: Invalid syntax
+ROXR (A4)+,A2		ERROR: Invalid syntax
+ROXR (A4)+,(A3)		ERROR: Invalid syntax
+ROXR (A4)+,(A4)+		ERROR: Invalid syntax
+ROXR (A4)+,-(A5)		ERROR: Invalid syntax
+ROXR (A4)+,$10(A6)		ERROR: Invalid syntax
+ROXR (A4)+,$10(A6,D7.W)		ERROR: Invalid syntax
+ROXR (A4)+,$1234		ERROR: Invalid syntax
+ROXR (A4)+,$12345678		ERROR: Invalid syntax
+ROXR (A4)+,FW		ERROR: Invalid syntax
+ROXR (A4)+,*+$10(PC)		ERROR: Invalid syntax
+ROXR (A4)+,#1		ERROR: Invalid syntax
+ROXR (A4)+,#$80		ERROR: Invalid syntax
+ROXR (A4)+,#$1234		ERROR: Invalid syntax
+ROXR (A4)+,#$12345678		ERROR: Invalid syntax
+ROXR (A4)+,SR		ERROR: Invalid syntax
+ROXR (A4)+,CCR		ERROR: Invalid syntax
+ROXR (A4)+,USP		ERROR: Invalid syntax
+ROXR -(A5),D1		ERROR: Invalid syntax
+ROXR -(A5),A2		ERROR: Invalid syntax
+ROXR -(A5),(A3)		ERROR: Invalid syntax
+ROXR -(A5),(A4)+		ERROR: Invalid syntax
+ROXR -(A5),-(A5)		ERROR: Invalid syntax
+ROXR -(A5),$10(A6)		ERROR: Invalid syntax
+ROXR -(A5),$10(A6,D7.W)		ERROR: Invalid syntax
+ROXR -(A5),$1234		ERROR: Invalid syntax
+ROXR -(A5),$12345678		ERROR: Invalid syntax
+ROXR -(A5),FW		ERROR: Invalid syntax
+ROXR -(A5),*+$10(PC)		ERROR: Invalid syntax
+ROXR -(A5),#1		ERROR: Invalid syntax
+ROXR -(A5),#$80		ERROR: Invalid syntax
+ROXR -(A5),#$1234		ERROR: Invalid syntax
+ROXR -(A5),#$12345678		ERROR: Invalid syntax
+ROXR -(A5),SR		ERROR: Invalid syntax
+ROXR -(A5),CCR		ERROR: Invalid syntax
+ROXR -(A5),USP		ERROR: Invalid syntax
+ROXR $10(A6),D1		ERROR: Invalid syntax
+ROXR $10(A6),A2		ERROR: Invalid syntax
+ROXR $10(A6),(A3)		ERROR: Invalid syntax
+ROXR $10(A6),(A4)+		ERROR: Invalid syntax
+ROXR $10(A6),-(A5)		ERROR: Invalid syntax
+ROXR $10(A6),$10(A6)		ERROR: Invalid syntax
+ROXR $10(A6),$10(A6,D7.W)		ERROR: Invalid syntax
+ROXR $10(A6),$1234		ERROR: Invalid syntax
+ROXR $10(A6),$12345678		ERROR: Invalid syntax
+ROXR $10(A6),FW		ERROR: Invalid syntax
+ROXR $10(A6),*+$10(PC)		ERROR: Invalid syntax
+ROXR $10(A6),#1		ERROR: Invalid syntax
+ROXR $10(A6),#$80		ERROR: Invalid syntax
+ROXR $10(A6),#$1234		ERROR: Invalid syntax
+ROXR $10(A6),#$12345678		ERROR: Invalid syntax
+ROXR $10(A6),SR		ERROR: Invalid syntax
+ROXR $10(A6),CCR		ERROR: Invalid syntax
+ROXR $10(A6),USP		ERROR: Invalid syntax
+ROXR $10(A6,D7.W),D1		ERROR: Invalid syntax
+ROXR $10(A6,D7.W),A2		ERROR: Invalid syntax
+ROXR $10(A6,D7.W),(A3)		ERROR: Invalid syntax
+ROXR $10(A6,D7.W),(A4)+		ERROR: Invalid syntax
+ROXR $10(A6,D7.W),-(A5)		ERROR: Invalid syntax
+ROXR $10(A6,D7.W),$10(A6)		ERROR: Invalid syntax
+ROXR $10(A6,D7.W),$10(A6,D7.W)		ERROR: Invalid syntax
+ROXR $10(A6,D7.W),$1234		ERROR: Invalid syntax
+ROXR $10(A6,D7.W),$12345678		ERROR: Invalid syntax
+ROXR $10(A6,D7.W),FW		ERROR: Invalid syntax
+ROXR $10(A6,D7.W),*+$10(PC)		ERROR: Invalid syntax
+ROXR $10(A6,D7.W),#1		ERROR: Invalid syntax
+ROXR $10(A6,D7.W),#$80		ERROR: Invalid syntax
+ROXR $10(A6,D7.W),#$1234		ERROR: Invalid syntax
+ROXR $10(A6,D7.W),#$12345678		ERROR: Invalid syntax
+ROXR $10(A6,D7.W),SR		ERROR: Invalid syntax
+ROXR $10(A6,D7.W),CCR		ERROR: Invalid syntax
+ROXR $10(A6,D7.W),USP		ERROR: Invalid syntax
+ROXR $1234,D1		ERROR: Invalid syntax
+ROXR $1234,A2		ERROR: Invalid syntax
+ROXR $1234,(A3)		ERROR: Invalid syntax
+ROXR $1234,(A4)+		ERROR: Invalid syntax
+ROXR $1234,-(A5)		ERROR: Invalid syntax
+ROXR $1234,$10(A6)		ERROR: Invalid syntax
+ROXR $1234,$10(A6,D7.W)		ERROR: Invalid syntax
+ROXR $1234,$1234		ERROR: Invalid syntax
+ROXR $1234,$12345678		ERROR: Invalid syntax
+ROXR $1234,FW		ERROR: Invalid syntax
+ROXR $1234,*+$10(PC)		ERROR: Invalid syntax
+ROXR $1234,#1		ERROR: Invalid syntax
+ROXR $1234,#$80		ERROR: Invalid syntax
+ROXR $1234,#$1234		ERROR: Invalid syntax
+ROXR $1234,#$12345678		ERROR: Invalid syntax
+ROXR $1234,SR		ERROR: Invalid syntax
+ROXR $1234,CCR		ERROR: Invalid syntax
+ROXR $1234,USP		ERROR: Invalid syntax
+ROXR $12345678,D1		ERROR: Invalid syntax
+ROXR $12345678,A2		ERROR: Invalid syntax
+ROXR $12345678,(A3)		ERROR: Invalid syntax
+ROXR $12345678,(A4)+		ERROR: Invalid syntax
+ROXR $12345678,-(A5)		ERROR: Invalid syntax
+ROXR $12345678,$10(A6)		ERROR: Invalid syntax
+ROXR $12345678,$10(A6,D7.W)		ERROR: Invalid syntax
+ROXR $12345678,$1234		ERROR: Invalid syntax
+ROXR $12345678,$12345678		ERROR: Invalid syntax
+ROXR $12345678,FW		ERROR: Invalid syntax
+ROXR $12345678,*+$10(PC)		ERROR: Invalid syntax
+ROXR $12345678,#1		ERROR: Invalid syntax
+ROXR $12345678,#$80		ERROR: Invalid syntax
+ROXR $12345678,#$1234		ERROR: Invalid syntax
+ROXR $12345678,#$12345678		ERROR: Invalid syntax
+ROXR $12345678,SR		ERROR: Invalid syntax
+ROXR $12345678,CCR		ERROR: Invalid syntax
+ROXR $12345678,USP		ERROR: Invalid syntax
+ROXR FW,D1		ERROR: Invalid syntax
+ROXR FW,A2		ERROR: Invalid syntax
+ROXR FW,(A3)		ERROR: Invalid syntax
+ROXR FW,(A4)+		ERROR: Invalid syntax
+ROXR FW,-(A5)		ERROR: Invalid syntax
+ROXR FW,$10(A6)		ERROR: Invalid syntax
+ROXR FW,$10(A6,D7.W)		ERROR: Invalid syntax
+ROXR FW,$1234		ERROR: Invalid syntax
+ROXR FW,$12345678		ERROR: Invalid syntax
+ROXR FW,FW		ERROR: Invalid syntax
+ROXR FW,*+$10(PC)		ERROR: Invalid syntax
+ROXR FW,#1		ERROR: Invalid syntax
+ROXR FW,#$80		ERROR: Invalid syntax
+ROXR FW,#$1234		ERROR: Invalid syntax
+ROXR FW,#$12345678		ERROR: Invalid syntax
+ROXR FW,SR		ERROR: Invalid syntax
+ROXR FW,CCR		ERROR: Invalid syntax
+ROXR FW,USP		ERROR: Invalid syntax
+ROXR *+$10(PC),D1		ERROR: Invalid addressing mode
+ROXR *+$10(PC),A2		ERROR: Invalid addressing mode
+ROXR *+$10(PC),(A3)		ERROR: Invalid addressing mode
+ROXR *+$10(PC),(A4)+		ERROR: Invalid addressing mode
+ROXR *+$10(PC),-(A5)		ERROR: Invalid addressing mode
+ROXR *+$10(PC),$10(A6)		ERROR: Invalid addressing mode
+ROXR *+$10(PC),$10(A6,D7.W)		ERROR: Invalid addressing mode
+ROXR *+$10(PC),$1234		ERROR: Invalid addressing mode
+ROXR *+$10(PC),$12345678		ERROR: Invalid addressing mode
+ROXR *+$10(PC),FW		ERROR: Invalid addressing mode
+ROXR *+$10(PC),*+$10(PC)		ERROR: Invalid addressing mode
+ROXR *+$10(PC),#1		ERROR: Invalid addressing mode
+ROXR *+$10(PC),#$80		ERROR: Invalid addressing mode
+ROXR *+$10(PC),#$1234		ERROR: Invalid addressing mode
+ROXR *+$10(PC),#$12345678		ERROR: Invalid addressing mode
+ROXR *+$10(PC),SR		ERROR: Invalid addressing mode
+ROXR *+$10(PC),CCR		ERROR: Invalid addressing mode
+ROXR *+$10(PC),USP		ERROR: Invalid addressing mode
+ROXR #1,D1	E251	-
+ROXR #1,A2		ERROR: Invalid addressing mode
+ROXR #1,(A3)		ERROR: Invalid addressing mode
+ROXR #1,(A4)+		ERROR: Invalid addressing mode
+ROXR #1,-(A5)		ERROR: Invalid addressing mode
+ROXR #1,$10(A6)		ERROR: Invalid addressing mode
+ROXR #1,$10(A6,D7.W)		ERROR: Invalid addressing mode
+ROXR #1,$1234		ERROR: Invalid addressing mode
+ROXR #1,$12345678		ERROR: Invalid addressing mode
+ROXR #1,FW		ERROR: Invalid addressing mode
+ROXR #1,*+$10(PC)		ERROR: Invalid addressing mode
+ROXR #1,#1		ERROR: Invalid addressing mode
+ROXR #1,#$80		ERROR: Invalid addressing mode
+ROXR #1,#$1234		ERROR: Invalid addressing mode
+ROXR #1,#$12345678		ERROR: Invalid addressing mode
+ROXR #1,SR		ERROR: Invalid addressing mode
+ROXR #1,CCR		ERROR: Invalid addressing mode
+ROXR #1,USP		ERROR: Invalid addressing mode
+ROXR #$80,D1	E051	ERROR: Invalid constant shift count
+ROXR #$80,A2		ERROR: Invalid addressing mode
+ROXR #$80,(A3)		ERROR: Invalid addressing mode
+ROXR #$80,(A4)+		ERROR: Invalid addressing mode
+ROXR #$80,-(A5)		ERROR: Invalid addressing mode
+ROXR #$80,$10(A6)		ERROR: Invalid addressing mode
+ROXR #$80,$10(A6,D7.W)		ERROR: Invalid addressing mode
+ROXR #$80,$1234		ERROR: Invalid addressing mode
+ROXR #$80,$12345678		ERROR: Invalid addressing mode
+ROXR #$80,FW		ERROR: Invalid addressing mode
+ROXR #$80,*+$10(PC)		ERROR: Invalid addressing mode
+ROXR #$80,#1		ERROR: Invalid addressing mode
+ROXR #$80,#$80		ERROR: Invalid addressing mode
+ROXR #$80,#$1234		ERROR: Invalid addressing mode
+ROXR #$80,#$12345678		ERROR: Invalid addressing mode
+ROXR #$80,SR		ERROR: Invalid addressing mode
+ROXR #$80,CCR		ERROR: Invalid addressing mode
+ROXR #$80,USP		ERROR: Invalid addressing mode
+ROXR #$1234,D1	E851	ERROR: Invalid constant shift count
+ROXR #$1234,A2		ERROR: Invalid addressing mode
+ROXR #$1234,(A3)		ERROR: Invalid addressing mode
+ROXR #$1234,(A4)+		ERROR: Invalid addressing mode
+ROXR #$1234,-(A5)		ERROR: Invalid addressing mode
+ROXR #$1234,$10(A6)		ERROR: Invalid addressing mode
+ROXR #$1234,$10(A6,D7.W)		ERROR: Invalid addressing mode
+ROXR #$1234,$1234		ERROR: Invalid addressing mode
+ROXR #$1234,$12345678		ERROR: Invalid addressing mode
+ROXR #$1234,FW		ERROR: Invalid addressing mode
+ROXR #$1234,*+$10(PC)		ERROR: Invalid addressing mode
+ROXR #$1234,#1		ERROR: Invalid addressing mode
+ROXR #$1234,#$80		ERROR: Invalid addressing mode
+ROXR #$1234,#$1234		ERROR: Invalid addressing mode
+ROXR #$1234,#$12345678		ERROR: Invalid addressing mode
+ROXR #$1234,SR		ERROR: Invalid addressing mode
+ROXR #$1234,CCR		ERROR: Invalid addressing mode
+ROXR #$1234,USP		ERROR: Invalid addressing mode
+ROXR #$12345678,D1	E051	ERROR: Invalid constant shift count
+ROXR #$12345678,A2		ERROR: Invalid addressing mode
+ROXR #$12345678,(A3)		ERROR: Invalid addressing mode
+ROXR #$12345678,(A4)+		ERROR: Invalid addressing mode
+ROXR #$12345678,-(A5)		ERROR: Invalid addressing mode
+ROXR #$12345678,$10(A6)		ERROR: Invalid addressing mode
+ROXR #$12345678,$10(A6,D7.W)		ERROR: Invalid addressing mode
+ROXR #$12345678,$1234		ERROR: Invalid addressing mode
+ROXR #$12345678,$12345678		ERROR: Invalid addressing mode
+ROXR #$12345678,FW		ERROR: Invalid addressing mode
+ROXR #$12345678,*+$10(PC)		ERROR: Invalid addressing mode
+ROXR #$12345678,#1		ERROR: Invalid addressing mode
+ROXR #$12345678,#$80		ERROR: Invalid addressing mode
+ROXR #$12345678,#$1234		ERROR: Invalid addressing mode
+ROXR #$12345678,#$12345678		ERROR: Invalid addressing mode
+ROXR #$12345678,SR		ERROR: Invalid addressing mode
+ROXR #$12345678,CCR		ERROR: Invalid addressing mode
+ROXR #$12345678,USP		ERROR: Invalid addressing mode
+ROXR SR,D1		ERROR: Invalid addressing mode
+ROXR SR,A2		ERROR: Invalid addressing mode
+ROXR SR,(A3)		ERROR: Invalid addressing mode
+ROXR SR,(A4)+		ERROR: Invalid addressing mode
+ROXR SR,-(A5)		ERROR: Invalid addressing mode
+ROXR SR,$10(A6)		ERROR: Invalid addressing mode
+ROXR SR,$10(A6,D7.W)		ERROR: Invalid addressing mode
+ROXR SR,$1234		ERROR: Invalid addressing mode
+ROXR SR,$12345678		ERROR: Invalid addressing mode
+ROXR SR,FW		ERROR: Invalid addressing mode
+ROXR SR,*+$10(PC)		ERROR: Invalid addressing mode
+ROXR SR,#1		ERROR: Invalid addressing mode
+ROXR SR,#$80		ERROR: Invalid addressing mode
+ROXR SR,#$1234		ERROR: Invalid addressing mode
+ROXR SR,#$12345678		ERROR: Invalid addressing mode
+ROXR SR,SR		ERROR: Invalid addressing mode
+ROXR SR,CCR		ERROR: Invalid addressing mode
+ROXR SR,USP		ERROR: Invalid addressing mode
+ROXR CCR,D1		ERROR: Invalid addressing mode
+ROXR CCR,A2		ERROR: Invalid addressing mode
+ROXR CCR,(A3)		ERROR: Invalid addressing mode
+ROXR CCR,(A4)+		ERROR: Invalid addressing mode
+ROXR CCR,-(A5)		ERROR: Invalid addressing mode
+ROXR CCR,$10(A6)		ERROR: Invalid addressing mode
+ROXR CCR,$10(A6,D7.W)		ERROR: Invalid addressing mode
+ROXR CCR,$1234		ERROR: Invalid addressing mode
+ROXR CCR,$12345678		ERROR: Invalid addressing mode
+ROXR CCR,FW		ERROR: Invalid addressing mode
+ROXR CCR,*+$10(PC)		ERROR: Invalid addressing mode
+ROXR CCR,#1		ERROR: Invalid addressing mode
+ROXR CCR,#$80		ERROR: Invalid addressing mode
+ROXR CCR,#$1234		ERROR: Invalid addressing mode
+ROXR CCR,#$12345678		ERROR: Invalid addressing mode
+ROXR CCR,SR		ERROR: Invalid addressing mode
+ROXR CCR,CCR		ERROR: Invalid addressing mode
+ROXR CCR,USP		ERROR: Invalid addressing mode
+ROXR USP,D1		ERROR: Invalid addressing mode
+ROXR USP,A2		ERROR: Invalid addressing mode
+ROXR USP,(A3)		ERROR: Invalid addressing mode
+ROXR USP,(A4)+		ERROR: Invalid addressing mode
+ROXR USP,-(A5)		ERROR: Invalid addressing mode
+ROXR USP,$10(A6)		ERROR: Invalid addressing mode
+ROXR USP,$10(A6,D7.W)		ERROR: Invalid addressing mode
+ROXR USP,$1234		ERROR: Invalid addressing mode
+ROXR USP,$12345678		ERROR: Invalid addressing mode
+ROXR USP,FW		ERROR: Invalid addressing mode
+ROXR USP,*+$10(PC)		ERROR: Invalid addressing mode
+ROXR USP,#1		ERROR: Invalid addressing mode
+ROXR USP,#$80		ERROR: Invalid addressing mode
+ROXR USP,#$1234		ERROR: Invalid addressing mode
+ROXR USP,#$12345678		ERROR: Invalid addressing mode
+ROXR USP,SR		ERROR: Invalid addressing mode
+ROXR USP,CCR		ERROR: Invalid addressing mode
+ROXR USP,USP		ERROR: Invalid addressing mode
+ROXR SP,D1		ERROR: Invalid addressing mode
+ROXR SP,A2		ERROR: Invalid addressing mode
+ROXR D1,SP		ERROR: Invalid addressing mode
+ROXR #$12,SP		ERROR: Invalid addressing mode
+ROXR -2(A0),D1		ERROR: Invalid syntax
+ROXR -2(A0),A2		ERROR: Invalid syntax
+ROXR D1,-2(A0)		ERROR: Invalid addressing mode
+ROXR #$12,-2(A0)		ERROR: Invalid addressing mode
+ROXR $12(A0,A1.L),D1		ERROR: Invalid syntax
+ROXR $12(A0,A1.L),A2		ERROR: Invalid syntax
+ROXR D1,$12(A0,A1.L)		ERROR: Invalid addressing mode
+ROXR #$12,$12(A0,A1.L)		ERROR: Invalid addressing mode
+ROXR (A2,D3),D1		ERROR: Invalid syntax
+ROXR (A2,D3),A2		ERROR: Invalid syntax
+ROXR D1,(A2,D3)		ERROR: Invalid addressing mode
+ROXR #$12,(A2,D3)		ERROR: Invalid addressing mode
+ROXR $1234.L,D1		ERROR: Invalid syntax
+ROXR $1234.L,A2		ERROR: Invalid syntax
+ROXR D1,$1234.L		ERROR: Invalid addressing mode
+ROXR #$12,$1234.L		ERROR: Invalid addressing mode
+ROXR $1234.W,D1		ERROR: Invalid syntax
+ROXR $1234.W,A2		ERROR: Invalid syntax
+ROXR D1,$1234.W		ERROR: Invalid addressing mode
+ROXR #$12,$1234.W		ERROR: Invalid addressing mode
+ROXR $8000,D1		ERROR: Invalid syntax
+ROXR $8000,A2		ERROR: Invalid syntax
+ROXR D1,$8000		ERROR: Invalid addressing mode
+ROXR #$12,$8000		ERROR: Invalid addressing mode
+ROXR BK,D1		ERROR: Invalid syntax
+ROXR BK,A2		ERROR: Invalid syntax
+ROXR D1,BK		ERROR: Invalid addressing mode
+ROXR #$12,BK		ERROR: Invalid addressing mode
+ROXR *(PC,D0.W),D1		ERROR: Invalid addressing mode
+ROXR *(PC,D0.W),A2		ERROR: Invalid addressing mode
+ROXR D1,*(PC,D0.W)		ERROR: Invalid addressing mode
+ROXR #$12,*(PC,D0.W)		ERROR: Invalid addressing mode
+ROXR BK(PC),D1		ERROR: Invalid addressing mode
+ROXR BK(PC),A2		ERROR: Invalid addressing mode
+ROXR D1,BK(PC)		ERROR: Invalid addressing mode
+ROXR #$12,BK(PC)		ERROR: Invalid addressing mode
+ROXR #8,D1	E051	-
+ROXR #8,A2		ERROR: Invalid addressing mode
+ROXR D1,#8		ERROR: Invalid addressing mode
+ROXR #$12,#8		ERROR: Invalid addressing mode
+ROXR #9,D1	E251	ERROR: Invalid constant shift count
+ROXR #9,A2		ERROR: Invalid addressing mode
+ROXR D1,#9		ERROR: Invalid addressing mode
+ROXR #$12,#9		ERROR: Invalid addressing mode
+ROXR #0,D1	E051	ERROR: Invalid constant shift count
+ROXR #0,A2		ERROR: Invalid addressing mode
+ROXR D1,#0		ERROR: Invalid addressing mode
+ROXR #$12,#0		ERROR: Invalid addressing mode
+ROXR #-1,D1	EE51	ERROR: Invalid constant shift count
+ROXR #-1,A2		ERROR: Invalid addressing mode
+ROXR D1,#-1		ERROR: Invalid addressing mode
+ROXR #$12,#-1		ERROR: Invalid addressing mode
+ROXR #$12345678.L,D1	E051	ERROR: Invalid constant shift count
+ROXR #$12345678.L,A2		ERROR: Invalid addressing mode
+ROXR D1,#$12345678.L		ERROR: Invalid addressing mode
+ROXR #$12,#$12345678.L		ERROR: Invalid addressing mode
+ROXR #BK,D1	E051	ERROR: Invalid constant shift count
+ROXR #BK,A2		ERROR: Invalid addressing mode
+ROXR D1,#BK		ERROR: Invalid addressing mode
+ROXR #$12,#BK		ERROR: Invalid addressing mode
+ROXR #FW,D1	E051	ERROR: Invalid constant shift count
+ROXR #FW,A2		ERROR: Invalid addressing mode
+ROXR D1,#FW		ERROR: Invalid addressing mode
+ROXR #$12,#FW		ERROR: Invalid addressing mode
+ROXR #UNDEF,D1	EA51	ERROR: Undefined symbol
+ROXR #UNDEF,A2		ERROR: Invalid addressing mode
+ROXR D1,#UNDEF		ERROR: Invalid addressing mode
+ROXR #$12,#UNDEF		ERROR: Invalid addressing mode
+ROXR UNDEF,D1		ERROR: Invalid syntax
+ROXR UNDEF,A2		ERROR: Invalid syntax
+ROXR D1,UNDEF		ERROR: Invalid addressing mode
+ROXR #$12,UNDEF		ERROR: Invalid addressing mode
+ROXR D1,D2,D3		ERROR: Invalid syntax
+ROXR.B		ERROR: Invalid syntax
+ROXR.B D1		ERROR: Comma expected
+ROXR.B A2		ERROR: Comma expected
+ROXR.B SP		ERROR: Comma expected
+ROXR.B (A3)	E4D3	ERROR: Invalid size code
+ROXR.B (A4)+	E4DC	ERROR: Invalid size code
+ROXR.B -(A5)	E4E5	ERROR: Invalid size code
+ROXR.B $10(A6)	E4EE0010	ERROR: Invalid size code
+ROXR.B -2(A0)	E4E8FFFE	ERROR: Invalid size code
+ROXR.B $10(A6,D7.W)	E4F67010	ERROR: Invalid size code
+ROXR.B $12(A0,A1.L)	E4F09812	ERROR: Invalid size code
+ROXR.B (A2,D3)	E4F23000	ERROR: Invalid size code
+ROXR.B $1234	E4F81234	ERROR: Invalid size code
+ROXR.B $12345678	E4F912345678	ERROR: Invalid size code
+ROXR.B $1234.L	E4F900001234	ERROR: Invalid size code
+ROXR.B $1234.W	E4F81234	ERROR: Invalid size code
+ROXR.B $8000	E4F900008000	ERROR: Invalid size code
+ROXR.B BK	E4F81F00	ERROR: Invalid size code
+ROXR.B FW	E4F900001F00	ERROR: Invalid size code
+ROXR.B *+$10(PC)		ERROR: Comma expected
+ROXR.B *(PC,D0.W)		ERROR: Comma expected
+ROXR.B BK(PC)		ERROR: Comma expected
+ROXR.B #1		ERROR: Comma expected
+ROXR.B #8		ERROR: Comma expected
+ROXR.B #9		ERROR: Comma expected
+ROXR.B #0		ERROR: Comma expected
+ROXR.B #-1		ERROR: Comma expected
+ROXR.B #$80		ERROR: Comma expected
+ROXR.B #$1234		ERROR: Comma expected
+ROXR.B #$12345678		ERROR: Comma expected
+ROXR.B #$12345678.L		ERROR: Comma expected
+ROXR.B #BK		ERROR: Comma expected
+ROXR.B #FW		ERROR: Comma expected
+ROXR.B #UNDEF		ERROR: Comma expected
+ROXR.B UNDEF	E4F90000555D	ERROR: Undefined symbol
+ROXR.B SR		ERROR: Comma expected
+ROXR.B CCR		ERROR: Comma expected
+ROXR.B USP		ERROR: Comma expected
+ROXR.B D1,D1	E231	-
+ROXR.B D1,A2		ERROR: Invalid addressing mode
+ROXR.B D1,(A3)		ERROR: Invalid addressing mode
+ROXR.B D1,$10(A6)		ERROR: Invalid addressing mode
+ROXR.B D1,$1234		ERROR: Invalid addressing mode
+ROXR.B D1,FW		ERROR: Invalid addressing mode
+ROXR.B D1,#1		ERROR: Invalid addressing mode
+ROXR.B D1,#$1234		ERROR: Invalid addressing mode
+ROXR.B D1,CCR		ERROR: Invalid addressing mode
+ROXR.B D1,SR		ERROR: Invalid addressing mode
+ROXR.B A2,D1		ERROR: Invalid addressing mode
+ROXR.B A2,A2		ERROR: Invalid addressing mode
+ROXR.B A2,(A3)		ERROR: Invalid addressing mode
+ROXR.B A2,$10(A6)		ERROR: Invalid addressing mode
+ROXR.B A2,$1234		ERROR: Invalid addressing mode
+ROXR.B A2,FW		ERROR: Invalid addressing mode
+ROXR.B A2,#1		ERROR: Invalid addressing mode
+ROXR.B A2,#$1234		ERROR: Invalid addressing mode
+ROXR.B A2,CCR		ERROR: Invalid addressing mode
+ROXR.B A2,SR		ERROR: Invalid addressing mode
+ROXR.B (A3),D1		ERROR: Invalid syntax
+ROXR.B (A3),A2		ERROR: Invalid syntax
+ROXR.B (A3),(A3)		ERROR: Invalid syntax
+ROXR.B (A3),$10(A6)		ERROR: Invalid syntax
+ROXR.B (A3),$1234		ERROR: Invalid syntax
+ROXR.B (A3),FW		ERROR: Invalid syntax
+ROXR.B (A3),#1		ERROR: Invalid syntax
+ROXR.B (A3),#$1234		ERROR: Invalid syntax
+ROXR.B (A3),CCR		ERROR: Invalid syntax
+ROXR.B (A3),SR		ERROR: Invalid syntax
+ROXR.B $10(A6),D1		ERROR: Invalid syntax
+ROXR.B $10(A6),A2		ERROR: Invalid syntax
+ROXR.B $10(A6),(A3)		ERROR: Invalid syntax
+ROXR.B $10(A6),$10(A6)		ERROR: Invalid syntax
+ROXR.B $10(A6),$1234		ERROR: Invalid syntax
+ROXR.B $10(A6),FW		ERROR: Invalid syntax
+ROXR.B $10(A6),#1		ERROR: Invalid syntax
+ROXR.B $10(A6),#$1234		ERROR: Invalid syntax
+ROXR.B $10(A6),CCR		ERROR: Invalid syntax
+ROXR.B $10(A6),SR		ERROR: Invalid syntax
+ROXR.B $1234,D1		ERROR: Invalid syntax
+ROXR.B $1234,A2		ERROR: Invalid syntax
+ROXR.B $1234,(A3)		ERROR: Invalid syntax
+ROXR.B $1234,$10(A6)		ERROR: Invalid syntax
+ROXR.B $1234,$1234		ERROR: Invalid syntax
+ROXR.B $1234,FW		ERROR: Invalid syntax
+ROXR.B $1234,#1		ERROR: Invalid syntax
+ROXR.B $1234,#$1234		ERROR: Invalid syntax
+ROXR.B $1234,CCR		ERROR: Invalid syntax
+ROXR.B $1234,SR		ERROR: Invalid syntax
+ROXR.B FW,D1		ERROR: Invalid syntax
+ROXR.B FW,A2		ERROR: Invalid syntax
+ROXR.B FW,(A3)		ERROR: Invalid syntax
+ROXR.B FW,$10(A6)		ERROR: Invalid syntax
+ROXR.B FW,$1234		ERROR: Invalid syntax
+ROXR.B FW,FW		ERROR: Invalid syntax
+ROXR.B FW,#1		ERROR: Invalid syntax
+ROXR.B FW,#$1234		ERROR: Invalid syntax
+ROXR.B FW,CCR		ERROR: Invalid syntax
+ROXR.B FW,SR		ERROR: Invalid syntax
+ROXR.B #1,D1	E211	-
+ROXR.B #1,A2		ERROR: Invalid addressing mode
+ROXR.B #1,(A3)		ERROR: Invalid addressing mode
+ROXR.B #1,$10(A6)		ERROR: Invalid addressing mode
+ROXR.B #1,$1234		ERROR: Invalid addressing mode
+ROXR.B #1,FW		ERROR: Invalid addressing mode
+ROXR.B #1,#1		ERROR: Invalid addressing mode
+ROXR.B #1,#$1234		ERROR: Invalid addressing mode
+ROXR.B #1,CCR		ERROR: Invalid addressing mode
+ROXR.B #1,SR		ERROR: Invalid addressing mode
+ROXR.B #$1234,D1	E811	ERROR: Invalid constant shift count
+ROXR.B #$1234,A2		ERROR: Invalid addressing mode
+ROXR.B #$1234,(A3)		ERROR: Invalid addressing mode
+ROXR.B #$1234,$10(A6)		ERROR: Invalid addressing mode
+ROXR.B #$1234,$1234		ERROR: Invalid addressing mode
+ROXR.B #$1234,FW		ERROR: Invalid addressing mode
+ROXR.B #$1234,#1		ERROR: Invalid addressing mode
+ROXR.B #$1234,#$1234		ERROR: Invalid addressing mode
+ROXR.B #$1234,CCR		ERROR: Invalid addressing mode
+ROXR.B #$1234,SR		ERROR: Invalid addressing mode
+ROXR.B CCR,D1		ERROR: Invalid addressing mode
+ROXR.B CCR,A2		ERROR: Invalid addressing mode
+ROXR.B CCR,(A3)		ERROR: Invalid addressing mode
+ROXR.B CCR,$10(A6)		ERROR: Invalid addressing mode
+ROXR.B CCR,$1234		ERROR: Invalid addressing mode
+ROXR.B CCR,FW		ERROR: Invalid addressing mode
+ROXR.B CCR,#1		ERROR: Invalid addressing mode
+ROXR.B CCR,#$1234		ERROR: Invalid addressing mode
+ROXR.B CCR,CCR		ERROR: Invalid addressing mode
+ROXR.B CCR,SR		ERROR: Invalid addressing mode
+ROXR.B SR,D1		ERROR: Invalid addressing mode
+ROXR.B SR,A2		ERROR: Invalid addressing mode
+ROXR.B SR,(A3)		ERROR: Invalid addressing mode
+ROXR.B SR,$10(A6)		ERROR: Invalid addressing mode
+ROXR.B SR,$1234		ERROR: Invalid addressing mode
+ROXR.B SR,FW		ERROR: Invalid addressing mode
+ROXR.B SR,#1		ERROR: Invalid addressing mode
+ROXR.B SR,#$1234		ERROR: Invalid addressing mode
+ROXR.B SR,CCR		ERROR: Invalid addressing mode
+ROXR.B SR,SR		ERROR: Invalid addressing mode
+ROXR.B SP,D1		ERROR: Invalid addressing mode
+ROXR.B SP,A2		ERROR: Invalid addressing mode
+ROXR.B D1,SP		ERROR: Invalid addressing mode
+ROXR.B #$12,SP		ERROR: Invalid addressing mode
+ROXR.B (A4)+,D1		ERROR: Invalid syntax
+ROXR.B (A4)+,A2		ERROR: Invalid syntax
+ROXR.B D1,(A4)+		ERROR: Invalid addressing mode
+ROXR.B #$12,(A4)+		ERROR: Invalid addressing mode
+ROXR.B -(A5),D1		ERROR: Invalid syntax
+ROXR.B -(A5),A2		ERROR: Invalid syntax
+ROXR.B D1,-(A5)		ERROR: Invalid addressing mode
+ROXR.B #$12,-(A5)		ERROR: Invalid addressing mode
+ROXR.B -2(A0),D1		ERROR: Invalid syntax
+ROXR.B -2(A0),A2		ERROR: Invalid syntax
+ROXR.B D1,-2(A0)		ERROR: Invalid addressing mode
+ROXR.B #$12,-2(A0)		ERROR: Invalid addressing mode
+ROXR.B $10(A6,D7.W),D1		ERROR: Invalid syntax
+ROXR.B $10(A6,D7.W),A2		ERROR: Invalid syntax
+ROXR.B D1,$10(A6,D7.W)		ERROR: Invalid addressing mode
+ROXR.B #$12,$10(A6,D7.W)		ERROR: Invalid addressing mode
+ROXR.B $12(A0,A1.L),D1		ERROR: Invalid syntax
+ROXR.B $12(A0,A1.L),A2		ERROR: Invalid syntax
+ROXR.B D1,$12(A0,A1.L)		ERROR: Invalid addressing mode
+ROXR.B #$12,$12(A0,A1.L)		ERROR: Invalid addressing mode
+ROXR.B (A2,D3),D1		ERROR: Invalid syntax
+ROXR.B (A2,D3),A2		ERROR: Invalid syntax
+ROXR.B D1,(A2,D3)		ERROR: Invalid addressing mode
+ROXR.B #$12,(A2,D3)		ERROR: Invalid addressing mode
+ROXR.B $12345678,D1		ERROR: Invalid syntax
+ROXR.B $12345678,A2		ERROR: Invalid syntax
+ROXR.B D1,$12345678		ERROR: Invalid addressing mode
+ROXR.B #$12,$12345678		ERROR: Invalid addressing mode
+ROXR.B $1234.L,D1		ERROR: Invalid syntax
+ROXR.B $1234.L,A2		ERROR: Invalid syntax
+ROXR.B D1,$1234.L		ERROR: Invalid addressing mode
+ROXR.B #$12,$1234.L		ERROR: Invalid addressing mode
+ROXR.B $1234.W,D1		ERROR: Invalid syntax
+ROXR.B $1234.W,A2		ERROR: Invalid syntax
+ROXR.B D1,$1234.W		ERROR: Invalid addressing mode
+ROXR.B #$12,$1234.W		ERROR: Invalid addressing mode
+ROXR.B $8000,D1		ERROR: Invalid syntax
+ROXR.B $8000,A2		ERROR: Invalid syntax
+ROXR.B D1,$8000		ERROR: Invalid addressing mode
+ROXR.B #$12,$8000		ERROR: Invalid addressing mode
+ROXR.B BK,D1		ERROR: Invalid syntax
+ROXR.B BK,A2		ERROR: Invalid syntax
+ROXR.B D1,BK		ERROR: Invalid addressing mode
+ROXR.B #$12,BK		ERROR: Invalid addressing mode
+ROXR.B *+$10(PC),D1		ERROR: Invalid addressing mode
+ROXR.B *+$10(PC),A2		ERROR: Invalid addressing mode
+ROXR.B D1,*+$10(PC)		ERROR: Invalid addressing mode
+ROXR.B #$12,*+$10(PC)		ERROR: Invalid addressing mode
+ROXR.B *(PC,D0.W),D1		ERROR: Invalid addressing mode
+ROXR.B *(PC,D0.W),A2		ERROR: Invalid addressing mode
+ROXR.B D1,*(PC,D0.W)		ERROR: Invalid addressing mode
+ROXR.B #$12,*(PC,D0.W)		ERROR: Invalid addressing mode
+ROXR.B BK(PC),D1		ERROR: Invalid addressing mode
+ROXR.B BK(PC),A2		ERROR: Invalid addressing mode
+ROXR.B D1,BK(PC)		ERROR: Invalid addressing mode
+ROXR.B #$12,BK(PC)		ERROR: Invalid addressing mode
+ROXR.B #8,D1	E011	-
+ROXR.B #8,A2		ERROR: Invalid addressing mode
+ROXR.B D1,#8		ERROR: Invalid addressing mode
+ROXR.B #$12,#8		ERROR: Invalid addressing mode
+ROXR.B #9,D1	E211	ERROR: Invalid constant shift count
+ROXR.B #9,A2		ERROR: Invalid addressing mode
+ROXR.B D1,#9		ERROR: Invalid addressing mode
+ROXR.B #$12,#9		ERROR: Invalid addressing mode
+ROXR.B #0,D1	E011	ERROR: Invalid constant shift count
+ROXR.B #0,A2		ERROR: Invalid addressing mode
+ROXR.B D1,#0		ERROR: Invalid addressing mode
+ROXR.B #$12,#0		ERROR: Invalid addressing mode
+ROXR.B #-1,D1	EE11	ERROR: Invalid constant shift count
+ROXR.B #-1,A2		ERROR: Invalid addressing mode
+ROXR.B D1,#-1		ERROR: Invalid addressing mode
+ROXR.B #$12,#-1		ERROR: Invalid addressing mode
+ROXR.B #$80,D1	E011	ERROR: Invalid constant shift count
+ROXR.B #$80,A2		ERROR: Invalid addressing mode
+ROXR.B D1,#$80		ERROR: Invalid addressing mode
+ROXR.B #$12,#$80		ERROR: Invalid addressing mode
+ROXR.B #$12345678,D1	E011	ERROR: Invalid constant shift count
+ROXR.B #$12345678,A2		ERROR: Invalid addressing mode
+ROXR.B D1,#$12345678		ERROR: Invalid addressing mode
+ROXR.B #$12,#$12345678		ERROR: Invalid addressing mode
+ROXR.B #$12345678.L,D1	E011	ERROR: Invalid constant shift count
+ROXR.B #$12345678.L,A2		ERROR: Invalid addressing mode
+ROXR.B D1,#$12345678.L		ERROR: Invalid addressing mode
+ROXR.B #$12,#$12345678.L		ERROR: Invalid addressing mode
+ROXR.B #BK,D1	E011	ERROR: Invalid constant shift count
+ROXR.B #BK,A2		ERROR: Invalid addressing mode
+ROXR.B D1,#BK		ERROR: Invalid addressing mode
+ROXR.B #$12,#BK		ERROR: Invalid addressing mode
+ROXR.B #FW,D1	E011	ERROR: Invalid constant shift count
+ROXR.B #FW,A2		ERROR: Invalid addressing mode
+ROXR.B D1,#FW		ERROR: Invalid addressing mode
+ROXR.B #$12,#FW		ERROR: Invalid addressing mode
+ROXR.B #UNDEF,D1	EA11	ERROR: Undefined symbol
+ROXR.B #UNDEF,A2		ERROR: Invalid addressing mode
+ROXR.B D1,#UNDEF		ERROR: Invalid addressing mode
+ROXR.B #$12,#UNDEF		ERROR: Invalid addressing mode
+ROXR.B UNDEF,D1		ERROR: Invalid syntax
+ROXR.B UNDEF,A2		ERROR: Invalid syntax
+ROXR.B D1,UNDEF		ERROR: Invalid addressing mode
+ROXR.B #$12,UNDEF		ERROR: Invalid addressing mode
+ROXR.B USP,D1		ERROR: Invalid addressing mode
+ROXR.B USP,A2		ERROR: Invalid addressing mode
+ROXR.B D1,USP		ERROR: Invalid addressing mode
+ROXR.B #$12,USP		ERROR: Invalid addressing mode
+ROXR.B D1,D2,D3		ERROR: Invalid syntax
+ROXR.W		ERROR: Invalid syntax
+ROXR.W D1		ERROR: Comma expected
+ROXR.W A2		ERROR: Comma expected
+ROXR.W SP		ERROR: Comma expected
+ROXR.W (A3)	E4D3	-
+ROXR.W (A4)+	E4DC	-
+ROXR.W -(A5)	E4E5	-
+ROXR.W $10(A6)	E4EE0010	-
+ROXR.W -2(A0)	E4E8FFFE	-
+ROXR.W $10(A6,D7.W)	E4F67010	-
+ROXR.W $12(A0,A1.L)	E4F09812	-
+ROXR.W (A2,D3)	E4F23000	-
+ROXR.W $1234	E4F81234	-
+ROXR.W $12345678	E4F912345678	-
+ROXR.W $1234.L	E4F900001234	-
+ROXR.W $1234.W	E4F81234	WARNING: Forcing SHORT addressing disables range checking of extension word
+ROXR.W $8000	E4F900008000	-
+ROXR.W BK	E4F81F00	-
+ROXR.W FW	E4F900001F00	-
+ROXR.W *+$10(PC)		ERROR: Comma expected
+ROXR.W *(PC,D0.W)		ERROR: Comma expected
+ROXR.W BK(PC)		ERROR: Comma expected
+ROXR.W #1		ERROR: Comma expected
+ROXR.W #8		ERROR: Comma expected
+ROXR.W #9		ERROR: Comma expected
+ROXR.W #0		ERROR: Comma expected
+ROXR.W #-1		ERROR: Comma expected
+ROXR.W #$80		ERROR: Comma expected
+ROXR.W #$1234		ERROR: Comma expected
+ROXR.W #$12345678		ERROR: Comma expected
+ROXR.W #$12345678.L		ERROR: Comma expected
+ROXR.W #BK		ERROR: Comma expected
+ROXR.W #FW		ERROR: Comma expected
+ROXR.W #UNDEF		ERROR: Comma expected
+ROXR.W UNDEF	E4F90000555D	ERROR: Undefined symbol
+ROXR.W SR		ERROR: Comma expected
+ROXR.W CCR		ERROR: Comma expected
+ROXR.W USP		ERROR: Comma expected
+ROXR.W D1,D1	E271	-
+ROXR.W D1,A2		ERROR: Invalid addressing mode
+ROXR.W D1,(A3)		ERROR: Invalid addressing mode
+ROXR.W D1,(A4)+		ERROR: Invalid addressing mode
+ROXR.W D1,-(A5)		ERROR: Invalid addressing mode
+ROXR.W D1,$10(A6)		ERROR: Invalid addressing mode
+ROXR.W D1,$10(A6,D7.W)		ERROR: Invalid addressing mode
+ROXR.W D1,$1234		ERROR: Invalid addressing mode
+ROXR.W D1,$12345678		ERROR: Invalid addressing mode
+ROXR.W D1,FW		ERROR: Invalid addressing mode
+ROXR.W D1,*+$10(PC)		ERROR: Invalid addressing mode
+ROXR.W D1,#1		ERROR: Invalid addressing mode
+ROXR.W D1,#$80		ERROR: Invalid addressing mode
+ROXR.W D1,#$1234		ERROR: Invalid addressing mode
+ROXR.W D1,#$12345678		ERROR: Invalid addressing mode
+ROXR.W D1,SR		ERROR: Invalid addressing mode
+ROXR.W D1,CCR		ERROR: Invalid addressing mode
+ROXR.W D1,USP		ERROR: Invalid addressing mode
+ROXR.W A2,D1		ERROR: Invalid addressing mode
+ROXR.W A2,A2		ERROR: Invalid addressing mode
+ROXR.W A2,(A3)		ERROR: Invalid addressing mode
+ROXR.W A2,(A4)+		ERROR: Invalid addressing mode
+ROXR.W A2,-(A5)		ERROR: Invalid addressing mode
+ROXR.W A2,$10(A6)		ERROR: Invalid addressing mode
+ROXR.W A2,$10(A6,D7.W)		ERROR: Invalid addressing mode
+ROXR.W A2,$1234		ERROR: Invalid addressing mode
+ROXR.W A2,$12345678		ERROR: Invalid addressing mode
+ROXR.W A2,FW		ERROR: Invalid addressing mode
+ROXR.W A2,*+$10(PC)		ERROR: Invalid addressing mode
+ROXR.W A2,#1		ERROR: Invalid addressing mode
+ROXR.W A2,#$80		ERROR: Invalid addressing mode
+ROXR.W A2,#$1234		ERROR: Invalid addressing mode
+ROXR.W A2,#$12345678		ERROR: Invalid addressing mode
+ROXR.W A2,SR		ERROR: Invalid addressing mode
+ROXR.W A2,CCR		ERROR: Invalid addressing mode
+ROXR.W A2,USP		ERROR: Invalid addressing mode
+ROXR.W (A3),D1		ERROR: Invalid syntax
+ROXR.W (A3),A2		ERROR: Invalid syntax
+ROXR.W (A3),(A3)		ERROR: Invalid syntax
+ROXR.W (A3),(A4)+		ERROR: Invalid syntax
+ROXR.W (A3),-(A5)		ERROR: Invalid syntax
+ROXR.W (A3),$10(A6)		ERROR: Invalid syntax
+ROXR.W (A3),$10(A6,D7.W)		ERROR: Invalid syntax
+ROXR.W (A3),$1234		ERROR: Invalid syntax
+ROXR.W (A3),$12345678		ERROR: Invalid syntax
+ROXR.W (A3),FW		ERROR: Invalid syntax
+ROXR.W (A3),*+$10(PC)		ERROR: Invalid syntax
+ROXR.W (A3),#1		ERROR: Invalid syntax
+ROXR.W (A3),#$80		ERROR: Invalid syntax
+ROXR.W (A3),#$1234		ERROR: Invalid syntax
+ROXR.W (A3),#$12345678		ERROR: Invalid syntax
+ROXR.W (A3),SR		ERROR: Invalid syntax
+ROXR.W (A3),CCR		ERROR: Invalid syntax
+ROXR.W (A3),USP		ERROR: Invalid syntax
+ROXR.W (A4)+,D1		ERROR: Invalid syntax
+ROXR.W (A4)+,A2		ERROR: Invalid syntax
+ROXR.W (A4)+,(A3)		ERROR: Invalid syntax
+ROXR.W (A4)+,(A4)+		ERROR: Invalid syntax
+ROXR.W (A4)+,-(A5)		ERROR: Invalid syntax
+ROXR.W (A4)+,$10(A6)		ERROR: Invalid syntax
+ROXR.W (A4)+,$10(A6,D7.W)		ERROR: Invalid syntax
+ROXR.W (A4)+,$1234		ERROR: Invalid syntax
+ROXR.W (A4)+,$12345678		ERROR: Invalid syntax
+ROXR.W (A4)+,FW		ERROR: Invalid syntax
+ROXR.W (A4)+,*+$10(PC)		ERROR: Invalid syntax
+ROXR.W (A4)+,#1		ERROR: Invalid syntax
+ROXR.W (A4)+,#$80		ERROR: Invalid syntax
+ROXR.W (A4)+,#$1234		ERROR: Invalid syntax
+ROXR.W (A4)+,#$12345678		ERROR: Invalid syntax
+ROXR.W (A4)+,SR		ERROR: Invalid syntax
+ROXR.W (A4)+,CCR		ERROR: Invalid syntax
+ROXR.W (A4)+,USP		ERROR: Invalid syntax
+ROXR.W -(A5),D1		ERROR: Invalid syntax
+ROXR.W -(A5),A2		ERROR: Invalid syntax
+ROXR.W -(A5),(A3)		ERROR: Invalid syntax
+ROXR.W -(A5),(A4)+		ERROR: Invalid syntax
+ROXR.W -(A5),-(A5)		ERROR: Invalid syntax
+ROXR.W -(A5),$10(A6)		ERROR: Invalid syntax
+ROXR.W -(A5),$10(A6,D7.W)		ERROR: Invalid syntax
+ROXR.W -(A5),$1234		ERROR: Invalid syntax
+ROXR.W -(A5),$12345678		ERROR: Invalid syntax
+ROXR.W -(A5),FW		ERROR: Invalid syntax
+ROXR.W -(A5),*+$10(PC)		ERROR: Invalid syntax
+ROXR.W -(A5),#1		ERROR: Invalid syntax
+ROXR.W -(A5),#$80		ERROR: Invalid syntax
+ROXR.W -(A5),#$1234		ERROR: Invalid syntax
+ROXR.W -(A5),#$12345678		ERROR: Invalid syntax
+ROXR.W -(A5),SR		ERROR: Invalid syntax
+ROXR.W -(A5),CCR		ERROR: Invalid syntax
+ROXR.W -(A5),USP		ERROR: Invalid syntax
+ROXR.W $10(A6),D1		ERROR: Invalid syntax
+ROXR.W $10(A6),A2		ERROR: Invalid syntax
+ROXR.W $10(A6),(A3)		ERROR: Invalid syntax
+ROXR.W $10(A6),(A4)+		ERROR: Invalid syntax
+ROXR.W $10(A6),-(A5)		ERROR: Invalid syntax
+ROXR.W $10(A6),$10(A6)		ERROR: Invalid syntax
+ROXR.W $10(A6),$10(A6,D7.W)		ERROR: Invalid syntax
+ROXR.W $10(A6),$1234		ERROR: Invalid syntax
+ROXR.W $10(A6),$12345678		ERROR: Invalid syntax
+ROXR.W $10(A6),FW		ERROR: Invalid syntax
+ROXR.W $10(A6),*+$10(PC)		ERROR: Invalid syntax
+ROXR.W $10(A6),#1		ERROR: Invalid syntax
+ROXR.W $10(A6),#$80		ERROR: Invalid syntax
+ROXR.W $10(A6),#$1234		ERROR: Invalid syntax
+ROXR.W $10(A6),#$12345678		ERROR: Invalid syntax
+ROXR.W $10(A6),SR		ERROR: Invalid syntax
+ROXR.W $10(A6),CCR		ERROR: Invalid syntax
+ROXR.W $10(A6),USP		ERROR: Invalid syntax
+ROXR.W $10(A6,D7.W),D1		ERROR: Invalid syntax
+ROXR.W $10(A6,D7.W),A2		ERROR: Invalid syntax
+ROXR.W $10(A6,D7.W),(A3)		ERROR: Invalid syntax
+ROXR.W $10(A6,D7.W),(A4)+		ERROR: Invalid syntax
+ROXR.W $10(A6,D7.W),-(A5)		ERROR: Invalid syntax
+ROXR.W $10(A6,D7.W),$10(A6)		ERROR: Invalid syntax
+ROXR.W $10(A6,D7.W),$10(A6,D7.W)		ERROR: Invalid syntax
+ROXR.W $10(A6,D7.W),$1234		ERROR: Invalid syntax
+ROXR.W $10(A6,D7.W),$12345678		ERROR: Invalid syntax
+ROXR.W $10(A6,D7.W),FW		ERROR: Invalid syntax
+ROXR.W $10(A6,D7.W),*+$10(PC)		ERROR: Invalid syntax
+ROXR.W $10(A6,D7.W),#1		ERROR: Invalid syntax
+ROXR.W $10(A6,D7.W),#$80		ERROR: Invalid syntax
+ROXR.W $10(A6,D7.W),#$1234		ERROR: Invalid syntax
+ROXR.W $10(A6,D7.W),#$12345678		ERROR: Invalid syntax
+ROXR.W $10(A6,D7.W),SR		ERROR: Invalid syntax
+ROXR.W $10(A6,D7.W),CCR		ERROR: Invalid syntax
+ROXR.W $10(A6,D7.W),USP		ERROR: Invalid syntax
+ROXR.W $1234,D1		ERROR: Invalid syntax
+ROXR.W $1234,A2		ERROR: Invalid syntax
+ROXR.W $1234,(A3)		ERROR: Invalid syntax
+ROXR.W $1234,(A4)+		ERROR: Invalid syntax
+ROXR.W $1234,-(A5)		ERROR: Invalid syntax
+ROXR.W $1234,$10(A6)		ERROR: Invalid syntax
+ROXR.W $1234,$10(A6,D7.W)		ERROR: Invalid syntax
+ROXR.W $1234,$1234		ERROR: Invalid syntax
+ROXR.W $1234,$12345678		ERROR: Invalid syntax
+ROXR.W $1234,FW		ERROR: Invalid syntax
+ROXR.W $1234,*+$10(PC)		ERROR: Invalid syntax
+ROXR.W $1234,#1		ERROR: Invalid syntax
+ROXR.W $1234,#$80		ERROR: Invalid syntax
+ROXR.W $1234,#$1234		ERROR: Invalid syntax
+ROXR.W $1234,#$12345678		ERROR: Invalid syntax
+ROXR.W $1234,SR		ERROR: Invalid syntax
+ROXR.W $1234,CCR		ERROR: Invalid syntax
+ROXR.W $1234,USP		ERROR: Invalid syntax
+ROXR.W $12345678,D1		ERROR: Invalid syntax
+ROXR.W $12345678,A2		ERROR: Invalid syntax
+ROXR.W $12345678,(A3)		ERROR: Invalid syntax
+ROXR.W $12345678,(A4)+		ERROR: Invalid syntax
+ROXR.W $12345678,-(A5)		ERROR: Invalid syntax
+ROXR.W $12345678,$10(A6)		ERROR: Invalid syntax
+ROXR.W $12345678,$10(A6,D7.W)		ERROR: Invalid syntax
+ROXR.W $12345678,$1234		ERROR: Invalid syntax
+ROXR.W $12345678,$12345678		ERROR: Invalid syntax
+ROXR.W $12345678,FW		ERROR: Invalid syntax
+ROXR.W $12345678,*+$10(PC)		ERROR: Invalid syntax
+ROXR.W $12345678,#1		ERROR: Invalid syntax
+ROXR.W $12345678,#$80		ERROR: Invalid syntax
+ROXR.W $12345678,#$1234		ERROR: Invalid syntax
+ROXR.W $12345678,#$12345678		ERROR: Invalid syntax
+ROXR.W $12345678,SR		ERROR: Invalid syntax
+ROXR.W $12345678,CCR		ERROR: Invalid syntax
+ROXR.W $12345678,USP		ERROR: Invalid syntax
+ROXR.W FW,D1		ERROR: Invalid syntax
+ROXR.W FW,A2		ERROR: Invalid syntax
+ROXR.W FW,(A3)		ERROR: Invalid syntax
+ROXR.W FW,(A4)+		ERROR: Invalid syntax
+ROXR.W FW,-(A5)		ERROR: Invalid syntax
+ROXR.W FW,$10(A6)		ERROR: Invalid syntax
+ROXR.W FW,$10(A6,D7.W)		ERROR: Invalid syntax
+ROXR.W FW,$1234		ERROR: Invalid syntax
+ROXR.W FW,$12345678		ERROR: Invalid syntax
+ROXR.W FW,FW		ERROR: Invalid syntax
+ROXR.W FW,*+$10(PC)		ERROR: Invalid syntax
+ROXR.W FW,#1		ERROR: Invalid syntax
+ROXR.W FW,#$80		ERROR: Invalid syntax
+ROXR.W FW,#$1234		ERROR: Invalid syntax
+ROXR.W FW,#$12345678		ERROR: Invalid syntax
+ROXR.W FW,SR		ERROR: Invalid syntax
+ROXR.W FW,CCR		ERROR: Invalid syntax
+ROXR.W FW,USP		ERROR: Invalid syntax
+ROXR.W *+$10(PC),D1		ERROR: Invalid addressing mode
+ROXR.W *+$10(PC),A2		ERROR: Invalid addressing mode
+ROXR.W *+$10(PC),(A3)		ERROR: Invalid addressing mode
+ROXR.W *+$10(PC),(A4)+		ERROR: Invalid addressing mode
+ROXR.W *+$10(PC),-(A5)		ERROR: Invalid addressing mode
+ROXR.W *+$10(PC),$10(A6)		ERROR: Invalid addressing mode
+ROXR.W *+$10(PC),$10(A6,D7.W)		ERROR: Invalid addressing mode
+ROXR.W *+$10(PC),$1234		ERROR: Invalid addressing mode
+ROXR.W *+$10(PC),$12345678		ERROR: Invalid addressing mode
+ROXR.W *+$10(PC),FW		ERROR: Invalid addressing mode
+ROXR.W *+$10(PC),*+$10(PC)		ERROR: Invalid addressing mode
+ROXR.W *+$10(PC),#1		ERROR: Invalid addressing mode
+ROXR.W *+$10(PC),#$80		ERROR: Invalid addressing mode
+ROXR.W *+$10(PC),#$1234		ERROR: Invalid addressing mode
+ROXR.W *+$10(PC),#$12345678		ERROR: Invalid addressing mode
+ROXR.W *+$10(PC),SR		ERROR: Invalid addressing mode
+ROXR.W *+$10(PC),CCR		ERROR: Invalid addressing mode
+ROXR.W *+$10(PC),USP		ERROR: Invalid addressing mode
+ROXR.W #1,D1	E251	-
+ROXR.W #1,A2		ERROR: Invalid addressing mode
+ROXR.W #1,(A3)		ERROR: Invalid addressing mode
+ROXR.W #1,(A4)+		ERROR: Invalid addressing mode
+ROXR.W #1,-(A5)		ERROR: Invalid addressing mode
+ROXR.W #1,$10(A6)		ERROR: Invalid addressing mode
+ROXR.W #1,$10(A6,D7.W)		ERROR: Invalid addressing mode
+ROXR.W #1,$1234		ERROR: Invalid addressing mode
+ROXR.W #1,$12345678		ERROR: Invalid addressing mode
+ROXR.W #1,FW		ERROR: Invalid addressing mode
+ROXR.W #1,*+$10(PC)		ERROR: Invalid addressing mode
+ROXR.W #1,#1		ERROR: Invalid addressing mode
+ROXR.W #1,#$80		ERROR: Invalid addressing mode
+ROXR.W #1,#$1234		ERROR: Invalid addressing mode
+ROXR.W #1,#$12345678		ERROR: Invalid addressing mode
+ROXR.W #1,SR		ERROR: Invalid addressing mode
+ROXR.W #1,CCR		ERROR: Invalid addressing mode
+ROXR.W #1,USP		ERROR: Invalid addressing mode
+ROXR.W #$80,D1	E051	ERROR: Invalid constant shift count
+ROXR.W #$80,A2		ERROR: Invalid addressing mode
+ROXR.W #$80,(A3)		ERROR: Invalid addressing mode
+ROXR.W #$80,(A4)+		ERROR: Invalid addressing mode
+ROXR.W #$80,-(A5)		ERROR: Invalid addressing mode
+ROXR.W #$80,$10(A6)		ERROR: Invalid addressing mode
+ROXR.W #$80,$10(A6,D7.W)		ERROR: Invalid addressing mode
+ROXR.W #$80,$1234		ERROR: Invalid addressing mode
+ROXR.W #$80,$12345678		ERROR: Invalid addressing mode
+ROXR.W #$80,FW		ERROR: Invalid addressing mode
+ROXR.W #$80,*+$10(PC)		ERROR: Invalid addressing mode
+ROXR.W #$80,#1		ERROR: Invalid addressing mode
+ROXR.W #$80,#$80		ERROR: Invalid addressing mode
+ROXR.W #$80,#$1234		ERROR: Invalid addressing mode
+ROXR.W #$80,#$12345678		ERROR: Invalid addressing mode
+ROXR.W #$80,SR		ERROR: Invalid addressing mode
+ROXR.W #$80,CCR		ERROR: Invalid addressing mode
+ROXR.W #$80,USP		ERROR: Invalid addressing mode
+ROXR.W #$1234,D1	E851	ERROR: Invalid constant shift count
+ROXR.W #$1234,A2		ERROR: Invalid addressing mode
+ROXR.W #$1234,(A3)		ERROR: Invalid addressing mode
+ROXR.W #$1234,(A4)+		ERROR: Invalid addressing mode
+ROXR.W #$1234,-(A5)		ERROR: Invalid addressing mode
+ROXR.W #$1234,$10(A6)		ERROR: Invalid addressing mode
+ROXR.W #$1234,$10(A6,D7.W)		ERROR: Invalid addressing mode
+ROXR.W #$1234,$1234		ERROR: Invalid addressing mode
+ROXR.W #$1234,$12345678		ERROR: Invalid addressing mode
+ROXR.W #$1234,FW		ERROR: Invalid addressing mode
+ROXR.W #$1234,*+$10(PC)		ERROR: Invalid addressing mode
+ROXR.W #$1234,#1		ERROR: Invalid addressing mode
+ROXR.W #$1234,#$80		ERROR: Invalid addressing mode
+ROXR.W #$1234,#$1234		ERROR: Invalid addressing mode
+ROXR.W #$1234,#$12345678		ERROR: Invalid addressing mode
+ROXR.W #$1234,SR		ERROR: Invalid addressing mode
+ROXR.W #$1234,CCR		ERROR: Invalid addressing mode
+ROXR.W #$1234,USP		ERROR: Invalid addressing mode
+ROXR.W #$12345678,D1	E051	ERROR: Invalid constant shift count
+ROXR.W #$12345678,A2		ERROR: Invalid addressing mode
+ROXR.W #$12345678,(A3)		ERROR: Invalid addressing mode
+ROXR.W #$12345678,(A4)+		ERROR: Invalid addressing mode
+ROXR.W #$12345678,-(A5)		ERROR: Invalid addressing mode
+ROXR.W #$12345678,$10(A6)		ERROR: Invalid addressing mode
+ROXR.W #$12345678,$10(A6,D7.W)		ERROR: Invalid addressing mode
+ROXR.W #$12345678,$1234		ERROR: Invalid addressing mode
+ROXR.W #$12345678,$12345678		ERROR: Invalid addressing mode
+ROXR.W #$12345678,FW		ERROR: Invalid addressing mode
+ROXR.W #$12345678,*+$10(PC)		ERROR: Invalid addressing mode
+ROXR.W #$12345678,#1		ERROR: Invalid addressing mode
+ROXR.W #$12345678,#$80		ERROR: Invalid addressing mode
+ROXR.W #$12345678,#$1234		ERROR: Invalid addressing mode
+ROXR.W #$12345678,#$12345678		ERROR: Invalid addressing mode
+ROXR.W #$12345678,SR		ERROR: Invalid addressing mode
+ROXR.W #$12345678,CCR		ERROR: Invalid addressing mode
+ROXR.W #$12345678,USP		ERROR: Invalid addressing mode
+ROXR.W SR,D1		ERROR: Invalid addressing mode
+ROXR.W SR,A2		ERROR: Invalid addressing mode
+ROXR.W SR,(A3)		ERROR: Invalid addressing mode
+ROXR.W SR,(A4)+		ERROR: Invalid addressing mode
+ROXR.W SR,-(A5)		ERROR: Invalid addressing mode
+ROXR.W SR,$10(A6)		ERROR: Invalid addressing mode
+ROXR.W SR,$10(A6,D7.W)		ERROR: Invalid addressing mode
+ROXR.W SR,$1234		ERROR: Invalid addressing mode
+ROXR.W SR,$12345678		ERROR: Invalid addressing mode
+ROXR.W SR,FW		ERROR: Invalid addressing mode
+ROXR.W SR,*+$10(PC)		ERROR: Invalid addressing mode
+ROXR.W SR,#1		ERROR: Invalid addressing mode
+ROXR.W SR,#$80		ERROR: Invalid addressing mode
+ROXR.W SR,#$1234		ERROR: Invalid addressing mode
+ROXR.W SR,#$12345678		ERROR: Invalid addressing mode
+ROXR.W SR,SR		ERROR: Invalid addressing mode
+ROXR.W SR,CCR		ERROR: Invalid addressing mode
+ROXR.W SR,USP		ERROR: Invalid addressing mode
+ROXR.W CCR,D1		ERROR: Invalid addressing mode
+ROXR.W CCR,A2		ERROR: Invalid addressing mode
+ROXR.W CCR,(A3)		ERROR: Invalid addressing mode
+ROXR.W CCR,(A4)+		ERROR: Invalid addressing mode
+ROXR.W CCR,-(A5)		ERROR: Invalid addressing mode
+ROXR.W CCR,$10(A6)		ERROR: Invalid addressing mode
+ROXR.W CCR,$10(A6,D7.W)		ERROR: Invalid addressing mode
+ROXR.W CCR,$1234		ERROR: Invalid addressing mode
+ROXR.W CCR,$12345678		ERROR: Invalid addressing mode
+ROXR.W CCR,FW		ERROR: Invalid addressing mode
+ROXR.W CCR,*+$10(PC)		ERROR: Invalid addressing mode
+ROXR.W CCR,#1		ERROR: Invalid addressing mode
+ROXR.W CCR,#$80		ERROR: Invalid addressing mode
+ROXR.W CCR,#$1234		ERROR: Invalid addressing mode
+ROXR.W CCR,#$12345678		ERROR: Invalid addressing mode
+ROXR.W CCR,SR		ERROR: Invalid addressing mode
+ROXR.W CCR,CCR		ERROR: Invalid addressing mode
+ROXR.W CCR,USP		ERROR: Invalid addressing mode
+ROXR.W USP,D1		ERROR: Invalid addressing mode
+ROXR.W USP,A2		ERROR: Invalid addressing mode
+ROXR.W USP,(A3)		ERROR: Invalid addressing mode
+ROXR.W USP,(A4)+		ERROR: Invalid addressing mode
+ROXR.W USP,-(A5)		ERROR: Invalid addressing mode
+ROXR.W USP,$10(A6)		ERROR: Invalid addressing mode
+ROXR.W USP,$10(A6,D7.W)		ERROR: Invalid addressing mode
+ROXR.W USP,$1234		ERROR: Invalid addressing mode
+ROXR.W USP,$12345678		ERROR: Invalid addressing mode
+ROXR.W USP,FW		ERROR: Invalid addressing mode
+ROXR.W USP,*+$10(PC)		ERROR: Invalid addressing mode
+ROXR.W USP,#1		ERROR: Invalid addressing mode
+ROXR.W USP,#$80		ERROR: Invalid addressing mode
+ROXR.W USP,#$1234		ERROR: Invalid addressing mode
+ROXR.W USP,#$12345678		ERROR: Invalid addressing mode
+ROXR.W USP,SR		ERROR: Invalid addressing mode
+ROXR.W USP,CCR		ERROR: Invalid addressing mode
+ROXR.W USP,USP		ERROR: Invalid addressing mode
+ROXR.W SP,D1		ERROR: Invalid addressing mode
+ROXR.W SP,A2		ERROR: Invalid addressing mode
+ROXR.W D1,SP		ERROR: Invalid addressing mode
+ROXR.W #$12,SP		ERROR: Invalid addressing mode
+ROXR.W -2(A0),D1		ERROR: Invalid syntax
+ROXR.W -2(A0),A2		ERROR: Invalid syntax
+ROXR.W D1,-2(A0)		ERROR: Invalid addressing mode
+ROXR.W #$12,-2(A0)		ERROR: Invalid addressing mode
+ROXR.W $12(A0,A1.L),D1		ERROR: Invalid syntax
+ROXR.W $12(A0,A1.L),A2		ERROR: Invalid syntax
+ROXR.W D1,$12(A0,A1.L)		ERROR: Invalid addressing mode
+ROXR.W #$12,$12(A0,A1.L)		ERROR: Invalid addressing mode
+ROXR.W (A2,D3),D1		ERROR: Invalid syntax
+ROXR.W (A2,D3),A2		ERROR: Invalid syntax
+ROXR.W D1,(A2,D3)		ERROR: Invalid addressing mode
+ROXR.W #$12,(A2,D3)		ERROR: Invalid addressing mode
+ROXR.W $1234.L,D1		ERROR: Invalid syntax
+ROXR.W $1234.L,A2		ERROR: Invalid syntax
+ROXR.W D1,$1234.L		ERROR: Invalid addressing mode
+ROXR.W #$12,$1234.L		ERROR: Invalid addressing mode
+ROXR.W $1234.W,D1		ERROR: Invalid syntax
+ROXR.W $1234.W,A2		ERROR: Invalid syntax
+ROXR.W D1,$1234.W		ERROR: Invalid addressing mode
+ROXR.W #$12,$1234.W		ERROR: Invalid addressing mode
+ROXR.W $8000,D1		ERROR: Invalid syntax
+ROXR.W $8000,A2		ERROR: Invalid syntax
+ROXR.W D1,$8000		ERROR: Invalid addressing mode
+ROXR.W #$12,$8000		ERROR: Invalid addressing mode
+ROXR.W BK,D1		ERROR: Invalid syntax
+ROXR.W BK,A2		ERROR: Invalid syntax
+ROXR.W D1,BK		ERROR: Invalid addressing mode
+ROXR.W #$12,BK		ERROR: Invalid addressing mode
+ROXR.W *(PC,D0.W),D1		ERROR: Invalid addressing mode
+ROXR.W *(PC,D0.W),A2		ERROR: Invalid addressing mode
+ROXR.W D1,*(PC,D0.W)		ERROR: Invalid addressing mode
+ROXR.W #$12,*(PC,D0.W)		ERROR: Invalid addressing mode
+ROXR.W BK(PC),D1		ERROR: Invalid addressing mode
+ROXR.W BK(PC),A2		ERROR: Invalid addressing mode
+ROXR.W D1,BK(PC)		ERROR: Invalid addressing mode
+ROXR.W #$12,BK(PC)		ERROR: Invalid addressing mode
+ROXR.W #8,D1	E051	-
+ROXR.W #8,A2		ERROR: Invalid addressing mode
+ROXR.W D1,#8		ERROR: Invalid addressing mode
+ROXR.W #$12,#8		ERROR: Invalid addressing mode
+ROXR.W #9,D1	E251	ERROR: Invalid constant shift count
+ROXR.W #9,A2		ERROR: Invalid addressing mode
+ROXR.W D1,#9		ERROR: Invalid addressing mode
+ROXR.W #$12,#9		ERROR: Invalid addressing mode
+ROXR.W #0,D1	E051	ERROR: Invalid constant shift count
+ROXR.W #0,A2		ERROR: Invalid addressing mode
+ROXR.W D1,#0		ERROR: Invalid addressing mode
+ROXR.W #$12,#0		ERROR: Invalid addressing mode
+ROXR.W #-1,D1	EE51	ERROR: Invalid constant shift count
+ROXR.W #-1,A2		ERROR: Invalid addressing mode
+ROXR.W D1,#-1		ERROR: Invalid addressing mode
+ROXR.W #$12,#-1		ERROR: Invalid addressing mode
+ROXR.W #$12345678.L,D1	E051	ERROR: Invalid constant shift count
+ROXR.W #$12345678.L,A2		ERROR: Invalid addressing mode
+ROXR.W D1,#$12345678.L		ERROR: Invalid addressing mode
+ROXR.W #$12,#$12345678.L		ERROR: Invalid addressing mode
+ROXR.W #BK,D1	E051	ERROR: Invalid constant shift count
+ROXR.W #BK,A2		ERROR: Invalid addressing mode
+ROXR.W D1,#BK		ERROR: Invalid addressing mode
+ROXR.W #$12,#BK		ERROR: Invalid addressing mode
+ROXR.W #FW,D1	E051	ERROR: Invalid constant shift count
+ROXR.W #FW,A2		ERROR: Invalid addressing mode
+ROXR.W D1,#FW		ERROR: Invalid addressing mode
+ROXR.W #$12,#FW		ERROR: Invalid addressing mode
+ROXR.W #UNDEF,D1	EA51	ERROR: Undefined symbol
+ROXR.W #UNDEF,A2		ERROR: Invalid addressing mode
+ROXR.W D1,#UNDEF		ERROR: Invalid addressing mode
+ROXR.W #$12,#UNDEF		ERROR: Invalid addressing mode
+ROXR.W UNDEF,D1		ERROR: Invalid syntax
+ROXR.W UNDEF,A2		ERROR: Invalid syntax
+ROXR.W D1,UNDEF		ERROR: Invalid addressing mode
+ROXR.W #$12,UNDEF		ERROR: Invalid addressing mode
+ROXR.W D1,D2,D3		ERROR: Invalid syntax
+ROXR.L		ERROR: Invalid syntax
+ROXR.L D1		ERROR: Comma expected
+ROXR.L A2		ERROR: Comma expected
+ROXR.L SP		ERROR: Comma expected
+ROXR.L (A3)	E4D3	ERROR: Invalid size code
+ROXR.L (A4)+	E4DC	ERROR: Invalid size code
+ROXR.L -(A5)	E4E5	ERROR: Invalid size code
+ROXR.L $10(A6)	E4EE0010	ERROR: Invalid size code
+ROXR.L -2(A0)	E4E8FFFE	ERROR: Invalid size code
+ROXR.L $10(A6,D7.W)	E4F67010	ERROR: Invalid size code
+ROXR.L $12(A0,A1.L)	E4F09812	ERROR: Invalid size code
+ROXR.L (A2,D3)	E4F23000	ERROR: Invalid size code
+ROXR.L $1234	E4F81234	ERROR: Invalid size code
+ROXR.L $12345678	E4F912345678	ERROR: Invalid size code
+ROXR.L $1234.L	E4F900001234	ERROR: Invalid size code
+ROXR.L $1234.W	E4F81234	ERROR: Invalid size code
+ROXR.L $8000	E4F900008000	ERROR: Invalid size code
+ROXR.L BK	E4F81F00	ERROR: Invalid size code
+ROXR.L FW	E4F900001F00	ERROR: Invalid size code
+ROXR.L *+$10(PC)		ERROR: Comma expected
+ROXR.L *(PC,D0.W)		ERROR: Comma expected
+ROXR.L BK(PC)		ERROR: Comma expected
+ROXR.L #1		ERROR: Comma expected
+ROXR.L #8		ERROR: Comma expected
+ROXR.L #9		ERROR: Comma expected
+ROXR.L #0		ERROR: Comma expected
+ROXR.L #-1		ERROR: Comma expected
+ROXR.L #$80		ERROR: Comma expected
+ROXR.L #$1234		ERROR: Comma expected
+ROXR.L #$12345678		ERROR: Comma expected
+ROXR.L #$12345678.L		ERROR: Comma expected
+ROXR.L #BK		ERROR: Comma expected
+ROXR.L #FW		ERROR: Comma expected
+ROXR.L #UNDEF		ERROR: Comma expected
+ROXR.L UNDEF	E4F90000555D	ERROR: Undefined symbol
+ROXR.L SR		ERROR: Comma expected
+ROXR.L CCR		ERROR: Comma expected
+ROXR.L USP		ERROR: Comma expected
+ROXR.L D1,D1	E2B1	-
+ROXR.L D1,A2		ERROR: Invalid addressing mode
+ROXR.L D1,(A3)		ERROR: Invalid addressing mode
+ROXR.L D1,$10(A6)		ERROR: Invalid addressing mode
+ROXR.L D1,$1234		ERROR: Invalid addressing mode
+ROXR.L D1,FW		ERROR: Invalid addressing mode
+ROXR.L D1,#1		ERROR: Invalid addressing mode
+ROXR.L D1,#$1234		ERROR: Invalid addressing mode
+ROXR.L D1,CCR		ERROR: Invalid addressing mode
+ROXR.L D1,SR		ERROR: Invalid addressing mode
+ROXR.L A2,D1		ERROR: Invalid addressing mode
+ROXR.L A2,A2		ERROR: Invalid addressing mode
+ROXR.L A2,(A3)		ERROR: Invalid addressing mode
+ROXR.L A2,$10(A6)		ERROR: Invalid addressing mode
+ROXR.L A2,$1234		ERROR: Invalid addressing mode
+ROXR.L A2,FW		ERROR: Invalid addressing mode
+ROXR.L A2,#1		ERROR: Invalid addressing mode
+ROXR.L A2,#$1234		ERROR: Invalid addressing mode
+ROXR.L A2,CCR		ERROR: Invalid addressing mode
+ROXR.L A2,SR		ERROR: Invalid addressing mode
+ROXR.L (A3),D1		ERROR: Invalid syntax
+ROXR.L (A3),A2		ERROR: Invalid syntax
+ROXR.L (A3),(A3)		ERROR: Invalid syntax
+ROXR.L (A3),$10(A6)		ERROR: Invalid syntax
+ROXR.L (A3),$1234		ERROR: Invalid syntax
+ROXR.L (A3),FW		ERROR: Invalid syntax
+ROXR.L (A3),#1		ERROR: Invalid syntax
+ROXR.L (A3),#$1234		ERROR: Invalid syntax
+ROXR.L (A3),CCR		ERROR: Invalid syntax
+ROXR.L (A3),SR		ERROR: Invalid syntax
+ROXR.L $10(A6),D1		ERROR: Invalid syntax
+ROXR.L $10(A6),A2		ERROR: Invalid syntax
+ROXR.L $10(A6),(A3)		ERROR: Invalid syntax
+ROXR.L $10(A6),$10(A6)		ERROR: Invalid syntax
+ROXR.L $10(A6),$1234		ERROR: Invalid syntax
+ROXR.L $10(A6),FW		ERROR: Invalid syntax
+ROXR.L $10(A6),#1		ERROR: Invalid syntax
+ROXR.L $10(A6),#$1234		ERROR: Invalid syntax
+ROXR.L $10(A6),CCR		ERROR: Invalid syntax
+ROXR.L $10(A6),SR		ERROR: Invalid syntax
+ROXR.L $1234,D1		ERROR: Invalid syntax
+ROXR.L $1234,A2		ERROR: Invalid syntax
+ROXR.L $1234,(A3)		ERROR: Invalid syntax
+ROXR.L $1234,$10(A6)		ERROR: Invalid syntax
+ROXR.L $1234,$1234		ERROR: Invalid syntax
+ROXR.L $1234,FW		ERROR: Invalid syntax
+ROXR.L $1234,#1		ERROR: Invalid syntax
+ROXR.L $1234,#$1234		ERROR: Invalid syntax
+ROXR.L $1234,CCR		ERROR: Invalid syntax
+ROXR.L $1234,SR		ERROR: Invalid syntax
+ROXR.L FW,D1		ERROR: Invalid syntax
+ROXR.L FW,A2		ERROR: Invalid syntax
+ROXR.L FW,(A3)		ERROR: Invalid syntax
+ROXR.L FW,$10(A6)		ERROR: Invalid syntax
+ROXR.L FW,$1234		ERROR: Invalid syntax
+ROXR.L FW,FW		ERROR: Invalid syntax
+ROXR.L FW,#1		ERROR: Invalid syntax
+ROXR.L FW,#$1234		ERROR: Invalid syntax
+ROXR.L FW,CCR		ERROR: Invalid syntax
+ROXR.L FW,SR		ERROR: Invalid syntax
+ROXR.L #1,D1	E291	-
+ROXR.L #1,A2		ERROR: Invalid addressing mode
+ROXR.L #1,(A3)		ERROR: Invalid addressing mode
+ROXR.L #1,$10(A6)		ERROR: Invalid addressing mode
+ROXR.L #1,$1234		ERROR: Invalid addressing mode
+ROXR.L #1,FW		ERROR: Invalid addressing mode
+ROXR.L #1,#1		ERROR: Invalid addressing mode
+ROXR.L #1,#$1234		ERROR: Invalid addressing mode
+ROXR.L #1,CCR		ERROR: Invalid addressing mode
+ROXR.L #1,SR		ERROR: Invalid addressing mode
+ROXR.L #$1234,D1	E891	ERROR: Invalid constant shift count
+ROXR.L #$1234,A2		ERROR: Invalid addressing mode
+ROXR.L #$1234,(A3)		ERROR: Invalid addressing mode
+ROXR.L #$1234,$10(A6)		ERROR: Invalid addressing mode
+ROXR.L #$1234,$1234		ERROR: Invalid addressing mode
+ROXR.L #$1234,FW		ERROR: Invalid addressing mode
+ROXR.L #$1234,#1		ERROR: Invalid addressing mode
+ROXR.L #$1234,#$1234		ERROR: Invalid addressing mode
+ROXR.L #$1234,CCR		ERROR: Invalid addressing mode
+ROXR.L #$1234,SR		ERROR: Invalid addressing mode
+ROXR.L CCR,D1		ERROR: Invalid addressing mode
+ROXR.L CCR,A2		ERROR: Invalid addressing mode
+ROXR.L CCR,(A3)		ERROR: Invalid addressing mode
+ROXR.L CCR,$10(A6)		ERROR: Invalid addressing mode
+ROXR.L CCR,$1234		ERROR: Invalid addressing mode
+ROXR.L CCR,FW		ERROR: Invalid addressing mode
+ROXR.L CCR,#1		ERROR: Invalid addressing mode
+ROXR.L CCR,#$1234		ERROR: Invalid addressing mode
+ROXR.L CCR,CCR		ERROR: Invalid addressing mode
+ROXR.L CCR,SR		ERROR: Invalid addressing mode
+ROXR.L SR,D1		ERROR: Invalid addressing mode
+ROXR.L SR,A2		ERROR: Invalid addressing mode
+ROXR.L SR,(A3)		ERROR: Invalid addressing mode
+ROXR.L SR,$10(A6)		ERROR: Invalid addressing mode
+ROXR.L SR,$1234		ERROR: Invalid addressing mode
+ROXR.L SR,FW		ERROR: Invalid addressing mode
+ROXR.L SR,#1		ERROR: Invalid addressing mode
+ROXR.L SR,#$1234		ERROR: Invalid addressing mode
+ROXR.L SR,CCR		ERROR: Invalid addressing mode
+ROXR.L SR,SR		ERROR: Invalid addressing mode
+ROXR.L SP,D1		ERROR: Invalid addressing mode
+ROXR.L SP,A2		ERROR: Invalid addressing mode
+ROXR.L D1,SP		ERROR: Invalid addressing mode
+ROXR.L #$12,SP		ERROR: Invalid addressing mode
+ROXR.L (A4)+,D1		ERROR: Invalid syntax
+ROXR.L (A4)+,A2		ERROR: Invalid syntax
+ROXR.L D1,(A4)+		ERROR: Invalid addressing mode
+ROXR.L #$12,(A4)+		ERROR: Invalid addressing mode
+ROXR.L -(A5),D1		ERROR: Invalid syntax
+ROXR.L -(A5),A2		ERROR: Invalid syntax
+ROXR.L D1,-(A5)		ERROR: Invalid addressing mode
+ROXR.L #$12,-(A5)		ERROR: Invalid addressing mode
+ROXR.L -2(A0),D1		ERROR: Invalid syntax
+ROXR.L -2(A0),A2		ERROR: Invalid syntax
+ROXR.L D1,-2(A0)		ERROR: Invalid addressing mode
+ROXR.L #$12,-2(A0)		ERROR: Invalid addressing mode
+ROXR.L $10(A6,D7.W),D1		ERROR: Invalid syntax
+ROXR.L $10(A6,D7.W),A2		ERROR: Invalid syntax
+ROXR.L D1,$10(A6,D7.W)		ERROR: Invalid addressing mode
+ROXR.L #$12,$10(A6,D7.W)		ERROR: Invalid addressing mode
+ROXR.L $12(A0,A1.L),D1		ERROR: Invalid syntax
+ROXR.L $12(A0,A1.L),A2		ERROR: Invalid syntax
+ROXR.L D1,$12(A0,A1.L)		ERROR: Invalid addressing mode
+ROXR.L #$12,$12(A0,A1.L)		ERROR: Invalid addressing mode
+ROXR.L (A2,D3),D1		ERROR: Invalid syntax
+ROXR.L (A2,D3),A2		ERROR: Invalid syntax
+ROXR.L D1,(A2,D3)		ERROR: Invalid addressing mode
+ROXR.L #$12,(A2,D3)		ERROR: Invalid addressing mode
+ROXR.L $12345678,D1		ERROR: Invalid syntax
+ROXR.L $12345678,A2		ERROR: Invalid syntax
+ROXR.L D1,$12345678		ERROR: Invalid addressing mode
+ROXR.L #$12,$12345678		ERROR: Invalid addressing mode
+ROXR.L $1234.L,D1		ERROR: Invalid syntax
+ROXR.L $1234.L,A2		ERROR: Invalid syntax
+ROXR.L D1,$1234.L		ERROR: Invalid addressing mode
+ROXR.L #$12,$1234.L		ERROR: Invalid addressing mode
+ROXR.L $1234.W,D1		ERROR: Invalid syntax
+ROXR.L $1234.W,A2		ERROR: Invalid syntax
+ROXR.L D1,$1234.W		ERROR: Invalid addressing mode
+ROXR.L #$12,$1234.W		ERROR: Invalid addressing mode
+ROXR.L $8000,D1		ERROR: Invalid syntax
+ROXR.L $8000,A2		ERROR: Invalid syntax
+ROXR.L D1,$8000		ERROR: Invalid addressing mode
+ROXR.L #$12,$8000		ERROR: Invalid addressing mode
+ROXR.L BK,D1		ERROR: Invalid syntax
+ROXR.L BK,A2		ERROR: Invalid syntax
+ROXR.L D1,BK		ERROR: Invalid addressing mode
+ROXR.L #$12,BK		ERROR: Invalid addressing mode
+ROXR.L *+$10(PC),D1		ERROR: Invalid addressing mode
+ROXR.L *+$10(PC),A2		ERROR: Invalid addressing mode
+ROXR.L D1,*+$10(PC)		ERROR: Invalid addressing mode
+ROXR.L #$12,*+$10(PC)		ERROR: Invalid addressing mode
+ROXR.L *(PC,D0.W),D1		ERROR: Invalid addressing mode
+ROXR.L *(PC,D0.W),A2		ERROR: Invalid addressing mode
+ROXR.L D1,*(PC,D0.W)		ERROR: Invalid addressing mode
+ROXR.L #$12,*(PC,D0.W)		ERROR: Invalid addressing mode
+ROXR.L BK(PC),D1		ERROR: Invalid addressing mode
+ROXR.L BK(PC),A2		ERROR: Invalid addressing mode
+ROXR.L D1,BK(PC)		ERROR: Invalid addressing mode
+ROXR.L #$12,BK(PC)		ERROR: Invalid addressing mode
+ROXR.L #8,D1	E091	-
+ROXR.L #8,A2		ERROR: Invalid addressing mode
+ROXR.L D1,#8		ERROR: Invalid addressing mode
+ROXR.L #$12,#8		ERROR: Invalid addressing mode
+ROXR.L #9,D1	E291	ERROR: Invalid constant shift count
+ROXR.L #9,A2		ERROR: Invalid addressing mode
+ROXR.L D1,#9		ERROR: Invalid addressing mode
+ROXR.L #$12,#9		ERROR: Invalid addressing mode
+ROXR.L #0,D1	E091	ERROR: Invalid constant shift count
+ROXR.L #0,A2		ERROR: Invalid addressing mode
+ROXR.L D1,#0		ERROR: Invalid addressing mode
+ROXR.L #$12,#0		ERROR: Invalid addressing mode
+ROXR.L #-1,D1	EE91	ERROR: Invalid constant shift count
+ROXR.L #-1,A2		ERROR: Invalid addressing mode
+ROXR.L D1,#-1		ERROR: Invalid addressing mode
+ROXR.L #$12,#-1		ERROR: Invalid addressing mode
+ROXR.L #$80,D1	E091	ERROR: Invalid constant shift count
+ROXR.L #$80,A2		ERROR: Invalid addressing mode
+ROXR.L D1,#$80		ERROR: Invalid addressing mode
+ROXR.L #$12,#$80		ERROR: Invalid addressing mode
+ROXR.L #$12345678,D1	E091	ERROR: Invalid constant shift count
+ROXR.L #$12345678,A2		ERROR: Invalid addressing mode
+ROXR.L D1,#$12345678		ERROR: Invalid addressing mode
+ROXR.L #$12,#$12345678		ERROR: Invalid addressing mode
+ROXR.L #$12345678.L,D1	E091	ERROR: Invalid constant shift count
+ROXR.L #$12345678.L,A2		ERROR: Invalid addressing mode
+ROXR.L D1,#$12345678.L		ERROR: Invalid addressing mode
+ROXR.L #$12,#$12345678.L		ERROR: Invalid addressing mode
+ROXR.L #BK,D1	E091	ERROR: Invalid constant shift count
+ROXR.L #BK,A2		ERROR: Invalid addressing mode
+ROXR.L D1,#BK		ERROR: Invalid addressing mode
+ROXR.L #$12,#BK		ERROR: Invalid addressing mode
+ROXR.L #FW,D1	E091	ERROR: Invalid constant shift count
+ROXR.L #FW,A2		ERROR: Invalid addressing mode
+ROXR.L D1,#FW		ERROR: Invalid addressing mode
+ROXR.L #$12,#FW		ERROR: Invalid addressing mode
+ROXR.L #UNDEF,D1	EA91	ERROR: Undefined symbol
+ROXR.L #UNDEF,A2		ERROR: Invalid addressing mode
+ROXR.L D1,#UNDEF		ERROR: Invalid addressing mode
+ROXR.L #$12,#UNDEF		ERROR: Invalid addressing mode
+ROXR.L UNDEF,D1		ERROR: Invalid syntax
+ROXR.L UNDEF,A2		ERROR: Invalid syntax
+ROXR.L D1,UNDEF		ERROR: Invalid addressing mode
+ROXR.L #$12,UNDEF		ERROR: Invalid addressing mode
+ROXR.L USP,D1		ERROR: Invalid addressing mode
+ROXR.L USP,A2		ERROR: Invalid addressing mode
+ROXR.L D1,USP		ERROR: Invalid addressing mode
+ROXR.L #$12,USP		ERROR: Invalid addressing mode
+ROXR.L D1,D2,D3		ERROR: Invalid syntax
+ROXR.S		ERROR: Invalid syntax
+ROXR.S D1		ERROR: Comma expected
+ROXR.S A2		ERROR: Comma expected
+ROXR.S SP		ERROR: Comma expected
+ROXR.S (A3)	E4D3	ERROR: Invalid size code
+ROXR.S (A4)+	E4DC	ERROR: Invalid size code
+ROXR.S -(A5)	E4E5	ERROR: Invalid size code
+ROXR.S $10(A6)	E4EE0010	ERROR: Invalid size code
+ROXR.S -2(A0)	E4E8FFFE	ERROR: Invalid size code
+ROXR.S $10(A6,D7.W)	E4F67010	ERROR: Invalid size code
+ROXR.S $12(A0,A1.L)	E4F09812	ERROR: Invalid size code
+ROXR.S (A2,D3)	E4F23000	ERROR: Invalid size code
+ROXR.S $1234	E4F81234	ERROR: Invalid size code
+ROXR.S $12345678	E4F912345678	ERROR: Invalid size code
+ROXR.S $1234.L	E4F900001234	ERROR: Invalid size code
+ROXR.S $1234.W	E4F81234	ERROR: Invalid size code
+ROXR.S $8000	E4F900008000	ERROR: Invalid size code
+ROXR.S BK	E4F81F00	ERROR: Invalid size code
+ROXR.S FW	E4F900001F00	ERROR: Invalid size code
+ROXR.S *+$10(PC)		ERROR: Comma expected
+ROXR.S *(PC,D0.W)		ERROR: Comma expected
+ROXR.S BK(PC)		ERROR: Comma expected
+ROXR.S #1		ERROR: Comma expected
+ROXR.S #8		ERROR: Comma expected
+ROXR.S #9		ERROR: Comma expected
+ROXR.S #0		ERROR: Comma expected
+ROXR.S #-1		ERROR: Comma expected
+ROXR.S #$80		ERROR: Comma expected
+ROXR.S #$1234		ERROR: Comma expected
+ROXR.S #$12345678		ERROR: Comma expected
+ROXR.S #$12345678.L		ERROR: Comma expected
+ROXR.S #BK		ERROR: Comma expected
+ROXR.S #FW		ERROR: Comma expected
+ROXR.S #UNDEF		ERROR: Comma expected
+ROXR.S UNDEF	E4F90000555D	ERROR: Undefined symbol
+ROXR.S SR		ERROR: Comma expected
+ROXR.S CCR		ERROR: Comma expected
+ROXR.S USP		ERROR: Comma expected
+ROXR.S D1,D1	E271	ERROR: Invalid size code
+ROXR.S D1,A2		ERROR: Invalid addressing mode
+ROXR.S D1,(A3)		ERROR: Invalid addressing mode
+ROXR.S D1,$10(A6)		ERROR: Invalid addressing mode
+ROXR.S D1,$1234		ERROR: Invalid addressing mode
+ROXR.S D1,FW		ERROR: Invalid addressing mode
+ROXR.S D1,#1		ERROR: Invalid addressing mode
+ROXR.S D1,#$1234		ERROR: Invalid addressing mode
+ROXR.S D1,CCR		ERROR: Invalid addressing mode
+ROXR.S D1,SR		ERROR: Invalid addressing mode
+ROXR.S A2,D1		ERROR: Invalid addressing mode
+ROXR.S A2,A2		ERROR: Invalid addressing mode
+ROXR.S A2,(A3)		ERROR: Invalid addressing mode
+ROXR.S A2,$10(A6)		ERROR: Invalid addressing mode
+ROXR.S A2,$1234		ERROR: Invalid addressing mode
+ROXR.S A2,FW		ERROR: Invalid addressing mode
+ROXR.S A2,#1		ERROR: Invalid addressing mode
+ROXR.S A2,#$1234		ERROR: Invalid addressing mode
+ROXR.S A2,CCR		ERROR: Invalid addressing mode
+ROXR.S A2,SR		ERROR: Invalid addressing mode
+ROXR.S (A3),D1		ERROR: Invalid syntax
+ROXR.S (A3),A2		ERROR: Invalid syntax
+ROXR.S (A3),(A3)		ERROR: Invalid syntax
+ROXR.S (A3),$10(A6)		ERROR: Invalid syntax
+ROXR.S (A3),$1234		ERROR: Invalid syntax
+ROXR.S (A3),FW		ERROR: Invalid syntax
+ROXR.S (A3),#1		ERROR: Invalid syntax
+ROXR.S (A3),#$1234		ERROR: Invalid syntax
+ROXR.S (A3),CCR		ERROR: Invalid syntax
+ROXR.S (A3),SR		ERROR: Invalid syntax
+ROXR.S $10(A6),D1		ERROR: Invalid syntax
+ROXR.S $10(A6),A2		ERROR: Invalid syntax
+ROXR.S $10(A6),(A3)		ERROR: Invalid syntax
+ROXR.S $10(A6),$10(A6)		ERROR: Invalid syntax
+ROXR.S $10(A6),$1234		ERROR: Invalid syntax
+ROXR.S $10(A6),FW		ERROR: Invalid syntax
+ROXR.S $10(A6),#1		ERROR: Invalid syntax
+ROXR.S $10(A6),#$1234		ERROR: Invalid syntax
+ROXR.S $10(A6),CCR		ERROR: Invalid syntax
+ROXR.S $10(A6),SR		ERROR: Invalid syntax
+ROXR.S $1234,D1		ERROR: Invalid syntax
+ROXR.S $1234,A2		ERROR: Invalid syntax
+ROXR.S $1234,(A3)		ERROR: Invalid syntax
+ROXR.S $1234,$10(A6)		ERROR: Invalid syntax
+ROXR.S $1234,$1234		ERROR: Invalid syntax
+ROXR.S $1234,FW		ERROR: Invalid syntax
+ROXR.S $1234,#1		ERROR: Invalid syntax
+ROXR.S $1234,#$1234		ERROR: Invalid syntax
+ROXR.S $1234,CCR		ERROR: Invalid syntax
+ROXR.S $1234,SR		ERROR: Invalid syntax
+ROXR.S FW,D1		ERROR: Invalid syntax
+ROXR.S FW,A2		ERROR: Invalid syntax
+ROXR.S FW,(A3)		ERROR: Invalid syntax
+ROXR.S FW,$10(A6)		ERROR: Invalid syntax
+ROXR.S FW,$1234		ERROR: Invalid syntax
+ROXR.S FW,FW		ERROR: Invalid syntax
+ROXR.S FW,#1		ERROR: Invalid syntax
+ROXR.S FW,#$1234		ERROR: Invalid syntax
+ROXR.S FW,CCR		ERROR: Invalid syntax
+ROXR.S FW,SR		ERROR: Invalid syntax
+ROXR.S #1,D1	E251	ERROR: Invalid size code
+ROXR.S #1,A2		ERROR: Invalid addressing mode
+ROXR.S #1,(A3)		ERROR: Invalid addressing mode
+ROXR.S #1,$10(A6)		ERROR: Invalid addressing mode
+ROXR.S #1,$1234		ERROR: Invalid addressing mode
+ROXR.S #1,FW		ERROR: Invalid addressing mode
+ROXR.S #1,#1		ERROR: Invalid addressing mode
+ROXR.S #1,#$1234		ERROR: Invalid addressing mode
+ROXR.S #1,CCR		ERROR: Invalid addressing mode
+ROXR.S #1,SR		ERROR: Invalid addressing mode
+ROXR.S #$1234,D1	E851	ERROR: Invalid size code
+ROXR.S #$1234,A2		ERROR: Invalid addressing mode
+ROXR.S #$1234,(A3)		ERROR: Invalid addressing mode
+ROXR.S #$1234,$10(A6)		ERROR: Invalid addressing mode
+ROXR.S #$1234,$1234		ERROR: Invalid addressing mode
+ROXR.S #$1234,FW		ERROR: Invalid addressing mode
+ROXR.S #$1234,#1		ERROR: Invalid addressing mode
+ROXR.S #$1234,#$1234		ERROR: Invalid addressing mode
+ROXR.S #$1234,CCR		ERROR: Invalid addressing mode
+ROXR.S #$1234,SR		ERROR: Invalid addressing mode
+ROXR.S CCR,D1		ERROR: Invalid addressing mode
+ROXR.S CCR,A2		ERROR: Invalid addressing mode
+ROXR.S CCR,(A3)		ERROR: Invalid addressing mode
+ROXR.S CCR,$10(A6)		ERROR: Invalid addressing mode
+ROXR.S CCR,$1234		ERROR: Invalid addressing mode
+ROXR.S CCR,FW		ERROR: Invalid addressing mode
+ROXR.S CCR,#1		ERROR: Invalid addressing mode
+ROXR.S CCR,#$1234		ERROR: Invalid addressing mode
+ROXR.S CCR,CCR		ERROR: Invalid addressing mode
+ROXR.S CCR,SR		ERROR: Invalid addressing mode
+ROXR.S SR,D1		ERROR: Invalid addressing mode
+ROXR.S SR,A2		ERROR: Invalid addressing mode
+ROXR.S SR,(A3)		ERROR: Invalid addressing mode
+ROXR.S SR,$10(A6)		ERROR: Invalid addressing mode
+ROXR.S SR,$1234		ERROR: Invalid addressing mode
+ROXR.S SR,FW		ERROR: Invalid addressing mode
+ROXR.S SR,#1		ERROR: Invalid addressing mode
+ROXR.S SR,#$1234		ERROR: Invalid addressing mode
+ROXR.S SR,CCR		ERROR: Invalid addressing mode
+ROXR.S SR,SR		ERROR: Invalid addressing mode
+ROXR.S SP,D1		ERROR: Invalid addressing mode
+ROXR.S SP,A2		ERROR: Invalid addressing mode
+ROXR.S D1,SP		ERROR: Invalid addressing mode
+ROXR.S #$12,SP		ERROR: Invalid addressing mode
+ROXR.S (A4)+,D1		ERROR: Invalid syntax
+ROXR.S (A4)+,A2		ERROR: Invalid syntax
+ROXR.S D1,(A4)+		ERROR: Invalid addressing mode
+ROXR.S #$12,(A4)+		ERROR: Invalid addressing mode
+ROXR.S -(A5),D1		ERROR: Invalid syntax
+ROXR.S -(A5),A2		ERROR: Invalid syntax
+ROXR.S D1,-(A5)		ERROR: Invalid addressing mode
+ROXR.S #$12,-(A5)		ERROR: Invalid addressing mode
+ROXR.S -2(A0),D1		ERROR: Invalid syntax
+ROXR.S -2(A0),A2		ERROR: Invalid syntax
+ROXR.S D1,-2(A0)		ERROR: Invalid addressing mode
+ROXR.S #$12,-2(A0)		ERROR: Invalid addressing mode
+ROXR.S $10(A6,D7.W),D1		ERROR: Invalid syntax
+ROXR.S $10(A6,D7.W),A2		ERROR: Invalid syntax
+ROXR.S D1,$10(A6,D7.W)		ERROR: Invalid addressing mode
+ROXR.S #$12,$10(A6,D7.W)		ERROR: Invalid addressing mode
+ROXR.S $12(A0,A1.L),D1		ERROR: Invalid syntax
+ROXR.S $12(A0,A1.L),A2		ERROR: Invalid syntax
+ROXR.S D1,$12(A0,A1.L)		ERROR: Invalid addressing mode
+ROXR.S #$12,$12(A0,A1.L)		ERROR: Invalid addressing mode
+ROXR.S (A2,D3),D1		ERROR: Invalid syntax
+ROXR.S (A2,D3),A2		ERROR: Invalid syntax
+ROXR.S D1,(A2,D3)		ERROR: Invalid addressing mode
+ROXR.S #$12,(A2,D3)		ERROR: Invalid addressing mode
+ROXR.S $12345678,D1		ERROR: Invalid syntax
+ROXR.S $12345678,A2		ERROR: Invalid syntax
+ROXR.S D1,$12345678		ERROR: Invalid addressing mode
+ROXR.S #$12,$12345678		ERROR: Invalid addressing mode
+ROXR.S $1234.L,D1		ERROR: Invalid syntax
+ROXR.S $1234.L,A2		ERROR: Invalid syntax
+ROXR.S D1,$1234.L		ERROR: Invalid addressing mode
+ROXR.S #$12,$1234.L		ERROR: Invalid addressing mode
+ROXR.S $1234.W,D1		ERROR: Invalid syntax
+ROXR.S $1234.W,A2		ERROR: Invalid syntax
+ROXR.S D1,$1234.W		ERROR: Invalid addressing mode
+ROXR.S #$12,$1234.W		ERROR: Invalid addressing mode
+ROXR.S $8000,D1		ERROR: Invalid syntax
+ROXR.S $8000,A2		ERROR: Invalid syntax
+ROXR.S D1,$8000		ERROR: Invalid addressing mode
+ROXR.S #$12,$8000		ERROR: Invalid addressing mode
+ROXR.S BK,D1		ERROR: Invalid syntax
+ROXR.S BK,A2		ERROR: Invalid syntax
+ROXR.S D1,BK		ERROR: Invalid addressing mode
+ROXR.S #$12,BK		ERROR: Invalid addressing mode
+ROXR.S *+$10(PC),D1		ERROR: Invalid addressing mode
+ROXR.S *+$10(PC),A2		ERROR: Invalid addressing mode
+ROXR.S D1,*+$10(PC)		ERROR: Invalid addressing mode
+ROXR.S #$12,*+$10(PC)		ERROR: Invalid addressing mode
+ROXR.S *(PC,D0.W),D1		ERROR: Invalid addressing mode
+ROXR.S *(PC,D0.W),A2		ERROR: Invalid addressing mode
+ROXR.S D1,*(PC,D0.W)		ERROR: Invalid addressing mode
+ROXR.S #$12,*(PC,D0.W)		ERROR: Invalid addressing mode
+ROXR.S BK(PC),D1		ERROR: Invalid addressing mode
+ROXR.S BK(PC),A2		ERROR: Invalid addressing mode
+ROXR.S D1,BK(PC)		ERROR: Invalid addressing mode
+ROXR.S #$12,BK(PC)		ERROR: Invalid addressing mode
+ROXR.S #8,D1	E051	ERROR: Invalid size code
+ROXR.S #8,A2		ERROR: Invalid addressing mode
+ROXR.S D1,#8		ERROR: Invalid addressing mode
+ROXR.S #$12,#8		ERROR: Invalid addressing mode
+ROXR.S #9,D1	E251	ERROR: Invalid size code
+ROXR.S #9,A2		ERROR: Invalid addressing mode
+ROXR.S D1,#9		ERROR: Invalid addressing mode
+ROXR.S #$12,#9		ERROR: Invalid addressing mode
+ROXR.S #0,D1	E051	ERROR: Invalid size code
+ROXR.S #0,A2		ERROR: Invalid addressing mode
+ROXR.S D1,#0		ERROR: Invalid addressing mode
+ROXR.S #$12,#0		ERROR: Invalid addressing mode
+ROXR.S #-1,D1	EE51	ERROR: Invalid size code
+ROXR.S #-1,A2		ERROR: Invalid addressing mode
+ROXR.S D1,#-1		ERROR: Invalid addressing mode
+ROXR.S #$12,#-1		ERROR: Invalid addressing mode
+ROXR.S #$80,D1	E051	ERROR: Invalid size code
+ROXR.S #$80,A2		ERROR: Invalid addressing mode
+ROXR.S D1,#$80		ERROR: Invalid addressing mode
+ROXR.S #$12,#$80		ERROR: Invalid addressing mode
+ROXR.S #$12345678,D1	E051	ERROR: Invalid size code
+ROXR.S #$12345678,A2		ERROR: Invalid addressing mode
+ROXR.S D1,#$12345678		ERROR: Invalid addressing mode
+ROXR.S #$12,#$12345678		ERROR: Invalid addressing mode
+ROXR.S #$12345678.L,D1	E051	ERROR: Invalid size code
+ROXR.S #$12345678.L,A2		ERROR: Invalid addressing mode
+ROXR.S D1,#$12345678.L		ERROR: Invalid addressing mode
+ROXR.S #$12,#$12345678.L		ERROR: Invalid addressing mode
+ROXR.S #BK,D1	E051	ERROR: Invalid size code
+ROXR.S #BK,A2		ERROR: Invalid addressing mode
+ROXR.S D1,#BK		ERROR: Invalid addressing mode
+ROXR.S #$12,#BK		ERROR: Invalid addressing mode
+ROXR.S #FW,D1	E051	ERROR: Invalid size code
+ROXR.S #FW,A2		ERROR: Invalid addressing mode
+ROXR.S D1,#FW		ERROR: Invalid addressing mode
+ROXR.S #$12,#FW		ERROR: Invalid addressing mode
+ROXR.S #UNDEF,D1	EA51	ERROR: Undefined symbol
+ROXR.S #UNDEF,A2		ERROR: Invalid addressing mode
+ROXR.S D1,#UNDEF		ERROR: Invalid addressing mode
+ROXR.S #$12,#UNDEF		ERROR: Invalid addressing mode
+ROXR.S UNDEF,D1		ERROR: Invalid syntax
+ROXR.S UNDEF,A2		ERROR: Invalid syntax
+ROXR.S D1,UNDEF		ERROR: Invalid addressing mode
+ROXR.S #$12,UNDEF		ERROR: Invalid addressing mode
+ROXR.S USP,D1		ERROR: Invalid addressing mode
+ROXR.S USP,A2		ERROR: Invalid addressing mode
+ROXR.S D1,USP		ERROR: Invalid addressing mode
+ROXR.S #$12,USP		ERROR: Invalid addressing mode
+ROXR.S D1,D2,D3		ERROR: Invalid syntax
+ROXR.X D1,D2	E272	ERROR: Invalid size code
+ROXR.X #1		ERROR: Comma expected

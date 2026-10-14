@@ -1,0 +1,356 @@
+BFCLR D1{0:8}	ECC10008	-
+BFCLR D1{31:32}	ECC107C0	-
+BFCLR D1{D2:D3}	ECC108A3	-
+BFCLR D1{4:D5}	ECC10125	-
+BFCLR D1{D6:1}	ECC10981	-
+BFCLR D1{32:1}		ERROR: Invalid bitfield
+BFCLR D1{0:0}		ERROR: Invalid bitfield
+BFCLR D1{BK:1}		ERROR: Invalid bitfield
+BFCLR (A3){0:8}	ECD30008	-
+BFCLR (A3){31:32}	ECD307C0	-
+BFCLR (A3){D2:D3}	ECD308A3	-
+BFCLR (A3){4:D5}	ECD30125	-
+BFCLR (A3){D6:1}	ECD30981	-
+BFCLR (A3){32:1}		ERROR: Invalid bitfield
+BFCLR (A3){0:0}		ERROR: Invalid bitfield
+BFCLR (A3){BK:1}		ERROR: Invalid bitfield
+BFCLR $10(A6){0:8}	ECEE00080010	-
+BFCLR $10(A6){31:32}	ECEE07C00010	-
+BFCLR $10(A6){D2:D3}	ECEE08A30010	-
+BFCLR $10(A6){4:D5}	ECEE01250010	-
+BFCLR $10(A6){D6:1}	ECEE09810010	-
+BFCLR $10(A6){32:1}		ERROR: Invalid bitfield
+BFCLR $10(A6){0:0}		ERROR: Invalid bitfield
+BFCLR $10(A6){BK:1}		ERROR: Invalid bitfield
+BFCLR $10(A6,D7.W){0:8}	ECF600087010	-
+BFCLR $10(A6,D7.W){31:32}	ECF607C07010	-
+BFCLR $10(A6,D7.W){D2:D3}	ECF608A37010	-
+BFCLR $10(A6,D7.W){4:D5}	ECF601257010	-
+BFCLR $10(A6,D7.W){D6:1}	ECF609817010	-
+BFCLR $10(A6,D7.W){32:1}		ERROR: Invalid bitfield
+BFCLR $10(A6,D7.W){0:0}		ERROR: Invalid bitfield
+BFCLR $10(A6,D7.W){BK:1}		ERROR: Invalid bitfield
+BFCLR $1234{0:8}	ECF800081234	-
+BFCLR $1234{31:32}	ECF807C01234	-
+BFCLR $1234{D2:D3}	ECF808A31234	-
+BFCLR $1234{4:D5}	ECF801251234	-
+BFCLR $1234{D6:1}	ECF809811234	-
+BFCLR $1234{32:1}		ERROR: Invalid bitfield
+BFCLR $1234{0:0}		ERROR: Invalid bitfield
+BFCLR $1234{BK:1}		ERROR: Invalid bitfield
+BFCLR FW{0:8}	ECF9000800001F00	-
+BFCLR FW{31:32}	ECF907C000001F00	-
+BFCLR FW{D2:D3}	ECF908A300001F00	-
+BFCLR FW{4:D5}	ECF9012500001F00	-
+BFCLR FW{D6:1}	ECF9098100001F00	-
+BFCLR FW{32:1}		ERROR: Invalid bitfield
+BFCLR FW{0:0}		ERROR: Invalid bitfield
+BFCLR FW{BK:1}		ERROR: Invalid bitfield
+BFCLR *+$10(PC){0:8}		ERROR: Invalid addressing mode
+BFCLR *+$10(PC){31:32}		ERROR: Invalid addressing mode
+BFCLR *+$10(PC){D2:D3}		ERROR: Invalid addressing mode
+BFCLR *+$10(PC){4:D5}		ERROR: Invalid addressing mode
+BFCLR *+$10(PC){D6:1}		ERROR: Invalid addressing mode
+BFCLR *+$10(PC){32:1}		ERROR: Invalid bitfield
+BFCLR *+$10(PC){0:0}		ERROR: Invalid bitfield
+BFCLR *+$10(PC){BK:1}		ERROR: Invalid bitfield
+BFCLR (A4)+{0:8}		ERROR: Invalid addressing mode
+BFCLR (A4)+{31:32}		ERROR: Invalid addressing mode
+BFCLR (A4)+{D2:D3}		ERROR: Invalid addressing mode
+BFCLR (A4)+{4:D5}		ERROR: Invalid addressing mode
+BFCLR (A4)+{D6:1}		ERROR: Invalid addressing mode
+BFCLR (A4)+{32:1}		ERROR: Invalid bitfield
+BFCLR (A4)+{0:0}		ERROR: Invalid bitfield
+BFCLR (A4)+{BK:1}		ERROR: Invalid bitfield
+BFCLR -(A5){0:8}		ERROR: Invalid addressing mode
+BFCLR -(A5){31:32}		ERROR: Invalid addressing mode
+BFCLR -(A5){D2:D3}		ERROR: Invalid addressing mode
+BFCLR -(A5){4:D5}		ERROR: Invalid addressing mode
+BFCLR -(A5){D6:1}		ERROR: Invalid addressing mode
+BFCLR -(A5){32:1}		ERROR: Invalid bitfield
+BFCLR -(A5){0:0}		ERROR: Invalid bitfield
+BFCLR -(A5){BK:1}		ERROR: Invalid bitfield
+BFCLR A2{0:8}		ERROR: Invalid addressing mode
+BFCLR A2{31:32}		ERROR: Invalid addressing mode
+BFCLR A2{D2:D3}		ERROR: Invalid addressing mode
+BFCLR A2{4:D5}		ERROR: Invalid addressing mode
+BFCLR A2{D6:1}		ERROR: Invalid addressing mode
+BFCLR A2{32:1}		ERROR: Invalid bitfield
+BFCLR A2{0:0}		ERROR: Invalid bitfield
+BFCLR A2{BK:1}		ERROR: Invalid bitfield
+BFCLR #1{0:8}		ERROR: Invalid addressing mode
+BFCLR #1{31:32}		ERROR: Invalid addressing mode
+BFCLR #1{D2:D3}		ERROR: Invalid addressing mode
+BFCLR #1{4:D5}		ERROR: Invalid addressing mode
+BFCLR #1{D6:1}		ERROR: Invalid addressing mode
+BFCLR #1{32:1}		ERROR: Invalid bitfield
+BFCLR #1{0:0}		ERROR: Invalid bitfield
+BFCLR #1{BK:1}		ERROR: Invalid bitfield
+BFCLR D1		ERROR: Invalid bitfield
+BFCLR.B D1{0:8}	ECC10008	-
+BFCLR.B D1{31:32}	ECC107C0	-
+BFCLR.B D1{D2:D3}	ECC108A3	-
+BFCLR.B D1{4:D5}	ECC10125	-
+BFCLR.B D1{D6:1}	ECC10981	-
+BFCLR.B D1{32:1}		ERROR: Invalid bitfield
+BFCLR.B D1{0:0}		ERROR: Invalid bitfield
+BFCLR.B D1{BK:1}		ERROR: Invalid bitfield
+BFCLR.B (A3){0:8}	ECD30008	-
+BFCLR.B (A3){31:32}	ECD307C0	-
+BFCLR.B (A3){D2:D3}	ECD308A3	-
+BFCLR.B (A3){4:D5}	ECD30125	-
+BFCLR.B (A3){D6:1}	ECD30981	-
+BFCLR.B (A3){32:1}		ERROR: Invalid bitfield
+BFCLR.B (A3){0:0}		ERROR: Invalid bitfield
+BFCLR.B (A3){BK:1}		ERROR: Invalid bitfield
+BFCLR.B $10(A6){0:8}	ECEE00080010	-
+BFCLR.B $10(A6){31:32}	ECEE07C00010	-
+BFCLR.B $10(A6){D2:D3}	ECEE08A30010	-
+BFCLR.B $10(A6){4:D5}	ECEE01250010	-
+BFCLR.B $10(A6){D6:1}	ECEE09810010	-
+BFCLR.B $10(A6){32:1}		ERROR: Invalid bitfield
+BFCLR.B $10(A6){0:0}		ERROR: Invalid bitfield
+BFCLR.B $10(A6){BK:1}		ERROR: Invalid bitfield
+BFCLR.B $10(A6,D7.W){0:8}	ECF600087010	-
+BFCLR.B $10(A6,D7.W){31:32}	ECF607C07010	-
+BFCLR.B $10(A6,D7.W){D2:D3}	ECF608A37010	-
+BFCLR.B $10(A6,D7.W){4:D5}	ECF601257010	-
+BFCLR.B $10(A6,D7.W){D6:1}	ECF609817010	-
+BFCLR.B $10(A6,D7.W){32:1}		ERROR: Invalid bitfield
+BFCLR.B $10(A6,D7.W){0:0}		ERROR: Invalid bitfield
+BFCLR.B $10(A6,D7.W){BK:1}		ERROR: Invalid bitfield
+BFCLR.B $1234{0:8}	ECF800081234	-
+BFCLR.B $1234{31:32}	ECF807C01234	-
+BFCLR.B $1234{D2:D3}	ECF808A31234	-
+BFCLR.B $1234{4:D5}	ECF801251234	-
+BFCLR.B $1234{D6:1}	ECF809811234	-
+BFCLR.B $1234{32:1}		ERROR: Invalid bitfield
+BFCLR.B $1234{0:0}		ERROR: Invalid bitfield
+BFCLR.B $1234{BK:1}		ERROR: Invalid bitfield
+BFCLR.B FW{0:8}	ECF9000800001F00	-
+BFCLR.B FW{31:32}	ECF907C000001F00	-
+BFCLR.B FW{D2:D3}	ECF908A300001F00	-
+BFCLR.B FW{4:D5}	ECF9012500001F00	-
+BFCLR.B FW{D6:1}	ECF9098100001F00	-
+BFCLR.B FW{32:1}		ERROR: Invalid bitfield
+BFCLR.B FW{0:0}		ERROR: Invalid bitfield
+BFCLR.B FW{BK:1}		ERROR: Invalid bitfield
+BFCLR.B *+$10(PC){0:8}		ERROR: Invalid addressing mode
+BFCLR.B *+$10(PC){31:32}		ERROR: Invalid addressing mode
+BFCLR.B *+$10(PC){D2:D3}		ERROR: Invalid addressing mode
+BFCLR.B *+$10(PC){4:D5}		ERROR: Invalid addressing mode
+BFCLR.B *+$10(PC){D6:1}		ERROR: Invalid addressing mode
+BFCLR.B *+$10(PC){32:1}		ERROR: Invalid bitfield
+BFCLR.B *+$10(PC){0:0}		ERROR: Invalid bitfield
+BFCLR.B *+$10(PC){BK:1}		ERROR: Invalid bitfield
+BFCLR.B (A4)+{0:8}		ERROR: Invalid addressing mode
+BFCLR.B (A4)+{31:32}		ERROR: Invalid addressing mode
+BFCLR.B (A4)+{D2:D3}		ERROR: Invalid addressing mode
+BFCLR.B (A4)+{4:D5}		ERROR: Invalid addressing mode
+BFCLR.B (A4)+{D6:1}		ERROR: Invalid addressing mode
+BFCLR.B (A4)+{32:1}		ERROR: Invalid bitfield
+BFCLR.B (A4)+{0:0}		ERROR: Invalid bitfield
+BFCLR.B (A4)+{BK:1}		ERROR: Invalid bitfield
+BFCLR.B -(A5){0:8}		ERROR: Invalid addressing mode
+BFCLR.B -(A5){31:32}		ERROR: Invalid addressing mode
+BFCLR.B -(A5){D2:D3}		ERROR: Invalid addressing mode
+BFCLR.B -(A5){4:D5}		ERROR: Invalid addressing mode
+BFCLR.B -(A5){D6:1}		ERROR: Invalid addressing mode
+BFCLR.B -(A5){32:1}		ERROR: Invalid bitfield
+BFCLR.B -(A5){0:0}		ERROR: Invalid bitfield
+BFCLR.B -(A5){BK:1}		ERROR: Invalid bitfield
+BFCLR.B A2{0:8}		ERROR: Invalid addressing mode
+BFCLR.B A2{31:32}		ERROR: Invalid addressing mode
+BFCLR.B A2{D2:D3}		ERROR: Invalid addressing mode
+BFCLR.B A2{4:D5}		ERROR: Invalid addressing mode
+BFCLR.B A2{D6:1}		ERROR: Invalid addressing mode
+BFCLR.B A2{32:1}		ERROR: Invalid bitfield
+BFCLR.B A2{0:0}		ERROR: Invalid bitfield
+BFCLR.B A2{BK:1}		ERROR: Invalid bitfield
+BFCLR.B #1{0:8}		ERROR: Invalid addressing mode
+BFCLR.B #1{31:32}		ERROR: Invalid addressing mode
+BFCLR.B #1{D2:D3}		ERROR: Invalid addressing mode
+BFCLR.B #1{4:D5}		ERROR: Invalid addressing mode
+BFCLR.B #1{D6:1}		ERROR: Invalid addressing mode
+BFCLR.B #1{32:1}		ERROR: Invalid bitfield
+BFCLR.B #1{0:0}		ERROR: Invalid bitfield
+BFCLR.B #1{BK:1}		ERROR: Invalid bitfield
+BFCLR.B D1		ERROR: Invalid bitfield
+BFCLR.L D1{0:8}	ECC10008	-
+BFCLR.L D1{31:32}	ECC107C0	-
+BFCLR.L D1{D2:D3}	ECC108A3	-
+BFCLR.L D1{4:D5}	ECC10125	-
+BFCLR.L D1{D6:1}	ECC10981	-
+BFCLR.L D1{32:1}		ERROR: Invalid bitfield
+BFCLR.L D1{0:0}		ERROR: Invalid bitfield
+BFCLR.L D1{BK:1}		ERROR: Invalid bitfield
+BFCLR.L (A3){0:8}	ECD30008	-
+BFCLR.L (A3){31:32}	ECD307C0	-
+BFCLR.L (A3){D2:D3}	ECD308A3	-
+BFCLR.L (A3){4:D5}	ECD30125	-
+BFCLR.L (A3){D6:1}	ECD30981	-
+BFCLR.L (A3){32:1}		ERROR: Invalid bitfield
+BFCLR.L (A3){0:0}		ERROR: Invalid bitfield
+BFCLR.L (A3){BK:1}		ERROR: Invalid bitfield
+BFCLR.L $10(A6){0:8}	ECEE00080010	-
+BFCLR.L $10(A6){31:32}	ECEE07C00010	-
+BFCLR.L $10(A6){D2:D3}	ECEE08A30010	-
+BFCLR.L $10(A6){4:D5}	ECEE01250010	-
+BFCLR.L $10(A6){D6:1}	ECEE09810010	-
+BFCLR.L $10(A6){32:1}		ERROR: Invalid bitfield
+BFCLR.L $10(A6){0:0}		ERROR: Invalid bitfield
+BFCLR.L $10(A6){BK:1}		ERROR: Invalid bitfield
+BFCLR.L $10(A6,D7.W){0:8}	ECF600087010	-
+BFCLR.L $10(A6,D7.W){31:32}	ECF607C07010	-
+BFCLR.L $10(A6,D7.W){D2:D3}	ECF608A37010	-
+BFCLR.L $10(A6,D7.W){4:D5}	ECF601257010	-
+BFCLR.L $10(A6,D7.W){D6:1}	ECF609817010	-
+BFCLR.L $10(A6,D7.W){32:1}		ERROR: Invalid bitfield
+BFCLR.L $10(A6,D7.W){0:0}		ERROR: Invalid bitfield
+BFCLR.L $10(A6,D7.W){BK:1}		ERROR: Invalid bitfield
+BFCLR.L $1234{0:8}	ECF800081234	-
+BFCLR.L $1234{31:32}	ECF807C01234	-
+BFCLR.L $1234{D2:D3}	ECF808A31234	-
+BFCLR.L $1234{4:D5}	ECF801251234	-
+BFCLR.L $1234{D6:1}	ECF809811234	-
+BFCLR.L $1234{32:1}		ERROR: Invalid bitfield
+BFCLR.L $1234{0:0}		ERROR: Invalid bitfield
+BFCLR.L $1234{BK:1}		ERROR: Invalid bitfield
+BFCLR.L FW{0:8}	ECF9000800001F00	-
+BFCLR.L FW{31:32}	ECF907C000001F00	-
+BFCLR.L FW{D2:D3}	ECF908A300001F00	-
+BFCLR.L FW{4:D5}	ECF9012500001F00	-
+BFCLR.L FW{D6:1}	ECF9098100001F00	-
+BFCLR.L FW{32:1}		ERROR: Invalid bitfield
+BFCLR.L FW{0:0}		ERROR: Invalid bitfield
+BFCLR.L FW{BK:1}		ERROR: Invalid bitfield
+BFCLR.L *+$10(PC){0:8}		ERROR: Invalid addressing mode
+BFCLR.L *+$10(PC){31:32}		ERROR: Invalid addressing mode
+BFCLR.L *+$10(PC){D2:D3}		ERROR: Invalid addressing mode
+BFCLR.L *+$10(PC){4:D5}		ERROR: Invalid addressing mode
+BFCLR.L *+$10(PC){D6:1}		ERROR: Invalid addressing mode
+BFCLR.L *+$10(PC){32:1}		ERROR: Invalid bitfield
+BFCLR.L *+$10(PC){0:0}		ERROR: Invalid bitfield
+BFCLR.L *+$10(PC){BK:1}		ERROR: Invalid bitfield
+BFCLR.L (A4)+{0:8}		ERROR: Invalid addressing mode
+BFCLR.L (A4)+{31:32}		ERROR: Invalid addressing mode
+BFCLR.L (A4)+{D2:D3}		ERROR: Invalid addressing mode
+BFCLR.L (A4)+{4:D5}		ERROR: Invalid addressing mode
+BFCLR.L (A4)+{D6:1}		ERROR: Invalid addressing mode
+BFCLR.L (A4)+{32:1}		ERROR: Invalid bitfield
+BFCLR.L (A4)+{0:0}		ERROR: Invalid bitfield
+BFCLR.L (A4)+{BK:1}		ERROR: Invalid bitfield
+BFCLR.L -(A5){0:8}		ERROR: Invalid addressing mode
+BFCLR.L -(A5){31:32}		ERROR: Invalid addressing mode
+BFCLR.L -(A5){D2:D3}		ERROR: Invalid addressing mode
+BFCLR.L -(A5){4:D5}		ERROR: Invalid addressing mode
+BFCLR.L -(A5){D6:1}		ERROR: Invalid addressing mode
+BFCLR.L -(A5){32:1}		ERROR: Invalid bitfield
+BFCLR.L -(A5){0:0}		ERROR: Invalid bitfield
+BFCLR.L -(A5){BK:1}		ERROR: Invalid bitfield
+BFCLR.L A2{0:8}		ERROR: Invalid addressing mode
+BFCLR.L A2{31:32}		ERROR: Invalid addressing mode
+BFCLR.L A2{D2:D3}		ERROR: Invalid addressing mode
+BFCLR.L A2{4:D5}		ERROR: Invalid addressing mode
+BFCLR.L A2{D6:1}		ERROR: Invalid addressing mode
+BFCLR.L A2{32:1}		ERROR: Invalid bitfield
+BFCLR.L A2{0:0}		ERROR: Invalid bitfield
+BFCLR.L A2{BK:1}		ERROR: Invalid bitfield
+BFCLR.L #1{0:8}		ERROR: Invalid addressing mode
+BFCLR.L #1{31:32}		ERROR: Invalid addressing mode
+BFCLR.L #1{D2:D3}		ERROR: Invalid addressing mode
+BFCLR.L #1{4:D5}		ERROR: Invalid addressing mode
+BFCLR.L #1{D6:1}		ERROR: Invalid addressing mode
+BFCLR.L #1{32:1}		ERROR: Invalid bitfield
+BFCLR.L #1{0:0}		ERROR: Invalid bitfield
+BFCLR.L #1{BK:1}		ERROR: Invalid bitfield
+BFCLR.L D1		ERROR: Invalid bitfield
+BFCLR.S D1{0:8}	ECC10008	-
+BFCLR.S D1{31:32}	ECC107C0	-
+BFCLR.S D1{D2:D3}	ECC108A3	-
+BFCLR.S D1{4:D5}	ECC10125	-
+BFCLR.S D1{D6:1}	ECC10981	-
+BFCLR.S D1{32:1}		ERROR: Invalid bitfield
+BFCLR.S D1{0:0}		ERROR: Invalid bitfield
+BFCLR.S D1{BK:1}		ERROR: Invalid bitfield
+BFCLR.S (A3){0:8}	ECD30008	-
+BFCLR.S (A3){31:32}	ECD307C0	-
+BFCLR.S (A3){D2:D3}	ECD308A3	-
+BFCLR.S (A3){4:D5}	ECD30125	-
+BFCLR.S (A3){D6:1}	ECD30981	-
+BFCLR.S (A3){32:1}		ERROR: Invalid bitfield
+BFCLR.S (A3){0:0}		ERROR: Invalid bitfield
+BFCLR.S (A3){BK:1}		ERROR: Invalid bitfield
+BFCLR.S $10(A6){0:8}	ECEE00080010	-
+BFCLR.S $10(A6){31:32}	ECEE07C00010	-
+BFCLR.S $10(A6){D2:D3}	ECEE08A30010	-
+BFCLR.S $10(A6){4:D5}	ECEE01250010	-
+BFCLR.S $10(A6){D6:1}	ECEE09810010	-
+BFCLR.S $10(A6){32:1}		ERROR: Invalid bitfield
+BFCLR.S $10(A6){0:0}		ERROR: Invalid bitfield
+BFCLR.S $10(A6){BK:1}		ERROR: Invalid bitfield
+BFCLR.S $10(A6,D7.W){0:8}	ECF600087010	-
+BFCLR.S $10(A6,D7.W){31:32}	ECF607C07010	-
+BFCLR.S $10(A6,D7.W){D2:D3}	ECF608A37010	-
+BFCLR.S $10(A6,D7.W){4:D5}	ECF601257010	-
+BFCLR.S $10(A6,D7.W){D6:1}	ECF609817010	-
+BFCLR.S $10(A6,D7.W){32:1}		ERROR: Invalid bitfield
+BFCLR.S $10(A6,D7.W){0:0}		ERROR: Invalid bitfield
+BFCLR.S $10(A6,D7.W){BK:1}		ERROR: Invalid bitfield
+BFCLR.S $1234{0:8}	ECF800081234	-
+BFCLR.S $1234{31:32}	ECF807C01234	-
+BFCLR.S $1234{D2:D3}	ECF808A31234	-
+BFCLR.S $1234{4:D5}	ECF801251234	-
+BFCLR.S $1234{D6:1}	ECF809811234	-
+BFCLR.S $1234{32:1}		ERROR: Invalid bitfield
+BFCLR.S $1234{0:0}		ERROR: Invalid bitfield
+BFCLR.S $1234{BK:1}		ERROR: Invalid bitfield
+BFCLR.S FW{0:8}	ECF9000800001F00	-
+BFCLR.S FW{31:32}	ECF907C000001F00	-
+BFCLR.S FW{D2:D3}	ECF908A300001F00	-
+BFCLR.S FW{4:D5}	ECF9012500001F00	-
+BFCLR.S FW{D6:1}	ECF9098100001F00	-
+BFCLR.S FW{32:1}		ERROR: Invalid bitfield
+BFCLR.S FW{0:0}		ERROR: Invalid bitfield
+BFCLR.S FW{BK:1}		ERROR: Invalid bitfield
+BFCLR.S *+$10(PC){0:8}		ERROR: Invalid addressing mode
+BFCLR.S *+$10(PC){31:32}		ERROR: Invalid addressing mode
+BFCLR.S *+$10(PC){D2:D3}		ERROR: Invalid addressing mode
+BFCLR.S *+$10(PC){4:D5}		ERROR: Invalid addressing mode
+BFCLR.S *+$10(PC){D6:1}		ERROR: Invalid addressing mode
+BFCLR.S *+$10(PC){32:1}		ERROR: Invalid bitfield
+BFCLR.S *+$10(PC){0:0}		ERROR: Invalid bitfield
+BFCLR.S *+$10(PC){BK:1}		ERROR: Invalid bitfield
+BFCLR.S (A4)+{0:8}		ERROR: Invalid addressing mode
+BFCLR.S (A4)+{31:32}		ERROR: Invalid addressing mode
+BFCLR.S (A4)+{D2:D3}		ERROR: Invalid addressing mode
+BFCLR.S (A4)+{4:D5}		ERROR: Invalid addressing mode
+BFCLR.S (A4)+{D6:1}		ERROR: Invalid addressing mode
+BFCLR.S (A4)+{32:1}		ERROR: Invalid bitfield
+BFCLR.S (A4)+{0:0}		ERROR: Invalid bitfield
+BFCLR.S (A4)+{BK:1}		ERROR: Invalid bitfield
+BFCLR.S -(A5){0:8}		ERROR: Invalid addressing mode
+BFCLR.S -(A5){31:32}		ERROR: Invalid addressing mode
+BFCLR.S -(A5){D2:D3}		ERROR: Invalid addressing mode
+BFCLR.S -(A5){4:D5}		ERROR: Invalid addressing mode
+BFCLR.S -(A5){D6:1}		ERROR: Invalid addressing mode
+BFCLR.S -(A5){32:1}		ERROR: Invalid bitfield
+BFCLR.S -(A5){0:0}		ERROR: Invalid bitfield
+BFCLR.S -(A5){BK:1}		ERROR: Invalid bitfield
+BFCLR.S A2{0:8}		ERROR: Invalid addressing mode
+BFCLR.S A2{31:32}		ERROR: Invalid addressing mode
+BFCLR.S A2{D2:D3}		ERROR: Invalid addressing mode
+BFCLR.S A2{4:D5}		ERROR: Invalid addressing mode
+BFCLR.S A2{D6:1}		ERROR: Invalid addressing mode
+BFCLR.S A2{32:1}		ERROR: Invalid bitfield
+BFCLR.S A2{0:0}		ERROR: Invalid bitfield
+BFCLR.S A2{BK:1}		ERROR: Invalid bitfield
+BFCLR.S #1{0:8}		ERROR: Invalid addressing mode
+BFCLR.S #1{31:32}		ERROR: Invalid addressing mode
+BFCLR.S #1{D2:D3}		ERROR: Invalid addressing mode
+BFCLR.S #1{4:D5}		ERROR: Invalid addressing mode
+BFCLR.S #1{D6:1}		ERROR: Invalid addressing mode
+BFCLR.S #1{32:1}		ERROR: Invalid bitfield
+BFCLR.S #1{0:0}		ERROR: Invalid bitfield
+BFCLR.S #1{BK:1}		ERROR: Invalid bitfield
+BFCLR.S D1		ERROR: Invalid bitfield

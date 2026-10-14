@@ -1,0 +1,82 @@
+BRA		ERROR: Invalid syntax
+BRA *+2	60000000	-
+BRA *+4	6002	-
+BRA *+$80	607E	-
+BRA *+$82	60000080	-
+BRA *-$7E	6080	-
+BRA *-$80	6000FF7E	-
+BRA *+$8000	60007FFE	-
+BRA *	60FE	-
+BRA BK	60000EFE	-
+BRA FW	60000EFE	-
+BRA $1000	60FE	-
+BRA $12345678	60004676	ERROR: Branch instruction displacement is out of range or invalid
+BRA D1		ERROR: Invalid addressing mode
+BRA (A0)		ERROR: Invalid addressing mode
+BRA #4		ERROR: Invalid addressing mode
+BRA.B		ERROR: Invalid syntax
+BRA.B *+2	6000	ERROR: Branch instruction displacement is out of range or invalid
+BRA.B *+4	6002	-
+BRA.B *+$80	607E	-
+BRA.B *+$82	6080	ERROR: Branch instruction displacement is out of range or invalid
+BRA.B *-$7E	6080	-
+BRA.B *-$80	607E	ERROR: Branch instruction displacement is out of range or invalid
+BRA.B *+$8000	60FE	ERROR: Branch instruction displacement is out of range or invalid
+BRA.B *	60FE	-
+BRA.B BK	60FE	ERROR: Branch instruction displacement is out of range or invalid
+BRA.B FW	60FE	ERROR: Branch instruction displacement is out of range or invalid
+BRA.B $1000	60FE	-
+BRA.B $12345678	6076	ERROR: Branch instruction displacement is out of range or invalid
+BRA.B D1		ERROR: Invalid addressing mode
+BRA.B (A0)		ERROR: Invalid addressing mode
+BRA.B #4		ERROR: Invalid addressing mode
+BRA.W		ERROR: Invalid syntax
+BRA.W *+2	60000000	-
+BRA.W *+4	60000002	-
+BRA.W *+$80	6000007E	-
+BRA.W *+$82	60000080	-
+BRA.W *-$7E	6000FF80	-
+BRA.W *-$80	6000FF7E	-
+BRA.W *+$8000	60007FFE	-
+BRA.W *	6000FFFE	-
+BRA.W BK	60000EFE	-
+BRA.W FW	60000EFE	-
+BRA.W $1000	6000FFFE	-
+BRA.W $12345678	60004676	ERROR: Branch instruction displacement is out of range or invalid
+BRA.W D1		ERROR: Invalid addressing mode
+BRA.W (A0)		ERROR: Invalid addressing mode
+BRA.W #4		ERROR: Invalid addressing mode
+BRA.L		ERROR: Invalid syntax
+BRA.L *+2	60000000	-
+BRA.L *+4	60000002	-
+BRA.L *+$80	6000007E	-
+BRA.L *+$82	60000080	-
+BRA.L *-$7E	6000FF80	-
+BRA.L *-$80	6000FF7E	-
+BRA.L *+$8000	60007FFE	-
+BRA.L *	6000FFFE	-
+BRA.L BK	60000EFE	-
+BRA.L FW	60000EFE	-
+BRA.L $1000	6000FFFE	-
+BRA.L $12345678	60004676	ERROR: Branch instruction displacement is out of range or invalid
+BRA.L D1		ERROR: Invalid addressing mode
+BRA.L (A0)		ERROR: Invalid addressing mode
+BRA.L #4		ERROR: Invalid addressing mode
+BRA.S		ERROR: Invalid syntax
+BRA.S *+2	6000	ERROR: Branch instruction displacement is out of range or invalid
+BRA.S *+4	6002	-
+BRA.S *+$80	607E	-
+BRA.S *+$82	6080	ERROR: Branch instruction displacement is out of range or invalid
+BRA.S *-$7E	6080	-
+BRA.S *-$80	607E	ERROR: Branch instruction displacement is out of range or invalid
+BRA.S *+$8000	60FE	ERROR: Branch instruction displacement is out of range or invalid
+BRA.S *	60FE	-
+BRA.S BK	60FE	ERROR: Branch instruction displacement is out of range or invalid
+BRA.S FW	60FE	ERROR: Branch instruction displacement is out of range or invalid
+BRA.S $1000	60FE	-
+BRA.S $12345678	6076	ERROR: Branch instruction displacement is out of range or invalid
+BRA.S D1		ERROR: Invalid addressing mode
+BRA.S (A0)		ERROR: Invalid addressing mode
+BRA.S #4		ERROR: Invalid addressing mode
+BRA.X D1,D2		ERROR: Invalid addressing mode
+BRA.X #1		ERROR: Invalid addressing mode

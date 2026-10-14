@@ -1,0 +1,1621 @@
+ASR		ERROR: Invalid syntax
+ASR D1		ERROR: Comma expected
+ASR A2		ERROR: Comma expected
+ASR SP		ERROR: Comma expected
+ASR (A3)	E0D3	-
+ASR (A4)+	E0DC	-
+ASR -(A5)	E0E5	-
+ASR $10(A6)	E0EE0010	-
+ASR -2(A0)	E0E8FFFE	-
+ASR $10(A6,D7.W)	E0F67010	-
+ASR $12(A0,A1.L)	E0F09812	-
+ASR (A2,D3)	E0F23000	-
+ASR $1234	E0F81234	-
+ASR $12345678	E0F912345678	-
+ASR $1234.L	E0F900001234	-
+ASR $1234.W	E0F81234	WARNING: Forcing SHORT addressing disables range checking of extension word
+ASR $8000	E0F900008000	-
+ASR BK	E0F81F00	-
+ASR FW	E0F900001F00	-
+ASR *+$10(PC)		ERROR: Comma expected
+ASR *(PC,D0.W)		ERROR: Comma expected
+ASR BK(PC)		ERROR: Comma expected
+ASR #1		ERROR: Comma expected
+ASR #8		ERROR: Comma expected
+ASR #9		ERROR: Comma expected
+ASR #0		ERROR: Comma expected
+ASR #-1		ERROR: Comma expected
+ASR #$80		ERROR: Comma expected
+ASR #$1234		ERROR: Comma expected
+ASR #$12345678		ERROR: Comma expected
+ASR #$12345678.L		ERROR: Comma expected
+ASR #BK		ERROR: Comma expected
+ASR #FW		ERROR: Comma expected
+ASR #UNDEF		ERROR: Comma expected
+ASR UNDEF	E0F90000557D	ERROR: Undefined symbol
+ASR SR		ERROR: Comma expected
+ASR CCR		ERROR: Comma expected
+ASR USP		ERROR: Comma expected
+ASR D1,D1	E261	-
+ASR D1,A2		ERROR: Invalid addressing mode
+ASR D1,(A3)		ERROR: Invalid addressing mode
+ASR D1,(A4)+		ERROR: Invalid addressing mode
+ASR D1,-(A5)		ERROR: Invalid addressing mode
+ASR D1,$10(A6)		ERROR: Invalid addressing mode
+ASR D1,$10(A6,D7.W)		ERROR: Invalid addressing mode
+ASR D1,$1234		ERROR: Invalid addressing mode
+ASR D1,$12345678		ERROR: Invalid addressing mode
+ASR D1,FW		ERROR: Invalid addressing mode
+ASR D1,*+$10(PC)		ERROR: Invalid addressing mode
+ASR D1,#1		ERROR: Invalid addressing mode
+ASR D1,#$80		ERROR: Invalid addressing mode
+ASR D1,#$1234		ERROR: Invalid addressing mode
+ASR D1,#$12345678		ERROR: Invalid addressing mode
+ASR D1,SR		ERROR: Invalid addressing mode
+ASR D1,CCR		ERROR: Invalid addressing mode
+ASR D1,USP		ERROR: Invalid addressing mode
+ASR A2,D1		ERROR: Invalid addressing mode
+ASR A2,A2		ERROR: Invalid addressing mode
+ASR A2,(A3)		ERROR: Invalid addressing mode
+ASR A2,(A4)+		ERROR: Invalid addressing mode
+ASR A2,-(A5)		ERROR: Invalid addressing mode
+ASR A2,$10(A6)		ERROR: Invalid addressing mode
+ASR A2,$10(A6,D7.W)		ERROR: Invalid addressing mode
+ASR A2,$1234		ERROR: Invalid addressing mode
+ASR A2,$12345678		ERROR: Invalid addressing mode
+ASR A2,FW		ERROR: Invalid addressing mode
+ASR A2,*+$10(PC)		ERROR: Invalid addressing mode
+ASR A2,#1		ERROR: Invalid addressing mode
+ASR A2,#$80		ERROR: Invalid addressing mode
+ASR A2,#$1234		ERROR: Invalid addressing mode
+ASR A2,#$12345678		ERROR: Invalid addressing mode
+ASR A2,SR		ERROR: Invalid addressing mode
+ASR A2,CCR		ERROR: Invalid addressing mode
+ASR A2,USP		ERROR: Invalid addressing mode
+ASR (A3),D1		ERROR: Invalid syntax
+ASR (A3),A2		ERROR: Invalid syntax
+ASR (A3),(A3)		ERROR: Invalid syntax
+ASR (A3),(A4)+		ERROR: Invalid syntax
+ASR (A3),-(A5)		ERROR: Invalid syntax
+ASR (A3),$10(A6)		ERROR: Invalid syntax
+ASR (A3),$10(A6,D7.W)		ERROR: Invalid syntax
+ASR (A3),$1234		ERROR: Invalid syntax
+ASR (A3),$12345678		ERROR: Invalid syntax
+ASR (A3),FW		ERROR: Invalid syntax
+ASR (A3),*+$10(PC)		ERROR: Invalid syntax
+ASR (A3),#1		ERROR: Invalid syntax
+ASR (A3),#$80		ERROR: Invalid syntax
+ASR (A3),#$1234		ERROR: Invalid syntax
+ASR (A3),#$12345678		ERROR: Invalid syntax
+ASR (A3),SR		ERROR: Invalid syntax
+ASR (A3),CCR		ERROR: Invalid syntax
+ASR (A3),USP		ERROR: Invalid syntax
+ASR (A4)+,D1		ERROR: Invalid syntax
+ASR (A4)+,A2		ERROR: Invalid syntax
+ASR (A4)+,(A3)		ERROR: Invalid syntax
+ASR (A4)+,(A4)+		ERROR: Invalid syntax
+ASR (A4)+,-(A5)		ERROR: Invalid syntax
+ASR (A4)+,$10(A6)		ERROR: Invalid syntax
+ASR (A4)+,$10(A6,D7.W)		ERROR: Invalid syntax
+ASR (A4)+,$1234		ERROR: Invalid syntax
+ASR (A4)+,$12345678		ERROR: Invalid syntax
+ASR (A4)+,FW		ERROR: Invalid syntax
+ASR (A4)+,*+$10(PC)		ERROR: Invalid syntax
+ASR (A4)+,#1		ERROR: Invalid syntax
+ASR (A4)+,#$80		ERROR: Invalid syntax
+ASR (A4)+,#$1234		ERROR: Invalid syntax
+ASR (A4)+,#$12345678		ERROR: Invalid syntax
+ASR (A4)+,SR		ERROR: Invalid syntax
+ASR (A4)+,CCR		ERROR: Invalid syntax
+ASR (A4)+,USP		ERROR: Invalid syntax
+ASR -(A5),D1		ERROR: Invalid syntax
+ASR -(A5),A2		ERROR: Invalid syntax
+ASR -(A5),(A3)		ERROR: Invalid syntax
+ASR -(A5),(A4)+		ERROR: Invalid syntax
+ASR -(A5),-(A5)		ERROR: Invalid syntax
+ASR -(A5),$10(A6)		ERROR: Invalid syntax
+ASR -(A5),$10(A6,D7.W)		ERROR: Invalid syntax
+ASR -(A5),$1234		ERROR: Invalid syntax
+ASR -(A5),$12345678		ERROR: Invalid syntax
+ASR -(A5),FW		ERROR: Invalid syntax
+ASR -(A5),*+$10(PC)		ERROR: Invalid syntax
+ASR -(A5),#1		ERROR: Invalid syntax
+ASR -(A5),#$80		ERROR: Invalid syntax
+ASR -(A5),#$1234		ERROR: Invalid syntax
+ASR -(A5),#$12345678		ERROR: Invalid syntax
+ASR -(A5),SR		ERROR: Invalid syntax
+ASR -(A5),CCR		ERROR: Invalid syntax
+ASR -(A5),USP		ERROR: Invalid syntax
+ASR $10(A6),D1		ERROR: Invalid syntax
+ASR $10(A6),A2		ERROR: Invalid syntax
+ASR $10(A6),(A3)		ERROR: Invalid syntax
+ASR $10(A6),(A4)+		ERROR: Invalid syntax
+ASR $10(A6),-(A5)		ERROR: Invalid syntax
+ASR $10(A6),$10(A6)		ERROR: Invalid syntax
+ASR $10(A6),$10(A6,D7.W)		ERROR: Invalid syntax
+ASR $10(A6),$1234		ERROR: Invalid syntax
+ASR $10(A6),$12345678		ERROR: Invalid syntax
+ASR $10(A6),FW		ERROR: Invalid syntax
+ASR $10(A6),*+$10(PC)		ERROR: Invalid syntax
+ASR $10(A6),#1		ERROR: Invalid syntax
+ASR $10(A6),#$80		ERROR: Invalid syntax
+ASR $10(A6),#$1234		ERROR: Invalid syntax
+ASR $10(A6),#$12345678		ERROR: Invalid syntax
+ASR $10(A6),SR		ERROR: Invalid syntax
+ASR $10(A6),CCR		ERROR: Invalid syntax
+ASR $10(A6),USP		ERROR: Invalid syntax
+ASR $10(A6,D7.W),D1		ERROR: Invalid syntax
+ASR $10(A6,D7.W),A2		ERROR: Invalid syntax
+ASR $10(A6,D7.W),(A3)		ERROR: Invalid syntax
+ASR $10(A6,D7.W),(A4)+		ERROR: Invalid syntax
+ASR $10(A6,D7.W),-(A5)		ERROR: Invalid syntax
+ASR $10(A6,D7.W),$10(A6)		ERROR: Invalid syntax
+ASR $10(A6,D7.W),$10(A6,D7.W)		ERROR: Invalid syntax
+ASR $10(A6,D7.W),$1234		ERROR: Invalid syntax
+ASR $10(A6,D7.W),$12345678		ERROR: Invalid syntax
+ASR $10(A6,D7.W),FW		ERROR: Invalid syntax
+ASR $10(A6,D7.W),*+$10(PC)		ERROR: Invalid syntax
+ASR $10(A6,D7.W),#1		ERROR: Invalid syntax
+ASR $10(A6,D7.W),#$80		ERROR: Invalid syntax
+ASR $10(A6,D7.W),#$1234		ERROR: Invalid syntax
+ASR $10(A6,D7.W),#$12345678		ERROR: Invalid syntax
+ASR $10(A6,D7.W),SR		ERROR: Invalid syntax
+ASR $10(A6,D7.W),CCR		ERROR: Invalid syntax
+ASR $10(A6,D7.W),USP		ERROR: Invalid syntax
+ASR $1234,D1		ERROR: Invalid syntax
+ASR $1234,A2		ERROR: Invalid syntax
+ASR $1234,(A3)		ERROR: Invalid syntax
+ASR $1234,(A4)+		ERROR: Invalid syntax
+ASR $1234,-(A5)		ERROR: Invalid syntax
+ASR $1234,$10(A6)		ERROR: Invalid syntax
+ASR $1234,$10(A6,D7.W)		ERROR: Invalid syntax
+ASR $1234,$1234		ERROR: Invalid syntax
+ASR $1234,$12345678		ERROR: Invalid syntax
+ASR $1234,FW		ERROR: Invalid syntax
+ASR $1234,*+$10(PC)		ERROR: Invalid syntax
+ASR $1234,#1		ERROR: Invalid syntax
+ASR $1234,#$80		ERROR: Invalid syntax
+ASR $1234,#$1234		ERROR: Invalid syntax
+ASR $1234,#$12345678		ERROR: Invalid syntax
+ASR $1234,SR		ERROR: Invalid syntax
+ASR $1234,CCR		ERROR: Invalid syntax
+ASR $1234,USP		ERROR: Invalid syntax
+ASR $12345678,D1		ERROR: Invalid syntax
+ASR $12345678,A2		ERROR: Invalid syntax
+ASR $12345678,(A3)		ERROR: Invalid syntax
+ASR $12345678,(A4)+		ERROR: Invalid syntax
+ASR $12345678,-(A5)		ERROR: Invalid syntax
+ASR $12345678,$10(A6)		ERROR: Invalid syntax
+ASR $12345678,$10(A6,D7.W)		ERROR: Invalid syntax
+ASR $12345678,$1234		ERROR: Invalid syntax
+ASR $12345678,$12345678		ERROR: Invalid syntax
+ASR $12345678,FW		ERROR: Invalid syntax
+ASR $12345678,*+$10(PC)		ERROR: Invalid syntax
+ASR $12345678,#1		ERROR: Invalid syntax
+ASR $12345678,#$80		ERROR: Invalid syntax
+ASR $12345678,#$1234		ERROR: Invalid syntax
+ASR $12345678,#$12345678		ERROR: Invalid syntax
+ASR $12345678,SR		ERROR: Invalid syntax
+ASR $12345678,CCR		ERROR: Invalid syntax
+ASR $12345678,USP		ERROR: Invalid syntax
+ASR FW,D1		ERROR: Invalid syntax
+ASR FW,A2		ERROR: Invalid syntax
+ASR FW,(A3)		ERROR: Invalid syntax
+ASR FW,(A4)+		ERROR: Invalid syntax
+ASR FW,-(A5)		ERROR: Invalid syntax
+ASR FW,$10(A6)		ERROR: Invalid syntax
+ASR FW,$10(A6,D7.W)		ERROR: Invalid syntax
+ASR FW,$1234		ERROR: Invalid syntax
+ASR FW,$12345678		ERROR: Invalid syntax
+ASR FW,FW		ERROR: Invalid syntax
+ASR FW,*+$10(PC)		ERROR: Invalid syntax
+ASR FW,#1		ERROR: Invalid syntax
+ASR FW,#$80		ERROR: Invalid syntax
+ASR FW,#$1234		ERROR: Invalid syntax
+ASR FW,#$12345678		ERROR: Invalid syntax
+ASR FW,SR		ERROR: Invalid syntax
+ASR FW,CCR		ERROR: Invalid syntax
+ASR FW,USP		ERROR: Invalid syntax
+ASR *+$10(PC),D1		ERROR: Invalid addressing mode
+ASR *+$10(PC),A2		ERROR: Invalid addressing mode
+ASR *+$10(PC),(A3)		ERROR: Invalid addressing mode
+ASR *+$10(PC),(A4)+		ERROR: Invalid addressing mode
+ASR *+$10(PC),-(A5)		ERROR: Invalid addressing mode
+ASR *+$10(PC),$10(A6)		ERROR: Invalid addressing mode
+ASR *+$10(PC),$10(A6,D7.W)		ERROR: Invalid addressing mode
+ASR *+$10(PC),$1234		ERROR: Invalid addressing mode
+ASR *+$10(PC),$12345678		ERROR: Invalid addressing mode
+ASR *+$10(PC),FW		ERROR: Invalid addressing mode
+ASR *+$10(PC),*+$10(PC)		ERROR: Invalid addressing mode
+ASR *+$10(PC),#1		ERROR: Invalid addressing mode
+ASR *+$10(PC),#$80		ERROR: Invalid addressing mode
+ASR *+$10(PC),#$1234		ERROR: Invalid addressing mode
+ASR *+$10(PC),#$12345678		ERROR: Invalid addressing mode
+ASR *+$10(PC),SR		ERROR: Invalid addressing mode
+ASR *+$10(PC),CCR		ERROR: Invalid addressing mode
+ASR *+$10(PC),USP		ERROR: Invalid addressing mode
+ASR #1,D1	E241	-
+ASR #1,A2		ERROR: Invalid addressing mode
+ASR #1,(A3)		ERROR: Invalid addressing mode
+ASR #1,(A4)+		ERROR: Invalid addressing mode
+ASR #1,-(A5)		ERROR: Invalid addressing mode
+ASR #1,$10(A6)		ERROR: Invalid addressing mode
+ASR #1,$10(A6,D7.W)		ERROR: Invalid addressing mode
+ASR #1,$1234		ERROR: Invalid addressing mode
+ASR #1,$12345678		ERROR: Invalid addressing mode
+ASR #1,FW		ERROR: Invalid addressing mode
+ASR #1,*+$10(PC)		ERROR: Invalid addressing mode
+ASR #1,#1		ERROR: Invalid addressing mode
+ASR #1,#$80		ERROR: Invalid addressing mode
+ASR #1,#$1234		ERROR: Invalid addressing mode
+ASR #1,#$12345678		ERROR: Invalid addressing mode
+ASR #1,SR		ERROR: Invalid addressing mode
+ASR #1,CCR		ERROR: Invalid addressing mode
+ASR #1,USP		ERROR: Invalid addressing mode
+ASR #$80,D1	E041	ERROR: Invalid constant shift count
+ASR #$80,A2		ERROR: Invalid addressing mode
+ASR #$80,(A3)		ERROR: Invalid addressing mode
+ASR #$80,(A4)+		ERROR: Invalid addressing mode
+ASR #$80,-(A5)		ERROR: Invalid addressing mode
+ASR #$80,$10(A6)		ERROR: Invalid addressing mode
+ASR #$80,$10(A6,D7.W)		ERROR: Invalid addressing mode
+ASR #$80,$1234		ERROR: Invalid addressing mode
+ASR #$80,$12345678		ERROR: Invalid addressing mode
+ASR #$80,FW		ERROR: Invalid addressing mode
+ASR #$80,*+$10(PC)		ERROR: Invalid addressing mode
+ASR #$80,#1		ERROR: Invalid addressing mode
+ASR #$80,#$80		ERROR: Invalid addressing mode
+ASR #$80,#$1234		ERROR: Invalid addressing mode
+ASR #$80,#$12345678		ERROR: Invalid addressing mode
+ASR #$80,SR		ERROR: Invalid addressing mode
+ASR #$80,CCR		ERROR: Invalid addressing mode
+ASR #$80,USP		ERROR: Invalid addressing mode
+ASR #$1234,D1	E841	ERROR: Invalid constant shift count
+ASR #$1234,A2		ERROR: Invalid addressing mode
+ASR #$1234,(A3)		ERROR: Invalid addressing mode
+ASR #$1234,(A4)+		ERROR: Invalid addressing mode
+ASR #$1234,-(A5)		ERROR: Invalid addressing mode
+ASR #$1234,$10(A6)		ERROR: Invalid addressing mode
+ASR #$1234,$10(A6,D7.W)		ERROR: Invalid addressing mode
+ASR #$1234,$1234		ERROR: Invalid addressing mode
+ASR #$1234,$12345678		ERROR: Invalid addressing mode
+ASR #$1234,FW		ERROR: Invalid addressing mode
+ASR #$1234,*+$10(PC)		ERROR: Invalid addressing mode
+ASR #$1234,#1		ERROR: Invalid addressing mode
+ASR #$1234,#$80		ERROR: Invalid addressing mode
+ASR #$1234,#$1234		ERROR: Invalid addressing mode
+ASR #$1234,#$12345678		ERROR: Invalid addressing mode
+ASR #$1234,SR		ERROR: Invalid addressing mode
+ASR #$1234,CCR		ERROR: Invalid addressing mode
+ASR #$1234,USP		ERROR: Invalid addressing mode
+ASR #$12345678,D1	E041	ERROR: Invalid constant shift count
+ASR #$12345678,A2		ERROR: Invalid addressing mode
+ASR #$12345678,(A3)		ERROR: Invalid addressing mode
+ASR #$12345678,(A4)+		ERROR: Invalid addressing mode
+ASR #$12345678,-(A5)		ERROR: Invalid addressing mode
+ASR #$12345678,$10(A6)		ERROR: Invalid addressing mode
+ASR #$12345678,$10(A6,D7.W)		ERROR: Invalid addressing mode
+ASR #$12345678,$1234		ERROR: Invalid addressing mode
+ASR #$12345678,$12345678		ERROR: Invalid addressing mode
+ASR #$12345678,FW		ERROR: Invalid addressing mode
+ASR #$12345678,*+$10(PC)		ERROR: Invalid addressing mode
+ASR #$12345678,#1		ERROR: Invalid addressing mode
+ASR #$12345678,#$80		ERROR: Invalid addressing mode
+ASR #$12345678,#$1234		ERROR: Invalid addressing mode
+ASR #$12345678,#$12345678		ERROR: Invalid addressing mode
+ASR #$12345678,SR		ERROR: Invalid addressing mode
+ASR #$12345678,CCR		ERROR: Invalid addressing mode
+ASR #$12345678,USP		ERROR: Invalid addressing mode
+ASR SR,D1		ERROR: Invalid addressing mode
+ASR SR,A2		ERROR: Invalid addressing mode
+ASR SR,(A3)		ERROR: Invalid addressing mode
+ASR SR,(A4)+		ERROR: Invalid addressing mode
+ASR SR,-(A5)		ERROR: Invalid addressing mode
+ASR SR,$10(A6)		ERROR: Invalid addressing mode
+ASR SR,$10(A6,D7.W)		ERROR: Invalid addressing mode
+ASR SR,$1234		ERROR: Invalid addressing mode
+ASR SR,$12345678		ERROR: Invalid addressing mode
+ASR SR,FW		ERROR: Invalid addressing mode
+ASR SR,*+$10(PC)		ERROR: Invalid addressing mode
+ASR SR,#1		ERROR: Invalid addressing mode
+ASR SR,#$80		ERROR: Invalid addressing mode
+ASR SR,#$1234		ERROR: Invalid addressing mode
+ASR SR,#$12345678		ERROR: Invalid addressing mode
+ASR SR,SR		ERROR: Invalid addressing mode
+ASR SR,CCR		ERROR: Invalid addressing mode
+ASR SR,USP		ERROR: Invalid addressing mode
+ASR CCR,D1		ERROR: Invalid addressing mode
+ASR CCR,A2		ERROR: Invalid addressing mode
+ASR CCR,(A3)		ERROR: Invalid addressing mode
+ASR CCR,(A4)+		ERROR: Invalid addressing mode
+ASR CCR,-(A5)		ERROR: Invalid addressing mode
+ASR CCR,$10(A6)		ERROR: Invalid addressing mode
+ASR CCR,$10(A6,D7.W)		ERROR: Invalid addressing mode
+ASR CCR,$1234		ERROR: Invalid addressing mode
+ASR CCR,$12345678		ERROR: Invalid addressing mode
+ASR CCR,FW		ERROR: Invalid addressing mode
+ASR CCR,*+$10(PC)		ERROR: Invalid addressing mode
+ASR CCR,#1		ERROR: Invalid addressing mode
+ASR CCR,#$80		ERROR: Invalid addressing mode
+ASR CCR,#$1234		ERROR: Invalid addressing mode
+ASR CCR,#$12345678		ERROR: Invalid addressing mode
+ASR CCR,SR		ERROR: Invalid addressing mode
+ASR CCR,CCR		ERROR: Invalid addressing mode
+ASR CCR,USP		ERROR: Invalid addressing mode
+ASR USP,D1		ERROR: Invalid addressing mode
+ASR USP,A2		ERROR: Invalid addressing mode
+ASR USP,(A3)		ERROR: Invalid addressing mode
+ASR USP,(A4)+		ERROR: Invalid addressing mode
+ASR USP,-(A5)		ERROR: Invalid addressing mode
+ASR USP,$10(A6)		ERROR: Invalid addressing mode
+ASR USP,$10(A6,D7.W)		ERROR: Invalid addressing mode
+ASR USP,$1234		ERROR: Invalid addressing mode
+ASR USP,$12345678		ERROR: Invalid addressing mode
+ASR USP,FW		ERROR: Invalid addressing mode
+ASR USP,*+$10(PC)		ERROR: Invalid addressing mode
+ASR USP,#1		ERROR: Invalid addressing mode
+ASR USP,#$80		ERROR: Invalid addressing mode
+ASR USP,#$1234		ERROR: Invalid addressing mode
+ASR USP,#$12345678		ERROR: Invalid addressing mode
+ASR USP,SR		ERROR: Invalid addressing mode
+ASR USP,CCR		ERROR: Invalid addressing mode
+ASR USP,USP		ERROR: Invalid addressing mode
+ASR SP,D1		ERROR: Invalid addressing mode
+ASR SP,A2		ERROR: Invalid addressing mode
+ASR D1,SP		ERROR: Invalid addressing mode
+ASR #$12,SP		ERROR: Invalid addressing mode
+ASR -2(A0),D1		ERROR: Invalid syntax
+ASR -2(A0),A2		ERROR: Invalid syntax
+ASR D1,-2(A0)		ERROR: Invalid addressing mode
+ASR #$12,-2(A0)		ERROR: Invalid addressing mode
+ASR $12(A0,A1.L),D1		ERROR: Invalid syntax
+ASR $12(A0,A1.L),A2		ERROR: Invalid syntax
+ASR D1,$12(A0,A1.L)		ERROR: Invalid addressing mode
+ASR #$12,$12(A0,A1.L)		ERROR: Invalid addressing mode
+ASR (A2,D3),D1		ERROR: Invalid syntax
+ASR (A2,D3),A2		ERROR: Invalid syntax
+ASR D1,(A2,D3)		ERROR: Invalid addressing mode
+ASR #$12,(A2,D3)		ERROR: Invalid addressing mode
+ASR $1234.L,D1		ERROR: Invalid syntax
+ASR $1234.L,A2		ERROR: Invalid syntax
+ASR D1,$1234.L		ERROR: Invalid addressing mode
+ASR #$12,$1234.L		ERROR: Invalid addressing mode
+ASR $1234.W,D1		ERROR: Invalid syntax
+ASR $1234.W,A2		ERROR: Invalid syntax
+ASR D1,$1234.W		ERROR: Invalid addressing mode
+ASR #$12,$1234.W		ERROR: Invalid addressing mode
+ASR $8000,D1		ERROR: Invalid syntax
+ASR $8000,A2		ERROR: Invalid syntax
+ASR D1,$8000		ERROR: Invalid addressing mode
+ASR #$12,$8000		ERROR: Invalid addressing mode
+ASR BK,D1		ERROR: Invalid syntax
+ASR BK,A2		ERROR: Invalid syntax
+ASR D1,BK		ERROR: Invalid addressing mode
+ASR #$12,BK		ERROR: Invalid addressing mode
+ASR *(PC,D0.W),D1		ERROR: Invalid addressing mode
+ASR *(PC,D0.W),A2		ERROR: Invalid addressing mode
+ASR D1,*(PC,D0.W)		ERROR: Invalid addressing mode
+ASR #$12,*(PC,D0.W)		ERROR: Invalid addressing mode
+ASR BK(PC),D1		ERROR: Invalid addressing mode
+ASR BK(PC),A2		ERROR: Invalid addressing mode
+ASR D1,BK(PC)		ERROR: Invalid addressing mode
+ASR #$12,BK(PC)		ERROR: Invalid addressing mode
+ASR #8,D1	E041	-
+ASR #8,A2		ERROR: Invalid addressing mode
+ASR D1,#8		ERROR: Invalid addressing mode
+ASR #$12,#8		ERROR: Invalid addressing mode
+ASR #9,D1	E241	ERROR: Invalid constant shift count
+ASR #9,A2		ERROR: Invalid addressing mode
+ASR D1,#9		ERROR: Invalid addressing mode
+ASR #$12,#9		ERROR: Invalid addressing mode
+ASR #0,D1	E041	ERROR: Invalid constant shift count
+ASR #0,A2		ERROR: Invalid addressing mode
+ASR D1,#0		ERROR: Invalid addressing mode
+ASR #$12,#0		ERROR: Invalid addressing mode
+ASR #-1,D1	EE41	ERROR: Invalid constant shift count
+ASR #-1,A2		ERROR: Invalid addressing mode
+ASR D1,#-1		ERROR: Invalid addressing mode
+ASR #$12,#-1		ERROR: Invalid addressing mode
+ASR #$12345678.L,D1	E041	ERROR: Invalid constant shift count
+ASR #$12345678.L,A2		ERROR: Invalid addressing mode
+ASR D1,#$12345678.L		ERROR: Invalid addressing mode
+ASR #$12,#$12345678.L		ERROR: Invalid addressing mode
+ASR #BK,D1	E041	ERROR: Invalid constant shift count
+ASR #BK,A2		ERROR: Invalid addressing mode
+ASR D1,#BK		ERROR: Invalid addressing mode
+ASR #$12,#BK		ERROR: Invalid addressing mode
+ASR #FW,D1	E041	ERROR: Invalid constant shift count
+ASR #FW,A2		ERROR: Invalid addressing mode
+ASR D1,#FW		ERROR: Invalid addressing mode
+ASR #$12,#FW		ERROR: Invalid addressing mode
+ASR #UNDEF,D1	EA41	ERROR: Undefined symbol
+ASR #UNDEF,A2		ERROR: Invalid addressing mode
+ASR D1,#UNDEF		ERROR: Invalid addressing mode
+ASR #$12,#UNDEF		ERROR: Invalid addressing mode
+ASR UNDEF,D1		ERROR: Invalid syntax
+ASR UNDEF,A2		ERROR: Invalid syntax
+ASR D1,UNDEF		ERROR: Invalid addressing mode
+ASR #$12,UNDEF		ERROR: Invalid addressing mode
+ASR D1,D2,D3		ERROR: Invalid syntax
+ASR.B		ERROR: Invalid syntax
+ASR.B D1		ERROR: Comma expected
+ASR.B A2		ERROR: Comma expected
+ASR.B SP		ERROR: Comma expected
+ASR.B (A3)	E0D3	ERROR: Invalid size code
+ASR.B (A4)+	E0DC	ERROR: Invalid size code
+ASR.B -(A5)	E0E5	ERROR: Invalid size code
+ASR.B $10(A6)	E0EE0010	ERROR: Invalid size code
+ASR.B -2(A0)	E0E8FFFE	ERROR: Invalid size code
+ASR.B $10(A6,D7.W)	E0F67010	ERROR: Invalid size code
+ASR.B $12(A0,A1.L)	E0F09812	ERROR: Invalid size code
+ASR.B (A2,D3)	E0F23000	ERROR: Invalid size code
+ASR.B $1234	E0F81234	ERROR: Invalid size code
+ASR.B $12345678	E0F912345678	ERROR: Invalid size code
+ASR.B $1234.L	E0F900001234	ERROR: Invalid size code
+ASR.B $1234.W	E0F81234	ERROR: Invalid size code
+ASR.B $8000	E0F900008000	ERROR: Invalid size code
+ASR.B BK	E0F81F00	ERROR: Invalid size code
+ASR.B FW	E0F900001F00	ERROR: Invalid size code
+ASR.B *+$10(PC)		ERROR: Comma expected
+ASR.B *(PC,D0.W)		ERROR: Comma expected
+ASR.B BK(PC)		ERROR: Comma expected
+ASR.B #1		ERROR: Comma expected
+ASR.B #8		ERROR: Comma expected
+ASR.B #9		ERROR: Comma expected
+ASR.B #0		ERROR: Comma expected
+ASR.B #-1		ERROR: Comma expected
+ASR.B #$80		ERROR: Comma expected
+ASR.B #$1234		ERROR: Comma expected
+ASR.B #$12345678		ERROR: Comma expected
+ASR.B #$12345678.L		ERROR: Comma expected
+ASR.B #BK		ERROR: Comma expected
+ASR.B #FW		ERROR: Comma expected
+ASR.B #UNDEF		ERROR: Comma expected
+ASR.B UNDEF	E0F90000557D	ERROR: Undefined symbol
+ASR.B SR		ERROR: Comma expected
+ASR.B CCR		ERROR: Comma expected
+ASR.B USP		ERROR: Comma expected
+ASR.B D1,D1	E221	-
+ASR.B D1,A2		ERROR: Invalid addressing mode
+ASR.B D1,(A3)		ERROR: Invalid addressing mode
+ASR.B D1,$10(A6)		ERROR: Invalid addressing mode
+ASR.B D1,$1234		ERROR: Invalid addressing mode
+ASR.B D1,FW		ERROR: Invalid addressing mode
+ASR.B D1,#1		ERROR: Invalid addressing mode
+ASR.B D1,#$1234		ERROR: Invalid addressing mode
+ASR.B D1,CCR		ERROR: Invalid addressing mode
+ASR.B D1,SR		ERROR: Invalid addressing mode
+ASR.B A2,D1		ERROR: Invalid addressing mode
+ASR.B A2,A2		ERROR: Invalid addressing mode
+ASR.B A2,(A3)		ERROR: Invalid addressing mode
+ASR.B A2,$10(A6)		ERROR: Invalid addressing mode
+ASR.B A2,$1234		ERROR: Invalid addressing mode
+ASR.B A2,FW		ERROR: Invalid addressing mode
+ASR.B A2,#1		ERROR: Invalid addressing mode
+ASR.B A2,#$1234		ERROR: Invalid addressing mode
+ASR.B A2,CCR		ERROR: Invalid addressing mode
+ASR.B A2,SR		ERROR: Invalid addressing mode
+ASR.B (A3),D1		ERROR: Invalid syntax
+ASR.B (A3),A2		ERROR: Invalid syntax
+ASR.B (A3),(A3)		ERROR: Invalid syntax
+ASR.B (A3),$10(A6)		ERROR: Invalid syntax
+ASR.B (A3),$1234		ERROR: Invalid syntax
+ASR.B (A3),FW		ERROR: Invalid syntax
+ASR.B (A3),#1		ERROR: Invalid syntax
+ASR.B (A3),#$1234		ERROR: Invalid syntax
+ASR.B (A3),CCR		ERROR: Invalid syntax
+ASR.B (A3),SR		ERROR: Invalid syntax
+ASR.B $10(A6),D1		ERROR: Invalid syntax
+ASR.B $10(A6),A2		ERROR: Invalid syntax
+ASR.B $10(A6),(A3)		ERROR: Invalid syntax
+ASR.B $10(A6),$10(A6)		ERROR: Invalid syntax
+ASR.B $10(A6),$1234		ERROR: Invalid syntax
+ASR.B $10(A6),FW		ERROR: Invalid syntax
+ASR.B $10(A6),#1		ERROR: Invalid syntax
+ASR.B $10(A6),#$1234		ERROR: Invalid syntax
+ASR.B $10(A6),CCR		ERROR: Invalid syntax
+ASR.B $10(A6),SR		ERROR: Invalid syntax
+ASR.B $1234,D1		ERROR: Invalid syntax
+ASR.B $1234,A2		ERROR: Invalid syntax
+ASR.B $1234,(A3)		ERROR: Invalid syntax
+ASR.B $1234,$10(A6)		ERROR: Invalid syntax
+ASR.B $1234,$1234		ERROR: Invalid syntax
+ASR.B $1234,FW		ERROR: Invalid syntax
+ASR.B $1234,#1		ERROR: Invalid syntax
+ASR.B $1234,#$1234		ERROR: Invalid syntax
+ASR.B $1234,CCR		ERROR: Invalid syntax
+ASR.B $1234,SR		ERROR: Invalid syntax
+ASR.B FW,D1		ERROR: Invalid syntax
+ASR.B FW,A2		ERROR: Invalid syntax
+ASR.B FW,(A3)		ERROR: Invalid syntax
+ASR.B FW,$10(A6)		ERROR: Invalid syntax
+ASR.B FW,$1234		ERROR: Invalid syntax
+ASR.B FW,FW		ERROR: Invalid syntax
+ASR.B FW,#1		ERROR: Invalid syntax
+ASR.B FW,#$1234		ERROR: Invalid syntax
+ASR.B FW,CCR		ERROR: Invalid syntax
+ASR.B FW,SR		ERROR: Invalid syntax
+ASR.B #1,D1	E201	-
+ASR.B #1,A2		ERROR: Invalid addressing mode
+ASR.B #1,(A3)		ERROR: Invalid addressing mode
+ASR.B #1,$10(A6)		ERROR: Invalid addressing mode
+ASR.B #1,$1234		ERROR: Invalid addressing mode
+ASR.B #1,FW		ERROR: Invalid addressing mode
+ASR.B #1,#1		ERROR: Invalid addressing mode
+ASR.B #1,#$1234		ERROR: Invalid addressing mode
+ASR.B #1,CCR		ERROR: Invalid addressing mode
+ASR.B #1,SR		ERROR: Invalid addressing mode
+ASR.B #$1234,D1	E801	ERROR: Invalid constant shift count
+ASR.B #$1234,A2		ERROR: Invalid addressing mode
+ASR.B #$1234,(A3)		ERROR: Invalid addressing mode
+ASR.B #$1234,$10(A6)		ERROR: Invalid addressing mode
+ASR.B #$1234,$1234		ERROR: Invalid addressing mode
+ASR.B #$1234,FW		ERROR: Invalid addressing mode
+ASR.B #$1234,#1		ERROR: Invalid addressing mode
+ASR.B #$1234,#$1234		ERROR: Invalid addressing mode
+ASR.B #$1234,CCR		ERROR: Invalid addressing mode
+ASR.B #$1234,SR		ERROR: Invalid addressing mode
+ASR.B CCR,D1		ERROR: Invalid addressing mode
+ASR.B CCR,A2		ERROR: Invalid addressing mode
+ASR.B CCR,(A3)		ERROR: Invalid addressing mode
+ASR.B CCR,$10(A6)		ERROR: Invalid addressing mode
+ASR.B CCR,$1234		ERROR: Invalid addressing mode
+ASR.B CCR,FW		ERROR: Invalid addressing mode
+ASR.B CCR,#1		ERROR: Invalid addressing mode
+ASR.B CCR,#$1234		ERROR: Invalid addressing mode
+ASR.B CCR,CCR		ERROR: Invalid addressing mode
+ASR.B CCR,SR		ERROR: Invalid addressing mode
+ASR.B SR,D1		ERROR: Invalid addressing mode
+ASR.B SR,A2		ERROR: Invalid addressing mode
+ASR.B SR,(A3)		ERROR: Invalid addressing mode
+ASR.B SR,$10(A6)		ERROR: Invalid addressing mode
+ASR.B SR,$1234		ERROR: Invalid addressing mode
+ASR.B SR,FW		ERROR: Invalid addressing mode
+ASR.B SR,#1		ERROR: Invalid addressing mode
+ASR.B SR,#$1234		ERROR: Invalid addressing mode
+ASR.B SR,CCR		ERROR: Invalid addressing mode
+ASR.B SR,SR		ERROR: Invalid addressing mode
+ASR.B SP,D1		ERROR: Invalid addressing mode
+ASR.B SP,A2		ERROR: Invalid addressing mode
+ASR.B D1,SP		ERROR: Invalid addressing mode
+ASR.B #$12,SP		ERROR: Invalid addressing mode
+ASR.B (A4)+,D1		ERROR: Invalid syntax
+ASR.B (A4)+,A2		ERROR: Invalid syntax
+ASR.B D1,(A4)+		ERROR: Invalid addressing mode
+ASR.B #$12,(A4)+		ERROR: Invalid addressing mode
+ASR.B -(A5),D1		ERROR: Invalid syntax
+ASR.B -(A5),A2		ERROR: Invalid syntax
+ASR.B D1,-(A5)		ERROR: Invalid addressing mode
+ASR.B #$12,-(A5)		ERROR: Invalid addressing mode
+ASR.B -2(A0),D1		ERROR: Invalid syntax
+ASR.B -2(A0),A2		ERROR: Invalid syntax
+ASR.B D1,-2(A0)		ERROR: Invalid addressing mode
+ASR.B #$12,-2(A0)		ERROR: Invalid addressing mode
+ASR.B $10(A6,D7.W),D1		ERROR: Invalid syntax
+ASR.B $10(A6,D7.W),A2		ERROR: Invalid syntax
+ASR.B D1,$10(A6,D7.W)		ERROR: Invalid addressing mode
+ASR.B #$12,$10(A6,D7.W)		ERROR: Invalid addressing mode
+ASR.B $12(A0,A1.L),D1		ERROR: Invalid syntax
+ASR.B $12(A0,A1.L),A2		ERROR: Invalid syntax
+ASR.B D1,$12(A0,A1.L)		ERROR: Invalid addressing mode
+ASR.B #$12,$12(A0,A1.L)		ERROR: Invalid addressing mode
+ASR.B (A2,D3),D1		ERROR: Invalid syntax
+ASR.B (A2,D3),A2		ERROR: Invalid syntax
+ASR.B D1,(A2,D3)		ERROR: Invalid addressing mode
+ASR.B #$12,(A2,D3)		ERROR: Invalid addressing mode
+ASR.B $12345678,D1		ERROR: Invalid syntax
+ASR.B $12345678,A2		ERROR: Invalid syntax
+ASR.B D1,$12345678		ERROR: Invalid addressing mode
+ASR.B #$12,$12345678		ERROR: Invalid addressing mode
+ASR.B $1234.L,D1		ERROR: Invalid syntax
+ASR.B $1234.L,A2		ERROR: Invalid syntax
+ASR.B D1,$1234.L		ERROR: Invalid addressing mode
+ASR.B #$12,$1234.L		ERROR: Invalid addressing mode
+ASR.B $1234.W,D1		ERROR: Invalid syntax
+ASR.B $1234.W,A2		ERROR: Invalid syntax
+ASR.B D1,$1234.W		ERROR: Invalid addressing mode
+ASR.B #$12,$1234.W		ERROR: Invalid addressing mode
+ASR.B $8000,D1		ERROR: Invalid syntax
+ASR.B $8000,A2		ERROR: Invalid syntax
+ASR.B D1,$8000		ERROR: Invalid addressing mode
+ASR.B #$12,$8000		ERROR: Invalid addressing mode
+ASR.B BK,D1		ERROR: Invalid syntax
+ASR.B BK,A2		ERROR: Invalid syntax
+ASR.B D1,BK		ERROR: Invalid addressing mode
+ASR.B #$12,BK		ERROR: Invalid addressing mode
+ASR.B *+$10(PC),D1		ERROR: Invalid addressing mode
+ASR.B *+$10(PC),A2		ERROR: Invalid addressing mode
+ASR.B D1,*+$10(PC)		ERROR: Invalid addressing mode
+ASR.B #$12,*+$10(PC)		ERROR: Invalid addressing mode
+ASR.B *(PC,D0.W),D1		ERROR: Invalid addressing mode
+ASR.B *(PC,D0.W),A2		ERROR: Invalid addressing mode
+ASR.B D1,*(PC,D0.W)		ERROR: Invalid addressing mode
+ASR.B #$12,*(PC,D0.W)		ERROR: Invalid addressing mode
+ASR.B BK(PC),D1		ERROR: Invalid addressing mode
+ASR.B BK(PC),A2		ERROR: Invalid addressing mode
+ASR.B D1,BK(PC)		ERROR: Invalid addressing mode
+ASR.B #$12,BK(PC)		ERROR: Invalid addressing mode
+ASR.B #8,D1	E001	-
+ASR.B #8,A2		ERROR: Invalid addressing mode
+ASR.B D1,#8		ERROR: Invalid addressing mode
+ASR.B #$12,#8		ERROR: Invalid addressing mode
+ASR.B #9,D1	E201	ERROR: Invalid constant shift count
+ASR.B #9,A2		ERROR: Invalid addressing mode
+ASR.B D1,#9		ERROR: Invalid addressing mode
+ASR.B #$12,#9		ERROR: Invalid addressing mode
+ASR.B #0,D1	E001	ERROR: Invalid constant shift count
+ASR.B #0,A2		ERROR: Invalid addressing mode
+ASR.B D1,#0		ERROR: Invalid addressing mode
+ASR.B #$12,#0		ERROR: Invalid addressing mode
+ASR.B #-1,D1	EE01	ERROR: Invalid constant shift count
+ASR.B #-1,A2		ERROR: Invalid addressing mode
+ASR.B D1,#-1		ERROR: Invalid addressing mode
+ASR.B #$12,#-1		ERROR: Invalid addressing mode
+ASR.B #$80,D1	E001	ERROR: Invalid constant shift count
+ASR.B #$80,A2		ERROR: Invalid addressing mode
+ASR.B D1,#$80		ERROR: Invalid addressing mode
+ASR.B #$12,#$80		ERROR: Invalid addressing mode
+ASR.B #$12345678,D1	E001	ERROR: Invalid constant shift count
+ASR.B #$12345678,A2		ERROR: Invalid addressing mode
+ASR.B D1,#$12345678		ERROR: Invalid addressing mode
+ASR.B #$12,#$12345678		ERROR: Invalid addressing mode
+ASR.B #$12345678.L,D1	E001	ERROR: Invalid constant shift count
+ASR.B #$12345678.L,A2		ERROR: Invalid addressing mode
+ASR.B D1,#$12345678.L		ERROR: Invalid addressing mode
+ASR.B #$12,#$12345678.L		ERROR: Invalid addressing mode
+ASR.B #BK,D1	E001	ERROR: Invalid constant shift count
+ASR.B #BK,A2		ERROR: Invalid addressing mode
+ASR.B D1,#BK		ERROR: Invalid addressing mode
+ASR.B #$12,#BK		ERROR: Invalid addressing mode
+ASR.B #FW,D1	E001	ERROR: Invalid constant shift count
+ASR.B #FW,A2		ERROR: Invalid addressing mode
+ASR.B D1,#FW		ERROR: Invalid addressing mode
+ASR.B #$12,#FW		ERROR: Invalid addressing mode
+ASR.B #UNDEF,D1	EA01	ERROR: Undefined symbol
+ASR.B #UNDEF,A2		ERROR: Invalid addressing mode
+ASR.B D1,#UNDEF		ERROR: Invalid addressing mode
+ASR.B #$12,#UNDEF		ERROR: Invalid addressing mode
+ASR.B UNDEF,D1		ERROR: Invalid syntax
+ASR.B UNDEF,A2		ERROR: Invalid syntax
+ASR.B D1,UNDEF		ERROR: Invalid addressing mode
+ASR.B #$12,UNDEF		ERROR: Invalid addressing mode
+ASR.B USP,D1		ERROR: Invalid addressing mode
+ASR.B USP,A2		ERROR: Invalid addressing mode
+ASR.B D1,USP		ERROR: Invalid addressing mode
+ASR.B #$12,USP		ERROR: Invalid addressing mode
+ASR.B D1,D2,D3		ERROR: Invalid syntax
+ASR.W		ERROR: Invalid syntax
+ASR.W D1		ERROR: Comma expected
+ASR.W A2		ERROR: Comma expected
+ASR.W SP		ERROR: Comma expected
+ASR.W (A3)	E0D3	-
+ASR.W (A4)+	E0DC	-
+ASR.W -(A5)	E0E5	-
+ASR.W $10(A6)	E0EE0010	-
+ASR.W -2(A0)	E0E8FFFE	-
+ASR.W $10(A6,D7.W)	E0F67010	-
+ASR.W $12(A0,A1.L)	E0F09812	-
+ASR.W (A2,D3)	E0F23000	-
+ASR.W $1234	E0F81234	-
+ASR.W $12345678	E0F912345678	-
+ASR.W $1234.L	E0F900001234	-
+ASR.W $1234.W	E0F81234	WARNING: Forcing SHORT addressing disables range checking of extension word
+ASR.W $8000	E0F900008000	-
+ASR.W BK	E0F81F00	-
+ASR.W FW	E0F900001F00	-
+ASR.W *+$10(PC)		ERROR: Comma expected
+ASR.W *(PC,D0.W)		ERROR: Comma expected
+ASR.W BK(PC)		ERROR: Comma expected
+ASR.W #1		ERROR: Comma expected
+ASR.W #8		ERROR: Comma expected
+ASR.W #9		ERROR: Comma expected
+ASR.W #0		ERROR: Comma expected
+ASR.W #-1		ERROR: Comma expected
+ASR.W #$80		ERROR: Comma expected
+ASR.W #$1234		ERROR: Comma expected
+ASR.W #$12345678		ERROR: Comma expected
+ASR.W #$12345678.L		ERROR: Comma expected
+ASR.W #BK		ERROR: Comma expected
+ASR.W #FW		ERROR: Comma expected
+ASR.W #UNDEF		ERROR: Comma expected
+ASR.W UNDEF	E0F90000557D	ERROR: Undefined symbol
+ASR.W SR		ERROR: Comma expected
+ASR.W CCR		ERROR: Comma expected
+ASR.W USP		ERROR: Comma expected
+ASR.W D1,D1	E261	-
+ASR.W D1,A2		ERROR: Invalid addressing mode
+ASR.W D1,(A3)		ERROR: Invalid addressing mode
+ASR.W D1,(A4)+		ERROR: Invalid addressing mode
+ASR.W D1,-(A5)		ERROR: Invalid addressing mode
+ASR.W D1,$10(A6)		ERROR: Invalid addressing mode
+ASR.W D1,$10(A6,D7.W)		ERROR: Invalid addressing mode
+ASR.W D1,$1234		ERROR: Invalid addressing mode
+ASR.W D1,$12345678		ERROR: Invalid addressing mode
+ASR.W D1,FW		ERROR: Invalid addressing mode
+ASR.W D1,*+$10(PC)		ERROR: Invalid addressing mode
+ASR.W D1,#1		ERROR: Invalid addressing mode
+ASR.W D1,#$80		ERROR: Invalid addressing mode
+ASR.W D1,#$1234		ERROR: Invalid addressing mode
+ASR.W D1,#$12345678		ERROR: Invalid addressing mode
+ASR.W D1,SR		ERROR: Invalid addressing mode
+ASR.W D1,CCR		ERROR: Invalid addressing mode
+ASR.W D1,USP		ERROR: Invalid addressing mode
+ASR.W A2,D1		ERROR: Invalid addressing mode
+ASR.W A2,A2		ERROR: Invalid addressing mode
+ASR.W A2,(A3)		ERROR: Invalid addressing mode
+ASR.W A2,(A4)+		ERROR: Invalid addressing mode
+ASR.W A2,-(A5)		ERROR: Invalid addressing mode
+ASR.W A2,$10(A6)		ERROR: Invalid addressing mode
+ASR.W A2,$10(A6,D7.W)		ERROR: Invalid addressing mode
+ASR.W A2,$1234		ERROR: Invalid addressing mode
+ASR.W A2,$12345678		ERROR: Invalid addressing mode
+ASR.W A2,FW		ERROR: Invalid addressing mode
+ASR.W A2,*+$10(PC)		ERROR: Invalid addressing mode
+ASR.W A2,#1		ERROR: Invalid addressing mode
+ASR.W A2,#$80		ERROR: Invalid addressing mode
+ASR.W A2,#$1234		ERROR: Invalid addressing mode
+ASR.W A2,#$12345678		ERROR: Invalid addressing mode
+ASR.W A2,SR		ERROR: Invalid addressing mode
+ASR.W A2,CCR		ERROR: Invalid addressing mode
+ASR.W A2,USP		ERROR: Invalid addressing mode
+ASR.W (A3),D1		ERROR: Invalid syntax
+ASR.W (A3),A2		ERROR: Invalid syntax
+ASR.W (A3),(A3)		ERROR: Invalid syntax
+ASR.W (A3),(A4)+		ERROR: Invalid syntax
+ASR.W (A3),-(A5)		ERROR: Invalid syntax
+ASR.W (A3),$10(A6)		ERROR: Invalid syntax
+ASR.W (A3),$10(A6,D7.W)		ERROR: Invalid syntax
+ASR.W (A3),$1234		ERROR: Invalid syntax
+ASR.W (A3),$12345678		ERROR: Invalid syntax
+ASR.W (A3),FW		ERROR: Invalid syntax
+ASR.W (A3),*+$10(PC)		ERROR: Invalid syntax
+ASR.W (A3),#1		ERROR: Invalid syntax
+ASR.W (A3),#$80		ERROR: Invalid syntax
+ASR.W (A3),#$1234		ERROR: Invalid syntax
+ASR.W (A3),#$12345678		ERROR: Invalid syntax
+ASR.W (A3),SR		ERROR: Invalid syntax
+ASR.W (A3),CCR		ERROR: Invalid syntax
+ASR.W (A3),USP		ERROR: Invalid syntax
+ASR.W (A4)+,D1		ERROR: Invalid syntax
+ASR.W (A4)+,A2		ERROR: Invalid syntax
+ASR.W (A4)+,(A3)		ERROR: Invalid syntax
+ASR.W (A4)+,(A4)+		ERROR: Invalid syntax
+ASR.W (A4)+,-(A5)		ERROR: Invalid syntax
+ASR.W (A4)+,$10(A6)		ERROR: Invalid syntax
+ASR.W (A4)+,$10(A6,D7.W)		ERROR: Invalid syntax
+ASR.W (A4)+,$1234		ERROR: Invalid syntax
+ASR.W (A4)+,$12345678		ERROR: Invalid syntax
+ASR.W (A4)+,FW		ERROR: Invalid syntax
+ASR.W (A4)+,*+$10(PC)		ERROR: Invalid syntax
+ASR.W (A4)+,#1		ERROR: Invalid syntax
+ASR.W (A4)+,#$80		ERROR: Invalid syntax
+ASR.W (A4)+,#$1234		ERROR: Invalid syntax
+ASR.W (A4)+,#$12345678		ERROR: Invalid syntax
+ASR.W (A4)+,SR		ERROR: Invalid syntax
+ASR.W (A4)+,CCR		ERROR: Invalid syntax
+ASR.W (A4)+,USP		ERROR: Invalid syntax
+ASR.W -(A5),D1		ERROR: Invalid syntax
+ASR.W -(A5),A2		ERROR: Invalid syntax
+ASR.W -(A5),(A3)		ERROR: Invalid syntax
+ASR.W -(A5),(A4)+		ERROR: Invalid syntax
+ASR.W -(A5),-(A5)		ERROR: Invalid syntax
+ASR.W -(A5),$10(A6)		ERROR: Invalid syntax
+ASR.W -(A5),$10(A6,D7.W)		ERROR: Invalid syntax
+ASR.W -(A5),$1234		ERROR: Invalid syntax
+ASR.W -(A5),$12345678		ERROR: Invalid syntax
+ASR.W -(A5),FW		ERROR: Invalid syntax
+ASR.W -(A5),*+$10(PC)		ERROR: Invalid syntax
+ASR.W -(A5),#1		ERROR: Invalid syntax
+ASR.W -(A5),#$80		ERROR: Invalid syntax
+ASR.W -(A5),#$1234		ERROR: Invalid syntax
+ASR.W -(A5),#$12345678		ERROR: Invalid syntax
+ASR.W -(A5),SR		ERROR: Invalid syntax
+ASR.W -(A5),CCR		ERROR: Invalid syntax
+ASR.W -(A5),USP		ERROR: Invalid syntax
+ASR.W $10(A6),D1		ERROR: Invalid syntax
+ASR.W $10(A6),A2		ERROR: Invalid syntax
+ASR.W $10(A6),(A3)		ERROR: Invalid syntax
+ASR.W $10(A6),(A4)+		ERROR: Invalid syntax
+ASR.W $10(A6),-(A5)		ERROR: Invalid syntax
+ASR.W $10(A6),$10(A6)		ERROR: Invalid syntax
+ASR.W $10(A6),$10(A6,D7.W)		ERROR: Invalid syntax
+ASR.W $10(A6),$1234		ERROR: Invalid syntax
+ASR.W $10(A6),$12345678		ERROR: Invalid syntax
+ASR.W $10(A6),FW		ERROR: Invalid syntax
+ASR.W $10(A6),*+$10(PC)		ERROR: Invalid syntax
+ASR.W $10(A6),#1		ERROR: Invalid syntax
+ASR.W $10(A6),#$80		ERROR: Invalid syntax
+ASR.W $10(A6),#$1234		ERROR: Invalid syntax
+ASR.W $10(A6),#$12345678		ERROR: Invalid syntax
+ASR.W $10(A6),SR		ERROR: Invalid syntax
+ASR.W $10(A6),CCR		ERROR: Invalid syntax
+ASR.W $10(A6),USP		ERROR: Invalid syntax
+ASR.W $10(A6,D7.W),D1		ERROR: Invalid syntax
+ASR.W $10(A6,D7.W),A2		ERROR: Invalid syntax
+ASR.W $10(A6,D7.W),(A3)		ERROR: Invalid syntax
+ASR.W $10(A6,D7.W),(A4)+		ERROR: Invalid syntax
+ASR.W $10(A6,D7.W),-(A5)		ERROR: Invalid syntax
+ASR.W $10(A6,D7.W),$10(A6)		ERROR: Invalid syntax
+ASR.W $10(A6,D7.W),$10(A6,D7.W)		ERROR: Invalid syntax
+ASR.W $10(A6,D7.W),$1234		ERROR: Invalid syntax
+ASR.W $10(A6,D7.W),$12345678		ERROR: Invalid syntax
+ASR.W $10(A6,D7.W),FW		ERROR: Invalid syntax
+ASR.W $10(A6,D7.W),*+$10(PC)		ERROR: Invalid syntax
+ASR.W $10(A6,D7.W),#1		ERROR: Invalid syntax
+ASR.W $10(A6,D7.W),#$80		ERROR: Invalid syntax
+ASR.W $10(A6,D7.W),#$1234		ERROR: Invalid syntax
+ASR.W $10(A6,D7.W),#$12345678		ERROR: Invalid syntax
+ASR.W $10(A6,D7.W),SR		ERROR: Invalid syntax
+ASR.W $10(A6,D7.W),CCR		ERROR: Invalid syntax
+ASR.W $10(A6,D7.W),USP		ERROR: Invalid syntax
+ASR.W $1234,D1		ERROR: Invalid syntax
+ASR.W $1234,A2		ERROR: Invalid syntax
+ASR.W $1234,(A3)		ERROR: Invalid syntax
+ASR.W $1234,(A4)+		ERROR: Invalid syntax
+ASR.W $1234,-(A5)		ERROR: Invalid syntax
+ASR.W $1234,$10(A6)		ERROR: Invalid syntax
+ASR.W $1234,$10(A6,D7.W)		ERROR: Invalid syntax
+ASR.W $1234,$1234		ERROR: Invalid syntax
+ASR.W $1234,$12345678		ERROR: Invalid syntax
+ASR.W $1234,FW		ERROR: Invalid syntax
+ASR.W $1234,*+$10(PC)		ERROR: Invalid syntax
+ASR.W $1234,#1		ERROR: Invalid syntax
+ASR.W $1234,#$80		ERROR: Invalid syntax
+ASR.W $1234,#$1234		ERROR: Invalid syntax
+ASR.W $1234,#$12345678		ERROR: Invalid syntax
+ASR.W $1234,SR		ERROR: Invalid syntax
+ASR.W $1234,CCR		ERROR: Invalid syntax
+ASR.W $1234,USP		ERROR: Invalid syntax
+ASR.W $12345678,D1		ERROR: Invalid syntax
+ASR.W $12345678,A2		ERROR: Invalid syntax
+ASR.W $12345678,(A3)		ERROR: Invalid syntax
+ASR.W $12345678,(A4)+		ERROR: Invalid syntax
+ASR.W $12345678,-(A5)		ERROR: Invalid syntax
+ASR.W $12345678,$10(A6)		ERROR: Invalid syntax
+ASR.W $12345678,$10(A6,D7.W)		ERROR: Invalid syntax
+ASR.W $12345678,$1234		ERROR: Invalid syntax
+ASR.W $12345678,$12345678		ERROR: Invalid syntax
+ASR.W $12345678,FW		ERROR: Invalid syntax
+ASR.W $12345678,*+$10(PC)		ERROR: Invalid syntax
+ASR.W $12345678,#1		ERROR: Invalid syntax
+ASR.W $12345678,#$80		ERROR: Invalid syntax
+ASR.W $12345678,#$1234		ERROR: Invalid syntax
+ASR.W $12345678,#$12345678		ERROR: Invalid syntax
+ASR.W $12345678,SR		ERROR: Invalid syntax
+ASR.W $12345678,CCR		ERROR: Invalid syntax
+ASR.W $12345678,USP		ERROR: Invalid syntax
+ASR.W FW,D1		ERROR: Invalid syntax
+ASR.W FW,A2		ERROR: Invalid syntax
+ASR.W FW,(A3)		ERROR: Invalid syntax
+ASR.W FW,(A4)+		ERROR: Invalid syntax
+ASR.W FW,-(A5)		ERROR: Invalid syntax
+ASR.W FW,$10(A6)		ERROR: Invalid syntax
+ASR.W FW,$10(A6,D7.W)		ERROR: Invalid syntax
+ASR.W FW,$1234		ERROR: Invalid syntax
+ASR.W FW,$12345678		ERROR: Invalid syntax
+ASR.W FW,FW		ERROR: Invalid syntax
+ASR.W FW,*+$10(PC)		ERROR: Invalid syntax
+ASR.W FW,#1		ERROR: Invalid syntax
+ASR.W FW,#$80		ERROR: Invalid syntax
+ASR.W FW,#$1234		ERROR: Invalid syntax
+ASR.W FW,#$12345678		ERROR: Invalid syntax
+ASR.W FW,SR		ERROR: Invalid syntax
+ASR.W FW,CCR		ERROR: Invalid syntax
+ASR.W FW,USP		ERROR: Invalid syntax
+ASR.W *+$10(PC),D1		ERROR: Invalid addressing mode
+ASR.W *+$10(PC),A2		ERROR: Invalid addressing mode
+ASR.W *+$10(PC),(A3)		ERROR: Invalid addressing mode
+ASR.W *+$10(PC),(A4)+		ERROR: Invalid addressing mode
+ASR.W *+$10(PC),-(A5)		ERROR: Invalid addressing mode
+ASR.W *+$10(PC),$10(A6)		ERROR: Invalid addressing mode
+ASR.W *+$10(PC),$10(A6,D7.W)		ERROR: Invalid addressing mode
+ASR.W *+$10(PC),$1234		ERROR: Invalid addressing mode
+ASR.W *+$10(PC),$12345678		ERROR: Invalid addressing mode
+ASR.W *+$10(PC),FW		ERROR: Invalid addressing mode
+ASR.W *+$10(PC),*+$10(PC)		ERROR: Invalid addressing mode
+ASR.W *+$10(PC),#1		ERROR: Invalid addressing mode
+ASR.W *+$10(PC),#$80		ERROR: Invalid addressing mode
+ASR.W *+$10(PC),#$1234		ERROR: Invalid addressing mode
+ASR.W *+$10(PC),#$12345678		ERROR: Invalid addressing mode
+ASR.W *+$10(PC),SR		ERROR: Invalid addressing mode
+ASR.W *+$10(PC),CCR		ERROR: Invalid addressing mode
+ASR.W *+$10(PC),USP		ERROR: Invalid addressing mode
+ASR.W #1,D1	E241	-
+ASR.W #1,A2		ERROR: Invalid addressing mode
+ASR.W #1,(A3)		ERROR: Invalid addressing mode
+ASR.W #1,(A4)+		ERROR: Invalid addressing mode
+ASR.W #1,-(A5)		ERROR: Invalid addressing mode
+ASR.W #1,$10(A6)		ERROR: Invalid addressing mode
+ASR.W #1,$10(A6,D7.W)		ERROR: Invalid addressing mode
+ASR.W #1,$1234		ERROR: Invalid addressing mode
+ASR.W #1,$12345678		ERROR: Invalid addressing mode
+ASR.W #1,FW		ERROR: Invalid addressing mode
+ASR.W #1,*+$10(PC)		ERROR: Invalid addressing mode
+ASR.W #1,#1		ERROR: Invalid addressing mode
+ASR.W #1,#$80		ERROR: Invalid addressing mode
+ASR.W #1,#$1234		ERROR: Invalid addressing mode
+ASR.W #1,#$12345678		ERROR: Invalid addressing mode
+ASR.W #1,SR		ERROR: Invalid addressing mode
+ASR.W #1,CCR		ERROR: Invalid addressing mode
+ASR.W #1,USP		ERROR: Invalid addressing mode
+ASR.W #$80,D1	E041	ERROR: Invalid constant shift count
+ASR.W #$80,A2		ERROR: Invalid addressing mode
+ASR.W #$80,(A3)		ERROR: Invalid addressing mode
+ASR.W #$80,(A4)+		ERROR: Invalid addressing mode
+ASR.W #$80,-(A5)		ERROR: Invalid addressing mode
+ASR.W #$80,$10(A6)		ERROR: Invalid addressing mode
+ASR.W #$80,$10(A6,D7.W)		ERROR: Invalid addressing mode
+ASR.W #$80,$1234		ERROR: Invalid addressing mode
+ASR.W #$80,$12345678		ERROR: Invalid addressing mode
+ASR.W #$80,FW		ERROR: Invalid addressing mode
+ASR.W #$80,*+$10(PC)		ERROR: Invalid addressing mode
+ASR.W #$80,#1		ERROR: Invalid addressing mode
+ASR.W #$80,#$80		ERROR: Invalid addressing mode
+ASR.W #$80,#$1234		ERROR: Invalid addressing mode
+ASR.W #$80,#$12345678		ERROR: Invalid addressing mode
+ASR.W #$80,SR		ERROR: Invalid addressing mode
+ASR.W #$80,CCR		ERROR: Invalid addressing mode
+ASR.W #$80,USP		ERROR: Invalid addressing mode
+ASR.W #$1234,D1	E841	ERROR: Invalid constant shift count
+ASR.W #$1234,A2		ERROR: Invalid addressing mode
+ASR.W #$1234,(A3)		ERROR: Invalid addressing mode
+ASR.W #$1234,(A4)+		ERROR: Invalid addressing mode
+ASR.W #$1234,-(A5)		ERROR: Invalid addressing mode
+ASR.W #$1234,$10(A6)		ERROR: Invalid addressing mode
+ASR.W #$1234,$10(A6,D7.W)		ERROR: Invalid addressing mode
+ASR.W #$1234,$1234		ERROR: Invalid addressing mode
+ASR.W #$1234,$12345678		ERROR: Invalid addressing mode
+ASR.W #$1234,FW		ERROR: Invalid addressing mode
+ASR.W #$1234,*+$10(PC)		ERROR: Invalid addressing mode
+ASR.W #$1234,#1		ERROR: Invalid addressing mode
+ASR.W #$1234,#$80		ERROR: Invalid addressing mode
+ASR.W #$1234,#$1234		ERROR: Invalid addressing mode
+ASR.W #$1234,#$12345678		ERROR: Invalid addressing mode
+ASR.W #$1234,SR		ERROR: Invalid addressing mode
+ASR.W #$1234,CCR		ERROR: Invalid addressing mode
+ASR.W #$1234,USP		ERROR: Invalid addressing mode
+ASR.W #$12345678,D1	E041	ERROR: Invalid constant shift count
+ASR.W #$12345678,A2		ERROR: Invalid addressing mode
+ASR.W #$12345678,(A3)		ERROR: Invalid addressing mode
+ASR.W #$12345678,(A4)+		ERROR: Invalid addressing mode
+ASR.W #$12345678,-(A5)		ERROR: Invalid addressing mode
+ASR.W #$12345678,$10(A6)		ERROR: Invalid addressing mode
+ASR.W #$12345678,$10(A6,D7.W)		ERROR: Invalid addressing mode
+ASR.W #$12345678,$1234		ERROR: Invalid addressing mode
+ASR.W #$12345678,$12345678		ERROR: Invalid addressing mode
+ASR.W #$12345678,FW		ERROR: Invalid addressing mode
+ASR.W #$12345678,*+$10(PC)		ERROR: Invalid addressing mode
+ASR.W #$12345678,#1		ERROR: Invalid addressing mode
+ASR.W #$12345678,#$80		ERROR: Invalid addressing mode
+ASR.W #$12345678,#$1234		ERROR: Invalid addressing mode
+ASR.W #$12345678,#$12345678		ERROR: Invalid addressing mode
+ASR.W #$12345678,SR		ERROR: Invalid addressing mode
+ASR.W #$12345678,CCR		ERROR: Invalid addressing mode
+ASR.W #$12345678,USP		ERROR: Invalid addressing mode
+ASR.W SR,D1		ERROR: Invalid addressing mode
+ASR.W SR,A2		ERROR: Invalid addressing mode
+ASR.W SR,(A3)		ERROR: Invalid addressing mode
+ASR.W SR,(A4)+		ERROR: Invalid addressing mode
+ASR.W SR,-(A5)		ERROR: Invalid addressing mode
+ASR.W SR,$10(A6)		ERROR: Invalid addressing mode
+ASR.W SR,$10(A6,D7.W)		ERROR: Invalid addressing mode
+ASR.W SR,$1234		ERROR: Invalid addressing mode
+ASR.W SR,$12345678		ERROR: Invalid addressing mode
+ASR.W SR,FW		ERROR: Invalid addressing mode
+ASR.W SR,*+$10(PC)		ERROR: Invalid addressing mode
+ASR.W SR,#1		ERROR: Invalid addressing mode
+ASR.W SR,#$80		ERROR: Invalid addressing mode
+ASR.W SR,#$1234		ERROR: Invalid addressing mode
+ASR.W SR,#$12345678		ERROR: Invalid addressing mode
+ASR.W SR,SR		ERROR: Invalid addressing mode
+ASR.W SR,CCR		ERROR: Invalid addressing mode
+ASR.W SR,USP		ERROR: Invalid addressing mode
+ASR.W CCR,D1		ERROR: Invalid addressing mode
+ASR.W CCR,A2		ERROR: Invalid addressing mode
+ASR.W CCR,(A3)		ERROR: Invalid addressing mode
+ASR.W CCR,(A4)+		ERROR: Invalid addressing mode
+ASR.W CCR,-(A5)		ERROR: Invalid addressing mode
+ASR.W CCR,$10(A6)		ERROR: Invalid addressing mode
+ASR.W CCR,$10(A6,D7.W)		ERROR: Invalid addressing mode
+ASR.W CCR,$1234		ERROR: Invalid addressing mode
+ASR.W CCR,$12345678		ERROR: Invalid addressing mode
+ASR.W CCR,FW		ERROR: Invalid addressing mode
+ASR.W CCR,*+$10(PC)		ERROR: Invalid addressing mode
+ASR.W CCR,#1		ERROR: Invalid addressing mode
+ASR.W CCR,#$80		ERROR: Invalid addressing mode
+ASR.W CCR,#$1234		ERROR: Invalid addressing mode
+ASR.W CCR,#$12345678		ERROR: Invalid addressing mode
+ASR.W CCR,SR		ERROR: Invalid addressing mode
+ASR.W CCR,CCR		ERROR: Invalid addressing mode
+ASR.W CCR,USP		ERROR: Invalid addressing mode
+ASR.W USP,D1		ERROR: Invalid addressing mode
+ASR.W USP,A2		ERROR: Invalid addressing mode
+ASR.W USP,(A3)		ERROR: Invalid addressing mode
+ASR.W USP,(A4)+		ERROR: Invalid addressing mode
+ASR.W USP,-(A5)		ERROR: Invalid addressing mode
+ASR.W USP,$10(A6)		ERROR: Invalid addressing mode
+ASR.W USP,$10(A6,D7.W)		ERROR: Invalid addressing mode
+ASR.W USP,$1234		ERROR: Invalid addressing mode
+ASR.W USP,$12345678		ERROR: Invalid addressing mode
+ASR.W USP,FW		ERROR: Invalid addressing mode
+ASR.W USP,*+$10(PC)		ERROR: Invalid addressing mode
+ASR.W USP,#1		ERROR: Invalid addressing mode
+ASR.W USP,#$80		ERROR: Invalid addressing mode
+ASR.W USP,#$1234		ERROR: Invalid addressing mode
+ASR.W USP,#$12345678		ERROR: Invalid addressing mode
+ASR.W USP,SR		ERROR: Invalid addressing mode
+ASR.W USP,CCR		ERROR: Invalid addressing mode
+ASR.W USP,USP		ERROR: Invalid addressing mode
+ASR.W SP,D1		ERROR: Invalid addressing mode
+ASR.W SP,A2		ERROR: Invalid addressing mode
+ASR.W D1,SP		ERROR: Invalid addressing mode
+ASR.W #$12,SP		ERROR: Invalid addressing mode
+ASR.W -2(A0),D1		ERROR: Invalid syntax
+ASR.W -2(A0),A2		ERROR: Invalid syntax
+ASR.W D1,-2(A0)		ERROR: Invalid addressing mode
+ASR.W #$12,-2(A0)		ERROR: Invalid addressing mode
+ASR.W $12(A0,A1.L),D1		ERROR: Invalid syntax
+ASR.W $12(A0,A1.L),A2		ERROR: Invalid syntax
+ASR.W D1,$12(A0,A1.L)		ERROR: Invalid addressing mode
+ASR.W #$12,$12(A0,A1.L)		ERROR: Invalid addressing mode
+ASR.W (A2,D3),D1		ERROR: Invalid syntax
+ASR.W (A2,D3),A2		ERROR: Invalid syntax
+ASR.W D1,(A2,D3)		ERROR: Invalid addressing mode
+ASR.W #$12,(A2,D3)		ERROR: Invalid addressing mode
+ASR.W $1234.L,D1		ERROR: Invalid syntax
+ASR.W $1234.L,A2		ERROR: Invalid syntax
+ASR.W D1,$1234.L		ERROR: Invalid addressing mode
+ASR.W #$12,$1234.L		ERROR: Invalid addressing mode
+ASR.W $1234.W,D1		ERROR: Invalid syntax
+ASR.W $1234.W,A2		ERROR: Invalid syntax
+ASR.W D1,$1234.W		ERROR: Invalid addressing mode
+ASR.W #$12,$1234.W		ERROR: Invalid addressing mode
+ASR.W $8000,D1		ERROR: Invalid syntax
+ASR.W $8000,A2		ERROR: Invalid syntax
+ASR.W D1,$8000		ERROR: Invalid addressing mode
+ASR.W #$12,$8000		ERROR: Invalid addressing mode
+ASR.W BK,D1		ERROR: Invalid syntax
+ASR.W BK,A2		ERROR: Invalid syntax
+ASR.W D1,BK		ERROR: Invalid addressing mode
+ASR.W #$12,BK		ERROR: Invalid addressing mode
+ASR.W *(PC,D0.W),D1		ERROR: Invalid addressing mode
+ASR.W *(PC,D0.W),A2		ERROR: Invalid addressing mode
+ASR.W D1,*(PC,D0.W)		ERROR: Invalid addressing mode
+ASR.W #$12,*(PC,D0.W)		ERROR: Invalid addressing mode
+ASR.W BK(PC),D1		ERROR: Invalid addressing mode
+ASR.W BK(PC),A2		ERROR: Invalid addressing mode
+ASR.W D1,BK(PC)		ERROR: Invalid addressing mode
+ASR.W #$12,BK(PC)		ERROR: Invalid addressing mode
+ASR.W #8,D1	E041	-
+ASR.W #8,A2		ERROR: Invalid addressing mode
+ASR.W D1,#8		ERROR: Invalid addressing mode
+ASR.W #$12,#8		ERROR: Invalid addressing mode
+ASR.W #9,D1	E241	ERROR: Invalid constant shift count
+ASR.W #9,A2		ERROR: Invalid addressing mode
+ASR.W D1,#9		ERROR: Invalid addressing mode
+ASR.W #$12,#9		ERROR: Invalid addressing mode
+ASR.W #0,D1	E041	ERROR: Invalid constant shift count
+ASR.W #0,A2		ERROR: Invalid addressing mode
+ASR.W D1,#0		ERROR: Invalid addressing mode
+ASR.W #$12,#0		ERROR: Invalid addressing mode
+ASR.W #-1,D1	EE41	ERROR: Invalid constant shift count
+ASR.W #-1,A2		ERROR: Invalid addressing mode
+ASR.W D1,#-1		ERROR: Invalid addressing mode
+ASR.W #$12,#-1		ERROR: Invalid addressing mode
+ASR.W #$12345678.L,D1	E041	ERROR: Invalid constant shift count
+ASR.W #$12345678.L,A2		ERROR: Invalid addressing mode
+ASR.W D1,#$12345678.L		ERROR: Invalid addressing mode
+ASR.W #$12,#$12345678.L		ERROR: Invalid addressing mode
+ASR.W #BK,D1	E041	ERROR: Invalid constant shift count
+ASR.W #BK,A2		ERROR: Invalid addressing mode
+ASR.W D1,#BK		ERROR: Invalid addressing mode
+ASR.W #$12,#BK		ERROR: Invalid addressing mode
+ASR.W #FW,D1	E041	ERROR: Invalid constant shift count
+ASR.W #FW,A2		ERROR: Invalid addressing mode
+ASR.W D1,#FW		ERROR: Invalid addressing mode
+ASR.W #$12,#FW		ERROR: Invalid addressing mode
+ASR.W #UNDEF,D1	EA41	ERROR: Undefined symbol
+ASR.W #UNDEF,A2		ERROR: Invalid addressing mode
+ASR.W D1,#UNDEF		ERROR: Invalid addressing mode
+ASR.W #$12,#UNDEF		ERROR: Invalid addressing mode
+ASR.W UNDEF,D1		ERROR: Invalid syntax
+ASR.W UNDEF,A2		ERROR: Invalid syntax
+ASR.W D1,UNDEF		ERROR: Invalid addressing mode
+ASR.W #$12,UNDEF		ERROR: Invalid addressing mode
+ASR.W D1,D2,D3		ERROR: Invalid syntax
+ASR.L		ERROR: Invalid syntax
+ASR.L D1		ERROR: Comma expected
+ASR.L A2		ERROR: Comma expected
+ASR.L SP		ERROR: Comma expected
+ASR.L (A3)	E0D3	ERROR: Invalid size code
+ASR.L (A4)+	E0DC	ERROR: Invalid size code
+ASR.L -(A5)	E0E5	ERROR: Invalid size code
+ASR.L $10(A6)	E0EE0010	ERROR: Invalid size code
+ASR.L -2(A0)	E0E8FFFE	ERROR: Invalid size code
+ASR.L $10(A6,D7.W)	E0F67010	ERROR: Invalid size code
+ASR.L $12(A0,A1.L)	E0F09812	ERROR: Invalid size code
+ASR.L (A2,D3)	E0F23000	ERROR: Invalid size code
+ASR.L $1234	E0F81234	ERROR: Invalid size code
+ASR.L $12345678	E0F912345678	ERROR: Invalid size code
+ASR.L $1234.L	E0F900001234	ERROR: Invalid size code
+ASR.L $1234.W	E0F81234	ERROR: Invalid size code
+ASR.L $8000	E0F900008000	ERROR: Invalid size code
+ASR.L BK	E0F81F00	ERROR: Invalid size code
+ASR.L FW	E0F900001F00	ERROR: Invalid size code
+ASR.L *+$10(PC)		ERROR: Comma expected
+ASR.L *(PC,D0.W)		ERROR: Comma expected
+ASR.L BK(PC)		ERROR: Comma expected
+ASR.L #1		ERROR: Comma expected
+ASR.L #8		ERROR: Comma expected
+ASR.L #9		ERROR: Comma expected
+ASR.L #0		ERROR: Comma expected
+ASR.L #-1		ERROR: Comma expected
+ASR.L #$80		ERROR: Comma expected
+ASR.L #$1234		ERROR: Comma expected
+ASR.L #$12345678		ERROR: Comma expected
+ASR.L #$12345678.L		ERROR: Comma expected
+ASR.L #BK		ERROR: Comma expected
+ASR.L #FW		ERROR: Comma expected
+ASR.L #UNDEF		ERROR: Comma expected
+ASR.L UNDEF	E0F90000557D	ERROR: Undefined symbol
+ASR.L SR		ERROR: Comma expected
+ASR.L CCR		ERROR: Comma expected
+ASR.L USP		ERROR: Comma expected
+ASR.L D1,D1	E2A1	-
+ASR.L D1,A2		ERROR: Invalid addressing mode
+ASR.L D1,(A3)		ERROR: Invalid addressing mode
+ASR.L D1,$10(A6)		ERROR: Invalid addressing mode
+ASR.L D1,$1234		ERROR: Invalid addressing mode
+ASR.L D1,FW		ERROR: Invalid addressing mode
+ASR.L D1,#1		ERROR: Invalid addressing mode
+ASR.L D1,#$1234		ERROR: Invalid addressing mode
+ASR.L D1,CCR		ERROR: Invalid addressing mode
+ASR.L D1,SR		ERROR: Invalid addressing mode
+ASR.L A2,D1		ERROR: Invalid addressing mode
+ASR.L A2,A2		ERROR: Invalid addressing mode
+ASR.L A2,(A3)		ERROR: Invalid addressing mode
+ASR.L A2,$10(A6)		ERROR: Invalid addressing mode
+ASR.L A2,$1234		ERROR: Invalid addressing mode
+ASR.L A2,FW		ERROR: Invalid addressing mode
+ASR.L A2,#1		ERROR: Invalid addressing mode
+ASR.L A2,#$1234		ERROR: Invalid addressing mode
+ASR.L A2,CCR		ERROR: Invalid addressing mode
+ASR.L A2,SR		ERROR: Invalid addressing mode
+ASR.L (A3),D1		ERROR: Invalid syntax
+ASR.L (A3),A2		ERROR: Invalid syntax
+ASR.L (A3),(A3)		ERROR: Invalid syntax
+ASR.L (A3),$10(A6)		ERROR: Invalid syntax
+ASR.L (A3),$1234		ERROR: Invalid syntax
+ASR.L (A3),FW		ERROR: Invalid syntax
+ASR.L (A3),#1		ERROR: Invalid syntax
+ASR.L (A3),#$1234		ERROR: Invalid syntax
+ASR.L (A3),CCR		ERROR: Invalid syntax
+ASR.L (A3),SR		ERROR: Invalid syntax
+ASR.L $10(A6),D1		ERROR: Invalid syntax
+ASR.L $10(A6),A2		ERROR: Invalid syntax
+ASR.L $10(A6),(A3)		ERROR: Invalid syntax
+ASR.L $10(A6),$10(A6)		ERROR: Invalid syntax
+ASR.L $10(A6),$1234		ERROR: Invalid syntax
+ASR.L $10(A6),FW		ERROR: Invalid syntax
+ASR.L $10(A6),#1		ERROR: Invalid syntax
+ASR.L $10(A6),#$1234		ERROR: Invalid syntax
+ASR.L $10(A6),CCR		ERROR: Invalid syntax
+ASR.L $10(A6),SR		ERROR: Invalid syntax
+ASR.L $1234,D1		ERROR: Invalid syntax
+ASR.L $1234,A2		ERROR: Invalid syntax
+ASR.L $1234,(A3)		ERROR: Invalid syntax
+ASR.L $1234,$10(A6)		ERROR: Invalid syntax
+ASR.L $1234,$1234		ERROR: Invalid syntax
+ASR.L $1234,FW		ERROR: Invalid syntax
+ASR.L $1234,#1		ERROR: Invalid syntax
+ASR.L $1234,#$1234		ERROR: Invalid syntax
+ASR.L $1234,CCR		ERROR: Invalid syntax
+ASR.L $1234,SR		ERROR: Invalid syntax
+ASR.L FW,D1		ERROR: Invalid syntax
+ASR.L FW,A2		ERROR: Invalid syntax
+ASR.L FW,(A3)		ERROR: Invalid syntax
+ASR.L FW,$10(A6)		ERROR: Invalid syntax
+ASR.L FW,$1234		ERROR: Invalid syntax
+ASR.L FW,FW		ERROR: Invalid syntax
+ASR.L FW,#1		ERROR: Invalid syntax
+ASR.L FW,#$1234		ERROR: Invalid syntax
+ASR.L FW,CCR		ERROR: Invalid syntax
+ASR.L FW,SR		ERROR: Invalid syntax
+ASR.L #1,D1	E281	-
+ASR.L #1,A2		ERROR: Invalid addressing mode
+ASR.L #1,(A3)		ERROR: Invalid addressing mode
+ASR.L #1,$10(A6)		ERROR: Invalid addressing mode
+ASR.L #1,$1234		ERROR: Invalid addressing mode
+ASR.L #1,FW		ERROR: Invalid addressing mode
+ASR.L #1,#1		ERROR: Invalid addressing mode
+ASR.L #1,#$1234		ERROR: Invalid addressing mode
+ASR.L #1,CCR		ERROR: Invalid addressing mode
+ASR.L #1,SR		ERROR: Invalid addressing mode
+ASR.L #$1234,D1	E881	ERROR: Invalid constant shift count
+ASR.L #$1234,A2		ERROR: Invalid addressing mode
+ASR.L #$1234,(A3)		ERROR: Invalid addressing mode
+ASR.L #$1234,$10(A6)		ERROR: Invalid addressing mode
+ASR.L #$1234,$1234		ERROR: Invalid addressing mode
+ASR.L #$1234,FW		ERROR: Invalid addressing mode
+ASR.L #$1234,#1		ERROR: Invalid addressing mode
+ASR.L #$1234,#$1234		ERROR: Invalid addressing mode
+ASR.L #$1234,CCR		ERROR: Invalid addressing mode
+ASR.L #$1234,SR		ERROR: Invalid addressing mode
+ASR.L CCR,D1		ERROR: Invalid addressing mode
+ASR.L CCR,A2		ERROR: Invalid addressing mode
+ASR.L CCR,(A3)		ERROR: Invalid addressing mode
+ASR.L CCR,$10(A6)		ERROR: Invalid addressing mode
+ASR.L CCR,$1234		ERROR: Invalid addressing mode
+ASR.L CCR,FW		ERROR: Invalid addressing mode
+ASR.L CCR,#1		ERROR: Invalid addressing mode
+ASR.L CCR,#$1234		ERROR: Invalid addressing mode
+ASR.L CCR,CCR		ERROR: Invalid addressing mode
+ASR.L CCR,SR		ERROR: Invalid addressing mode
+ASR.L SR,D1		ERROR: Invalid addressing mode
+ASR.L SR,A2		ERROR: Invalid addressing mode
+ASR.L SR,(A3)		ERROR: Invalid addressing mode
+ASR.L SR,$10(A6)		ERROR: Invalid addressing mode
+ASR.L SR,$1234		ERROR: Invalid addressing mode
+ASR.L SR,FW		ERROR: Invalid addressing mode
+ASR.L SR,#1		ERROR: Invalid addressing mode
+ASR.L SR,#$1234		ERROR: Invalid addressing mode
+ASR.L SR,CCR		ERROR: Invalid addressing mode
+ASR.L SR,SR		ERROR: Invalid addressing mode
+ASR.L SP,D1		ERROR: Invalid addressing mode
+ASR.L SP,A2		ERROR: Invalid addressing mode
+ASR.L D1,SP		ERROR: Invalid addressing mode
+ASR.L #$12,SP		ERROR: Invalid addressing mode
+ASR.L (A4)+,D1		ERROR: Invalid syntax
+ASR.L (A4)+,A2		ERROR: Invalid syntax
+ASR.L D1,(A4)+		ERROR: Invalid addressing mode
+ASR.L #$12,(A4)+		ERROR: Invalid addressing mode
+ASR.L -(A5),D1		ERROR: Invalid syntax
+ASR.L -(A5),A2		ERROR: Invalid syntax
+ASR.L D1,-(A5)		ERROR: Invalid addressing mode
+ASR.L #$12,-(A5)		ERROR: Invalid addressing mode
+ASR.L -2(A0),D1		ERROR: Invalid syntax
+ASR.L -2(A0),A2		ERROR: Invalid syntax
+ASR.L D1,-2(A0)		ERROR: Invalid addressing mode
+ASR.L #$12,-2(A0)		ERROR: Invalid addressing mode
+ASR.L $10(A6,D7.W),D1		ERROR: Invalid syntax
+ASR.L $10(A6,D7.W),A2		ERROR: Invalid syntax
+ASR.L D1,$10(A6,D7.W)		ERROR: Invalid addressing mode
+ASR.L #$12,$10(A6,D7.W)		ERROR: Invalid addressing mode
+ASR.L $12(A0,A1.L),D1		ERROR: Invalid syntax
+ASR.L $12(A0,A1.L),A2		ERROR: Invalid syntax
+ASR.L D1,$12(A0,A1.L)		ERROR: Invalid addressing mode
+ASR.L #$12,$12(A0,A1.L)		ERROR: Invalid addressing mode
+ASR.L (A2,D3),D1		ERROR: Invalid syntax
+ASR.L (A2,D3),A2		ERROR: Invalid syntax
+ASR.L D1,(A2,D3)		ERROR: Invalid addressing mode
+ASR.L #$12,(A2,D3)		ERROR: Invalid addressing mode
+ASR.L $12345678,D1		ERROR: Invalid syntax
+ASR.L $12345678,A2		ERROR: Invalid syntax
+ASR.L D1,$12345678		ERROR: Invalid addressing mode
+ASR.L #$12,$12345678		ERROR: Invalid addressing mode
+ASR.L $1234.L,D1		ERROR: Invalid syntax
+ASR.L $1234.L,A2		ERROR: Invalid syntax
+ASR.L D1,$1234.L		ERROR: Invalid addressing mode
+ASR.L #$12,$1234.L		ERROR: Invalid addressing mode
+ASR.L $1234.W,D1		ERROR: Invalid syntax
+ASR.L $1234.W,A2		ERROR: Invalid syntax
+ASR.L D1,$1234.W		ERROR: Invalid addressing mode
+ASR.L #$12,$1234.W		ERROR: Invalid addressing mode
+ASR.L $8000,D1		ERROR: Invalid syntax
+ASR.L $8000,A2		ERROR: Invalid syntax
+ASR.L D1,$8000		ERROR: Invalid addressing mode
+ASR.L #$12,$8000		ERROR: Invalid addressing mode
+ASR.L BK,D1		ERROR: Invalid syntax
+ASR.L BK,A2		ERROR: Invalid syntax
+ASR.L D1,BK		ERROR: Invalid addressing mode
+ASR.L #$12,BK		ERROR: Invalid addressing mode
+ASR.L *+$10(PC),D1		ERROR: Invalid addressing mode
+ASR.L *+$10(PC),A2		ERROR: Invalid addressing mode
+ASR.L D1,*+$10(PC)		ERROR: Invalid addressing mode
+ASR.L #$12,*+$10(PC)		ERROR: Invalid addressing mode
+ASR.L *(PC,D0.W),D1		ERROR: Invalid addressing mode
+ASR.L *(PC,D0.W),A2		ERROR: Invalid addressing mode
+ASR.L D1,*(PC,D0.W)		ERROR: Invalid addressing mode
+ASR.L #$12,*(PC,D0.W)		ERROR: Invalid addressing mode
+ASR.L BK(PC),D1		ERROR: Invalid addressing mode
+ASR.L BK(PC),A2		ERROR: Invalid addressing mode
+ASR.L D1,BK(PC)		ERROR: Invalid addressing mode
+ASR.L #$12,BK(PC)		ERROR: Invalid addressing mode
+ASR.L #8,D1	E081	-
+ASR.L #8,A2		ERROR: Invalid addressing mode
+ASR.L D1,#8		ERROR: Invalid addressing mode
+ASR.L #$12,#8		ERROR: Invalid addressing mode
+ASR.L #9,D1	E281	ERROR: Invalid constant shift count
+ASR.L #9,A2		ERROR: Invalid addressing mode
+ASR.L D1,#9		ERROR: Invalid addressing mode
+ASR.L #$12,#9		ERROR: Invalid addressing mode
+ASR.L #0,D1	E081	ERROR: Invalid constant shift count
+ASR.L #0,A2		ERROR: Invalid addressing mode
+ASR.L D1,#0		ERROR: Invalid addressing mode
+ASR.L #$12,#0		ERROR: Invalid addressing mode
+ASR.L #-1,D1	EE81	ERROR: Invalid constant shift count
+ASR.L #-1,A2		ERROR: Invalid addressing mode
+ASR.L D1,#-1		ERROR: Invalid addressing mode
+ASR.L #$12,#-1		ERROR: Invalid addressing mode
+ASR.L #$80,D1	E081	ERROR: Invalid constant shift count
+ASR.L #$80,A2		ERROR: Invalid addressing mode
+ASR.L D1,#$80		ERROR: Invalid addressing mode
+ASR.L #$12,#$80		ERROR: Invalid addressing mode
+ASR.L #$12345678,D1	E081	ERROR: Invalid constant shift count
+ASR.L #$12345678,A2		ERROR: Invalid addressing mode
+ASR.L D1,#$12345678		ERROR: Invalid addressing mode
+ASR.L #$12,#$12345678		ERROR: Invalid addressing mode
+ASR.L #$12345678.L,D1	E081	ERROR: Invalid constant shift count
+ASR.L #$12345678.L,A2		ERROR: Invalid addressing mode
+ASR.L D1,#$12345678.L		ERROR: Invalid addressing mode
+ASR.L #$12,#$12345678.L		ERROR: Invalid addressing mode
+ASR.L #BK,D1	E081	ERROR: Invalid constant shift count
+ASR.L #BK,A2		ERROR: Invalid addressing mode
+ASR.L D1,#BK		ERROR: Invalid addressing mode
+ASR.L #$12,#BK		ERROR: Invalid addressing mode
+ASR.L #FW,D1	E081	ERROR: Invalid constant shift count
+ASR.L #FW,A2		ERROR: Invalid addressing mode
+ASR.L D1,#FW		ERROR: Invalid addressing mode
+ASR.L #$12,#FW		ERROR: Invalid addressing mode
+ASR.L #UNDEF,D1	EA81	ERROR: Undefined symbol
+ASR.L #UNDEF,A2		ERROR: Invalid addressing mode
+ASR.L D1,#UNDEF		ERROR: Invalid addressing mode
+ASR.L #$12,#UNDEF		ERROR: Invalid addressing mode
+ASR.L UNDEF,D1		ERROR: Invalid syntax
+ASR.L UNDEF,A2		ERROR: Invalid syntax
+ASR.L D1,UNDEF		ERROR: Invalid addressing mode
+ASR.L #$12,UNDEF		ERROR: Invalid addressing mode
+ASR.L USP,D1		ERROR: Invalid addressing mode
+ASR.L USP,A2		ERROR: Invalid addressing mode
+ASR.L D1,USP		ERROR: Invalid addressing mode
+ASR.L #$12,USP		ERROR: Invalid addressing mode
+ASR.L D1,D2,D3		ERROR: Invalid syntax
+ASR.S		ERROR: Invalid syntax
+ASR.S D1		ERROR: Comma expected
+ASR.S A2		ERROR: Comma expected
+ASR.S SP		ERROR: Comma expected
+ASR.S (A3)	E0D3	ERROR: Invalid size code
+ASR.S (A4)+	E0DC	ERROR: Invalid size code
+ASR.S -(A5)	E0E5	ERROR: Invalid size code
+ASR.S $10(A6)	E0EE0010	ERROR: Invalid size code
+ASR.S -2(A0)	E0E8FFFE	ERROR: Invalid size code
+ASR.S $10(A6,D7.W)	E0F67010	ERROR: Invalid size code
+ASR.S $12(A0,A1.L)	E0F09812	ERROR: Invalid size code
+ASR.S (A2,D3)	E0F23000	ERROR: Invalid size code
+ASR.S $1234	E0F81234	ERROR: Invalid size code
+ASR.S $12345678	E0F912345678	ERROR: Invalid size code
+ASR.S $1234.L	E0F900001234	ERROR: Invalid size code
+ASR.S $1234.W	E0F81234	ERROR: Invalid size code
+ASR.S $8000	E0F900008000	ERROR: Invalid size code
+ASR.S BK	E0F81F00	ERROR: Invalid size code
+ASR.S FW	E0F900001F00	ERROR: Invalid size code
+ASR.S *+$10(PC)		ERROR: Comma expected
+ASR.S *(PC,D0.W)		ERROR: Comma expected
+ASR.S BK(PC)		ERROR: Comma expected
+ASR.S #1		ERROR: Comma expected
+ASR.S #8		ERROR: Comma expected
+ASR.S #9		ERROR: Comma expected
+ASR.S #0		ERROR: Comma expected
+ASR.S #-1		ERROR: Comma expected
+ASR.S #$80		ERROR: Comma expected
+ASR.S #$1234		ERROR: Comma expected
+ASR.S #$12345678		ERROR: Comma expected
+ASR.S #$12345678.L		ERROR: Comma expected
+ASR.S #BK		ERROR: Comma expected
+ASR.S #FW		ERROR: Comma expected
+ASR.S #UNDEF		ERROR: Comma expected
+ASR.S UNDEF	E0F90000557D	ERROR: Undefined symbol
+ASR.S SR		ERROR: Comma expected
+ASR.S CCR		ERROR: Comma expected
+ASR.S USP		ERROR: Comma expected
+ASR.S D1,D1	E261	ERROR: Invalid size code
+ASR.S D1,A2		ERROR: Invalid addressing mode
+ASR.S D1,(A3)		ERROR: Invalid addressing mode
+ASR.S D1,$10(A6)		ERROR: Invalid addressing mode
+ASR.S D1,$1234		ERROR: Invalid addressing mode
+ASR.S D1,FW		ERROR: Invalid addressing mode
+ASR.S D1,#1		ERROR: Invalid addressing mode
+ASR.S D1,#$1234		ERROR: Invalid addressing mode
+ASR.S D1,CCR		ERROR: Invalid addressing mode
+ASR.S D1,SR		ERROR: Invalid addressing mode
+ASR.S A2,D1		ERROR: Invalid addressing mode
+ASR.S A2,A2		ERROR: Invalid addressing mode
+ASR.S A2,(A3)		ERROR: Invalid addressing mode
+ASR.S A2,$10(A6)		ERROR: Invalid addressing mode
+ASR.S A2,$1234		ERROR: Invalid addressing mode
+ASR.S A2,FW		ERROR: Invalid addressing mode
+ASR.S A2,#1		ERROR: Invalid addressing mode
+ASR.S A2,#$1234		ERROR: Invalid addressing mode
+ASR.S A2,CCR		ERROR: Invalid addressing mode
+ASR.S A2,SR		ERROR: Invalid addressing mode
+ASR.S (A3),D1		ERROR: Invalid syntax
+ASR.S (A3),A2		ERROR: Invalid syntax
+ASR.S (A3),(A3)		ERROR: Invalid syntax
+ASR.S (A3),$10(A6)		ERROR: Invalid syntax
+ASR.S (A3),$1234		ERROR: Invalid syntax
+ASR.S (A3),FW		ERROR: Invalid syntax
+ASR.S (A3),#1		ERROR: Invalid syntax
+ASR.S (A3),#$1234		ERROR: Invalid syntax
+ASR.S (A3),CCR		ERROR: Invalid syntax
+ASR.S (A3),SR		ERROR: Invalid syntax
+ASR.S $10(A6),D1		ERROR: Invalid syntax
+ASR.S $10(A6),A2		ERROR: Invalid syntax
+ASR.S $10(A6),(A3)		ERROR: Invalid syntax
+ASR.S $10(A6),$10(A6)		ERROR: Invalid syntax
+ASR.S $10(A6),$1234		ERROR: Invalid syntax
+ASR.S $10(A6),FW		ERROR: Invalid syntax
+ASR.S $10(A6),#1		ERROR: Invalid syntax
+ASR.S $10(A6),#$1234		ERROR: Invalid syntax
+ASR.S $10(A6),CCR		ERROR: Invalid syntax
+ASR.S $10(A6),SR		ERROR: Invalid syntax
+ASR.S $1234,D1		ERROR: Invalid syntax
+ASR.S $1234,A2		ERROR: Invalid syntax
+ASR.S $1234,(A3)		ERROR: Invalid syntax
+ASR.S $1234,$10(A6)		ERROR: Invalid syntax
+ASR.S $1234,$1234		ERROR: Invalid syntax
+ASR.S $1234,FW		ERROR: Invalid syntax
+ASR.S $1234,#1		ERROR: Invalid syntax
+ASR.S $1234,#$1234		ERROR: Invalid syntax
+ASR.S $1234,CCR		ERROR: Invalid syntax
+ASR.S $1234,SR		ERROR: Invalid syntax
+ASR.S FW,D1		ERROR: Invalid syntax
+ASR.S FW,A2		ERROR: Invalid syntax
+ASR.S FW,(A3)		ERROR: Invalid syntax
+ASR.S FW,$10(A6)		ERROR: Invalid syntax
+ASR.S FW,$1234		ERROR: Invalid syntax
+ASR.S FW,FW		ERROR: Invalid syntax
+ASR.S FW,#1		ERROR: Invalid syntax
+ASR.S FW,#$1234		ERROR: Invalid syntax
+ASR.S FW,CCR		ERROR: Invalid syntax
+ASR.S FW,SR		ERROR: Invalid syntax
+ASR.S #1,D1	E241	ERROR: Invalid size code
+ASR.S #1,A2		ERROR: Invalid addressing mode
+ASR.S #1,(A3)		ERROR: Invalid addressing mode
+ASR.S #1,$10(A6)		ERROR: Invalid addressing mode
+ASR.S #1,$1234		ERROR: Invalid addressing mode
+ASR.S #1,FW		ERROR: Invalid addressing mode
+ASR.S #1,#1		ERROR: Invalid addressing mode
+ASR.S #1,#$1234		ERROR: Invalid addressing mode
+ASR.S #1,CCR		ERROR: Invalid addressing mode
+ASR.S #1,SR		ERROR: Invalid addressing mode
+ASR.S #$1234,D1	E841	ERROR: Invalid size code
+ASR.S #$1234,A2		ERROR: Invalid addressing mode
+ASR.S #$1234,(A3)		ERROR: Invalid addressing mode
+ASR.S #$1234,$10(A6)		ERROR: Invalid addressing mode
+ASR.S #$1234,$1234		ERROR: Invalid addressing mode
+ASR.S #$1234,FW		ERROR: Invalid addressing mode
+ASR.S #$1234,#1		ERROR: Invalid addressing mode
+ASR.S #$1234,#$1234		ERROR: Invalid addressing mode
+ASR.S #$1234,CCR		ERROR: Invalid addressing mode
+ASR.S #$1234,SR		ERROR: Invalid addressing mode
+ASR.S CCR,D1		ERROR: Invalid addressing mode
+ASR.S CCR,A2		ERROR: Invalid addressing mode
+ASR.S CCR,(A3)		ERROR: Invalid addressing mode
+ASR.S CCR,$10(A6)		ERROR: Invalid addressing mode
+ASR.S CCR,$1234		ERROR: Invalid addressing mode
+ASR.S CCR,FW		ERROR: Invalid addressing mode
+ASR.S CCR,#1		ERROR: Invalid addressing mode
+ASR.S CCR,#$1234		ERROR: Invalid addressing mode
+ASR.S CCR,CCR		ERROR: Invalid addressing mode
+ASR.S CCR,SR		ERROR: Invalid addressing mode
+ASR.S SR,D1		ERROR: Invalid addressing mode
+ASR.S SR,A2		ERROR: Invalid addressing mode
+ASR.S SR,(A3)		ERROR: Invalid addressing mode
+ASR.S SR,$10(A6)		ERROR: Invalid addressing mode
+ASR.S SR,$1234		ERROR: Invalid addressing mode
+ASR.S SR,FW		ERROR: Invalid addressing mode
+ASR.S SR,#1		ERROR: Invalid addressing mode
+ASR.S SR,#$1234		ERROR: Invalid addressing mode
+ASR.S SR,CCR		ERROR: Invalid addressing mode
+ASR.S SR,SR		ERROR: Invalid addressing mode
+ASR.S SP,D1		ERROR: Invalid addressing mode
+ASR.S SP,A2		ERROR: Invalid addressing mode
+ASR.S D1,SP		ERROR: Invalid addressing mode
+ASR.S #$12,SP		ERROR: Invalid addressing mode
+ASR.S (A4)+,D1		ERROR: Invalid syntax
+ASR.S (A4)+,A2		ERROR: Invalid syntax
+ASR.S D1,(A4)+		ERROR: Invalid addressing mode
+ASR.S #$12,(A4)+		ERROR: Invalid addressing mode
+ASR.S -(A5),D1		ERROR: Invalid syntax
+ASR.S -(A5),A2		ERROR: Invalid syntax
+ASR.S D1,-(A5)		ERROR: Invalid addressing mode
+ASR.S #$12,-(A5)		ERROR: Invalid addressing mode
+ASR.S -2(A0),D1		ERROR: Invalid syntax
+ASR.S -2(A0),A2		ERROR: Invalid syntax
+ASR.S D1,-2(A0)		ERROR: Invalid addressing mode
+ASR.S #$12,-2(A0)		ERROR: Invalid addressing mode
+ASR.S $10(A6,D7.W),D1		ERROR: Invalid syntax
+ASR.S $10(A6,D7.W),A2		ERROR: Invalid syntax
+ASR.S D1,$10(A6,D7.W)		ERROR: Invalid addressing mode
+ASR.S #$12,$10(A6,D7.W)		ERROR: Invalid addressing mode
+ASR.S $12(A0,A1.L),D1		ERROR: Invalid syntax
+ASR.S $12(A0,A1.L),A2		ERROR: Invalid syntax
+ASR.S D1,$12(A0,A1.L)		ERROR: Invalid addressing mode
+ASR.S #$12,$12(A0,A1.L)		ERROR: Invalid addressing mode
+ASR.S (A2,D3),D1		ERROR: Invalid syntax
+ASR.S (A2,D3),A2		ERROR: Invalid syntax
+ASR.S D1,(A2,D3)		ERROR: Invalid addressing mode
+ASR.S #$12,(A2,D3)		ERROR: Invalid addressing mode
+ASR.S $12345678,D1		ERROR: Invalid syntax
+ASR.S $12345678,A2		ERROR: Invalid syntax
+ASR.S D1,$12345678		ERROR: Invalid addressing mode
+ASR.S #$12,$12345678		ERROR: Invalid addressing mode
+ASR.S $1234.L,D1		ERROR: Invalid syntax
+ASR.S $1234.L,A2		ERROR: Invalid syntax
+ASR.S D1,$1234.L		ERROR: Invalid addressing mode
+ASR.S #$12,$1234.L		ERROR: Invalid addressing mode
+ASR.S $1234.W,D1		ERROR: Invalid syntax
+ASR.S $1234.W,A2		ERROR: Invalid syntax
+ASR.S D1,$1234.W		ERROR: Invalid addressing mode
+ASR.S #$12,$1234.W		ERROR: Invalid addressing mode
+ASR.S $8000,D1		ERROR: Invalid syntax
+ASR.S $8000,A2		ERROR: Invalid syntax
+ASR.S D1,$8000		ERROR: Invalid addressing mode
+ASR.S #$12,$8000		ERROR: Invalid addressing mode
+ASR.S BK,D1		ERROR: Invalid syntax
+ASR.S BK,A2		ERROR: Invalid syntax
+ASR.S D1,BK		ERROR: Invalid addressing mode
+ASR.S #$12,BK		ERROR: Invalid addressing mode
+ASR.S *+$10(PC),D1		ERROR: Invalid addressing mode
+ASR.S *+$10(PC),A2		ERROR: Invalid addressing mode
+ASR.S D1,*+$10(PC)		ERROR: Invalid addressing mode
+ASR.S #$12,*+$10(PC)		ERROR: Invalid addressing mode
+ASR.S *(PC,D0.W),D1		ERROR: Invalid addressing mode
+ASR.S *(PC,D0.W),A2		ERROR: Invalid addressing mode
+ASR.S D1,*(PC,D0.W)		ERROR: Invalid addressing mode
+ASR.S #$12,*(PC,D0.W)		ERROR: Invalid addressing mode
+ASR.S BK(PC),D1		ERROR: Invalid addressing mode
+ASR.S BK(PC),A2		ERROR: Invalid addressing mode
+ASR.S D1,BK(PC)		ERROR: Invalid addressing mode
+ASR.S #$12,BK(PC)		ERROR: Invalid addressing mode
+ASR.S #8,D1	E041	ERROR: Invalid size code
+ASR.S #8,A2		ERROR: Invalid addressing mode
+ASR.S D1,#8		ERROR: Invalid addressing mode
+ASR.S #$12,#8		ERROR: Invalid addressing mode
+ASR.S #9,D1	E241	ERROR: Invalid size code
+ASR.S #9,A2		ERROR: Invalid addressing mode
+ASR.S D1,#9		ERROR: Invalid addressing mode
+ASR.S #$12,#9		ERROR: Invalid addressing mode
+ASR.S #0,D1	E041	ERROR: Invalid size code
+ASR.S #0,A2		ERROR: Invalid addressing mode
+ASR.S D1,#0		ERROR: Invalid addressing mode
+ASR.S #$12,#0		ERROR: Invalid addressing mode
+ASR.S #-1,D1	EE41	ERROR: Invalid size code
+ASR.S #-1,A2		ERROR: Invalid addressing mode
+ASR.S D1,#-1		ERROR: Invalid addressing mode
+ASR.S #$12,#-1		ERROR: Invalid addressing mode
+ASR.S #$80,D1	E041	ERROR: Invalid size code
+ASR.S #$80,A2		ERROR: Invalid addressing mode
+ASR.S D1,#$80		ERROR: Invalid addressing mode
+ASR.S #$12,#$80		ERROR: Invalid addressing mode
+ASR.S #$12345678,D1	E041	ERROR: Invalid size code
+ASR.S #$12345678,A2		ERROR: Invalid addressing mode
+ASR.S D1,#$12345678		ERROR: Invalid addressing mode
+ASR.S #$12,#$12345678		ERROR: Invalid addressing mode
+ASR.S #$12345678.L,D1	E041	ERROR: Invalid size code
+ASR.S #$12345678.L,A2		ERROR: Invalid addressing mode
+ASR.S D1,#$12345678.L		ERROR: Invalid addressing mode
+ASR.S #$12,#$12345678.L		ERROR: Invalid addressing mode
+ASR.S #BK,D1	E041	ERROR: Invalid size code
+ASR.S #BK,A2		ERROR: Invalid addressing mode
+ASR.S D1,#BK		ERROR: Invalid addressing mode
+ASR.S #$12,#BK		ERROR: Invalid addressing mode
+ASR.S #FW,D1	E041	ERROR: Invalid size code
+ASR.S #FW,A2		ERROR: Invalid addressing mode
+ASR.S D1,#FW		ERROR: Invalid addressing mode
+ASR.S #$12,#FW		ERROR: Invalid addressing mode
+ASR.S #UNDEF,D1	EA41	ERROR: Undefined symbol
+ASR.S #UNDEF,A2		ERROR: Invalid addressing mode
+ASR.S D1,#UNDEF		ERROR: Invalid addressing mode
+ASR.S #$12,#UNDEF		ERROR: Invalid addressing mode
+ASR.S UNDEF,D1		ERROR: Invalid syntax
+ASR.S UNDEF,A2		ERROR: Invalid syntax
+ASR.S D1,UNDEF		ERROR: Invalid addressing mode
+ASR.S #$12,UNDEF		ERROR: Invalid addressing mode
+ASR.S USP,D1		ERROR: Invalid addressing mode
+ASR.S USP,A2		ERROR: Invalid addressing mode
+ASR.S D1,USP		ERROR: Invalid addressing mode
+ASR.S #$12,USP		ERROR: Invalid addressing mode
+ASR.S D1,D2,D3		ERROR: Invalid syntax
+ASR.X D1,D2	E262	ERROR: Invalid size code
+ASR.X #1		ERROR: Comma expected

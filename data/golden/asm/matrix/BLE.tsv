@@ -1,0 +1,82 @@
+BLE		ERROR: Invalid syntax
+BLE *+2	6F000000	-
+BLE *+4	6F02	-
+BLE *+$80	6F7E	-
+BLE *+$82	6F000080	-
+BLE *-$7E	6F80	-
+BLE *-$80	6F00FF7E	-
+BLE *+$8000	6F007FFE	-
+BLE *	6FFE	-
+BLE BK	6F000EFE	-
+BLE FW	6F000EFE	-
+BLE $1000	6FFE	-
+BLE $12345678	6F004676	ERROR: Branch instruction displacement is out of range or invalid
+BLE D1		ERROR: Invalid addressing mode
+BLE (A0)		ERROR: Invalid addressing mode
+BLE #4		ERROR: Invalid addressing mode
+BLE.B		ERROR: Invalid syntax
+BLE.B *+2	6F00	ERROR: Branch instruction displacement is out of range or invalid
+BLE.B *+4	6F02	-
+BLE.B *+$80	6F7E	-
+BLE.B *+$82	6F80	ERROR: Branch instruction displacement is out of range or invalid
+BLE.B *-$7E	6F80	-
+BLE.B *-$80	6F7E	ERROR: Branch instruction displacement is out of range or invalid
+BLE.B *+$8000	6FFE	ERROR: Branch instruction displacement is out of range or invalid
+BLE.B *	6FFE	-
+BLE.B BK	6FFE	ERROR: Branch instruction displacement is out of range or invalid
+BLE.B FW	6FFE	ERROR: Branch instruction displacement is out of range or invalid
+BLE.B $1000	6FFE	-
+BLE.B $12345678	6F76	ERROR: Branch instruction displacement is out of range or invalid
+BLE.B D1		ERROR: Invalid addressing mode
+BLE.B (A0)		ERROR: Invalid addressing mode
+BLE.B #4		ERROR: Invalid addressing mode
+BLE.W		ERROR: Invalid syntax
+BLE.W *+2	6F000000	-
+BLE.W *+4	6F000002	-
+BLE.W *+$80	6F00007E	-
+BLE.W *+$82	6F000080	-
+BLE.W *-$7E	6F00FF80	-
+BLE.W *-$80	6F00FF7E	-
+BLE.W *+$8000	6F007FFE	-
+BLE.W *	6F00FFFE	-
+BLE.W BK	6F000EFE	-
+BLE.W FW	6F000EFE	-
+BLE.W $1000	6F00FFFE	-
+BLE.W $12345678	6F004676	ERROR: Branch instruction displacement is out of range or invalid
+BLE.W D1		ERROR: Invalid addressing mode
+BLE.W (A0)		ERROR: Invalid addressing mode
+BLE.W #4		ERROR: Invalid addressing mode
+BLE.L		ERROR: Invalid syntax
+BLE.L *+2	6F000000	-
+BLE.L *+4	6F000002	-
+BLE.L *+$80	6F00007E	-
+BLE.L *+$82	6F000080	-
+BLE.L *-$7E	6F00FF80	-
+BLE.L *-$80	6F00FF7E	-
+BLE.L *+$8000	6F007FFE	-
+BLE.L *	6F00FFFE	-
+BLE.L BK	6F000EFE	-
+BLE.L FW	6F000EFE	-
+BLE.L $1000	6F00FFFE	-
+BLE.L $12345678	6F004676	ERROR: Branch instruction displacement is out of range or invalid
+BLE.L D1		ERROR: Invalid addressing mode
+BLE.L (A0)		ERROR: Invalid addressing mode
+BLE.L #4		ERROR: Invalid addressing mode
+BLE.S		ERROR: Invalid syntax
+BLE.S *+2	6F00	ERROR: Branch instruction displacement is out of range or invalid
+BLE.S *+4	6F02	-
+BLE.S *+$80	6F7E	-
+BLE.S *+$82	6F80	ERROR: Branch instruction displacement is out of range or invalid
+BLE.S *-$7E	6F80	-
+BLE.S *-$80	6F7E	ERROR: Branch instruction displacement is out of range or invalid
+BLE.S *+$8000	6FFE	ERROR: Branch instruction displacement is out of range or invalid
+BLE.S *	6FFE	-
+BLE.S BK	6FFE	ERROR: Branch instruction displacement is out of range or invalid
+BLE.S FW	6FFE	ERROR: Branch instruction displacement is out of range or invalid
+BLE.S $1000	6FFE	-
+BLE.S $12345678	6F76	ERROR: Branch instruction displacement is out of range or invalid
+BLE.S D1		ERROR: Invalid addressing mode
+BLE.S (A0)		ERROR: Invalid addressing mode
+BLE.S #4		ERROR: Invalid addressing mode
+BLE.X D1,D2		ERROR: Invalid addressing mode
+BLE.X #1		ERROR: Invalid addressing mode

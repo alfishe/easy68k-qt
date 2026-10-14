@@ -1,0 +1,1621 @@
+SBCD		ERROR: Invalid syntax
+SBCD D1		ERROR: Comma expected
+SBCD A2		ERROR: Comma expected
+SBCD SP		ERROR: Comma expected
+SBCD (A3)		ERROR: Comma expected
+SBCD (A4)+		ERROR: Comma expected
+SBCD -(A5)		ERROR: Comma expected
+SBCD $10(A6)		ERROR: Comma expected
+SBCD -2(A0)		ERROR: Comma expected
+SBCD $10(A6,D7.W)		ERROR: Comma expected
+SBCD $12(A0,A1.L)		ERROR: Comma expected
+SBCD (A2,D3)		ERROR: Comma expected
+SBCD $1234		ERROR: Comma expected
+SBCD $12345678		ERROR: Comma expected
+SBCD $1234.L		ERROR: Comma expected
+SBCD $1234.W		ERROR: Comma expected
+SBCD $8000		ERROR: Comma expected
+SBCD BK		ERROR: Comma expected
+SBCD FW		ERROR: Comma expected
+SBCD *+$10(PC)		ERROR: Comma expected
+SBCD *(PC,D0.W)		ERROR: Comma expected
+SBCD BK(PC)		ERROR: Comma expected
+SBCD #1		ERROR: Comma expected
+SBCD #8		ERROR: Comma expected
+SBCD #9		ERROR: Comma expected
+SBCD #0		ERROR: Comma expected
+SBCD #-1		ERROR: Comma expected
+SBCD #$80		ERROR: Comma expected
+SBCD #$1234		ERROR: Comma expected
+SBCD #$12345678		ERROR: Comma expected
+SBCD #$12345678.L		ERROR: Comma expected
+SBCD #BK		ERROR: Comma expected
+SBCD #FW		ERROR: Comma expected
+SBCD #UNDEF		ERROR: Comma expected
+SBCD UNDEF		ERROR: Comma expected
+SBCD SR		ERROR: Comma expected
+SBCD CCR		ERROR: Comma expected
+SBCD USP		ERROR: Comma expected
+SBCD D1,D1	8301	-
+SBCD D1,A2		ERROR: Invalid addressing mode
+SBCD D1,(A3)		ERROR: Invalid addressing mode
+SBCD D1,(A4)+		ERROR: Invalid addressing mode
+SBCD D1,-(A5)		ERROR: Invalid addressing mode
+SBCD D1,$10(A6)		ERROR: Invalid addressing mode
+SBCD D1,$10(A6,D7.W)		ERROR: Invalid addressing mode
+SBCD D1,$1234		ERROR: Invalid addressing mode
+SBCD D1,$12345678		ERROR: Invalid addressing mode
+SBCD D1,FW		ERROR: Invalid addressing mode
+SBCD D1,*+$10(PC)		ERROR: Invalid addressing mode
+SBCD D1,#1		ERROR: Invalid addressing mode
+SBCD D1,#$80		ERROR: Invalid addressing mode
+SBCD D1,#$1234		ERROR: Invalid addressing mode
+SBCD D1,#$12345678		ERROR: Invalid addressing mode
+SBCD D1,SR		ERROR: Invalid addressing mode
+SBCD D1,CCR		ERROR: Invalid addressing mode
+SBCD D1,USP		ERROR: Invalid addressing mode
+SBCD A2,D1		ERROR: Invalid addressing mode
+SBCD A2,A2		ERROR: Invalid addressing mode
+SBCD A2,(A3)		ERROR: Invalid addressing mode
+SBCD A2,(A4)+		ERROR: Invalid addressing mode
+SBCD A2,-(A5)		ERROR: Invalid addressing mode
+SBCD A2,$10(A6)		ERROR: Invalid addressing mode
+SBCD A2,$10(A6,D7.W)		ERROR: Invalid addressing mode
+SBCD A2,$1234		ERROR: Invalid addressing mode
+SBCD A2,$12345678		ERROR: Invalid addressing mode
+SBCD A2,FW		ERROR: Invalid addressing mode
+SBCD A2,*+$10(PC)		ERROR: Invalid addressing mode
+SBCD A2,#1		ERROR: Invalid addressing mode
+SBCD A2,#$80		ERROR: Invalid addressing mode
+SBCD A2,#$1234		ERROR: Invalid addressing mode
+SBCD A2,#$12345678		ERROR: Invalid addressing mode
+SBCD A2,SR		ERROR: Invalid addressing mode
+SBCD A2,CCR		ERROR: Invalid addressing mode
+SBCD A2,USP		ERROR: Invalid addressing mode
+SBCD (A3),D1		ERROR: Invalid addressing mode
+SBCD (A3),A2		ERROR: Invalid addressing mode
+SBCD (A3),(A3)		ERROR: Invalid addressing mode
+SBCD (A3),(A4)+		ERROR: Invalid addressing mode
+SBCD (A3),-(A5)		ERROR: Invalid addressing mode
+SBCD (A3),$10(A6)		ERROR: Invalid addressing mode
+SBCD (A3),$10(A6,D7.W)		ERROR: Invalid addressing mode
+SBCD (A3),$1234		ERROR: Invalid addressing mode
+SBCD (A3),$12345678		ERROR: Invalid addressing mode
+SBCD (A3),FW		ERROR: Invalid addressing mode
+SBCD (A3),*+$10(PC)		ERROR: Invalid addressing mode
+SBCD (A3),#1		ERROR: Invalid addressing mode
+SBCD (A3),#$80		ERROR: Invalid addressing mode
+SBCD (A3),#$1234		ERROR: Invalid addressing mode
+SBCD (A3),#$12345678		ERROR: Invalid addressing mode
+SBCD (A3),SR		ERROR: Invalid addressing mode
+SBCD (A3),CCR		ERROR: Invalid addressing mode
+SBCD (A3),USP		ERROR: Invalid addressing mode
+SBCD (A4)+,D1		ERROR: Invalid addressing mode
+SBCD (A4)+,A2		ERROR: Invalid addressing mode
+SBCD (A4)+,(A3)		ERROR: Invalid addressing mode
+SBCD (A4)+,(A4)+		ERROR: Invalid addressing mode
+SBCD (A4)+,-(A5)		ERROR: Invalid addressing mode
+SBCD (A4)+,$10(A6)		ERROR: Invalid addressing mode
+SBCD (A4)+,$10(A6,D7.W)		ERROR: Invalid addressing mode
+SBCD (A4)+,$1234		ERROR: Invalid addressing mode
+SBCD (A4)+,$12345678		ERROR: Invalid addressing mode
+SBCD (A4)+,FW		ERROR: Invalid addressing mode
+SBCD (A4)+,*+$10(PC)		ERROR: Invalid addressing mode
+SBCD (A4)+,#1		ERROR: Invalid addressing mode
+SBCD (A4)+,#$80		ERROR: Invalid addressing mode
+SBCD (A4)+,#$1234		ERROR: Invalid addressing mode
+SBCD (A4)+,#$12345678		ERROR: Invalid addressing mode
+SBCD (A4)+,SR		ERROR: Invalid addressing mode
+SBCD (A4)+,CCR		ERROR: Invalid addressing mode
+SBCD (A4)+,USP		ERROR: Invalid addressing mode
+SBCD -(A5),D1		ERROR: Invalid addressing mode
+SBCD -(A5),A2		ERROR: Invalid addressing mode
+SBCD -(A5),(A3)		ERROR: Invalid addressing mode
+SBCD -(A5),(A4)+		ERROR: Invalid addressing mode
+SBCD -(A5),-(A5)	8B0D	-
+SBCD -(A5),$10(A6)		ERROR: Invalid addressing mode
+SBCD -(A5),$10(A6,D7.W)		ERROR: Invalid addressing mode
+SBCD -(A5),$1234		ERROR: Invalid addressing mode
+SBCD -(A5),$12345678		ERROR: Invalid addressing mode
+SBCD -(A5),FW		ERROR: Invalid addressing mode
+SBCD -(A5),*+$10(PC)		ERROR: Invalid addressing mode
+SBCD -(A5),#1		ERROR: Invalid addressing mode
+SBCD -(A5),#$80		ERROR: Invalid addressing mode
+SBCD -(A5),#$1234		ERROR: Invalid addressing mode
+SBCD -(A5),#$12345678		ERROR: Invalid addressing mode
+SBCD -(A5),SR		ERROR: Invalid addressing mode
+SBCD -(A5),CCR		ERROR: Invalid addressing mode
+SBCD -(A5),USP		ERROR: Invalid addressing mode
+SBCD $10(A6),D1		ERROR: Invalid addressing mode
+SBCD $10(A6),A2		ERROR: Invalid addressing mode
+SBCD $10(A6),(A3)		ERROR: Invalid addressing mode
+SBCD $10(A6),(A4)+		ERROR: Invalid addressing mode
+SBCD $10(A6),-(A5)		ERROR: Invalid addressing mode
+SBCD $10(A6),$10(A6)		ERROR: Invalid addressing mode
+SBCD $10(A6),$10(A6,D7.W)		ERROR: Invalid addressing mode
+SBCD $10(A6),$1234		ERROR: Invalid addressing mode
+SBCD $10(A6),$12345678		ERROR: Invalid addressing mode
+SBCD $10(A6),FW		ERROR: Invalid addressing mode
+SBCD $10(A6),*+$10(PC)		ERROR: Invalid addressing mode
+SBCD $10(A6),#1		ERROR: Invalid addressing mode
+SBCD $10(A6),#$80		ERROR: Invalid addressing mode
+SBCD $10(A6),#$1234		ERROR: Invalid addressing mode
+SBCD $10(A6),#$12345678		ERROR: Invalid addressing mode
+SBCD $10(A6),SR		ERROR: Invalid addressing mode
+SBCD $10(A6),CCR		ERROR: Invalid addressing mode
+SBCD $10(A6),USP		ERROR: Invalid addressing mode
+SBCD $10(A6,D7.W),D1		ERROR: Invalid addressing mode
+SBCD $10(A6,D7.W),A2		ERROR: Invalid addressing mode
+SBCD $10(A6,D7.W),(A3)		ERROR: Invalid addressing mode
+SBCD $10(A6,D7.W),(A4)+		ERROR: Invalid addressing mode
+SBCD $10(A6,D7.W),-(A5)		ERROR: Invalid addressing mode
+SBCD $10(A6,D7.W),$10(A6)		ERROR: Invalid addressing mode
+SBCD $10(A6,D7.W),$10(A6,D7.W)		ERROR: Invalid addressing mode
+SBCD $10(A6,D7.W),$1234		ERROR: Invalid addressing mode
+SBCD $10(A6,D7.W),$12345678		ERROR: Invalid addressing mode
+SBCD $10(A6,D7.W),FW		ERROR: Invalid addressing mode
+SBCD $10(A6,D7.W),*+$10(PC)		ERROR: Invalid addressing mode
+SBCD $10(A6,D7.W),#1		ERROR: Invalid addressing mode
+SBCD $10(A6,D7.W),#$80		ERROR: Invalid addressing mode
+SBCD $10(A6,D7.W),#$1234		ERROR: Invalid addressing mode
+SBCD $10(A6,D7.W),#$12345678		ERROR: Invalid addressing mode
+SBCD $10(A6,D7.W),SR		ERROR: Invalid addressing mode
+SBCD $10(A6,D7.W),CCR		ERROR: Invalid addressing mode
+SBCD $10(A6,D7.W),USP		ERROR: Invalid addressing mode
+SBCD $1234,D1		ERROR: Invalid addressing mode
+SBCD $1234,A2		ERROR: Invalid addressing mode
+SBCD $1234,(A3)		ERROR: Invalid addressing mode
+SBCD $1234,(A4)+		ERROR: Invalid addressing mode
+SBCD $1234,-(A5)		ERROR: Invalid addressing mode
+SBCD $1234,$10(A6)		ERROR: Invalid addressing mode
+SBCD $1234,$10(A6,D7.W)		ERROR: Invalid addressing mode
+SBCD $1234,$1234		ERROR: Invalid addressing mode
+SBCD $1234,$12345678		ERROR: Invalid addressing mode
+SBCD $1234,FW		ERROR: Invalid addressing mode
+SBCD $1234,*+$10(PC)		ERROR: Invalid addressing mode
+SBCD $1234,#1		ERROR: Invalid addressing mode
+SBCD $1234,#$80		ERROR: Invalid addressing mode
+SBCD $1234,#$1234		ERROR: Invalid addressing mode
+SBCD $1234,#$12345678		ERROR: Invalid addressing mode
+SBCD $1234,SR		ERROR: Invalid addressing mode
+SBCD $1234,CCR		ERROR: Invalid addressing mode
+SBCD $1234,USP		ERROR: Invalid addressing mode
+SBCD $12345678,D1		ERROR: Invalid addressing mode
+SBCD $12345678,A2		ERROR: Invalid addressing mode
+SBCD $12345678,(A3)		ERROR: Invalid addressing mode
+SBCD $12345678,(A4)+		ERROR: Invalid addressing mode
+SBCD $12345678,-(A5)		ERROR: Invalid addressing mode
+SBCD $12345678,$10(A6)		ERROR: Invalid addressing mode
+SBCD $12345678,$10(A6,D7.W)		ERROR: Invalid addressing mode
+SBCD $12345678,$1234		ERROR: Invalid addressing mode
+SBCD $12345678,$12345678		ERROR: Invalid addressing mode
+SBCD $12345678,FW		ERROR: Invalid addressing mode
+SBCD $12345678,*+$10(PC)		ERROR: Invalid addressing mode
+SBCD $12345678,#1		ERROR: Invalid addressing mode
+SBCD $12345678,#$80		ERROR: Invalid addressing mode
+SBCD $12345678,#$1234		ERROR: Invalid addressing mode
+SBCD $12345678,#$12345678		ERROR: Invalid addressing mode
+SBCD $12345678,SR		ERROR: Invalid addressing mode
+SBCD $12345678,CCR		ERROR: Invalid addressing mode
+SBCD $12345678,USP		ERROR: Invalid addressing mode
+SBCD FW,D1		ERROR: Invalid addressing mode
+SBCD FW,A2		ERROR: Invalid addressing mode
+SBCD FW,(A3)		ERROR: Invalid addressing mode
+SBCD FW,(A4)+		ERROR: Invalid addressing mode
+SBCD FW,-(A5)		ERROR: Invalid addressing mode
+SBCD FW,$10(A6)		ERROR: Invalid addressing mode
+SBCD FW,$10(A6,D7.W)		ERROR: Invalid addressing mode
+SBCD FW,$1234		ERROR: Invalid addressing mode
+SBCD FW,$12345678		ERROR: Invalid addressing mode
+SBCD FW,FW		ERROR: Invalid addressing mode
+SBCD FW,*+$10(PC)		ERROR: Invalid addressing mode
+SBCD FW,#1		ERROR: Invalid addressing mode
+SBCD FW,#$80		ERROR: Invalid addressing mode
+SBCD FW,#$1234		ERROR: Invalid addressing mode
+SBCD FW,#$12345678		ERROR: Invalid addressing mode
+SBCD FW,SR		ERROR: Invalid addressing mode
+SBCD FW,CCR		ERROR: Invalid addressing mode
+SBCD FW,USP		ERROR: Invalid addressing mode
+SBCD *+$10(PC),D1		ERROR: Invalid addressing mode
+SBCD *+$10(PC),A2		ERROR: Invalid addressing mode
+SBCD *+$10(PC),(A3)		ERROR: Invalid addressing mode
+SBCD *+$10(PC),(A4)+		ERROR: Invalid addressing mode
+SBCD *+$10(PC),-(A5)		ERROR: Invalid addressing mode
+SBCD *+$10(PC),$10(A6)		ERROR: Invalid addressing mode
+SBCD *+$10(PC),$10(A6,D7.W)		ERROR: Invalid addressing mode
+SBCD *+$10(PC),$1234		ERROR: Invalid addressing mode
+SBCD *+$10(PC),$12345678		ERROR: Invalid addressing mode
+SBCD *+$10(PC),FW		ERROR: Invalid addressing mode
+SBCD *+$10(PC),*+$10(PC)		ERROR: Invalid addressing mode
+SBCD *+$10(PC),#1		ERROR: Invalid addressing mode
+SBCD *+$10(PC),#$80		ERROR: Invalid addressing mode
+SBCD *+$10(PC),#$1234		ERROR: Invalid addressing mode
+SBCD *+$10(PC),#$12345678		ERROR: Invalid addressing mode
+SBCD *+$10(PC),SR		ERROR: Invalid addressing mode
+SBCD *+$10(PC),CCR		ERROR: Invalid addressing mode
+SBCD *+$10(PC),USP		ERROR: Invalid addressing mode
+SBCD #1,D1		ERROR: Invalid addressing mode
+SBCD #1,A2		ERROR: Invalid addressing mode
+SBCD #1,(A3)		ERROR: Invalid addressing mode
+SBCD #1,(A4)+		ERROR: Invalid addressing mode
+SBCD #1,-(A5)		ERROR: Invalid addressing mode
+SBCD #1,$10(A6)		ERROR: Invalid addressing mode
+SBCD #1,$10(A6,D7.W)		ERROR: Invalid addressing mode
+SBCD #1,$1234		ERROR: Invalid addressing mode
+SBCD #1,$12345678		ERROR: Invalid addressing mode
+SBCD #1,FW		ERROR: Invalid addressing mode
+SBCD #1,*+$10(PC)		ERROR: Invalid addressing mode
+SBCD #1,#1		ERROR: Invalid addressing mode
+SBCD #1,#$80		ERROR: Invalid addressing mode
+SBCD #1,#$1234		ERROR: Invalid addressing mode
+SBCD #1,#$12345678		ERROR: Invalid addressing mode
+SBCD #1,SR		ERROR: Invalid addressing mode
+SBCD #1,CCR		ERROR: Invalid addressing mode
+SBCD #1,USP		ERROR: Invalid addressing mode
+SBCD #$80,D1		ERROR: Invalid addressing mode
+SBCD #$80,A2		ERROR: Invalid addressing mode
+SBCD #$80,(A3)		ERROR: Invalid addressing mode
+SBCD #$80,(A4)+		ERROR: Invalid addressing mode
+SBCD #$80,-(A5)		ERROR: Invalid addressing mode
+SBCD #$80,$10(A6)		ERROR: Invalid addressing mode
+SBCD #$80,$10(A6,D7.W)		ERROR: Invalid addressing mode
+SBCD #$80,$1234		ERROR: Invalid addressing mode
+SBCD #$80,$12345678		ERROR: Invalid addressing mode
+SBCD #$80,FW		ERROR: Invalid addressing mode
+SBCD #$80,*+$10(PC)		ERROR: Invalid addressing mode
+SBCD #$80,#1		ERROR: Invalid addressing mode
+SBCD #$80,#$80		ERROR: Invalid addressing mode
+SBCD #$80,#$1234		ERROR: Invalid addressing mode
+SBCD #$80,#$12345678		ERROR: Invalid addressing mode
+SBCD #$80,SR		ERROR: Invalid addressing mode
+SBCD #$80,CCR		ERROR: Invalid addressing mode
+SBCD #$80,USP		ERROR: Invalid addressing mode
+SBCD #$1234,D1		ERROR: Invalid addressing mode
+SBCD #$1234,A2		ERROR: Invalid addressing mode
+SBCD #$1234,(A3)		ERROR: Invalid addressing mode
+SBCD #$1234,(A4)+		ERROR: Invalid addressing mode
+SBCD #$1234,-(A5)		ERROR: Invalid addressing mode
+SBCD #$1234,$10(A6)		ERROR: Invalid addressing mode
+SBCD #$1234,$10(A6,D7.W)		ERROR: Invalid addressing mode
+SBCD #$1234,$1234		ERROR: Invalid addressing mode
+SBCD #$1234,$12345678		ERROR: Invalid addressing mode
+SBCD #$1234,FW		ERROR: Invalid addressing mode
+SBCD #$1234,*+$10(PC)		ERROR: Invalid addressing mode
+SBCD #$1234,#1		ERROR: Invalid addressing mode
+SBCD #$1234,#$80		ERROR: Invalid addressing mode
+SBCD #$1234,#$1234		ERROR: Invalid addressing mode
+SBCD #$1234,#$12345678		ERROR: Invalid addressing mode
+SBCD #$1234,SR		ERROR: Invalid addressing mode
+SBCD #$1234,CCR		ERROR: Invalid addressing mode
+SBCD #$1234,USP		ERROR: Invalid addressing mode
+SBCD #$12345678,D1		ERROR: Invalid addressing mode
+SBCD #$12345678,A2		ERROR: Invalid addressing mode
+SBCD #$12345678,(A3)		ERROR: Invalid addressing mode
+SBCD #$12345678,(A4)+		ERROR: Invalid addressing mode
+SBCD #$12345678,-(A5)		ERROR: Invalid addressing mode
+SBCD #$12345678,$10(A6)		ERROR: Invalid addressing mode
+SBCD #$12345678,$10(A6,D7.W)		ERROR: Invalid addressing mode
+SBCD #$12345678,$1234		ERROR: Invalid addressing mode
+SBCD #$12345678,$12345678		ERROR: Invalid addressing mode
+SBCD #$12345678,FW		ERROR: Invalid addressing mode
+SBCD #$12345678,*+$10(PC)		ERROR: Invalid addressing mode
+SBCD #$12345678,#1		ERROR: Invalid addressing mode
+SBCD #$12345678,#$80		ERROR: Invalid addressing mode
+SBCD #$12345678,#$1234		ERROR: Invalid addressing mode
+SBCD #$12345678,#$12345678		ERROR: Invalid addressing mode
+SBCD #$12345678,SR		ERROR: Invalid addressing mode
+SBCD #$12345678,CCR		ERROR: Invalid addressing mode
+SBCD #$12345678,USP		ERROR: Invalid addressing mode
+SBCD SR,D1		ERROR: Invalid addressing mode
+SBCD SR,A2		ERROR: Invalid addressing mode
+SBCD SR,(A3)		ERROR: Invalid addressing mode
+SBCD SR,(A4)+		ERROR: Invalid addressing mode
+SBCD SR,-(A5)		ERROR: Invalid addressing mode
+SBCD SR,$10(A6)		ERROR: Invalid addressing mode
+SBCD SR,$10(A6,D7.W)		ERROR: Invalid addressing mode
+SBCD SR,$1234		ERROR: Invalid addressing mode
+SBCD SR,$12345678		ERROR: Invalid addressing mode
+SBCD SR,FW		ERROR: Invalid addressing mode
+SBCD SR,*+$10(PC)		ERROR: Invalid addressing mode
+SBCD SR,#1		ERROR: Invalid addressing mode
+SBCD SR,#$80		ERROR: Invalid addressing mode
+SBCD SR,#$1234		ERROR: Invalid addressing mode
+SBCD SR,#$12345678		ERROR: Invalid addressing mode
+SBCD SR,SR		ERROR: Invalid addressing mode
+SBCD SR,CCR		ERROR: Invalid addressing mode
+SBCD SR,USP		ERROR: Invalid addressing mode
+SBCD CCR,D1		ERROR: Invalid addressing mode
+SBCD CCR,A2		ERROR: Invalid addressing mode
+SBCD CCR,(A3)		ERROR: Invalid addressing mode
+SBCD CCR,(A4)+		ERROR: Invalid addressing mode
+SBCD CCR,-(A5)		ERROR: Invalid addressing mode
+SBCD CCR,$10(A6)		ERROR: Invalid addressing mode
+SBCD CCR,$10(A6,D7.W)		ERROR: Invalid addressing mode
+SBCD CCR,$1234		ERROR: Invalid addressing mode
+SBCD CCR,$12345678		ERROR: Invalid addressing mode
+SBCD CCR,FW		ERROR: Invalid addressing mode
+SBCD CCR,*+$10(PC)		ERROR: Invalid addressing mode
+SBCD CCR,#1		ERROR: Invalid addressing mode
+SBCD CCR,#$80		ERROR: Invalid addressing mode
+SBCD CCR,#$1234		ERROR: Invalid addressing mode
+SBCD CCR,#$12345678		ERROR: Invalid addressing mode
+SBCD CCR,SR		ERROR: Invalid addressing mode
+SBCD CCR,CCR		ERROR: Invalid addressing mode
+SBCD CCR,USP		ERROR: Invalid addressing mode
+SBCD USP,D1		ERROR: Invalid addressing mode
+SBCD USP,A2		ERROR: Invalid addressing mode
+SBCD USP,(A3)		ERROR: Invalid addressing mode
+SBCD USP,(A4)+		ERROR: Invalid addressing mode
+SBCD USP,-(A5)		ERROR: Invalid addressing mode
+SBCD USP,$10(A6)		ERROR: Invalid addressing mode
+SBCD USP,$10(A6,D7.W)		ERROR: Invalid addressing mode
+SBCD USP,$1234		ERROR: Invalid addressing mode
+SBCD USP,$12345678		ERROR: Invalid addressing mode
+SBCD USP,FW		ERROR: Invalid addressing mode
+SBCD USP,*+$10(PC)		ERROR: Invalid addressing mode
+SBCD USP,#1		ERROR: Invalid addressing mode
+SBCD USP,#$80		ERROR: Invalid addressing mode
+SBCD USP,#$1234		ERROR: Invalid addressing mode
+SBCD USP,#$12345678		ERROR: Invalid addressing mode
+SBCD USP,SR		ERROR: Invalid addressing mode
+SBCD USP,CCR		ERROR: Invalid addressing mode
+SBCD USP,USP		ERROR: Invalid addressing mode
+SBCD SP,D1		ERROR: Invalid addressing mode
+SBCD SP,A2		ERROR: Invalid addressing mode
+SBCD D1,SP		ERROR: Invalid addressing mode
+SBCD #$12,SP		ERROR: Invalid addressing mode
+SBCD -2(A0),D1		ERROR: Invalid addressing mode
+SBCD -2(A0),A2		ERROR: Invalid addressing mode
+SBCD D1,-2(A0)		ERROR: Invalid addressing mode
+SBCD #$12,-2(A0)		ERROR: Invalid addressing mode
+SBCD $12(A0,A1.L),D1		ERROR: Invalid addressing mode
+SBCD $12(A0,A1.L),A2		ERROR: Invalid addressing mode
+SBCD D1,$12(A0,A1.L)		ERROR: Invalid addressing mode
+SBCD #$12,$12(A0,A1.L)		ERROR: Invalid addressing mode
+SBCD (A2,D3),D1		ERROR: Invalid addressing mode
+SBCD (A2,D3),A2		ERROR: Invalid addressing mode
+SBCD D1,(A2,D3)		ERROR: Invalid addressing mode
+SBCD #$12,(A2,D3)		ERROR: Invalid addressing mode
+SBCD $1234.L,D1		ERROR: Invalid addressing mode
+SBCD $1234.L,A2		ERROR: Invalid addressing mode
+SBCD D1,$1234.L		ERROR: Invalid addressing mode
+SBCD #$12,$1234.L		ERROR: Invalid addressing mode
+SBCD $1234.W,D1		ERROR: Invalid addressing mode
+SBCD $1234.W,A2		ERROR: Invalid addressing mode
+SBCD D1,$1234.W		ERROR: Invalid addressing mode
+SBCD #$12,$1234.W		ERROR: Invalid addressing mode
+SBCD $8000,D1		ERROR: Invalid addressing mode
+SBCD $8000,A2		ERROR: Invalid addressing mode
+SBCD D1,$8000		ERROR: Invalid addressing mode
+SBCD #$12,$8000		ERROR: Invalid addressing mode
+SBCD BK,D1		ERROR: Invalid addressing mode
+SBCD BK,A2		ERROR: Invalid addressing mode
+SBCD D1,BK		ERROR: Invalid addressing mode
+SBCD #$12,BK		ERROR: Invalid addressing mode
+SBCD *(PC,D0.W),D1		ERROR: Invalid addressing mode
+SBCD *(PC,D0.W),A2		ERROR: Invalid addressing mode
+SBCD D1,*(PC,D0.W)		ERROR: Invalid addressing mode
+SBCD #$12,*(PC,D0.W)		ERROR: Invalid addressing mode
+SBCD BK(PC),D1		ERROR: Invalid addressing mode
+SBCD BK(PC),A2		ERROR: Invalid addressing mode
+SBCD D1,BK(PC)		ERROR: Invalid addressing mode
+SBCD #$12,BK(PC)		ERROR: Invalid addressing mode
+SBCD #8,D1		ERROR: Invalid addressing mode
+SBCD #8,A2		ERROR: Invalid addressing mode
+SBCD D1,#8		ERROR: Invalid addressing mode
+SBCD #$12,#8		ERROR: Invalid addressing mode
+SBCD #9,D1		ERROR: Invalid addressing mode
+SBCD #9,A2		ERROR: Invalid addressing mode
+SBCD D1,#9		ERROR: Invalid addressing mode
+SBCD #$12,#9		ERROR: Invalid addressing mode
+SBCD #0,D1		ERROR: Invalid addressing mode
+SBCD #0,A2		ERROR: Invalid addressing mode
+SBCD D1,#0		ERROR: Invalid addressing mode
+SBCD #$12,#0		ERROR: Invalid addressing mode
+SBCD #-1,D1		ERROR: Invalid addressing mode
+SBCD #-1,A2		ERROR: Invalid addressing mode
+SBCD D1,#-1		ERROR: Invalid addressing mode
+SBCD #$12,#-1		ERROR: Invalid addressing mode
+SBCD #$12345678.L,D1		ERROR: Invalid addressing mode
+SBCD #$12345678.L,A2		ERROR: Invalid addressing mode
+SBCD D1,#$12345678.L		ERROR: Invalid addressing mode
+SBCD #$12,#$12345678.L		ERROR: Invalid addressing mode
+SBCD #BK,D1		ERROR: Invalid addressing mode
+SBCD #BK,A2		ERROR: Invalid addressing mode
+SBCD D1,#BK		ERROR: Invalid addressing mode
+SBCD #$12,#BK		ERROR: Invalid addressing mode
+SBCD #FW,D1		ERROR: Invalid addressing mode
+SBCD #FW,A2		ERROR: Invalid addressing mode
+SBCD D1,#FW		ERROR: Invalid addressing mode
+SBCD #$12,#FW		ERROR: Invalid addressing mode
+SBCD #UNDEF,D1		ERROR: Invalid addressing mode
+SBCD #UNDEF,A2		ERROR: Invalid addressing mode
+SBCD D1,#UNDEF		ERROR: Invalid addressing mode
+SBCD #$12,#UNDEF		ERROR: Invalid addressing mode
+SBCD UNDEF,D1		ERROR: Invalid addressing mode
+SBCD UNDEF,A2		ERROR: Invalid addressing mode
+SBCD D1,UNDEF		ERROR: Invalid addressing mode
+SBCD #$12,UNDEF		ERROR: Invalid addressing mode
+SBCD D1,D2,D3		ERROR: Invalid syntax
+SBCD.B		ERROR: Invalid syntax
+SBCD.B D1		ERROR: Comma expected
+SBCD.B A2		ERROR: Comma expected
+SBCD.B SP		ERROR: Comma expected
+SBCD.B (A3)		ERROR: Comma expected
+SBCD.B (A4)+		ERROR: Comma expected
+SBCD.B -(A5)		ERROR: Comma expected
+SBCD.B $10(A6)		ERROR: Comma expected
+SBCD.B -2(A0)		ERROR: Comma expected
+SBCD.B $10(A6,D7.W)		ERROR: Comma expected
+SBCD.B $12(A0,A1.L)		ERROR: Comma expected
+SBCD.B (A2,D3)		ERROR: Comma expected
+SBCD.B $1234		ERROR: Comma expected
+SBCD.B $12345678		ERROR: Comma expected
+SBCD.B $1234.L		ERROR: Comma expected
+SBCD.B $1234.W		ERROR: Comma expected
+SBCD.B $8000		ERROR: Comma expected
+SBCD.B BK		ERROR: Comma expected
+SBCD.B FW		ERROR: Comma expected
+SBCD.B *+$10(PC)		ERROR: Comma expected
+SBCD.B *(PC,D0.W)		ERROR: Comma expected
+SBCD.B BK(PC)		ERROR: Comma expected
+SBCD.B #1		ERROR: Comma expected
+SBCD.B #8		ERROR: Comma expected
+SBCD.B #9		ERROR: Comma expected
+SBCD.B #0		ERROR: Comma expected
+SBCD.B #-1		ERROR: Comma expected
+SBCD.B #$80		ERROR: Comma expected
+SBCD.B #$1234		ERROR: Comma expected
+SBCD.B #$12345678		ERROR: Comma expected
+SBCD.B #$12345678.L		ERROR: Comma expected
+SBCD.B #BK		ERROR: Comma expected
+SBCD.B #FW		ERROR: Comma expected
+SBCD.B #UNDEF		ERROR: Comma expected
+SBCD.B UNDEF		ERROR: Comma expected
+SBCD.B SR		ERROR: Comma expected
+SBCD.B CCR		ERROR: Comma expected
+SBCD.B USP		ERROR: Comma expected
+SBCD.B D1,D1	8301	-
+SBCD.B D1,A2		ERROR: Invalid addressing mode
+SBCD.B D1,(A3)		ERROR: Invalid addressing mode
+SBCD.B D1,$10(A6)		ERROR: Invalid addressing mode
+SBCD.B D1,$1234		ERROR: Invalid addressing mode
+SBCD.B D1,FW		ERROR: Invalid addressing mode
+SBCD.B D1,#1		ERROR: Invalid addressing mode
+SBCD.B D1,#$1234		ERROR: Invalid addressing mode
+SBCD.B D1,CCR		ERROR: Invalid addressing mode
+SBCD.B D1,SR		ERROR: Invalid addressing mode
+SBCD.B A2,D1		ERROR: Invalid addressing mode
+SBCD.B A2,A2		ERROR: Invalid addressing mode
+SBCD.B A2,(A3)		ERROR: Invalid addressing mode
+SBCD.B A2,$10(A6)		ERROR: Invalid addressing mode
+SBCD.B A2,$1234		ERROR: Invalid addressing mode
+SBCD.B A2,FW		ERROR: Invalid addressing mode
+SBCD.B A2,#1		ERROR: Invalid addressing mode
+SBCD.B A2,#$1234		ERROR: Invalid addressing mode
+SBCD.B A2,CCR		ERROR: Invalid addressing mode
+SBCD.B A2,SR		ERROR: Invalid addressing mode
+SBCD.B (A3),D1		ERROR: Invalid addressing mode
+SBCD.B (A3),A2		ERROR: Invalid addressing mode
+SBCD.B (A3),(A3)		ERROR: Invalid addressing mode
+SBCD.B (A3),$10(A6)		ERROR: Invalid addressing mode
+SBCD.B (A3),$1234		ERROR: Invalid addressing mode
+SBCD.B (A3),FW		ERROR: Invalid addressing mode
+SBCD.B (A3),#1		ERROR: Invalid addressing mode
+SBCD.B (A3),#$1234		ERROR: Invalid addressing mode
+SBCD.B (A3),CCR		ERROR: Invalid addressing mode
+SBCD.B (A3),SR		ERROR: Invalid addressing mode
+SBCD.B $10(A6),D1		ERROR: Invalid addressing mode
+SBCD.B $10(A6),A2		ERROR: Invalid addressing mode
+SBCD.B $10(A6),(A3)		ERROR: Invalid addressing mode
+SBCD.B $10(A6),$10(A6)		ERROR: Invalid addressing mode
+SBCD.B $10(A6),$1234		ERROR: Invalid addressing mode
+SBCD.B $10(A6),FW		ERROR: Invalid addressing mode
+SBCD.B $10(A6),#1		ERROR: Invalid addressing mode
+SBCD.B $10(A6),#$1234		ERROR: Invalid addressing mode
+SBCD.B $10(A6),CCR		ERROR: Invalid addressing mode
+SBCD.B $10(A6),SR		ERROR: Invalid addressing mode
+SBCD.B $1234,D1		ERROR: Invalid addressing mode
+SBCD.B $1234,A2		ERROR: Invalid addressing mode
+SBCD.B $1234,(A3)		ERROR: Invalid addressing mode
+SBCD.B $1234,$10(A6)		ERROR: Invalid addressing mode
+SBCD.B $1234,$1234		ERROR: Invalid addressing mode
+SBCD.B $1234,FW		ERROR: Invalid addressing mode
+SBCD.B $1234,#1		ERROR: Invalid addressing mode
+SBCD.B $1234,#$1234		ERROR: Invalid addressing mode
+SBCD.B $1234,CCR		ERROR: Invalid addressing mode
+SBCD.B $1234,SR		ERROR: Invalid addressing mode
+SBCD.B FW,D1		ERROR: Invalid addressing mode
+SBCD.B FW,A2		ERROR: Invalid addressing mode
+SBCD.B FW,(A3)		ERROR: Invalid addressing mode
+SBCD.B FW,$10(A6)		ERROR: Invalid addressing mode
+SBCD.B FW,$1234		ERROR: Invalid addressing mode
+SBCD.B FW,FW		ERROR: Invalid addressing mode
+SBCD.B FW,#1		ERROR: Invalid addressing mode
+SBCD.B FW,#$1234		ERROR: Invalid addressing mode
+SBCD.B FW,CCR		ERROR: Invalid addressing mode
+SBCD.B FW,SR		ERROR: Invalid addressing mode
+SBCD.B #1,D1		ERROR: Invalid addressing mode
+SBCD.B #1,A2		ERROR: Invalid addressing mode
+SBCD.B #1,(A3)		ERROR: Invalid addressing mode
+SBCD.B #1,$10(A6)		ERROR: Invalid addressing mode
+SBCD.B #1,$1234		ERROR: Invalid addressing mode
+SBCD.B #1,FW		ERROR: Invalid addressing mode
+SBCD.B #1,#1		ERROR: Invalid addressing mode
+SBCD.B #1,#$1234		ERROR: Invalid addressing mode
+SBCD.B #1,CCR		ERROR: Invalid addressing mode
+SBCD.B #1,SR		ERROR: Invalid addressing mode
+SBCD.B #$1234,D1		ERROR: Invalid addressing mode
+SBCD.B #$1234,A2		ERROR: Invalid addressing mode
+SBCD.B #$1234,(A3)		ERROR: Invalid addressing mode
+SBCD.B #$1234,$10(A6)		ERROR: Invalid addressing mode
+SBCD.B #$1234,$1234		ERROR: Invalid addressing mode
+SBCD.B #$1234,FW		ERROR: Invalid addressing mode
+SBCD.B #$1234,#1		ERROR: Invalid addressing mode
+SBCD.B #$1234,#$1234		ERROR: Invalid addressing mode
+SBCD.B #$1234,CCR		ERROR: Invalid addressing mode
+SBCD.B #$1234,SR		ERROR: Invalid addressing mode
+SBCD.B CCR,D1		ERROR: Invalid addressing mode
+SBCD.B CCR,A2		ERROR: Invalid addressing mode
+SBCD.B CCR,(A3)		ERROR: Invalid addressing mode
+SBCD.B CCR,$10(A6)		ERROR: Invalid addressing mode
+SBCD.B CCR,$1234		ERROR: Invalid addressing mode
+SBCD.B CCR,FW		ERROR: Invalid addressing mode
+SBCD.B CCR,#1		ERROR: Invalid addressing mode
+SBCD.B CCR,#$1234		ERROR: Invalid addressing mode
+SBCD.B CCR,CCR		ERROR: Invalid addressing mode
+SBCD.B CCR,SR		ERROR: Invalid addressing mode
+SBCD.B SR,D1		ERROR: Invalid addressing mode
+SBCD.B SR,A2		ERROR: Invalid addressing mode
+SBCD.B SR,(A3)		ERROR: Invalid addressing mode
+SBCD.B SR,$10(A6)		ERROR: Invalid addressing mode
+SBCD.B SR,$1234		ERROR: Invalid addressing mode
+SBCD.B SR,FW		ERROR: Invalid addressing mode
+SBCD.B SR,#1		ERROR: Invalid addressing mode
+SBCD.B SR,#$1234		ERROR: Invalid addressing mode
+SBCD.B SR,CCR		ERROR: Invalid addressing mode
+SBCD.B SR,SR		ERROR: Invalid addressing mode
+SBCD.B SP,D1		ERROR: Invalid addressing mode
+SBCD.B SP,A2		ERROR: Invalid addressing mode
+SBCD.B D1,SP		ERROR: Invalid addressing mode
+SBCD.B #$12,SP		ERROR: Invalid addressing mode
+SBCD.B (A4)+,D1		ERROR: Invalid addressing mode
+SBCD.B (A4)+,A2		ERROR: Invalid addressing mode
+SBCD.B D1,(A4)+		ERROR: Invalid addressing mode
+SBCD.B #$12,(A4)+		ERROR: Invalid addressing mode
+SBCD.B -(A5),D1		ERROR: Invalid addressing mode
+SBCD.B -(A5),A2		ERROR: Invalid addressing mode
+SBCD.B D1,-(A5)		ERROR: Invalid addressing mode
+SBCD.B #$12,-(A5)		ERROR: Invalid addressing mode
+SBCD.B -2(A0),D1		ERROR: Invalid addressing mode
+SBCD.B -2(A0),A2		ERROR: Invalid addressing mode
+SBCD.B D1,-2(A0)		ERROR: Invalid addressing mode
+SBCD.B #$12,-2(A0)		ERROR: Invalid addressing mode
+SBCD.B $10(A6,D7.W),D1		ERROR: Invalid addressing mode
+SBCD.B $10(A6,D7.W),A2		ERROR: Invalid addressing mode
+SBCD.B D1,$10(A6,D7.W)		ERROR: Invalid addressing mode
+SBCD.B #$12,$10(A6,D7.W)		ERROR: Invalid addressing mode
+SBCD.B $12(A0,A1.L),D1		ERROR: Invalid addressing mode
+SBCD.B $12(A0,A1.L),A2		ERROR: Invalid addressing mode
+SBCD.B D1,$12(A0,A1.L)		ERROR: Invalid addressing mode
+SBCD.B #$12,$12(A0,A1.L)		ERROR: Invalid addressing mode
+SBCD.B (A2,D3),D1		ERROR: Invalid addressing mode
+SBCD.B (A2,D3),A2		ERROR: Invalid addressing mode
+SBCD.B D1,(A2,D3)		ERROR: Invalid addressing mode
+SBCD.B #$12,(A2,D3)		ERROR: Invalid addressing mode
+SBCD.B $12345678,D1		ERROR: Invalid addressing mode
+SBCD.B $12345678,A2		ERROR: Invalid addressing mode
+SBCD.B D1,$12345678		ERROR: Invalid addressing mode
+SBCD.B #$12,$12345678		ERROR: Invalid addressing mode
+SBCD.B $1234.L,D1		ERROR: Invalid addressing mode
+SBCD.B $1234.L,A2		ERROR: Invalid addressing mode
+SBCD.B D1,$1234.L		ERROR: Invalid addressing mode
+SBCD.B #$12,$1234.L		ERROR: Invalid addressing mode
+SBCD.B $1234.W,D1		ERROR: Invalid addressing mode
+SBCD.B $1234.W,A2		ERROR: Invalid addressing mode
+SBCD.B D1,$1234.W		ERROR: Invalid addressing mode
+SBCD.B #$12,$1234.W		ERROR: Invalid addressing mode
+SBCD.B $8000,D1		ERROR: Invalid addressing mode
+SBCD.B $8000,A2		ERROR: Invalid addressing mode
+SBCD.B D1,$8000		ERROR: Invalid addressing mode
+SBCD.B #$12,$8000		ERROR: Invalid addressing mode
+SBCD.B BK,D1		ERROR: Invalid addressing mode
+SBCD.B BK,A2		ERROR: Invalid addressing mode
+SBCD.B D1,BK		ERROR: Invalid addressing mode
+SBCD.B #$12,BK		ERROR: Invalid addressing mode
+SBCD.B *+$10(PC),D1		ERROR: Invalid addressing mode
+SBCD.B *+$10(PC),A2		ERROR: Invalid addressing mode
+SBCD.B D1,*+$10(PC)		ERROR: Invalid addressing mode
+SBCD.B #$12,*+$10(PC)		ERROR: Invalid addressing mode
+SBCD.B *(PC,D0.W),D1		ERROR: Invalid addressing mode
+SBCD.B *(PC,D0.W),A2		ERROR: Invalid addressing mode
+SBCD.B D1,*(PC,D0.W)		ERROR: Invalid addressing mode
+SBCD.B #$12,*(PC,D0.W)		ERROR: Invalid addressing mode
+SBCD.B BK(PC),D1		ERROR: Invalid addressing mode
+SBCD.B BK(PC),A2		ERROR: Invalid addressing mode
+SBCD.B D1,BK(PC)		ERROR: Invalid addressing mode
+SBCD.B #$12,BK(PC)		ERROR: Invalid addressing mode
+SBCD.B #8,D1		ERROR: Invalid addressing mode
+SBCD.B #8,A2		ERROR: Invalid addressing mode
+SBCD.B D1,#8		ERROR: Invalid addressing mode
+SBCD.B #$12,#8		ERROR: Invalid addressing mode
+SBCD.B #9,D1		ERROR: Invalid addressing mode
+SBCD.B #9,A2		ERROR: Invalid addressing mode
+SBCD.B D1,#9		ERROR: Invalid addressing mode
+SBCD.B #$12,#9		ERROR: Invalid addressing mode
+SBCD.B #0,D1		ERROR: Invalid addressing mode
+SBCD.B #0,A2		ERROR: Invalid addressing mode
+SBCD.B D1,#0		ERROR: Invalid addressing mode
+SBCD.B #$12,#0		ERROR: Invalid addressing mode
+SBCD.B #-1,D1		ERROR: Invalid addressing mode
+SBCD.B #-1,A2		ERROR: Invalid addressing mode
+SBCD.B D1,#-1		ERROR: Invalid addressing mode
+SBCD.B #$12,#-1		ERROR: Invalid addressing mode
+SBCD.B #$80,D1		ERROR: Invalid addressing mode
+SBCD.B #$80,A2		ERROR: Invalid addressing mode
+SBCD.B D1,#$80		ERROR: Invalid addressing mode
+SBCD.B #$12,#$80		ERROR: Invalid addressing mode
+SBCD.B #$12345678,D1		ERROR: Invalid addressing mode
+SBCD.B #$12345678,A2		ERROR: Invalid addressing mode
+SBCD.B D1,#$12345678		ERROR: Invalid addressing mode
+SBCD.B #$12,#$12345678		ERROR: Invalid addressing mode
+SBCD.B #$12345678.L,D1		ERROR: Invalid addressing mode
+SBCD.B #$12345678.L,A2		ERROR: Invalid addressing mode
+SBCD.B D1,#$12345678.L		ERROR: Invalid addressing mode
+SBCD.B #$12,#$12345678.L		ERROR: Invalid addressing mode
+SBCD.B #BK,D1		ERROR: Invalid addressing mode
+SBCD.B #BK,A2		ERROR: Invalid addressing mode
+SBCD.B D1,#BK		ERROR: Invalid addressing mode
+SBCD.B #$12,#BK		ERROR: Invalid addressing mode
+SBCD.B #FW,D1		ERROR: Invalid addressing mode
+SBCD.B #FW,A2		ERROR: Invalid addressing mode
+SBCD.B D1,#FW		ERROR: Invalid addressing mode
+SBCD.B #$12,#FW		ERROR: Invalid addressing mode
+SBCD.B #UNDEF,D1		ERROR: Invalid addressing mode
+SBCD.B #UNDEF,A2		ERROR: Invalid addressing mode
+SBCD.B D1,#UNDEF		ERROR: Invalid addressing mode
+SBCD.B #$12,#UNDEF		ERROR: Invalid addressing mode
+SBCD.B UNDEF,D1		ERROR: Invalid addressing mode
+SBCD.B UNDEF,A2		ERROR: Invalid addressing mode
+SBCD.B D1,UNDEF		ERROR: Invalid addressing mode
+SBCD.B #$12,UNDEF		ERROR: Invalid addressing mode
+SBCD.B USP,D1		ERROR: Invalid addressing mode
+SBCD.B USP,A2		ERROR: Invalid addressing mode
+SBCD.B D1,USP		ERROR: Invalid addressing mode
+SBCD.B #$12,USP		ERROR: Invalid addressing mode
+SBCD.B D1,D2,D3		ERROR: Invalid syntax
+SBCD.W		ERROR: Invalid syntax
+SBCD.W D1		ERROR: Comma expected
+SBCD.W A2		ERROR: Comma expected
+SBCD.W SP		ERROR: Comma expected
+SBCD.W (A3)		ERROR: Comma expected
+SBCD.W (A4)+		ERROR: Comma expected
+SBCD.W -(A5)		ERROR: Comma expected
+SBCD.W $10(A6)		ERROR: Comma expected
+SBCD.W -2(A0)		ERROR: Comma expected
+SBCD.W $10(A6,D7.W)		ERROR: Comma expected
+SBCD.W $12(A0,A1.L)		ERROR: Comma expected
+SBCD.W (A2,D3)		ERROR: Comma expected
+SBCD.W $1234		ERROR: Comma expected
+SBCD.W $12345678		ERROR: Comma expected
+SBCD.W $1234.L		ERROR: Comma expected
+SBCD.W $1234.W		ERROR: Comma expected
+SBCD.W $8000		ERROR: Comma expected
+SBCD.W BK		ERROR: Comma expected
+SBCD.W FW		ERROR: Comma expected
+SBCD.W *+$10(PC)		ERROR: Comma expected
+SBCD.W *(PC,D0.W)		ERROR: Comma expected
+SBCD.W BK(PC)		ERROR: Comma expected
+SBCD.W #1		ERROR: Comma expected
+SBCD.W #8		ERROR: Comma expected
+SBCD.W #9		ERROR: Comma expected
+SBCD.W #0		ERROR: Comma expected
+SBCD.W #-1		ERROR: Comma expected
+SBCD.W #$80		ERROR: Comma expected
+SBCD.W #$1234		ERROR: Comma expected
+SBCD.W #$12345678		ERROR: Comma expected
+SBCD.W #$12345678.L		ERROR: Comma expected
+SBCD.W #BK		ERROR: Comma expected
+SBCD.W #FW		ERROR: Comma expected
+SBCD.W #UNDEF		ERROR: Comma expected
+SBCD.W UNDEF		ERROR: Comma expected
+SBCD.W SR		ERROR: Comma expected
+SBCD.W CCR		ERROR: Comma expected
+SBCD.W USP		ERROR: Comma expected
+SBCD.W D1,D1	8301	ERROR: Invalid size code
+SBCD.W D1,A2		ERROR: Invalid addressing mode
+SBCD.W D1,(A3)		ERROR: Invalid addressing mode
+SBCD.W D1,(A4)+		ERROR: Invalid addressing mode
+SBCD.W D1,-(A5)		ERROR: Invalid addressing mode
+SBCD.W D1,$10(A6)		ERROR: Invalid addressing mode
+SBCD.W D1,$10(A6,D7.W)		ERROR: Invalid addressing mode
+SBCD.W D1,$1234		ERROR: Invalid addressing mode
+SBCD.W D1,$12345678		ERROR: Invalid addressing mode
+SBCD.W D1,FW		ERROR: Invalid addressing mode
+SBCD.W D1,*+$10(PC)		ERROR: Invalid addressing mode
+SBCD.W D1,#1		ERROR: Invalid addressing mode
+SBCD.W D1,#$80		ERROR: Invalid addressing mode
+SBCD.W D1,#$1234		ERROR: Invalid addressing mode
+SBCD.W D1,#$12345678		ERROR: Invalid addressing mode
+SBCD.W D1,SR		ERROR: Invalid addressing mode
+SBCD.W D1,CCR		ERROR: Invalid addressing mode
+SBCD.W D1,USP		ERROR: Invalid addressing mode
+SBCD.W A2,D1		ERROR: Invalid addressing mode
+SBCD.W A2,A2		ERROR: Invalid addressing mode
+SBCD.W A2,(A3)		ERROR: Invalid addressing mode
+SBCD.W A2,(A4)+		ERROR: Invalid addressing mode
+SBCD.W A2,-(A5)		ERROR: Invalid addressing mode
+SBCD.W A2,$10(A6)		ERROR: Invalid addressing mode
+SBCD.W A2,$10(A6,D7.W)		ERROR: Invalid addressing mode
+SBCD.W A2,$1234		ERROR: Invalid addressing mode
+SBCD.W A2,$12345678		ERROR: Invalid addressing mode
+SBCD.W A2,FW		ERROR: Invalid addressing mode
+SBCD.W A2,*+$10(PC)		ERROR: Invalid addressing mode
+SBCD.W A2,#1		ERROR: Invalid addressing mode
+SBCD.W A2,#$80		ERROR: Invalid addressing mode
+SBCD.W A2,#$1234		ERROR: Invalid addressing mode
+SBCD.W A2,#$12345678		ERROR: Invalid addressing mode
+SBCD.W A2,SR		ERROR: Invalid addressing mode
+SBCD.W A2,CCR		ERROR: Invalid addressing mode
+SBCD.W A2,USP		ERROR: Invalid addressing mode
+SBCD.W (A3),D1		ERROR: Invalid addressing mode
+SBCD.W (A3),A2		ERROR: Invalid addressing mode
+SBCD.W (A3),(A3)		ERROR: Invalid addressing mode
+SBCD.W (A3),(A4)+		ERROR: Invalid addressing mode
+SBCD.W (A3),-(A5)		ERROR: Invalid addressing mode
+SBCD.W (A3),$10(A6)		ERROR: Invalid addressing mode
+SBCD.W (A3),$10(A6,D7.W)		ERROR: Invalid addressing mode
+SBCD.W (A3),$1234		ERROR: Invalid addressing mode
+SBCD.W (A3),$12345678		ERROR: Invalid addressing mode
+SBCD.W (A3),FW		ERROR: Invalid addressing mode
+SBCD.W (A3),*+$10(PC)		ERROR: Invalid addressing mode
+SBCD.W (A3),#1		ERROR: Invalid addressing mode
+SBCD.W (A3),#$80		ERROR: Invalid addressing mode
+SBCD.W (A3),#$1234		ERROR: Invalid addressing mode
+SBCD.W (A3),#$12345678		ERROR: Invalid addressing mode
+SBCD.W (A3),SR		ERROR: Invalid addressing mode
+SBCD.W (A3),CCR		ERROR: Invalid addressing mode
+SBCD.W (A3),USP		ERROR: Invalid addressing mode
+SBCD.W (A4)+,D1		ERROR: Invalid addressing mode
+SBCD.W (A4)+,A2		ERROR: Invalid addressing mode
+SBCD.W (A4)+,(A3)		ERROR: Invalid addressing mode
+SBCD.W (A4)+,(A4)+		ERROR: Invalid addressing mode
+SBCD.W (A4)+,-(A5)		ERROR: Invalid addressing mode
+SBCD.W (A4)+,$10(A6)		ERROR: Invalid addressing mode
+SBCD.W (A4)+,$10(A6,D7.W)		ERROR: Invalid addressing mode
+SBCD.W (A4)+,$1234		ERROR: Invalid addressing mode
+SBCD.W (A4)+,$12345678		ERROR: Invalid addressing mode
+SBCD.W (A4)+,FW		ERROR: Invalid addressing mode
+SBCD.W (A4)+,*+$10(PC)		ERROR: Invalid addressing mode
+SBCD.W (A4)+,#1		ERROR: Invalid addressing mode
+SBCD.W (A4)+,#$80		ERROR: Invalid addressing mode
+SBCD.W (A4)+,#$1234		ERROR: Invalid addressing mode
+SBCD.W (A4)+,#$12345678		ERROR: Invalid addressing mode
+SBCD.W (A4)+,SR		ERROR: Invalid addressing mode
+SBCD.W (A4)+,CCR		ERROR: Invalid addressing mode
+SBCD.W (A4)+,USP		ERROR: Invalid addressing mode
+SBCD.W -(A5),D1		ERROR: Invalid addressing mode
+SBCD.W -(A5),A2		ERROR: Invalid addressing mode
+SBCD.W -(A5),(A3)		ERROR: Invalid addressing mode
+SBCD.W -(A5),(A4)+		ERROR: Invalid addressing mode
+SBCD.W -(A5),-(A5)	8B0D	ERROR: Invalid size code
+SBCD.W -(A5),$10(A6)		ERROR: Invalid addressing mode
+SBCD.W -(A5),$10(A6,D7.W)		ERROR: Invalid addressing mode
+SBCD.W -(A5),$1234		ERROR: Invalid addressing mode
+SBCD.W -(A5),$12345678		ERROR: Invalid addressing mode
+SBCD.W -(A5),FW		ERROR: Invalid addressing mode
+SBCD.W -(A5),*+$10(PC)		ERROR: Invalid addressing mode
+SBCD.W -(A5),#1		ERROR: Invalid addressing mode
+SBCD.W -(A5),#$80		ERROR: Invalid addressing mode
+SBCD.W -(A5),#$1234		ERROR: Invalid addressing mode
+SBCD.W -(A5),#$12345678		ERROR: Invalid addressing mode
+SBCD.W -(A5),SR		ERROR: Invalid addressing mode
+SBCD.W -(A5),CCR		ERROR: Invalid addressing mode
+SBCD.W -(A5),USP		ERROR: Invalid addressing mode
+SBCD.W $10(A6),D1		ERROR: Invalid addressing mode
+SBCD.W $10(A6),A2		ERROR: Invalid addressing mode
+SBCD.W $10(A6),(A3)		ERROR: Invalid addressing mode
+SBCD.W $10(A6),(A4)+		ERROR: Invalid addressing mode
+SBCD.W $10(A6),-(A5)		ERROR: Invalid addressing mode
+SBCD.W $10(A6),$10(A6)		ERROR: Invalid addressing mode
+SBCD.W $10(A6),$10(A6,D7.W)		ERROR: Invalid addressing mode
+SBCD.W $10(A6),$1234		ERROR: Invalid addressing mode
+SBCD.W $10(A6),$12345678		ERROR: Invalid addressing mode
+SBCD.W $10(A6),FW		ERROR: Invalid addressing mode
+SBCD.W $10(A6),*+$10(PC)		ERROR: Invalid addressing mode
+SBCD.W $10(A6),#1		ERROR: Invalid addressing mode
+SBCD.W $10(A6),#$80		ERROR: Invalid addressing mode
+SBCD.W $10(A6),#$1234		ERROR: Invalid addressing mode
+SBCD.W $10(A6),#$12345678		ERROR: Invalid addressing mode
+SBCD.W $10(A6),SR		ERROR: Invalid addressing mode
+SBCD.W $10(A6),CCR		ERROR: Invalid addressing mode
+SBCD.W $10(A6),USP		ERROR: Invalid addressing mode
+SBCD.W $10(A6,D7.W),D1		ERROR: Invalid addressing mode
+SBCD.W $10(A6,D7.W),A2		ERROR: Invalid addressing mode
+SBCD.W $10(A6,D7.W),(A3)		ERROR: Invalid addressing mode
+SBCD.W $10(A6,D7.W),(A4)+		ERROR: Invalid addressing mode
+SBCD.W $10(A6,D7.W),-(A5)		ERROR: Invalid addressing mode
+SBCD.W $10(A6,D7.W),$10(A6)		ERROR: Invalid addressing mode
+SBCD.W $10(A6,D7.W),$10(A6,D7.W)		ERROR: Invalid addressing mode
+SBCD.W $10(A6,D7.W),$1234		ERROR: Invalid addressing mode
+SBCD.W $10(A6,D7.W),$12345678		ERROR: Invalid addressing mode
+SBCD.W $10(A6,D7.W),FW		ERROR: Invalid addressing mode
+SBCD.W $10(A6,D7.W),*+$10(PC)		ERROR: Invalid addressing mode
+SBCD.W $10(A6,D7.W),#1		ERROR: Invalid addressing mode
+SBCD.W $10(A6,D7.W),#$80		ERROR: Invalid addressing mode
+SBCD.W $10(A6,D7.W),#$1234		ERROR: Invalid addressing mode
+SBCD.W $10(A6,D7.W),#$12345678		ERROR: Invalid addressing mode
+SBCD.W $10(A6,D7.W),SR		ERROR: Invalid addressing mode
+SBCD.W $10(A6,D7.W),CCR		ERROR: Invalid addressing mode
+SBCD.W $10(A6,D7.W),USP		ERROR: Invalid addressing mode
+SBCD.W $1234,D1		ERROR: Invalid addressing mode
+SBCD.W $1234,A2		ERROR: Invalid addressing mode
+SBCD.W $1234,(A3)		ERROR: Invalid addressing mode
+SBCD.W $1234,(A4)+		ERROR: Invalid addressing mode
+SBCD.W $1234,-(A5)		ERROR: Invalid addressing mode
+SBCD.W $1234,$10(A6)		ERROR: Invalid addressing mode
+SBCD.W $1234,$10(A6,D7.W)		ERROR: Invalid addressing mode
+SBCD.W $1234,$1234		ERROR: Invalid addressing mode
+SBCD.W $1234,$12345678		ERROR: Invalid addressing mode
+SBCD.W $1234,FW		ERROR: Invalid addressing mode
+SBCD.W $1234,*+$10(PC)		ERROR: Invalid addressing mode
+SBCD.W $1234,#1		ERROR: Invalid addressing mode
+SBCD.W $1234,#$80		ERROR: Invalid addressing mode
+SBCD.W $1234,#$1234		ERROR: Invalid addressing mode
+SBCD.W $1234,#$12345678		ERROR: Invalid addressing mode
+SBCD.W $1234,SR		ERROR: Invalid addressing mode
+SBCD.W $1234,CCR		ERROR: Invalid addressing mode
+SBCD.W $1234,USP		ERROR: Invalid addressing mode
+SBCD.W $12345678,D1		ERROR: Invalid addressing mode
+SBCD.W $12345678,A2		ERROR: Invalid addressing mode
+SBCD.W $12345678,(A3)		ERROR: Invalid addressing mode
+SBCD.W $12345678,(A4)+		ERROR: Invalid addressing mode
+SBCD.W $12345678,-(A5)		ERROR: Invalid addressing mode
+SBCD.W $12345678,$10(A6)		ERROR: Invalid addressing mode
+SBCD.W $12345678,$10(A6,D7.W)		ERROR: Invalid addressing mode
+SBCD.W $12345678,$1234		ERROR: Invalid addressing mode
+SBCD.W $12345678,$12345678		ERROR: Invalid addressing mode
+SBCD.W $12345678,FW		ERROR: Invalid addressing mode
+SBCD.W $12345678,*+$10(PC)		ERROR: Invalid addressing mode
+SBCD.W $12345678,#1		ERROR: Invalid addressing mode
+SBCD.W $12345678,#$80		ERROR: Invalid addressing mode
+SBCD.W $12345678,#$1234		ERROR: Invalid addressing mode
+SBCD.W $12345678,#$12345678		ERROR: Invalid addressing mode
+SBCD.W $12345678,SR		ERROR: Invalid addressing mode
+SBCD.W $12345678,CCR		ERROR: Invalid addressing mode
+SBCD.W $12345678,USP		ERROR: Invalid addressing mode
+SBCD.W FW,D1		ERROR: Invalid addressing mode
+SBCD.W FW,A2		ERROR: Invalid addressing mode
+SBCD.W FW,(A3)		ERROR: Invalid addressing mode
+SBCD.W FW,(A4)+		ERROR: Invalid addressing mode
+SBCD.W FW,-(A5)		ERROR: Invalid addressing mode
+SBCD.W FW,$10(A6)		ERROR: Invalid addressing mode
+SBCD.W FW,$10(A6,D7.W)		ERROR: Invalid addressing mode
+SBCD.W FW,$1234		ERROR: Invalid addressing mode
+SBCD.W FW,$12345678		ERROR: Invalid addressing mode
+SBCD.W FW,FW		ERROR: Invalid addressing mode
+SBCD.W FW,*+$10(PC)		ERROR: Invalid addressing mode
+SBCD.W FW,#1		ERROR: Invalid addressing mode
+SBCD.W FW,#$80		ERROR: Invalid addressing mode
+SBCD.W FW,#$1234		ERROR: Invalid addressing mode
+SBCD.W FW,#$12345678		ERROR: Invalid addressing mode
+SBCD.W FW,SR		ERROR: Invalid addressing mode
+SBCD.W FW,CCR		ERROR: Invalid addressing mode
+SBCD.W FW,USP		ERROR: Invalid addressing mode
+SBCD.W *+$10(PC),D1		ERROR: Invalid addressing mode
+SBCD.W *+$10(PC),A2		ERROR: Invalid addressing mode
+SBCD.W *+$10(PC),(A3)		ERROR: Invalid addressing mode
+SBCD.W *+$10(PC),(A4)+		ERROR: Invalid addressing mode
+SBCD.W *+$10(PC),-(A5)		ERROR: Invalid addressing mode
+SBCD.W *+$10(PC),$10(A6)		ERROR: Invalid addressing mode
+SBCD.W *+$10(PC),$10(A6,D7.W)		ERROR: Invalid addressing mode
+SBCD.W *+$10(PC),$1234		ERROR: Invalid addressing mode
+SBCD.W *+$10(PC),$12345678		ERROR: Invalid addressing mode
+SBCD.W *+$10(PC),FW		ERROR: Invalid addressing mode
+SBCD.W *+$10(PC),*+$10(PC)		ERROR: Invalid addressing mode
+SBCD.W *+$10(PC),#1		ERROR: Invalid addressing mode
+SBCD.W *+$10(PC),#$80		ERROR: Invalid addressing mode
+SBCD.W *+$10(PC),#$1234		ERROR: Invalid addressing mode
+SBCD.W *+$10(PC),#$12345678		ERROR: Invalid addressing mode
+SBCD.W *+$10(PC),SR		ERROR: Invalid addressing mode
+SBCD.W *+$10(PC),CCR		ERROR: Invalid addressing mode
+SBCD.W *+$10(PC),USP		ERROR: Invalid addressing mode
+SBCD.W #1,D1		ERROR: Invalid addressing mode
+SBCD.W #1,A2		ERROR: Invalid addressing mode
+SBCD.W #1,(A3)		ERROR: Invalid addressing mode
+SBCD.W #1,(A4)+		ERROR: Invalid addressing mode
+SBCD.W #1,-(A5)		ERROR: Invalid addressing mode
+SBCD.W #1,$10(A6)		ERROR: Invalid addressing mode
+SBCD.W #1,$10(A6,D7.W)		ERROR: Invalid addressing mode
+SBCD.W #1,$1234		ERROR: Invalid addressing mode
+SBCD.W #1,$12345678		ERROR: Invalid addressing mode
+SBCD.W #1,FW		ERROR: Invalid addressing mode
+SBCD.W #1,*+$10(PC)		ERROR: Invalid addressing mode
+SBCD.W #1,#1		ERROR: Invalid addressing mode
+SBCD.W #1,#$80		ERROR: Invalid addressing mode
+SBCD.W #1,#$1234		ERROR: Invalid addressing mode
+SBCD.W #1,#$12345678		ERROR: Invalid addressing mode
+SBCD.W #1,SR		ERROR: Invalid addressing mode
+SBCD.W #1,CCR		ERROR: Invalid addressing mode
+SBCD.W #1,USP		ERROR: Invalid addressing mode
+SBCD.W #$80,D1		ERROR: Invalid addressing mode
+SBCD.W #$80,A2		ERROR: Invalid addressing mode
+SBCD.W #$80,(A3)		ERROR: Invalid addressing mode
+SBCD.W #$80,(A4)+		ERROR: Invalid addressing mode
+SBCD.W #$80,-(A5)		ERROR: Invalid addressing mode
+SBCD.W #$80,$10(A6)		ERROR: Invalid addressing mode
+SBCD.W #$80,$10(A6,D7.W)		ERROR: Invalid addressing mode
+SBCD.W #$80,$1234		ERROR: Invalid addressing mode
+SBCD.W #$80,$12345678		ERROR: Invalid addressing mode
+SBCD.W #$80,FW		ERROR: Invalid addressing mode
+SBCD.W #$80,*+$10(PC)		ERROR: Invalid addressing mode
+SBCD.W #$80,#1		ERROR: Invalid addressing mode
+SBCD.W #$80,#$80		ERROR: Invalid addressing mode
+SBCD.W #$80,#$1234		ERROR: Invalid addressing mode
+SBCD.W #$80,#$12345678		ERROR: Invalid addressing mode
+SBCD.W #$80,SR		ERROR: Invalid addressing mode
+SBCD.W #$80,CCR		ERROR: Invalid addressing mode
+SBCD.W #$80,USP		ERROR: Invalid addressing mode
+SBCD.W #$1234,D1		ERROR: Invalid addressing mode
+SBCD.W #$1234,A2		ERROR: Invalid addressing mode
+SBCD.W #$1234,(A3)		ERROR: Invalid addressing mode
+SBCD.W #$1234,(A4)+		ERROR: Invalid addressing mode
+SBCD.W #$1234,-(A5)		ERROR: Invalid addressing mode
+SBCD.W #$1234,$10(A6)		ERROR: Invalid addressing mode
+SBCD.W #$1234,$10(A6,D7.W)		ERROR: Invalid addressing mode
+SBCD.W #$1234,$1234		ERROR: Invalid addressing mode
+SBCD.W #$1234,$12345678		ERROR: Invalid addressing mode
+SBCD.W #$1234,FW		ERROR: Invalid addressing mode
+SBCD.W #$1234,*+$10(PC)		ERROR: Invalid addressing mode
+SBCD.W #$1234,#1		ERROR: Invalid addressing mode
+SBCD.W #$1234,#$80		ERROR: Invalid addressing mode
+SBCD.W #$1234,#$1234		ERROR: Invalid addressing mode
+SBCD.W #$1234,#$12345678		ERROR: Invalid addressing mode
+SBCD.W #$1234,SR		ERROR: Invalid addressing mode
+SBCD.W #$1234,CCR		ERROR: Invalid addressing mode
+SBCD.W #$1234,USP		ERROR: Invalid addressing mode
+SBCD.W #$12345678,D1		ERROR: Invalid addressing mode
+SBCD.W #$12345678,A2		ERROR: Invalid addressing mode
+SBCD.W #$12345678,(A3)		ERROR: Invalid addressing mode
+SBCD.W #$12345678,(A4)+		ERROR: Invalid addressing mode
+SBCD.W #$12345678,-(A5)		ERROR: Invalid addressing mode
+SBCD.W #$12345678,$10(A6)		ERROR: Invalid addressing mode
+SBCD.W #$12345678,$10(A6,D7.W)		ERROR: Invalid addressing mode
+SBCD.W #$12345678,$1234		ERROR: Invalid addressing mode
+SBCD.W #$12345678,$12345678		ERROR: Invalid addressing mode
+SBCD.W #$12345678,FW		ERROR: Invalid addressing mode
+SBCD.W #$12345678,*+$10(PC)		ERROR: Invalid addressing mode
+SBCD.W #$12345678,#1		ERROR: Invalid addressing mode
+SBCD.W #$12345678,#$80		ERROR: Invalid addressing mode
+SBCD.W #$12345678,#$1234		ERROR: Invalid addressing mode
+SBCD.W #$12345678,#$12345678		ERROR: Invalid addressing mode
+SBCD.W #$12345678,SR		ERROR: Invalid addressing mode
+SBCD.W #$12345678,CCR		ERROR: Invalid addressing mode
+SBCD.W #$12345678,USP		ERROR: Invalid addressing mode
+SBCD.W SR,D1		ERROR: Invalid addressing mode
+SBCD.W SR,A2		ERROR: Invalid addressing mode
+SBCD.W SR,(A3)		ERROR: Invalid addressing mode
+SBCD.W SR,(A4)+		ERROR: Invalid addressing mode
+SBCD.W SR,-(A5)		ERROR: Invalid addressing mode
+SBCD.W SR,$10(A6)		ERROR: Invalid addressing mode
+SBCD.W SR,$10(A6,D7.W)		ERROR: Invalid addressing mode
+SBCD.W SR,$1234		ERROR: Invalid addressing mode
+SBCD.W SR,$12345678		ERROR: Invalid addressing mode
+SBCD.W SR,FW		ERROR: Invalid addressing mode
+SBCD.W SR,*+$10(PC)		ERROR: Invalid addressing mode
+SBCD.W SR,#1		ERROR: Invalid addressing mode
+SBCD.W SR,#$80		ERROR: Invalid addressing mode
+SBCD.W SR,#$1234		ERROR: Invalid addressing mode
+SBCD.W SR,#$12345678		ERROR: Invalid addressing mode
+SBCD.W SR,SR		ERROR: Invalid addressing mode
+SBCD.W SR,CCR		ERROR: Invalid addressing mode
+SBCD.W SR,USP		ERROR: Invalid addressing mode
+SBCD.W CCR,D1		ERROR: Invalid addressing mode
+SBCD.W CCR,A2		ERROR: Invalid addressing mode
+SBCD.W CCR,(A3)		ERROR: Invalid addressing mode
+SBCD.W CCR,(A4)+		ERROR: Invalid addressing mode
+SBCD.W CCR,-(A5)		ERROR: Invalid addressing mode
+SBCD.W CCR,$10(A6)		ERROR: Invalid addressing mode
+SBCD.W CCR,$10(A6,D7.W)		ERROR: Invalid addressing mode
+SBCD.W CCR,$1234		ERROR: Invalid addressing mode
+SBCD.W CCR,$12345678		ERROR: Invalid addressing mode
+SBCD.W CCR,FW		ERROR: Invalid addressing mode
+SBCD.W CCR,*+$10(PC)		ERROR: Invalid addressing mode
+SBCD.W CCR,#1		ERROR: Invalid addressing mode
+SBCD.W CCR,#$80		ERROR: Invalid addressing mode
+SBCD.W CCR,#$1234		ERROR: Invalid addressing mode
+SBCD.W CCR,#$12345678		ERROR: Invalid addressing mode
+SBCD.W CCR,SR		ERROR: Invalid addressing mode
+SBCD.W CCR,CCR		ERROR: Invalid addressing mode
+SBCD.W CCR,USP		ERROR: Invalid addressing mode
+SBCD.W USP,D1		ERROR: Invalid addressing mode
+SBCD.W USP,A2		ERROR: Invalid addressing mode
+SBCD.W USP,(A3)		ERROR: Invalid addressing mode
+SBCD.W USP,(A4)+		ERROR: Invalid addressing mode
+SBCD.W USP,-(A5)		ERROR: Invalid addressing mode
+SBCD.W USP,$10(A6)		ERROR: Invalid addressing mode
+SBCD.W USP,$10(A6,D7.W)		ERROR: Invalid addressing mode
+SBCD.W USP,$1234		ERROR: Invalid addressing mode
+SBCD.W USP,$12345678		ERROR: Invalid addressing mode
+SBCD.W USP,FW		ERROR: Invalid addressing mode
+SBCD.W USP,*+$10(PC)		ERROR: Invalid addressing mode
+SBCD.W USP,#1		ERROR: Invalid addressing mode
+SBCD.W USP,#$80		ERROR: Invalid addressing mode
+SBCD.W USP,#$1234		ERROR: Invalid addressing mode
+SBCD.W USP,#$12345678		ERROR: Invalid addressing mode
+SBCD.W USP,SR		ERROR: Invalid addressing mode
+SBCD.W USP,CCR		ERROR: Invalid addressing mode
+SBCD.W USP,USP		ERROR: Invalid addressing mode
+SBCD.W SP,D1		ERROR: Invalid addressing mode
+SBCD.W SP,A2		ERROR: Invalid addressing mode
+SBCD.W D1,SP		ERROR: Invalid addressing mode
+SBCD.W #$12,SP		ERROR: Invalid addressing mode
+SBCD.W -2(A0),D1		ERROR: Invalid addressing mode
+SBCD.W -2(A0),A2		ERROR: Invalid addressing mode
+SBCD.W D1,-2(A0)		ERROR: Invalid addressing mode
+SBCD.W #$12,-2(A0)		ERROR: Invalid addressing mode
+SBCD.W $12(A0,A1.L),D1		ERROR: Invalid addressing mode
+SBCD.W $12(A0,A1.L),A2		ERROR: Invalid addressing mode
+SBCD.W D1,$12(A0,A1.L)		ERROR: Invalid addressing mode
+SBCD.W #$12,$12(A0,A1.L)		ERROR: Invalid addressing mode
+SBCD.W (A2,D3),D1		ERROR: Invalid addressing mode
+SBCD.W (A2,D3),A2		ERROR: Invalid addressing mode
+SBCD.W D1,(A2,D3)		ERROR: Invalid addressing mode
+SBCD.W #$12,(A2,D3)		ERROR: Invalid addressing mode
+SBCD.W $1234.L,D1		ERROR: Invalid addressing mode
+SBCD.W $1234.L,A2		ERROR: Invalid addressing mode
+SBCD.W D1,$1234.L		ERROR: Invalid addressing mode
+SBCD.W #$12,$1234.L		ERROR: Invalid addressing mode
+SBCD.W $1234.W,D1		ERROR: Invalid addressing mode
+SBCD.W $1234.W,A2		ERROR: Invalid addressing mode
+SBCD.W D1,$1234.W		ERROR: Invalid addressing mode
+SBCD.W #$12,$1234.W		ERROR: Invalid addressing mode
+SBCD.W $8000,D1		ERROR: Invalid addressing mode
+SBCD.W $8000,A2		ERROR: Invalid addressing mode
+SBCD.W D1,$8000		ERROR: Invalid addressing mode
+SBCD.W #$12,$8000		ERROR: Invalid addressing mode
+SBCD.W BK,D1		ERROR: Invalid addressing mode
+SBCD.W BK,A2		ERROR: Invalid addressing mode
+SBCD.W D1,BK		ERROR: Invalid addressing mode
+SBCD.W #$12,BK		ERROR: Invalid addressing mode
+SBCD.W *(PC,D0.W),D1		ERROR: Invalid addressing mode
+SBCD.W *(PC,D0.W),A2		ERROR: Invalid addressing mode
+SBCD.W D1,*(PC,D0.W)		ERROR: Invalid addressing mode
+SBCD.W #$12,*(PC,D0.W)		ERROR: Invalid addressing mode
+SBCD.W BK(PC),D1		ERROR: Invalid addressing mode
+SBCD.W BK(PC),A2		ERROR: Invalid addressing mode
+SBCD.W D1,BK(PC)		ERROR: Invalid addressing mode
+SBCD.W #$12,BK(PC)		ERROR: Invalid addressing mode
+SBCD.W #8,D1		ERROR: Invalid addressing mode
+SBCD.W #8,A2		ERROR: Invalid addressing mode
+SBCD.W D1,#8		ERROR: Invalid addressing mode
+SBCD.W #$12,#8		ERROR: Invalid addressing mode
+SBCD.W #9,D1		ERROR: Invalid addressing mode
+SBCD.W #9,A2		ERROR: Invalid addressing mode
+SBCD.W D1,#9		ERROR: Invalid addressing mode
+SBCD.W #$12,#9		ERROR: Invalid addressing mode
+SBCD.W #0,D1		ERROR: Invalid addressing mode
+SBCD.W #0,A2		ERROR: Invalid addressing mode
+SBCD.W D1,#0		ERROR: Invalid addressing mode
+SBCD.W #$12,#0		ERROR: Invalid addressing mode
+SBCD.W #-1,D1		ERROR: Invalid addressing mode
+SBCD.W #-1,A2		ERROR: Invalid addressing mode
+SBCD.W D1,#-1		ERROR: Invalid addressing mode
+SBCD.W #$12,#-1		ERROR: Invalid addressing mode
+SBCD.W #$12345678.L,D1		ERROR: Invalid addressing mode
+SBCD.W #$12345678.L,A2		ERROR: Invalid addressing mode
+SBCD.W D1,#$12345678.L		ERROR: Invalid addressing mode
+SBCD.W #$12,#$12345678.L		ERROR: Invalid addressing mode
+SBCD.W #BK,D1		ERROR: Invalid addressing mode
+SBCD.W #BK,A2		ERROR: Invalid addressing mode
+SBCD.W D1,#BK		ERROR: Invalid addressing mode
+SBCD.W #$12,#BK		ERROR: Invalid addressing mode
+SBCD.W #FW,D1		ERROR: Invalid addressing mode
+SBCD.W #FW,A2		ERROR: Invalid addressing mode
+SBCD.W D1,#FW		ERROR: Invalid addressing mode
+SBCD.W #$12,#FW		ERROR: Invalid addressing mode
+SBCD.W #UNDEF,D1		ERROR: Invalid addressing mode
+SBCD.W #UNDEF,A2		ERROR: Invalid addressing mode
+SBCD.W D1,#UNDEF		ERROR: Invalid addressing mode
+SBCD.W #$12,#UNDEF		ERROR: Invalid addressing mode
+SBCD.W UNDEF,D1		ERROR: Invalid addressing mode
+SBCD.W UNDEF,A2		ERROR: Invalid addressing mode
+SBCD.W D1,UNDEF		ERROR: Invalid addressing mode
+SBCD.W #$12,UNDEF		ERROR: Invalid addressing mode
+SBCD.W D1,D2,D3		ERROR: Invalid syntax
+SBCD.L		ERROR: Invalid syntax
+SBCD.L D1		ERROR: Comma expected
+SBCD.L A2		ERROR: Comma expected
+SBCD.L SP		ERROR: Comma expected
+SBCD.L (A3)		ERROR: Comma expected
+SBCD.L (A4)+		ERROR: Comma expected
+SBCD.L -(A5)		ERROR: Comma expected
+SBCD.L $10(A6)		ERROR: Comma expected
+SBCD.L -2(A0)		ERROR: Comma expected
+SBCD.L $10(A6,D7.W)		ERROR: Comma expected
+SBCD.L $12(A0,A1.L)		ERROR: Comma expected
+SBCD.L (A2,D3)		ERROR: Comma expected
+SBCD.L $1234		ERROR: Comma expected
+SBCD.L $12345678		ERROR: Comma expected
+SBCD.L $1234.L		ERROR: Comma expected
+SBCD.L $1234.W		ERROR: Comma expected
+SBCD.L $8000		ERROR: Comma expected
+SBCD.L BK		ERROR: Comma expected
+SBCD.L FW		ERROR: Comma expected
+SBCD.L *+$10(PC)		ERROR: Comma expected
+SBCD.L *(PC,D0.W)		ERROR: Comma expected
+SBCD.L BK(PC)		ERROR: Comma expected
+SBCD.L #1		ERROR: Comma expected
+SBCD.L #8		ERROR: Comma expected
+SBCD.L #9		ERROR: Comma expected
+SBCD.L #0		ERROR: Comma expected
+SBCD.L #-1		ERROR: Comma expected
+SBCD.L #$80		ERROR: Comma expected
+SBCD.L #$1234		ERROR: Comma expected
+SBCD.L #$12345678		ERROR: Comma expected
+SBCD.L #$12345678.L		ERROR: Comma expected
+SBCD.L #BK		ERROR: Comma expected
+SBCD.L #FW		ERROR: Comma expected
+SBCD.L #UNDEF		ERROR: Comma expected
+SBCD.L UNDEF		ERROR: Comma expected
+SBCD.L SR		ERROR: Comma expected
+SBCD.L CCR		ERROR: Comma expected
+SBCD.L USP		ERROR: Comma expected
+SBCD.L D1,D1	8301	ERROR: Invalid size code
+SBCD.L D1,A2		ERROR: Invalid addressing mode
+SBCD.L D1,(A3)		ERROR: Invalid addressing mode
+SBCD.L D1,$10(A6)		ERROR: Invalid addressing mode
+SBCD.L D1,$1234		ERROR: Invalid addressing mode
+SBCD.L D1,FW		ERROR: Invalid addressing mode
+SBCD.L D1,#1		ERROR: Invalid addressing mode
+SBCD.L D1,#$1234		ERROR: Invalid addressing mode
+SBCD.L D1,CCR		ERROR: Invalid addressing mode
+SBCD.L D1,SR		ERROR: Invalid addressing mode
+SBCD.L A2,D1		ERROR: Invalid addressing mode
+SBCD.L A2,A2		ERROR: Invalid addressing mode
+SBCD.L A2,(A3)		ERROR: Invalid addressing mode
+SBCD.L A2,$10(A6)		ERROR: Invalid addressing mode
+SBCD.L A2,$1234		ERROR: Invalid addressing mode
+SBCD.L A2,FW		ERROR: Invalid addressing mode
+SBCD.L A2,#1		ERROR: Invalid addressing mode
+SBCD.L A2,#$1234		ERROR: Invalid addressing mode
+SBCD.L A2,CCR		ERROR: Invalid addressing mode
+SBCD.L A2,SR		ERROR: Invalid addressing mode
+SBCD.L (A3),D1		ERROR: Invalid addressing mode
+SBCD.L (A3),A2		ERROR: Invalid addressing mode
+SBCD.L (A3),(A3)		ERROR: Invalid addressing mode
+SBCD.L (A3),$10(A6)		ERROR: Invalid addressing mode
+SBCD.L (A3),$1234		ERROR: Invalid addressing mode
+SBCD.L (A3),FW		ERROR: Invalid addressing mode
+SBCD.L (A3),#1		ERROR: Invalid addressing mode
+SBCD.L (A3),#$1234		ERROR: Invalid addressing mode
+SBCD.L (A3),CCR		ERROR: Invalid addressing mode
+SBCD.L (A3),SR		ERROR: Invalid addressing mode
+SBCD.L $10(A6),D1		ERROR: Invalid addressing mode
+SBCD.L $10(A6),A2		ERROR: Invalid addressing mode
+SBCD.L $10(A6),(A3)		ERROR: Invalid addressing mode
+SBCD.L $10(A6),$10(A6)		ERROR: Invalid addressing mode
+SBCD.L $10(A6),$1234		ERROR: Invalid addressing mode
+SBCD.L $10(A6),FW		ERROR: Invalid addressing mode
+SBCD.L $10(A6),#1		ERROR: Invalid addressing mode
+SBCD.L $10(A6),#$1234		ERROR: Invalid addressing mode
+SBCD.L $10(A6),CCR		ERROR: Invalid addressing mode
+SBCD.L $10(A6),SR		ERROR: Invalid addressing mode
+SBCD.L $1234,D1		ERROR: Invalid addressing mode
+SBCD.L $1234,A2		ERROR: Invalid addressing mode
+SBCD.L $1234,(A3)		ERROR: Invalid addressing mode
+SBCD.L $1234,$10(A6)		ERROR: Invalid addressing mode
+SBCD.L $1234,$1234		ERROR: Invalid addressing mode
+SBCD.L $1234,FW		ERROR: Invalid addressing mode
+SBCD.L $1234,#1		ERROR: Invalid addressing mode
+SBCD.L $1234,#$1234		ERROR: Invalid addressing mode
+SBCD.L $1234,CCR		ERROR: Invalid addressing mode
+SBCD.L $1234,SR		ERROR: Invalid addressing mode
+SBCD.L FW,D1		ERROR: Invalid addressing mode
+SBCD.L FW,A2		ERROR: Invalid addressing mode
+SBCD.L FW,(A3)		ERROR: Invalid addressing mode
+SBCD.L FW,$10(A6)		ERROR: Invalid addressing mode
+SBCD.L FW,$1234		ERROR: Invalid addressing mode
+SBCD.L FW,FW		ERROR: Invalid addressing mode
+SBCD.L FW,#1		ERROR: Invalid addressing mode
+SBCD.L FW,#$1234		ERROR: Invalid addressing mode
+SBCD.L FW,CCR		ERROR: Invalid addressing mode
+SBCD.L FW,SR		ERROR: Invalid addressing mode
+SBCD.L #1,D1		ERROR: Invalid addressing mode
+SBCD.L #1,A2		ERROR: Invalid addressing mode
+SBCD.L #1,(A3)		ERROR: Invalid addressing mode
+SBCD.L #1,$10(A6)		ERROR: Invalid addressing mode
+SBCD.L #1,$1234		ERROR: Invalid addressing mode
+SBCD.L #1,FW		ERROR: Invalid addressing mode
+SBCD.L #1,#1		ERROR: Invalid addressing mode
+SBCD.L #1,#$1234		ERROR: Invalid addressing mode
+SBCD.L #1,CCR		ERROR: Invalid addressing mode
+SBCD.L #1,SR		ERROR: Invalid addressing mode
+SBCD.L #$1234,D1		ERROR: Invalid addressing mode
+SBCD.L #$1234,A2		ERROR: Invalid addressing mode
+SBCD.L #$1234,(A3)		ERROR: Invalid addressing mode
+SBCD.L #$1234,$10(A6)		ERROR: Invalid addressing mode
+SBCD.L #$1234,$1234		ERROR: Invalid addressing mode
+SBCD.L #$1234,FW		ERROR: Invalid addressing mode
+SBCD.L #$1234,#1		ERROR: Invalid addressing mode
+SBCD.L #$1234,#$1234		ERROR: Invalid addressing mode
+SBCD.L #$1234,CCR		ERROR: Invalid addressing mode
+SBCD.L #$1234,SR		ERROR: Invalid addressing mode
+SBCD.L CCR,D1		ERROR: Invalid addressing mode
+SBCD.L CCR,A2		ERROR: Invalid addressing mode
+SBCD.L CCR,(A3)		ERROR: Invalid addressing mode
+SBCD.L CCR,$10(A6)		ERROR: Invalid addressing mode
+SBCD.L CCR,$1234		ERROR: Invalid addressing mode
+SBCD.L CCR,FW		ERROR: Invalid addressing mode
+SBCD.L CCR,#1		ERROR: Invalid addressing mode
+SBCD.L CCR,#$1234		ERROR: Invalid addressing mode
+SBCD.L CCR,CCR		ERROR: Invalid addressing mode
+SBCD.L CCR,SR		ERROR: Invalid addressing mode
+SBCD.L SR,D1		ERROR: Invalid addressing mode
+SBCD.L SR,A2		ERROR: Invalid addressing mode
+SBCD.L SR,(A3)		ERROR: Invalid addressing mode
+SBCD.L SR,$10(A6)		ERROR: Invalid addressing mode
+SBCD.L SR,$1234		ERROR: Invalid addressing mode
+SBCD.L SR,FW		ERROR: Invalid addressing mode
+SBCD.L SR,#1		ERROR: Invalid addressing mode
+SBCD.L SR,#$1234		ERROR: Invalid addressing mode
+SBCD.L SR,CCR		ERROR: Invalid addressing mode
+SBCD.L SR,SR		ERROR: Invalid addressing mode
+SBCD.L SP,D1		ERROR: Invalid addressing mode
+SBCD.L SP,A2		ERROR: Invalid addressing mode
+SBCD.L D1,SP		ERROR: Invalid addressing mode
+SBCD.L #$12,SP		ERROR: Invalid addressing mode
+SBCD.L (A4)+,D1		ERROR: Invalid addressing mode
+SBCD.L (A4)+,A2		ERROR: Invalid addressing mode
+SBCD.L D1,(A4)+		ERROR: Invalid addressing mode
+SBCD.L #$12,(A4)+		ERROR: Invalid addressing mode
+SBCD.L -(A5),D1		ERROR: Invalid addressing mode
+SBCD.L -(A5),A2		ERROR: Invalid addressing mode
+SBCD.L D1,-(A5)		ERROR: Invalid addressing mode
+SBCD.L #$12,-(A5)		ERROR: Invalid addressing mode
+SBCD.L -2(A0),D1		ERROR: Invalid addressing mode
+SBCD.L -2(A0),A2		ERROR: Invalid addressing mode
+SBCD.L D1,-2(A0)		ERROR: Invalid addressing mode
+SBCD.L #$12,-2(A0)		ERROR: Invalid addressing mode
+SBCD.L $10(A6,D7.W),D1		ERROR: Invalid addressing mode
+SBCD.L $10(A6,D7.W),A2		ERROR: Invalid addressing mode
+SBCD.L D1,$10(A6,D7.W)		ERROR: Invalid addressing mode
+SBCD.L #$12,$10(A6,D7.W)		ERROR: Invalid addressing mode
+SBCD.L $12(A0,A1.L),D1		ERROR: Invalid addressing mode
+SBCD.L $12(A0,A1.L),A2		ERROR: Invalid addressing mode
+SBCD.L D1,$12(A0,A1.L)		ERROR: Invalid addressing mode
+SBCD.L #$12,$12(A0,A1.L)		ERROR: Invalid addressing mode
+SBCD.L (A2,D3),D1		ERROR: Invalid addressing mode
+SBCD.L (A2,D3),A2		ERROR: Invalid addressing mode
+SBCD.L D1,(A2,D3)		ERROR: Invalid addressing mode
+SBCD.L #$12,(A2,D3)		ERROR: Invalid addressing mode
+SBCD.L $12345678,D1		ERROR: Invalid addressing mode
+SBCD.L $12345678,A2		ERROR: Invalid addressing mode
+SBCD.L D1,$12345678		ERROR: Invalid addressing mode
+SBCD.L #$12,$12345678		ERROR: Invalid addressing mode
+SBCD.L $1234.L,D1		ERROR: Invalid addressing mode
+SBCD.L $1234.L,A2		ERROR: Invalid addressing mode
+SBCD.L D1,$1234.L		ERROR: Invalid addressing mode
+SBCD.L #$12,$1234.L		ERROR: Invalid addressing mode
+SBCD.L $1234.W,D1		ERROR: Invalid addressing mode
+SBCD.L $1234.W,A2		ERROR: Invalid addressing mode
+SBCD.L D1,$1234.W		ERROR: Invalid addressing mode
+SBCD.L #$12,$1234.W		ERROR: Invalid addressing mode
+SBCD.L $8000,D1		ERROR: Invalid addressing mode
+SBCD.L $8000,A2		ERROR: Invalid addressing mode
+SBCD.L D1,$8000		ERROR: Invalid addressing mode
+SBCD.L #$12,$8000		ERROR: Invalid addressing mode
+SBCD.L BK,D1		ERROR: Invalid addressing mode
+SBCD.L BK,A2		ERROR: Invalid addressing mode
+SBCD.L D1,BK		ERROR: Invalid addressing mode
+SBCD.L #$12,BK		ERROR: Invalid addressing mode
+SBCD.L *+$10(PC),D1		ERROR: Invalid addressing mode
+SBCD.L *+$10(PC),A2		ERROR: Invalid addressing mode
+SBCD.L D1,*+$10(PC)		ERROR: Invalid addressing mode
+SBCD.L #$12,*+$10(PC)		ERROR: Invalid addressing mode
+SBCD.L *(PC,D0.W),D1		ERROR: Invalid addressing mode
+SBCD.L *(PC,D0.W),A2		ERROR: Invalid addressing mode
+SBCD.L D1,*(PC,D0.W)		ERROR: Invalid addressing mode
+SBCD.L #$12,*(PC,D0.W)		ERROR: Invalid addressing mode
+SBCD.L BK(PC),D1		ERROR: Invalid addressing mode
+SBCD.L BK(PC),A2		ERROR: Invalid addressing mode
+SBCD.L D1,BK(PC)		ERROR: Invalid addressing mode
+SBCD.L #$12,BK(PC)		ERROR: Invalid addressing mode
+SBCD.L #8,D1		ERROR: Invalid addressing mode
+SBCD.L #8,A2		ERROR: Invalid addressing mode
+SBCD.L D1,#8		ERROR: Invalid addressing mode
+SBCD.L #$12,#8		ERROR: Invalid addressing mode
+SBCD.L #9,D1		ERROR: Invalid addressing mode
+SBCD.L #9,A2		ERROR: Invalid addressing mode
+SBCD.L D1,#9		ERROR: Invalid addressing mode
+SBCD.L #$12,#9		ERROR: Invalid addressing mode
+SBCD.L #0,D1		ERROR: Invalid addressing mode
+SBCD.L #0,A2		ERROR: Invalid addressing mode
+SBCD.L D1,#0		ERROR: Invalid addressing mode
+SBCD.L #$12,#0		ERROR: Invalid addressing mode
+SBCD.L #-1,D1		ERROR: Invalid addressing mode
+SBCD.L #-1,A2		ERROR: Invalid addressing mode
+SBCD.L D1,#-1		ERROR: Invalid addressing mode
+SBCD.L #$12,#-1		ERROR: Invalid addressing mode
+SBCD.L #$80,D1		ERROR: Invalid addressing mode
+SBCD.L #$80,A2		ERROR: Invalid addressing mode
+SBCD.L D1,#$80		ERROR: Invalid addressing mode
+SBCD.L #$12,#$80		ERROR: Invalid addressing mode
+SBCD.L #$12345678,D1		ERROR: Invalid addressing mode
+SBCD.L #$12345678,A2		ERROR: Invalid addressing mode
+SBCD.L D1,#$12345678		ERROR: Invalid addressing mode
+SBCD.L #$12,#$12345678		ERROR: Invalid addressing mode
+SBCD.L #$12345678.L,D1		ERROR: Invalid addressing mode
+SBCD.L #$12345678.L,A2		ERROR: Invalid addressing mode
+SBCD.L D1,#$12345678.L		ERROR: Invalid addressing mode
+SBCD.L #$12,#$12345678.L		ERROR: Invalid addressing mode
+SBCD.L #BK,D1		ERROR: Invalid addressing mode
+SBCD.L #BK,A2		ERROR: Invalid addressing mode
+SBCD.L D1,#BK		ERROR: Invalid addressing mode
+SBCD.L #$12,#BK		ERROR: Invalid addressing mode
+SBCD.L #FW,D1		ERROR: Invalid addressing mode
+SBCD.L #FW,A2		ERROR: Invalid addressing mode
+SBCD.L D1,#FW		ERROR: Invalid addressing mode
+SBCD.L #$12,#FW		ERROR: Invalid addressing mode
+SBCD.L #UNDEF,D1		ERROR: Invalid addressing mode
+SBCD.L #UNDEF,A2		ERROR: Invalid addressing mode
+SBCD.L D1,#UNDEF		ERROR: Invalid addressing mode
+SBCD.L #$12,#UNDEF		ERROR: Invalid addressing mode
+SBCD.L UNDEF,D1		ERROR: Invalid addressing mode
+SBCD.L UNDEF,A2		ERROR: Invalid addressing mode
+SBCD.L D1,UNDEF		ERROR: Invalid addressing mode
+SBCD.L #$12,UNDEF		ERROR: Invalid addressing mode
+SBCD.L USP,D1		ERROR: Invalid addressing mode
+SBCD.L USP,A2		ERROR: Invalid addressing mode
+SBCD.L D1,USP		ERROR: Invalid addressing mode
+SBCD.L #$12,USP		ERROR: Invalid addressing mode
+SBCD.L D1,D2,D3		ERROR: Invalid syntax
+SBCD.S		ERROR: Invalid syntax
+SBCD.S D1		ERROR: Comma expected
+SBCD.S A2		ERROR: Comma expected
+SBCD.S SP		ERROR: Comma expected
+SBCD.S (A3)		ERROR: Comma expected
+SBCD.S (A4)+		ERROR: Comma expected
+SBCD.S -(A5)		ERROR: Comma expected
+SBCD.S $10(A6)		ERROR: Comma expected
+SBCD.S -2(A0)		ERROR: Comma expected
+SBCD.S $10(A6,D7.W)		ERROR: Comma expected
+SBCD.S $12(A0,A1.L)		ERROR: Comma expected
+SBCD.S (A2,D3)		ERROR: Comma expected
+SBCD.S $1234		ERROR: Comma expected
+SBCD.S $12345678		ERROR: Comma expected
+SBCD.S $1234.L		ERROR: Comma expected
+SBCD.S $1234.W		ERROR: Comma expected
+SBCD.S $8000		ERROR: Comma expected
+SBCD.S BK		ERROR: Comma expected
+SBCD.S FW		ERROR: Comma expected
+SBCD.S *+$10(PC)		ERROR: Comma expected
+SBCD.S *(PC,D0.W)		ERROR: Comma expected
+SBCD.S BK(PC)		ERROR: Comma expected
+SBCD.S #1		ERROR: Comma expected
+SBCD.S #8		ERROR: Comma expected
+SBCD.S #9		ERROR: Comma expected
+SBCD.S #0		ERROR: Comma expected
+SBCD.S #-1		ERROR: Comma expected
+SBCD.S #$80		ERROR: Comma expected
+SBCD.S #$1234		ERROR: Comma expected
+SBCD.S #$12345678		ERROR: Comma expected
+SBCD.S #$12345678.L		ERROR: Comma expected
+SBCD.S #BK		ERROR: Comma expected
+SBCD.S #FW		ERROR: Comma expected
+SBCD.S #UNDEF		ERROR: Comma expected
+SBCD.S UNDEF		ERROR: Comma expected
+SBCD.S SR		ERROR: Comma expected
+SBCD.S CCR		ERROR: Comma expected
+SBCD.S USP		ERROR: Comma expected
+SBCD.S D1,D1	8301	ERROR: Invalid size code
+SBCD.S D1,A2		ERROR: Invalid addressing mode
+SBCD.S D1,(A3)		ERROR: Invalid addressing mode
+SBCD.S D1,$10(A6)		ERROR: Invalid addressing mode
+SBCD.S D1,$1234		ERROR: Invalid addressing mode
+SBCD.S D1,FW		ERROR: Invalid addressing mode
+SBCD.S D1,#1		ERROR: Invalid addressing mode
+SBCD.S D1,#$1234		ERROR: Invalid addressing mode
+SBCD.S D1,CCR		ERROR: Invalid addressing mode
+SBCD.S D1,SR		ERROR: Invalid addressing mode
+SBCD.S A2,D1		ERROR: Invalid addressing mode
+SBCD.S A2,A2		ERROR: Invalid addressing mode
+SBCD.S A2,(A3)		ERROR: Invalid addressing mode
+SBCD.S A2,$10(A6)		ERROR: Invalid addressing mode
+SBCD.S A2,$1234		ERROR: Invalid addressing mode
+SBCD.S A2,FW		ERROR: Invalid addressing mode
+SBCD.S A2,#1		ERROR: Invalid addressing mode
+SBCD.S A2,#$1234		ERROR: Invalid addressing mode
+SBCD.S A2,CCR		ERROR: Invalid addressing mode
+SBCD.S A2,SR		ERROR: Invalid addressing mode
+SBCD.S (A3),D1		ERROR: Invalid addressing mode
+SBCD.S (A3),A2		ERROR: Invalid addressing mode
+SBCD.S (A3),(A3)		ERROR: Invalid addressing mode
+SBCD.S (A3),$10(A6)		ERROR: Invalid addressing mode
+SBCD.S (A3),$1234		ERROR: Invalid addressing mode
+SBCD.S (A3),FW		ERROR: Invalid addressing mode
+SBCD.S (A3),#1		ERROR: Invalid addressing mode
+SBCD.S (A3),#$1234		ERROR: Invalid addressing mode
+SBCD.S (A3),CCR		ERROR: Invalid addressing mode
+SBCD.S (A3),SR		ERROR: Invalid addressing mode
+SBCD.S $10(A6),D1		ERROR: Invalid addressing mode
+SBCD.S $10(A6),A2		ERROR: Invalid addressing mode
+SBCD.S $10(A6),(A3)		ERROR: Invalid addressing mode
+SBCD.S $10(A6),$10(A6)		ERROR: Invalid addressing mode
+SBCD.S $10(A6),$1234		ERROR: Invalid addressing mode
+SBCD.S $10(A6),FW		ERROR: Invalid addressing mode
+SBCD.S $10(A6),#1		ERROR: Invalid addressing mode
+SBCD.S $10(A6),#$1234		ERROR: Invalid addressing mode
+SBCD.S $10(A6),CCR		ERROR: Invalid addressing mode
+SBCD.S $10(A6),SR		ERROR: Invalid addressing mode
+SBCD.S $1234,D1		ERROR: Invalid addressing mode
+SBCD.S $1234,A2		ERROR: Invalid addressing mode
+SBCD.S $1234,(A3)		ERROR: Invalid addressing mode
+SBCD.S $1234,$10(A6)		ERROR: Invalid addressing mode
+SBCD.S $1234,$1234		ERROR: Invalid addressing mode
+SBCD.S $1234,FW		ERROR: Invalid addressing mode
+SBCD.S $1234,#1		ERROR: Invalid addressing mode
+SBCD.S $1234,#$1234		ERROR: Invalid addressing mode
+SBCD.S $1234,CCR		ERROR: Invalid addressing mode
+SBCD.S $1234,SR		ERROR: Invalid addressing mode
+SBCD.S FW,D1		ERROR: Invalid addressing mode
+SBCD.S FW,A2		ERROR: Invalid addressing mode
+SBCD.S FW,(A3)		ERROR: Invalid addressing mode
+SBCD.S FW,$10(A6)		ERROR: Invalid addressing mode
+SBCD.S FW,$1234		ERROR: Invalid addressing mode
+SBCD.S FW,FW		ERROR: Invalid addressing mode
+SBCD.S FW,#1		ERROR: Invalid addressing mode
+SBCD.S FW,#$1234		ERROR: Invalid addressing mode
+SBCD.S FW,CCR		ERROR: Invalid addressing mode
+SBCD.S FW,SR		ERROR: Invalid addressing mode
+SBCD.S #1,D1		ERROR: Invalid addressing mode
+SBCD.S #1,A2		ERROR: Invalid addressing mode
+SBCD.S #1,(A3)		ERROR: Invalid addressing mode
+SBCD.S #1,$10(A6)		ERROR: Invalid addressing mode
+SBCD.S #1,$1234		ERROR: Invalid addressing mode
+SBCD.S #1,FW		ERROR: Invalid addressing mode
+SBCD.S #1,#1		ERROR: Invalid addressing mode
+SBCD.S #1,#$1234		ERROR: Invalid addressing mode
+SBCD.S #1,CCR		ERROR: Invalid addressing mode
+SBCD.S #1,SR		ERROR: Invalid addressing mode
+SBCD.S #$1234,D1		ERROR: Invalid addressing mode
+SBCD.S #$1234,A2		ERROR: Invalid addressing mode
+SBCD.S #$1234,(A3)		ERROR: Invalid addressing mode
+SBCD.S #$1234,$10(A6)		ERROR: Invalid addressing mode
+SBCD.S #$1234,$1234		ERROR: Invalid addressing mode
+SBCD.S #$1234,FW		ERROR: Invalid addressing mode
+SBCD.S #$1234,#1		ERROR: Invalid addressing mode
+SBCD.S #$1234,#$1234		ERROR: Invalid addressing mode
+SBCD.S #$1234,CCR		ERROR: Invalid addressing mode
+SBCD.S #$1234,SR		ERROR: Invalid addressing mode
+SBCD.S CCR,D1		ERROR: Invalid addressing mode
+SBCD.S CCR,A2		ERROR: Invalid addressing mode
+SBCD.S CCR,(A3)		ERROR: Invalid addressing mode
+SBCD.S CCR,$10(A6)		ERROR: Invalid addressing mode
+SBCD.S CCR,$1234		ERROR: Invalid addressing mode
+SBCD.S CCR,FW		ERROR: Invalid addressing mode
+SBCD.S CCR,#1		ERROR: Invalid addressing mode
+SBCD.S CCR,#$1234		ERROR: Invalid addressing mode
+SBCD.S CCR,CCR		ERROR: Invalid addressing mode
+SBCD.S CCR,SR		ERROR: Invalid addressing mode
+SBCD.S SR,D1		ERROR: Invalid addressing mode
+SBCD.S SR,A2		ERROR: Invalid addressing mode
+SBCD.S SR,(A3)		ERROR: Invalid addressing mode
+SBCD.S SR,$10(A6)		ERROR: Invalid addressing mode
+SBCD.S SR,$1234		ERROR: Invalid addressing mode
+SBCD.S SR,FW		ERROR: Invalid addressing mode
+SBCD.S SR,#1		ERROR: Invalid addressing mode
+SBCD.S SR,#$1234		ERROR: Invalid addressing mode
+SBCD.S SR,CCR		ERROR: Invalid addressing mode
+SBCD.S SR,SR		ERROR: Invalid addressing mode
+SBCD.S SP,D1		ERROR: Invalid addressing mode
+SBCD.S SP,A2		ERROR: Invalid addressing mode
+SBCD.S D1,SP		ERROR: Invalid addressing mode
+SBCD.S #$12,SP		ERROR: Invalid addressing mode
+SBCD.S (A4)+,D1		ERROR: Invalid addressing mode
+SBCD.S (A4)+,A2		ERROR: Invalid addressing mode
+SBCD.S D1,(A4)+		ERROR: Invalid addressing mode
+SBCD.S #$12,(A4)+		ERROR: Invalid addressing mode
+SBCD.S -(A5),D1		ERROR: Invalid addressing mode
+SBCD.S -(A5),A2		ERROR: Invalid addressing mode
+SBCD.S D1,-(A5)		ERROR: Invalid addressing mode
+SBCD.S #$12,-(A5)		ERROR: Invalid addressing mode
+SBCD.S -2(A0),D1		ERROR: Invalid addressing mode
+SBCD.S -2(A0),A2		ERROR: Invalid addressing mode
+SBCD.S D1,-2(A0)		ERROR: Invalid addressing mode
+SBCD.S #$12,-2(A0)		ERROR: Invalid addressing mode
+SBCD.S $10(A6,D7.W),D1		ERROR: Invalid addressing mode
+SBCD.S $10(A6,D7.W),A2		ERROR: Invalid addressing mode
+SBCD.S D1,$10(A6,D7.W)		ERROR: Invalid addressing mode
+SBCD.S #$12,$10(A6,D7.W)		ERROR: Invalid addressing mode
+SBCD.S $12(A0,A1.L),D1		ERROR: Invalid addressing mode
+SBCD.S $12(A0,A1.L),A2		ERROR: Invalid addressing mode
+SBCD.S D1,$12(A0,A1.L)		ERROR: Invalid addressing mode
+SBCD.S #$12,$12(A0,A1.L)		ERROR: Invalid addressing mode
+SBCD.S (A2,D3),D1		ERROR: Invalid addressing mode
+SBCD.S (A2,D3),A2		ERROR: Invalid addressing mode
+SBCD.S D1,(A2,D3)		ERROR: Invalid addressing mode
+SBCD.S #$12,(A2,D3)		ERROR: Invalid addressing mode
+SBCD.S $12345678,D1		ERROR: Invalid addressing mode
+SBCD.S $12345678,A2		ERROR: Invalid addressing mode
+SBCD.S D1,$12345678		ERROR: Invalid addressing mode
+SBCD.S #$12,$12345678		ERROR: Invalid addressing mode
+SBCD.S $1234.L,D1		ERROR: Invalid addressing mode
+SBCD.S $1234.L,A2		ERROR: Invalid addressing mode
+SBCD.S D1,$1234.L		ERROR: Invalid addressing mode
+SBCD.S #$12,$1234.L		ERROR: Invalid addressing mode
+SBCD.S $1234.W,D1		ERROR: Invalid addressing mode
+SBCD.S $1234.W,A2		ERROR: Invalid addressing mode
+SBCD.S D1,$1234.W		ERROR: Invalid addressing mode
+SBCD.S #$12,$1234.W		ERROR: Invalid addressing mode
+SBCD.S $8000,D1		ERROR: Invalid addressing mode
+SBCD.S $8000,A2		ERROR: Invalid addressing mode
+SBCD.S D1,$8000		ERROR: Invalid addressing mode
+SBCD.S #$12,$8000		ERROR: Invalid addressing mode
+SBCD.S BK,D1		ERROR: Invalid addressing mode
+SBCD.S BK,A2		ERROR: Invalid addressing mode
+SBCD.S D1,BK		ERROR: Invalid addressing mode
+SBCD.S #$12,BK		ERROR: Invalid addressing mode
+SBCD.S *+$10(PC),D1		ERROR: Invalid addressing mode
+SBCD.S *+$10(PC),A2		ERROR: Invalid addressing mode
+SBCD.S D1,*+$10(PC)		ERROR: Invalid addressing mode
+SBCD.S #$12,*+$10(PC)		ERROR: Invalid addressing mode
+SBCD.S *(PC,D0.W),D1		ERROR: Invalid addressing mode
+SBCD.S *(PC,D0.W),A2		ERROR: Invalid addressing mode
+SBCD.S D1,*(PC,D0.W)		ERROR: Invalid addressing mode
+SBCD.S #$12,*(PC,D0.W)		ERROR: Invalid addressing mode
+SBCD.S BK(PC),D1		ERROR: Invalid addressing mode
+SBCD.S BK(PC),A2		ERROR: Invalid addressing mode
+SBCD.S D1,BK(PC)		ERROR: Invalid addressing mode
+SBCD.S #$12,BK(PC)		ERROR: Invalid addressing mode
+SBCD.S #8,D1		ERROR: Invalid addressing mode
+SBCD.S #8,A2		ERROR: Invalid addressing mode
+SBCD.S D1,#8		ERROR: Invalid addressing mode
+SBCD.S #$12,#8		ERROR: Invalid addressing mode
+SBCD.S #9,D1		ERROR: Invalid addressing mode
+SBCD.S #9,A2		ERROR: Invalid addressing mode
+SBCD.S D1,#9		ERROR: Invalid addressing mode
+SBCD.S #$12,#9		ERROR: Invalid addressing mode
+SBCD.S #0,D1		ERROR: Invalid addressing mode
+SBCD.S #0,A2		ERROR: Invalid addressing mode
+SBCD.S D1,#0		ERROR: Invalid addressing mode
+SBCD.S #$12,#0		ERROR: Invalid addressing mode
+SBCD.S #-1,D1		ERROR: Invalid addressing mode
+SBCD.S #-1,A2		ERROR: Invalid addressing mode
+SBCD.S D1,#-1		ERROR: Invalid addressing mode
+SBCD.S #$12,#-1		ERROR: Invalid addressing mode
+SBCD.S #$80,D1		ERROR: Invalid addressing mode
+SBCD.S #$80,A2		ERROR: Invalid addressing mode
+SBCD.S D1,#$80		ERROR: Invalid addressing mode
+SBCD.S #$12,#$80		ERROR: Invalid addressing mode
+SBCD.S #$12345678,D1		ERROR: Invalid addressing mode
+SBCD.S #$12345678,A2		ERROR: Invalid addressing mode
+SBCD.S D1,#$12345678		ERROR: Invalid addressing mode
+SBCD.S #$12,#$12345678		ERROR: Invalid addressing mode
+SBCD.S #$12345678.L,D1		ERROR: Invalid addressing mode
+SBCD.S #$12345678.L,A2		ERROR: Invalid addressing mode
+SBCD.S D1,#$12345678.L		ERROR: Invalid addressing mode
+SBCD.S #$12,#$12345678.L		ERROR: Invalid addressing mode
+SBCD.S #BK,D1		ERROR: Invalid addressing mode
+SBCD.S #BK,A2		ERROR: Invalid addressing mode
+SBCD.S D1,#BK		ERROR: Invalid addressing mode
+SBCD.S #$12,#BK		ERROR: Invalid addressing mode
+SBCD.S #FW,D1		ERROR: Invalid addressing mode
+SBCD.S #FW,A2		ERROR: Invalid addressing mode
+SBCD.S D1,#FW		ERROR: Invalid addressing mode
+SBCD.S #$12,#FW		ERROR: Invalid addressing mode
+SBCD.S #UNDEF,D1		ERROR: Invalid addressing mode
+SBCD.S #UNDEF,A2		ERROR: Invalid addressing mode
+SBCD.S D1,#UNDEF		ERROR: Invalid addressing mode
+SBCD.S #$12,#UNDEF		ERROR: Invalid addressing mode
+SBCD.S UNDEF,D1		ERROR: Invalid addressing mode
+SBCD.S UNDEF,A2		ERROR: Invalid addressing mode
+SBCD.S D1,UNDEF		ERROR: Invalid addressing mode
+SBCD.S #$12,UNDEF		ERROR: Invalid addressing mode
+SBCD.S USP,D1		ERROR: Invalid addressing mode
+SBCD.S USP,A2		ERROR: Invalid addressing mode
+SBCD.S D1,USP		ERROR: Invalid addressing mode
+SBCD.S #$12,USP		ERROR: Invalid addressing mode
+SBCD.S D1,D2,D3		ERROR: Invalid syntax
+SBCD.X D1,D2	8501	ERROR: Invalid size code
+SBCD.X #1		ERROR: Comma expected

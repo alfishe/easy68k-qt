@@ -1,0 +1,92 @@
+DBNE		ERROR: Invalid syntax
+DBNE D2,*+2	56CA0000	-
+DBNE D2,*+4	56CA0002	-
+DBNE D2,*+$80	56CA007E	-
+DBNE D2,*+$82	56CA0080	-
+DBNE D2,*-$7E	56CAFF80	-
+DBNE D2,*-$80	56CAFF7E	-
+DBNE D2,*+$8000	56CA7FFE	-
+DBNE D2,*	56CAFFFE	-
+DBNE D2,BK	56CA0EFE	-
+DBNE D2,FW	56CA0EFE	-
+DBNE D2,$1000	56CAFFFE	-
+DBNE D2,$12345678	56CA4676	ERROR: Branch instruction displacement is out of range or invalid
+DBNE D2,D1		ERROR: Invalid addressing mode
+DBNE D2,(A0)		ERROR: Invalid addressing mode
+DBNE D2,#4		ERROR: Invalid addressing mode
+DBNE A2,*		ERROR: Invalid addressing mode
+DBNE #1,*		ERROR: Invalid addressing mode
+DBNE.B		ERROR: Invalid syntax
+DBNE.B D2,*+2	56CA0000	ERROR: Invalid size code
+DBNE.B D2,*+4	56CA0002	ERROR: Invalid size code
+DBNE.B D2,*+$80	56CA007E	ERROR: Invalid size code
+DBNE.B D2,*+$82	56CA0080	ERROR: Invalid size code
+DBNE.B D2,*-$7E	56CAFF80	ERROR: Invalid size code
+DBNE.B D2,*-$80	56CAFF7E	ERROR: Invalid size code
+DBNE.B D2,*+$8000	56CA7FFE	ERROR: Invalid size code
+DBNE.B D2,*	56CAFFFE	ERROR: Invalid size code
+DBNE.B D2,BK	56CA0EFE	ERROR: Invalid size code
+DBNE.B D2,FW	56CA0EFE	ERROR: Invalid size code
+DBNE.B D2,$1000	56CAFFFE	ERROR: Invalid size code
+DBNE.B D2,$12345678	56CA4676	ERROR: Invalid size code
+DBNE.B D2,D1		ERROR: Invalid addressing mode
+DBNE.B D2,(A0)		ERROR: Invalid addressing mode
+DBNE.B D2,#4		ERROR: Invalid addressing mode
+DBNE.B A2,*		ERROR: Invalid addressing mode
+DBNE.B #1,*		ERROR: Invalid addressing mode
+DBNE.W		ERROR: Invalid syntax
+DBNE.W D2,*+2	56CA0000	-
+DBNE.W D2,*+4	56CA0002	-
+DBNE.W D2,*+$80	56CA007E	-
+DBNE.W D2,*+$82	56CA0080	-
+DBNE.W D2,*-$7E	56CAFF80	-
+DBNE.W D2,*-$80	56CAFF7E	-
+DBNE.W D2,*+$8000	56CA7FFE	-
+DBNE.W D2,*	56CAFFFE	-
+DBNE.W D2,BK	56CA0EFE	-
+DBNE.W D2,FW	56CA0EFE	-
+DBNE.W D2,$1000	56CAFFFE	-
+DBNE.W D2,$12345678	56CA4676	ERROR: Branch instruction displacement is out of range or invalid
+DBNE.W D2,D1		ERROR: Invalid addressing mode
+DBNE.W D2,(A0)		ERROR: Invalid addressing mode
+DBNE.W D2,#4		ERROR: Invalid addressing mode
+DBNE.W A2,*		ERROR: Invalid addressing mode
+DBNE.W #1,*		ERROR: Invalid addressing mode
+DBNE.L		ERROR: Invalid syntax
+DBNE.L D2,*+2	56CA0000	ERROR: Invalid size code
+DBNE.L D2,*+4	56CA0002	ERROR: Invalid size code
+DBNE.L D2,*+$80	56CA007E	ERROR: Invalid size code
+DBNE.L D2,*+$82	56CA0080	ERROR: Invalid size code
+DBNE.L D2,*-$7E	56CAFF80	ERROR: Invalid size code
+DBNE.L D2,*-$80	56CAFF7E	ERROR: Invalid size code
+DBNE.L D2,*+$8000	56CA7FFE	ERROR: Invalid size code
+DBNE.L D2,*	56CAFFFE	ERROR: Invalid size code
+DBNE.L D2,BK	56CA0EFE	ERROR: Invalid size code
+DBNE.L D2,FW	56CA0EFE	ERROR: Invalid size code
+DBNE.L D2,$1000	56CAFFFE	ERROR: Invalid size code
+DBNE.L D2,$12345678	56CA4676	ERROR: Invalid size code
+DBNE.L D2,D1		ERROR: Invalid addressing mode
+DBNE.L D2,(A0)		ERROR: Invalid addressing mode
+DBNE.L D2,#4		ERROR: Invalid addressing mode
+DBNE.L A2,*		ERROR: Invalid addressing mode
+DBNE.L #1,*		ERROR: Invalid addressing mode
+DBNE.S		ERROR: Invalid syntax
+DBNE.S D2,*+2	56CA0000	ERROR: Invalid size code
+DBNE.S D2,*+4	56CA0002	ERROR: Invalid size code
+DBNE.S D2,*+$80	56CA007E	ERROR: Invalid size code
+DBNE.S D2,*+$82	56CA0080	ERROR: Invalid size code
+DBNE.S D2,*-$7E	56CAFF80	ERROR: Invalid size code
+DBNE.S D2,*-$80	56CAFF7E	ERROR: Invalid size code
+DBNE.S D2,*+$8000	56CA7FFE	ERROR: Invalid size code
+DBNE.S D2,*	56CAFFFE	ERROR: Invalid size code
+DBNE.S D2,BK	56CA0EFE	ERROR: Invalid size code
+DBNE.S D2,FW	56CA0EFE	ERROR: Invalid size code
+DBNE.S D2,$1000	56CAFFFE	ERROR: Invalid size code
+DBNE.S D2,$12345678	56CA4676	ERROR: Invalid size code
+DBNE.S D2,D1		ERROR: Invalid addressing mode
+DBNE.S D2,(A0)		ERROR: Invalid addressing mode
+DBNE.S D2,#4		ERROR: Invalid addressing mode
+DBNE.S A2,*		ERROR: Invalid addressing mode
+DBNE.S #1,*		ERROR: Invalid addressing mode
+DBNE.X D1,D2		ERROR: Invalid addressing mode
+DBNE.X #1		ERROR: Comma expected

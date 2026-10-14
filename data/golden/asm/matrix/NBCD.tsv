@@ -1,0 +1,405 @@
+NBCD		ERROR: Invalid syntax
+NBCD D1	4801	-
+NBCD A2		ERROR: Invalid addressing mode
+NBCD SP		ERROR: Invalid addressing mode
+NBCD (A3)	4813	-
+NBCD (A4)+	481C	-
+NBCD -(A5)	4825	-
+NBCD $10(A6)	482E0010	-
+NBCD -2(A0)	4828FFFE	-
+NBCD $10(A6,D7.W)	48367010	-
+NBCD $12(A0,A1.L)	48309812	-
+NBCD (A2,D3)	48323000	-
+NBCD $1234	48381234	-
+NBCD $12345678	483912345678	-
+NBCD $1234.L	483900001234	-
+NBCD $1234.W	48381234	WARNING: Forcing SHORT addressing disables range checking of extension word
+NBCD $8000	483900008000	-
+NBCD BK	48381F00	-
+NBCD FW	483900001F00	-
+NBCD *+$10(PC)		ERROR: Invalid addressing mode
+NBCD *(PC,D0.W)		ERROR: Invalid addressing mode
+NBCD BK(PC)		ERROR: Invalid addressing mode
+NBCD #1		ERROR: Invalid addressing mode
+NBCD #8		ERROR: Invalid addressing mode
+NBCD #9		ERROR: Invalid addressing mode
+NBCD #0		ERROR: Invalid addressing mode
+NBCD #-1		ERROR: Invalid addressing mode
+NBCD #$80		ERROR: Invalid addressing mode
+NBCD #$1234		ERROR: Invalid addressing mode
+NBCD #$12345678		ERROR: Invalid addressing mode
+NBCD #$12345678.L		ERROR: Invalid addressing mode
+NBCD #BK		ERROR: Invalid addressing mode
+NBCD #FW		ERROR: Invalid addressing mode
+NBCD #UNDEF		ERROR: Invalid addressing mode
+NBCD UNDEF	48390000562B	ERROR: Undefined symbol
+NBCD SR		ERROR: Invalid addressing mode
+NBCD CCR		ERROR: Invalid addressing mode
+NBCD USP		ERROR: Invalid addressing mode
+NBCD D1,D1		ERROR: Invalid syntax
+NBCD D1,A2		ERROR: Invalid syntax
+NBCD D1,(A3)		ERROR: Invalid syntax
+NBCD D1,$10(A6)		ERROR: Invalid syntax
+NBCD D1,$1234		ERROR: Invalid syntax
+NBCD D1,FW		ERROR: Invalid syntax
+NBCD D1,#1		ERROR: Invalid syntax
+NBCD D1,#$1234		ERROR: Invalid syntax
+NBCD D1,CCR		ERROR: Invalid syntax
+NBCD D1,SR		ERROR: Invalid syntax
+NBCD A2,D1		ERROR: Invalid addressing mode
+NBCD A2,A2		ERROR: Invalid addressing mode
+NBCD A2,(A3)		ERROR: Invalid addressing mode
+NBCD A2,$10(A6)		ERROR: Invalid addressing mode
+NBCD A2,$1234		ERROR: Invalid addressing mode
+NBCD A2,FW		ERROR: Invalid addressing mode
+NBCD A2,#1		ERROR: Invalid addressing mode
+NBCD A2,#$1234		ERROR: Invalid addressing mode
+NBCD A2,CCR		ERROR: Invalid addressing mode
+NBCD A2,SR		ERROR: Invalid addressing mode
+NBCD (A3),D1		ERROR: Invalid syntax
+NBCD (A3),A2		ERROR: Invalid syntax
+NBCD (A3),(A3)		ERROR: Invalid syntax
+NBCD (A3),$10(A6)		ERROR: Invalid syntax
+NBCD (A3),$1234		ERROR: Invalid syntax
+NBCD (A3),FW		ERROR: Invalid syntax
+NBCD (A3),#1		ERROR: Invalid syntax
+NBCD (A3),#$1234		ERROR: Invalid syntax
+NBCD (A3),CCR		ERROR: Invalid syntax
+NBCD (A3),SR		ERROR: Invalid syntax
+NBCD $10(A6),D1		ERROR: Invalid syntax
+NBCD $10(A6),A2		ERROR: Invalid syntax
+NBCD $10(A6),(A3)		ERROR: Invalid syntax
+NBCD $10(A6),$10(A6)		ERROR: Invalid syntax
+NBCD $10(A6),$1234		ERROR: Invalid syntax
+NBCD $10(A6),FW		ERROR: Invalid syntax
+NBCD $10(A6),#1		ERROR: Invalid syntax
+NBCD $10(A6),#$1234		ERROR: Invalid syntax
+NBCD $10(A6),CCR		ERROR: Invalid syntax
+NBCD $10(A6),SR		ERROR: Invalid syntax
+NBCD $1234,D1		ERROR: Invalid syntax
+NBCD $1234,A2		ERROR: Invalid syntax
+NBCD $1234,(A3)		ERROR: Invalid syntax
+NBCD $1234,$10(A6)		ERROR: Invalid syntax
+NBCD $1234,$1234		ERROR: Invalid syntax
+NBCD $1234,FW		ERROR: Invalid syntax
+NBCD $1234,#1		ERROR: Invalid syntax
+NBCD $1234,#$1234		ERROR: Invalid syntax
+NBCD $1234,CCR		ERROR: Invalid syntax
+NBCD $1234,SR		ERROR: Invalid syntax
+NBCD FW,D1		ERROR: Invalid syntax
+NBCD FW,A2		ERROR: Invalid syntax
+NBCD FW,(A3)		ERROR: Invalid syntax
+NBCD FW,$10(A6)		ERROR: Invalid syntax
+NBCD FW,$1234		ERROR: Invalid syntax
+NBCD FW,FW		ERROR: Invalid syntax
+NBCD FW,#1		ERROR: Invalid syntax
+NBCD FW,#$1234		ERROR: Invalid syntax
+NBCD FW,CCR		ERROR: Invalid syntax
+NBCD FW,SR		ERROR: Invalid syntax
+NBCD #1,D1		ERROR: Invalid addressing mode
+NBCD #1,A2		ERROR: Invalid addressing mode
+NBCD #1,(A3)		ERROR: Invalid addressing mode
+NBCD #1,$10(A6)		ERROR: Invalid addressing mode
+NBCD #1,$1234		ERROR: Invalid addressing mode
+NBCD #1,FW		ERROR: Invalid addressing mode
+NBCD #1,#1		ERROR: Invalid addressing mode
+NBCD #1,#$1234		ERROR: Invalid addressing mode
+NBCD #1,CCR		ERROR: Invalid addressing mode
+NBCD #1,SR		ERROR: Invalid addressing mode
+NBCD #$1234,D1		ERROR: Invalid addressing mode
+NBCD #$1234,A2		ERROR: Invalid addressing mode
+NBCD #$1234,(A3)		ERROR: Invalid addressing mode
+NBCD #$1234,$10(A6)		ERROR: Invalid addressing mode
+NBCD #$1234,$1234		ERROR: Invalid addressing mode
+NBCD #$1234,FW		ERROR: Invalid addressing mode
+NBCD #$1234,#1		ERROR: Invalid addressing mode
+NBCD #$1234,#$1234		ERROR: Invalid addressing mode
+NBCD #$1234,CCR		ERROR: Invalid addressing mode
+NBCD #$1234,SR		ERROR: Invalid addressing mode
+NBCD CCR,D1		ERROR: Invalid addressing mode
+NBCD CCR,A2		ERROR: Invalid addressing mode
+NBCD CCR,(A3)		ERROR: Invalid addressing mode
+NBCD CCR,$10(A6)		ERROR: Invalid addressing mode
+NBCD CCR,$1234		ERROR: Invalid addressing mode
+NBCD CCR,FW		ERROR: Invalid addressing mode
+NBCD CCR,#1		ERROR: Invalid addressing mode
+NBCD CCR,#$1234		ERROR: Invalid addressing mode
+NBCD CCR,CCR		ERROR: Invalid addressing mode
+NBCD CCR,SR		ERROR: Invalid addressing mode
+NBCD SR,D1		ERROR: Invalid addressing mode
+NBCD SR,A2		ERROR: Invalid addressing mode
+NBCD SR,(A3)		ERROR: Invalid addressing mode
+NBCD SR,$10(A6)		ERROR: Invalid addressing mode
+NBCD SR,$1234		ERROR: Invalid addressing mode
+NBCD SR,FW		ERROR: Invalid addressing mode
+NBCD SR,#1		ERROR: Invalid addressing mode
+NBCD SR,#$1234		ERROR: Invalid addressing mode
+NBCD SR,CCR		ERROR: Invalid addressing mode
+NBCD SR,SR		ERROR: Invalid addressing mode
+NBCD SP,D1		ERROR: Invalid addressing mode
+NBCD SP,A2		ERROR: Invalid addressing mode
+NBCD D1,SP		ERROR: Invalid syntax
+NBCD #$12,SP		ERROR: Invalid addressing mode
+NBCD (A4)+,D1		ERROR: Invalid syntax
+NBCD (A4)+,A2		ERROR: Invalid syntax
+NBCD D1,(A4)+		ERROR: Invalid syntax
+NBCD #$12,(A4)+		ERROR: Invalid addressing mode
+NBCD -(A5),D1		ERROR: Invalid syntax
+NBCD -(A5),A2		ERROR: Invalid syntax
+NBCD D1,-(A5)		ERROR: Invalid syntax
+NBCD #$12,-(A5)		ERROR: Invalid addressing mode
+NBCD -2(A0),D1		ERROR: Invalid syntax
+NBCD -2(A0),A2		ERROR: Invalid syntax
+NBCD D1,-2(A0)		ERROR: Invalid syntax
+NBCD #$12,-2(A0)		ERROR: Invalid addressing mode
+NBCD $10(A6,D7.W),D1		ERROR: Invalid syntax
+NBCD $10(A6,D7.W),A2		ERROR: Invalid syntax
+NBCD D1,$10(A6,D7.W)		ERROR: Invalid syntax
+NBCD #$12,$10(A6,D7.W)		ERROR: Invalid addressing mode
+NBCD $12(A0,A1.L),D1		ERROR: Invalid syntax
+NBCD $12(A0,A1.L),A2		ERROR: Invalid syntax
+NBCD D1,$12(A0,A1.L)		ERROR: Invalid syntax
+NBCD #$12,$12(A0,A1.L)		ERROR: Invalid addressing mode
+NBCD (A2,D3),D1		ERROR: Invalid syntax
+NBCD (A2,D3),A2		ERROR: Invalid syntax
+NBCD D1,(A2,D3)		ERROR: Invalid syntax
+NBCD #$12,(A2,D3)		ERROR: Invalid addressing mode
+NBCD $12345678,D1		ERROR: Invalid syntax
+NBCD $12345678,A2		ERROR: Invalid syntax
+NBCD D1,$12345678		ERROR: Invalid syntax
+NBCD #$12,$12345678		ERROR: Invalid addressing mode
+NBCD $1234.L,D1		ERROR: Invalid syntax
+NBCD $1234.L,A2		ERROR: Invalid syntax
+NBCD D1,$1234.L		ERROR: Invalid syntax
+NBCD #$12,$1234.L		ERROR: Invalid addressing mode
+NBCD $1234.W,D1		ERROR: Invalid syntax
+NBCD $1234.W,A2		ERROR: Invalid syntax
+NBCD D1,$1234.W		ERROR: Invalid syntax
+NBCD #$12,$1234.W		ERROR: Invalid addressing mode
+NBCD $8000,D1		ERROR: Invalid syntax
+NBCD $8000,A2		ERROR: Invalid syntax
+NBCD D1,$8000		ERROR: Invalid syntax
+NBCD #$12,$8000		ERROR: Invalid addressing mode
+NBCD BK,D1		ERROR: Invalid syntax
+NBCD BK,A2		ERROR: Invalid syntax
+NBCD D1,BK		ERROR: Invalid syntax
+NBCD #$12,BK		ERROR: Invalid addressing mode
+NBCD *+$10(PC),D1		ERROR: Invalid addressing mode
+NBCD *+$10(PC),A2		ERROR: Invalid addressing mode
+NBCD D1,*+$10(PC)		ERROR: Invalid syntax
+NBCD #$12,*+$10(PC)		ERROR: Invalid addressing mode
+NBCD *(PC,D0.W),D1		ERROR: Invalid addressing mode
+NBCD *(PC,D0.W),A2		ERROR: Invalid addressing mode
+NBCD D1,*(PC,D0.W)		ERROR: Invalid syntax
+NBCD #$12,*(PC,D0.W)		ERROR: Invalid addressing mode
+NBCD BK(PC),D1		ERROR: Invalid addressing mode
+NBCD BK(PC),A2		ERROR: Invalid addressing mode
+NBCD D1,BK(PC)		ERROR: Invalid syntax
+NBCD #$12,BK(PC)		ERROR: Invalid addressing mode
+NBCD #8,D1		ERROR: Invalid addressing mode
+NBCD #8,A2		ERROR: Invalid addressing mode
+NBCD D1,#8		ERROR: Invalid syntax
+NBCD #$12,#8		ERROR: Invalid addressing mode
+NBCD #9,D1		ERROR: Invalid addressing mode
+NBCD #9,A2		ERROR: Invalid addressing mode
+NBCD D1,#9		ERROR: Invalid syntax
+NBCD #$12,#9		ERROR: Invalid addressing mode
+NBCD #0,D1		ERROR: Invalid addressing mode
+NBCD #0,A2		ERROR: Invalid addressing mode
+NBCD D1,#0		ERROR: Invalid syntax
+NBCD #$12,#0		ERROR: Invalid addressing mode
+NBCD #-1,D1		ERROR: Invalid addressing mode
+NBCD #-1,A2		ERROR: Invalid addressing mode
+NBCD D1,#-1		ERROR: Invalid syntax
+NBCD #$12,#-1		ERROR: Invalid addressing mode
+NBCD #$80,D1		ERROR: Invalid addressing mode
+NBCD #$80,A2		ERROR: Invalid addressing mode
+NBCD D1,#$80		ERROR: Invalid syntax
+NBCD #$12,#$80		ERROR: Invalid addressing mode
+NBCD #$12345678,D1		ERROR: Invalid addressing mode
+NBCD #$12345678,A2		ERROR: Invalid addressing mode
+NBCD D1,#$12345678		ERROR: Invalid syntax
+NBCD #$12,#$12345678		ERROR: Invalid addressing mode
+NBCD #$12345678.L,D1		ERROR: Invalid addressing mode
+NBCD #$12345678.L,A2		ERROR: Invalid addressing mode
+NBCD D1,#$12345678.L		ERROR: Invalid syntax
+NBCD #$12,#$12345678.L		ERROR: Invalid addressing mode
+NBCD #BK,D1		ERROR: Invalid addressing mode
+NBCD #BK,A2		ERROR: Invalid addressing mode
+NBCD D1,#BK		ERROR: Invalid syntax
+NBCD #$12,#BK		ERROR: Invalid addressing mode
+NBCD #FW,D1		ERROR: Invalid addressing mode
+NBCD #FW,A2		ERROR: Invalid addressing mode
+NBCD D1,#FW		ERROR: Invalid syntax
+NBCD #$12,#FW		ERROR: Invalid addressing mode
+NBCD #UNDEF,D1		ERROR: Invalid addressing mode
+NBCD #UNDEF,A2		ERROR: Invalid addressing mode
+NBCD D1,#UNDEF		ERROR: Invalid syntax
+NBCD #$12,#UNDEF		ERROR: Invalid addressing mode
+NBCD UNDEF,D1		ERROR: Invalid syntax
+NBCD UNDEF,A2		ERROR: Invalid syntax
+NBCD D1,UNDEF		ERROR: Invalid syntax
+NBCD #$12,UNDEF		ERROR: Invalid addressing mode
+NBCD USP,D1		ERROR: Invalid addressing mode
+NBCD USP,A2		ERROR: Invalid addressing mode
+NBCD D1,USP		ERROR: Invalid syntax
+NBCD #$12,USP		ERROR: Invalid addressing mode
+NBCD D1,D2,D3		ERROR: Invalid syntax
+NBCD.B		ERROR: Invalid syntax
+NBCD.B D1	4801	-
+NBCD.B A2		ERROR: Invalid addressing mode
+NBCD.B SP		ERROR: Invalid addressing mode
+NBCD.B (A3)	4813	-
+NBCD.B (A4)+	481C	-
+NBCD.B -(A5)	4825	-
+NBCD.B $10(A6)	482E0010	-
+NBCD.B -2(A0)	4828FFFE	-
+NBCD.B $10(A6,D7.W)	48367010	-
+NBCD.B $12(A0,A1.L)	48309812	-
+NBCD.B (A2,D3)	48323000	-
+NBCD.B $1234	48381234	-
+NBCD.B $12345678	483912345678	-
+NBCD.B $1234.L	483900001234	-
+NBCD.B $1234.W	48381234	WARNING: Forcing SHORT addressing disables range checking of extension word
+NBCD.B $8000	483900008000	-
+NBCD.B BK	48381F00	-
+NBCD.B FW	483900001F00	-
+NBCD.B *+$10(PC)		ERROR: Invalid addressing mode
+NBCD.B *(PC,D0.W)		ERROR: Invalid addressing mode
+NBCD.B BK(PC)		ERROR: Invalid addressing mode
+NBCD.B #1		ERROR: Invalid addressing mode
+NBCD.B #8		ERROR: Invalid addressing mode
+NBCD.B #9		ERROR: Invalid addressing mode
+NBCD.B #0		ERROR: Invalid addressing mode
+NBCD.B #-1		ERROR: Invalid addressing mode
+NBCD.B #$80		ERROR: Invalid addressing mode
+NBCD.B #$1234		ERROR: Invalid addressing mode
+NBCD.B #$12345678		ERROR: Invalid addressing mode
+NBCD.B #$12345678.L		ERROR: Invalid addressing mode
+NBCD.B #BK		ERROR: Invalid addressing mode
+NBCD.B #FW		ERROR: Invalid addressing mode
+NBCD.B #UNDEF		ERROR: Invalid addressing mode
+NBCD.B UNDEF	48390000562B	ERROR: Undefined symbol
+NBCD.B SR		ERROR: Invalid addressing mode
+NBCD.B CCR		ERROR: Invalid addressing mode
+NBCD.B USP		ERROR: Invalid addressing mode
+NBCD.B D1,D2,D3		ERROR: Invalid syntax
+NBCD.W		ERROR: Invalid syntax
+NBCD.W D1	4801	ERROR: Invalid size code
+NBCD.W A2		ERROR: Invalid addressing mode
+NBCD.W SP		ERROR: Invalid addressing mode
+NBCD.W (A3)	4813	ERROR: Invalid size code
+NBCD.W (A4)+	481C	ERROR: Invalid size code
+NBCD.W -(A5)	4825	ERROR: Invalid size code
+NBCD.W $10(A6)	482E0010	ERROR: Invalid size code
+NBCD.W -2(A0)	4828FFFE	ERROR: Invalid size code
+NBCD.W $10(A6,D7.W)	48367010	ERROR: Invalid size code
+NBCD.W $12(A0,A1.L)	48309812	ERROR: Invalid size code
+NBCD.W (A2,D3)	48323000	ERROR: Invalid size code
+NBCD.W $1234	48381234	ERROR: Invalid size code
+NBCD.W $12345678	483912345678	ERROR: Invalid size code
+NBCD.W $1234.L	483900001234	ERROR: Invalid size code
+NBCD.W $1234.W	48381234	ERROR: Invalid size code
+NBCD.W $8000	483900008000	ERROR: Invalid size code
+NBCD.W BK	48381F00	ERROR: Invalid size code
+NBCD.W FW	483900001F00	ERROR: Invalid size code
+NBCD.W *+$10(PC)		ERROR: Invalid addressing mode
+NBCD.W *(PC,D0.W)		ERROR: Invalid addressing mode
+NBCD.W BK(PC)		ERROR: Invalid addressing mode
+NBCD.W #1		ERROR: Invalid addressing mode
+NBCD.W #8		ERROR: Invalid addressing mode
+NBCD.W #9		ERROR: Invalid addressing mode
+NBCD.W #0		ERROR: Invalid addressing mode
+NBCD.W #-1		ERROR: Invalid addressing mode
+NBCD.W #$80		ERROR: Invalid addressing mode
+NBCD.W #$1234		ERROR: Invalid addressing mode
+NBCD.W #$12345678		ERROR: Invalid addressing mode
+NBCD.W #$12345678.L		ERROR: Invalid addressing mode
+NBCD.W #BK		ERROR: Invalid addressing mode
+NBCD.W #FW		ERROR: Invalid addressing mode
+NBCD.W #UNDEF		ERROR: Invalid addressing mode
+NBCD.W UNDEF	48390000562B	ERROR: Undefined symbol
+NBCD.W SR		ERROR: Invalid addressing mode
+NBCD.W CCR		ERROR: Invalid addressing mode
+NBCD.W USP		ERROR: Invalid addressing mode
+NBCD.W D1,D2,D3		ERROR: Invalid syntax
+NBCD.L		ERROR: Invalid syntax
+NBCD.L D1	4801	ERROR: Invalid size code
+NBCD.L A2		ERROR: Invalid addressing mode
+NBCD.L SP		ERROR: Invalid addressing mode
+NBCD.L (A3)	4813	ERROR: Invalid size code
+NBCD.L (A4)+	481C	ERROR: Invalid size code
+NBCD.L -(A5)	4825	ERROR: Invalid size code
+NBCD.L $10(A6)	482E0010	ERROR: Invalid size code
+NBCD.L -2(A0)	4828FFFE	ERROR: Invalid size code
+NBCD.L $10(A6,D7.W)	48367010	ERROR: Invalid size code
+NBCD.L $12(A0,A1.L)	48309812	ERROR: Invalid size code
+NBCD.L (A2,D3)	48323000	ERROR: Invalid size code
+NBCD.L $1234	48381234	ERROR: Invalid size code
+NBCD.L $12345678	483912345678	ERROR: Invalid size code
+NBCD.L $1234.L	483900001234	ERROR: Invalid size code
+NBCD.L $1234.W	48381234	ERROR: Invalid size code
+NBCD.L $8000	483900008000	ERROR: Invalid size code
+NBCD.L BK	48381F00	ERROR: Invalid size code
+NBCD.L FW	483900001F00	ERROR: Invalid size code
+NBCD.L *+$10(PC)		ERROR: Invalid addressing mode
+NBCD.L *(PC,D0.W)		ERROR: Invalid addressing mode
+NBCD.L BK(PC)		ERROR: Invalid addressing mode
+NBCD.L #1		ERROR: Invalid addressing mode
+NBCD.L #8		ERROR: Invalid addressing mode
+NBCD.L #9		ERROR: Invalid addressing mode
+NBCD.L #0		ERROR: Invalid addressing mode
+NBCD.L #-1		ERROR: Invalid addressing mode
+NBCD.L #$80		ERROR: Invalid addressing mode
+NBCD.L #$1234		ERROR: Invalid addressing mode
+NBCD.L #$12345678		ERROR: Invalid addressing mode
+NBCD.L #$12345678.L		ERROR: Invalid addressing mode
+NBCD.L #BK		ERROR: Invalid addressing mode
+NBCD.L #FW		ERROR: Invalid addressing mode
+NBCD.L #UNDEF		ERROR: Invalid addressing mode
+NBCD.L UNDEF	48390000562B	ERROR: Undefined symbol
+NBCD.L SR		ERROR: Invalid addressing mode
+NBCD.L CCR		ERROR: Invalid addressing mode
+NBCD.L USP		ERROR: Invalid addressing mode
+NBCD.L D1,D2,D3		ERROR: Invalid syntax
+NBCD.S		ERROR: Invalid syntax
+NBCD.S D1	4801	ERROR: Invalid size code
+NBCD.S A2		ERROR: Invalid addressing mode
+NBCD.S SP		ERROR: Invalid addressing mode
+NBCD.S (A3)	4813	ERROR: Invalid size code
+NBCD.S (A4)+	481C	ERROR: Invalid size code
+NBCD.S -(A5)	4825	ERROR: Invalid size code
+NBCD.S $10(A6)	482E0010	ERROR: Invalid size code
+NBCD.S -2(A0)	4828FFFE	ERROR: Invalid size code
+NBCD.S $10(A6,D7.W)	48367010	ERROR: Invalid size code
+NBCD.S $12(A0,A1.L)	48309812	ERROR: Invalid size code
+NBCD.S (A2,D3)	48323000	ERROR: Invalid size code
+NBCD.S $1234	48381234	ERROR: Invalid size code
+NBCD.S $12345678	483912345678	ERROR: Invalid size code
+NBCD.S $1234.L	483900001234	ERROR: Invalid size code
+NBCD.S $1234.W	48381234	ERROR: Invalid size code
+NBCD.S $8000	483900008000	ERROR: Invalid size code
+NBCD.S BK	48381F00	ERROR: Invalid size code
+NBCD.S FW	483900001F00	ERROR: Invalid size code
+NBCD.S *+$10(PC)		ERROR: Invalid addressing mode
+NBCD.S *(PC,D0.W)		ERROR: Invalid addressing mode
+NBCD.S BK(PC)		ERROR: Invalid addressing mode
+NBCD.S #1		ERROR: Invalid addressing mode
+NBCD.S #8		ERROR: Invalid addressing mode
+NBCD.S #9		ERROR: Invalid addressing mode
+NBCD.S #0		ERROR: Invalid addressing mode
+NBCD.S #-1		ERROR: Invalid addressing mode
+NBCD.S #$80		ERROR: Invalid addressing mode
+NBCD.S #$1234		ERROR: Invalid addressing mode
+NBCD.S #$12345678		ERROR: Invalid addressing mode
+NBCD.S #$12345678.L		ERROR: Invalid addressing mode
+NBCD.S #BK		ERROR: Invalid addressing mode
+NBCD.S #FW		ERROR: Invalid addressing mode
+NBCD.S #UNDEF		ERROR: Invalid addressing mode
+NBCD.S UNDEF	48390000562B	ERROR: Undefined symbol
+NBCD.S SR		ERROR: Invalid addressing mode
+NBCD.S CCR		ERROR: Invalid addressing mode
+NBCD.S USP		ERROR: Invalid addressing mode
+NBCD.S D1,D2,D3		ERROR: Invalid syntax
+NBCD.X D1,D2		ERROR: Invalid syntax
+NBCD.X #1		ERROR: Invalid addressing mode

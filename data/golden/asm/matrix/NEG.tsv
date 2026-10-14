@@ -1,0 +1,405 @@
+NEG		ERROR: Invalid syntax
+NEG D1	4441	-
+NEG A2		ERROR: Invalid addressing mode
+NEG SP		ERROR: Invalid addressing mode
+NEG (A3)	4453	-
+NEG (A4)+	445C	-
+NEG -(A5)	4465	-
+NEG $10(A6)	446E0010	-
+NEG -2(A0)	4468FFFE	-
+NEG $10(A6,D7.W)	44767010	-
+NEG $12(A0,A1.L)	44709812	-
+NEG (A2,D3)	44723000	-
+NEG $1234	44781234	-
+NEG $12345678	447912345678	-
+NEG $1234.L	447900001234	-
+NEG $1234.W	44781234	WARNING: Forcing SHORT addressing disables range checking of extension word
+NEG $8000	447900008000	-
+NEG BK	44781F00	-
+NEG FW	447900001F00	-
+NEG *+$10(PC)		ERROR: Invalid addressing mode
+NEG *(PC,D0.W)		ERROR: Invalid addressing mode
+NEG BK(PC)		ERROR: Invalid addressing mode
+NEG #1		ERROR: Invalid addressing mode
+NEG #8		ERROR: Invalid addressing mode
+NEG #9		ERROR: Invalid addressing mode
+NEG #0		ERROR: Invalid addressing mode
+NEG #-1		ERROR: Invalid addressing mode
+NEG #$80		ERROR: Invalid addressing mode
+NEG #$1234		ERROR: Invalid addressing mode
+NEG #$12345678		ERROR: Invalid addressing mode
+NEG #$12345678.L		ERROR: Invalid addressing mode
+NEG #BK		ERROR: Invalid addressing mode
+NEG #FW		ERROR: Invalid addressing mode
+NEG #UNDEF		ERROR: Invalid addressing mode
+NEG UNDEF	4479000055B4	ERROR: Undefined symbol
+NEG SR		ERROR: Invalid addressing mode
+NEG CCR		ERROR: Invalid addressing mode
+NEG USP		ERROR: Invalid addressing mode
+NEG D1,D1		ERROR: Invalid syntax
+NEG D1,A2		ERROR: Invalid syntax
+NEG D1,(A3)		ERROR: Invalid syntax
+NEG D1,$10(A6)		ERROR: Invalid syntax
+NEG D1,$1234		ERROR: Invalid syntax
+NEG D1,FW		ERROR: Invalid syntax
+NEG D1,#1		ERROR: Invalid syntax
+NEG D1,#$1234		ERROR: Invalid syntax
+NEG D1,CCR		ERROR: Invalid syntax
+NEG D1,SR		ERROR: Invalid syntax
+NEG A2,D1		ERROR: Invalid addressing mode
+NEG A2,A2		ERROR: Invalid addressing mode
+NEG A2,(A3)		ERROR: Invalid addressing mode
+NEG A2,$10(A6)		ERROR: Invalid addressing mode
+NEG A2,$1234		ERROR: Invalid addressing mode
+NEG A2,FW		ERROR: Invalid addressing mode
+NEG A2,#1		ERROR: Invalid addressing mode
+NEG A2,#$1234		ERROR: Invalid addressing mode
+NEG A2,CCR		ERROR: Invalid addressing mode
+NEG A2,SR		ERROR: Invalid addressing mode
+NEG (A3),D1		ERROR: Invalid syntax
+NEG (A3),A2		ERROR: Invalid syntax
+NEG (A3),(A3)		ERROR: Invalid syntax
+NEG (A3),$10(A6)		ERROR: Invalid syntax
+NEG (A3),$1234		ERROR: Invalid syntax
+NEG (A3),FW		ERROR: Invalid syntax
+NEG (A3),#1		ERROR: Invalid syntax
+NEG (A3),#$1234		ERROR: Invalid syntax
+NEG (A3),CCR		ERROR: Invalid syntax
+NEG (A3),SR		ERROR: Invalid syntax
+NEG $10(A6),D1		ERROR: Invalid syntax
+NEG $10(A6),A2		ERROR: Invalid syntax
+NEG $10(A6),(A3)		ERROR: Invalid syntax
+NEG $10(A6),$10(A6)		ERROR: Invalid syntax
+NEG $10(A6),$1234		ERROR: Invalid syntax
+NEG $10(A6),FW		ERROR: Invalid syntax
+NEG $10(A6),#1		ERROR: Invalid syntax
+NEG $10(A6),#$1234		ERROR: Invalid syntax
+NEG $10(A6),CCR		ERROR: Invalid syntax
+NEG $10(A6),SR		ERROR: Invalid syntax
+NEG $1234,D1		ERROR: Invalid syntax
+NEG $1234,A2		ERROR: Invalid syntax
+NEG $1234,(A3)		ERROR: Invalid syntax
+NEG $1234,$10(A6)		ERROR: Invalid syntax
+NEG $1234,$1234		ERROR: Invalid syntax
+NEG $1234,FW		ERROR: Invalid syntax
+NEG $1234,#1		ERROR: Invalid syntax
+NEG $1234,#$1234		ERROR: Invalid syntax
+NEG $1234,CCR		ERROR: Invalid syntax
+NEG $1234,SR		ERROR: Invalid syntax
+NEG FW,D1		ERROR: Invalid syntax
+NEG FW,A2		ERROR: Invalid syntax
+NEG FW,(A3)		ERROR: Invalid syntax
+NEG FW,$10(A6)		ERROR: Invalid syntax
+NEG FW,$1234		ERROR: Invalid syntax
+NEG FW,FW		ERROR: Invalid syntax
+NEG FW,#1		ERROR: Invalid syntax
+NEG FW,#$1234		ERROR: Invalid syntax
+NEG FW,CCR		ERROR: Invalid syntax
+NEG FW,SR		ERROR: Invalid syntax
+NEG #1,D1		ERROR: Invalid addressing mode
+NEG #1,A2		ERROR: Invalid addressing mode
+NEG #1,(A3)		ERROR: Invalid addressing mode
+NEG #1,$10(A6)		ERROR: Invalid addressing mode
+NEG #1,$1234		ERROR: Invalid addressing mode
+NEG #1,FW		ERROR: Invalid addressing mode
+NEG #1,#1		ERROR: Invalid addressing mode
+NEG #1,#$1234		ERROR: Invalid addressing mode
+NEG #1,CCR		ERROR: Invalid addressing mode
+NEG #1,SR		ERROR: Invalid addressing mode
+NEG #$1234,D1		ERROR: Invalid addressing mode
+NEG #$1234,A2		ERROR: Invalid addressing mode
+NEG #$1234,(A3)		ERROR: Invalid addressing mode
+NEG #$1234,$10(A6)		ERROR: Invalid addressing mode
+NEG #$1234,$1234		ERROR: Invalid addressing mode
+NEG #$1234,FW		ERROR: Invalid addressing mode
+NEG #$1234,#1		ERROR: Invalid addressing mode
+NEG #$1234,#$1234		ERROR: Invalid addressing mode
+NEG #$1234,CCR		ERROR: Invalid addressing mode
+NEG #$1234,SR		ERROR: Invalid addressing mode
+NEG CCR,D1		ERROR: Invalid addressing mode
+NEG CCR,A2		ERROR: Invalid addressing mode
+NEG CCR,(A3)		ERROR: Invalid addressing mode
+NEG CCR,$10(A6)		ERROR: Invalid addressing mode
+NEG CCR,$1234		ERROR: Invalid addressing mode
+NEG CCR,FW		ERROR: Invalid addressing mode
+NEG CCR,#1		ERROR: Invalid addressing mode
+NEG CCR,#$1234		ERROR: Invalid addressing mode
+NEG CCR,CCR		ERROR: Invalid addressing mode
+NEG CCR,SR		ERROR: Invalid addressing mode
+NEG SR,D1		ERROR: Invalid addressing mode
+NEG SR,A2		ERROR: Invalid addressing mode
+NEG SR,(A3)		ERROR: Invalid addressing mode
+NEG SR,$10(A6)		ERROR: Invalid addressing mode
+NEG SR,$1234		ERROR: Invalid addressing mode
+NEG SR,FW		ERROR: Invalid addressing mode
+NEG SR,#1		ERROR: Invalid addressing mode
+NEG SR,#$1234		ERROR: Invalid addressing mode
+NEG SR,CCR		ERROR: Invalid addressing mode
+NEG SR,SR		ERROR: Invalid addressing mode
+NEG SP,D1		ERROR: Invalid addressing mode
+NEG SP,A2		ERROR: Invalid addressing mode
+NEG D1,SP		ERROR: Invalid syntax
+NEG #$12,SP		ERROR: Invalid addressing mode
+NEG (A4)+,D1		ERROR: Invalid syntax
+NEG (A4)+,A2		ERROR: Invalid syntax
+NEG D1,(A4)+		ERROR: Invalid syntax
+NEG #$12,(A4)+		ERROR: Invalid addressing mode
+NEG -(A5),D1		ERROR: Invalid syntax
+NEG -(A5),A2		ERROR: Invalid syntax
+NEG D1,-(A5)		ERROR: Invalid syntax
+NEG #$12,-(A5)		ERROR: Invalid addressing mode
+NEG -2(A0),D1		ERROR: Invalid syntax
+NEG -2(A0),A2		ERROR: Invalid syntax
+NEG D1,-2(A0)		ERROR: Invalid syntax
+NEG #$12,-2(A0)		ERROR: Invalid addressing mode
+NEG $10(A6,D7.W),D1		ERROR: Invalid syntax
+NEG $10(A6,D7.W),A2		ERROR: Invalid syntax
+NEG D1,$10(A6,D7.W)		ERROR: Invalid syntax
+NEG #$12,$10(A6,D7.W)		ERROR: Invalid addressing mode
+NEG $12(A0,A1.L),D1		ERROR: Invalid syntax
+NEG $12(A0,A1.L),A2		ERROR: Invalid syntax
+NEG D1,$12(A0,A1.L)		ERROR: Invalid syntax
+NEG #$12,$12(A0,A1.L)		ERROR: Invalid addressing mode
+NEG (A2,D3),D1		ERROR: Invalid syntax
+NEG (A2,D3),A2		ERROR: Invalid syntax
+NEG D1,(A2,D3)		ERROR: Invalid syntax
+NEG #$12,(A2,D3)		ERROR: Invalid addressing mode
+NEG $12345678,D1		ERROR: Invalid syntax
+NEG $12345678,A2		ERROR: Invalid syntax
+NEG D1,$12345678		ERROR: Invalid syntax
+NEG #$12,$12345678		ERROR: Invalid addressing mode
+NEG $1234.L,D1		ERROR: Invalid syntax
+NEG $1234.L,A2		ERROR: Invalid syntax
+NEG D1,$1234.L		ERROR: Invalid syntax
+NEG #$12,$1234.L		ERROR: Invalid addressing mode
+NEG $1234.W,D1		ERROR: Invalid syntax
+NEG $1234.W,A2		ERROR: Invalid syntax
+NEG D1,$1234.W		ERROR: Invalid syntax
+NEG #$12,$1234.W		ERROR: Invalid addressing mode
+NEG $8000,D1		ERROR: Invalid syntax
+NEG $8000,A2		ERROR: Invalid syntax
+NEG D1,$8000		ERROR: Invalid syntax
+NEG #$12,$8000		ERROR: Invalid addressing mode
+NEG BK,D1		ERROR: Invalid syntax
+NEG BK,A2		ERROR: Invalid syntax
+NEG D1,BK		ERROR: Invalid syntax
+NEG #$12,BK		ERROR: Invalid addressing mode
+NEG *+$10(PC),D1		ERROR: Invalid addressing mode
+NEG *+$10(PC),A2		ERROR: Invalid addressing mode
+NEG D1,*+$10(PC)		ERROR: Invalid syntax
+NEG #$12,*+$10(PC)		ERROR: Invalid addressing mode
+NEG *(PC,D0.W),D1		ERROR: Invalid addressing mode
+NEG *(PC,D0.W),A2		ERROR: Invalid addressing mode
+NEG D1,*(PC,D0.W)		ERROR: Invalid syntax
+NEG #$12,*(PC,D0.W)		ERROR: Invalid addressing mode
+NEG BK(PC),D1		ERROR: Invalid addressing mode
+NEG BK(PC),A2		ERROR: Invalid addressing mode
+NEG D1,BK(PC)		ERROR: Invalid syntax
+NEG #$12,BK(PC)		ERROR: Invalid addressing mode
+NEG #8,D1		ERROR: Invalid addressing mode
+NEG #8,A2		ERROR: Invalid addressing mode
+NEG D1,#8		ERROR: Invalid syntax
+NEG #$12,#8		ERROR: Invalid addressing mode
+NEG #9,D1		ERROR: Invalid addressing mode
+NEG #9,A2		ERROR: Invalid addressing mode
+NEG D1,#9		ERROR: Invalid syntax
+NEG #$12,#9		ERROR: Invalid addressing mode
+NEG #0,D1		ERROR: Invalid addressing mode
+NEG #0,A2		ERROR: Invalid addressing mode
+NEG D1,#0		ERROR: Invalid syntax
+NEG #$12,#0		ERROR: Invalid addressing mode
+NEG #-1,D1		ERROR: Invalid addressing mode
+NEG #-1,A2		ERROR: Invalid addressing mode
+NEG D1,#-1		ERROR: Invalid syntax
+NEG #$12,#-1		ERROR: Invalid addressing mode
+NEG #$80,D1		ERROR: Invalid addressing mode
+NEG #$80,A2		ERROR: Invalid addressing mode
+NEG D1,#$80		ERROR: Invalid syntax
+NEG #$12,#$80		ERROR: Invalid addressing mode
+NEG #$12345678,D1		ERROR: Invalid addressing mode
+NEG #$12345678,A2		ERROR: Invalid addressing mode
+NEG D1,#$12345678		ERROR: Invalid syntax
+NEG #$12,#$12345678		ERROR: Invalid addressing mode
+NEG #$12345678.L,D1		ERROR: Invalid addressing mode
+NEG #$12345678.L,A2		ERROR: Invalid addressing mode
+NEG D1,#$12345678.L		ERROR: Invalid syntax
+NEG #$12,#$12345678.L		ERROR: Invalid addressing mode
+NEG #BK,D1		ERROR: Invalid addressing mode
+NEG #BK,A2		ERROR: Invalid addressing mode
+NEG D1,#BK		ERROR: Invalid syntax
+NEG #$12,#BK		ERROR: Invalid addressing mode
+NEG #FW,D1		ERROR: Invalid addressing mode
+NEG #FW,A2		ERROR: Invalid addressing mode
+NEG D1,#FW		ERROR: Invalid syntax
+NEG #$12,#FW		ERROR: Invalid addressing mode
+NEG #UNDEF,D1		ERROR: Invalid addressing mode
+NEG #UNDEF,A2		ERROR: Invalid addressing mode
+NEG D1,#UNDEF		ERROR: Invalid syntax
+NEG #$12,#UNDEF		ERROR: Invalid addressing mode
+NEG UNDEF,D1		ERROR: Invalid syntax
+NEG UNDEF,A2		ERROR: Invalid syntax
+NEG D1,UNDEF		ERROR: Invalid syntax
+NEG #$12,UNDEF		ERROR: Invalid addressing mode
+NEG USP,D1		ERROR: Invalid addressing mode
+NEG USP,A2		ERROR: Invalid addressing mode
+NEG D1,USP		ERROR: Invalid syntax
+NEG #$12,USP		ERROR: Invalid addressing mode
+NEG D1,D2,D3		ERROR: Invalid syntax
+NEG.B		ERROR: Invalid syntax
+NEG.B D1	4401	-
+NEG.B A2		ERROR: Invalid addressing mode
+NEG.B SP		ERROR: Invalid addressing mode
+NEG.B (A3)	4413	-
+NEG.B (A4)+	441C	-
+NEG.B -(A5)	4425	-
+NEG.B $10(A6)	442E0010	-
+NEG.B -2(A0)	4428FFFE	-
+NEG.B $10(A6,D7.W)	44367010	-
+NEG.B $12(A0,A1.L)	44309812	-
+NEG.B (A2,D3)	44323000	-
+NEG.B $1234	44381234	-
+NEG.B $12345678	443912345678	-
+NEG.B $1234.L	443900001234	-
+NEG.B $1234.W	44381234	WARNING: Forcing SHORT addressing disables range checking of extension word
+NEG.B $8000	443900008000	-
+NEG.B BK	44381F00	-
+NEG.B FW	443900001F00	-
+NEG.B *+$10(PC)		ERROR: Invalid addressing mode
+NEG.B *(PC,D0.W)		ERROR: Invalid addressing mode
+NEG.B BK(PC)		ERROR: Invalid addressing mode
+NEG.B #1		ERROR: Invalid addressing mode
+NEG.B #8		ERROR: Invalid addressing mode
+NEG.B #9		ERROR: Invalid addressing mode
+NEG.B #0		ERROR: Invalid addressing mode
+NEG.B #-1		ERROR: Invalid addressing mode
+NEG.B #$80		ERROR: Invalid addressing mode
+NEG.B #$1234		ERROR: Invalid addressing mode
+NEG.B #$12345678		ERROR: Invalid addressing mode
+NEG.B #$12345678.L		ERROR: Invalid addressing mode
+NEG.B #BK		ERROR: Invalid addressing mode
+NEG.B #FW		ERROR: Invalid addressing mode
+NEG.B #UNDEF		ERROR: Invalid addressing mode
+NEG.B UNDEF	4439000055B4	ERROR: Undefined symbol
+NEG.B SR		ERROR: Invalid addressing mode
+NEG.B CCR		ERROR: Invalid addressing mode
+NEG.B USP		ERROR: Invalid addressing mode
+NEG.B D1,D2,D3		ERROR: Invalid syntax
+NEG.W		ERROR: Invalid syntax
+NEG.W D1	4441	-
+NEG.W A2		ERROR: Invalid addressing mode
+NEG.W SP		ERROR: Invalid addressing mode
+NEG.W (A3)	4453	-
+NEG.W (A4)+	445C	-
+NEG.W -(A5)	4465	-
+NEG.W $10(A6)	446E0010	-
+NEG.W -2(A0)	4468FFFE	-
+NEG.W $10(A6,D7.W)	44767010	-
+NEG.W $12(A0,A1.L)	44709812	-
+NEG.W (A2,D3)	44723000	-
+NEG.W $1234	44781234	-
+NEG.W $12345678	447912345678	-
+NEG.W $1234.L	447900001234	-
+NEG.W $1234.W	44781234	WARNING: Forcing SHORT addressing disables range checking of extension word
+NEG.W $8000	447900008000	-
+NEG.W BK	44781F00	-
+NEG.W FW	447900001F00	-
+NEG.W *+$10(PC)		ERROR: Invalid addressing mode
+NEG.W *(PC,D0.W)		ERROR: Invalid addressing mode
+NEG.W BK(PC)		ERROR: Invalid addressing mode
+NEG.W #1		ERROR: Invalid addressing mode
+NEG.W #8		ERROR: Invalid addressing mode
+NEG.W #9		ERROR: Invalid addressing mode
+NEG.W #0		ERROR: Invalid addressing mode
+NEG.W #-1		ERROR: Invalid addressing mode
+NEG.W #$80		ERROR: Invalid addressing mode
+NEG.W #$1234		ERROR: Invalid addressing mode
+NEG.W #$12345678		ERROR: Invalid addressing mode
+NEG.W #$12345678.L		ERROR: Invalid addressing mode
+NEG.W #BK		ERROR: Invalid addressing mode
+NEG.W #FW		ERROR: Invalid addressing mode
+NEG.W #UNDEF		ERROR: Invalid addressing mode
+NEG.W UNDEF	4479000055B4	ERROR: Undefined symbol
+NEG.W SR		ERROR: Invalid addressing mode
+NEG.W CCR		ERROR: Invalid addressing mode
+NEG.W USP		ERROR: Invalid addressing mode
+NEG.W D1,D2,D3		ERROR: Invalid syntax
+NEG.L		ERROR: Invalid syntax
+NEG.L D1	4481	-
+NEG.L A2		ERROR: Invalid addressing mode
+NEG.L SP		ERROR: Invalid addressing mode
+NEG.L (A3)	4493	-
+NEG.L (A4)+	449C	-
+NEG.L -(A5)	44A5	-
+NEG.L $10(A6)	44AE0010	-
+NEG.L -2(A0)	44A8FFFE	-
+NEG.L $10(A6,D7.W)	44B67010	-
+NEG.L $12(A0,A1.L)	44B09812	-
+NEG.L (A2,D3)	44B23000	-
+NEG.L $1234	44B81234	-
+NEG.L $12345678	44B912345678	-
+NEG.L $1234.L	44B900001234	-
+NEG.L $1234.W	44B81234	WARNING: Forcing SHORT addressing disables range checking of extension word
+NEG.L $8000	44B900008000	-
+NEG.L BK	44B81F00	-
+NEG.L FW	44B900001F00	-
+NEG.L *+$10(PC)		ERROR: Invalid addressing mode
+NEG.L *(PC,D0.W)		ERROR: Invalid addressing mode
+NEG.L BK(PC)		ERROR: Invalid addressing mode
+NEG.L #1		ERROR: Invalid addressing mode
+NEG.L #8		ERROR: Invalid addressing mode
+NEG.L #9		ERROR: Invalid addressing mode
+NEG.L #0		ERROR: Invalid addressing mode
+NEG.L #-1		ERROR: Invalid addressing mode
+NEG.L #$80		ERROR: Invalid addressing mode
+NEG.L #$1234		ERROR: Invalid addressing mode
+NEG.L #$12345678		ERROR: Invalid addressing mode
+NEG.L #$12345678.L		ERROR: Invalid addressing mode
+NEG.L #BK		ERROR: Invalid addressing mode
+NEG.L #FW		ERROR: Invalid addressing mode
+NEG.L #UNDEF		ERROR: Invalid addressing mode
+NEG.L UNDEF	44B9000055B4	ERROR: Undefined symbol
+NEG.L SR		ERROR: Invalid addressing mode
+NEG.L CCR		ERROR: Invalid addressing mode
+NEG.L USP		ERROR: Invalid addressing mode
+NEG.L D1,D2,D3		ERROR: Invalid syntax
+NEG.S		ERROR: Invalid syntax
+NEG.S D1	4441	ERROR: Invalid size code
+NEG.S A2		ERROR: Invalid addressing mode
+NEG.S SP		ERROR: Invalid addressing mode
+NEG.S (A3)	4453	ERROR: Invalid size code
+NEG.S (A4)+	445C	ERROR: Invalid size code
+NEG.S -(A5)	4465	ERROR: Invalid size code
+NEG.S $10(A6)	446E0010	ERROR: Invalid size code
+NEG.S -2(A0)	4468FFFE	ERROR: Invalid size code
+NEG.S $10(A6,D7.W)	44767010	ERROR: Invalid size code
+NEG.S $12(A0,A1.L)	44709812	ERROR: Invalid size code
+NEG.S (A2,D3)	44723000	ERROR: Invalid size code
+NEG.S $1234	44781234	ERROR: Invalid size code
+NEG.S $12345678	447912345678	ERROR: Invalid size code
+NEG.S $1234.L	447900001234	ERROR: Invalid size code
+NEG.S $1234.W	44781234	ERROR: Invalid size code
+NEG.S $8000	447900008000	ERROR: Invalid size code
+NEG.S BK	44781F00	ERROR: Invalid size code
+NEG.S FW	447900001F00	ERROR: Invalid size code
+NEG.S *+$10(PC)		ERROR: Invalid addressing mode
+NEG.S *(PC,D0.W)		ERROR: Invalid addressing mode
+NEG.S BK(PC)		ERROR: Invalid addressing mode
+NEG.S #1		ERROR: Invalid addressing mode
+NEG.S #8		ERROR: Invalid addressing mode
+NEG.S #9		ERROR: Invalid addressing mode
+NEG.S #0		ERROR: Invalid addressing mode
+NEG.S #-1		ERROR: Invalid addressing mode
+NEG.S #$80		ERROR: Invalid addressing mode
+NEG.S #$1234		ERROR: Invalid addressing mode
+NEG.S #$12345678		ERROR: Invalid addressing mode
+NEG.S #$12345678.L		ERROR: Invalid addressing mode
+NEG.S #BK		ERROR: Invalid addressing mode
+NEG.S #FW		ERROR: Invalid addressing mode
+NEG.S #UNDEF		ERROR: Invalid addressing mode
+NEG.S UNDEF	4479000055B4	ERROR: Undefined symbol
+NEG.S SR		ERROR: Invalid addressing mode
+NEG.S CCR		ERROR: Invalid addressing mode
+NEG.S USP		ERROR: Invalid addressing mode
+NEG.S D1,D2,D3		ERROR: Invalid syntax
+NEG.X D1,D2		ERROR: Invalid syntax
+NEG.X #1		ERROR: Invalid addressing mode

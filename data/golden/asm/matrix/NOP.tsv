@@ -1,0 +1,405 @@
+NOP	4E71	-
+NOP D1	4E71	-
+NOP A2	4E71	-
+NOP SP	4E71	-
+NOP (A3)	4E71	-
+NOP (A4)+	4E71	-
+NOP -(A5)	4E71	-
+NOP $10(A6)	4E71	-
+NOP -2(A0)	4E71	-
+NOP $10(A6,D7.W)	4E71	-
+NOP $12(A0,A1.L)	4E71	-
+NOP (A2,D3)	4E71	-
+NOP $1234	4E71	-
+NOP $12345678	4E71	-
+NOP $1234.L	4E71	-
+NOP $1234.W	4E71	-
+NOP $8000	4E71	-
+NOP BK	4E71	-
+NOP FW	4E71	-
+NOP *+$10(PC)	4E71	-
+NOP *(PC,D0.W)	4E71	-
+NOP BK(PC)	4E71	-
+NOP #1	4E71	-
+NOP #8	4E71	-
+NOP #9	4E71	-
+NOP #0	4E71	-
+NOP #-1	4E71	-
+NOP #$80	4E71	-
+NOP #$1234	4E71	-
+NOP #$12345678	4E71	-
+NOP #$12345678.L	4E71	-
+NOP #BK	4E71	-
+NOP #FW	4E71	-
+NOP #UNDEF	4E71	-
+NOP UNDEF	4E71	-
+NOP SR	4E71	-
+NOP CCR	4E71	-
+NOP USP	4E71	-
+NOP D1,D1	4E71	-
+NOP D1,A2	4E71	-
+NOP D1,(A3)	4E71	-
+NOP D1,$10(A6)	4E71	-
+NOP D1,$1234	4E71	-
+NOP D1,FW	4E71	-
+NOP D1,#1	4E71	-
+NOP D1,#$1234	4E71	-
+NOP D1,CCR	4E71	-
+NOP D1,SR	4E71	-
+NOP A2,D1	4E71	-
+NOP A2,A2	4E71	-
+NOP A2,(A3)	4E71	-
+NOP A2,$10(A6)	4E71	-
+NOP A2,$1234	4E71	-
+NOP A2,FW	4E71	-
+NOP A2,#1	4E71	-
+NOP A2,#$1234	4E71	-
+NOP A2,CCR	4E71	-
+NOP A2,SR	4E71	-
+NOP (A3),D1	4E71	-
+NOP (A3),A2	4E71	-
+NOP (A3),(A3)	4E71	-
+NOP (A3),$10(A6)	4E71	-
+NOP (A3),$1234	4E71	-
+NOP (A3),FW	4E71	-
+NOP (A3),#1	4E71	-
+NOP (A3),#$1234	4E71	-
+NOP (A3),CCR	4E71	-
+NOP (A3),SR	4E71	-
+NOP $10(A6),D1	4E71	-
+NOP $10(A6),A2	4E71	-
+NOP $10(A6),(A3)	4E71	-
+NOP $10(A6),$10(A6)	4E71	-
+NOP $10(A6),$1234	4E71	-
+NOP $10(A6),FW	4E71	-
+NOP $10(A6),#1	4E71	-
+NOP $10(A6),#$1234	4E71	-
+NOP $10(A6),CCR	4E71	-
+NOP $10(A6),SR	4E71	-
+NOP $1234,D1	4E71	-
+NOP $1234,A2	4E71	-
+NOP $1234,(A3)	4E71	-
+NOP $1234,$10(A6)	4E71	-
+NOP $1234,$1234	4E71	-
+NOP $1234,FW	4E71	-
+NOP $1234,#1	4E71	-
+NOP $1234,#$1234	4E71	-
+NOP $1234,CCR	4E71	-
+NOP $1234,SR	4E71	-
+NOP FW,D1	4E71	-
+NOP FW,A2	4E71	-
+NOP FW,(A3)	4E71	-
+NOP FW,$10(A6)	4E71	-
+NOP FW,$1234	4E71	-
+NOP FW,FW	4E71	-
+NOP FW,#1	4E71	-
+NOP FW,#$1234	4E71	-
+NOP FW,CCR	4E71	-
+NOP FW,SR	4E71	-
+NOP #1,D1	4E71	-
+NOP #1,A2	4E71	-
+NOP #1,(A3)	4E71	-
+NOP #1,$10(A6)	4E71	-
+NOP #1,$1234	4E71	-
+NOP #1,FW	4E71	-
+NOP #1,#1	4E71	-
+NOP #1,#$1234	4E71	-
+NOP #1,CCR	4E71	-
+NOP #1,SR	4E71	-
+NOP #$1234,D1	4E71	-
+NOP #$1234,A2	4E71	-
+NOP #$1234,(A3)	4E71	-
+NOP #$1234,$10(A6)	4E71	-
+NOP #$1234,$1234	4E71	-
+NOP #$1234,FW	4E71	-
+NOP #$1234,#1	4E71	-
+NOP #$1234,#$1234	4E71	-
+NOP #$1234,CCR	4E71	-
+NOP #$1234,SR	4E71	-
+NOP CCR,D1	4E71	-
+NOP CCR,A2	4E71	-
+NOP CCR,(A3)	4E71	-
+NOP CCR,$10(A6)	4E71	-
+NOP CCR,$1234	4E71	-
+NOP CCR,FW	4E71	-
+NOP CCR,#1	4E71	-
+NOP CCR,#$1234	4E71	-
+NOP CCR,CCR	4E71	-
+NOP CCR,SR	4E71	-
+NOP SR,D1	4E71	-
+NOP SR,A2	4E71	-
+NOP SR,(A3)	4E71	-
+NOP SR,$10(A6)	4E71	-
+NOP SR,$1234	4E71	-
+NOP SR,FW	4E71	-
+NOP SR,#1	4E71	-
+NOP SR,#$1234	4E71	-
+NOP SR,CCR	4E71	-
+NOP SR,SR	4E71	-
+NOP SP,D1	4E71	-
+NOP SP,A2	4E71	-
+NOP D1,SP	4E71	-
+NOP #$12,SP	4E71	-
+NOP (A4)+,D1	4E71	-
+NOP (A4)+,A2	4E71	-
+NOP D1,(A4)+	4E71	-
+NOP #$12,(A4)+	4E71	-
+NOP -(A5),D1	4E71	-
+NOP -(A5),A2	4E71	-
+NOP D1,-(A5)	4E71	-
+NOP #$12,-(A5)	4E71	-
+NOP -2(A0),D1	4E71	-
+NOP -2(A0),A2	4E71	-
+NOP D1,-2(A0)	4E71	-
+NOP #$12,-2(A0)	4E71	-
+NOP $10(A6,D7.W),D1	4E71	-
+NOP $10(A6,D7.W),A2	4E71	-
+NOP D1,$10(A6,D7.W)	4E71	-
+NOP #$12,$10(A6,D7.W)	4E71	-
+NOP $12(A0,A1.L),D1	4E71	-
+NOP $12(A0,A1.L),A2	4E71	-
+NOP D1,$12(A0,A1.L)	4E71	-
+NOP #$12,$12(A0,A1.L)	4E71	-
+NOP (A2,D3),D1	4E71	-
+NOP (A2,D3),A2	4E71	-
+NOP D1,(A2,D3)	4E71	-
+NOP #$12,(A2,D3)	4E71	-
+NOP $12345678,D1	4E71	-
+NOP $12345678,A2	4E71	-
+NOP D1,$12345678	4E71	-
+NOP #$12,$12345678	4E71	-
+NOP $1234.L,D1	4E71	-
+NOP $1234.L,A2	4E71	-
+NOP D1,$1234.L	4E71	-
+NOP #$12,$1234.L	4E71	-
+NOP $1234.W,D1	4E71	-
+NOP $1234.W,A2	4E71	-
+NOP D1,$1234.W	4E71	-
+NOP #$12,$1234.W	4E71	-
+NOP $8000,D1	4E71	-
+NOP $8000,A2	4E71	-
+NOP D1,$8000	4E71	-
+NOP #$12,$8000	4E71	-
+NOP BK,D1	4E71	-
+NOP BK,A2	4E71	-
+NOP D1,BK	4E71	-
+NOP #$12,BK	4E71	-
+NOP *+$10(PC),D1	4E71	-
+NOP *+$10(PC),A2	4E71	-
+NOP D1,*+$10(PC)	4E71	-
+NOP #$12,*+$10(PC)	4E71	-
+NOP *(PC,D0.W),D1	4E71	-
+NOP *(PC,D0.W),A2	4E71	-
+NOP D1,*(PC,D0.W)	4E71	-
+NOP #$12,*(PC,D0.W)	4E71	-
+NOP BK(PC),D1	4E71	-
+NOP BK(PC),A2	4E71	-
+NOP D1,BK(PC)	4E71	-
+NOP #$12,BK(PC)	4E71	-
+NOP #8,D1	4E71	-
+NOP #8,A2	4E71	-
+NOP D1,#8	4E71	-
+NOP #$12,#8	4E71	-
+NOP #9,D1	4E71	-
+NOP #9,A2	4E71	-
+NOP D1,#9	4E71	-
+NOP #$12,#9	4E71	-
+NOP #0,D1	4E71	-
+NOP #0,A2	4E71	-
+NOP D1,#0	4E71	-
+NOP #$12,#0	4E71	-
+NOP #-1,D1	4E71	-
+NOP #-1,A2	4E71	-
+NOP D1,#-1	4E71	-
+NOP #$12,#-1	4E71	-
+NOP #$80,D1	4E71	-
+NOP #$80,A2	4E71	-
+NOP D1,#$80	4E71	-
+NOP #$12,#$80	4E71	-
+NOP #$12345678,D1	4E71	-
+NOP #$12345678,A2	4E71	-
+NOP D1,#$12345678	4E71	-
+NOP #$12,#$12345678	4E71	-
+NOP #$12345678.L,D1	4E71	-
+NOP #$12345678.L,A2	4E71	-
+NOP D1,#$12345678.L	4E71	-
+NOP #$12,#$12345678.L	4E71	-
+NOP #BK,D1	4E71	-
+NOP #BK,A2	4E71	-
+NOP D1,#BK	4E71	-
+NOP #$12,#BK	4E71	-
+NOP #FW,D1	4E71	-
+NOP #FW,A2	4E71	-
+NOP D1,#FW	4E71	-
+NOP #$12,#FW	4E71	-
+NOP #UNDEF,D1	4E71	-
+NOP #UNDEF,A2	4E71	-
+NOP D1,#UNDEF	4E71	-
+NOP #$12,#UNDEF	4E71	-
+NOP UNDEF,D1	4E71	-
+NOP UNDEF,A2	4E71	-
+NOP D1,UNDEF	4E71	-
+NOP #$12,UNDEF	4E71	-
+NOP USP,D1	4E71	-
+NOP USP,A2	4E71	-
+NOP D1,USP	4E71	-
+NOP #$12,USP	4E71	-
+NOP D1,D2,D3	4E71	-
+NOP.B	4E71	ERROR: Invalid size code
+NOP.B D1	4E71	ERROR: Invalid size code
+NOP.B A2	4E71	ERROR: Invalid size code
+NOP.B SP	4E71	ERROR: Invalid size code
+NOP.B (A3)	4E71	ERROR: Invalid size code
+NOP.B (A4)+	4E71	ERROR: Invalid size code
+NOP.B -(A5)	4E71	ERROR: Invalid size code
+NOP.B $10(A6)	4E71	ERROR: Invalid size code
+NOP.B -2(A0)	4E71	ERROR: Invalid size code
+NOP.B $10(A6,D7.W)	4E71	ERROR: Invalid size code
+NOP.B $12(A0,A1.L)	4E71	ERROR: Invalid size code
+NOP.B (A2,D3)	4E71	ERROR: Invalid size code
+NOP.B $1234	4E71	ERROR: Invalid size code
+NOP.B $12345678	4E71	ERROR: Invalid size code
+NOP.B $1234.L	4E71	ERROR: Invalid size code
+NOP.B $1234.W	4E71	ERROR: Invalid size code
+NOP.B $8000	4E71	ERROR: Invalid size code
+NOP.B BK	4E71	ERROR: Invalid size code
+NOP.B FW	4E71	ERROR: Invalid size code
+NOP.B *+$10(PC)	4E71	ERROR: Invalid size code
+NOP.B *(PC,D0.W)	4E71	ERROR: Invalid size code
+NOP.B BK(PC)	4E71	ERROR: Invalid size code
+NOP.B #1	4E71	ERROR: Invalid size code
+NOP.B #8	4E71	ERROR: Invalid size code
+NOP.B #9	4E71	ERROR: Invalid size code
+NOP.B #0	4E71	ERROR: Invalid size code
+NOP.B #-1	4E71	ERROR: Invalid size code
+NOP.B #$80	4E71	ERROR: Invalid size code
+NOP.B #$1234	4E71	ERROR: Invalid size code
+NOP.B #$12345678	4E71	ERROR: Invalid size code
+NOP.B #$12345678.L	4E71	ERROR: Invalid size code
+NOP.B #BK	4E71	ERROR: Invalid size code
+NOP.B #FW	4E71	ERROR: Invalid size code
+NOP.B #UNDEF	4E71	ERROR: Invalid size code
+NOP.B UNDEF	4E71	ERROR: Invalid size code
+NOP.B SR	4E71	ERROR: Invalid size code
+NOP.B CCR	4E71	ERROR: Invalid size code
+NOP.B USP	4E71	ERROR: Invalid size code
+NOP.B D1,D2,D3	4E71	ERROR: Invalid size code
+NOP.W	4E71	ERROR: Invalid size code
+NOP.W D1	4E71	ERROR: Invalid size code
+NOP.W A2	4E71	ERROR: Invalid size code
+NOP.W SP	4E71	ERROR: Invalid size code
+NOP.W (A3)	4E71	ERROR: Invalid size code
+NOP.W (A4)+	4E71	ERROR: Invalid size code
+NOP.W -(A5)	4E71	ERROR: Invalid size code
+NOP.W $10(A6)	4E71	ERROR: Invalid size code
+NOP.W -2(A0)	4E71	ERROR: Invalid size code
+NOP.W $10(A6,D7.W)	4E71	ERROR: Invalid size code
+NOP.W $12(A0,A1.L)	4E71	ERROR: Invalid size code
+NOP.W (A2,D3)	4E71	ERROR: Invalid size code
+NOP.W $1234	4E71	ERROR: Invalid size code
+NOP.W $12345678	4E71	ERROR: Invalid size code
+NOP.W $1234.L	4E71	ERROR: Invalid size code
+NOP.W $1234.W	4E71	ERROR: Invalid size code
+NOP.W $8000	4E71	ERROR: Invalid size code
+NOP.W BK	4E71	ERROR: Invalid size code
+NOP.W FW	4E71	ERROR: Invalid size code
+NOP.W *+$10(PC)	4E71	ERROR: Invalid size code
+NOP.W *(PC,D0.W)	4E71	ERROR: Invalid size code
+NOP.W BK(PC)	4E71	ERROR: Invalid size code
+NOP.W #1	4E71	ERROR: Invalid size code
+NOP.W #8	4E71	ERROR: Invalid size code
+NOP.W #9	4E71	ERROR: Invalid size code
+NOP.W #0	4E71	ERROR: Invalid size code
+NOP.W #-1	4E71	ERROR: Invalid size code
+NOP.W #$80	4E71	ERROR: Invalid size code
+NOP.W #$1234	4E71	ERROR: Invalid size code
+NOP.W #$12345678	4E71	ERROR: Invalid size code
+NOP.W #$12345678.L	4E71	ERROR: Invalid size code
+NOP.W #BK	4E71	ERROR: Invalid size code
+NOP.W #FW	4E71	ERROR: Invalid size code
+NOP.W #UNDEF	4E71	ERROR: Invalid size code
+NOP.W UNDEF	4E71	ERROR: Invalid size code
+NOP.W SR	4E71	ERROR: Invalid size code
+NOP.W CCR	4E71	ERROR: Invalid size code
+NOP.W USP	4E71	ERROR: Invalid size code
+NOP.W D1,D2,D3	4E71	ERROR: Invalid size code
+NOP.L	4E71	ERROR: Invalid size code
+NOP.L D1	4E71	ERROR: Invalid size code
+NOP.L A2	4E71	ERROR: Invalid size code
+NOP.L SP	4E71	ERROR: Invalid size code
+NOP.L (A3)	4E71	ERROR: Invalid size code
+NOP.L (A4)+	4E71	ERROR: Invalid size code
+NOP.L -(A5)	4E71	ERROR: Invalid size code
+NOP.L $10(A6)	4E71	ERROR: Invalid size code
+NOP.L -2(A0)	4E71	ERROR: Invalid size code
+NOP.L $10(A6,D7.W)	4E71	ERROR: Invalid size code
+NOP.L $12(A0,A1.L)	4E71	ERROR: Invalid size code
+NOP.L (A2,D3)	4E71	ERROR: Invalid size code
+NOP.L $1234	4E71	ERROR: Invalid size code
+NOP.L $12345678	4E71	ERROR: Invalid size code
+NOP.L $1234.L	4E71	ERROR: Invalid size code
+NOP.L $1234.W	4E71	ERROR: Invalid size code
+NOP.L $8000	4E71	ERROR: Invalid size code
+NOP.L BK	4E71	ERROR: Invalid size code
+NOP.L FW	4E71	ERROR: Invalid size code
+NOP.L *+$10(PC)	4E71	ERROR: Invalid size code
+NOP.L *(PC,D0.W)	4E71	ERROR: Invalid size code
+NOP.L BK(PC)	4E71	ERROR: Invalid size code
+NOP.L #1	4E71	ERROR: Invalid size code
+NOP.L #8	4E71	ERROR: Invalid size code
+NOP.L #9	4E71	ERROR: Invalid size code
+NOP.L #0	4E71	ERROR: Invalid size code
+NOP.L #-1	4E71	ERROR: Invalid size code
+NOP.L #$80	4E71	ERROR: Invalid size code
+NOP.L #$1234	4E71	ERROR: Invalid size code
+NOP.L #$12345678	4E71	ERROR: Invalid size code
+NOP.L #$12345678.L	4E71	ERROR: Invalid size code
+NOP.L #BK	4E71	ERROR: Invalid size code
+NOP.L #FW	4E71	ERROR: Invalid size code
+NOP.L #UNDEF	4E71	ERROR: Invalid size code
+NOP.L UNDEF	4E71	ERROR: Invalid size code
+NOP.L SR	4E71	ERROR: Invalid size code
+NOP.L CCR	4E71	ERROR: Invalid size code
+NOP.L USP	4E71	ERROR: Invalid size code
+NOP.L D1,D2,D3	4E71	ERROR: Invalid size code
+NOP.S	4E71	ERROR: Invalid size code
+NOP.S D1	4E71	ERROR: Invalid size code
+NOP.S A2	4E71	ERROR: Invalid size code
+NOP.S SP	4E71	ERROR: Invalid size code
+NOP.S (A3)	4E71	ERROR: Invalid size code
+NOP.S (A4)+	4E71	ERROR: Invalid size code
+NOP.S -(A5)	4E71	ERROR: Invalid size code
+NOP.S $10(A6)	4E71	ERROR: Invalid size code
+NOP.S -2(A0)	4E71	ERROR: Invalid size code
+NOP.S $10(A6,D7.W)	4E71	ERROR: Invalid size code
+NOP.S $12(A0,A1.L)	4E71	ERROR: Invalid size code
+NOP.S (A2,D3)	4E71	ERROR: Invalid size code
+NOP.S $1234	4E71	ERROR: Invalid size code
+NOP.S $12345678	4E71	ERROR: Invalid size code
+NOP.S $1234.L	4E71	ERROR: Invalid size code
+NOP.S $1234.W	4E71	ERROR: Invalid size code
+NOP.S $8000	4E71	ERROR: Invalid size code
+NOP.S BK	4E71	ERROR: Invalid size code
+NOP.S FW	4E71	ERROR: Invalid size code
+NOP.S *+$10(PC)	4E71	ERROR: Invalid size code
+NOP.S *(PC,D0.W)	4E71	ERROR: Invalid size code
+NOP.S BK(PC)	4E71	ERROR: Invalid size code
+NOP.S #1	4E71	ERROR: Invalid size code
+NOP.S #8	4E71	ERROR: Invalid size code
+NOP.S #9	4E71	ERROR: Invalid size code
+NOP.S #0	4E71	ERROR: Invalid size code
+NOP.S #-1	4E71	ERROR: Invalid size code
+NOP.S #$80	4E71	ERROR: Invalid size code
+NOP.S #$1234	4E71	ERROR: Invalid size code
+NOP.S #$12345678	4E71	ERROR: Invalid size code
+NOP.S #$12345678.L	4E71	ERROR: Invalid size code
+NOP.S #BK	4E71	ERROR: Invalid size code
+NOP.S #FW	4E71	ERROR: Invalid size code
+NOP.S #UNDEF	4E71	ERROR: Invalid size code
+NOP.S UNDEF	4E71	ERROR: Invalid size code
+NOP.S SR	4E71	ERROR: Invalid size code
+NOP.S CCR	4E71	ERROR: Invalid size code
+NOP.S USP	4E71	ERROR: Invalid size code
+NOP.S D1,D2,D3	4E71	ERROR: Invalid size code
+NOP.X D1,D2	4E71	ERROR: Invalid size code
+NOP.X #1	4E71	ERROR: Invalid size code

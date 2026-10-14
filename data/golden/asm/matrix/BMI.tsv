@@ -1,0 +1,82 @@
+BMI		ERROR: Invalid syntax
+BMI *+2	6B000000	-
+BMI *+4	6B02	-
+BMI *+$80	6B7E	-
+BMI *+$82	6B000080	-
+BMI *-$7E	6B80	-
+BMI *-$80	6B00FF7E	-
+BMI *+$8000	6B007FFE	-
+BMI *	6BFE	-
+BMI BK	6B000EFE	-
+BMI FW	6B000EFE	-
+BMI $1000	6BFE	-
+BMI $12345678	6B004676	ERROR: Branch instruction displacement is out of range or invalid
+BMI D1		ERROR: Invalid addressing mode
+BMI (A0)		ERROR: Invalid addressing mode
+BMI #4		ERROR: Invalid addressing mode
+BMI.B		ERROR: Invalid syntax
+BMI.B *+2	6B00	ERROR: Branch instruction displacement is out of range or invalid
+BMI.B *+4	6B02	-
+BMI.B *+$80	6B7E	-
+BMI.B *+$82	6B80	ERROR: Branch instruction displacement is out of range or invalid
+BMI.B *-$7E	6B80	-
+BMI.B *-$80	6B7E	ERROR: Branch instruction displacement is out of range or invalid
+BMI.B *+$8000	6BFE	ERROR: Branch instruction displacement is out of range or invalid
+BMI.B *	6BFE	-
+BMI.B BK	6BFE	ERROR: Branch instruction displacement is out of range or invalid
+BMI.B FW	6BFE	ERROR: Branch instruction displacement is out of range or invalid
+BMI.B $1000	6BFE	-
+BMI.B $12345678	6B76	ERROR: Branch instruction displacement is out of range or invalid
+BMI.B D1		ERROR: Invalid addressing mode
+BMI.B (A0)		ERROR: Invalid addressing mode
+BMI.B #4		ERROR: Invalid addressing mode
+BMI.W		ERROR: Invalid syntax
+BMI.W *+2	6B000000	-
+BMI.W *+4	6B000002	-
+BMI.W *+$80	6B00007E	-
+BMI.W *+$82	6B000080	-
+BMI.W *-$7E	6B00FF80	-
+BMI.W *-$80	6B00FF7E	-
+BMI.W *+$8000	6B007FFE	-
+BMI.W *	6B00FFFE	-
+BMI.W BK	6B000EFE	-
+BMI.W FW	6B000EFE	-
+BMI.W $1000	6B00FFFE	-
+BMI.W $12345678	6B004676	ERROR: Branch instruction displacement is out of range or invalid
+BMI.W D1		ERROR: Invalid addressing mode
+BMI.W (A0)		ERROR: Invalid addressing mode
+BMI.W #4		ERROR: Invalid addressing mode
+BMI.L		ERROR: Invalid syntax
+BMI.L *+2	6B000000	-
+BMI.L *+4	6B000002	-
+BMI.L *+$80	6B00007E	-
+BMI.L *+$82	6B000080	-
+BMI.L *-$7E	6B00FF80	-
+BMI.L *-$80	6B00FF7E	-
+BMI.L *+$8000	6B007FFE	-
+BMI.L *	6B00FFFE	-
+BMI.L BK	6B000EFE	-
+BMI.L FW	6B000EFE	-
+BMI.L $1000	6B00FFFE	-
+BMI.L $12345678	6B004676	ERROR: Branch instruction displacement is out of range or invalid
+BMI.L D1		ERROR: Invalid addressing mode
+BMI.L (A0)		ERROR: Invalid addressing mode
+BMI.L #4		ERROR: Invalid addressing mode
+BMI.S		ERROR: Invalid syntax
+BMI.S *+2	6B00	ERROR: Branch instruction displacement is out of range or invalid
+BMI.S *+4	6B02	-
+BMI.S *+$80	6B7E	-
+BMI.S *+$82	6B80	ERROR: Branch instruction displacement is out of range or invalid
+BMI.S *-$7E	6B80	-
+BMI.S *-$80	6B7E	ERROR: Branch instruction displacement is out of range or invalid
+BMI.S *+$8000	6BFE	ERROR: Branch instruction displacement is out of range or invalid
+BMI.S *	6BFE	-
+BMI.S BK	6BFE	ERROR: Branch instruction displacement is out of range or invalid
+BMI.S FW	6BFE	ERROR: Branch instruction displacement is out of range or invalid
+BMI.S $1000	6BFE	-
+BMI.S $12345678	6B76	ERROR: Branch instruction displacement is out of range or invalid
+BMI.S D1		ERROR: Invalid addressing mode
+BMI.S (A0)		ERROR: Invalid addressing mode
+BMI.S #4		ERROR: Invalid addressing mode
+BMI.X D1,D2		ERROR: Invalid addressing mode
+BMI.X #1		ERROR: Invalid addressing mode

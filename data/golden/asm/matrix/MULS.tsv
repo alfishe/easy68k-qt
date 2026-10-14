@@ -1,0 +1,1621 @@
+MULS		ERROR: Invalid syntax
+MULS D1		ERROR: Comma expected
+MULS A2		ERROR: Comma expected
+MULS SP		ERROR: Comma expected
+MULS (A3)		ERROR: Comma expected
+MULS (A4)+		ERROR: Comma expected
+MULS -(A5)		ERROR: Comma expected
+MULS $10(A6)		ERROR: Comma expected
+MULS -2(A0)		ERROR: Comma expected
+MULS $10(A6,D7.W)		ERROR: Comma expected
+MULS $12(A0,A1.L)		ERROR: Comma expected
+MULS (A2,D3)		ERROR: Comma expected
+MULS $1234		ERROR: Comma expected
+MULS $12345678		ERROR: Comma expected
+MULS $1234.L		ERROR: Comma expected
+MULS $1234.W		ERROR: Comma expected
+MULS $8000		ERROR: Comma expected
+MULS BK		ERROR: Comma expected
+MULS FW		ERROR: Comma expected
+MULS *+$10(PC)		ERROR: Comma expected
+MULS *(PC,D0.W)		ERROR: Comma expected
+MULS BK(PC)		ERROR: Comma expected
+MULS #1		ERROR: Comma expected
+MULS #8		ERROR: Comma expected
+MULS #9		ERROR: Comma expected
+MULS #0		ERROR: Comma expected
+MULS #-1		ERROR: Comma expected
+MULS #$80		ERROR: Comma expected
+MULS #$1234		ERROR: Comma expected
+MULS #$12345678		ERROR: Comma expected
+MULS #$12345678.L		ERROR: Comma expected
+MULS #BK		ERROR: Comma expected
+MULS #FW		ERROR: Comma expected
+MULS #UNDEF		ERROR: Comma expected
+MULS UNDEF		ERROR: Comma expected
+MULS SR		ERROR: Comma expected
+MULS CCR		ERROR: Comma expected
+MULS USP		ERROR: Comma expected
+MULS D1,D1	C3C1	-
+MULS D1,A2		ERROR: Invalid addressing mode
+MULS D1,(A3)		ERROR: Invalid addressing mode
+MULS D1,(A4)+		ERROR: Invalid addressing mode
+MULS D1,-(A5)		ERROR: Invalid addressing mode
+MULS D1,$10(A6)		ERROR: Invalid addressing mode
+MULS D1,$10(A6,D7.W)		ERROR: Invalid addressing mode
+MULS D1,$1234		ERROR: Invalid addressing mode
+MULS D1,$12345678		ERROR: Invalid addressing mode
+MULS D1,FW		ERROR: Invalid addressing mode
+MULS D1,*+$10(PC)		ERROR: Invalid addressing mode
+MULS D1,#1		ERROR: Invalid addressing mode
+MULS D1,#$80		ERROR: Invalid addressing mode
+MULS D1,#$1234		ERROR: Invalid addressing mode
+MULS D1,#$12345678		ERROR: Invalid addressing mode
+MULS D1,SR		ERROR: Invalid addressing mode
+MULS D1,CCR		ERROR: Invalid addressing mode
+MULS D1,USP		ERROR: Invalid addressing mode
+MULS A2,D1		ERROR: Invalid addressing mode
+MULS A2,A2		ERROR: Invalid addressing mode
+MULS A2,(A3)		ERROR: Invalid addressing mode
+MULS A2,(A4)+		ERROR: Invalid addressing mode
+MULS A2,-(A5)		ERROR: Invalid addressing mode
+MULS A2,$10(A6)		ERROR: Invalid addressing mode
+MULS A2,$10(A6,D7.W)		ERROR: Invalid addressing mode
+MULS A2,$1234		ERROR: Invalid addressing mode
+MULS A2,$12345678		ERROR: Invalid addressing mode
+MULS A2,FW		ERROR: Invalid addressing mode
+MULS A2,*+$10(PC)		ERROR: Invalid addressing mode
+MULS A2,#1		ERROR: Invalid addressing mode
+MULS A2,#$80		ERROR: Invalid addressing mode
+MULS A2,#$1234		ERROR: Invalid addressing mode
+MULS A2,#$12345678		ERROR: Invalid addressing mode
+MULS A2,SR		ERROR: Invalid addressing mode
+MULS A2,CCR		ERROR: Invalid addressing mode
+MULS A2,USP		ERROR: Invalid addressing mode
+MULS (A3),D1	C3D3	-
+MULS (A3),A2		ERROR: Invalid addressing mode
+MULS (A3),(A3)		ERROR: Invalid addressing mode
+MULS (A3),(A4)+		ERROR: Invalid addressing mode
+MULS (A3),-(A5)		ERROR: Invalid addressing mode
+MULS (A3),$10(A6)		ERROR: Invalid addressing mode
+MULS (A3),$10(A6,D7.W)		ERROR: Invalid addressing mode
+MULS (A3),$1234		ERROR: Invalid addressing mode
+MULS (A3),$12345678		ERROR: Invalid addressing mode
+MULS (A3),FW		ERROR: Invalid addressing mode
+MULS (A3),*+$10(PC)		ERROR: Invalid addressing mode
+MULS (A3),#1		ERROR: Invalid addressing mode
+MULS (A3),#$80		ERROR: Invalid addressing mode
+MULS (A3),#$1234		ERROR: Invalid addressing mode
+MULS (A3),#$12345678		ERROR: Invalid addressing mode
+MULS (A3),SR		ERROR: Invalid addressing mode
+MULS (A3),CCR		ERROR: Invalid addressing mode
+MULS (A3),USP		ERROR: Invalid addressing mode
+MULS (A4)+,D1	C3DC	-
+MULS (A4)+,A2		ERROR: Invalid addressing mode
+MULS (A4)+,(A3)		ERROR: Invalid addressing mode
+MULS (A4)+,(A4)+		ERROR: Invalid addressing mode
+MULS (A4)+,-(A5)		ERROR: Invalid addressing mode
+MULS (A4)+,$10(A6)		ERROR: Invalid addressing mode
+MULS (A4)+,$10(A6,D7.W)		ERROR: Invalid addressing mode
+MULS (A4)+,$1234		ERROR: Invalid addressing mode
+MULS (A4)+,$12345678		ERROR: Invalid addressing mode
+MULS (A4)+,FW		ERROR: Invalid addressing mode
+MULS (A4)+,*+$10(PC)		ERROR: Invalid addressing mode
+MULS (A4)+,#1		ERROR: Invalid addressing mode
+MULS (A4)+,#$80		ERROR: Invalid addressing mode
+MULS (A4)+,#$1234		ERROR: Invalid addressing mode
+MULS (A4)+,#$12345678		ERROR: Invalid addressing mode
+MULS (A4)+,SR		ERROR: Invalid addressing mode
+MULS (A4)+,CCR		ERROR: Invalid addressing mode
+MULS (A4)+,USP		ERROR: Invalid addressing mode
+MULS -(A5),D1	C3E5	-
+MULS -(A5),A2		ERROR: Invalid addressing mode
+MULS -(A5),(A3)		ERROR: Invalid addressing mode
+MULS -(A5),(A4)+		ERROR: Invalid addressing mode
+MULS -(A5),-(A5)		ERROR: Invalid addressing mode
+MULS -(A5),$10(A6)		ERROR: Invalid addressing mode
+MULS -(A5),$10(A6,D7.W)		ERROR: Invalid addressing mode
+MULS -(A5),$1234		ERROR: Invalid addressing mode
+MULS -(A5),$12345678		ERROR: Invalid addressing mode
+MULS -(A5),FW		ERROR: Invalid addressing mode
+MULS -(A5),*+$10(PC)		ERROR: Invalid addressing mode
+MULS -(A5),#1		ERROR: Invalid addressing mode
+MULS -(A5),#$80		ERROR: Invalid addressing mode
+MULS -(A5),#$1234		ERROR: Invalid addressing mode
+MULS -(A5),#$12345678		ERROR: Invalid addressing mode
+MULS -(A5),SR		ERROR: Invalid addressing mode
+MULS -(A5),CCR		ERROR: Invalid addressing mode
+MULS -(A5),USP		ERROR: Invalid addressing mode
+MULS $10(A6),D1	C3EE0010	-
+MULS $10(A6),A2		ERROR: Invalid addressing mode
+MULS $10(A6),(A3)		ERROR: Invalid addressing mode
+MULS $10(A6),(A4)+		ERROR: Invalid addressing mode
+MULS $10(A6),-(A5)		ERROR: Invalid addressing mode
+MULS $10(A6),$10(A6)		ERROR: Invalid addressing mode
+MULS $10(A6),$10(A6,D7.W)		ERROR: Invalid addressing mode
+MULS $10(A6),$1234		ERROR: Invalid addressing mode
+MULS $10(A6),$12345678		ERROR: Invalid addressing mode
+MULS $10(A6),FW		ERROR: Invalid addressing mode
+MULS $10(A6),*+$10(PC)		ERROR: Invalid addressing mode
+MULS $10(A6),#1		ERROR: Invalid addressing mode
+MULS $10(A6),#$80		ERROR: Invalid addressing mode
+MULS $10(A6),#$1234		ERROR: Invalid addressing mode
+MULS $10(A6),#$12345678		ERROR: Invalid addressing mode
+MULS $10(A6),SR		ERROR: Invalid addressing mode
+MULS $10(A6),CCR		ERROR: Invalid addressing mode
+MULS $10(A6),USP		ERROR: Invalid addressing mode
+MULS $10(A6,D7.W),D1	C3F67010	-
+MULS $10(A6,D7.W),A2		ERROR: Invalid addressing mode
+MULS $10(A6,D7.W),(A3)		ERROR: Invalid addressing mode
+MULS $10(A6,D7.W),(A4)+		ERROR: Invalid addressing mode
+MULS $10(A6,D7.W),-(A5)		ERROR: Invalid addressing mode
+MULS $10(A6,D7.W),$10(A6)		ERROR: Invalid addressing mode
+MULS $10(A6,D7.W),$10(A6,D7.W)		ERROR: Invalid addressing mode
+MULS $10(A6,D7.W),$1234		ERROR: Invalid addressing mode
+MULS $10(A6,D7.W),$12345678		ERROR: Invalid addressing mode
+MULS $10(A6,D7.W),FW		ERROR: Invalid addressing mode
+MULS $10(A6,D7.W),*+$10(PC)		ERROR: Invalid addressing mode
+MULS $10(A6,D7.W),#1		ERROR: Invalid addressing mode
+MULS $10(A6,D7.W),#$80		ERROR: Invalid addressing mode
+MULS $10(A6,D7.W),#$1234		ERROR: Invalid addressing mode
+MULS $10(A6,D7.W),#$12345678		ERROR: Invalid addressing mode
+MULS $10(A6,D7.W),SR		ERROR: Invalid addressing mode
+MULS $10(A6,D7.W),CCR		ERROR: Invalid addressing mode
+MULS $10(A6,D7.W),USP		ERROR: Invalid addressing mode
+MULS $1234,D1	C3F81234	-
+MULS $1234,A2		ERROR: Invalid addressing mode
+MULS $1234,(A3)		ERROR: Invalid addressing mode
+MULS $1234,(A4)+		ERROR: Invalid addressing mode
+MULS $1234,-(A5)		ERROR: Invalid addressing mode
+MULS $1234,$10(A6)		ERROR: Invalid addressing mode
+MULS $1234,$10(A6,D7.W)		ERROR: Invalid addressing mode
+MULS $1234,$1234		ERROR: Invalid addressing mode
+MULS $1234,$12345678		ERROR: Invalid addressing mode
+MULS $1234,FW		ERROR: Invalid addressing mode
+MULS $1234,*+$10(PC)		ERROR: Invalid addressing mode
+MULS $1234,#1		ERROR: Invalid addressing mode
+MULS $1234,#$80		ERROR: Invalid addressing mode
+MULS $1234,#$1234		ERROR: Invalid addressing mode
+MULS $1234,#$12345678		ERROR: Invalid addressing mode
+MULS $1234,SR		ERROR: Invalid addressing mode
+MULS $1234,CCR		ERROR: Invalid addressing mode
+MULS $1234,USP		ERROR: Invalid addressing mode
+MULS $12345678,D1	C3F912345678	-
+MULS $12345678,A2		ERROR: Invalid addressing mode
+MULS $12345678,(A3)		ERROR: Invalid addressing mode
+MULS $12345678,(A4)+		ERROR: Invalid addressing mode
+MULS $12345678,-(A5)		ERROR: Invalid addressing mode
+MULS $12345678,$10(A6)		ERROR: Invalid addressing mode
+MULS $12345678,$10(A6,D7.W)		ERROR: Invalid addressing mode
+MULS $12345678,$1234		ERROR: Invalid addressing mode
+MULS $12345678,$12345678		ERROR: Invalid addressing mode
+MULS $12345678,FW		ERROR: Invalid addressing mode
+MULS $12345678,*+$10(PC)		ERROR: Invalid addressing mode
+MULS $12345678,#1		ERROR: Invalid addressing mode
+MULS $12345678,#$80		ERROR: Invalid addressing mode
+MULS $12345678,#$1234		ERROR: Invalid addressing mode
+MULS $12345678,#$12345678		ERROR: Invalid addressing mode
+MULS $12345678,SR		ERROR: Invalid addressing mode
+MULS $12345678,CCR		ERROR: Invalid addressing mode
+MULS $12345678,USP		ERROR: Invalid addressing mode
+MULS FW,D1	C3F900001F00	-
+MULS FW,A2		ERROR: Invalid addressing mode
+MULS FW,(A3)		ERROR: Invalid addressing mode
+MULS FW,(A4)+		ERROR: Invalid addressing mode
+MULS FW,-(A5)		ERROR: Invalid addressing mode
+MULS FW,$10(A6)		ERROR: Invalid addressing mode
+MULS FW,$10(A6,D7.W)		ERROR: Invalid addressing mode
+MULS FW,$1234		ERROR: Invalid addressing mode
+MULS FW,$12345678		ERROR: Invalid addressing mode
+MULS FW,FW		ERROR: Invalid addressing mode
+MULS FW,*+$10(PC)		ERROR: Invalid addressing mode
+MULS FW,#1		ERROR: Invalid addressing mode
+MULS FW,#$80		ERROR: Invalid addressing mode
+MULS FW,#$1234		ERROR: Invalid addressing mode
+MULS FW,#$12345678		ERROR: Invalid addressing mode
+MULS FW,SR		ERROR: Invalid addressing mode
+MULS FW,CCR		ERROR: Invalid addressing mode
+MULS FW,USP		ERROR: Invalid addressing mode
+MULS *+$10(PC),D1	C3FA000E	-
+MULS *+$10(PC),A2		ERROR: Invalid addressing mode
+MULS *+$10(PC),(A3)		ERROR: Invalid addressing mode
+MULS *+$10(PC),(A4)+		ERROR: Invalid addressing mode
+MULS *+$10(PC),-(A5)		ERROR: Invalid addressing mode
+MULS *+$10(PC),$10(A6)		ERROR: Invalid addressing mode
+MULS *+$10(PC),$10(A6,D7.W)		ERROR: Invalid addressing mode
+MULS *+$10(PC),$1234		ERROR: Invalid addressing mode
+MULS *+$10(PC),$12345678		ERROR: Invalid addressing mode
+MULS *+$10(PC),FW		ERROR: Invalid addressing mode
+MULS *+$10(PC),*+$10(PC)		ERROR: Invalid addressing mode
+MULS *+$10(PC),#1		ERROR: Invalid addressing mode
+MULS *+$10(PC),#$80		ERROR: Invalid addressing mode
+MULS *+$10(PC),#$1234		ERROR: Invalid addressing mode
+MULS *+$10(PC),#$12345678		ERROR: Invalid addressing mode
+MULS *+$10(PC),SR		ERROR: Invalid addressing mode
+MULS *+$10(PC),CCR		ERROR: Invalid addressing mode
+MULS *+$10(PC),USP		ERROR: Invalid addressing mode
+MULS #1,D1	C3FC0001	-
+MULS #1,A2		ERROR: Invalid addressing mode
+MULS #1,(A3)		ERROR: Invalid addressing mode
+MULS #1,(A4)+		ERROR: Invalid addressing mode
+MULS #1,-(A5)		ERROR: Invalid addressing mode
+MULS #1,$10(A6)		ERROR: Invalid addressing mode
+MULS #1,$10(A6,D7.W)		ERROR: Invalid addressing mode
+MULS #1,$1234		ERROR: Invalid addressing mode
+MULS #1,$12345678		ERROR: Invalid addressing mode
+MULS #1,FW		ERROR: Invalid addressing mode
+MULS #1,*+$10(PC)		ERROR: Invalid addressing mode
+MULS #1,#1		ERROR: Invalid addressing mode
+MULS #1,#$80		ERROR: Invalid addressing mode
+MULS #1,#$1234		ERROR: Invalid addressing mode
+MULS #1,#$12345678		ERROR: Invalid addressing mode
+MULS #1,SR		ERROR: Invalid addressing mode
+MULS #1,CCR		ERROR: Invalid addressing mode
+MULS #1,USP		ERROR: Invalid addressing mode
+MULS #$80,D1	C3FC0080	-
+MULS #$80,A2		ERROR: Invalid addressing mode
+MULS #$80,(A3)		ERROR: Invalid addressing mode
+MULS #$80,(A4)+		ERROR: Invalid addressing mode
+MULS #$80,-(A5)		ERROR: Invalid addressing mode
+MULS #$80,$10(A6)		ERROR: Invalid addressing mode
+MULS #$80,$10(A6,D7.W)		ERROR: Invalid addressing mode
+MULS #$80,$1234		ERROR: Invalid addressing mode
+MULS #$80,$12345678		ERROR: Invalid addressing mode
+MULS #$80,FW		ERROR: Invalid addressing mode
+MULS #$80,*+$10(PC)		ERROR: Invalid addressing mode
+MULS #$80,#1		ERROR: Invalid addressing mode
+MULS #$80,#$80		ERROR: Invalid addressing mode
+MULS #$80,#$1234		ERROR: Invalid addressing mode
+MULS #$80,#$12345678		ERROR: Invalid addressing mode
+MULS #$80,SR		ERROR: Invalid addressing mode
+MULS #$80,CCR		ERROR: Invalid addressing mode
+MULS #$80,USP		ERROR: Invalid addressing mode
+MULS #$1234,D1	C3FC1234	-
+MULS #$1234,A2		ERROR: Invalid addressing mode
+MULS #$1234,(A3)		ERROR: Invalid addressing mode
+MULS #$1234,(A4)+		ERROR: Invalid addressing mode
+MULS #$1234,-(A5)		ERROR: Invalid addressing mode
+MULS #$1234,$10(A6)		ERROR: Invalid addressing mode
+MULS #$1234,$10(A6,D7.W)		ERROR: Invalid addressing mode
+MULS #$1234,$1234		ERROR: Invalid addressing mode
+MULS #$1234,$12345678		ERROR: Invalid addressing mode
+MULS #$1234,FW		ERROR: Invalid addressing mode
+MULS #$1234,*+$10(PC)		ERROR: Invalid addressing mode
+MULS #$1234,#1		ERROR: Invalid addressing mode
+MULS #$1234,#$80		ERROR: Invalid addressing mode
+MULS #$1234,#$1234		ERROR: Invalid addressing mode
+MULS #$1234,#$12345678		ERROR: Invalid addressing mode
+MULS #$1234,SR		ERROR: Invalid addressing mode
+MULS #$1234,CCR		ERROR: Invalid addressing mode
+MULS #$1234,USP		ERROR: Invalid addressing mode
+MULS #$12345678,D1	C3FC5678	ERROR: Immediate data exceeds 16 bits
+MULS #$12345678,A2		ERROR: Invalid addressing mode
+MULS #$12345678,(A3)		ERROR: Invalid addressing mode
+MULS #$12345678,(A4)+		ERROR: Invalid addressing mode
+MULS #$12345678,-(A5)		ERROR: Invalid addressing mode
+MULS #$12345678,$10(A6)		ERROR: Invalid addressing mode
+MULS #$12345678,$10(A6,D7.W)		ERROR: Invalid addressing mode
+MULS #$12345678,$1234		ERROR: Invalid addressing mode
+MULS #$12345678,$12345678		ERROR: Invalid addressing mode
+MULS #$12345678,FW		ERROR: Invalid addressing mode
+MULS #$12345678,*+$10(PC)		ERROR: Invalid addressing mode
+MULS #$12345678,#1		ERROR: Invalid addressing mode
+MULS #$12345678,#$80		ERROR: Invalid addressing mode
+MULS #$12345678,#$1234		ERROR: Invalid addressing mode
+MULS #$12345678,#$12345678		ERROR: Invalid addressing mode
+MULS #$12345678,SR		ERROR: Invalid addressing mode
+MULS #$12345678,CCR		ERROR: Invalid addressing mode
+MULS #$12345678,USP		ERROR: Invalid addressing mode
+MULS SR,D1		ERROR: Invalid addressing mode
+MULS SR,A2		ERROR: Invalid addressing mode
+MULS SR,(A3)		ERROR: Invalid addressing mode
+MULS SR,(A4)+		ERROR: Invalid addressing mode
+MULS SR,-(A5)		ERROR: Invalid addressing mode
+MULS SR,$10(A6)		ERROR: Invalid addressing mode
+MULS SR,$10(A6,D7.W)		ERROR: Invalid addressing mode
+MULS SR,$1234		ERROR: Invalid addressing mode
+MULS SR,$12345678		ERROR: Invalid addressing mode
+MULS SR,FW		ERROR: Invalid addressing mode
+MULS SR,*+$10(PC)		ERROR: Invalid addressing mode
+MULS SR,#1		ERROR: Invalid addressing mode
+MULS SR,#$80		ERROR: Invalid addressing mode
+MULS SR,#$1234		ERROR: Invalid addressing mode
+MULS SR,#$12345678		ERROR: Invalid addressing mode
+MULS SR,SR		ERROR: Invalid addressing mode
+MULS SR,CCR		ERROR: Invalid addressing mode
+MULS SR,USP		ERROR: Invalid addressing mode
+MULS CCR,D1		ERROR: Invalid addressing mode
+MULS CCR,A2		ERROR: Invalid addressing mode
+MULS CCR,(A3)		ERROR: Invalid addressing mode
+MULS CCR,(A4)+		ERROR: Invalid addressing mode
+MULS CCR,-(A5)		ERROR: Invalid addressing mode
+MULS CCR,$10(A6)		ERROR: Invalid addressing mode
+MULS CCR,$10(A6,D7.W)		ERROR: Invalid addressing mode
+MULS CCR,$1234		ERROR: Invalid addressing mode
+MULS CCR,$12345678		ERROR: Invalid addressing mode
+MULS CCR,FW		ERROR: Invalid addressing mode
+MULS CCR,*+$10(PC)		ERROR: Invalid addressing mode
+MULS CCR,#1		ERROR: Invalid addressing mode
+MULS CCR,#$80		ERROR: Invalid addressing mode
+MULS CCR,#$1234		ERROR: Invalid addressing mode
+MULS CCR,#$12345678		ERROR: Invalid addressing mode
+MULS CCR,SR		ERROR: Invalid addressing mode
+MULS CCR,CCR		ERROR: Invalid addressing mode
+MULS CCR,USP		ERROR: Invalid addressing mode
+MULS USP,D1		ERROR: Invalid addressing mode
+MULS USP,A2		ERROR: Invalid addressing mode
+MULS USP,(A3)		ERROR: Invalid addressing mode
+MULS USP,(A4)+		ERROR: Invalid addressing mode
+MULS USP,-(A5)		ERROR: Invalid addressing mode
+MULS USP,$10(A6)		ERROR: Invalid addressing mode
+MULS USP,$10(A6,D7.W)		ERROR: Invalid addressing mode
+MULS USP,$1234		ERROR: Invalid addressing mode
+MULS USP,$12345678		ERROR: Invalid addressing mode
+MULS USP,FW		ERROR: Invalid addressing mode
+MULS USP,*+$10(PC)		ERROR: Invalid addressing mode
+MULS USP,#1		ERROR: Invalid addressing mode
+MULS USP,#$80		ERROR: Invalid addressing mode
+MULS USP,#$1234		ERROR: Invalid addressing mode
+MULS USP,#$12345678		ERROR: Invalid addressing mode
+MULS USP,SR		ERROR: Invalid addressing mode
+MULS USP,CCR		ERROR: Invalid addressing mode
+MULS USP,USP		ERROR: Invalid addressing mode
+MULS SP,D1		ERROR: Invalid addressing mode
+MULS SP,A2		ERROR: Invalid addressing mode
+MULS D1,SP		ERROR: Invalid addressing mode
+MULS #$12,SP		ERROR: Invalid addressing mode
+MULS -2(A0),D1	C3E8FFFE	-
+MULS -2(A0),A2		ERROR: Invalid addressing mode
+MULS D1,-2(A0)		ERROR: Invalid addressing mode
+MULS #$12,-2(A0)		ERROR: Invalid addressing mode
+MULS $12(A0,A1.L),D1	C3F09812	-
+MULS $12(A0,A1.L),A2		ERROR: Invalid addressing mode
+MULS D1,$12(A0,A1.L)		ERROR: Invalid addressing mode
+MULS #$12,$12(A0,A1.L)		ERROR: Invalid addressing mode
+MULS (A2,D3),D1	C3F23000	-
+MULS (A2,D3),A2		ERROR: Invalid addressing mode
+MULS D1,(A2,D3)		ERROR: Invalid addressing mode
+MULS #$12,(A2,D3)		ERROR: Invalid addressing mode
+MULS $1234.L,D1	C3F900001234	-
+MULS $1234.L,A2		ERROR: Invalid addressing mode
+MULS D1,$1234.L		ERROR: Invalid addressing mode
+MULS #$12,$1234.L		ERROR: Invalid addressing mode
+MULS $1234.W,D1	C3F81234	WARNING: Forcing SHORT addressing disables range checking of extension word
+MULS $1234.W,A2		ERROR: Invalid addressing mode
+MULS D1,$1234.W		ERROR: Invalid addressing mode
+MULS #$12,$1234.W		ERROR: Invalid addressing mode
+MULS $8000,D1	C3F900008000	-
+MULS $8000,A2		ERROR: Invalid addressing mode
+MULS D1,$8000		ERROR: Invalid addressing mode
+MULS #$12,$8000		ERROR: Invalid addressing mode
+MULS BK,D1	C3F81F00	-
+MULS BK,A2		ERROR: Invalid addressing mode
+MULS D1,BK		ERROR: Invalid addressing mode
+MULS #$12,BK		ERROR: Invalid addressing mode
+MULS *(PC,D0.W),D1	C3FB00FE	-
+MULS *(PC,D0.W),A2		ERROR: Invalid addressing mode
+MULS D1,*(PC,D0.W)		ERROR: Invalid addressing mode
+MULS #$12,*(PC,D0.W)		ERROR: Invalid addressing mode
+MULS BK(PC),D1	C3FA0EFE	-
+MULS BK(PC),A2		ERROR: Invalid addressing mode
+MULS D1,BK(PC)		ERROR: Invalid addressing mode
+MULS #$12,BK(PC)		ERROR: Invalid addressing mode
+MULS #8,D1	C3FC0008	-
+MULS #8,A2		ERROR: Invalid addressing mode
+MULS D1,#8		ERROR: Invalid addressing mode
+MULS #$12,#8		ERROR: Invalid addressing mode
+MULS #9,D1	C3FC0009	-
+MULS #9,A2		ERROR: Invalid addressing mode
+MULS D1,#9		ERROR: Invalid addressing mode
+MULS #$12,#9		ERROR: Invalid addressing mode
+MULS #0,D1	C3FC0000	-
+MULS #0,A2		ERROR: Invalid addressing mode
+MULS D1,#0		ERROR: Invalid addressing mode
+MULS #$12,#0		ERROR: Invalid addressing mode
+MULS #-1,D1	C3FCFFFF	-
+MULS #-1,A2		ERROR: Invalid addressing mode
+MULS D1,#-1		ERROR: Invalid addressing mode
+MULS #$12,#-1		ERROR: Invalid addressing mode
+MULS #$12345678.L,D1	C3FC5678	ERROR: Immediate data exceeds 16 bits
+MULS #$12345678.L,A2		ERROR: Invalid addressing mode
+MULS D1,#$12345678.L		ERROR: Invalid addressing mode
+MULS #$12,#$12345678.L		ERROR: Invalid addressing mode
+MULS #BK,D1	C3FC1F00	-
+MULS #BK,A2		ERROR: Invalid addressing mode
+MULS D1,#BK		ERROR: Invalid addressing mode
+MULS #$12,#BK		ERROR: Invalid addressing mode
+MULS #FW,D1	C3FC1F00	-
+MULS #FW,A2		ERROR: Invalid addressing mode
+MULS D1,#FW		ERROR: Invalid addressing mode
+MULS #$12,#FW		ERROR: Invalid addressing mode
+MULS #UNDEF,D1	C3FC55E7	ERROR: Undefined symbol
+MULS #UNDEF,A2		ERROR: Invalid addressing mode
+MULS D1,#UNDEF		ERROR: Invalid addressing mode
+MULS #$12,#UNDEF		ERROR: Invalid addressing mode
+MULS UNDEF,D1	C3F9000055E7	ERROR: Undefined symbol
+MULS UNDEF,A2		ERROR: Invalid addressing mode
+MULS D1,UNDEF		ERROR: Invalid addressing mode
+MULS #$12,UNDEF		ERROR: Invalid addressing mode
+MULS D1,D2,D3		ERROR: Invalid syntax
+MULS.B		ERROR: Invalid syntax
+MULS.B D1		ERROR: Comma expected
+MULS.B A2		ERROR: Comma expected
+MULS.B SP		ERROR: Comma expected
+MULS.B (A3)		ERROR: Comma expected
+MULS.B (A4)+		ERROR: Comma expected
+MULS.B -(A5)		ERROR: Comma expected
+MULS.B $10(A6)		ERROR: Comma expected
+MULS.B -2(A0)		ERROR: Comma expected
+MULS.B $10(A6,D7.W)		ERROR: Comma expected
+MULS.B $12(A0,A1.L)		ERROR: Comma expected
+MULS.B (A2,D3)		ERROR: Comma expected
+MULS.B $1234		ERROR: Comma expected
+MULS.B $12345678		ERROR: Comma expected
+MULS.B $1234.L		ERROR: Comma expected
+MULS.B $1234.W		ERROR: Comma expected
+MULS.B $8000		ERROR: Comma expected
+MULS.B BK		ERROR: Comma expected
+MULS.B FW		ERROR: Comma expected
+MULS.B *+$10(PC)		ERROR: Comma expected
+MULS.B *(PC,D0.W)		ERROR: Comma expected
+MULS.B BK(PC)		ERROR: Comma expected
+MULS.B #1		ERROR: Comma expected
+MULS.B #8		ERROR: Comma expected
+MULS.B #9		ERROR: Comma expected
+MULS.B #0		ERROR: Comma expected
+MULS.B #-1		ERROR: Comma expected
+MULS.B #$80		ERROR: Comma expected
+MULS.B #$1234		ERROR: Comma expected
+MULS.B #$12345678		ERROR: Comma expected
+MULS.B #$12345678.L		ERROR: Comma expected
+MULS.B #BK		ERROR: Comma expected
+MULS.B #FW		ERROR: Comma expected
+MULS.B #UNDEF		ERROR: Comma expected
+MULS.B UNDEF		ERROR: Comma expected
+MULS.B SR		ERROR: Comma expected
+MULS.B CCR		ERROR: Comma expected
+MULS.B USP		ERROR: Comma expected
+MULS.B D1,D1	C3C1	ERROR: Invalid size code
+MULS.B D1,A2		ERROR: Invalid addressing mode
+MULS.B D1,(A3)		ERROR: Invalid addressing mode
+MULS.B D1,$10(A6)		ERROR: Invalid addressing mode
+MULS.B D1,$1234		ERROR: Invalid addressing mode
+MULS.B D1,FW		ERROR: Invalid addressing mode
+MULS.B D1,#1		ERROR: Invalid addressing mode
+MULS.B D1,#$1234		ERROR: Invalid addressing mode
+MULS.B D1,CCR		ERROR: Invalid addressing mode
+MULS.B D1,SR		ERROR: Invalid addressing mode
+MULS.B A2,D1		ERROR: Invalid addressing mode
+MULS.B A2,A2		ERROR: Invalid addressing mode
+MULS.B A2,(A3)		ERROR: Invalid addressing mode
+MULS.B A2,$10(A6)		ERROR: Invalid addressing mode
+MULS.B A2,$1234		ERROR: Invalid addressing mode
+MULS.B A2,FW		ERROR: Invalid addressing mode
+MULS.B A2,#1		ERROR: Invalid addressing mode
+MULS.B A2,#$1234		ERROR: Invalid addressing mode
+MULS.B A2,CCR		ERROR: Invalid addressing mode
+MULS.B A2,SR		ERROR: Invalid addressing mode
+MULS.B (A3),D1	C3D3	ERROR: Invalid size code
+MULS.B (A3),A2		ERROR: Invalid addressing mode
+MULS.B (A3),(A3)		ERROR: Invalid addressing mode
+MULS.B (A3),$10(A6)		ERROR: Invalid addressing mode
+MULS.B (A3),$1234		ERROR: Invalid addressing mode
+MULS.B (A3),FW		ERROR: Invalid addressing mode
+MULS.B (A3),#1		ERROR: Invalid addressing mode
+MULS.B (A3),#$1234		ERROR: Invalid addressing mode
+MULS.B (A3),CCR		ERROR: Invalid addressing mode
+MULS.B (A3),SR		ERROR: Invalid addressing mode
+MULS.B $10(A6),D1	C3EE0010	ERROR: Invalid size code
+MULS.B $10(A6),A2		ERROR: Invalid addressing mode
+MULS.B $10(A6),(A3)		ERROR: Invalid addressing mode
+MULS.B $10(A6),$10(A6)		ERROR: Invalid addressing mode
+MULS.B $10(A6),$1234		ERROR: Invalid addressing mode
+MULS.B $10(A6),FW		ERROR: Invalid addressing mode
+MULS.B $10(A6),#1		ERROR: Invalid addressing mode
+MULS.B $10(A6),#$1234		ERROR: Invalid addressing mode
+MULS.B $10(A6),CCR		ERROR: Invalid addressing mode
+MULS.B $10(A6),SR		ERROR: Invalid addressing mode
+MULS.B $1234,D1	C3F81234	ERROR: Invalid size code
+MULS.B $1234,A2		ERROR: Invalid addressing mode
+MULS.B $1234,(A3)		ERROR: Invalid addressing mode
+MULS.B $1234,$10(A6)		ERROR: Invalid addressing mode
+MULS.B $1234,$1234		ERROR: Invalid addressing mode
+MULS.B $1234,FW		ERROR: Invalid addressing mode
+MULS.B $1234,#1		ERROR: Invalid addressing mode
+MULS.B $1234,#$1234		ERROR: Invalid addressing mode
+MULS.B $1234,CCR		ERROR: Invalid addressing mode
+MULS.B $1234,SR		ERROR: Invalid addressing mode
+MULS.B FW,D1	C3F900001F00	ERROR: Invalid size code
+MULS.B FW,A2		ERROR: Invalid addressing mode
+MULS.B FW,(A3)		ERROR: Invalid addressing mode
+MULS.B FW,$10(A6)		ERROR: Invalid addressing mode
+MULS.B FW,$1234		ERROR: Invalid addressing mode
+MULS.B FW,FW		ERROR: Invalid addressing mode
+MULS.B FW,#1		ERROR: Invalid addressing mode
+MULS.B FW,#$1234		ERROR: Invalid addressing mode
+MULS.B FW,CCR		ERROR: Invalid addressing mode
+MULS.B FW,SR		ERROR: Invalid addressing mode
+MULS.B #1,D1	C3FC0001	ERROR: Invalid size code
+MULS.B #1,A2		ERROR: Invalid addressing mode
+MULS.B #1,(A3)		ERROR: Invalid addressing mode
+MULS.B #1,$10(A6)		ERROR: Invalid addressing mode
+MULS.B #1,$1234		ERROR: Invalid addressing mode
+MULS.B #1,FW		ERROR: Invalid addressing mode
+MULS.B #1,#1		ERROR: Invalid addressing mode
+MULS.B #1,#$1234		ERROR: Invalid addressing mode
+MULS.B #1,CCR		ERROR: Invalid addressing mode
+MULS.B #1,SR		ERROR: Invalid addressing mode
+MULS.B #$1234,D1	C3FC0034	ERROR: Invalid size code
+MULS.B #$1234,A2		ERROR: Invalid addressing mode
+MULS.B #$1234,(A3)		ERROR: Invalid addressing mode
+MULS.B #$1234,$10(A6)		ERROR: Invalid addressing mode
+MULS.B #$1234,$1234		ERROR: Invalid addressing mode
+MULS.B #$1234,FW		ERROR: Invalid addressing mode
+MULS.B #$1234,#1		ERROR: Invalid addressing mode
+MULS.B #$1234,#$1234		ERROR: Invalid addressing mode
+MULS.B #$1234,CCR		ERROR: Invalid addressing mode
+MULS.B #$1234,SR		ERROR: Invalid addressing mode
+MULS.B CCR,D1		ERROR: Invalid addressing mode
+MULS.B CCR,A2		ERROR: Invalid addressing mode
+MULS.B CCR,(A3)		ERROR: Invalid addressing mode
+MULS.B CCR,$10(A6)		ERROR: Invalid addressing mode
+MULS.B CCR,$1234		ERROR: Invalid addressing mode
+MULS.B CCR,FW		ERROR: Invalid addressing mode
+MULS.B CCR,#1		ERROR: Invalid addressing mode
+MULS.B CCR,#$1234		ERROR: Invalid addressing mode
+MULS.B CCR,CCR		ERROR: Invalid addressing mode
+MULS.B CCR,SR		ERROR: Invalid addressing mode
+MULS.B SR,D1		ERROR: Invalid addressing mode
+MULS.B SR,A2		ERROR: Invalid addressing mode
+MULS.B SR,(A3)		ERROR: Invalid addressing mode
+MULS.B SR,$10(A6)		ERROR: Invalid addressing mode
+MULS.B SR,$1234		ERROR: Invalid addressing mode
+MULS.B SR,FW		ERROR: Invalid addressing mode
+MULS.B SR,#1		ERROR: Invalid addressing mode
+MULS.B SR,#$1234		ERROR: Invalid addressing mode
+MULS.B SR,CCR		ERROR: Invalid addressing mode
+MULS.B SR,SR		ERROR: Invalid addressing mode
+MULS.B SP,D1		ERROR: Invalid addressing mode
+MULS.B SP,A2		ERROR: Invalid addressing mode
+MULS.B D1,SP		ERROR: Invalid addressing mode
+MULS.B #$12,SP		ERROR: Invalid addressing mode
+MULS.B (A4)+,D1	C3DC	ERROR: Invalid size code
+MULS.B (A4)+,A2		ERROR: Invalid addressing mode
+MULS.B D1,(A4)+		ERROR: Invalid addressing mode
+MULS.B #$12,(A4)+		ERROR: Invalid addressing mode
+MULS.B -(A5),D1	C3E5	ERROR: Invalid size code
+MULS.B -(A5),A2		ERROR: Invalid addressing mode
+MULS.B D1,-(A5)		ERROR: Invalid addressing mode
+MULS.B #$12,-(A5)		ERROR: Invalid addressing mode
+MULS.B -2(A0),D1	C3E8FFFE	ERROR: Invalid size code
+MULS.B -2(A0),A2		ERROR: Invalid addressing mode
+MULS.B D1,-2(A0)		ERROR: Invalid addressing mode
+MULS.B #$12,-2(A0)		ERROR: Invalid addressing mode
+MULS.B $10(A6,D7.W),D1	C3F67010	ERROR: Invalid size code
+MULS.B $10(A6,D7.W),A2		ERROR: Invalid addressing mode
+MULS.B D1,$10(A6,D7.W)		ERROR: Invalid addressing mode
+MULS.B #$12,$10(A6,D7.W)		ERROR: Invalid addressing mode
+MULS.B $12(A0,A1.L),D1	C3F09812	ERROR: Invalid size code
+MULS.B $12(A0,A1.L),A2		ERROR: Invalid addressing mode
+MULS.B D1,$12(A0,A1.L)		ERROR: Invalid addressing mode
+MULS.B #$12,$12(A0,A1.L)		ERROR: Invalid addressing mode
+MULS.B (A2,D3),D1	C3F23000	ERROR: Invalid size code
+MULS.B (A2,D3),A2		ERROR: Invalid addressing mode
+MULS.B D1,(A2,D3)		ERROR: Invalid addressing mode
+MULS.B #$12,(A2,D3)		ERROR: Invalid addressing mode
+MULS.B $12345678,D1	C3F912345678	ERROR: Invalid size code
+MULS.B $12345678,A2		ERROR: Invalid addressing mode
+MULS.B D1,$12345678		ERROR: Invalid addressing mode
+MULS.B #$12,$12345678		ERROR: Invalid addressing mode
+MULS.B $1234.L,D1	C3F900001234	ERROR: Invalid size code
+MULS.B $1234.L,A2		ERROR: Invalid addressing mode
+MULS.B D1,$1234.L		ERROR: Invalid addressing mode
+MULS.B #$12,$1234.L		ERROR: Invalid addressing mode
+MULS.B $1234.W,D1	C3F81234	ERROR: Invalid size code
+MULS.B $1234.W,A2		ERROR: Invalid addressing mode
+MULS.B D1,$1234.W		ERROR: Invalid addressing mode
+MULS.B #$12,$1234.W		ERROR: Invalid addressing mode
+MULS.B $8000,D1	C3F900008000	ERROR: Invalid size code
+MULS.B $8000,A2		ERROR: Invalid addressing mode
+MULS.B D1,$8000		ERROR: Invalid addressing mode
+MULS.B #$12,$8000		ERROR: Invalid addressing mode
+MULS.B BK,D1	C3F81F00	ERROR: Invalid size code
+MULS.B BK,A2		ERROR: Invalid addressing mode
+MULS.B D1,BK		ERROR: Invalid addressing mode
+MULS.B #$12,BK		ERROR: Invalid addressing mode
+MULS.B *+$10(PC),D1	C3FA000E	ERROR: Invalid size code
+MULS.B *+$10(PC),A2		ERROR: Invalid addressing mode
+MULS.B D1,*+$10(PC)		ERROR: Invalid addressing mode
+MULS.B #$12,*+$10(PC)		ERROR: Invalid addressing mode
+MULS.B *(PC,D0.W),D1	C3FB00FE	ERROR: Invalid size code
+MULS.B *(PC,D0.W),A2		ERROR: Invalid addressing mode
+MULS.B D1,*(PC,D0.W)		ERROR: Invalid addressing mode
+MULS.B #$12,*(PC,D0.W)		ERROR: Invalid addressing mode
+MULS.B BK(PC),D1	C3FA0EFE	ERROR: Invalid size code
+MULS.B BK(PC),A2		ERROR: Invalid addressing mode
+MULS.B D1,BK(PC)		ERROR: Invalid addressing mode
+MULS.B #$12,BK(PC)		ERROR: Invalid addressing mode
+MULS.B #8,D1	C3FC0008	ERROR: Invalid size code
+MULS.B #8,A2		ERROR: Invalid addressing mode
+MULS.B D1,#8		ERROR: Invalid addressing mode
+MULS.B #$12,#8		ERROR: Invalid addressing mode
+MULS.B #9,D1	C3FC0009	ERROR: Invalid size code
+MULS.B #9,A2		ERROR: Invalid addressing mode
+MULS.B D1,#9		ERROR: Invalid addressing mode
+MULS.B #$12,#9		ERROR: Invalid addressing mode
+MULS.B #0,D1	C3FC0000	ERROR: Invalid size code
+MULS.B #0,A2		ERROR: Invalid addressing mode
+MULS.B D1,#0		ERROR: Invalid addressing mode
+MULS.B #$12,#0		ERROR: Invalid addressing mode
+MULS.B #-1,D1	C3FC00FF	ERROR: Invalid size code
+MULS.B #-1,A2		ERROR: Invalid addressing mode
+MULS.B D1,#-1		ERROR: Invalid addressing mode
+MULS.B #$12,#-1		ERROR: Invalid addressing mode
+MULS.B #$80,D1	C3FC0080	ERROR: Invalid size code
+MULS.B #$80,A2		ERROR: Invalid addressing mode
+MULS.B D1,#$80		ERROR: Invalid addressing mode
+MULS.B #$12,#$80		ERROR: Invalid addressing mode
+MULS.B #$12345678,D1	C3FC0078	ERROR: Invalid size code
+MULS.B #$12345678,A2		ERROR: Invalid addressing mode
+MULS.B D1,#$12345678		ERROR: Invalid addressing mode
+MULS.B #$12,#$12345678		ERROR: Invalid addressing mode
+MULS.B #$12345678.L,D1	C3FC0078	ERROR: Invalid size code
+MULS.B #$12345678.L,A2		ERROR: Invalid addressing mode
+MULS.B D1,#$12345678.L		ERROR: Invalid addressing mode
+MULS.B #$12,#$12345678.L		ERROR: Invalid addressing mode
+MULS.B #BK,D1	C3FC0000	ERROR: Invalid size code
+MULS.B #BK,A2		ERROR: Invalid addressing mode
+MULS.B D1,#BK		ERROR: Invalid addressing mode
+MULS.B #$12,#BK		ERROR: Invalid addressing mode
+MULS.B #FW,D1	C3FC0000	ERROR: Invalid size code
+MULS.B #FW,A2		ERROR: Invalid addressing mode
+MULS.B D1,#FW		ERROR: Invalid addressing mode
+MULS.B #$12,#FW		ERROR: Invalid addressing mode
+MULS.B #UNDEF,D1	C3FC00E7	ERROR: Undefined symbol
+MULS.B #UNDEF,A2		ERROR: Invalid addressing mode
+MULS.B D1,#UNDEF		ERROR: Invalid addressing mode
+MULS.B #$12,#UNDEF		ERROR: Invalid addressing mode
+MULS.B UNDEF,D1	C3F9000055E7	ERROR: Undefined symbol
+MULS.B UNDEF,A2		ERROR: Invalid addressing mode
+MULS.B D1,UNDEF		ERROR: Invalid addressing mode
+MULS.B #$12,UNDEF		ERROR: Invalid addressing mode
+MULS.B USP,D1		ERROR: Invalid addressing mode
+MULS.B USP,A2		ERROR: Invalid addressing mode
+MULS.B D1,USP		ERROR: Invalid addressing mode
+MULS.B #$12,USP		ERROR: Invalid addressing mode
+MULS.B D1,D2,D3		ERROR: Invalid syntax
+MULS.W		ERROR: Invalid syntax
+MULS.W D1		ERROR: Comma expected
+MULS.W A2		ERROR: Comma expected
+MULS.W SP		ERROR: Comma expected
+MULS.W (A3)		ERROR: Comma expected
+MULS.W (A4)+		ERROR: Comma expected
+MULS.W -(A5)		ERROR: Comma expected
+MULS.W $10(A6)		ERROR: Comma expected
+MULS.W -2(A0)		ERROR: Comma expected
+MULS.W $10(A6,D7.W)		ERROR: Comma expected
+MULS.W $12(A0,A1.L)		ERROR: Comma expected
+MULS.W (A2,D3)		ERROR: Comma expected
+MULS.W $1234		ERROR: Comma expected
+MULS.W $12345678		ERROR: Comma expected
+MULS.W $1234.L		ERROR: Comma expected
+MULS.W $1234.W		ERROR: Comma expected
+MULS.W $8000		ERROR: Comma expected
+MULS.W BK		ERROR: Comma expected
+MULS.W FW		ERROR: Comma expected
+MULS.W *+$10(PC)		ERROR: Comma expected
+MULS.W *(PC,D0.W)		ERROR: Comma expected
+MULS.W BK(PC)		ERROR: Comma expected
+MULS.W #1		ERROR: Comma expected
+MULS.W #8		ERROR: Comma expected
+MULS.W #9		ERROR: Comma expected
+MULS.W #0		ERROR: Comma expected
+MULS.W #-1		ERROR: Comma expected
+MULS.W #$80		ERROR: Comma expected
+MULS.W #$1234		ERROR: Comma expected
+MULS.W #$12345678		ERROR: Comma expected
+MULS.W #$12345678.L		ERROR: Comma expected
+MULS.W #BK		ERROR: Comma expected
+MULS.W #FW		ERROR: Comma expected
+MULS.W #UNDEF		ERROR: Comma expected
+MULS.W UNDEF		ERROR: Comma expected
+MULS.W SR		ERROR: Comma expected
+MULS.W CCR		ERROR: Comma expected
+MULS.W USP		ERROR: Comma expected
+MULS.W D1,D1	C3C1	-
+MULS.W D1,A2		ERROR: Invalid addressing mode
+MULS.W D1,(A3)		ERROR: Invalid addressing mode
+MULS.W D1,(A4)+		ERROR: Invalid addressing mode
+MULS.W D1,-(A5)		ERROR: Invalid addressing mode
+MULS.W D1,$10(A6)		ERROR: Invalid addressing mode
+MULS.W D1,$10(A6,D7.W)		ERROR: Invalid addressing mode
+MULS.W D1,$1234		ERROR: Invalid addressing mode
+MULS.W D1,$12345678		ERROR: Invalid addressing mode
+MULS.W D1,FW		ERROR: Invalid addressing mode
+MULS.W D1,*+$10(PC)		ERROR: Invalid addressing mode
+MULS.W D1,#1		ERROR: Invalid addressing mode
+MULS.W D1,#$80		ERROR: Invalid addressing mode
+MULS.W D1,#$1234		ERROR: Invalid addressing mode
+MULS.W D1,#$12345678		ERROR: Invalid addressing mode
+MULS.W D1,SR		ERROR: Invalid addressing mode
+MULS.W D1,CCR		ERROR: Invalid addressing mode
+MULS.W D1,USP		ERROR: Invalid addressing mode
+MULS.W A2,D1		ERROR: Invalid addressing mode
+MULS.W A2,A2		ERROR: Invalid addressing mode
+MULS.W A2,(A3)		ERROR: Invalid addressing mode
+MULS.W A2,(A4)+		ERROR: Invalid addressing mode
+MULS.W A2,-(A5)		ERROR: Invalid addressing mode
+MULS.W A2,$10(A6)		ERROR: Invalid addressing mode
+MULS.W A2,$10(A6,D7.W)		ERROR: Invalid addressing mode
+MULS.W A2,$1234		ERROR: Invalid addressing mode
+MULS.W A2,$12345678		ERROR: Invalid addressing mode
+MULS.W A2,FW		ERROR: Invalid addressing mode
+MULS.W A2,*+$10(PC)		ERROR: Invalid addressing mode
+MULS.W A2,#1		ERROR: Invalid addressing mode
+MULS.W A2,#$80		ERROR: Invalid addressing mode
+MULS.W A2,#$1234		ERROR: Invalid addressing mode
+MULS.W A2,#$12345678		ERROR: Invalid addressing mode
+MULS.W A2,SR		ERROR: Invalid addressing mode
+MULS.W A2,CCR		ERROR: Invalid addressing mode
+MULS.W A2,USP		ERROR: Invalid addressing mode
+MULS.W (A3),D1	C3D3	-
+MULS.W (A3),A2		ERROR: Invalid addressing mode
+MULS.W (A3),(A3)		ERROR: Invalid addressing mode
+MULS.W (A3),(A4)+		ERROR: Invalid addressing mode
+MULS.W (A3),-(A5)		ERROR: Invalid addressing mode
+MULS.W (A3),$10(A6)		ERROR: Invalid addressing mode
+MULS.W (A3),$10(A6,D7.W)		ERROR: Invalid addressing mode
+MULS.W (A3),$1234		ERROR: Invalid addressing mode
+MULS.W (A3),$12345678		ERROR: Invalid addressing mode
+MULS.W (A3),FW		ERROR: Invalid addressing mode
+MULS.W (A3),*+$10(PC)		ERROR: Invalid addressing mode
+MULS.W (A3),#1		ERROR: Invalid addressing mode
+MULS.W (A3),#$80		ERROR: Invalid addressing mode
+MULS.W (A3),#$1234		ERROR: Invalid addressing mode
+MULS.W (A3),#$12345678		ERROR: Invalid addressing mode
+MULS.W (A3),SR		ERROR: Invalid addressing mode
+MULS.W (A3),CCR		ERROR: Invalid addressing mode
+MULS.W (A3),USP		ERROR: Invalid addressing mode
+MULS.W (A4)+,D1	C3DC	-
+MULS.W (A4)+,A2		ERROR: Invalid addressing mode
+MULS.W (A4)+,(A3)		ERROR: Invalid addressing mode
+MULS.W (A4)+,(A4)+		ERROR: Invalid addressing mode
+MULS.W (A4)+,-(A5)		ERROR: Invalid addressing mode
+MULS.W (A4)+,$10(A6)		ERROR: Invalid addressing mode
+MULS.W (A4)+,$10(A6,D7.W)		ERROR: Invalid addressing mode
+MULS.W (A4)+,$1234		ERROR: Invalid addressing mode
+MULS.W (A4)+,$12345678		ERROR: Invalid addressing mode
+MULS.W (A4)+,FW		ERROR: Invalid addressing mode
+MULS.W (A4)+,*+$10(PC)		ERROR: Invalid addressing mode
+MULS.W (A4)+,#1		ERROR: Invalid addressing mode
+MULS.W (A4)+,#$80		ERROR: Invalid addressing mode
+MULS.W (A4)+,#$1234		ERROR: Invalid addressing mode
+MULS.W (A4)+,#$12345678		ERROR: Invalid addressing mode
+MULS.W (A4)+,SR		ERROR: Invalid addressing mode
+MULS.W (A4)+,CCR		ERROR: Invalid addressing mode
+MULS.W (A4)+,USP		ERROR: Invalid addressing mode
+MULS.W -(A5),D1	C3E5	-
+MULS.W -(A5),A2		ERROR: Invalid addressing mode
+MULS.W -(A5),(A3)		ERROR: Invalid addressing mode
+MULS.W -(A5),(A4)+		ERROR: Invalid addressing mode
+MULS.W -(A5),-(A5)		ERROR: Invalid addressing mode
+MULS.W -(A5),$10(A6)		ERROR: Invalid addressing mode
+MULS.W -(A5),$10(A6,D7.W)		ERROR: Invalid addressing mode
+MULS.W -(A5),$1234		ERROR: Invalid addressing mode
+MULS.W -(A5),$12345678		ERROR: Invalid addressing mode
+MULS.W -(A5),FW		ERROR: Invalid addressing mode
+MULS.W -(A5),*+$10(PC)		ERROR: Invalid addressing mode
+MULS.W -(A5),#1		ERROR: Invalid addressing mode
+MULS.W -(A5),#$80		ERROR: Invalid addressing mode
+MULS.W -(A5),#$1234		ERROR: Invalid addressing mode
+MULS.W -(A5),#$12345678		ERROR: Invalid addressing mode
+MULS.W -(A5),SR		ERROR: Invalid addressing mode
+MULS.W -(A5),CCR		ERROR: Invalid addressing mode
+MULS.W -(A5),USP		ERROR: Invalid addressing mode
+MULS.W $10(A6),D1	C3EE0010	-
+MULS.W $10(A6),A2		ERROR: Invalid addressing mode
+MULS.W $10(A6),(A3)		ERROR: Invalid addressing mode
+MULS.W $10(A6),(A4)+		ERROR: Invalid addressing mode
+MULS.W $10(A6),-(A5)		ERROR: Invalid addressing mode
+MULS.W $10(A6),$10(A6)		ERROR: Invalid addressing mode
+MULS.W $10(A6),$10(A6,D7.W)		ERROR: Invalid addressing mode
+MULS.W $10(A6),$1234		ERROR: Invalid addressing mode
+MULS.W $10(A6),$12345678		ERROR: Invalid addressing mode
+MULS.W $10(A6),FW		ERROR: Invalid addressing mode
+MULS.W $10(A6),*+$10(PC)		ERROR: Invalid addressing mode
+MULS.W $10(A6),#1		ERROR: Invalid addressing mode
+MULS.W $10(A6),#$80		ERROR: Invalid addressing mode
+MULS.W $10(A6),#$1234		ERROR: Invalid addressing mode
+MULS.W $10(A6),#$12345678		ERROR: Invalid addressing mode
+MULS.W $10(A6),SR		ERROR: Invalid addressing mode
+MULS.W $10(A6),CCR		ERROR: Invalid addressing mode
+MULS.W $10(A6),USP		ERROR: Invalid addressing mode
+MULS.W $10(A6,D7.W),D1	C3F67010	-
+MULS.W $10(A6,D7.W),A2		ERROR: Invalid addressing mode
+MULS.W $10(A6,D7.W),(A3)		ERROR: Invalid addressing mode
+MULS.W $10(A6,D7.W),(A4)+		ERROR: Invalid addressing mode
+MULS.W $10(A6,D7.W),-(A5)		ERROR: Invalid addressing mode
+MULS.W $10(A6,D7.W),$10(A6)		ERROR: Invalid addressing mode
+MULS.W $10(A6,D7.W),$10(A6,D7.W)		ERROR: Invalid addressing mode
+MULS.W $10(A6,D7.W),$1234		ERROR: Invalid addressing mode
+MULS.W $10(A6,D7.W),$12345678		ERROR: Invalid addressing mode
+MULS.W $10(A6,D7.W),FW		ERROR: Invalid addressing mode
+MULS.W $10(A6,D7.W),*+$10(PC)		ERROR: Invalid addressing mode
+MULS.W $10(A6,D7.W),#1		ERROR: Invalid addressing mode
+MULS.W $10(A6,D7.W),#$80		ERROR: Invalid addressing mode
+MULS.W $10(A6,D7.W),#$1234		ERROR: Invalid addressing mode
+MULS.W $10(A6,D7.W),#$12345678		ERROR: Invalid addressing mode
+MULS.W $10(A6,D7.W),SR		ERROR: Invalid addressing mode
+MULS.W $10(A6,D7.W),CCR		ERROR: Invalid addressing mode
+MULS.W $10(A6,D7.W),USP		ERROR: Invalid addressing mode
+MULS.W $1234,D1	C3F81234	-
+MULS.W $1234,A2		ERROR: Invalid addressing mode
+MULS.W $1234,(A3)		ERROR: Invalid addressing mode
+MULS.W $1234,(A4)+		ERROR: Invalid addressing mode
+MULS.W $1234,-(A5)		ERROR: Invalid addressing mode
+MULS.W $1234,$10(A6)		ERROR: Invalid addressing mode
+MULS.W $1234,$10(A6,D7.W)		ERROR: Invalid addressing mode
+MULS.W $1234,$1234		ERROR: Invalid addressing mode
+MULS.W $1234,$12345678		ERROR: Invalid addressing mode
+MULS.W $1234,FW		ERROR: Invalid addressing mode
+MULS.W $1234,*+$10(PC)		ERROR: Invalid addressing mode
+MULS.W $1234,#1		ERROR: Invalid addressing mode
+MULS.W $1234,#$80		ERROR: Invalid addressing mode
+MULS.W $1234,#$1234		ERROR: Invalid addressing mode
+MULS.W $1234,#$12345678		ERROR: Invalid addressing mode
+MULS.W $1234,SR		ERROR: Invalid addressing mode
+MULS.W $1234,CCR		ERROR: Invalid addressing mode
+MULS.W $1234,USP		ERROR: Invalid addressing mode
+MULS.W $12345678,D1	C3F912345678	-
+MULS.W $12345678,A2		ERROR: Invalid addressing mode
+MULS.W $12345678,(A3)		ERROR: Invalid addressing mode
+MULS.W $12345678,(A4)+		ERROR: Invalid addressing mode
+MULS.W $12345678,-(A5)		ERROR: Invalid addressing mode
+MULS.W $12345678,$10(A6)		ERROR: Invalid addressing mode
+MULS.W $12345678,$10(A6,D7.W)		ERROR: Invalid addressing mode
+MULS.W $12345678,$1234		ERROR: Invalid addressing mode
+MULS.W $12345678,$12345678		ERROR: Invalid addressing mode
+MULS.W $12345678,FW		ERROR: Invalid addressing mode
+MULS.W $12345678,*+$10(PC)		ERROR: Invalid addressing mode
+MULS.W $12345678,#1		ERROR: Invalid addressing mode
+MULS.W $12345678,#$80		ERROR: Invalid addressing mode
+MULS.W $12345678,#$1234		ERROR: Invalid addressing mode
+MULS.W $12345678,#$12345678		ERROR: Invalid addressing mode
+MULS.W $12345678,SR		ERROR: Invalid addressing mode
+MULS.W $12345678,CCR		ERROR: Invalid addressing mode
+MULS.W $12345678,USP		ERROR: Invalid addressing mode
+MULS.W FW,D1	C3F900001F00	-
+MULS.W FW,A2		ERROR: Invalid addressing mode
+MULS.W FW,(A3)		ERROR: Invalid addressing mode
+MULS.W FW,(A4)+		ERROR: Invalid addressing mode
+MULS.W FW,-(A5)		ERROR: Invalid addressing mode
+MULS.W FW,$10(A6)		ERROR: Invalid addressing mode
+MULS.W FW,$10(A6,D7.W)		ERROR: Invalid addressing mode
+MULS.W FW,$1234		ERROR: Invalid addressing mode
+MULS.W FW,$12345678		ERROR: Invalid addressing mode
+MULS.W FW,FW		ERROR: Invalid addressing mode
+MULS.W FW,*+$10(PC)		ERROR: Invalid addressing mode
+MULS.W FW,#1		ERROR: Invalid addressing mode
+MULS.W FW,#$80		ERROR: Invalid addressing mode
+MULS.W FW,#$1234		ERROR: Invalid addressing mode
+MULS.W FW,#$12345678		ERROR: Invalid addressing mode
+MULS.W FW,SR		ERROR: Invalid addressing mode
+MULS.W FW,CCR		ERROR: Invalid addressing mode
+MULS.W FW,USP		ERROR: Invalid addressing mode
+MULS.W *+$10(PC),D1	C3FA000E	-
+MULS.W *+$10(PC),A2		ERROR: Invalid addressing mode
+MULS.W *+$10(PC),(A3)		ERROR: Invalid addressing mode
+MULS.W *+$10(PC),(A4)+		ERROR: Invalid addressing mode
+MULS.W *+$10(PC),-(A5)		ERROR: Invalid addressing mode
+MULS.W *+$10(PC),$10(A6)		ERROR: Invalid addressing mode
+MULS.W *+$10(PC),$10(A6,D7.W)		ERROR: Invalid addressing mode
+MULS.W *+$10(PC),$1234		ERROR: Invalid addressing mode
+MULS.W *+$10(PC),$12345678		ERROR: Invalid addressing mode
+MULS.W *+$10(PC),FW		ERROR: Invalid addressing mode
+MULS.W *+$10(PC),*+$10(PC)		ERROR: Invalid addressing mode
+MULS.W *+$10(PC),#1		ERROR: Invalid addressing mode
+MULS.W *+$10(PC),#$80		ERROR: Invalid addressing mode
+MULS.W *+$10(PC),#$1234		ERROR: Invalid addressing mode
+MULS.W *+$10(PC),#$12345678		ERROR: Invalid addressing mode
+MULS.W *+$10(PC),SR		ERROR: Invalid addressing mode
+MULS.W *+$10(PC),CCR		ERROR: Invalid addressing mode
+MULS.W *+$10(PC),USP		ERROR: Invalid addressing mode
+MULS.W #1,D1	C3FC0001	-
+MULS.W #1,A2		ERROR: Invalid addressing mode
+MULS.W #1,(A3)		ERROR: Invalid addressing mode
+MULS.W #1,(A4)+		ERROR: Invalid addressing mode
+MULS.W #1,-(A5)		ERROR: Invalid addressing mode
+MULS.W #1,$10(A6)		ERROR: Invalid addressing mode
+MULS.W #1,$10(A6,D7.W)		ERROR: Invalid addressing mode
+MULS.W #1,$1234		ERROR: Invalid addressing mode
+MULS.W #1,$12345678		ERROR: Invalid addressing mode
+MULS.W #1,FW		ERROR: Invalid addressing mode
+MULS.W #1,*+$10(PC)		ERROR: Invalid addressing mode
+MULS.W #1,#1		ERROR: Invalid addressing mode
+MULS.W #1,#$80		ERROR: Invalid addressing mode
+MULS.W #1,#$1234		ERROR: Invalid addressing mode
+MULS.W #1,#$12345678		ERROR: Invalid addressing mode
+MULS.W #1,SR		ERROR: Invalid addressing mode
+MULS.W #1,CCR		ERROR: Invalid addressing mode
+MULS.W #1,USP		ERROR: Invalid addressing mode
+MULS.W #$80,D1	C3FC0080	-
+MULS.W #$80,A2		ERROR: Invalid addressing mode
+MULS.W #$80,(A3)		ERROR: Invalid addressing mode
+MULS.W #$80,(A4)+		ERROR: Invalid addressing mode
+MULS.W #$80,-(A5)		ERROR: Invalid addressing mode
+MULS.W #$80,$10(A6)		ERROR: Invalid addressing mode
+MULS.W #$80,$10(A6,D7.W)		ERROR: Invalid addressing mode
+MULS.W #$80,$1234		ERROR: Invalid addressing mode
+MULS.W #$80,$12345678		ERROR: Invalid addressing mode
+MULS.W #$80,FW		ERROR: Invalid addressing mode
+MULS.W #$80,*+$10(PC)		ERROR: Invalid addressing mode
+MULS.W #$80,#1		ERROR: Invalid addressing mode
+MULS.W #$80,#$80		ERROR: Invalid addressing mode
+MULS.W #$80,#$1234		ERROR: Invalid addressing mode
+MULS.W #$80,#$12345678		ERROR: Invalid addressing mode
+MULS.W #$80,SR		ERROR: Invalid addressing mode
+MULS.W #$80,CCR		ERROR: Invalid addressing mode
+MULS.W #$80,USP		ERROR: Invalid addressing mode
+MULS.W #$1234,D1	C3FC1234	-
+MULS.W #$1234,A2		ERROR: Invalid addressing mode
+MULS.W #$1234,(A3)		ERROR: Invalid addressing mode
+MULS.W #$1234,(A4)+		ERROR: Invalid addressing mode
+MULS.W #$1234,-(A5)		ERROR: Invalid addressing mode
+MULS.W #$1234,$10(A6)		ERROR: Invalid addressing mode
+MULS.W #$1234,$10(A6,D7.W)		ERROR: Invalid addressing mode
+MULS.W #$1234,$1234		ERROR: Invalid addressing mode
+MULS.W #$1234,$12345678		ERROR: Invalid addressing mode
+MULS.W #$1234,FW		ERROR: Invalid addressing mode
+MULS.W #$1234,*+$10(PC)		ERROR: Invalid addressing mode
+MULS.W #$1234,#1		ERROR: Invalid addressing mode
+MULS.W #$1234,#$80		ERROR: Invalid addressing mode
+MULS.W #$1234,#$1234		ERROR: Invalid addressing mode
+MULS.W #$1234,#$12345678		ERROR: Invalid addressing mode
+MULS.W #$1234,SR		ERROR: Invalid addressing mode
+MULS.W #$1234,CCR		ERROR: Invalid addressing mode
+MULS.W #$1234,USP		ERROR: Invalid addressing mode
+MULS.W #$12345678,D1	C3FC5678	ERROR: Immediate data exceeds 16 bits
+MULS.W #$12345678,A2		ERROR: Invalid addressing mode
+MULS.W #$12345678,(A3)		ERROR: Invalid addressing mode
+MULS.W #$12345678,(A4)+		ERROR: Invalid addressing mode
+MULS.W #$12345678,-(A5)		ERROR: Invalid addressing mode
+MULS.W #$12345678,$10(A6)		ERROR: Invalid addressing mode
+MULS.W #$12345678,$10(A6,D7.W)		ERROR: Invalid addressing mode
+MULS.W #$12345678,$1234		ERROR: Invalid addressing mode
+MULS.W #$12345678,$12345678		ERROR: Invalid addressing mode
+MULS.W #$12345678,FW		ERROR: Invalid addressing mode
+MULS.W #$12345678,*+$10(PC)		ERROR: Invalid addressing mode
+MULS.W #$12345678,#1		ERROR: Invalid addressing mode
+MULS.W #$12345678,#$80		ERROR: Invalid addressing mode
+MULS.W #$12345678,#$1234		ERROR: Invalid addressing mode
+MULS.W #$12345678,#$12345678		ERROR: Invalid addressing mode
+MULS.W #$12345678,SR		ERROR: Invalid addressing mode
+MULS.W #$12345678,CCR		ERROR: Invalid addressing mode
+MULS.W #$12345678,USP		ERROR: Invalid addressing mode
+MULS.W SR,D1		ERROR: Invalid addressing mode
+MULS.W SR,A2		ERROR: Invalid addressing mode
+MULS.W SR,(A3)		ERROR: Invalid addressing mode
+MULS.W SR,(A4)+		ERROR: Invalid addressing mode
+MULS.W SR,-(A5)		ERROR: Invalid addressing mode
+MULS.W SR,$10(A6)		ERROR: Invalid addressing mode
+MULS.W SR,$10(A6,D7.W)		ERROR: Invalid addressing mode
+MULS.W SR,$1234		ERROR: Invalid addressing mode
+MULS.W SR,$12345678		ERROR: Invalid addressing mode
+MULS.W SR,FW		ERROR: Invalid addressing mode
+MULS.W SR,*+$10(PC)		ERROR: Invalid addressing mode
+MULS.W SR,#1		ERROR: Invalid addressing mode
+MULS.W SR,#$80		ERROR: Invalid addressing mode
+MULS.W SR,#$1234		ERROR: Invalid addressing mode
+MULS.W SR,#$12345678		ERROR: Invalid addressing mode
+MULS.W SR,SR		ERROR: Invalid addressing mode
+MULS.W SR,CCR		ERROR: Invalid addressing mode
+MULS.W SR,USP		ERROR: Invalid addressing mode
+MULS.W CCR,D1		ERROR: Invalid addressing mode
+MULS.W CCR,A2		ERROR: Invalid addressing mode
+MULS.W CCR,(A3)		ERROR: Invalid addressing mode
+MULS.W CCR,(A4)+		ERROR: Invalid addressing mode
+MULS.W CCR,-(A5)		ERROR: Invalid addressing mode
+MULS.W CCR,$10(A6)		ERROR: Invalid addressing mode
+MULS.W CCR,$10(A6,D7.W)		ERROR: Invalid addressing mode
+MULS.W CCR,$1234		ERROR: Invalid addressing mode
+MULS.W CCR,$12345678		ERROR: Invalid addressing mode
+MULS.W CCR,FW		ERROR: Invalid addressing mode
+MULS.W CCR,*+$10(PC)		ERROR: Invalid addressing mode
+MULS.W CCR,#1		ERROR: Invalid addressing mode
+MULS.W CCR,#$80		ERROR: Invalid addressing mode
+MULS.W CCR,#$1234		ERROR: Invalid addressing mode
+MULS.W CCR,#$12345678		ERROR: Invalid addressing mode
+MULS.W CCR,SR		ERROR: Invalid addressing mode
+MULS.W CCR,CCR		ERROR: Invalid addressing mode
+MULS.W CCR,USP		ERROR: Invalid addressing mode
+MULS.W USP,D1		ERROR: Invalid addressing mode
+MULS.W USP,A2		ERROR: Invalid addressing mode
+MULS.W USP,(A3)		ERROR: Invalid addressing mode
+MULS.W USP,(A4)+		ERROR: Invalid addressing mode
+MULS.W USP,-(A5)		ERROR: Invalid addressing mode
+MULS.W USP,$10(A6)		ERROR: Invalid addressing mode
+MULS.W USP,$10(A6,D7.W)		ERROR: Invalid addressing mode
+MULS.W USP,$1234		ERROR: Invalid addressing mode
+MULS.W USP,$12345678		ERROR: Invalid addressing mode
+MULS.W USP,FW		ERROR: Invalid addressing mode
+MULS.W USP,*+$10(PC)		ERROR: Invalid addressing mode
+MULS.W USP,#1		ERROR: Invalid addressing mode
+MULS.W USP,#$80		ERROR: Invalid addressing mode
+MULS.W USP,#$1234		ERROR: Invalid addressing mode
+MULS.W USP,#$12345678		ERROR: Invalid addressing mode
+MULS.W USP,SR		ERROR: Invalid addressing mode
+MULS.W USP,CCR		ERROR: Invalid addressing mode
+MULS.W USP,USP		ERROR: Invalid addressing mode
+MULS.W SP,D1		ERROR: Invalid addressing mode
+MULS.W SP,A2		ERROR: Invalid addressing mode
+MULS.W D1,SP		ERROR: Invalid addressing mode
+MULS.W #$12,SP		ERROR: Invalid addressing mode
+MULS.W -2(A0),D1	C3E8FFFE	-
+MULS.W -2(A0),A2		ERROR: Invalid addressing mode
+MULS.W D1,-2(A0)		ERROR: Invalid addressing mode
+MULS.W #$12,-2(A0)		ERROR: Invalid addressing mode
+MULS.W $12(A0,A1.L),D1	C3F09812	-
+MULS.W $12(A0,A1.L),A2		ERROR: Invalid addressing mode
+MULS.W D1,$12(A0,A1.L)		ERROR: Invalid addressing mode
+MULS.W #$12,$12(A0,A1.L)		ERROR: Invalid addressing mode
+MULS.W (A2,D3),D1	C3F23000	-
+MULS.W (A2,D3),A2		ERROR: Invalid addressing mode
+MULS.W D1,(A2,D3)		ERROR: Invalid addressing mode
+MULS.W #$12,(A2,D3)		ERROR: Invalid addressing mode
+MULS.W $1234.L,D1	C3F900001234	-
+MULS.W $1234.L,A2		ERROR: Invalid addressing mode
+MULS.W D1,$1234.L		ERROR: Invalid addressing mode
+MULS.W #$12,$1234.L		ERROR: Invalid addressing mode
+MULS.W $1234.W,D1	C3F81234	WARNING: Forcing SHORT addressing disables range checking of extension word
+MULS.W $1234.W,A2		ERROR: Invalid addressing mode
+MULS.W D1,$1234.W		ERROR: Invalid addressing mode
+MULS.W #$12,$1234.W		ERROR: Invalid addressing mode
+MULS.W $8000,D1	C3F900008000	-
+MULS.W $8000,A2		ERROR: Invalid addressing mode
+MULS.W D1,$8000		ERROR: Invalid addressing mode
+MULS.W #$12,$8000		ERROR: Invalid addressing mode
+MULS.W BK,D1	C3F81F00	-
+MULS.W BK,A2		ERROR: Invalid addressing mode
+MULS.W D1,BK		ERROR: Invalid addressing mode
+MULS.W #$12,BK		ERROR: Invalid addressing mode
+MULS.W *(PC,D0.W),D1	C3FB00FE	-
+MULS.W *(PC,D0.W),A2		ERROR: Invalid addressing mode
+MULS.W D1,*(PC,D0.W)		ERROR: Invalid addressing mode
+MULS.W #$12,*(PC,D0.W)		ERROR: Invalid addressing mode
+MULS.W BK(PC),D1	C3FA0EFE	-
+MULS.W BK(PC),A2		ERROR: Invalid addressing mode
+MULS.W D1,BK(PC)		ERROR: Invalid addressing mode
+MULS.W #$12,BK(PC)		ERROR: Invalid addressing mode
+MULS.W #8,D1	C3FC0008	-
+MULS.W #8,A2		ERROR: Invalid addressing mode
+MULS.W D1,#8		ERROR: Invalid addressing mode
+MULS.W #$12,#8		ERROR: Invalid addressing mode
+MULS.W #9,D1	C3FC0009	-
+MULS.W #9,A2		ERROR: Invalid addressing mode
+MULS.W D1,#9		ERROR: Invalid addressing mode
+MULS.W #$12,#9		ERROR: Invalid addressing mode
+MULS.W #0,D1	C3FC0000	-
+MULS.W #0,A2		ERROR: Invalid addressing mode
+MULS.W D1,#0		ERROR: Invalid addressing mode
+MULS.W #$12,#0		ERROR: Invalid addressing mode
+MULS.W #-1,D1	C3FCFFFF	-
+MULS.W #-1,A2		ERROR: Invalid addressing mode
+MULS.W D1,#-1		ERROR: Invalid addressing mode
+MULS.W #$12,#-1		ERROR: Invalid addressing mode
+MULS.W #$12345678.L,D1	C3FC5678	ERROR: Immediate data exceeds 16 bits
+MULS.W #$12345678.L,A2		ERROR: Invalid addressing mode
+MULS.W D1,#$12345678.L		ERROR: Invalid addressing mode
+MULS.W #$12,#$12345678.L		ERROR: Invalid addressing mode
+MULS.W #BK,D1	C3FC1F00	-
+MULS.W #BK,A2		ERROR: Invalid addressing mode
+MULS.W D1,#BK		ERROR: Invalid addressing mode
+MULS.W #$12,#BK		ERROR: Invalid addressing mode
+MULS.W #FW,D1	C3FC1F00	-
+MULS.W #FW,A2		ERROR: Invalid addressing mode
+MULS.W D1,#FW		ERROR: Invalid addressing mode
+MULS.W #$12,#FW		ERROR: Invalid addressing mode
+MULS.W #UNDEF,D1	C3FC55E7	ERROR: Undefined symbol
+MULS.W #UNDEF,A2		ERROR: Invalid addressing mode
+MULS.W D1,#UNDEF		ERROR: Invalid addressing mode
+MULS.W #$12,#UNDEF		ERROR: Invalid addressing mode
+MULS.W UNDEF,D1	C3F9000055E7	ERROR: Undefined symbol
+MULS.W UNDEF,A2		ERROR: Invalid addressing mode
+MULS.W D1,UNDEF		ERROR: Invalid addressing mode
+MULS.W #$12,UNDEF		ERROR: Invalid addressing mode
+MULS.W D1,D2,D3		ERROR: Invalid syntax
+MULS.L		ERROR: Invalid syntax
+MULS.L D1		ERROR: Comma expected
+MULS.L A2		ERROR: Comma expected
+MULS.L SP		ERROR: Comma expected
+MULS.L (A3)		ERROR: Comma expected
+MULS.L (A4)+		ERROR: Comma expected
+MULS.L -(A5)		ERROR: Comma expected
+MULS.L $10(A6)		ERROR: Comma expected
+MULS.L -2(A0)		ERROR: Comma expected
+MULS.L $10(A6,D7.W)		ERROR: Comma expected
+MULS.L $12(A0,A1.L)		ERROR: Comma expected
+MULS.L (A2,D3)		ERROR: Comma expected
+MULS.L $1234		ERROR: Comma expected
+MULS.L $12345678		ERROR: Comma expected
+MULS.L $1234.L		ERROR: Comma expected
+MULS.L $1234.W		ERROR: Comma expected
+MULS.L $8000		ERROR: Comma expected
+MULS.L BK		ERROR: Comma expected
+MULS.L FW		ERROR: Comma expected
+MULS.L *+$10(PC)		ERROR: Comma expected
+MULS.L *(PC,D0.W)		ERROR: Comma expected
+MULS.L BK(PC)		ERROR: Comma expected
+MULS.L #1		ERROR: Comma expected
+MULS.L #8		ERROR: Comma expected
+MULS.L #9		ERROR: Comma expected
+MULS.L #0		ERROR: Comma expected
+MULS.L #-1		ERROR: Comma expected
+MULS.L #$80		ERROR: Comma expected
+MULS.L #$1234		ERROR: Comma expected
+MULS.L #$12345678		ERROR: Comma expected
+MULS.L #$12345678.L		ERROR: Comma expected
+MULS.L #BK		ERROR: Comma expected
+MULS.L #FW		ERROR: Comma expected
+MULS.L #UNDEF		ERROR: Comma expected
+MULS.L UNDEF		ERROR: Comma expected
+MULS.L SR		ERROR: Comma expected
+MULS.L CCR		ERROR: Comma expected
+MULS.L USP		ERROR: Comma expected
+MULS.L D1,D1	C3C1	ERROR: Invalid size code
+MULS.L D1,A2		ERROR: Invalid addressing mode
+MULS.L D1,(A3)		ERROR: Invalid addressing mode
+MULS.L D1,$10(A6)		ERROR: Invalid addressing mode
+MULS.L D1,$1234		ERROR: Invalid addressing mode
+MULS.L D1,FW		ERROR: Invalid addressing mode
+MULS.L D1,#1		ERROR: Invalid addressing mode
+MULS.L D1,#$1234		ERROR: Invalid addressing mode
+MULS.L D1,CCR		ERROR: Invalid addressing mode
+MULS.L D1,SR		ERROR: Invalid addressing mode
+MULS.L A2,D1		ERROR: Invalid addressing mode
+MULS.L A2,A2		ERROR: Invalid addressing mode
+MULS.L A2,(A3)		ERROR: Invalid addressing mode
+MULS.L A2,$10(A6)		ERROR: Invalid addressing mode
+MULS.L A2,$1234		ERROR: Invalid addressing mode
+MULS.L A2,FW		ERROR: Invalid addressing mode
+MULS.L A2,#1		ERROR: Invalid addressing mode
+MULS.L A2,#$1234		ERROR: Invalid addressing mode
+MULS.L A2,CCR		ERROR: Invalid addressing mode
+MULS.L A2,SR		ERROR: Invalid addressing mode
+MULS.L (A3),D1	C3D3	ERROR: Invalid size code
+MULS.L (A3),A2		ERROR: Invalid addressing mode
+MULS.L (A3),(A3)		ERROR: Invalid addressing mode
+MULS.L (A3),$10(A6)		ERROR: Invalid addressing mode
+MULS.L (A3),$1234		ERROR: Invalid addressing mode
+MULS.L (A3),FW		ERROR: Invalid addressing mode
+MULS.L (A3),#1		ERROR: Invalid addressing mode
+MULS.L (A3),#$1234		ERROR: Invalid addressing mode
+MULS.L (A3),CCR		ERROR: Invalid addressing mode
+MULS.L (A3),SR		ERROR: Invalid addressing mode
+MULS.L $10(A6),D1	C3EE0010	ERROR: Invalid size code
+MULS.L $10(A6),A2		ERROR: Invalid addressing mode
+MULS.L $10(A6),(A3)		ERROR: Invalid addressing mode
+MULS.L $10(A6),$10(A6)		ERROR: Invalid addressing mode
+MULS.L $10(A6),$1234		ERROR: Invalid addressing mode
+MULS.L $10(A6),FW		ERROR: Invalid addressing mode
+MULS.L $10(A6),#1		ERROR: Invalid addressing mode
+MULS.L $10(A6),#$1234		ERROR: Invalid addressing mode
+MULS.L $10(A6),CCR		ERROR: Invalid addressing mode
+MULS.L $10(A6),SR		ERROR: Invalid addressing mode
+MULS.L $1234,D1	C3F81234	ERROR: Invalid size code
+MULS.L $1234,A2		ERROR: Invalid addressing mode
+MULS.L $1234,(A3)		ERROR: Invalid addressing mode
+MULS.L $1234,$10(A6)		ERROR: Invalid addressing mode
+MULS.L $1234,$1234		ERROR: Invalid addressing mode
+MULS.L $1234,FW		ERROR: Invalid addressing mode
+MULS.L $1234,#1		ERROR: Invalid addressing mode
+MULS.L $1234,#$1234		ERROR: Invalid addressing mode
+MULS.L $1234,CCR		ERROR: Invalid addressing mode
+MULS.L $1234,SR		ERROR: Invalid addressing mode
+MULS.L FW,D1	C3F900001F00	ERROR: Invalid size code
+MULS.L FW,A2		ERROR: Invalid addressing mode
+MULS.L FW,(A3)		ERROR: Invalid addressing mode
+MULS.L FW,$10(A6)		ERROR: Invalid addressing mode
+MULS.L FW,$1234		ERROR: Invalid addressing mode
+MULS.L FW,FW		ERROR: Invalid addressing mode
+MULS.L FW,#1		ERROR: Invalid addressing mode
+MULS.L FW,#$1234		ERROR: Invalid addressing mode
+MULS.L FW,CCR		ERROR: Invalid addressing mode
+MULS.L FW,SR		ERROR: Invalid addressing mode
+MULS.L #1,D1	C3FC00000001	ERROR: Invalid size code
+MULS.L #1,A2		ERROR: Invalid addressing mode
+MULS.L #1,(A3)		ERROR: Invalid addressing mode
+MULS.L #1,$10(A6)		ERROR: Invalid addressing mode
+MULS.L #1,$1234		ERROR: Invalid addressing mode
+MULS.L #1,FW		ERROR: Invalid addressing mode
+MULS.L #1,#1		ERROR: Invalid addressing mode
+MULS.L #1,#$1234		ERROR: Invalid addressing mode
+MULS.L #1,CCR		ERROR: Invalid addressing mode
+MULS.L #1,SR		ERROR: Invalid addressing mode
+MULS.L #$1234,D1	C3FC00001234	ERROR: Invalid size code
+MULS.L #$1234,A2		ERROR: Invalid addressing mode
+MULS.L #$1234,(A3)		ERROR: Invalid addressing mode
+MULS.L #$1234,$10(A6)		ERROR: Invalid addressing mode
+MULS.L #$1234,$1234		ERROR: Invalid addressing mode
+MULS.L #$1234,FW		ERROR: Invalid addressing mode
+MULS.L #$1234,#1		ERROR: Invalid addressing mode
+MULS.L #$1234,#$1234		ERROR: Invalid addressing mode
+MULS.L #$1234,CCR		ERROR: Invalid addressing mode
+MULS.L #$1234,SR		ERROR: Invalid addressing mode
+MULS.L CCR,D1		ERROR: Invalid addressing mode
+MULS.L CCR,A2		ERROR: Invalid addressing mode
+MULS.L CCR,(A3)		ERROR: Invalid addressing mode
+MULS.L CCR,$10(A6)		ERROR: Invalid addressing mode
+MULS.L CCR,$1234		ERROR: Invalid addressing mode
+MULS.L CCR,FW		ERROR: Invalid addressing mode
+MULS.L CCR,#1		ERROR: Invalid addressing mode
+MULS.L CCR,#$1234		ERROR: Invalid addressing mode
+MULS.L CCR,CCR		ERROR: Invalid addressing mode
+MULS.L CCR,SR		ERROR: Invalid addressing mode
+MULS.L SR,D1		ERROR: Invalid addressing mode
+MULS.L SR,A2		ERROR: Invalid addressing mode
+MULS.L SR,(A3)		ERROR: Invalid addressing mode
+MULS.L SR,$10(A6)		ERROR: Invalid addressing mode
+MULS.L SR,$1234		ERROR: Invalid addressing mode
+MULS.L SR,FW		ERROR: Invalid addressing mode
+MULS.L SR,#1		ERROR: Invalid addressing mode
+MULS.L SR,#$1234		ERROR: Invalid addressing mode
+MULS.L SR,CCR		ERROR: Invalid addressing mode
+MULS.L SR,SR		ERROR: Invalid addressing mode
+MULS.L SP,D1		ERROR: Invalid addressing mode
+MULS.L SP,A2		ERROR: Invalid addressing mode
+MULS.L D1,SP		ERROR: Invalid addressing mode
+MULS.L #$12,SP		ERROR: Invalid addressing mode
+MULS.L (A4)+,D1	C3DC	ERROR: Invalid size code
+MULS.L (A4)+,A2		ERROR: Invalid addressing mode
+MULS.L D1,(A4)+		ERROR: Invalid addressing mode
+MULS.L #$12,(A4)+		ERROR: Invalid addressing mode
+MULS.L -(A5),D1	C3E5	ERROR: Invalid size code
+MULS.L -(A5),A2		ERROR: Invalid addressing mode
+MULS.L D1,-(A5)		ERROR: Invalid addressing mode
+MULS.L #$12,-(A5)		ERROR: Invalid addressing mode
+MULS.L -2(A0),D1	C3E8FFFE	ERROR: Invalid size code
+MULS.L -2(A0),A2		ERROR: Invalid addressing mode
+MULS.L D1,-2(A0)		ERROR: Invalid addressing mode
+MULS.L #$12,-2(A0)		ERROR: Invalid addressing mode
+MULS.L $10(A6,D7.W),D1	C3F67010	ERROR: Invalid size code
+MULS.L $10(A6,D7.W),A2		ERROR: Invalid addressing mode
+MULS.L D1,$10(A6,D7.W)		ERROR: Invalid addressing mode
+MULS.L #$12,$10(A6,D7.W)		ERROR: Invalid addressing mode
+MULS.L $12(A0,A1.L),D1	C3F09812	ERROR: Invalid size code
+MULS.L $12(A0,A1.L),A2		ERROR: Invalid addressing mode
+MULS.L D1,$12(A0,A1.L)		ERROR: Invalid addressing mode
+MULS.L #$12,$12(A0,A1.L)		ERROR: Invalid addressing mode
+MULS.L (A2,D3),D1	C3F23000	ERROR: Invalid size code
+MULS.L (A2,D3),A2		ERROR: Invalid addressing mode
+MULS.L D1,(A2,D3)		ERROR: Invalid addressing mode
+MULS.L #$12,(A2,D3)		ERROR: Invalid addressing mode
+MULS.L $12345678,D1	C3F912345678	ERROR: Invalid size code
+MULS.L $12345678,A2		ERROR: Invalid addressing mode
+MULS.L D1,$12345678		ERROR: Invalid addressing mode
+MULS.L #$12,$12345678		ERROR: Invalid addressing mode
+MULS.L $1234.L,D1	C3F900001234	ERROR: Invalid size code
+MULS.L $1234.L,A2		ERROR: Invalid addressing mode
+MULS.L D1,$1234.L		ERROR: Invalid addressing mode
+MULS.L #$12,$1234.L		ERROR: Invalid addressing mode
+MULS.L $1234.W,D1	C3F81234	ERROR: Invalid size code
+MULS.L $1234.W,A2		ERROR: Invalid addressing mode
+MULS.L D1,$1234.W		ERROR: Invalid addressing mode
+MULS.L #$12,$1234.W		ERROR: Invalid addressing mode
+MULS.L $8000,D1	C3F900008000	ERROR: Invalid size code
+MULS.L $8000,A2		ERROR: Invalid addressing mode
+MULS.L D1,$8000		ERROR: Invalid addressing mode
+MULS.L #$12,$8000		ERROR: Invalid addressing mode
+MULS.L BK,D1	C3F81F00	ERROR: Invalid size code
+MULS.L BK,A2		ERROR: Invalid addressing mode
+MULS.L D1,BK		ERROR: Invalid addressing mode
+MULS.L #$12,BK		ERROR: Invalid addressing mode
+MULS.L *+$10(PC),D1	C3FA000E	ERROR: Invalid size code
+MULS.L *+$10(PC),A2		ERROR: Invalid addressing mode
+MULS.L D1,*+$10(PC)		ERROR: Invalid addressing mode
+MULS.L #$12,*+$10(PC)		ERROR: Invalid addressing mode
+MULS.L *(PC,D0.W),D1	C3FB00FE	ERROR: Invalid size code
+MULS.L *(PC,D0.W),A2		ERROR: Invalid addressing mode
+MULS.L D1,*(PC,D0.W)		ERROR: Invalid addressing mode
+MULS.L #$12,*(PC,D0.W)		ERROR: Invalid addressing mode
+MULS.L BK(PC),D1	C3FA0EFE	ERROR: Invalid size code
+MULS.L BK(PC),A2		ERROR: Invalid addressing mode
+MULS.L D1,BK(PC)		ERROR: Invalid addressing mode
+MULS.L #$12,BK(PC)		ERROR: Invalid addressing mode
+MULS.L #8,D1	C3FC00000008	ERROR: Invalid size code
+MULS.L #8,A2		ERROR: Invalid addressing mode
+MULS.L D1,#8		ERROR: Invalid addressing mode
+MULS.L #$12,#8		ERROR: Invalid addressing mode
+MULS.L #9,D1	C3FC00000009	ERROR: Invalid size code
+MULS.L #9,A2		ERROR: Invalid addressing mode
+MULS.L D1,#9		ERROR: Invalid addressing mode
+MULS.L #$12,#9		ERROR: Invalid addressing mode
+MULS.L #0,D1	C3FC00000000	ERROR: Invalid size code
+MULS.L #0,A2		ERROR: Invalid addressing mode
+MULS.L D1,#0		ERROR: Invalid addressing mode
+MULS.L #$12,#0		ERROR: Invalid addressing mode
+MULS.L #-1,D1	C3FCFFFFFFFF	ERROR: Invalid size code
+MULS.L #-1,A2		ERROR: Invalid addressing mode
+MULS.L D1,#-1		ERROR: Invalid addressing mode
+MULS.L #$12,#-1		ERROR: Invalid addressing mode
+MULS.L #$80,D1	C3FC00000080	ERROR: Invalid size code
+MULS.L #$80,A2		ERROR: Invalid addressing mode
+MULS.L D1,#$80		ERROR: Invalid addressing mode
+MULS.L #$12,#$80		ERROR: Invalid addressing mode
+MULS.L #$12345678,D1	C3FC12345678	ERROR: Invalid size code
+MULS.L #$12345678,A2		ERROR: Invalid addressing mode
+MULS.L D1,#$12345678		ERROR: Invalid addressing mode
+MULS.L #$12,#$12345678		ERROR: Invalid addressing mode
+MULS.L #$12345678.L,D1	C3FC12345678	ERROR: Invalid size code
+MULS.L #$12345678.L,A2		ERROR: Invalid addressing mode
+MULS.L D1,#$12345678.L		ERROR: Invalid addressing mode
+MULS.L #$12,#$12345678.L		ERROR: Invalid addressing mode
+MULS.L #BK,D1	C3FC00001F00	ERROR: Invalid size code
+MULS.L #BK,A2		ERROR: Invalid addressing mode
+MULS.L D1,#BK		ERROR: Invalid addressing mode
+MULS.L #$12,#BK		ERROR: Invalid addressing mode
+MULS.L #FW,D1	C3FC00001F00	ERROR: Invalid size code
+MULS.L #FW,A2		ERROR: Invalid addressing mode
+MULS.L D1,#FW		ERROR: Invalid addressing mode
+MULS.L #$12,#FW		ERROR: Invalid addressing mode
+MULS.L #UNDEF,D1	C3FC000055E7	ERROR: Undefined symbol
+MULS.L #UNDEF,A2		ERROR: Invalid addressing mode
+MULS.L D1,#UNDEF		ERROR: Invalid addressing mode
+MULS.L #$12,#UNDEF		ERROR: Invalid addressing mode
+MULS.L UNDEF,D1	C3F9000055E7	ERROR: Undefined symbol
+MULS.L UNDEF,A2		ERROR: Invalid addressing mode
+MULS.L D1,UNDEF		ERROR: Invalid addressing mode
+MULS.L #$12,UNDEF		ERROR: Invalid addressing mode
+MULS.L USP,D1		ERROR: Invalid addressing mode
+MULS.L USP,A2		ERROR: Invalid addressing mode
+MULS.L D1,USP		ERROR: Invalid addressing mode
+MULS.L #$12,USP		ERROR: Invalid addressing mode
+MULS.L D1,D2,D3		ERROR: Invalid syntax
+MULS.S		ERROR: Invalid syntax
+MULS.S D1		ERROR: Comma expected
+MULS.S A2		ERROR: Comma expected
+MULS.S SP		ERROR: Comma expected
+MULS.S (A3)		ERROR: Comma expected
+MULS.S (A4)+		ERROR: Comma expected
+MULS.S -(A5)		ERROR: Comma expected
+MULS.S $10(A6)		ERROR: Comma expected
+MULS.S -2(A0)		ERROR: Comma expected
+MULS.S $10(A6,D7.W)		ERROR: Comma expected
+MULS.S $12(A0,A1.L)		ERROR: Comma expected
+MULS.S (A2,D3)		ERROR: Comma expected
+MULS.S $1234		ERROR: Comma expected
+MULS.S $12345678		ERROR: Comma expected
+MULS.S $1234.L		ERROR: Comma expected
+MULS.S $1234.W		ERROR: Comma expected
+MULS.S $8000		ERROR: Comma expected
+MULS.S BK		ERROR: Comma expected
+MULS.S FW		ERROR: Comma expected
+MULS.S *+$10(PC)		ERROR: Comma expected
+MULS.S *(PC,D0.W)		ERROR: Comma expected
+MULS.S BK(PC)		ERROR: Comma expected
+MULS.S #1		ERROR: Comma expected
+MULS.S #8		ERROR: Comma expected
+MULS.S #9		ERROR: Comma expected
+MULS.S #0		ERROR: Comma expected
+MULS.S #-1		ERROR: Comma expected
+MULS.S #$80		ERROR: Comma expected
+MULS.S #$1234		ERROR: Comma expected
+MULS.S #$12345678		ERROR: Comma expected
+MULS.S #$12345678.L		ERROR: Comma expected
+MULS.S #BK		ERROR: Comma expected
+MULS.S #FW		ERROR: Comma expected
+MULS.S #UNDEF		ERROR: Comma expected
+MULS.S UNDEF		ERROR: Comma expected
+MULS.S SR		ERROR: Comma expected
+MULS.S CCR		ERROR: Comma expected
+MULS.S USP		ERROR: Comma expected
+MULS.S D1,D1	C3C1	ERROR: Invalid size code
+MULS.S D1,A2		ERROR: Invalid addressing mode
+MULS.S D1,(A3)		ERROR: Invalid addressing mode
+MULS.S D1,$10(A6)		ERROR: Invalid addressing mode
+MULS.S D1,$1234		ERROR: Invalid addressing mode
+MULS.S D1,FW		ERROR: Invalid addressing mode
+MULS.S D1,#1		ERROR: Invalid addressing mode
+MULS.S D1,#$1234		ERROR: Invalid addressing mode
+MULS.S D1,CCR		ERROR: Invalid addressing mode
+MULS.S D1,SR		ERROR: Invalid addressing mode
+MULS.S A2,D1		ERROR: Invalid addressing mode
+MULS.S A2,A2		ERROR: Invalid addressing mode
+MULS.S A2,(A3)		ERROR: Invalid addressing mode
+MULS.S A2,$10(A6)		ERROR: Invalid addressing mode
+MULS.S A2,$1234		ERROR: Invalid addressing mode
+MULS.S A2,FW		ERROR: Invalid addressing mode
+MULS.S A2,#1		ERROR: Invalid addressing mode
+MULS.S A2,#$1234		ERROR: Invalid addressing mode
+MULS.S A2,CCR		ERROR: Invalid addressing mode
+MULS.S A2,SR		ERROR: Invalid addressing mode
+MULS.S (A3),D1	C3D3	ERROR: Invalid size code
+MULS.S (A3),A2		ERROR: Invalid addressing mode
+MULS.S (A3),(A3)		ERROR: Invalid addressing mode
+MULS.S (A3),$10(A6)		ERROR: Invalid addressing mode
+MULS.S (A3),$1234		ERROR: Invalid addressing mode
+MULS.S (A3),FW		ERROR: Invalid addressing mode
+MULS.S (A3),#1		ERROR: Invalid addressing mode
+MULS.S (A3),#$1234		ERROR: Invalid addressing mode
+MULS.S (A3),CCR		ERROR: Invalid addressing mode
+MULS.S (A3),SR		ERROR: Invalid addressing mode
+MULS.S $10(A6),D1	C3EE0010	ERROR: Invalid size code
+MULS.S $10(A6),A2		ERROR: Invalid addressing mode
+MULS.S $10(A6),(A3)		ERROR: Invalid addressing mode
+MULS.S $10(A6),$10(A6)		ERROR: Invalid addressing mode
+MULS.S $10(A6),$1234		ERROR: Invalid addressing mode
+MULS.S $10(A6),FW		ERROR: Invalid addressing mode
+MULS.S $10(A6),#1		ERROR: Invalid addressing mode
+MULS.S $10(A6),#$1234		ERROR: Invalid addressing mode
+MULS.S $10(A6),CCR		ERROR: Invalid addressing mode
+MULS.S $10(A6),SR		ERROR: Invalid addressing mode
+MULS.S $1234,D1	C3F81234	ERROR: Invalid size code
+MULS.S $1234,A2		ERROR: Invalid addressing mode
+MULS.S $1234,(A3)		ERROR: Invalid addressing mode
+MULS.S $1234,$10(A6)		ERROR: Invalid addressing mode
+MULS.S $1234,$1234		ERROR: Invalid addressing mode
+MULS.S $1234,FW		ERROR: Invalid addressing mode
+MULS.S $1234,#1		ERROR: Invalid addressing mode
+MULS.S $1234,#$1234		ERROR: Invalid addressing mode
+MULS.S $1234,CCR		ERROR: Invalid addressing mode
+MULS.S $1234,SR		ERROR: Invalid addressing mode
+MULS.S FW,D1	C3F900001F00	ERROR: Invalid size code
+MULS.S FW,A2		ERROR: Invalid addressing mode
+MULS.S FW,(A3)		ERROR: Invalid addressing mode
+MULS.S FW,$10(A6)		ERROR: Invalid addressing mode
+MULS.S FW,$1234		ERROR: Invalid addressing mode
+MULS.S FW,FW		ERROR: Invalid addressing mode
+MULS.S FW,#1		ERROR: Invalid addressing mode
+MULS.S FW,#$1234		ERROR: Invalid addressing mode
+MULS.S FW,CCR		ERROR: Invalid addressing mode
+MULS.S FW,SR		ERROR: Invalid addressing mode
+MULS.S #1,D1	C3FC	ERROR: Invalid size code
+MULS.S #1,A2		ERROR: Invalid addressing mode
+MULS.S #1,(A3)		ERROR: Invalid addressing mode
+MULS.S #1,$10(A6)		ERROR: Invalid addressing mode
+MULS.S #1,$1234		ERROR: Invalid addressing mode
+MULS.S #1,FW		ERROR: Invalid addressing mode
+MULS.S #1,#1		ERROR: Invalid addressing mode
+MULS.S #1,#$1234		ERROR: Invalid addressing mode
+MULS.S #1,CCR		ERROR: Invalid addressing mode
+MULS.S #1,SR		ERROR: Invalid addressing mode
+MULS.S #$1234,D1	C3FC	ERROR: Invalid size code
+MULS.S #$1234,A2		ERROR: Invalid addressing mode
+MULS.S #$1234,(A3)		ERROR: Invalid addressing mode
+MULS.S #$1234,$10(A6)		ERROR: Invalid addressing mode
+MULS.S #$1234,$1234		ERROR: Invalid addressing mode
+MULS.S #$1234,FW		ERROR: Invalid addressing mode
+MULS.S #$1234,#1		ERROR: Invalid addressing mode
+MULS.S #$1234,#$1234		ERROR: Invalid addressing mode
+MULS.S #$1234,CCR		ERROR: Invalid addressing mode
+MULS.S #$1234,SR		ERROR: Invalid addressing mode
+MULS.S CCR,D1		ERROR: Invalid addressing mode
+MULS.S CCR,A2		ERROR: Invalid addressing mode
+MULS.S CCR,(A3)		ERROR: Invalid addressing mode
+MULS.S CCR,$10(A6)		ERROR: Invalid addressing mode
+MULS.S CCR,$1234		ERROR: Invalid addressing mode
+MULS.S CCR,FW		ERROR: Invalid addressing mode
+MULS.S CCR,#1		ERROR: Invalid addressing mode
+MULS.S CCR,#$1234		ERROR: Invalid addressing mode
+MULS.S CCR,CCR		ERROR: Invalid addressing mode
+MULS.S CCR,SR		ERROR: Invalid addressing mode
+MULS.S SR,D1		ERROR: Invalid addressing mode
+MULS.S SR,A2		ERROR: Invalid addressing mode
+MULS.S SR,(A3)		ERROR: Invalid addressing mode
+MULS.S SR,$10(A6)		ERROR: Invalid addressing mode
+MULS.S SR,$1234		ERROR: Invalid addressing mode
+MULS.S SR,FW		ERROR: Invalid addressing mode
+MULS.S SR,#1		ERROR: Invalid addressing mode
+MULS.S SR,#$1234		ERROR: Invalid addressing mode
+MULS.S SR,CCR		ERROR: Invalid addressing mode
+MULS.S SR,SR		ERROR: Invalid addressing mode
+MULS.S SP,D1		ERROR: Invalid addressing mode
+MULS.S SP,A2		ERROR: Invalid addressing mode
+MULS.S D1,SP		ERROR: Invalid addressing mode
+MULS.S #$12,SP		ERROR: Invalid addressing mode
+MULS.S (A4)+,D1	C3DC	ERROR: Invalid size code
+MULS.S (A4)+,A2		ERROR: Invalid addressing mode
+MULS.S D1,(A4)+		ERROR: Invalid addressing mode
+MULS.S #$12,(A4)+		ERROR: Invalid addressing mode
+MULS.S -(A5),D1	C3E5	ERROR: Invalid size code
+MULS.S -(A5),A2		ERROR: Invalid addressing mode
+MULS.S D1,-(A5)		ERROR: Invalid addressing mode
+MULS.S #$12,-(A5)		ERROR: Invalid addressing mode
+MULS.S -2(A0),D1	C3E8FFFE	ERROR: Invalid size code
+MULS.S -2(A0),A2		ERROR: Invalid addressing mode
+MULS.S D1,-2(A0)		ERROR: Invalid addressing mode
+MULS.S #$12,-2(A0)		ERROR: Invalid addressing mode
+MULS.S $10(A6,D7.W),D1	C3F67010	ERROR: Invalid size code
+MULS.S $10(A6,D7.W),A2		ERROR: Invalid addressing mode
+MULS.S D1,$10(A6,D7.W)		ERROR: Invalid addressing mode
+MULS.S #$12,$10(A6,D7.W)		ERROR: Invalid addressing mode
+MULS.S $12(A0,A1.L),D1	C3F09812	ERROR: Invalid size code
+MULS.S $12(A0,A1.L),A2		ERROR: Invalid addressing mode
+MULS.S D1,$12(A0,A1.L)		ERROR: Invalid addressing mode
+MULS.S #$12,$12(A0,A1.L)		ERROR: Invalid addressing mode
+MULS.S (A2,D3),D1	C3F23000	ERROR: Invalid size code
+MULS.S (A2,D3),A2		ERROR: Invalid addressing mode
+MULS.S D1,(A2,D3)		ERROR: Invalid addressing mode
+MULS.S #$12,(A2,D3)		ERROR: Invalid addressing mode
+MULS.S $12345678,D1	C3F912345678	ERROR: Invalid size code
+MULS.S $12345678,A2		ERROR: Invalid addressing mode
+MULS.S D1,$12345678		ERROR: Invalid addressing mode
+MULS.S #$12,$12345678		ERROR: Invalid addressing mode
+MULS.S $1234.L,D1	C3F900001234	ERROR: Invalid size code
+MULS.S $1234.L,A2		ERROR: Invalid addressing mode
+MULS.S D1,$1234.L		ERROR: Invalid addressing mode
+MULS.S #$12,$1234.L		ERROR: Invalid addressing mode
+MULS.S $1234.W,D1	C3F81234	ERROR: Invalid size code
+MULS.S $1234.W,A2		ERROR: Invalid addressing mode
+MULS.S D1,$1234.W		ERROR: Invalid addressing mode
+MULS.S #$12,$1234.W		ERROR: Invalid addressing mode
+MULS.S $8000,D1	C3F900008000	ERROR: Invalid size code
+MULS.S $8000,A2		ERROR: Invalid addressing mode
+MULS.S D1,$8000		ERROR: Invalid addressing mode
+MULS.S #$12,$8000		ERROR: Invalid addressing mode
+MULS.S BK,D1	C3F81F00	ERROR: Invalid size code
+MULS.S BK,A2		ERROR: Invalid addressing mode
+MULS.S D1,BK		ERROR: Invalid addressing mode
+MULS.S #$12,BK		ERROR: Invalid addressing mode
+MULS.S *+$10(PC),D1	C3FA000E	ERROR: Invalid size code
+MULS.S *+$10(PC),A2		ERROR: Invalid addressing mode
+MULS.S D1,*+$10(PC)		ERROR: Invalid addressing mode
+MULS.S #$12,*+$10(PC)		ERROR: Invalid addressing mode
+MULS.S *(PC,D0.W),D1	C3FB00FE	ERROR: Invalid size code
+MULS.S *(PC,D0.W),A2		ERROR: Invalid addressing mode
+MULS.S D1,*(PC,D0.W)		ERROR: Invalid addressing mode
+MULS.S #$12,*(PC,D0.W)		ERROR: Invalid addressing mode
+MULS.S BK(PC),D1	C3FA0EFE	ERROR: Invalid size code
+MULS.S BK(PC),A2		ERROR: Invalid addressing mode
+MULS.S D1,BK(PC)		ERROR: Invalid addressing mode
+MULS.S #$12,BK(PC)		ERROR: Invalid addressing mode
+MULS.S #8,D1	C3FC	ERROR: Invalid size code
+MULS.S #8,A2		ERROR: Invalid addressing mode
+MULS.S D1,#8		ERROR: Invalid addressing mode
+MULS.S #$12,#8		ERROR: Invalid addressing mode
+MULS.S #9,D1	C3FC	ERROR: Invalid size code
+MULS.S #9,A2		ERROR: Invalid addressing mode
+MULS.S D1,#9		ERROR: Invalid addressing mode
+MULS.S #$12,#9		ERROR: Invalid addressing mode
+MULS.S #0,D1	C3FC	ERROR: Invalid size code
+MULS.S #0,A2		ERROR: Invalid addressing mode
+MULS.S D1,#0		ERROR: Invalid addressing mode
+MULS.S #$12,#0		ERROR: Invalid addressing mode
+MULS.S #-1,D1	C3FC	ERROR: Invalid size code
+MULS.S #-1,A2		ERROR: Invalid addressing mode
+MULS.S D1,#-1		ERROR: Invalid addressing mode
+MULS.S #$12,#-1		ERROR: Invalid addressing mode
+MULS.S #$80,D1	C3FC	ERROR: Invalid size code
+MULS.S #$80,A2		ERROR: Invalid addressing mode
+MULS.S D1,#$80		ERROR: Invalid addressing mode
+MULS.S #$12,#$80		ERROR: Invalid addressing mode
+MULS.S #$12345678,D1	C3FC	ERROR: Invalid size code
+MULS.S #$12345678,A2		ERROR: Invalid addressing mode
+MULS.S D1,#$12345678		ERROR: Invalid addressing mode
+MULS.S #$12,#$12345678		ERROR: Invalid addressing mode
+MULS.S #$12345678.L,D1	C3FC	ERROR: Invalid size code
+MULS.S #$12345678.L,A2		ERROR: Invalid addressing mode
+MULS.S D1,#$12345678.L		ERROR: Invalid addressing mode
+MULS.S #$12,#$12345678.L		ERROR: Invalid addressing mode
+MULS.S #BK,D1	C3FC	ERROR: Invalid size code
+MULS.S #BK,A2		ERROR: Invalid addressing mode
+MULS.S D1,#BK		ERROR: Invalid addressing mode
+MULS.S #$12,#BK		ERROR: Invalid addressing mode
+MULS.S #FW,D1	C3FC	ERROR: Invalid size code
+MULS.S #FW,A2		ERROR: Invalid addressing mode
+MULS.S D1,#FW		ERROR: Invalid addressing mode
+MULS.S #$12,#FW		ERROR: Invalid addressing mode
+MULS.S #UNDEF,D1	C3FC	ERROR: Undefined symbol
+MULS.S #UNDEF,A2		ERROR: Invalid addressing mode
+MULS.S D1,#UNDEF		ERROR: Invalid addressing mode
+MULS.S #$12,#UNDEF		ERROR: Invalid addressing mode
+MULS.S UNDEF,D1	C3F9000055E7	ERROR: Undefined symbol
+MULS.S UNDEF,A2		ERROR: Invalid addressing mode
+MULS.S D1,UNDEF		ERROR: Invalid addressing mode
+MULS.S #$12,UNDEF		ERROR: Invalid addressing mode
+MULS.S USP,D1		ERROR: Invalid addressing mode
+MULS.S USP,A2		ERROR: Invalid addressing mode
+MULS.S D1,USP		ERROR: Invalid addressing mode
+MULS.S #$12,USP		ERROR: Invalid addressing mode
+MULS.S D1,D2,D3		ERROR: Invalid syntax
+MULS.X D1,D2	C5C1	ERROR: Invalid size code
+MULS.X #1		ERROR: Comma expected

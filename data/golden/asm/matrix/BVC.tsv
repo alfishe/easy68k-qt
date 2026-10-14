@@ -1,0 +1,82 @@
+BVC		ERROR: Invalid syntax
+BVC *+2	68000000	-
+BVC *+4	6802	-
+BVC *+$80	687E	-
+BVC *+$82	68000080	-
+BVC *-$7E	6880	-
+BVC *-$80	6800FF7E	-
+BVC *+$8000	68007FFE	-
+BVC *	68FE	-
+BVC BK	68000EFE	-
+BVC FW	68000EFE	-
+BVC $1000	68FE	-
+BVC $12345678	68004676	ERROR: Branch instruction displacement is out of range or invalid
+BVC D1		ERROR: Invalid addressing mode
+BVC (A0)		ERROR: Invalid addressing mode
+BVC #4		ERROR: Invalid addressing mode
+BVC.B		ERROR: Invalid syntax
+BVC.B *+2	6800	ERROR: Branch instruction displacement is out of range or invalid
+BVC.B *+4	6802	-
+BVC.B *+$80	687E	-
+BVC.B *+$82	6880	ERROR: Branch instruction displacement is out of range or invalid
+BVC.B *-$7E	6880	-
+BVC.B *-$80	687E	ERROR: Branch instruction displacement is out of range or invalid
+BVC.B *+$8000	68FE	ERROR: Branch instruction displacement is out of range or invalid
+BVC.B *	68FE	-
+BVC.B BK	68FE	ERROR: Branch instruction displacement is out of range or invalid
+BVC.B FW	68FE	ERROR: Branch instruction displacement is out of range or invalid
+BVC.B $1000	68FE	-
+BVC.B $12345678	6876	ERROR: Branch instruction displacement is out of range or invalid
+BVC.B D1		ERROR: Invalid addressing mode
+BVC.B (A0)		ERROR: Invalid addressing mode
+BVC.B #4		ERROR: Invalid addressing mode
+BVC.W		ERROR: Invalid syntax
+BVC.W *+2	68000000	-
+BVC.W *+4	68000002	-
+BVC.W *+$80	6800007E	-
+BVC.W *+$82	68000080	-
+BVC.W *-$7E	6800FF80	-
+BVC.W *-$80	6800FF7E	-
+BVC.W *+$8000	68007FFE	-
+BVC.W *	6800FFFE	-
+BVC.W BK	68000EFE	-
+BVC.W FW	68000EFE	-
+BVC.W $1000	6800FFFE	-
+BVC.W $12345678	68004676	ERROR: Branch instruction displacement is out of range or invalid
+BVC.W D1		ERROR: Invalid addressing mode
+BVC.W (A0)		ERROR: Invalid addressing mode
+BVC.W #4		ERROR: Invalid addressing mode
+BVC.L		ERROR: Invalid syntax
+BVC.L *+2	68000000	-
+BVC.L *+4	68000002	-
+BVC.L *+$80	6800007E	-
+BVC.L *+$82	68000080	-
+BVC.L *-$7E	6800FF80	-
+BVC.L *-$80	6800FF7E	-
+BVC.L *+$8000	68007FFE	-
+BVC.L *	6800FFFE	-
+BVC.L BK	68000EFE	-
+BVC.L FW	68000EFE	-
+BVC.L $1000	6800FFFE	-
+BVC.L $12345678	68004676	ERROR: Branch instruction displacement is out of range or invalid
+BVC.L D1		ERROR: Invalid addressing mode
+BVC.L (A0)		ERROR: Invalid addressing mode
+BVC.L #4		ERROR: Invalid addressing mode
+BVC.S		ERROR: Invalid syntax
+BVC.S *+2	6800	ERROR: Branch instruction displacement is out of range or invalid
+BVC.S *+4	6802	-
+BVC.S *+$80	687E	-
+BVC.S *+$82	6880	ERROR: Branch instruction displacement is out of range or invalid
+BVC.S *-$7E	6880	-
+BVC.S *-$80	687E	ERROR: Branch instruction displacement is out of range or invalid
+BVC.S *+$8000	68FE	ERROR: Branch instruction displacement is out of range or invalid
+BVC.S *	68FE	-
+BVC.S BK	68FE	ERROR: Branch instruction displacement is out of range or invalid
+BVC.S FW	68FE	ERROR: Branch instruction displacement is out of range or invalid
+BVC.S $1000	68FE	-
+BVC.S $12345678	6876	ERROR: Branch instruction displacement is out of range or invalid
+BVC.S D1		ERROR: Invalid addressing mode
+BVC.S (A0)		ERROR: Invalid addressing mode
+BVC.S #4		ERROR: Invalid addressing mode
+BVC.X D1,D2		ERROR: Invalid addressing mode
+BVC.X #1		ERROR: Invalid addressing mode

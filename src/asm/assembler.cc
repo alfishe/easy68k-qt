@@ -7,6 +7,8 @@
 #include <sstream>
 #include <unordered_set>
 
+#include "easym68k/asm/original_status.h"
+
 namespace easym68k::asm_ {
 
 Assembler::Assembler()
@@ -79,7 +81,7 @@ void Assembler::OnLineParsed(const ParsedLine& line) {
     align = line.size != SizeSpec::kByte;
   else if (op == "SIMHALT")
     align = true;
-  else if (!op.empty() && instruction_table_.Lookup(op) != nullptr)
+  else if (!op.empty() && IsInstruction(op))
     align = true;
   if (align && (location_counter_ & 1)) {
     // The original only increments loc (no pad byte; the S-records simply
@@ -470,7 +472,10 @@ void Assembler::RunPass(const std::vector<std::string>& lines) {
       continue;
     }
 
-    if (line.has_error) {
+    // Instruction lines report operand errors in the original's order
+    // (createCode()), so they go to HandleInstruction even when an operand
+    // could not be parsed.
+    if (line.has_error && !(IsInstruction(line.opcode) && IsAssembling())) {
       if (pass_ == 2 && IsAssembling())
         AddError(line.line_number, line.error_message);
       flush_listing(start_lc, lines[i], i + 1);
@@ -902,160 +907,97 @@ bool Assembler::HandleDirective(const ParsedLine& line) {
   return true;
 }
 
+bool Assembler::IsInstruction(const std::string& opcode) {
+  return opcode == "MOVEM" || LookupInstruction(opcode) != nullptr;
+}
+
 bool Assembler::HandleInstruction(const ParsedLine& line) {
-  if (pass_ == 1) {
-    location_counter_ += static_cast<uint32_t>(InstructionSize(line));
-    return true;
-  }
+  // ASSEMBLE.CPP createCode(): the same building routines run in both
+  // passes (pass 1 only advances the location counter).
+  BuildContext ctx;
+  ctx.loc = location_counter_;
+  ctx.pass2 = pass_ == 2;
+  ctx.output = [this, &ctx](int32_t data, int size) {
+    location_counter_ = ctx.loc;
+    OutputAt(data, size);
+  };
 
-  // Pass 2: look up instruction and dispatch to code generator.
-  const InstrEntry* entry = instruction_table_.Lookup(line.opcode);
-  if (!entry) {
-    AddError(line.line_number, ErrorCode::kUnknownInstruction, line.opcode);
-    return true;
+  const int size = SizeCode(line.size);
+  status::NewError(ctx.status, line.size_status);
+  if (line.opcode == "MOVEM") {
+    AssembleMovem(size, line.operands, line.has_error, line.error_status, line.status, ctx);
+  } else if (const Instruction* inst = LookupInstruction(line.opcode)) {
+    AssembleInstruction(*inst, size, line.operands, line.has_error, line.status, ctx);
+  } else {
+    status::NewError(ctx.status, status::kInvOpcode);
   }
-
-  std::string error_msg;
-  if (!code_generator_.Encode(
-          *entry, line, location_counter_, symbols_, [this](uint16_t w) { EmitWord(w); },
-          &error_msg)) {
-    AddError(line.line_number, error_msg);
-  }
+  location_counter_ = ctx.loc;
+  if (pass_ == 2 && ctx.status != status::kOk)
+    ReportStatus(line.line_number, ctx.status);
   return true;
 }
 
-int Assembler::InstructionSize(const ParsedLine& line) const {
-  const InstrEntry* entry = instruction_table_.Lookup(line.opcode);
-  if (!entry)
-    return 2;
+void Assembler::OutputAt(int32_t data, int size) {
+  const uint32_t loc = location_counter_;
+  if (size == LONG_SIZE)
+    EmitLong(static_cast<uint32_t>(data));
+  else
+    EmitWord(static_cast<uint16_t>(data & 0xFFFF));
+  location_counter_ = loc;
+}
 
-  SizeSpec sz = (line.size != SizeSpec::kNone) ? line.size : SizeSpec::kWord;
-  int words = 1;  // base opcode word
-
-  auto can_use_quick = [&]() -> bool {
-    if (line.operands.empty())
-      return false;
-    const Operand& src = line.operands[0];
-    return src.mode == AddressMode::kImmediate && src.is_back_ref && src.data >= 1 &&
-           src.data <= 8 && src.forced_size == SizeSpec::kNone && sz != SizeSpec::kByte;
-  };
-
-  switch (entry->encoding) {
-    case InstrEncoding::kFixed:
-    case InstrEncoding::kRegOp:
-    case InstrEncoding::kAnOp:
-    case InstrEncoding::kMoveUsp:
-    case InstrEncoding::kAddxSubx:
-    case InstrEncoding::kAbcdSbcd:
-    case InstrEncoding::kCmpm:
-    case InstrEncoding::kExg:
-    case InstrEncoding::kMoveq:
-    case InstrEncoding::kTrap:
+void Assembler::ReportStatus(int line_number, int st) {
+  const char* text = status::Message(st);
+  std::string message = text ? text : "assembly error";
+  ErrorCode code = ErrorCode::kGeneric;
+  switch (st) {
+    case status::kInvAddrMode:
+      code = ErrorCode::kInvEa;
       break;
-
-    case InstrEncoding::kBranch:
-      // BUILD.CPP branch(): unsized branches use the short form when the
-      // target is a backward reference within -128..127 (and not +0);
-      // pass 1 must size exactly like pass 2 encodes.
-      if (line.size == SizeSpec::kShort || line.size == SizeSpec::kByte) {
-        words = 1;
-      } else if (line.size == SizeSpec::kLong || line.size == SizeSpec::kWord) {
-        words = 2;
-      } else if (!line.operands.empty()) {
-        const Operand& target = line.operands[0];
-        int32_t disp = target.data - static_cast<int32_t>(location_counter_) - 2;
-        words = (target.is_back_ref && disp >= -128 && disp <= 127 && disp != 0) ? 1 : 2;
-      } else {
-        words = 2;
-      }
+    case status::kInvSizeCode:
+      code = ErrorCode::kInvSizeCode;
       break;
-
-    case InstrEncoding::kDBcc:
-      words = 2;
+    case status::kInvQuickConst:
+      code = ErrorCode::kInvQuickConst;
       break;
-
-    case InstrEncoding::kQuick:
-      if (line.operands.size() >= 2)
-        words += InstructionTable::ExtWordCount(line.operands[1].mode, sz);
+    case status::kInvMoveQuickConst:
+      code = ErrorCode::kInvMoveQuickConst;
       break;
-
-    case InstrEncoding::kShift:
-      if (line.operands.size() == 1)
-        words += InstructionTable::ExtWordCount(line.operands[0].mode, sz);
+    case status::kInvVectorNum:
+      code = ErrorCode::kInvVectorNum;
       break;
-
-    case InstrEncoding::kMoveM: {
-      words = 2;
-      for (const auto& operand : line.operands) {
-        if (operand.mode != AddressMode::kRegisterList) {
-          words += InstructionTable::ExtWordCount(operand.mode, sz);
-          break;
-        }
-      }
+    case status::kInvBranchDisp:
+      code = ErrorCode::kInvBranchDisp;
       break;
-    }
-
-    case InstrEncoding::kMove: {
-      if (line.operands.size() >= 2) {
-        const Operand& src = line.operands[0];
-        const Operand& dst = line.operands[1];
-        if (src.mode == AddressMode::kImmediate && src.is_back_ref && src.data >= -128 &&
-            src.data <= 127 && dst.mode == AddressMode::kDnDirect && sz == SizeSpec::kLong &&
-            src.forced_size == SizeSpec::kNone) {
-          break;
-        }
-      }
-      for (const auto& op : line.operands)
-        words += InstructionTable::ExtWordCount(op.mode, sz);
+    case status::kInvDisp:
+      code = ErrorCode::kInvDisp;
       break;
-    }
-
-    case InstrEncoding::kEaBidirect: {
-      if (line.operands.size() >= 2 && line.operands[0].mode == AddressMode::kImmediate) {
-        uint16_t top = entry->base & 0xF000;
-        if ((top == 0xD000 || top == 0x9000) && can_use_quick()) {
-          words += InstructionTable::ExtWordCount(line.operands[1].mode, sz);
-          break;
-        }
-      }
-      for (const auto& op : line.operands)
-        words += InstructionTable::ExtWordCount(op.mode, sz);
+    case status::kInvAbsAddress:
+      code = ErrorCode::kInvAbsAddress;
       break;
-    }
-
-    case InstrEncoding::kImmedToEa: {
-      if (line.operands.size() >= 2) {
-        uint16_t itype = entry->base & 0xFF00;
-        if ((itype == 0x0600 || itype == 0x0400) && can_use_quick()) {
-          words += InstructionTable::ExtWordCount(line.operands[1].mode, sz);
-          break;
-        }
-      }
-      for (const auto& op : line.operands)
-        words += InstructionTable::ExtWordCount(op.mode, sz);
+    case status::kInv8BitData:
+      code = ErrorCode::kInv8BitData;
       break;
-    }
-
-    case InstrEncoding::kAddrEa: {
-      if (line.operands.size() >= 2) {
-        uint16_t top = entry->base & 0xF000;
-        if ((top == 0xD000 || top == 0x9000) && can_use_quick()) {
-          words += InstructionTable::ExtWordCount(line.operands[1].mode, sz);
-          break;
-        }
-      }
-      for (const auto& op : line.operands)
-        words += InstructionTable::ExtWordCount(op.mode, sz);
+    case status::kInv16BitData:
+      code = ErrorCode::kInv16BitData;
       break;
-    }
-
+    case status::kInvShiftCount:
+      code = ErrorCode::kInvShiftCount;
+      break;
+    case status::kInvOpcode:
+      code = ErrorCode::kUnknownInstruction;
+      break;
+    case status::kUndefined:
+      code = ErrorCode::kUndefSymbol;
+      break;
+    case status::kInvForwardRef:
+      code = ErrorCode::kInvForwardRef;
+      break;
     default:
-      for (const auto& op : line.operands)
-        words += InstructionTable::ExtWordCount(op.mode, sz);
       break;
   }
-
-  return words * 2;
+  AddError(line_number, message, code,
+           status::IsError(st) ? ErrorSeverity::kError : ErrorSeverity::kWarning);
 }
 
 void Assembler::EmitByte(uint8_t b) {

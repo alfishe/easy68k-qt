@@ -1,0 +1,1621 @@
+MULU		ERROR: Invalid syntax
+MULU D1		ERROR: Comma expected
+MULU A2		ERROR: Comma expected
+MULU SP		ERROR: Comma expected
+MULU (A3)		ERROR: Comma expected
+MULU (A4)+		ERROR: Comma expected
+MULU -(A5)		ERROR: Comma expected
+MULU $10(A6)		ERROR: Comma expected
+MULU -2(A0)		ERROR: Comma expected
+MULU $10(A6,D7.W)		ERROR: Comma expected
+MULU $12(A0,A1.L)		ERROR: Comma expected
+MULU (A2,D3)		ERROR: Comma expected
+MULU $1234		ERROR: Comma expected
+MULU $12345678		ERROR: Comma expected
+MULU $1234.L		ERROR: Comma expected
+MULU $1234.W		ERROR: Comma expected
+MULU $8000		ERROR: Comma expected
+MULU BK		ERROR: Comma expected
+MULU FW		ERROR: Comma expected
+MULU *+$10(PC)		ERROR: Comma expected
+MULU *(PC,D0.W)		ERROR: Comma expected
+MULU BK(PC)		ERROR: Comma expected
+MULU #1		ERROR: Comma expected
+MULU #8		ERROR: Comma expected
+MULU #9		ERROR: Comma expected
+MULU #0		ERROR: Comma expected
+MULU #-1		ERROR: Comma expected
+MULU #$80		ERROR: Comma expected
+MULU #$1234		ERROR: Comma expected
+MULU #$12345678		ERROR: Comma expected
+MULU #$12345678.L		ERROR: Comma expected
+MULU #BK		ERROR: Comma expected
+MULU #FW		ERROR: Comma expected
+MULU #UNDEF		ERROR: Comma expected
+MULU UNDEF		ERROR: Comma expected
+MULU SR		ERROR: Comma expected
+MULU CCR		ERROR: Comma expected
+MULU USP		ERROR: Comma expected
+MULU D1,D1	C2C1	-
+MULU D1,A2		ERROR: Invalid addressing mode
+MULU D1,(A3)		ERROR: Invalid addressing mode
+MULU D1,(A4)+		ERROR: Invalid addressing mode
+MULU D1,-(A5)		ERROR: Invalid addressing mode
+MULU D1,$10(A6)		ERROR: Invalid addressing mode
+MULU D1,$10(A6,D7.W)		ERROR: Invalid addressing mode
+MULU D1,$1234		ERROR: Invalid addressing mode
+MULU D1,$12345678		ERROR: Invalid addressing mode
+MULU D1,FW		ERROR: Invalid addressing mode
+MULU D1,*+$10(PC)		ERROR: Invalid addressing mode
+MULU D1,#1		ERROR: Invalid addressing mode
+MULU D1,#$80		ERROR: Invalid addressing mode
+MULU D1,#$1234		ERROR: Invalid addressing mode
+MULU D1,#$12345678		ERROR: Invalid addressing mode
+MULU D1,SR		ERROR: Invalid addressing mode
+MULU D1,CCR		ERROR: Invalid addressing mode
+MULU D1,USP		ERROR: Invalid addressing mode
+MULU A2,D1		ERROR: Invalid addressing mode
+MULU A2,A2		ERROR: Invalid addressing mode
+MULU A2,(A3)		ERROR: Invalid addressing mode
+MULU A2,(A4)+		ERROR: Invalid addressing mode
+MULU A2,-(A5)		ERROR: Invalid addressing mode
+MULU A2,$10(A6)		ERROR: Invalid addressing mode
+MULU A2,$10(A6,D7.W)		ERROR: Invalid addressing mode
+MULU A2,$1234		ERROR: Invalid addressing mode
+MULU A2,$12345678		ERROR: Invalid addressing mode
+MULU A2,FW		ERROR: Invalid addressing mode
+MULU A2,*+$10(PC)		ERROR: Invalid addressing mode
+MULU A2,#1		ERROR: Invalid addressing mode
+MULU A2,#$80		ERROR: Invalid addressing mode
+MULU A2,#$1234		ERROR: Invalid addressing mode
+MULU A2,#$12345678		ERROR: Invalid addressing mode
+MULU A2,SR		ERROR: Invalid addressing mode
+MULU A2,CCR		ERROR: Invalid addressing mode
+MULU A2,USP		ERROR: Invalid addressing mode
+MULU (A3),D1	C2D3	-
+MULU (A3),A2		ERROR: Invalid addressing mode
+MULU (A3),(A3)		ERROR: Invalid addressing mode
+MULU (A3),(A4)+		ERROR: Invalid addressing mode
+MULU (A3),-(A5)		ERROR: Invalid addressing mode
+MULU (A3),$10(A6)		ERROR: Invalid addressing mode
+MULU (A3),$10(A6,D7.W)		ERROR: Invalid addressing mode
+MULU (A3),$1234		ERROR: Invalid addressing mode
+MULU (A3),$12345678		ERROR: Invalid addressing mode
+MULU (A3),FW		ERROR: Invalid addressing mode
+MULU (A3),*+$10(PC)		ERROR: Invalid addressing mode
+MULU (A3),#1		ERROR: Invalid addressing mode
+MULU (A3),#$80		ERROR: Invalid addressing mode
+MULU (A3),#$1234		ERROR: Invalid addressing mode
+MULU (A3),#$12345678		ERROR: Invalid addressing mode
+MULU (A3),SR		ERROR: Invalid addressing mode
+MULU (A3),CCR		ERROR: Invalid addressing mode
+MULU (A3),USP		ERROR: Invalid addressing mode
+MULU (A4)+,D1	C2DC	-
+MULU (A4)+,A2		ERROR: Invalid addressing mode
+MULU (A4)+,(A3)		ERROR: Invalid addressing mode
+MULU (A4)+,(A4)+		ERROR: Invalid addressing mode
+MULU (A4)+,-(A5)		ERROR: Invalid addressing mode
+MULU (A4)+,$10(A6)		ERROR: Invalid addressing mode
+MULU (A4)+,$10(A6,D7.W)		ERROR: Invalid addressing mode
+MULU (A4)+,$1234		ERROR: Invalid addressing mode
+MULU (A4)+,$12345678		ERROR: Invalid addressing mode
+MULU (A4)+,FW		ERROR: Invalid addressing mode
+MULU (A4)+,*+$10(PC)		ERROR: Invalid addressing mode
+MULU (A4)+,#1		ERROR: Invalid addressing mode
+MULU (A4)+,#$80		ERROR: Invalid addressing mode
+MULU (A4)+,#$1234		ERROR: Invalid addressing mode
+MULU (A4)+,#$12345678		ERROR: Invalid addressing mode
+MULU (A4)+,SR		ERROR: Invalid addressing mode
+MULU (A4)+,CCR		ERROR: Invalid addressing mode
+MULU (A4)+,USP		ERROR: Invalid addressing mode
+MULU -(A5),D1	C2E5	-
+MULU -(A5),A2		ERROR: Invalid addressing mode
+MULU -(A5),(A3)		ERROR: Invalid addressing mode
+MULU -(A5),(A4)+		ERROR: Invalid addressing mode
+MULU -(A5),-(A5)		ERROR: Invalid addressing mode
+MULU -(A5),$10(A6)		ERROR: Invalid addressing mode
+MULU -(A5),$10(A6,D7.W)		ERROR: Invalid addressing mode
+MULU -(A5),$1234		ERROR: Invalid addressing mode
+MULU -(A5),$12345678		ERROR: Invalid addressing mode
+MULU -(A5),FW		ERROR: Invalid addressing mode
+MULU -(A5),*+$10(PC)		ERROR: Invalid addressing mode
+MULU -(A5),#1		ERROR: Invalid addressing mode
+MULU -(A5),#$80		ERROR: Invalid addressing mode
+MULU -(A5),#$1234		ERROR: Invalid addressing mode
+MULU -(A5),#$12345678		ERROR: Invalid addressing mode
+MULU -(A5),SR		ERROR: Invalid addressing mode
+MULU -(A5),CCR		ERROR: Invalid addressing mode
+MULU -(A5),USP		ERROR: Invalid addressing mode
+MULU $10(A6),D1	C2EE0010	-
+MULU $10(A6),A2		ERROR: Invalid addressing mode
+MULU $10(A6),(A3)		ERROR: Invalid addressing mode
+MULU $10(A6),(A4)+		ERROR: Invalid addressing mode
+MULU $10(A6),-(A5)		ERROR: Invalid addressing mode
+MULU $10(A6),$10(A6)		ERROR: Invalid addressing mode
+MULU $10(A6),$10(A6,D7.W)		ERROR: Invalid addressing mode
+MULU $10(A6),$1234		ERROR: Invalid addressing mode
+MULU $10(A6),$12345678		ERROR: Invalid addressing mode
+MULU $10(A6),FW		ERROR: Invalid addressing mode
+MULU $10(A6),*+$10(PC)		ERROR: Invalid addressing mode
+MULU $10(A6),#1		ERROR: Invalid addressing mode
+MULU $10(A6),#$80		ERROR: Invalid addressing mode
+MULU $10(A6),#$1234		ERROR: Invalid addressing mode
+MULU $10(A6),#$12345678		ERROR: Invalid addressing mode
+MULU $10(A6),SR		ERROR: Invalid addressing mode
+MULU $10(A6),CCR		ERROR: Invalid addressing mode
+MULU $10(A6),USP		ERROR: Invalid addressing mode
+MULU $10(A6,D7.W),D1	C2F67010	-
+MULU $10(A6,D7.W),A2		ERROR: Invalid addressing mode
+MULU $10(A6,D7.W),(A3)		ERROR: Invalid addressing mode
+MULU $10(A6,D7.W),(A4)+		ERROR: Invalid addressing mode
+MULU $10(A6,D7.W),-(A5)		ERROR: Invalid addressing mode
+MULU $10(A6,D7.W),$10(A6)		ERROR: Invalid addressing mode
+MULU $10(A6,D7.W),$10(A6,D7.W)		ERROR: Invalid addressing mode
+MULU $10(A6,D7.W),$1234		ERROR: Invalid addressing mode
+MULU $10(A6,D7.W),$12345678		ERROR: Invalid addressing mode
+MULU $10(A6,D7.W),FW		ERROR: Invalid addressing mode
+MULU $10(A6,D7.W),*+$10(PC)		ERROR: Invalid addressing mode
+MULU $10(A6,D7.W),#1		ERROR: Invalid addressing mode
+MULU $10(A6,D7.W),#$80		ERROR: Invalid addressing mode
+MULU $10(A6,D7.W),#$1234		ERROR: Invalid addressing mode
+MULU $10(A6,D7.W),#$12345678		ERROR: Invalid addressing mode
+MULU $10(A6,D7.W),SR		ERROR: Invalid addressing mode
+MULU $10(A6,D7.W),CCR		ERROR: Invalid addressing mode
+MULU $10(A6,D7.W),USP		ERROR: Invalid addressing mode
+MULU $1234,D1	C2F81234	-
+MULU $1234,A2		ERROR: Invalid addressing mode
+MULU $1234,(A3)		ERROR: Invalid addressing mode
+MULU $1234,(A4)+		ERROR: Invalid addressing mode
+MULU $1234,-(A5)		ERROR: Invalid addressing mode
+MULU $1234,$10(A6)		ERROR: Invalid addressing mode
+MULU $1234,$10(A6,D7.W)		ERROR: Invalid addressing mode
+MULU $1234,$1234		ERROR: Invalid addressing mode
+MULU $1234,$12345678		ERROR: Invalid addressing mode
+MULU $1234,FW		ERROR: Invalid addressing mode
+MULU $1234,*+$10(PC)		ERROR: Invalid addressing mode
+MULU $1234,#1		ERROR: Invalid addressing mode
+MULU $1234,#$80		ERROR: Invalid addressing mode
+MULU $1234,#$1234		ERROR: Invalid addressing mode
+MULU $1234,#$12345678		ERROR: Invalid addressing mode
+MULU $1234,SR		ERROR: Invalid addressing mode
+MULU $1234,CCR		ERROR: Invalid addressing mode
+MULU $1234,USP		ERROR: Invalid addressing mode
+MULU $12345678,D1	C2F912345678	-
+MULU $12345678,A2		ERROR: Invalid addressing mode
+MULU $12345678,(A3)		ERROR: Invalid addressing mode
+MULU $12345678,(A4)+		ERROR: Invalid addressing mode
+MULU $12345678,-(A5)		ERROR: Invalid addressing mode
+MULU $12345678,$10(A6)		ERROR: Invalid addressing mode
+MULU $12345678,$10(A6,D7.W)		ERROR: Invalid addressing mode
+MULU $12345678,$1234		ERROR: Invalid addressing mode
+MULU $12345678,$12345678		ERROR: Invalid addressing mode
+MULU $12345678,FW		ERROR: Invalid addressing mode
+MULU $12345678,*+$10(PC)		ERROR: Invalid addressing mode
+MULU $12345678,#1		ERROR: Invalid addressing mode
+MULU $12345678,#$80		ERROR: Invalid addressing mode
+MULU $12345678,#$1234		ERROR: Invalid addressing mode
+MULU $12345678,#$12345678		ERROR: Invalid addressing mode
+MULU $12345678,SR		ERROR: Invalid addressing mode
+MULU $12345678,CCR		ERROR: Invalid addressing mode
+MULU $12345678,USP		ERROR: Invalid addressing mode
+MULU FW,D1	C2F900001F00	-
+MULU FW,A2		ERROR: Invalid addressing mode
+MULU FW,(A3)		ERROR: Invalid addressing mode
+MULU FW,(A4)+		ERROR: Invalid addressing mode
+MULU FW,-(A5)		ERROR: Invalid addressing mode
+MULU FW,$10(A6)		ERROR: Invalid addressing mode
+MULU FW,$10(A6,D7.W)		ERROR: Invalid addressing mode
+MULU FW,$1234		ERROR: Invalid addressing mode
+MULU FW,$12345678		ERROR: Invalid addressing mode
+MULU FW,FW		ERROR: Invalid addressing mode
+MULU FW,*+$10(PC)		ERROR: Invalid addressing mode
+MULU FW,#1		ERROR: Invalid addressing mode
+MULU FW,#$80		ERROR: Invalid addressing mode
+MULU FW,#$1234		ERROR: Invalid addressing mode
+MULU FW,#$12345678		ERROR: Invalid addressing mode
+MULU FW,SR		ERROR: Invalid addressing mode
+MULU FW,CCR		ERROR: Invalid addressing mode
+MULU FW,USP		ERROR: Invalid addressing mode
+MULU *+$10(PC),D1	C2FA000E	-
+MULU *+$10(PC),A2		ERROR: Invalid addressing mode
+MULU *+$10(PC),(A3)		ERROR: Invalid addressing mode
+MULU *+$10(PC),(A4)+		ERROR: Invalid addressing mode
+MULU *+$10(PC),-(A5)		ERROR: Invalid addressing mode
+MULU *+$10(PC),$10(A6)		ERROR: Invalid addressing mode
+MULU *+$10(PC),$10(A6,D7.W)		ERROR: Invalid addressing mode
+MULU *+$10(PC),$1234		ERROR: Invalid addressing mode
+MULU *+$10(PC),$12345678		ERROR: Invalid addressing mode
+MULU *+$10(PC),FW		ERROR: Invalid addressing mode
+MULU *+$10(PC),*+$10(PC)		ERROR: Invalid addressing mode
+MULU *+$10(PC),#1		ERROR: Invalid addressing mode
+MULU *+$10(PC),#$80		ERROR: Invalid addressing mode
+MULU *+$10(PC),#$1234		ERROR: Invalid addressing mode
+MULU *+$10(PC),#$12345678		ERROR: Invalid addressing mode
+MULU *+$10(PC),SR		ERROR: Invalid addressing mode
+MULU *+$10(PC),CCR		ERROR: Invalid addressing mode
+MULU *+$10(PC),USP		ERROR: Invalid addressing mode
+MULU #1,D1	C2FC0001	-
+MULU #1,A2		ERROR: Invalid addressing mode
+MULU #1,(A3)		ERROR: Invalid addressing mode
+MULU #1,(A4)+		ERROR: Invalid addressing mode
+MULU #1,-(A5)		ERROR: Invalid addressing mode
+MULU #1,$10(A6)		ERROR: Invalid addressing mode
+MULU #1,$10(A6,D7.W)		ERROR: Invalid addressing mode
+MULU #1,$1234		ERROR: Invalid addressing mode
+MULU #1,$12345678		ERROR: Invalid addressing mode
+MULU #1,FW		ERROR: Invalid addressing mode
+MULU #1,*+$10(PC)		ERROR: Invalid addressing mode
+MULU #1,#1		ERROR: Invalid addressing mode
+MULU #1,#$80		ERROR: Invalid addressing mode
+MULU #1,#$1234		ERROR: Invalid addressing mode
+MULU #1,#$12345678		ERROR: Invalid addressing mode
+MULU #1,SR		ERROR: Invalid addressing mode
+MULU #1,CCR		ERROR: Invalid addressing mode
+MULU #1,USP		ERROR: Invalid addressing mode
+MULU #$80,D1	C2FC0080	-
+MULU #$80,A2		ERROR: Invalid addressing mode
+MULU #$80,(A3)		ERROR: Invalid addressing mode
+MULU #$80,(A4)+		ERROR: Invalid addressing mode
+MULU #$80,-(A5)		ERROR: Invalid addressing mode
+MULU #$80,$10(A6)		ERROR: Invalid addressing mode
+MULU #$80,$10(A6,D7.W)		ERROR: Invalid addressing mode
+MULU #$80,$1234		ERROR: Invalid addressing mode
+MULU #$80,$12345678		ERROR: Invalid addressing mode
+MULU #$80,FW		ERROR: Invalid addressing mode
+MULU #$80,*+$10(PC)		ERROR: Invalid addressing mode
+MULU #$80,#1		ERROR: Invalid addressing mode
+MULU #$80,#$80		ERROR: Invalid addressing mode
+MULU #$80,#$1234		ERROR: Invalid addressing mode
+MULU #$80,#$12345678		ERROR: Invalid addressing mode
+MULU #$80,SR		ERROR: Invalid addressing mode
+MULU #$80,CCR		ERROR: Invalid addressing mode
+MULU #$80,USP		ERROR: Invalid addressing mode
+MULU #$1234,D1	C2FC1234	-
+MULU #$1234,A2		ERROR: Invalid addressing mode
+MULU #$1234,(A3)		ERROR: Invalid addressing mode
+MULU #$1234,(A4)+		ERROR: Invalid addressing mode
+MULU #$1234,-(A5)		ERROR: Invalid addressing mode
+MULU #$1234,$10(A6)		ERROR: Invalid addressing mode
+MULU #$1234,$10(A6,D7.W)		ERROR: Invalid addressing mode
+MULU #$1234,$1234		ERROR: Invalid addressing mode
+MULU #$1234,$12345678		ERROR: Invalid addressing mode
+MULU #$1234,FW		ERROR: Invalid addressing mode
+MULU #$1234,*+$10(PC)		ERROR: Invalid addressing mode
+MULU #$1234,#1		ERROR: Invalid addressing mode
+MULU #$1234,#$80		ERROR: Invalid addressing mode
+MULU #$1234,#$1234		ERROR: Invalid addressing mode
+MULU #$1234,#$12345678		ERROR: Invalid addressing mode
+MULU #$1234,SR		ERROR: Invalid addressing mode
+MULU #$1234,CCR		ERROR: Invalid addressing mode
+MULU #$1234,USP		ERROR: Invalid addressing mode
+MULU #$12345678,D1	C2FC5678	ERROR: Immediate data exceeds 16 bits
+MULU #$12345678,A2		ERROR: Invalid addressing mode
+MULU #$12345678,(A3)		ERROR: Invalid addressing mode
+MULU #$12345678,(A4)+		ERROR: Invalid addressing mode
+MULU #$12345678,-(A5)		ERROR: Invalid addressing mode
+MULU #$12345678,$10(A6)		ERROR: Invalid addressing mode
+MULU #$12345678,$10(A6,D7.W)		ERROR: Invalid addressing mode
+MULU #$12345678,$1234		ERROR: Invalid addressing mode
+MULU #$12345678,$12345678		ERROR: Invalid addressing mode
+MULU #$12345678,FW		ERROR: Invalid addressing mode
+MULU #$12345678,*+$10(PC)		ERROR: Invalid addressing mode
+MULU #$12345678,#1		ERROR: Invalid addressing mode
+MULU #$12345678,#$80		ERROR: Invalid addressing mode
+MULU #$12345678,#$1234		ERROR: Invalid addressing mode
+MULU #$12345678,#$12345678		ERROR: Invalid addressing mode
+MULU #$12345678,SR		ERROR: Invalid addressing mode
+MULU #$12345678,CCR		ERROR: Invalid addressing mode
+MULU #$12345678,USP		ERROR: Invalid addressing mode
+MULU SR,D1		ERROR: Invalid addressing mode
+MULU SR,A2		ERROR: Invalid addressing mode
+MULU SR,(A3)		ERROR: Invalid addressing mode
+MULU SR,(A4)+		ERROR: Invalid addressing mode
+MULU SR,-(A5)		ERROR: Invalid addressing mode
+MULU SR,$10(A6)		ERROR: Invalid addressing mode
+MULU SR,$10(A6,D7.W)		ERROR: Invalid addressing mode
+MULU SR,$1234		ERROR: Invalid addressing mode
+MULU SR,$12345678		ERROR: Invalid addressing mode
+MULU SR,FW		ERROR: Invalid addressing mode
+MULU SR,*+$10(PC)		ERROR: Invalid addressing mode
+MULU SR,#1		ERROR: Invalid addressing mode
+MULU SR,#$80		ERROR: Invalid addressing mode
+MULU SR,#$1234		ERROR: Invalid addressing mode
+MULU SR,#$12345678		ERROR: Invalid addressing mode
+MULU SR,SR		ERROR: Invalid addressing mode
+MULU SR,CCR		ERROR: Invalid addressing mode
+MULU SR,USP		ERROR: Invalid addressing mode
+MULU CCR,D1		ERROR: Invalid addressing mode
+MULU CCR,A2		ERROR: Invalid addressing mode
+MULU CCR,(A3)		ERROR: Invalid addressing mode
+MULU CCR,(A4)+		ERROR: Invalid addressing mode
+MULU CCR,-(A5)		ERROR: Invalid addressing mode
+MULU CCR,$10(A6)		ERROR: Invalid addressing mode
+MULU CCR,$10(A6,D7.W)		ERROR: Invalid addressing mode
+MULU CCR,$1234		ERROR: Invalid addressing mode
+MULU CCR,$12345678		ERROR: Invalid addressing mode
+MULU CCR,FW		ERROR: Invalid addressing mode
+MULU CCR,*+$10(PC)		ERROR: Invalid addressing mode
+MULU CCR,#1		ERROR: Invalid addressing mode
+MULU CCR,#$80		ERROR: Invalid addressing mode
+MULU CCR,#$1234		ERROR: Invalid addressing mode
+MULU CCR,#$12345678		ERROR: Invalid addressing mode
+MULU CCR,SR		ERROR: Invalid addressing mode
+MULU CCR,CCR		ERROR: Invalid addressing mode
+MULU CCR,USP		ERROR: Invalid addressing mode
+MULU USP,D1		ERROR: Invalid addressing mode
+MULU USP,A2		ERROR: Invalid addressing mode
+MULU USP,(A3)		ERROR: Invalid addressing mode
+MULU USP,(A4)+		ERROR: Invalid addressing mode
+MULU USP,-(A5)		ERROR: Invalid addressing mode
+MULU USP,$10(A6)		ERROR: Invalid addressing mode
+MULU USP,$10(A6,D7.W)		ERROR: Invalid addressing mode
+MULU USP,$1234		ERROR: Invalid addressing mode
+MULU USP,$12345678		ERROR: Invalid addressing mode
+MULU USP,FW		ERROR: Invalid addressing mode
+MULU USP,*+$10(PC)		ERROR: Invalid addressing mode
+MULU USP,#1		ERROR: Invalid addressing mode
+MULU USP,#$80		ERROR: Invalid addressing mode
+MULU USP,#$1234		ERROR: Invalid addressing mode
+MULU USP,#$12345678		ERROR: Invalid addressing mode
+MULU USP,SR		ERROR: Invalid addressing mode
+MULU USP,CCR		ERROR: Invalid addressing mode
+MULU USP,USP		ERROR: Invalid addressing mode
+MULU SP,D1		ERROR: Invalid addressing mode
+MULU SP,A2		ERROR: Invalid addressing mode
+MULU D1,SP		ERROR: Invalid addressing mode
+MULU #$12,SP		ERROR: Invalid addressing mode
+MULU -2(A0),D1	C2E8FFFE	-
+MULU -2(A0),A2		ERROR: Invalid addressing mode
+MULU D1,-2(A0)		ERROR: Invalid addressing mode
+MULU #$12,-2(A0)		ERROR: Invalid addressing mode
+MULU $12(A0,A1.L),D1	C2F09812	-
+MULU $12(A0,A1.L),A2		ERROR: Invalid addressing mode
+MULU D1,$12(A0,A1.L)		ERROR: Invalid addressing mode
+MULU #$12,$12(A0,A1.L)		ERROR: Invalid addressing mode
+MULU (A2,D3),D1	C2F23000	-
+MULU (A2,D3),A2		ERROR: Invalid addressing mode
+MULU D1,(A2,D3)		ERROR: Invalid addressing mode
+MULU #$12,(A2,D3)		ERROR: Invalid addressing mode
+MULU $1234.L,D1	C2F900001234	-
+MULU $1234.L,A2		ERROR: Invalid addressing mode
+MULU D1,$1234.L		ERROR: Invalid addressing mode
+MULU #$12,$1234.L		ERROR: Invalid addressing mode
+MULU $1234.W,D1	C2F81234	WARNING: Forcing SHORT addressing disables range checking of extension word
+MULU $1234.W,A2		ERROR: Invalid addressing mode
+MULU D1,$1234.W		ERROR: Invalid addressing mode
+MULU #$12,$1234.W		ERROR: Invalid addressing mode
+MULU $8000,D1	C2F900008000	-
+MULU $8000,A2		ERROR: Invalid addressing mode
+MULU D1,$8000		ERROR: Invalid addressing mode
+MULU #$12,$8000		ERROR: Invalid addressing mode
+MULU BK,D1	C2F81F00	-
+MULU BK,A2		ERROR: Invalid addressing mode
+MULU D1,BK		ERROR: Invalid addressing mode
+MULU #$12,BK		ERROR: Invalid addressing mode
+MULU *(PC,D0.W),D1	C2FB00FE	-
+MULU *(PC,D0.W),A2		ERROR: Invalid addressing mode
+MULU D1,*(PC,D0.W)		ERROR: Invalid addressing mode
+MULU #$12,*(PC,D0.W)		ERROR: Invalid addressing mode
+MULU BK(PC),D1	C2FA0EFE	-
+MULU BK(PC),A2		ERROR: Invalid addressing mode
+MULU D1,BK(PC)		ERROR: Invalid addressing mode
+MULU #$12,BK(PC)		ERROR: Invalid addressing mode
+MULU #8,D1	C2FC0008	-
+MULU #8,A2		ERROR: Invalid addressing mode
+MULU D1,#8		ERROR: Invalid addressing mode
+MULU #$12,#8		ERROR: Invalid addressing mode
+MULU #9,D1	C2FC0009	-
+MULU #9,A2		ERROR: Invalid addressing mode
+MULU D1,#9		ERROR: Invalid addressing mode
+MULU #$12,#9		ERROR: Invalid addressing mode
+MULU #0,D1	C2FC0000	-
+MULU #0,A2		ERROR: Invalid addressing mode
+MULU D1,#0		ERROR: Invalid addressing mode
+MULU #$12,#0		ERROR: Invalid addressing mode
+MULU #-1,D1	C2FCFFFF	-
+MULU #-1,A2		ERROR: Invalid addressing mode
+MULU D1,#-1		ERROR: Invalid addressing mode
+MULU #$12,#-1		ERROR: Invalid addressing mode
+MULU #$12345678.L,D1	C2FC5678	ERROR: Immediate data exceeds 16 bits
+MULU #$12345678.L,A2		ERROR: Invalid addressing mode
+MULU D1,#$12345678.L		ERROR: Invalid addressing mode
+MULU #$12,#$12345678.L		ERROR: Invalid addressing mode
+MULU #BK,D1	C2FC1F00	-
+MULU #BK,A2		ERROR: Invalid addressing mode
+MULU D1,#BK		ERROR: Invalid addressing mode
+MULU #$12,#BK		ERROR: Invalid addressing mode
+MULU #FW,D1	C2FC1F00	-
+MULU #FW,A2		ERROR: Invalid addressing mode
+MULU D1,#FW		ERROR: Invalid addressing mode
+MULU #$12,#FW		ERROR: Invalid addressing mode
+MULU #UNDEF,D1	C2FC5601	ERROR: Undefined symbol
+MULU #UNDEF,A2		ERROR: Invalid addressing mode
+MULU D1,#UNDEF		ERROR: Invalid addressing mode
+MULU #$12,#UNDEF		ERROR: Invalid addressing mode
+MULU UNDEF,D1	C2F900005601	ERROR: Undefined symbol
+MULU UNDEF,A2		ERROR: Invalid addressing mode
+MULU D1,UNDEF		ERROR: Invalid addressing mode
+MULU #$12,UNDEF		ERROR: Invalid addressing mode
+MULU D1,D2,D3		ERROR: Invalid syntax
+MULU.B		ERROR: Invalid syntax
+MULU.B D1		ERROR: Comma expected
+MULU.B A2		ERROR: Comma expected
+MULU.B SP		ERROR: Comma expected
+MULU.B (A3)		ERROR: Comma expected
+MULU.B (A4)+		ERROR: Comma expected
+MULU.B -(A5)		ERROR: Comma expected
+MULU.B $10(A6)		ERROR: Comma expected
+MULU.B -2(A0)		ERROR: Comma expected
+MULU.B $10(A6,D7.W)		ERROR: Comma expected
+MULU.B $12(A0,A1.L)		ERROR: Comma expected
+MULU.B (A2,D3)		ERROR: Comma expected
+MULU.B $1234		ERROR: Comma expected
+MULU.B $12345678		ERROR: Comma expected
+MULU.B $1234.L		ERROR: Comma expected
+MULU.B $1234.W		ERROR: Comma expected
+MULU.B $8000		ERROR: Comma expected
+MULU.B BK		ERROR: Comma expected
+MULU.B FW		ERROR: Comma expected
+MULU.B *+$10(PC)		ERROR: Comma expected
+MULU.B *(PC,D0.W)		ERROR: Comma expected
+MULU.B BK(PC)		ERROR: Comma expected
+MULU.B #1		ERROR: Comma expected
+MULU.B #8		ERROR: Comma expected
+MULU.B #9		ERROR: Comma expected
+MULU.B #0		ERROR: Comma expected
+MULU.B #-1		ERROR: Comma expected
+MULU.B #$80		ERROR: Comma expected
+MULU.B #$1234		ERROR: Comma expected
+MULU.B #$12345678		ERROR: Comma expected
+MULU.B #$12345678.L		ERROR: Comma expected
+MULU.B #BK		ERROR: Comma expected
+MULU.B #FW		ERROR: Comma expected
+MULU.B #UNDEF		ERROR: Comma expected
+MULU.B UNDEF		ERROR: Comma expected
+MULU.B SR		ERROR: Comma expected
+MULU.B CCR		ERROR: Comma expected
+MULU.B USP		ERROR: Comma expected
+MULU.B D1,D1	C2C1	ERROR: Invalid size code
+MULU.B D1,A2		ERROR: Invalid addressing mode
+MULU.B D1,(A3)		ERROR: Invalid addressing mode
+MULU.B D1,$10(A6)		ERROR: Invalid addressing mode
+MULU.B D1,$1234		ERROR: Invalid addressing mode
+MULU.B D1,FW		ERROR: Invalid addressing mode
+MULU.B D1,#1		ERROR: Invalid addressing mode
+MULU.B D1,#$1234		ERROR: Invalid addressing mode
+MULU.B D1,CCR		ERROR: Invalid addressing mode
+MULU.B D1,SR		ERROR: Invalid addressing mode
+MULU.B A2,D1		ERROR: Invalid addressing mode
+MULU.B A2,A2		ERROR: Invalid addressing mode
+MULU.B A2,(A3)		ERROR: Invalid addressing mode
+MULU.B A2,$10(A6)		ERROR: Invalid addressing mode
+MULU.B A2,$1234		ERROR: Invalid addressing mode
+MULU.B A2,FW		ERROR: Invalid addressing mode
+MULU.B A2,#1		ERROR: Invalid addressing mode
+MULU.B A2,#$1234		ERROR: Invalid addressing mode
+MULU.B A2,CCR		ERROR: Invalid addressing mode
+MULU.B A2,SR		ERROR: Invalid addressing mode
+MULU.B (A3),D1	C2D3	ERROR: Invalid size code
+MULU.B (A3),A2		ERROR: Invalid addressing mode
+MULU.B (A3),(A3)		ERROR: Invalid addressing mode
+MULU.B (A3),$10(A6)		ERROR: Invalid addressing mode
+MULU.B (A3),$1234		ERROR: Invalid addressing mode
+MULU.B (A3),FW		ERROR: Invalid addressing mode
+MULU.B (A3),#1		ERROR: Invalid addressing mode
+MULU.B (A3),#$1234		ERROR: Invalid addressing mode
+MULU.B (A3),CCR		ERROR: Invalid addressing mode
+MULU.B (A3),SR		ERROR: Invalid addressing mode
+MULU.B $10(A6),D1	C2EE0010	ERROR: Invalid size code
+MULU.B $10(A6),A2		ERROR: Invalid addressing mode
+MULU.B $10(A6),(A3)		ERROR: Invalid addressing mode
+MULU.B $10(A6),$10(A6)		ERROR: Invalid addressing mode
+MULU.B $10(A6),$1234		ERROR: Invalid addressing mode
+MULU.B $10(A6),FW		ERROR: Invalid addressing mode
+MULU.B $10(A6),#1		ERROR: Invalid addressing mode
+MULU.B $10(A6),#$1234		ERROR: Invalid addressing mode
+MULU.B $10(A6),CCR		ERROR: Invalid addressing mode
+MULU.B $10(A6),SR		ERROR: Invalid addressing mode
+MULU.B $1234,D1	C2F81234	ERROR: Invalid size code
+MULU.B $1234,A2		ERROR: Invalid addressing mode
+MULU.B $1234,(A3)		ERROR: Invalid addressing mode
+MULU.B $1234,$10(A6)		ERROR: Invalid addressing mode
+MULU.B $1234,$1234		ERROR: Invalid addressing mode
+MULU.B $1234,FW		ERROR: Invalid addressing mode
+MULU.B $1234,#1		ERROR: Invalid addressing mode
+MULU.B $1234,#$1234		ERROR: Invalid addressing mode
+MULU.B $1234,CCR		ERROR: Invalid addressing mode
+MULU.B $1234,SR		ERROR: Invalid addressing mode
+MULU.B FW,D1	C2F900001F00	ERROR: Invalid size code
+MULU.B FW,A2		ERROR: Invalid addressing mode
+MULU.B FW,(A3)		ERROR: Invalid addressing mode
+MULU.B FW,$10(A6)		ERROR: Invalid addressing mode
+MULU.B FW,$1234		ERROR: Invalid addressing mode
+MULU.B FW,FW		ERROR: Invalid addressing mode
+MULU.B FW,#1		ERROR: Invalid addressing mode
+MULU.B FW,#$1234		ERROR: Invalid addressing mode
+MULU.B FW,CCR		ERROR: Invalid addressing mode
+MULU.B FW,SR		ERROR: Invalid addressing mode
+MULU.B #1,D1	C2FC0001	ERROR: Invalid size code
+MULU.B #1,A2		ERROR: Invalid addressing mode
+MULU.B #1,(A3)		ERROR: Invalid addressing mode
+MULU.B #1,$10(A6)		ERROR: Invalid addressing mode
+MULU.B #1,$1234		ERROR: Invalid addressing mode
+MULU.B #1,FW		ERROR: Invalid addressing mode
+MULU.B #1,#1		ERROR: Invalid addressing mode
+MULU.B #1,#$1234		ERROR: Invalid addressing mode
+MULU.B #1,CCR		ERROR: Invalid addressing mode
+MULU.B #1,SR		ERROR: Invalid addressing mode
+MULU.B #$1234,D1	C2FC0034	ERROR: Invalid size code
+MULU.B #$1234,A2		ERROR: Invalid addressing mode
+MULU.B #$1234,(A3)		ERROR: Invalid addressing mode
+MULU.B #$1234,$10(A6)		ERROR: Invalid addressing mode
+MULU.B #$1234,$1234		ERROR: Invalid addressing mode
+MULU.B #$1234,FW		ERROR: Invalid addressing mode
+MULU.B #$1234,#1		ERROR: Invalid addressing mode
+MULU.B #$1234,#$1234		ERROR: Invalid addressing mode
+MULU.B #$1234,CCR		ERROR: Invalid addressing mode
+MULU.B #$1234,SR		ERROR: Invalid addressing mode
+MULU.B CCR,D1		ERROR: Invalid addressing mode
+MULU.B CCR,A2		ERROR: Invalid addressing mode
+MULU.B CCR,(A3)		ERROR: Invalid addressing mode
+MULU.B CCR,$10(A6)		ERROR: Invalid addressing mode
+MULU.B CCR,$1234		ERROR: Invalid addressing mode
+MULU.B CCR,FW		ERROR: Invalid addressing mode
+MULU.B CCR,#1		ERROR: Invalid addressing mode
+MULU.B CCR,#$1234		ERROR: Invalid addressing mode
+MULU.B CCR,CCR		ERROR: Invalid addressing mode
+MULU.B CCR,SR		ERROR: Invalid addressing mode
+MULU.B SR,D1		ERROR: Invalid addressing mode
+MULU.B SR,A2		ERROR: Invalid addressing mode
+MULU.B SR,(A3)		ERROR: Invalid addressing mode
+MULU.B SR,$10(A6)		ERROR: Invalid addressing mode
+MULU.B SR,$1234		ERROR: Invalid addressing mode
+MULU.B SR,FW		ERROR: Invalid addressing mode
+MULU.B SR,#1		ERROR: Invalid addressing mode
+MULU.B SR,#$1234		ERROR: Invalid addressing mode
+MULU.B SR,CCR		ERROR: Invalid addressing mode
+MULU.B SR,SR		ERROR: Invalid addressing mode
+MULU.B SP,D1		ERROR: Invalid addressing mode
+MULU.B SP,A2		ERROR: Invalid addressing mode
+MULU.B D1,SP		ERROR: Invalid addressing mode
+MULU.B #$12,SP		ERROR: Invalid addressing mode
+MULU.B (A4)+,D1	C2DC	ERROR: Invalid size code
+MULU.B (A4)+,A2		ERROR: Invalid addressing mode
+MULU.B D1,(A4)+		ERROR: Invalid addressing mode
+MULU.B #$12,(A4)+		ERROR: Invalid addressing mode
+MULU.B -(A5),D1	C2E5	ERROR: Invalid size code
+MULU.B -(A5),A2		ERROR: Invalid addressing mode
+MULU.B D1,-(A5)		ERROR: Invalid addressing mode
+MULU.B #$12,-(A5)		ERROR: Invalid addressing mode
+MULU.B -2(A0),D1	C2E8FFFE	ERROR: Invalid size code
+MULU.B -2(A0),A2		ERROR: Invalid addressing mode
+MULU.B D1,-2(A0)		ERROR: Invalid addressing mode
+MULU.B #$12,-2(A0)		ERROR: Invalid addressing mode
+MULU.B $10(A6,D7.W),D1	C2F67010	ERROR: Invalid size code
+MULU.B $10(A6,D7.W),A2		ERROR: Invalid addressing mode
+MULU.B D1,$10(A6,D7.W)		ERROR: Invalid addressing mode
+MULU.B #$12,$10(A6,D7.W)		ERROR: Invalid addressing mode
+MULU.B $12(A0,A1.L),D1	C2F09812	ERROR: Invalid size code
+MULU.B $12(A0,A1.L),A2		ERROR: Invalid addressing mode
+MULU.B D1,$12(A0,A1.L)		ERROR: Invalid addressing mode
+MULU.B #$12,$12(A0,A1.L)		ERROR: Invalid addressing mode
+MULU.B (A2,D3),D1	C2F23000	ERROR: Invalid size code
+MULU.B (A2,D3),A2		ERROR: Invalid addressing mode
+MULU.B D1,(A2,D3)		ERROR: Invalid addressing mode
+MULU.B #$12,(A2,D3)		ERROR: Invalid addressing mode
+MULU.B $12345678,D1	C2F912345678	ERROR: Invalid size code
+MULU.B $12345678,A2		ERROR: Invalid addressing mode
+MULU.B D1,$12345678		ERROR: Invalid addressing mode
+MULU.B #$12,$12345678		ERROR: Invalid addressing mode
+MULU.B $1234.L,D1	C2F900001234	ERROR: Invalid size code
+MULU.B $1234.L,A2		ERROR: Invalid addressing mode
+MULU.B D1,$1234.L		ERROR: Invalid addressing mode
+MULU.B #$12,$1234.L		ERROR: Invalid addressing mode
+MULU.B $1234.W,D1	C2F81234	ERROR: Invalid size code
+MULU.B $1234.W,A2		ERROR: Invalid addressing mode
+MULU.B D1,$1234.W		ERROR: Invalid addressing mode
+MULU.B #$12,$1234.W		ERROR: Invalid addressing mode
+MULU.B $8000,D1	C2F900008000	ERROR: Invalid size code
+MULU.B $8000,A2		ERROR: Invalid addressing mode
+MULU.B D1,$8000		ERROR: Invalid addressing mode
+MULU.B #$12,$8000		ERROR: Invalid addressing mode
+MULU.B BK,D1	C2F81F00	ERROR: Invalid size code
+MULU.B BK,A2		ERROR: Invalid addressing mode
+MULU.B D1,BK		ERROR: Invalid addressing mode
+MULU.B #$12,BK		ERROR: Invalid addressing mode
+MULU.B *+$10(PC),D1	C2FA000E	ERROR: Invalid size code
+MULU.B *+$10(PC),A2		ERROR: Invalid addressing mode
+MULU.B D1,*+$10(PC)		ERROR: Invalid addressing mode
+MULU.B #$12,*+$10(PC)		ERROR: Invalid addressing mode
+MULU.B *(PC,D0.W),D1	C2FB00FE	ERROR: Invalid size code
+MULU.B *(PC,D0.W),A2		ERROR: Invalid addressing mode
+MULU.B D1,*(PC,D0.W)		ERROR: Invalid addressing mode
+MULU.B #$12,*(PC,D0.W)		ERROR: Invalid addressing mode
+MULU.B BK(PC),D1	C2FA0EFE	ERROR: Invalid size code
+MULU.B BK(PC),A2		ERROR: Invalid addressing mode
+MULU.B D1,BK(PC)		ERROR: Invalid addressing mode
+MULU.B #$12,BK(PC)		ERROR: Invalid addressing mode
+MULU.B #8,D1	C2FC0008	ERROR: Invalid size code
+MULU.B #8,A2		ERROR: Invalid addressing mode
+MULU.B D1,#8		ERROR: Invalid addressing mode
+MULU.B #$12,#8		ERROR: Invalid addressing mode
+MULU.B #9,D1	C2FC0009	ERROR: Invalid size code
+MULU.B #9,A2		ERROR: Invalid addressing mode
+MULU.B D1,#9		ERROR: Invalid addressing mode
+MULU.B #$12,#9		ERROR: Invalid addressing mode
+MULU.B #0,D1	C2FC0000	ERROR: Invalid size code
+MULU.B #0,A2		ERROR: Invalid addressing mode
+MULU.B D1,#0		ERROR: Invalid addressing mode
+MULU.B #$12,#0		ERROR: Invalid addressing mode
+MULU.B #-1,D1	C2FC00FF	ERROR: Invalid size code
+MULU.B #-1,A2		ERROR: Invalid addressing mode
+MULU.B D1,#-1		ERROR: Invalid addressing mode
+MULU.B #$12,#-1		ERROR: Invalid addressing mode
+MULU.B #$80,D1	C2FC0080	ERROR: Invalid size code
+MULU.B #$80,A2		ERROR: Invalid addressing mode
+MULU.B D1,#$80		ERROR: Invalid addressing mode
+MULU.B #$12,#$80		ERROR: Invalid addressing mode
+MULU.B #$12345678,D1	C2FC0078	ERROR: Invalid size code
+MULU.B #$12345678,A2		ERROR: Invalid addressing mode
+MULU.B D1,#$12345678		ERROR: Invalid addressing mode
+MULU.B #$12,#$12345678		ERROR: Invalid addressing mode
+MULU.B #$12345678.L,D1	C2FC0078	ERROR: Invalid size code
+MULU.B #$12345678.L,A2		ERROR: Invalid addressing mode
+MULU.B D1,#$12345678.L		ERROR: Invalid addressing mode
+MULU.B #$12,#$12345678.L		ERROR: Invalid addressing mode
+MULU.B #BK,D1	C2FC0000	ERROR: Invalid size code
+MULU.B #BK,A2		ERROR: Invalid addressing mode
+MULU.B D1,#BK		ERROR: Invalid addressing mode
+MULU.B #$12,#BK		ERROR: Invalid addressing mode
+MULU.B #FW,D1	C2FC0000	ERROR: Invalid size code
+MULU.B #FW,A2		ERROR: Invalid addressing mode
+MULU.B D1,#FW		ERROR: Invalid addressing mode
+MULU.B #$12,#FW		ERROR: Invalid addressing mode
+MULU.B #UNDEF,D1	C2FC0001	ERROR: Undefined symbol
+MULU.B #UNDEF,A2		ERROR: Invalid addressing mode
+MULU.B D1,#UNDEF		ERROR: Invalid addressing mode
+MULU.B #$12,#UNDEF		ERROR: Invalid addressing mode
+MULU.B UNDEF,D1	C2F900005601	ERROR: Undefined symbol
+MULU.B UNDEF,A2		ERROR: Invalid addressing mode
+MULU.B D1,UNDEF		ERROR: Invalid addressing mode
+MULU.B #$12,UNDEF		ERROR: Invalid addressing mode
+MULU.B USP,D1		ERROR: Invalid addressing mode
+MULU.B USP,A2		ERROR: Invalid addressing mode
+MULU.B D1,USP		ERROR: Invalid addressing mode
+MULU.B #$12,USP		ERROR: Invalid addressing mode
+MULU.B D1,D2,D3		ERROR: Invalid syntax
+MULU.W		ERROR: Invalid syntax
+MULU.W D1		ERROR: Comma expected
+MULU.W A2		ERROR: Comma expected
+MULU.W SP		ERROR: Comma expected
+MULU.W (A3)		ERROR: Comma expected
+MULU.W (A4)+		ERROR: Comma expected
+MULU.W -(A5)		ERROR: Comma expected
+MULU.W $10(A6)		ERROR: Comma expected
+MULU.W -2(A0)		ERROR: Comma expected
+MULU.W $10(A6,D7.W)		ERROR: Comma expected
+MULU.W $12(A0,A1.L)		ERROR: Comma expected
+MULU.W (A2,D3)		ERROR: Comma expected
+MULU.W $1234		ERROR: Comma expected
+MULU.W $12345678		ERROR: Comma expected
+MULU.W $1234.L		ERROR: Comma expected
+MULU.W $1234.W		ERROR: Comma expected
+MULU.W $8000		ERROR: Comma expected
+MULU.W BK		ERROR: Comma expected
+MULU.W FW		ERROR: Comma expected
+MULU.W *+$10(PC)		ERROR: Comma expected
+MULU.W *(PC,D0.W)		ERROR: Comma expected
+MULU.W BK(PC)		ERROR: Comma expected
+MULU.W #1		ERROR: Comma expected
+MULU.W #8		ERROR: Comma expected
+MULU.W #9		ERROR: Comma expected
+MULU.W #0		ERROR: Comma expected
+MULU.W #-1		ERROR: Comma expected
+MULU.W #$80		ERROR: Comma expected
+MULU.W #$1234		ERROR: Comma expected
+MULU.W #$12345678		ERROR: Comma expected
+MULU.W #$12345678.L		ERROR: Comma expected
+MULU.W #BK		ERROR: Comma expected
+MULU.W #FW		ERROR: Comma expected
+MULU.W #UNDEF		ERROR: Comma expected
+MULU.W UNDEF		ERROR: Comma expected
+MULU.W SR		ERROR: Comma expected
+MULU.W CCR		ERROR: Comma expected
+MULU.W USP		ERROR: Comma expected
+MULU.W D1,D1	C2C1	-
+MULU.W D1,A2		ERROR: Invalid addressing mode
+MULU.W D1,(A3)		ERROR: Invalid addressing mode
+MULU.W D1,(A4)+		ERROR: Invalid addressing mode
+MULU.W D1,-(A5)		ERROR: Invalid addressing mode
+MULU.W D1,$10(A6)		ERROR: Invalid addressing mode
+MULU.W D1,$10(A6,D7.W)		ERROR: Invalid addressing mode
+MULU.W D1,$1234		ERROR: Invalid addressing mode
+MULU.W D1,$12345678		ERROR: Invalid addressing mode
+MULU.W D1,FW		ERROR: Invalid addressing mode
+MULU.W D1,*+$10(PC)		ERROR: Invalid addressing mode
+MULU.W D1,#1		ERROR: Invalid addressing mode
+MULU.W D1,#$80		ERROR: Invalid addressing mode
+MULU.W D1,#$1234		ERROR: Invalid addressing mode
+MULU.W D1,#$12345678		ERROR: Invalid addressing mode
+MULU.W D1,SR		ERROR: Invalid addressing mode
+MULU.W D1,CCR		ERROR: Invalid addressing mode
+MULU.W D1,USP		ERROR: Invalid addressing mode
+MULU.W A2,D1		ERROR: Invalid addressing mode
+MULU.W A2,A2		ERROR: Invalid addressing mode
+MULU.W A2,(A3)		ERROR: Invalid addressing mode
+MULU.W A2,(A4)+		ERROR: Invalid addressing mode
+MULU.W A2,-(A5)		ERROR: Invalid addressing mode
+MULU.W A2,$10(A6)		ERROR: Invalid addressing mode
+MULU.W A2,$10(A6,D7.W)		ERROR: Invalid addressing mode
+MULU.W A2,$1234		ERROR: Invalid addressing mode
+MULU.W A2,$12345678		ERROR: Invalid addressing mode
+MULU.W A2,FW		ERROR: Invalid addressing mode
+MULU.W A2,*+$10(PC)		ERROR: Invalid addressing mode
+MULU.W A2,#1		ERROR: Invalid addressing mode
+MULU.W A2,#$80		ERROR: Invalid addressing mode
+MULU.W A2,#$1234		ERROR: Invalid addressing mode
+MULU.W A2,#$12345678		ERROR: Invalid addressing mode
+MULU.W A2,SR		ERROR: Invalid addressing mode
+MULU.W A2,CCR		ERROR: Invalid addressing mode
+MULU.W A2,USP		ERROR: Invalid addressing mode
+MULU.W (A3),D1	C2D3	-
+MULU.W (A3),A2		ERROR: Invalid addressing mode
+MULU.W (A3),(A3)		ERROR: Invalid addressing mode
+MULU.W (A3),(A4)+		ERROR: Invalid addressing mode
+MULU.W (A3),-(A5)		ERROR: Invalid addressing mode
+MULU.W (A3),$10(A6)		ERROR: Invalid addressing mode
+MULU.W (A3),$10(A6,D7.W)		ERROR: Invalid addressing mode
+MULU.W (A3),$1234		ERROR: Invalid addressing mode
+MULU.W (A3),$12345678		ERROR: Invalid addressing mode
+MULU.W (A3),FW		ERROR: Invalid addressing mode
+MULU.W (A3),*+$10(PC)		ERROR: Invalid addressing mode
+MULU.W (A3),#1		ERROR: Invalid addressing mode
+MULU.W (A3),#$80		ERROR: Invalid addressing mode
+MULU.W (A3),#$1234		ERROR: Invalid addressing mode
+MULU.W (A3),#$12345678		ERROR: Invalid addressing mode
+MULU.W (A3),SR		ERROR: Invalid addressing mode
+MULU.W (A3),CCR		ERROR: Invalid addressing mode
+MULU.W (A3),USP		ERROR: Invalid addressing mode
+MULU.W (A4)+,D1	C2DC	-
+MULU.W (A4)+,A2		ERROR: Invalid addressing mode
+MULU.W (A4)+,(A3)		ERROR: Invalid addressing mode
+MULU.W (A4)+,(A4)+		ERROR: Invalid addressing mode
+MULU.W (A4)+,-(A5)		ERROR: Invalid addressing mode
+MULU.W (A4)+,$10(A6)		ERROR: Invalid addressing mode
+MULU.W (A4)+,$10(A6,D7.W)		ERROR: Invalid addressing mode
+MULU.W (A4)+,$1234		ERROR: Invalid addressing mode
+MULU.W (A4)+,$12345678		ERROR: Invalid addressing mode
+MULU.W (A4)+,FW		ERROR: Invalid addressing mode
+MULU.W (A4)+,*+$10(PC)		ERROR: Invalid addressing mode
+MULU.W (A4)+,#1		ERROR: Invalid addressing mode
+MULU.W (A4)+,#$80		ERROR: Invalid addressing mode
+MULU.W (A4)+,#$1234		ERROR: Invalid addressing mode
+MULU.W (A4)+,#$12345678		ERROR: Invalid addressing mode
+MULU.W (A4)+,SR		ERROR: Invalid addressing mode
+MULU.W (A4)+,CCR		ERROR: Invalid addressing mode
+MULU.W (A4)+,USP		ERROR: Invalid addressing mode
+MULU.W -(A5),D1	C2E5	-
+MULU.W -(A5),A2		ERROR: Invalid addressing mode
+MULU.W -(A5),(A3)		ERROR: Invalid addressing mode
+MULU.W -(A5),(A4)+		ERROR: Invalid addressing mode
+MULU.W -(A5),-(A5)		ERROR: Invalid addressing mode
+MULU.W -(A5),$10(A6)		ERROR: Invalid addressing mode
+MULU.W -(A5),$10(A6,D7.W)		ERROR: Invalid addressing mode
+MULU.W -(A5),$1234		ERROR: Invalid addressing mode
+MULU.W -(A5),$12345678		ERROR: Invalid addressing mode
+MULU.W -(A5),FW		ERROR: Invalid addressing mode
+MULU.W -(A5),*+$10(PC)		ERROR: Invalid addressing mode
+MULU.W -(A5),#1		ERROR: Invalid addressing mode
+MULU.W -(A5),#$80		ERROR: Invalid addressing mode
+MULU.W -(A5),#$1234		ERROR: Invalid addressing mode
+MULU.W -(A5),#$12345678		ERROR: Invalid addressing mode
+MULU.W -(A5),SR		ERROR: Invalid addressing mode
+MULU.W -(A5),CCR		ERROR: Invalid addressing mode
+MULU.W -(A5),USP		ERROR: Invalid addressing mode
+MULU.W $10(A6),D1	C2EE0010	-
+MULU.W $10(A6),A2		ERROR: Invalid addressing mode
+MULU.W $10(A6),(A3)		ERROR: Invalid addressing mode
+MULU.W $10(A6),(A4)+		ERROR: Invalid addressing mode
+MULU.W $10(A6),-(A5)		ERROR: Invalid addressing mode
+MULU.W $10(A6),$10(A6)		ERROR: Invalid addressing mode
+MULU.W $10(A6),$10(A6,D7.W)		ERROR: Invalid addressing mode
+MULU.W $10(A6),$1234		ERROR: Invalid addressing mode
+MULU.W $10(A6),$12345678		ERROR: Invalid addressing mode
+MULU.W $10(A6),FW		ERROR: Invalid addressing mode
+MULU.W $10(A6),*+$10(PC)		ERROR: Invalid addressing mode
+MULU.W $10(A6),#1		ERROR: Invalid addressing mode
+MULU.W $10(A6),#$80		ERROR: Invalid addressing mode
+MULU.W $10(A6),#$1234		ERROR: Invalid addressing mode
+MULU.W $10(A6),#$12345678		ERROR: Invalid addressing mode
+MULU.W $10(A6),SR		ERROR: Invalid addressing mode
+MULU.W $10(A6),CCR		ERROR: Invalid addressing mode
+MULU.W $10(A6),USP		ERROR: Invalid addressing mode
+MULU.W $10(A6,D7.W),D1	C2F67010	-
+MULU.W $10(A6,D7.W),A2		ERROR: Invalid addressing mode
+MULU.W $10(A6,D7.W),(A3)		ERROR: Invalid addressing mode
+MULU.W $10(A6,D7.W),(A4)+		ERROR: Invalid addressing mode
+MULU.W $10(A6,D7.W),-(A5)		ERROR: Invalid addressing mode
+MULU.W $10(A6,D7.W),$10(A6)		ERROR: Invalid addressing mode
+MULU.W $10(A6,D7.W),$10(A6,D7.W)		ERROR: Invalid addressing mode
+MULU.W $10(A6,D7.W),$1234		ERROR: Invalid addressing mode
+MULU.W $10(A6,D7.W),$12345678		ERROR: Invalid addressing mode
+MULU.W $10(A6,D7.W),FW		ERROR: Invalid addressing mode
+MULU.W $10(A6,D7.W),*+$10(PC)		ERROR: Invalid addressing mode
+MULU.W $10(A6,D7.W),#1		ERROR: Invalid addressing mode
+MULU.W $10(A6,D7.W),#$80		ERROR: Invalid addressing mode
+MULU.W $10(A6,D7.W),#$1234		ERROR: Invalid addressing mode
+MULU.W $10(A6,D7.W),#$12345678		ERROR: Invalid addressing mode
+MULU.W $10(A6,D7.W),SR		ERROR: Invalid addressing mode
+MULU.W $10(A6,D7.W),CCR		ERROR: Invalid addressing mode
+MULU.W $10(A6,D7.W),USP		ERROR: Invalid addressing mode
+MULU.W $1234,D1	C2F81234	-
+MULU.W $1234,A2		ERROR: Invalid addressing mode
+MULU.W $1234,(A3)		ERROR: Invalid addressing mode
+MULU.W $1234,(A4)+		ERROR: Invalid addressing mode
+MULU.W $1234,-(A5)		ERROR: Invalid addressing mode
+MULU.W $1234,$10(A6)		ERROR: Invalid addressing mode
+MULU.W $1234,$10(A6,D7.W)		ERROR: Invalid addressing mode
+MULU.W $1234,$1234		ERROR: Invalid addressing mode
+MULU.W $1234,$12345678		ERROR: Invalid addressing mode
+MULU.W $1234,FW		ERROR: Invalid addressing mode
+MULU.W $1234,*+$10(PC)		ERROR: Invalid addressing mode
+MULU.W $1234,#1		ERROR: Invalid addressing mode
+MULU.W $1234,#$80		ERROR: Invalid addressing mode
+MULU.W $1234,#$1234		ERROR: Invalid addressing mode
+MULU.W $1234,#$12345678		ERROR: Invalid addressing mode
+MULU.W $1234,SR		ERROR: Invalid addressing mode
+MULU.W $1234,CCR		ERROR: Invalid addressing mode
+MULU.W $1234,USP		ERROR: Invalid addressing mode
+MULU.W $12345678,D1	C2F912345678	-
+MULU.W $12345678,A2		ERROR: Invalid addressing mode
+MULU.W $12345678,(A3)		ERROR: Invalid addressing mode
+MULU.W $12345678,(A4)+		ERROR: Invalid addressing mode
+MULU.W $12345678,-(A5)		ERROR: Invalid addressing mode
+MULU.W $12345678,$10(A6)		ERROR: Invalid addressing mode
+MULU.W $12345678,$10(A6,D7.W)		ERROR: Invalid addressing mode
+MULU.W $12345678,$1234		ERROR: Invalid addressing mode
+MULU.W $12345678,$12345678		ERROR: Invalid addressing mode
+MULU.W $12345678,FW		ERROR: Invalid addressing mode
+MULU.W $12345678,*+$10(PC)		ERROR: Invalid addressing mode
+MULU.W $12345678,#1		ERROR: Invalid addressing mode
+MULU.W $12345678,#$80		ERROR: Invalid addressing mode
+MULU.W $12345678,#$1234		ERROR: Invalid addressing mode
+MULU.W $12345678,#$12345678		ERROR: Invalid addressing mode
+MULU.W $12345678,SR		ERROR: Invalid addressing mode
+MULU.W $12345678,CCR		ERROR: Invalid addressing mode
+MULU.W $12345678,USP		ERROR: Invalid addressing mode
+MULU.W FW,D1	C2F900001F00	-
+MULU.W FW,A2		ERROR: Invalid addressing mode
+MULU.W FW,(A3)		ERROR: Invalid addressing mode
+MULU.W FW,(A4)+		ERROR: Invalid addressing mode
+MULU.W FW,-(A5)		ERROR: Invalid addressing mode
+MULU.W FW,$10(A6)		ERROR: Invalid addressing mode
+MULU.W FW,$10(A6,D7.W)		ERROR: Invalid addressing mode
+MULU.W FW,$1234		ERROR: Invalid addressing mode
+MULU.W FW,$12345678		ERROR: Invalid addressing mode
+MULU.W FW,FW		ERROR: Invalid addressing mode
+MULU.W FW,*+$10(PC)		ERROR: Invalid addressing mode
+MULU.W FW,#1		ERROR: Invalid addressing mode
+MULU.W FW,#$80		ERROR: Invalid addressing mode
+MULU.W FW,#$1234		ERROR: Invalid addressing mode
+MULU.W FW,#$12345678		ERROR: Invalid addressing mode
+MULU.W FW,SR		ERROR: Invalid addressing mode
+MULU.W FW,CCR		ERROR: Invalid addressing mode
+MULU.W FW,USP		ERROR: Invalid addressing mode
+MULU.W *+$10(PC),D1	C2FA000E	-
+MULU.W *+$10(PC),A2		ERROR: Invalid addressing mode
+MULU.W *+$10(PC),(A3)		ERROR: Invalid addressing mode
+MULU.W *+$10(PC),(A4)+		ERROR: Invalid addressing mode
+MULU.W *+$10(PC),-(A5)		ERROR: Invalid addressing mode
+MULU.W *+$10(PC),$10(A6)		ERROR: Invalid addressing mode
+MULU.W *+$10(PC),$10(A6,D7.W)		ERROR: Invalid addressing mode
+MULU.W *+$10(PC),$1234		ERROR: Invalid addressing mode
+MULU.W *+$10(PC),$12345678		ERROR: Invalid addressing mode
+MULU.W *+$10(PC),FW		ERROR: Invalid addressing mode
+MULU.W *+$10(PC),*+$10(PC)		ERROR: Invalid addressing mode
+MULU.W *+$10(PC),#1		ERROR: Invalid addressing mode
+MULU.W *+$10(PC),#$80		ERROR: Invalid addressing mode
+MULU.W *+$10(PC),#$1234		ERROR: Invalid addressing mode
+MULU.W *+$10(PC),#$12345678		ERROR: Invalid addressing mode
+MULU.W *+$10(PC),SR		ERROR: Invalid addressing mode
+MULU.W *+$10(PC),CCR		ERROR: Invalid addressing mode
+MULU.W *+$10(PC),USP		ERROR: Invalid addressing mode
+MULU.W #1,D1	C2FC0001	-
+MULU.W #1,A2		ERROR: Invalid addressing mode
+MULU.W #1,(A3)		ERROR: Invalid addressing mode
+MULU.W #1,(A4)+		ERROR: Invalid addressing mode
+MULU.W #1,-(A5)		ERROR: Invalid addressing mode
+MULU.W #1,$10(A6)		ERROR: Invalid addressing mode
+MULU.W #1,$10(A6,D7.W)		ERROR: Invalid addressing mode
+MULU.W #1,$1234		ERROR: Invalid addressing mode
+MULU.W #1,$12345678		ERROR: Invalid addressing mode
+MULU.W #1,FW		ERROR: Invalid addressing mode
+MULU.W #1,*+$10(PC)		ERROR: Invalid addressing mode
+MULU.W #1,#1		ERROR: Invalid addressing mode
+MULU.W #1,#$80		ERROR: Invalid addressing mode
+MULU.W #1,#$1234		ERROR: Invalid addressing mode
+MULU.W #1,#$12345678		ERROR: Invalid addressing mode
+MULU.W #1,SR		ERROR: Invalid addressing mode
+MULU.W #1,CCR		ERROR: Invalid addressing mode
+MULU.W #1,USP		ERROR: Invalid addressing mode
+MULU.W #$80,D1	C2FC0080	-
+MULU.W #$80,A2		ERROR: Invalid addressing mode
+MULU.W #$80,(A3)		ERROR: Invalid addressing mode
+MULU.W #$80,(A4)+		ERROR: Invalid addressing mode
+MULU.W #$80,-(A5)		ERROR: Invalid addressing mode
+MULU.W #$80,$10(A6)		ERROR: Invalid addressing mode
+MULU.W #$80,$10(A6,D7.W)		ERROR: Invalid addressing mode
+MULU.W #$80,$1234		ERROR: Invalid addressing mode
+MULU.W #$80,$12345678		ERROR: Invalid addressing mode
+MULU.W #$80,FW		ERROR: Invalid addressing mode
+MULU.W #$80,*+$10(PC)		ERROR: Invalid addressing mode
+MULU.W #$80,#1		ERROR: Invalid addressing mode
+MULU.W #$80,#$80		ERROR: Invalid addressing mode
+MULU.W #$80,#$1234		ERROR: Invalid addressing mode
+MULU.W #$80,#$12345678		ERROR: Invalid addressing mode
+MULU.W #$80,SR		ERROR: Invalid addressing mode
+MULU.W #$80,CCR		ERROR: Invalid addressing mode
+MULU.W #$80,USP		ERROR: Invalid addressing mode
+MULU.W #$1234,D1	C2FC1234	-
+MULU.W #$1234,A2		ERROR: Invalid addressing mode
+MULU.W #$1234,(A3)		ERROR: Invalid addressing mode
+MULU.W #$1234,(A4)+		ERROR: Invalid addressing mode
+MULU.W #$1234,-(A5)		ERROR: Invalid addressing mode
+MULU.W #$1234,$10(A6)		ERROR: Invalid addressing mode
+MULU.W #$1234,$10(A6,D7.W)		ERROR: Invalid addressing mode
+MULU.W #$1234,$1234		ERROR: Invalid addressing mode
+MULU.W #$1234,$12345678		ERROR: Invalid addressing mode
+MULU.W #$1234,FW		ERROR: Invalid addressing mode
+MULU.W #$1234,*+$10(PC)		ERROR: Invalid addressing mode
+MULU.W #$1234,#1		ERROR: Invalid addressing mode
+MULU.W #$1234,#$80		ERROR: Invalid addressing mode
+MULU.W #$1234,#$1234		ERROR: Invalid addressing mode
+MULU.W #$1234,#$12345678		ERROR: Invalid addressing mode
+MULU.W #$1234,SR		ERROR: Invalid addressing mode
+MULU.W #$1234,CCR		ERROR: Invalid addressing mode
+MULU.W #$1234,USP		ERROR: Invalid addressing mode
+MULU.W #$12345678,D1	C2FC5678	ERROR: Immediate data exceeds 16 bits
+MULU.W #$12345678,A2		ERROR: Invalid addressing mode
+MULU.W #$12345678,(A3)		ERROR: Invalid addressing mode
+MULU.W #$12345678,(A4)+		ERROR: Invalid addressing mode
+MULU.W #$12345678,-(A5)		ERROR: Invalid addressing mode
+MULU.W #$12345678,$10(A6)		ERROR: Invalid addressing mode
+MULU.W #$12345678,$10(A6,D7.W)		ERROR: Invalid addressing mode
+MULU.W #$12345678,$1234		ERROR: Invalid addressing mode
+MULU.W #$12345678,$12345678		ERROR: Invalid addressing mode
+MULU.W #$12345678,FW		ERROR: Invalid addressing mode
+MULU.W #$12345678,*+$10(PC)		ERROR: Invalid addressing mode
+MULU.W #$12345678,#1		ERROR: Invalid addressing mode
+MULU.W #$12345678,#$80		ERROR: Invalid addressing mode
+MULU.W #$12345678,#$1234		ERROR: Invalid addressing mode
+MULU.W #$12345678,#$12345678		ERROR: Invalid addressing mode
+MULU.W #$12345678,SR		ERROR: Invalid addressing mode
+MULU.W #$12345678,CCR		ERROR: Invalid addressing mode
+MULU.W #$12345678,USP		ERROR: Invalid addressing mode
+MULU.W SR,D1		ERROR: Invalid addressing mode
+MULU.W SR,A2		ERROR: Invalid addressing mode
+MULU.W SR,(A3)		ERROR: Invalid addressing mode
+MULU.W SR,(A4)+		ERROR: Invalid addressing mode
+MULU.W SR,-(A5)		ERROR: Invalid addressing mode
+MULU.W SR,$10(A6)		ERROR: Invalid addressing mode
+MULU.W SR,$10(A6,D7.W)		ERROR: Invalid addressing mode
+MULU.W SR,$1234		ERROR: Invalid addressing mode
+MULU.W SR,$12345678		ERROR: Invalid addressing mode
+MULU.W SR,FW		ERROR: Invalid addressing mode
+MULU.W SR,*+$10(PC)		ERROR: Invalid addressing mode
+MULU.W SR,#1		ERROR: Invalid addressing mode
+MULU.W SR,#$80		ERROR: Invalid addressing mode
+MULU.W SR,#$1234		ERROR: Invalid addressing mode
+MULU.W SR,#$12345678		ERROR: Invalid addressing mode
+MULU.W SR,SR		ERROR: Invalid addressing mode
+MULU.W SR,CCR		ERROR: Invalid addressing mode
+MULU.W SR,USP		ERROR: Invalid addressing mode
+MULU.W CCR,D1		ERROR: Invalid addressing mode
+MULU.W CCR,A2		ERROR: Invalid addressing mode
+MULU.W CCR,(A3)		ERROR: Invalid addressing mode
+MULU.W CCR,(A4)+		ERROR: Invalid addressing mode
+MULU.W CCR,-(A5)		ERROR: Invalid addressing mode
+MULU.W CCR,$10(A6)		ERROR: Invalid addressing mode
+MULU.W CCR,$10(A6,D7.W)		ERROR: Invalid addressing mode
+MULU.W CCR,$1234		ERROR: Invalid addressing mode
+MULU.W CCR,$12345678		ERROR: Invalid addressing mode
+MULU.W CCR,FW		ERROR: Invalid addressing mode
+MULU.W CCR,*+$10(PC)		ERROR: Invalid addressing mode
+MULU.W CCR,#1		ERROR: Invalid addressing mode
+MULU.W CCR,#$80		ERROR: Invalid addressing mode
+MULU.W CCR,#$1234		ERROR: Invalid addressing mode
+MULU.W CCR,#$12345678		ERROR: Invalid addressing mode
+MULU.W CCR,SR		ERROR: Invalid addressing mode
+MULU.W CCR,CCR		ERROR: Invalid addressing mode
+MULU.W CCR,USP		ERROR: Invalid addressing mode
+MULU.W USP,D1		ERROR: Invalid addressing mode
+MULU.W USP,A2		ERROR: Invalid addressing mode
+MULU.W USP,(A3)		ERROR: Invalid addressing mode
+MULU.W USP,(A4)+		ERROR: Invalid addressing mode
+MULU.W USP,-(A5)		ERROR: Invalid addressing mode
+MULU.W USP,$10(A6)		ERROR: Invalid addressing mode
+MULU.W USP,$10(A6,D7.W)		ERROR: Invalid addressing mode
+MULU.W USP,$1234		ERROR: Invalid addressing mode
+MULU.W USP,$12345678		ERROR: Invalid addressing mode
+MULU.W USP,FW		ERROR: Invalid addressing mode
+MULU.W USP,*+$10(PC)		ERROR: Invalid addressing mode
+MULU.W USP,#1		ERROR: Invalid addressing mode
+MULU.W USP,#$80		ERROR: Invalid addressing mode
+MULU.W USP,#$1234		ERROR: Invalid addressing mode
+MULU.W USP,#$12345678		ERROR: Invalid addressing mode
+MULU.W USP,SR		ERROR: Invalid addressing mode
+MULU.W USP,CCR		ERROR: Invalid addressing mode
+MULU.W USP,USP		ERROR: Invalid addressing mode
+MULU.W SP,D1		ERROR: Invalid addressing mode
+MULU.W SP,A2		ERROR: Invalid addressing mode
+MULU.W D1,SP		ERROR: Invalid addressing mode
+MULU.W #$12,SP		ERROR: Invalid addressing mode
+MULU.W -2(A0),D1	C2E8FFFE	-
+MULU.W -2(A0),A2		ERROR: Invalid addressing mode
+MULU.W D1,-2(A0)		ERROR: Invalid addressing mode
+MULU.W #$12,-2(A0)		ERROR: Invalid addressing mode
+MULU.W $12(A0,A1.L),D1	C2F09812	-
+MULU.W $12(A0,A1.L),A2		ERROR: Invalid addressing mode
+MULU.W D1,$12(A0,A1.L)		ERROR: Invalid addressing mode
+MULU.W #$12,$12(A0,A1.L)		ERROR: Invalid addressing mode
+MULU.W (A2,D3),D1	C2F23000	-
+MULU.W (A2,D3),A2		ERROR: Invalid addressing mode
+MULU.W D1,(A2,D3)		ERROR: Invalid addressing mode
+MULU.W #$12,(A2,D3)		ERROR: Invalid addressing mode
+MULU.W $1234.L,D1	C2F900001234	-
+MULU.W $1234.L,A2		ERROR: Invalid addressing mode
+MULU.W D1,$1234.L		ERROR: Invalid addressing mode
+MULU.W #$12,$1234.L		ERROR: Invalid addressing mode
+MULU.W $1234.W,D1	C2F81234	WARNING: Forcing SHORT addressing disables range checking of extension word
+MULU.W $1234.W,A2		ERROR: Invalid addressing mode
+MULU.W D1,$1234.W		ERROR: Invalid addressing mode
+MULU.W #$12,$1234.W		ERROR: Invalid addressing mode
+MULU.W $8000,D1	C2F900008000	-
+MULU.W $8000,A2		ERROR: Invalid addressing mode
+MULU.W D1,$8000		ERROR: Invalid addressing mode
+MULU.W #$12,$8000		ERROR: Invalid addressing mode
+MULU.W BK,D1	C2F81F00	-
+MULU.W BK,A2		ERROR: Invalid addressing mode
+MULU.W D1,BK		ERROR: Invalid addressing mode
+MULU.W #$12,BK		ERROR: Invalid addressing mode
+MULU.W *(PC,D0.W),D1	C2FB00FE	-
+MULU.W *(PC,D0.W),A2		ERROR: Invalid addressing mode
+MULU.W D1,*(PC,D0.W)		ERROR: Invalid addressing mode
+MULU.W #$12,*(PC,D0.W)		ERROR: Invalid addressing mode
+MULU.W BK(PC),D1	C2FA0EFE	-
+MULU.W BK(PC),A2		ERROR: Invalid addressing mode
+MULU.W D1,BK(PC)		ERROR: Invalid addressing mode
+MULU.W #$12,BK(PC)		ERROR: Invalid addressing mode
+MULU.W #8,D1	C2FC0008	-
+MULU.W #8,A2		ERROR: Invalid addressing mode
+MULU.W D1,#8		ERROR: Invalid addressing mode
+MULU.W #$12,#8		ERROR: Invalid addressing mode
+MULU.W #9,D1	C2FC0009	-
+MULU.W #9,A2		ERROR: Invalid addressing mode
+MULU.W D1,#9		ERROR: Invalid addressing mode
+MULU.W #$12,#9		ERROR: Invalid addressing mode
+MULU.W #0,D1	C2FC0000	-
+MULU.W #0,A2		ERROR: Invalid addressing mode
+MULU.W D1,#0		ERROR: Invalid addressing mode
+MULU.W #$12,#0		ERROR: Invalid addressing mode
+MULU.W #-1,D1	C2FCFFFF	-
+MULU.W #-1,A2		ERROR: Invalid addressing mode
+MULU.W D1,#-1		ERROR: Invalid addressing mode
+MULU.W #$12,#-1		ERROR: Invalid addressing mode
+MULU.W #$12345678.L,D1	C2FC5678	ERROR: Immediate data exceeds 16 bits
+MULU.W #$12345678.L,A2		ERROR: Invalid addressing mode
+MULU.W D1,#$12345678.L		ERROR: Invalid addressing mode
+MULU.W #$12,#$12345678.L		ERROR: Invalid addressing mode
+MULU.W #BK,D1	C2FC1F00	-
+MULU.W #BK,A2		ERROR: Invalid addressing mode
+MULU.W D1,#BK		ERROR: Invalid addressing mode
+MULU.W #$12,#BK		ERROR: Invalid addressing mode
+MULU.W #FW,D1	C2FC1F00	-
+MULU.W #FW,A2		ERROR: Invalid addressing mode
+MULU.W D1,#FW		ERROR: Invalid addressing mode
+MULU.W #$12,#FW		ERROR: Invalid addressing mode
+MULU.W #UNDEF,D1	C2FC5601	ERROR: Undefined symbol
+MULU.W #UNDEF,A2		ERROR: Invalid addressing mode
+MULU.W D1,#UNDEF		ERROR: Invalid addressing mode
+MULU.W #$12,#UNDEF		ERROR: Invalid addressing mode
+MULU.W UNDEF,D1	C2F900005601	ERROR: Undefined symbol
+MULU.W UNDEF,A2		ERROR: Invalid addressing mode
+MULU.W D1,UNDEF		ERROR: Invalid addressing mode
+MULU.W #$12,UNDEF		ERROR: Invalid addressing mode
+MULU.W D1,D2,D3		ERROR: Invalid syntax
+MULU.L		ERROR: Invalid syntax
+MULU.L D1		ERROR: Comma expected
+MULU.L A2		ERROR: Comma expected
+MULU.L SP		ERROR: Comma expected
+MULU.L (A3)		ERROR: Comma expected
+MULU.L (A4)+		ERROR: Comma expected
+MULU.L -(A5)		ERROR: Comma expected
+MULU.L $10(A6)		ERROR: Comma expected
+MULU.L -2(A0)		ERROR: Comma expected
+MULU.L $10(A6,D7.W)		ERROR: Comma expected
+MULU.L $12(A0,A1.L)		ERROR: Comma expected
+MULU.L (A2,D3)		ERROR: Comma expected
+MULU.L $1234		ERROR: Comma expected
+MULU.L $12345678		ERROR: Comma expected
+MULU.L $1234.L		ERROR: Comma expected
+MULU.L $1234.W		ERROR: Comma expected
+MULU.L $8000		ERROR: Comma expected
+MULU.L BK		ERROR: Comma expected
+MULU.L FW		ERROR: Comma expected
+MULU.L *+$10(PC)		ERROR: Comma expected
+MULU.L *(PC,D0.W)		ERROR: Comma expected
+MULU.L BK(PC)		ERROR: Comma expected
+MULU.L #1		ERROR: Comma expected
+MULU.L #8		ERROR: Comma expected
+MULU.L #9		ERROR: Comma expected
+MULU.L #0		ERROR: Comma expected
+MULU.L #-1		ERROR: Comma expected
+MULU.L #$80		ERROR: Comma expected
+MULU.L #$1234		ERROR: Comma expected
+MULU.L #$12345678		ERROR: Comma expected
+MULU.L #$12345678.L		ERROR: Comma expected
+MULU.L #BK		ERROR: Comma expected
+MULU.L #FW		ERROR: Comma expected
+MULU.L #UNDEF		ERROR: Comma expected
+MULU.L UNDEF		ERROR: Comma expected
+MULU.L SR		ERROR: Comma expected
+MULU.L CCR		ERROR: Comma expected
+MULU.L USP		ERROR: Comma expected
+MULU.L D1,D1	C2C1	ERROR: Invalid size code
+MULU.L D1,A2		ERROR: Invalid addressing mode
+MULU.L D1,(A3)		ERROR: Invalid addressing mode
+MULU.L D1,$10(A6)		ERROR: Invalid addressing mode
+MULU.L D1,$1234		ERROR: Invalid addressing mode
+MULU.L D1,FW		ERROR: Invalid addressing mode
+MULU.L D1,#1		ERROR: Invalid addressing mode
+MULU.L D1,#$1234		ERROR: Invalid addressing mode
+MULU.L D1,CCR		ERROR: Invalid addressing mode
+MULU.L D1,SR		ERROR: Invalid addressing mode
+MULU.L A2,D1		ERROR: Invalid addressing mode
+MULU.L A2,A2		ERROR: Invalid addressing mode
+MULU.L A2,(A3)		ERROR: Invalid addressing mode
+MULU.L A2,$10(A6)		ERROR: Invalid addressing mode
+MULU.L A2,$1234		ERROR: Invalid addressing mode
+MULU.L A2,FW		ERROR: Invalid addressing mode
+MULU.L A2,#1		ERROR: Invalid addressing mode
+MULU.L A2,#$1234		ERROR: Invalid addressing mode
+MULU.L A2,CCR		ERROR: Invalid addressing mode
+MULU.L A2,SR		ERROR: Invalid addressing mode
+MULU.L (A3),D1	C2D3	ERROR: Invalid size code
+MULU.L (A3),A2		ERROR: Invalid addressing mode
+MULU.L (A3),(A3)		ERROR: Invalid addressing mode
+MULU.L (A3),$10(A6)		ERROR: Invalid addressing mode
+MULU.L (A3),$1234		ERROR: Invalid addressing mode
+MULU.L (A3),FW		ERROR: Invalid addressing mode
+MULU.L (A3),#1		ERROR: Invalid addressing mode
+MULU.L (A3),#$1234		ERROR: Invalid addressing mode
+MULU.L (A3),CCR		ERROR: Invalid addressing mode
+MULU.L (A3),SR		ERROR: Invalid addressing mode
+MULU.L $10(A6),D1	C2EE0010	ERROR: Invalid size code
+MULU.L $10(A6),A2		ERROR: Invalid addressing mode
+MULU.L $10(A6),(A3)		ERROR: Invalid addressing mode
+MULU.L $10(A6),$10(A6)		ERROR: Invalid addressing mode
+MULU.L $10(A6),$1234		ERROR: Invalid addressing mode
+MULU.L $10(A6),FW		ERROR: Invalid addressing mode
+MULU.L $10(A6),#1		ERROR: Invalid addressing mode
+MULU.L $10(A6),#$1234		ERROR: Invalid addressing mode
+MULU.L $10(A6),CCR		ERROR: Invalid addressing mode
+MULU.L $10(A6),SR		ERROR: Invalid addressing mode
+MULU.L $1234,D1	C2F81234	ERROR: Invalid size code
+MULU.L $1234,A2		ERROR: Invalid addressing mode
+MULU.L $1234,(A3)		ERROR: Invalid addressing mode
+MULU.L $1234,$10(A6)		ERROR: Invalid addressing mode
+MULU.L $1234,$1234		ERROR: Invalid addressing mode
+MULU.L $1234,FW		ERROR: Invalid addressing mode
+MULU.L $1234,#1		ERROR: Invalid addressing mode
+MULU.L $1234,#$1234		ERROR: Invalid addressing mode
+MULU.L $1234,CCR		ERROR: Invalid addressing mode
+MULU.L $1234,SR		ERROR: Invalid addressing mode
+MULU.L FW,D1	C2F900001F00	ERROR: Invalid size code
+MULU.L FW,A2		ERROR: Invalid addressing mode
+MULU.L FW,(A3)		ERROR: Invalid addressing mode
+MULU.L FW,$10(A6)		ERROR: Invalid addressing mode
+MULU.L FW,$1234		ERROR: Invalid addressing mode
+MULU.L FW,FW		ERROR: Invalid addressing mode
+MULU.L FW,#1		ERROR: Invalid addressing mode
+MULU.L FW,#$1234		ERROR: Invalid addressing mode
+MULU.L FW,CCR		ERROR: Invalid addressing mode
+MULU.L FW,SR		ERROR: Invalid addressing mode
+MULU.L #1,D1	C2FC00000001	ERROR: Invalid size code
+MULU.L #1,A2		ERROR: Invalid addressing mode
+MULU.L #1,(A3)		ERROR: Invalid addressing mode
+MULU.L #1,$10(A6)		ERROR: Invalid addressing mode
+MULU.L #1,$1234		ERROR: Invalid addressing mode
+MULU.L #1,FW		ERROR: Invalid addressing mode
+MULU.L #1,#1		ERROR: Invalid addressing mode
+MULU.L #1,#$1234		ERROR: Invalid addressing mode
+MULU.L #1,CCR		ERROR: Invalid addressing mode
+MULU.L #1,SR		ERROR: Invalid addressing mode
+MULU.L #$1234,D1	C2FC00001234	ERROR: Invalid size code
+MULU.L #$1234,A2		ERROR: Invalid addressing mode
+MULU.L #$1234,(A3)		ERROR: Invalid addressing mode
+MULU.L #$1234,$10(A6)		ERROR: Invalid addressing mode
+MULU.L #$1234,$1234		ERROR: Invalid addressing mode
+MULU.L #$1234,FW		ERROR: Invalid addressing mode
+MULU.L #$1234,#1		ERROR: Invalid addressing mode
+MULU.L #$1234,#$1234		ERROR: Invalid addressing mode
+MULU.L #$1234,CCR		ERROR: Invalid addressing mode
+MULU.L #$1234,SR		ERROR: Invalid addressing mode
+MULU.L CCR,D1		ERROR: Invalid addressing mode
+MULU.L CCR,A2		ERROR: Invalid addressing mode
+MULU.L CCR,(A3)		ERROR: Invalid addressing mode
+MULU.L CCR,$10(A6)		ERROR: Invalid addressing mode
+MULU.L CCR,$1234		ERROR: Invalid addressing mode
+MULU.L CCR,FW		ERROR: Invalid addressing mode
+MULU.L CCR,#1		ERROR: Invalid addressing mode
+MULU.L CCR,#$1234		ERROR: Invalid addressing mode
+MULU.L CCR,CCR		ERROR: Invalid addressing mode
+MULU.L CCR,SR		ERROR: Invalid addressing mode
+MULU.L SR,D1		ERROR: Invalid addressing mode
+MULU.L SR,A2		ERROR: Invalid addressing mode
+MULU.L SR,(A3)		ERROR: Invalid addressing mode
+MULU.L SR,$10(A6)		ERROR: Invalid addressing mode
+MULU.L SR,$1234		ERROR: Invalid addressing mode
+MULU.L SR,FW		ERROR: Invalid addressing mode
+MULU.L SR,#1		ERROR: Invalid addressing mode
+MULU.L SR,#$1234		ERROR: Invalid addressing mode
+MULU.L SR,CCR		ERROR: Invalid addressing mode
+MULU.L SR,SR		ERROR: Invalid addressing mode
+MULU.L SP,D1		ERROR: Invalid addressing mode
+MULU.L SP,A2		ERROR: Invalid addressing mode
+MULU.L D1,SP		ERROR: Invalid addressing mode
+MULU.L #$12,SP		ERROR: Invalid addressing mode
+MULU.L (A4)+,D1	C2DC	ERROR: Invalid size code
+MULU.L (A4)+,A2		ERROR: Invalid addressing mode
+MULU.L D1,(A4)+		ERROR: Invalid addressing mode
+MULU.L #$12,(A4)+		ERROR: Invalid addressing mode
+MULU.L -(A5),D1	C2E5	ERROR: Invalid size code
+MULU.L -(A5),A2		ERROR: Invalid addressing mode
+MULU.L D1,-(A5)		ERROR: Invalid addressing mode
+MULU.L #$12,-(A5)		ERROR: Invalid addressing mode
+MULU.L -2(A0),D1	C2E8FFFE	ERROR: Invalid size code
+MULU.L -2(A0),A2		ERROR: Invalid addressing mode
+MULU.L D1,-2(A0)		ERROR: Invalid addressing mode
+MULU.L #$12,-2(A0)		ERROR: Invalid addressing mode
+MULU.L $10(A6,D7.W),D1	C2F67010	ERROR: Invalid size code
+MULU.L $10(A6,D7.W),A2		ERROR: Invalid addressing mode
+MULU.L D1,$10(A6,D7.W)		ERROR: Invalid addressing mode
+MULU.L #$12,$10(A6,D7.W)		ERROR: Invalid addressing mode
+MULU.L $12(A0,A1.L),D1	C2F09812	ERROR: Invalid size code
+MULU.L $12(A0,A1.L),A2		ERROR: Invalid addressing mode
+MULU.L D1,$12(A0,A1.L)		ERROR: Invalid addressing mode
+MULU.L #$12,$12(A0,A1.L)		ERROR: Invalid addressing mode
+MULU.L (A2,D3),D1	C2F23000	ERROR: Invalid size code
+MULU.L (A2,D3),A2		ERROR: Invalid addressing mode
+MULU.L D1,(A2,D3)		ERROR: Invalid addressing mode
+MULU.L #$12,(A2,D3)		ERROR: Invalid addressing mode
+MULU.L $12345678,D1	C2F912345678	ERROR: Invalid size code
+MULU.L $12345678,A2		ERROR: Invalid addressing mode
+MULU.L D1,$12345678		ERROR: Invalid addressing mode
+MULU.L #$12,$12345678		ERROR: Invalid addressing mode
+MULU.L $1234.L,D1	C2F900001234	ERROR: Invalid size code
+MULU.L $1234.L,A2		ERROR: Invalid addressing mode
+MULU.L D1,$1234.L		ERROR: Invalid addressing mode
+MULU.L #$12,$1234.L		ERROR: Invalid addressing mode
+MULU.L $1234.W,D1	C2F81234	ERROR: Invalid size code
+MULU.L $1234.W,A2		ERROR: Invalid addressing mode
+MULU.L D1,$1234.W		ERROR: Invalid addressing mode
+MULU.L #$12,$1234.W		ERROR: Invalid addressing mode
+MULU.L $8000,D1	C2F900008000	ERROR: Invalid size code
+MULU.L $8000,A2		ERROR: Invalid addressing mode
+MULU.L D1,$8000		ERROR: Invalid addressing mode
+MULU.L #$12,$8000		ERROR: Invalid addressing mode
+MULU.L BK,D1	C2F81F00	ERROR: Invalid size code
+MULU.L BK,A2		ERROR: Invalid addressing mode
+MULU.L D1,BK		ERROR: Invalid addressing mode
+MULU.L #$12,BK		ERROR: Invalid addressing mode
+MULU.L *+$10(PC),D1	C2FA000E	ERROR: Invalid size code
+MULU.L *+$10(PC),A2		ERROR: Invalid addressing mode
+MULU.L D1,*+$10(PC)		ERROR: Invalid addressing mode
+MULU.L #$12,*+$10(PC)		ERROR: Invalid addressing mode
+MULU.L *(PC,D0.W),D1	C2FB00FE	ERROR: Invalid size code
+MULU.L *(PC,D0.W),A2		ERROR: Invalid addressing mode
+MULU.L D1,*(PC,D0.W)		ERROR: Invalid addressing mode
+MULU.L #$12,*(PC,D0.W)		ERROR: Invalid addressing mode
+MULU.L BK(PC),D1	C2FA0EFE	ERROR: Invalid size code
+MULU.L BK(PC),A2		ERROR: Invalid addressing mode
+MULU.L D1,BK(PC)		ERROR: Invalid addressing mode
+MULU.L #$12,BK(PC)		ERROR: Invalid addressing mode
+MULU.L #8,D1	C2FC00000008	ERROR: Invalid size code
+MULU.L #8,A2		ERROR: Invalid addressing mode
+MULU.L D1,#8		ERROR: Invalid addressing mode
+MULU.L #$12,#8		ERROR: Invalid addressing mode
+MULU.L #9,D1	C2FC00000009	ERROR: Invalid size code
+MULU.L #9,A2		ERROR: Invalid addressing mode
+MULU.L D1,#9		ERROR: Invalid addressing mode
+MULU.L #$12,#9		ERROR: Invalid addressing mode
+MULU.L #0,D1	C2FC00000000	ERROR: Invalid size code
+MULU.L #0,A2		ERROR: Invalid addressing mode
+MULU.L D1,#0		ERROR: Invalid addressing mode
+MULU.L #$12,#0		ERROR: Invalid addressing mode
+MULU.L #-1,D1	C2FCFFFFFFFF	ERROR: Invalid size code
+MULU.L #-1,A2		ERROR: Invalid addressing mode
+MULU.L D1,#-1		ERROR: Invalid addressing mode
+MULU.L #$12,#-1		ERROR: Invalid addressing mode
+MULU.L #$80,D1	C2FC00000080	ERROR: Invalid size code
+MULU.L #$80,A2		ERROR: Invalid addressing mode
+MULU.L D1,#$80		ERROR: Invalid addressing mode
+MULU.L #$12,#$80		ERROR: Invalid addressing mode
+MULU.L #$12345678,D1	C2FC12345678	ERROR: Invalid size code
+MULU.L #$12345678,A2		ERROR: Invalid addressing mode
+MULU.L D1,#$12345678		ERROR: Invalid addressing mode
+MULU.L #$12,#$12345678		ERROR: Invalid addressing mode
+MULU.L #$12345678.L,D1	C2FC12345678	ERROR: Invalid size code
+MULU.L #$12345678.L,A2		ERROR: Invalid addressing mode
+MULU.L D1,#$12345678.L		ERROR: Invalid addressing mode
+MULU.L #$12,#$12345678.L		ERROR: Invalid addressing mode
+MULU.L #BK,D1	C2FC00001F00	ERROR: Invalid size code
+MULU.L #BK,A2		ERROR: Invalid addressing mode
+MULU.L D1,#BK		ERROR: Invalid addressing mode
+MULU.L #$12,#BK		ERROR: Invalid addressing mode
+MULU.L #FW,D1	C2FC00001F00	ERROR: Invalid size code
+MULU.L #FW,A2		ERROR: Invalid addressing mode
+MULU.L D1,#FW		ERROR: Invalid addressing mode
+MULU.L #$12,#FW		ERROR: Invalid addressing mode
+MULU.L #UNDEF,D1	C2FC00005601	ERROR: Undefined symbol
+MULU.L #UNDEF,A2		ERROR: Invalid addressing mode
+MULU.L D1,#UNDEF		ERROR: Invalid addressing mode
+MULU.L #$12,#UNDEF		ERROR: Invalid addressing mode
+MULU.L UNDEF,D1	C2F900005601	ERROR: Undefined symbol
+MULU.L UNDEF,A2		ERROR: Invalid addressing mode
+MULU.L D1,UNDEF		ERROR: Invalid addressing mode
+MULU.L #$12,UNDEF		ERROR: Invalid addressing mode
+MULU.L USP,D1		ERROR: Invalid addressing mode
+MULU.L USP,A2		ERROR: Invalid addressing mode
+MULU.L D1,USP		ERROR: Invalid addressing mode
+MULU.L #$12,USP		ERROR: Invalid addressing mode
+MULU.L D1,D2,D3		ERROR: Invalid syntax
+MULU.S		ERROR: Invalid syntax
+MULU.S D1		ERROR: Comma expected
+MULU.S A2		ERROR: Comma expected
+MULU.S SP		ERROR: Comma expected
+MULU.S (A3)		ERROR: Comma expected
+MULU.S (A4)+		ERROR: Comma expected
+MULU.S -(A5)		ERROR: Comma expected
+MULU.S $10(A6)		ERROR: Comma expected
+MULU.S -2(A0)		ERROR: Comma expected
+MULU.S $10(A6,D7.W)		ERROR: Comma expected
+MULU.S $12(A0,A1.L)		ERROR: Comma expected
+MULU.S (A2,D3)		ERROR: Comma expected
+MULU.S $1234		ERROR: Comma expected
+MULU.S $12345678		ERROR: Comma expected
+MULU.S $1234.L		ERROR: Comma expected
+MULU.S $1234.W		ERROR: Comma expected
+MULU.S $8000		ERROR: Comma expected
+MULU.S BK		ERROR: Comma expected
+MULU.S FW		ERROR: Comma expected
+MULU.S *+$10(PC)		ERROR: Comma expected
+MULU.S *(PC,D0.W)		ERROR: Comma expected
+MULU.S BK(PC)		ERROR: Comma expected
+MULU.S #1		ERROR: Comma expected
+MULU.S #8		ERROR: Comma expected
+MULU.S #9		ERROR: Comma expected
+MULU.S #0		ERROR: Comma expected
+MULU.S #-1		ERROR: Comma expected
+MULU.S #$80		ERROR: Comma expected
+MULU.S #$1234		ERROR: Comma expected
+MULU.S #$12345678		ERROR: Comma expected
+MULU.S #$12345678.L		ERROR: Comma expected
+MULU.S #BK		ERROR: Comma expected
+MULU.S #FW		ERROR: Comma expected
+MULU.S #UNDEF		ERROR: Comma expected
+MULU.S UNDEF		ERROR: Comma expected
+MULU.S SR		ERROR: Comma expected
+MULU.S CCR		ERROR: Comma expected
+MULU.S USP		ERROR: Comma expected
+MULU.S D1,D1	C2C1	ERROR: Invalid size code
+MULU.S D1,A2		ERROR: Invalid addressing mode
+MULU.S D1,(A3)		ERROR: Invalid addressing mode
+MULU.S D1,$10(A6)		ERROR: Invalid addressing mode
+MULU.S D1,$1234		ERROR: Invalid addressing mode
+MULU.S D1,FW		ERROR: Invalid addressing mode
+MULU.S D1,#1		ERROR: Invalid addressing mode
+MULU.S D1,#$1234		ERROR: Invalid addressing mode
+MULU.S D1,CCR		ERROR: Invalid addressing mode
+MULU.S D1,SR		ERROR: Invalid addressing mode
+MULU.S A2,D1		ERROR: Invalid addressing mode
+MULU.S A2,A2		ERROR: Invalid addressing mode
+MULU.S A2,(A3)		ERROR: Invalid addressing mode
+MULU.S A2,$10(A6)		ERROR: Invalid addressing mode
+MULU.S A2,$1234		ERROR: Invalid addressing mode
+MULU.S A2,FW		ERROR: Invalid addressing mode
+MULU.S A2,#1		ERROR: Invalid addressing mode
+MULU.S A2,#$1234		ERROR: Invalid addressing mode
+MULU.S A2,CCR		ERROR: Invalid addressing mode
+MULU.S A2,SR		ERROR: Invalid addressing mode
+MULU.S (A3),D1	C2D3	ERROR: Invalid size code
+MULU.S (A3),A2		ERROR: Invalid addressing mode
+MULU.S (A3),(A3)		ERROR: Invalid addressing mode
+MULU.S (A3),$10(A6)		ERROR: Invalid addressing mode
+MULU.S (A3),$1234		ERROR: Invalid addressing mode
+MULU.S (A3),FW		ERROR: Invalid addressing mode
+MULU.S (A3),#1		ERROR: Invalid addressing mode
+MULU.S (A3),#$1234		ERROR: Invalid addressing mode
+MULU.S (A3),CCR		ERROR: Invalid addressing mode
+MULU.S (A3),SR		ERROR: Invalid addressing mode
+MULU.S $10(A6),D1	C2EE0010	ERROR: Invalid size code
+MULU.S $10(A6),A2		ERROR: Invalid addressing mode
+MULU.S $10(A6),(A3)		ERROR: Invalid addressing mode
+MULU.S $10(A6),$10(A6)		ERROR: Invalid addressing mode
+MULU.S $10(A6),$1234		ERROR: Invalid addressing mode
+MULU.S $10(A6),FW		ERROR: Invalid addressing mode
+MULU.S $10(A6),#1		ERROR: Invalid addressing mode
+MULU.S $10(A6),#$1234		ERROR: Invalid addressing mode
+MULU.S $10(A6),CCR		ERROR: Invalid addressing mode
+MULU.S $10(A6),SR		ERROR: Invalid addressing mode
+MULU.S $1234,D1	C2F81234	ERROR: Invalid size code
+MULU.S $1234,A2		ERROR: Invalid addressing mode
+MULU.S $1234,(A3)		ERROR: Invalid addressing mode
+MULU.S $1234,$10(A6)		ERROR: Invalid addressing mode
+MULU.S $1234,$1234		ERROR: Invalid addressing mode
+MULU.S $1234,FW		ERROR: Invalid addressing mode
+MULU.S $1234,#1		ERROR: Invalid addressing mode
+MULU.S $1234,#$1234		ERROR: Invalid addressing mode
+MULU.S $1234,CCR		ERROR: Invalid addressing mode
+MULU.S $1234,SR		ERROR: Invalid addressing mode
+MULU.S FW,D1	C2F900001F00	ERROR: Invalid size code
+MULU.S FW,A2		ERROR: Invalid addressing mode
+MULU.S FW,(A3)		ERROR: Invalid addressing mode
+MULU.S FW,$10(A6)		ERROR: Invalid addressing mode
+MULU.S FW,$1234		ERROR: Invalid addressing mode
+MULU.S FW,FW		ERROR: Invalid addressing mode
+MULU.S FW,#1		ERROR: Invalid addressing mode
+MULU.S FW,#$1234		ERROR: Invalid addressing mode
+MULU.S FW,CCR		ERROR: Invalid addressing mode
+MULU.S FW,SR		ERROR: Invalid addressing mode
+MULU.S #1,D1	C2FC	ERROR: Invalid size code
+MULU.S #1,A2		ERROR: Invalid addressing mode
+MULU.S #1,(A3)		ERROR: Invalid addressing mode
+MULU.S #1,$10(A6)		ERROR: Invalid addressing mode
+MULU.S #1,$1234		ERROR: Invalid addressing mode
+MULU.S #1,FW		ERROR: Invalid addressing mode
+MULU.S #1,#1		ERROR: Invalid addressing mode
+MULU.S #1,#$1234		ERROR: Invalid addressing mode
+MULU.S #1,CCR		ERROR: Invalid addressing mode
+MULU.S #1,SR		ERROR: Invalid addressing mode
+MULU.S #$1234,D1	C2FC	ERROR: Invalid size code
+MULU.S #$1234,A2		ERROR: Invalid addressing mode
+MULU.S #$1234,(A3)		ERROR: Invalid addressing mode
+MULU.S #$1234,$10(A6)		ERROR: Invalid addressing mode
+MULU.S #$1234,$1234		ERROR: Invalid addressing mode
+MULU.S #$1234,FW		ERROR: Invalid addressing mode
+MULU.S #$1234,#1		ERROR: Invalid addressing mode
+MULU.S #$1234,#$1234		ERROR: Invalid addressing mode
+MULU.S #$1234,CCR		ERROR: Invalid addressing mode
+MULU.S #$1234,SR		ERROR: Invalid addressing mode
+MULU.S CCR,D1		ERROR: Invalid addressing mode
+MULU.S CCR,A2		ERROR: Invalid addressing mode
+MULU.S CCR,(A3)		ERROR: Invalid addressing mode
+MULU.S CCR,$10(A6)		ERROR: Invalid addressing mode
+MULU.S CCR,$1234		ERROR: Invalid addressing mode
+MULU.S CCR,FW		ERROR: Invalid addressing mode
+MULU.S CCR,#1		ERROR: Invalid addressing mode
+MULU.S CCR,#$1234		ERROR: Invalid addressing mode
+MULU.S CCR,CCR		ERROR: Invalid addressing mode
+MULU.S CCR,SR		ERROR: Invalid addressing mode
+MULU.S SR,D1		ERROR: Invalid addressing mode
+MULU.S SR,A2		ERROR: Invalid addressing mode
+MULU.S SR,(A3)		ERROR: Invalid addressing mode
+MULU.S SR,$10(A6)		ERROR: Invalid addressing mode
+MULU.S SR,$1234		ERROR: Invalid addressing mode
+MULU.S SR,FW		ERROR: Invalid addressing mode
+MULU.S SR,#1		ERROR: Invalid addressing mode
+MULU.S SR,#$1234		ERROR: Invalid addressing mode
+MULU.S SR,CCR		ERROR: Invalid addressing mode
+MULU.S SR,SR		ERROR: Invalid addressing mode
+MULU.S SP,D1		ERROR: Invalid addressing mode
+MULU.S SP,A2		ERROR: Invalid addressing mode
+MULU.S D1,SP		ERROR: Invalid addressing mode
+MULU.S #$12,SP		ERROR: Invalid addressing mode
+MULU.S (A4)+,D1	C2DC	ERROR: Invalid size code
+MULU.S (A4)+,A2		ERROR: Invalid addressing mode
+MULU.S D1,(A4)+		ERROR: Invalid addressing mode
+MULU.S #$12,(A4)+		ERROR: Invalid addressing mode
+MULU.S -(A5),D1	C2E5	ERROR: Invalid size code
+MULU.S -(A5),A2		ERROR: Invalid addressing mode
+MULU.S D1,-(A5)		ERROR: Invalid addressing mode
+MULU.S #$12,-(A5)		ERROR: Invalid addressing mode
+MULU.S -2(A0),D1	C2E8FFFE	ERROR: Invalid size code
+MULU.S -2(A0),A2		ERROR: Invalid addressing mode
+MULU.S D1,-2(A0)		ERROR: Invalid addressing mode
+MULU.S #$12,-2(A0)		ERROR: Invalid addressing mode
+MULU.S $10(A6,D7.W),D1	C2F67010	ERROR: Invalid size code
+MULU.S $10(A6,D7.W),A2		ERROR: Invalid addressing mode
+MULU.S D1,$10(A6,D7.W)		ERROR: Invalid addressing mode
+MULU.S #$12,$10(A6,D7.W)		ERROR: Invalid addressing mode
+MULU.S $12(A0,A1.L),D1	C2F09812	ERROR: Invalid size code
+MULU.S $12(A0,A1.L),A2		ERROR: Invalid addressing mode
+MULU.S D1,$12(A0,A1.L)		ERROR: Invalid addressing mode
+MULU.S #$12,$12(A0,A1.L)		ERROR: Invalid addressing mode
+MULU.S (A2,D3),D1	C2F23000	ERROR: Invalid size code
+MULU.S (A2,D3),A2		ERROR: Invalid addressing mode
+MULU.S D1,(A2,D3)		ERROR: Invalid addressing mode
+MULU.S #$12,(A2,D3)		ERROR: Invalid addressing mode
+MULU.S $12345678,D1	C2F912345678	ERROR: Invalid size code
+MULU.S $12345678,A2		ERROR: Invalid addressing mode
+MULU.S D1,$12345678		ERROR: Invalid addressing mode
+MULU.S #$12,$12345678		ERROR: Invalid addressing mode
+MULU.S $1234.L,D1	C2F900001234	ERROR: Invalid size code
+MULU.S $1234.L,A2		ERROR: Invalid addressing mode
+MULU.S D1,$1234.L		ERROR: Invalid addressing mode
+MULU.S #$12,$1234.L		ERROR: Invalid addressing mode
+MULU.S $1234.W,D1	C2F81234	ERROR: Invalid size code
+MULU.S $1234.W,A2		ERROR: Invalid addressing mode
+MULU.S D1,$1234.W		ERROR: Invalid addressing mode
+MULU.S #$12,$1234.W		ERROR: Invalid addressing mode
+MULU.S $8000,D1	C2F900008000	ERROR: Invalid size code
+MULU.S $8000,A2		ERROR: Invalid addressing mode
+MULU.S D1,$8000		ERROR: Invalid addressing mode
+MULU.S #$12,$8000		ERROR: Invalid addressing mode
+MULU.S BK,D1	C2F81F00	ERROR: Invalid size code
+MULU.S BK,A2		ERROR: Invalid addressing mode
+MULU.S D1,BK		ERROR: Invalid addressing mode
+MULU.S #$12,BK		ERROR: Invalid addressing mode
+MULU.S *+$10(PC),D1	C2FA000E	ERROR: Invalid size code
+MULU.S *+$10(PC),A2		ERROR: Invalid addressing mode
+MULU.S D1,*+$10(PC)		ERROR: Invalid addressing mode
+MULU.S #$12,*+$10(PC)		ERROR: Invalid addressing mode
+MULU.S *(PC,D0.W),D1	C2FB00FE	ERROR: Invalid size code
+MULU.S *(PC,D0.W),A2		ERROR: Invalid addressing mode
+MULU.S D1,*(PC,D0.W)		ERROR: Invalid addressing mode
+MULU.S #$12,*(PC,D0.W)		ERROR: Invalid addressing mode
+MULU.S BK(PC),D1	C2FA0EFE	ERROR: Invalid size code
+MULU.S BK(PC),A2		ERROR: Invalid addressing mode
+MULU.S D1,BK(PC)		ERROR: Invalid addressing mode
+MULU.S #$12,BK(PC)		ERROR: Invalid addressing mode
+MULU.S #8,D1	C2FC	ERROR: Invalid size code
+MULU.S #8,A2		ERROR: Invalid addressing mode
+MULU.S D1,#8		ERROR: Invalid addressing mode
+MULU.S #$12,#8		ERROR: Invalid addressing mode
+MULU.S #9,D1	C2FC	ERROR: Invalid size code
+MULU.S #9,A2		ERROR: Invalid addressing mode
+MULU.S D1,#9		ERROR: Invalid addressing mode
+MULU.S #$12,#9		ERROR: Invalid addressing mode
+MULU.S #0,D1	C2FC	ERROR: Invalid size code
+MULU.S #0,A2		ERROR: Invalid addressing mode
+MULU.S D1,#0		ERROR: Invalid addressing mode
+MULU.S #$12,#0		ERROR: Invalid addressing mode
+MULU.S #-1,D1	C2FC	ERROR: Invalid size code
+MULU.S #-1,A2		ERROR: Invalid addressing mode
+MULU.S D1,#-1		ERROR: Invalid addressing mode
+MULU.S #$12,#-1		ERROR: Invalid addressing mode
+MULU.S #$80,D1	C2FC	ERROR: Invalid size code
+MULU.S #$80,A2		ERROR: Invalid addressing mode
+MULU.S D1,#$80		ERROR: Invalid addressing mode
+MULU.S #$12,#$80		ERROR: Invalid addressing mode
+MULU.S #$12345678,D1	C2FC	ERROR: Invalid size code
+MULU.S #$12345678,A2		ERROR: Invalid addressing mode
+MULU.S D1,#$12345678		ERROR: Invalid addressing mode
+MULU.S #$12,#$12345678		ERROR: Invalid addressing mode
+MULU.S #$12345678.L,D1	C2FC	ERROR: Invalid size code
+MULU.S #$12345678.L,A2		ERROR: Invalid addressing mode
+MULU.S D1,#$12345678.L		ERROR: Invalid addressing mode
+MULU.S #$12,#$12345678.L		ERROR: Invalid addressing mode
+MULU.S #BK,D1	C2FC	ERROR: Invalid size code
+MULU.S #BK,A2		ERROR: Invalid addressing mode
+MULU.S D1,#BK		ERROR: Invalid addressing mode
+MULU.S #$12,#BK		ERROR: Invalid addressing mode
+MULU.S #FW,D1	C2FC	ERROR: Invalid size code
+MULU.S #FW,A2		ERROR: Invalid addressing mode
+MULU.S D1,#FW		ERROR: Invalid addressing mode
+MULU.S #$12,#FW		ERROR: Invalid addressing mode
+MULU.S #UNDEF,D1	C2FC	ERROR: Undefined symbol
+MULU.S #UNDEF,A2		ERROR: Invalid addressing mode
+MULU.S D1,#UNDEF		ERROR: Invalid addressing mode
+MULU.S #$12,#UNDEF		ERROR: Invalid addressing mode
+MULU.S UNDEF,D1	C2F900005601	ERROR: Undefined symbol
+MULU.S UNDEF,A2		ERROR: Invalid addressing mode
+MULU.S D1,UNDEF		ERROR: Invalid addressing mode
+MULU.S #$12,UNDEF		ERROR: Invalid addressing mode
+MULU.S USP,D1		ERROR: Invalid addressing mode
+MULU.S USP,A2		ERROR: Invalid addressing mode
+MULU.S D1,USP		ERROR: Invalid addressing mode
+MULU.S #$12,USP		ERROR: Invalid addressing mode
+MULU.S D1,D2,D3		ERROR: Invalid syntax
+MULU.X D1,D2	C4C1	ERROR: Invalid size code
+MULU.X #1		ERROR: Comma expected

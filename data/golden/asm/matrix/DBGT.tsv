@@ -1,0 +1,92 @@
+DBGT		ERROR: Invalid syntax
+DBGT D2,*+2	5ECA0000	-
+DBGT D2,*+4	5ECA0002	-
+DBGT D2,*+$80	5ECA007E	-
+DBGT D2,*+$82	5ECA0080	-
+DBGT D2,*-$7E	5ECAFF80	-
+DBGT D2,*-$80	5ECAFF7E	-
+DBGT D2,*+$8000	5ECA7FFE	-
+DBGT D2,*	5ECAFFFE	-
+DBGT D2,BK	5ECA0EFE	-
+DBGT D2,FW	5ECA0EFE	-
+DBGT D2,$1000	5ECAFFFE	-
+DBGT D2,$12345678	5ECA4676	ERROR: Branch instruction displacement is out of range or invalid
+DBGT D2,D1		ERROR: Invalid addressing mode
+DBGT D2,(A0)		ERROR: Invalid addressing mode
+DBGT D2,#4		ERROR: Invalid addressing mode
+DBGT A2,*		ERROR: Invalid addressing mode
+DBGT #1,*		ERROR: Invalid addressing mode
+DBGT.B		ERROR: Invalid syntax
+DBGT.B D2,*+2	5ECA0000	ERROR: Invalid size code
+DBGT.B D2,*+4	5ECA0002	ERROR: Invalid size code
+DBGT.B D2,*+$80	5ECA007E	ERROR: Invalid size code
+DBGT.B D2,*+$82	5ECA0080	ERROR: Invalid size code
+DBGT.B D2,*-$7E	5ECAFF80	ERROR: Invalid size code
+DBGT.B D2,*-$80	5ECAFF7E	ERROR: Invalid size code
+DBGT.B D2,*+$8000	5ECA7FFE	ERROR: Invalid size code
+DBGT.B D2,*	5ECAFFFE	ERROR: Invalid size code
+DBGT.B D2,BK	5ECA0EFE	ERROR: Invalid size code
+DBGT.B D2,FW	5ECA0EFE	ERROR: Invalid size code
+DBGT.B D2,$1000	5ECAFFFE	ERROR: Invalid size code
+DBGT.B D2,$12345678	5ECA4676	ERROR: Invalid size code
+DBGT.B D2,D1		ERROR: Invalid addressing mode
+DBGT.B D2,(A0)		ERROR: Invalid addressing mode
+DBGT.B D2,#4		ERROR: Invalid addressing mode
+DBGT.B A2,*		ERROR: Invalid addressing mode
+DBGT.B #1,*		ERROR: Invalid addressing mode
+DBGT.W		ERROR: Invalid syntax
+DBGT.W D2,*+2	5ECA0000	-
+DBGT.W D2,*+4	5ECA0002	-
+DBGT.W D2,*+$80	5ECA007E	-
+DBGT.W D2,*+$82	5ECA0080	-
+DBGT.W D2,*-$7E	5ECAFF80	-
+DBGT.W D2,*-$80	5ECAFF7E	-
+DBGT.W D2,*+$8000	5ECA7FFE	-
+DBGT.W D2,*	5ECAFFFE	-
+DBGT.W D2,BK	5ECA0EFE	-
+DBGT.W D2,FW	5ECA0EFE	-
+DBGT.W D2,$1000	5ECAFFFE	-
+DBGT.W D2,$12345678	5ECA4676	ERROR: Branch instruction displacement is out of range or invalid
+DBGT.W D2,D1		ERROR: Invalid addressing mode
+DBGT.W D2,(A0)		ERROR: Invalid addressing mode
+DBGT.W D2,#4		ERROR: Invalid addressing mode
+DBGT.W A2,*		ERROR: Invalid addressing mode
+DBGT.W #1,*		ERROR: Invalid addressing mode
+DBGT.L		ERROR: Invalid syntax
+DBGT.L D2,*+2	5ECA0000	ERROR: Invalid size code
+DBGT.L D2,*+4	5ECA0002	ERROR: Invalid size code
+DBGT.L D2,*+$80	5ECA007E	ERROR: Invalid size code
+DBGT.L D2,*+$82	5ECA0080	ERROR: Invalid size code
+DBGT.L D2,*-$7E	5ECAFF80	ERROR: Invalid size code
+DBGT.L D2,*-$80	5ECAFF7E	ERROR: Invalid size code
+DBGT.L D2,*+$8000	5ECA7FFE	ERROR: Invalid size code
+DBGT.L D2,*	5ECAFFFE	ERROR: Invalid size code
+DBGT.L D2,BK	5ECA0EFE	ERROR: Invalid size code
+DBGT.L D2,FW	5ECA0EFE	ERROR: Invalid size code
+DBGT.L D2,$1000	5ECAFFFE	ERROR: Invalid size code
+DBGT.L D2,$12345678	5ECA4676	ERROR: Invalid size code
+DBGT.L D2,D1		ERROR: Invalid addressing mode
+DBGT.L D2,(A0)		ERROR: Invalid addressing mode
+DBGT.L D2,#4		ERROR: Invalid addressing mode
+DBGT.L A2,*		ERROR: Invalid addressing mode
+DBGT.L #1,*		ERROR: Invalid addressing mode
+DBGT.S		ERROR: Invalid syntax
+DBGT.S D2,*+2	5ECA0000	ERROR: Invalid size code
+DBGT.S D2,*+4	5ECA0002	ERROR: Invalid size code
+DBGT.S D2,*+$80	5ECA007E	ERROR: Invalid size code
+DBGT.S D2,*+$82	5ECA0080	ERROR: Invalid size code
+DBGT.S D2,*-$7E	5ECAFF80	ERROR: Invalid size code
+DBGT.S D2,*-$80	5ECAFF7E	ERROR: Invalid size code
+DBGT.S D2,*+$8000	5ECA7FFE	ERROR: Invalid size code
+DBGT.S D2,*	5ECAFFFE	ERROR: Invalid size code
+DBGT.S D2,BK	5ECA0EFE	ERROR: Invalid size code
+DBGT.S D2,FW	5ECA0EFE	ERROR: Invalid size code
+DBGT.S D2,$1000	5ECAFFFE	ERROR: Invalid size code
+DBGT.S D2,$12345678	5ECA4676	ERROR: Invalid size code
+DBGT.S D2,D1		ERROR: Invalid addressing mode
+DBGT.S D2,(A0)		ERROR: Invalid addressing mode
+DBGT.S D2,#4		ERROR: Invalid addressing mode
+DBGT.S A2,*		ERROR: Invalid addressing mode
+DBGT.S #1,*		ERROR: Invalid addressing mode
+DBGT.X D1,D2		ERROR: Invalid addressing mode
+DBGT.X #1		ERROR: Comma expected

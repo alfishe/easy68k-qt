@@ -1,0 +1,92 @@
+DBHI		ERROR: Invalid syntax
+DBHI D2,*+2	52CA0000	-
+DBHI D2,*+4	52CA0002	-
+DBHI D2,*+$80	52CA007E	-
+DBHI D2,*+$82	52CA0080	-
+DBHI D2,*-$7E	52CAFF80	-
+DBHI D2,*-$80	52CAFF7E	-
+DBHI D2,*+$8000	52CA7FFE	-
+DBHI D2,*	52CAFFFE	-
+DBHI D2,BK	52CA0EFE	-
+DBHI D2,FW	52CA0EFE	-
+DBHI D2,$1000	52CAFFFE	-
+DBHI D2,$12345678	52CA4676	ERROR: Branch instruction displacement is out of range or invalid
+DBHI D2,D1		ERROR: Invalid addressing mode
+DBHI D2,(A0)		ERROR: Invalid addressing mode
+DBHI D2,#4		ERROR: Invalid addressing mode
+DBHI A2,*		ERROR: Invalid addressing mode
+DBHI #1,*		ERROR: Invalid addressing mode
+DBHI.B		ERROR: Invalid syntax
+DBHI.B D2,*+2	52CA0000	ERROR: Invalid size code
+DBHI.B D2,*+4	52CA0002	ERROR: Invalid size code
+DBHI.B D2,*+$80	52CA007E	ERROR: Invalid size code
+DBHI.B D2,*+$82	52CA0080	ERROR: Invalid size code
+DBHI.B D2,*-$7E	52CAFF80	ERROR: Invalid size code
+DBHI.B D2,*-$80	52CAFF7E	ERROR: Invalid size code
+DBHI.B D2,*+$8000	52CA7FFE	ERROR: Invalid size code
+DBHI.B D2,*	52CAFFFE	ERROR: Invalid size code
+DBHI.B D2,BK	52CA0EFE	ERROR: Invalid size code
+DBHI.B D2,FW	52CA0EFE	ERROR: Invalid size code
+DBHI.B D2,$1000	52CAFFFE	ERROR: Invalid size code
+DBHI.B D2,$12345678	52CA4676	ERROR: Invalid size code
+DBHI.B D2,D1		ERROR: Invalid addressing mode
+DBHI.B D2,(A0)		ERROR: Invalid addressing mode
+DBHI.B D2,#4		ERROR: Invalid addressing mode
+DBHI.B A2,*		ERROR: Invalid addressing mode
+DBHI.B #1,*		ERROR: Invalid addressing mode
+DBHI.W		ERROR: Invalid syntax
+DBHI.W D2,*+2	52CA0000	-
+DBHI.W D2,*+4	52CA0002	-
+DBHI.W D2,*+$80	52CA007E	-
+DBHI.W D2,*+$82	52CA0080	-
+DBHI.W D2,*-$7E	52CAFF80	-
+DBHI.W D2,*-$80	52CAFF7E	-
+DBHI.W D2,*+$8000	52CA7FFE	-
+DBHI.W D2,*	52CAFFFE	-
+DBHI.W D2,BK	52CA0EFE	-
+DBHI.W D2,FW	52CA0EFE	-
+DBHI.W D2,$1000	52CAFFFE	-
+DBHI.W D2,$12345678	52CA4676	ERROR: Branch instruction displacement is out of range or invalid
+DBHI.W D2,D1		ERROR: Invalid addressing mode
+DBHI.W D2,(A0)		ERROR: Invalid addressing mode
+DBHI.W D2,#4		ERROR: Invalid addressing mode
+DBHI.W A2,*		ERROR: Invalid addressing mode
+DBHI.W #1,*		ERROR: Invalid addressing mode
+DBHI.L		ERROR: Invalid syntax
+DBHI.L D2,*+2	52CA0000	ERROR: Invalid size code
+DBHI.L D2,*+4	52CA0002	ERROR: Invalid size code
+DBHI.L D2,*+$80	52CA007E	ERROR: Invalid size code
+DBHI.L D2,*+$82	52CA0080	ERROR: Invalid size code
+DBHI.L D2,*-$7E	52CAFF80	ERROR: Invalid size code
+DBHI.L D2,*-$80	52CAFF7E	ERROR: Invalid size code
+DBHI.L D2,*+$8000	52CA7FFE	ERROR: Invalid size code
+DBHI.L D2,*	52CAFFFE	ERROR: Invalid size code
+DBHI.L D2,BK	52CA0EFE	ERROR: Invalid size code
+DBHI.L D2,FW	52CA0EFE	ERROR: Invalid size code
+DBHI.L D2,$1000	52CAFFFE	ERROR: Invalid size code
+DBHI.L D2,$12345678	52CA4676	ERROR: Invalid size code
+DBHI.L D2,D1		ERROR: Invalid addressing mode
+DBHI.L D2,(A0)		ERROR: Invalid addressing mode
+DBHI.L D2,#4		ERROR: Invalid addressing mode
+DBHI.L A2,*		ERROR: Invalid addressing mode
+DBHI.L #1,*		ERROR: Invalid addressing mode
+DBHI.S		ERROR: Invalid syntax
+DBHI.S D2,*+2	52CA0000	ERROR: Invalid size code
+DBHI.S D2,*+4	52CA0002	ERROR: Invalid size code
+DBHI.S D2,*+$80	52CA007E	ERROR: Invalid size code
+DBHI.S D2,*+$82	52CA0080	ERROR: Invalid size code
+DBHI.S D2,*-$7E	52CAFF80	ERROR: Invalid size code
+DBHI.S D2,*-$80	52CAFF7E	ERROR: Invalid size code
+DBHI.S D2,*+$8000	52CA7FFE	ERROR: Invalid size code
+DBHI.S D2,*	52CAFFFE	ERROR: Invalid size code
+DBHI.S D2,BK	52CA0EFE	ERROR: Invalid size code
+DBHI.S D2,FW	52CA0EFE	ERROR: Invalid size code
+DBHI.S D2,$1000	52CAFFFE	ERROR: Invalid size code
+DBHI.S D2,$12345678	52CA4676	ERROR: Invalid size code
+DBHI.S D2,D1		ERROR: Invalid addressing mode
+DBHI.S D2,(A0)		ERROR: Invalid addressing mode
+DBHI.S D2,#4		ERROR: Invalid addressing mode
+DBHI.S A2,*		ERROR: Invalid addressing mode
+DBHI.S #1,*		ERROR: Invalid addressing mode
+DBHI.X D1,D2		ERROR: Invalid addressing mode
+DBHI.X #1		ERROR: Comma expected

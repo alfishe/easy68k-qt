@@ -1,0 +1,92 @@
+DBF		ERROR: Invalid syntax
+DBF D2,*+2	51CA0000	-
+DBF D2,*+4	51CA0002	-
+DBF D2,*+$80	51CA007E	-
+DBF D2,*+$82	51CA0080	-
+DBF D2,*-$7E	51CAFF80	-
+DBF D2,*-$80	51CAFF7E	-
+DBF D2,*+$8000	51CA7FFE	-
+DBF D2,*	51CAFFFE	-
+DBF D2,BK	51CA0EFE	-
+DBF D2,FW	51CA0EFE	-
+DBF D2,$1000	51CAFFFE	-
+DBF D2,$12345678	51CA4676	ERROR: Branch instruction displacement is out of range or invalid
+DBF D2,D1		ERROR: Invalid addressing mode
+DBF D2,(A0)		ERROR: Invalid addressing mode
+DBF D2,#4		ERROR: Invalid addressing mode
+DBF A2,*		ERROR: Invalid addressing mode
+DBF #1,*		ERROR: Invalid addressing mode
+DBF.B		ERROR: Invalid syntax
+DBF.B D2,*+2	51CA0000	ERROR: Invalid size code
+DBF.B D2,*+4	51CA0002	ERROR: Invalid size code
+DBF.B D2,*+$80	51CA007E	ERROR: Invalid size code
+DBF.B D2,*+$82	51CA0080	ERROR: Invalid size code
+DBF.B D2,*-$7E	51CAFF80	ERROR: Invalid size code
+DBF.B D2,*-$80	51CAFF7E	ERROR: Invalid size code
+DBF.B D2,*+$8000	51CA7FFE	ERROR: Invalid size code
+DBF.B D2,*	51CAFFFE	ERROR: Invalid size code
+DBF.B D2,BK	51CA0EFE	ERROR: Invalid size code
+DBF.B D2,FW	51CA0EFE	ERROR: Invalid size code
+DBF.B D2,$1000	51CAFFFE	ERROR: Invalid size code
+DBF.B D2,$12345678	51CA4676	ERROR: Invalid size code
+DBF.B D2,D1		ERROR: Invalid addressing mode
+DBF.B D2,(A0)		ERROR: Invalid addressing mode
+DBF.B D2,#4		ERROR: Invalid addressing mode
+DBF.B A2,*		ERROR: Invalid addressing mode
+DBF.B #1,*		ERROR: Invalid addressing mode
+DBF.W		ERROR: Invalid syntax
+DBF.W D2,*+2	51CA0000	-
+DBF.W D2,*+4	51CA0002	-
+DBF.W D2,*+$80	51CA007E	-
+DBF.W D2,*+$82	51CA0080	-
+DBF.W D2,*-$7E	51CAFF80	-
+DBF.W D2,*-$80	51CAFF7E	-
+DBF.W D2,*+$8000	51CA7FFE	-
+DBF.W D2,*	51CAFFFE	-
+DBF.W D2,BK	51CA0EFE	-
+DBF.W D2,FW	51CA0EFE	-
+DBF.W D2,$1000	51CAFFFE	-
+DBF.W D2,$12345678	51CA4676	ERROR: Branch instruction displacement is out of range or invalid
+DBF.W D2,D1		ERROR: Invalid addressing mode
+DBF.W D2,(A0)		ERROR: Invalid addressing mode
+DBF.W D2,#4		ERROR: Invalid addressing mode
+DBF.W A2,*		ERROR: Invalid addressing mode
+DBF.W #1,*		ERROR: Invalid addressing mode
+DBF.L		ERROR: Invalid syntax
+DBF.L D2,*+2	51CA0000	ERROR: Invalid size code
+DBF.L D2,*+4	51CA0002	ERROR: Invalid size code
+DBF.L D2,*+$80	51CA007E	ERROR: Invalid size code
+DBF.L D2,*+$82	51CA0080	ERROR: Invalid size code
+DBF.L D2,*-$7E	51CAFF80	ERROR: Invalid size code
+DBF.L D2,*-$80	51CAFF7E	ERROR: Invalid size code
+DBF.L D2,*+$8000	51CA7FFE	ERROR: Invalid size code
+DBF.L D2,*	51CAFFFE	ERROR: Invalid size code
+DBF.L D2,BK	51CA0EFE	ERROR: Invalid size code
+DBF.L D2,FW	51CA0EFE	ERROR: Invalid size code
+DBF.L D2,$1000	51CAFFFE	ERROR: Invalid size code
+DBF.L D2,$12345678	51CA4676	ERROR: Invalid size code
+DBF.L D2,D1		ERROR: Invalid addressing mode
+DBF.L D2,(A0)		ERROR: Invalid addressing mode
+DBF.L D2,#4		ERROR: Invalid addressing mode
+DBF.L A2,*		ERROR: Invalid addressing mode
+DBF.L #1,*		ERROR: Invalid addressing mode
+DBF.S		ERROR: Invalid syntax
+DBF.S D2,*+2	51CA0000	ERROR: Invalid size code
+DBF.S D2,*+4	51CA0002	ERROR: Invalid size code
+DBF.S D2,*+$80	51CA007E	ERROR: Invalid size code
+DBF.S D2,*+$82	51CA0080	ERROR: Invalid size code
+DBF.S D2,*-$7E	51CAFF80	ERROR: Invalid size code
+DBF.S D2,*-$80	51CAFF7E	ERROR: Invalid size code
+DBF.S D2,*+$8000	51CA7FFE	ERROR: Invalid size code
+DBF.S D2,*	51CAFFFE	ERROR: Invalid size code
+DBF.S D2,BK	51CA0EFE	ERROR: Invalid size code
+DBF.S D2,FW	51CA0EFE	ERROR: Invalid size code
+DBF.S D2,$1000	51CAFFFE	ERROR: Invalid size code
+DBF.S D2,$12345678	51CA4676	ERROR: Invalid size code
+DBF.S D2,D1		ERROR: Invalid addressing mode
+DBF.S D2,(A0)		ERROR: Invalid addressing mode
+DBF.S D2,#4		ERROR: Invalid addressing mode
+DBF.S A2,*		ERROR: Invalid addressing mode
+DBF.S #1,*		ERROR: Invalid addressing mode
+DBF.X D1,D2		ERROR: Invalid addressing mode
+DBF.X #1		ERROR: Comma expected

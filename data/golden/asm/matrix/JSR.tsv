@@ -1,0 +1,405 @@
+JSR		ERROR: Invalid syntax
+JSR D1		ERROR: Invalid addressing mode
+JSR A2		ERROR: Invalid addressing mode
+JSR SP		ERROR: Invalid addressing mode
+JSR (A3)	4E93	-
+JSR (A4)+		ERROR: Invalid addressing mode
+JSR -(A5)		ERROR: Invalid addressing mode
+JSR $10(A6)	4EAE0010	-
+JSR -2(A0)	4EA8FFFE	-
+JSR $10(A6,D7.W)	4EB67010	-
+JSR $12(A0,A1.L)	4EB09812	-
+JSR (A2,D3)	4EB23000	-
+JSR $1234	4EB81234	-
+JSR $12345678	4EB912345678	-
+JSR $1234.L	4EB900001234	-
+JSR $1234.W	4EB81234	WARNING: Forcing SHORT addressing disables range checking of extension word
+JSR $8000	4EB900008000	-
+JSR BK	4EB81F00	-
+JSR FW	4EB900001F00	-
+JSR *+$10(PC)	4EBA000E	-
+JSR *(PC,D0.W)	4EBB00FE	-
+JSR BK(PC)	4EBA0EFE	-
+JSR #1		ERROR: Invalid addressing mode
+JSR #8		ERROR: Invalid addressing mode
+JSR #9		ERROR: Invalid addressing mode
+JSR #0		ERROR: Invalid addressing mode
+JSR #-1		ERROR: Invalid addressing mode
+JSR #$80		ERROR: Invalid addressing mode
+JSR #$1234		ERROR: Invalid addressing mode
+JSR #$12345678		ERROR: Invalid addressing mode
+JSR #$12345678.L		ERROR: Invalid addressing mode
+JSR #BK		ERROR: Invalid addressing mode
+JSR #FW		ERROR: Invalid addressing mode
+JSR #UNDEF		ERROR: Invalid addressing mode
+JSR UNDEF	4EB900005564	ERROR: Undefined symbol
+JSR SR		ERROR: Invalid addressing mode
+JSR CCR		ERROR: Invalid addressing mode
+JSR USP		ERROR: Invalid addressing mode
+JSR D1,D1		ERROR: Invalid addressing mode
+JSR D1,A2		ERROR: Invalid addressing mode
+JSR D1,(A3)		ERROR: Invalid addressing mode
+JSR D1,$10(A6)		ERROR: Invalid addressing mode
+JSR D1,$1234		ERROR: Invalid addressing mode
+JSR D1,FW		ERROR: Invalid addressing mode
+JSR D1,#1		ERROR: Invalid addressing mode
+JSR D1,#$1234		ERROR: Invalid addressing mode
+JSR D1,CCR		ERROR: Invalid addressing mode
+JSR D1,SR		ERROR: Invalid addressing mode
+JSR A2,D1		ERROR: Invalid addressing mode
+JSR A2,A2		ERROR: Invalid addressing mode
+JSR A2,(A3)		ERROR: Invalid addressing mode
+JSR A2,$10(A6)		ERROR: Invalid addressing mode
+JSR A2,$1234		ERROR: Invalid addressing mode
+JSR A2,FW		ERROR: Invalid addressing mode
+JSR A2,#1		ERROR: Invalid addressing mode
+JSR A2,#$1234		ERROR: Invalid addressing mode
+JSR A2,CCR		ERROR: Invalid addressing mode
+JSR A2,SR		ERROR: Invalid addressing mode
+JSR (A3),D1		ERROR: Invalid syntax
+JSR (A3),A2		ERROR: Invalid syntax
+JSR (A3),(A3)		ERROR: Invalid syntax
+JSR (A3),$10(A6)		ERROR: Invalid syntax
+JSR (A3),$1234		ERROR: Invalid syntax
+JSR (A3),FW		ERROR: Invalid syntax
+JSR (A3),#1		ERROR: Invalid syntax
+JSR (A3),#$1234		ERROR: Invalid syntax
+JSR (A3),CCR		ERROR: Invalid syntax
+JSR (A3),SR		ERROR: Invalid syntax
+JSR $10(A6),D1		ERROR: Invalid syntax
+JSR $10(A6),A2		ERROR: Invalid syntax
+JSR $10(A6),(A3)		ERROR: Invalid syntax
+JSR $10(A6),$10(A6)		ERROR: Invalid syntax
+JSR $10(A6),$1234		ERROR: Invalid syntax
+JSR $10(A6),FW		ERROR: Invalid syntax
+JSR $10(A6),#1		ERROR: Invalid syntax
+JSR $10(A6),#$1234		ERROR: Invalid syntax
+JSR $10(A6),CCR		ERROR: Invalid syntax
+JSR $10(A6),SR		ERROR: Invalid syntax
+JSR $1234,D1		ERROR: Invalid syntax
+JSR $1234,A2		ERROR: Invalid syntax
+JSR $1234,(A3)		ERROR: Invalid syntax
+JSR $1234,$10(A6)		ERROR: Invalid syntax
+JSR $1234,$1234		ERROR: Invalid syntax
+JSR $1234,FW		ERROR: Invalid syntax
+JSR $1234,#1		ERROR: Invalid syntax
+JSR $1234,#$1234		ERROR: Invalid syntax
+JSR $1234,CCR		ERROR: Invalid syntax
+JSR $1234,SR		ERROR: Invalid syntax
+JSR FW,D1		ERROR: Invalid syntax
+JSR FW,A2		ERROR: Invalid syntax
+JSR FW,(A3)		ERROR: Invalid syntax
+JSR FW,$10(A6)		ERROR: Invalid syntax
+JSR FW,$1234		ERROR: Invalid syntax
+JSR FW,FW		ERROR: Invalid syntax
+JSR FW,#1		ERROR: Invalid syntax
+JSR FW,#$1234		ERROR: Invalid syntax
+JSR FW,CCR		ERROR: Invalid syntax
+JSR FW,SR		ERROR: Invalid syntax
+JSR #1,D1		ERROR: Invalid addressing mode
+JSR #1,A2		ERROR: Invalid addressing mode
+JSR #1,(A3)		ERROR: Invalid addressing mode
+JSR #1,$10(A6)		ERROR: Invalid addressing mode
+JSR #1,$1234		ERROR: Invalid addressing mode
+JSR #1,FW		ERROR: Invalid addressing mode
+JSR #1,#1		ERROR: Invalid addressing mode
+JSR #1,#$1234		ERROR: Invalid addressing mode
+JSR #1,CCR		ERROR: Invalid addressing mode
+JSR #1,SR		ERROR: Invalid addressing mode
+JSR #$1234,D1		ERROR: Invalid addressing mode
+JSR #$1234,A2		ERROR: Invalid addressing mode
+JSR #$1234,(A3)		ERROR: Invalid addressing mode
+JSR #$1234,$10(A6)		ERROR: Invalid addressing mode
+JSR #$1234,$1234		ERROR: Invalid addressing mode
+JSR #$1234,FW		ERROR: Invalid addressing mode
+JSR #$1234,#1		ERROR: Invalid addressing mode
+JSR #$1234,#$1234		ERROR: Invalid addressing mode
+JSR #$1234,CCR		ERROR: Invalid addressing mode
+JSR #$1234,SR		ERROR: Invalid addressing mode
+JSR CCR,D1		ERROR: Invalid addressing mode
+JSR CCR,A2		ERROR: Invalid addressing mode
+JSR CCR,(A3)		ERROR: Invalid addressing mode
+JSR CCR,$10(A6)		ERROR: Invalid addressing mode
+JSR CCR,$1234		ERROR: Invalid addressing mode
+JSR CCR,FW		ERROR: Invalid addressing mode
+JSR CCR,#1		ERROR: Invalid addressing mode
+JSR CCR,#$1234		ERROR: Invalid addressing mode
+JSR CCR,CCR		ERROR: Invalid addressing mode
+JSR CCR,SR		ERROR: Invalid addressing mode
+JSR SR,D1		ERROR: Invalid addressing mode
+JSR SR,A2		ERROR: Invalid addressing mode
+JSR SR,(A3)		ERROR: Invalid addressing mode
+JSR SR,$10(A6)		ERROR: Invalid addressing mode
+JSR SR,$1234		ERROR: Invalid addressing mode
+JSR SR,FW		ERROR: Invalid addressing mode
+JSR SR,#1		ERROR: Invalid addressing mode
+JSR SR,#$1234		ERROR: Invalid addressing mode
+JSR SR,CCR		ERROR: Invalid addressing mode
+JSR SR,SR		ERROR: Invalid addressing mode
+JSR SP,D1		ERROR: Invalid addressing mode
+JSR SP,A2		ERROR: Invalid addressing mode
+JSR D1,SP		ERROR: Invalid addressing mode
+JSR #$12,SP		ERROR: Invalid addressing mode
+JSR (A4)+,D1		ERROR: Invalid addressing mode
+JSR (A4)+,A2		ERROR: Invalid addressing mode
+JSR D1,(A4)+		ERROR: Invalid addressing mode
+JSR #$12,(A4)+		ERROR: Invalid addressing mode
+JSR -(A5),D1		ERROR: Invalid addressing mode
+JSR -(A5),A2		ERROR: Invalid addressing mode
+JSR D1,-(A5)		ERROR: Invalid addressing mode
+JSR #$12,-(A5)		ERROR: Invalid addressing mode
+JSR -2(A0),D1		ERROR: Invalid syntax
+JSR -2(A0),A2		ERROR: Invalid syntax
+JSR D1,-2(A0)		ERROR: Invalid addressing mode
+JSR #$12,-2(A0)		ERROR: Invalid addressing mode
+JSR $10(A6,D7.W),D1		ERROR: Invalid syntax
+JSR $10(A6,D7.W),A2		ERROR: Invalid syntax
+JSR D1,$10(A6,D7.W)		ERROR: Invalid addressing mode
+JSR #$12,$10(A6,D7.W)		ERROR: Invalid addressing mode
+JSR $12(A0,A1.L),D1		ERROR: Invalid syntax
+JSR $12(A0,A1.L),A2		ERROR: Invalid syntax
+JSR D1,$12(A0,A1.L)		ERROR: Invalid addressing mode
+JSR #$12,$12(A0,A1.L)		ERROR: Invalid addressing mode
+JSR (A2,D3),D1		ERROR: Invalid syntax
+JSR (A2,D3),A2		ERROR: Invalid syntax
+JSR D1,(A2,D3)		ERROR: Invalid addressing mode
+JSR #$12,(A2,D3)		ERROR: Invalid addressing mode
+JSR $12345678,D1		ERROR: Invalid syntax
+JSR $12345678,A2		ERROR: Invalid syntax
+JSR D1,$12345678		ERROR: Invalid addressing mode
+JSR #$12,$12345678		ERROR: Invalid addressing mode
+JSR $1234.L,D1		ERROR: Invalid syntax
+JSR $1234.L,A2		ERROR: Invalid syntax
+JSR D1,$1234.L		ERROR: Invalid addressing mode
+JSR #$12,$1234.L		ERROR: Invalid addressing mode
+JSR $1234.W,D1		ERROR: Invalid syntax
+JSR $1234.W,A2		ERROR: Invalid syntax
+JSR D1,$1234.W		ERROR: Invalid addressing mode
+JSR #$12,$1234.W		ERROR: Invalid addressing mode
+JSR $8000,D1		ERROR: Invalid syntax
+JSR $8000,A2		ERROR: Invalid syntax
+JSR D1,$8000		ERROR: Invalid addressing mode
+JSR #$12,$8000		ERROR: Invalid addressing mode
+JSR BK,D1		ERROR: Invalid syntax
+JSR BK,A2		ERROR: Invalid syntax
+JSR D1,BK		ERROR: Invalid addressing mode
+JSR #$12,BK		ERROR: Invalid addressing mode
+JSR *+$10(PC),D1		ERROR: Invalid syntax
+JSR *+$10(PC),A2		ERROR: Invalid syntax
+JSR D1,*+$10(PC)		ERROR: Invalid addressing mode
+JSR #$12,*+$10(PC)		ERROR: Invalid addressing mode
+JSR *(PC,D0.W),D1		ERROR: Invalid syntax
+JSR *(PC,D0.W),A2		ERROR: Invalid syntax
+JSR D1,*(PC,D0.W)		ERROR: Invalid addressing mode
+JSR #$12,*(PC,D0.W)		ERROR: Invalid addressing mode
+JSR BK(PC),D1		ERROR: Invalid syntax
+JSR BK(PC),A2		ERROR: Invalid syntax
+JSR D1,BK(PC)		ERROR: Invalid addressing mode
+JSR #$12,BK(PC)		ERROR: Invalid addressing mode
+JSR #8,D1		ERROR: Invalid addressing mode
+JSR #8,A2		ERROR: Invalid addressing mode
+JSR D1,#8		ERROR: Invalid addressing mode
+JSR #$12,#8		ERROR: Invalid addressing mode
+JSR #9,D1		ERROR: Invalid addressing mode
+JSR #9,A2		ERROR: Invalid addressing mode
+JSR D1,#9		ERROR: Invalid addressing mode
+JSR #$12,#9		ERROR: Invalid addressing mode
+JSR #0,D1		ERROR: Invalid addressing mode
+JSR #0,A2		ERROR: Invalid addressing mode
+JSR D1,#0		ERROR: Invalid addressing mode
+JSR #$12,#0		ERROR: Invalid addressing mode
+JSR #-1,D1		ERROR: Invalid addressing mode
+JSR #-1,A2		ERROR: Invalid addressing mode
+JSR D1,#-1		ERROR: Invalid addressing mode
+JSR #$12,#-1		ERROR: Invalid addressing mode
+JSR #$80,D1		ERROR: Invalid addressing mode
+JSR #$80,A2		ERROR: Invalid addressing mode
+JSR D1,#$80		ERROR: Invalid addressing mode
+JSR #$12,#$80		ERROR: Invalid addressing mode
+JSR #$12345678,D1		ERROR: Invalid addressing mode
+JSR #$12345678,A2		ERROR: Invalid addressing mode
+JSR D1,#$12345678		ERROR: Invalid addressing mode
+JSR #$12,#$12345678		ERROR: Invalid addressing mode
+JSR #$12345678.L,D1		ERROR: Invalid addressing mode
+JSR #$12345678.L,A2		ERROR: Invalid addressing mode
+JSR D1,#$12345678.L		ERROR: Invalid addressing mode
+JSR #$12,#$12345678.L		ERROR: Invalid addressing mode
+JSR #BK,D1		ERROR: Invalid addressing mode
+JSR #BK,A2		ERROR: Invalid addressing mode
+JSR D1,#BK		ERROR: Invalid addressing mode
+JSR #$12,#BK		ERROR: Invalid addressing mode
+JSR #FW,D1		ERROR: Invalid addressing mode
+JSR #FW,A2		ERROR: Invalid addressing mode
+JSR D1,#FW		ERROR: Invalid addressing mode
+JSR #$12,#FW		ERROR: Invalid addressing mode
+JSR #UNDEF,D1		ERROR: Invalid addressing mode
+JSR #UNDEF,A2		ERROR: Invalid addressing mode
+JSR D1,#UNDEF		ERROR: Invalid addressing mode
+JSR #$12,#UNDEF		ERROR: Invalid addressing mode
+JSR UNDEF,D1		ERROR: Invalid syntax
+JSR UNDEF,A2		ERROR: Invalid syntax
+JSR D1,UNDEF		ERROR: Invalid addressing mode
+JSR #$12,UNDEF		ERROR: Invalid addressing mode
+JSR USP,D1		ERROR: Invalid addressing mode
+JSR USP,A2		ERROR: Invalid addressing mode
+JSR D1,USP		ERROR: Invalid addressing mode
+JSR #$12,USP		ERROR: Invalid addressing mode
+JSR D1,D2,D3		ERROR: Invalid addressing mode
+JSR.B		ERROR: Invalid syntax
+JSR.B D1		ERROR: Invalid addressing mode
+JSR.B A2		ERROR: Invalid addressing mode
+JSR.B SP		ERROR: Invalid addressing mode
+JSR.B (A3)	4E93	ERROR: Invalid size code
+JSR.B (A4)+		ERROR: Invalid addressing mode
+JSR.B -(A5)		ERROR: Invalid addressing mode
+JSR.B $10(A6)	4EAE0010	ERROR: Invalid size code
+JSR.B -2(A0)	4EA8FFFE	ERROR: Invalid size code
+JSR.B $10(A6,D7.W)	4EB67010	ERROR: Invalid size code
+JSR.B $12(A0,A1.L)	4EB09812	ERROR: Invalid size code
+JSR.B (A2,D3)	4EB23000	ERROR: Invalid size code
+JSR.B $1234	4EB81234	ERROR: Invalid size code
+JSR.B $12345678	4EB912345678	ERROR: Invalid size code
+JSR.B $1234.L	4EB900001234	ERROR: Invalid size code
+JSR.B $1234.W	4EB81234	ERROR: Invalid size code
+JSR.B $8000	4EB900008000	ERROR: Invalid size code
+JSR.B BK	4EB81F00	ERROR: Invalid size code
+JSR.B FW	4EB900001F00	ERROR: Invalid size code
+JSR.B *+$10(PC)	4EBA000E	ERROR: Invalid size code
+JSR.B *(PC,D0.W)	4EBB00FE	ERROR: Invalid size code
+JSR.B BK(PC)	4EBA0EFE	ERROR: Invalid size code
+JSR.B #1		ERROR: Invalid addressing mode
+JSR.B #8		ERROR: Invalid addressing mode
+JSR.B #9		ERROR: Invalid addressing mode
+JSR.B #0		ERROR: Invalid addressing mode
+JSR.B #-1		ERROR: Invalid addressing mode
+JSR.B #$80		ERROR: Invalid addressing mode
+JSR.B #$1234		ERROR: Invalid addressing mode
+JSR.B #$12345678		ERROR: Invalid addressing mode
+JSR.B #$12345678.L		ERROR: Invalid addressing mode
+JSR.B #BK		ERROR: Invalid addressing mode
+JSR.B #FW		ERROR: Invalid addressing mode
+JSR.B #UNDEF		ERROR: Invalid addressing mode
+JSR.B UNDEF	4EB900005564	ERROR: Undefined symbol
+JSR.B SR		ERROR: Invalid addressing mode
+JSR.B CCR		ERROR: Invalid addressing mode
+JSR.B USP		ERROR: Invalid addressing mode
+JSR.B D1,D2,D3		ERROR: Invalid addressing mode
+JSR.W		ERROR: Invalid syntax
+JSR.W D1		ERROR: Invalid addressing mode
+JSR.W A2		ERROR: Invalid addressing mode
+JSR.W SP		ERROR: Invalid addressing mode
+JSR.W (A3)	4E93	ERROR: Invalid size code
+JSR.W (A4)+		ERROR: Invalid addressing mode
+JSR.W -(A5)		ERROR: Invalid addressing mode
+JSR.W $10(A6)	4EAE0010	ERROR: Invalid size code
+JSR.W -2(A0)	4EA8FFFE	ERROR: Invalid size code
+JSR.W $10(A6,D7.W)	4EB67010	ERROR: Invalid size code
+JSR.W $12(A0,A1.L)	4EB09812	ERROR: Invalid size code
+JSR.W (A2,D3)	4EB23000	ERROR: Invalid size code
+JSR.W $1234	4EB81234	ERROR: Invalid size code
+JSR.W $12345678	4EB912345678	ERROR: Invalid size code
+JSR.W $1234.L	4EB900001234	ERROR: Invalid size code
+JSR.W $1234.W	4EB81234	ERROR: Invalid size code
+JSR.W $8000	4EB900008000	ERROR: Invalid size code
+JSR.W BK	4EB81F00	ERROR: Invalid size code
+JSR.W FW	4EB900001F00	ERROR: Invalid size code
+JSR.W *+$10(PC)	4EBA000E	ERROR: Invalid size code
+JSR.W *(PC,D0.W)	4EBB00FE	ERROR: Invalid size code
+JSR.W BK(PC)	4EBA0EFE	ERROR: Invalid size code
+JSR.W #1		ERROR: Invalid addressing mode
+JSR.W #8		ERROR: Invalid addressing mode
+JSR.W #9		ERROR: Invalid addressing mode
+JSR.W #0		ERROR: Invalid addressing mode
+JSR.W #-1		ERROR: Invalid addressing mode
+JSR.W #$80		ERROR: Invalid addressing mode
+JSR.W #$1234		ERROR: Invalid addressing mode
+JSR.W #$12345678		ERROR: Invalid addressing mode
+JSR.W #$12345678.L		ERROR: Invalid addressing mode
+JSR.W #BK		ERROR: Invalid addressing mode
+JSR.W #FW		ERROR: Invalid addressing mode
+JSR.W #UNDEF		ERROR: Invalid addressing mode
+JSR.W UNDEF	4EB900005564	ERROR: Undefined symbol
+JSR.W SR		ERROR: Invalid addressing mode
+JSR.W CCR		ERROR: Invalid addressing mode
+JSR.W USP		ERROR: Invalid addressing mode
+JSR.W D1,D2,D3		ERROR: Invalid addressing mode
+JSR.L		ERROR: Invalid syntax
+JSR.L D1		ERROR: Invalid addressing mode
+JSR.L A2		ERROR: Invalid addressing mode
+JSR.L SP		ERROR: Invalid addressing mode
+JSR.L (A3)	4E93	ERROR: Invalid size code
+JSR.L (A4)+		ERROR: Invalid addressing mode
+JSR.L -(A5)		ERROR: Invalid addressing mode
+JSR.L $10(A6)	4EAE0010	ERROR: Invalid size code
+JSR.L -2(A0)	4EA8FFFE	ERROR: Invalid size code
+JSR.L $10(A6,D7.W)	4EB67010	ERROR: Invalid size code
+JSR.L $12(A0,A1.L)	4EB09812	ERROR: Invalid size code
+JSR.L (A2,D3)	4EB23000	ERROR: Invalid size code
+JSR.L $1234	4EB81234	ERROR: Invalid size code
+JSR.L $12345678	4EB912345678	ERROR: Invalid size code
+JSR.L $1234.L	4EB900001234	ERROR: Invalid size code
+JSR.L $1234.W	4EB81234	ERROR: Invalid size code
+JSR.L $8000	4EB900008000	ERROR: Invalid size code
+JSR.L BK	4EB81F00	ERROR: Invalid size code
+JSR.L FW	4EB900001F00	ERROR: Invalid size code
+JSR.L *+$10(PC)	4EBA000E	ERROR: Invalid size code
+JSR.L *(PC,D0.W)	4EBB00FE	ERROR: Invalid size code
+JSR.L BK(PC)	4EBA0EFE	ERROR: Invalid size code
+JSR.L #1		ERROR: Invalid addressing mode
+JSR.L #8		ERROR: Invalid addressing mode
+JSR.L #9		ERROR: Invalid addressing mode
+JSR.L #0		ERROR: Invalid addressing mode
+JSR.L #-1		ERROR: Invalid addressing mode
+JSR.L #$80		ERROR: Invalid addressing mode
+JSR.L #$1234		ERROR: Invalid addressing mode
+JSR.L #$12345678		ERROR: Invalid addressing mode
+JSR.L #$12345678.L		ERROR: Invalid addressing mode
+JSR.L #BK		ERROR: Invalid addressing mode
+JSR.L #FW		ERROR: Invalid addressing mode
+JSR.L #UNDEF		ERROR: Invalid addressing mode
+JSR.L UNDEF	4EB900005564	ERROR: Undefined symbol
+JSR.L SR		ERROR: Invalid addressing mode
+JSR.L CCR		ERROR: Invalid addressing mode
+JSR.L USP		ERROR: Invalid addressing mode
+JSR.L D1,D2,D3		ERROR: Invalid addressing mode
+JSR.S		ERROR: Invalid syntax
+JSR.S D1		ERROR: Invalid addressing mode
+JSR.S A2		ERROR: Invalid addressing mode
+JSR.S SP		ERROR: Invalid addressing mode
+JSR.S (A3)	4E93	ERROR: Invalid size code
+JSR.S (A4)+		ERROR: Invalid addressing mode
+JSR.S -(A5)		ERROR: Invalid addressing mode
+JSR.S $10(A6)	4EAE0010	ERROR: Invalid size code
+JSR.S -2(A0)	4EA8FFFE	ERROR: Invalid size code
+JSR.S $10(A6,D7.W)	4EB67010	ERROR: Invalid size code
+JSR.S $12(A0,A1.L)	4EB09812	ERROR: Invalid size code
+JSR.S (A2,D3)	4EB23000	ERROR: Invalid size code
+JSR.S $1234	4EB81234	ERROR: Invalid size code
+JSR.S $12345678	4EB912345678	ERROR: Invalid size code
+JSR.S $1234.L	4EB900001234	ERROR: Invalid size code
+JSR.S $1234.W	4EB81234	ERROR: Invalid size code
+JSR.S $8000	4EB900008000	ERROR: Invalid size code
+JSR.S BK	4EB81F00	ERROR: Invalid size code
+JSR.S FW	4EB900001F00	ERROR: Invalid size code
+JSR.S *+$10(PC)	4EBA000E	ERROR: Invalid size code
+JSR.S *(PC,D0.W)	4EBB00FE	ERROR: Invalid size code
+JSR.S BK(PC)	4EBA0EFE	ERROR: Invalid size code
+JSR.S #1		ERROR: Invalid addressing mode
+JSR.S #8		ERROR: Invalid addressing mode
+JSR.S #9		ERROR: Invalid addressing mode
+JSR.S #0		ERROR: Invalid addressing mode
+JSR.S #-1		ERROR: Invalid addressing mode
+JSR.S #$80		ERROR: Invalid addressing mode
+JSR.S #$1234		ERROR: Invalid addressing mode
+JSR.S #$12345678		ERROR: Invalid addressing mode
+JSR.S #$12345678.L		ERROR: Invalid addressing mode
+JSR.S #BK		ERROR: Invalid addressing mode
+JSR.S #FW		ERROR: Invalid addressing mode
+JSR.S #UNDEF		ERROR: Invalid addressing mode
+JSR.S UNDEF	4EB900005564	ERROR: Undefined symbol
+JSR.S SR		ERROR: Invalid addressing mode
+JSR.S CCR		ERROR: Invalid addressing mode
+JSR.S USP		ERROR: Invalid addressing mode
+JSR.S D1,D2,D3		ERROR: Invalid addressing mode
+JSR.X D1,D2		ERROR: Invalid addressing mode
+JSR.X #1		ERROR: Invalid addressing mode

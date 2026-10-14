@@ -1,0 +1,405 @@
+TAS		ERROR: Invalid syntax
+TAS D1	4AC1	-
+TAS A2		ERROR: Invalid addressing mode
+TAS SP		ERROR: Invalid addressing mode
+TAS (A3)	4AD3	-
+TAS (A4)+	4ADC	-
+TAS -(A5)	4AE5	-
+TAS $10(A6)	4AEE0010	-
+TAS -2(A0)	4AE8FFFE	-
+TAS $10(A6,D7.W)	4AF67010	-
+TAS $12(A0,A1.L)	4AF09812	-
+TAS (A2,D3)	4AF23000	-
+TAS $1234	4AF81234	-
+TAS $12345678	4AF912345678	-
+TAS $1234.L	4AF900001234	-
+TAS $1234.W	4AF81234	WARNING: Forcing SHORT addressing disables range checking of extension word
+TAS $8000	4AF900008000	-
+TAS BK	4AF81F00	-
+TAS FW	4AF900001F00	-
+TAS *+$10(PC)		ERROR: Invalid addressing mode
+TAS *(PC,D0.W)		ERROR: Invalid addressing mode
+TAS BK(PC)		ERROR: Invalid addressing mode
+TAS #1		ERROR: Invalid addressing mode
+TAS #8		ERROR: Invalid addressing mode
+TAS #9		ERROR: Invalid addressing mode
+TAS #0		ERROR: Invalid addressing mode
+TAS #-1		ERROR: Invalid addressing mode
+TAS #$80		ERROR: Invalid addressing mode
+TAS #$1234		ERROR: Invalid addressing mode
+TAS #$12345678		ERROR: Invalid addressing mode
+TAS #$12345678.L		ERROR: Invalid addressing mode
+TAS #BK		ERROR: Invalid addressing mode
+TAS #FW		ERROR: Invalid addressing mode
+TAS #UNDEF		ERROR: Invalid addressing mode
+TAS UNDEF	4AF90000564D	ERROR: Undefined symbol
+TAS SR		ERROR: Invalid addressing mode
+TAS CCR		ERROR: Invalid addressing mode
+TAS USP		ERROR: Invalid addressing mode
+TAS D1,D1		ERROR: Invalid syntax
+TAS D1,A2		ERROR: Invalid syntax
+TAS D1,(A3)		ERROR: Invalid syntax
+TAS D1,$10(A6)		ERROR: Invalid syntax
+TAS D1,$1234		ERROR: Invalid syntax
+TAS D1,FW		ERROR: Invalid syntax
+TAS D1,#1		ERROR: Invalid syntax
+TAS D1,#$1234		ERROR: Invalid syntax
+TAS D1,CCR		ERROR: Invalid syntax
+TAS D1,SR		ERROR: Invalid syntax
+TAS A2,D1		ERROR: Invalid addressing mode
+TAS A2,A2		ERROR: Invalid addressing mode
+TAS A2,(A3)		ERROR: Invalid addressing mode
+TAS A2,$10(A6)		ERROR: Invalid addressing mode
+TAS A2,$1234		ERROR: Invalid addressing mode
+TAS A2,FW		ERROR: Invalid addressing mode
+TAS A2,#1		ERROR: Invalid addressing mode
+TAS A2,#$1234		ERROR: Invalid addressing mode
+TAS A2,CCR		ERROR: Invalid addressing mode
+TAS A2,SR		ERROR: Invalid addressing mode
+TAS (A3),D1		ERROR: Invalid syntax
+TAS (A3),A2		ERROR: Invalid syntax
+TAS (A3),(A3)		ERROR: Invalid syntax
+TAS (A3),$10(A6)		ERROR: Invalid syntax
+TAS (A3),$1234		ERROR: Invalid syntax
+TAS (A3),FW		ERROR: Invalid syntax
+TAS (A3),#1		ERROR: Invalid syntax
+TAS (A3),#$1234		ERROR: Invalid syntax
+TAS (A3),CCR		ERROR: Invalid syntax
+TAS (A3),SR		ERROR: Invalid syntax
+TAS $10(A6),D1		ERROR: Invalid syntax
+TAS $10(A6),A2		ERROR: Invalid syntax
+TAS $10(A6),(A3)		ERROR: Invalid syntax
+TAS $10(A6),$10(A6)		ERROR: Invalid syntax
+TAS $10(A6),$1234		ERROR: Invalid syntax
+TAS $10(A6),FW		ERROR: Invalid syntax
+TAS $10(A6),#1		ERROR: Invalid syntax
+TAS $10(A6),#$1234		ERROR: Invalid syntax
+TAS $10(A6),CCR		ERROR: Invalid syntax
+TAS $10(A6),SR		ERROR: Invalid syntax
+TAS $1234,D1		ERROR: Invalid syntax
+TAS $1234,A2		ERROR: Invalid syntax
+TAS $1234,(A3)		ERROR: Invalid syntax
+TAS $1234,$10(A6)		ERROR: Invalid syntax
+TAS $1234,$1234		ERROR: Invalid syntax
+TAS $1234,FW		ERROR: Invalid syntax
+TAS $1234,#1		ERROR: Invalid syntax
+TAS $1234,#$1234		ERROR: Invalid syntax
+TAS $1234,CCR		ERROR: Invalid syntax
+TAS $1234,SR		ERROR: Invalid syntax
+TAS FW,D1		ERROR: Invalid syntax
+TAS FW,A2		ERROR: Invalid syntax
+TAS FW,(A3)		ERROR: Invalid syntax
+TAS FW,$10(A6)		ERROR: Invalid syntax
+TAS FW,$1234		ERROR: Invalid syntax
+TAS FW,FW		ERROR: Invalid syntax
+TAS FW,#1		ERROR: Invalid syntax
+TAS FW,#$1234		ERROR: Invalid syntax
+TAS FW,CCR		ERROR: Invalid syntax
+TAS FW,SR		ERROR: Invalid syntax
+TAS #1,D1		ERROR: Invalid addressing mode
+TAS #1,A2		ERROR: Invalid addressing mode
+TAS #1,(A3)		ERROR: Invalid addressing mode
+TAS #1,$10(A6)		ERROR: Invalid addressing mode
+TAS #1,$1234		ERROR: Invalid addressing mode
+TAS #1,FW		ERROR: Invalid addressing mode
+TAS #1,#1		ERROR: Invalid addressing mode
+TAS #1,#$1234		ERROR: Invalid addressing mode
+TAS #1,CCR		ERROR: Invalid addressing mode
+TAS #1,SR		ERROR: Invalid addressing mode
+TAS #$1234,D1		ERROR: Invalid addressing mode
+TAS #$1234,A2		ERROR: Invalid addressing mode
+TAS #$1234,(A3)		ERROR: Invalid addressing mode
+TAS #$1234,$10(A6)		ERROR: Invalid addressing mode
+TAS #$1234,$1234		ERROR: Invalid addressing mode
+TAS #$1234,FW		ERROR: Invalid addressing mode
+TAS #$1234,#1		ERROR: Invalid addressing mode
+TAS #$1234,#$1234		ERROR: Invalid addressing mode
+TAS #$1234,CCR		ERROR: Invalid addressing mode
+TAS #$1234,SR		ERROR: Invalid addressing mode
+TAS CCR,D1		ERROR: Invalid addressing mode
+TAS CCR,A2		ERROR: Invalid addressing mode
+TAS CCR,(A3)		ERROR: Invalid addressing mode
+TAS CCR,$10(A6)		ERROR: Invalid addressing mode
+TAS CCR,$1234		ERROR: Invalid addressing mode
+TAS CCR,FW		ERROR: Invalid addressing mode
+TAS CCR,#1		ERROR: Invalid addressing mode
+TAS CCR,#$1234		ERROR: Invalid addressing mode
+TAS CCR,CCR		ERROR: Invalid addressing mode
+TAS CCR,SR		ERROR: Invalid addressing mode
+TAS SR,D1		ERROR: Invalid addressing mode
+TAS SR,A2		ERROR: Invalid addressing mode
+TAS SR,(A3)		ERROR: Invalid addressing mode
+TAS SR,$10(A6)		ERROR: Invalid addressing mode
+TAS SR,$1234		ERROR: Invalid addressing mode
+TAS SR,FW		ERROR: Invalid addressing mode
+TAS SR,#1		ERROR: Invalid addressing mode
+TAS SR,#$1234		ERROR: Invalid addressing mode
+TAS SR,CCR		ERROR: Invalid addressing mode
+TAS SR,SR		ERROR: Invalid addressing mode
+TAS SP,D1		ERROR: Invalid addressing mode
+TAS SP,A2		ERROR: Invalid addressing mode
+TAS D1,SP		ERROR: Invalid syntax
+TAS #$12,SP		ERROR: Invalid addressing mode
+TAS (A4)+,D1		ERROR: Invalid syntax
+TAS (A4)+,A2		ERROR: Invalid syntax
+TAS D1,(A4)+		ERROR: Invalid syntax
+TAS #$12,(A4)+		ERROR: Invalid addressing mode
+TAS -(A5),D1		ERROR: Invalid syntax
+TAS -(A5),A2		ERROR: Invalid syntax
+TAS D1,-(A5)		ERROR: Invalid syntax
+TAS #$12,-(A5)		ERROR: Invalid addressing mode
+TAS -2(A0),D1		ERROR: Invalid syntax
+TAS -2(A0),A2		ERROR: Invalid syntax
+TAS D1,-2(A0)		ERROR: Invalid syntax
+TAS #$12,-2(A0)		ERROR: Invalid addressing mode
+TAS $10(A6,D7.W),D1		ERROR: Invalid syntax
+TAS $10(A6,D7.W),A2		ERROR: Invalid syntax
+TAS D1,$10(A6,D7.W)		ERROR: Invalid syntax
+TAS #$12,$10(A6,D7.W)		ERROR: Invalid addressing mode
+TAS $12(A0,A1.L),D1		ERROR: Invalid syntax
+TAS $12(A0,A1.L),A2		ERROR: Invalid syntax
+TAS D1,$12(A0,A1.L)		ERROR: Invalid syntax
+TAS #$12,$12(A0,A1.L)		ERROR: Invalid addressing mode
+TAS (A2,D3),D1		ERROR: Invalid syntax
+TAS (A2,D3),A2		ERROR: Invalid syntax
+TAS D1,(A2,D3)		ERROR: Invalid syntax
+TAS #$12,(A2,D3)		ERROR: Invalid addressing mode
+TAS $12345678,D1		ERROR: Invalid syntax
+TAS $12345678,A2		ERROR: Invalid syntax
+TAS D1,$12345678		ERROR: Invalid syntax
+TAS #$12,$12345678		ERROR: Invalid addressing mode
+TAS $1234.L,D1		ERROR: Invalid syntax
+TAS $1234.L,A2		ERROR: Invalid syntax
+TAS D1,$1234.L		ERROR: Invalid syntax
+TAS #$12,$1234.L		ERROR: Invalid addressing mode
+TAS $1234.W,D1		ERROR: Invalid syntax
+TAS $1234.W,A2		ERROR: Invalid syntax
+TAS D1,$1234.W		ERROR: Invalid syntax
+TAS #$12,$1234.W		ERROR: Invalid addressing mode
+TAS $8000,D1		ERROR: Invalid syntax
+TAS $8000,A2		ERROR: Invalid syntax
+TAS D1,$8000		ERROR: Invalid syntax
+TAS #$12,$8000		ERROR: Invalid addressing mode
+TAS BK,D1		ERROR: Invalid syntax
+TAS BK,A2		ERROR: Invalid syntax
+TAS D1,BK		ERROR: Invalid syntax
+TAS #$12,BK		ERROR: Invalid addressing mode
+TAS *+$10(PC),D1		ERROR: Invalid addressing mode
+TAS *+$10(PC),A2		ERROR: Invalid addressing mode
+TAS D1,*+$10(PC)		ERROR: Invalid syntax
+TAS #$12,*+$10(PC)		ERROR: Invalid addressing mode
+TAS *(PC,D0.W),D1		ERROR: Invalid addressing mode
+TAS *(PC,D0.W),A2		ERROR: Invalid addressing mode
+TAS D1,*(PC,D0.W)		ERROR: Invalid syntax
+TAS #$12,*(PC,D0.W)		ERROR: Invalid addressing mode
+TAS BK(PC),D1		ERROR: Invalid addressing mode
+TAS BK(PC),A2		ERROR: Invalid addressing mode
+TAS D1,BK(PC)		ERROR: Invalid syntax
+TAS #$12,BK(PC)		ERROR: Invalid addressing mode
+TAS #8,D1		ERROR: Invalid addressing mode
+TAS #8,A2		ERROR: Invalid addressing mode
+TAS D1,#8		ERROR: Invalid syntax
+TAS #$12,#8		ERROR: Invalid addressing mode
+TAS #9,D1		ERROR: Invalid addressing mode
+TAS #9,A2		ERROR: Invalid addressing mode
+TAS D1,#9		ERROR: Invalid syntax
+TAS #$12,#9		ERROR: Invalid addressing mode
+TAS #0,D1		ERROR: Invalid addressing mode
+TAS #0,A2		ERROR: Invalid addressing mode
+TAS D1,#0		ERROR: Invalid syntax
+TAS #$12,#0		ERROR: Invalid addressing mode
+TAS #-1,D1		ERROR: Invalid addressing mode
+TAS #-1,A2		ERROR: Invalid addressing mode
+TAS D1,#-1		ERROR: Invalid syntax
+TAS #$12,#-1		ERROR: Invalid addressing mode
+TAS #$80,D1		ERROR: Invalid addressing mode
+TAS #$80,A2		ERROR: Invalid addressing mode
+TAS D1,#$80		ERROR: Invalid syntax
+TAS #$12,#$80		ERROR: Invalid addressing mode
+TAS #$12345678,D1		ERROR: Invalid addressing mode
+TAS #$12345678,A2		ERROR: Invalid addressing mode
+TAS D1,#$12345678		ERROR: Invalid syntax
+TAS #$12,#$12345678		ERROR: Invalid addressing mode
+TAS #$12345678.L,D1		ERROR: Invalid addressing mode
+TAS #$12345678.L,A2		ERROR: Invalid addressing mode
+TAS D1,#$12345678.L		ERROR: Invalid syntax
+TAS #$12,#$12345678.L		ERROR: Invalid addressing mode
+TAS #BK,D1		ERROR: Invalid addressing mode
+TAS #BK,A2		ERROR: Invalid addressing mode
+TAS D1,#BK		ERROR: Invalid syntax
+TAS #$12,#BK		ERROR: Invalid addressing mode
+TAS #FW,D1		ERROR: Invalid addressing mode
+TAS #FW,A2		ERROR: Invalid addressing mode
+TAS D1,#FW		ERROR: Invalid syntax
+TAS #$12,#FW		ERROR: Invalid addressing mode
+TAS #UNDEF,D1		ERROR: Invalid addressing mode
+TAS #UNDEF,A2		ERROR: Invalid addressing mode
+TAS D1,#UNDEF		ERROR: Invalid syntax
+TAS #$12,#UNDEF		ERROR: Invalid addressing mode
+TAS UNDEF,D1		ERROR: Invalid syntax
+TAS UNDEF,A2		ERROR: Invalid syntax
+TAS D1,UNDEF		ERROR: Invalid syntax
+TAS #$12,UNDEF		ERROR: Invalid addressing mode
+TAS USP,D1		ERROR: Invalid addressing mode
+TAS USP,A2		ERROR: Invalid addressing mode
+TAS D1,USP		ERROR: Invalid syntax
+TAS #$12,USP		ERROR: Invalid addressing mode
+TAS D1,D2,D3		ERROR: Invalid syntax
+TAS.B		ERROR: Invalid syntax
+TAS.B D1	4AC1	-
+TAS.B A2		ERROR: Invalid addressing mode
+TAS.B SP		ERROR: Invalid addressing mode
+TAS.B (A3)	4AD3	-
+TAS.B (A4)+	4ADC	-
+TAS.B -(A5)	4AE5	-
+TAS.B $10(A6)	4AEE0010	-
+TAS.B -2(A0)	4AE8FFFE	-
+TAS.B $10(A6,D7.W)	4AF67010	-
+TAS.B $12(A0,A1.L)	4AF09812	-
+TAS.B (A2,D3)	4AF23000	-
+TAS.B $1234	4AF81234	-
+TAS.B $12345678	4AF912345678	-
+TAS.B $1234.L	4AF900001234	-
+TAS.B $1234.W	4AF81234	WARNING: Forcing SHORT addressing disables range checking of extension word
+TAS.B $8000	4AF900008000	-
+TAS.B BK	4AF81F00	-
+TAS.B FW	4AF900001F00	-
+TAS.B *+$10(PC)		ERROR: Invalid addressing mode
+TAS.B *(PC,D0.W)		ERROR: Invalid addressing mode
+TAS.B BK(PC)		ERROR: Invalid addressing mode
+TAS.B #1		ERROR: Invalid addressing mode
+TAS.B #8		ERROR: Invalid addressing mode
+TAS.B #9		ERROR: Invalid addressing mode
+TAS.B #0		ERROR: Invalid addressing mode
+TAS.B #-1		ERROR: Invalid addressing mode
+TAS.B #$80		ERROR: Invalid addressing mode
+TAS.B #$1234		ERROR: Invalid addressing mode
+TAS.B #$12345678		ERROR: Invalid addressing mode
+TAS.B #$12345678.L		ERROR: Invalid addressing mode
+TAS.B #BK		ERROR: Invalid addressing mode
+TAS.B #FW		ERROR: Invalid addressing mode
+TAS.B #UNDEF		ERROR: Invalid addressing mode
+TAS.B UNDEF	4AF90000564D	ERROR: Undefined symbol
+TAS.B SR		ERROR: Invalid addressing mode
+TAS.B CCR		ERROR: Invalid addressing mode
+TAS.B USP		ERROR: Invalid addressing mode
+TAS.B D1,D2,D3		ERROR: Invalid syntax
+TAS.W		ERROR: Invalid syntax
+TAS.W D1	4AC1	ERROR: Invalid size code
+TAS.W A2		ERROR: Invalid addressing mode
+TAS.W SP		ERROR: Invalid addressing mode
+TAS.W (A3)	4AD3	ERROR: Invalid size code
+TAS.W (A4)+	4ADC	ERROR: Invalid size code
+TAS.W -(A5)	4AE5	ERROR: Invalid size code
+TAS.W $10(A6)	4AEE0010	ERROR: Invalid size code
+TAS.W -2(A0)	4AE8FFFE	ERROR: Invalid size code
+TAS.W $10(A6,D7.W)	4AF67010	ERROR: Invalid size code
+TAS.W $12(A0,A1.L)	4AF09812	ERROR: Invalid size code
+TAS.W (A2,D3)	4AF23000	ERROR: Invalid size code
+TAS.W $1234	4AF81234	ERROR: Invalid size code
+TAS.W $12345678	4AF912345678	ERROR: Invalid size code
+TAS.W $1234.L	4AF900001234	ERROR: Invalid size code
+TAS.W $1234.W	4AF81234	ERROR: Invalid size code
+TAS.W $8000	4AF900008000	ERROR: Invalid size code
+TAS.W BK	4AF81F00	ERROR: Invalid size code
+TAS.W FW	4AF900001F00	ERROR: Invalid size code
+TAS.W *+$10(PC)		ERROR: Invalid addressing mode
+TAS.W *(PC,D0.W)		ERROR: Invalid addressing mode
+TAS.W BK(PC)		ERROR: Invalid addressing mode
+TAS.W #1		ERROR: Invalid addressing mode
+TAS.W #8		ERROR: Invalid addressing mode
+TAS.W #9		ERROR: Invalid addressing mode
+TAS.W #0		ERROR: Invalid addressing mode
+TAS.W #-1		ERROR: Invalid addressing mode
+TAS.W #$80		ERROR: Invalid addressing mode
+TAS.W #$1234		ERROR: Invalid addressing mode
+TAS.W #$12345678		ERROR: Invalid addressing mode
+TAS.W #$12345678.L		ERROR: Invalid addressing mode
+TAS.W #BK		ERROR: Invalid addressing mode
+TAS.W #FW		ERROR: Invalid addressing mode
+TAS.W #UNDEF		ERROR: Invalid addressing mode
+TAS.W UNDEF	4AF90000564D	ERROR: Undefined symbol
+TAS.W SR		ERROR: Invalid addressing mode
+TAS.W CCR		ERROR: Invalid addressing mode
+TAS.W USP		ERROR: Invalid addressing mode
+TAS.W D1,D2,D3		ERROR: Invalid syntax
+TAS.L		ERROR: Invalid syntax
+TAS.L D1	4AC1	ERROR: Invalid size code
+TAS.L A2		ERROR: Invalid addressing mode
+TAS.L SP		ERROR: Invalid addressing mode
+TAS.L (A3)	4AD3	ERROR: Invalid size code
+TAS.L (A4)+	4ADC	ERROR: Invalid size code
+TAS.L -(A5)	4AE5	ERROR: Invalid size code
+TAS.L $10(A6)	4AEE0010	ERROR: Invalid size code
+TAS.L -2(A0)	4AE8FFFE	ERROR: Invalid size code
+TAS.L $10(A6,D7.W)	4AF67010	ERROR: Invalid size code
+TAS.L $12(A0,A1.L)	4AF09812	ERROR: Invalid size code
+TAS.L (A2,D3)	4AF23000	ERROR: Invalid size code
+TAS.L $1234	4AF81234	ERROR: Invalid size code
+TAS.L $12345678	4AF912345678	ERROR: Invalid size code
+TAS.L $1234.L	4AF900001234	ERROR: Invalid size code
+TAS.L $1234.W	4AF81234	ERROR: Invalid size code
+TAS.L $8000	4AF900008000	ERROR: Invalid size code
+TAS.L BK	4AF81F00	ERROR: Invalid size code
+TAS.L FW	4AF900001F00	ERROR: Invalid size code
+TAS.L *+$10(PC)		ERROR: Invalid addressing mode
+TAS.L *(PC,D0.W)		ERROR: Invalid addressing mode
+TAS.L BK(PC)		ERROR: Invalid addressing mode
+TAS.L #1		ERROR: Invalid addressing mode
+TAS.L #8		ERROR: Invalid addressing mode
+TAS.L #9		ERROR: Invalid addressing mode
+TAS.L #0		ERROR: Invalid addressing mode
+TAS.L #-1		ERROR: Invalid addressing mode
+TAS.L #$80		ERROR: Invalid addressing mode
+TAS.L #$1234		ERROR: Invalid addressing mode
+TAS.L #$12345678		ERROR: Invalid addressing mode
+TAS.L #$12345678.L		ERROR: Invalid addressing mode
+TAS.L #BK		ERROR: Invalid addressing mode
+TAS.L #FW		ERROR: Invalid addressing mode
+TAS.L #UNDEF		ERROR: Invalid addressing mode
+TAS.L UNDEF	4AF90000564D	ERROR: Undefined symbol
+TAS.L SR		ERROR: Invalid addressing mode
+TAS.L CCR		ERROR: Invalid addressing mode
+TAS.L USP		ERROR: Invalid addressing mode
+TAS.L D1,D2,D3		ERROR: Invalid syntax
+TAS.S		ERROR: Invalid syntax
+TAS.S D1	4AC1	ERROR: Invalid size code
+TAS.S A2		ERROR: Invalid addressing mode
+TAS.S SP		ERROR: Invalid addressing mode
+TAS.S (A3)	4AD3	ERROR: Invalid size code
+TAS.S (A4)+	4ADC	ERROR: Invalid size code
+TAS.S -(A5)	4AE5	ERROR: Invalid size code
+TAS.S $10(A6)	4AEE0010	ERROR: Invalid size code
+TAS.S -2(A0)	4AE8FFFE	ERROR: Invalid size code
+TAS.S $10(A6,D7.W)	4AF67010	ERROR: Invalid size code
+TAS.S $12(A0,A1.L)	4AF09812	ERROR: Invalid size code
+TAS.S (A2,D3)	4AF23000	ERROR: Invalid size code
+TAS.S $1234	4AF81234	ERROR: Invalid size code
+TAS.S $12345678	4AF912345678	ERROR: Invalid size code
+TAS.S $1234.L	4AF900001234	ERROR: Invalid size code
+TAS.S $1234.W	4AF81234	ERROR: Invalid size code
+TAS.S $8000	4AF900008000	ERROR: Invalid size code
+TAS.S BK	4AF81F00	ERROR: Invalid size code
+TAS.S FW	4AF900001F00	ERROR: Invalid size code
+TAS.S *+$10(PC)		ERROR: Invalid addressing mode
+TAS.S *(PC,D0.W)		ERROR: Invalid addressing mode
+TAS.S BK(PC)		ERROR: Invalid addressing mode
+TAS.S #1		ERROR: Invalid addressing mode
+TAS.S #8		ERROR: Invalid addressing mode
+TAS.S #9		ERROR: Invalid addressing mode
+TAS.S #0		ERROR: Invalid addressing mode
+TAS.S #-1		ERROR: Invalid addressing mode
+TAS.S #$80		ERROR: Invalid addressing mode
+TAS.S #$1234		ERROR: Invalid addressing mode
+TAS.S #$12345678		ERROR: Invalid addressing mode
+TAS.S #$12345678.L		ERROR: Invalid addressing mode
+TAS.S #BK		ERROR: Invalid addressing mode
+TAS.S #FW		ERROR: Invalid addressing mode
+TAS.S #UNDEF		ERROR: Invalid addressing mode
+TAS.S UNDEF	4AF90000564D	ERROR: Undefined symbol
+TAS.S SR		ERROR: Invalid addressing mode
+TAS.S CCR		ERROR: Invalid addressing mode
+TAS.S USP		ERROR: Invalid addressing mode
+TAS.S D1,D2,D3		ERROR: Invalid syntax
+TAS.X D1,D2		ERROR: Invalid syntax
+TAS.X #1		ERROR: Invalid addressing mode

@@ -13,9 +13,8 @@
 #include <string>
 #include <vector>
 
-#include "easym68k/asm/code_generator.h"
 #include "easym68k/asm/error_codes.h"
-#include "easym68k/asm/instruction_table.h"
+#include "easym68k/asm/instruction_set.h"
 #include "easym68k/asm/listing_generator.h"
 #include "easym68k/asm/parser.h"
 #include "easym68k/asm/srecord_generator.h"
@@ -158,8 +157,6 @@ class Assembler {
 
   Parser parser_;
   SymbolTable symbols_;
-  InstructionTable instruction_table_;
-  CodeGenerator code_generator_;
 
   static std::vector<std::string> SplitLines(const std::string& source);
 
@@ -174,7 +171,13 @@ class Assembler {
   void DefineOrMarkLabel(const std::string& label, uint32_t value, int line_number);
   bool HandleDirective(const ParsedLine& line);
   bool HandleInstruction(const ParsedLine& line);
-  int InstructionSize(const ParsedLine& line) const;
+  // True for opcodes assembled by HandleInstruction (flavor table + MOVEM).
+  static bool IsInstruction(const std::string& opcode);
+  // Writes object code at the location counter without advancing it
+  // (CODEGEN.CPP output()).
+  void OutputAt(int32_t data, int size);
+  // Reports the original status of a line (ERROR.CPP message text).
+  void ReportStatus(int line_number, int status);
 
   // Conditional assembly — always called regardless of IsAssembling()
   bool IsConditional(const std::string& opcode) const;

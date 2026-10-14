@@ -1,0 +1,1621 @@
+LINK		ERROR: Invalid syntax
+LINK D1		ERROR: Comma expected
+LINK A2		ERROR: Comma expected
+LINK SP		ERROR: Comma expected
+LINK (A3)		ERROR: Comma expected
+LINK (A4)+		ERROR: Comma expected
+LINK -(A5)		ERROR: Comma expected
+LINK $10(A6)		ERROR: Comma expected
+LINK -2(A0)		ERROR: Comma expected
+LINK $10(A6,D7.W)		ERROR: Comma expected
+LINK $12(A0,A1.L)		ERROR: Comma expected
+LINK (A2,D3)		ERROR: Comma expected
+LINK $1234		ERROR: Comma expected
+LINK $12345678		ERROR: Comma expected
+LINK $1234.L		ERROR: Comma expected
+LINK $1234.W		ERROR: Comma expected
+LINK $8000		ERROR: Comma expected
+LINK BK		ERROR: Comma expected
+LINK FW		ERROR: Comma expected
+LINK *+$10(PC)		ERROR: Comma expected
+LINK *(PC,D0.W)		ERROR: Comma expected
+LINK BK(PC)		ERROR: Comma expected
+LINK #1		ERROR: Comma expected
+LINK #8		ERROR: Comma expected
+LINK #9		ERROR: Comma expected
+LINK #0		ERROR: Comma expected
+LINK #-1		ERROR: Comma expected
+LINK #$80		ERROR: Comma expected
+LINK #$1234		ERROR: Comma expected
+LINK #$12345678		ERROR: Comma expected
+LINK #$12345678.L		ERROR: Comma expected
+LINK #BK		ERROR: Comma expected
+LINK #FW		ERROR: Comma expected
+LINK #UNDEF		ERROR: Comma expected
+LINK UNDEF		ERROR: Comma expected
+LINK SR		ERROR: Comma expected
+LINK CCR		ERROR: Comma expected
+LINK USP		ERROR: Comma expected
+LINK D1,D1		ERROR: Invalid addressing mode
+LINK D1,A2		ERROR: Invalid addressing mode
+LINK D1,(A3)		ERROR: Invalid addressing mode
+LINK D1,(A4)+		ERROR: Invalid addressing mode
+LINK D1,-(A5)		ERROR: Invalid addressing mode
+LINK D1,$10(A6)		ERROR: Invalid addressing mode
+LINK D1,$10(A6,D7.W)		ERROR: Invalid addressing mode
+LINK D1,$1234		ERROR: Invalid addressing mode
+LINK D1,$12345678		ERROR: Invalid addressing mode
+LINK D1,FW		ERROR: Invalid addressing mode
+LINK D1,*+$10(PC)		ERROR: Invalid addressing mode
+LINK D1,#1		ERROR: Invalid addressing mode
+LINK D1,#$80		ERROR: Invalid addressing mode
+LINK D1,#$1234		ERROR: Invalid addressing mode
+LINK D1,#$12345678		ERROR: Invalid addressing mode
+LINK D1,SR		ERROR: Invalid addressing mode
+LINK D1,CCR		ERROR: Invalid addressing mode
+LINK D1,USP		ERROR: Invalid addressing mode
+LINK A2,D1		ERROR: Invalid addressing mode
+LINK A2,A2		ERROR: Invalid addressing mode
+LINK A2,(A3)		ERROR: Invalid addressing mode
+LINK A2,(A4)+		ERROR: Invalid addressing mode
+LINK A2,-(A5)		ERROR: Invalid addressing mode
+LINK A2,$10(A6)		ERROR: Invalid addressing mode
+LINK A2,$10(A6,D7.W)		ERROR: Invalid addressing mode
+LINK A2,$1234		ERROR: Invalid addressing mode
+LINK A2,$12345678		ERROR: Invalid addressing mode
+LINK A2,FW		ERROR: Invalid addressing mode
+LINK A2,*+$10(PC)		ERROR: Invalid addressing mode
+LINK A2,#1	4E520001	-
+LINK A2,#$80	4E520080	-
+LINK A2,#$1234	4E521234	-
+LINK A2,#$12345678	4E525678	ERROR: Immediate data exceeds 16 bits
+LINK A2,SR		ERROR: Invalid addressing mode
+LINK A2,CCR		ERROR: Invalid addressing mode
+LINK A2,USP		ERROR: Invalid addressing mode
+LINK (A3),D1		ERROR: Invalid addressing mode
+LINK (A3),A2		ERROR: Invalid addressing mode
+LINK (A3),(A3)		ERROR: Invalid addressing mode
+LINK (A3),(A4)+		ERROR: Invalid addressing mode
+LINK (A3),-(A5)		ERROR: Invalid addressing mode
+LINK (A3),$10(A6)		ERROR: Invalid addressing mode
+LINK (A3),$10(A6,D7.W)		ERROR: Invalid addressing mode
+LINK (A3),$1234		ERROR: Invalid addressing mode
+LINK (A3),$12345678		ERROR: Invalid addressing mode
+LINK (A3),FW		ERROR: Invalid addressing mode
+LINK (A3),*+$10(PC)		ERROR: Invalid addressing mode
+LINK (A3),#1		ERROR: Invalid addressing mode
+LINK (A3),#$80		ERROR: Invalid addressing mode
+LINK (A3),#$1234		ERROR: Invalid addressing mode
+LINK (A3),#$12345678		ERROR: Invalid addressing mode
+LINK (A3),SR		ERROR: Invalid addressing mode
+LINK (A3),CCR		ERROR: Invalid addressing mode
+LINK (A3),USP		ERROR: Invalid addressing mode
+LINK (A4)+,D1		ERROR: Invalid addressing mode
+LINK (A4)+,A2		ERROR: Invalid addressing mode
+LINK (A4)+,(A3)		ERROR: Invalid addressing mode
+LINK (A4)+,(A4)+		ERROR: Invalid addressing mode
+LINK (A4)+,-(A5)		ERROR: Invalid addressing mode
+LINK (A4)+,$10(A6)		ERROR: Invalid addressing mode
+LINK (A4)+,$10(A6,D7.W)		ERROR: Invalid addressing mode
+LINK (A4)+,$1234		ERROR: Invalid addressing mode
+LINK (A4)+,$12345678		ERROR: Invalid addressing mode
+LINK (A4)+,FW		ERROR: Invalid addressing mode
+LINK (A4)+,*+$10(PC)		ERROR: Invalid addressing mode
+LINK (A4)+,#1		ERROR: Invalid addressing mode
+LINK (A4)+,#$80		ERROR: Invalid addressing mode
+LINK (A4)+,#$1234		ERROR: Invalid addressing mode
+LINK (A4)+,#$12345678		ERROR: Invalid addressing mode
+LINK (A4)+,SR		ERROR: Invalid addressing mode
+LINK (A4)+,CCR		ERROR: Invalid addressing mode
+LINK (A4)+,USP		ERROR: Invalid addressing mode
+LINK -(A5),D1		ERROR: Invalid addressing mode
+LINK -(A5),A2		ERROR: Invalid addressing mode
+LINK -(A5),(A3)		ERROR: Invalid addressing mode
+LINK -(A5),(A4)+		ERROR: Invalid addressing mode
+LINK -(A5),-(A5)		ERROR: Invalid addressing mode
+LINK -(A5),$10(A6)		ERROR: Invalid addressing mode
+LINK -(A5),$10(A6,D7.W)		ERROR: Invalid addressing mode
+LINK -(A5),$1234		ERROR: Invalid addressing mode
+LINK -(A5),$12345678		ERROR: Invalid addressing mode
+LINK -(A5),FW		ERROR: Invalid addressing mode
+LINK -(A5),*+$10(PC)		ERROR: Invalid addressing mode
+LINK -(A5),#1		ERROR: Invalid addressing mode
+LINK -(A5),#$80		ERROR: Invalid addressing mode
+LINK -(A5),#$1234		ERROR: Invalid addressing mode
+LINK -(A5),#$12345678		ERROR: Invalid addressing mode
+LINK -(A5),SR		ERROR: Invalid addressing mode
+LINK -(A5),CCR		ERROR: Invalid addressing mode
+LINK -(A5),USP		ERROR: Invalid addressing mode
+LINK $10(A6),D1		ERROR: Invalid addressing mode
+LINK $10(A6),A2		ERROR: Invalid addressing mode
+LINK $10(A6),(A3)		ERROR: Invalid addressing mode
+LINK $10(A6),(A4)+		ERROR: Invalid addressing mode
+LINK $10(A6),-(A5)		ERROR: Invalid addressing mode
+LINK $10(A6),$10(A6)		ERROR: Invalid addressing mode
+LINK $10(A6),$10(A6,D7.W)		ERROR: Invalid addressing mode
+LINK $10(A6),$1234		ERROR: Invalid addressing mode
+LINK $10(A6),$12345678		ERROR: Invalid addressing mode
+LINK $10(A6),FW		ERROR: Invalid addressing mode
+LINK $10(A6),*+$10(PC)		ERROR: Invalid addressing mode
+LINK $10(A6),#1		ERROR: Invalid addressing mode
+LINK $10(A6),#$80		ERROR: Invalid addressing mode
+LINK $10(A6),#$1234		ERROR: Invalid addressing mode
+LINK $10(A6),#$12345678		ERROR: Invalid addressing mode
+LINK $10(A6),SR		ERROR: Invalid addressing mode
+LINK $10(A6),CCR		ERROR: Invalid addressing mode
+LINK $10(A6),USP		ERROR: Invalid addressing mode
+LINK $10(A6,D7.W),D1		ERROR: Invalid addressing mode
+LINK $10(A6,D7.W),A2		ERROR: Invalid addressing mode
+LINK $10(A6,D7.W),(A3)		ERROR: Invalid addressing mode
+LINK $10(A6,D7.W),(A4)+		ERROR: Invalid addressing mode
+LINK $10(A6,D7.W),-(A5)		ERROR: Invalid addressing mode
+LINK $10(A6,D7.W),$10(A6)		ERROR: Invalid addressing mode
+LINK $10(A6,D7.W),$10(A6,D7.W)		ERROR: Invalid addressing mode
+LINK $10(A6,D7.W),$1234		ERROR: Invalid addressing mode
+LINK $10(A6,D7.W),$12345678		ERROR: Invalid addressing mode
+LINK $10(A6,D7.W),FW		ERROR: Invalid addressing mode
+LINK $10(A6,D7.W),*+$10(PC)		ERROR: Invalid addressing mode
+LINK $10(A6,D7.W),#1		ERROR: Invalid addressing mode
+LINK $10(A6,D7.W),#$80		ERROR: Invalid addressing mode
+LINK $10(A6,D7.W),#$1234		ERROR: Invalid addressing mode
+LINK $10(A6,D7.W),#$12345678		ERROR: Invalid addressing mode
+LINK $10(A6,D7.W),SR		ERROR: Invalid addressing mode
+LINK $10(A6,D7.W),CCR		ERROR: Invalid addressing mode
+LINK $10(A6,D7.W),USP		ERROR: Invalid addressing mode
+LINK $1234,D1		ERROR: Invalid addressing mode
+LINK $1234,A2		ERROR: Invalid addressing mode
+LINK $1234,(A3)		ERROR: Invalid addressing mode
+LINK $1234,(A4)+		ERROR: Invalid addressing mode
+LINK $1234,-(A5)		ERROR: Invalid addressing mode
+LINK $1234,$10(A6)		ERROR: Invalid addressing mode
+LINK $1234,$10(A6,D7.W)		ERROR: Invalid addressing mode
+LINK $1234,$1234		ERROR: Invalid addressing mode
+LINK $1234,$12345678		ERROR: Invalid addressing mode
+LINK $1234,FW		ERROR: Invalid addressing mode
+LINK $1234,*+$10(PC)		ERROR: Invalid addressing mode
+LINK $1234,#1		ERROR: Invalid addressing mode
+LINK $1234,#$80		ERROR: Invalid addressing mode
+LINK $1234,#$1234		ERROR: Invalid addressing mode
+LINK $1234,#$12345678		ERROR: Invalid addressing mode
+LINK $1234,SR		ERROR: Invalid addressing mode
+LINK $1234,CCR		ERROR: Invalid addressing mode
+LINK $1234,USP		ERROR: Invalid addressing mode
+LINK $12345678,D1		ERROR: Invalid addressing mode
+LINK $12345678,A2		ERROR: Invalid addressing mode
+LINK $12345678,(A3)		ERROR: Invalid addressing mode
+LINK $12345678,(A4)+		ERROR: Invalid addressing mode
+LINK $12345678,-(A5)		ERROR: Invalid addressing mode
+LINK $12345678,$10(A6)		ERROR: Invalid addressing mode
+LINK $12345678,$10(A6,D7.W)		ERROR: Invalid addressing mode
+LINK $12345678,$1234		ERROR: Invalid addressing mode
+LINK $12345678,$12345678		ERROR: Invalid addressing mode
+LINK $12345678,FW		ERROR: Invalid addressing mode
+LINK $12345678,*+$10(PC)		ERROR: Invalid addressing mode
+LINK $12345678,#1		ERROR: Invalid addressing mode
+LINK $12345678,#$80		ERROR: Invalid addressing mode
+LINK $12345678,#$1234		ERROR: Invalid addressing mode
+LINK $12345678,#$12345678		ERROR: Invalid addressing mode
+LINK $12345678,SR		ERROR: Invalid addressing mode
+LINK $12345678,CCR		ERROR: Invalid addressing mode
+LINK $12345678,USP		ERROR: Invalid addressing mode
+LINK FW,D1		ERROR: Invalid addressing mode
+LINK FW,A2		ERROR: Invalid addressing mode
+LINK FW,(A3)		ERROR: Invalid addressing mode
+LINK FW,(A4)+		ERROR: Invalid addressing mode
+LINK FW,-(A5)		ERROR: Invalid addressing mode
+LINK FW,$10(A6)		ERROR: Invalid addressing mode
+LINK FW,$10(A6,D7.W)		ERROR: Invalid addressing mode
+LINK FW,$1234		ERROR: Invalid addressing mode
+LINK FW,$12345678		ERROR: Invalid addressing mode
+LINK FW,FW		ERROR: Invalid addressing mode
+LINK FW,*+$10(PC)		ERROR: Invalid addressing mode
+LINK FW,#1		ERROR: Invalid addressing mode
+LINK FW,#$80		ERROR: Invalid addressing mode
+LINK FW,#$1234		ERROR: Invalid addressing mode
+LINK FW,#$12345678		ERROR: Invalid addressing mode
+LINK FW,SR		ERROR: Invalid addressing mode
+LINK FW,CCR		ERROR: Invalid addressing mode
+LINK FW,USP		ERROR: Invalid addressing mode
+LINK *+$10(PC),D1		ERROR: Invalid addressing mode
+LINK *+$10(PC),A2		ERROR: Invalid addressing mode
+LINK *+$10(PC),(A3)		ERROR: Invalid addressing mode
+LINK *+$10(PC),(A4)+		ERROR: Invalid addressing mode
+LINK *+$10(PC),-(A5)		ERROR: Invalid addressing mode
+LINK *+$10(PC),$10(A6)		ERROR: Invalid addressing mode
+LINK *+$10(PC),$10(A6,D7.W)		ERROR: Invalid addressing mode
+LINK *+$10(PC),$1234		ERROR: Invalid addressing mode
+LINK *+$10(PC),$12345678		ERROR: Invalid addressing mode
+LINK *+$10(PC),FW		ERROR: Invalid addressing mode
+LINK *+$10(PC),*+$10(PC)		ERROR: Invalid addressing mode
+LINK *+$10(PC),#1		ERROR: Invalid addressing mode
+LINK *+$10(PC),#$80		ERROR: Invalid addressing mode
+LINK *+$10(PC),#$1234		ERROR: Invalid addressing mode
+LINK *+$10(PC),#$12345678		ERROR: Invalid addressing mode
+LINK *+$10(PC),SR		ERROR: Invalid addressing mode
+LINK *+$10(PC),CCR		ERROR: Invalid addressing mode
+LINK *+$10(PC),USP		ERROR: Invalid addressing mode
+LINK #1,D1		ERROR: Invalid addressing mode
+LINK #1,A2		ERROR: Invalid addressing mode
+LINK #1,(A3)		ERROR: Invalid addressing mode
+LINK #1,(A4)+		ERROR: Invalid addressing mode
+LINK #1,-(A5)		ERROR: Invalid addressing mode
+LINK #1,$10(A6)		ERROR: Invalid addressing mode
+LINK #1,$10(A6,D7.W)		ERROR: Invalid addressing mode
+LINK #1,$1234		ERROR: Invalid addressing mode
+LINK #1,$12345678		ERROR: Invalid addressing mode
+LINK #1,FW		ERROR: Invalid addressing mode
+LINK #1,*+$10(PC)		ERROR: Invalid addressing mode
+LINK #1,#1		ERROR: Invalid addressing mode
+LINK #1,#$80		ERROR: Invalid addressing mode
+LINK #1,#$1234		ERROR: Invalid addressing mode
+LINK #1,#$12345678		ERROR: Invalid addressing mode
+LINK #1,SR		ERROR: Invalid addressing mode
+LINK #1,CCR		ERROR: Invalid addressing mode
+LINK #1,USP		ERROR: Invalid addressing mode
+LINK #$80,D1		ERROR: Invalid addressing mode
+LINK #$80,A2		ERROR: Invalid addressing mode
+LINK #$80,(A3)		ERROR: Invalid addressing mode
+LINK #$80,(A4)+		ERROR: Invalid addressing mode
+LINK #$80,-(A5)		ERROR: Invalid addressing mode
+LINK #$80,$10(A6)		ERROR: Invalid addressing mode
+LINK #$80,$10(A6,D7.W)		ERROR: Invalid addressing mode
+LINK #$80,$1234		ERROR: Invalid addressing mode
+LINK #$80,$12345678		ERROR: Invalid addressing mode
+LINK #$80,FW		ERROR: Invalid addressing mode
+LINK #$80,*+$10(PC)		ERROR: Invalid addressing mode
+LINK #$80,#1		ERROR: Invalid addressing mode
+LINK #$80,#$80		ERROR: Invalid addressing mode
+LINK #$80,#$1234		ERROR: Invalid addressing mode
+LINK #$80,#$12345678		ERROR: Invalid addressing mode
+LINK #$80,SR		ERROR: Invalid addressing mode
+LINK #$80,CCR		ERROR: Invalid addressing mode
+LINK #$80,USP		ERROR: Invalid addressing mode
+LINK #$1234,D1		ERROR: Invalid addressing mode
+LINK #$1234,A2		ERROR: Invalid addressing mode
+LINK #$1234,(A3)		ERROR: Invalid addressing mode
+LINK #$1234,(A4)+		ERROR: Invalid addressing mode
+LINK #$1234,-(A5)		ERROR: Invalid addressing mode
+LINK #$1234,$10(A6)		ERROR: Invalid addressing mode
+LINK #$1234,$10(A6,D7.W)		ERROR: Invalid addressing mode
+LINK #$1234,$1234		ERROR: Invalid addressing mode
+LINK #$1234,$12345678		ERROR: Invalid addressing mode
+LINK #$1234,FW		ERROR: Invalid addressing mode
+LINK #$1234,*+$10(PC)		ERROR: Invalid addressing mode
+LINK #$1234,#1		ERROR: Invalid addressing mode
+LINK #$1234,#$80		ERROR: Invalid addressing mode
+LINK #$1234,#$1234		ERROR: Invalid addressing mode
+LINK #$1234,#$12345678		ERROR: Invalid addressing mode
+LINK #$1234,SR		ERROR: Invalid addressing mode
+LINK #$1234,CCR		ERROR: Invalid addressing mode
+LINK #$1234,USP		ERROR: Invalid addressing mode
+LINK #$12345678,D1		ERROR: Invalid addressing mode
+LINK #$12345678,A2		ERROR: Invalid addressing mode
+LINK #$12345678,(A3)		ERROR: Invalid addressing mode
+LINK #$12345678,(A4)+		ERROR: Invalid addressing mode
+LINK #$12345678,-(A5)		ERROR: Invalid addressing mode
+LINK #$12345678,$10(A6)		ERROR: Invalid addressing mode
+LINK #$12345678,$10(A6,D7.W)		ERROR: Invalid addressing mode
+LINK #$12345678,$1234		ERROR: Invalid addressing mode
+LINK #$12345678,$12345678		ERROR: Invalid addressing mode
+LINK #$12345678,FW		ERROR: Invalid addressing mode
+LINK #$12345678,*+$10(PC)		ERROR: Invalid addressing mode
+LINK #$12345678,#1		ERROR: Invalid addressing mode
+LINK #$12345678,#$80		ERROR: Invalid addressing mode
+LINK #$12345678,#$1234		ERROR: Invalid addressing mode
+LINK #$12345678,#$12345678		ERROR: Invalid addressing mode
+LINK #$12345678,SR		ERROR: Invalid addressing mode
+LINK #$12345678,CCR		ERROR: Invalid addressing mode
+LINK #$12345678,USP		ERROR: Invalid addressing mode
+LINK SR,D1		ERROR: Invalid addressing mode
+LINK SR,A2		ERROR: Invalid addressing mode
+LINK SR,(A3)		ERROR: Invalid addressing mode
+LINK SR,(A4)+		ERROR: Invalid addressing mode
+LINK SR,-(A5)		ERROR: Invalid addressing mode
+LINK SR,$10(A6)		ERROR: Invalid addressing mode
+LINK SR,$10(A6,D7.W)		ERROR: Invalid addressing mode
+LINK SR,$1234		ERROR: Invalid addressing mode
+LINK SR,$12345678		ERROR: Invalid addressing mode
+LINK SR,FW		ERROR: Invalid addressing mode
+LINK SR,*+$10(PC)		ERROR: Invalid addressing mode
+LINK SR,#1		ERROR: Invalid addressing mode
+LINK SR,#$80		ERROR: Invalid addressing mode
+LINK SR,#$1234		ERROR: Invalid addressing mode
+LINK SR,#$12345678		ERROR: Invalid addressing mode
+LINK SR,SR		ERROR: Invalid addressing mode
+LINK SR,CCR		ERROR: Invalid addressing mode
+LINK SR,USP		ERROR: Invalid addressing mode
+LINK CCR,D1		ERROR: Invalid addressing mode
+LINK CCR,A2		ERROR: Invalid addressing mode
+LINK CCR,(A3)		ERROR: Invalid addressing mode
+LINK CCR,(A4)+		ERROR: Invalid addressing mode
+LINK CCR,-(A5)		ERROR: Invalid addressing mode
+LINK CCR,$10(A6)		ERROR: Invalid addressing mode
+LINK CCR,$10(A6,D7.W)		ERROR: Invalid addressing mode
+LINK CCR,$1234		ERROR: Invalid addressing mode
+LINK CCR,$12345678		ERROR: Invalid addressing mode
+LINK CCR,FW		ERROR: Invalid addressing mode
+LINK CCR,*+$10(PC)		ERROR: Invalid addressing mode
+LINK CCR,#1		ERROR: Invalid addressing mode
+LINK CCR,#$80		ERROR: Invalid addressing mode
+LINK CCR,#$1234		ERROR: Invalid addressing mode
+LINK CCR,#$12345678		ERROR: Invalid addressing mode
+LINK CCR,SR		ERROR: Invalid addressing mode
+LINK CCR,CCR		ERROR: Invalid addressing mode
+LINK CCR,USP		ERROR: Invalid addressing mode
+LINK USP,D1		ERROR: Invalid addressing mode
+LINK USP,A2		ERROR: Invalid addressing mode
+LINK USP,(A3)		ERROR: Invalid addressing mode
+LINK USP,(A4)+		ERROR: Invalid addressing mode
+LINK USP,-(A5)		ERROR: Invalid addressing mode
+LINK USP,$10(A6)		ERROR: Invalid addressing mode
+LINK USP,$10(A6,D7.W)		ERROR: Invalid addressing mode
+LINK USP,$1234		ERROR: Invalid addressing mode
+LINK USP,$12345678		ERROR: Invalid addressing mode
+LINK USP,FW		ERROR: Invalid addressing mode
+LINK USP,*+$10(PC)		ERROR: Invalid addressing mode
+LINK USP,#1		ERROR: Invalid addressing mode
+LINK USP,#$80		ERROR: Invalid addressing mode
+LINK USP,#$1234		ERROR: Invalid addressing mode
+LINK USP,#$12345678		ERROR: Invalid addressing mode
+LINK USP,SR		ERROR: Invalid addressing mode
+LINK USP,CCR		ERROR: Invalid addressing mode
+LINK USP,USP		ERROR: Invalid addressing mode
+LINK SP,D1		ERROR: Invalid addressing mode
+LINK SP,A2		ERROR: Invalid addressing mode
+LINK D1,SP		ERROR: Invalid addressing mode
+LINK #$12,SP		ERROR: Invalid addressing mode
+LINK -2(A0),D1		ERROR: Invalid addressing mode
+LINK -2(A0),A2		ERROR: Invalid addressing mode
+LINK D1,-2(A0)		ERROR: Invalid addressing mode
+LINK #$12,-2(A0)		ERROR: Invalid addressing mode
+LINK $12(A0,A1.L),D1		ERROR: Invalid addressing mode
+LINK $12(A0,A1.L),A2		ERROR: Invalid addressing mode
+LINK D1,$12(A0,A1.L)		ERROR: Invalid addressing mode
+LINK #$12,$12(A0,A1.L)		ERROR: Invalid addressing mode
+LINK (A2,D3),D1		ERROR: Invalid addressing mode
+LINK (A2,D3),A2		ERROR: Invalid addressing mode
+LINK D1,(A2,D3)		ERROR: Invalid addressing mode
+LINK #$12,(A2,D3)		ERROR: Invalid addressing mode
+LINK $1234.L,D1		ERROR: Invalid addressing mode
+LINK $1234.L,A2		ERROR: Invalid addressing mode
+LINK D1,$1234.L		ERROR: Invalid addressing mode
+LINK #$12,$1234.L		ERROR: Invalid addressing mode
+LINK $1234.W,D1		ERROR: Invalid addressing mode
+LINK $1234.W,A2		ERROR: Invalid addressing mode
+LINK D1,$1234.W		ERROR: Invalid addressing mode
+LINK #$12,$1234.W		ERROR: Invalid addressing mode
+LINK $8000,D1		ERROR: Invalid addressing mode
+LINK $8000,A2		ERROR: Invalid addressing mode
+LINK D1,$8000		ERROR: Invalid addressing mode
+LINK #$12,$8000		ERROR: Invalid addressing mode
+LINK BK,D1		ERROR: Invalid addressing mode
+LINK BK,A2		ERROR: Invalid addressing mode
+LINK D1,BK		ERROR: Invalid addressing mode
+LINK #$12,BK		ERROR: Invalid addressing mode
+LINK *(PC,D0.W),D1		ERROR: Invalid addressing mode
+LINK *(PC,D0.W),A2		ERROR: Invalid addressing mode
+LINK D1,*(PC,D0.W)		ERROR: Invalid addressing mode
+LINK #$12,*(PC,D0.W)		ERROR: Invalid addressing mode
+LINK BK(PC),D1		ERROR: Invalid addressing mode
+LINK BK(PC),A2		ERROR: Invalid addressing mode
+LINK D1,BK(PC)		ERROR: Invalid addressing mode
+LINK #$12,BK(PC)		ERROR: Invalid addressing mode
+LINK #8,D1		ERROR: Invalid addressing mode
+LINK #8,A2		ERROR: Invalid addressing mode
+LINK D1,#8		ERROR: Invalid addressing mode
+LINK #$12,#8		ERROR: Invalid addressing mode
+LINK #9,D1		ERROR: Invalid addressing mode
+LINK #9,A2		ERROR: Invalid addressing mode
+LINK D1,#9		ERROR: Invalid addressing mode
+LINK #$12,#9		ERROR: Invalid addressing mode
+LINK #0,D1		ERROR: Invalid addressing mode
+LINK #0,A2		ERROR: Invalid addressing mode
+LINK D1,#0		ERROR: Invalid addressing mode
+LINK #$12,#0		ERROR: Invalid addressing mode
+LINK #-1,D1		ERROR: Invalid addressing mode
+LINK #-1,A2		ERROR: Invalid addressing mode
+LINK D1,#-1		ERROR: Invalid addressing mode
+LINK #$12,#-1		ERROR: Invalid addressing mode
+LINK #$12345678.L,D1		ERROR: Invalid addressing mode
+LINK #$12345678.L,A2		ERROR: Invalid addressing mode
+LINK D1,#$12345678.L		ERROR: Invalid addressing mode
+LINK #$12,#$12345678.L		ERROR: Invalid addressing mode
+LINK #BK,D1		ERROR: Invalid addressing mode
+LINK #BK,A2		ERROR: Invalid addressing mode
+LINK D1,#BK		ERROR: Invalid addressing mode
+LINK #$12,#BK		ERROR: Invalid addressing mode
+LINK #FW,D1		ERROR: Invalid addressing mode
+LINK #FW,A2		ERROR: Invalid addressing mode
+LINK D1,#FW		ERROR: Invalid addressing mode
+LINK #$12,#FW		ERROR: Invalid addressing mode
+LINK #UNDEF,D1		ERROR: Invalid addressing mode
+LINK #UNDEF,A2		ERROR: Invalid addressing mode
+LINK D1,#UNDEF		ERROR: Invalid addressing mode
+LINK #$12,#UNDEF		ERROR: Invalid addressing mode
+LINK UNDEF,D1		ERROR: Invalid addressing mode
+LINK UNDEF,A2		ERROR: Invalid addressing mode
+LINK D1,UNDEF		ERROR: Invalid addressing mode
+LINK #$12,UNDEF		ERROR: Invalid addressing mode
+LINK D1,D2,D3		ERROR: Invalid syntax
+LINK.B		ERROR: Invalid syntax
+LINK.B D1		ERROR: Comma expected
+LINK.B A2		ERROR: Comma expected
+LINK.B SP		ERROR: Comma expected
+LINK.B (A3)		ERROR: Comma expected
+LINK.B (A4)+		ERROR: Comma expected
+LINK.B -(A5)		ERROR: Comma expected
+LINK.B $10(A6)		ERROR: Comma expected
+LINK.B -2(A0)		ERROR: Comma expected
+LINK.B $10(A6,D7.W)		ERROR: Comma expected
+LINK.B $12(A0,A1.L)		ERROR: Comma expected
+LINK.B (A2,D3)		ERROR: Comma expected
+LINK.B $1234		ERROR: Comma expected
+LINK.B $12345678		ERROR: Comma expected
+LINK.B $1234.L		ERROR: Comma expected
+LINK.B $1234.W		ERROR: Comma expected
+LINK.B $8000		ERROR: Comma expected
+LINK.B BK		ERROR: Comma expected
+LINK.B FW		ERROR: Comma expected
+LINK.B *+$10(PC)		ERROR: Comma expected
+LINK.B *(PC,D0.W)		ERROR: Comma expected
+LINK.B BK(PC)		ERROR: Comma expected
+LINK.B #1		ERROR: Comma expected
+LINK.B #8		ERROR: Comma expected
+LINK.B #9		ERROR: Comma expected
+LINK.B #0		ERROR: Comma expected
+LINK.B #-1		ERROR: Comma expected
+LINK.B #$80		ERROR: Comma expected
+LINK.B #$1234		ERROR: Comma expected
+LINK.B #$12345678		ERROR: Comma expected
+LINK.B #$12345678.L		ERROR: Comma expected
+LINK.B #BK		ERROR: Comma expected
+LINK.B #FW		ERROR: Comma expected
+LINK.B #UNDEF		ERROR: Comma expected
+LINK.B UNDEF		ERROR: Comma expected
+LINK.B SR		ERROR: Comma expected
+LINK.B CCR		ERROR: Comma expected
+LINK.B USP		ERROR: Comma expected
+LINK.B D1,D1		ERROR: Invalid addressing mode
+LINK.B D1,A2		ERROR: Invalid addressing mode
+LINK.B D1,(A3)		ERROR: Invalid addressing mode
+LINK.B D1,$10(A6)		ERROR: Invalid addressing mode
+LINK.B D1,$1234		ERROR: Invalid addressing mode
+LINK.B D1,FW		ERROR: Invalid addressing mode
+LINK.B D1,#1		ERROR: Invalid addressing mode
+LINK.B D1,#$1234		ERROR: Invalid addressing mode
+LINK.B D1,CCR		ERROR: Invalid addressing mode
+LINK.B D1,SR		ERROR: Invalid addressing mode
+LINK.B A2,D1		ERROR: Invalid addressing mode
+LINK.B A2,A2		ERROR: Invalid addressing mode
+LINK.B A2,(A3)		ERROR: Invalid addressing mode
+LINK.B A2,$10(A6)		ERROR: Invalid addressing mode
+LINK.B A2,$1234		ERROR: Invalid addressing mode
+LINK.B A2,FW		ERROR: Invalid addressing mode
+LINK.B A2,#1	4E520001	ERROR: Invalid size code
+LINK.B A2,#$1234	4E521234	ERROR: Invalid size code
+LINK.B A2,CCR		ERROR: Invalid addressing mode
+LINK.B A2,SR		ERROR: Invalid addressing mode
+LINK.B (A3),D1		ERROR: Invalid addressing mode
+LINK.B (A3),A2		ERROR: Invalid addressing mode
+LINK.B (A3),(A3)		ERROR: Invalid addressing mode
+LINK.B (A3),$10(A6)		ERROR: Invalid addressing mode
+LINK.B (A3),$1234		ERROR: Invalid addressing mode
+LINK.B (A3),FW		ERROR: Invalid addressing mode
+LINK.B (A3),#1		ERROR: Invalid addressing mode
+LINK.B (A3),#$1234		ERROR: Invalid addressing mode
+LINK.B (A3),CCR		ERROR: Invalid addressing mode
+LINK.B (A3),SR		ERROR: Invalid addressing mode
+LINK.B $10(A6),D1		ERROR: Invalid addressing mode
+LINK.B $10(A6),A2		ERROR: Invalid addressing mode
+LINK.B $10(A6),(A3)		ERROR: Invalid addressing mode
+LINK.B $10(A6),$10(A6)		ERROR: Invalid addressing mode
+LINK.B $10(A6),$1234		ERROR: Invalid addressing mode
+LINK.B $10(A6),FW		ERROR: Invalid addressing mode
+LINK.B $10(A6),#1		ERROR: Invalid addressing mode
+LINK.B $10(A6),#$1234		ERROR: Invalid addressing mode
+LINK.B $10(A6),CCR		ERROR: Invalid addressing mode
+LINK.B $10(A6),SR		ERROR: Invalid addressing mode
+LINK.B $1234,D1		ERROR: Invalid addressing mode
+LINK.B $1234,A2		ERROR: Invalid addressing mode
+LINK.B $1234,(A3)		ERROR: Invalid addressing mode
+LINK.B $1234,$10(A6)		ERROR: Invalid addressing mode
+LINK.B $1234,$1234		ERROR: Invalid addressing mode
+LINK.B $1234,FW		ERROR: Invalid addressing mode
+LINK.B $1234,#1		ERROR: Invalid addressing mode
+LINK.B $1234,#$1234		ERROR: Invalid addressing mode
+LINK.B $1234,CCR		ERROR: Invalid addressing mode
+LINK.B $1234,SR		ERROR: Invalid addressing mode
+LINK.B FW,D1		ERROR: Invalid addressing mode
+LINK.B FW,A2		ERROR: Invalid addressing mode
+LINK.B FW,(A3)		ERROR: Invalid addressing mode
+LINK.B FW,$10(A6)		ERROR: Invalid addressing mode
+LINK.B FW,$1234		ERROR: Invalid addressing mode
+LINK.B FW,FW		ERROR: Invalid addressing mode
+LINK.B FW,#1		ERROR: Invalid addressing mode
+LINK.B FW,#$1234		ERROR: Invalid addressing mode
+LINK.B FW,CCR		ERROR: Invalid addressing mode
+LINK.B FW,SR		ERROR: Invalid addressing mode
+LINK.B #1,D1		ERROR: Invalid addressing mode
+LINK.B #1,A2		ERROR: Invalid addressing mode
+LINK.B #1,(A3)		ERROR: Invalid addressing mode
+LINK.B #1,$10(A6)		ERROR: Invalid addressing mode
+LINK.B #1,$1234		ERROR: Invalid addressing mode
+LINK.B #1,FW		ERROR: Invalid addressing mode
+LINK.B #1,#1		ERROR: Invalid addressing mode
+LINK.B #1,#$1234		ERROR: Invalid addressing mode
+LINK.B #1,CCR		ERROR: Invalid addressing mode
+LINK.B #1,SR		ERROR: Invalid addressing mode
+LINK.B #$1234,D1		ERROR: Invalid addressing mode
+LINK.B #$1234,A2		ERROR: Invalid addressing mode
+LINK.B #$1234,(A3)		ERROR: Invalid addressing mode
+LINK.B #$1234,$10(A6)		ERROR: Invalid addressing mode
+LINK.B #$1234,$1234		ERROR: Invalid addressing mode
+LINK.B #$1234,FW		ERROR: Invalid addressing mode
+LINK.B #$1234,#1		ERROR: Invalid addressing mode
+LINK.B #$1234,#$1234		ERROR: Invalid addressing mode
+LINK.B #$1234,CCR		ERROR: Invalid addressing mode
+LINK.B #$1234,SR		ERROR: Invalid addressing mode
+LINK.B CCR,D1		ERROR: Invalid addressing mode
+LINK.B CCR,A2		ERROR: Invalid addressing mode
+LINK.B CCR,(A3)		ERROR: Invalid addressing mode
+LINK.B CCR,$10(A6)		ERROR: Invalid addressing mode
+LINK.B CCR,$1234		ERROR: Invalid addressing mode
+LINK.B CCR,FW		ERROR: Invalid addressing mode
+LINK.B CCR,#1		ERROR: Invalid addressing mode
+LINK.B CCR,#$1234		ERROR: Invalid addressing mode
+LINK.B CCR,CCR		ERROR: Invalid addressing mode
+LINK.B CCR,SR		ERROR: Invalid addressing mode
+LINK.B SR,D1		ERROR: Invalid addressing mode
+LINK.B SR,A2		ERROR: Invalid addressing mode
+LINK.B SR,(A3)		ERROR: Invalid addressing mode
+LINK.B SR,$10(A6)		ERROR: Invalid addressing mode
+LINK.B SR,$1234		ERROR: Invalid addressing mode
+LINK.B SR,FW		ERROR: Invalid addressing mode
+LINK.B SR,#1		ERROR: Invalid addressing mode
+LINK.B SR,#$1234		ERROR: Invalid addressing mode
+LINK.B SR,CCR		ERROR: Invalid addressing mode
+LINK.B SR,SR		ERROR: Invalid addressing mode
+LINK.B SP,D1		ERROR: Invalid addressing mode
+LINK.B SP,A2		ERROR: Invalid addressing mode
+LINK.B D1,SP		ERROR: Invalid addressing mode
+LINK.B #$12,SP		ERROR: Invalid addressing mode
+LINK.B (A4)+,D1		ERROR: Invalid addressing mode
+LINK.B (A4)+,A2		ERROR: Invalid addressing mode
+LINK.B D1,(A4)+		ERROR: Invalid addressing mode
+LINK.B #$12,(A4)+		ERROR: Invalid addressing mode
+LINK.B -(A5),D1		ERROR: Invalid addressing mode
+LINK.B -(A5),A2		ERROR: Invalid addressing mode
+LINK.B D1,-(A5)		ERROR: Invalid addressing mode
+LINK.B #$12,-(A5)		ERROR: Invalid addressing mode
+LINK.B -2(A0),D1		ERROR: Invalid addressing mode
+LINK.B -2(A0),A2		ERROR: Invalid addressing mode
+LINK.B D1,-2(A0)		ERROR: Invalid addressing mode
+LINK.B #$12,-2(A0)		ERROR: Invalid addressing mode
+LINK.B $10(A6,D7.W),D1		ERROR: Invalid addressing mode
+LINK.B $10(A6,D7.W),A2		ERROR: Invalid addressing mode
+LINK.B D1,$10(A6,D7.W)		ERROR: Invalid addressing mode
+LINK.B #$12,$10(A6,D7.W)		ERROR: Invalid addressing mode
+LINK.B $12(A0,A1.L),D1		ERROR: Invalid addressing mode
+LINK.B $12(A0,A1.L),A2		ERROR: Invalid addressing mode
+LINK.B D1,$12(A0,A1.L)		ERROR: Invalid addressing mode
+LINK.B #$12,$12(A0,A1.L)		ERROR: Invalid addressing mode
+LINK.B (A2,D3),D1		ERROR: Invalid addressing mode
+LINK.B (A2,D3),A2		ERROR: Invalid addressing mode
+LINK.B D1,(A2,D3)		ERROR: Invalid addressing mode
+LINK.B #$12,(A2,D3)		ERROR: Invalid addressing mode
+LINK.B $12345678,D1		ERROR: Invalid addressing mode
+LINK.B $12345678,A2		ERROR: Invalid addressing mode
+LINK.B D1,$12345678		ERROR: Invalid addressing mode
+LINK.B #$12,$12345678		ERROR: Invalid addressing mode
+LINK.B $1234.L,D1		ERROR: Invalid addressing mode
+LINK.B $1234.L,A2		ERROR: Invalid addressing mode
+LINK.B D1,$1234.L		ERROR: Invalid addressing mode
+LINK.B #$12,$1234.L		ERROR: Invalid addressing mode
+LINK.B $1234.W,D1		ERROR: Invalid addressing mode
+LINK.B $1234.W,A2		ERROR: Invalid addressing mode
+LINK.B D1,$1234.W		ERROR: Invalid addressing mode
+LINK.B #$12,$1234.W		ERROR: Invalid addressing mode
+LINK.B $8000,D1		ERROR: Invalid addressing mode
+LINK.B $8000,A2		ERROR: Invalid addressing mode
+LINK.B D1,$8000		ERROR: Invalid addressing mode
+LINK.B #$12,$8000		ERROR: Invalid addressing mode
+LINK.B BK,D1		ERROR: Invalid addressing mode
+LINK.B BK,A2		ERROR: Invalid addressing mode
+LINK.B D1,BK		ERROR: Invalid addressing mode
+LINK.B #$12,BK		ERROR: Invalid addressing mode
+LINK.B *+$10(PC),D1		ERROR: Invalid addressing mode
+LINK.B *+$10(PC),A2		ERROR: Invalid addressing mode
+LINK.B D1,*+$10(PC)		ERROR: Invalid addressing mode
+LINK.B #$12,*+$10(PC)		ERROR: Invalid addressing mode
+LINK.B *(PC,D0.W),D1		ERROR: Invalid addressing mode
+LINK.B *(PC,D0.W),A2		ERROR: Invalid addressing mode
+LINK.B D1,*(PC,D0.W)		ERROR: Invalid addressing mode
+LINK.B #$12,*(PC,D0.W)		ERROR: Invalid addressing mode
+LINK.B BK(PC),D1		ERROR: Invalid addressing mode
+LINK.B BK(PC),A2		ERROR: Invalid addressing mode
+LINK.B D1,BK(PC)		ERROR: Invalid addressing mode
+LINK.B #$12,BK(PC)		ERROR: Invalid addressing mode
+LINK.B #8,D1		ERROR: Invalid addressing mode
+LINK.B #8,A2		ERROR: Invalid addressing mode
+LINK.B D1,#8		ERROR: Invalid addressing mode
+LINK.B #$12,#8		ERROR: Invalid addressing mode
+LINK.B #9,D1		ERROR: Invalid addressing mode
+LINK.B #9,A2		ERROR: Invalid addressing mode
+LINK.B D1,#9		ERROR: Invalid addressing mode
+LINK.B #$12,#9		ERROR: Invalid addressing mode
+LINK.B #0,D1		ERROR: Invalid addressing mode
+LINK.B #0,A2		ERROR: Invalid addressing mode
+LINK.B D1,#0		ERROR: Invalid addressing mode
+LINK.B #$12,#0		ERROR: Invalid addressing mode
+LINK.B #-1,D1		ERROR: Invalid addressing mode
+LINK.B #-1,A2		ERROR: Invalid addressing mode
+LINK.B D1,#-1		ERROR: Invalid addressing mode
+LINK.B #$12,#-1		ERROR: Invalid addressing mode
+LINK.B #$80,D1		ERROR: Invalid addressing mode
+LINK.B #$80,A2		ERROR: Invalid addressing mode
+LINK.B D1,#$80		ERROR: Invalid addressing mode
+LINK.B #$12,#$80		ERROR: Invalid addressing mode
+LINK.B #$12345678,D1		ERROR: Invalid addressing mode
+LINK.B #$12345678,A2		ERROR: Invalid addressing mode
+LINK.B D1,#$12345678		ERROR: Invalid addressing mode
+LINK.B #$12,#$12345678		ERROR: Invalid addressing mode
+LINK.B #$12345678.L,D1		ERROR: Invalid addressing mode
+LINK.B #$12345678.L,A2		ERROR: Invalid addressing mode
+LINK.B D1,#$12345678.L		ERROR: Invalid addressing mode
+LINK.B #$12,#$12345678.L		ERROR: Invalid addressing mode
+LINK.B #BK,D1		ERROR: Invalid addressing mode
+LINK.B #BK,A2		ERROR: Invalid addressing mode
+LINK.B D1,#BK		ERROR: Invalid addressing mode
+LINK.B #$12,#BK		ERROR: Invalid addressing mode
+LINK.B #FW,D1		ERROR: Invalid addressing mode
+LINK.B #FW,A2		ERROR: Invalid addressing mode
+LINK.B D1,#FW		ERROR: Invalid addressing mode
+LINK.B #$12,#FW		ERROR: Invalid addressing mode
+LINK.B #UNDEF,D1		ERROR: Invalid addressing mode
+LINK.B #UNDEF,A2		ERROR: Invalid addressing mode
+LINK.B D1,#UNDEF		ERROR: Invalid addressing mode
+LINK.B #$12,#UNDEF		ERROR: Invalid addressing mode
+LINK.B UNDEF,D1		ERROR: Invalid addressing mode
+LINK.B UNDEF,A2		ERROR: Invalid addressing mode
+LINK.B D1,UNDEF		ERROR: Invalid addressing mode
+LINK.B #$12,UNDEF		ERROR: Invalid addressing mode
+LINK.B USP,D1		ERROR: Invalid addressing mode
+LINK.B USP,A2		ERROR: Invalid addressing mode
+LINK.B D1,USP		ERROR: Invalid addressing mode
+LINK.B #$12,USP		ERROR: Invalid addressing mode
+LINK.B D1,D2,D3		ERROR: Invalid syntax
+LINK.W		ERROR: Invalid syntax
+LINK.W D1		ERROR: Comma expected
+LINK.W A2		ERROR: Comma expected
+LINK.W SP		ERROR: Comma expected
+LINK.W (A3)		ERROR: Comma expected
+LINK.W (A4)+		ERROR: Comma expected
+LINK.W -(A5)		ERROR: Comma expected
+LINK.W $10(A6)		ERROR: Comma expected
+LINK.W -2(A0)		ERROR: Comma expected
+LINK.W $10(A6,D7.W)		ERROR: Comma expected
+LINK.W $12(A0,A1.L)		ERROR: Comma expected
+LINK.W (A2,D3)		ERROR: Comma expected
+LINK.W $1234		ERROR: Comma expected
+LINK.W $12345678		ERROR: Comma expected
+LINK.W $1234.L		ERROR: Comma expected
+LINK.W $1234.W		ERROR: Comma expected
+LINK.W $8000		ERROR: Comma expected
+LINK.W BK		ERROR: Comma expected
+LINK.W FW		ERROR: Comma expected
+LINK.W *+$10(PC)		ERROR: Comma expected
+LINK.W *(PC,D0.W)		ERROR: Comma expected
+LINK.W BK(PC)		ERROR: Comma expected
+LINK.W #1		ERROR: Comma expected
+LINK.W #8		ERROR: Comma expected
+LINK.W #9		ERROR: Comma expected
+LINK.W #0		ERROR: Comma expected
+LINK.W #-1		ERROR: Comma expected
+LINK.W #$80		ERROR: Comma expected
+LINK.W #$1234		ERROR: Comma expected
+LINK.W #$12345678		ERROR: Comma expected
+LINK.W #$12345678.L		ERROR: Comma expected
+LINK.W #BK		ERROR: Comma expected
+LINK.W #FW		ERROR: Comma expected
+LINK.W #UNDEF		ERROR: Comma expected
+LINK.W UNDEF		ERROR: Comma expected
+LINK.W SR		ERROR: Comma expected
+LINK.W CCR		ERROR: Comma expected
+LINK.W USP		ERROR: Comma expected
+LINK.W D1,D1		ERROR: Invalid addressing mode
+LINK.W D1,A2		ERROR: Invalid addressing mode
+LINK.W D1,(A3)		ERROR: Invalid addressing mode
+LINK.W D1,(A4)+		ERROR: Invalid addressing mode
+LINK.W D1,-(A5)		ERROR: Invalid addressing mode
+LINK.W D1,$10(A6)		ERROR: Invalid addressing mode
+LINK.W D1,$10(A6,D7.W)		ERROR: Invalid addressing mode
+LINK.W D1,$1234		ERROR: Invalid addressing mode
+LINK.W D1,$12345678		ERROR: Invalid addressing mode
+LINK.W D1,FW		ERROR: Invalid addressing mode
+LINK.W D1,*+$10(PC)		ERROR: Invalid addressing mode
+LINK.W D1,#1		ERROR: Invalid addressing mode
+LINK.W D1,#$80		ERROR: Invalid addressing mode
+LINK.W D1,#$1234		ERROR: Invalid addressing mode
+LINK.W D1,#$12345678		ERROR: Invalid addressing mode
+LINK.W D1,SR		ERROR: Invalid addressing mode
+LINK.W D1,CCR		ERROR: Invalid addressing mode
+LINK.W D1,USP		ERROR: Invalid addressing mode
+LINK.W A2,D1		ERROR: Invalid addressing mode
+LINK.W A2,A2		ERROR: Invalid addressing mode
+LINK.W A2,(A3)		ERROR: Invalid addressing mode
+LINK.W A2,(A4)+		ERROR: Invalid addressing mode
+LINK.W A2,-(A5)		ERROR: Invalid addressing mode
+LINK.W A2,$10(A6)		ERROR: Invalid addressing mode
+LINK.W A2,$10(A6,D7.W)		ERROR: Invalid addressing mode
+LINK.W A2,$1234		ERROR: Invalid addressing mode
+LINK.W A2,$12345678		ERROR: Invalid addressing mode
+LINK.W A2,FW		ERROR: Invalid addressing mode
+LINK.W A2,*+$10(PC)		ERROR: Invalid addressing mode
+LINK.W A2,#1	4E520001	ERROR: Invalid size code
+LINK.W A2,#$80	4E520080	ERROR: Invalid size code
+LINK.W A2,#$1234	4E521234	ERROR: Invalid size code
+LINK.W A2,#$12345678	4E525678	ERROR: Invalid size code
+LINK.W A2,SR		ERROR: Invalid addressing mode
+LINK.W A2,CCR		ERROR: Invalid addressing mode
+LINK.W A2,USP		ERROR: Invalid addressing mode
+LINK.W (A3),D1		ERROR: Invalid addressing mode
+LINK.W (A3),A2		ERROR: Invalid addressing mode
+LINK.W (A3),(A3)		ERROR: Invalid addressing mode
+LINK.W (A3),(A4)+		ERROR: Invalid addressing mode
+LINK.W (A3),-(A5)		ERROR: Invalid addressing mode
+LINK.W (A3),$10(A6)		ERROR: Invalid addressing mode
+LINK.W (A3),$10(A6,D7.W)		ERROR: Invalid addressing mode
+LINK.W (A3),$1234		ERROR: Invalid addressing mode
+LINK.W (A3),$12345678		ERROR: Invalid addressing mode
+LINK.W (A3),FW		ERROR: Invalid addressing mode
+LINK.W (A3),*+$10(PC)		ERROR: Invalid addressing mode
+LINK.W (A3),#1		ERROR: Invalid addressing mode
+LINK.W (A3),#$80		ERROR: Invalid addressing mode
+LINK.W (A3),#$1234		ERROR: Invalid addressing mode
+LINK.W (A3),#$12345678		ERROR: Invalid addressing mode
+LINK.W (A3),SR		ERROR: Invalid addressing mode
+LINK.W (A3),CCR		ERROR: Invalid addressing mode
+LINK.W (A3),USP		ERROR: Invalid addressing mode
+LINK.W (A4)+,D1		ERROR: Invalid addressing mode
+LINK.W (A4)+,A2		ERROR: Invalid addressing mode
+LINK.W (A4)+,(A3)		ERROR: Invalid addressing mode
+LINK.W (A4)+,(A4)+		ERROR: Invalid addressing mode
+LINK.W (A4)+,-(A5)		ERROR: Invalid addressing mode
+LINK.W (A4)+,$10(A6)		ERROR: Invalid addressing mode
+LINK.W (A4)+,$10(A6,D7.W)		ERROR: Invalid addressing mode
+LINK.W (A4)+,$1234		ERROR: Invalid addressing mode
+LINK.W (A4)+,$12345678		ERROR: Invalid addressing mode
+LINK.W (A4)+,FW		ERROR: Invalid addressing mode
+LINK.W (A4)+,*+$10(PC)		ERROR: Invalid addressing mode
+LINK.W (A4)+,#1		ERROR: Invalid addressing mode
+LINK.W (A4)+,#$80		ERROR: Invalid addressing mode
+LINK.W (A4)+,#$1234		ERROR: Invalid addressing mode
+LINK.W (A4)+,#$12345678		ERROR: Invalid addressing mode
+LINK.W (A4)+,SR		ERROR: Invalid addressing mode
+LINK.W (A4)+,CCR		ERROR: Invalid addressing mode
+LINK.W (A4)+,USP		ERROR: Invalid addressing mode
+LINK.W -(A5),D1		ERROR: Invalid addressing mode
+LINK.W -(A5),A2		ERROR: Invalid addressing mode
+LINK.W -(A5),(A3)		ERROR: Invalid addressing mode
+LINK.W -(A5),(A4)+		ERROR: Invalid addressing mode
+LINK.W -(A5),-(A5)		ERROR: Invalid addressing mode
+LINK.W -(A5),$10(A6)		ERROR: Invalid addressing mode
+LINK.W -(A5),$10(A6,D7.W)		ERROR: Invalid addressing mode
+LINK.W -(A5),$1234		ERROR: Invalid addressing mode
+LINK.W -(A5),$12345678		ERROR: Invalid addressing mode
+LINK.W -(A5),FW		ERROR: Invalid addressing mode
+LINK.W -(A5),*+$10(PC)		ERROR: Invalid addressing mode
+LINK.W -(A5),#1		ERROR: Invalid addressing mode
+LINK.W -(A5),#$80		ERROR: Invalid addressing mode
+LINK.W -(A5),#$1234		ERROR: Invalid addressing mode
+LINK.W -(A5),#$12345678		ERROR: Invalid addressing mode
+LINK.W -(A5),SR		ERROR: Invalid addressing mode
+LINK.W -(A5),CCR		ERROR: Invalid addressing mode
+LINK.W -(A5),USP		ERROR: Invalid addressing mode
+LINK.W $10(A6),D1		ERROR: Invalid addressing mode
+LINK.W $10(A6),A2		ERROR: Invalid addressing mode
+LINK.W $10(A6),(A3)		ERROR: Invalid addressing mode
+LINK.W $10(A6),(A4)+		ERROR: Invalid addressing mode
+LINK.W $10(A6),-(A5)		ERROR: Invalid addressing mode
+LINK.W $10(A6),$10(A6)		ERROR: Invalid addressing mode
+LINK.W $10(A6),$10(A6,D7.W)		ERROR: Invalid addressing mode
+LINK.W $10(A6),$1234		ERROR: Invalid addressing mode
+LINK.W $10(A6),$12345678		ERROR: Invalid addressing mode
+LINK.W $10(A6),FW		ERROR: Invalid addressing mode
+LINK.W $10(A6),*+$10(PC)		ERROR: Invalid addressing mode
+LINK.W $10(A6),#1		ERROR: Invalid addressing mode
+LINK.W $10(A6),#$80		ERROR: Invalid addressing mode
+LINK.W $10(A6),#$1234		ERROR: Invalid addressing mode
+LINK.W $10(A6),#$12345678		ERROR: Invalid addressing mode
+LINK.W $10(A6),SR		ERROR: Invalid addressing mode
+LINK.W $10(A6),CCR		ERROR: Invalid addressing mode
+LINK.W $10(A6),USP		ERROR: Invalid addressing mode
+LINK.W $10(A6,D7.W),D1		ERROR: Invalid addressing mode
+LINK.W $10(A6,D7.W),A2		ERROR: Invalid addressing mode
+LINK.W $10(A6,D7.W),(A3)		ERROR: Invalid addressing mode
+LINK.W $10(A6,D7.W),(A4)+		ERROR: Invalid addressing mode
+LINK.W $10(A6,D7.W),-(A5)		ERROR: Invalid addressing mode
+LINK.W $10(A6,D7.W),$10(A6)		ERROR: Invalid addressing mode
+LINK.W $10(A6,D7.W),$10(A6,D7.W)		ERROR: Invalid addressing mode
+LINK.W $10(A6,D7.W),$1234		ERROR: Invalid addressing mode
+LINK.W $10(A6,D7.W),$12345678		ERROR: Invalid addressing mode
+LINK.W $10(A6,D7.W),FW		ERROR: Invalid addressing mode
+LINK.W $10(A6,D7.W),*+$10(PC)		ERROR: Invalid addressing mode
+LINK.W $10(A6,D7.W),#1		ERROR: Invalid addressing mode
+LINK.W $10(A6,D7.W),#$80		ERROR: Invalid addressing mode
+LINK.W $10(A6,D7.W),#$1234		ERROR: Invalid addressing mode
+LINK.W $10(A6,D7.W),#$12345678		ERROR: Invalid addressing mode
+LINK.W $10(A6,D7.W),SR		ERROR: Invalid addressing mode
+LINK.W $10(A6,D7.W),CCR		ERROR: Invalid addressing mode
+LINK.W $10(A6,D7.W),USP		ERROR: Invalid addressing mode
+LINK.W $1234,D1		ERROR: Invalid addressing mode
+LINK.W $1234,A2		ERROR: Invalid addressing mode
+LINK.W $1234,(A3)		ERROR: Invalid addressing mode
+LINK.W $1234,(A4)+		ERROR: Invalid addressing mode
+LINK.W $1234,-(A5)		ERROR: Invalid addressing mode
+LINK.W $1234,$10(A6)		ERROR: Invalid addressing mode
+LINK.W $1234,$10(A6,D7.W)		ERROR: Invalid addressing mode
+LINK.W $1234,$1234		ERROR: Invalid addressing mode
+LINK.W $1234,$12345678		ERROR: Invalid addressing mode
+LINK.W $1234,FW		ERROR: Invalid addressing mode
+LINK.W $1234,*+$10(PC)		ERROR: Invalid addressing mode
+LINK.W $1234,#1		ERROR: Invalid addressing mode
+LINK.W $1234,#$80		ERROR: Invalid addressing mode
+LINK.W $1234,#$1234		ERROR: Invalid addressing mode
+LINK.W $1234,#$12345678		ERROR: Invalid addressing mode
+LINK.W $1234,SR		ERROR: Invalid addressing mode
+LINK.W $1234,CCR		ERROR: Invalid addressing mode
+LINK.W $1234,USP		ERROR: Invalid addressing mode
+LINK.W $12345678,D1		ERROR: Invalid addressing mode
+LINK.W $12345678,A2		ERROR: Invalid addressing mode
+LINK.W $12345678,(A3)		ERROR: Invalid addressing mode
+LINK.W $12345678,(A4)+		ERROR: Invalid addressing mode
+LINK.W $12345678,-(A5)		ERROR: Invalid addressing mode
+LINK.W $12345678,$10(A6)		ERROR: Invalid addressing mode
+LINK.W $12345678,$10(A6,D7.W)		ERROR: Invalid addressing mode
+LINK.W $12345678,$1234		ERROR: Invalid addressing mode
+LINK.W $12345678,$12345678		ERROR: Invalid addressing mode
+LINK.W $12345678,FW		ERROR: Invalid addressing mode
+LINK.W $12345678,*+$10(PC)		ERROR: Invalid addressing mode
+LINK.W $12345678,#1		ERROR: Invalid addressing mode
+LINK.W $12345678,#$80		ERROR: Invalid addressing mode
+LINK.W $12345678,#$1234		ERROR: Invalid addressing mode
+LINK.W $12345678,#$12345678		ERROR: Invalid addressing mode
+LINK.W $12345678,SR		ERROR: Invalid addressing mode
+LINK.W $12345678,CCR		ERROR: Invalid addressing mode
+LINK.W $12345678,USP		ERROR: Invalid addressing mode
+LINK.W FW,D1		ERROR: Invalid addressing mode
+LINK.W FW,A2		ERROR: Invalid addressing mode
+LINK.W FW,(A3)		ERROR: Invalid addressing mode
+LINK.W FW,(A4)+		ERROR: Invalid addressing mode
+LINK.W FW,-(A5)		ERROR: Invalid addressing mode
+LINK.W FW,$10(A6)		ERROR: Invalid addressing mode
+LINK.W FW,$10(A6,D7.W)		ERROR: Invalid addressing mode
+LINK.W FW,$1234		ERROR: Invalid addressing mode
+LINK.W FW,$12345678		ERROR: Invalid addressing mode
+LINK.W FW,FW		ERROR: Invalid addressing mode
+LINK.W FW,*+$10(PC)		ERROR: Invalid addressing mode
+LINK.W FW,#1		ERROR: Invalid addressing mode
+LINK.W FW,#$80		ERROR: Invalid addressing mode
+LINK.W FW,#$1234		ERROR: Invalid addressing mode
+LINK.W FW,#$12345678		ERROR: Invalid addressing mode
+LINK.W FW,SR		ERROR: Invalid addressing mode
+LINK.W FW,CCR		ERROR: Invalid addressing mode
+LINK.W FW,USP		ERROR: Invalid addressing mode
+LINK.W *+$10(PC),D1		ERROR: Invalid addressing mode
+LINK.W *+$10(PC),A2		ERROR: Invalid addressing mode
+LINK.W *+$10(PC),(A3)		ERROR: Invalid addressing mode
+LINK.W *+$10(PC),(A4)+		ERROR: Invalid addressing mode
+LINK.W *+$10(PC),-(A5)		ERROR: Invalid addressing mode
+LINK.W *+$10(PC),$10(A6)		ERROR: Invalid addressing mode
+LINK.W *+$10(PC),$10(A6,D7.W)		ERROR: Invalid addressing mode
+LINK.W *+$10(PC),$1234		ERROR: Invalid addressing mode
+LINK.W *+$10(PC),$12345678		ERROR: Invalid addressing mode
+LINK.W *+$10(PC),FW		ERROR: Invalid addressing mode
+LINK.W *+$10(PC),*+$10(PC)		ERROR: Invalid addressing mode
+LINK.W *+$10(PC),#1		ERROR: Invalid addressing mode
+LINK.W *+$10(PC),#$80		ERROR: Invalid addressing mode
+LINK.W *+$10(PC),#$1234		ERROR: Invalid addressing mode
+LINK.W *+$10(PC),#$12345678		ERROR: Invalid addressing mode
+LINK.W *+$10(PC),SR		ERROR: Invalid addressing mode
+LINK.W *+$10(PC),CCR		ERROR: Invalid addressing mode
+LINK.W *+$10(PC),USP		ERROR: Invalid addressing mode
+LINK.W #1,D1		ERROR: Invalid addressing mode
+LINK.W #1,A2		ERROR: Invalid addressing mode
+LINK.W #1,(A3)		ERROR: Invalid addressing mode
+LINK.W #1,(A4)+		ERROR: Invalid addressing mode
+LINK.W #1,-(A5)		ERROR: Invalid addressing mode
+LINK.W #1,$10(A6)		ERROR: Invalid addressing mode
+LINK.W #1,$10(A6,D7.W)		ERROR: Invalid addressing mode
+LINK.W #1,$1234		ERROR: Invalid addressing mode
+LINK.W #1,$12345678		ERROR: Invalid addressing mode
+LINK.W #1,FW		ERROR: Invalid addressing mode
+LINK.W #1,*+$10(PC)		ERROR: Invalid addressing mode
+LINK.W #1,#1		ERROR: Invalid addressing mode
+LINK.W #1,#$80		ERROR: Invalid addressing mode
+LINK.W #1,#$1234		ERROR: Invalid addressing mode
+LINK.W #1,#$12345678		ERROR: Invalid addressing mode
+LINK.W #1,SR		ERROR: Invalid addressing mode
+LINK.W #1,CCR		ERROR: Invalid addressing mode
+LINK.W #1,USP		ERROR: Invalid addressing mode
+LINK.W #$80,D1		ERROR: Invalid addressing mode
+LINK.W #$80,A2		ERROR: Invalid addressing mode
+LINK.W #$80,(A3)		ERROR: Invalid addressing mode
+LINK.W #$80,(A4)+		ERROR: Invalid addressing mode
+LINK.W #$80,-(A5)		ERROR: Invalid addressing mode
+LINK.W #$80,$10(A6)		ERROR: Invalid addressing mode
+LINK.W #$80,$10(A6,D7.W)		ERROR: Invalid addressing mode
+LINK.W #$80,$1234		ERROR: Invalid addressing mode
+LINK.W #$80,$12345678		ERROR: Invalid addressing mode
+LINK.W #$80,FW		ERROR: Invalid addressing mode
+LINK.W #$80,*+$10(PC)		ERROR: Invalid addressing mode
+LINK.W #$80,#1		ERROR: Invalid addressing mode
+LINK.W #$80,#$80		ERROR: Invalid addressing mode
+LINK.W #$80,#$1234		ERROR: Invalid addressing mode
+LINK.W #$80,#$12345678		ERROR: Invalid addressing mode
+LINK.W #$80,SR		ERROR: Invalid addressing mode
+LINK.W #$80,CCR		ERROR: Invalid addressing mode
+LINK.W #$80,USP		ERROR: Invalid addressing mode
+LINK.W #$1234,D1		ERROR: Invalid addressing mode
+LINK.W #$1234,A2		ERROR: Invalid addressing mode
+LINK.W #$1234,(A3)		ERROR: Invalid addressing mode
+LINK.W #$1234,(A4)+		ERROR: Invalid addressing mode
+LINK.W #$1234,-(A5)		ERROR: Invalid addressing mode
+LINK.W #$1234,$10(A6)		ERROR: Invalid addressing mode
+LINK.W #$1234,$10(A6,D7.W)		ERROR: Invalid addressing mode
+LINK.W #$1234,$1234		ERROR: Invalid addressing mode
+LINK.W #$1234,$12345678		ERROR: Invalid addressing mode
+LINK.W #$1234,FW		ERROR: Invalid addressing mode
+LINK.W #$1234,*+$10(PC)		ERROR: Invalid addressing mode
+LINK.W #$1234,#1		ERROR: Invalid addressing mode
+LINK.W #$1234,#$80		ERROR: Invalid addressing mode
+LINK.W #$1234,#$1234		ERROR: Invalid addressing mode
+LINK.W #$1234,#$12345678		ERROR: Invalid addressing mode
+LINK.W #$1234,SR		ERROR: Invalid addressing mode
+LINK.W #$1234,CCR		ERROR: Invalid addressing mode
+LINK.W #$1234,USP		ERROR: Invalid addressing mode
+LINK.W #$12345678,D1		ERROR: Invalid addressing mode
+LINK.W #$12345678,A2		ERROR: Invalid addressing mode
+LINK.W #$12345678,(A3)		ERROR: Invalid addressing mode
+LINK.W #$12345678,(A4)+		ERROR: Invalid addressing mode
+LINK.W #$12345678,-(A5)		ERROR: Invalid addressing mode
+LINK.W #$12345678,$10(A6)		ERROR: Invalid addressing mode
+LINK.W #$12345678,$10(A6,D7.W)		ERROR: Invalid addressing mode
+LINK.W #$12345678,$1234		ERROR: Invalid addressing mode
+LINK.W #$12345678,$12345678		ERROR: Invalid addressing mode
+LINK.W #$12345678,FW		ERROR: Invalid addressing mode
+LINK.W #$12345678,*+$10(PC)		ERROR: Invalid addressing mode
+LINK.W #$12345678,#1		ERROR: Invalid addressing mode
+LINK.W #$12345678,#$80		ERROR: Invalid addressing mode
+LINK.W #$12345678,#$1234		ERROR: Invalid addressing mode
+LINK.W #$12345678,#$12345678		ERROR: Invalid addressing mode
+LINK.W #$12345678,SR		ERROR: Invalid addressing mode
+LINK.W #$12345678,CCR		ERROR: Invalid addressing mode
+LINK.W #$12345678,USP		ERROR: Invalid addressing mode
+LINK.W SR,D1		ERROR: Invalid addressing mode
+LINK.W SR,A2		ERROR: Invalid addressing mode
+LINK.W SR,(A3)		ERROR: Invalid addressing mode
+LINK.W SR,(A4)+		ERROR: Invalid addressing mode
+LINK.W SR,-(A5)		ERROR: Invalid addressing mode
+LINK.W SR,$10(A6)		ERROR: Invalid addressing mode
+LINK.W SR,$10(A6,D7.W)		ERROR: Invalid addressing mode
+LINK.W SR,$1234		ERROR: Invalid addressing mode
+LINK.W SR,$12345678		ERROR: Invalid addressing mode
+LINK.W SR,FW		ERROR: Invalid addressing mode
+LINK.W SR,*+$10(PC)		ERROR: Invalid addressing mode
+LINK.W SR,#1		ERROR: Invalid addressing mode
+LINK.W SR,#$80		ERROR: Invalid addressing mode
+LINK.W SR,#$1234		ERROR: Invalid addressing mode
+LINK.W SR,#$12345678		ERROR: Invalid addressing mode
+LINK.W SR,SR		ERROR: Invalid addressing mode
+LINK.W SR,CCR		ERROR: Invalid addressing mode
+LINK.W SR,USP		ERROR: Invalid addressing mode
+LINK.W CCR,D1		ERROR: Invalid addressing mode
+LINK.W CCR,A2		ERROR: Invalid addressing mode
+LINK.W CCR,(A3)		ERROR: Invalid addressing mode
+LINK.W CCR,(A4)+		ERROR: Invalid addressing mode
+LINK.W CCR,-(A5)		ERROR: Invalid addressing mode
+LINK.W CCR,$10(A6)		ERROR: Invalid addressing mode
+LINK.W CCR,$10(A6,D7.W)		ERROR: Invalid addressing mode
+LINK.W CCR,$1234		ERROR: Invalid addressing mode
+LINK.W CCR,$12345678		ERROR: Invalid addressing mode
+LINK.W CCR,FW		ERROR: Invalid addressing mode
+LINK.W CCR,*+$10(PC)		ERROR: Invalid addressing mode
+LINK.W CCR,#1		ERROR: Invalid addressing mode
+LINK.W CCR,#$80		ERROR: Invalid addressing mode
+LINK.W CCR,#$1234		ERROR: Invalid addressing mode
+LINK.W CCR,#$12345678		ERROR: Invalid addressing mode
+LINK.W CCR,SR		ERROR: Invalid addressing mode
+LINK.W CCR,CCR		ERROR: Invalid addressing mode
+LINK.W CCR,USP		ERROR: Invalid addressing mode
+LINK.W USP,D1		ERROR: Invalid addressing mode
+LINK.W USP,A2		ERROR: Invalid addressing mode
+LINK.W USP,(A3)		ERROR: Invalid addressing mode
+LINK.W USP,(A4)+		ERROR: Invalid addressing mode
+LINK.W USP,-(A5)		ERROR: Invalid addressing mode
+LINK.W USP,$10(A6)		ERROR: Invalid addressing mode
+LINK.W USP,$10(A6,D7.W)		ERROR: Invalid addressing mode
+LINK.W USP,$1234		ERROR: Invalid addressing mode
+LINK.W USP,$12345678		ERROR: Invalid addressing mode
+LINK.W USP,FW		ERROR: Invalid addressing mode
+LINK.W USP,*+$10(PC)		ERROR: Invalid addressing mode
+LINK.W USP,#1		ERROR: Invalid addressing mode
+LINK.W USP,#$80		ERROR: Invalid addressing mode
+LINK.W USP,#$1234		ERROR: Invalid addressing mode
+LINK.W USP,#$12345678		ERROR: Invalid addressing mode
+LINK.W USP,SR		ERROR: Invalid addressing mode
+LINK.W USP,CCR		ERROR: Invalid addressing mode
+LINK.W USP,USP		ERROR: Invalid addressing mode
+LINK.W SP,D1		ERROR: Invalid addressing mode
+LINK.W SP,A2		ERROR: Invalid addressing mode
+LINK.W D1,SP		ERROR: Invalid addressing mode
+LINK.W #$12,SP		ERROR: Invalid addressing mode
+LINK.W -2(A0),D1		ERROR: Invalid addressing mode
+LINK.W -2(A0),A2		ERROR: Invalid addressing mode
+LINK.W D1,-2(A0)		ERROR: Invalid addressing mode
+LINK.W #$12,-2(A0)		ERROR: Invalid addressing mode
+LINK.W $12(A0,A1.L),D1		ERROR: Invalid addressing mode
+LINK.W $12(A0,A1.L),A2		ERROR: Invalid addressing mode
+LINK.W D1,$12(A0,A1.L)		ERROR: Invalid addressing mode
+LINK.W #$12,$12(A0,A1.L)		ERROR: Invalid addressing mode
+LINK.W (A2,D3),D1		ERROR: Invalid addressing mode
+LINK.W (A2,D3),A2		ERROR: Invalid addressing mode
+LINK.W D1,(A2,D3)		ERROR: Invalid addressing mode
+LINK.W #$12,(A2,D3)		ERROR: Invalid addressing mode
+LINK.W $1234.L,D1		ERROR: Invalid addressing mode
+LINK.W $1234.L,A2		ERROR: Invalid addressing mode
+LINK.W D1,$1234.L		ERROR: Invalid addressing mode
+LINK.W #$12,$1234.L		ERROR: Invalid addressing mode
+LINK.W $1234.W,D1		ERROR: Invalid addressing mode
+LINK.W $1234.W,A2		ERROR: Invalid addressing mode
+LINK.W D1,$1234.W		ERROR: Invalid addressing mode
+LINK.W #$12,$1234.W		ERROR: Invalid addressing mode
+LINK.W $8000,D1		ERROR: Invalid addressing mode
+LINK.W $8000,A2		ERROR: Invalid addressing mode
+LINK.W D1,$8000		ERROR: Invalid addressing mode
+LINK.W #$12,$8000		ERROR: Invalid addressing mode
+LINK.W BK,D1		ERROR: Invalid addressing mode
+LINK.W BK,A2		ERROR: Invalid addressing mode
+LINK.W D1,BK		ERROR: Invalid addressing mode
+LINK.W #$12,BK		ERROR: Invalid addressing mode
+LINK.W *(PC,D0.W),D1		ERROR: Invalid addressing mode
+LINK.W *(PC,D0.W),A2		ERROR: Invalid addressing mode
+LINK.W D1,*(PC,D0.W)		ERROR: Invalid addressing mode
+LINK.W #$12,*(PC,D0.W)		ERROR: Invalid addressing mode
+LINK.W BK(PC),D1		ERROR: Invalid addressing mode
+LINK.W BK(PC),A2		ERROR: Invalid addressing mode
+LINK.W D1,BK(PC)		ERROR: Invalid addressing mode
+LINK.W #$12,BK(PC)		ERROR: Invalid addressing mode
+LINK.W #8,D1		ERROR: Invalid addressing mode
+LINK.W #8,A2		ERROR: Invalid addressing mode
+LINK.W D1,#8		ERROR: Invalid addressing mode
+LINK.W #$12,#8		ERROR: Invalid addressing mode
+LINK.W #9,D1		ERROR: Invalid addressing mode
+LINK.W #9,A2		ERROR: Invalid addressing mode
+LINK.W D1,#9		ERROR: Invalid addressing mode
+LINK.W #$12,#9		ERROR: Invalid addressing mode
+LINK.W #0,D1		ERROR: Invalid addressing mode
+LINK.W #0,A2		ERROR: Invalid addressing mode
+LINK.W D1,#0		ERROR: Invalid addressing mode
+LINK.W #$12,#0		ERROR: Invalid addressing mode
+LINK.W #-1,D1		ERROR: Invalid addressing mode
+LINK.W #-1,A2		ERROR: Invalid addressing mode
+LINK.W D1,#-1		ERROR: Invalid addressing mode
+LINK.W #$12,#-1		ERROR: Invalid addressing mode
+LINK.W #$12345678.L,D1		ERROR: Invalid addressing mode
+LINK.W #$12345678.L,A2		ERROR: Invalid addressing mode
+LINK.W D1,#$12345678.L		ERROR: Invalid addressing mode
+LINK.W #$12,#$12345678.L		ERROR: Invalid addressing mode
+LINK.W #BK,D1		ERROR: Invalid addressing mode
+LINK.W #BK,A2		ERROR: Invalid addressing mode
+LINK.W D1,#BK		ERROR: Invalid addressing mode
+LINK.W #$12,#BK		ERROR: Invalid addressing mode
+LINK.W #FW,D1		ERROR: Invalid addressing mode
+LINK.W #FW,A2		ERROR: Invalid addressing mode
+LINK.W D1,#FW		ERROR: Invalid addressing mode
+LINK.W #$12,#FW		ERROR: Invalid addressing mode
+LINK.W #UNDEF,D1		ERROR: Invalid addressing mode
+LINK.W #UNDEF,A2		ERROR: Invalid addressing mode
+LINK.W D1,#UNDEF		ERROR: Invalid addressing mode
+LINK.W #$12,#UNDEF		ERROR: Invalid addressing mode
+LINK.W UNDEF,D1		ERROR: Invalid addressing mode
+LINK.W UNDEF,A2		ERROR: Invalid addressing mode
+LINK.W D1,UNDEF		ERROR: Invalid addressing mode
+LINK.W #$12,UNDEF		ERROR: Invalid addressing mode
+LINK.W D1,D2,D3		ERROR: Invalid syntax
+LINK.L		ERROR: Invalid syntax
+LINK.L D1		ERROR: Comma expected
+LINK.L A2		ERROR: Comma expected
+LINK.L SP		ERROR: Comma expected
+LINK.L (A3)		ERROR: Comma expected
+LINK.L (A4)+		ERROR: Comma expected
+LINK.L -(A5)		ERROR: Comma expected
+LINK.L $10(A6)		ERROR: Comma expected
+LINK.L -2(A0)		ERROR: Comma expected
+LINK.L $10(A6,D7.W)		ERROR: Comma expected
+LINK.L $12(A0,A1.L)		ERROR: Comma expected
+LINK.L (A2,D3)		ERROR: Comma expected
+LINK.L $1234		ERROR: Comma expected
+LINK.L $12345678		ERROR: Comma expected
+LINK.L $1234.L		ERROR: Comma expected
+LINK.L $1234.W		ERROR: Comma expected
+LINK.L $8000		ERROR: Comma expected
+LINK.L BK		ERROR: Comma expected
+LINK.L FW		ERROR: Comma expected
+LINK.L *+$10(PC)		ERROR: Comma expected
+LINK.L *(PC,D0.W)		ERROR: Comma expected
+LINK.L BK(PC)		ERROR: Comma expected
+LINK.L #1		ERROR: Comma expected
+LINK.L #8		ERROR: Comma expected
+LINK.L #9		ERROR: Comma expected
+LINK.L #0		ERROR: Comma expected
+LINK.L #-1		ERROR: Comma expected
+LINK.L #$80		ERROR: Comma expected
+LINK.L #$1234		ERROR: Comma expected
+LINK.L #$12345678		ERROR: Comma expected
+LINK.L #$12345678.L		ERROR: Comma expected
+LINK.L #BK		ERROR: Comma expected
+LINK.L #FW		ERROR: Comma expected
+LINK.L #UNDEF		ERROR: Comma expected
+LINK.L UNDEF		ERROR: Comma expected
+LINK.L SR		ERROR: Comma expected
+LINK.L CCR		ERROR: Comma expected
+LINK.L USP		ERROR: Comma expected
+LINK.L D1,D1		ERROR: Invalid addressing mode
+LINK.L D1,A2		ERROR: Invalid addressing mode
+LINK.L D1,(A3)		ERROR: Invalid addressing mode
+LINK.L D1,$10(A6)		ERROR: Invalid addressing mode
+LINK.L D1,$1234		ERROR: Invalid addressing mode
+LINK.L D1,FW		ERROR: Invalid addressing mode
+LINK.L D1,#1		ERROR: Invalid addressing mode
+LINK.L D1,#$1234		ERROR: Invalid addressing mode
+LINK.L D1,CCR		ERROR: Invalid addressing mode
+LINK.L D1,SR		ERROR: Invalid addressing mode
+LINK.L A2,D1		ERROR: Invalid addressing mode
+LINK.L A2,A2		ERROR: Invalid addressing mode
+LINK.L A2,(A3)		ERROR: Invalid addressing mode
+LINK.L A2,$10(A6)		ERROR: Invalid addressing mode
+LINK.L A2,$1234		ERROR: Invalid addressing mode
+LINK.L A2,FW		ERROR: Invalid addressing mode
+LINK.L A2,#1	4E520001	ERROR: Invalid size code
+LINK.L A2,#$1234	4E521234	ERROR: Invalid size code
+LINK.L A2,CCR		ERROR: Invalid addressing mode
+LINK.L A2,SR		ERROR: Invalid addressing mode
+LINK.L (A3),D1		ERROR: Invalid addressing mode
+LINK.L (A3),A2		ERROR: Invalid addressing mode
+LINK.L (A3),(A3)		ERROR: Invalid addressing mode
+LINK.L (A3),$10(A6)		ERROR: Invalid addressing mode
+LINK.L (A3),$1234		ERROR: Invalid addressing mode
+LINK.L (A3),FW		ERROR: Invalid addressing mode
+LINK.L (A3),#1		ERROR: Invalid addressing mode
+LINK.L (A3),#$1234		ERROR: Invalid addressing mode
+LINK.L (A3),CCR		ERROR: Invalid addressing mode
+LINK.L (A3),SR		ERROR: Invalid addressing mode
+LINK.L $10(A6),D1		ERROR: Invalid addressing mode
+LINK.L $10(A6),A2		ERROR: Invalid addressing mode
+LINK.L $10(A6),(A3)		ERROR: Invalid addressing mode
+LINK.L $10(A6),$10(A6)		ERROR: Invalid addressing mode
+LINK.L $10(A6),$1234		ERROR: Invalid addressing mode
+LINK.L $10(A6),FW		ERROR: Invalid addressing mode
+LINK.L $10(A6),#1		ERROR: Invalid addressing mode
+LINK.L $10(A6),#$1234		ERROR: Invalid addressing mode
+LINK.L $10(A6),CCR		ERROR: Invalid addressing mode
+LINK.L $10(A6),SR		ERROR: Invalid addressing mode
+LINK.L $1234,D1		ERROR: Invalid addressing mode
+LINK.L $1234,A2		ERROR: Invalid addressing mode
+LINK.L $1234,(A3)		ERROR: Invalid addressing mode
+LINK.L $1234,$10(A6)		ERROR: Invalid addressing mode
+LINK.L $1234,$1234		ERROR: Invalid addressing mode
+LINK.L $1234,FW		ERROR: Invalid addressing mode
+LINK.L $1234,#1		ERROR: Invalid addressing mode
+LINK.L $1234,#$1234		ERROR: Invalid addressing mode
+LINK.L $1234,CCR		ERROR: Invalid addressing mode
+LINK.L $1234,SR		ERROR: Invalid addressing mode
+LINK.L FW,D1		ERROR: Invalid addressing mode
+LINK.L FW,A2		ERROR: Invalid addressing mode
+LINK.L FW,(A3)		ERROR: Invalid addressing mode
+LINK.L FW,$10(A6)		ERROR: Invalid addressing mode
+LINK.L FW,$1234		ERROR: Invalid addressing mode
+LINK.L FW,FW		ERROR: Invalid addressing mode
+LINK.L FW,#1		ERROR: Invalid addressing mode
+LINK.L FW,#$1234		ERROR: Invalid addressing mode
+LINK.L FW,CCR		ERROR: Invalid addressing mode
+LINK.L FW,SR		ERROR: Invalid addressing mode
+LINK.L #1,D1		ERROR: Invalid addressing mode
+LINK.L #1,A2		ERROR: Invalid addressing mode
+LINK.L #1,(A3)		ERROR: Invalid addressing mode
+LINK.L #1,$10(A6)		ERROR: Invalid addressing mode
+LINK.L #1,$1234		ERROR: Invalid addressing mode
+LINK.L #1,FW		ERROR: Invalid addressing mode
+LINK.L #1,#1		ERROR: Invalid addressing mode
+LINK.L #1,#$1234		ERROR: Invalid addressing mode
+LINK.L #1,CCR		ERROR: Invalid addressing mode
+LINK.L #1,SR		ERROR: Invalid addressing mode
+LINK.L #$1234,D1		ERROR: Invalid addressing mode
+LINK.L #$1234,A2		ERROR: Invalid addressing mode
+LINK.L #$1234,(A3)		ERROR: Invalid addressing mode
+LINK.L #$1234,$10(A6)		ERROR: Invalid addressing mode
+LINK.L #$1234,$1234		ERROR: Invalid addressing mode
+LINK.L #$1234,FW		ERROR: Invalid addressing mode
+LINK.L #$1234,#1		ERROR: Invalid addressing mode
+LINK.L #$1234,#$1234		ERROR: Invalid addressing mode
+LINK.L #$1234,CCR		ERROR: Invalid addressing mode
+LINK.L #$1234,SR		ERROR: Invalid addressing mode
+LINK.L CCR,D1		ERROR: Invalid addressing mode
+LINK.L CCR,A2		ERROR: Invalid addressing mode
+LINK.L CCR,(A3)		ERROR: Invalid addressing mode
+LINK.L CCR,$10(A6)		ERROR: Invalid addressing mode
+LINK.L CCR,$1234		ERROR: Invalid addressing mode
+LINK.L CCR,FW		ERROR: Invalid addressing mode
+LINK.L CCR,#1		ERROR: Invalid addressing mode
+LINK.L CCR,#$1234		ERROR: Invalid addressing mode
+LINK.L CCR,CCR		ERROR: Invalid addressing mode
+LINK.L CCR,SR		ERROR: Invalid addressing mode
+LINK.L SR,D1		ERROR: Invalid addressing mode
+LINK.L SR,A2		ERROR: Invalid addressing mode
+LINK.L SR,(A3)		ERROR: Invalid addressing mode
+LINK.L SR,$10(A6)		ERROR: Invalid addressing mode
+LINK.L SR,$1234		ERROR: Invalid addressing mode
+LINK.L SR,FW		ERROR: Invalid addressing mode
+LINK.L SR,#1		ERROR: Invalid addressing mode
+LINK.L SR,#$1234		ERROR: Invalid addressing mode
+LINK.L SR,CCR		ERROR: Invalid addressing mode
+LINK.L SR,SR		ERROR: Invalid addressing mode
+LINK.L SP,D1		ERROR: Invalid addressing mode
+LINK.L SP,A2		ERROR: Invalid addressing mode
+LINK.L D1,SP		ERROR: Invalid addressing mode
+LINK.L #$12,SP		ERROR: Invalid addressing mode
+LINK.L (A4)+,D1		ERROR: Invalid addressing mode
+LINK.L (A4)+,A2		ERROR: Invalid addressing mode
+LINK.L D1,(A4)+		ERROR: Invalid addressing mode
+LINK.L #$12,(A4)+		ERROR: Invalid addressing mode
+LINK.L -(A5),D1		ERROR: Invalid addressing mode
+LINK.L -(A5),A2		ERROR: Invalid addressing mode
+LINK.L D1,-(A5)		ERROR: Invalid addressing mode
+LINK.L #$12,-(A5)		ERROR: Invalid addressing mode
+LINK.L -2(A0),D1		ERROR: Invalid addressing mode
+LINK.L -2(A0),A2		ERROR: Invalid addressing mode
+LINK.L D1,-2(A0)		ERROR: Invalid addressing mode
+LINK.L #$12,-2(A0)		ERROR: Invalid addressing mode
+LINK.L $10(A6,D7.W),D1		ERROR: Invalid addressing mode
+LINK.L $10(A6,D7.W),A2		ERROR: Invalid addressing mode
+LINK.L D1,$10(A6,D7.W)		ERROR: Invalid addressing mode
+LINK.L #$12,$10(A6,D7.W)		ERROR: Invalid addressing mode
+LINK.L $12(A0,A1.L),D1		ERROR: Invalid addressing mode
+LINK.L $12(A0,A1.L),A2		ERROR: Invalid addressing mode
+LINK.L D1,$12(A0,A1.L)		ERROR: Invalid addressing mode
+LINK.L #$12,$12(A0,A1.L)		ERROR: Invalid addressing mode
+LINK.L (A2,D3),D1		ERROR: Invalid addressing mode
+LINK.L (A2,D3),A2		ERROR: Invalid addressing mode
+LINK.L D1,(A2,D3)		ERROR: Invalid addressing mode
+LINK.L #$12,(A2,D3)		ERROR: Invalid addressing mode
+LINK.L $12345678,D1		ERROR: Invalid addressing mode
+LINK.L $12345678,A2		ERROR: Invalid addressing mode
+LINK.L D1,$12345678		ERROR: Invalid addressing mode
+LINK.L #$12,$12345678		ERROR: Invalid addressing mode
+LINK.L $1234.L,D1		ERROR: Invalid addressing mode
+LINK.L $1234.L,A2		ERROR: Invalid addressing mode
+LINK.L D1,$1234.L		ERROR: Invalid addressing mode
+LINK.L #$12,$1234.L		ERROR: Invalid addressing mode
+LINK.L $1234.W,D1		ERROR: Invalid addressing mode
+LINK.L $1234.W,A2		ERROR: Invalid addressing mode
+LINK.L D1,$1234.W		ERROR: Invalid addressing mode
+LINK.L #$12,$1234.W		ERROR: Invalid addressing mode
+LINK.L $8000,D1		ERROR: Invalid addressing mode
+LINK.L $8000,A2		ERROR: Invalid addressing mode
+LINK.L D1,$8000		ERROR: Invalid addressing mode
+LINK.L #$12,$8000		ERROR: Invalid addressing mode
+LINK.L BK,D1		ERROR: Invalid addressing mode
+LINK.L BK,A2		ERROR: Invalid addressing mode
+LINK.L D1,BK		ERROR: Invalid addressing mode
+LINK.L #$12,BK		ERROR: Invalid addressing mode
+LINK.L *+$10(PC),D1		ERROR: Invalid addressing mode
+LINK.L *+$10(PC),A2		ERROR: Invalid addressing mode
+LINK.L D1,*+$10(PC)		ERROR: Invalid addressing mode
+LINK.L #$12,*+$10(PC)		ERROR: Invalid addressing mode
+LINK.L *(PC,D0.W),D1		ERROR: Invalid addressing mode
+LINK.L *(PC,D0.W),A2		ERROR: Invalid addressing mode
+LINK.L D1,*(PC,D0.W)		ERROR: Invalid addressing mode
+LINK.L #$12,*(PC,D0.W)		ERROR: Invalid addressing mode
+LINK.L BK(PC),D1		ERROR: Invalid addressing mode
+LINK.L BK(PC),A2		ERROR: Invalid addressing mode
+LINK.L D1,BK(PC)		ERROR: Invalid addressing mode
+LINK.L #$12,BK(PC)		ERROR: Invalid addressing mode
+LINK.L #8,D1		ERROR: Invalid addressing mode
+LINK.L #8,A2		ERROR: Invalid addressing mode
+LINK.L D1,#8		ERROR: Invalid addressing mode
+LINK.L #$12,#8		ERROR: Invalid addressing mode
+LINK.L #9,D1		ERROR: Invalid addressing mode
+LINK.L #9,A2		ERROR: Invalid addressing mode
+LINK.L D1,#9		ERROR: Invalid addressing mode
+LINK.L #$12,#9		ERROR: Invalid addressing mode
+LINK.L #0,D1		ERROR: Invalid addressing mode
+LINK.L #0,A2		ERROR: Invalid addressing mode
+LINK.L D1,#0		ERROR: Invalid addressing mode
+LINK.L #$12,#0		ERROR: Invalid addressing mode
+LINK.L #-1,D1		ERROR: Invalid addressing mode
+LINK.L #-1,A2		ERROR: Invalid addressing mode
+LINK.L D1,#-1		ERROR: Invalid addressing mode
+LINK.L #$12,#-1		ERROR: Invalid addressing mode
+LINK.L #$80,D1		ERROR: Invalid addressing mode
+LINK.L #$80,A2		ERROR: Invalid addressing mode
+LINK.L D1,#$80		ERROR: Invalid addressing mode
+LINK.L #$12,#$80		ERROR: Invalid addressing mode
+LINK.L #$12345678,D1		ERROR: Invalid addressing mode
+LINK.L #$12345678,A2		ERROR: Invalid addressing mode
+LINK.L D1,#$12345678		ERROR: Invalid addressing mode
+LINK.L #$12,#$12345678		ERROR: Invalid addressing mode
+LINK.L #$12345678.L,D1		ERROR: Invalid addressing mode
+LINK.L #$12345678.L,A2		ERROR: Invalid addressing mode
+LINK.L D1,#$12345678.L		ERROR: Invalid addressing mode
+LINK.L #$12,#$12345678.L		ERROR: Invalid addressing mode
+LINK.L #BK,D1		ERROR: Invalid addressing mode
+LINK.L #BK,A2		ERROR: Invalid addressing mode
+LINK.L D1,#BK		ERROR: Invalid addressing mode
+LINK.L #$12,#BK		ERROR: Invalid addressing mode
+LINK.L #FW,D1		ERROR: Invalid addressing mode
+LINK.L #FW,A2		ERROR: Invalid addressing mode
+LINK.L D1,#FW		ERROR: Invalid addressing mode
+LINK.L #$12,#FW		ERROR: Invalid addressing mode
+LINK.L #UNDEF,D1		ERROR: Invalid addressing mode
+LINK.L #UNDEF,A2		ERROR: Invalid addressing mode
+LINK.L D1,#UNDEF		ERROR: Invalid addressing mode
+LINK.L #$12,#UNDEF		ERROR: Invalid addressing mode
+LINK.L UNDEF,D1		ERROR: Invalid addressing mode
+LINK.L UNDEF,A2		ERROR: Invalid addressing mode
+LINK.L D1,UNDEF		ERROR: Invalid addressing mode
+LINK.L #$12,UNDEF		ERROR: Invalid addressing mode
+LINK.L USP,D1		ERROR: Invalid addressing mode
+LINK.L USP,A2		ERROR: Invalid addressing mode
+LINK.L D1,USP		ERROR: Invalid addressing mode
+LINK.L #$12,USP		ERROR: Invalid addressing mode
+LINK.L D1,D2,D3		ERROR: Invalid syntax
+LINK.S		ERROR: Invalid syntax
+LINK.S D1		ERROR: Comma expected
+LINK.S A2		ERROR: Comma expected
+LINK.S SP		ERROR: Comma expected
+LINK.S (A3)		ERROR: Comma expected
+LINK.S (A4)+		ERROR: Comma expected
+LINK.S -(A5)		ERROR: Comma expected
+LINK.S $10(A6)		ERROR: Comma expected
+LINK.S -2(A0)		ERROR: Comma expected
+LINK.S $10(A6,D7.W)		ERROR: Comma expected
+LINK.S $12(A0,A1.L)		ERROR: Comma expected
+LINK.S (A2,D3)		ERROR: Comma expected
+LINK.S $1234		ERROR: Comma expected
+LINK.S $12345678		ERROR: Comma expected
+LINK.S $1234.L		ERROR: Comma expected
+LINK.S $1234.W		ERROR: Comma expected
+LINK.S $8000		ERROR: Comma expected
+LINK.S BK		ERROR: Comma expected
+LINK.S FW		ERROR: Comma expected
+LINK.S *+$10(PC)		ERROR: Comma expected
+LINK.S *(PC,D0.W)		ERROR: Comma expected
+LINK.S BK(PC)		ERROR: Comma expected
+LINK.S #1		ERROR: Comma expected
+LINK.S #8		ERROR: Comma expected
+LINK.S #9		ERROR: Comma expected
+LINK.S #0		ERROR: Comma expected
+LINK.S #-1		ERROR: Comma expected
+LINK.S #$80		ERROR: Comma expected
+LINK.S #$1234		ERROR: Comma expected
+LINK.S #$12345678		ERROR: Comma expected
+LINK.S #$12345678.L		ERROR: Comma expected
+LINK.S #BK		ERROR: Comma expected
+LINK.S #FW		ERROR: Comma expected
+LINK.S #UNDEF		ERROR: Comma expected
+LINK.S UNDEF		ERROR: Comma expected
+LINK.S SR		ERROR: Comma expected
+LINK.S CCR		ERROR: Comma expected
+LINK.S USP		ERROR: Comma expected
+LINK.S D1,D1		ERROR: Invalid addressing mode
+LINK.S D1,A2		ERROR: Invalid addressing mode
+LINK.S D1,(A3)		ERROR: Invalid addressing mode
+LINK.S D1,$10(A6)		ERROR: Invalid addressing mode
+LINK.S D1,$1234		ERROR: Invalid addressing mode
+LINK.S D1,FW		ERROR: Invalid addressing mode
+LINK.S D1,#1		ERROR: Invalid addressing mode
+LINK.S D1,#$1234		ERROR: Invalid addressing mode
+LINK.S D1,CCR		ERROR: Invalid addressing mode
+LINK.S D1,SR		ERROR: Invalid addressing mode
+LINK.S A2,D1		ERROR: Invalid addressing mode
+LINK.S A2,A2		ERROR: Invalid addressing mode
+LINK.S A2,(A3)		ERROR: Invalid addressing mode
+LINK.S A2,$10(A6)		ERROR: Invalid addressing mode
+LINK.S A2,$1234		ERROR: Invalid addressing mode
+LINK.S A2,FW		ERROR: Invalid addressing mode
+LINK.S A2,#1	4E520001	ERROR: Invalid size code
+LINK.S A2,#$1234	4E521234	ERROR: Invalid size code
+LINK.S A2,CCR		ERROR: Invalid addressing mode
+LINK.S A2,SR		ERROR: Invalid addressing mode
+LINK.S (A3),D1		ERROR: Invalid addressing mode
+LINK.S (A3),A2		ERROR: Invalid addressing mode
+LINK.S (A3),(A3)		ERROR: Invalid addressing mode
+LINK.S (A3),$10(A6)		ERROR: Invalid addressing mode
+LINK.S (A3),$1234		ERROR: Invalid addressing mode
+LINK.S (A3),FW		ERROR: Invalid addressing mode
+LINK.S (A3),#1		ERROR: Invalid addressing mode
+LINK.S (A3),#$1234		ERROR: Invalid addressing mode
+LINK.S (A3),CCR		ERROR: Invalid addressing mode
+LINK.S (A3),SR		ERROR: Invalid addressing mode
+LINK.S $10(A6),D1		ERROR: Invalid addressing mode
+LINK.S $10(A6),A2		ERROR: Invalid addressing mode
+LINK.S $10(A6),(A3)		ERROR: Invalid addressing mode
+LINK.S $10(A6),$10(A6)		ERROR: Invalid addressing mode
+LINK.S $10(A6),$1234		ERROR: Invalid addressing mode
+LINK.S $10(A6),FW		ERROR: Invalid addressing mode
+LINK.S $10(A6),#1		ERROR: Invalid addressing mode
+LINK.S $10(A6),#$1234		ERROR: Invalid addressing mode
+LINK.S $10(A6),CCR		ERROR: Invalid addressing mode
+LINK.S $10(A6),SR		ERROR: Invalid addressing mode
+LINK.S $1234,D1		ERROR: Invalid addressing mode
+LINK.S $1234,A2		ERROR: Invalid addressing mode
+LINK.S $1234,(A3)		ERROR: Invalid addressing mode
+LINK.S $1234,$10(A6)		ERROR: Invalid addressing mode
+LINK.S $1234,$1234		ERROR: Invalid addressing mode
+LINK.S $1234,FW		ERROR: Invalid addressing mode
+LINK.S $1234,#1		ERROR: Invalid addressing mode
+LINK.S $1234,#$1234		ERROR: Invalid addressing mode
+LINK.S $1234,CCR		ERROR: Invalid addressing mode
+LINK.S $1234,SR		ERROR: Invalid addressing mode
+LINK.S FW,D1		ERROR: Invalid addressing mode
+LINK.S FW,A2		ERROR: Invalid addressing mode
+LINK.S FW,(A3)		ERROR: Invalid addressing mode
+LINK.S FW,$10(A6)		ERROR: Invalid addressing mode
+LINK.S FW,$1234		ERROR: Invalid addressing mode
+LINK.S FW,FW		ERROR: Invalid addressing mode
+LINK.S FW,#1		ERROR: Invalid addressing mode
+LINK.S FW,#$1234		ERROR: Invalid addressing mode
+LINK.S FW,CCR		ERROR: Invalid addressing mode
+LINK.S FW,SR		ERROR: Invalid addressing mode
+LINK.S #1,D1		ERROR: Invalid addressing mode
+LINK.S #1,A2		ERROR: Invalid addressing mode
+LINK.S #1,(A3)		ERROR: Invalid addressing mode
+LINK.S #1,$10(A6)		ERROR: Invalid addressing mode
+LINK.S #1,$1234		ERROR: Invalid addressing mode
+LINK.S #1,FW		ERROR: Invalid addressing mode
+LINK.S #1,#1		ERROR: Invalid addressing mode
+LINK.S #1,#$1234		ERROR: Invalid addressing mode
+LINK.S #1,CCR		ERROR: Invalid addressing mode
+LINK.S #1,SR		ERROR: Invalid addressing mode
+LINK.S #$1234,D1		ERROR: Invalid addressing mode
+LINK.S #$1234,A2		ERROR: Invalid addressing mode
+LINK.S #$1234,(A3)		ERROR: Invalid addressing mode
+LINK.S #$1234,$10(A6)		ERROR: Invalid addressing mode
+LINK.S #$1234,$1234		ERROR: Invalid addressing mode
+LINK.S #$1234,FW		ERROR: Invalid addressing mode
+LINK.S #$1234,#1		ERROR: Invalid addressing mode
+LINK.S #$1234,#$1234		ERROR: Invalid addressing mode
+LINK.S #$1234,CCR		ERROR: Invalid addressing mode
+LINK.S #$1234,SR		ERROR: Invalid addressing mode
+LINK.S CCR,D1		ERROR: Invalid addressing mode
+LINK.S CCR,A2		ERROR: Invalid addressing mode
+LINK.S CCR,(A3)		ERROR: Invalid addressing mode
+LINK.S CCR,$10(A6)		ERROR: Invalid addressing mode
+LINK.S CCR,$1234		ERROR: Invalid addressing mode
+LINK.S CCR,FW		ERROR: Invalid addressing mode
+LINK.S CCR,#1		ERROR: Invalid addressing mode
+LINK.S CCR,#$1234		ERROR: Invalid addressing mode
+LINK.S CCR,CCR		ERROR: Invalid addressing mode
+LINK.S CCR,SR		ERROR: Invalid addressing mode
+LINK.S SR,D1		ERROR: Invalid addressing mode
+LINK.S SR,A2		ERROR: Invalid addressing mode
+LINK.S SR,(A3)		ERROR: Invalid addressing mode
+LINK.S SR,$10(A6)		ERROR: Invalid addressing mode
+LINK.S SR,$1234		ERROR: Invalid addressing mode
+LINK.S SR,FW		ERROR: Invalid addressing mode
+LINK.S SR,#1		ERROR: Invalid addressing mode
+LINK.S SR,#$1234		ERROR: Invalid addressing mode
+LINK.S SR,CCR		ERROR: Invalid addressing mode
+LINK.S SR,SR		ERROR: Invalid addressing mode
+LINK.S SP,D1		ERROR: Invalid addressing mode
+LINK.S SP,A2		ERROR: Invalid addressing mode
+LINK.S D1,SP		ERROR: Invalid addressing mode
+LINK.S #$12,SP		ERROR: Invalid addressing mode
+LINK.S (A4)+,D1		ERROR: Invalid addressing mode
+LINK.S (A4)+,A2		ERROR: Invalid addressing mode
+LINK.S D1,(A4)+		ERROR: Invalid addressing mode
+LINK.S #$12,(A4)+		ERROR: Invalid addressing mode
+LINK.S -(A5),D1		ERROR: Invalid addressing mode
+LINK.S -(A5),A2		ERROR: Invalid addressing mode
+LINK.S D1,-(A5)		ERROR: Invalid addressing mode
+LINK.S #$12,-(A5)		ERROR: Invalid addressing mode
+LINK.S -2(A0),D1		ERROR: Invalid addressing mode
+LINK.S -2(A0),A2		ERROR: Invalid addressing mode
+LINK.S D1,-2(A0)		ERROR: Invalid addressing mode
+LINK.S #$12,-2(A0)		ERROR: Invalid addressing mode
+LINK.S $10(A6,D7.W),D1		ERROR: Invalid addressing mode
+LINK.S $10(A6,D7.W),A2		ERROR: Invalid addressing mode
+LINK.S D1,$10(A6,D7.W)		ERROR: Invalid addressing mode
+LINK.S #$12,$10(A6,D7.W)		ERROR: Invalid addressing mode
+LINK.S $12(A0,A1.L),D1		ERROR: Invalid addressing mode
+LINK.S $12(A0,A1.L),A2		ERROR: Invalid addressing mode
+LINK.S D1,$12(A0,A1.L)		ERROR: Invalid addressing mode
+LINK.S #$12,$12(A0,A1.L)		ERROR: Invalid addressing mode
+LINK.S (A2,D3),D1		ERROR: Invalid addressing mode
+LINK.S (A2,D3),A2		ERROR: Invalid addressing mode
+LINK.S D1,(A2,D3)		ERROR: Invalid addressing mode
+LINK.S #$12,(A2,D3)		ERROR: Invalid addressing mode
+LINK.S $12345678,D1		ERROR: Invalid addressing mode
+LINK.S $12345678,A2		ERROR: Invalid addressing mode
+LINK.S D1,$12345678		ERROR: Invalid addressing mode
+LINK.S #$12,$12345678		ERROR: Invalid addressing mode
+LINK.S $1234.L,D1		ERROR: Invalid addressing mode
+LINK.S $1234.L,A2		ERROR: Invalid addressing mode
+LINK.S D1,$1234.L		ERROR: Invalid addressing mode
+LINK.S #$12,$1234.L		ERROR: Invalid addressing mode
+LINK.S $1234.W,D1		ERROR: Invalid addressing mode
+LINK.S $1234.W,A2		ERROR: Invalid addressing mode
+LINK.S D1,$1234.W		ERROR: Invalid addressing mode
+LINK.S #$12,$1234.W		ERROR: Invalid addressing mode
+LINK.S $8000,D1		ERROR: Invalid addressing mode
+LINK.S $8000,A2		ERROR: Invalid addressing mode
+LINK.S D1,$8000		ERROR: Invalid addressing mode
+LINK.S #$12,$8000		ERROR: Invalid addressing mode
+LINK.S BK,D1		ERROR: Invalid addressing mode
+LINK.S BK,A2		ERROR: Invalid addressing mode
+LINK.S D1,BK		ERROR: Invalid addressing mode
+LINK.S #$12,BK		ERROR: Invalid addressing mode
+LINK.S *+$10(PC),D1		ERROR: Invalid addressing mode
+LINK.S *+$10(PC),A2		ERROR: Invalid addressing mode
+LINK.S D1,*+$10(PC)		ERROR: Invalid addressing mode
+LINK.S #$12,*+$10(PC)		ERROR: Invalid addressing mode
+LINK.S *(PC,D0.W),D1		ERROR: Invalid addressing mode
+LINK.S *(PC,D0.W),A2		ERROR: Invalid addressing mode
+LINK.S D1,*(PC,D0.W)		ERROR: Invalid addressing mode
+LINK.S #$12,*(PC,D0.W)		ERROR: Invalid addressing mode
+LINK.S BK(PC),D1		ERROR: Invalid addressing mode
+LINK.S BK(PC),A2		ERROR: Invalid addressing mode
+LINK.S D1,BK(PC)		ERROR: Invalid addressing mode
+LINK.S #$12,BK(PC)		ERROR: Invalid addressing mode
+LINK.S #8,D1		ERROR: Invalid addressing mode
+LINK.S #8,A2		ERROR: Invalid addressing mode
+LINK.S D1,#8		ERROR: Invalid addressing mode
+LINK.S #$12,#8		ERROR: Invalid addressing mode
+LINK.S #9,D1		ERROR: Invalid addressing mode
+LINK.S #9,A2		ERROR: Invalid addressing mode
+LINK.S D1,#9		ERROR: Invalid addressing mode
+LINK.S #$12,#9		ERROR: Invalid addressing mode
+LINK.S #0,D1		ERROR: Invalid addressing mode
+LINK.S #0,A2		ERROR: Invalid addressing mode
+LINK.S D1,#0		ERROR: Invalid addressing mode
+LINK.S #$12,#0		ERROR: Invalid addressing mode
+LINK.S #-1,D1		ERROR: Invalid addressing mode
+LINK.S #-1,A2		ERROR: Invalid addressing mode
+LINK.S D1,#-1		ERROR: Invalid addressing mode
+LINK.S #$12,#-1		ERROR: Invalid addressing mode
+LINK.S #$80,D1		ERROR: Invalid addressing mode
+LINK.S #$80,A2		ERROR: Invalid addressing mode
+LINK.S D1,#$80		ERROR: Invalid addressing mode
+LINK.S #$12,#$80		ERROR: Invalid addressing mode
+LINK.S #$12345678,D1		ERROR: Invalid addressing mode
+LINK.S #$12345678,A2		ERROR: Invalid addressing mode
+LINK.S D1,#$12345678		ERROR: Invalid addressing mode
+LINK.S #$12,#$12345678		ERROR: Invalid addressing mode
+LINK.S #$12345678.L,D1		ERROR: Invalid addressing mode
+LINK.S #$12345678.L,A2		ERROR: Invalid addressing mode
+LINK.S D1,#$12345678.L		ERROR: Invalid addressing mode
+LINK.S #$12,#$12345678.L		ERROR: Invalid addressing mode
+LINK.S #BK,D1		ERROR: Invalid addressing mode
+LINK.S #BK,A2		ERROR: Invalid addressing mode
+LINK.S D1,#BK		ERROR: Invalid addressing mode
+LINK.S #$12,#BK		ERROR: Invalid addressing mode
+LINK.S #FW,D1		ERROR: Invalid addressing mode
+LINK.S #FW,A2		ERROR: Invalid addressing mode
+LINK.S D1,#FW		ERROR: Invalid addressing mode
+LINK.S #$12,#FW		ERROR: Invalid addressing mode
+LINK.S #UNDEF,D1		ERROR: Invalid addressing mode
+LINK.S #UNDEF,A2		ERROR: Invalid addressing mode
+LINK.S D1,#UNDEF		ERROR: Invalid addressing mode
+LINK.S #$12,#UNDEF		ERROR: Invalid addressing mode
+LINK.S UNDEF,D1		ERROR: Invalid addressing mode
+LINK.S UNDEF,A2		ERROR: Invalid addressing mode
+LINK.S D1,UNDEF		ERROR: Invalid addressing mode
+LINK.S #$12,UNDEF		ERROR: Invalid addressing mode
+LINK.S USP,D1		ERROR: Invalid addressing mode
+LINK.S USP,A2		ERROR: Invalid addressing mode
+LINK.S D1,USP		ERROR: Invalid addressing mode
+LINK.S #$12,USP		ERROR: Invalid addressing mode
+LINK.S D1,D2,D3		ERROR: Invalid syntax
+LINK.X D1,D2		ERROR: Invalid addressing mode
+LINK.X #1		ERROR: Comma expected

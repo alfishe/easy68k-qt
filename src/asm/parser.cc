@@ -6,6 +6,7 @@
 #include <algorithm>
 #include <cctype>
 
+#include "easym68k/asm/instruction_set.h"
 #include "easym68k/asm/symbol_table.h"
 
 namespace easym68k::asm_ {
@@ -33,8 +34,15 @@ ParsedLine Parser::ParseLine(const std::string& line, int line_number) {
   result.line_number = line_number;
   has_error_ = false;
   error_message_.clear();
+  error_status_ = 0;
+  status_ = 0;
 
-  tokens_ = lexer_.TokenizeLine(line, line_number);
+  // Bit field instructions: {offset:width} groups are taken out of the line
+  // and parsed separately (ASSEMBLE.CPP fieldParse()).
+  std::vector<std::pair<size_t, std::string>> fields;
+  const std::string text = ExtractBitFields(line, &fields);
+
+  tokens_ = lexer_.TokenizeLine(text, line_number);
   token_pos_ = 0;
 
   if (tokens_.empty() || tokens_[0].type == TokenType::kEof ||
@@ -61,7 +69,9 @@ ParsedLine Parser::ParseLine(const std::string& line, int line_number) {
     } else if (result.opcode == "MEMORY") {
       ParseMemoryOperands(result);
     } else if (result.opcode == "MOVEM") {
+      evaluator_.SetLenientUndefined(true);
       ParseMovemOperands(result);
+      evaluator_.SetLenientUndefined(false);
     } else if (result.opcode == "REG") {
       Operand reg_op;
       if (!ParseRegisterList(reg_op)) {
@@ -70,7 +80,18 @@ ParsedLine Parser::ParseLine(const std::string& line, int line_number) {
         result.operands.push_back(reg_op);
       }
     } else {
+      // Instruction operands evaluate undefined symbols leniently (see
+      // ExpressionEvaluator::SetLenientUndefined).
+      evaluator_.SetLenientUndefined(LookupInstruction(result.opcode) != nullptr);
       ParseOperands(result);
+      evaluator_.SetLenientUndefined(false);
+      for (const auto& [index, field_text] : fields) {
+        if (index < result.operands.size()) {
+          Operand& op = result.operands[index];
+          op.has_field = true;
+          op.field_status = ParseBitField(field_text, &op.field);
+        }
+      }
     }
   }
 
@@ -81,7 +102,9 @@ ParsedLine Parser::ParseLine(const std::string& line, int line_number) {
   if (has_error_) {
     result.has_error = true;
     result.error_message = error_message_;
+    result.error_status = error_status_;
   }
+  result.status = status_;
 
   return result;
 }
@@ -91,6 +114,132 @@ bool Parser::ParseOperand(const std::string& operand_text, Operand& operand) {
   token_pos_ = 0;
   has_error_ = false;
   return ParseSingleOperand(operand);
+}
+
+// Removes the {offset:width} groups of a bit field instruction line (BFxxx
+// mnemonic) and returns them with the index of the operand they follow.
+std::string Parser::ExtractBitFields(const std::string& line,
+                                     std::vector<std::pair<size_t, std::string>>* fields) {
+  if (line.find('{') == std::string::npos)
+    return line;
+  // Find the mnemonic: skip a label (column 1 or ending with ':').
+  size_t p = 0;
+  auto is_ident = [](char c) {
+    return std::isalnum(static_cast<unsigned char>(c)) || c == '_' || c == '.' || c == '$';
+  };
+  if (p < line.size() && !std::isspace(static_cast<unsigned char>(line[p]))) {
+    while (p < line.size() && is_ident(line[p]))
+      ++p;
+    if (p < line.size() && line[p] == ':')
+      ++p;
+  }
+  while (p < line.size() && std::isspace(static_cast<unsigned char>(line[p])))
+    ++p;
+  size_t m = p;
+  while (m < line.size() && !std::isspace(static_cast<unsigned char>(line[m])))
+    ++m;
+  if (m - p < 2 || std::toupper(static_cast<unsigned char>(line[p])) != 'B' ||
+      std::toupper(static_cast<unsigned char>(line[p + 1])) != 'F')
+    return line;
+
+  std::string out = line.substr(0, m);
+  size_t operand = 0;
+  int depth = 0;
+  bool quoted = false;
+  for (size_t i = m; i < line.size(); ++i) {
+    char c = line[i];
+    if (c == '\'')
+      quoted = !quoted;
+    if (!quoted) {
+      if (c == ';')
+        quoted = false;
+      if (c == '(')
+        ++depth;
+      else if (c == ')')
+        --depth;
+      else if (c == ',' && depth == 0)
+        ++operand;
+      else if (c == '{' && depth == 0) {
+        size_t close = line.find('}', i);
+        size_t end = close == std::string::npos ? line.size() : close + 1;
+        fields->push_back({operand, line.substr(i, end - i)});
+        i = end - 1;
+        continue;
+      }
+    }
+    out.push_back(c);
+  }
+  return out;
+}
+
+// ASSEMBLE.CPP fieldParse(): parses "{offset:width}" into the extension word
+// fields (Do/offset in bits 11-6, Dw/width in bits 5-0). Returns the status.
+int Parser::ParseBitField(const std::string& text, int32_t* field) {
+  constexpr int kBadBitfield = 0x417;
+  constexpr int kInvForwardRef = 0x306;
+  int st = 0;
+  *field = 0;
+  size_t p = 0;
+  auto skip_space = [&] {
+    while (p < text.size() && std::isspace(static_cast<unsigned char>(text[p])))
+      ++p;
+  };
+  auto is_dreg = [&] {
+    return p + 1 < text.size() && std::toupper(static_cast<unsigned char>(text[p])) == 'D' &&
+           text[p + 1] >= '0' && text[p + 1] <= '7' &&
+           (p + 2 >= text.size() || !std::isalnum(static_cast<unsigned char>(text[p + 2])));
+  };
+  // Evaluates the expression up to one of `stops`.
+  auto eval = [&](const char* stops, int32_t* value) -> bool {
+    if (p < text.size() && text[p] == '#')
+      ++p;
+    size_t end = text.find_first_of(stops, p);
+    if (end == std::string::npos)
+      end = text.size();
+    ExpressionResult r = evaluator_.Evaluate(text.substr(p, end - p));
+    p = end;
+    if (!r.is_valid)
+      return false;
+    if (!r.is_back_ref && (kInvForwardRef & 0xF00) > st)
+      st = kInvForwardRef;
+    *value = r.value;
+    return true;
+  };
+
+  if (p >= text.size() || text[p] != '{')
+    return kBadBitfield;
+  ++p;
+  skip_space();
+  if (is_dreg()) {  // offset in data register
+    *field |= 0x0800;
+    *field |= (text[p + 1] - '0') << 6;
+    p += 2;
+  } else {
+    int32_t offset = 0;
+    if (!eval(":}", &offset) || offset < 0 || offset > 31)
+      return kBadBitfield;
+    *field |= offset << 6;
+  }
+  skip_space();
+  if (p >= text.size() || text[p] != ':')
+    return kBadBitfield;
+  ++p;
+  skip_space();
+  if (is_dreg()) {  // width in data register
+    *field |= 0x0020;
+    *field |= text[p + 1] - '0';
+    p += 2;
+  } else {
+    int32_t width = 0;
+    if (!eval("}", &width) || width < 1 || width > 32)
+      return kBadBitfield;
+    if (width == 32)  // 0 specifies a field width of 32
+      width = 0;
+    *field |= width;
+  }
+  if (p >= text.size() || text[p] != '}')
+    return kBadBitfield;
+  return st;
 }
 
 Token Parser::Current() const {
@@ -164,6 +313,22 @@ bool Parser::ParseOpcodeOrDirective(ParsedLine& line) {
     line.opcode = ToUpper(token.text);
     line.size = token.size;
     Advance();
+    // INSTLOOK.CPP instLookup(): a one-letter size code other than B/W/L/S
+    // is INV_SIZE_CODE (the instruction is assembled unsized).
+    if (line.size == SizeSpec::kNone && Check(TokenType::kDot) &&
+        Current().column == token.column + static_cast<int>(token.text.size())) {
+      Token sz = Peek();
+      Token after = Peek(2);
+      bool one_letter = (sz.type == TokenType::kSymbol || sz.type == TokenType::kOpcode) &&
+                        sz.text.size() == 1 && sz.column == Current().column + 1;
+      bool separated = after.type == TokenType::kEof || after.type == TokenType::kNewline ||
+                       after.type == TokenType::kComment || after.column > sz.column + 1;
+      if (one_letter && separated) {
+        Advance();
+        Advance();
+        line.size_status = 0x201;  // INV_SIZE_CODE
+      }
+    }
     return true;
   }
 
@@ -485,7 +650,11 @@ bool Parser::ParseAbsoluteOrDisplacement(Operand& op) {
   if (forced == SizeSpec::kLong) {
     op.mode = AddressMode::kAbsLong;
   } else if (forced == SizeSpec::kWord) {
+    // OPPARSE.CPP: force short addressing, with a FORCING_SHORT warning.
+    op.data = static_cast<int16_t>(op.data);
     op.mode = AddressMode::kAbsShort;
+    if (0x100 > status_)  // NEWERROR(FORCING_SHORT)
+      status_ = 0x104;
   } else if (!back_ref || value > 32767 || value < -32768) {
     op.mode = AddressMode::kAbsLong;
   } else {
@@ -533,6 +702,8 @@ bool Parser::EvaluateExpression(int32_t& value, bool& is_back_ref) {
   }
   value = result.value;
   is_back_ref = result.is_back_ref;
+  if ((result.status & 0xF00) > status_)  // NEWERROR
+    status_ = result.status;
   return true;
 }
 
@@ -555,8 +726,10 @@ std::string Parser::ToUpper(const std::string& s) {
 // register mask in op.data and sets op.mode = kRegisterList.
 // ---------------------------------------------------------------------------
 bool Parser::ParseRegisterList(Operand& op) {
-  // Named register-list symbol (e.g. SAVE_REGS defined via REG)
-  if (Check(TokenType::kSymbol)) {
+  // Named register-list symbol (e.g. SAVE_REGS defined via REG). MOVEM.CPP
+  // evalList() only accepts An/Dn by number, so SP is looked up as a symbol.
+  if (Check(TokenType::kSymbol) ||
+      (Check(TokenType::kRegister) && Current().reg_type == RegisterType::kSP)) {
     std::string name = Current().text;
     Advance();
     op.mode = AddressMode::kRegisterList;
@@ -576,6 +749,7 @@ bool Parser::ParseRegisterList(Operand& op) {
         }
       } else if (pass_ == 2) {
         Error("Undefined register list symbol: " + name);
+        error_status_ = 0x301;  // UNDEFINED
         return false;
       }
     }
@@ -589,8 +763,7 @@ bool Parser::ParseRegisterList(Operand& op) {
   }
   {
     Token first = Current();
-    if (first.reg_type != RegisterType::kData && first.reg_type != RegisterType::kAddress &&
-        first.reg_type != RegisterType::kSP) {
+    if (first.reg_type != RegisterType::kData && first.reg_type != RegisterType::kAddress) {
       Error("Expected data or address register in register list");
       return false;
     }
@@ -606,7 +779,7 @@ bool Parser::ParseRegisterList(Operand& op) {
     int bit1;
     if (r1.reg_type == RegisterType::kData) {
       bit1 = r1.reg_num;
-    } else if (r1.reg_type == RegisterType::kAddress || r1.reg_type == RegisterType::kSP) {
+    } else if (r1.reg_type == RegisterType::kAddress) {
       bit1 = 8 + r1.reg_num;
     } else {
       Error("Invalid register type in register list");
@@ -623,7 +796,7 @@ bool Parser::ParseRegisterList(Operand& op) {
       int bit2;
       if (r2.reg_type == RegisterType::kData) {
         bit2 = r2.reg_num;
-      } else if (r2.reg_type == RegisterType::kAddress || r2.reg_type == RegisterType::kSP) {
+      } else if (r2.reg_type == RegisterType::kAddress) {
         bit2 = 8 + r2.reg_num;
       } else {
         Error("Invalid register type in register list range");
@@ -662,30 +835,35 @@ bool Parser::ParseMovemOperands(ParsedLine& line) {
   if (Check(TokenType::kRegister)) {
     Token t = Current();
     first_is_explicit_list =
-        (t.reg_type == RegisterType::kData || t.reg_type == RegisterType::kAddress ||
-         t.reg_type == RegisterType::kSP);
+        (t.reg_type == RegisterType::kData || t.reg_type == RegisterType::kAddress);
   }
 
   if (first_is_explicit_list) {
     // Form 1: <reglist>, <ea>
     Operand reg_op;
-    if (!ParseRegisterList(reg_op))
+    if (!ParseRegisterList(reg_op)) {
+      // MOVEM.CPP: the operand is then parsed as <ea>,<reg_list>; its first
+      // register is a register direct operand not followed by a comma.
+      error_status_ = 0x408;  // COMMA_EXPECTED
       return false;
+    }
+    line.operands.push_back(reg_op);
     if (!Match(TokenType::kComma)) {
       Error("Expected comma after MOVEM register list");
+      error_status_ = 0x408;  // COMMA_EXPECTED
       return false;
     }
     Operand ea_op;
     if (!ParseSingleOperand(ea_op))
       return false;
-    line.operands.push_back(reg_op);
     line.operands.push_back(ea_op);
     return true;
   }
 
   // A symbol might be a REG-defined register list — try parsing it as one,
   // then check that a comma follows before committing.
-  if (Check(TokenType::kSymbol)) {
+  if (Check(TokenType::kSymbol) ||
+      (Check(TokenType::kRegister) && Current().reg_type == RegisterType::kSP)) {
     size_t saved_pos = token_pos_;
     bool saved_err = has_error_;
     std::string saved_msg = error_message_;
@@ -706,20 +884,22 @@ bool Parser::ParseMovemOperands(ParsedLine& line) {
     token_pos_ = saved_pos;
     has_error_ = saved_err;
     error_message_ = saved_msg;
+    error_status_ = 0;
   }
 
   // Form 2: <ea>, <reglist>
   Operand ea_op;
   if (!ParseSingleOperand(ea_op))
     return false;
+  line.operands.push_back(ea_op);
   if (!Match(TokenType::kComma)) {
     Error("Expected comma in MOVEM operands");
+    error_status_ = 0x408;  // COMMA_EXPECTED
     return false;
   }
   Operand reg_op;
   if (!ParseRegisterList(reg_op))
     return false;
-  line.operands.push_back(ea_op);
   line.operands.push_back(reg_op);
   return true;
 }
