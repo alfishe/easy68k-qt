@@ -20,7 +20,7 @@ the original Edit68K assembler core built on Linux from the original sources
 
 ## Status snapshot
 
-*Updated after every committed iteration (last: 2026-10-14, commit `1b68a39`).*
+*Updated after every committed iteration (last: 2026-10-14, commit `c2ec310`).*
 
 | Area | Rows | Done | Partial | Gap | Notes |
 |------|------|------|---------|-----|-------|
@@ -207,7 +207,7 @@ Each committed iteration updates the snapshot above and adds a line here.
 | 2026-10-14 | `3d15f4b` | removed unused assembler front end | — |
 | 2026-10-14 | `dfd8262` | bit field instructions in the simulator | S8 Done |
 | 2026-10-14 | `1b68a39` | advanced breakpoint engine; Run checks after executing | S14 Done (core) |
-| 2026-10-14 | (9.10) | Step Over / Run To core API | S15 Done (core) |
+| 2026-10-14 | `c2ec310` | Step Over / Run To core API | S15 Done (core) |
 
 ## 10. Parity acceptance
 
