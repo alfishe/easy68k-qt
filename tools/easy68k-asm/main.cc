@@ -2,16 +2,21 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 //
 // easy68k-asm — command-line front end for the EASy68K-Qt assembler.
-// Writes <base>.L68 (listing) and <base>.S68 (S-records) like Edit68K.
+// Writes <base>.L68 (listing) and <base>.S68 (S-records) like Edit68K, with
+// the same options as the reference driver (tools/reference/edit68k):
 //
-// Usage: easy68k-asm [--no-list] [--no-srec] [--cex] <source.x68> [-o <base>]
+// Usage: easy68k-asm [--no-list] [--no-srec] [--cex] [--no-bitfield]
+//                    [--no-cre] [--mex] [--sex] [--no-warnings]
+//                    <source.x68> [-o <base>]
+//
+// Messages go to stderr as "line N: <text>"; the exit status is 1 when the
+// assembly has errors. Include files are looked up relative to the source.
 
 #include <cstdio>
 #include <cstdlib>
 #include <fstream>
 #include <sstream>
 #include <string>
-#include <vector>
 
 #include "easym68k/asm/assembler.h"
 
@@ -19,7 +24,8 @@ namespace {
 
 int Usage() {
   std::fprintf(stderr,
-               "usage: easy68k-asm [--no-list] [--no-srec] [--cex] <source.x68> [-o <base>]\n");
+               "usage: easy68k-asm [--no-list] [--no-srec] [--cex] [--no-bitfield] [--no-cre]\n"
+               "                   [--mex] [--sex] [--no-warnings] <source.x68> [-o <base>]\n");
   return 2;
 }
 
@@ -31,39 +37,29 @@ std::string StripExtension(const std::string& path) {
   return path;
 }
 
-// Edit68K strips its editor settings trailer ("*~Tab size~4~" etc.) from the
-// last lines of a source file before assembling (textS.cpp).
-std::string StripEditorTrailer(const std::string& text) {
-  std::vector<std::string> lines;
-  std::istringstream in(text);
-  for (std::string l; std::getline(in, l);)
-    lines.push_back(l);
-  int checked = 0;
-  for (int i = static_cast<int>(lines.size()) - 1; i >= 0 && checked < 5; --i, ++checked) {
-    const std::string& l = lines[i];
-    if (l.rfind("*~Tab size~", 0) == 0 || l.rfind("*~Tab type~", 0) == 0 ||
-        l.rfind("*~Font size~", 0) == 0 || l.rfind("*~Font name~", 0) == 0)
-      lines.erase(lines.begin() + i);
-  }
-  std::string out;
-  for (const std::string& l : lines)
-    out += l + "\n";
-  return out;
-}
-
 }  // namespace
 
 int main(int argc, char** argv) {
-  bool list = true, srec = true, cex = false;
   std::string source, base;
+  easym68k::asm_::AssemblerOptions options;
   for (int i = 1; i < argc; ++i) {
     std::string a = argv[i];
     if (a == "--no-list")
-      list = false;
+      options.generate_listing = false;
     else if (a == "--no-srec")
-      srec = false;
+      options.generate_srecord = false;
     else if (a == "--cex")
-      cex = true;
+      options.cex = true;
+    else if (a == "--no-bitfield")
+      options.bitfield = false;
+    else if (a == "--no-cre")
+      options.cre = false;
+    else if (a == "--mex")
+      options.mex = true;
+    else if (a == "--sex")
+      options.sex = true;
+    else if (a == "--no-warnings")
+      options.warnings = false;
     else if (a == "-o" && i + 1 < argc)
       base = argv[++i];
     else if (!a.empty() && a[0] == '-')
@@ -83,22 +79,19 @@ int main(int argc, char** argv) {
   }
   std::stringstream ss;
   ss << in.rdbuf();
-  std::string text;
-  for (char c : ss.str())
-    if (c != '\r')
-      text.push_back(c);
-  text = StripEditorTrailer(text);
 
   easym68k::asm_::Assembler assembler;
   const char* date = std::getenv("EASY68K_REF_DATE");
-  assembler.ConfigureListing(source, date ? date : "", 60, cex);
-  easym68k::asm_::AssemblyResult r = assembler.Assemble(text);
+  assembler.ConfigureListing(source, date ? date : "", 60, options.cex);
+  assembler.SetOptions(options);
+  easym68k::asm_::AssemblyResult r = assembler.Assemble(ss.str());
 
-  if (list) {
+  // Like Edit68K, the files are written even when the assembly has errors.
+  if (options.generate_listing) {
     std::ofstream out(base + ".L68", std::ios::binary);
     out << assembler.GetListing();
   }
-  if (srec && r.success) {
+  if (options.generate_srecord) {
     std::ofstream out(base + ".S68", std::ios::binary);
     out << r.srecord;
   }

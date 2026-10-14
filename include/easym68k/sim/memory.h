@@ -71,6 +71,9 @@ class Memory {
   // ---------------------------------------------------------------------------
 
   void Clear();
+  // Erases memory to $FF like Sim68K does on start-up and before loading a
+  // program (SIM68Ku.cpp FormCreate/OpenFile), and resets the map flags.
+  void Erase();
   void LoadData(uint32_t address, const uint8_t* data, size_t size);
   void LoadData(uint32_t address, const std::vector<uint8_t>& data);
 

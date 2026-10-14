@@ -1,0 +1,114 @@
+00001000 Starting Address
+Assembler used: EASy68K Editor/Assembler v5.16.01
+Created On: 
+
+00000000                             1  * Macros: parameters, \@ labels, NARG, IFARG, MEXIT, nesting, size \0
+00001000                             2          ORG     $1000
+00001000                             3  PUSH    MACRO
+00001000                             4          MOVE.\0 \1,-(SP)
+00001000                             5          ENDM
+00001000                             6  POP     MACRO
+00001000                             7          MOVE.\0 (SP)+,\1
+00001000                             8          ENDM
+00001000                             9  SWAPR   MACRO
+00001000                            10          PUSH.L  \1
+00001000                            11          MOVE.L  \2,\1
+00001000                            12          POP.L   \2
+00001000                            13          ENDM
+00001000                            14  DELAY   MACRO
+00001000                            15          MOVE.W  #\1,D7
+00001000                            16  LOOP\@  DBRA    D7,LOOP\@
+00001000                            17          ENDM
+00001000                            18  OPTARG  MACRO
+00001000                            19          IFARG   2
+00001000                            20          MOVE.L  \2,D0
+00001000                            21          ENDC
+00001000                            22          MOVE.L  \1,D1
+00001000                            23          DC.W    NARG
+00001000                            24          ENDM
+00001000                            25  EARLY   MACRO
+00001000                            26          MOVEQ   #1,D0
+00001000                            27          IFC     '\1','STOP'
+00001000                            28          MEXIT
+00001000                            29          ENDC
+00001000                            30          MOVEQ   #2,D0
+00001000                            31          ENDM
+00001000                            32  MANY    MACRO
+00001000                            33          DC.B    \1,\2,\3,\4,\5,\6,\7,\8,\9,\A
+00001000                            34          ENDM
+00001000                            35m START   PUSH    D0
+00001000  3F00                      36m         MOVE.W D0,-(SP)
+00001002                            37m         ENDM
+00001002                            38m         PUSH.L  A0
+00001002  2F08                      39m         MOVE.L A0,-(SP)
+00001004                            40m         ENDM
+00001004                            41m         POP.W   D1
+00001004  321F                      42m         MOVE.W (SP)+,D1
+00001006                            43m         ENDM
+00001006                            44m         SWAPR   D2,D3
+00001006                            45mm         PUSH.L  D2
+00001006  2F02                      46mm         MOVE.L D2,-(SP)
+00001008                            47mm         ENDM
+00001008  2403                      48m         MOVE.L  D3,D2
+0000100A                            49mm         POP.L   D3
+0000100A  261F                      50mm         MOVE.L (SP)+,D3
+0000100C                            51mm         ENDM
+0000100C                            52m         ENDM
+0000100C                            53m         DELAY   10
+0000100C  3E3C 000A                 54m         MOVE.W  #10,D7
+00001010  51CF FFFE                 55m LOOP_7  DBRA    D7,LOOP_7
+00001014                            56m         ENDM
+00001014                            57m         DELAY   20
+00001014  3E3C 0014                 58m         MOVE.W  #20,D7
+00001018  51CF FFFE                 59m LOOP_8  DBRA    D7,LOOP_8
+0000101C                            60m         ENDM
+0000101C                            61m         OPTARG  #1
+0000101C                 FALSE      62m         IFARG   2
+0000101C                            63m         ENDC
+0000101C  7201                      64m         MOVE.L  #1,D1
+0000101E= 0001                      65m         DC.W    1
+00001020                            66m         ENDM
+00001020                            67m         OPTARG  #1,#2
+00001020                 TRUE       68m         IFARG   2
+00001020  7002                      69m         MOVE.L  #2,D0
+00001022                            70m         ENDC
+00001022  7201                      71m         MOVE.L  #1,D1
+00001024= 0002                      72m         DC.W    2
+00001026                            73m         ENDM
+00001026                            74m         EARLY   GO
+00001026  7001                      75m         MOVEQ   #1,D0
+00001028                 FALSE      76m         IFC     'GO','STOP'
+00001028                            77m         ENDC
+00001028  7002                      78m         MOVEQ   #2,D0
+0000102A                            79m         ENDM
+0000102A                            80m         EARLY   STOP
+0000102A  7001                      81m         MOVEQ   #1,D0
+0000102C                 TRUE       82m         IFC     'STOP','STOP'
+0000102C                            83m         MEXIT
+0000102C                            84m         MANY    1,2,3,4,5,6,7,8,9,10
+0000102C= 01 02 03 04 05 06 07      85          DC.B    1,2,3,4,5,6,7,8,9,10
+          08 09 0A              
+00001036                            87m         ENDM
+00001036                            88m         PUSH    <D0>
+00001036  3F00                      89m         MOVE.W D0,-(SP)
+00001038                            90m         ENDM
+00001038  FFFF FFFF                 91          SIMHALT
+0000103C                            92          END     START
+
+No errors detected
+No warnings generated
+
+
+SYMBOL TABLE INFORMATION
+Symbol-name         Value
+-------------------------
+DELAY               95
+EARLY               140
+LOOP_7              1010
+LOOP_8              1018
+MANY                1B0
+OPTARG              D3
+POP                 26
+PUSH                0
+START               1000
+SWAPR               4C

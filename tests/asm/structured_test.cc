@@ -425,60 +425,74 @@ TEST(StructuredTest, EndiWithoutIf) {
   AsmExpectError(
       "  ORG $1000\n"
       "  ENDI\n",
-      "ENDI");
+      "No matching IF statement was found");
 }
 
 TEST(StructuredTest, EndwWithoutWhile) {
   AsmExpectError(
       "  ORG $1000\n"
       "  ENDW\n",
-      "ENDW");
+      "No matching WHILE statement was found");
 }
 
 TEST(StructuredTest, EndfWithoutFor) {
   AsmExpectError(
       "  ORG $1000\n"
       "  ENDF\n",
-      "ENDF");
+      "No matching FOR statement was found");
 }
 
 TEST(StructuredTest, UntilWithoutRepeat) {
   AsmExpectError(
       "  ORG $1000\n"
       "  UNTIL <EQ> DO\n",
-      "UNTIL");
+      "No matching REPEAT statement was found");
 }
 
 TEST(StructuredTest, UnlessWithoutDbloop) {
   AsmExpectError(
       "  ORG $1000\n"
       "  UNLESS\n",
-      "UNLESS");
+      "No matching DBLOOP statement was found");
 }
 
 TEST(StructuredTest, ElseWithoutIf) {
   AsmExpectError(
       "  ORG $1000\n"
       "  ELSE\n",
-      "ELSE");
+      "No matching IF statement was found");
 }
 
-TEST(StructuredTest, WhileMissingDo) {
-  AsmExpectError(
+TEST(StructuredTest, WhileMissingDoIsWarning) {
+  // STRUCTURED.CPP: a missing DO is the DO_EXPECTED warning (reference oracle).
+  Assembler a;
+  auto r = a.Assemble(
       "  ORG $1000\n"
       "  WHILE <EQ>\n"
       "    NOP\n"
-      "  ENDW\n",
-      "DO");
+      "  ENDW\n");
+  EXPECT_TRUE(r.success);
+  bool found = false;
+  for (const auto& e : r.errors)
+    if (e.severity == ErrorSeverity::kWarning && e.message == "DO expected")
+      found = true;
+  EXPECT_TRUE(found);
 }
 
-TEST(StructuredTest, ForMissingDo) {
-  AsmExpectError(
+TEST(StructuredTest, ForMissingDoIsWarning) {
+  // STRUCTURED.CPP: a missing DO is the DO_EXPECTED warning (reference oracle).
+  Assembler a;
+  auto r = a.Assemble(
       "  ORG $1000\n"
       "  FOR D0 = #1 TO #5\n"
       "    NOP\n"
-      "  ENDF\n",
-      "DO");
+      "  ENDF\n");
+  EXPECT_TRUE(r.success);
+  bool found = false;
+  for (const auto& e : r.errors)
+    if (e.severity == ErrorSeverity::kWarning && e.message == "DO expected")
+      found = true;
+  EXPECT_TRUE(found);
 }
 
 TEST(StructuredTest, MismatchedNesting) {
@@ -488,7 +502,7 @@ TEST(StructuredTest, MismatchedNesting) {
       "  WHILE <EQ> DO\n"
       "    NOP\n"
       "  ENDI\n",
-      "ENDI");
+      "No matching IF statement was found");
 }
 
 // ─── Two-pass consistency ────────────────────────────────────────────────────

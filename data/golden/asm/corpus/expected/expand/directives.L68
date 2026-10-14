@@ -1,0 +1,76 @@
+00001000 Starting Address
+Assembler used: EASy68K Editor/Assembler v5.16.01
+Created On: 
+
+00000000                             1  * Directives: DC/DS/DCB, EQU/SET/REG, ORG/SECTION/OFFSET, expressions
+00000000  =00000005                  2  COUNT   EQU     5
+00000000  =0000F0F0                  3  MASK    EQU     $F0F0
+00000000  =00000001                  4  VAL     SET     1
+00000000  =00000003                  5  VAL     SET     VAL+2
+00000000                             6  SAVED   REG     D0-D3/A0/A5-A6
+00001000                             7          ORG     $1000
+00001000= 01 02 03 41 49 74 27       8  START   DC.B    1,2,3,'A','It''s',0
+          73 00                 
+0000100A= 0005 F0F0 1000 FFFF       10          DC.W    COUNT,MASK,START,-1,$1234
+          1234                  
+00001014= 00001000 00003010         12          DC.L    START,END_OF,$12345678,'ABCD'
+          12345678 41424344     
+00001024= 54 68 69 73 20 69 73      14          DC.B    'This is a long string that will not fit in the listing columns',0
+          20 61 20 6C 6F 6E 67  
+          20 73 74 72 69 6E 67  
+          20 74 68 61 74 20 77  
+          69 6C 6C 20 6E 6F 74  
+          20 66 69 74 20 69 6E  
+          20 74 68 65 20 6C 69  
+          73 74 69 6E 67 20 63  
+          6F 6C 75 6D 6E 73 00  
+00001063                            23          DS.B    3
+00001066                            24          DS.W    2
+0000106A                            25          DS.L    1
+0000106E= AA AA AA AA AA            26  BLOCK   DCB.B   5,$AA
+00001074= BEEF BEEF BEEF            27          DCB.W   3,$BEEF
+0000107A= 00001000 00001000         28          DCB.L   2,START
+00001082= 000E 0014 000E 0002       29  EXPR    DC.W    2+3*4,(2+3)*4,100/7,100\7,1<<4,256>>2,$FF&$0F,$F0!$0F,$FF^$0F,~0
+          0010 0040 000F 00FF   
+          00F0 FFFF             
+00001096= FFFFFFFB 00000005         32          DC.L    -COUNT,--COUNT,%1010,@17,'AB'<<16
+          0000000A 0000000F     
+          41420000              
+000010AA= 0003 00AC                 35          DC.W    VAL,*-START
+00000000                            36          SECTION 1
+00002000                            37          ORG     $2000
+00002000= 0001                      38  SEC1    DC.W    1
+000010AE                            39          SECTION 0
+000010AE= 0002                      40          DC.W    2
+00000000=                           41          OFFSET  0
+00000000=                           42  FIELD1  DS.L    1
+00000004=                           43  FIELD2  DS.W    2
+00000008=                           44  FIELD3  DS.B    1
+00003000                            45          ORG     $3000
+00003000  48E7 F086                 46          MOVEM.L SAVED,-(SP)
+00003004  4CDF 610F                 47          MOVEM.L (SP)+,SAVED
+00003008  43E8 0004                 48          LEA     FIELD2(A0),A1
+0000300C  303C 0008                 49          MOVE.W  #FIELD3,D0
+00003010= 00                        50  END_OF  DC.B    0
+00003012  FFFF FFFF                 51          SIMHALT
+00003016                            52          END     START
+
+No errors detected
+No warnings generated
+
+
+SYMBOL TABLE INFORMATION
+Symbol-name         Value
+-------------------------
+BLOCK               106E
+COUNT               5
+END_OF              3010
+EXPR                1082
+FIELD1              0
+FIELD2              4
+FIELD3              8
+MASK                F0F0
+SAVED               610F
+SEC1                2000
+START               1000
+VAL                 3

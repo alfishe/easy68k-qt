@@ -1,0 +1,56 @@
+00000000 Starting Address
+Assembler used: EASy68K Editor/Assembler v5.16.01
+Created On: 
+
+00000000                             1  * Conditional assembly: IFC/IFNC/IFEQ/IFNE/IFLT/IFLE/IFGT/IFGE, nesting
+00000000  =00000001                  2  DEBUG   EQU     1
+00000000  =00000003                  3  LEVEL   EQU     3
+00001000                             4          ORG     $1000
+Line 5 ERROR: Label is not allowed
+00001000                 FALSE       5  START   IFEQ    DEBUG
+00001000                             6          ENDC
+00001000                 TRUE        7          IFNE    DEBUG
+00001000= 02                         8          DC.B    2
+00001001                             9          ENDC
+00001001                 TRUE       10          IFLT    LEVEL-5
+00001001= 03                        11          DC.B    3
+00001002                 TRUE       12          IFGT    LEVEL-2
+00001002= 04                        13          DC.B    4
+00001003                            14          ENDC
+00001003                 FALSE      15          IFLE    LEVEL-2
+00001003                            16          ENDC
+00001003                            17          ENDC
+00001003                 TRUE       18          IFGE    LEVEL
+00001003= 06                        19          DC.B    6
+00001004                            20          ENDC
+00001004                 TRUE       21          IFC     'ABC','abc'
+00001004= 07                        22          DC.B    7
+00001005                            23          ENDC
+00001005                 TRUE       24          IFNC    'ABC','XYZ'
+00001005= 08                        25          DC.B    8
+00001006                 TRUE       26          IFEQ    0
+00001006                 FALSE      27          IFNE    0
+00001006                            28          ENDC
+00001006= 0A                        29          DC.B    10
+00001007                            30          ENDC
+00001007                            31          ENDC
+00001007                 FALSE      32          IFNC    'A','A'
+00001007                            33          ENDC
+Line 34 ERROR: Label is not allowed
+00001007                 TRUE       34  LBL     IFEQ    0
+00001007                            35          ENDC
+Line 36 ERROR: Invalid argument
+00001007                 TRUE       36          IFEQ
+00001007                            37          ENDC
+Line 38 ERROR: Undefined symbol
+00001007                            38          END     START
+
+4 errors detected
+No warnings generated
+
+
+SYMBOL TABLE INFORMATION
+Symbol-name         Value
+-------------------------
+DEBUG               1
+LEVEL               3

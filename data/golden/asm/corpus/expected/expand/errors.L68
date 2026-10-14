@@ -1,0 +1,62 @@
+00001000 Starting Address
+Assembler used: EASy68K Editor/Assembler v5.16.01
+Created On: 
+
+00000000                             1  * Error and warning paths
+00001000                             2          ORG     $1000
+00001000  4E71                       3  START   NOP
+Line 4 ERROR: Invalid opcode
+00001002                             4          BOGUS   D0
+Line 5 ERROR: Invalid size code
+00001002  3200                       5          MOVE.X  D0,D1
+Line 6 ERROR: Quick immediate data range must be 1 to 8
+00001004  5240                       6          ADDQ    #9,D0
+Line 7 ERROR: Division by zero attempted
+00001006= 0000                       7          DC.W    1/0
+Line 8 ERROR: Invalid block length
+00001008=                            8          DCB.B   -1,0
+Line 9 ERROR: Branch instruction displacement is out of range or invalid
+00001008  60DE                       9          BRA.S   START+1000
+0000100A  4E71                      10  DUP     NOP
+Line 11 ERROR: Symbol defined more than once
+0000100C  4E71                      11  DUP     NOP
+Line 12 ERROR: Label required with this directive
+0000100E                            12          EQU     5
+Line 13 ERROR: Invalid syntax
+0000100E                            13  NOLABEL EQU
+Line 14 WARNING: Forcing SHORT addressing disables range checking of extension word
+0000100E  3038 1234                 14          MOVE.W  $1234.W,D0
+00001012= 544F4F4C 4F4E4700         15          DC.L    'TOOLONG'
+Line 16 ERROR: Immediate data exceeds 16 bits
+0000101A= 6789                      16          DC.W    $123456789
+Line 17 CUSTOM FAILURE MESSAGE
+0000101C                            17          FAIL    Custom failure message
+Line 18 ERROR: Forward references not allowed with this directive
+0000101C                            18          ORG     FWD
+0000101C  4E71                      19  FWD     NOP
+Line 20 ERROR: Quick immediate data range exceeds 1 byte
+0000101E  702C                      20          MOVEQ   #300,D0
+Line 21 ERROR: Invalid vector number
+00001020  4E40                      21          TRAP    #16
+Line 22 ERROR: Immediate data exceeds 16 bits
+00001022  4E56 0000                 22          LINK    A6,#$10000
+00001026                            23          INCLUDE missing_file.x68
+Line 24 ERROR: Unable to access specified file
+00001026                            24          INCLUDE missing_file.x68
+Line 25 ERROR: Invalid opcode
+00001026                            25          ENDM
+Line 26 ERROR: Invalid syntax
+00001026                            26          MOVE.L  D0,D1,D2
+Line 27 WARNING: Address expected
+00001026                            27          END
+
+18 errors detected
+2 warnings generated
+
+
+SYMBOL TABLE INFORMATION
+Symbol-name         Value
+-------------------------
+DUP                 100A
+FWD                 101C
+START               1000

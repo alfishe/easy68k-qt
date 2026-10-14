@@ -455,11 +455,13 @@ TEST(MacroTest, ContinuationNoAmpersand) {
 // ─── Error cases ─────────────────────────────────────────────────────────────
 
 TEST(MacroTest, EndmWithoutMacro) {
-  AsmExpectError("  ORG $1000\n  ENDM\n", "ENDM");
+  AsmExpectError("  ORG $1000\n  ENDM\n",
+                 "Invalid opcode");  // ENDM outside a macro (reference oracle)
 }
 
 TEST(MacroTest, MexitWithoutMacro) {
-  AsmExpectError("  ORG $1000\n  MEXIT\n", "MEXIT");
+  AsmExpectError("  ORG $1000\n  MEXIT\n",
+                 "Invalid opcode");  // MEXIT outside a macro (reference oracle)
 }
 
 }  // namespace

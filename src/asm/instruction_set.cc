@@ -1175,6 +1175,19 @@ const Instruction* LookupInstruction(const std::string& mnemonic) {
   return nullptr;
 }
 
+bool IsBitFieldFlavor(const Flavor& flavor) {
+  return flavor.exec == bitField;
+}
+
+const std::vector<Instruction>& AllInstructions() {
+  static const std::vector<Instruction> all(std::begin(kInstructions), std::end(kInstructions));
+  return all;
+}
+
+uint16_t PickMask(int size, const Flavor& flavor, int& status) {
+  return pickMask(size, &flavor, status);
+}
+
 bool IsBitFieldInstruction(const Instruction& instruction) {
   return instruction.flavor_count > 0 && instruction.flavors[0].exec == bitField;
 }
@@ -1192,199 +1205,6 @@ int SizeCode(SizeSpec size) {
     default:
       return 0;
   }
-}
-
-OpDescriptor ToOpDescriptor(const Operand& op) {
-  OpDescriptor d;
-  d.mode = static_cast<int>(op.mode);
-  d.data = op.data;
-  d.field = op.field;
-  d.reg = op.reg < 0 ? 0 : op.reg;
-  d.index = op.index_reg < 0 ? 0 : op.index_reg;
-  if (op.mode == AddressMode::kAnIndirectIdx || op.mode == AddressMode::kPCIndex)
-    d.size = SizeCode(op.index_size);
-  else if (op.mode == AddressMode::kImmediate && op.forced_size == SizeSpec::kLong)
-    d.size = LONG_SIZE;  // #n.L prevents the MOVEQ/ADDQ/SUBQ optimizations
-  d.back_ref = op.is_back_ref;
-  return d;
-}
-
-void AssembleInstruction(const Instruction& instruction, int size,
-                         const std::vector<Operand>& operands, bool parse_failed,
-                         int operand_status, BuildContext& ctx) {
-  OpDescriptor source, dest;
-  bool sourceParsed = false;
-  bool destParsed = false;
-  const size_t parsed = operands.size();
-
-  const Flavor* flavorPtr = instruction.flavors;
-  for (size_t f = 0; f < instruction.flavor_count; ++f, ++flavorPtr) {
-    if (!sourceParsed && flavorPtr->source) {
-      // opParse(source): an operand that could not be parsed (or is
-      // missing) is a syntax error.
-      if (parsed < 1) {
-        NewError(ctx.status, status::kSyntax);
-        return;
-      }
-      source = ToOpDescriptor(operands[0]);
-      NewError(ctx.status, operand_status);
-      if (flavorPtr->exec == bitField && (parsed < 2 || operands[0].has_field)) {
-        // not Dn,addr{offset:width}: {offset:width} must follow the source
-        if (!operands[0].has_field) {
-          NewError(ctx.status, status::kBadBitfield);
-          return;
-        }
-        NewError(ctx.status, operands[0].field_status);
-        if (ctx.status > status::kSevere)
-          return;
-      }
-      sourceParsed = true;
-    }
-    if (!destParsed && flavorPtr->dest) {  // if destination needs parsing
-      if (parsed < 2 && !(parsed == 1 && parse_failed)) {
-        NewError(ctx.status, status::kCommaExpected);
-        return;
-      }
-      if (parsed < 2) {  // the destination could not be parsed
-        NewError(ctx.status, status::kSyntax);
-        return;
-      }
-      dest = ToOpDescriptor(operands[1]);
-      if (flavorPtr->exec == bitField && flavorPtr->source == DnDirect) {
-        if (!operands[1].has_field) {
-          NewError(ctx.status, status::kBadBitfield);
-          return;
-        }
-        NewError(ctx.status, operands[1].field_status);
-        if (ctx.status > status::kSevere)
-          return;
-      }
-      if (parsed > 2 || parse_failed) {  // text after the destination
-        NewError(ctx.status, status::kSyntax);
-        return;
-      }
-      destParsed = true;
-    }
-    if (!flavorPtr->source) {
-      uint16_t mask = pickMask(size, flavorPtr, ctx.status);
-      flavorPtr->exec(mask, size, &source, &dest, ctx);
-      return;
-    } else if ((source.mode & flavorPtr->source) && !flavorPtr->dest) {
-      if (parsed > 1 || parse_failed) {  // more text after the source
-        NewError(ctx.status, status::kSyntax);
-        return;
-      }
-      uint16_t mask = pickMask(size, flavorPtr, ctx.status);
-      flavorPtr->exec(mask, size, &source, &dest, ctx);
-      return;
-    } else if ((source.mode & flavorPtr->source) && (dest.mode & flavorPtr->dest)) {
-      uint16_t mask = pickMask(size, flavorPtr, ctx.status);
-      flavorPtr->exec(mask, size, &source, &dest, ctx);
-      return;
-    }
-  }
-  NewError(ctx.status, status::kInvAddrMode);
-}
-
-void AssembleMovem(int size, const std::vector<Operand>& operands, bool parse_failed,
-                   int error_status, int operand_status, BuildContext& ctx) {
-  constexpr int kControlAlt = AnInd | AnIndDisp | AnIndIndex | AbsShort | AbsLong;
-  constexpr int kDestModes = kControlAlt | AnIndPre;
-  constexpr int kSourceModes = kControlAlt | AnIndPost | PCDisp | PCIndex;
-  const size_t parsed = operands.size();
-  const int fail_status = error_status ? error_status : status::kSyntax;
-
-  // Pick mask according to size code (only .W and .L are valid)
-  uint16_t instMask;
-  if (size == WORD_SIZE) {
-    instMask = 0x4880;
-  } else if (size == LONG_SIZE) {
-    instMask = 0x48C0;
-  } else {
-    if (size)
-      NewError(ctx.status, status::kInvSizeCode);
-    instMask = 0x4880;
-  }
-
-  if (parsed == 0) {
-    NewError(ctx.status, fail_status);
-    return;
-  }
-  OpDescriptor memOp;
-  uint16_t regList;
-  if (operands[0].mode == AddressMode::kRegisterList) {
-    if (parsed < 2) {  // no comma, or the <ea> could not be parsed
-      NewError(ctx.status, parse_failed ? fail_status : status::kCommaExpected);
-      return;
-    }
-    // MOVEM <reg_list>,<ea>
-    regList = static_cast<uint16_t>(operands[0].data);
-    memOp = ToOpDescriptor(operands[1]);
-    NewError(ctx.status, operand_status);
-    if (operand_status >= status::kError) {
-      // opParse() failed: the original retries the operands as
-      // <ea>,<reg_list>, where the register (list) is not a legal <ea>.
-      NewError(ctx.status, status::kInvAddrMode);
-      return;
-    }
-    if (!(memOp.mode & kDestModes)) {
-      NewError(ctx.status, status::kInvAddrMode);
-      return;
-    }
-    if (ctx.pass2) {
-      output(ctx, instMask | effAddr(&memOp), WORD_SIZE);
-      ctx.loc += 2;
-      // If the addressing mode is address register indirect with
-      // predecrement, reverse the bits in the register list mask
-      if (memOp.mode == AnIndPre) {
-        uint16_t temp = regList;
-        regList = 0;
-        for (int i = 0; i < 16; i++) {
-          regList = static_cast<uint16_t>(regList << 1);
-          regList |= (temp & 1);
-          temp >>= 1;
-        }
-      }
-      output(ctx, regList, WORD_SIZE);
-      ctx.loc += 2;
-    } else {
-      ctx.loc += 4;
-    }
-    extWords(&memOp, size, ctx);
-    return;
-  }
-  // MOVEM <ea>,<reg_list>
-  memOp = ToOpDescriptor(operands[0]);
-  NewError(ctx.status, operand_status);
-  if (operand_status >= status::kError)  // status not < ERRORN: no code
-    return;
-  if (parsed < 2 && (!parse_failed || fail_status == status::kCommaExpected)) {
-    NewError(ctx.status, status::kCommaExpected);
-    return;
-  }
-  // The addressing mode is checked before the register list is parsed.
-  if (!(memOp.mode & kSourceModes)) {
-    NewError(ctx.status, status::kInvAddrMode);
-    return;
-  }
-  if (parsed < 2) {  // the register list could not be parsed
-    NewError(ctx.status, fail_status);
-    return;
-  }
-  if (operands[1].mode != AddressMode::kRegisterList) {
-    NewError(ctx.status, status::kSyntax);
-    return;
-  }
-  regList = static_cast<uint16_t>(operands[1].data);
-  if (ctx.pass2) {
-    output(ctx, instMask | 0x0400 | effAddr(&memOp), WORD_SIZE);
-    ctx.loc += 2;
-    output(ctx, regList, WORD_SIZE);
-    ctx.loc += 2;
-  } else {
-    ctx.loc += 4;
-  }
-  extWords(&memOp, size, ctx);
 }
 
 }  // namespace easym68k::asm_

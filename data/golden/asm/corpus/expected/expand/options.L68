@@ -1,0 +1,57 @@
+00001000 Starting Address
+Assembler used: EASy68K Editor/Assembler v5.16.01
+Created On: 
+
+00000000                             1  * OPT directives and listing control
+00000000                             2          OPT     MEX,SEX,CEX
+00001000                             3          ORG     $1000
+00001000                             4  INC2    MACRO
+00001000                             5          ADDQ.W  #2,\1
+00001000                             6          ENDM
+00001000                             7m START   INC2    D0
+00001000  5440                       8m         ADDQ.W  #2,D0
+00001002                             9m         ENDM
+00001002                            10          IF D0 <EQ> #4 THEN
+00001002  B07C 0004                 11s     CMP.W   #4,D0
+00001006  6600 0004                 12s     BNE _00000000
+0000100A  4E71                      13            NOP
+0000100C                            14          ENDI
+0000100C                            15s _00000000
+0000100C= 00000001 00000002         16          DC.L    1,2,3,4,5,6,7,8
+          00000003 00000004     
+          00000005 00000006     
+          00000007 00000008     
+0000102C= 41 20 6C 6F 6E 67 20      20          DC.B    'A long constant expansion string'
+          63 6F 6E 73 74 61 6E  
+          74 20 65 78 70 61 6E  
+          73 69 6F 6E 20 73 74  
+          72 69 6E 67           
+0000104C                            25          OPT     NOMEX,NOSEX,NOCEX
+0000104C                            26m         INC2    D1
+0000104E                            27          IF D0 <EQ> #4 THEN
+00001056  4E71                      28            NOP
+00001058                            29          ENDI
+00001058= 00000001 00000002 ...     30          DC.L    1,2,3,4,5,6,7,8
+<------------------------------ PAGE ------------------------------>
+0000107C  4E71                      31          NOP
+0000107E                            32          OPT     NOWAR
+00001002                            33          ORG     $1001
+00001002                            34          OPT     WAR
+Line 35 WARNING: Origin value is odd (Location counter set to next highest address)
+00001102                            35          ORG     $1101
+00001102                            36  *[sim68k]bitfield
+00001102                            37          OPT     BIT
+00001102                            38          OPT     CRE
+00001102                            39          END     START
+
+No errors detected
+2 warnings generated
+
+
+SYMBOL TABLE INFORMATION
+Symbol-name         Value
+-------------------------
+INC2                0
+START               1000
+_00000000           100C
+_00000001           1058

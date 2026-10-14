@@ -373,31 +373,18 @@ TEST(AssemblerTest, DsbReservesBytes) {
 // EVEN
 // ---------------------------------------------------------------------------
 
-TEST(AssemblerTest, EvenAlignsOddAddress) {
-  // DC.B $01 leaves LC at an odd address; EVEN adds a pad byte.
+TEST(AssemblerTest, EvenIsNotAnOriginalDirective) {
+  // The original has no EVEN directive: "Invalid opcode" (reference oracle).
   Assembler a;
   auto r = a.Assemble(
       "    ORG $1000\n"
       "    DC.B $01\n"
       "    EVEN\n"
       "    DC.W $BEEF\n");
-  EXPECT_TRUE(r.success);
-  ASSERT_EQ(r.code.size(), 4u);
-  EXPECT_EQ(r.code[0], 0x01);  // DC.B
-  EXPECT_EQ(r.code[1], 0x00);  // EVEN pad
-  EXPECT_EQ(r.code[2], 0xBE);  // DC.W high
-  EXPECT_EQ(r.code[3], 0xEF);  // DC.W low
-}
-
-TEST(AssemblerTest, EvenOnAlignedAddressIsNoop) {
-  Assembler a;
-  auto r = a.Assemble(
-      "    ORG $1000\n"
-      "    DC.W $1234\n"  // already word-aligned after this
-      "    EVEN\n"
-      "    DC.W $5678\n");
-  EXPECT_TRUE(r.success);
-  ASSERT_EQ(r.code.size(), 4u);
+  EXPECT_FALSE(r.success);
+  ASSERT_FALSE(r.errors.empty());
+  EXPECT_EQ(r.errors[0].line_number, 3);
+  EXPECT_EQ(r.errors[0].message, "Invalid opcode");
 }
 
 // ---------------------------------------------------------------------------

@@ -67,16 +67,18 @@ TEST(ConditionalTest, IfcUnequalStringsSkips) {
   EXPECT_EQ(code[0], 0x02);
 }
 
-TEST(ConditionalTest, IfcCaseSensitive) {
-  // 'ABC' != 'abc' — case-sensitive
+TEST(ConditionalTest, IfcIgnoresCase) {
+  // ASSEMBLE.CPP compares the IFC strings with stricmp(): 'ABC' == 'abc'
+  // (reference oracle lists the IFC as TRUE).
   auto code =
       Asm("  ORG $1000\n"
           "  IFC 'ABC','abc'\n"
           "  DC.B $01\n"
           "  ENDC\n"
           "  DC.B $02\n");
-  ASSERT_EQ(code.size(), 1u);
-  EXPECT_EQ(code[0], 0x02);
+  ASSERT_EQ(code.size(), 2u);
+  EXPECT_EQ(code[0], 0x01);
+  EXPECT_EQ(code[1], 0x02);
 }
 
 // ============================================================
@@ -257,42 +259,6 @@ TEST(ConditionalTest, IfgeNegativeSkips) {
 // ELSE — toggles assembly state
 // ============================================================
 
-TEST(ConditionalTest, ElseAfterTrueCondSkipElseBranch) {
-  auto code =
-      Asm("  ORG $1000\n"
-          "  IFEQ 0\n"
-          "  DC.B $01\n"
-          "  ELSE\n"
-          "  DC.B $02\n"
-          "  ENDC\n");
-  ASSERT_EQ(code.size(), 1u);
-  EXPECT_EQ(code[0], 0x01);
-}
-
-TEST(ConditionalTest, ElseAfterFalseCondAssembleElseBranch) {
-  auto code =
-      Asm("  ORG $1000\n"
-          "  IFEQ 1\n"
-          "  DC.B $01\n"
-          "  ELSE\n"
-          "  DC.B $02\n"
-          "  ENDC\n");
-  ASSERT_EQ(code.size(), 1u);
-  EXPECT_EQ(code[0], 0x02);
-}
-
-TEST(ConditionalTest, ElseWithIfc) {
-  auto code =
-      Asm("  ORG $1000\n"
-          "  IFC 'a','b'\n"
-          "  DC.B $01\n"
-          "  ELSE\n"
-          "  DC.B $02\n"
-          "  ENDC\n");
-  ASSERT_EQ(code.size(), 1u);
-  EXPECT_EQ(code[0], 0x02);
-}
-
 // ============================================================
 // Nesting
 // ============================================================
@@ -347,21 +313,6 @@ TEST(ConditionalTest, ThreeLevelsDeep) {
           "  ENDC\n");
   ASSERT_EQ(code.size(), 1u);
   EXPECT_EQ(code[0], 0xFF);
-}
-
-TEST(ConditionalTest, NestedElse) {
-  // Outer true, inner false → inner else branch assembled
-  auto code =
-      Asm("  ORG $1000\n"
-          "  IFEQ 0\n"  // outer: true
-          "  IFEQ 1\n"  // inner: false
-          "  DC.B $01\n"
-          "  ELSE\n"
-          "  DC.B $02\n"
-          "  ENDC\n"
-          "  ENDC\n");
-  ASSERT_EQ(code.size(), 1u);
-  EXPECT_EQ(code[0], 0x02);
 }
 
 TEST(ConditionalTest, ElseInsideSkippedOuterNotToggled) {
@@ -453,22 +404,28 @@ TEST(ConditionalTest, MultipleTopLevelConditions) {
 // Error cases
 // ============================================================
 
-TEST(ConditionalTest, EndcWithoutIfIsError) {
-  AsmExpectError("  ORG $1000\n  ENDC\n", "ENDC without");
-}
-
-TEST(ConditionalTest, ElseWithoutIfIsError) {
-  AsmExpectError("  ORG $1000\n  ELSE\n  ENDC\n", "ELSE without");
-}
-
-TEST(ConditionalTest, DoubleElseIsError) {
+TEST(ConditionalTest, ElseIsStructuredElseOnly) {
+  // The original's conditional assembly has no ELSE (ASSEMBLE.CPP); ELSE is
+  // the structured IF ... ELSE ... ENDI statement, so inside IFxx/ENDC it
+  // finds no structured IF. (The original pops an empty stack here, which is
+  // undefined; the port reports "No matching IF statement was found".)
   AsmExpectError(
       "  ORG $1000\n"
       "  IFEQ 0\n"
+      "  DC.B $01\n"
       "  ELSE\n"
-      "  ELSE\n"
+      "  DC.B $02\n"
       "  ENDC\n",
-      "Multiple ELSE");
+      "No matching IF statement was found");
+}
+
+TEST(ConditionalTest, EndcWithoutIfIsIgnored) {
+  // ASSEMBLE.CPP: ENDC with no open conditional only resets the skip state
+  // (reference oracle: no error).
+  Assembler a;
+  auto r = a.Assemble("  ORG $1000\n  ENDC\n  END $1000\n");
+  EXPECT_TRUE(r.success);
+  EXPECT_TRUE(r.errors.empty());
 }
 
 TEST(ConditionalTest, LabelOnConditionalLineIsError) {
@@ -477,7 +434,7 @@ TEST(ConditionalTest, LabelOnConditionalLineIsError) {
       "MYLAB IFC 'a','a'\n"
       "  DC.B $01\n"
       "  ENDC\n",
-      "Label not permitted");
+      "Label is not allowed");
 }
 
 }  // namespace

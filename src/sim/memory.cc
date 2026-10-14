@@ -205,6 +205,13 @@ void Memory::Clear() {
   supervisor_ = false;
 }
 
+void Memory::Erase() {
+  std::memset(data_.data(), 0xFF, data_.size());
+  std::memset(flags_.data(), kMemNormal, flags_.size());
+  fault_ = MemoryFault{};
+  supervisor_ = false;
+}
+
 void Memory::LoadData(uint32_t address, const uint8_t* data, size_t size) {
   uint32_t addr = MaskAddress(address);
   size_t copy_size = std::min(size, static_cast<size_t>(kMemorySize - addr));

@@ -4,7 +4,8 @@
 # Compare the EASy68K-Qt assembler against the original EASy68K assembler
 # (reference oracle) on a set of sources.
 #
-# Usage: tools/reference/compare_asm.sh <build-dir> <source.x68>... [-- <ref flags>]
+# Usage: tools/reference/compare_asm.sh <build-dir> <source.x68>... [-- <flags>]
+#   <flags> (e.g. --mex --sex --cex) are passed to both assemblers.
 #   <build-dir> must contain tools/easy68k-asm/easy68k-asm and (configured
 #   with -DBUILD_REFERENCE_TOOLS=ON) tools/reference/edit68k/easy68k-ref-asm.
 # Prints one line per source: SAME / DIFF-S68 / DIFF-L68 / REF-ERROR /
@@ -26,11 +27,17 @@ done
 work="$(mktemp -d)"
 trap 'rm -rf "$work"' EXIT
 status=0
+port="$(cd "$(dirname "$port")" && pwd)/$(basename "$port")"
+ref="$(cd "$(dirname "$ref")" && pwd)/$(basename "$ref")"
 for src in "${sources[@]}"; do
   name="$(basename "${src%.*}")"
-  "$ref" "${ref_flags[@]}" "$src" -o "$work/$name.ref" >"$work/$name.ref.log" 2>&1
+  # Run both in the source's directory: the original opens INCLUDE/INCBIN
+  # files relative to the current directory.
+  dir="$(cd "$(dirname "$src")" && pwd)"
+  file="$(basename "$src")"
+  (cd "$dir" && "$ref" "${ref_flags[@]}" "$file" -o "$work/$name.ref") >"$work/$name.ref.log" 2>&1
   ref_rc=$?
-  "$port" "$src" -o "$work/$name.port" >"$work/$name.port.log" 2>&1
+  (cd "$dir" && "$port" "${ref_flags[@]}" "$file" -o "$work/$name.port") >"$work/$name.port.log" 2>&1
   port_rc=$?
   # Normalise line endings for comparison.
   for f in "$work/$name".{ref,port}.{S68,L68}; do [[ -f "$f" ]] && sed -i 's/\r$//' "$f"; done

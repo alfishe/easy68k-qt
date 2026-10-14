@@ -127,7 +127,7 @@ TEST(ErrorReporterTest, ErrorCodes) {
 TEST(ErrorReporterTest, OddOrgIsWarning) {
   // ORG to an odd address emits a warning; assembly succeeds.
   Assembler a;
-  auto r = a.Assemble("  ORG $1001\n  DC.W $ABCD\n");
+  auto r = a.Assemble("  ORG $1001\n  DC.W $ABCD\n  END $1002\n");
   EXPECT_TRUE(r.success) << "assembly should succeed despite odd-ORG warning";
   EXPECT_EQ(r.warning_count, 1);
   ASSERT_FALSE(r.errors.empty());
@@ -142,7 +142,8 @@ TEST(ErrorReporterTest, WarningCountIsCorrect) {
   Assembler a;
   auto r = a.Assemble("  ORG $1001\n  ORG $2001\n  NOP\n");
   EXPECT_TRUE(r.success);
-  EXPECT_EQ(r.warning_count, 2);
+  // two odd ORGs + "END directive missing" (reference oracle)
+  EXPECT_EQ(r.warning_count, 3);
 }
 
 TEST(ErrorReporterTest, ErrorCountDoesNotIncludeWarnings) {
@@ -156,29 +157,6 @@ TEST(ErrorReporterTest, ErrorCountDoesNotIncludeWarnings) {
 }
 
 // ─── Error limit ─────────────────────────────────────────────────────────────
-
-TEST(ErrorReporterTest, ErrorLimitStopsAssembly) {
-  // SetMaxErrors(3): after 3 errors a "too many errors" message is appended and
-  // assembly halts before processing further lines.
-  Assembler a;
-  a.SetMaxErrors(3);
-  // Generate more than 3 errors with unknown instructions.
-  auto r = a.Assemble(
-      "  ORG $1000\n"
-      "  BOGUS1\n"
-      "  BOGUS2\n"
-      "  BOGUS3\n"
-      "  BOGUS4\n"
-      "  BOGUS5\n");
-  EXPECT_FALSE(r.success);
-  // Should have exactly 3 real errors + 1 "too many" sentinel = 4 entries.
-  EXPECT_LE(r.errors.size(), 4u);
-  bool found_sentinel = false;
-  for (const auto& e : r.errors)
-    if (e.message.find("too many") != std::string::npos)
-      found_sentinel = true;
-  EXPECT_TRUE(found_sentinel);
-}
 
 TEST(ErrorReporterTest, ErrorLimitZeroMeansUnlimited) {
   Assembler a;
@@ -195,16 +173,32 @@ TEST(ErrorReporterTest, ErrorLimitZeroMeansUnlimited) {
   EXPECT_GE(r.errors.size(), 5u);
 }
 
-TEST(ErrorReporterTest, DefaultLimitIsTen) {
-  // Default max_errors is 10; 11 bogus instructions should stop at 10.
+TEST(ErrorReporterTest, NoErrorLimit) {
+  // The original assembler reports every error (no limit); SetMaxErrors()
+  // is kept for API compatibility only.
   Assembler a;
-  const std::string src =
+  a.SetMaxErrors(3);
+  auto r = a.Assemble(
       "  ORG $1000\n"
-      "  B1\n  B2\n  B3\n  B4\n  B5\n"
-      "  B6\n  B7\n  B8\n  B9\n  B10\n  B11\n";
-  auto r = a.Assemble(src);
+      "  BOGUS1\n"
+      "  BOGUS2\n"
+      "  BOGUS3\n"
+      "  BOGUS4\n"
+      "  BOGUS5\n"
+      "  END $1000\n");
   EXPECT_FALSE(r.success);
-  EXPECT_LE(r.errors.size(), 11u);  // 10 real + 1 sentinel
+  EXPECT_EQ(r.errors.size(), 5u);
+}
+
+TEST(ErrorReporterTest, OriginalStatusIsReported) {
+  // Each diagnostic carries the original status code (asm.h) and text.
+  Assembler a;
+  auto r = a.Assemble("  ORG $1000\n  DCB.B -1,$00\n  ENDM\n  END $1000\n");
+  ASSERT_EQ(r.errors.size(), 2u);
+  EXPECT_EQ(r.errors[0].status, 0x307);  // INV_LENGTH
+  EXPECT_EQ(r.errors[0].message, "Invalid block length");
+  EXPECT_EQ(r.errors[1].status, 0x402);  // INV_OPCODE
+  EXPECT_EQ(r.errors[1].message, "Invalid opcode");
 }
 
 // ─── Error codes in result ────────────────────────────────────────────────────
@@ -226,73 +220,6 @@ TEST(ErrorReporterTest, UnknownInstructionMessageIsOriginal) {
   auto r = a.Assemble("  ORG $1000\n  MYZAP D0\n");
   ASSERT_FALSE(r.errors.empty());
   EXPECT_EQ(r.errors[0].message, "Invalid opcode");
-}
-
-TEST(ErrorReporterTest, EndmOutsideMacroCode) {
-  Assembler a;
-  auto r = a.Assemble("  ORG $1000\n  ENDM\n");
-  ASSERT_FALSE(r.errors.empty());
-  bool found = false;
-  for (const auto& e : r.errors)
-    if (e.code == ErrorCode::kEndmOutside)
-      found = true;
-  EXPECT_TRUE(found);
-}
-
-TEST(ErrorReporterTest, MexitOutsideMacroCode) {
-  Assembler a;
-  auto r = a.Assemble("  ORG $1000\n  MEXIT\n");
-  ASSERT_FALSE(r.errors.empty());
-  bool found = false;
-  for (const auto& e : r.errors)
-    if (e.code == ErrorCode::kMexitOutside)
-      found = true;
-  EXPECT_TRUE(found);
-}
-
-TEST(ErrorReporterTest, EndcWithoutIfCode) {
-  Assembler a;
-  auto r = a.Assemble("  ORG $1000\n  ENDC\n");
-  ASSERT_FALSE(r.errors.empty());
-  bool found = false;
-  for (const auto& e : r.errors)
-    if (e.code == ErrorCode::kEndcWithoutIf)
-      found = true;
-  EXPECT_TRUE(found);
-}
-
-TEST(ErrorReporterTest, ElseWithoutIfError) {
-  // ELSE outside any conditional block produces an error mentioning "ELSE".
-  Assembler a;
-  auto r = a.Assemble("  ORG $1000\n  ELSE\n  ENDC\n");
-  ASSERT_FALSE(r.errors.empty());
-  bool found = false;
-  for (const auto& e : r.errors)
-    if (e.message.find("ELSE") != std::string::npos)
-      found = true;
-  EXPECT_TRUE(found);
-}
-
-TEST(ErrorReporterTest, DcbNegCountCode) {
-  Assembler a;
-  auto r = a.Assemble("  ORG $1000\n  DCB.B -1,$00\n");
-  ASSERT_FALSE(r.errors.empty());
-  bool found = false;
-  for (const auto& e : r.errors)
-    if (e.code == ErrorCode::kDcbNegCount)
-      found = true;
-  EXPECT_TRUE(found);
-}
-
-TEST(ErrorReporterTest, SectionOutOfRangeCode) {
-  Assembler a;
-  auto r = a.Assemble("  ORG $1000\n  SECTION 16\n");
-  ASSERT_FALSE(r.errors.empty());
-  bool found = false;
-  for (const auto& e : r.errors)
-    if (e.code == ErrorCode::kSectionOutOfRange)
-      found = true;
-  EXPECT_TRUE(found);
 }
 
 TEST(ErrorReporterTest, IncludeNotFoundCode) {

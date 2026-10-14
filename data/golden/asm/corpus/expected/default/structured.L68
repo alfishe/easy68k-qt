@@ -1,0 +1,102 @@
+00001000 Starting Address
+Assembler used: EASy68K Editor/Assembler v5.16.01
+Created On: 
+
+00000000                             1  * Structured assembly: IF/ELSE/ENDI, WHILE, REPEAT/UNTIL, FOR, DBLOOP/UNLESS
+00001000                             2          ORG     $1000
+00001000  303C 0005                  3  START   MOVE.W  #5,D0
+00001004                             4          IF.W D0 <GT> #3 THEN
+0000100C  7201                       5            MOVEQ   #1,D1
+0000100E                             6          ELSE
+00001012  7202                       7            MOVEQ   #2,D1
+00001014                             8          ENDI
+00001014                             9          IF <EQ> THEN.S
+00001016  4E71                      10            NOP
+00001018                            11          ENDI
+00001018                            12          IF.B D0 <LT> D1 OR.B D2 <GE> D3 THEN
+00001022  4E71                      13            NOP
+00001024                            14          ENDI
+00001024                            15          IF D0 <NE> #0 AND D1 <HI> D2 THEN.L
+00001032  4E71                      16            NOP
+00001034                            17          ENDI
+00001034                            18          WHILE D0 <GT> #0 DO
+0000103C  5340                      19            SUBQ.W  #1,D0
+0000103E                            20          ENDW
+00001040                            21          WHILE.L (A0)+ <NE> (A1)+ DO.S
+00001044  4E71                      22            NOP
+00001046                            23          ENDW
+00001048                            24          REPEAT
+00001048  5240                      25            ADDQ.W  #1,D0
+0000104A                            26          UNTIL D0 <EQ> #10 DO
+00001050                            27          REPEAT
+00001050  4E71                      28            NOP
+00001052                            29          UNTIL <MI>
+Line 30 WARNING: DO expected
+00001052  6AFC                      30          UNTIL <MI>
+00001054                            31          FOR D0 = #1 TO #10 DO
+0000105C  4E71                      32            NOP
+0000105E                            33          ENDF
+00001066                            34          FOR.L D1 = #100 DOWNTO #0 BY #5 DO.S
+0000106A  4E71                      35            NOP
+0000106C                            36          ENDF
+00001076                            37          FOR.B D2 = D3 TO D4 BY D5 DO
+0000107C  4E71                      38            NOP
+0000107E                            39          ENDF
+00001084                            40          DBLOOP D6 = #4
+00001088  4E71                      41            NOP
+0000108A                            42          UNLESS
+0000108E                            43          DBLOOP D7 = D6
+00001090  4E71                      44            NOP
+00001092                            45          UNLESS <F>
+00001096                            46          DBLOOP D5 = #3
+0000109A  4E71                      47            NOP
+0000109C                            48          UNLESS.W D0 <EQ> D1
+000010A2                            49          IF D0 <EQ> D1 THEN
+000010A8                            50            IF D2 <EQ> D3 THEN
+000010AE                            51              WHILE <CS> DO
+000010B2  4E71                      52                NOP
+000010B4                            53              ENDW
+000010B6                            54            ENDI
+000010B6                            55          ENDI
+000010B6                            56          IF D0 <GT> D1
+Line 57 WARNING: THEN expected
+000010B8  6F00 0004                 57          IF D0 <GT> D1
+000010BC  4E71                      58            NOP
+000010BE                            59          ENDI
+000010BE  FFFF FFFF                 60          SIMHALT
+000010C2                            61          END     START
+
+No errors detected
+2 warnings generated
+
+
+SYMBOL TABLE INFORMATION
+Symbol-name         Value
+-------------------------
+START               1000
+_00000000           1012
+_00000001           1014
+_00000002           1018
+_00000003           1022
+_00000004           1024
+_00000005           1034
+_00000006           10B6
+_00000007           10B6
+_00000008           10BE
+_10000000           1034
+_10000001           1040
+_10000002           1040
+_10000003           1048
+_10000004           10AE
+_10000005           10B6
+_20000000           105C
+_20000001           1060
+_20000002           106A
+_20000003           106E
+_20000004           107C
+_20000005           1080
+_30000000           1048
+_30000001           1050
+_40000000           1088
+_40000001           1090
+_40000002           109A

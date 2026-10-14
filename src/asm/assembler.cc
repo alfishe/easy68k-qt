@@ -1,1131 +1,237 @@
 // Copyright 2024 EASy68K Contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
+//
+// Assembler API around the port of the original Edit68K assembler.
 
 #include "easym68k/asm/assembler.h"
 
+#include <algorithm>
+#include <cctype>
+#include <cstdlib>
+#include <filesystem>
 #include <fstream>
 #include <sstream>
-#include <unordered_set>
 
+#include "core/asm_core.h"
 #include "easym68k/asm/original_status.h"
 
 namespace easym68k::asm_ {
 
-Assembler::Assembler()
-    : pass_(1),
-      location_counter_(0),
-      org_(0),
-      org_set_(false),
-      end_seen_(false),
-      listing_enabled_(true),
-      offset_mode_(false),
-      offset_save_loc_(0),
-      section_locs_{},
-      current_section_(0),
-      stc_label_i_(0x00000000u),
-      stc_label_w_(0x10000000u),
-      stc_label_f_(0x20000000u),
-      stc_label_r_(0x30000000u),
-      stc_label_d_(0x40000000u),
-      macro_label_num_(0),
-      macro_nest_depth_(0),
-      max_errors_(10),
-      current_line_has_equ_(false),
-      current_line_equ_value_(0),
-      page_length_(60),
-      cex_flag_(true),
-      in_emit_word_or_long_(false),
-      in_structured_expansion_(0),
-      listing_macro_nest_depth_(0) {
-  // Default file reader: read from the real filesystem
-  file_reader_ = [this](const std::string& filename) -> std::string {
-    return ReadIncludeFile(filename);
-  };
-  parser_.SetLabelHook([this](const ParsedLine& line) { OnLineParsed(line); });
-}
+namespace {
 
-Assembler::~Assembler() = default;
-
-// Defines a label in pass 1, or marks it as reached (BACKREF) in pass 2, and
-// tracks the current global label for local (".name") label scoping. In the
-// original, define() looks the symbol up with the previous global label and
-// only then makes a global label current (SYMBOL.CPP define()).
-void Assembler::DefineOrMarkLabel(const std::string& label, uint32_t value, int line_number) {
-  if (pass_ == 1)
-    symbols_.DefineLabel(label, value, line_number);
-  else
-    symbols_.MarkAsBackRef(label);
-  if (!label.empty() && label[0] != '.')
-    symbols_.SetCurrentParentLabel(label);
-}
-
-// Parser hook: runs after label/opcode parsing and before operand evaluation.
-// Word-aligns the location counter where the original does (instructions,
-// DC/DS/DCB .W/.L, SIMHALT) and defines the label at the aligned address, so
-// operands of the same line see it (ASSEMBLE.CPP assemble(), DIRECTIV.CPP).
-void Assembler::OnLineParsed(const ParsedLine& line) {
-  const std::string& op = line.opcode;
-  // Labels with their own value or handling: EQU/SET/REG (operand value),
-  // ORG (new location), SECTION (section number), MACRO (definition name),
-  // macro calls (MacroProcessor), structured statements (re-injected as a
-  // label line), conditional directives (labels are an error there).
-  if (op == "EQU" || op == "SET" || op == "REG" || op == "ORG" || op == "SECTION" ||
-      op == "MACRO" || op == "ENDM" || IsStructured(op) || IsConditional(op) ||
-      (!op.empty() && IsMacro(op)))
-    return;
-  if (!IsAssembling())
-    return;
-
-  bool align = false;
-  if (op == "DC" || op == "DS" || op == "DCB")
-    align = line.size != SizeSpec::kByte;
-  else if (op == "SIMHALT")
-    align = true;
-  else if (!op.empty() && IsInstruction(op))
-    align = true;
-  if (align && (location_counter_ & 1)) {
-    // The original only increments loc (no pad byte; the S-records simply
-    // skip the address). Keep `code_` a gap-filled image of the program.
-    if (pass_ == 2 && !offset_mode_ && org_set_)
-      code_.push_back(0);
-    ++location_counter_;
-    parser_.SetLocationCounter(location_counter_);
+// Port error code for an original status (for callers that classify
+// diagnostics); the message text is always the original's.
+ErrorCode CodeForStatus(int st) {
+  switch (st) {
+    case status::kInvAddrMode:
+      return ErrorCode::kInvEa;
+    case status::kInvSizeCode:
+      return ErrorCode::kInvSizeCode;
+    case status::kInvQuickConst:
+      return ErrorCode::kInvQuickConst;
+    case status::kInvMoveQuickConst:
+      return ErrorCode::kInvMoveQuickConst;
+    case status::kInvVectorNum:
+      return ErrorCode::kInvVectorNum;
+    case status::kInvBranchDisp:
+      return ErrorCode::kInvBranchDisp;
+    case status::kInvDisp:
+      return ErrorCode::kInvDisp;
+    case status::kInvAbsAddress:
+      return ErrorCode::kInvAbsAddress;
+    case status::kInv8BitData:
+      return ErrorCode::kInv8BitData;
+    case status::kInv16BitData:
+      return ErrorCode::kInv16BitData;
+    case status::kInvShiftCount:
+      return ErrorCode::kInvShiftCount;
+    case status::kInvOpcode:
+      return ErrorCode::kUnknownInstruction;
+    case status::kUndefined:
+      return ErrorCode::kUndefSymbol;
+    case status::kInvForwardRef:
+      return ErrorCode::kInvForwardRef;
+    case status::kMultipleDefs:
+      return ErrorCode::kMultDefd;
+    case status::kDivByZero:
+      return ErrorCode::kDivByZero;
+    case status::kOddAddress:
+      return ErrorCode::kOddAddress;
+    case status::kPhaseError:
+      return ErrorCode::kPhaseError;
+    case status::kAddressMissing:
+      return ErrorCode::kAddressMissing;
+    case status::kLabelError:
+      return ErrorCode::kLabelError;
+    case status::kFailError:
+      return ErrorCode::kFailDirective;
+    case status::kFileError:
+      return ErrorCode::kIncludeNotFound;
+    default:
+      return ErrorCode::kGeneric;
   }
-
-  if (!line.label.empty())
-    DefineOrMarkLabel(line.label, location_counter_, line.line_number);
 }
+
+bool ReadFile(const std::filesystem::path& path, std::string* contents) {
+  std::ifstream in(path, std::ios::binary);
+  if (!in)
+    return false;
+  std::ostringstream ss;
+  ss << in.rdbuf();
+  *contents = ss.str();
+  return true;
+}
+
+// Finds `name` in `dir`, also matching file names case-insensitively (the
+// original ran on Windows, where file names are not case-sensitive).
+bool ReadFromDir(const std::filesystem::path& dir, const std::string& name, std::string* contents) {
+  std::filesystem::path p = dir / name;
+  if (ReadFile(p, contents))
+    return true;
+  std::error_code ec;
+  std::filesystem::path parent = p.parent_path().empty() ? "." : p.parent_path();
+  std::string leaf = p.filename().string();
+  auto lower = [](std::string s) {
+    std::transform(s.begin(), s.end(), s.begin(),
+                   [](unsigned char c) { return static_cast<char>(std::tolower(c)); });
+    return s;
+  };
+  for (const auto& e : std::filesystem::directory_iterator(parent, ec))
+    if (lower(e.path().filename().string()) == lower(leaf))
+      return ReadFile(e.path(), contents);
+  return false;
+}
+
+}  // namespace
+
+Assembler::Assembler() = default;
+Assembler::~Assembler() = default;
 
 void Assembler::AddIncludePath(const std::string& path) {
   include_paths_.push_back(path);
 }
 
-// static
-std::vector<std::string> Assembler::SplitLines(const std::string& source) {
-  std::vector<std::string> lines;
-  std::istringstream ss(source);
-  std::string line;
-  while (std::getline(ss, line))
-    lines.push_back(line);
-  if (lines.empty())
-    lines.push_back("");
-  return lines;
-}
-
-std::string Assembler::ReadIncludeFile(const std::string& filename) {
-  // Search include paths first
-  for (const auto& dir : include_paths_) {
-    std::string path = dir + "/" + filename;
-    std::ifstream f(path);
-    if (f.is_open()) {
-      std::ostringstream buf;
-      buf << f.rdbuf();
-      return buf.str();
-    }
-  }
-  // Fallback: try filename as-is
-  std::ifstream f(filename);
-  if (!f.is_open())
-    return "";
-  std::ostringstream buf;
-  buf << f.rdbuf();
-  return buf.str();
-}
-
-std::string Assembler::ReadBinaryFile(const std::string& filename) {
-  std::ifstream f(filename, std::ios::binary);
-  if (!f.is_open())
-    return "";
-  std::ostringstream buf;
-  buf << f.rdbuf();
-  return buf.str();
-}
-
 void Assembler::ConfigureListing(const std::string& filename, const std::string& date,
-                                 int page_length, bool cex_flag) {
+                                 int /*page_length*/, bool cex_flag) {
   source_filename_ = filename;
-  source_date_ = date;
-  page_length_ = page_length;
-  cex_flag_ = cex_flag;
+  created_on_ = date;
+  options_.cex = cex_flag;
 }
 
-std::string Assembler::GetListing() const {
-  int wcount = 0;
-  int ecount = 0;
-  for (const auto& e : errors_) {
-    if (e.severity == ErrorSeverity::kWarning)
-      wcount++;
-    else
-      ecount++;
+bool Assembler::ReadInclude(const std::string& name, std::string* contents) const {
+  if (file_reader_) {
+    *contents = file_reader_(name);
+    return !contents->empty();
   }
-  return listing_generator_.Generate(ecount, wcount);
+  for (const std::string& dir : include_paths_)
+    if (ReadFromDir(dir, name, contents))
+      return true;
+  if (!source_filename_.empty()) {
+    std::filesystem::path dir = std::filesystem::path(source_filename_).parent_path();
+    if (!dir.empty() && ReadFromDir(dir, name, contents))
+      return true;
+  }
+  return ReadFromDir(".", name, contents);
 }
 
 AssemblyResult Assembler::Assemble(const std::string& source) {
-  auto lines = SplitLines(source);
+  // The original read Windows text files; accept CR LF and LF.
+  std::string text;
+  text.reserve(source.size() + 1);
+  for (char c : source)
+    if (c != '\r')
+      text.push_back(c);
 
-  // Join macro continuation lines: a line ending with ',' followed by a line
-  // starting with '&' (after whitespace) merges into one argument list.
-  for (int i = static_cast<int>(lines.size()) - 1; i > 0; --i) {
-    std::string& prev = lines[i - 1];
-    std::string& curr = lines[i];
-    size_t last = prev.find_last_not_of(" \t\r");
-    if (last == std::string::npos || prev[last] != ',')
-      continue;
-    size_t first = curr.find_first_not_of(" \t");
-    if (first == std::string::npos || curr[first] != '&')
-      continue;
-    prev += " " + curr.substr(first + 1);
-    curr.clear();
+  core::CoreOptions co;
+  co.generate_list = options_.generate_listing;
+  co.generate_srec = options_.generate_srecord;
+  co.bitfield = options_.bitfield;
+  co.cre = options_.cre;
+  co.cex = options_.cex;
+  co.mex = options_.mex;
+  co.sex = options_.sex;
+  co.warnings = options_.warnings;
+  co.tab_type = options_.fixed_tabs ? core::Fixed : core::Assembly;
+  co.tab_size = options_.tab_size;
+  co.created_on = created_on_;
+  co.file_name = source_filename_;
+
+  // Edit68K saves editor settings as comment lines at the end of the file
+  // ("*~Tab type~1~", "*~Tab size~4~", "*~Font name~...", "*~Font size~...")
+  // and removes them before assembling, applying the tab settings to the
+  // listing (textS.cpp).
+  {
+    std::vector<std::string> lines;
+    std::istringstream ls(text);
+    for (std::string l; std::getline(ls, l);)
+      lines.push_back(l);
+    bool changed = false;
+    int checked = 0;
+    for (int i = static_cast<int>(lines.size()) - 1; i >= 0 && checked < 5; --i, ++checked) {
+      const std::string& l = lines[i];
+      if (l.rfind("*~Tab size~", 0) == 0) {
+        co.tab_size = std::max(1, std::atoi(l.c_str() + 11));
+        lines.erase(lines.begin() + i);
+        changed = true;
+      } else if (l.rfind("*~Tab type~", 0) == 0) {
+        co.tab_type = (l.size() > 11 && l[11] == '0') ? core::Assembly : core::Fixed;
+        lines.erase(lines.begin() + i);
+        changed = true;
+      } else if (l.rfind("*~Font size~", 0) == 0 || l.rfind("*~Font name~", 0) == 0) {
+        lines.erase(lines.begin() + i);
+        changed = true;
+      }
+    }
+    if (changed) {
+      text.clear();
+      for (const std::string& l : lines)
+        text += l + "\n";
+    }
   }
 
-  errors_.clear();
-
-  auto reset_state = [this]() {
-    location_counter_ = 0;
-    org_ = 0;
-    org_set_ = false;
-    end_seen_ = false;
-    start_address_ = 0;
-    listing_enabled_ = true;
-    offset_mode_ = false;
-    offset_save_loc_ = 0;
-    current_section_ = 0;
-    for (auto& s : section_locs_)
-      s = 0;
-    cond_stack_.clear();
-    stc_label_i_ = 0x00000000u;
-    stc_label_w_ = 0x10000000u;
-    stc_label_f_ = 0x20000000u;
-    stc_label_r_ = 0x30000000u;
-    stc_label_d_ = 0x40000000u;
-    stc_stack_.clear();
-    db_stack_.clear();
-    for_stack_.clear();
-    macro_label_num_ = 0;
-    macro_nest_depth_ = 0;
-
-    map_rom_ = false;
-    map_rom_start_ = 0;
-    map_rom_end_ = 0;
-    map_read_ = false;
-    map_read_start_ = 0;
-    map_read_end_ = 0;
-    map_protected_ = false;
-    map_protected_start_ = 0;
-    map_protected_end_ = 0;
-    map_invalid_ = false;
-    map_invalid_start_ = 0;
-    map_invalid_end_ = 0;
-    srecord_generator_.Reset();
-  };
-
-  // Pre-scan: build macro table so forward-referenced macros work in both passes.
-  macros_.clear();
-  ScanMacros(lines);
-
-  // Pass 1: define all labels / EQU symbols; compute location counter.
-  pass_ = 1;
-  reset_state();
-  symbols_.Clear();
-  parser_.SetPass(1);
-  parser_.SetSymbolTable(&symbols_);
-  RunPass(lines);
-
-  // Pass 2: emit object code using the symbol table built in pass 1.
-  pass_ = 2;
-  reset_state();
-  code_.clear();
-  parser_.SetPass(2);
-  listing_generator_.Reset();
-  listing_generator_.Configure(source_filename_, source_date_, page_length_, cex_flag_);
-  RunPass(lines);
-  listing_generator_.SetStartAddress(start_address_);
-
-  srecord_generator_.SetStartAddress(start_address_);
-  srecord_generator_.SetMemoryMaps(map_rom_, map_rom_start_, map_rom_end_, map_read_,
-                                   map_read_start_, map_read_end_, map_protected_,
-                                   map_protected_start_, map_protected_end_, map_invalid_,
-                                   map_invalid_start_, map_invalid_end_);
+  core::AsmCore core(co, [this](const std::string& name, std::string* contents) {
+    return ReadInclude(name, contents);
+  });
+  core.AssembleSource(text);
 
   AssemblyResult result;
-  result.org = org_;
-  result.start_address = start_address_;
-  result.code = code_;
-  result.errors = errors_;
-  int wcount = 0;
-  bool has_error = false;
-  for (const auto& e : errors_) {
-    if (e.severity == ErrorSeverity::kWarning)
-      wcount++;
-    else
-      has_error = true;
+  listing_ = core.Listing();
+  result.srecord = core.SRecords();
+  result.start_address = core.StartAddress();
+  result.warning_count = core.WarningCount();
+  result.success = core.ErrorCount() == 0;
+
+  for (const core::CoreMessage& m : core.Messages()) {
+    AssemblyError e;
+    e.line_number = m.line;
+    e.status = m.code;
+    e.file = m.file;
+    e.severity = status::IsError(m.code) ? ErrorSeverity::kError : ErrorSeverity::kWarning;
+    e.code = CodeForStatus(m.code);
+    // "ERROR: Invalid syntax" -> "Invalid syntax"
+    std::string msg = m.text;
+    for (const char* prefix : {"ERROR: ", "WARNING: "}) {
+      if (msg.rfind(prefix, 0) == 0) {
+        msg.erase(0, std::char_traits<char>::length(prefix));
+        break;
+      }
+    }
+    e.message = msg;
+    result.errors.push_back(std::move(e));
   }
-  result.warning_count = wcount;
-  result.success = !has_error;
-  if (result.success) {
-    result.srecord = srecord_generator_.Generate();
+
+  const auto& image = core.Image();
+  if (!image.empty()) {
+    result.org = image.begin()->first;
+    uint32_t last = image.rbegin()->first;
+    result.code.assign(static_cast<size_t>(last - result.org) + 1, 0);
+    for (const auto& [addr, byte] : image)
+      result.code[addr - result.org] = byte;
   }
+
+  for (const auto& s : core.Symbols())
+    result.symbols.push_back({s.name, s.value, s.flags});
   return result;
-}
-
-bool Assembler::IsAssembling() const {
-  for (const auto& f : cond_stack_)
-    if (!f.active)
-      return false;
-  return true;
-}
-
-bool Assembler::OuterIsAssembling() const {
-  for (size_t i = 0; i + 1 < cond_stack_.size(); i++)
-    if (!cond_stack_[i].active)
-      return false;
-  return true;
-}
-
-bool Assembler::IsStructured(const std::string& opcode) const {
-  return opcode == "IF" || opcode == "ELSE" || opcode == "ENDI" || opcode == "WHILE" ||
-         opcode == "ENDW" || opcode == "REPEAT" || opcode == "UNTIL" || opcode == "FOR" ||
-         opcode == "ENDF" || opcode == "DBLOOP" || opcode == "UNLESS";
-}
-
-void Assembler::InjectLines(const std::vector<std::string>& generated) {
-  bool saved_end = end_seen_;
-  end_seen_ = false;
-  RunPass(generated);
-  end_seen_ = saved_end;
-}
-
-bool Assembler::IsConditional(const std::string& opcode) const {
-  return opcode == "IFC" || opcode == "IFNC" || opcode == "IFEQ" || opcode == "IFNE" ||
-         opcode == "IFLT" || opcode == "IFLE" || opcode == "IFGT" || opcode == "IFGE" ||
-         opcode == "ELSE" || opcode == "ENDC";
-}
-
-void Assembler::HandleConditional(const ParsedLine& line) {
-  const std::string& op = line.opcode;
-  const bool outer = OuterIsAssembling();
-
-  // The original rejects labels on conditional directive lines (ASSEMBLE.CPP: LABEL_ERROR).
-  if (!line.label.empty() && pass_ == 2)
-    AddError(line.line_number, ErrorCode::kLabelOnCond, line.label);
-
-  // Helper: extract string value from an operand for IFC/IFNC comparison.
-  // kStringLiteral → symbol_name; kImmediate → decimal; otherwise → symbol_name
-  auto operand_str = [](const Operand& o) -> std::string {
-    if (o.mode == AddressMode::kStringLiteral)
-      return o.symbol_name;
-    if (o.mode == AddressMode::kImmediate)
-      return std::to_string(o.data);
-    return o.symbol_name;
-  };
-
-  if (op == "IFC") {
-    // IFC 'str1','str2' — assemble if strings are equal (case-sensitive)
-    if (!IsAssembling()) {
-      // Nested inside an already-skipped block — track depth only
-      cond_stack_.push_back({false, false});
-      return;
-    }
-    bool cond = false;
-    if (line.operands.size() >= 2) {
-      cond = (operand_str(line.operands[0]) == operand_str(line.operands[1]));
-    } else if (pass_ == 2) {
-      AddError(line.line_number, ErrorCode::kMissingOperand, "IFC requires two string operands");
-    }
-    cond_stack_.push_back({cond, false});
-
-  } else if (op == "IFNC") {
-    // IFNC 'str1','str2' — assemble if strings are NOT equal
-    if (!IsAssembling()) {
-      cond_stack_.push_back({false, false});
-      return;
-    }
-    bool cond = true;
-    if (line.operands.size() >= 2) {
-      cond = (operand_str(line.operands[0]) != operand_str(line.operands[1]));
-    } else if (pass_ == 2) {
-      AddError(line.line_number, ErrorCode::kMissingOperand, "IFNC requires two string operands");
-    }
-    cond_stack_.push_back({cond, false});
-
-  } else if (op == "IFEQ" || op == "IFNE" || op == "IFLT" || op == "IFLE" || op == "IFGT" ||
-             op == "IFGE") {
-    // IFxx expr — assemble based on expr compared to 0
-    if (!IsAssembling()) {
-      cond_stack_.push_back({false, false});
-      return;
-    }
-    bool cond = false;
-    if (line.operands.empty()) {
-      if (pass_ == 2)
-        AddError(line.line_number, ErrorCode::kMissingOperand, op + " requires an expression");
-    } else {
-      int32_t val = line.operands[0].data;
-      if (op == "IFEQ")
-        cond = (val == 0);
-      else if (op == "IFNE")
-        cond = (val != 0);
-      else if (op == "IFLT")
-        cond = (val < 0);
-      else if (op == "IFLE")
-        cond = (val <= 0);
-      else if (op == "IFGT")
-        cond = (val > 0);
-      else if (op == "IFGE")
-        cond = (val >= 0);
-    }
-    cond_stack_.push_back({cond, false});
-
-  } else if (op == "ELSE") {
-    if (cond_stack_.empty()) {
-      if (pass_ == 2)
-        AddError(line.line_number, ErrorCode::kElseWithoutIf);
-      return;
-    }
-    CondFrame& top = cond_stack_.back();
-    if (top.seen_else) {
-      if (pass_ == 2)
-        AddError(line.line_number, ErrorCode::kMultipleElse);
-      return;
-    }
-    top.seen_else = true;
-    // Only toggle active state when the outer context is assembling.
-    // If the outer is skipped, the whole block is dead regardless.
-    if (outer)
-      top.active = !top.active;
-
-  } else if (op == "ENDC") {
-    if (cond_stack_.empty()) {
-      if (pass_ == 2)
-        AddError(line.line_number, ErrorCode::kEndcWithoutIf);
-      return;
-    }
-    cond_stack_.pop_back();
-  }
-}
-
-void Assembler::RunPass(const std::vector<std::string>& lines) {
-  auto flush_listing = [&](uint32_t start_lc, const std::string& raw_line, int line_number) {
-    if (pass_ == 2 && listing_enabled_) {
-      std::string ident = "";
-      if (listing_macro_nest_depth_ > 0) {
-        ident.append(listing_macro_nest_depth_, 'm');
-      }
-      if (in_structured_expansion_ > 0) {
-        ident.push_back('s');
-      }
-      listing_generator_.AddLine(start_lc, current_line_emitted_, raw_line, line_number, ident,
-                                 offset_mode_, false, current_line_equ_value_,
-                                 current_line_has_equ_);
-    }
-  };
-
-  for (int i = 0; i < static_cast<int>(lines.size()); i++) {
-    if (end_seen_)
-      break;
-    uint32_t start_lc = location_counter_;
-    if (pass_ == 2) {
-      current_line_emitted_.clear();
-      current_line_has_equ_ = false;
-      current_line_equ_value_ = 0;
-    }
-    parser_.SetLocationCounter(location_counter_);
-    ParsedLine line = parser_.ParseLine(lines[i], i + 1);
-    // OnLineParsed() may have word-aligned the location counter; the listing
-    // shows the aligned address, as the original's listLoc() after loc++.
-    start_lc = location_counter_;
-
-    // Structured directives are checked BEFORE error handling because the parser
-    // fails on <cc> tokens (e.g. <EQ>, <GT>) in operands.  line.opcode is still
-    // set even when has_error is true.
-    // Exception: ELSE is also a conditional-assembly keyword; when a conditional
-    // frame is active it belongs to the conditional handler, not structured.
-    if (!line.opcode.empty() && IsStructured(line.opcode) &&
-        !(line.opcode == "ELSE" && !cond_stack_.empty())) {
-      if (IsAssembling()) {
-        in_structured_expansion_++;
-        HandleStructured(lines[i], line.line_number);
-        in_structured_expansion_--;
-      }
-      flush_listing(start_lc, lines[i], i + 1);
-      continue;
-    }
-
-    // MACRO definition: scan ahead to collect body, skip to ENDM.
-    // Only when assembling; if not assembling the body lines are individually skipped.
-    if (line.opcode == "MACRO" && IsAssembling()) {
-      if (line.label.empty() && pass_ == 2)
-        AddError(line.line_number, ErrorCode::kMacroNoName);
-      else if (!line.label.empty())
-        CollectMacroBody(line.label, lines, i, line.line_number);
-      flush_listing(start_lc, lines[i], i + 1);
-      continue;
-    }
-
-    // Macro invocations are checked BEFORE the error check because the parser
-    // fails on operands that are not valid 68000 addressing modes.
-    if (IsAssembling() && !line.opcode.empty() && IsMacro(line.opcode)) {
-      InvokeMacro(line.opcode, line.label, ExtractRawOperands(lines[i], line.label, line.opcode),
-                  line.size, line.line_number);
-      flush_listing(start_lc, lines[i], i + 1);
-      continue;
-    }
-
-    // Instruction lines report operand errors in the original's order
-    // (createCode()), so they go to HandleInstruction even when an operand
-    // could not be parsed.
-    if (line.has_error && !(IsInstruction(line.opcode) && IsAssembling())) {
-      if (pass_ == 2 && IsAssembling())
-        AddError(line.line_number, line.error_message);
-      flush_listing(start_lc, lines[i], i + 1);
-      continue;
-    }
-
-    // Standalone ENDM/MEXIT outside a macro body.
-    if (line.opcode == "ENDM" || line.opcode == "MEXIT") {
-      if (IsAssembling() && pass_ == 2)
-        AddError(line.line_number,
-                 line.opcode == "ENDM" ? ErrorCode::kEndmOutside : ErrorCode::kMexitOutside);
-      flush_listing(start_lc, lines[i], i + 1);
-      continue;
-    }
-
-    // Conditional directives are always evaluated to maintain the nesting stack.
-    if (!line.opcode.empty() && IsConditional(line.opcode)) {
-      HandleConditional(line);
-      flush_listing(start_lc, lines[i], i + 1);
-      continue;
-    }
-
-    // Skip non-conditional content when inside an inactive conditional block.
-    if (!IsAssembling()) {
-      flush_listing(start_lc, lines[i], i + 1);
-      continue;
-    }
-
-    bool ok = ProcessLine(line);
-    flush_listing(start_lc, lines[i], i + 1);
-    if (!ok)
-      break;
-  }
-}
-
-bool Assembler::ProcessLine(const ParsedLine& line) {
-  // Labels are defined (pass 1) / marked (pass 2) in OnLineParsed() before
-  // operand evaluation, or by the handlers of EQU/SET/REG/ORG/SECTION.
-
-  if (line.opcode.empty())
-    return true;
-
-  static const std::unordered_set<std::string> kDirectiveOpcodes = {
-      "ORG", "EQU",  "SET",  "DC",     "DS",      "DCB",     "END",     "EVEN",
-      "ODD", "XDEF", "XREF", "REG",    "INCLUDE", "INCBIN",  "SECTION", "OFFSET",
-      "OPT", "FAIL", "LIST", "NOLIST", "PAGE",    "SIMHALT", "MEMORY",
-  };
-  if (kDirectiveOpcodes.count(line.opcode))
-    return HandleDirective(line);
-
-  return HandleInstruction(line);
-}
-
-bool Assembler::HandleDirective(const ParsedLine& line) {
-  const std::string& op = line.opcode;
-
-  if (op == "ORG") {
-    if (line.operands.empty()) {
-      AddError(line.line_number, ErrorCode::kMissingOperand, "ORG requires an address");
-      return true;
-    }
-    uint32_t new_loc = static_cast<uint32_t>(line.operands[0].data);
-    if (new_loc & 1) {
-      // Odd ORG: warn and align (DIRECTIV.CPP:112-115)
-      if (pass_ == 2)
-        AddWarning(line.line_number, ErrorCode::kOddAddress);
-      new_loc &= ~1u;
-    }
-    if (offset_mode_) {
-      // Exiting OFFSET mode via ORG
-      offset_mode_ = false;
-      location_counter_ = offset_save_loc_;
-    }
-    location_counter_ = new_loc;
-    // DIRECTIV.CPP org(): a label on ORG takes the NEW location.
-    if (!line.label.empty())
-      DefineOrMarkLabel(line.label, location_counter_, line.line_number);
-    return true;
-  }
-
-  if (op == "EQU" || op == "SET") {
-    if (pass_ == 1) {
-      if (line.label.empty()) {
-        AddError(line.line_number, ErrorCode::kMissingLabel);
-      } else if (line.operands.empty()) {
-        AddError(line.line_number, ErrorCode::kMissingOperand, "EQU/SET requires a value");
-      } else {
-        int32_t val = line.operands[0].data;
-        if (op == "SET") {
-          symbols_.DefineSet(line.label, val, line.line_number);
-        } else {
-          symbols_.DefineEqu(line.label, val, line.line_number);
-        }
-      }
-    } else {
-      if (!line.label.empty()) {
-        symbols_.MarkAsBackRef(line.label);  // define() in pass 2 sets BACKREF
-        SymbolInfo info;
-        if (symbols_.Lookup(line.label, info)) {
-          current_line_has_equ_ = true;
-          current_line_equ_value_ = info.value;
-        }
-      }
-    }
-    return true;
-  }
-
-  if (op == "DC") {
-    SizeSpec sz = line.size;
-    if (sz == SizeSpec::kNone)
-      sz = SizeSpec::kWord;
-
-    int bytes_per = (sz == SizeSpec::kByte) ? 1 : (sz == SizeSpec::kLong) ? 4 : 2;
-
-    // Word-align before DC.W or DC.L (DIRECTIV.CPP:351-355)
-    if (bytes_per > 1 && (location_counter_ & 1))
-      EmitByte(0);
-
-    if (pass_ == 1) {
-      for (const auto& operand : line.operands) {
-        if (operand.mode == AddressMode::kStringLiteral) {
-          location_counter_ += static_cast<uint32_t>(operand.symbol_name.size());
-        } else {
-          location_counter_ += static_cast<uint32_t>(bytes_per);
-        }
-      }
-    } else {
-      for (const auto& op_val : line.operands) {
-        if (op_val.mode == AddressMode::kStringLiteral) {
-          for (unsigned char ch : op_val.symbol_name)
-            EmitByte(ch);
-        } else {
-          uint32_t val = static_cast<uint32_t>(op_val.data);
-          if (bytes_per == 1) {
-            EmitByte(static_cast<uint8_t>(val & 0xFF));
-          } else if (bytes_per == 2) {
-            EmitWord(static_cast<uint16_t>(val & 0xFFFF));
-          } else {
-            EmitLong(val);
-          }
-        }
-      }
-    }
-    return true;
-  }
-
-  if (op == "DCB") {
-    SizeSpec sz = line.size;
-    if (sz == SizeSpec::kNone)
-      sz = SizeSpec::kWord;
-
-    int bytes_per = (sz == SizeSpec::kByte) ? 1 : (sz == SizeSpec::kLong) ? 4 : 2;
-
-    // Word-align before DCB.W or DCB.L
-    if (bytes_per > 1 && (location_counter_ & 1))
-      EmitByte(0);
-
-    int32_t count = 0;
-    uint32_t fill_val = 0;
-    if (line.operands.size() >= 1)
-      count = line.operands[0].data;
-    if (line.operands.size() >= 2)
-      fill_val = static_cast<uint32_t>(line.operands[1].data);
-
-    if (count < 0) {
-      AddError(line.line_number, ErrorCode::kDcbNegCount);
-      return true;
-    }
-
-    uint32_t total = static_cast<uint32_t>(bytes_per * count);
-    if (pass_ == 2) {
-      for (int32_t j = 0; j < count; j++) {
-        if (bytes_per == 1) {
-          EmitByte(static_cast<uint8_t>(fill_val & 0xFF));
-        } else if (bytes_per == 2) {
-          EmitWord(static_cast<uint16_t>(fill_val & 0xFFFF));
-        } else {
-          EmitLong(fill_val);
-        }
-      }
-    } else {
-      location_counter_ += total;
-    }
-    return true;
-  }
-
-  if (op == "DS") {
-    SizeSpec sz = line.size;
-    if (sz == SizeSpec::kNone)
-      sz = SizeSpec::kWord;
-
-    int bytes_per = (sz == SizeSpec::kByte) ? 1 : (sz == SizeSpec::kLong) ? 4 : 2;
-
-    if (bytes_per > 1 && (location_counter_ & 1))
-      SkipBytes(1);
-
-    int32_t count = line.operands.empty() ? 1 : line.operands[0].data;
-    uint32_t total = static_cast<uint32_t>(bytes_per * count);
-
-    // DIRECTIV.CPP ds(): only advances loc; no object data is written (the
-    // S-records skip the reserved space).
-    SkipBytes(total);
-    return true;
-  }
-
-  if (op == "EVEN") {
-    if (location_counter_ & 1)
-      SkipBytes(1);
-    return true;
-  }
-
-  if (op == "ODD") {
-    if (!(location_counter_ & 1)) {
-      if (pass_ == 2) {
-        EmitByte(0);
-      } else {
-        location_counter_++;
-      }
-    }
-    return true;
-  }
-
-  if (op == "END") {
-    end_seen_ = true;
-    // DIRECTIV.CPP funct_end(): the operand is the starting address
-    // (defaults to $1000 with a warning); it must be a backward reference
-    // and is rounded up to even.
-    if (pass_ == 2) {
-      if (line.operands.empty()) {
-        start_address_ = 0x1000;
-        AddWarning(line.line_number, ErrorCode::kAddressMissing);
-      } else {
-        if (!line.label.empty())
-          AddError(line.line_number, ErrorCode::kLabelError);
-        const Operand& o = line.operands[0];
-        if (!o.is_back_ref) {
-          AddError(line.line_number, ErrorCode::kInvForwardRef);
-        } else {
-          uint32_t addr = static_cast<uint32_t>(o.data);
-          if (addr & 1) {
-            AddWarning(line.line_number, ErrorCode::kOddAddress);
-            ++addr;
-          }
-          start_address_ = addr;
-        }
-      }
-    }
-    return false;
-  }
-
-  if (op == "REG") {
-    if (pass_ == 1) {
-      if (line.label.empty()) {
-        AddError(line.line_number, ErrorCode::kMissingLabel);
-      } else if (line.operands.empty()) {
-        AddError(line.line_number, ErrorCode::kMissingOperand,
-                 "REG requires a register list operand");
-      } else {
-        uint16_t mask = static_cast<uint16_t>(line.operands[0].data & 0xFFFF);
-        symbols_.DefineRegisterList(line.label, mask, line.line_number);
-      }
-    } else if (!line.label.empty()) {
-      symbols_.MarkAsBackRef(line.label);
-    }
-    return true;
-  }
-
-  if (op == "INCLUDE") {
-    if (line.operands.empty() || line.operands[0].mode != AddressMode::kStringLiteral) {
-      AddError(line.line_number, ErrorCode::kMissingOperand, "INCLUDE requires a filename string");
-      return true;
-    }
-    const std::string& filename = line.operands[0].symbol_name;
-
-    // Cycle detection
-    if (active_includes_.count(filename)) {
-      AddError(line.line_number, ErrorCode::kIncludeCycle, filename);
-      return true;
-    }
-
-    std::string content = file_reader_(filename);
-    if (content.empty()) {
-      // Only error in pass 2 so pass 1 can still build the symbol table
-      if (pass_ == 2)
-        AddError(line.line_number, ErrorCode::kIncludeNotFound, filename);
-      return true;
-    }
-
-    auto sub_lines = SplitLines(content);
-    active_includes_.insert(filename);
-    bool saved_end = end_seen_;
-    end_seen_ = false;
-    RunPass(sub_lines);
-    end_seen_ = saved_end;  // END inside INCLUDE ends only that file
-    active_includes_.erase(filename);
-    return true;
-  }
-
-  if (op == "INCBIN") {
-    if (line.operands.empty() || line.operands[0].mode != AddressMode::kStringLiteral) {
-      AddError(line.line_number, ErrorCode::kMissingOperand, "INCBIN requires a filename string");
-      return true;
-    }
-    const std::string& filename = line.operands[0].symbol_name;
-    std::string content = ReadBinaryFile(filename);
-    if (content.empty() && pass_ == 2) {
-      AddError(line.line_number, ErrorCode::kIncbinNotFound, filename);
-      return true;
-    }
-    uint32_t sz = static_cast<uint32_t>(content.size());
-    if (pass_ == 2) {
-      for (unsigned char ch : content)
-        EmitByte(ch);
-    } else {
-      location_counter_ += sz;
-    }
-    return true;
-  }
-
-  if (op == "SECTION") {
-    // SECTION n — switch to section 0-15, saving current LC
-    int32_t n = line.operands.empty() ? 0 : line.operands[0].data;
-    if (n < 0 || n >= kNumSections) {
-      AddError(line.line_number, ErrorCode::kSectionOutOfRange);
-      return true;
-    }
-    if (offset_mode_) {
-      // Exiting OFFSET mode via SECTION
-      offset_mode_ = false;
-      location_counter_ = offset_save_loc_;
-    }
-    // Save current section's LC and restore new section's LC
-    section_locs_[current_section_] = location_counter_;
-    current_section_ = static_cast<int>(n);
-    location_counter_ = section_locs_[current_section_];
-    // DIRECTIV.CPP section(): a label on SECTION is defined as the section number.
-    if (!line.label.empty())
-      DefineOrMarkLabel(line.label, static_cast<uint32_t>(n), line.line_number);
-    return true;
-  }
-
-  if (op == "OFFSET") {
-    // OFFSET expr — starts OFFSET mode: LC = expr, code not emitted
-    if (line.operands.empty()) {
-      AddError(line.line_number, ErrorCode::kMissingOperand, "OFFSET requires an expression");
-      return true;
-    }
-    if (!offset_mode_)
-      offset_save_loc_ = location_counter_;
-    offset_mode_ = true;
-    location_counter_ = static_cast<uint32_t>(line.operands[0].data);
-    return true;
-  }
-
-  if (op == "OPT") {
-    // Options control listing / assembly behavior — no-op in this implementation
-    return true;
-  }
-
-  if (op == "FAIL") {
-    // FAIL 'message' — unconditional user error
-    if (pass_ == 2) {
-      std::string extra;
-      if (!line.operands.empty() && line.operands[0].mode == AddressMode::kStringLiteral)
-        extra = line.operands[0].symbol_name;
-      AddError(line.line_number, ErrorCode::kFailDirective, extra);
-    }
-    return true;
-  }
-
-  if (op == "LIST") {
-    listing_enabled_ = true;
-    return true;
-  }
-
-  if (op == "NOLIST") {
-    listing_enabled_ = false;
-    return true;
-  }
-
-  if (op == "PAGE") {
-    if (pass_ == 2) {
-      listing_generator_.AddPageBreak();
-    }
-    return true;
-  }
-
-  if (op == "SIMHALT") {
-    // Word-align then emit two 0xFFFF words (= 4 bytes)
-    WordAlign();
-    EmitWord(0xFFFF);
-    EmitWord(0xFFFF);
-    return true;
-  }
-
-  if (op == "MEMORY") {
-    if (line.operands.size() != 3) {
-      AddError(line.line_number, ErrorCode::kInvMemory,
-               "Expected map type, start address, and end address");
-      return true;
-    }
-    std::string type = line.operands[0].symbol_name;
-    uint32_t start_addr = static_cast<uint32_t>(line.operands[1].data) & 0x00FFFFFF;
-    uint32_t end_addr = static_cast<uint32_t>(line.operands[2].data) & 0x00FFFFFF;
-
-    if (type == "ROM") {
-      map_rom_ = true;
-      map_rom_start_ = start_addr;
-      map_rom_end_ = end_addr;
-    } else if (type == "READ") {
-      map_read_ = true;
-      map_read_start_ = start_addr;
-      map_read_end_ = end_addr;
-    } else if (type == "PROTECTED") {
-      map_protected_ = true;
-      map_protected_start_ = start_addr;
-      map_protected_end_ = end_addr;
-    } else if (type == "INVALID") {
-      map_invalid_ = true;
-      map_invalid_start_ = start_addr;
-      map_invalid_end_ = end_addr;
-    } else {
-      AddError(line.line_number, ErrorCode::kInvMemory, "Invalid memory map type: " + type);
-    }
-    return true;
-  }
-
-  // XDEF/XREF are linker annotations with no code-generation effect.
-  return true;
-}
-
-bool Assembler::IsInstruction(const std::string& opcode) {
-  return opcode == "MOVEM" || LookupInstruction(opcode) != nullptr;
-}
-
-bool Assembler::HandleInstruction(const ParsedLine& line) {
-  // ASSEMBLE.CPP createCode(): the same building routines run in both
-  // passes (pass 1 only advances the location counter).
-  BuildContext ctx;
-  ctx.loc = location_counter_;
-  ctx.pass2 = pass_ == 2;
-  ctx.output = [this, &ctx](int32_t data, int size) {
-    location_counter_ = ctx.loc;
-    OutputAt(data, size);
-  };
-
-  const int size = SizeCode(line.size);
-  status::NewError(ctx.status, line.size_status);
-  if (line.opcode == "MOVEM") {
-    AssembleMovem(size, line.operands, line.has_error, line.error_status, line.status, ctx);
-  } else if (const Instruction* inst = LookupInstruction(line.opcode)) {
-    AssembleInstruction(*inst, size, line.operands, line.has_error, line.status, ctx);
-  } else {
-    status::NewError(ctx.status, status::kInvOpcode);
-  }
-  location_counter_ = ctx.loc;
-  if (pass_ == 2 && ctx.status != status::kOk)
-    ReportStatus(line.line_number, ctx.status);
-  return true;
-}
-
-void Assembler::OutputAt(int32_t data, int size) {
-  const uint32_t loc = location_counter_;
-  if (size == LONG_SIZE)
-    EmitLong(static_cast<uint32_t>(data));
-  else
-    EmitWord(static_cast<uint16_t>(data & 0xFFFF));
-  location_counter_ = loc;
-}
-
-void Assembler::ReportStatus(int line_number, int st) {
-  const char* text = status::Message(st);
-  std::string message = text ? text : "assembly error";
-  ErrorCode code = ErrorCode::kGeneric;
-  switch (st) {
-    case status::kInvAddrMode:
-      code = ErrorCode::kInvEa;
-      break;
-    case status::kInvSizeCode:
-      code = ErrorCode::kInvSizeCode;
-      break;
-    case status::kInvQuickConst:
-      code = ErrorCode::kInvQuickConst;
-      break;
-    case status::kInvMoveQuickConst:
-      code = ErrorCode::kInvMoveQuickConst;
-      break;
-    case status::kInvVectorNum:
-      code = ErrorCode::kInvVectorNum;
-      break;
-    case status::kInvBranchDisp:
-      code = ErrorCode::kInvBranchDisp;
-      break;
-    case status::kInvDisp:
-      code = ErrorCode::kInvDisp;
-      break;
-    case status::kInvAbsAddress:
-      code = ErrorCode::kInvAbsAddress;
-      break;
-    case status::kInv8BitData:
-      code = ErrorCode::kInv8BitData;
-      break;
-    case status::kInv16BitData:
-      code = ErrorCode::kInv16BitData;
-      break;
-    case status::kInvShiftCount:
-      code = ErrorCode::kInvShiftCount;
-      break;
-    case status::kInvOpcode:
-      code = ErrorCode::kUnknownInstruction;
-      break;
-    case status::kUndefined:
-      code = ErrorCode::kUndefSymbol;
-      break;
-    case status::kInvForwardRef:
-      code = ErrorCode::kInvForwardRef;
-      break;
-    default:
-      break;
-  }
-  AddError(line_number, message, code,
-           status::IsError(st) ? ErrorSeverity::kError : ErrorSeverity::kWarning);
-}
-
-void Assembler::EmitByte(uint8_t b) {
-  if (pass_ == 2 && !offset_mode_) {
-    if (!org_set_) {
-      org_ = location_counter_;
-      org_set_ = true;
-    }
-    code_.push_back(b);
-    if (!in_emit_word_or_long_) {
-      current_line_emitted_.push_back({b, 1});
-    }
-    // S-Record generation: bytes emitted on their own are items; words and
-    // longs are added as whole items by EmitWord/EmitLong.
-    if (!in_emit_word_or_long_)
-      srecord_generator_.AddByte(location_counter_, b);
-  }
-  location_counter_++;
-}
-
-void Assembler::EmitWord(uint16_t w) {
-  if (pass_ == 2 && !offset_mode_) {
-    current_line_emitted_.push_back({w, 2});
-    const uint8_t bytes[2] = {static_cast<uint8_t>(w >> 8), static_cast<uint8_t>(w)};
-    if (!org_set_) {
-      org_ = location_counter_;
-      org_set_ = true;
-    }
-    srecord_generator_.AddItem(location_counter_, bytes, 2);
-  }
-  bool saved = in_emit_word_or_long_;
-  in_emit_word_or_long_ = true;
-  EmitByte(static_cast<uint8_t>((w >> 8) & 0xFF));
-  EmitByte(static_cast<uint8_t>(w & 0xFF));
-  in_emit_word_or_long_ = saved;
-}
-
-void Assembler::EmitLong(uint32_t l) {
-  if (pass_ == 2 && !offset_mode_) {
-    current_line_emitted_.push_back({l, 4});
-    const uint8_t bytes[4] = {static_cast<uint8_t>(l >> 24), static_cast<uint8_t>(l >> 16),
-                              static_cast<uint8_t>(l >> 8), static_cast<uint8_t>(l)};
-    if (!org_set_) {
-      org_ = location_counter_;
-      org_set_ = true;
-    }
-    srecord_generator_.AddItem(location_counter_, bytes, 4);
-  }
-  bool saved = in_emit_word_or_long_;
-  in_emit_word_or_long_ = true;
-  EmitByte(static_cast<uint8_t>((l >> 24) & 0xFF));
-  EmitByte(static_cast<uint8_t>((l >> 16) & 0xFF));
-  EmitByte(static_cast<uint8_t>((l >> 8) & 0xFF));
-  EmitByte(static_cast<uint8_t>(l & 0xFF));
-  in_emit_word_or_long_ = saved;
-}
-
-void Assembler::SkipBytes(uint32_t n) {
-  // Reserve space without generating object code (original DS/EVEN only
-  // advance loc). `code_` stays a gap-filled image of the program.
-  if (pass_ == 2 && !offset_mode_ && org_set_)
-    code_.insert(code_.end(), n, 0);
-  location_counter_ += n;
-}
-
-void Assembler::WordAlign() {
-  if (location_counter_ & 1) {
-    EmitByte(0);
-  }
-}
-
-void Assembler::AddError(int line_number, const std::string& message) {
-  if (pass_ == 2) {
-    listing_generator_.AddErrorLine(message, false);
-  }
-  if (max_errors_ > 0) {
-    int err_count = 0;
-    for (const auto& e : errors_)
-      if (e.severity == ErrorSeverity::kError)
-        err_count++;
-    if (err_count >= max_errors_) {
-      if (err_count == max_errors_) {
-        errors_.push_back({line_number, "too many errors — assembly stopped", ErrorCode::kGeneric});
-        end_seen_ = true;
-      }
-      return;
-    }
-  }
-  errors_.push_back({line_number, message});
-}
-
-void Assembler::AddError(int line_number, ErrorCode code, const std::string& extra) {
-  std::string msg = ErrorCodeMessage(code);
-  if (!extra.empty())
-    msg += ": " + extra;
-  AddError(line_number, msg, code, ErrorSeverity::kError);
-}
-
-void Assembler::AddWarning(int line_number, ErrorCode code, const std::string& extra) {
-  std::string msg = ErrorCodeMessage(code);
-  if (!extra.empty())
-    msg += ": " + extra;
-  if (pass_ == 2) {
-    listing_generator_.AddErrorLine(msg, true);
-  }
-  errors_.push_back({line_number, std::move(msg), code, ErrorSeverity::kWarning});
-}
-
-// Internal: push with explicit code+severity, bypassing limit (used by code-based overloads).
-void Assembler::AddError(int line_number, const std::string& message, ErrorCode code,
-                         ErrorSeverity severity) {
-  if (pass_ == 2) {
-    listing_generator_.AddErrorLine(message, severity == ErrorSeverity::kWarning);
-  }
-  if (severity == ErrorSeverity::kError && max_errors_ > 0) {
-    int err_count = 0;
-    for (const auto& e : errors_)
-      if (e.severity == ErrorSeverity::kError)
-        err_count++;
-    if (err_count >= max_errors_) {
-      if (err_count == max_errors_) {
-        errors_.push_back({line_number, "too many errors — assembly stopped", ErrorCode::kGeneric});
-        end_seen_ = true;
-      }
-      return;
-    }
-  }
-  errors_.push_back({line_number, message, code, severity});
 }
 
 }  // namespace easym68k::asm_

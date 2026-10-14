@@ -54,7 +54,7 @@ using sim::SimResult;
     if (!line.empty())
       lines.push_back(line);
   }
-  sim.GetMemory().Clear();
+  sim.GetMemory().Erase();  // Sim68K erases memory to $FF before loading
   if (!sim.LoadSRecordLines(lines))
     return ::testing::AssertionFailure() << "S-record load failed";
   sim.InitProgram();
@@ -227,7 +227,7 @@ LINEF:  MOVE.W  #$AA,$3002
   // Enabled (default): SIMHALT halts immediately.
   ASSERT_TRUE(AssembleAndLoad(program, sim_));
   EXPECT_EQ(sim_.Run(), SimResult::kHalted);
-  EXPECT_EQ(sim_.GetMemory().ReadWord(0x3000).value, 0u);
+  EXPECT_EQ(sim_.GetMemory().ReadWord(0x3000).value, 0xFFFFu);  // untouched (erased to $FF)
 
   // Disabled: $FFFF is a Line-F exception; execution continues.
   sim_.SetSimhaltEnabled(false);
@@ -253,7 +253,8 @@ HANDLER MOVE.W  #2,$3002
   sim_.SetExceptionsEnabled(false);
   EXPECT_EQ(sim_.Run(), SimResult::kBadInstruction);
   EXPECT_TRUE(sim_.State().halted);
-  EXPECT_EQ(sim_.GetMemory().ReadWord(0x3002).value, 0u);  // handler not entered
+  EXPECT_EQ(sim_.GetMemory().ReadWord(0x3002).value,
+            0xFFFFu);  // handler not entered (erased to $FF)
   sim_.SetExceptionsEnabled(true);
 }
 

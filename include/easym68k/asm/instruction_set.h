@@ -19,7 +19,7 @@
 #include <string>
 #include <vector>
 
-#include "easym68k/asm/parser.h"
+#include "easym68k/asm/lexer.h"
 
 namespace easym68k::asm_ {
 
@@ -96,27 +96,15 @@ const Instruction* LookupInstruction(const std::string& mnemonic);
 // True if the instruction's first flavor is a bit field instruction (needs
 // OPT BITFIELD in the original).
 bool IsBitFieldInstruction(const Instruction& instruction);
+// True if `flavor` is built by the bit field routine (bitField()).
+bool IsBitFieldFlavor(const Flavor& flavor);
 
-// Converts a parsed operand to the original's operand descriptor.
-OpDescriptor ToOpDescriptor(const Operand& op);
+// All flavor-table instructions, in alphabetical order.
+const std::vector<Instruction>& AllInstructions();
 
-// Assembles one instruction line like createCode(): selects the first flavor
-// whose addressing modes match, picks the size mask and runs its building
-// routine. `operands` are the operands parsed without error; `parse_failed`
-// means the operand after them could not be parsed; `operand_status` is the
-// non-fatal status of their evaluation (e.g. UNDEFINED, FORCING_SHORT), which
-// counts only if the instruction parses operands. Reports the line's status
-// in ctx.status.
-void AssembleInstruction(const Instruction& instruction, int size,
-                         const std::vector<Operand>& operands, bool parse_failed,
-                         int operand_status, BuildContext& ctx);
-
-// Assembles MOVEM like MOVEM.CPP movem(): <reg_list>,<ea> or
-// <ea>,<reg_list>. `error_status` is the status of a parse error (0 when
-// the operands could not be parsed for another reason: syntax error);
-// `operand_status` the non-fatal status of the <ea> evaluation.
-void AssembleMovem(int size, const std::vector<Operand>& operands, bool parse_failed,
-                   int error_status, int operand_status, BuildContext& ctx);
+// ASSEMBLE.CPP pickMask(): the skeleton mask for `size` (see the original's
+// dangling else in instruction_set.cc).
+uint16_t PickMask(int size, const Flavor& flavor, int& status);
 
 // Original size code for a parsed size suffix (0 when none).
 int SizeCode(SizeSpec size);

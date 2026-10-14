@@ -1,24 +1,20 @@
 // Copyright 2024 EASy68K Contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
 //
-// Two-pass assembler for EASy68K 68000 Assembler
+// EASy68K assembler public API. The assembly itself is done by the port of
+// the original Edit68K assembler (src/asm/core); this class provides the
+// editor's surroundings: editor settings, include file access and the
+// results (object code, S-records, listing, messages).
 
 #ifndef EASYM68K_ASM_ASSEMBLER_H_
 #define EASYM68K_ASM_ASSEMBLER_H_
 
 #include <cstdint>
 #include <functional>
-#include <map>
-#include <set>
 #include <string>
 #include <vector>
 
 #include "easym68k/asm/error_codes.h"
-#include "easym68k/asm/instruction_set.h"
-#include "easym68k/asm/listing_generator.h"
-#include "easym68k/asm/parser.h"
-#include "easym68k/asm/srecord_generator.h"
-#include "easym68k/asm/symbol_table.h"
 
 namespace easym68k::asm_ {
 
@@ -28,6 +24,8 @@ struct AssemblyError {
   std::string message;
   ErrorCode code;  // kGeneric for untyped messages
   ErrorSeverity severity;
+  int status = 0;    // original status code (asm.h), 0 if none
+  std::string file;  // include file the message belongs to; empty for the source
 
   AssemblyError()
       : line_number(0), column(0), code(ErrorCode::kGeneric), severity(ErrorSeverity::kError) {}
@@ -36,14 +34,21 @@ struct AssemblyError {
       : line_number(ln), column(0), message(std::move(msg)), code(c), severity(sev) {}
 };
 
+struct AssemblySymbol {
+  std::string name;  // local labels appear as <global>:<local>
+  int32_t value;
+  int flags;  // asm.h symbol flags (BACKREF, REDEFINABLE, REG_LIST_SYM, ...)
+};
+
 struct AssemblyResult {
   bool success;
-  uint32_t org;               // Address of first emitted byte
-  std::vector<uint8_t> code;  // Contiguous bytes starting at org
+  uint32_t org;               // Address of the lowest emitted byte
+  std::vector<uint8_t> code;  // Bytes from org to the highest emitted byte (gaps 0)
   std::vector<AssemblyError> errors;
   int warning_count;
   std::string srecord;     // Generated Motorola S-Record text
   uint32_t start_address;  // END operand (S8 record / listing)
+  std::vector<AssemblySymbol> symbols;
 
   AssemblyResult() : success(false), org(0), warning_count(0), start_address(0) {}
 };
@@ -51,6 +56,20 @@ struct AssemblyResult {
 // Callback for reading included files: given a filename, returns its contents.
 // Returns empty string if the file cannot be found/read.
 using FileReader = std::function<std::string(const std::string& filename)>;
+
+// The original's Options dialog and editor settings that affect assembly.
+struct AssemblerOptions {
+  bool generate_listing = true;  // Generate listing (.L68)
+  bool generate_srecord = true;  // Generate S-record (.S68)
+  bool bitfield = true;          // Assemble bit field instructions
+  bool cre = true;               // Symbol table in listing (OPT CRE)
+  bool cex = false;              // Expand constants (OPT CEX)
+  bool mex = false;              // Expand macro calls (OPT MEX)
+  bool sex = false;              // Expand structured code (OPT SEX)
+  bool warnings = true;          // Show warnings (OPT WAR)
+  bool fixed_tabs = true;        // Editor tab type: fixed (false: assembly tabs)
+  int tab_size = 4;              // Editor fixed tab size
+};
 
 class Assembler {
  public:
@@ -63,176 +82,34 @@ class Assembler {
   // Add a directory to the include search path
   void AddIncludePath(const std::string& path);
 
-  // Stop assembly after this many errors (default: 10; 0 = unlimited)
+  // The original assembler has no error limit; kept for API compatibility.
   void SetMaxErrors(int n) { max_errors_ = n; }
 
+  void SetOptions(const AssemblerOptions& options) { options_ = options; }
+  const AssemblerOptions& options() const { return options_; }
+
+  // Assembles `source` (Windows or Unix line ends). Editor settings lines at
+  // the end of the file ("*~Tab type~", "*~Tab size~", font lines, as written
+  // by Edit68K) are removed and applied, like the original editor does.
   AssemblyResult Assemble(const std::string& source);
 
-  // Listing configuration and retrieval
+  // Listing configuration and retrieval. `date` is the "Created On:" text;
+  // `filename` and `page_length` are accepted for compatibility (the
+  // original listing has no page header).
   void ConfigureListing(const std::string& filename, const std::string& date, int page_length = 60,
-                        bool cex_flag = true);
-  std::string GetListing() const;
+                        bool cex_flag = false);
+  std::string GetListing() const { return listing_; }
 
  private:
-  int pass_;
-  uint32_t location_counter_;
-  uint32_t org_;
-  bool org_set_;
-  bool end_seen_;
-  uint32_t start_address_ = 0;
-  bool listing_enabled_;
-
-  // OFFSET mode: saves location counter; exits on ORG/SECTION
-  bool offset_mode_;
-  uint32_t offset_save_loc_;
-
-  // SECTION support: 16 sections, each with a saved location counter
-  static constexpr int kNumSections = 16;
-  uint32_t section_locs_[kNumSections];
-  int current_section_;
-
-  std::vector<uint8_t> code_;
-  std::vector<AssemblyError> errors_;
-  std::vector<std::string> include_paths_;
-
-  // Include cycle detection: set of filenames currently being assembled
-  std::set<std::string> active_includes_;
-
-  // Conditional assembly stack (IFC/IFNC/IFxx/ELSE/ENDC)
-  struct CondFrame {
-    bool active;     // true = current branch is being assembled
-    bool seen_else;  // true = ELSE already encountered for this frame
-  };
-  std::vector<CondFrame> cond_stack_;
-
-  bool IsAssembling() const;       // true when no enclosing conditional is inactive
-  bool OuterIsAssembling() const;  // true when all frames *except* the top are active
-
-  // Structured control flow state (reset each pass)
-  uint32_t stc_label_i_;                // IF label counter (starts 0x00000000)
-  uint32_t stc_label_w_;                // WHILE label counter (starts 0x10000000)
-  uint32_t stc_label_f_;                // FOR label counter (starts 0x20000000)
-  uint32_t stc_label_r_;                // REPEAT label counter (starts 0x30000000)
-  uint32_t stc_label_d_;                // DBLOOP label counter (starts 0x40000000)
-  std::vector<uint32_t> stc_stack_;     // label values tagged with type mask
-  std::vector<char> db_stack_;          // DBLOOP register-number stack
-  std::vector<std::string> for_stack_;  // FOR deferred instruction strings
-
-  static constexpr uint32_t kStcMaskI = 0x00000000u;
-  static constexpr uint32_t kStcMaskW = 0x10000000u;
-  static constexpr uint32_t kStcMaskF = 0x20000000u;
-  static constexpr uint32_t kStcMaskR = 0x30000000u;
-  static constexpr uint32_t kStcMaskD = 0x40000000u;
-  static constexpr uint32_t kStcTypeMask = 0xF0000000u;
-
-  bool IsStructured(const std::string& opcode) const;
-  void HandleStructured(const std::string& raw_line, int line_number);
-  void InjectLines(const std::vector<std::string>& generated);
-
-  // Macro processor
-  static constexpr int kMacroNestLimit = 256;
-  std::map<std::string, std::vector<std::string>> macros_;  // name → body lines
-  int macro_label_num_;   // per-invocation unique label counter for \@
-  int macro_nest_depth_;  // recursion guard
-
-  void ScanMacros(const std::vector<std::string>& lines);
-  bool IsMacro(const std::string& opcode) const;
-  // Collect body lines [i+1 .. ENDM) from lines, store under name, advance i to ENDM.
-  void CollectMacroBody(const std::string& name, const std::vector<std::string>& lines, int& i,
-                        int line_number);
-  void InvokeMacro(const std::string& name, const std::string& label,
-                   const std::string& raw_operands, SizeSpec size, int line_number);
-
-  // Helpers used by InvokeMacro (implemented in macro_processor.cc)
-  static std::string ExtractRawOperands(const std::string& raw_line, const std::string& label,
-                                        const std::string& opcode);
-  static std::vector<std::string> ParseMacroArgs(const std::string& arg_text, char size_char);
-  static std::string SubstituteMacroParams(const std::string& body_line,
-                                           const std::vector<std::string>& args, int narg,
-                                           int label_num);
-  static std::string GetLineOpcode(const std::string& raw);
-  static int ExtractIfargN(const std::string& raw);
-
   FileReader file_reader_;
-
-  Parser parser_;
-  SymbolTable symbols_;
-
-  static std::vector<std::string> SplitLines(const std::string& source);
-
-  // Reads a file via file_reader_ (with include path search for INCLUDE)
-  std::string ReadIncludeFile(const std::string& filename);
-  // Reads a binary file for INCBIN (raw bytes)
-  std::string ReadBinaryFile(const std::string& filename);
-
-  void RunPass(const std::vector<std::string>& lines);
-  bool ProcessLine(const ParsedLine& line);
-  void OnLineParsed(const ParsedLine& line);
-  void DefineOrMarkLabel(const std::string& label, uint32_t value, int line_number);
-  bool HandleDirective(const ParsedLine& line);
-  bool HandleInstruction(const ParsedLine& line);
-  // True for opcodes assembled by HandleInstruction (flavor table + MOVEM).
-  static bool IsInstruction(const std::string& opcode);
-  // Writes object code at the location counter without advancing it
-  // (CODEGEN.CPP output()).
-  void OutputAt(int32_t data, int size);
-  // Reports the original status of a line (ERROR.CPP message text).
-  void ReportStatus(int line_number, int status);
-
-  // Conditional assembly — always called regardless of IsAssembling()
-  bool IsConditional(const std::string& opcode) const;
-  void HandleConditional(const ParsedLine& line);
-
-  void EmitByte(uint8_t b);
-  void EmitWord(uint16_t w);
-  void SkipBytes(uint32_t n);
-  void EmitLong(uint32_t l);
-  void WordAlign();
-
-  // Error/warning helpers — all ultimately push to errors_.
-  // String form: code=kGeneric, severity=kError.
-  void AddError(int line_number, const std::string& message);
-  // Code form: message = ErrorCodeMessage(code) [+ ": " + extra].
-  void AddError(int line_number, ErrorCode code, const std::string& extra = "");
-  void AddWarning(int line_number, ErrorCode code, const std::string& extra = "");
-  // Internal: push with explicit code + severity (bypasses limit check for warnings).
-  void AddError(int line_number, const std::string& message, ErrorCode code,
-                ErrorSeverity severity);
-
-  int max_errors_;  // 0 = unlimited; default = 10
-
-  // Listing generator state
-  ListingGenerator listing_generator_;
-  std::vector<EmittedItem> current_line_emitted_;
-  bool current_line_has_equ_;
-  int32_t current_line_equ_value_;
+  std::vector<std::string> include_paths_;
+  AssemblerOptions options_;
   std::string source_filename_;
-  std::string source_date_;
-  int page_length_;
-  bool cex_flag_;
-  bool in_emit_word_or_long_;
-  int in_structured_expansion_;
-  int listing_macro_nest_depth_;
+  std::string created_on_;
+  std::string listing_;
+  int max_errors_ = 0;
 
-  // Memory map state fields
-  bool map_rom_ = false;
-  uint32_t map_rom_start_ = 0;
-  uint32_t map_rom_end_ = 0;
-
-  bool map_read_ = false;
-  uint32_t map_read_start_ = 0;
-  uint32_t map_read_end_ = 0;
-
-  bool map_protected_ = false;
-  uint32_t map_protected_start_ = 0;
-  uint32_t map_protected_end_ = 0;
-
-  bool map_invalid_ = false;
-  uint32_t map_invalid_start_ = 0;
-  uint32_t map_invalid_end_ = 0;
-
-  // S-Record generator state
-  SRecordGenerator srecord_generator_;
+  bool ReadInclude(const std::string& name, std::string* contents) const;
 };
 
 }  // namespace easym68k::asm_

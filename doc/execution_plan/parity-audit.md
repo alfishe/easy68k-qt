@@ -20,27 +20,28 @@ the original Edit68K assembler core built on Linux from the original sources
 
 ## Status snapshot
 
-*Updated after every committed iteration (last: 2026-10-14, commit `0998cc2`).*
+*Updated after every committed iteration (last: 2026-10-14, 8.13 assembly loop port).*
 
 | Area | Rows | Done | Partial | Gap | Notes |
 |------|------|------|---------|-----|-------|
 | 1. Simulator core | 17 | 14 | 1 | 2 | S8 (9.8), S14 (9.9) gap; S15 (9.10) partial |
-| 2. Assembler | 9 | 2 | 4 | 3 | object code matches the oracle; listing (.L68) does not yet |
+| 2. Assembler | 9 | 7 | 1 | 1 | core is a port of the original; listings and S-records match the oracle |
 | 3. Sim68K GUI | 21 | 0 | 0 | 21 | GUI sources are 1-line stubs (27 files) |
 | 4. Edit68K GUI | 14 | 0 | 0 | 14 | |
 | 5. EASyBIN | 4 | 0 | 0 | 4 | |
 | 6. Help | 1 | 0 | 0 | 1 | |
-| **Total** | **66** | **16** | **5** | **45** | |
+| **Total** | **66** | **21** | **2** | **43** | |
 
 | Measure | Value |
 |---------|-------|
-| Plan tasks (PROGRESS.md) | 57 done, 48 open (8.13 listing parity next) |
+| Plan tasks (PROGRESS.md) | 60 done, 46 open (8.14 front-end cleanup next) |
 | Simulator unit tests | 688 pass (ASan+UBSan clean) |
-| Assembler tests | 603 pass, incl. 132 instruction-matrix suites |
+| Assembler tests | 622 pass (incl. 132 instruction-matrix suites, 21 golden, 21 corpus cases); ASan+UBSan clean |
 | Integration tests (asm + sim) | 10 pass |
 | Instruction matrix vs oracle | 98,583 / 98,583 cases match (bytes + diagnostic class) |
 | Golden programs, S-records (.S68) vs oracle | 21 / 21 match |
-| Golden programs, listings (.L68) vs oracle | 0 / 21 match (8.13) |
+| Golden programs, listings (.L68) vs oracle | 21 / 21 match |
+| Corpus (directives, macros, conditional/structured, OPT, INCLUDE/INCBIN, MEMORY, errors) × 3 option variants vs oracle | 21 / 21 match (.L68 + .S68) |
 | GUI | not started (Phase 13) |
 
 ---
@@ -72,13 +73,13 @@ the original Edit68K assembler core built on Linux from the original sources
 | ID | Feature | Original | Port status | Task |
 |----|---------|----------|-------------|------|
 | A1a | Instruction set: every mnemonic, flavor, addressing mode and size, incl. error paths (INSTTABL/BUILD/CODEGEN/MOVEM ported verbatim) | INSTTABL.CPP, BUILD.CPP, CODEGEN.CPP, MOVEM.CPP, ASSEMBLE.CPP createCode() | **Done**: 98,583-case matrix matches the oracle | 8.12 |
-| A1b | Directives, macros, conditional + structured assembly | DIRECTIV.CPP, MACRO.CPP, STRUCTURED.CPP, ASSEMBLE.CPP | **Partial**: object code of the 21 golden programs matches; port's own implementation, not yet verified against a directive/macro/structured corpus | 8.13 |
-| A2 | Listing (.L68) and S-Record (.S68) output | LISTING.CPP, OBJECT.CPP | **Partial**: S-records match the oracle (21/21, incl. record splitting, S8 = END address); listing format differs (0/21) | 8.11 (S68) ✓, 8.13 (L68) |
-| A3 | Error/warning reporting (original texts, one most-severe status per line) | ERROR.CPP | **Partial**: instruction diagnostics use the original codes and texts; directive/macro/listing messages pending | 8.12 ✓, 8.13 |
+| A1b | Directives, macros, conditional + structured assembly | DIRECTIV.CPP, MACRO.CPP, STRUCTURED.CPP, ASSEMBLE.CPP | **Done**: ported function by function (src/asm/core); golden + corpus match the oracle | 8.13 ✓ |
+| A2 | Listing (.L68) and S-Record (.S68) output | LISTING.CPP, OBJECT.CPP | **Done**: byte-identical to the oracle (golden 21/21, corpus 21/21) | 8.11 ✓, 8.13 ✓ |
+| A3 | Error/warning reporting (original texts, one most-severe status per line, no error limit) | ERROR.CPP | **Done**: printError() ported; messages carry the original status | 8.12 ✓, 8.13 ✓ |
 | A4 | **Bit-field instruction encoding** (Assembler Options → Assemble Bit Field Instructions) | CODEGEN.CPP, INSTTABL.CPP | **Done** (8.7/8.12, matrix-verified); OPT BITFIELD switch with 8.9 | **NEW 8.7** ✓ |
-| A5 | OPT CRE: cross-reference / symbol table appended to listing | LISTING.CPP optCRE() | **Gap** | **NEW 8.8** (with 8.13) |
-| A6 | OPT MEX / SEX / CEX listing expansion (macros, structured, constants) | LISTING.CPP | Partial: only CEX wired (`cex_flag`) | **NEW 8.8** (with 8.13) |
-| A7 | Show-warnings option; auto-save before assemble; generate list / S-record toggles | optionsS.cpp | Gap (option plumbing) | **NEW 8.9** (AssemblerOptions struct) |
+| A5 | OPT CRE: cross-reference / symbol table appended to listing | LISTING.CPP optCRE() | **Done** | **NEW 8.8** ✓ (8.13) |
+| A6 | OPT MEX / SEX / CEX listing expansion (macros, structured, constants) | LISTING.CPP | **Done** (corpus "expand" variant) | **NEW 8.8** ✓ (8.13) |
+| A7 | Show-warnings option; auto-save before assemble; generate list / S-record toggles | optionsS.cpp | **Partial**: `AssemblerOptions` done (8.9); auto-save is GUI (13.19) | **NEW 8.9** ✓ + 13.19 |
 | A8 | Source template for new files | optionsS.cpp Template, template.NEW | Gap | 13.19 |
 
 ## 3. Sim68K GUI
@@ -202,6 +203,7 @@ Each committed iteration updates the snapshot above and adds a line here.
 | 2026-10-13 | `426acd0` | 9.6 core integration test | asm + sim end to end (10 tests) |
 | 2026-10-14 | `0c0433f` | licence: GPL-2.0-or-later | — |
 | 2026-10-14 | `e0826c2` | 8.12 + 8.7 instruction table/builders, matrix | A1a, A4 Done; matrix 98,583/98,583 |
+| 2026-10-14 | (8.13) | assembly loop ported from the original (core), corpus test, Memory::Erase | A1b, A2, A3, A5, A6 Done; A7 Partial; L68 21/21 |
 
 ## 10. Parity acceptance
 

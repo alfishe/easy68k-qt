@@ -361,16 +361,18 @@ TEST(MovemTest, RegDirectiveEaToRegs) {
 }
 
 // REG defined AFTER its use (forward reference).
-TEST(MovemTest, RegDirectiveForwardRef) {
-  auto bytes = AsmMulti(
+TEST(MovemTest, RegDirectiveForwardRefIsError) {
+  // MOVEM.CPP evalList(): a register list symbol must be defined before it
+  // is used; the original reports "Invalid syntax" (reference oracle).
+  Assembler a;
+  auto r = a.Assemble(
       "        MOVEM.W FREGS,-(SP)\n"
       "FREGS   REG D0-D3/A0-A3\n");
-  ASSERT_EQ(bytes.size(), 4u);
-  // mask 0x0F0F; reversed for -(SP): 0xF0F0
-  EXPECT_EQ(bytes[0], 0x48);
-  EXPECT_EQ(bytes[1], 0xA7);
-  EXPECT_EQ(bytes[2], 0xF0);
-  EXPECT_EQ(bytes[3], 0xF0);
+  EXPECT_FALSE(r.success);
+  ASSERT_FALSE(r.errors.empty());
+  EXPECT_EQ(r.errors[0].line_number, 1);
+  EXPECT_EQ(r.errors[0].message, "Invalid syntax");
+  EXPECT_TRUE(r.code.empty());
 }
 
 // REG with combined D and A ranges.

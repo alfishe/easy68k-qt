@@ -140,7 +140,7 @@ TEST(DirectivesTest, DcbDefaultSizeIsWord) {
 }
 
 TEST(DirectivesTest, DcbNegativeCountIsError) {
-  AsmExpectError("  ORG $1000\n  DCB.B -1,$00\n", "non-negative");
+  AsmExpectError("  ORG $1000\n  DCB.B -1,$00\n", "Invalid block length");
 }
 
 TEST(DirectivesTest, DcbLabelPlacedCorrectly) {
@@ -235,36 +235,31 @@ TEST(DirectivesTest, DcByteStringLabelPlacement) {
 // SIMHALT tests
 // ============================================================
 
-TEST(DirectivesTest, SimhaltEmitsTwoFfffWords) {
-  // SIMHALT → 0xFFFF 0xFFFF
+TEST(DirectivesTest, SimhaltObjectIsOneFfffWord) {
+  // DIRECTIV.CPP simhalt(): the listing shows FFFF FFFF but only one $FFFF
+  // word reaches the S-record (reference oracle: S1051000FFFFEC).
   auto code = Asm("  ORG $1000\n  SIMHALT\n");
-  ASSERT_EQ(code.size(), 4u);
+  ASSERT_EQ(code.size(), 2u);
   EXPECT_EQ(code[0], 0xFF);
   EXPECT_EQ(code[1], 0xFF);
-  EXPECT_EQ(code[2], 0xFF);
-  EXPECT_EQ(code[3], 0xFF);
 }
 
 TEST(DirectivesTest, SimhaltAtOddAddressAligns) {
-  // DC.B $01, SIMHALT → pad, 0xFFFF 0xFFFF
+  // DC.B $01, SIMHALT → word aligned to $1002 (no pad byte is written)
   auto code = Asm("  ORG $1000\n  DC.B $01\n  SIMHALT\n");
-  ASSERT_EQ(code.size(), 6u);
+  ASSERT_EQ(code.size(), 4u);
   EXPECT_EQ(code[0], 0x01);
-  EXPECT_EQ(code[1], 0x00);  // alignment pad
+  EXPECT_EQ(code[1], 0x00);  // gap (not in the S-records)
   EXPECT_EQ(code[2], 0xFF);
   EXPECT_EQ(code[3], 0xFF);
-  EXPECT_EQ(code[4], 0xFF);
-  EXPECT_EQ(code[5], 0xFF);
 }
 
 TEST(DirectivesTest, SimhaltAtEvenAddressNoExtraPad) {
   // DC.W $1234, SIMHALT → no extra padding
   auto code = Asm("  ORG $1000\n  DC.W $1234\n  SIMHALT\n");
-  ASSERT_EQ(code.size(), 6u);
+  ASSERT_EQ(code.size(), 4u);
   EXPECT_EQ(code[2], 0xFF);
   EXPECT_EQ(code[3], 0xFF);
-  EXPECT_EQ(code[4], 0xFF);
-  EXPECT_EQ(code[5], 0xFF);
 }
 
 TEST(DirectivesTest, SimhaltLabelFollowing) {
@@ -285,8 +280,9 @@ TEST(DirectivesTest, SimhaltLabelFollowing) {
 // ORG odd address
 // ============================================================
 
-TEST(DirectivesTest, OrgOddAddressRoundsDown) {
-  // ORG $1001 (odd) → auto-aligned to $1000, error emitted
+TEST(DirectivesTest, OrgOddAddressRoundsUp) {
+  // DIRECTIV.CPP org(): ORG $1001 → ODD_ADDRESS warning, location counter set
+  // to the next highest address ($1002)
   Assembler a;
   auto result = a.Assemble("  ORG $1001\n  DC.W $1234\n");
   // There should be an error about odd ORG
@@ -298,8 +294,7 @@ TEST(DirectivesTest, OrgOddAddressRoundsDown) {
     }
   }
   EXPECT_TRUE(found_odd_err) << "Expected odd-ORG error";
-  // Code still emitted at rounded-down address
-  EXPECT_EQ(result.org, 0x1000u);
+  EXPECT_EQ(result.org, 0x1002u);
 }
 
 // ============================================================
@@ -307,11 +302,12 @@ TEST(DirectivesTest, OrgOddAddressRoundsDown) {
 // ============================================================
 
 TEST(DirectivesTest, FailEmitsError) {
-  AsmExpectError("  ORG $1000\n  FAIL 'bad stuff'\n", "FAIL");
+  // DIRECTIV.CPP failError(): the message is the operand text.
+  AsmExpectError("  ORG $1000\n  FAIL 'bad stuff'\n", "'bad stuff'");
 }
 
 TEST(DirectivesTest, FailWithoutMessage) {
-  AsmExpectError("  ORG $1000\n  FAIL\n", "FAIL");
+  AsmExpectError("  ORG $1000\n  FAIL\n", "Unspecified user defined error.");
 }
 
 // ============================================================
@@ -403,25 +399,24 @@ TEST(DirectivesTest, IncludeForwardRef) {
 }
 
 TEST(DirectivesTest, IncludeFileNotFound) {
-  AsmExpectError("  ORG $1000\n  INCLUDE 'nosuchfile.x68'\n", "cannot open");
+  AsmExpectError("  ORG $1000\n  INCLUDE 'nosuchfile.x68'\n", "Unable to access specified file");
 }
 
 TEST(DirectivesTest, IncludeMissingFilenameIsError) {
-  AsmExpectError("  ORG $1000\n  INCLUDE\n", "filename");
+  AsmExpectError("  ORG $1000\n  INCLUDE\n", "Unable to access specified file");
 }
 
-TEST(DirectivesTest, IncludeEndInIncludedFileStopsOnlyThatFile) {
-  // END inside INCLUDE should not stop the outer assembly
+TEST(DirectivesTest, IncludeEndInIncludedFileEndsAssembly) {
+  // DIRECTIV.CPP include(): END sets endFlag, which also ends the outer
+  // file (reference oracle: only $11 is assembled, "Address expected").
   auto files = WithFiles({{"sub.x68", "  DC.B $11\n  END\n  DC.B $22\n"}});
   const char* src =
       "  ORG $1000\n"
       "  INCLUDE 'sub.x68'\n"
       "  DC.B $33\n";
   auto code = Asm(src, files);
-  // $11 from sub.x68, $33 from outer (END in sub stops sub, not outer)
-  ASSERT_EQ(code.size(), 2u);
+  ASSERT_EQ(code.size(), 1u);
   EXPECT_EQ(code[0], 0x11);
-  EXPECT_EQ(code[1], 0x33);
 }
 
 TEST(DirectivesTest, IncludeLocationCounterContinues) {
@@ -468,7 +463,7 @@ TEST(DirectivesTest, SectionSwitchesLocationCounter) {
 }
 
 TEST(DirectivesTest, SectionOutOfRange) {
-  AsmExpectError("  ORG $1000\n  SECTION 16\n", "0-15");
+  AsmExpectError("  ORG $1000\n  SECTION 16\n", "Invalid syntax");
 }
 
 TEST(DirectivesTest, SectionZeroIsDefault) {
@@ -540,10 +535,10 @@ TEST(DirectivesTest, EndStopsAssembly) {
 // EVEN / ODD in context of new directives
 // ============================================================
 
-TEST(DirectivesTest, EvenAfterDcbByte) {
-  // DCB.B odd count followed by EVEN
-  auto code = Asm("  ORG $1000\n  DCB.B 3,$00\n  EVEN\n  DC.W $ABCD\n");
-  // 3 bytes + 1 pad + 2 bytes = 6
+TEST(DirectivesTest, DcWordAfterOddDcbIsAligned) {
+  // DCB.B odd count followed by DC.W: DC.W word-aligns itself
+  auto code = Asm("  ORG $1000\n  DCB.B 3,$00\n  DC.W $ABCD\n");
+  // 3 bytes + 1 gap + 2 bytes = 6
   ASSERT_EQ(code.size(), 6u);
   EXPECT_EQ(code[4], 0xAB);
   EXPECT_EQ(code[5], 0xCD);
@@ -568,16 +563,14 @@ TEST(DirectivesTest, DcbAfterInclude) {
 TEST(DirectivesTest, SimhaltAfterString) {
   // DC.B string (odd count) then SIMHALT
   auto code = Asm("  ORG $1000\n  DC.B 'HI!'\n  SIMHALT\n");
-  // 3 bytes + 1 pad + 4 bytes = 8
-  ASSERT_EQ(code.size(), 8u);
+  // 3 bytes + 1 gap + one $FFFF word (see SimhaltObjectIsOneFfffWord)
+  ASSERT_EQ(code.size(), 6u);
   EXPECT_EQ(code[0], 'H');
   EXPECT_EQ(code[1], 'I');
   EXPECT_EQ(code[2], '!');
   EXPECT_EQ(code[3], 0x00);  // pad
   EXPECT_EQ(code[4], 0xFF);
   EXPECT_EQ(code[5], 0xFF);
-  EXPECT_EQ(code[6], 0xFF);
-  EXPECT_EQ(code[7], 0xFF);
 }
 
 TEST(DirectivesTest, OptListNolistDoNotAffectCode) {
@@ -595,15 +588,18 @@ TEST(DirectivesTest, OptListNolistDoNotAffectCode) {
   EXPECT_EQ(code[1], 0x02);
 }
 
-TEST(DirectivesTest, DcByteDoubleQuotedStringInInclude) {
-  // INCLUDE file uses double-quoted include inside
-  auto files = WithFiles({{"msg.x68", "  DC.B \"Hi\",0\n"}});
-  const char* src = "  ORG $1000\n  INCLUDE 'msg.x68'\n";
-  auto code = Asm(src, files);
-  ASSERT_EQ(code.size(), 3u);
-  EXPECT_EQ(code[0], 'H');
-  EXPECT_EQ(code[1], 'i');
-  EXPECT_EQ(code[2], 0x00);
+TEST(DirectivesTest, DcByteDoubleQuotedStringIsSyntaxError) {
+  // The original's strings are single-quoted only: DC.B "Hi" is "Invalid
+  // syntax" (reference oracle), also inside an included file.
+  Assembler a;
+  a.SetFileReader([](const std::string& name) {
+    return name == "msg.x68" ? std::string("  DC.B \"Hi\",0\n") : std::string();
+  });
+  auto r = a.Assemble("  ORG $1000\n  INCLUDE 'msg.x68'\n");
+  EXPECT_FALSE(r.success);
+  ASSERT_FALSE(r.errors.empty());
+  EXPECT_EQ(r.errors[0].message, "Invalid syntax");
+  EXPECT_EQ(r.errors[0].file, "msg.x68");
 }
 
 TEST(DirectivesTest, DcWordAfterStringPreservesAlignment) {

@@ -1,0 +1,44 @@
+00001000 Starting Address
+Assembler used: EASy68K Editor/Assembler v5.16.01
+Created On: 
+
+00000000                             1  * Directives: DC/DS/DCB, EQU/SET/REG, ORG/SECTION/OFFSET, expressions
+00000000  =00000005                  2  COUNT   EQU     5
+00000000  =0000F0F0                  3  MASK    EQU     $F0F0
+00000000  =00000001                  4  VAL     SET     1
+00000000  =00000003                  5  VAL     SET     VAL+2
+00000000                             6  SAVED   REG     D0-D3/A0/A5-A6
+00001000                             7          ORG     $1000
+00001000= 01 02 03 41 49 74 ...      8  START   DC.B    1,2,3,'A','It''s',0
+0000100A= 0005 F0F0 1000 F...        9          DC.W    COUNT,MASK,START,-1,$1234
+00001014= 00001000 00003010 ...     10          DC.L    START,END_OF,$12345678,'ABCD'
+00001024= 54 68 69 73 20 69 ...     11          DC.B    'This is a long string that will not fit in the listing columns',0
+00001063                            12          DS.B    3
+00001066                            13          DS.W    2
+0000106A                            14          DS.L    1
+0000106E= AA AA AA AA AA            15  BLOCK   DCB.B   5,$AA
+00001074= BEEF BEEF BEEF            16          DCB.W   3,$BEEF
+0000107A= 00001000 00001000         17          DCB.L   2,START
+00001082= 000E 0014 000E 0...       18  EXPR    DC.W    2+3*4,(2+3)*4,100/7,100\7,1<<4,256>>2,$FF&$0F,$F0!$0F,$FF^$0F,~0
+00001096= FFFFFFFB 00000005 ...     19          DC.L    -COUNT,--COUNT,%1010,@17,'AB'<<16
+000010AA= 0003 00AC                 20          DC.W    VAL,*-START
+00000000                            21          SECTION 1
+00002000                            22          ORG     $2000
+00002000= 0001                      23  SEC1    DC.W    1
+000010AE                            24          SECTION 0
+000010AE= 0002                      25          DC.W    2
+00000000=                           26          OFFSET  0
+00000000=                           27  FIELD1  DS.L    1
+00000004=                           28  FIELD2  DS.W    2
+00000008=                           29  FIELD3  DS.B    1
+00003000                            30          ORG     $3000
+00003000  48E7 F086                 31          MOVEM.L SAVED,-(SP)
+00003004  4CDF 610F                 32          MOVEM.L (SP)+,SAVED
+00003008  43E8 0004                 33          LEA     FIELD2(A0),A1
+0000300C  303C 0008                 34          MOVE.W  #FIELD3,D0
+00003010= 00                        35  END_OF  DC.B    0
+00003012  FFFF FFFF                 36          SIMHALT
+00003016                            37          END     START
+
+No errors detected
+No warnings generated

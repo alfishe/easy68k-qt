@@ -1,0 +1,4 @@
+# Sources ported line by line from the original EASy68K (see asm_core.h):
+# keep the original layout so they can be compared with it.
+DisableFormat: true
+SortIncludes: Never
