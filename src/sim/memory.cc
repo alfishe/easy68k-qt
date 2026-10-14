@@ -129,6 +129,8 @@ MemoryAccessResult Memory::Read(uint32_t address, DataSize size) const {
 // =============================================================================
 
 SimResult Memory::WriteByte(uint32_t address, uint8_t value) {
+  if (fault_blocks_writes_ && fault_.kind != SimResult::kOk)
+    return fault_.kind;
   uint32_t addr = MaskAddress(address);
   switch (CheckWrite(addr, 1)) {
     case MapResult::kBusError:
@@ -145,6 +147,8 @@ SimResult Memory::WriteByte(uint32_t address, uint8_t value) {
 }
 
 SimResult Memory::WriteWord(uint32_t address, uint16_t value) {
+  if (fault_blocks_writes_ && fault_.kind != SimResult::kOk)
+    return fault_.kind;
   if (!IsAligned(address)) {
     RecordFault(SimResult::kAddressError, address, false);
     return SimResult::kAddressError;
@@ -166,6 +170,8 @@ SimResult Memory::WriteWord(uint32_t address, uint16_t value) {
 }
 
 SimResult Memory::WriteLong(uint32_t address, uint32_t value) {
+  if (fault_blocks_writes_ && fault_.kind != SimResult::kOk)
+    return fault_.kind;
   if (!IsAligned(address)) {
     RecordFault(SimResult::kAddressError, address, false);
     return SimResult::kAddressError;

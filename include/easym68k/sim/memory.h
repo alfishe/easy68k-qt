@@ -110,6 +110,11 @@ class Memory {
   // The PC value recorded with a fault is read from *pc (may be null).
   void SetFaultPcSource(const uint32_t* pc) { fault_pc_source_ = pc; }
 
+  // When set, a recorded fault blocks further writes until ClearFault(): the
+  // simulator uses it so an instruction whose access faulted cannot store
+  // its result (e.g. MOVE whose source faulted).
+  void SetFaultBlocksWrites(bool enabled) { fault_blocks_writes_ = enabled; }
+
   // Access tracking for address breakpoints (UTILS.CPP mem_req()/mem_put()
   // set readEA/bpRead and writeEA/bpWrite): the address of the last
   // successful read and write since ResetAccessTracking().
@@ -140,6 +145,7 @@ class Memory {
   std::vector<std::pair<uint32_t, uint32_t>> exemptions_;
   mutable MemoryFault fault_;
   const uint32_t* fault_pc_source_ = nullptr;
+  bool fault_blocks_writes_ = false;
   mutable AccessTracking access_;
 
   void NoteRead(uint32_t addr) const {

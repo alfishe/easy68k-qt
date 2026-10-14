@@ -180,7 +180,9 @@ void UpdateFlagsNegX(CpuState& state, uint32_t dst, uint32_t result, DataSize si
   if (result != 0)
     state.SetFlag(kSrZero, false);
   state.SetFlag(kSrOverflow, dm && rm);
-  bool c = (result != 0);
+  // C = Dm | Rm (PRM). `result != 0` missed the borrow of 0 - $FF..FF - X(1),
+  // whose result is 0.
+  bool c = dm || rm;
   state.SetFlag(kSrCarry, c);
   state.SetFlag(kSrExtend, c);
 }

@@ -21,6 +21,7 @@ M68kSimulator::M68kSimulator(Config config)
       exceptions_enabled_(config.exceptions_enabled),
       bitfield_enabled_(config.bitfield_enabled) {
   memory_.SetFaultPcSource(&state_.pc);
+  memory_.SetFaultBlocksWrites(true);
 }
 
 // =============================================================================

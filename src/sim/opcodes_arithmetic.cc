@@ -562,6 +562,10 @@ SimResult M68kSimulator::OpClr(uint16_t opcode) {
 
   EffectiveAddr ea = CalcEA(mode, reg, size);
   IncrementCycles(EaCyclePenalty(ea, size) + UnaryRmwCycles(opcode, size));  // CODE4.CPP CLR
+  // The 68000 reads the destination before writing it (CLR, Scc and MOVE
+  // from SR are read-modify-write cycles), as the original does via
+  // eff_addr(): an odd address faults as a read.
+  (void)ReadEA(ea, size);
   SimResult r = WriteEA(ea, 0, size);
   if (r != SimResult::kOk)
     return r;
@@ -830,20 +834,26 @@ SimResult M68kSimulator::OpNbcd(uint16_t opcode) {
   IncrementCycles(EaCyclePenalty(ea, DataSize::kByte) + ((opcode & 0x0030) ? 8 : 6));
   uint32_t dst = ReadEA(ea, DataSize::kByte) & kByteMask;
 
-  int low = 0 - static_cast<int>(dst & 0xF) - static_cast<int>(x);
-  int borrow_low = 0;
-  if (low < 0) {
-    low += 10;
-    borrow_low = 1;
+  // 0 - dst - X digit by digit, as CODE5.CPP NBCD computes it: a digit
+  // without borrow yields 0, otherwise 10 - digit - borrow, and the low digit
+  // is added unmasked to the high digit. Identical to decimal subtraction for
+  // valid BCD; non-BCD digits (undefined in the PRM) give the original's
+  // results (e.g. $FF, X=1 -> $9A; $4A, X=1 -> $4F).
+  int low = 10 - static_cast<int>(dst & 0xF) - static_cast<int>(x);
+  int borrow = 0;
+  if (low < 10)
+    borrow = 1;
+  else
+    low = 0;
+  int high = 10 - static_cast<int>((dst >> 4) & 0xF) - borrow;
+  if (high < 10)
+    borrow = 1;
+  else {
+    borrow = 0;
+    high = 0;
   }
-  int high = 0 - static_cast<int>(dst >> 4) - borrow_low;
-  int borrow_high = 0;
-  if (high < 0) {
-    high += 10;
-    borrow_high = 1;
-  }
-  uint32_t result = (static_cast<uint32_t>(high & 0xF) << 4) | static_cast<uint32_t>(low & 0xF);
-  bool carry = (borrow_high != 0);
+  uint32_t result = (static_cast<uint32_t>(low) + (static_cast<uint32_t>(high) << 4)) & 0xFF;
+  bool carry = (borrow != 0);
 
   if (result != 0)
     state_.SetFlag(kSrZero, false);
@@ -868,6 +878,10 @@ SimResult M68kSimulator::OpChk(uint16_t opcode) {
   int16_t upper = static_cast<int16_t>(ReadEA(ea, DataSize::kWord) & kWordMask);
   int16_t val = static_cast<int16_t>(state_.d[dn] & kWordMask);
 
+  // N: set if Dn < 0, cleared if Dn > bound (PRM; undefined otherwise). The
+  // original sets it from the sign of Dn in every case (CODE9.CPP CHK), which
+  // satisfies both; Z/V/C are undefined and left unchanged.
+  state_.SetFlag(kSrNegative, val < 0);
   if (val < 0 || val > upper)
     return SimResult::kChkException;
   IncrementCycles(10);  // CODE9.CPP CHK: inc_cyc(10) only when no exception

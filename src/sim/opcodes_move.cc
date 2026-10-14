@@ -163,6 +163,10 @@ SimResult M68kSimulator::OpMoveFrSr(uint16_t opcode) {
   int reg = opcode & 0x7;
   EffectiveAddr ea = CalcEA(mode, reg, DataSize::kWord);
   IncrementCycles(EaCyclePenalty(ea, DataSize::kWord));
+  // The 68000 reads the destination before writing it (CLR, Scc and MOVE
+  // from SR are read-modify-write cycles), as the original does via
+  // eff_addr(): an odd address faults as a read.
+  (void)ReadEA(ea, DataSize::kWord);
   SimResult r = WriteEA(ea, state_.sr, DataSize::kWord);
   if (r != SimResult::kOk)
     return r;

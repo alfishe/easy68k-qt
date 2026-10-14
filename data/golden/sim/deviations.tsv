@@ -1,0 +1,12 @@
+# Accepted differences between the port and the original Sim68K core
+# (tools/reference/compare_sim_blocks.py; format in its docstring).
+# Each is an undefined result or a bug of the original that the port fixes.
+^(ABCD|SBCD|NBCD):	SR=000A	N and V are undefined (PRM); the original inverts them (cc_update UND), the port sets N from the result and leaves V
+^CHK:	SR=0007	Z, V, C are undefined (PRM); the original inverts them (cc_update UND), the port leaves them unchanged
+^DIV[SU]:	SR=000D,@V	overflow: C must be cleared (PRM), the original leaves it unchanged (bug, fixed); N and Z are undefined
+^MULS:	SR=0002	V must be cleared (PRM); the original computes it with the ASL overflow rule (cc_update CASE_9; bug, fixed)
+.	CYC,A0-A7,@fault	address/bus error: the original raises the exception inside the memory access after (An)+/-(An) updates and EA cycles; the port restores the registers and cycle count of the instruction start (the 68000 aborts the instruction)
+^(RTS|RTR|RTE):	PC	the port keeps PC within the 24-bit address space; the original keeps the upper byte popped from the stack (fetches are masked to 24 bits in both)
+HASH ^(CHK|NBCD|ABCD|SBCD)$		exception frames stack the SR, which holds the undefined flags above
+HASH ^MOVE$		the original reads the MOVE destination before writing it (eff_addr() for the destination EA; the 68000 does not), so a faulting destination stacks a read (R/W=1) frame with the read PC; the port stacks a write frame (bug, fixed)
+HASH ^(RTS|RTR|RTE)$		24-bit PC (above): the stacked PC and fault address of the resulting address error differ in the upper byte
