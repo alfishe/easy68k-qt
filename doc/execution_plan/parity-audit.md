@@ -20,7 +20,7 @@ the original Edit68K assembler core built on Linux from the original sources
 
 ## Status snapshot
 
-*Updated after every committed iteration (last: 2026-10-14, 8.13 assembly loop port).*
+*Updated after every committed iteration (last: 2026-10-14, commit `29fad1c`).*
 
 | Area | Rows | Done | Partial | Gap | Notes |
 |------|------|------|---------|-----|-------|
@@ -203,7 +203,7 @@ Each committed iteration updates the snapshot above and adds a line here.
 | 2026-10-13 | `426acd0` | 9.6 core integration test | asm + sim end to end (10 tests) |
 | 2026-10-14 | `0c0433f` | licence: GPL-2.0-or-later | — |
 | 2026-10-14 | `e0826c2` | 8.12 + 8.7 instruction table/builders, matrix | A1a, A4 Done; matrix 98,583/98,583 |
-| 2026-10-14 | (8.13) | assembly loop ported from the original (core), corpus test, Memory::Erase | A1b, A2, A3, A5, A6 Done; A7 Partial; L68 21/21 |
+| 2026-10-14 | `29fad1c` | assembly loop ported from the original (core), corpus test, Memory::Erase | A1b, A2, A3, A5, A6 Done; A7 Partial; L68 21/21 |
 
 ## 10. Parity acceptance
 
