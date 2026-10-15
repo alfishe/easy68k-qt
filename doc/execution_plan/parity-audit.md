@@ -28,7 +28,7 @@ hash and the program output.
 
 ## Status snapshot
 
-*Updated after every committed iteration (last: 2026-10-15, commit `(X)`).*
+*Updated after every committed iteration (last: 2026-10-15, commit `54361dd`).*
 
 | Area | Rows | Done | Partial | Gap | Notes |
 |------|------|------|---------|-----|-------|
@@ -268,7 +268,7 @@ Each committed iteration updates the snapshot above and adds a line here.
 | 2026-10-15 | `1c0799f` | 13.3 register panel: editing, A7/US/SS, SR bits, Clear Cycles | G1, G2 |
 | 2026-10-15 | `9328c62` | 13.4 listing view: heading, breakpoint gutter, PC highlight, double click; breakpoints while running | G5 |
 | 2026-10-15 | `9898209` | 13.5 stack window | G16 |
-| 2026-10-15 | `(X)` | 13.6/13.7 memory window: view, Live, editing, Copy/Fill/Save | G15 |
+| 2026-10-15 | `54361dd` | 13.6/13.7 memory window: view, Live, editing, Copy/Fill/Save | G15 |
 
 ## 10. Parity acceptance
 
