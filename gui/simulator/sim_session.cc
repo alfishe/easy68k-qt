@@ -3,6 +3,7 @@
 
 #include "sim_session.h"
 
+#include <algorithm>
 #include <cstring>
 #include <fstream>
 #include <QDir>
@@ -33,9 +34,12 @@ class SimSession::Observer : public sim::ISimObserver {
  public:
   Observer(sim::M68kSimulator* sim, SimSession* session) : sim_(sim), session_(session) {}
   void OnEvent(const sim::SimEvent& e) override {
-    if (e.type == sim::SimEventType::kInstructionExecuted &&
-        session_->bp_pending_.load(std::memory_order_acquire))
-      session_->ApplyBreakpointQueue();
+    if (e.type == sim::SimEventType::kInstructionExecuted) {
+      if (session_->bp_pending_.load(std::memory_order_acquire))
+        session_->ApplyBreakpointQueue();
+      if (session_->snap_pending_.load(std::memory_order_acquire))
+        session_->TakeSnapshot();
+    }
     if (e.type == sim::SimEventType::kStopped)
       sim_->RequestStop();
     if (e.type == sim::SimEventType::kHalted || e.type == sim::SimEventType::kStopped) {
@@ -548,6 +552,37 @@ void SimSession::ApplyBreakpointQueue() {
     else
       sim_->RemoveBreakpoint(c.address);
   }
+}
+
+// ---------------------------------------------------------------------------
+// Memory snapshot
+// ---------------------------------------------------------------------------
+
+void SimSession::RequestMemorySnapshot(uint32_t address, uint32_t size) {
+  {
+    std::lock_guard<std::mutex> lock(snap_mu_);
+    snap_address_ = address & sim::kAddressMask;
+    snap_size_ = std::min<uint32_t>(size, sim::kMemorySize);
+  }
+  snap_pending_.store(true, std::memory_order_release);
+  if (!IsRunning())
+    TakeSnapshot();
+}
+
+void SimSession::TakeSnapshot() {
+  uint32_t address = 0, size = 0;
+  {
+    std::lock_guard<std::mutex> lock(snap_mu_);
+    address = snap_address_;
+    size = snap_size_;
+    snap_pending_.store(false, std::memory_order_release);
+  }
+  QByteArray bytes(static_cast<qsizetype>(size), '\0');
+  const uint8_t* m = sim_->GetMemory().RawData();
+  for (uint32_t i = 0; i < size; i++)
+    bytes[static_cast<qsizetype>(i)] = static_cast<char>(m[(address + i) & sim::kAddressMask]);
+  QMetaObject::invokeMethod(
+      this, [this, address, bytes] { emit MemorySnapshot(address, bytes); }, Qt::QueuedConnection);
 }
 
 // ---------------------------------------------------------------------------

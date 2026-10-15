@@ -20,6 +20,7 @@
 #include <memory>
 #include <mutex>
 #include <optional>
+#include <QByteArray>
 #include <QObject>
 #include <QPagedPaintDevice>
 #include <QString>
@@ -102,6 +103,12 @@ class SimSession : public QObject {
   void ClearBreakpoints();
   std::vector<uint32_t> Breakpoints() const;
 
+  // ---- Memory snapshot (memory window Live mode) -----------------------------------
+  // Copies [address, address + size) of memory: at once when the program is
+  // not running, else on the worker before its next instruction. The copy
+  // arrives with MemorySnapshot().
+  void RequestMemorySnapshot(uint32_t address, uint32_t size);
+
   // ---- Options ---------------------------------------------------------------------
   void SetExceptionsEnabled(bool enabled);
   bool ExceptionsEnabled() const;
@@ -127,6 +134,7 @@ class SimSession : public QObject {
   void MessagesCleared();             // a program was opened
   void OptionsChanged();              // exceptions / bit field changed by the program
   void BreakpointsChanged();
+  void MemorySnapshot(uint32_t address, const QByteArray& bytes);
   void ProgramLoaded();
   void ProgramClosed();
   // Execution stopped (or the program was rewound/loaded): refresh views.
@@ -185,6 +193,12 @@ class SimSession : public QObject {
   };
   std::vector<BpChange> bp_queue_;
   std::atomic<bool> bp_pending_{false};
+
+  void TakeSnapshot();  // worker thread, or GUI when not running
+  std::mutex snap_mu_;
+  uint32_t snap_address_ = 0;
+  uint32_t snap_size_ = 0;
+  std::atomic<bool> snap_pending_{false};
 };
 
 }  // namespace easym68k::gui

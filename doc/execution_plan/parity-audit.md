@@ -28,22 +28,22 @@ hash and the program output.
 
 ## Status snapshot
 
-*Updated after every committed iteration (last: 2026-10-15, commit `9898209`).*
+*Updated after every committed iteration (last: 2026-10-15, commit `(X)`).*
 
 | Area | Rows | Done | Partial | Gap | Notes |
 |------|------|------|---------|-----|-------|
 | 1. Simulator core | 17 | 17 | 0 | 0 | instruction corpus + opcode sweep match the oracle (documented deviations only); 32-bit PC; Trap #15 text and file tasks verified |
 | 2. Assembler | 9 | 7 | 1 | 1 | core is a port of the original; listings and S-records match the oracle in every option combination; A7 auto-save and A8 template are GUI (13.19) |
-| 3. Sim68K GUI | 22 | 8 | 5 | 9 | Sim68K-Qt runs: main window, run controls, I/O window (13.2) |
+| 3. Sim68K GUI | 22 | 9 | 5 | 8 | Sim68K-Qt runs: main window, run controls, I/O window (13.2) |
 | 4. Edit68K GUI | 14 | 0 | 0 | 14 | |
 | 5. EASyBIN | 4 | 0 | 0 | 4 | |
 | 6. Help | 1 | 0 | 0 | 1 | |
-| **Total** | **67** | **32** | **6** | **29** | |
+| **Total** | **67** | **33** | **6** | **28** | |
 
 | Measure | Value |
 |---------|-------|
-| Plan tasks (PROGRESS.md) | 81 done, 31 open (13.6 next) |
-| Qt back end tests (`easym68k-gui-tests`, offscreen) | 99 pass (ASan+UBSan clean) |
+| Plan tasks (PROGRESS.md) | 83 done, 29 open (13.8 next) |
+| Qt back end tests (`easym68k-gui-tests`, offscreen) | 107 pass (ASan+UBSan clean) |
 | clang-tidy (`tools/clang-tidy.sh`, core libraries) | 0 findings (22 files + public headers) |
 | Simulator unit tests | 805 pass, incl. 28 golden simulation traces (ASan+UBSan clean) |
 | Assembler tests | 406 pass (incl. 132 instruction-matrix suites, 21 golden, 33 corpus cases); ASan+UBSan clean |
@@ -132,7 +132,7 @@ hash and the program output.
 | G12 | Options: Auto Trace Options (interval ms, disable display update) | Optionsu.dfm | **NEW 13.24** |
 | G13 | Options: Fullscreen Options (screen number) | FullscreenOptions.dfm | 13.10 |
 | G14 | Options: Output Window Size (640x480 … 1920x1200, 9 presets), Text Wrap | SIM68Ku.dfm | 13.2 — **Done** |
-| G15 | Memory window: hex/ASCII, Row/Page spin, Live update, address jump, edit bytes, Copy, Fill, Save range to file | Memory1.dfm/.cpp | 13.6, 13.7 (+ Save: **NEW** in 13.7) |
+| G15 | Memory window: hex/ASCII, Row/Page spin, Live update, address jump, edit bytes, Copy, Fill, Save range to file | Memory1.dfm/.cpp | 13.6, 13.7 — **Done** |
 | G16 | Stack window: view A0-A6/US/SS, scroll | Stack1.dfm | 13.5 — **Done** |
 | G17 | Hardware window: 7-seg ×8, LEDs, 8 toggle switches, 8 push buttons, editable addresses, IRQ 1-7 buttons, auto IRQ (level + interval ms), Reset button, memory map (ROM/Read/Protected/Invalid start/end) | hardwareu.dfm | 13.8, 13.15 |
 | G18 | Output window: text I/O, graphics, sound, mouse/keyboard, fullscreen | simIOu.cpp, CODE9.CPP | 13.9-13.11 — Partial: all but full screen and the window shortcuts (13.1, 13.2) |
@@ -268,6 +268,7 @@ Each committed iteration updates the snapshot above and adds a line here.
 | 2026-10-15 | `1c0799f` | 13.3 register panel: editing, A7/US/SS, SR bits, Clear Cycles | G1, G2 |
 | 2026-10-15 | `9328c62` | 13.4 listing view: heading, breakpoint gutter, PC highlight, double click; breakpoints while running | G5 |
 | 2026-10-15 | `9898209` | 13.5 stack window | G16 |
+| 2026-10-15 | `(X)` | 13.6/13.7 memory window: view, Live, editing, Copy/Fill/Save | G15 |
 
 ## 10. Parity acceptance
 

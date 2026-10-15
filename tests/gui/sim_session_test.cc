@@ -159,6 +159,28 @@ TEST_F(SimSessionTest, BreakpointSetWhileRunningStopsTheProgram) {
   EXPECT_FALSE(s.Simulator().HasBreakpoint(0x1000));
 }
 
+TEST_F(SimSessionTest, MemorySnapshotWhileRunning) {
+  const std::string source =
+      "        ORG     $1000\n"
+      "START   ADDQ.L  #1,D0\n"
+      "        BRA     START\n"
+      "        END     START\n";
+  SimSession s;
+  ASSERT_TRUE(s.Open(Assemble("snap", source)));
+  QSignalSpy snaps(&s, &SimSession::MemorySnapshot);
+  s.Run();
+  std::this_thread::sleep_for(std::chrono::milliseconds(10));
+  s.RequestMemorySnapshot(0x1000, 4);  // copied by the worker
+  ASSERT_TRUE(Until([&] { return snaps.count() == 1; }));
+  EXPECT_EQ(snaps.last().at(0).toUInt(), 0x1000u);
+  EXPECT_EQ(snaps.last().at(1).toByteArray(), QByteArray("\x52\x80\x60\xFC", 4));
+  s.Pause();
+  ASSERT_TRUE(Until([&] { return !s.IsRunning(); }));
+  s.RequestMemorySnapshot(0x1002, 2);  // stopped: copied at once
+  ASSERT_TRUE(Until([&] { return snaps.count() == 2; }));
+  EXPECT_EQ(snaps.last().at(1).toByteArray(), QByteArray("\x60\xFC", 2));
+}
+
 TEST_F(SimSessionTest, StepOverRunsASubroutine) {
   const std::string source =
       "        ORG     $1000\n"

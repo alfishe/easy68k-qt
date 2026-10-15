@@ -23,6 +23,7 @@
 #include <QVBoxLayout>
 
 #include "io_window.h"
+#include "memory_window.h"
 #include "qt_print_io.h"
 #include "register_widget.h"
 #include "sim_io_screen.h"
@@ -81,6 +82,20 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent) {
   io_window_ = new IoWindow(&session_->Screen(), &session_->Peripheral(), this);
   stack_window_ = new StackWindow(
       &session_->Simulator().GetMemory(), [this] { return !session_->IsRunning(); }, this);
+  MemoryWindow::Access access;
+  access.readable = [this] { return !session_->IsRunning(); };
+  access.request_snapshot = [this](uint32_t address, uint32_t size) {
+    session_->RequestMemorySnapshot(address, size);
+  };
+  memory_window_ = new MemoryWindow(&session_->Simulator().GetMemory(), access, this);
+  connect(session_.get(), &SimSession::MemorySnapshot, memory_window_, &MemoryWindow::OnSnapshot);
+  connect(memory_window_, &MemoryWindow::MemoryEdited, this,
+          [this] { stack_window_->UpdateState(session_->Simulator().State()); });
+  // Ctrl+Tab: memory -> stack -> hardware (Memory1.cpp, Stack1.cpp BringToFront()).
+  connect(memory_window_, &MemoryWindow::NextWindowRequested, this, [this] {
+    if (stack_window_->isVisible())
+      Raise(stack_window_);
+  });
 
   CreateActions();
   CreateMenus();
@@ -111,6 +126,11 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent) {
     ShowState();
   });
   connect(registers_, &RegisterWidget::PcDoubleClicked, this, &MainWindow::OnGotoPc);
+  // regDblClick(): the memory window at the register's address.
+  connect(registers_, &RegisterWidget::AddressDoubleClicked, this, [this](uint32_t address) {
+    memory_window_->ShowAddress(address);
+    Raise(memory_window_);
+  });
   // Listing: breakpoint gutter and double click (SIM68Ku.cpp breakP, ListBox1).
   source_->SetBreakpointQuery([this](uint32_t a) { return session_->HasBreakpoint(a); });
   connect(source_, &SourceView::BreakpointToggled, session_.get(), &SimSession::ToggleBreakpoint);
@@ -261,13 +281,10 @@ void MainWindow::CreateMenus() {
     io_window_->raise();
     io_window_->activateWindow();
   });
-  view->addAction(Pending(QStringLiteral("&Memory"), QStringLiteral("13.6")));
+  QAction* memory = view->addAction(QStringLiteral("&Memory"));
+  connect(memory, &QAction::triggered, this, [this] { Raise(memory_window_); });
   QAction* stack = view->addAction(QStringLiteral("&Stack"));
-  connect(stack, &QAction::triggered, this, [this] {
-    stack_window_->show();
-    stack_window_->raise();
-    stack_window_->activateWindow();
-  });
+  connect(stack, &QAction::triggered, this, [this] { Raise(stack_window_); });
   view->addAction(Pending(QStringLiteral("&Hardware"), QStringLiteral("13.8")));
   view->addAction(Pending(QStringLiteral("&Break Points"), QStringLiteral("13.22")));
   view->addAction(Pending(QStringLiteral("&EASyBIN"), QStringLiteral("13.20")));
@@ -366,6 +383,7 @@ void MainWindow::ShowState() {
   registers_->Show(cpu);
   source_->HighlightPc(cpu.pc, Halted());
   stack_window_->UpdateState(cpu);
+  memory_window_->Refresh();
 }
 
 // SIM68Ku.cpp setMenuTask19()/restoreMenuTask19().
@@ -474,6 +492,12 @@ void MainWindow::OnWindowSize(QAction* action) {
 
 QString MainWindow::MessageText() const {
   return messages_->toPlainText();
+}
+
+void MainWindow::Raise(QWidget* window) {
+  window->show();
+  window->raise();
+  window->activateWindow();
 }
 
 bool MainWindow::Halted() const {
