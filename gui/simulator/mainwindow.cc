@@ -27,6 +27,7 @@
 #include "register_widget.h"
 #include "sim_io_screen.h"
 #include "source_view.h"
+#include "stack_window.h"
 
 namespace easym68k::gui {
 
@@ -78,6 +79,8 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent) {
   statusBar();
 
   io_window_ = new IoWindow(&session_->Screen(), &session_->Peripheral(), this);
+  stack_window_ = new StackWindow(
+      &session_->Simulator().GetMemory(), [this] { return !session_->IsRunning(); }, this);
 
   CreateActions();
   CreateMenus();
@@ -99,6 +102,7 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent) {
     cpu.pc = edited.pc;
     cpu.sr = edited.sr;
     source_->HighlightPc(cpu.pc, Halted());  // regPCChange()
+    stack_window_->UpdateState(cpu);         // StackFrm->updateDisplay()
   });
   connect(registers_, &RegisterWidget::ClearCycles, this, [this] {
     if (session_->IsRunning())
@@ -258,7 +262,12 @@ void MainWindow::CreateMenus() {
     io_window_->activateWindow();
   });
   view->addAction(Pending(QStringLiteral("&Memory"), QStringLiteral("13.6")));
-  view->addAction(Pending(QStringLiteral("&Stack"), QStringLiteral("13.5")));
+  QAction* stack = view->addAction(QStringLiteral("&Stack"));
+  connect(stack, &QAction::triggered, this, [this] {
+    stack_window_->show();
+    stack_window_->raise();
+    stack_window_->activateWindow();
+  });
   view->addAction(Pending(QStringLiteral("&Hardware"), QStringLiteral("13.8")));
   view->addAction(Pending(QStringLiteral("&Break Points"), QStringLiteral("13.22")));
   view->addAction(Pending(QStringLiteral("&EASyBIN"), QStringLiteral("13.20")));
@@ -356,6 +365,7 @@ void MainWindow::ShowState() {
   const sim::CpuState& cpu = session_->Simulator().State();
   registers_->Show(cpu);
   source_->HighlightPc(cpu.pc, Halted());
+  stack_window_->UpdateState(cpu);
 }
 
 // SIM68Ku.cpp setMenuTask19()/restoreMenuTask19().

@@ -24,6 +24,7 @@ namespace easym68k::gui {
 class IoWindow;
 class RegisterWidget;
 class SourceView;
+class StackWindow;
 
 class MainWindow : public QMainWindow {
   Q_OBJECT
@@ -55,6 +56,7 @@ class MainWindow : public QMainWindow {
   QAction* CloseAction() const { return close_; }
   RegisterWidget* Registers() const { return registers_; }
   SourceView* Source() const { return source_; }
+  StackWindow* Stack() const { return stack_window_; }
 
  protected:
   void dragEnterEvent(QDragEnterEvent* event) override;
@@ -86,6 +88,7 @@ class MainWindow : public QMainWindow {
   std::unique_ptr<SimSession> session_;
   QPrinter printer_;
   IoWindow* io_window_ = nullptr;
+  StackWindow* stack_window_ = nullptr;
   RegisterWidget* registers_ = nullptr;
   SourceView* source_ = nullptr;
   QPlainTextEdit* messages_ = nullptr;

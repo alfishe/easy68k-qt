@@ -28,6 +28,7 @@ add_library(easy68k-simulator-ui STATIC
   io_window.cc
   register_widget.cc
   source_view.cc
+  stack_window.cc
   mainwindow.cc
 )
 target_include_directories(easy68k-simulator-ui PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
