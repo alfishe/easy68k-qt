@@ -28,7 +28,7 @@ hash and the program output.
 
 ## Status snapshot
 
-*Updated after every committed iteration (last: 2026-10-15, commit `pending`).*
+*Updated after every committed iteration (last: 2026-10-15, commit `d114c2c`).*
 
 | Area | Rows | Done | Partial | Gap | Notes |
 |------|------|------|---------|-----|-------|
@@ -279,7 +279,7 @@ Each committed iteration updates the snapshot above and adds a line here.
 | 2026-10-15 | `b25d9cb` | 13.18 settings persistence and source/output/printer font dialogs | G9, G17, G20 |
 | 2026-10-15 | `1773e58` | 13.22 advanced break points window (Registers, Memory, Expression Builder) | G8, G19 Done |
 | 2026-10-15 | `79d9988` | 13.23 Sim68K Find dialog, Find Next (F3), and Go to PC (Ctrl+G) | G7 Done |
-| 2026-10-15 | `pending` | 13.24 Auto Trace (F10) and Auto Trace Options dialog | G3, G12 Done |
+| 2026-10-15 | `d114c2c` | 13.24 Auto Trace (F10) and Auto Trace Options dialog | G3, G12 Done |
 
 ## 10. Parity acceptance
 
