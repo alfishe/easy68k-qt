@@ -28,22 +28,22 @@ hash and the program output.
 
 ## Status snapshot
 
-*Updated after every committed iteration (last: 2026-10-15, commit `79d9988`).*
+*Updated after every committed iteration (last: 2026-10-15, commit `pending`).*
 
 | Area | Rows | Done | Partial | Gap | Notes |
 |------|------|------|---------|-----|-------|
 | 1. Simulator core | 17 | 17 | 0 | 0 | instruction corpus + opcode sweep match the oracle (documented deviations only); 32-bit PC; Trap #15 text and file tasks verified |
 | 2. Assembler | 9 | 7 | 1 | 1 | core is a port of the original; listings and S-records match the oracle in every option combination; A7 auto-save and A8 template are GUI (13.19) |
-| 3. Sim68K GUI | 24 | 19 | 3 | 2 | Sim68K-Qt runs: main window, run controls, I/O window (13.2) |
+| 3. Sim68K GUI | 24 | 21 | 2 | 1 | Sim68K-Qt runs: main window, run controls, I/O window (13.2) |
 | 4. Edit68K GUI | 14 | 0 | 0 | 14 | |
 | 5. EASyBIN | 4 | 0 | 0 | 4 | |
 | 6. Help | 1 | 0 | 0 | 1 | |
-| **Total** | **69** | **43** | **4** | **22** | |
+| **Total** | **69** | **45** | **3** | **21** | |
 
 | Measure | Value |
 |---------|-------|
-| Plan tasks (PROGRESS.md) | 97 done, 16 open (13.24 next) |
-| Qt back end tests (`easym68k-gui-tests`, offscreen) | 139 pass (ASan+UBSan clean) |
+| Plan tasks (PROGRESS.md) | 98 done, 15 open (13.20 next) |
+| Qt back end tests (`easym68k-gui-tests`, offscreen) | 141 pass (ASan+UBSan clean) |
 | clang-tidy (`tools/clang-tidy.sh`, core libraries) | 0 findings (23 files + public headers) |
 | Simulator unit tests | 812 pass, incl. 28 golden simulation traces (ASan+UBSan clean) |
 | Assembler tests | 406 pass (incl. 132 instruction-matrix suites, 21 golden, 33 corpus cases); ASan+UBSan clean |
@@ -120,7 +120,7 @@ hash and the program output.
 |----|---------|----------|------|
 | G1 | Main window: registers D0-D7, A0-A7, PC, SS, US, SR with T S INT XNZVC, editable | SIM68Ku.dfm | 13.3 — **Done** |
 | G2 | Cycles display + Clear Cycles | SIM68Ku.dfm | 13.3 — **Done** |
-| G3 | Toolbar + Run menu: Open, Run (F9), Run To Cursor (Ctrl+F9), Auto Trace (F10), Step Over (F8), Trace Into (F7), Pause (F6), Rewind (Ctrl+F2), Reload (Ctrl+F3), Log Start (Ctrl+F4), Log Stop (Ctrl+F5) | SIM68Ku.dfm ActionList | 13.2, 13.12 — Partial: all but Auto Trace (13.24) |
+| G3 | Toolbar + Run menu: Open, Run (F9), Run To Cursor (Ctrl+F9), Auto Trace (F10), Step Over (F8), Trace Into (F7), Pause (F6), Rewind (Ctrl+F2), Reload (Ctrl+F3), Log Start (Ctrl+F4), Log Stop (Ctrl+F5) | SIM68Ku.dfm ActionList | 13.2, 13.12, 13.24 — **Done** |
 | G4 | File: Open (Ctrl+O), Open Data (load extra S-record), Close, Printer Setup, Exit | SIM68Ku.dfm | 13.2 — **Done** |
 | G5 | Source view (.L68 mapped to PC), breakpoint gutter, Clear All PC Breakpoints popup, message pane | SIM68Ku.dfm ListBox1/breakP | 13.4 — **Done** |
 | G6 | `*[sim68k]break`, `bitfield`, `simhalt_off` listing commands | SIM68Ku.cpp | 13.2a — **Done** |
@@ -129,7 +129,7 @@ hash and the program output.
 | G9 | Options: Source / Output / Printer fonts | SIM68Ku.dfm | 13.18 — **Done** |
 | G10 | Options: Log Output dialog (exec log type, output log type, file names, memory range) + Replace/Append prompt. Execution logging is active only while tracing (Step/Trace/Auto Trace, not Run); log file layout per RUN.CPP (memory rows, register block, source/instruction line); "***** Reset/Reload Program Pressed *****" markers | logU.dfm, LogfileDialogu.dfm, RUN.CPP | 13.12 — **Done** |
 | G11 | Options: Enable Exceptions, Enable Bit Field Instructions | SIM68Ku.dfm | 13.2 — **Done** |
-| G12 | Options: Auto Trace Options (interval ms, disable display update) | Optionsu.dfm | **NEW 13.24** |
+| G12 | Options: Auto Trace Options (interval ms, disable display update) | Optionsu.dfm | 13.24 — **Done** |
 | G13 | Options: Fullscreen Options (screen number) | FullscreenOptions.dfm | 13.10 — **Done** |
 | G14 | Options: Output Window Size (640x480 … 1920x1200, 9 presets), Text Wrap | SIM68Ku.dfm | 13.2 — **Done** |
 | G15 | Memory window: hex/ASCII, Row/Page spin, Live update, address jump, edit bytes, Copy, Fill, Save range to file | Memory1.dfm/.cpp | 13.6, 13.7 — **Done** |
@@ -279,6 +279,7 @@ Each committed iteration updates the snapshot above and adds a line here.
 | 2026-10-15 | `b25d9cb` | 13.18 settings persistence and source/output/printer font dialogs | G9, G17, G20 |
 | 2026-10-15 | `1773e58` | 13.22 advanced break points window (Registers, Memory, Expression Builder) | G8, G19 Done |
 | 2026-10-15 | `79d9988` | 13.23 Sim68K Find dialog, Find Next (F3), and Go to PC (Ctrl+G) | G7 Done |
+| 2026-10-15 | `pending` | 13.24 Auto Trace (F10) and Auto Trace Options dialog | G3, G12 Done |
 
 ## 10. Parity acceptance
 

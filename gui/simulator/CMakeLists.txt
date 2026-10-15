@@ -34,6 +34,7 @@ add_library(easy68k-simulator-ui STATIC
   hardware_window.cc
   breakpoints_window.cc
   find_dialog.cc
+  auto_trace_options_dialog.cc
   fullscreen_options_dialog.cc
   log_window.cc
   mainwindow.cc

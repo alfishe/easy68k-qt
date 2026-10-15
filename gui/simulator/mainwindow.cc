@@ -27,6 +27,7 @@
 #include <QToolBar>
 #include <QVBoxLayout>
 
+#include "auto_trace_options_dialog.h"
 #include "breakpoints_window.h"
 #include "find_dialog.h"
 #include "fullscreen_options_dialog.h"
@@ -196,6 +197,9 @@ MainWindow::MainWindow(const QString& settings_file, QWidget* parent)
   find_dialog_ = new FindDialog(this);
   connect(find_dialog_, &FindDialog::FindRequested, this,
           [this](const QString& text, bool next) { source_->Find(text, next); });
+  auto_trace_timer_ = new QTimer(this);
+  auto_trace_timer_->setInterval(auto_trace_interval_);
+  connect(auto_trace_timer_, &QTimer::timeout, this, &MainWindow::OnAutoTraceTick);
   // Memory1.cpp: an edit refreshes the stack and hardware windows; a switch
   // or button repaints the memory and stack windows.
   connect(memory_window_, &MemoryWindow::MemoryEdited, this, [this] {
@@ -235,11 +239,11 @@ MainWindow::MainWindow(const QString& settings_file, QWidget* parent)
 
   connect(session_.get(), &SimSession::StateChanged, this, [this] {
     UpdateActions();
-    registers_->SetEditable(!session_->IsRunning());
+    registers_->SetEditable(!session_->IsRunning() && !IsAutoTracing());
   });
   // SIM68Ku.cpp loadRegs()/register key handlers: edits go to the CPU.
   connect(registers_, &RegisterWidget::Edited, this, [this](const sim::CpuState& edited) {
-    if (session_->IsRunning())
+    if (session_->IsRunning() || IsAutoTracing())
       return;
     sim::CpuState& cpu = session_->Simulator().State();
     std::copy(std::begin(edited.d), std::end(edited.d), std::begin(cpu.d));
@@ -248,11 +252,13 @@ MainWindow::MainWindow(const QString& settings_file, QWidget* parent)
     cpu.ssp = edited.ssp;
     cpu.pc = edited.pc;
     cpu.sr = edited.sr;
-    source_->HighlightPc(cpu.pc, Halted());  // regPCChange()
-    stack_window_->UpdateState(cpu);         // StackFrm->updateDisplay()
+    if (!(IsAutoTracing() && auto_trace_disable_display_)) {
+      source_->HighlightPc(cpu.pc, Halted());  // regPCChange()
+      stack_window_->UpdateState(cpu);         // StackFrm->updateDisplay()
+    }
   });
   connect(registers_, &RegisterWidget::ClearCycles, this, [this] {
-    if (session_->IsRunning())
+    if (session_->IsRunning() || IsAutoTracing())
       return;
     session_->Simulator().State().cycles = 0;
     ShowState();
@@ -270,12 +276,23 @@ MainWindow::MainWindow(const QString& settings_file, QWidget* parent)
   connect(session_.get(), &SimSession::BreakpointsChanged, source_,
           &SourceView::RefreshBreakpoints);
   connect(source_, &SourceView::PcRequested, this, [this](uint32_t address) {
-    if (session_->IsRunning())
+    if (session_->IsRunning() || IsAutoTracing())
       return;
     session_->Simulator().State().pc = address;
     ShowState();
   });
-  connect(session_.get(), &SimSession::ExecutionStopped, this, &MainWindow::ShowState);
+  connect(session_.get(), &SimSession::ExecutionStopped, this, [this] {
+    if (IsAutoTracing()) {
+      const uint32_t pc = session_->Simulator().State().pc;
+      if (session_->State() != SimSession::RunState::kReady || session_->HasBreakpoint(pc) ||
+          session_->Simulator().AdvancedBreakpointHit()) {
+        auto_trace_timer_->stop();
+        UpdateActions();
+        registers_->SetEditable(!session_->IsRunning());
+      }
+    }
+    ShowState();
+  });
   connect(session_.get(), &SimSession::Message, messages_, &QPlainTextEdit::appendPlainText);
   connect(session_.get(), &SimSession::MessagesCleared, messages_, &QPlainTextEdit::clear);
   connect(session_.get(), &SimSession::OptionsChanged, this, [this] {
@@ -288,6 +305,7 @@ MainWindow::MainWindow(const QString& settings_file, QWidget* parent)
     SaveSettings();  // CODE9.CPP task 32 subtask 5
   });
   connect(session_.get(), &SimSession::ProgramLoaded, this, [this] {
+    auto_trace_timer_->stop();
     program_loaded_ = true;
     hardware_window_->Initialize();  // Hardware->initialize()
     source_->SetListing(session_->Listing(), session_->HasListing());
@@ -296,6 +314,7 @@ MainWindow::MainWindow(const QString& settings_file, QWidget* parent)
   });
   // SIMHALT / task 9: stopLogWithAnnounce().
   connect(session_.get(), &SimSession::ProgramEnded, this, [this] {
+    auto_trace_timer_->stop();
     if (!session_->Log().Logging())
       return;
     inform_(QStringLiteral("Information"), QStringLiteral("Current Log Stopped."));
@@ -303,6 +322,7 @@ MainWindow::MainWindow(const QString& settings_file, QWidget* parent)
     UpdateLogActions();
   });
   connect(session_.get(), &SimSession::ProgramClosed, this, [this] {
+    auto_trace_timer_->stop();
     source_->SetListing(session_->Listing(), false);
     UpdateActions();
   });
@@ -371,18 +391,27 @@ void MainWindow::CreateActions() {
   connect(run_, &QAction::triggered, this, [this] { session_->Run(); });
   run_to_cursor_ = Action(QStringLiteral("Run To &Cursor"), QKeySequence(Qt::CTRL | Qt::Key_F9),
                           &MainWindow::OnRunToCursor);
-  auto_trace_ = Pending(QStringLiteral("&Auto Trace"), QStringLiteral("13.24"));
-  auto_trace_->setShortcut(QKeySequence(Qt::Key_F10));
+  auto_trace_ = Action(QStringLiteral("&Auto Trace"), QKeySequence(Qt::Key_F10),
+                       &MainWindow::OnAutoTrace);
   step_ = Action(QStringLiteral("&Step Over"), QKeySequence(Qt::Key_F8), nullptr);
   connect(step_, &QAction::triggered, this, [this] { session_->StepOver(); });
   trace_ = Action(QStringLiteral("&Trace Into"), QKeySequence(Qt::Key_F7), nullptr);
   connect(trace_, &QAction::triggered, this, [this] { session_->TraceInto(); });
   pause_ = Action(QStringLiteral("&Pause"), QKeySequence(Qt::Key_F6), nullptr);
-  connect(pause_, &QAction::triggered, this, [this] { session_->Pause(); });
+  connect(pause_, &QAction::triggered, this, [this] {
+    StopAutoTrace();
+    session_->Pause();
+  });
   rewind_ = Action(QStringLiteral("R&ewind Program"), QKeySequence(Qt::CTRL | Qt::Key_F2), nullptr);
-  connect(rewind_, &QAction::triggered, this, [this] { session_->Rewind(); });
+  connect(rewind_, &QAction::triggered, this, [this] {
+    StopAutoTrace();
+    session_->Rewind();
+  });
   reload_ = Action(QStringLiteral("Re&load Program"), QKeySequence(Qt::CTRL | Qt::Key_F3), nullptr);
-  connect(reload_, &QAction::triggered, this, [this] { session_->Reload(); });
+  connect(reload_, &QAction::triggered, this, [this] {
+    StopAutoTrace();
+    session_->Reload();
+  });
   log_start_ = Action(QStringLiteral("L&og Start"), QKeySequence(Qt::CTRL | Qt::Key_F4),
                       &MainWindow::OnLogStart);
   log_stop_ = Action(QStringLiteral("Lo&g Stop"), QKeySequence(Qt::CTRL | Qt::Key_F5),
@@ -395,6 +424,7 @@ void MainWindow::CreateActions() {
   step_->setIcon(style->standardIcon(QStyle::SP_ArrowRight));
   trace_->setIcon(style->standardIcon(QStyle::SP_ArrowDown));
   run_to_cursor_->setIcon(style->standardIcon(QStyle::SP_MediaSeekForward));
+  auto_trace_->setIcon(style->standardIcon(QStyle::SP_CommandLink));
   rewind_->setIcon(style->standardIcon(QStyle::SP_MediaSkipBackward));
   reload_->setIcon(style->standardIcon(QStyle::SP_BrowserReload));
 }
@@ -472,7 +502,9 @@ void MainWindow::CreateMenus() {
     SaveSettings();
   });
   options->addSeparator();
-  options->addAction(Pending(QStringLiteral("&Auto Trace Options..."), QStringLiteral("13.24")));
+  auto_trace_options_action_ =
+      options->addAction(QStringLiteral("&Auto Trace Options..."), this,
+                         &MainWindow::OnAutoTraceOptions);
   options->addSeparator();
   QAction* fullscreen = options->addAction(QStringLiteral("&Fullscreen Options..."));
   connect(fullscreen, &QAction::triggered, this, &MainWindow::OnFullscreenOptions);
@@ -536,17 +568,17 @@ void MainWindow::CreateToolBar() {
 void MainWindow::UpdateActions() {
   using S = SimSession::RunState;
   const S state = session_->State();
-  const bool active = state == S::kReady || state == S::kStopped;
+  const bool running = state == S::kRunning || IsAutoTracing();
+  const bool active = !running && (state == S::kReady || state == S::kStopped);
   const bool loaded = state != S::kNoProgram;
-  open_->setEnabled(state != S::kRunning);
-  open_data_->setEnabled(state != S::kRunning);
+  open_->setEnabled(!running);
+  open_data_->setEnabled(!running);
   close_->setEnabled(loaded);
-  for (QAction* a : {run_, run_to_cursor_, step_, trace_})
+  for (QAction* a : {run_, run_to_cursor_, auto_trace_, step_, trace_})
     a->setEnabled(active);
   pause_->setEnabled(loaded);
   rewind_->setEnabled(loaded);
-  reload_->setEnabled(program_loaded_ && !session_->ProgramPath().isEmpty() &&
-                      state != S::kRunning);
+  reload_->setEnabled(program_loaded_ && !session_->ProgramPath().isEmpty() && !running);
 }
 
 // SIM68Ku.cpp scrshow(): registers and the PC's listing line.
@@ -555,9 +587,11 @@ void MainWindow::ShowState() {
     return;
   const sim::CpuState& cpu = session_->Simulator().State();
   registers_->Show(cpu);
-  source_->HighlightPc(cpu.pc, Halted());
-  stack_window_->UpdateState(cpu);
-  memory_window_->Refresh();
+  if (!(IsAutoTracing() && auto_trace_disable_display_)) {
+    source_->HighlightPc(cpu.pc, Halted());
+    stack_window_->UpdateState(cpu);
+    memory_window_->Refresh();
+  }
   hardware_window_->Refresh();
 }
 
@@ -661,6 +695,47 @@ void MainWindow::OnRunToCursor() {
   QMessageBox::warning(this, QStringLiteral("Error"),
                        QStringLiteral("Selected line does not have a valid address."));
   session_->Run();
+}
+
+void MainWindow::SetAutoTraceInterval(int ms) {
+  auto_trace_interval_ = std::max(1, ms);
+  if (auto_trace_timer_)
+    auto_trace_timer_->setInterval(auto_trace_interval_);
+}
+
+// SIM68Ku.cpp AutoTraceExecute().
+void MainWindow::OnAutoTrace() {
+  if (session_->IsRunning() || IsAutoTracing())
+    return;
+  if (session_->State() != SimSession::RunState::kReady &&
+      session_->State() != SimSession::RunState::kStopped)
+    return;
+  session_->Simulator().ResetBreakPassCounts();
+  auto_trace_timer_->setInterval(auto_trace_interval_);
+  auto_trace_timer_->start();
+  UpdateActions();
+  registers_->SetEditable(false);
+}
+
+// SIM68Ku.cpp AutoTraceTimerTimer().
+void MainWindow::OnAutoTraceTick() {
+  if (session_->IsRunning())
+    return;
+  if (session_->State() != SimSession::RunState::kReady &&
+      session_->State() != SimSession::RunState::kStopped) {
+    StopAutoTrace();
+    return;
+  }
+  session_->TraceInto();
+}
+
+void MainWindow::StopAutoTrace() {
+  if (!IsAutoTracing())
+    return;
+  auto_trace_timer_->stop();
+  UpdateActions();
+  registers_->SetEditable(!session_->IsRunning());
+  ShowState();
 }
 
 void MainWindow::OnGotoPc() {
@@ -889,7 +964,7 @@ void MainWindow::LoadSettings(QSettings& settings) {
       std::max(0, settings.value(QStringLiteral("fullscreen_monitor"), 0).toInt()));
   const int interval = settings.value(QStringLiteral("auto_trace_interval"), 200).toInt();
   if (interval > 0)
-    auto_trace_interval_ = interval;
+    SetAutoTraceInterval(interval);
   auto_trace_disable_display_ = settings.value(QStringLiteral("disable_display"), false).toBool();
 
   UpdateLogActions();
@@ -944,6 +1019,16 @@ void MainWindow::SaveSettings(QSettings& settings) const {
   settings.setValue(QStringLiteral("auto_trace_interval"), auto_trace_interval_);
   settings.setValue(QStringLiteral("disable_display"), auto_trace_disable_display_);
   settings.sync();
+}
+
+// SimulatorOptionsClick() (Optionsu.cpp).
+void MainWindow::OnAutoTraceOptions() {
+  AutoTraceOptionsDialog dialog(auto_trace_interval_, auto_trace_disable_display_, this);
+  if (dialog.exec() == QDialog::Accepted) {
+    SetAutoTraceInterval(dialog.Interval());
+    SetAutoTraceDisableDisplay(dialog.DisableDisplay());
+    SaveSettings();
+  }
 }
 
 // mmuFullscreenOptionsClick().
@@ -1059,6 +1144,7 @@ void MainWindow::dropEvent(QDropEvent* event) {
 }
 
 void MainWindow::closeEvent(QCloseEvent* event) {
+  auto_trace_timer_->stop();
   session_->Pause();
   SaveSettings();          // FormClose(): SaveSettings()
   session_->Log().Stop();  // FormClose(): stopLog()

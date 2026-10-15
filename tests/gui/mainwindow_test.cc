@@ -17,6 +17,7 @@
 #include <QTemporaryDir>
 #include <QUrl>
 
+#include "auto_trace_options_dialog.h"
 #include "easym68k/asm/assembler.h"
 #include "hardware_window.h"
 #include "io_window.h"
@@ -374,6 +375,55 @@ TEST_F(MainWindowTest, Task32Subtask5SavesExceptionsSetting) {
   EXPECT_TRUE(w.Session().ExceptionsEnabled());
   QSettings saved(settings_file, QSettings::IniFormat);
   EXPECT_TRUE(saved.value(QStringLiteral("exceptions")).toBool());
+}
+
+TEST_F(MainWindowTest, AutoTraceOptionsDialogClampsAndAccepts) {
+  AutoTraceOptionsDialog dialog(5, true);
+  EXPECT_EQ(dialog.Interval(), 10);  // clamped to [10, 1000]
+  EXPECT_TRUE(dialog.DisableDisplay());
+
+  dialog.IntervalSpinBox()->setValue(120);
+  dialog.DisableDisplayCheckBox()->setChecked(false);
+  dialog.OkButton()->click();
+  EXPECT_EQ(dialog.result(), QDialog::Accepted);
+  EXPECT_EQ(dialog.Interval(), 120);
+  EXPECT_FALSE(dialog.DisableDisplay());
+}
+
+TEST_F(MainWindowTest, AutoTraceStepsAndStopsOnBreakpointAndHalt) {
+  const std::string prog =
+      "        ORG     $1000\n"
+      "START   MOVEQ   #1,D0\n"
+      "        MOVEQ   #2,D0\n"
+      "*[sim68k]break\n"
+      "        MOVEQ   #3,D0\n"
+      "        SIMHALT\n"
+      "        END     START\n";
+  MainWindow w{QString()};
+  ASSERT_TRUE(w.OpenFile(Assemble("autotrace", prog)));
+  w.SetAutoTraceInterval(10);
+  w.SetAutoTraceDisableDisplay(true);
+
+  const int initial_row = w.Source()->List()->currentRow();
+  w.AutoTraceAction()->trigger();
+  EXPECT_TRUE(w.IsAutoTracing());
+  EXPECT_FALSE(w.RunAction()->isEnabled());
+  EXPECT_FALSE(w.AutoTraceAction()->isEnabled());
+
+  // Auto-trace steps through the first two instructions and stops at the
+  // breakpoint at $1004; stopping refreshes the PC highlight even when
+  // DisableDisplay was checked during stepping.
+  ASSERT_TRUE(Until([&] { return !w.IsAutoTracing() && !w.Session().IsRunning(); }));
+  EXPECT_EQ(w.Session().Simulator().State().d[0], 2u);
+  EXPECT_EQ(w.Session().Simulator().State().pc, 0x1004u);
+  EXPECT_GT(w.Source()->List()->currentRow(), initial_row);
+  EXPECT_TRUE(w.MessageText().contains(QStringLiteral("PC=00001000")));
+
+  // Resuming auto-trace runs until SIMHALT and stops automatically.
+  w.AutoTraceAction()->trigger();
+  ASSERT_TRUE(Until([&] { return w.Session().State() == SimSession::RunState::kHalted; }));
+  EXPECT_FALSE(w.IsAutoTracing());
+  EXPECT_EQ(w.Session().Simulator().State().d[0], 3u);
 }
 
 }  // namespace

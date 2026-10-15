@@ -18,6 +18,7 @@
 #include <QPlainTextEdit>
 #include <QPrinter>
 #include <QSettings>
+#include <QTimer>
 #include <vector>
 
 #include "sim_log.h"
@@ -68,11 +69,12 @@ class MainWindow : public QMainWindow {
     choose_font_ = std::move(dialog);
   }
 
-  // Auto Trace options (SIM68Ku.cpp AutoTraceOptions; dialog in 13.24).
+  // Auto Trace options (SIM68Ku.cpp AutoTraceOptions; Task 13.24).
   int AutoTraceInterval() const { return auto_trace_interval_; }
-  void SetAutoTraceInterval(int ms) { auto_trace_interval_ = ms; }
+  void SetAutoTraceInterval(int ms);
   bool AutoTraceDisableDisplay() const { return auto_trace_disable_display_; }
   void SetAutoTraceDisableDisplay(bool disable) { auto_trace_disable_display_ = disable; }
+  bool IsAutoTracing() const { return auto_trace_timer_ && auto_trace_timer_->isActive(); }
 
   SimSession& Session() { return *session_; }
   QString MessageText() const;  // the message pane
@@ -90,6 +92,8 @@ class MainWindow : public QMainWindow {
 
   // Actions, for tests.
   QAction* RunAction() const { return run_; }
+  QAction* RunToCursorAction() const { return run_to_cursor_; }
+  QAction* AutoTraceAction() const { return auto_trace_; }
   QAction* StepAction() const { return step_; }
   QAction* TraceAction() const { return trace_; }
   QAction* PauseAction() const { return pause_; }
@@ -104,6 +108,7 @@ class MainWindow : public QMainWindow {
   QAction* SourceFontAction() const { return source_font_action_; }
   QAction* OutputFontAction() const { return output_font_action_; }
   QAction* PrinterFontAction() const { return printer_font_action_; }
+  QAction* AutoTraceOptionsAction() const { return auto_trace_options_action_; }
   QAction* BreakPointsAction() const { return break_points_action_; }
   QAction* ExceptionsAction() const { return exceptions_; }
   QAction* BitFieldAction() const { return bit_field_; }
@@ -139,11 +144,15 @@ class MainWindow : public QMainWindow {
   void OnPrinterSetup();
   void OnFind();
   void OnRunToCursor();
+  void OnAutoTrace();
+  void OnAutoTraceTick();
+  void StopAutoTrace();
   void OnGotoPc();
   void OnAbout();
   void OnSourceFont();
   void OnOutputFont();
   void OnPrinterFont();
+  void OnAutoTraceOptions();
   void OnFullscreenOptions();
   void OnLogOutput();
   void OnLogStart();
@@ -166,6 +175,7 @@ class MainWindow : public QMainWindow {
   QFont printer_font_;
   int auto_trace_interval_ = 200;
   bool auto_trace_disable_display_ = false;
+  QTimer* auto_trace_timer_ = nullptr;
   IoWindow* io_window_ = nullptr;
   StackWindow* stack_window_ = nullptr;
   MemoryWindow* memory_window_ = nullptr;
@@ -206,6 +216,7 @@ class MainWindow : public QMainWindow {
   QAction* source_font_action_ = nullptr;
   QAction* output_font_action_ = nullptr;
   QAction* printer_font_action_ = nullptr;
+  QAction* auto_trace_options_action_ = nullptr;
   QAction* exceptions_ = nullptr;
   QAction* bit_field_ = nullptr;
   QAction* text_wrap_ = nullptr;
