@@ -28,7 +28,7 @@ hash and the program output.
 
 ## Status snapshot
 
-*Updated after every committed iteration (last: 2026-10-15, commit `(X)`).*
+*Updated after every committed iteration (last: 2026-10-15, commit `635b61c`).*
 
 | Area | Rows | Done | Partial | Gap | Notes |
 |------|------|------|---------|-----|-------|
@@ -264,7 +264,7 @@ Each committed iteration updates the snapshot above and adds a line here.
 | 2026-10-15 | `88ba984` | 13.1c sound back end (standard + multi-voice players); tasks 70/72 result fix | S9 tasks 70-77 back end |
 | 2026-10-15 | `1d051bb` | 13.1d serial (Qt SerialPort) and network (`StdNetworkIO`) back ends; serial/network buffer and map checks | S9 tasks 40-43, 100-107 back ends; S10 serial buffer checks |
 | 2026-10-15 | `4b1025c` | 13.2a SimSession: program loading, run controls on a worker thread, messages, STOP/IRQ | G3, G4, G5 (model), G6 |
-| 2026-10-15 | `(X)` | 13.2b Sim68K-Qt main window, I/O window, drag and drop, command line | G1-G6, G8, G11, G14, G18, G20, G22 (new) |
+| 2026-10-15 | `635b61c` | 13.2b Sim68K-Qt main window, I/O window, drag and drop, command line | G1-G6, G8, G11, G14, G18, G20, G22 (new) |
 
 ## 10. Parity acceptance
 
