@@ -246,7 +246,7 @@ Decision: Parity policy (user instruction, 2026-10-14): do NOT reproduce bugs of
 | Task | Status | Commit | Summary |
 |------|--------|--------|---------|
 | 12.1 Enable CI | TODO | | |
-| 12.2 Code Coverage | DONE | pending | `ENABLE_COVERAGE` (Clang source-based / GCC gcov) and `tools/coverage.sh` (runs the three suites, reports and gates: fails below easym68k-sim 90% / easym68k-asm 85% lines; optional HTML). Result: easym68k-sim 93.6%, easym68k-asm 85.6% (port code 90.3%; was 83.7% before two new oracle-verified corpus programs `operands.x68` — index/PC-relative/forced-size operand syntax and diagnostics — and `forms.x68` — every structured condition, sizes, expression operators, DC/DCB/DS/OFFSET forms; 33 corpus listings × 3 variants match the oracle) |
+| 12.2 Code Coverage | DONE | `c736ec5` | `ENABLE_COVERAGE` (Clang source-based / GCC gcov) and `tools/coverage.sh` (runs the three suites, reports and gates: fails below easym68k-sim 90% / easym68k-asm 85% lines; optional HTML). Result: easym68k-sim 93.6%, easym68k-asm 85.6% (port code 90.3%; was 83.7% before two new oracle-verified corpus programs `operands.x68` — index/PC-relative/forced-size operand syntax and diagnostics — and `forms.x68` — every structured condition, sizes, expression operators, DC/DCB/DS/OFFSET forms; 33 corpus listings × 3 variants match the oracle) |
 | 12.3 clang-tidy | TODO | | |
 
 ## Phase 13: GUI Implementation
