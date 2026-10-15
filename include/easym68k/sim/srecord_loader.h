@@ -17,15 +17,24 @@ namespace easym68k::sim {
 
 class SRecordLoader {
  public:
+  // SIMOPS2.CPP loadSrec(). Loading stops at the first S7/S8/S9 record.
   struct LoadResult {
+    // False only when the file cannot be opened (the original's FAILURE); a
+    // record that stops the load still leaves the data read before it.
     bool success;
     uint32_t start_address;
     bool has_start_address;
+    // "Invalid data on line N of .S68 file..." when a record stopped the
+    // load, else empty.
     std::string error_message;
-    int error_line;  // 1-based; 0 if not line-specific
-    // One entry per S0 record, as SIMOPS2.CPP loadSrec() shows it: "S0 = "
-    // and the data bytes as characters ('.' for those outside ' '..'~').
+    int error_line;  // 1-based line of error_message; 0 if none
+    // One entry per S0 record, as loadSrec() shows it: "S0 = " and the data
+    // bytes as characters ('.' for those outside ' '..'~').
     std::vector<std::string> s0_texts;
+    // The message pane lines of loadSrec(): S0 texts, "Checksum error on
+    // line N...", "Invalid Address on line N...", the stop messages, ".S68
+    // file read successful".
+    std::vector<std::string> messages;
   };
 
   LoadResult LoadFromFile(const std::string& filename, Memory& memory);

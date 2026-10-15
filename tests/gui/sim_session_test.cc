@@ -323,6 +323,37 @@ TEST_F(SimSessionTest, MissingListingAndMissingFile) {
   EXPECT_EQ(s.State(), RunState::kNoProgram);
 }
 
+// SIMOPS2.CPP loadSrec(): its lines in the message pane; a checksum error
+// or a stopped load still opens the program.
+TEST_F(SimSessionTest, LoadMessages) {
+  SimSession s;
+  QSignalSpy messages(&s, &SimSession::Message);
+  const QString path = dir_.filePath(QStringLiteral("bad.S68"));
+  QFile f(path);
+  ASSERT_TRUE(f.open(QIODevice::WriteOnly));
+  f.write("S00600004844521B\nS1071000700512340\nS107100070054E7100\nS9031000EC\n");
+  f.close();
+  ASSERT_TRUE(s.Open(path));
+  QStringList lines;
+  for (const auto& m : messages)
+    lines << m.at(0).toString();
+  EXPECT_EQ(lines.mid(0, 5), (QStringList{QStringLiteral("S0 = HDR"),
+                                          QStringLiteral("Invalid data on line 2 of .S68 file..."),
+                                          QStringLiteral("2: S1071000700512340"),
+                                          QStringLiteral("Remainder of load stopped..."),
+                                          QStringLiteral("Unable to open .L68 file.")}));
+  EXPECT_EQ(s.State(), RunState::kReady);
+  messages.clear();
+  ASSERT_TRUE(f.open(QIODevice::WriteOnly));
+  f.write("S107100070054E7100\nS9031000EC\n");
+  f.close();
+  ASSERT_TRUE(s.Open(path));
+  ASSERT_GE(messages.count(), 2);
+  EXPECT_EQ(messages.at(0).at(0).toString(), QStringLiteral("Checksum error on line 1..."));
+  EXPECT_EQ(messages.at(1).at(0).toString(), QStringLiteral(".S68 file read successful"));
+  EXPECT_EQ(s.Simulator().GetMemory().RawData()[0x1000], 0x70);
+}
+
 TEST(ListingTest, InstructionLinesAndCommands) {
   const QStringList lines = {
       QStringLiteral("00001000 Starting Address"),

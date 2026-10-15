@@ -4,6 +4,7 @@
 #include "easym68k/sim/srecord_loader.h"
 
 #include <cctype>
+#include <cstdio>
 #include <fstream>
 #include <sstream>
 #include <string>
@@ -46,7 +47,13 @@ uint32_t ParseHexValue(const std::string& line, size_t pos, int bytes) {
 }
 
 SRecordLoader::LoadResult MakeError(const std::string& msg, int line) {
-  return {false, 0, false, msg, line, {}};
+  return {false, 0, false, msg, line, {}, {msg}};
+}
+
+std::string LineText(const char* format, int line) {
+  char text[64];
+  std::snprintf(text, sizeof text, format, line);
+  return text;
 }
 
 }  // namespace
@@ -54,7 +61,7 @@ SRecordLoader::LoadResult MakeError(const std::string& msg, int line) {
 SRecordLoader::LoadResult SRecordLoader::LoadFromFile(const std::string& filename, Memory& memory) {
   std::ifstream file(filename);
   if (!file.is_open()) {
-    return MakeError("cannot open file: " + filename, 0);
+    return MakeError("error: cannot open file " + filename, 0);
   }
   return LoadFromStream(file, memory);
 }
@@ -68,163 +75,129 @@ SRecordLoader::LoadResult SRecordLoader::LoadFromStream(std::istream& stream, Me
   return LoadFromLines(lines, memory);
 }
 
+// SIMOPS2.CPP loadSrec(). Records are read up to the first S7/S8/S9; S5 is
+// ignored. A checksum error is reported and loading goes on; a record that
+// cannot be read, or data past the 16 MB of memory, stops the load. The
+// record length is the byte count (the original counted hex pairs up to the
+// end of the line) and the S0 checksum includes its address field.
 SRecordLoader::LoadResult SRecordLoader::LoadFromLines(const std::vector<std::string>& lines,
                                                        Memory& memory) {
-  if (lines.empty()) {
-    return MakeError("empty input", 0);
-  }
-
-  LoadResult result{true, 0, false, {}, 0, {}};
+  LoadResult result{true, 0, false, {}, 0, {}, {}};
+  uint8_t* mem = memory.RawData();
   int line_num = 0;
+  bool error = false;
+  std::string error_text;
 
   for (const auto& raw : lines) {
     ++line_num;
-
-    if (raw.empty())
-      continue;
-    // Must begin with 'S' or 's'
-    if (raw[0] != 'S' && raw[0] != 's')
-      continue;
-    if (raw.length() < 4)
-      continue;
-
-    char type = static_cast<char>(std::toupper(static_cast<unsigned char>(raw[1])));
-
-    int byte_count = ParseHexByte(raw, 2);
+    std::string line = raw;
+    if (!line.empty() && line.back() == '\r')
+      line.pop_back();
+    if (line.empty())
+      continue;  // (the original re-read the previous record type)
+    error_text = line;
+    error = true;  // until the record is read
+    if (line.size() < 4 || line[0] != 'S')
+      break;
+    const char type = line[1];
+    const int byte_count = ParseHexByte(line, 2);
     if (byte_count < 0)
-      continue;  // malformed byte-count field — skip
-
-    // Every byte after the type+byte_count field must be present.
-    size_t required = 4 + static_cast<size_t>(byte_count) * 2;
-    if (raw.length() < required) {
-      return MakeError("truncated record", line_num);
-    }
-
-    // Helper: sum all bytes in the record body (byte_count through last byte).
-    // Valid record: (sum & 0xFF) == 0xFF.
-    auto validate_checksum = [&](size_t body_start, int body_bytes) -> bool {
-      int sum = byte_count;
-      for (int i = 0; i < body_bytes; ++i) {
-        int b = ParseHexByte(raw, body_start + static_cast<size_t>(i) * 2);
-        if (b < 0)
-          return false;
-        sum += b;
-      }
-      return (sum & 0xFF) == 0xFF;
-    };
-
+      break;
+    int address_bytes = 0;
     switch (type) {
-      case '0': {  // Header record — the text is kept; no error on a bad checksum
-        std::string text = "S0 = ";
-        for (int i = 0; i < byte_count - 3; ++i) {
-          const int b = ParseHexByte(raw, 8 + static_cast<size_t>(i) * 2);
-          if (b < 0)
-            break;
-          text += b >= ' ' && b <= '~' ? static_cast<char>(b) : '.';
-        }
-        result.s0_texts.push_back(std::move(text));
+      case '0':
+      case '1':
+      case '9':
+        address_bytes = 2;
         break;
-      }
-
-      case '1': {  // 16-bit address data record
-        if (byte_count < 3)
-          continue;
-        if (!validate_checksum(4, byte_count)) {
-          return MakeError("checksum mismatch", line_num);
-        }
-        uint32_t address = ParseHexValue(raw, 4, 2);
-        int data_bytes = byte_count - 3;
-        size_t data_pos = 8;
-        for (int i = 0; i < data_bytes; ++i) {
-          int b = ParseHexByte(raw, data_pos);
-          if (b < 0)
-            return MakeError("invalid hex in data", line_num);
-          memory.WriteByte(address++, static_cast<uint8_t>(b));
-          data_pos += 2;
-        }
+      case '2':
+      case '8':
+        address_bytes = 3;
         break;
-      }
-
-      case '2': {  // 24-bit address data record
-        if (byte_count < 4)
-          continue;
-        if (!validate_checksum(4, byte_count)) {
-          return MakeError("checksum mismatch", line_num);
-        }
-        uint32_t address = ParseHexValue(raw, 4, 3);
-        int data_bytes = byte_count - 4;
-        size_t data_pos = 10;
-        for (int i = 0; i < data_bytes; ++i) {
-          int b = ParseHexByte(raw, data_pos);
-          if (b < 0)
-            return MakeError("invalid hex in data", line_num);
-          memory.WriteByte(address++, static_cast<uint8_t>(b));
-          data_pos += 2;
-        }
+      case '3':
+      case '7':
+        address_bytes = 4;
         break;
-      }
-
-      case '3': {  // 32-bit address data record
-        if (byte_count < 5)
-          continue;
-        if (!validate_checksum(4, byte_count)) {
-          return MakeError("checksum mismatch", line_num);
-        }
-        uint32_t address = ParseHexValue(raw, 4, 4);
-        int data_bytes = byte_count - 5;
-        size_t data_pos = 12;
-        for (int i = 0; i < data_bytes; ++i) {
-          int b = ParseHexByte(raw, data_pos);
-          if (b < 0)
-            return MakeError("invalid hex in data", line_num);
-          memory.WriteByte(address++, static_cast<uint8_t>(b));
-          data_pos += 2;
-        }
+      case '5':
+        address_bytes = -1;  // record count: ignored
         break;
-      }
-
-      case '5':  // Record count (16-bit) — ignore
-      case '6':  // Record count (24-bit) — ignore
-        break;
-
-      case '7': {  // 32-bit start address (terminator for S3)
-        if (byte_count < 5)
-          continue;
-        if (!validate_checksum(4, byte_count)) {
-          return MakeError("checksum mismatch", line_num);
-        }
-        result.start_address = ParseHexValue(raw, 4, 4) & kAddressMask;
-        result.has_start_address = true;
-        break;
-      }
-
-      case '8': {  // 24-bit start address (terminator for S2)
-        if (byte_count < 4)
-          continue;
-        if (!validate_checksum(4, byte_count)) {
-          return MakeError("checksum mismatch", line_num);
-        }
-        result.start_address = ParseHexValue(raw, 4, 3) & kAddressMask;
-        result.has_start_address = true;
-        break;
-      }
-
-      case '9': {  // 16-bit start address (terminator for S1)
-        if (byte_count < 3)
-          continue;
-        if (!validate_checksum(4, byte_count)) {
-          return MakeError("checksum mismatch", line_num);
-        }
-        result.start_address = ParseHexValue(raw, 4, 2) & kAddressMask;
-        result.has_start_address = true;
-        break;
-      }
-
       default:
         break;
     }
+    if (address_bytes == 0)
+      break;
+    if (address_bytes < 0) {
+      error = false;
+      continue;
+    }
+    if (type >= '7') {  // start address: PC, end of the file (no checksum test)
+      bool bad = false;
+      for (int i = 0; i < address_bytes; ++i)
+        bad = bad || ParseHexByte(line, 4 + static_cast<size_t>(i) * 2) < 0;
+      if (bad)
+        break;
+      result.start_address = ParseHexValue(line, 4, address_bytes) & kAddressMask;
+      result.has_start_address = true;
+      error = false;
+      break;
+    }
+    if (byte_count < address_bytes + 1 || line.size() < 4 + static_cast<size_t>(byte_count) * 2)
+      break;
+    std::vector<int> bytes(static_cast<size_t>(byte_count));
+    int sum = byte_count;
+    bool bad_hex = false;
+    for (int i = 0; i < byte_count; ++i) {
+      bytes[static_cast<size_t>(i)] = ParseHexByte(line, 4 + static_cast<size_t>(i) * 2);
+      if (bytes[static_cast<size_t>(i)] < 0)
+        bad_hex = true;
+      sum += bytes[static_cast<size_t>(i)];
+    }
+    if (bad_hex)
+      break;
+    const bool checksum_ok = (sum & 0xFF) == 0xFF;
+    const int data_bytes = byte_count - address_bytes - 1;
+    if (type == '0') {
+      std::string text = "S0 = ";
+      for (int i = 0; i < data_bytes; ++i) {
+        const int b = bytes[static_cast<size_t>(address_bytes) + static_cast<size_t>(i)];
+        text += b >= ' ' && b <= '~' ? static_cast<char>(b) : '.';
+      }
+      if (!checksum_ok)
+        result.messages.push_back(LineText("Checksum error on line %d...", line_num));
+      result.messages.push_back(text);
+      result.s0_texts.push_back(std::move(text));
+      error = false;
+      continue;
+    }
+    uint32_t address = 0;
+    for (int i = 0; i < address_bytes; ++i)
+      address = (address << 8) | static_cast<uint32_t>(bytes[static_cast<size_t>(i)]);
+    bool bad_address = false;
+    for (int i = 0; i < data_bytes; ++i, ++address) {
+      if (address > kAddressMask) {
+        result.messages.push_back(LineText("Invalid Address on line %d...", line_num));
+        bad_address = true;
+        break;
+      }
+      mem[address] =
+          static_cast<uint8_t>(bytes[static_cast<size_t>(address_bytes) + static_cast<size_t>(i)]);
+    }
+    if (!checksum_ok)
+      result.messages.push_back(LineText("Checksum error on line %d...", line_num));
+    if (bad_address)
+      break;
+    error = false;
   }
 
+  if (error) {
+    result.error_message = LineText("Invalid data on line %d of .S68 file...", line_num);
+    result.error_line = line_num;
+    result.messages.push_back(result.error_message);
+    result.messages.push_back(std::to_string(line_num) + ": " + error_text);
+    result.messages.emplace_back("Remainder of load stopped...");
+  } else {
+    result.messages.emplace_back(".S68 file read successful");
+  }
   return result;
 }
 

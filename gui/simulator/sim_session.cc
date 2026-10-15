@@ -239,10 +239,7 @@ bool SimSession::LoadProgram(const QString& path, bool keep_breakpoints) {
   sim::SRecordLoader loader;
   const auto r = loader.LoadFromFile(QFile::encodeName(path).toStdString(), memory);
   if (!r.success) {
-    if (!QFileInfo::exists(path))
-      emit Message(QStringLiteral("error: cannot open file %1").arg(path));
-    else
-      emit Message(QString::fromStdString(r.error_message));
+    emit Message(QStringLiteral("error: cannot open file %1").arg(path));
     program_path_.clear();
     SetState(RunState::kNoProgram);
     emit ProgramClosed();
@@ -250,8 +247,8 @@ bool SimSession::LoadProgram(const QString& path, bool keep_breakpoints) {
   }
   if (r.has_start_address)
     sim_->SetStartAddress(r.start_address);
-  for (const std::string& text : r.s0_texts)
-    emit Message(QString::fromLatin1(text.c_str()));  // loadSrec(): the S0 lines
+  for (const std::string& text : r.messages)
+    emit Message(QString::fromLatin1(text.c_str()));  // loadSrec()'s lines
   ApplyS0MemoryMap(r.s0_texts);
 
   const QString listing_path = ListingPathFor(path);
@@ -297,14 +294,11 @@ bool SimSession::OpenData(const QString& s68_path) {
   sim::SRecordLoader loader;
   const auto r = loader.LoadFromFile(QFile::encodeName(s68_path).toStdString(), sim_->GetMemory());
   if (!r.success) {
-    if (!QFileInfo::exists(s68_path))
-      emit Message(QStringLiteral("error: cannot open file %1").arg(s68_path));
-    else
-      emit Message(QString::fromStdString(r.error_message));
+    emit Message(QStringLiteral("error: cannot open file %1").arg(s68_path));
     return false;
   }
-  for (const std::string& text : r.s0_texts)
-    emit Message(QString::fromLatin1(text.c_str()));  // loadSrec(): the S0 lines
+  for (const std::string& text : r.messages)
+    emit Message(QString::fromLatin1(text.c_str()));  // loadSrec()'s lines
   ApplyS0MemoryMap(r.s0_texts);
   emit ExecutionStopped();  // memory changed
   return true;

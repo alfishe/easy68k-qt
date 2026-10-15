@@ -62,11 +62,14 @@ TEST_F(SRecordLoaderTest, ChecksumValid) {
 }
 
 TEST_F(SRecordLoaderTest, ChecksumInvalid) {
-  // Corrupt the checksum byte (E3 → 00)
-  auto r = loader.LoadFromLines({"S10701001234567800"}, memory);
-  EXPECT_FALSE(r.success);
-  EXPECT_GT(r.error_line, 0);
-  EXPECT_FALSE(r.error_message.empty());
+  // loadSrec(): a checksum error is reported and loading goes on.
+  auto r = loader.LoadFromLines({"S10701001234567800", "S10701049ABCDEF0CF", "S9030100FB"}, memory);
+  EXPECT_TRUE(r.success);
+  EXPECT_EQ(r.error_line, 0);
+  EXPECT_EQ(memory.ReadByte(0x0100).value, 0x12u);
+  EXPECT_EQ(memory.ReadByte(0x0104).value, 0x9Au);
+  EXPECT_EQ(r.messages,
+            (std::vector<std::string>{"Checksum error on line 1...", ".S68 file read successful"}));
 }
 
 TEST_F(SRecordLoaderTest, S1Record) {
@@ -121,22 +124,29 @@ TEST_F(SRecordLoaderTest, S9StartAddress) {
 
 TEST_F(SRecordLoaderTest, EmptyFile) {
   auto r = loader.LoadFromLines({}, memory);
-  EXPECT_FALSE(r.success);
-  EXPECT_FALSE(r.error_message.empty());
+  EXPECT_TRUE(r.success);
+  EXPECT_FALSE(r.has_start_address);
+  EXPECT_EQ(r.messages, (std::vector<std::string>{".S68 file read successful"}));
 }
 
 TEST_F(SRecordLoaderTest, MissingSRecordHeader) {
-  // Lines without 'S' prefix are silently skipped; load still succeeds
-  auto r = loader.LoadFromLines({"not a record", "; comment", "S9030100FB"}, memory);
+  // A line that is not a record stops the load; the data before it stays.
+  auto r = loader.LoadFromLines({"S107010012345678E3", "not a record", "S9030100FB"}, memory);
   EXPECT_TRUE(r.success);
-  EXPECT_TRUE(r.has_start_address);
+  EXPECT_EQ(r.error_line, 2);
+  EXPECT_FALSE(r.has_start_address);
+  EXPECT_EQ(memory.ReadByte(0x0100).value, 0x12u);
+  EXPECT_EQ(r.messages,
+            (std::vector<std::string>{"Invalid data on line 2 of .S68 file...", "2: not a record",
+                                      "Remainder of load stopped..."}));
 }
 
 TEST_F(SRecordLoaderTest, TruncatedRecord) {
   // byte_count = 07 but only partial data follows
   auto r = loader.LoadFromLines({"S1070100123456"}, memory);
-  EXPECT_FALSE(r.success);
+  EXPECT_TRUE(r.success);
   EXPECT_EQ(r.error_line, 1);
+  EXPECT_EQ(r.error_message, "Invalid data on line 1 of .S68 file...");
 }
 
 TEST_F(SRecordLoaderTest, MultipleDataRecords) {
@@ -167,11 +177,44 @@ TEST_F(SRecordLoaderTest, EmptyLinesSkipped) {
 }
 
 TEST_F(SRecordLoaderTest, LowercaseSPrefix) {
-  // 's' (lowercase) is accepted as well as 'S'
-  // s1 07 01 00 12 34 56 78 E3 — same record with lowercase 's'
+  // loadSrec() reads "S%c": a lower-case 's' is not a record.
   auto r = loader.LoadFromLines({"s107010012345678E3", "S9030100FB"}, memory);
-  EXPECT_TRUE(r.success);
+  EXPECT_EQ(r.error_line, 1);
+  EXPECT_NE(memory.ReadByte(0x0100).value, 0x12u);
+}
+
+TEST_F(SRecordLoaderTest, LoadingStopsAtTheStartAddress) {
+  // Lines after S7/S8/S9 are not read; their checksum is not tested.
+  auto r = loader.LoadFromLines({"S9030100FF", "S107010012345678E3"}, memory);
+  EXPECT_TRUE(r.has_start_address);
+  EXPECT_EQ(r.start_address, 0x0100u);
+  EXPECT_NE(memory.ReadByte(0x0100).value, 0x12u);
+  EXPECT_EQ(r.messages, (std::vector<std::string>{".S68 file read successful"}));
+}
+
+TEST_F(SRecordLoaderTest, S5IgnoredOtherTypesStop) {
+  auto r = loader.LoadFromLines({"S5030001FB", "S107010012345678E3", "S6040000010A"}, memory);
   EXPECT_EQ(memory.ReadByte(0x0100).value, 0x12u);
+  EXPECT_EQ(r.error_line, 3);
+}
+
+TEST_F(SRecordLoaderTest, DataPastMemoryStops) {
+  // S3 FFFFFFFE: bytes past $FFFFFF are refused ("Invalid Address").
+  // sum = 07+00+FF+FF+FE+11+22 = 0x236 -> checksum C9
+  auto r = loader.LoadFromLines({"S30700FFFFFE1122C9", "S9030100FB"}, memory);
+  EXPECT_EQ(memory.ReadByte(0xFFFFFE).value, 0x11u);
+  EXPECT_EQ(memory.ReadByte(0xFFFFFF).value, 0x22u);
+  auto r2 = loader.LoadFromLines({"S30701000000AABB92", "S9030100FB"}, memory);
+  EXPECT_EQ(r2.error_line, 1);
+  EXPECT_EQ(r2.messages.front(), "Invalid Address on line 1...");
+  EXPECT_EQ(r2.messages[1], "Invalid data on line 1 of .S68 file...");
+  EXPECT_TRUE(r.messages.back() == ".S68 file read successful");
+}
+
+TEST_F(SRecordLoaderTest, CannotOpen) {
+  auto r = loader.LoadFromFile("/nonexistent/x.S68", memory);
+  EXPECT_FALSE(r.success);
+  EXPECT_EQ(r.messages, (std::vector<std::string>{"error: cannot open file /nonexistent/x.S68"}));
 }
 
 TEST_F(SRecordLoaderTest, NoStartAddress) {

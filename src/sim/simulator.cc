@@ -569,7 +569,7 @@ bool M68kSimulator::LoadSRecord(const std::string& filename) {
   auto r = loader.LoadFromFile(filename, memory_);
   if (r.success && r.has_start_address)
     start_address_ = r.start_address;
-  return r.success;
+  return r.success && r.error_line == 0;
 }
 
 bool M68kSimulator::LoadSRecordLines(const std::vector<std::string>& lines) {
@@ -577,7 +577,7 @@ bool M68kSimulator::LoadSRecordLines(const std::vector<std::string>& lines) {
   auto r = loader.LoadFromLines(lines, memory_);
   if (r.success && r.has_start_address)
     start_address_ = r.start_address;
-  return r.success;
+  return r.success && r.error_line == 0;
 }
 
 // =============================================================================
