@@ -27,6 +27,8 @@
 #include <QStringList>
 #include <QThread>
 #include <set>
+#include <string>
+#include <utility>
 #include <vector>
 
 #include "easym68k/sim/isim_observer.h"
@@ -103,11 +105,31 @@ class SimSession : public QObject {
   void ClearBreakpoints();
   std::vector<uint32_t> Breakpoints() const;
 
-  // ---- Memory snapshot (memory window Live mode) -----------------------------------
+  // ---- Memory snapshot (memory window Live mode, hardware window) -------------------
   // Copies [address, address + size) of memory: at once when the program is
-  // not running, else on the worker before its next instruction. The copy
-  // arrives with MemorySnapshot().
+  // not running, else on the worker before its next instruction or while it
+  // waits for input or a delay. The copy arrives with MemorySnapshot().
+  // Requests for different ranges are all served.
   void RequestMemorySnapshot(uint32_t address, uint32_t size);
+
+  // ---- Simulator access (GUI thread) -----------------------------------------------
+  // Runs `fn` with the simulator: at once when the program is not running,
+  // else on the worker before its next instruction or while it waits for
+  // input or a delay (the original changed memory between instructions).
+  void RunOnSimulator(std::function<void(sim::M68kSimulator&)> fn);
+
+  // ---- Hardware window -------------------------------------------------------------
+  // Enabled while a program is loaded and not halted (hardwareu.cpp
+  // enable()/disable()): the IRQ and Reset buttons work.
+  bool HardwareEnabled() const { return hardware_enabled_; }
+  // hardwareu.cpp ResetBtnClick(): the CPU is reset from the vectors at $0
+  // and $4 and, unless the program is being traced, runs.
+  void HardwareReset();
+  // Device addresses: Trap #15 task 32 and the memory map exemptions.
+  void SetHardwareAddresses(uint32_t seg7, uint32_t leds, uint32_t switches, uint32_t buttons);
+  // The hardware window's memory map (also set by EASy68K S0 records).
+  void SetMemoryMap(const sim::M68kSimulator::MemoryMapConfig& map);
+  const sim::M68kSimulator::MemoryMapConfig& MemoryMap() const { return memory_map_; }
 
   // ---- Options ---------------------------------------------------------------------
   void SetExceptionsEnabled(bool enabled);
@@ -125,7 +147,7 @@ class SimSession : public QObject {
 
   // An interrupt request from the hardware window, timers, mouse or keyboard
   // (hardwareu.cpp IRQprocess()): ignored while no program is active; wakes a
-  // program waiting after STOP.
+  // program waiting after STOP unless the level is masked; 44 cycles.
   void Interrupt(int level);
 
  signals:
@@ -135,6 +157,8 @@ class SimSession : public QObject {
   void OptionsChanged();              // exceptions / bit field changed by the program
   void BreakpointsChanged();
   void MemorySnapshot(uint32_t address, const QByteArray& bytes);
+  void HardwareEnabledChanged(bool enabled);
+  void MemoryMapChanged();  // set by the program's S0 records
   void ProgramLoaded();
   void ProgramClosed();
   // Execution stopped (or the program was rewound/loaded): refresh views.
@@ -153,6 +177,12 @@ class SimSession : public QObject {
   void SetState(RunState state);
   void WhenStopped(std::function<void()> action);  // after the worker returned
   bool LoadProgram(const QString& path, bool keep_breakpoints);
+  void ApplyS0MemoryMap(const std::vector<std::string>& s0_texts);
+  void SetHardwareEnabledFlag(bool enabled);
+  // Serves the GUI's requests (breakpoints, simulator tasks, snapshots):
+  // worker thread, or GUI thread when the worker is idle.
+  void ServiceWorker();
+  void NotifyWorker();  // wakes a worker waiting for input or a delay
 
   Services services_;
   std::unique_ptr<SimIoScreen> screen_;
@@ -196,9 +226,15 @@ class SimSession : public QObject {
 
   void TakeSnapshot();  // worker thread, or GUI when not running
   std::mutex snap_mu_;
-  uint32_t snap_address_ = 0;
-  uint32_t snap_size_ = 0;
+  std::vector<std::pair<uint32_t, uint32_t>> snap_requests_;  // address, size
   std::atomic<bool> snap_pending_{false};
+
+  void RunTasks();  // worker thread, or GUI when not running
+  std::mutex task_mu_;
+  std::vector<std::function<void(sim::M68kSimulator&)>> tasks_;
+  std::atomic<bool> tasks_pending_{false};
+
+  sim::M68kSimulator::MemoryMapConfig memory_map_;
 };
 
 }  // namespace easym68k::gui

@@ -23,6 +23,9 @@ class SRecordLoader {
     bool has_start_address;
     std::string error_message;
     int error_line;  // 1-based; 0 if not line-specific
+    // One entry per S0 record, as SIMOPS2.CPP loadSrec() shows it: "S0 = "
+    // and the data bytes as characters ('.' for those outside ' '..'~').
+    std::vector<std::string> s0_texts;
   };
 
   LoadResult LoadFromFile(const std::string& filename, Memory& memory);

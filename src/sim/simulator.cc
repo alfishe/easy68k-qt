@@ -78,8 +78,10 @@ void M68kSimulator::HardwareReset() {
 
 void M68kSimulator::ConfigureMemoryMap(const MemoryMapConfig& map) {
   memory_.SetFlags(0, kAddressMask, kMemNormal);
+  // A range whose start is above its end is empty (memoryMapCheck() tests
+  // start <= loc <= end).
   auto apply = [this](const MemoryMapConfig::Range& r, uint8_t flag) {
-    if (r.enabled)
+    if (r.enabled && r.start <= r.end)
       memory_.AddFlags(r.start, r.end, flag);
   };
   apply(map.invalid, kMemInvalid);

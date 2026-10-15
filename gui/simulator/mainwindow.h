@@ -26,6 +26,7 @@ class RegisterWidget;
 class SourceView;
 class StackWindow;
 class MemoryWindow;
+class HardwareWindow;
 
 class MainWindow : public QMainWindow {
   Q_OBJECT
@@ -59,6 +60,7 @@ class MainWindow : public QMainWindow {
   SourceView* Source() const { return source_; }
   StackWindow* Stack() const { return stack_window_; }
   MemoryWindow* MemoryView() const { return memory_window_; }
+  HardwareWindow* Hardware() const { return hardware_window_; }
 
  protected:
   void dragEnterEvent(QDragEnterEvent* event) override;
@@ -87,12 +89,17 @@ class MainWindow : public QMainWindow {
   bool Confirm();
   bool Halted() const;
   static void Raise(QWidget* window);
+  // Ctrl+Tab (Memory1.cpp, Stack1.cpp, hardwareu.cpp BringToFront()): the
+  // first visible window of memory, stack, hardware from `index`, else the
+  // main window.
+  void BringToFront(int index);
 
   std::unique_ptr<SimSession> session_;
   QPrinter printer_;
   IoWindow* io_window_ = nullptr;
   StackWindow* stack_window_ = nullptr;
   MemoryWindow* memory_window_ = nullptr;
+  HardwareWindow* hardware_window_ = nullptr;
   RegisterWidget* registers_ = nullptr;
   SourceView* source_ = nullptr;
   QPlainTextEdit* messages_ = nullptr;

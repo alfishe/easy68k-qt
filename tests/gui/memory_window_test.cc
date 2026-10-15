@@ -156,6 +156,8 @@ TEST_F(MemoryWindowTest, LiveCopiesWhileRunning) {
   QTest::qWait(250);
   EXPECT_EQ(requested_address_, 0x1000u);
   EXPECT_EQ(requested_size_, static_cast<uint32_t>(window_->Rows()) * 16);
+  window_->OnSnapshot(0x1000, QByteArray(16, '\x42'));  // another window's copy
+  EXPECT_FALSE(window_->RowText(0).endsWith(QStringLiteral("BBBBBBBBBBBBBBBB")));
   QByteArray bytes(static_cast<int>(requested_size_), '\x41');
   window_->OnSnapshot(0x1000, bytes);
   EXPECT_TRUE(window_->RowText(0).endsWith(QStringLiteral("AAAAAAAAAAAAAAAA")));

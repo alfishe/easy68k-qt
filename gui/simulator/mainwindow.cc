@@ -22,9 +22,11 @@
 #include <QToolBar>
 #include <QVBoxLayout>
 
+#include "hardware_window.h"
 #include "io_window.h"
 #include "memory_window.h"
 #include "qt_print_io.h"
+#include "qt_simulator_env.h"
 #include "register_widget.h"
 #include "sim_io_screen.h"
 #include "source_view.h"
@@ -89,13 +91,25 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent) {
   };
   memory_window_ = new MemoryWindow(&session_->Simulator().GetMemory(), access, this);
   connect(session_.get(), &SimSession::MemorySnapshot, memory_window_, &MemoryWindow::OnSnapshot);
-  connect(memory_window_, &MemoryWindow::MemoryEdited, this,
-          [this] { stack_window_->UpdateState(session_->Simulator().State()); });
-  // Ctrl+Tab: memory -> stack -> hardware (Memory1.cpp, Stack1.cpp BringToFront()).
-  connect(memory_window_, &MemoryWindow::NextWindowRequested, this, [this] {
-    if (stack_window_->isVisible())
-      Raise(stack_window_);
+  hardware_window_ = new HardwareWindow(session_.get(), this);
+  // Memory1.cpp: an edit refreshes the stack and hardware windows; a switch
+  // or button repaints the memory and stack windows.
+  connect(memory_window_, &MemoryWindow::MemoryEdited, this, [this] {
+    stack_window_->UpdateState(session_->Simulator().State());
+    hardware_window_->Refresh();
   });
+  connect(hardware_window_, &HardwareWindow::MemoryChanged, this, [this] {
+    memory_window_->Refresh();
+    stack_window_->UpdateState(session_->Simulator().State());
+  });
+  // Ctrl+Tab: memory -> stack -> hardware -> main window.
+  connect(memory_window_, &MemoryWindow::NextWindowRequested, this, [this] { BringToFront(1); });
+  connect(stack_window_, &StackWindow::NextWindowRequested, this, [this] { BringToFront(2); });
+  connect(hardware_window_, &HardwareWindow::NextWindowRequested, this,
+          [this] { BringToFront(3); });
+  // Trap #15 task 32.0: Hardware->Show().
+  connect(&session_->Env(), &QtSimulatorEnv::ShowHardwareRequested, this,
+          [this] { Raise(hardware_window_); });
 
   CreateActions();
   CreateMenus();
@@ -152,6 +166,7 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent) {
   });
   connect(session_.get(), &SimSession::ProgramLoaded, this, [this] {
     program_loaded_ = true;
+    hardware_window_->Initialize();  // Hardware->initialize()
     source_->SetListing(session_->Listing(), session_->HasListing());
     setWindowTitle(session_->ProgramPath());
     UpdateActions();
@@ -285,7 +300,8 @@ void MainWindow::CreateMenus() {
   connect(memory, &QAction::triggered, this, [this] { Raise(memory_window_); });
   QAction* stack = view->addAction(QStringLiteral("&Stack"));
   connect(stack, &QAction::triggered, this, [this] { Raise(stack_window_); });
-  view->addAction(Pending(QStringLiteral("&Hardware"), QStringLiteral("13.8")));
+  QAction* hardware = view->addAction(QStringLiteral("&Hardware"));
+  connect(hardware, &QAction::triggered, this, [this] { Raise(hardware_window_); });
   view->addAction(Pending(QStringLiteral("&Break Points"), QStringLiteral("13.22")));
   view->addAction(Pending(QStringLiteral("&EASyBIN"), QStringLiteral("13.20")));
 
@@ -384,6 +400,7 @@ void MainWindow::ShowState() {
   source_->HighlightPc(cpu.pc, Halted());
   stack_window_->UpdateState(cpu);
   memory_window_->Refresh();
+  hardware_window_->Refresh();
 }
 
 // SIM68Ku.cpp setMenuTask19()/restoreMenuTask19().
@@ -498,6 +515,17 @@ void MainWindow::Raise(QWidget* window) {
   window->show();
   window->raise();
   window->activateWindow();
+}
+
+void MainWindow::BringToFront(int index) {
+  QWidget* const chain[] = {memory_window_, stack_window_, hardware_window_};
+  for (int i = index; i < 3; i++) {
+    if (chain[i]->isVisible()) {
+      Raise(chain[i]);
+      return;
+    }
+  }
+  Raise(this);  // Break Points window (13.22), then Form1
 }
 
 bool MainWindow::Halted() const {

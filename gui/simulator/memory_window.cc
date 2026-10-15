@@ -174,8 +174,11 @@ MemoryWindow::MemoryWindow(sim::Memory* memory, Access access, QWidget* parent)
   });
   live_timer_.setInterval(100);
   connect(&live_timer_, &QTimer::timeout, this, [this] {
-    if (live_->isChecked() && isVisible() && !Readable() && access_.request_snapshot)
-      access_.request_snapshot(mem_addr_, static_cast<uint32_t>(Rows()) * 16);
+    if (live_->isChecked() && isVisible() && !Readable() && access_.request_snapshot) {
+      requested_address_ = mem_addr_;
+      requested_size_ = static_cast<uint32_t>(Rows()) * 16;
+      access_.request_snapshot(requested_address_, requested_size_);
+    }
   });
   live_timer_.start();
 }
@@ -210,6 +213,9 @@ void MemoryWindow::Refresh() {
 }
 
 void MemoryWindow::OnSnapshot(uint32_t address, const QByteArray& bytes) {
+  // Copies requested by other windows are for them.
+  if (address != requested_address_ || static_cast<uint32_t>(bytes.size()) != requested_size_)
+    return;
   snap_address_ = address;
   snapshot_ = bytes;
   update();

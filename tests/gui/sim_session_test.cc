@@ -9,6 +9,7 @@
 
 #include <gtest/gtest.h>
 
+#include <atomic>
 #include <chrono>
 #include <QCoreApplication>
 #include <QDir>
@@ -215,6 +216,36 @@ TEST_F(SimSessionTest, PauseReleasesAProgramWaitingForInput) {
   EXPECT_EQ(s.Simulator().State().pc, 0x1006u);  // after the TRAP
   s.Run();
   ASSERT_TRUE(WaitState(s, RunState::kHalted));
+}
+
+// Requests reach a program waiting for input (the original handled GUI
+// events while waiting), and every requested range is copied.
+TEST_F(SimSessionTest, RequestsServedWhileWaitingForInput) {
+  const std::string source =
+      "        ORG     $1000\n"
+      "START   MOVE.B  #4,D0\n"
+      "        TRAP    #15\n"
+      "        SIMHALT\n"
+      "        END     START\n";
+  SimSession s;
+  ASSERT_TRUE(s.Open(Assemble("wait", source)));
+  QSignalSpy snaps(&s, &SimSession::MemorySnapshot);
+  s.Run();
+  ASSERT_TRUE(Until([&] { return s.Screen().InputActive(); }));
+  std::atomic<bool> ran{false};
+  s.RunOnSimulator([&](sim::M68kSimulator& sim) {
+    sim.GetMemory().RawData()[0x2000] = 0x42;
+    ran = true;
+  });
+  ASSERT_TRUE(Until([&] { return ran.load(); }));
+  s.RequestMemorySnapshot(0x2000, 1);
+  s.RequestMemorySnapshot(0x1000, 2);
+  ASSERT_TRUE(Until([&] { return snaps.count() == 2; }));
+  EXPECT_EQ(snaps.at(0).at(1).toByteArray(), QByteArray("\x42", 1));
+  EXPECT_EQ(snaps.at(1).at(0).toUInt(), 0x1000u);
+  EXPECT_TRUE(s.IsRunning());
+  s.Pause();
+  ASSERT_TRUE(Until([&] { return !s.IsRunning(); }));
 }
 
 TEST_F(SimSessionTest, IllegalInstructionWithExceptionsOff) {

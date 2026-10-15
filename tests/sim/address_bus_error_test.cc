@@ -157,6 +157,14 @@ TEST_F(AddressBusErrorTest, ReadMapWriteIsBusError) {
   EXPECT_EQ(Frame().info, 0x05);
 }
 
+TEST_F(AddressBusErrorTest, MapRangeWithStartAboveEndIsEmpty) {
+  Load({0x31C0, 0x7000});  // MOVE.W D0,$7000.W
+  M68kSimulator::MemoryMapConfig map;
+  map.read = {true, 0x7FFF, 0x7000};
+  sim_.ConfigureMemoryMap(map);
+  EXPECT_EQ(sim_.Step(), SimResult::kOk);
+}
+
 TEST_F(AddressBusErrorTest, HardwareAddressesExempt) {
   Load({0x11C0, 0x7010});  // MOVE.B D0,$7010.W
   M68kSimulator::MemoryMapConfig map;

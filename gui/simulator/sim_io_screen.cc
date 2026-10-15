@@ -514,6 +514,29 @@ void SimIoScreen::SetFontProperties(uint32_t color, uint32_t style) {
 // Input
 // ---------------------------------------------------------------------------
 
+// Waits until the input is done or cancelled, running the wait hook when
+// poked.
+void SimIoScreen::WaitForInput(std::unique_lock<std::mutex>& lock) {
+  for (;;) {
+    input_cv_.wait(lock, [this] { return input_done_ || cancel_input_ || poked_; });
+    if (input_done_ || cancel_input_)
+      return;
+    poked_ = false;
+    lock.unlock();
+    if (wait_hook_)
+      wait_hook_();
+    lock.lock();
+  }
+}
+
+void SimIoScreen::Poke() {
+  {
+    std::lock_guard<std::mutex> lock(mu_);
+    poked_ = true;
+  }
+  input_cv_.notify_all();
+}
+
 // simIOu.cpp textIn() + FormKeyPress(): at most 79 keys; Enter (or a key past
 // the limit) ends the input with CR LF.
 bool SimIoScreen::ReadLine(std::string* line) {
@@ -533,7 +556,7 @@ bool SimIoScreen::ReadLine(std::string* line) {
   RequestShow(true);
   MarkDirty(true);  // prompt
   lock.lock();
-  input_cv_.wait(lock, [this] { return input_done_ || cancel_input_; });
+  WaitForInput(lock);
   if (!input_done_) {
     input_mode_ = false;
     return false;
@@ -564,7 +587,7 @@ bool SimIoScreen::ReadChar(char* ch) {
   RequestShow(true);
   MarkDirty(true);
   lock.lock();
-  input_cv_.wait(lock, [this] { return input_done_ || cancel_input_; });
+  WaitForInput(lock);
   if (!input_done_) {
     input_mode_ = false;
     char_input_ = false;

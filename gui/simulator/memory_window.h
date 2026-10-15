@@ -113,6 +113,8 @@ class MemoryWindow : public QWidget {
   QTimer prompt_timer_;  // 500 ms
   QTimer live_timer_;    // 100 ms while running with Live
   uint32_t snap_address_ = 0;
+  uint32_t requested_address_ = 0;  // the last Live request
+  uint32_t requested_size_ = 0;
   QByteArray snapshot_;
   QPixmap last_image_;
 };

@@ -82,12 +82,21 @@ class QtSimulatorEnv : public QObject, public sim::ISimulatorEnv {
   bool AutoIrqRunning(int level) const;
   void CancelDelay();  // stop/reset: wakes and skips delays until ResumeDelay()
   void ResumeDelay();
+  // Hardware window initialize() (a program is opened): every automatic
+  // interrupt unchecked and stopped.
+  void ClearAutoIrqs();
+  bool AutoIrqEnabled() const;  // autoIRQ: the checked levels may run
+  // `hook` runs on the simulator thread during a delay each time Poke() is
+  // called (the session serves GUI requests while the program waits).
+  void SetWaitHook(std::function<void()> hook) { wait_hook_ = std::move(hook); }
+  void Poke();
 
  signals:
   void ShowHardwareRequested();
   void FullScreenRequested(bool fullscreen);
   void ExceptionsEnabledChanged(bool enabled);
-  void AutoIrqChanged();  // check boxes or intervals changed
+  void AutoIrqChanged();                     // check boxes or intervals changed
+  void AutoIrqEnabledChanged(bool enabled);  // "Automatic Enabled/Disabled"
 
  private:
   void ApplyAutoIrq(uint8_t irq_config, uint32_t interval);
@@ -98,6 +107,8 @@ class QtSimulatorEnv : public QObject, public sim::ISimulatorEnv {
   mutable std::mutex mu_;
   std::condition_variable delay_cv_;
   bool delay_cancelled_ = false;
+  bool poked_ = false;
+  std::function<void()> wait_hook_;
   HardwareAddresses addresses_;
   std::array<AutoIrq, 7> auto_irq_{};
   bool auto_irq_on_ = false;

@@ -46,7 +46,7 @@ uint32_t ParseHexValue(const std::string& line, size_t pos, int bytes) {
 }
 
 SRecordLoader::LoadResult MakeError(const std::string& msg, int line) {
-  return {false, 0, false, msg, line};
+  return {false, 0, false, msg, line, {}};
 }
 
 }  // namespace
@@ -74,7 +74,7 @@ SRecordLoader::LoadResult SRecordLoader::LoadFromLines(const std::vector<std::st
     return MakeError("empty input", 0);
   }
 
-  LoadResult result{true, 0, false, {}, 0};
+  LoadResult result{true, 0, false, {}, 0, {}};
   int line_num = 0;
 
   for (const auto& raw : lines) {
@@ -114,9 +114,17 @@ SRecordLoader::LoadResult SRecordLoader::LoadFromLines(const std::vector<std::st
     };
 
     switch (type) {
-      case '0':  // Header record — validate checksum but ignore payload
-        // No error on bad header checksum; header is purely informational.
+      case '0': {  // Header record — the text is kept; no error on a bad checksum
+        std::string text = "S0 = ";
+        for (int i = 0; i < byte_count - 3; ++i) {
+          const int b = ParseHexByte(raw, 8 + static_cast<size_t>(i) * 2);
+          if (b < 0)
+            break;
+          text += b >= ' ' && b <= '~' ? static_cast<char>(b) : '.';
+        }
+        result.s0_texts.push_back(std::move(text));
         break;
+      }
 
       case '1': {  // 16-bit address data record
         if (byte_count < 3)

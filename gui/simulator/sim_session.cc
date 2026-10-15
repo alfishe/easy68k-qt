@@ -34,12 +34,8 @@ class SimSession::Observer : public sim::ISimObserver {
  public:
   Observer(sim::M68kSimulator* sim, SimSession* session) : sim_(sim), session_(session) {}
   void OnEvent(const sim::SimEvent& e) override {
-    if (e.type == sim::SimEventType::kInstructionExecuted) {
-      if (session_->bp_pending_.load(std::memory_order_acquire))
-        session_->ApplyBreakpointQueue();
-      if (session_->snap_pending_.load(std::memory_order_acquire))
-        session_->TakeSnapshot();
-    }
+    if (e.type == sim::SimEventType::kInstructionExecuted)
+      session_->ServiceWorker();
     if (e.type == sim::SimEventType::kStopped)
       sim_->RequestStop();
     if (e.type == sim::SimEventType::kHalted || e.type == sim::SimEventType::kStopped) {
@@ -162,6 +158,11 @@ SimSession::SimSession(Services services, QObject* parent)
 
   connect(env_.get(), &QtSimulatorEnv::ExceptionsEnabledChanged, this,
           [this](bool) { emit OptionsChanged(); });
+  // A program waiting for input or a delay still serves the GUI's requests.
+  screen_->SetWaitHook([this] { ServiceWorker(); });
+  env_->SetWaitHook([this] { ServiceWorker(); });
+  const auto hw = env_->GetHardwareAddresses();
+  SetHardwareAddresses(hw.seg7, hw.leds, hw.switches, hw.buttons);
 
   worker_ = new QObject;
   worker_->moveToThread(&thread_);
@@ -200,7 +201,7 @@ void SimSession::InitSim() {
   sim_->InitProgram();
   trace_ = false;
   stop_reported_ = false;
-  hardware_enabled_ = true;  // Hardware->enable(): automatic IRQs run again
+  SetHardwareEnabledFlag(true);  // Hardware->enable(): automatic IRQs run again
   env_->SetHardwareEnabled(true);
 }
 
@@ -230,6 +231,7 @@ bool SimSession::LoadProgram(const QString& path, bool keep_breakpoints) {
   std::memset(memory.RawData(), 0xFF, memory.Size());                  // erase memory to $FF
   memory.RawData()[env_->GetSwitchAddress() & sim::kAddressMask] = 0;  // toggle switches
   sim_->SetSimhaltEnabled(true);
+  env_->ClearAutoIrqs();  // Hardware->initialize()
   emit MessagesCleared();
   listing_.clear();
   has_listing_ = false;
@@ -248,6 +250,9 @@ bool SimSession::LoadProgram(const QString& path, bool keep_breakpoints) {
   }
   if (r.has_start_address)
     sim_->SetStartAddress(r.start_address);
+  for (const std::string& text : r.s0_texts)
+    emit Message(QString::fromLatin1(text.c_str()));  // loadSrec(): the S0 lines
+  ApplyS0MemoryMap(r.s0_texts);
 
   const QString listing_path = ListingPathFor(path);
   QFile listing(listing_path);
@@ -298,6 +303,9 @@ bool SimSession::OpenData(const QString& s68_path) {
       emit Message(QString::fromStdString(r.error_message));
     return false;
   }
+  for (const std::string& text : r.s0_texts)
+    emit Message(QString::fromLatin1(text.c_str()));  // loadSrec(): the S0 lines
+  ApplyS0MemoryMap(r.s0_texts);
   emit ExecutionStopped();  // memory changed
   return true;
 }
@@ -374,7 +382,7 @@ void SimSession::Start(Command command, uint32_t address) {
   screen_->ResumeInput();
   env_->ResumeDelay();
   sim_->ClearStopRequest();
-  ApplyBreakpointQueue();
+  ServiceWorker();
   SetState(RunState::kRunning);
   QMetaObject::invokeMethod(
       worker_,
@@ -420,6 +428,7 @@ void SimSession::WhenStopped(std::function<void()> action) {
 
 // RUN.CPP runprog() after an instruction stopped the run.
 void SimSession::OnFinished(Command command, SimResult result) {
+  ServiceWorker();  // requests the worker did not reach
   const auto& cpu = sim_->State();
   if (cpu.stopped && ExceptionsEnabled()) {
     // STOP: waits for an interrupt; the automatic IRQs keep running unless
@@ -428,7 +437,7 @@ void SimSession::OnFinished(Command command, SimResult result) {
       env_->SetHardwareEnabled(false);
     SetState(RunState::kStopped);
   } else if (cpu.halted) {
-    hardware_enabled_ = false;  // haltSimulator(): Hardware->disable()
+    SetHardwareEnabledFlag(false);  // haltSimulator(): Hardware->disable()
     env_->SetHardwareEnabled(false);
     SetState(RunState::kHalted);
   } else {
@@ -488,9 +497,98 @@ void SimSession::Interrupt(int level) {
   if (!hardware_enabled_ || state_ == RunState::kNoProgram || state_ == RunState::kHalted)
     return;
   sim_->Interrupt(level);
+  if (state_ == RunState::kStopped) {
+    // After STOP the request waits while every pending level is masked.
+    const int mask = sim_->State().GetInterruptMask();
+    const int int_mask = (0xFF80 >> (7 - mask)) | 0x40;
+    if ((sim_->GetPendingIrqs() & int_mask) == 0)
+      return;
+  }
+  RunOnSimulator([](sim::M68kSimulator& sim) { sim.State().cycles += 44; });  // interrupt time
   if (state_ == RunState::kRunning || trace_)
     return;
   Start(Command::kResume);
+}
+
+void SimSession::HardwareReset() {
+  if (!hardware_enabled_ || state_ == RunState::kNoProgram || state_ == RunState::kHalted)
+    return;
+  RunOnSimulator([](sim::M68kSimulator& sim) {
+    sim.HardwareReset();
+    sim.State().cycles += 44;  // IRQprocess(0)
+  });
+  if (IsRunning())
+    return;
+  if (state_ == RunState::kStopped)
+    SetState(RunState::kReady);
+  emit ExecutionStopped();  // scrshow()
+  if (!trace_)
+    Start(Command::kResume);
+}
+
+void SimSession::SetHardwareEnabledFlag(bool enabled) {
+  if (hardware_enabled_ == enabled)
+    return;
+  hardware_enabled_ = enabled;
+  emit HardwareEnabledChanged(enabled);
+}
+
+void SimSession::SetHardwareAddresses(uint32_t seg7, uint32_t leds, uint32_t switches,
+                                      uint32_t buttons) {
+  QtSimulatorEnv::HardwareAddresses a;
+  a.seg7 = seg7;
+  a.leds = leds;
+  a.switches = switches;
+  a.buttons = buttons;
+  env_->SetHardwareAddresses(a);
+  RunOnSimulator([a](sim::M68kSimulator& sim) {
+    sim.SetHardwareAddresses(a.seg7, a.leds, a.switches, a.buttons);
+  });
+}
+
+void SimSession::SetMemoryMap(const sim::M68kSimulator::MemoryMapConfig& map) {
+  memory_map_ = map;
+  RunOnSimulator([map](sim::M68kSimulator& sim) { sim.ConfigureMemoryMap(map); });
+}
+
+// SIMOPS2.CPP loadSrec(): after the EASy68K header record, S0 records
+// "      ROM", "     READ", "PROTECTED" or "  INVALID" with "ssssss,eeeeee"
+// enable that range of the memory map; other ranges are kept.
+void SimSession::ApplyS0MemoryMap(const std::vector<std::string>& s0_texts) {
+  static const QString kHeader = QStringLiteral("S0 = 68KPROG   20CREATED BY EASY68K");
+  bool easy68k = false;
+  bool changed = false;
+  sim::M68kSimulator::MemoryMapConfig map = memory_map_;
+  for (const std::string& text : s0_texts) {
+    const QString str = QString::fromLatin1(text.c_str());
+    if (!easy68k) {
+      easy68k = str == kHeader;
+      continue;
+    }
+    bool ok_start = false, ok_end = false;
+    const uint32_t start = str.mid(15, 6).toUInt(&ok_start, 16);
+    const uint32_t end = str.mid(22, 6).toUInt(&ok_end, 16);
+    if (!ok_start || !ok_end)
+      continue;
+    const QString kind = str.mid(5, 9);
+    sim::M68kSimulator::MemoryMapConfig::Range* range = nullptr;
+    if (kind == QLatin1String("      ROM"))
+      range = &map.rom;
+    else if (kind == QLatin1String("     READ"))
+      range = &map.read;
+    else if (kind == QLatin1String("PROTECTED"))
+      range = &map.protected_;
+    else if (kind == QLatin1String("  INVALID"))
+      range = &map.invalid;
+    if (range == nullptr)
+      continue;
+    *range = {true, start, end};
+    changed = true;
+  }
+  if (!changed)
+    return;
+  SetMemoryMap(map);
+  emit MemoryMapChanged();
 }
 
 // ---------------------------------------------------------------------------
@@ -559,30 +657,77 @@ void SimSession::ApplyBreakpointQueue() {
 // ---------------------------------------------------------------------------
 
 void SimSession::RequestMemorySnapshot(uint32_t address, uint32_t size) {
+  const std::pair<uint32_t, uint32_t> request(address & sim::kAddressMask,
+                                              std::min<uint32_t>(size, sim::kMemorySize));
   {
     std::lock_guard<std::mutex> lock(snap_mu_);
-    snap_address_ = address & sim::kAddressMask;
-    snap_size_ = std::min<uint32_t>(size, sim::kMemorySize);
+    if (std::find(snap_requests_.begin(), snap_requests_.end(), request) == snap_requests_.end())
+      snap_requests_.push_back(request);
   }
   snap_pending_.store(true, std::memory_order_release);
   if (!IsRunning())
     TakeSnapshot();
+  else
+    NotifyWorker();
 }
 
 void SimSession::TakeSnapshot() {
-  uint32_t address = 0, size = 0;
+  std::vector<std::pair<uint32_t, uint32_t>> requests;
   {
     std::lock_guard<std::mutex> lock(snap_mu_);
-    address = snap_address_;
-    size = snap_size_;
+    requests.swap(snap_requests_);
     snap_pending_.store(false, std::memory_order_release);
   }
-  QByteArray bytes(static_cast<qsizetype>(size), '\0');
   const uint8_t* m = sim_->GetMemory().RawData();
-  for (uint32_t i = 0; i < size; i++)
-    bytes[static_cast<qsizetype>(i)] = static_cast<char>(m[(address + i) & sim::kAddressMask]);
-  QMetaObject::invokeMethod(
-      this, [this, address, bytes] { emit MemorySnapshot(address, bytes); }, Qt::QueuedConnection);
+  for (const auto& [address, size] : requests) {
+    QByteArray bytes(static_cast<qsizetype>(size), '\0');
+    for (uint32_t i = 0; i < size; i++)
+      bytes[static_cast<qsizetype>(i)] = static_cast<char>(m[(address + i) & sim::kAddressMask]);
+    QMetaObject::invokeMethod(
+        this, [this, address = address, bytes] { emit MemorySnapshot(address, bytes); },
+        Qt::QueuedConnection);
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Simulator tasks
+// ---------------------------------------------------------------------------
+
+void SimSession::RunOnSimulator(std::function<void(sim::M68kSimulator&)> fn) {
+  {
+    std::lock_guard<std::mutex> lock(task_mu_);
+    tasks_.push_back(std::move(fn));
+  }
+  tasks_pending_.store(true, std::memory_order_release);
+  if (!IsRunning())
+    RunTasks();
+  else
+    NotifyWorker();
+}
+
+void SimSession::RunTasks() {
+  std::vector<std::function<void(sim::M68kSimulator&)>> tasks;
+  {
+    std::lock_guard<std::mutex> lock(task_mu_);
+    tasks.swap(tasks_);
+    tasks_pending_.store(false, std::memory_order_release);
+  }
+  for (auto& task : tasks)
+    task(*sim_);
+}
+
+void SimSession::ServiceWorker() {
+  if (bp_pending_.load(std::memory_order_acquire))
+    ApplyBreakpointQueue();
+  if (tasks_pending_.load(std::memory_order_acquire))
+    RunTasks();
+  if (snap_pending_.load(std::memory_order_acquire))
+    TakeSnapshot();
+}
+
+void SimSession::NotifyWorker() {
+  screen_->Poke();
+  env_->Poke();
 }
 
 // ---------------------------------------------------------------------------

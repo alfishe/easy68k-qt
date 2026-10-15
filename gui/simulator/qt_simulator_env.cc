@@ -35,9 +35,26 @@ uint32_t QtSimulatorEnv::GetTimeHundredths() {
 
 // CODE9.CPP task 23 looped Sleep(10) n times; one timed wait here.
 void QtSimulatorEnv::DelayHundredths(unsigned int n) {
+  const auto deadline =
+      std::chrono::steady_clock::now() + std::chrono::milliseconds(10) * static_cast<int64_t>(n);
   std::unique_lock<std::mutex> lock(mu_);
-  delay_cv_.wait_for(lock, std::chrono::milliseconds(10) * static_cast<int64_t>(n),
-                     [this] { return delay_cancelled_; });
+  while (delay_cv_.wait_until(lock, deadline, [this] { return delay_cancelled_ || poked_; })) {
+    if (delay_cancelled_)
+      return;
+    poked_ = false;
+    lock.unlock();
+    if (wait_hook_)
+      wait_hook_();
+    lock.lock();
+  }
+}
+
+void QtSimulatorEnv::Poke() {
+  {
+    std::lock_guard<std::mutex> lock(mu_);
+    poked_ = true;
+  }
+  delay_cv_.notify_all();
 }
 
 void QtSimulatorEnv::CancelDelay() {
@@ -133,12 +150,35 @@ void QtSimulatorEnv::ApplyAutoIrq(uint8_t irq_config, uint32_t interval) {
 
 void QtSimulatorEnv::SetHardwareEnabled(bool enabled) {
   PostToThread(this, [this, enabled] {
+    bool changed = false;
     {
       std::lock_guard<std::mutex> lock(mu_);
+      changed = auto_irq_on_ != enabled;
       auto_irq_on_ = enabled;
     }
     for (int i = 1; i <= 7; i++)
       UpdateTimer(i);
+    if (changed)
+      emit AutoIrqEnabledChanged(enabled);
+  });
+}
+
+bool QtSimulatorEnv::AutoIrqEnabled() const {
+  std::lock_guard<std::mutex> lock(mu_);
+  return auto_irq_on_;
+}
+
+void QtSimulatorEnv::ClearAutoIrqs() {
+  SetHardwareEnabled(false);
+  PostToThread(this, [this] {
+    {
+      std::lock_guard<std::mutex> lock(mu_);
+      for (auto& a : auto_irq_)
+        a.checked = false;
+    }
+    for (int i = 1; i <= 7; i++)
+      UpdateTimer(i);
+    emit AutoIrqChanged();
   });
 }
 

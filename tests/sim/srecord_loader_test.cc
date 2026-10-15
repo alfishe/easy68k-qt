@@ -40,6 +40,21 @@ Memory SRecordLoaderTest::memory;
 // Valid records — Task 2.2 required tests
 // ---------------------------------------------------------------------------
 
+// SIMOPS2.CPP loadSrec(): each S0 record's data as text, '.' for bytes
+// outside ' '..'~' (the Sim68K window reads the memory map from these).
+TEST_F(SRecordLoaderTest, S0TextsAreKept) {
+  std::vector<std::string> lines = {
+      "S021000036384B50524F47202020323043524541544544204259204541535936384B6D",
+      "S00500000141B8",
+      "S9030100FB",
+  };
+  auto r = loader.LoadFromLines(lines, memory);
+  ASSERT_TRUE(r.success);
+  ASSERT_EQ(r.s0_texts.size(), 2u);
+  EXPECT_EQ(r.s0_texts[0], "S0 = 68KPROG   20CREATED BY EASY68K");
+  EXPECT_EQ(r.s0_texts[1], "S0 = .A");
+}
+
 TEST_F(SRecordLoaderTest, ChecksumValid) {
   auto r = loader.LoadFromLines({"S107010012345678E3", "S9030100FB"}, memory);
   EXPECT_TRUE(r.success);

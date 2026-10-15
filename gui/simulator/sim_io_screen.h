@@ -128,6 +128,10 @@ class SimIoScreen : public QObject {
   // Called (outside the lock) on every key down (true) / up (false): the
   // keyboard IRQ of task 62.
   void SetKeyEventHook(std::function<void(bool down)> hook);
+  // `hook` runs on the simulator thread while it waits for input, each time
+  // Poke() is called (the session serves GUI requests meanwhile).
+  void SetWaitHook(std::function<void()> hook) { wait_hook_ = std::move(hook); }
+  void Poke();
 
   // ---- Graphics (tasks 80-96) -------------------------------------------------
   void SetPenColor(uint32_t color);
@@ -193,6 +197,7 @@ class SimIoScreen : public QObject {
   static QRect Normalized(int x1, int y1, int x2, int y2);
 
   void MarkDirty(bool dirty);  // emits Changed() once until Snapshot()
+  void WaitForInput(std::unique_lock<std::mutex>& lock);
   void RequestShow(bool request);
 
   mutable std::mutex mu_;
@@ -234,6 +239,8 @@ class SimIoScreen : public QObject {
   bool char_input_ = false;
   bool input_done_ = false;
   bool cancel_input_ = false;
+  bool poked_ = false;
+  std::function<void()> wait_hook_;
   std::string key_buf_;
   std::string line_;
   char input_char_ = 0;
