@@ -1,0 +1,153 @@
+00001000 Starting Address
+Assembler used: EASy68K Editor/Assembler v5.16.01
+Created On: 
+
+00000000                             1  * Assembler corpus: every structured condition code, sizes and branch
+00000000                             2  * sizes, nested conjunctions, and expression operators/directive forms
+00000000                             3  * not used by structured.x68 / directives.x68. Compared with the original
+00000000                             4  * assembler. CC0-1.0.
+00001000                             5          ORG     $1000
+00001000  =0000000E                  6  VAL1    EQU     10+2*3-4/2
+00001000  =0000001E                  7  VAL2    EQU     (1<<4)|(1>>0)&$FF^$0F
+00001000  =0000000B                  8  VAL3    EQU     -VAL1+%1010+@17
+00001000  =00000001                  9  VAL4    SET     1
+00001000  =00000002                 10  VAL4    SET     VAL4+1
+00001000  =00000010                 11  CNT     EQU     $10
+00001000                            12  START   IF.B D0 <CC> D1 THEN
+00001006  4E71                      13            NOP
+00001008                            14          ENDI
+00001008                            15          IF.W D0 <CS> D1 THEN.S
+0000100C  4E71                      16            NOP
+0000100E                            17          ENDI
+0000100E                            18          IF.L D0 <EQ> D1 THEN.L
+00001014  4E71                      19            NOP
+00001016                            20          ENDI
+00001016                            21          IF D0 <NE> D1 THEN
+0000101C  4E71                      22            NOP
+0000101E                            23          ELSE.S
+00001020  4E71                      24            NOP
+00001022                            25          ENDI
+00001022                            26          IF D0 <VC> D1 THEN
+00001028  4E71                      27            NOP
+0000102A                            28          ELSE.L
+0000102E  4E71                      29            NOP
+00001030                            30          ENDI
+00001030                            31          IF D0 <VS> D1 OR D2 <PL> D3 OR D4 <MI> D5 THEN
+Line 32 WARNING: THEN expected
+00001038                            32          IF D0 <VS> D1 OR D2 <PL> D3 OR D4 <MI> D5 THEN
+00001038  4E71                      33            NOP
+0000103A                            34          ENDI
+0000103A                            35          IF D0 <GE> D1 AND D2 <LT> D3 AND D4 <GT> D5 THEN
+Line 36 WARNING: THEN expected
+00001042  6C00 0004                 36          IF D0 <GE> D1 AND D2 <LT> D3 AND D4 <GT> D5 THEN
+00001046  4E71                      37            NOP
+00001048                            38          ENDI
+00001048                            39          IF D0 <LE> D1 OR D2 <HI> D3 AND D4 <LS> D5 THEN
+Line 40 WARNING: THEN expected
+00001052                            40          IF D0 <LE> D1 OR D2 <HI> D3 AND D4 <LS> D5 THEN
+00001052  4E71                      41            NOP
+00001054                            42          ENDI
+00001054                            43          IF <HS> THEN
+00001058  4E71                      44            NOP
+0000105A                            45          ENDI
+0000105A                            46          IF <LO> THEN
+0000105E  4E71                      47            NOP
+00001060                            48          ENDI
+00001060                            49          IF <T> THEN
+Line 50 ERROR: Invalid syntax
+00001060                            50s     B?? _0000000E
+00001060  4E71                      51            NOP
+00001062                            52          ENDI
+00001062                            53          IF <F> THEN
+Line 54 ERROR: Invalid syntax
+00001062                            54s     B?? _0000000F
+00001062  4E71                      55            NOP
+00001064                            56          ENDI
+00001064                            57          WHILE.B (A0) <NE> #0 DO
+0000106C  5288                      58            ADDQ.L  #1,A0
+0000106E                            59          ENDW
+00001070                            60          WHILE <VC> DO.L
+00001074  4E71                      61            NOP
+00001076                            62          ENDW
+00001078                            63          REPEAT
+00001078  4E71                      64            NOP
+0000107A                            65          UNTIL.L D0 <GE> #CNT DO.S
+00001082                            66          FOR.W D0 = #VAL1 TO #VAL1+5 BY #2 DO.L
+0000108A                            67            FOR.B D1 = #3 DOWNTO #1 DO
+00001092  4E71                      68              NOP
+00001094                            69            ENDF
+0000109C                            70          ENDF
+000010A6                            71          DBLOOP.S D3 = #CNT
+Line 72 ERROR: Invalid syntax
+000010A6                            72s     MOVE    =,.S
+Line 73 ERROR: Invalid syntax
+000010A6                            73          DBLOOP.S D3 = #CNT
+000010A6  4E71                      74            NOP
+000010A8                            75          UNLESS.L D0 <EQ> #0
+Line 76 ERROR: Invalid addressing mode
+000010AE                            76s     DBNE    DS,_40000000
+000010AE                            77  * data and space forms
+000010AE= 01 FF FF 48 69 00         78  BYTES   DC.B    1,-1,$FF,'Hi',0
+000010B4= 000E 001E 000B 0...       79  WORDS   DC.W    VAL1,VAL2,VAL3,VAL4,BYTES
+000010BE= 00001000 FFFFFFFF ...     80  LONGS   DC.L    START,-1,'ABCD'
+000010CA= AA AA AA                  81          DCB.B   3,$AA
+000010CE= BBBB BBBB                 82          DCB.W   2,$BBBB
+000010D2= CCCCCCCC CCCCCCCC         83          DCB.L   2,$CCCCCCCC
+000010DA                            84          DS.B    3
+000010DE                            85          DS.W    2
+000010E2                            86          DS.L    1
+000010E6                            87          DS.B    0
+000010E6= 38                        88          DC.B    *-BYTES
+00000000=                           89          OFFSET  0
+00000000=                           90  FIELD1  DS.W    1
+00000002=                           91  FIELD2  DS.L    1
+Line 92 WARNING: Origin value is odd (Location counter set to next highest address)
+000010E8                            92          ORG     *
+000010E8= 0002                      93          DC.W    FIELD2
+000010EA  FFFF FFFF                 94          SIMHALT
+000010EE                            95          END     START
+
+5 errors detected
+4 warnings generated
+
+
+SYMBOL TABLE INFORMATION
+Symbol-name         Value
+-------------------------
+BYTES               10AE
+CNT                 10
+FIELD1              0
+FIELD2              2
+LONGS               10BE
+START               1000
+VAL1                E
+VAL2                1E
+VAL3                B
+VAL4                2
+WORDS               10B4
+_00000000           1008
+_00000001           100E
+_00000002           1016
+_00000003           1020
+_00000004           1022
+_00000005           102E
+_00000006           1030
+_00000007           1038
+_00000008           103A
+_00000009           1048
+_0000000A           1052
+_0000000B           1054
+_0000000C           105A
+_0000000D           1060
+_0000000E           1062
+_0000000F           1064
+_10000000           1064
+_10000001           1070
+_10000002           1070
+_10000003           1078
+_20000000           108A
+_20000001           109E
+_20000002           1092
+_20000003           1096
+_30000000           1078
+_40000000           10A6

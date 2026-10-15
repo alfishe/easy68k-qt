@@ -246,7 +246,7 @@ Decision: Parity policy (user instruction, 2026-10-14): do NOT reproduce bugs of
 | Task | Status | Commit | Summary |
 |------|--------|--------|---------|
 | 12.1 Enable CI | TODO | | |
-| 12.2 Code Coverage | TODO | | |
+| 12.2 Code Coverage | DONE | pending | `ENABLE_COVERAGE` (Clang source-based / GCC gcov) and `tools/coverage.sh` (runs the three suites, reports and gates: fails below easym68k-sim 90% / easym68k-asm 85% lines; optional HTML). Result: easym68k-sim 93.6%, easym68k-asm 85.6% (port code 90.3%; was 83.7% before two new oracle-verified corpus programs `operands.x68` — index/PC-relative/forced-size operand syntax and diagnostics — and `forms.x68` — every structured condition, sizes, expression operators, DC/DCB/DS/OFFSET forms; 33 corpus listings × 3 variants match the oracle) |
 | 12.3 clang-tidy | TODO | | |
 
 ## Phase 13: GUI Implementation
@@ -321,4 +321,4 @@ Decision: (11.1) Privilege violation frames hold the address of the privileged i
 Decision: (11.2) Interrupt timing follows the 68000, not the original: a pending interrupt is taken at the instruction boundary before the next instruction, after the previous instruction's group 2 and trace exceptions, so its frame is stacked last and its handler runs first. The original (RUN.CPP exec_inst()) executes one more instruction and services the interrupt before that instruction's trace and TRAP/CHK/TRAPV/divide exceptions, so their handlers run in the reverse order. Compared with the oracle (`-i`), the port also shows the interrupt entry as its own Step.
 Decision: `M68kSimulator::Config::exceptions_enabled` defaults to true for the library; the Sim68K GUI must start with exceptions off unless the saved settings say otherwise (SIM68Ku.cpp defaultSettings()), tracked for 13.18.
 Decision: (0.6) Golden data comes from the original sources compiled as oracles on Linux rather than from Edit68K.exe/Sim68K.exe runs, so it is reproducible by script; simulation traces are stored as digests plus final state instead of JSON per step (10.1).
-**NEXT:** 12.2 coverage / 12.3 clang-tidy
+**NEXT:** 12.3 clang-tidy

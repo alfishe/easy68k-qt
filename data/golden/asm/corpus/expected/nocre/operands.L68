@@ -1,0 +1,88 @@
+00001000 Starting Address
+Assembler used: EASy68K Editor/Assembler v5.16.01
+Created On: 
+
+00000000                             1  * Assembler corpus: operand syntax variety (index registers with sizes,
+00000000                             2  * PC-relative index, SP/A7, negative and forced-size displacements,
+00000000                             3  * absolute .W/.L, immediates of every size, register lists) and the
+00000000                             4  * related diagnostics, compared with the original assembler. CC0-1.0.
+00001000                             5          ORG     $1000
+00001000  3030 1000                  6  START   MOVE.W  (A0,D1.W),D0
+00001004  3030 1800                  7          MOVE.W  (A0,D1.L),D0
+00001008  3030 9000                  8          MOVE.W  (A0,A1),D0
+0000100C  3030 9000                  9          MOVE.W  (A0,A1.W),D0
+00001010  3030 9800                 10          MOVE.W  (A0,A1.L),D0
+00001014  3037 2000                 11          MOVE.W  (SP,D2.W),D0
+Line 12 ERROR: Invalid syntax
+00001018                            12          MOVE.W  (A6,SP.L),D0
+00001018  3030 1002                 13          MOVE.W  2(A0,D1.W),D0
+0000101C  3030 18FE                 14          MOVE.W  -2(A0,D1.L),D0
+00001020  3030 A07F                 15          MOVE.W  $7F(A0,A2.W),D0
+00001024  3030 A880                 16          MOVE.W  -$80(A0,A2.L),D0
+00001028  3028 0002                 17          MOVE.W  (2,A0),D0
+0000102C  3030 3002                 18          MOVE.W  (2,A0,D3.W),D0
+00001030  3037 38FC                 19          MOVE.W  (-4,SP,D3.L),D0
+00001034  302F 0004                 20          MOVE.W  4(SP),D0
+00001038  302F FFFC                 21          MOVE.W  -4(A7),D0
+0000103C  302B 7FFF                 22          MOVE.W  $7FFF(A3),D0
+00001040  302B 8000                 23          MOVE.W  -$8000(A3),D0
+00001044  303A FFBA                 24          MOVE.W  START(PC),D0
+00001048  303B 00B6                 25          MOVE.W  START(PC,D0.W),D0
+0000104C  303B 88B2                 26          MOVE.W  START(PC,A0.L),D0
+00001050  303A FFAE                 27          MOVE.W  (START,PC),D0
+00001054  303B 10FE                 28          MOVE.W  (START,PC,D1.W),D0
+00001058  303A FFFE                 29          MOVE.W  *(PC),D0
+0000105C  3038 1234                 30          MOVE.W  $1234.W,D0
+00001060  3039 00001234             31          MOVE.W  $1234.L,D0
+00001066  3038 8000                 32          MOVE.W  $FFFF8000.W,D0
+0000106A  3039 00012345             33          MOVE.W  $00012345,D0
+00001070  103C 00FF                 34          MOVE.B  #-1,D0
+00001074  103C 00FF                 35          MOVE.B  #$FF,D0
+00001078  303C 8000                 36          MOVE.W  #-32768,D0
+0000107C  303C FFFF                 37          MOVE.W  #$FFFF,D0
+00001080  70FF                      38          MOVE.L  #-1,D0
+00001082  207C 00001000             39          MOVE.L  #START,A0
+00001088  203C 00004142             40          MOVE.L  #'AB',D0
+0000108E  203C 41424344             41          MOVE.L  #'ABCD',D0
+00001094  0699 12345678             42          ADD.L   #$12345678,(A1)+
+0000109A  5322                      43          SUB.B   #1,-(A2)
+0000109C  0C6B 0002 0004            44          CMP.W   #2,4(A3)
+000010A2  48E7 FFFE                 45          MOVEM.L D0-D7/A0-A6,-(SP)
+000010A6  4CDF 7FFF                 46          MOVEM.L (SP)+,D0-D7/A0-A6
+000010AA  48B8 0215 2000            47          MOVEM.W D0/D2/D4/A1,$2000
+000010B0  4CF8 000E 2000            48          MOVEM.L $2000.W,D1-D3
+000010B6  4CB0 0600 1002            49          MOVEM.W 2(A0,D1.W),A1-A2
+000010BC  48E7 0080                 50          MOVEM.L A0,-(A7)
+000010C0  45F0 1000                 51          LEA     (A0,D1.W),A2
+Line 52 ERROR: Displacement out of range
+000010C4  47FB 283A                 52          LEA     START(PC,D2.L),A3
+000010C8  486F 0004                 53          PEA     (4,SP)
+000010CC  4EF0 0000                 54          JMP     (A0,D0.W)
+Line 55 ERROR: Displacement out of range
+000010D0  4EBB 102E                 55          JSR     START(PC,D1.W)
+000010D4                            56  * diagnostics
+Line 57 ERROR: Invalid syntax
+000010D4                            57          MOVE.W  (A0,D1.X),D0            invalid index size
+Line 58 ERROR: Invalid syntax
+000010D4                            58          MOVE.W  (A0,D9),D0              not a register
+Line 59 ERROR: Displacement out of range
+000010D4  3030 1080                 59          MOVE.W  $80(A0,D1.W),D0         displacement out of range
+Line 60 ERROR: Displacement out of range
+000010D8  302B 8000                 60          MOVE.W  $8000(A3),D0            displacement out of range
+Line 61 ERROR: Comma expected
+000010DC                            61          MOVE.W  (A0,D1.W,D0)            syntax
+Line 62 ERROR: Invalid syntax
+000010DC                            62          MOVE.W  (A0,,D1),D0             syntax
+Line 63 ERROR: Immediate data exceeds 16 bits
+000010DC  303C 0000                 63          MOVE.W  #$10000,D0              exceeds 16 bits
+Line 64 ERROR: Immediate data exceeds 8 bits
+000010E0  103C 0000                 64          MOVE.B  #$100,D0                exceeds 8 bits
+Line 65 ERROR: Comma expected
+000010E4                            65          MOVEM.L D0-,(A0)                syntax
+Line 66 ERROR: Comma expected
+000010E4                            66          MOVEM.L D0/D9,(A0)              syntax
+000010E4  FFFF FFFF                 67          SIMHALT
+000010E8                            68          END     START
+
+13 errors detected
+3 warnings generated

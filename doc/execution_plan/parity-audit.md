@@ -28,7 +28,7 @@ hash and the program output.
 
 ## Status snapshot
 
-*Updated after every committed iteration (last: 2026-10-15, commit `bf30067`).*
+*Updated after every committed iteration (last: 2026-10-15, commit `(X)`).*
 
 | Area | Rows | Done | Partial | Gap | Notes |
 |------|------|------|---------|-----|-------|
@@ -42,14 +42,15 @@ hash and the program output.
 
 | Measure | Value |
 |---------|-------|
-| Plan tasks (PROGRESS.md) | 74 done, 38 open (12.2 / 12.3 next) |
+| Plan tasks (PROGRESS.md) | 75 done, 37 open (12.3 next) |
 | Simulator unit tests | 796 pass, incl. 28 golden simulation traces (ASan+UBSan clean) |
-| Assembler tests | 400 pass (incl. 132 instruction-matrix suites, 21 golden, 27 corpus cases); ASan+UBSan clean |
+| Assembler tests | 406 pass (incl. 132 instruction-matrix suites, 21 golden, 33 corpus cases); ASan+UBSan clean |
+| Line coverage (`tools/coverage.sh`) | easym68k-sim 93.6% (target 90%), easym68k-asm 85.6% (target 85%) |
 | Integration tests (asm + sim) | 10 pass |
 | Instruction matrix vs oracle | 98,583 / 98,583 cases match (bytes + diagnostic class) |
 | Golden programs, S-records (.S68) vs oracle | 21 / 21 match |
 | Golden programs, listings (.L68) vs oracle | 21 / 21 match |
-| Corpus (directives, macros, conditional/structured, OPT, INCLUDE/INCBIN, MEMORY, errors, every diagnostic text, nested macros/includes) × 3 option variants vs oracle | 27 / 27 match (.L68 byte-identical; .S68 identical or, with SIMHALT, same loaded image) |
+| Corpus (directives, macros, conditional/structured, OPT, INCLUDE/INCBIN, MEMORY, errors, every diagnostic text, nested macros/includes, operand syntax, structured/expression/data forms) × 3 option variants vs oracle | 33 / 33 match (.L68 byte-identical; .S68 identical or, with SIMHALT, same loaded image) |
 | Assembler option combinations (`--no-list`, `--no-srec`, `--no-warnings`, `--no-cre`, `--no-bitfield`, `--mex --sex --cex`) on all corpus + golden programs; bit field matrix with `--no-bitfield` | all match |
 | Simulator instruction corpus vs oracle (131 programs from the matrix, exceptions on; `compare_sim_corpus.sh`) | all executed cases match: identical or an accepted deviation (`data/golden/sim/deviations.tsv`); memory hash identical or accepted |
 | Golden simulation traces (oracle-generated, `tests/sim/golden_trace_test.cc`) | 28 / 28 match |
@@ -64,7 +65,7 @@ hash and the program output.
 | ✓ | **11.1** Exception tests | Done (`exception_test.cc`, golden `exceptions`) | S2, S3 | — |
 | ✓ | **11.2** Interrupt tests | Done (`interrupt_test.cc`; tracers take `-i STEP:LEVEL`) | S4 | — |
 | 4 | **0.5 / 12.1** CI (later) | CI pipeline on Linux, macOS, Windows | acceptance item 3 | CI green |
-| 5 | **12.2 / 12.3** Coverage, clang-tidy | Coverage report for src/sim and src/asm; clang-tidy profile (src/asm/core and tools/reference excluded: original layout) | — | coverage gate, zero clang-tidy findings |
+| 5 | **12.3** clang-tidy (12.2 ✓) | clang-tidy profile (src/asm/core and tools/reference excluded: original layout) | — | zero findings |
 | 6 | **13.1** Trap #15 Qt back ends | Text console, graphics, sound, serial, network, printing, file dialog | S9 | Manual checklist + unit tests where headless |
 | 7 | **13.2-13.18, 13.22-13.24** Sim68K-Qt | Main window, registers, source view, stack/memory viewers, hardware window, I/O console, graphics, log, settings, advanced breakpoints, find, auto trace | 3. Sim68K GUI (21 rows) | 13.21 manual checklist |
 | 8 | **13.19** Edit68K-Qt | Editor, assembler options (A7 auto-save, A8 template), find/replace, syntax colouring, MDI | 4. Edit68K GUI (14 rows), A7, A8 | 13.21 checklist; assembler output already oracle-verified |
@@ -253,6 +254,7 @@ Each committed iteration updates the snapshot above and adds a line here.
 | 2026-10-15 | `8efaeb1` | 11.2 interrupt tests; IRQ injection in both tracers | S4 order documented |
 | 2026-10-15 | `06029a4` | 0.6 golden data infrastructure marked done (delivered by 8.10/10.1) | — |
 | 2026-10-15 | `bf30067` | Clang -O2 / MSVC portability fixes (warnings, test portability) | — |
+| 2026-10-15 | `(X)` | 12.2 coverage tooling + gate; operands/forms corpus | coverage targets met; A1b/A3 coverage widened |
 
 ## 10. Parity acceptance
 
