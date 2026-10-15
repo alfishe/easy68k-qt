@@ -28,7 +28,7 @@ hash and the program output.
 
 ## Status snapshot
 
-*Updated after every committed iteration (last: 2026-10-15, commit `(X)`).*
+*Updated after every committed iteration (last: 2026-10-15, commit `218d9cd`).*
 
 | Area | Rows | Done | Partial | Gap | Notes |
 |------|------|------|---------|-----|-------|
@@ -272,7 +272,7 @@ Each committed iteration updates the snapshot above and adds a line here.
 | 2026-10-15 | `9898209` | 13.5 stack window | G16 |
 | 2026-10-15 | `54361dd` | 13.6/13.7 memory window: view, Live, editing, Copy/Fill/Save | G15 |
 | 2026-10-15 | `d454022` | 13.8 hardware window; session requests served while waiting; S0 lines and memory map | G8, G17, G23 (new) |
-| 2026-10-15 | `(X)` | 13.8b S-record loader as loadSrec(): messages, checksum errors go on, stops | G23 |
+| 2026-10-15 | `218d9cd` | 13.8b S-record loader as loadSrec(): messages, checksum errors go on, stops | G23 |
 
 ## 10. Parity acceptance
 
