@@ -130,6 +130,10 @@ void MainWindow::BuildActionsAndMenus() {
     }
   });
 
+  examples_act_ = file_menu->addAction(QStringLiteral("E&xamples..."));
+  examples_act_->setShortcut(QKeySequence(QStringLiteral("Ctrl+Shift+E")));
+  connect(examples_act_, &QAction::triggered, this, [this]() { ShowExamplesBrowser(); });
+
   reload_act_ = file_menu->addAction(QStringLiteral("&Reload File"));
   reload_act_->setShortcut(QKeySequence(QStringLiteral("Ctrl+R")));
   connect(reload_act_, &QAction::triggered, this, &MainWindow::ReloadActiveFile);
@@ -848,6 +852,24 @@ void MainWindow::OpenContextHelp(const QString& context) {
     token = QStringLiteral("INTRO");
   }
   help_viewer_->ShowContext(token);
+}
+
+void MainWindow::ShowExamplesBrowser(const QString& select_id) {
+  if (!examples_browser_) {
+    examples_browser_ = new gui::ExamplesBrowserDialog(this);
+    examples_browser_->SetOpenFileCallback(
+        [this](const QString& source_path, const QString& /*readme_path*/) {
+          if (!source_path.isEmpty()) {
+            OpenFile(source_path);
+          }
+        });
+  }
+  if (!select_id.isEmpty()) {
+    examples_browser_->SelectExampleById(select_id);
+  }
+  examples_browser_->show();
+  examples_browser_->raise();
+  examples_browser_->activateWindow();
 }
 
 void MainWindow::ShowAboutDialog() {

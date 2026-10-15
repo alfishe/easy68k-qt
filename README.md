@@ -32,19 +32,26 @@ the feature-by-feature parity snapshot.
   **30/30** Feature Coverage Matrix items verified):
   - `easy68k-editor` (**Edit68K-Qt**): MDI `.X68`/`.L68` editor with 8-category
     syntax highlighting, Assembly/Fixed tab stops, integrated assembler (`F9`),
-    clickable error list, simulator launch, printing, and context-sensitive
-    `F1` help.
+    clickable error list, simulator launch, printing, context-sensitive
+    `F1` help, and **File → Examples...** curriculum browser (`Ctrl+Shift+E`).
   - `easy68k-simulator` (**Sim68K-Qt**): full simulator GUI with register
     editor, source listing view with breakpoint gutter, I/O console & 640×480
     graphics window (with full-screen mode), Hardware peripheral window (7-seg,
     LEDs, switches, buttons, auto-IRQ, memory map), Memory viewer/editor,
     Stack viewer, Advanced Break Points dialog, Auto Trace, Execution/Output
-    logging, and all 9 Qt Trap #15 backends.
+    logging, all 9 Qt Trap #15 backends, automatic **"What to watch"** hints,
+    and **File → Check Solution...** (`Ctrl+Shift+C`).
   - `easybin` (**EASyBIN-Qt**): S-Record and binary utility with 1/2/4-file
     interleave split modes and color-coded hex/ASCII editor.
   - `easy68k-help` (**HelpViewer**): offline HTML help browser (`contents.hhc`,
-    `index.hhk`, `ez68k.ali`, and Quick Reference PDF) shared across all three
-    applications.
+    `index.hhk`, `ez68k.ali`, Quick Reference PDF, and instruction-to-examples
+    cross-links) shared across all three applications.
+- **Examples & Education curriculum** (`examples/`, `tools/easy68k-run/`,
+  Tasks E0–E9 complete): 83 graded examples + 83 exercises (166 verified
+  programs) across the Core Path (`L0`–`L3`), Track S (`systems/`), Track C/C++
+  (`c/` + `libeasy68k`), Track O (`optimization/` naive vs optimised pairs with
+  cycle budgets), and Capstone Projects (`projects/`), verified headlessly by
+  `easy68k-run` and `ExampleRunnerTest`.
 
 Correctness is checked against *reference oracles*: the original Edit68K
 assembler and Sim68K simulator built on Linux from the original sources
@@ -146,4 +153,4 @@ The learning examples under `examples/` are CC0-1.0 (see `examples/LICENSE`).
 
 ---
 
-*Phases 0–11 & Phase 13 (GUI) complete · 69/69 parity items & 30/30 feature matrix items verified · Next: Examples & Education (E1–E9)*
+*Phases 0–11, Phase 13 (GUI), & Examples Curriculum (E0–E9) complete · 69/69 parity items & 166 runnable curriculum programs verified*

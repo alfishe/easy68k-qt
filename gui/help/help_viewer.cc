@@ -278,6 +278,7 @@ QString HelpViewer::ResolveRelativeTarget(const QString& relative_target,
 
 void HelpViewer::LoadAliasTable() {
   context_map_.clear();
+  page_mnemonics_.clear();
 
   const QString ali_rel = ResolveRelativeTarget(QStringLiteral("ez68k.ali")).section('#', 0, 0);
   if (!ali_rel.isEmpty()) {
@@ -305,6 +306,13 @@ void HelpViewer::LoadAliasTable() {
           context_map_.insert(short_key, resolved);
           if (short_key.startsWith(QStringLiteral("DIRECT_"))) {
             context_map_.insert(short_key.mid(7), resolved);
+          }
+          const QString base_rel = resolved.section(QLatin1Char('#'), 0, 0).toLower();
+          if (base_rel.startsWith(QStringLiteral("reference/68ks"))) {
+            QStringList& mnems = page_mnemonics_[base_rel];
+            if (!mnems.contains(short_key)) {
+              mnems.push_back(short_key);
+            }
           }
         }
       }
@@ -565,8 +573,12 @@ bool HelpViewer::ShowContext(const QString& context) {
 }
 
 bool HelpViewer::NavigateToPage(const QString& relative_target) {
+  if (relative_target.trimmed().startsWith(QStringLiteral("example://"), Qt::CaseInsensitive)) {
+    return LoadTargetInternal(relative_target.trimmed(), /*record_history=*/true);
+  }
   QString base_dir;
-  if (!current_page_.isEmpty()) {
+  if (!current_page_.isEmpty() &&
+      !current_page_.startsWith(QStringLiteral("example://"), Qt::CaseInsensitive)) {
     base_dir = QFileInfo(current_page_.section('#', 0, 0)).path();
     if (base_dir == ".")
       base_dir.clear();
@@ -598,6 +610,25 @@ bool HelpViewer::OpenPdfTarget(const QString& canonical_rel_path) {
 }
 
 bool HelpViewer::LoadTargetInternal(const QString& canonical_target, bool record_history) {
+  if (canonical_target.startsWith(QStringLiteral("example://"), Qt::CaseInsensitive)) {
+    const QString ex_id = canonical_target.mid(10).section(QLatin1Char('/'), 0, 0).trimmed();
+    const ExampleCatalogEntry* entry = examples_catalog_.FindById(ex_id);
+    if (entry == nullptr)
+      return false;
+
+    current_page_ = QStringLiteral("example://") + entry->id;
+    browser_->setMarkdown(entry->readme_markdown);
+    setWindowTitle(QStringLiteral("EASy68K Help - Example %1: %2").arg(entry->id, entry->title));
+    if (record_history) {
+      RecordHistory(current_page_);
+    }
+    UpdateNavigationButtons();
+    if (example_activation_cb_) {
+      example_activation_cb_(entry->id);
+    }
+    return true;
+  }
+
   if (help_dir_.isEmpty())
     return false;
 
@@ -614,7 +645,44 @@ bool HelpViewer::LoadTargetInternal(const QString& canonical_target, bool record
   QFile file(abs_path);
   if (!file.open(QIODevice::ReadOnly))
     return false;
-  const QString html = QString::fromUtf8(file.readAll());
+  QString html = QString::fromUtf8(file.readAll());
+
+  // Append curriculum cross-links on 68000 instruction reference pages (Task E9).
+  const QStringList page_mnems = page_mnemonics_.value(rel_file.toLower());
+  if (!page_mnems.isEmpty()) {
+    QVector<const ExampleCatalogEntry*> related;
+    QSet<QString> seen_ids;
+    for (const QString& mnem : page_mnems) {
+      for (const ExampleCatalogEntry* ex : examples_catalog_.FindByMnemonic(mnem)) {
+        if (!seen_ids.contains(ex->id)) {
+          seen_ids.insert(ex->id);
+          related.push_back(ex);
+        }
+      }
+    }
+    if (!related.isEmpty()) {
+      QString cross_links = QStringLiteral(
+          "<hr><div class=\"curriculum-examples\">"
+          "<h3>Related Examples in Curriculum</h3><ul>");
+      const int limit = std::min<int>(related.size(), 10);
+      for (int i = 0; i < limit; ++i) {
+        const ExampleCatalogEntry* ex = related[i];
+        cross_links +=
+            QStringLiteral(
+                "<li><a href=\"example://%1\"><b>%1 — %2</b></a> "
+                "(%3, Level %4)</li>")
+                .arg(ex->id.toHtmlEscaped(), ex->title.toHtmlEscaped(), ex->track.toHtmlEscaped())
+                .arg(ex->level);
+      }
+      cross_links += QStringLiteral("</ul></div>");
+      const int body_close = html.lastIndexOf(QStringLiteral("</body>"), -1, Qt::CaseInsensitive);
+      if (body_close >= 0) {
+        html.insert(body_close, cross_links);
+      } else {
+        html += cross_links;
+      }
+    }
+  }
 
   current_page_ = canonical_target;
   browser_->document()->setBaseUrl(
@@ -723,6 +791,11 @@ void HelpViewer::OnAnchorClicked(const QUrl& url) {
   if (scheme == QStringLiteral("http") || scheme == QStringLiteral("https") ||
       scheme == QStringLiteral("mailto")) {
     QDesktopServices::openUrl(url);
+    return;
+  }
+  if (scheme == QStringLiteral("example")) {
+    const QString id = url.host().isEmpty() ? url.path() : url.host();
+    NavigateToPage(QStringLiteral("example://") + id);
     return;
   }
 

@@ -21,6 +21,7 @@
 #include <QTimer>
 #include <vector>
 
+#include "help/examples_browser.h"
 #include "sim_log.h"
 #include "sim_session.h"
 
@@ -101,6 +102,7 @@ class MainWindow : public QMainWindow {
   QAction* RewindAction() const { return rewind_; }
   QAction* ReloadAction() const { return reload_; }
   QAction* OpenAction() const { return open_; }
+  QAction* CheckSolutionAction() const { return check_solution_; }
   QAction* CloseAction() const { return close_; }
   QAction* FindAction() const { return find_; }
   QAction* GotoPcAction() const { return goto_pc_; }
@@ -121,6 +123,11 @@ class MainWindow : public QMainWindow {
   static QString ResolveEasyBinExecutable();
   void ShowHelp(const QString& context);
   HelpViewer* HelpView() const { return help_viewer_; }
+  void ShowSolutionChecker(const QString& spec_path = QString());
+  SolutionCheckReport CheckCurrentSolution(const QString& spec_path = QString()) const;
+  SolutionCheckerDialog* SolutionCheckerView() const { return solution_checker_dialog_; }
+  const QString& ActiveExampleSpecPath() const { return active_spec_path_; }
+  const QString& ActiveWhatToWatch() const { return active_what_to_watch_; }
   bool LoggingShown() const { return logging_action_->isVisible(); }
   RegisterWidget* Registers() const { return registers_; }
   SourceView* Source() const { return source_; }
@@ -148,6 +155,7 @@ class MainWindow : public QMainWindow {
 
   void OnOpen();
   void OnOpenData();
+  void OnCheckSolution();
   void OnClose();
   void OnPrinterSetup();
   void OnFind();
@@ -193,6 +201,9 @@ class MainWindow : public QMainWindow {
   BreakpointsWindow* breakpoints_window_ = nullptr;
   FindDialog* find_dialog_ = nullptr;
   HelpViewer* help_viewer_ = nullptr;
+  SolutionCheckerDialog* solution_checker_dialog_ = nullptr;
+  QString active_spec_path_;
+  QString active_what_to_watch_;
   RegisterWidget* registers_ = nullptr;
   SourceView* source_ = nullptr;
   QPlainTextEdit* messages_ = nullptr;
@@ -208,6 +219,7 @@ class MainWindow : public QMainWindow {
 
   QAction* open_ = nullptr;
   QAction* open_data_ = nullptr;
+  QAction* check_solution_ = nullptr;
   QAction* close_ = nullptr;
   QAction* printer_setup_ = nullptr;
   QAction* exit_ = nullptr;

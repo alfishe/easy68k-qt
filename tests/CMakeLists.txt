@@ -83,6 +83,7 @@ if(TARGET easy68k-simulator-ui)
     gui/help_viewer_test.cc
     gui/editor_test.cc
     gui/parity_validation_test.cc
+    gui/examples_browser_test.cc
   )
   find_package(Qt6 REQUIRED COMPONENTS Test)
   target_link_libraries(easym68k-gui-tests PRIVATE easy68k-simulator-ui easy68k-easybin-ui easy68k-editor-ui easy68k-help easym68k-asm Qt6::Test GTest::gtest)

@@ -24,8 +24,9 @@ class QMenu;
 class QPrinter;
 
 namespace easym68k::gui {
+class ExamplesBrowserDialog;
 class HelpViewer;
-}
+}  // namespace easym68k::gui
 
 namespace easym68k::editor {
 
@@ -79,7 +80,9 @@ class MainWindow : public QMainWindow {
 
   // Help & dialogs
   void OpenContextHelp(const QString& context = QString());
+  void ShowExamplesBrowser(const QString& select_id = QString());
   gui::HelpViewer* help_viewer() const { return help_viewer_; }
+  gui::ExamplesBrowserDialog* examples_browser() const { return examples_browser_; }
   EditorFindDialog* find_dialog() const { return find_dialog_; }
   EditorReplaceDialog* replace_dialog() const { return replace_dialog_; }
   QCheckBox* auto_save_checkbox() const { return auto_save_chk_; }
@@ -101,6 +104,7 @@ class MainWindow : public QMainWindow {
   // Menu actions exposed for tests
   QAction* new_action() const { return new_act_; }
   QAction* open_action() const { return open_act_; }
+  QAction* examples_action() const { return examples_act_; }
   QAction* reload_action() const { return reload_act_; }
   QAction* save_action() const { return save_act_; }
   QAction* save_as_action() const { return save_as_act_; }
@@ -168,6 +172,7 @@ class MainWindow : public QMainWindow {
   EditorFindDialog* find_dialog_ = nullptr;
   EditorReplaceDialog* replace_dialog_ = nullptr;
   gui::HelpViewer* help_viewer_ = nullptr;
+  gui::ExamplesBrowserDialog* examples_browser_ = nullptr;
 
   std::function<AssemblerStatusDialog::ActionChoice(const QString&, int, int, bool, bool)>
       status_dialog_handler_;
@@ -177,6 +182,7 @@ class MainWindow : public QMainWindow {
   // Actions
   QAction* new_act_ = nullptr;
   QAction* open_act_ = nullptr;
+  QAction* examples_act_ = nullptr;
   QAction* reload_act_ = nullptr;
   QAction* save_act_ = nullptr;
   QAction* save_as_act_ = nullptr;

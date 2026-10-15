@@ -1,6 +1,7 @@
 #ifndef EASYM68K_GUI_HELP_HELP_VIEWER_H_
 #define EASYM68K_GUI_HELP_HELP_VIEWER_H_
 
+#include <functional>
 #include <QDialog>
 #include <QHash>
 #include <QString>
@@ -8,7 +9,7 @@
 #include <QUrl>
 #include <QVector>
 
-#include <functional>
+#include "help/examples_browser.h"
 
 class QLineEdit;
 class QListWidget;
@@ -33,8 +34,7 @@ class HelpViewer : public QDialog {
     QString target;
   };
 
-  explicit HelpViewer(QWidget* parent = nullptr,
-                      const QString& help_dir = QString());
+  explicit HelpViewer(QWidget* parent = nullptr, const QString& help_dir = QString());
 
   static QString DefaultHelpDir();
 
@@ -60,10 +60,12 @@ class HelpViewer : public QDialog {
   // Opens EASy68KQuickRef.pdf via the configured PDF opener callback.
   bool OpenQuickReferencePdf();
 
-  void SetPdfOpener(std::function<void(const QString&)> opener) {
-    pdf_opener_ = std::move(opener);
+  void SetPdfOpener(std::function<void(const QString&)> opener) { pdf_opener_ = std::move(opener); }
+  void SetExampleActivationCallback(std::function<void(const QString& example_id)> cb) {
+    example_activation_cb_ = std::move(cb);
   }
 
+  const ExamplesCatalog& examples_catalog() const { return examples_catalog_; }
   const QString& help_dir() const { return help_dir_; }
   const QString& current_page() const { return current_page_; }
   QString current_html() const;
@@ -110,6 +112,10 @@ class HelpViewer : public QDialog {
   QStringList history_;
   int history_index_ = -1;
   std::function<void(const QString&)> pdf_opener_;
+  std::function<void(const QString&)> example_activation_cb_;
+  ExamplesCatalog examples_catalog_;
+  // Canonical relative page path -> list of instruction mnemonics documented on that page.
+  QHash<QString, QStringList> page_mnemonics_;
 
   QTabWidget* nav_tabs_ = nullptr;
   QTreeWidget* toc_tree_ = nullptr;

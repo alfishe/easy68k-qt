@@ -384,6 +384,9 @@ void MainWindow::CreateActions() {
   open_ =
       Action(QStringLiteral("&Open..."), QKeySequence(Qt::CTRL | Qt::Key_O), &MainWindow::OnOpen);
   open_data_ = Action(QStringLiteral("Open &Data..."), {}, &MainWindow::OnOpenData);
+  check_solution_ =
+      Action(QStringLiteral("Check &Solution..."), QKeySequence(QStringLiteral("Ctrl+Shift+C")),
+             &MainWindow::OnCheckSolution);
   close_ = Action(QStringLiteral("&Close"), {}, &MainWindow::OnClose);
   printer_setup_ = Action(QStringLiteral("&Printer Setup..."), {}, &MainWindow::OnPrinterSetup);
   exit_ = Action(QStringLiteral("E&xit"), {}, nullptr);
@@ -446,6 +449,7 @@ void MainWindow::CreateMenus() {
   QMenu* file = menuBar()->addMenu(QStringLiteral("&File"));
   file->addAction(open_);
   file->addAction(open_data_);
+  file->addAction(check_solution_);
   file->addSeparator();
   file->addAction(close_);
   file->addSeparator();
@@ -630,6 +634,29 @@ bool MainWindow::OpenFile(const QString& path) {
   }
   log.SetFileNames(path);
   UpdateLogActions();
+
+  active_spec_path_ = ExamplesCatalog::ResolveSpecPathForProgram(path);
+  active_what_to_watch_.clear();
+  if (!active_spec_path_.isEmpty()) {
+    QDir dir = QFileInfo(active_spec_path_).dir();
+    QString readme_path = dir.filePath(QStringLiteral("README.md"));
+    if (!QFileInfo::exists(readme_path)) {
+      QDir parent = dir;
+      if (parent.cdUp()) {
+        readme_path = parent.filePath(QStringLiteral("README.md"));
+      }
+    }
+    QFile rf(readme_path);
+    if (rf.open(QIODevice::ReadOnly)) {
+      active_what_to_watch_ = ExamplesCatalog::ExtractWhatToWatch(QString::fromUtf8(rf.readAll()));
+    }
+    if (!active_what_to_watch_.isEmpty()) {
+      messages_->appendPlainText(QStringLiteral("[What to watch] %1").arg(active_what_to_watch_));
+    }
+    if (solution_checker_dialog_ != nullptr) {
+      solution_checker_dialog_->SetSpecPath(active_spec_path_, active_what_to_watch_);
+    }
+  }
   return opened;
 }
 
@@ -682,6 +709,70 @@ void MainWindow::OnOpenData() {
                                                     QString::fromLatin1(kS68Filter));
   if (!name.isEmpty())
     session_->OpenData(name);
+}
+
+void MainWindow::OnCheckSolution() {
+  ShowSolutionChecker();
+}
+
+void MainWindow::ShowSolutionChecker(const QString& spec_path) {
+  const QString resolved = !spec_path.isEmpty() ? spec_path : active_spec_path_;
+  if (solution_checker_dialog_ == nullptr) {
+    solution_checker_dialog_ = new SolutionCheckerDialog(
+        this, resolved, active_what_to_watch_,
+        [this](const QString& target_spec) { return CheckCurrentSolution(target_spec); });
+  } else if (!resolved.isEmpty()) {
+    solution_checker_dialog_->SetSpecPath(resolved, active_what_to_watch_);
+  }
+  if (!solution_checker_dialog_->spec_path().isEmpty() &&
+      QFileInfo::exists(solution_checker_dialog_->spec_path())) {
+    solution_checker_dialog_->RunLiveCheck();
+  }
+  Raise(solution_checker_dialog_);
+}
+
+SolutionCheckReport MainWindow::CheckCurrentSolution(const QString& spec_path) const {
+  const QString target = !spec_path.isEmpty() ? spec_path : active_spec_path_;
+  tools::ExampleSpec spec;
+  std::string err;
+  if (target.isEmpty() || !tools::LoadExampleSpecFile(target.toStdString(), &spec, &err)) {
+    SolutionCheckReport bad;
+    bad.valid_spec = false;
+    bad.passed = false;
+    bad.spec_path = target;
+    bad.summary = QStringLiteral("Could not load spec: %1").arg(QString::fromStdString(err));
+    bad.failures.push_back(bad.summary);
+    return bad;
+  }
+
+  // Extract onscreen console text from SimIoScreen.
+  const SimIoScreen& screen = session_->Screen();
+  int cur_col = 0;
+  int cur_row = 0;
+  screen.GetRC(&cur_col, &cur_row);
+  QStringList screen_lines;
+  const int max_row = std::clamp(cur_row, 0, SimIoScreen::kMaxRows - 1);
+  for (int r = 0; r <= max_row; ++r) {
+    QString line;
+    for (int c = 0; c < SimIoScreen::kMaxCols; ++c) {
+      const char ch = screen.CharAt(r, c);
+      line.append(ch != 0 ? QLatin1Char(ch) : QLatin1Char(' '));
+    }
+    while (line.endsWith(QLatin1Char(' '))) {
+      line.chop(1);
+    }
+    if (r < max_row || !line.isEmpty()) {
+      screen_lines.push_back(line);
+    }
+  }
+  QString console_text = screen_lines.join(QStringLiteral("\r\n"));
+  if (!screen_lines.isEmpty() && cur_col == 0 && cur_row > 0) {
+    console_text += QStringLiteral("\r\n");
+  }
+
+  return CheckSimulatorStateAgainstSpec(spec, session_->Simulator().State(), Halted(),
+                                        session_->Simulator().GetMemory(), console_text, target,
+                                        active_what_to_watch_);
 }
 
 void MainWindow::OnClose() {
