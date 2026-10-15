@@ -45,7 +45,10 @@ run() {  # run <name> <src.x68> <flags...>
     input="$out/$name.in"
   fi
   if [[ $# -gt 0 ]]; then printf "%s\n" "$*" >"$out/$name.flags"; fi
-  "$ref" -t "$@" -n 400000 -o "$work/$name.trace" "$out/$name.S68" <"$input" >"$out/$name.out"
+  # run in an empty directory (Trap #15 file tasks create files)
+  mkdir -p "$work/run_$name"
+  (cd "$work/run_$name" &&
+     "$ref" -t "$@" -n 400000 -o "$work/$name.trace" "$out/$name.S68" <"$input" >"$out/$name.out")
   python3 - "$work/$name.trace" >"$out/$name.expected" <<'EOF'
 import sys
 h = 0xcbf29ce484222325

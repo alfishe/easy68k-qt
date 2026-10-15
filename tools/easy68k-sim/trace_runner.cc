@@ -9,6 +9,7 @@
 
 #include "easym68k/sim/itext_io.h"
 #include "easym68k/sim/simulator.h"
+#include "easym68k/sim/std_file_io.h"
 
 namespace easym68k::tools {
 namespace {
@@ -125,8 +126,10 @@ void DumpMemory(FILE* f, const M68kSimulator& sim, uint32_t addr, uint32_t len) 
 bool RunTrace(const std::string& s68_path, const TraceOptions& options, FILE* trace, FILE* in,
               FILE* out) {
   ConsoleTextIO text_io(in, out);
+  sim::StdFileIO file_io(options.file_dir);
   M68kSimulator::Config config;
   config.text_io = &text_io;
+  config.file_io = &file_io;
   config.exceptions_enabled = options.exceptions;
   config.bitfield_enabled = options.bitfield;
   M68kSimulator sim(config);

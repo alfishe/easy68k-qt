@@ -55,6 +55,29 @@ Memory::MapResult Memory::CheckWrite(uint32_t addr, int bytes) const {
   return MapResult::kOk;
 }
 
+SimResult Memory::CheckBuffer(uint32_t address, uint32_t bytes, uint8_t kinds,
+                              bool* rom_ignore) const {
+  if (rom_ignore != nullptr)
+    *rom_ignore = false;
+  uint32_t addr = MaskAddress(address);
+  if (!maps_active_ || IsExempt(addr))
+    return SimResult::kOk;
+  uint64_t end = static_cast<uint64_t>(addr) + (bytes == 0 ? 1 : bytes);
+  if (end > kMemorySize)
+    end = kMemorySize;
+  uint8_t f = 0;
+  for (uint64_t a = addr; a < end; ++a)
+    f |= flags_[a];
+  f &= kinds;
+  if ((f & kMemInvalid) || ((f & kMemProtected) && !supervisor_) || (f & kMemReadOnly)) {
+    RecordFault(SimResult::kBusError, address, false);
+    return SimResult::kBusError;
+  }
+  if ((f & kMemRom) && rom_ignore != nullptr)
+    *rom_ignore = true;
+  return SimResult::kOk;
+}
+
 void Memory::RecordFault(SimResult kind, uint32_t address, bool is_read) const {
   if (fault_.kind != SimResult::kOk)
     return;  // keep the first fault
@@ -213,6 +236,7 @@ SimResult Memory::Write(uint32_t address, uint32_t value, DataSize size) {
 void Memory::Clear() {
   std::memset(data_.data(), 0, data_.size());
   std::memset(flags_.data(), kMemNormal, flags_.size());
+  maps_active_ = false;
   fault_ = MemoryFault{};
   supervisor_ = false;
 }
@@ -220,6 +244,7 @@ void Memory::Clear() {
 void Memory::Erase() {
   std::memset(data_.data(), 0xFF, data_.size());
   std::memset(flags_.data(), kMemNormal, flags_.size());
+  maps_active_ = false;
   fault_ = MemoryFault{};
   supervisor_ = false;
 }
@@ -239,6 +264,10 @@ void Memory::LoadData(uint32_t address, const std::vector<uint8_t>& data) {
 // =============================================================================
 
 void Memory::SetFlags(uint32_t start_address, uint32_t end_address, uint8_t flags) {
+  if (flags != kMemNormal)
+    maps_active_ = true;
+  else if (MaskAddress(start_address) == 0 && MaskAddress(end_address) == kAddressMask)
+    maps_active_ = false;  // whole map reset
   uint32_t start = MaskAddress(start_address);
   uint32_t end = MaskAddress(end_address);
   if (start > end) {
@@ -250,6 +279,8 @@ void Memory::SetFlags(uint32_t start_address, uint32_t end_address, uint8_t flag
 }
 
 void Memory::AddFlags(uint32_t start_address, uint32_t end_address, uint8_t flags) {
+  if (flags != kMemNormal)
+    maps_active_ = true;
   uint32_t start = MaskAddress(start_address);
   uint32_t end = MaskAddress(end_address);
   if (start > end) {

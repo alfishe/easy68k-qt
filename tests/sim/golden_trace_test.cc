@@ -104,6 +104,11 @@ TEST_P(GoldenTraceTest, MatchesOriginal) {
         options.bitfield = true;
     }
   }
+  // Trap #15 file tasks work in a fresh directory, as the oracle did.
+  const fs::path files = fs::temp_directory_path() / ("easy68k_golden_" + name);
+  fs::remove_all(files);
+  fs::create_directories(files);
+  options.file_dir = files.string();
   FILE* trace = std::tmpfile();
   FILE* out = std::tmpfile();
   FILE* in = fs::exists(dir / (name + ".in")) ? std::fopen((dir / (name + ".in")).c_str(), "rb")
@@ -117,6 +122,7 @@ TEST_P(GoldenTraceTest, MatchesOriginal) {
   std::fclose(trace);
   std::fclose(out);
   std::fclose(in);
+  fs::remove_all(files);
 }
 
 INSTANTIATE_TEST_SUITE_P(Programs, GoldenTraceTest, ::testing::ValuesIn(Programs()),

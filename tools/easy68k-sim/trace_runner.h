@@ -23,6 +23,7 @@ struct TraceOptions {
   long max_steps = 100000;
   bool trace_steps = false;                          // one line per instruction
   std::vector<std::pair<uint32_t, uint32_t>> dumps;  // memory dumps (addr, len)
+  std::string file_dir;  // Trap #15 file tasks: relative names resolve here ("" = cwd)
 };
 
 // Loads `s68_path` the way Sim68K's File > Open does and runs it until it

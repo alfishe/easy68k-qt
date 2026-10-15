@@ -55,8 +55,16 @@ for prog in "${progs[@]}"; do
   else
     s68="$prog"
   fi
-  "$ref" -t "${flags[@]}" "${extra[@]}" -o "$work/$name.ref.trace" "$s68" <"$input" >"$work/$name.ref.out" 2>/dev/null
-  "$port" -t "${flags[@]}" "${extra[@]}" -o "$work/$name.port.trace" "$s68" <"$input" >"$work/$name.port.out" 2>/dev/null
+  # Each simulator runs in its own empty directory (Trap #15 file tasks).
+  s68="$(cd "$(dirname "$s68")" && pwd)/$(basename "$s68")"
+  rm -rf "$work/ref.d" "$work/port.d"
+  mkdir -p "$work/ref.d" "$work/port.d"
+  (cd "$work/ref.d" && "$ref" -t "${flags[@]}" "${extra[@]}" -o "$work/$name.ref.trace" "$s68" \
+     <"$input" >"$work/$name.ref.out" 2>/dev/null)
+  (cd "$work/port.d" && "$port" -t "${flags[@]}" "${extra[@]}" -o "$work/$name.port.trace" "$s68" \
+     <"$input" >"$work/$name.port.out" 2>/dev/null)
+  # files the program left behind must match too
+  diff -r "$work/ref.d" "$work/port.d" >/dev/null || echo "(files differ)" >>"$work/$name.port.out"
   for f in "$work/$name".{ref,port}.trace; do sed -i '/^MSG /d' "$f"; done
   verdict="SAME"
   if ! cmp -s "$work/$name.ref.trace" "$work/$name.port.trace"; then verdict="DIFF-TRACE"

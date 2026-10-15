@@ -103,6 +103,15 @@ class Memory {
     exemptions_ = std::move(ranges);
   }
 
+  // Trap #15 buffer check (UTILS.CPP memoryMapCheck()): tests the maps in
+  // `kinds` (kMemInvalid / kMemProtected / kMemReadOnly / kMemRom) over
+  // [address, address + bytes). Returns kBusError (recorded as a write fault
+  // at `address`, as the original raises it) or kOk; *rom_ignore is set when
+  // the range touches ROM and ROM was asked for (the original then skips the
+  // operation). Hardware I/O addresses are always allowed.
+  SimResult CheckBuffer(uint32_t address, uint32_t bytes, uint8_t kinds,
+                        bool* rom_ignore = nullptr) const;
+
   // Fault latch: records the first failing access since ClearFault().
   bool HasFault() const { return fault_.kind != SimResult::kOk; }
   const MemoryFault& GetFault() const { return fault_; }
@@ -146,6 +155,7 @@ class Memory {
   mutable MemoryFault fault_;
   const uint32_t* fault_pc_source_ = nullptr;
   bool fault_blocks_writes_ = false;
+  bool maps_active_ = false;  // some address has a non-normal map flag
   mutable AccessTracking access_;
 
   void NoteRead(uint32_t addr) const {

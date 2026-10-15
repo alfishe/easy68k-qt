@@ -9,6 +9,7 @@
 //   D1, D2, D3, D4 — parameters and return values, task-specific
 //   A1, A2, A3 — memory buffer addresses, task-specific
 
+#include <algorithm>
 #include <cstdint>
 #include <cstdio>
 #include <cstring>
@@ -25,6 +26,7 @@
 #include "easym68k/sim/isound_io.h"
 #include "easym68k/sim/itext_io.h"
 #include "easym68k/sim/simulator.h"
+#include "easym68k/sim/std_file_io.h"
 #include "easym68k/sim/trap15.h"
 #include "easym68k/sim/types.h"
 
@@ -36,9 +38,13 @@ namespace {
 void ReadStrFromMem(const uint8_t* raw, uint32_t addr, char* buf, size_t max_len) {
   if (max_len == 0)
     return;
-  const uint8_t* src = raw + (addr & kAddressMask);
+  uint32_t start = addr & kAddressMask;
+  const uint8_t* src = raw + start;
+  // Never read past the end of the 68000 memory (the original's strncpy
+  // could run off its buffer when no terminator followed).
+  size_t limit = std::min<size_t>(max_len - 1, kMemorySize - start);
   size_t i = 0;
-  while (i < max_len - 1 && src[i]) {
+  while (i < limit && src[i]) {
     buf[i] = static_cast<char>(src[i]);
     ++i;
   }
@@ -102,6 +108,9 @@ SimResult M68kSimulator::DispatchTrap15() {
   uint8_t task = static_cast<uint8_t>(state_.d[0] & 0xFF);
   uint8_t* raw = memory_.RawData();
   char buf[256];
+  auto SetD0Word = [this](short result) {  // result code in D0.W
+    state_.d[0] = (state_.d[0] & 0xFFFF0000u) | static_cast<uint16_t>(result);
+  };
 
   switch (task) {
       // ---- TEXT I/O --------------------------------------------------------
@@ -454,82 +463,85 @@ SimResult M68kSimulator::DispatchTrap15() {
         break;
       short result = 0;
       config_.file_io->CloseAll(&result);
-      state_.d[0] = (state_.d[0] & 0xFFFF0000u) | static_cast<uint16_t>(result);
+      SetD0Word(result);
       break;
     }
 
-    case kTrap15FileOpen: {  // 51: open existing file at (A1), FID in D1.L
+    case kTrap15FileOpen:    // 51: open existing file named at (A1), FID in D1.L
+    case kTrap15FileNew:     // 52: create file named at (A1), FID in D1.L
+    case kTrap15FileDelete:  // 57: delete file named at (A1)
+    case kTrap15FileOp: {    // 59: file operation D1 on file named at (A1)
       if (!config_.file_io)
         break;
       ReadStrFromMem(raw, state_.a[1], buf, sizeof(buf));
-      long fid = 0;
+      // CODE9.CPP: memoryMapCheck(Invalid, A1, strlen(name))
+      if (memory_.CheckBuffer(state_.a[1], static_cast<uint32_t>(std::strlen(buf)), kMemInvalid) !=
+          SimResult::kOk)
+        return SimResult::kBusError;
       short result = 0;
-      config_.file_io->OpenFile(&fid, buf, &result);
-      state_.d[1] = static_cast<uint32_t>(fid);
-      state_.d[0] = (state_.d[0] & 0xFFFF0000u) | static_cast<uint16_t>(result);
+      long value = static_cast<int32_t>(state_.d[1]);  // FID out / mode in
+      if (task == kTrap15FileOpen)
+        config_.file_io->OpenFile(&value, buf, &result);
+      else if (task == kTrap15FileNew)
+        config_.file_io->NewFile(&value, buf, &result);
+      else if (task == kTrap15FileDelete)
+        config_.file_io->DeleteFile(buf, &result);
+      else
+        config_.file_io->FileOp(&value, buf, &result);
+      if (task == kTrap15FileOpen || task == kTrap15FileNew)
+        state_.d[1] = static_cast<uint32_t>(value);
+      SetD0Word(result);
       break;
     }
 
-    case kTrap15FileNew: {  // 52: create/open file at (A1), FID in D1.L
+    case kTrap15FileRead:     // 53: read D2.L bytes from FID D1 into (A1)
+    case kTrap15FileWrite: {  // 54: write D2.L bytes from (A1) to FID D1
       if (!config_.file_io)
         break;
-      ReadStrFromMem(raw, state_.a[1], buf, sizeof(buf));
-      long fid = 0;
+      uint32_t addr = state_.a[1] & kAddressMask;
+      uint32_t size = state_.d[2];
+      // The buffer must fit in the 68000 memory (CODE9.CPP), else F_ERROR.
+      if (static_cast<uint64_t>(addr) + size > kMemorySize) {
+        SetD0Word(kFileError);
+        break;
+      }
+      bool rom = false;
+      uint8_t kinds =
+          task == kTrap15FileRead ? (kMemInvalid | kMemReadOnly | kMemRom) : kMemInvalid;
+      if (memory_.CheckBuffer(addr, size, kinds, &rom) != SimResult::kOk)
+        return SimResult::kBusError;
+      if (rom)
+        break;  // reading into ROM: the original skips the read (D0 unchanged)
       short result = 0;
-      config_.file_io->NewFile(&fid, buf, &result);
-      state_.d[1] = static_cast<uint32_t>(fid);
-      state_.d[0] = (state_.d[0] & 0xFFFF0000u) | static_cast<uint16_t>(result);
+      if (task == kTrap15FileRead) {
+        unsigned int count = size;
+        config_.file_io->ReadFile(static_cast<int32_t>(state_.d[1]),
+                                  reinterpret_cast<char*>(raw + addr), &count, &result);
+        state_.d[2] = count;
+      } else {
+        config_.file_io->WriteFile(static_cast<int32_t>(state_.d[1]),
+                                   reinterpret_cast<const char*>(raw + addr), size, &result);
+      }
+      SetD0Word(result);
       break;
     }
 
-    case kTrap15FileRead: {  // 53: read D2.L bytes from FID=D1 into (A1)
+    case kTrap15FilePosition: {  // 55: seek FID D1 to position D2
       if (!config_.file_io)
         break;
-      char* dst = reinterpret_cast<char*>(raw + (state_.a[1] & kAddressMask));
-      unsigned int size = state_.d[2];
       short result = 0;
-      config_.file_io->ReadFile(static_cast<long>(state_.d[1]), dst, &size, &result);
-      state_.d[2] = size;
-      state_.d[0] = (state_.d[0] & 0xFFFF0000u) | static_cast<uint16_t>(result);
+      config_.file_io->PositionFile(static_cast<int32_t>(state_.d[1]),
+                                    static_cast<int>(state_.d[2]), &result);
+      SetD0Word(result);
       break;
     }
 
-    case kTrap15FileWrite: {  // 54: write D2.L bytes from (A1) to FID=D1
-      if (!config_.file_io)
-        break;
-      const char* src = reinterpret_cast<const char*>(raw + (state_.a[1] & kAddressMask));
-      short result = 0;
-      config_.file_io->WriteFile(static_cast<long>(state_.d[1]), src, state_.d[2], &result);
-      state_.d[0] = (state_.d[0] & 0xFFFF0000u) | static_cast<uint16_t>(result);
-      break;
-    }
-
-    case kTrap15FilePosition: {  // 55: seek FID=D1 to position D2
+    case kTrap15FileClose: {  // 56: close FID D1
       if (!config_.file_io)
         break;
       short result = 0;
-      config_.file_io->PositionFile(static_cast<long>(state_.d[1]), static_cast<int>(state_.d[2]),
-                                    &result);
-      state_.d[0] = (state_.d[0] & 0xFFFF0000u) | static_cast<uint16_t>(result);
-      break;
-    }
-
-    case kTrap15FileClose: {  // 56: close FID=D1
-      if (!config_.file_io)
-        break;
-      short result = 0;
-      config_.file_io->CloseFile(static_cast<long>(state_.d[1]), &result);
-      state_.d[0] = (state_.d[0] & 0xFFFF0000u) | static_cast<uint16_t>(result);
-      break;
-    }
-
-    case kTrap15FileDelete: {  // 57: delete file at (A1)
-      if (!config_.file_io)
-        break;
-      ReadStrFromMem(raw, state_.a[1], buf, sizeof(buf));
-      short result = 0;
-      config_.file_io->DeleteFile(buf, &result);
-      state_.d[0] = (state_.d[0] & 0xFFFF0000u) | static_cast<uint16_t>(result);
+      config_.file_io->CloseFile(static_cast<int32_t>(state_.d[1]), &result);
+      SetD0Word(result);
       break;
     }
 
@@ -537,20 +549,12 @@ SimResult M68kSimulator::DispatchTrap15() {
       if (!config_.file_io)
         break;
       short result = 0;
-      config_.file_io->DisplayFileDialog(
-          reinterpret_cast<long*>(&state_.d[1]), static_cast<long>(state_.a[1]),
-          static_cast<long>(state_.a[2]), static_cast<long>(state_.a[3]), &result);
-      state_.d[0] = (state_.d[0] & 0xFFFF0000u) | static_cast<uint16_t>(result);
-      break;
-    }
-
-    case kTrap15FileOp: {  // 59: file operation; D1=op, (A1)=path
-      if (!config_.file_io)
-        break;
-      ReadStrFromMem(raw, state_.a[1], buf, sizeof(buf));
-      short result = 0;
-      config_.file_io->FileOp(reinterpret_cast<long*>(&state_.d[1]), buf, &result);
-      state_.d[0] = (state_.d[0] & 0xFFFF0000u) | static_cast<uint16_t>(result);
+      long mode = static_cast<int32_t>(state_.d[1]);
+      config_.file_io->DisplayFileDialog(&mode, static_cast<long>(state_.a[1]),
+                                         static_cast<long>(state_.a[2]),
+                                         static_cast<long>(state_.a[3]), &result);
+      state_.d[1] = static_cast<uint32_t>(mode);
+      SetD0Word(result);
       break;
     }
 

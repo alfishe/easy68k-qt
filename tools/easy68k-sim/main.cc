@@ -3,7 +3,7 @@
 //
 // easy68k-sim: headless command-line runner for the EASy68K-Qt simulator core.
 //
-//   easy68k-sim [-e] [-b] [-n MAX] [-t] [-o TRACE] [-m ADDR:LEN]... FILE.S68
+//   easy68k-sim [-e] [-b] [-n MAX] [-t] [-o TRACE] [-m ADDR:LEN]... [-d DIR] FILE.S68
 //
 //   -e   exceptions enabled (Sim68K /e; off by default as in Sim68K)
 //   -b   bitfield instructions enabled (Sim68K /b)
@@ -11,6 +11,7 @@
 //   -t   write one register line per executed instruction
 //   -o   trace file (default stderr)
 //   -m   dump LEN bytes of memory at ADDR (hex) after the run
+//   -d   directory for Trap #15 file tasks (default: current directory)
 //
 // Loads the program the way Sim68K's File > Open does (memory erased to $FF,
 // toggle-switch byte cleared, registers initialized) and runs it. Trap #15
@@ -27,8 +28,9 @@
 namespace {
 
 int Usage() {
-  std::fprintf(stderr,
-               "usage: easy68k-sim [-e] [-b] [-n MAX] [-t] [-o TRACE] [-m ADDR:LEN]... FILE.S68\n");
+  std::fprintf(
+      stderr,
+      "usage: easy68k-sim [-e] [-b] [-n MAX] [-t] [-o TRACE] [-m ADDR:LEN]... [-d DIR] FILE.S68\n");
   return 2;
 }
 
@@ -54,6 +56,8 @@ int main(int argc, char** argv) {
         std::perror(argv[i]);
         return 2;
       }
+    } else if (a == "-d" && i + 1 < argc) {
+      options.file_dir = argv[++i];
     } else if (a == "-m" && i + 1 < argc) {
       unsigned addr = 0, len = 0;
       if (std::sscanf(argv[++i], "%x:%x", &addr, &len) != 2)

@@ -8,6 +8,7 @@ add_library(easym68k-sim STATIC
   legality.cc
   srecord_loader.cc
   trap15_dispatch.cc
+  std_file_io.cc
   opcodes_move.cc
   opcodes_arithmetic.cc
   opcodes_logic.cc
