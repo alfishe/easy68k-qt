@@ -1,0 +1,26 @@
+# C-13 — Embedded C++ Patterns: Placement new, Static Allocation, and CRTP Hardware Drivers
+id = "C-13"
+title = "Embedded C++ Patterns: Placement new, Static Allocation, and CRTP Hardware Drivers"
+track = "c"
+level = 4
+difficulty = 4
+requires = ["C-11", "C-12", "S-07"]
+source = "main.cpp"
+toolchain = "gcc-cpp"
+
+[expect]
+halted = true
+registers = { D0 = 0xC3 }
+max_cycles = 300
+
+[[expect.memory]]
+address = 0x2000
+bytes = "68 00 0C 13 C3 07"
+
+[[expect.memory]]
+address = 0xE00000
+bytes = "07"
+
+[[expect.memory]]
+address = 0xE00010
+bytes = "C3"

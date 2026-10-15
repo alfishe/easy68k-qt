@@ -1,0 +1,14 @@
+# C-12 — Templates and constexpr: Zero-Cost Compile-Time Abstractions Verified by Cycle Count
+id = "C-12"
+title = "Templates and constexpr: Zero-Cost Compile-Time Abstractions Verified by Cycle Count"
+track = "c"
+level = 4
+difficulty = 3
+requires = ["C-10", "S-16"]
+source = "main.cpp"
+toolchain = "gcc-cpp"
+
+[expect]
+halted = true
+registers = { D0 = 760 }
+max_cycles = 60

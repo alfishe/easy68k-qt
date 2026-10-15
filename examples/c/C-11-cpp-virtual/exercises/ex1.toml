@@ -1,0 +1,11 @@
+id = "C-11-EX1"
+title = "Virtual call through vptr at $2000 -> 30"
+track = "c"
+level = 4
+difficulty = 4
+source = "ex1.cpp"
+toolchain = "gcc-cpp"
+
+[expect]
+halted = true
+registers = { D0 = 30 }

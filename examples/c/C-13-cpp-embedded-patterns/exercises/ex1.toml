@@ -1,0 +1,19 @@
+id = "C-13-EX1"
+title = "Construct Packet{$1234, $5678} at $2000 + Seg7 $3F"
+track = "c"
+level = 4
+difficulty = 4
+source = "ex1.cpp"
+toolchain = "gcc-cpp"
+
+[expect]
+halted = true
+registers = { D0 = 0x68AC }
+
+[[expect.memory]]
+address = 0x2000
+bytes = "12 34 56 78"
+
+[[expect.memory]]
+address = 0xE00000
+bytes = "3F"

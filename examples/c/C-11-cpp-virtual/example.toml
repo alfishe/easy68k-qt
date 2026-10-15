@@ -1,0 +1,18 @@
+# C-11 — Virtual Dispatch and Vtables in Memory: How Polymorphism Works on the 68000
+id = "C-11"
+title = "Virtual Dispatch and Vtables in Memory: How Polymorphism Works on the 68000"
+track = "c"
+level = 4
+difficulty = 4
+requires = ["C-10", "L2-08"]
+source = "main.cpp"
+toolchain = "gcc-cpp"
+
+[expect]
+halted = true
+registers = { D0 = 67 }
+max_cycles = 800
+
+[[expect.memory]]
+address = 0x2004
+bytes = "00 06 00 07"

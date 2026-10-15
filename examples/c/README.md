@@ -17,9 +17,9 @@ Delivery: E5 (C), E6 (C++) — in parallel with the core path.
 | C-07 | libeasy68k | Writing the Trap #15 runtime: inline asm with constraints | done |
 | C-08 | c-calls-asm | Hand-written asm functions called from C (and back) | done |
 | C-09 | interrupts-in-c | ISRs in C with an asm wrapper, critical sections, `volatile` | done |
-| C-10 | cpp-classes | Freestanding C++17: classes, constructors, RAII; no exceptions/RTTI | planned |
-| C-11 | cpp-virtual | Virtual dispatch and vtables in memory; cost in cycles | planned |
-| C-12 | cpp-templates-constexpr | Templates, `constexpr`, zero-cost abstractions verified by cycle count | planned |
-| C-13 | cpp-embedded-patterns | Placement new, static allocation, CRTP drivers for the hardware window | planned |
+| C-10 | cpp-classes | Freestanding C++17: classes, constructors, RAII; no exceptions/RTTI | done |
+| C-11 | cpp-virtual | Virtual dispatch and vtables in memory; cost in cycles | done |
+| C-12 | cpp-templates-constexpr | Templates, `constexpr`, zero-cost abstractions verified by cycle count | done |
+| C-13 | cpp-embedded-patterns | Placement new, static allocation, CRTP drivers for the hardware window | done |
 
 Directory names follow `<ID>-<name>`, e.g. `L2-06-stack-frames`.

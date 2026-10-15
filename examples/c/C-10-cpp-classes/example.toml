@@ -1,0 +1,18 @@
+# C-10 — Freestanding C++17: Classes, Constructors, this Pointer, and RAII
+id = "C-10"
+title = "Freestanding C++17: Classes, Constructors, this Pointer, and RAII"
+track = "c"
+level = 4
+difficulty = 3
+requires = ["C-03", "C-06"]
+source = "main.cpp"
+toolchain = "gcc-cpp"
+
+[expect]
+halted = true
+registers = { D0 = 56 }
+max_cycles = 700
+
+[[expect.memory]]
+address = 0xE00010
+bytes = "5A"

@@ -1,0 +1,11 @@
+id = "C-10-EX1"
+title = "Counter_add(this=4(A7), delta=8(A7)) -> 142"
+track = "c"
+level = 4
+difficulty = 3
+source = "ex1.cpp"
+toolchain = "gcc-cpp"
+
+[expect]
+halted = true
+registers = { D0 = 142 }

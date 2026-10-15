@@ -1,0 +1,12 @@
+id = "C-12-EX1"
+title = "Fold fib_ct(10)=55 + (5<<3)=40 -> 95 in D0"
+track = "c"
+level = 4
+difficulty = 3
+source = "ex1.cpp"
+toolchain = "gcc-cpp"
+
+[expect]
+halted = true
+registers = { D0 = 95 }
+max_cycles = 60
