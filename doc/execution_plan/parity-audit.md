@@ -28,12 +28,12 @@ hash and the program output.
 
 ## Status snapshot
 
-*Updated after every committed iteration (last: 2026-10-14, commit `d93516f`).*
+*Updated after every committed iteration (last: 2026-10-15, commit `d93516f`; next-task roadmap added).*
 
 | Area | Rows | Done | Partial | Gap | Notes |
 |------|------|------|---------|-----|-------|
-| 1. Simulator core | 17 | 17 | 0 | 0 | instruction corpus matches the oracle (documented deviations only) |
-| 2. Assembler | 9 | 7 | 1 | 1 | core is a port of the original; listings and S-records match the oracle |
+| 1. Simulator core | 17 | 17 | 0 | 0 | instruction corpus + opcode sweep match the oracle (documented deviations only); 32-bit PC; Trap #15 file tasks pending 10.4 |
+| 2. Assembler | 9 | 7 | 1 | 1 | core is a port of the original; listings and S-records match the oracle in every option combination; A7 auto-save and A8 template are GUI (13.19) |
 | 3. Sim68K GUI | 21 | 0 | 0 | 21 | GUI sources are 1-line stubs (27 files) |
 | 4. Edit68K GUI | 14 | 0 | 0 | 14 | |
 | 5. EASyBIN | 4 | 0 | 0 | 4 | |
@@ -55,6 +55,23 @@ hash and the program output.
 | Golden simulation traces (oracle-generated, `tests/sim/golden_trace_test.cc`) | 26 / 26 match |
 | Simulator opcode sweep vs oracle (every first word, 61,034 opcodes in 16 programs; `compare_sim_corpus.sh --sweep`) | 0 unexplained differences (legal/illegal decision, results, flags, cycles) |
 | GUI | not started (Phase 13) |
+
+### Next tasks (in order)
+
+| # | Task | Scope | Parity rows | Verification |
+|---|------|-------|-------------|--------------|
+| 1 | **10.4** Trap #15 vs oracle | Headless `IFileIO` back end ported from CODE9.CPP (tasks 50-59: open/new/read/write/position/close/delete files, file dialog stub); options/time tasks; extend the oracle's stubs to real files in a scratch directory | S9 | Trap #15 programs run in both simulators (`compare_sim.sh`), golden traces |
+| 2 | **11.1** Exception tests | Every exception vector with exceptions on/off, stacked frames, double faults, trace bit, privilege, interplay with the illegal-encoding table | S2, S3 | Unit tests; corpus/sweep already cover most of the decode side |
+| 3 | **11.2** Interrupt tests | Autovector IRQ 1-7, NMI, masking, STOP wake, Hardware window auto-IRQ semantics; the oracle has no interrupt source, so compare against hardwareu.cpp/RUN.CPP irqHandler() by review + unit tests | S4 | Unit tests |
+| 4 | **0.6 / 12.1** Golden infrastructure + CI | Mark 0.6 done (golden asm/sim data, oracle regeneration scripts exist); CI on Linux/macOS/Windows running the three suites (oracle tools optional, Linux only: `-m32`) | acceptance item 3 | CI green |
+| 5 | **12.2 / 12.3** Coverage, clang-tidy | Coverage report for src/sim and src/asm; clang-tidy profile (src/asm/core and tools/reference excluded: original layout) | — | coverage gate, zero clang-tidy findings |
+| 6 | **13.1** Trap #15 Qt back ends | Text console, graphics, sound, serial, network, printing, file dialog | S9 | Manual checklist + unit tests where headless |
+| 7 | **13.2-13.18, 13.22-13.24** Sim68K-Qt | Main window, registers, source view, stack/memory viewers, hardware window, I/O console, graphics, log, settings, advanced breakpoints, find, auto trace | 3. Sim68K GUI (21 rows) | 13.21 manual checklist |
+| 8 | **13.19** Edit68K-Qt | Editor, assembler options (A7 auto-save, A8 template), find/replace, syntax colouring, MDI | 4. Edit68K GUI (14 rows), A7, A8 | 13.21 checklist; assembler output already oracle-verified |
+| 9 | **13.20** EASyBIN-Qt | Binary utility | 5. EASyBIN (4 rows) | checklist + file round-trip tests |
+| 10 | **13.25** Help | Help system | 6. Help (1 row) | checklist |
+| 11 | **13.21** Feature parity validation | Manual UI checklist on Linux, macOS, Windows | all | acceptance |
+| 12 | **E1-E9** Education track | Runs after parity (E1 runner CLI can reuse `easy68k-sim-trace`) | — | example runner tests |
 
 ---
 
