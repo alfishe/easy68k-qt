@@ -21,6 +21,7 @@ add_subdirectory(src/asm)
 # Command-line tools (no Qt)
 add_subdirectory(tools/easy68k-asm)
 add_subdirectory(tools/easy68k-sim)
+add_subdirectory(tools/easy68k-run)
 
 # Developer reference tools built from the original EASy68K sources (oracles
 # for parity testing). Never part of the applications.

@@ -285,7 +285,7 @@ Decision: Parity policy (user instruction, 2026-10-14): do NOT reproduce bugs of
 | Task | Status | Commit | Summary |
 |------|--------|--------|---------|
 | E0 Strategy, Skeleton, Templates, Spec Format | DONE | `15d04b4` | Approved strategy (4 tracks + core path, 83 planned examples); `examples/` skeleton with track indexes generated from the curriculum; `_template/` (verified: assembles, runs, meets its spec); `example.toml` spec format; CC0-1.0 for examples |
-| E1 easy68k-run CLI + Example Runner Test | TODO | | |
+| E1 easy68k-run CLI + Example Runner Test | DONE | `pending` | `tools/easy68k-run/` (`easy68k-example-runner` library + `easy68k-run` CLI): zero-dependency parser for the `example.toml` TOML subset (`doc/examples/example-spec.md`), headless assembly + simulator execution with scripted `TextIn`/`CharIn` input, verification of `halted`/`result`/`output`/`output_contains`/`registers`/`max_cycles`/`min_cycles`/`[[expect.memory]]`, `interactive` assemble-only mode, `exercises/<name>.toml` + `solutions/` pairing, and `--json` output; 6 `ExampleRunnerTest` tests in `tests/integration/example_runner_test.cc` (16 integration tests; ASan+UBSan clean) |
 | E2 Levels 0–1 (15 examples) | TODO | | |
 | E3 Levels 2–3 (19 examples) | TODO | | |
 | E4 Track S (16 examples) | TODO | | |

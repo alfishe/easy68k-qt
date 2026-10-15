@@ -48,13 +48,15 @@ target_link_libraries(easym68k-asm-tests PRIVATE easym68k-asm GTest::gtest_main)
 add_test(NAME asm-tests COMMAND easym68k-asm-tests
          WORKING_DIRECTORY ${CMAKE_SOURCE_DIR})
 
-# Cross-library integration tests (assembler + simulator), Task 9.6.
+# Cross-library integration tests (assembler + simulator), Task 9.6 + Task E1.
 add_executable(easym68k-integration-tests
   integration/core_integration_test.cc
+  integration/example_runner_test.cc
 )
 target_link_libraries(easym68k-integration-tests PRIVATE
-  easym68k-asm easym68k-sim GTest::gtest_main
+  easym68k-asm easym68k-sim easy68k-example-runner GTest::gtest_main
 )
+target_compile_definitions(easym68k-integration-tests PRIVATE EASY68K_SOURCE_DIR="${CMAKE_SOURCE_DIR}")
 add_test(NAME integration-tests COMMAND easym68k-integration-tests)
 
 # Trap #15 Qt back ends (Task 13.1), headless: offscreen Qt platform.
