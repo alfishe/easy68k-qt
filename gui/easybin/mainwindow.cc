@@ -31,6 +31,7 @@
 #include <QWheelEvent>
 
 #include "easym68k/sim/types.h"
+#include "help/help_viewer.h"
 
 namespace easym68k::easybin {
 
@@ -1158,8 +1159,15 @@ void MainWindow::OnAbout() {
           .arg(QString::fromLatin1(kTitle)));
 }
 
+void MainWindow::ShowHelp(const QString& context) {
+  if (help_viewer_ == nullptr) {
+    help_viewer_ = new gui::HelpViewer(this);
+  }
+  help_viewer_->ShowContext(context);
+}
+
 void MainWindow::OnHelp() {
-  Notify(QStringLiteral("EASyBIN Help (Task 13.25)"));
+  ShowHelp(QStringLiteral("EASyBIN"));
 }
 
 }  // namespace easym68k::easybin

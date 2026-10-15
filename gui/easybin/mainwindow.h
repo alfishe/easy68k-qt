@@ -28,6 +28,10 @@
 
 #include "easym68k/sim/memory.h"
 
+namespace easym68k::gui {
+class HelpViewer;
+}
+
 namespace easym68k::easybin {
 
 class MainWindow : public QMainWindow {
@@ -93,6 +97,8 @@ class MainWindow : public QMainWindow {
   QAction* SaveBinaryAction() const { return save_bin_action_; }
   QAction* HelpAction() const { return help_action_; }
   QAction* AboutAction() const { return about_action_; }
+  void ShowHelp(const QString& context);
+  gui::HelpViewer* HelpView() const { return help_viewer_; }
 
   void SetNotify(std::function<void(const QString&)> notify) { notify_ = std::move(notify); }
   const QStringList& Notifications() const { return notifications_; }
@@ -137,6 +143,7 @@ class MainWindow : public QMainWindow {
 
   QWidget* header_ = nullptr;
   QWidget* side_ = nullptr;
+  gui::HelpViewer* help_viewer_ = nullptr;
 
   QAction* new_action_ = nullptr;
   QAction* open_srec_action_ = nullptr;

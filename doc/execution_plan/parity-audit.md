@@ -34,16 +34,16 @@ hash and the program output.
 |------|------|------|---------|-----|-------|
 | 1. Simulator core | 17 | 17 | 0 | 0 | instruction corpus + opcode sweep match the oracle (documented deviations only); 32-bit PC; Trap #15 text and file tasks verified |
 | 2. Assembler | 9 | 7 | 1 | 1 | core is a port of the original; listings and S-records match the oracle in every option combination; A7 auto-save and A8 template are GUI (13.19) |
-| 3. Sim68K GUI | 24 | 23 | 1 | 0 | Sim68K-Qt feature-complete except Help (13.25) |
+| 3. Sim68K GUI | 24 | 24 | 0 | 0 | Sim68K-Qt feature-complete |
 | 4. Edit68K GUI | 14 | 0 | 0 | 14 | |
-| 5. EASyBIN | 4 | 3 | 1 | 0 | EASyBIN-Qt feature-complete except Help (13.25) |
-| 6. Help | 1 | 0 | 0 | 1 | |
-| **Total** | **69** | **50** | **3** | **16** | |
+| 5. EASyBIN | 4 | 4 | 0 | 0 | EASyBIN-Qt feature-complete |
+| 6. Help | 1 | 1 | 0 | 0 | `HelpViewer` (`easy68k-help`) + 242 help assets (`data/help/`) |
+| **Total** | **69** | **53** | **1** | **15** | |
 
 | Measure | Value |
 |---------|-------|
-| Plan tasks (PROGRESS.md) | 99 done, 14 open (13.25 next) |
-| Qt back end tests (`easym68k-gui-tests`, offscreen) | 148 pass (ASan+UBSan clean) |
+| Plan tasks (PROGRESS.md) | 100 done, 13 open (13.19 next) |
+| Qt back end tests (`easym68k-gui-tests`, offscreen) | 153 pass (ASan+UBSan clean) |
 | clang-tidy (`tools/clang-tidy.sh`, core libraries) | 0 findings (23 files + public headers) |
 | Simulator unit tests | 812 pass, incl. 28 golden simulation traces (ASan+UBSan clean) |
 | Assembler tests | 406 pass (incl. 132 instruction-matrix suites, 21 golden, 33 corpus cases); ASan+UBSan clean |
@@ -68,10 +68,10 @@ hash and the program output.
 | ✓ | **11.2** Interrupt tests | Done (`interrupt_test.cc`; tracers take `-i STEP:LEVEL`) | S4 | — |
 | ✓ | **12.3** clang-tidy | Done (`ci/clang-tidy.cfg`, `tools/clang-tidy.sh`; 0 findings) | — | — |
 | ✓ | **13.1** Trap #15 Qt back ends | Done: I/O window (`SimIoScreen`, `QtTextIO`, `QtGraphicsIO`), peripheral, environment, file dialog, printing, sound, serial (`QtSerialIO`), network (`StdNetworkIO`) | S9 | — |
-| 7 | **13.2-13.18, 13.22-13.24** Sim68K-Qt (13.2-13.18 ✓; 13.22 next) | Main window, registers, source view, stack/memory viewers, hardware window, I/O console, graphics, log, settings, advanced breakpoints, find, auto trace | 3. Sim68K GUI (24 rows) | 13.21 manual checklist |
+| ✓ | **13.2-13.18, 13.22-13.24** Sim68K-Qt | Done: Main window, registers, source view, stack/memory viewers, hardware window, I/O console, graphics, log, settings, advanced breakpoints, find, auto trace | 3. Sim68K GUI (24 rows) | 13.21 manual checklist |
 | 8 | **13.19** Edit68K-Qt | Editor, assembler options (A7 auto-save, A8 template), find/replace, syntax colouring, MDI | 4. Edit68K GUI (14 rows), A7, A8 | 13.21 checklist; assembler output already oracle-verified |
-| 9 | **13.20** EASyBIN-Qt | Binary utility | 5. EASyBIN (4 rows) | checklist + file round-trip tests |
-| 10 | **13.25** Help | Help system | 6. Help (1 row) | checklist |
+| ✓ | **13.20** EASyBIN-Qt | Done: Binary/S-Record utility (`gui/easybin`) | 5. EASyBIN (4 rows) | checklist + file round-trip tests |
+| ✓ | **13.25** Help | Done: `HelpViewer` (`gui/help`) + `data/help/` | 6. Help (1 row), G20, B4 | 5 unit tests + checklist |
 | 11 | **13.21** Feature parity validation | Manual UI checklist on Linux, macOS, Windows | all | acceptance |
 | 12 | **E1-E9** Education track | Runs after parity (E1 runner CLI can reuse `easy68k-sim-trace`) | — | example runner tests |
 | 13 | **0.5 / 12.1** CI (later target) | CI pipeline on Linux, macOS, Windows; set up by the owner when wanted | acceptance item 3 | CI green |
@@ -137,7 +137,7 @@ hash and the program output.
 | G17 | Hardware window: 7-seg ×8, LEDs, 8 toggle switches, 8 push buttons, editable addresses, IRQ 1-7 buttons, auto IRQ (level + interval ms), Reset button, memory map (ROM/Read/Protected/Invalid start/end) | hardwareu.dfm | 13.8, 13.18 — **Done** |
 | G18 | Output window: text I/O, graphics, sound, mouse/keyboard, fullscreen | simIOu.cpp, CODE9.CPP | 13.9-13.11 — **Done** |
 | G19 | Advanced Break Points dialog (S14) | BREAKPOINTSu.dfm | 13.22 — **Done** |
-| G20 | Drag-and-drop open, settings persistence, Help, About | SIM68Ku.cpp | 13.2, 13.18 — Partial: drag and drop, settings persistence, About; Help (13.25) |
+| G20 | Drag-and-drop open, settings persistence, Help, About | SIM68Ku.cpp | 13.2, 13.18, 13.25 — **Done** |
 | G21 | Launch EASyBIN from View menu | SIM68Ku.dfm | 13.20 — **Done** |
 | G22 | Command line: `file.S68 [/r] [/f] [/e] [/b]` (run, full screen, exceptions, bit field) | SIM68Ku.cpp FormShow() | **NEW** 13.2, 13.10 — **Done** |
 | G23 | S-record load messages: S0 records as text, "Checksum error on line N..." (loading goes on), "Invalid Address on line N...", "Invalid data on line N of .S68 file..." with the line and "Remainder of load stopped...", ".S68 file read successful" | SIMOPS2.CPP loadSrec() | **NEW** 13.8b — **Done** |
@@ -169,13 +169,13 @@ hash and the program output.
 | B1 | Open S-record and binary files, drag-and-drop | Form1u.cpp OpenSRecordFile/OpenBinFile/WmDropFiles | 13.20 — **Done** |
 | B2 | Save as S-record or binary; output start address, first address, length, split output | Form1u.cpp SaveSRecFile/SaveBinFile/Output* | 13.20 — **Done** |
 | B3 | Hex/ASCII memory editor: row/page spin, mouse wheel, cursor navigation, byte editing | Form1u.cpp FormPaint/FormKeyPress | 13.20 — **Done** |
-| B4 | Copy, Fill (from/to/bytes/fill byte), New, Help, About | Form1u.cpp | 13.20 — Partial: Copy, Fill, New, About done; Help (13.25) |
+| B4 | Copy, Fill (from/to/bytes/fill byte), New, Help, About | Form1u.cpp | 13.20, 13.25 — **Done** |
 
 ## 6. Help
 
 | ID | Feature | Original | Task |
 |----|---------|----------|------|
-| H1 | 40 HTML help pages + quick reference PDF, opened from all three apps | Help/ (Windows HTML Help) | **NEW 13.25**: bundle pages, show with QTextBrowser (or QtHelp); PDF via QDesktopServices |
+| H1 | 40 HTML help pages + quick reference PDF, opened from all three apps | Help/ (Windows HTML Help) | **NEW 13.25** — **Done** (`gui/help/help_viewer.{h,cc}`, `data/help/`) |
 
 ## 7. Windows-specific behaviour and cross-platform equivalents
 
@@ -281,6 +281,7 @@ Each committed iteration updates the snapshot above and adds a line here.
 | 2026-10-15 | `79d9988` | 13.23 Sim68K Find dialog, Find Next (F3), and Go to PC (Ctrl+G) | G7 Done |
 | 2026-10-15 | `d114c2c` | 13.24 Auto Trace (F10) and Auto Trace Options dialog | G3, G12 Done |
 | 2026-10-15 | `2c46600` | 13.20 EASyBIN-Qt binary utility + Sim68K View > EASyBIN | B1-B3, G8, G21 Done; B4 Partial |
+| 2026-10-15 | `pending` | 13.25 HelpViewer (`easy68k-help`) + 242 help assets (`data/help/`), wired into Sim68K and EASyBIN | H1, G20, B4 Done |
 
 ## 10. Parity acceptance
 

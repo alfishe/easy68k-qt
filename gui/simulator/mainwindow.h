@@ -34,6 +34,7 @@ class MemoryWindow;
 class HardwareWindow;
 class BreakpointsWindow;
 class FindDialog;
+class HelpViewer;
 
 class MainWindow : public QMainWindow {
   Q_OBJECT
@@ -111,12 +112,15 @@ class MainWindow : public QMainWindow {
   QAction* AutoTraceOptionsAction() const { return auto_trace_options_action_; }
   QAction* BreakPointsAction() const { return break_points_action_; }
   QAction* ViewEasyBinAction() const { return view_easybin_; }
+  QAction* HelpAction() const { return sim_help_; }
   QAction* ExceptionsAction() const { return exceptions_; }
   QAction* BitFieldAction() const { return bit_field_; }
   void SetEasyBinLauncher(std::function<bool(const QString&)> launcher) {
     easybin_launcher_ = std::move(launcher);
   }
   static QString ResolveEasyBinExecutable();
+  void ShowHelp(const QString& context);
+  HelpViewer* HelpView() const { return help_viewer_; }
   bool LoggingShown() const { return logging_action_->isVisible(); }
   RegisterWidget* Registers() const { return registers_; }
   SourceView* Source() const { return source_; }
@@ -141,7 +145,6 @@ class MainWindow : public QMainWindow {
   void ShowState();                   // scrshow(): registers and listing highlight
   void SetKeyCommands(bool enabled);  // Trap #15 task 24
   QAction* Action(const QString& text, const QKeySequence& shortcut, void (MainWindow::*slot)());
-  QAction* Pending(const QString& text, const QString& task);  // later task
 
   void OnOpen();
   void OnOpenData();
@@ -153,6 +156,7 @@ class MainWindow : public QMainWindow {
   void OnAutoTraceTick();
   void StopAutoTrace();
   void OnGotoPc();
+  void OnHelp();
   void OnAbout();
   void OnSourceFont();
   void OnOutputFont();
@@ -188,6 +192,7 @@ class MainWindow : public QMainWindow {
   HardwareWindow* hardware_window_ = nullptr;
   BreakpointsWindow* breakpoints_window_ = nullptr;
   FindDialog* find_dialog_ = nullptr;
+  HelpViewer* help_viewer_ = nullptr;
   RegisterWidget* registers_ = nullptr;
   SourceView* source_ = nullptr;
   QPlainTextEdit* messages_ = nullptr;
@@ -221,6 +226,7 @@ class MainWindow : public QMainWindow {
   QAction* output_window_ = nullptr;
   QAction* break_points_action_ = nullptr;
   QAction* view_easybin_ = nullptr;
+  QAction* sim_help_ = nullptr;
   QAction* source_font_action_ = nullptr;
   QAction* output_font_action_ = nullptr;
   QAction* printer_font_action_ = nullptr;

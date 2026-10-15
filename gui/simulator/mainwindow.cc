@@ -35,6 +35,7 @@
 #include "find_dialog.h"
 #include "fullscreen_options_dialog.h"
 #include "hardware_window.h"
+#include "help/help_viewer.h"
 #include "io_window.h"
 #include "log_window.h"
 #include "memory_window.h"
@@ -224,6 +225,20 @@ MainWindow::MainWindow(const QString& settings_file, QWidget* parent)
           [this] { BringToFront(4); });
   connect(breakpoints_window_, &BreakpointsWindow::NextWindowRequested, this,
           [this] { BringToFront(5); });
+  // F1 context help on simulator sub-windows (Memory1.cpp, Stack1.cpp,
+  // hardwareu.cpp, BREAKPOINTSu.cpp).
+  auto bind_window_help = [this](QWidget* window, const QString& context) {
+    auto* f1 = new QAction(window);
+    f1->setShortcut(QKeySequence(Qt::Key_F1));
+    f1->setShortcutContext(Qt::WindowShortcut);
+    window->addAction(f1);
+    key_commands_.emplace_back(f1, f1->shortcut());
+    connect(f1, &QAction::triggered, this, [this, context] { ShowHelp(context); });
+  };
+  bind_window_help(memory_window_, QStringLiteral("SIM_MEMORY"));
+  bind_window_help(stack_window_, QStringLiteral("STACK"));
+  bind_window_help(hardware_window_, QStringLiteral("HARDWARE"));
+  bind_window_help(breakpoints_window_, QStringLiteral("BREAKPOINT"));
   // Trap #15 task 33: windowed (1) or full screen (2) output window.
   connect(&session_->Env(), &QtSimulatorEnv::FullScreenRequested, io_window_,
           &IoWindow::SetFullScreen);
@@ -362,14 +377,6 @@ QAction* MainWindow::Action(const QString& text, const QKeySequence& shortcut,
   }
   if (slot != nullptr)
     connect(a, &QAction::triggered, this, slot);
-  return a;
-}
-
-QAction* MainWindow::Pending(const QString& text, const QString& task) {
-  auto* a = new QAction(text, this);
-  a->setEnabled(false);
-  a->setToolTip(QStringLiteral("Not available yet (Task %1)").arg(task));
-  a->setStatusTip(a->toolTip());
   return a;
 }
 
@@ -538,7 +545,10 @@ void MainWindow::CreateMenus() {
           [this](bool on) { session_->Screen().SetTextWrap(on); });
 
   QMenu* help = menuBar()->addMenu(QStringLiteral("&Help"));
-  help->addAction(Pending(QStringLiteral("&Sim68K Help"), QStringLiteral("13.25")));
+  sim_help_ = help->addAction(QStringLiteral("&Sim68K Help"), this, &MainWindow::OnHelp);
+  sim_help_->setShortcut(QKeySequence(Qt::Key_F1));
+  sim_help_->setShortcutContext(Qt::WindowShortcut);
+  key_commands_.emplace_back(sim_help_, sim_help_->shortcut());
   help->addAction(QStringLiteral("&About Sim68K"), this, &MainWindow::OnAbout);
 }
 
@@ -745,6 +755,17 @@ void MainWindow::StopAutoTrace() {
 void MainWindow::OnGotoPc() {
   if (!session_->IsRunning())
     source_->HighlightPc(session_->Simulator().State().pc, Halted());
+}
+
+void MainWindow::ShowHelp(const QString& context) {
+  if (help_viewer_ == nullptr) {
+    help_viewer_ = new HelpViewer(this);
+  }
+  help_viewer_->ShowContext(context);
+}
+
+void MainWindow::OnHelp() {
+  ShowHelp(QStringLiteral("SIM_BASIC"));
 }
 
 void MainWindow::OnAbout() {
@@ -1078,6 +1099,11 @@ void MainWindow::OnViewEasyBin() {
 // Options > Log Output (logU.cpp OKBtnClick()/CancelBtnClick()).
 void MainWindow::OnLogOutput() {
   LogOutputDialog dialog(session_->Log().GetSettings(), this);
+  auto* f1 = new QAction(&dialog);
+  f1->setShortcut(QKeySequence(Qt::Key_F1));
+  f1->setShortcutContext(Qt::WindowShortcut);
+  dialog.addAction(f1);
+  connect(f1, &QAction::triggered, this, [this] { ShowHelp(QStringLiteral("SIM_OPTIONS")); });
   if (dialog.exec() == QDialog::Accepted) {
     session_->Log().SetSettings(dialog.Settings());
     SaveSettings();
@@ -1181,6 +1207,8 @@ void MainWindow::closeEvent(QCloseEvent* event) {
   hardware_window_->close();
   breakpoints_window_->close();
   find_dialog_->close();
+  if (help_viewer_ != nullptr)
+    help_viewer_->close();
   event->accept();
 }
 

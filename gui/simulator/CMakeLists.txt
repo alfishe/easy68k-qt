@@ -40,7 +40,7 @@ add_library(easy68k-simulator-ui STATIC
   mainwindow.cc
 )
 target_include_directories(easy68k-simulator-ui PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
-target_link_libraries(easy68k-simulator-ui PUBLIC easy68k-simio Qt6::Widgets Qt6::PrintSupport)
+target_link_libraries(easy68k-simulator-ui PUBLIC easy68k-simio easy68k-help Qt6::Widgets Qt6::PrintSupport)
 # hardwareu.dfm glyphs: toggle switch (off | on), push button, IRQ/Reset
 # button (up | disabled).
 qt_add_resources(easy68k-simulator-ui hardware_glyphs

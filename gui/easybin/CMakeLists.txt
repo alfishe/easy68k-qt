@@ -5,6 +5,7 @@ add_library(easy68k-easybin-ui STATIC
 target_include_directories(easy68k-easybin-ui PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/..)
 target_link_libraries(easy68k-easybin-ui PUBLIC
   easym68k-sim
+  easy68k-help
   Qt6::Widgets
 )
 
