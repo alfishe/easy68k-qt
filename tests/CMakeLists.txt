@@ -58,7 +58,7 @@ target_link_libraries(easym68k-integration-tests PRIVATE
 add_test(NAME integration-tests COMMAND easym68k-integration-tests)
 
 # Trap #15 Qt back ends (Task 13.1), headless: offscreen Qt platform.
-if(TARGET easy68k-simio)
+if(TARGET easy68k-simulator-ui)
   add_executable(easym68k-gui-tests
     gui/gui_test_main.cc
     gui/key_map_test.cc
@@ -68,9 +68,10 @@ if(TARGET easy68k-simio)
     gui/qt_sound_io_test.cc
     gui/qt_serial_io_test.cc
     gui/sim_session_test.cc
+    gui/mainwindow_test.cc
   )
   find_package(Qt6 REQUIRED COMPONENTS Test)
-  target_link_libraries(easym68k-gui-tests PRIVATE easy68k-simio easym68k-asm Qt6::Test GTest::gtest)
+  target_link_libraries(easym68k-gui-tests PRIVATE easy68k-simulator-ui easym68k-asm Qt6::Test GTest::gtest)
   add_test(NAME gui-tests COMMAND easym68k-gui-tests)
   set_tests_properties(gui-tests PROPERTIES ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
 endif()

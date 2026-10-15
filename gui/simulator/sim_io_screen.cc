@@ -129,6 +129,7 @@ void SimIoScreen::SetTextWrap(bool wrap) {
 
 void SimIoScreen::ResetForRun() {
   int w = 0, h = 0;
+  bool key_commands_restored = false;
   {
     std::lock_guard<std::mutex> lock(mu_);
     ClearLocked();
@@ -151,10 +152,13 @@ void SimIoScreen::ResetForRun() {
     keyboard_echo_ = true;
     input_prompt_ = true;
     input_lf_display_ = true;
+    key_commands_restored = !key_commands_enabled_;
     key_commands_enabled_ = true;  // Form1->restoreMenuTask19()
     w = can_width_;
     h = can_height_;
   }
+  if (key_commands_restored)
+    emit KeyCommandsChanged(true);
   emit WindowSizeChanged(w, h);
   MarkDirty(true);
 }
@@ -729,8 +733,14 @@ void SimIoScreen::GetKeyState(long* codes) const {
 }
 
 void SimIoScreen::SetKeyCommandsEnabled(bool enabled) {
-  std::lock_guard<std::mutex> lock(mu_);
-  key_commands_enabled_ = enabled;
+  bool changed = false;
+  {
+    std::lock_guard<std::mutex> lock(mu_);
+    changed = key_commands_enabled_ != enabled;
+    key_commands_enabled_ = enabled;
+  }
+  if (changed)
+    emit KeyCommandsChanged(enabled);
 }
 
 bool SimIoScreen::KeyCommandsEnabled() const {

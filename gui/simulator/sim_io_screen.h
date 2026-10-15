@@ -167,7 +167,8 @@ class SimIoScreen : public QObject {
   void Changed();        // the displayed image changed
   void ShowRequested();  // output/input while hidden
   void WindowSizeChanged(int width, int height);
-  void Bell();  // BEL output (task 6, '\a')
+  void Bell();                            // BEL output (task 6, '\a')
+  void KeyCommandsChanged(bool enabled);  // task 24 (any thread)
 
  private:
   // All *Locked functions require mu_.
