@@ -28,22 +28,22 @@ hash and the program output.
 
 ## Status snapshot
 
-*Updated after every committed iteration (last: 2026-10-15, commit `b25d9cb`).*
+*Updated after every committed iteration (last: 2026-10-15, commit `pending`).*
 
 | Area | Rows | Done | Partial | Gap | Notes |
 |------|------|------|---------|-----|-------|
 | 1. Simulator core | 17 | 17 | 0 | 0 | instruction corpus + opcode sweep match the oracle (documented deviations only); 32-bit PC; Trap #15 text and file tasks verified |
 | 2. Assembler | 9 | 7 | 1 | 1 | core is a port of the original; listings and S-records match the oracle in every option combination; A7 auto-save and A8 template are GUI (13.19) |
-| 3. Sim68K GUI | 24 | 17 | 3 | 4 | Sim68K-Qt runs: main window, run controls, I/O window (13.2) |
+| 3. Sim68K GUI | 24 | 18 | 3 | 3 | Sim68K-Qt runs: main window, run controls, I/O window (13.2) |
 | 4. Edit68K GUI | 14 | 0 | 0 | 14 | |
 | 5. EASyBIN | 4 | 0 | 0 | 4 | |
 | 6. Help | 1 | 0 | 0 | 1 | |
-| **Total** | **69** | **41** | **4** | **24** | |
+| **Total** | **69** | **42** | **4** | **23** | |
 
 | Measure | Value |
 |---------|-------|
-| Plan tasks (PROGRESS.md) | 95 done, 18 open (13.22 next) |
-| Qt back end tests (`easym68k-gui-tests`, offscreen) | 132 pass (ASan+UBSan clean) |
+| Plan tasks (PROGRESS.md) | 96 done, 17 open (13.23 next) |
+| Qt back end tests (`easym68k-gui-tests`, offscreen) | 137 pass (ASan+UBSan clean) |
 | clang-tidy (`tools/clang-tidy.sh`, core libraries) | 0 findings (23 files + public headers) |
 | Simulator unit tests | 812 pass, incl. 28 golden simulation traces (ASan+UBSan clean) |
 | Assembler tests | 406 pass (incl. 132 instruction-matrix suites, 21 golden, 33 corpus cases); ASan+UBSan clean |
@@ -125,7 +125,7 @@ hash and the program output.
 | G5 | Source view (.L68 mapped to PC), breakpoint gutter, Clear All PC Breakpoints popup, message pane | SIM68Ku.dfm ListBox1/breakP | 13.4 — **Done** |
 | G6 | `*[sim68k]break`, `bitfield`, `simhalt_off` listing commands | SIM68Ku.cpp | 13.2a — **Done** |
 | G7 | Search: Find (Ctrl+F), Find Next (F3), Go to PC (Ctrl+G) | findDialogS, SIM68Ku.dfm | **NEW 13.23** |
-| G8 | View menu: Output Window, Memory, Stack, Hardware, Break Points, EASyBIN | SIM68Ku.dfm | 13.2 — Partial: Output Window, Memory, Stack, Hardware work; Break Points (13.22), EASyBIN (13.20) |
+| G8 | View menu: Output Window, Memory, Stack, Hardware, Break Points, EASyBIN | SIM68Ku.dfm | 13.2, 13.22 — Partial: Output Window, Memory, Stack, Hardware, Break Points work; EASyBIN (13.20) |
 | G9 | Options: Source / Output / Printer fonts | SIM68Ku.dfm | 13.18 — **Done** |
 | G10 | Options: Log Output dialog (exec log type, output log type, file names, memory range) + Replace/Append prompt. Execution logging is active only while tracing (Step/Trace/Auto Trace, not Run); log file layout per RUN.CPP (memory rows, register block, source/instruction line); "***** Reset/Reload Program Pressed *****" markers | logU.dfm, LogfileDialogu.dfm, RUN.CPP | 13.12 — **Done** |
 | G11 | Options: Enable Exceptions, Enable Bit Field Instructions | SIM68Ku.dfm | 13.2 — **Done** |
@@ -136,7 +136,7 @@ hash and the program output.
 | G16 | Stack window: view A0-A6/US/SS, scroll | Stack1.dfm | 13.5 — **Done** |
 | G17 | Hardware window: 7-seg ×8, LEDs, 8 toggle switches, 8 push buttons, editable addresses, IRQ 1-7 buttons, auto IRQ (level + interval ms), Reset button, memory map (ROM/Read/Protected/Invalid start/end) | hardwareu.dfm | 13.8, 13.18 — **Done** |
 | G18 | Output window: text I/O, graphics, sound, mouse/keyboard, fullscreen | simIOu.cpp, CODE9.CPP | 13.9-13.11 — **Done** |
-| G19 | Advanced Break Points dialog (S14) | BREAKPOINTSu.dfm | **NEW 13.22** |
+| G19 | Advanced Break Points dialog (S14) | BREAKPOINTSu.dfm | 13.22 — **Done** |
 | G20 | Drag-and-drop open, settings persistence, Help, About | SIM68Ku.cpp | 13.2, 13.18 — Partial: drag and drop, settings persistence, About; Help (13.25) |
 | G21 | Launch EASyBIN from View menu | SIM68Ku.dfm | 13.20 |
 | G22 | Command line: `file.S68 [/r] [/f] [/e] [/b]` (run, full screen, exceptions, bit field) | SIM68Ku.cpp FormShow() | **NEW** 13.2, 13.10 — **Done** |
@@ -277,6 +277,7 @@ Each committed iteration updates the snapshot above and adds a line here.
 | 2026-10-15 | `16c45c2` | 13.9-13.11 output window: full screen, Fullscreen Options, Ctrl+Tab/Alt+Enter/Shift+Insert | G13, G18, G22 |
 | 2026-10-15 | `b2e7fe7` | 13.12 logging: trace lines, execution/output logs, Log Output dialog, Log Start/Stop | G10, G24 (new) |
 | 2026-10-15 | `b25d9cb` | 13.18 settings persistence and source/output/printer font dialogs | G9, G17, G20 |
+| 2026-10-15 | `pending` | 13.22 advanced break points window (Registers, Memory, Expression Builder) | G8, G19 Done |
 
 ## 10. Parity acceptance
 

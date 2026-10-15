@@ -74,6 +74,7 @@ if(TARGET easy68k-simulator-ui)
     gui/stack_window_test.cc
     gui/memory_window_test.cc
     gui/hardware_window_test.cc
+    gui/breakpoints_window_test.cc
     gui/io_window_test.cc
     gui/sim_log_test.cc
   )

@@ -31,6 +31,7 @@ class SourceView;
 class StackWindow;
 class MemoryWindow;
 class HardwareWindow;
+class BreakpointsWindow;
 
 class MainWindow : public QMainWindow {
   Q_OBJECT
@@ -100,6 +101,7 @@ class MainWindow : public QMainWindow {
   QAction* SourceFontAction() const { return source_font_action_; }
   QAction* OutputFontAction() const { return output_font_action_; }
   QAction* PrinterFontAction() const { return printer_font_action_; }
+  QAction* BreakPointsAction() const { return break_points_action_; }
   QAction* ExceptionsAction() const { return exceptions_; }
   QAction* BitFieldAction() const { return bit_field_; }
   bool LoggingShown() const { return logging_action_->isVisible(); }
@@ -109,6 +111,7 @@ class MainWindow : public QMainWindow {
   MemoryWindow* MemoryView() const { return memory_window_; }
   IoWindow* Io() const { return io_window_; }
   HardwareWindow* Hardware() const { return hardware_window_; }
+  BreakpointsWindow* Breakpoints() const { return breakpoints_window_; }
 
  protected:
   void dragEnterEvent(QDragEnterEvent* event) override;
@@ -162,6 +165,7 @@ class MainWindow : public QMainWindow {
   StackWindow* stack_window_ = nullptr;
   MemoryWindow* memory_window_ = nullptr;
   HardwareWindow* hardware_window_ = nullptr;
+  BreakpointsWindow* breakpoints_window_ = nullptr;
   RegisterWidget* registers_ = nullptr;
   SourceView* source_ = nullptr;
   QPlainTextEdit* messages_ = nullptr;
@@ -192,6 +196,7 @@ class MainWindow : public QMainWindow {
   QAction* log_start_ = nullptr;
   QAction* log_stop_ = nullptr;
   QAction* output_window_ = nullptr;
+  QAction* break_points_action_ = nullptr;
   QAction* source_font_action_ = nullptr;
   QAction* output_font_action_ = nullptr;
   QAction* printer_font_action_ = nullptr;

@@ -32,6 +32,7 @@ add_library(easy68k-simulator-ui STATIC
   stack_window.cc
   memory_window.cc
   hardware_window.cc
+  breakpoints_window.cc
   fullscreen_options_dialog.cc
   log_window.cc
   mainwindow.cc

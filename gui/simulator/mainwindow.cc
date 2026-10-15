@@ -27,6 +27,7 @@
 #include <QToolBar>
 #include <QVBoxLayout>
 
+#include "breakpoints_window.h"
 #include "fullscreen_options_dialog.h"
 #include "hardware_window.h"
 #include "io_window.h"
@@ -190,6 +191,7 @@ MainWindow::MainWindow(const QString& settings_file, QWidget* parent)
   memory_window_ = new MemoryWindow(&session_->Simulator().GetMemory(), access, this);
   connect(session_.get(), &SimSession::MemorySnapshot, memory_window_, &MemoryWindow::OnSnapshot);
   hardware_window_ = new HardwareWindow(session_.get(), this);
+  breakpoints_window_ = new BreakpointsWindow(session_.get(), this);
   // Memory1.cpp: an edit refreshes the stack and hardware windows; a switch
   // or button repaints the memory and stack windows.
   connect(memory_window_, &MemoryWindow::MemoryEdited, this, [this] {
@@ -200,12 +202,14 @@ MainWindow::MainWindow(const QString& settings_file, QWidget* parent)
     memory_window_->Refresh();
     stack_window_->UpdateState(session_->Simulator().State());
   });
-  // Ctrl+Tab: memory -> stack -> hardware -> main window.
+  // Ctrl+Tab: I/O -> memory -> stack -> hardware -> break points -> main window.
   connect(io_window_, &IoWindow::NextWindowRequested, this, [this] { BringToFront(1); });
   connect(memory_window_, &MemoryWindow::NextWindowRequested, this, [this] { BringToFront(2); });
-  connect(stack_window_, &StackWindow::NextWindowRequested, this, [this] { BringToFront(4); });
+  connect(stack_window_, &StackWindow::NextWindowRequested, this, [this] { BringToFront(3); });
   connect(hardware_window_, &HardwareWindow::NextWindowRequested, this,
-          [this] { BringToFront(3); });
+          [this] { BringToFront(4); });
+  connect(breakpoints_window_, &BreakpointsWindow::NextWindowRequested, this,
+          [this] { BringToFront(5); });
   // Trap #15 task 33: windowed (1) or full screen (2) output window.
   connect(&session_->Env(), &QtSimulatorEnv::FullScreenRequested, io_window_,
           &IoWindow::SetFullScreen);
@@ -432,7 +436,9 @@ void MainWindow::CreateMenus() {
   connect(stack, &QAction::triggered, this, [this] { Raise(stack_window_); });
   QAction* hardware = view->addAction(QStringLiteral("&Hardware"));
   connect(hardware, &QAction::triggered, this, [this] { Raise(hardware_window_); });
-  view->addAction(Pending(QStringLiteral("&Break Points"), QStringLiteral("13.22")));
+  break_points_action_ = view->addAction(QStringLiteral("&Break Points"));
+  connect(break_points_action_, &QAction::triggered, this,
+          [this] { Raise(breakpoints_window_); });
   view->addAction(Pending(QStringLiteral("&EASyBIN"), QStringLiteral("13.20")));
 
   QMenu* options = menuBar()->addMenu(QStringLiteral("&Options"));
@@ -986,14 +992,15 @@ void MainWindow::UpdateLogActions() {
 }
 
 void MainWindow::BringToFront(int index) {
-  QWidget* const chain[] = {io_window_, memory_window_, stack_window_, hardware_window_};
-  for (int i = index; i < 4; i++) {
+  QWidget* const chain[] = {io_window_, memory_window_, stack_window_, hardware_window_,
+                            breakpoints_window_};
+  for (int i = index; i < 5; i++) {
     if (chain[i]->isVisible()) {
       Raise(chain[i]);
       return;
     }
   }
-  Raise(this);  // Break Points window (13.22), then Form1
+  Raise(this);
 }
 
 bool MainWindow::Halted() const {
@@ -1045,6 +1052,7 @@ void MainWindow::closeEvent(QCloseEvent* event) {
   memory_window_->close();
   stack_window_->close();
   hardware_window_->close();
+  breakpoints_window_->close();
   event->accept();
 }
 
