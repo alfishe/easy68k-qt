@@ -13,6 +13,8 @@
 #include <cstdint>
 #include <cstdio>
 #include <cstring>
+#include <string>
+#include <vector>
 
 #include "easym68k/sim/iexecution_logger.h"
 #include "easym68k/sim/ifile_io.h"
@@ -49,6 +51,20 @@ void ReadStrFromMem(const uint8_t* raw, uint32_t addr, char* buf, size_t max_len
     ++i;
   }
   buf[i] = '\0';
+}
+
+// Byte copies between 68000 memory and a host buffer, the address wrapped
+// to 24 bits (I/O buffers never run past the 68000 memory).
+void CopyFromMem(const uint8_t* raw, uint32_t addr, char* dst, size_t n) {
+  for (size_t i = 0; i < n; i++)
+    dst[i] = static_cast<char>(raw[(addr + i) & kAddressMask]);
+}
+void CopyToMem(uint8_t* raw, uint32_t addr, const char* src, size_t n) {
+  for (size_t i = 0; i < n; i++)
+    raw[(addr + i) & kAddressMask] = static_cast<uint8_t>(src[i]);
+}
+void CopyStrToMem(uint8_t* raw, uint32_t addr, const char* str) {  // with NUL
+  CopyToMem(raw, addr, str, std::strlen(str) + 1);
 }
 
 // Write value in any base 2-36 into buf (uppercase, unsigned).
@@ -426,6 +442,9 @@ SimResult M68kSimulator::DispatchTrap15() {
         break;
       int cid = static_cast<int>(state_.d[0] >> 16);
       ReadStrFromMem(raw, state_.a[1], buf, sizeof(buf));
+      if (memory_.CheckBuffer(state_.a[1], static_cast<uint32_t>(std::strlen(buf)), kMemInvalid) !=
+          SimResult::kOk)
+        return SimResult::kBusError;
       short result = 0;
       config_.serial_io->InitPort(cid, buf, &result);
       state_.d[0] = (state_.d[0] & 0xFFFF0000u) | static_cast<uint16_t>(result);
@@ -446,11 +465,23 @@ SimResult M68kSimulator::DispatchTrap15() {
       if (!config_.serial_io)
         break;
       int cid = static_cast<int>(state_.d[0] >> 16);
-      char* dst = reinterpret_cast<char*>(raw + (state_.a[1] & kAddressMask));
       unsigned char count = static_cast<uint8_t>(state_.d[1]);
       short result = 0;
-      config_.serial_io->ReadString(cid, &count, dst, &result);
+      std::memset(buf, 0, sizeof(buf));
+      config_.serial_io->ReadString(cid, &count, buf, &result);  // buf: 256 bytes
       state_.d[1] = (state_.d[1] & 0xFFFFFF00u) | count;
+      // simIOu.cpp readComm(): the data (and terminator) is stored only in
+      // writable memory; Invalid/Read-only ranges raise a bus error.
+      if (result == 0 || result == 4) {
+        bool rom = false;
+        if (memory_.CheckBuffer(state_.a[1], count, kMemInvalid | kMemReadOnly | kMemRom, &rom) !=
+            SimResult::kOk) {
+          state_.d[0] = (state_.d[0] & 0xFFFF0000u) | static_cast<uint16_t>(result);
+          return SimResult::kBusError;
+        }
+        if (!rom)
+          CopyToMem(raw, state_.a[1], buf, static_cast<size_t>(count) + 1);
+      }
       state_.d[0] = (state_.d[0] & 0xFFFF0000u) | static_cast<uint16_t>(result);
       break;
     }
@@ -459,10 +490,12 @@ SimResult M68kSimulator::DispatchTrap15() {
       if (!config_.serial_io)
         break;
       int cid = static_cast<int>(state_.d[0] >> 16);
-      const char* src = reinterpret_cast<const char*>(raw + (state_.a[1] & kAddressMask));
       unsigned char count = static_cast<uint8_t>(state_.d[1]);
+      if (memory_.CheckBuffer(state_.a[1], count, kMemInvalid) != SimResult::kOk)
+        return SimResult::kBusError;
+      CopyFromMem(raw, state_.a[1], buf, count);
       short result = 0;
-      config_.serial_io->SendString(cid, &count, src, &result);
+      config_.serial_io->SendString(cid, &count, buf, &result);
       state_.d[1] = (state_.d[1] & 0xFFFFFF00u) | count;
       state_.d[0] = (state_.d[0] & 0xFFFF0000u) | static_cast<uint16_t>(result);
       break;
@@ -817,8 +850,11 @@ SimResult M68kSimulator::DispatchTrap15() {
         break;
       char server[256];
       ReadStrFromMem(raw, state_.a[2], server, sizeof(server));
+      const std::string requested = server;
       int result = 0;
       config_.network_io->CreateClient(static_cast<int>(state_.d[1]), server, &result);
+      if (requested != server)  // a host name: its IP address is returned
+        CopyStrToMem(raw, state_.a[2], server);
       state_.d[0] = static_cast<uint32_t>(result);
       break;
     }
@@ -837,9 +873,11 @@ SimResult M68kSimulator::DispatchTrap15() {
         break;
       char remote_ip[256];
       ReadStrFromMem(raw, state_.a[2], remote_ip, sizeof(remote_ip));
-      const char* data = reinterpret_cast<const char*>(raw + (state_.a[1] & kAddressMask));
-      int count = 0, result = 0;
-      config_.network_io->Send(static_cast<int>(state_.d[1]), data, remote_ip, &count, &result);
+      std::vector<char> data(state_.d[1] & 0xFFFF);
+      CopyFromMem(raw, state_.a[1], data.data(), data.size());
+      int count = static_cast<int>(state_.d[1]), result = 0;  // D1 kept on error
+      config_.network_io->Send(static_cast<int>(state_.d[1]), data.data(), remote_ip, &count,
+                               &result);
       state_.d[1] = static_cast<uint32_t>(count);
       state_.d[0] = static_cast<uint32_t>(result);
       break;
@@ -848,11 +886,15 @@ SimResult M68kSimulator::DispatchTrap15() {
     case kTrap15NetReceive: {  // 103: receive D1.W bytes into (A1); sender IP at (A2)
       if (!config_.network_io)
         break;
-      char* recv_buf = reinterpret_cast<char*>(raw + (state_.a[1] & kAddressMask));
-      char* sender_ip = reinterpret_cast<char*>(raw + (state_.a[2] & kAddressMask));
-      int count = 0, result = 0;
-      config_.network_io->Receive(static_cast<int>(state_.d[1]), recv_buf, &count, sender_ip,
+      std::vector<char> data(state_.d[1] & 0xFFFF);
+      char sender_ip[64] = {};
+      int count = static_cast<int>(state_.d[1]), result = 0;  // D1 kept on error
+      config_.network_io->Receive(static_cast<int>(state_.d[1]), data.data(), &count, sender_ip,
                                   &result);
+      if (result == 0 && count > 0) {
+        CopyToMem(raw, state_.a[1], data.data(), std::min(data.size(), static_cast<size_t>(count)));
+        CopyStrToMem(raw, state_.a[2], sender_ip);
+      }
       state_.d[1] = static_cast<uint32_t>(count);
       state_.d[0] = static_cast<uint32_t>(result);
       break;
@@ -870,9 +912,11 @@ SimResult M68kSimulator::DispatchTrap15() {
     case kTrap15NetGetLocalIP: {  // 105: get local IP; result string at (A2)
       if (!config_.network_io)
         break;
-      char* ip_buf = reinterpret_cast<char*>(raw + (state_.a[2] & kAddressMask));
+      char ip_buf[64] = {};
       int result = 0;
       config_.network_io->GetLocalIP(ip_buf, &result);
+      if (result == 0)
+        CopyStrToMem(raw, state_.a[2], ip_buf);
       state_.d[0] = static_cast<uint32_t>(result);
       break;
     }
@@ -882,10 +926,11 @@ SimResult M68kSimulator::DispatchTrap15() {
         break;
       char remote_ip[256];
       ReadStrFromMem(raw, state_.a[2], remote_ip, sizeof(remote_ip));
-      const char* data = reinterpret_cast<const char*>(raw + (state_.a[1] & kAddressMask));
+      std::vector<char> data(state_.d[1] & 0xFFFF);
+      CopyFromMem(raw, state_.a[1], data.data(), data.size());
       long d0 = static_cast<long>(state_.d[0]);
       long d1 = static_cast<long>(state_.d[1]);
-      config_.network_io->SendOnPort(&d0, &d1, data, remote_ip);
+      config_.network_io->SendOnPort(&d0, &d1, data.data(), remote_ip);
       state_.d[0] = static_cast<uint32_t>(d0);
       state_.d[1] = static_cast<uint32_t>(d1);
       break;
@@ -894,11 +939,16 @@ SimResult M68kSimulator::DispatchTrap15() {
     case kTrap15NetReceiveOnPort: {  // 107: receive on port; (A1)=buf, (A2)=sender IP
       if (!config_.network_io)
         break;
-      char* recv_buf = reinterpret_cast<char*>(raw + (state_.a[1] & kAddressMask));
-      char* sender_ip = reinterpret_cast<char*>(raw + (state_.a[2] & kAddressMask));
+      std::vector<char> data(state_.d[1] & 0xFFFF);
+      char sender_ip[64] = {};
       long d0 = static_cast<long>(state_.d[0]);
       long d1 = static_cast<long>(state_.d[1]);
-      config_.network_io->ReceiveOnPort(&d0, &d1, recv_buf, sender_ip);
+      config_.network_io->ReceiveOnPort(&d0, &d1, data.data(), sender_ip);
+      const auto received = static_cast<size_t>(static_cast<unsigned long>(d1) & 0xFFFF);
+      if (d0 == 0 && received > 0) {
+        CopyToMem(raw, state_.a[1], data.data(), std::min(data.size(), received));
+        CopyStrToMem(raw, state_.a[2], sender_ip);
+      }
       state_.d[0] = static_cast<uint32_t>(d0);
       state_.d[1] = static_cast<uint32_t>(d1);
       break;

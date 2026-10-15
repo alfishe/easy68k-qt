@@ -16,7 +16,10 @@ build="${1:-$root/build-tidy}"
 
 CC=clang CXX=clang++ cmake -S "$root" -B "$build" -G Ninja -DCMAKE_BUILD_TYPE=Debug \
   -DBUILD_GUI=OFF -DBUILD_TESTING=ON -DCMAKE_EXPORT_COMPILE_COMMANDS=ON >/dev/null
-cmake --build "$build" >/dev/null
+if ! out="$(cmake --build "$build" 2>&1)"; then
+  echo "$out" >&2
+  exit 1
+fi
 
 cd "$root"
 jobs="$(getconf _NPROCESSORS_ONLN 2>/dev/null || echo 4)"

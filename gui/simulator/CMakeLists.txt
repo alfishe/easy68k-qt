@@ -11,12 +11,16 @@ add_library(easy68k-simio STATIC
   qt_file_io.cc
   qt_print_io.cc
   qt_sound_io.cc
+  qt_serial_io.cc
 )
 target_include_directories(easy68k-simio PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 target_link_libraries(easy68k-simio PUBLIC easym68k-sim Qt6::Gui Qt6::Multimedia)
+if(Qt6SerialPort_FOUND)
+  target_link_libraries(easy68k-simio PUBLIC Qt6::SerialPort)
+  target_compile_definitions(easy68k-simio PUBLIC EASYM68K_HAS_SERIALPORT=1)
+endif()
 
 # The Sim68K-Qt application (Task 13.2) will add:
 #   qt_add_executable(easy68k-simulator main.cc mainwindow.cc ...)
 #   target_link_libraries(easy68k-simulator PRIVATE easy68k-simio Qt6::Widgets
 #     Qt6::Multimedia Qt6::Network Qt6::PrintSupport)
-#   and Qt6::SerialPort with EASYM68K_HAS_SERIALPORT=1 when Qt6SerialPort_FOUND.

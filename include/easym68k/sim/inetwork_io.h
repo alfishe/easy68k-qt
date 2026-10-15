@@ -11,7 +11,9 @@ namespace easym68k::sim {
 class INetworkIO {
  public:
   virtual ~INetworkIO() = default;
-  virtual void CreateClient(int settings, const char* server, int* result) = 0;
+  // `server` (at least 256 bytes): server name or IP; a host name is
+  // replaced by the IP address connected to.
+  virtual void CreateClient(int settings, char* server, int* result) = 0;
   virtual void CreateServer(int settings, int* result) = 0;
   virtual void Send(int settings, const char* data, const char* remote_ip, int* count,
                     int* result) = 0;

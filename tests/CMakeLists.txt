@@ -17,6 +17,7 @@ add_executable(easym68k-sim-tests
   sim/oracle_regression_test.cc
   sim/legality_test.cc
   sim/std_file_io_test.cc
+  sim/std_network_io_test.cc
   sim/flag_computation_test.cc
   sim/exception_test.cc
   sim/trap15_mock_test.cc
@@ -65,6 +66,7 @@ if(TARGET easy68k-simio)
     gui/qt_io_backends_test.cc
     gui/qt_devices_test.cc
     gui/qt_sound_io_test.cc
+    gui/qt_serial_io_test.cc
   )
   target_link_libraries(easym68k-gui-tests PRIVATE easy68k-simio GTest::gtest)
   add_test(NAME gui-tests COMMAND easym68k-gui-tests)

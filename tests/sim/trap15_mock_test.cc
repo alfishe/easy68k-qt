@@ -83,7 +83,7 @@ class MockSerialIO : public ISerialIO {
 
 class MockNetworkIO : public INetworkIO {
  public:
-  MOCK_METHOD(void, CreateClient, (int, const char*, int*), (override));
+  MOCK_METHOD(void, CreateClient, (int, char*, int*), (override));
   MOCK_METHOD(void, CreateServer, (int, int*), (override));
   MOCK_METHOD(void, Send, (int, const char*, const char*, int*, int*), (override));
   MOCK_METHOD(void, Receive, (int, char*, int*, char*, int*), (override));
@@ -590,6 +590,39 @@ TEST_F(Trap15Test, Task42_SerialRead_UpdatesD1B) {
       .WillOnce(SetArgPointee<1>(static_cast<unsigned char>(5)));
   sim_->Step();
   EXPECT_EQ(sim_->State().d[1] & 0xFF, 5u);
+}
+
+TEST_F(Trap15Test, Task42_SerialRead_StoresBytesAndTerminator) {
+  sim_->State().a[1] = 0x2000;
+  sim_->State().d[1] = 3;
+  sim_->GetMemory().WriteByte(0x2003, 0xAA);
+  sim_->GetMemory().WriteByte(0x2004, 0xBB);
+  EXPECT_CALL(serial_io_, ReadString(0, _, _, _))
+      .WillOnce([](int, unsigned char* n, char* buf, short* result) {
+        std::memcpy(buf, "xyz", 4);
+        *n = 3;
+        *result = 0;
+      });
+  RunTask(kTrap15SerialRead);
+  const uint8_t* m = sim_->GetMemory().RawData();
+  EXPECT_EQ(std::memcmp(m + 0x2000, "xyz", 4), 0);
+  EXPECT_EQ(m[0x2004], 0xBB);  // nothing beyond the terminator
+}
+
+TEST_F(Trap15Test, Task42_SerialRead_IntoInvalidMemoryIsBusError) {
+  M68kSimulator::MemoryMapConfig map;
+  map.invalid = {true, 0x3000, 0x3FFF};
+  sim_->ConfigureMemoryMap(map);
+  sim_->State().a[1] = 0x3000;
+  sim_->State().d[1] = 2;
+  EXPECT_CALL(serial_io_, ReadString(0, _, _, _))
+      .WillOnce([](int, unsigned char* n, char* buf, short* result) {
+        std::memcpy(buf, "ab", 3);
+        *n = 2;
+        *result = 0;
+      });
+  EXPECT_EQ(RunTask(kTrap15SerialRead), SimResult::kBusError);
+  EXPECT_EQ(sim_->GetMemory().RawData()[0x3000], 0);
 }
 
 TEST_F(Trap15Test, Task43_SerialSend) {
