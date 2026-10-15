@@ -1,0 +1,20 @@
+# P-03 — Mini Monitor & Debugger: TRAP #0 Services, Memory Dump, Edit, and Checksum
+id = "P-03"
+title = "Mini Monitor & Debugger: TRAP #0 Services, Memory Dump, Edit, and Checksum"
+track = "projects"
+level = 5
+difficulty = 4
+requires = ["L3-08", "S-08", "S-11"]
+source = "main.x68"
+
+[input]
+text = ["W 2000 42", "W 2001 58", "M 2000", "Q"]
+
+[expect]
+halted = true
+output = "2000: 4258\r\n"
+registers = { D0 = 0x4258 }
+
+[[expect.memory]]
+address = 0x2000
+bytes = "42 58"

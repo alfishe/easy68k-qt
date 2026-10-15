@@ -1,0 +1,15 @@
+# P-06 — Freestanding C++17 Game Framework with Hand-Optimised 68000 Assembly Hot Paths
+id = "P-06"
+title = "Freestanding C++17 Game Framework with Hand-Optimised 68000 Assembly Hot Paths"
+track = "projects"
+level = 5
+difficulty = 4
+requires = ["C-10", "C-12", "C-13", "O-08", "O-11"]
+source = "main.cpp"
+toolchain = "gcc-cpp"
+
+[expect]
+halted = true
+output = "Tick 4: x0=60 hits=1\r\n"
+registers = { D0 = 61 }
+max_cycles = 2000

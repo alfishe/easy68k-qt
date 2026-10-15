@@ -1,0 +1,14 @@
+id = "P-03-EX1"
+title = "Parse 2-digit hex string 'A5' into D0 and $2000"
+track = "projects"
+level = 5
+difficulty = 3
+source = "ex1.x68"
+
+[expect]
+halted = true
+registers = { D0 = 0xA5 }
+
+[[expect.memory]]
+address = 0x2000
+bytes = "A5"

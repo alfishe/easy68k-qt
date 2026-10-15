@@ -1,0 +1,11 @@
+id = "P-07-EX1"
+title = "Generate 16-pixel sine scanline and sum (1024) in <= 560 cycles"
+track = "projects"
+level = 5
+difficulty = 3
+source = "ex1.x68"
+
+[expect]
+halted = true
+registers = { D0 = 1024 }
+max_cycles = 560

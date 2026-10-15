@@ -1,0 +1,13 @@
+# P-02 — Arcade Pong Loop: Double-Buffered Graphics, Collision, 7-Seg Score, and Sound
+id = "P-02"
+title = "Arcade Pong Loop: Double-Buffered Graphics, Collision, 7-Seg Score, and Sound"
+track = "projects"
+level = 5
+difficulty = 3
+requires = ["S-03", "S-04", "S-05", "S-07", "O-13"]
+source = "main.x68"
+
+[expect]
+halted = true
+registers = { D0 = 52, D1 = 38, D2 = 1, D3 = 10 }
+max_cycles = 5000

@@ -1,0 +1,10 @@
+id = "P-05-EX1"
+title = "Restore task counters from TCB_A and TCB_B"
+track = "projects"
+level = 5
+difficulty = 3
+source = "ex1.x68"
+
+[expect]
+halted = true
+registers = { D0 = 111, D1 = 222, D2 = 333 }

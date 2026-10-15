@@ -1,0 +1,16 @@
+# P-01 — Calculator: Reverse Polish Notation (RPN) Stack Engine
+id = "P-01"
+title = "Calculator: Reverse Polish Notation (RPN) Stack Engine"
+track = "projects"
+level = 5
+difficulty = 3
+requires = ["L2-06", "L2-08", "S-01"]
+source = "main.x68"
+
+[input]
+text = ["12 8 + 5 * 4 - ="]
+
+[expect]
+halted = true
+output = "96\r\n"
+registers = { D0 = 96 }

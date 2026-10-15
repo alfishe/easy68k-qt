@@ -1,0 +1,14 @@
+id = "P-01-EX1"
+title = "Add unary negate ('n') to RPN calculator"
+track = "projects"
+level = 5
+difficulty = 3
+source = "ex1.x68"
+
+[input]
+text = ["15 3 * n 50 + ="]
+
+[expect]
+halted = true
+output = "5\r\n"
+registers = { D0 = 5 }

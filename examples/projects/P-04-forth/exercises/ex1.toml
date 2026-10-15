@@ -1,0 +1,10 @@
+id = "P-04-EX1"
+title = "Implement Forth OVER primitive (6 10 OVER * + = 66)"
+track = "projects"
+level = 5
+difficulty = 4
+source = "ex1.x68"
+
+[expect]
+halted = true
+registers = { D0 = 66 }

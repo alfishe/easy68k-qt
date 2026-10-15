@@ -11,11 +11,11 @@ EASy68K-Qt as-is and is checked automatically by the test suite.
 
 | Directory | Track | Levels | Status |
 |-----------|-------|--------|--------|
-| [`core/`](core/README.md) | Core path: orientation, data, control flow, data structures | 0–3 | planned (E2–E3) |
-| [`systems/`](systems/README.md) | Track S: I/O, devices, exceptions, interrupts, protection | 4 | planned (E4) |
-| [`c/`](c/README.md) | Track C: C and C++ on the 68000 | 4 | planned (E5–E6) |
-| [`optimization/`](optimization/README.md) | Track O: naive vs optimised pairs with cycle budgets | 4 | planned (E7) |
-| [`projects/`](projects/README.md) | Capstone projects | 4 | planned (E8) |
+| [`core/`](core/README.md) | Core path: orientation, data, control flow, data structures | 0–3 | done (E2–E3, 34 examples) |
+| [`systems/`](systems/README.md) | Track S: I/O, devices, exceptions, interrupts, protection | 4 | done (E4, 16 examples) |
+| [`c/`](c/README.md) | Track C: C and C++ on the 68000 | 4 | done (E5–E6, 13 examples) |
+| [`optimization/`](optimization/README.md) | Track O: naive vs optimised pairs with cycle budgets | 4 | done (E7, 13 pairs) |
+| [`projects/`](projects/README.md) | Capstone projects | 5 | done (E8, 7 projects) |
 
 Start with `core/L0-01-hello-simhalt` and follow the `requires` links in each
 example's README.

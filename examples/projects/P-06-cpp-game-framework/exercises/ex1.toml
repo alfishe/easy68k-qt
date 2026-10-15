@@ -1,0 +1,12 @@
+id = "P-06-EX1"
+title = "Step 2 entities and check 1D AABB overlap in <= 1000 cycles"
+track = "projects"
+level = 5
+difficulty = 4
+source = "ex1.cpp"
+toolchain = "gcc-cpp"
+
+[expect]
+halted = true
+registers = { D0 = 1, D1 = 50 }
+max_cycles = 1000

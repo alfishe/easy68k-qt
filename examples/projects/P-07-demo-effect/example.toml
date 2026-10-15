@@ -1,0 +1,13 @@
+# P-07 — Demo Effect: Fixed-Point Sine-Table Plasma Generator Within a Cycle Budget
+id = "P-07"
+title = "Demo Effect: Fixed-Point Sine-Table Plasma Generator Within a Cycle Budget"
+track = "projects"
+level = 5
+difficulty = 4
+requires = ["O-07", "O-08", "O-13"]
+source = "main.x68"
+
+[expect]
+halted = true
+registers = { D0 = 12960, D1 = 174, D2 = 238 }
+max_cycles = 5500

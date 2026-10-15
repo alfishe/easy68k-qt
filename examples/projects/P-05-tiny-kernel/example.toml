@@ -1,0 +1,16 @@
+# P-05 — Multitasking Mini-Kernel: User/Supervisor Mode, Task Control Blocks, and Context Switching
+id = "P-05"
+title = "Multitasking Mini-Kernel: User/Supervisor Mode, Task Control Blocks, and Context Switching"
+track = "projects"
+level = 5
+difficulty = 4
+requires = ["S-08", "S-11", "S-12", "C-09"]
+source = "main.x68"
+
+[expect]
+halted = true
+registers = { D0 = 30, D1 = 21, D2 = 6 }
+
+[[expect.memory]]
+address = 0x2000
+bytes = "00 00 00 1E 00 00 00 15"

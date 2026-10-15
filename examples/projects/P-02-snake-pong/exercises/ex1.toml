@@ -1,0 +1,10 @@
+id = "P-02-EX1"
+title = "Step paddle X from 20 to 40 over 5 frames"
+track = "projects"
+level = 5
+difficulty = 3
+source = "ex1.x68"
+
+[expect]
+halted = true
+registers = { D0 = 40, D1 = 1 }

@@ -1,0 +1,13 @@
+# P-04 — Direct-Threaded Forth Interpreter in 68000 Assembly
+id = "P-04"
+title = "Direct-Threaded Forth Interpreter in 68000 Assembly"
+track = "projects"
+level = 5
+difficulty = 4
+requires = ["L2-08", "L3-03", "O-04"]
+source = "main.x68"
+
+[expect]
+halted = true
+output = "54\r\n"
+registers = { D0 = 54 }
