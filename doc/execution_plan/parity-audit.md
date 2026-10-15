@@ -28,7 +28,7 @@ hash and the program output.
 
 ## Status snapshot
 
-*Updated after every committed iteration (last: 2026-10-15, commit `(X)`).*
+*Updated after every committed iteration (last: 2026-10-15, commit `e44106a`).*
 
 | Area | Rows | Done | Partial | Gap | Notes |
 |------|------|------|---------|-----|-------|
@@ -248,7 +248,7 @@ Each committed iteration updates the snapshot above and adds a line here.
 | 2026-10-14 | `080908a` | 10.1 golden simulation traces (23 programs from the oracle, incl. Trap #15 text tasks) | acceptance item 2 (golden traces) in place |
 | 2026-10-14 | `63cff79` | 8.15 assembler parity widening: SIMHALT S-record fix, diagnostics + nesting corpus, option combinations | A2/A3 coverage widened |
 | 2026-10-14 | `d93516f` | 10.5 32-bit program counter (user decision) | 24-bit PC deviation removed; 26 golden traces |
-| 2026-10-15 | `(X)` | 10.4 Trap #15 file tasks: StdFileIO back end, original buffer/map checks | S9 file tasks verified; S10 Trap #15 buffer checks for file tasks |
+| 2026-10-15 | `e44106a` | 10.4 Trap #15 file tasks: StdFileIO back end, original buffer/map checks | S9 file tasks verified; S10 Trap #15 buffer checks for file tasks |
 
 ## 10. Parity acceptance
 
