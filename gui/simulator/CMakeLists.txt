@@ -31,6 +31,7 @@ add_library(easy68k-simulator-ui STATIC
   stack_window.cc
   memory_window.cc
   hardware_window.cc
+  fullscreen_options_dialog.cc
   mainwindow.cc
 )
 target_include_directories(easy68k-simulator-ui PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})

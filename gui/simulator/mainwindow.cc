@@ -12,6 +12,7 @@
 #include <QDropEvent>
 #include <QFileDialog>
 #include <QFileInfo>
+#include <QGuiApplication>
 #include <QMenuBar>
 #include <QMessageBox>
 #include <QMimeData>
@@ -22,6 +23,7 @@
 #include <QToolBar>
 #include <QVBoxLayout>
 
+#include "fullscreen_options_dialog.h"
 #include "hardware_window.h"
 #include "io_window.h"
 #include "memory_window.h"
@@ -103,10 +105,14 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent) {
     stack_window_->UpdateState(session_->Simulator().State());
   });
   // Ctrl+Tab: memory -> stack -> hardware -> main window.
-  connect(memory_window_, &MemoryWindow::NextWindowRequested, this, [this] { BringToFront(1); });
-  connect(stack_window_, &StackWindow::NextWindowRequested, this, [this] { BringToFront(2); });
+  connect(io_window_, &IoWindow::NextWindowRequested, this, [this] { BringToFront(1); });
+  connect(memory_window_, &MemoryWindow::NextWindowRequested, this, [this] { BringToFront(2); });
+  connect(stack_window_, &StackWindow::NextWindowRequested, this, [this] { BringToFront(4); });
   connect(hardware_window_, &HardwareWindow::NextWindowRequested, this,
           [this] { BringToFront(3); });
+  // Trap #15 task 33: windowed (1) or full screen (2) output window.
+  connect(&session_->Env(), &QtSimulatorEnv::FullScreenRequested, io_window_,
+          &IoWindow::SetFullScreen);
   // Trap #15 task 32.0: Hardware->Show().
   connect(&session_->Env(), &QtSimulatorEnv::ShowHardwareRequested, this,
           [this] { Raise(hardware_window_); });
@@ -114,6 +120,14 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent) {
   CreateActions();
   CreateMenus();
   CreateToolBar();
+  // FormKeyDown(): Ctrl+Tab goes to the output window (not while task 24
+  // disables the shortcut keys).
+  auto* next_window = new QAction(this);
+  next_window->setShortcut(QKeySequence(Qt::CTRL | Qt::Key_Tab));
+  next_window->setShortcutContext(Qt::WindowShortcut);
+  addAction(next_window);
+  key_commands_.emplace_back(next_window, next_window->shortcut());
+  connect(next_window, &QAction::triggered, this, [this] { BringToFront(0); });
 
   connect(session_.get(), &SimSession::StateChanged, this, [this] {
     UpdateActions();
@@ -291,7 +305,12 @@ void MainWindow::CreateMenus() {
 
   QMenu* view = menuBar()->addMenu(QStringLiteral("&View"));
   output_window_ = view->addAction(QStringLiteral("&Output Window"));
+  // OutputWindow1Click(): leaves full screen, else shows the window.
   connect(output_window_, &QAction::triggered, this, [this] {
+    if (io_window_->FullScreen()) {
+      io_window_->SetFullScreen(false);
+      return;
+    }
     io_window_->show();
     io_window_->raise();
     io_window_->activateWindow();
@@ -320,7 +339,8 @@ void MainWindow::CreateMenus() {
   options->addSeparator();
   options->addAction(Pending(QStringLiteral("&Auto Trace Options..."), QStringLiteral("13.24")));
   options->addSeparator();
-  options->addAction(Pending(QStringLiteral("&Fullscreen Options..."), QStringLiteral("13.10")));
+  QAction* fullscreen = options->addAction(QStringLiteral("&Fullscreen Options..."));
+  connect(fullscreen, &QAction::triggered, this, &MainWindow::OnFullscreenOptions);
   options->addSeparator();
   bit_field_ = options->addAction(QStringLiteral("Enable &Bit Field Instructions"));
   bit_field_->setCheckable(true);
@@ -432,8 +452,9 @@ void MainWindow::ApplyArguments(const QStringList& args) {
       exceptions_->setChecked(true);
     } else if (option == QLatin1String("/b")) {
       bit_field_->setChecked(true);
+    } else if (option == QLatin1String("/f")) {
+      io_window_->SetFullScreen(true);  // shown full screen
     }
-    // "/f" (full screen output window): Task 13.10.
   }
 }
 
@@ -517,9 +538,25 @@ void MainWindow::Raise(QWidget* window) {
   window->activateWindow();
 }
 
+// mmuFullscreenOptionsClick().
+void MainWindow::OnFullscreenOptions() {
+  if (io_window_->FullScreen()) {
+    QMessageBox box(QMessageBox::NoIcon, QStringLiteral("Error"),
+                    QStringLiteral("Please deactivate fullscreen mode before attempting to change "
+                                   "the fullscreen settings."),
+                    QMessageBox::Ok, this);
+    box.exec();
+    return;
+  }
+  FullscreenOptionsDialog dialog(io_window_->FullScreenMonitor(),
+                                 static_cast<int>(QGuiApplication::screens().size()), this);
+  if (dialog.exec() == QDialog::Accepted)
+    io_window_->SetFullScreenMonitor(dialog.Monitor());
+}
+
 void MainWindow::BringToFront(int index) {
-  QWidget* const chain[] = {memory_window_, stack_window_, hardware_window_};
-  for (int i = index; i < 3; i++) {
+  QWidget* const chain[] = {io_window_, memory_window_, stack_window_, hardware_window_};
+  for (int i = index; i < 4; i++) {
     if (chain[i]->isVisible()) {
       Raise(chain[i]);
       return;

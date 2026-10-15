@@ -60,6 +60,7 @@ class MainWindow : public QMainWindow {
   SourceView* Source() const { return source_; }
   StackWindow* Stack() const { return stack_window_; }
   MemoryWindow* MemoryView() const { return memory_window_; }
+  IoWindow* Io() const { return io_window_; }
   HardwareWindow* Hardware() const { return hardware_window_; }
 
  protected:
@@ -85,13 +86,14 @@ class MainWindow : public QMainWindow {
   void OnRunToCursor();
   void OnGotoPc();
   void OnAbout();
+  void OnFullscreenOptions();
   void OnWindowSize(QAction* action);
   bool Confirm();
   bool Halted() const;
   static void Raise(QWidget* window);
-  // Ctrl+Tab (Memory1.cpp, Stack1.cpp, hardwareu.cpp BringToFront()): the
-  // first visible window of memory, stack, hardware from `index`, else the
-  // main window.
+  // Ctrl+Tab (simIOu.cpp, Memory1.cpp, Stack1.cpp, hardwareu.cpp
+  // BringToFront()): the first visible window of I/O, memory, stack,
+  // hardware from `index`, else the main window.
   void BringToFront(int index);
 
   std::unique_ptr<SimSession> session_;
