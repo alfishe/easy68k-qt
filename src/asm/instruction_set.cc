@@ -637,13 +637,13 @@ const Flavor bgtfl[] = {
 const Flavor bhifl[] = {
     {Absolute, 0, SHORT_SIZE | LONG_SIZE | BYTE_SIZE | WORD_SIZE, branch, 0x6200, 0x6200, 0x6200},
 };
-const Flavor bhsfl[] = {
+[[maybe_unused]] const Flavor bhsfl[] = {  // alias table kept from INSTTABL.CPP
     {Absolute, 0, SHORT_SIZE | LONG_SIZE | BYTE_SIZE | WORD_SIZE, branch, 0x6400, 0x6400, 0x6400},
 };
 const Flavor blefl[] = {
     {Absolute, 0, SHORT_SIZE | LONG_SIZE | BYTE_SIZE | WORD_SIZE, branch, 0x6f00, 0x6F00, 0x6F00},
 };
-const Flavor blofl[] = {
+[[maybe_unused]] const Flavor blofl[] = {  // alias table kept from INSTTABL.CPP
     {Absolute, 0, SHORT_SIZE | LONG_SIZE | BYTE_SIZE | WORD_SIZE, branch, 0x6500, 0x6500, 0x6500},
 };
 const Flavor blsfl[] = {
@@ -728,13 +728,13 @@ const Flavor dbgtfl[] = {
 const Flavor dbhifl[] = {
     {DnDirect, Absolute, WORD_SIZE, dbcc, 0, 0x52C8, 0},
 };
-const Flavor dbhsfl[] = {
+[[maybe_unused]] const Flavor dbhsfl[] = {  // alias table kept from INSTTABL.CPP
     {DnDirect, Absolute, WORD_SIZE, dbcc, 0, 0x54C8, 0},
 };
 const Flavor dblefl[] = {
     {DnDirect, Absolute, WORD_SIZE, dbcc, 0, 0x5FC8, 0},
 };
-const Flavor dblofl[] = {
+[[maybe_unused]] const Flavor dblofl[] = {  // alias table kept from INSTTABL.CPP
     {DnDirect, Absolute, WORD_SIZE, dbcc, 0, 0x55C8, 0},
 };
 const Flavor dblsfl[] = {
@@ -927,13 +927,13 @@ const Flavor sgtfl[] = {
 const Flavor shifl[] = {
     {DataAlt, 0, BYTE_SIZE, scc, 0x52C0, 0x52C0, 0},
 };
-const Flavor shsfl[] = {
+[[maybe_unused]] const Flavor shsfl[] = {  // alias table kept from INSTTABL.CPP
     {DataAlt, 0, BYTE_SIZE, scc, 0x54C0, 0x54C0, 0},
 };
 const Flavor slefl[] = {
     {DataAlt, 0, BYTE_SIZE, scc, 0x5FC0, 0x5FC0, 0},
 };
-const Flavor slofl[] = {
+[[maybe_unused]] const Flavor slofl[] = {  // alias table kept from INSTTABL.CPP
     {DataAlt, 0, BYTE_SIZE, scc, 0x55C0, 0x55C0, 0},
 };
 const Flavor slsfl[] = {

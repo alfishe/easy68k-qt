@@ -7,6 +7,7 @@
 #include <gmock/gmock.h>
 #include <gtest/gtest.h>
 
+#include <cstring>
 #include <memory>
 #include <string_view>
 
@@ -206,7 +207,7 @@ class Trap15Test : public ::testing::Test {
     uint32_t addr = 0x2000;
     for (size_t i = 0; str[i]; ++i)
       sim_->GetMemory().WriteByte(addr + i, static_cast<uint8_t>(str[i]));
-    sim_->GetMemory().WriteByte(addr + __builtin_strlen(str), 0);
+    sim_->GetMemory().WriteByte(addr + std::strlen(str), 0);
     sim_->State().a[1] = addr;
   }
 
@@ -892,7 +893,7 @@ TEST_F(Trap15Test, Task100_NetCreateClient) {
   sim_->State().d[1] = 0;
   sim_->State().a[2] = 0x2000;
   const char* ip = "127.0.0.1";
-  for (size_t i = 0; i <= __builtin_strlen(ip); ++i)
+  for (size_t i = 0; i <= std::strlen(ip); ++i)
     sim_->GetMemory().WriteByte(0x2000 + i, static_cast<uint8_t>(ip[i]));
   EXPECT_CALL(network_io_, CreateClient(0, _, _)).Times(1);
   RunTask(kTrap15NetCreateClient);

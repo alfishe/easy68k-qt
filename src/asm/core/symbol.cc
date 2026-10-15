@@ -90,7 +90,7 @@ void AsmCore::clearSymbols()
 symbolDef *AsmCore::lookup(char *sym, int create, int *errorPtr)
 {
   int h, cmp;
-  symbolDef *s, *last, *t;
+  symbolDef *s, *last, *t = NULL;  // port: NULL when not found (was uninitialized)
   char sym2[SIGCHARS+1];        // CK for local labels
   int i, j;
 

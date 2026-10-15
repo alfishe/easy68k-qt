@@ -225,7 +225,7 @@ int AsmCore::writeObj()
     // Fill in the record length (including the checksum in the record length
     sprintf(recLen, "%02X", byteCount);
     sRec += 2;          // point to byte count location
-    strncpy(sRec, recLen, 2);
+    memcpy(sRec, recLen, 2);  // port: two digits, no terminator (was strncpy)
 
     // Calculate checksum and add to record
     checksum = 0;

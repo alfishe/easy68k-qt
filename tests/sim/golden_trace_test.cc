@@ -108,11 +108,17 @@ TEST_P(GoldenTraceTest, MatchesOriginal) {
   const fs::path files = fs::temp_directory_path() / ("easy68k_golden_" + name);
   fs::remove_all(files);
   fs::create_directories(files);
-  options.file_dir = files.string();
-  FILE* trace = std::tmpfile();
-  FILE* out = std::tmpfile();
-  FILE* in = fs::exists(dir / (name + ".in")) ? std::fopen((dir / (name + ".in")).c_str(), "rb")
-                                              : std::tmpfile();
+  options.file_dir = (files / "work").string();
+  fs::create_directories(files / "work");
+  // Regular files in the scratch directory (std::tmpfile() needs write
+  // access to the drive root on Windows).
+  FILE* trace = std::fopen((files / "trace.txt").string().c_str(), "w+b");
+  FILE* out = std::fopen((files / "out.txt").string().c_str(), "w+b");
+  const fs::path in_path =
+      fs::exists(dir / (name + ".in")) ? dir / (name + ".in") : files / "empty.in";
+  if (!fs::exists(in_path))
+    std::fclose(std::fopen(in_path.string().c_str(), "wb"));
+  FILE* in = std::fopen(in_path.string().c_str(), "rb");
   ASSERT_TRUE(trace && out && in);
   ASSERT_TRUE(RunTrace((dir / (name + ".S68")).string(), options, trace, in, out));
   std::fflush(trace);
