@@ -283,7 +283,7 @@ Each committed iteration updates the snapshot above and adds a line here.
 | 2026-10-15 | `2c46600` | 13.20 EASyBIN-Qt binary utility + Sim68K View > EASyBIN | B1-B3, G8, G21 Done; B4 Partial |
 | 2026-10-15 | `99a7fe1` | 13.25 HelpViewer (`easy68k-help`) + 242 help assets (`data/help/`), wired into Sim68K and EASyBIN | H1, G20, B4 Done |
 | 2026-10-15 | `2afea15` | 13.19 Edit68K-Qt (`easy68k-editor` + `easy68k-editor-ui`) + `data/template.NEW` + 10 `EditorTest` tests | E1-E14, A7, A8 Done (all 69/69 parity rows Done) |
-| 2026-10-15 | `pending` | 13.21 Feature parity validation (`ParityValidationTest` + `parity-validation-checklist.md`) | All 30 Feature Coverage Matrix items + 69/69 parity rows validated |
+| 2026-10-15 | `1dff98a` | 13.21 Feature parity validation (`ParityValidationTest` + `parity-validation-checklist.md`) | All 30 Feature Coverage Matrix items + 69/69 parity rows validated |
 
 ## 10. Parity acceptance
 
