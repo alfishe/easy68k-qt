@@ -1,0 +1,14 @@
+# C-03 — m68k C Calling Convention: Stack Arguments, D0 Return, and Callee-Saved Registers
+id = "C-03"
+title = "m68k C Calling Convention: Stack Arguments, D0 Return, and Callee-Saved Registers"
+track = "c"
+level = 4
+difficulty = 3
+requires = ["C-01", "L2-05", "L2-06"]
+source = "main.c"
+toolchain = "gcc-c"
+
+[expect]
+halted = true
+registers = { D0 = 200, D2 = 0x11223344 }
+max_cycles = 400

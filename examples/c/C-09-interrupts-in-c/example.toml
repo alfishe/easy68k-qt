@@ -1,0 +1,19 @@
+# C-09 — Interrupts in C: ISR Wrappers, volatile Shared State, and Critical Sections
+id = "C-09"
+title = "Interrupts in C: ISR Wrappers, volatile Shared State, and Critical Sections"
+track = "c"
+level = 4
+difficulty = 4
+requires = ["C-05", "C-08", "S-10"]
+source = "main.c"
+toolchain = "gcc-c"
+exceptions = true
+
+[expect]
+halted = true
+registers = { D0 = 1 }
+max_cycles = 500
+
+[[expect.memory]]
+address = 0x2000
+bytes = "00 00 00 01"

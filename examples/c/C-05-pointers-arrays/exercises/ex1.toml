@@ -1,0 +1,15 @@
+id = "C-05-EX1"
+title = "Reverse 4 words at $2000 in-place"
+track = "c"
+level = 4
+difficulty = 2
+source = "ex1.c"
+toolchain = "gcc-c"
+
+[expect]
+halted = true
+registers = { D0 = 40 }
+
+[[expect.memory]]
+address = 0x2000
+bytes = "00 28 00 1E 00 14 00 0A"

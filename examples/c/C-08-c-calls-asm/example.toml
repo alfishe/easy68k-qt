@@ -1,0 +1,14 @@
+# C-08 — Mixing C and Assembly: Calling Hand-Written 68000 Routines from C and Back
+id = "C-08"
+title = "Mixing C and Assembly: Calling Hand-Written 68000 Routines from C and Back"
+track = "c"
+level = 4
+difficulty = 3
+requires = ["C-03", "L1-06"]
+source = "main.c"
+toolchain = "gcc-c"
+
+[expect]
+halted = true
+registers = { D0 = 58 }
+max_cycles = 1500

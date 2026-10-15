@@ -1,0 +1,11 @@
+id = "C-08-EX1"
+title = "Implement asm_abs32(4(A7)) -> D0"
+track = "c"
+level = 4
+difficulty = 3
+source = "ex1.c"
+toolchain = "gcc-c"
+
+[expect]
+halted = true
+registers = { D0 = 1234 }

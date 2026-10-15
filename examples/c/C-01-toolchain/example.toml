@@ -1,0 +1,15 @@
+# C-01 — Freestanding C Toolchain: crt0, Linker Script, and S-Records
+id = "C-01"
+title = "Freestanding C Toolchain: crt0, Linker Script, and S-Records"
+track = "c"
+level = 4
+difficulty = 2
+requires = ["L2-04", "L2-06"]
+source = "main.c"
+toolchain = "gcc-c"
+
+[expect]
+halted = true
+output = "C-01: 42\r\n"
+registers = { D0 = 42 }
+max_cycles = 400

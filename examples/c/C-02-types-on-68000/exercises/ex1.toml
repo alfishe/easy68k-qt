@@ -1,0 +1,11 @@
+id = "C-02-EX1"
+title = "Sum high and low 16-bit words at $2000"
+track = "c"
+level = 4
+difficulty = 2
+source = "ex1.c"
+toolchain = "gcc-c"
+
+[expect]
+halted = true
+registers = { D0 = 0x00019ACE }

@@ -1,0 +1,14 @@
+# C-04 — Reading Compiler Output: -O0 vs -O2 Code Generation on the 68000
+id = "C-04"
+title = "Reading Compiler Output: -O0 vs -O2 Code Generation on the 68000"
+track = "c"
+level = 4
+difficulty = 3
+requires = ["C-03", "S-16"]
+source = "main.c"
+toolchain = "gcc-c"
+
+[expect]
+halted = true
+registers = { D0 = 91, D4 = 91, D5 = 91 }
+max_cycles = 2500

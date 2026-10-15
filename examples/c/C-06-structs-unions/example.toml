@@ -1,0 +1,18 @@
+# C-06 — Structs, Alignment Padding, Unions, and Assembly OFFSET Views
+id = "C-06"
+title = "Structs, Alignment Padding, Unions, and Assembly OFFSET Views"
+track = "c"
+level = 4
+difficulty = 3
+requires = ["C-02", "L3-10"]
+source = "main.c"
+toolchain = "gcc-c"
+
+[expect]
+halted = true
+registers = { D0 = 10 }
+max_cycles = 300
+
+[[expect.memory]]
+address = 0x2000
+bytes = "07 00 00 78 00 50 00 FF 80 00"

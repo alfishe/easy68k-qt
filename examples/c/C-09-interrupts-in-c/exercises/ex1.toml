@@ -1,0 +1,12 @@
+id = "C-09-EX1"
+title = "TRAP #0 C handler + critical section -> 150"
+track = "c"
+level = 4
+difficulty = 4
+source = "ex1.c"
+toolchain = "gcc-c"
+exceptions = true
+
+[expect]
+halted = true
+registers = { D0 = 150 }

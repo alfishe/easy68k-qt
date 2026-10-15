@@ -1,0 +1,12 @@
+id = "C-07-EX1"
+title = "Print 42 in binary (task 15) and return 42"
+track = "c"
+level = 4
+difficulty = 3
+source = "ex1.c"
+toolchain = "gcc-c"
+
+[expect]
+halted = true
+output = "101010"
+registers = { D0 = 42 }

@@ -10,6 +10,7 @@ include(cmake/CompilerWarnings.cmake)
 
 option(BUILD_TESTING "Build unit and golden tests" ON)
 option(BUILD_GUI "Build Qt 6 GUI applications" ON)
+option(BUILD_EXAMPLES_C "Build Track C/C++ examples when m68k GCC cross-compiler is present" ON)
 option(ENABLE_SERIAL_PORT "Use Qt SerialPort for Trap #15 serial I/O if available" ON)
 option(ENABLE_ASAN "Enable AddressSanitizer" OFF)
 option(ENABLE_UBSAN "Enable UndefinedBehaviorSanitizer" OFF)
@@ -22,6 +23,10 @@ add_subdirectory(src/asm)
 add_subdirectory(tools/easy68k-asm)
 add_subdirectory(tools/easy68k-sim)
 add_subdirectory(tools/easy68k-run)
+
+if(BUILD_EXAMPLES_C)
+  add_subdirectory(examples/c)
+endif()
 
 # Developer reference tools built from the original EASy68K sources (oracles
 # for parity testing). Never part of the applications.

@@ -1,0 +1,15 @@
+# C-07 — Writing libeasy68k: GCC Extended Inline Assembly for Trap #15
+id = "C-07"
+title = "Writing libeasy68k: GCC Extended Inline Assembly for Trap #15"
+track = "c"
+level = 4
+difficulty = 3
+requires = ["C-03", "L0-04", "L1-09"]
+source = "main.c"
+toolchain = "gcc-c"
+
+[expect]
+halted = true
+output = "val=255 hex=FF\r\n"
+registers = { D0 = 255 }
+max_cycles = 400

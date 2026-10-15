@@ -8,15 +8,15 @@ Delivery: E5 (C), E6 (C++) — in parallel with the core path.
 
 | ID | Example | Concepts | Status |
 |----|---------|----------|--------|
-| C-01 | toolchain | crt0 (stack setup, BSS clear, call main, exit via task 9), linker script, S-records | planned |
-| C-02 | types-on-68000 | int/short/long/pointer sizes, alignment, endianness, `sizeof` | planned |
-| C-03 | calling-convention | Arguments on the stack, return in D0, scratch D0–D1/A0–A1, saved D2–D7/A2–A6, frame pointer | planned |
-| C-04 | reading-compiler-output | `-S` at -O0/-O1/-O2/-Os; mapping C lines to instructions | planned |
-| C-05 | pointers-arrays | Pointer arithmetic ↔ addressing modes; `volatile` and memory-mapped I/O | planned |
-| C-06 | structs-unions | Layout and padding, bitfields vs masks, OFFSET-based asm views | planned |
-| C-07 | libeasy68k | Writing the Trap #15 runtime: inline asm with constraints | planned |
-| C-08 | c-calls-asm | Hand-written asm functions called from C (and back) | planned |
-| C-09 | interrupts-in-c | ISRs in C with an asm wrapper, critical sections, `volatile` | planned |
+| C-01 | toolchain | crt0 (stack setup, BSS clear, call main, exit via task 9), linker script, S-records | done |
+| C-02 | types-on-68000 | int/short/long/pointer sizes, alignment, endianness, `sizeof` | done |
+| C-03 | calling-convention | Arguments on the stack, return in D0, scratch D0–D1/A0–A1, saved D2–D7/A2–A6, frame pointer | done |
+| C-04 | reading-compiler-output | `-S` at -O0/-O1/-O2/-Os; mapping C lines to instructions | done |
+| C-05 | pointers-arrays | Pointer arithmetic ↔ addressing modes; `volatile` and memory-mapped I/O | done |
+| C-06 | structs-unions | Layout and padding, bitfields vs masks, OFFSET-based asm views | done |
+| C-07 | libeasy68k | Writing the Trap #15 runtime: inline asm with constraints | done |
+| C-08 | c-calls-asm | Hand-written asm functions called from C (and back) | done |
+| C-09 | interrupts-in-c | ISRs in C with an asm wrapper, critical sections, `volatile` | done |
 | C-10 | cpp-classes | Freestanding C++17: classes, constructors, RAII; no exceptions/RTTI | planned |
 | C-11 | cpp-virtual | Virtual dispatch and vtables in memory; cost in cycles | planned |
 | C-12 | cpp-templates-constexpr | Templates, `constexpr`, zero-cost abstractions verified by cycle count | planned |

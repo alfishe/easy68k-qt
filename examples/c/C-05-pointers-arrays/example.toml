@@ -1,0 +1,18 @@
+# C-05 — Pointers, Arrays, and volatile Memory-Mapped I/O
+id = "C-05"
+title = "Pointers, Arrays, and volatile Memory-Mapped I/O"
+track = "c"
+level = 4
+difficulty = 2
+requires = ["C-02", "L3-02", "S-07"]
+source = "main.c"
+toolchain = "gcc-c"
+
+[expect]
+halted = true
+registers = { D0 = 150 }
+max_cycles = 300
+
+[[expect.memory]]
+address = 0xE00010
+bytes = "96"
