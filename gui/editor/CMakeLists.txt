@@ -1,10 +1,24 @@
+# Edit68K-Qt (Task 13.19): MDI 68000 editor and integrated assembler IDE.
+add_library(easy68k-editor-ui STATIC
+  syntax_highlighter.cc
+  editor_child.cc
+  dialogs.cc
+  mainwindow.cc
+)
+target_include_directories(easy68k-editor-ui PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/..)
+target_compile_definitions(easy68k-editor-ui PRIVATE
+  EASY68K_TEMPLATE_PATH="${CMAKE_SOURCE_DIR}/data/template.NEW"
+)
+target_link_libraries(easy68k-editor-ui PUBLIC
+  easym68k-asm
+  easy68k-help
+  Qt6::Widgets
+  Qt6::PrintSupport
+)
+
 qt_add_executable(easy68k-editor
   main.cc
-  mainwindow.cc
-  codeeditor.cc
-  highlighter.cc
 )
 target_link_libraries(easy68k-editor PRIVATE
-  easym68k-asm
-  Qt6::Widgets
+  easy68k-editor-ui
 )

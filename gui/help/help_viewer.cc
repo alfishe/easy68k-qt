@@ -1,5 +1,6 @@
 #include "help/help_viewer.h"
 
+#include <algorithm>
 #include <QCoreApplication>
 #include <QDesktopServices>
 #include <QDir>
@@ -19,8 +20,6 @@
 #include <QTreeWidget>
 #include <QTreeWidgetItemIterator>
 #include <QVBoxLayout>
-
-#include <algorithm>
 #include <utility>
 
 namespace easym68k::gui {
@@ -43,11 +42,11 @@ class HelpTextBrowser final : public QTextBrowser {
       const QString cur = viewer_->current_page().section('#', 0, 0);
       if (!cur.isEmpty()) {
         base_dir = QFileInfo(cur).path();
-        if (base_dir == ".") base_dir.clear();
+        if (base_dir == ".")
+          base_dir.clear();
       }
       const QString rel =
-          viewer_->ResolveRelativeTarget(name.toString(), base_dir)
-              .section('#', 0, 0);
+          viewer_->ResolveRelativeTarget(name.toString(), base_dir).section('#', 0, 0);
       if (!rel.isEmpty()) {
         const QString abs_path = QDir(viewer_->help_dir()).filePath(rel);
         QFile file(abs_path);
@@ -65,8 +64,7 @@ class HelpTextBrowser final : public QTextBrowser {
 
 QString NormalizeWhitespaceUpper(const QString& text) {
   QString simplified = text.trimmed();
-  simplified.replace(QRegularExpression(QStringLiteral("\\s+")),
-                     QStringLiteral(" "));
+  simplified.replace(QRegularExpression(QStringLiteral("\\s+")), QStringLiteral(" "));
   return simplified.toUpper();
 }
 
@@ -131,8 +129,7 @@ void HelpViewer::BuildUi() {
   back_btn_ = new QPushButton(QStringLiteral("&Back"), this);
   forward_btn_ = new QPushButton(QStringLiteral("&Forward"), this);
   home_btn_ = new QPushButton(QStringLiteral("&Home"), this);
-  quick_ref_btn_ =
-      new QPushButton(QStringLiteral("68000 &Quick Reference (PDF)"), this);
+  quick_ref_btn_ = new QPushButton(QStringLiteral("68000 &Quick Reference (PDF)"), this);
   toolbar_layout->addWidget(back_btn_);
   toolbar_layout->addWidget(forward_btn_);
   toolbar_layout->addWidget(home_btn_);
@@ -169,28 +166,19 @@ void HelpViewer::BuildUi() {
   root_layout->addWidget(splitter, 1);
 
   connect(back_btn_, &QPushButton::clicked, this, &HelpViewer::OnBackClicked);
-  connect(forward_btn_, &QPushButton::clicked, this,
-          &HelpViewer::OnForwardClicked);
+  connect(forward_btn_, &QPushButton::clicked, this, &HelpViewer::OnForwardClicked);
   connect(home_btn_, &QPushButton::clicked, this, &HelpViewer::OnHomeClicked);
-  connect(quick_ref_btn_, &QPushButton::clicked, this,
-          &HelpViewer::OpenQuickReferencePdf);
+  connect(quick_ref_btn_, &QPushButton::clicked, this, &HelpViewer::OpenQuickReferencePdf);
 
-  connect(toc_tree_, &QTreeWidget::itemClicked, this,
-          &HelpViewer::OnTocItemActivated);
-  connect(toc_tree_, &QTreeWidget::itemActivated, this,
-          &HelpViewer::OnTocItemActivated);
+  connect(toc_tree_, &QTreeWidget::itemClicked, this, &HelpViewer::OnTocItemActivated);
+  connect(toc_tree_, &QTreeWidget::itemActivated, this, &HelpViewer::OnTocItemActivated);
 
-  connect(index_filter_, &QLineEdit::textChanged, this,
-          &HelpViewer::OnIndexFilterChanged);
-  connect(index_filter_, &QLineEdit::returnPressed, this,
-          &HelpViewer::OnIndexFilterReturnPressed);
-  connect(index_list_, &QListWidget::itemClicked, this,
-          &HelpViewer::OnIndexItemActivated);
-  connect(index_list_, &QListWidget::itemActivated, this,
-          &HelpViewer::OnIndexItemActivated);
+  connect(index_filter_, &QLineEdit::textChanged, this, &HelpViewer::OnIndexFilterChanged);
+  connect(index_filter_, &QLineEdit::returnPressed, this, &HelpViewer::OnIndexFilterReturnPressed);
+  connect(index_list_, &QListWidget::itemClicked, this, &HelpViewer::OnIndexItemActivated);
+  connect(index_list_, &QListWidget::itemActivated, this, &HelpViewer::OnIndexItemActivated);
 
-  connect(browser_, &QTextBrowser::anchorClicked, this,
-          &HelpViewer::OnAnchorClicked);
+  connect(browser_, &QTextBrowser::anchorClicked, this, &HelpViewer::OnAnchorClicked);
 
   UpdateNavigationButtons();
 }
@@ -198,7 +186,8 @@ void HelpViewer::BuildUi() {
 void HelpViewer::ScanHelpDirectory() {
   file_lookup_.clear();
   basename_lookup_.clear();
-  if (help_dir_.isEmpty() || !QDir(help_dir_).exists()) return;
+  if (help_dir_.isEmpty() || !QDir(help_dir_).exists())
+    return;
 
   const QDir root(help_dir_);
   QDirIterator it(help_dir_, QDir::Files, QDirIterator::Subdirectories);
@@ -219,7 +208,8 @@ void HelpViewer::ScanHelpDirectory() {
 QString HelpViewer::ResolveRelativeTarget(const QString& relative_target,
                                           const QString& base_dir) const {
   QString trimmed = relative_target.trimmed();
-  if (trimmed.isEmpty()) return QString();
+  if (trimmed.isEmpty())
+    return QString();
 
   // Strip file:// url prefix if present cleanly.
   if (trimmed.startsWith(QStringLiteral("file://"), Qt::CaseInsensitive)) {
@@ -232,8 +222,7 @@ QString HelpViewer::ResolveRelativeTarget(const QString& relative_target,
 
   const int hash_pos = trimmed.indexOf(QLatin1Char('#'));
   QString path_part = (hash_pos >= 0) ? trimmed.left(hash_pos) : trimmed;
-  const QString fragment_part =
-      (hash_pos >= 0) ? trimmed.mid(hash_pos) : QString();
+  const QString fragment_part = (hash_pos >= 0) ? trimmed.mid(hash_pos) : QString();
 
   path_part.replace(QLatin1Char('\\'), QLatin1Char('/'));
   while (path_part.startsWith(QStringLiteral("./"))) {
@@ -241,7 +230,8 @@ QString HelpViewer::ResolveRelativeTarget(const QString& relative_target,
   }
 
   if (path_part.isEmpty()) {
-    if (current_page_.isEmpty()) return QString();
+    if (current_page_.isEmpty())
+      return QString();
     const QString cur_base = current_page_.section(QLatin1Char('#'), 0, 0);
     return cur_base + fragment_part;
   }
@@ -256,8 +246,7 @@ QString HelpViewer::ResolveRelativeTarget(const QString& relative_target,
 
   QStringList candidates;
   if (!base_dir.isEmpty()) {
-    candidates.push_back(
-        QDir::cleanPath(base_dir + QLatin1Char('/') + path_part));
+    candidates.push_back(QDir::cleanPath(base_dir + QLatin1Char('/') + path_part));
   }
   candidates.push_back(QDir::cleanPath(path_part));
 
@@ -280,8 +269,7 @@ QString HelpViewer::ResolveRelativeTarget(const QString& relative_target,
 void HelpViewer::LoadAliasTable() {
   context_map_.clear();
 
-  const QString ali_rel =
-      ResolveRelativeTarget(QStringLiteral("ez68k.ali")).section('#', 0, 0);
+  const QString ali_rel = ResolveRelativeTarget(QStringLiteral("ez68k.ali")).section('#', 0, 0);
   if (!ali_rel.isEmpty()) {
     QFile ali_file(QDir(help_dir_).filePath(ali_rel));
     if (ali_file.open(QIODevice::ReadOnly | QIODevice::Text)) {
@@ -293,11 +281,13 @@ void HelpViewer::LoadAliasTable() {
           continue;
         }
         const int eq = line.indexOf(QLatin1Char('='));
-        if (eq <= 0) continue;
+        if (eq <= 0)
+          continue;
         const QString idh_key = line.left(eq).trimmed().toUpper();
         const QString raw_target = line.mid(eq + 1).trimmed();
         const QString resolved = ResolveRelativeTarget(raw_target);
-        if (resolved.isEmpty()) continue;
+        if (resolved.isEmpty())
+          continue;
 
         context_map_.insert(idh_key, resolved);
         if (idh_key.startsWith(QStringLiteral("IDH_"))) {
@@ -314,7 +304,8 @@ void HelpViewer::LoadAliasTable() {
   auto map_to_idh = [this](const QString& keyword, const QString& idh_name) {
     const auto it = context_map_.constFind(idh_name.toUpper());
     if (it != context_map_.cend()) {
-      context_map_.insert(keyword.toUpper(), it.value());
+      const QString target = it.value();
+      context_map_.insert(keyword.toUpper(), target);
     }
   };
 
@@ -325,63 +316,50 @@ void HelpViewer::LoadAliasTable() {
   map_to_idh(QStringLiteral("MAIN"), QStringLiteral("IDH_INTRO"));
   map_to_idh(QStringLiteral("INTRO"), QStringLiteral("IDH_INTRO"));
   map_to_idh(QStringLiteral("68000"), QStringLiteral("IDH_QUICKREF"));
-  map_to_idh(QStringLiteral("ASSEMBLER"),
-             QStringLiteral("IDH_ASSEMBLER_BASIC_OPERATION"));
+  map_to_idh(QStringLiteral("ASSEMBLER"), QStringLiteral("IDH_ASSEMBLER_BASIC_OPERATION"));
   map_to_idh(QStringLiteral("OPTIONS"), QStringLiteral("IDH_EDIT_OPTIONS"));
-  map_to_idh(QStringLiteral("EDIT_OPTIONS"),
-             QStringLiteral("IDH_EDIT_OPTIONS"));
+  map_to_idh(QStringLiteral("EDIT_OPTIONS"), QStringLiteral("IDH_EDIT_OPTIONS"));
 
-  for (const char* bcc :
-       {"BCC", "BCS", "BEQ", "BNE", "BGE", "BGT", "BHI", "BLE", "BLS", "BLT",
-        "BMI", "BPL", "BVC", "BVS", "BRA", "BHS", "BLO"}) {
+  for (const char* bcc : {"BCC", "BCS", "BEQ", "BNE", "BGE", "BGT", "BHI", "BLE", "BLS", "BLT",
+                          "BMI", "BPL", "BVC", "BVS", "BRA", "BHS", "BLO"}) {
     map_to_idh(QString::fromLatin1(bcc), QStringLiteral("IDH_BCC"));
   }
   for (const char* dbcc :
-       {"DBCC", "DBCS", "DBEQ", "DBNE", "DBGE", "DBGT", "DBHI", "DBLE", "DBLS",
-        "DBLT", "DBMI", "DBPL", "DBVC", "DBVS", "DBRA", "DBF", "DBT", "DBHS",
-        "DBLO"}) {
+       {"DBCC", "DBCS", "DBEQ", "DBNE", "DBGE", "DBGT", "DBHI", "DBLE", "DBLS", "DBLT", "DBMI",
+        "DBPL", "DBVC", "DBVS", "DBRA", "DBF", "DBT", "DBHS", "DBLO"}) {
     map_to_idh(QString::fromLatin1(dbcc), QStringLiteral("IDH_DBCC"));
   }
   for (const char* scc :
-       {"SCC", "SCS", "SEQ", "SGE", "SGT", "SHI", "SLE", "SLS", "SLT", "SME",
-        "SMI", "SNE", "SPL", "SVC", "SVS", "SSF", "SST", "SF", "ST", "SHS",
-        "SLO"}) {
+       {"SCC", "SCS", "SEQ", "SGE", "SGT", "SHI", "SLE", "SLS", "SLT", "SME", "SMI",
+        "SNE", "SPL", "SVC", "SVS", "SSF", "SST", "SF",  "ST",  "SHS", "SLO"}) {
     map_to_idh(QString::fromLatin1(scc), QStringLiteral("IDH_SCC"));
   }
-  for (const char* cond : {"CONDITIONAL", "ENDC", "IFC", "IFEQ", "IFGE", "IFGT",
-                           "IFLE", "IFLT", "IFNC", "IFNE"}) {
+  for (const char* cond :
+       {"CONDITIONAL", "ENDC", "IFC", "IFEQ", "IFGE", "IFGT", "IFLE", "IFLT", "IFNC", "IFNE"}) {
     map_to_idh(QString::fromLatin1(cond), QStringLiteral("IDH_CONDITIONAL"));
   }
-  for (const char* opt : {"OPT", "MEX", "NOMEX", "NOSEX", "NOWAR", "SEX", "WAR",
-                          "CRE", "NOCRE", "CEX", "NOCEX"}) {
+  for (const char* opt :
+       {"OPT", "MEX", "NOMEX", "NOSEX", "NOWAR", "SEX", "WAR", "CRE", "NOCRE", "CEX", "NOCEX"}) {
     map_to_idh(QString::fromLatin1(opt), QStringLiteral("IDH_DIRECT_OPT"));
   }
 
   map_to_idh(QStringLiteral("BREAKPOINT"), QStringLiteral("IDH_SIM_ADVBREAK"));
   map_to_idh(QStringLiteral("SIMULATOR"), QStringLiteral("IDH_SIM_BASIC"));
-  map_to_idh(QStringLiteral("EXCEPTIONS"),
-             QStringLiteral("IDH_SIM_EXCEPTIONS"));
+  map_to_idh(QStringLiteral("EXCEPTIONS"), QStringLiteral("IDH_SIM_EXCEPTIONS"));
   map_to_idh(QStringLiteral("HARDWARE"), QStringLiteral("IDH_SIM_HARDWARE"));
   map_to_idh(QStringLiteral("STACK"), QStringLiteral("IDH_SIM_STACK"));
 
-  map_to_idh(QStringLiteral("DBLOOP"),
-             QStringLiteral("IDH_STRUCCONTROL_DBLOOP"));
-  map_to_idh(QStringLiteral("UNLESS"),
-             QStringLiteral("IDH_STRUCCONTROL_DBLOOP"));
-  map_to_idh(QStringLiteral("EXPRESSION"),
-             QStringLiteral("IDH_STRUCCONTROL_EXSYNTAX"));
+  map_to_idh(QStringLiteral("DBLOOP"), QStringLiteral("IDH_STRUCCONTROL_DBLOOP"));
+  map_to_idh(QStringLiteral("UNLESS"), QStringLiteral("IDH_STRUCCONTROL_DBLOOP"));
+  map_to_idh(QStringLiteral("EXPRESSION"), QStringLiteral("IDH_STRUCCONTROL_EXSYNTAX"));
   map_to_idh(QStringLiteral("FOR"), QStringLiteral("IDH_STRUCCONTROL_FOR"));
   map_to_idh(QStringLiteral("ENDF"), QStringLiteral("IDH_STRUCCONTROL_FOR"));
   map_to_idh(QStringLiteral("IF"), QStringLiteral("IDH_STRUCCONTROL_IF"));
   map_to_idh(QStringLiteral("ENDI"), QStringLiteral("IDH_STRUCCONTROL_IF"));
-  map_to_idh(QStringLiteral("STRUCTURED"),
-             QStringLiteral("IDH_STRUCCONTROL_INTRO"));
-  map_to_idh(QStringLiteral("REPEAT"),
-             QStringLiteral("IDH_STRUCCONTROL_REPEAT"));
-  map_to_idh(QStringLiteral("UNTIL"),
-             QStringLiteral("IDH_STRUCCONTROL_REPEAT"));
-  map_to_idh(QStringLiteral("WHILE"),
-             QStringLiteral("IDH_STRUCCONTROL_WHILE"));
+  map_to_idh(QStringLiteral("STRUCTURED"), QStringLiteral("IDH_STRUCCONTROL_INTRO"));
+  map_to_idh(QStringLiteral("REPEAT"), QStringLiteral("IDH_STRUCCONTROL_REPEAT"));
+  map_to_idh(QStringLiteral("UNTIL"), QStringLiteral("IDH_STRUCCONTROL_REPEAT"));
+  map_to_idh(QStringLiteral("WHILE"), QStringLiteral("IDH_STRUCCONTROL_WHILE"));
   map_to_idh(QStringLiteral("ENDW"), QStringLiteral("IDH_STRUCCONTROL_WHILE"));
   map_to_idh(QStringLiteral("ENDM"), QStringLiteral("IDH_MACRO"));
 
@@ -405,12 +383,13 @@ void HelpViewer::LoadAliasTable() {
 
 void HelpViewer::LoadContentsTree() {
   toc_tree_->clear();
-  const QString hhc_rel =
-      ResolveRelativeTarget(QStringLiteral("contents.hhc")).section('#', 0, 0);
-  if (hhc_rel.isEmpty()) return;
+  const QString hhc_rel = ResolveRelativeTarget(QStringLiteral("contents.hhc")).section('#', 0, 0);
+  if (hhc_rel.isEmpty())
+    return;
 
   QFile hhc_file(QDir(help_dir_).filePath(hhc_rel));
-  if (!hhc_file.open(QIODevice::ReadOnly | QIODevice::Text)) return;
+  if (!hhc_file.open(QIODevice::ReadOnly | QIODevice::Text))
+    return;
 
   QTextStream in(&hhc_file);
   const QString content = in.readAll();
@@ -433,8 +412,7 @@ void HelpViewer::LoadContentsTree() {
         current_item = parent_stack.takeLast();
       }
     } else if (tag == QStringLiteral("LI")) {
-      QTreeWidgetItem* parent =
-          parent_stack.isEmpty() ? nullptr : parent_stack.back();
+      QTreeWidgetItem* parent = parent_stack.isEmpty() ? nullptr : parent_stack.back();
       if (parent != nullptr) {
         current_item = new QTreeWidgetItem(parent);
       } else {
@@ -461,20 +439,20 @@ void HelpViewer::LoadContentsTree() {
 
 void HelpViewer::LoadIndexEntries() {
   index_entries_.clear();
-  const QString hhk_rel =
-      ResolveRelativeTarget(QStringLiteral("index.hhk")).section('#', 0, 0);
-  if (hhk_rel.isEmpty()) return;
+  const QString hhk_rel = ResolveRelativeTarget(QStringLiteral("index.hhk")).section('#', 0, 0);
+  if (hhk_rel.isEmpty())
+    return;
 
   QFile hhk_file(QDir(help_dir_).filePath(hhk_rel));
-  if (!hhk_file.open(QIODevice::ReadOnly | QIODevice::Text)) return;
+  if (!hhk_file.open(QIODevice::ReadOnly | QIODevice::Text))
+    return;
 
   QTextStream in(&hhk_file);
   const QString content = in.readAll();
 
   const QRegularExpression object_re(
       QStringLiteral("<OBJECT\\s+type=\"text/sitemap\"[^>]*>(.*?)</OBJECT>"),
-      QRegularExpression::CaseInsensitiveOption |
-          QRegularExpression::DotMatchesEverythingOption);
+      QRegularExpression::CaseInsensitiveOption | QRegularExpression::DotMatchesEverythingOption);
   const QRegularExpression param_re(
       QStringLiteral("<param\\s+name=\"([^\"]+)\"\\s+value=\"([^\"]*)\""),
       QRegularExpression::CaseInsensitiveOption);
@@ -502,8 +480,7 @@ void HelpViewer::LoadIndexEntries() {
 
   std::sort(index_entries_.begin(), index_entries_.end(),
             [](const IndexEntry& a, const IndexEntry& b) {
-              return QString::compare(a.title, b.title, Qt::CaseInsensitive) <
-                     0;
+              return QString::compare(a.title, b.title, Qt::CaseInsensitive) < 0;
             });
 }
 
@@ -511,8 +488,7 @@ void HelpViewer::PopulateIndexList(const QString& filter) {
   index_list_->clear();
   const QString needle = filter.trimmed();
   for (const IndexEntry& entry : index_entries_) {
-    if (!needle.isEmpty() &&
-        !entry.title.contains(needle, Qt::CaseInsensitive)) {
+    if (!needle.isEmpty() && !entry.title.contains(needle, Qt::CaseInsensitive)) {
       continue;
     }
     auto* item = new QListWidgetItem(entry.title, index_list_);
@@ -524,8 +500,7 @@ void HelpViewer::PopulateIndexList(const QString& filter) {
 }
 
 QString HelpViewer::ResolveContextPage(const QString& context) const {
-  const QString default_page =
-      ResolveRelativeTarget(QStringLiteral("main.htm"));
+  const QString default_page = ResolveRelativeTarget(QStringLiteral("main.htm"));
   const QString normalized = NormalizeWhitespaceUpper(context);
   if (normalized.isEmpty()) {
     return default_page;
@@ -539,10 +514,10 @@ QString HelpViewer::ResolveContextPage(const QString& context) const {
 
   // 2. Direct relative path lookup if caller passed a filename (e.g.
   // "easybin.htm" or "SIMHELP/memory.htm").
-  if (normalized.endsWith(QStringLiteral(".HTM")) ||
-      normalized.endsWith(QStringLiteral(".HTML"))) {
+  if (normalized.endsWith(QStringLiteral(".HTM")) || normalized.endsWith(QStringLiteral(".HTML"))) {
     const QString resolved = ResolveRelativeTarget(context);
-    if (!resolved.isEmpty()) return resolved;
+    if (!resolved.isEmpty())
+      return resolved;
   }
 
   // 3. Strip size suffix (.B, .W, .L, .S) on 68000 mnemonics (e.g. "MOVE.W").
@@ -583,34 +558,38 @@ bool HelpViewer::NavigateToPage(const QString& relative_target) {
   QString base_dir;
   if (!current_page_.isEmpty()) {
     base_dir = QFileInfo(current_page_.section('#', 0, 0)).path();
-    if (base_dir == ".") base_dir.clear();
+    if (base_dir == ".")
+      base_dir.clear();
   }
   const QString resolved = ResolveRelativeTarget(relative_target, base_dir);
-  if (resolved.isEmpty()) return false;
+  if (resolved.isEmpty())
+    return false;
   return LoadTargetInternal(resolved, /*record_history=*/true);
 }
 
 bool HelpViewer::OpenQuickReferencePdf() {
   const QString pdf_rel =
-      ResolveRelativeTarget(QStringLiteral("EASy68KQuickRef.pdf"))
-          .section('#', 0, 0);
-  if (pdf_rel.isEmpty()) return false;
+      ResolveRelativeTarget(QStringLiteral("EASy68KQuickRef.pdf")).section('#', 0, 0);
+  if (pdf_rel.isEmpty())
+    return false;
   return OpenPdfTarget(pdf_rel);
 }
 
 bool HelpViewer::OpenPdfTarget(const QString& canonical_rel_path) {
-  if (help_dir_.isEmpty()) return false;
+  if (help_dir_.isEmpty())
+    return false;
   const QString abs_path = QDir(help_dir_).filePath(canonical_rel_path);
-  if (!QFileInfo::exists(abs_path)) return false;
+  if (!QFileInfo::exists(abs_path))
+    return false;
   if (pdf_opener_) {
     pdf_opener_(abs_path);
   }
   return true;
 }
 
-bool HelpViewer::LoadTargetInternal(const QString& canonical_target,
-                                    bool record_history) {
-  if (help_dir_.isEmpty()) return false;
+bool HelpViewer::LoadTargetInternal(const QString& canonical_target, bool record_history) {
+  if (help_dir_.isEmpty())
+    return false;
 
   const QString rel_file = canonical_target.section(QLatin1Char('#'), 0, 0);
   const QString fragment = canonical_target.contains(QLatin1Char('#'))
@@ -623,7 +602,8 @@ bool HelpViewer::LoadTargetInternal(const QString& canonical_target,
 
   const QString abs_path = QDir(help_dir_).filePath(rel_file);
   QFile file(abs_path);
-  if (!file.open(QIODevice::ReadOnly)) return false;
+  if (!file.open(QIODevice::ReadOnly))
+    return false;
   const QString html = QString::fromUtf8(file.readAll());
 
   current_page_ = canonical_target;
@@ -665,10 +645,8 @@ void HelpViewer::SyncTocSelection(const QString& relative_page) {
   QTreeWidgetItemIterator it(toc_tree_);
   while (*it != nullptr) {
     QTreeWidgetItem* item = *it;
-    const QString item_target =
-        item->data(0, kTargetRole).toString().section('#', 0, 0);
-    if (!item_target.isEmpty() &&
-        item_target.compare(relative_page, Qt::CaseInsensitive) == 0) {
+    const QString item_target = item->data(0, kTargetRole).toString().section('#', 0, 0);
+    if (!item_target.isEmpty() && item_target.compare(relative_page, Qt::CaseInsensitive) == 0) {
       toc_tree_->blockSignals(true);
       toc_tree_->setCurrentItem(item);
       QTreeWidgetItem* parent = item->parent();
@@ -688,8 +666,7 @@ void HelpViewer::UpdateNavigationButtons() {
     back_btn_->setEnabled(history_index_ > 0);
   }
   if (forward_btn_ != nullptr) {
-    forward_btn_->setEnabled(history_index_ >= 0 &&
-                             history_index_ + 1 < history_.size());
+    forward_btn_->setEnabled(history_index_ >= 0 && history_index_ + 1 < history_.size());
   }
 }
 
@@ -702,7 +679,8 @@ QString HelpViewer::current_plain_text() const {
 }
 
 void HelpViewer::OnTocItemActivated(QTreeWidgetItem* item, int /*column*/) {
-  if (item == nullptr) return;
+  if (item == nullptr)
+    return;
   const QString target = item->data(0, kTargetRole).toString();
   if (!target.isEmpty()) {
     NavigateToPage(target);
@@ -722,7 +700,8 @@ void HelpViewer::OnIndexFilterReturnPressed() {
 }
 
 void HelpViewer::OnIndexItemActivated(QListWidgetItem* item) {
-  if (item == nullptr) return;
+  if (item == nullptr)
+    return;
   const QString target = item->data(kTargetRole).toString();
   if (!target.isEmpty()) {
     NavigateToPage(target);

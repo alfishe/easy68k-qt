@@ -33,17 +33,17 @@ hash and the program output.
 | Area | Rows | Done | Partial | Gap | Notes |
 |------|------|------|---------|-----|-------|
 | 1. Simulator core | 17 | 17 | 0 | 0 | instruction corpus + opcode sweep match the oracle (documented deviations only); 32-bit PC; Trap #15 text and file tasks verified |
-| 2. Assembler | 9 | 7 | 1 | 1 | core is a port of the original; listings and S-records match the oracle in every option combination; A7 auto-save and A8 template are GUI (13.19) |
+| 2. Assembler | 9 | 9 | 0 | 0 | core is a port of the original; listings and S-records match the oracle in every option combination; A7 auto-save and A8 template delivered in 13.19 |
 | 3. Sim68K GUI | 24 | 24 | 0 | 0 | Sim68K-Qt feature-complete |
-| 4. Edit68K GUI | 14 | 0 | 0 | 14 | |
+| 4. Edit68K GUI | 14 | 14 | 0 | 0 | Edit68K-Qt feature-complete |
 | 5. EASyBIN | 4 | 4 | 0 | 0 | EASyBIN-Qt feature-complete |
 | 6. Help | 1 | 1 | 0 | 0 | `HelpViewer` (`easy68k-help`) + 242 help assets (`data/help/`) |
-| **Total** | **69** | **53** | **1** | **15** | |
+| **Total** | **69** | **69** | **0** | **0** | All 69 functional parity rows Done |
 
 | Measure | Value |
 |---------|-------|
-| Plan tasks (PROGRESS.md) | 100 done, 13 open (13.19 next) |
-| Qt back end tests (`easym68k-gui-tests`, offscreen) | 153 pass (ASan+UBSan clean) |
+| Plan tasks (PROGRESS.md) | 101 done, 12 open (13.21 next) |
+| Qt back end tests (`easym68k-gui-tests`, offscreen) | 163 pass (ASan+UBSan clean) |
 | clang-tidy (`tools/clang-tidy.sh`, core libraries) | 0 findings (23 files + public headers) |
 | Simulator unit tests | 812 pass, incl. 28 golden simulation traces (ASan+UBSan clean) |
 | Assembler tests | 406 pass (incl. 132 instruction-matrix suites, 21 golden, 33 corpus cases); ASan+UBSan clean |
@@ -57,7 +57,7 @@ hash and the program output.
 | Simulator instruction corpus vs oracle (131 programs from the matrix, exceptions on; `compare_sim_corpus.sh`) | all executed cases match: identical or an accepted deviation (`data/golden/sim/deviations.tsv`); memory hash identical or accepted |
 | Golden simulation traces (oracle-generated, `tests/sim/golden_trace_test.cc`) | 28 / 28 match |
 | Simulator opcode sweep vs oracle (every first word, 61,034 opcodes in 16 programs; `compare_sim_corpus.sh --sweep`) | 0 unexplained differences (legal/illegal decision, results, flags, cycles) |
-| GUI | Sim68K-Qt: back ends (13.1) and main window (13.2) done; Edit68K-Qt, EASyBIN-Qt not started |
+| GUI | Sim68K-Qt, Edit68K-Qt, EASyBIN-Qt, and HelpViewer feature-complete |
 
 ### Next tasks (in order)
 
@@ -69,7 +69,7 @@ hash and the program output.
 | ✓ | **12.3** clang-tidy | Done (`ci/clang-tidy.cfg`, `tools/clang-tidy.sh`; 0 findings) | — | — |
 | ✓ | **13.1** Trap #15 Qt back ends | Done: I/O window (`SimIoScreen`, `QtTextIO`, `QtGraphicsIO`), peripheral, environment, file dialog, printing, sound, serial (`QtSerialIO`), network (`StdNetworkIO`) | S9 | — |
 | ✓ | **13.2-13.18, 13.22-13.24** Sim68K-Qt | Done: Main window, registers, source view, stack/memory viewers, hardware window, I/O console, graphics, log, settings, advanced breakpoints, find, auto trace | 3. Sim68K GUI (24 rows) | 13.21 manual checklist |
-| 8 | **13.19** Edit68K-Qt | Editor, assembler options (A7 auto-save, A8 template), find/replace, syntax colouring, MDI | 4. Edit68K GUI (14 rows), A7, A8 | 13.21 checklist; assembler output already oracle-verified |
+| ✓ | **13.19** Edit68K-Qt | Done: MDI editor, assembler options (A7 auto-save, A8 template), find/replace, syntax colouring (`gui/editor`) | 4. Edit68K GUI (14 rows), A7, A8 | 10 unit tests + 13.21 checklist |
 | ✓ | **13.20** EASyBIN-Qt | Done: Binary/S-Record utility (`gui/easybin`) | 5. EASyBIN (4 rows) | checklist + file round-trip tests |
 | ✓ | **13.25** Help | Done: `HelpViewer` (`gui/help`) + `data/help/` | 6. Help (1 row), G20, B4 | 5 unit tests + checklist |
 | 11 | **13.21** Feature parity validation | Manual UI checklist on Linux, macOS, Windows | all | acceptance |
@@ -111,8 +111,8 @@ hash and the program output.
 | A4 | **Bit-field instruction encoding** (Assembler Options → Assemble Bit Field Instructions) | CODEGEN.CPP, INSTTABL.CPP | **Done** (8.7/8.12, matrix-verified); OPT BITFIELD switch with 8.9 | **NEW 8.7** ✓ |
 | A5 | OPT CRE: cross-reference / symbol table appended to listing | LISTING.CPP optCRE() | **Done** | **NEW 8.8** ✓ (8.13) |
 | A6 | OPT MEX / SEX / CEX listing expansion (macros, structured, constants) | LISTING.CPP | **Done** (corpus "expand" variant) | **NEW 8.8** ✓ (8.13) |
-| A7 | Show-warnings option; auto-save before assemble; generate list / S-record toggles | optionsS.cpp | **Partial**: `AssemblerOptions` done (8.9); auto-save is GUI (13.19) | **NEW 8.9** ✓ + 13.19 |
-| A8 | Source template for new files | optionsS.cpp Template, template.NEW | Gap | 13.19 |
+| A7 | Show-warnings option; auto-save before assemble; generate list / S-record toggles | optionsS.cpp | **Done**: `AssemblerOptions` (8.9) + auto-save and `AssemblerOptionsDialog` (13.19) | **NEW 8.9** ✓ + 13.19 ✓ |
+| A8 | Source template for new files | optionsS.cpp Template, template.NEW | **Done**: `data/template.NEW` + `AssemblerOptionsDialog` Template tab (13.19) | 13.19 ✓ |
 
 ## 3. Sim68K GUI
 
@@ -147,20 +147,20 @@ hash and the program output.
 
 | ID | Feature | Original | Task |
 |----|---------|----------|------|
-| E1 | MDI multi-document editor; Window menu: Arrange, Cascade, Tile H/V, Minimize All | mainS.dfm | 13.19 (QMdiArea) |
-| E2 | File: New X68 (from template), Open (Ctrl+O), Save (Ctrl+S), Save As, Print (Ctrl+P), Printer Setup, Close, Exit; save-changes prompt | mainS.dfm, chksaveS | 13.19 |
-| E3 | Edit: Undo (Ctrl+Z) / Redo (Ctrl+Shift+Z), Cut/Copy/Paste/Select All, Comment / Uncomment Selection (Ctrl+Shift+C / U), context menu, Reload File | mainS.dfm, textS.dfm, undo.cpp | 13.19 |
-| E4 | Find (Ctrl+F, whole word, match case), Find Next (F3), Find and Replace (Ctrl+R, Replace / Replace All) | findDialogS, replaceDialogS | 13.19 |
-| E5 | Syntax highlighting: Code, Comment, Directive, Label, Macro/Other, Structured, Structure Error, Text, Background; presets Color1/Color2/No Color/Custom/Disabled; bold/italic/underline | editorOptions.dfm | 13.19 |
-| E6 | Editor options: new-file font + size, Assembly tabs vs fixed tabs (size), Auto Indent, Real Tabs, Print in black | editorOptions.dfm | 13.19 |
-| E7 | Adjust Font dialog for current file | fontForm1.dfm | 13.19 |
-| E8 | Assemble (F9): status dialog with warnings/errors count, Execute (launch Sim68K), Load L68 | assembleS.dfm | 13.19 |
-| E9 | Error list pane: double-click jumps to source line, Clear Error Messages | textS.dfm Messages | 13.19 |
-| E10 | Listing viewer window | listS.dfm | 13.19 |
-| E11 | Assembler Options dialog (A4-A8) + Template tab | optionsS.dfm | 13.19 |
-| E12 | Print preview | preview.dfm | 13.19 (QPrintPreviewDialog) |
-| E13 | Status bar (line/column), progress bar during assembly | textS.dfm | 13.19 |
-| E14 | Help, About | mainS.dfm | 13.19, H1 |
+| E1 | MDI multi-document editor; Window menu: Arrange, Cascade, Tile H/V, Minimize All | mainS.dfm | 13.19 (QMdiArea) — **Done** |
+| E2 | File: New X68 (from template), Open (Ctrl+O), Save (Ctrl+S), Save As, Print (Ctrl+P), Printer Setup, Close, Exit; save-changes prompt | mainS.dfm, chksaveS | 13.19 — **Done** |
+| E3 | Edit: Undo (Ctrl+Z) / Redo (Ctrl+Shift+Z), Cut/Copy/Paste/Select All, Comment / Uncomment Selection (Ctrl+Shift+C / U), context menu, Reload File | mainS.dfm, textS.dfm, undo.cpp | 13.19 — **Done** |
+| E4 | Find (Ctrl+F, whole word, match case), Find Next (F3), Find and Replace (Ctrl+R, Replace / Replace All) | findDialogS, replaceDialogS | 13.19 — **Done** |
+| E5 | Syntax highlighting: Code, Comment, Directive, Label, Macro/Other, Structured, Structure Error, Text, Background; presets Color1/Color2/No Color/Custom/Disabled; bold/italic/underline | editorOptions.dfm | 13.19 — **Done** |
+| E6 | Editor options: new-file font + size, Assembly tabs vs fixed tabs (size), Auto Indent, Real Tabs, Print in black | editorOptions.dfm | 13.19 — **Done** |
+| E7 | Adjust Font dialog for current file | fontForm1.dfm | 13.19 — **Done** |
+| E8 | Assemble (F9): status dialog with warnings/errors count, Execute (launch Sim68K), Load L68 | assembleS.dfm | 13.19 — **Done** |
+| E9 | Error list pane: double-click jumps to source line, Clear Error Messages | textS.dfm Messages | 13.19 — **Done** |
+| E10 | Listing viewer window | listS.dfm | 13.19 — **Done** |
+| E11 | Assembler Options dialog (A4-A8) + Template tab | optionsS.dfm | 13.19 — **Done** |
+| E12 | Print preview | preview.dfm | 13.19 (QPrintPreviewDialog) — **Done** |
+| E13 | Status bar (line/column), progress bar during assembly | textS.dfm | 13.19 — **Done** |
+| E14 | Help, About | mainS.dfm | 13.19, H1 — **Done** |
 
 ## 5. EASyBIN
 
@@ -282,6 +282,7 @@ Each committed iteration updates the snapshot above and adds a line here.
 | 2026-10-15 | `d114c2c` | 13.24 Auto Trace (F10) and Auto Trace Options dialog | G3, G12 Done |
 | 2026-10-15 | `2c46600` | 13.20 EASyBIN-Qt binary utility + Sim68K View > EASyBIN | B1-B3, G8, G21 Done; B4 Partial |
 | 2026-10-15 | `99a7fe1` | 13.25 HelpViewer (`easy68k-help`) + 242 help assets (`data/help/`), wired into Sim68K and EASyBIN | H1, G20, B4 Done |
+| 2026-10-15 | `pending` | 13.19 Edit68K-Qt (`easy68k-editor` + `easy68k-editor-ui`) + `data/template.NEW` + 10 `EditorTest` tests | E1-E14, A7, A8 Done (all 69/69 parity rows Done) |
 
 ## 10. Parity acceptance
 
