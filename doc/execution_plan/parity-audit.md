@@ -28,7 +28,7 @@ hash and the program output.
 
 ## Status snapshot
 
-*Updated after every committed iteration (last: 2026-10-15, commit `(X)`).*
+*Updated after every committed iteration (last: 2026-10-15, commit `b25d9cb`).*
 
 | Area | Rows | Done | Partial | Gap | Notes |
 |------|------|------|---------|-----|-------|
@@ -276,7 +276,7 @@ Each committed iteration updates the snapshot above and adds a line here.
 | 2026-10-15 | `218d9cd` | 13.8b S-record loader as loadSrec(): messages, checksum errors go on, stops | G23 |
 | 2026-10-15 | `16c45c2` | 13.9-13.11 output window: full screen, Fullscreen Options, Ctrl+Tab/Alt+Enter/Shift+Insert | G13, G18, G22 |
 | 2026-10-15 | `b2e7fe7` | 13.12 logging: trace lines, execution/output logs, Log Output dialog, Log Start/Stop | G10, G24 (new) |
-| 2026-10-15 | `(X)` | 13.18 settings persistence and source/output/printer font dialogs | G9, G17, G20 |
+| 2026-10-15 | `b25d9cb` | 13.18 settings persistence and source/output/printer font dialogs | G9, G17, G20 |
 
 ## 10. Parity acceptance
 
