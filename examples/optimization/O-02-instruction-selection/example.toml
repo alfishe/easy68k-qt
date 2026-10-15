@@ -1,0 +1,13 @@
+# O-02 — Instruction Selection: MOVEQ, ADDQ/SUBQ, SUB.L Dn,Dn, and LEA Arithmetic
+id = "O-02"
+title = "Instruction Selection: MOVEQ, ADDQ/SUBQ, SUB.L Dn,Dn, and LEA Arithmetic"
+track = "optimization"
+level = 4
+difficulty = 3
+requires = ["O-01", "L3-01"]
+source = "main.x68"
+
+[expect]
+halted = true
+registers = { D0 = 10, D2 = 10, D3 = 10, D4 = 52, D5 = 24 }
+max_cycles = 160

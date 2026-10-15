@@ -1,0 +1,13 @@
+# O-04 — Loop Optimisation: DBRA, Loop Inversion, and Unrolling
+id = "O-04"
+title = "Loop Optimisation: DBRA, Loop Inversion, and Unrolling"
+track = "optimization"
+level = 4
+difficulty = 3
+requires = ["O-03", "L2-02"]
+source = "main.x68"
+
+[expect]
+halted = true
+registers = { D0 = 136, D2 = 136, D3 = 136 }
+max_cycles = 900

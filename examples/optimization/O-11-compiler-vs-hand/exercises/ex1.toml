@@ -1,0 +1,11 @@
+id = "O-11-EX1"
+title = "Compute sum (D0=300) and max (D1=89) in <= 310 cycles"
+track = "optimization"
+level = 4
+difficulty = 4
+source = "ex1.x68"
+
+[expect]
+halted = true
+registers = { D0 = 300, D1 = 89 }
+max_cycles = 310

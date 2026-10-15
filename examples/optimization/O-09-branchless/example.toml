@@ -1,0 +1,13 @@
+# O-09 — Branchless Programming: Scc, SUBX Masks, and Branchless abs/min/max
+id = "O-09"
+title = "Branchless Programming: Scc, SUBX Masks, and Branchless abs/min/max"
+track = "optimization"
+level = 4
+difficulty = 4
+requires = ["O-02", "L1-04", "L2-01"]
+source = "main.x68"
+
+[expect]
+halted = true
+registers = { D0 = 75, D2 = 35 }
+max_cycles = 100

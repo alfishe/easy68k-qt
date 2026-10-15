@@ -1,0 +1,14 @@
+id = "O-03-EX1"
+title = "Copy 8 words from SRC to $2000 in <= 200 cycles"
+track = "optimization"
+level = 4
+difficulty = 3
+source = "ex1.x68"
+
+[expect]
+halted = true
+max_cycles = 200
+
+[[expect.memory]]
+address = 0x2000
+bytes = "00 0B 00 16 00 21 00 2C 00 37 00 42 00 4D 00 58"

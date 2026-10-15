@@ -1,0 +1,14 @@
+id = "O-05-EX1"
+title = "Copy 32 bytes from BLK to $2000 in <= 190 cycles"
+track = "optimization"
+level = 4
+difficulty = 3
+source = "ex1.x68"
+
+[expect]
+halted = true
+max_cycles = 190
+
+[[expect.memory]]
+address = 0x2000
+bytes = "11 11 11 11 22 22 22 22 33 33 33 33 44 44 44 44 55 55 55 55 66 66 66 66 77 77 77 77 88 88 88 88"

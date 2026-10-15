@@ -1,0 +1,13 @@
+# O-08 — Fixed-Point Arithmetic: Q8.8 and Q16.16 Scaling with SWAP
+id = "O-08"
+title = "Fixed-Point Arithmetic: Q8.8 and Q16.16 Scaling with SWAP"
+track = "optimization"
+level = 4
+difficulty = 4
+requires = ["O-06", "L1-07"]
+source = "main.x68"
+
+[expect]
+halted = true
+registers = { D0 = 7, D2 = 0x07E0, D3 = 7 }
+max_cycles = 250

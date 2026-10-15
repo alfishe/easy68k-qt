@@ -1,0 +1,13 @@
+# O-07 — Lookup Tables: Trading Memory for Cycles (Nybble Popcount & Squares)
+id = "O-07"
+title = "Lookup Tables: Trading Memory for Cycles (Nybble Popcount & Squares)"
+track = "optimization"
+level = 4
+difficulty = 3
+requires = ["O-03", "L3-02"]
+source = "main.x68"
+
+[expect]
+halted = true
+registers = { D0 = 5, D2 = 5, D3 = 5 }
+max_cycles = 350

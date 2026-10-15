@@ -1,0 +1,11 @@
+id = "O-13-EX1"
+title = "Fill (10,10)..(25,13) + Repaint in <= 120 cycles"
+track = "optimization"
+level = 4
+difficulty = 3
+source = "ex1.x68"
+
+[expect]
+halted = true
+registers = { D0 = 94 }
+max_cycles = 120

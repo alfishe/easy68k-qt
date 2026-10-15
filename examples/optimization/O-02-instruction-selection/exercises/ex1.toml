@@ -1,0 +1,11 @@
+id = "O-02-EX1"
+title = "Compute D0 = (100 + 8) + (7 - 3) = 112 in <= 36 cycles"
+track = "optimization"
+level = 4
+difficulty = 3
+source = "ex1.x68"
+
+[expect]
+halted = true
+registers = { D0 = 112, D1 = 4 }
+max_cycles = 36

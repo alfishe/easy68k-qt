@@ -1,0 +1,13 @@
+# O-13 — Graphics Fast Paths: Span Drawing vs Pixel Loops and Frame Budgets
+id = "O-13"
+title = "Graphics Fast Paths: Span Drawing vs Pixel Loops and Frame Budgets"
+track = "optimization"
+level = 4
+difficulty = 3
+requires = ["O-04", "S-03", "S-04"]
+source = "main.x68"
+
+[expect]
+halted = true
+registers = { D0 = 1 }
+max_cycles = 5000

@@ -1,0 +1,17 @@
+# O-03 — Addressing Mode Costs: (An)+ vs d(An,Xi) vs Absolute Long
+id = "O-03"
+title = "Addressing Mode Costs: (An)+ vs d(An,Xi) vs Absolute Long"
+track = "optimization"
+level = 4
+difficulty = 3
+requires = ["O-02", "L3-01"]
+source = "main.x68"
+
+[expect]
+halted = true
+registers = { D0 = 8 }
+max_cycles = 700
+
+[[expect.memory]]
+address = 0x2000
+bytes = "00 01 00 02 00 03 00 04 00 05 00 06 00 07 00 08"

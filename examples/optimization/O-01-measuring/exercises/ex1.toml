@@ -1,0 +1,11 @@
+id = "O-01-EX1"
+title = "Sum 8 longwords at ARR into D0 in <= 220 cycles"
+track = "optimization"
+level = 4
+difficulty = 3
+source = "ex1.x68"
+
+[expect]
+halted = true
+registers = { D0 = 360 }
+max_cycles = 220

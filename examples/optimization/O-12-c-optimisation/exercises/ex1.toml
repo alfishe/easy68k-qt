@@ -1,0 +1,11 @@
+id = "O-12-EX1"
+title = "Scale {10,20,30,40} by 3 and sum (300) in <= 220 cycles"
+track = "optimization"
+level = 4
+difficulty = 4
+source = "ex1.x68"
+
+[expect]
+halted = true
+registers = { D0 = 300 }
+max_cycles = 220

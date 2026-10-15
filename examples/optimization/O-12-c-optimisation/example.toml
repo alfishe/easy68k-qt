@@ -1,0 +1,13 @@
+# O-12 — Writing C That Compiles Well on the 68000: 16-Bit Counters, Pointers, and restrict
+id = "O-12"
+title = "Writing C That Compiles Well on the 68000: 16-Bit Counters, Pointers, and restrict"
+track = "optimization"
+level = 4
+difficulty = 4
+requires = ["O-11", "C-05"]
+source = "main.x68"
+
+[expect]
+halted = true
+registers = { D0 = 300, D2 = 300, D3 = 300 }
+max_cycles = 1000

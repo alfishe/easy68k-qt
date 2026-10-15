@@ -1,0 +1,11 @@
+id = "O-10-EX1"
+title = "Compute Fib(10) = 55 in D0 in <= 180 cycles"
+track = "optimization"
+level = 4
+difficulty = 3
+source = "ex1.x68"
+
+[expect]
+halted = true
+registers = { D0 = 55 }
+max_cycles = 180

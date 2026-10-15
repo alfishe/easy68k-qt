@@ -1,0 +1,13 @@
+# O-01 — Measuring First: Cycle Counter (Tasks 30/31) and Baseline Profiling
+id = "O-01"
+title = "Measuring First: Cycle Counter (Tasks 30/31) and Baseline Profiling"
+track = "optimization"
+level = 4
+difficulty = 3
+requires = ["L2-02", "S-16"]
+source = "main.x68"
+
+[expect]
+halted = true
+registers = { D0 = 360, D4 = 360, D5 = 360 }
+max_cycles = 850

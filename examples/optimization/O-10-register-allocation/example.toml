@@ -1,0 +1,13 @@
+# O-10 — Register Allocation: Keeping Hot Variables in D0–D7/A0–A6 and Minimising Spills
+id = "O-10"
+title = "Register Allocation: Keeping Hot Variables in D0–D7/A0–A6 and Minimising Spills"
+track = "optimization"
+level = 4
+difficulty = 3
+requires = ["O-03", "L2-05"]
+source = "main.x68"
+
+[expect]
+halted = true
+registers = { D0 = 55, D6 = 55, D7 = 55 }
+max_cycles = 1000

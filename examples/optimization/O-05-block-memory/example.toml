@@ -1,0 +1,17 @@
+# O-05 — Block Memory Copy and Fill: MOVEM.L vs Byte/Long Loops
+id = "O-05"
+title = "Block Memory Copy and Fill: MOVEM.L vs Byte/Long Loops"
+track = "optimization"
+level = 4
+difficulty = 3
+requires = ["O-04", "L2-05"]
+source = "main.x68"
+
+[expect]
+halted = true
+registers = { D0 = 0x88888888 }
+max_cycles = 1100
+
+[[expect.memory]]
+address = 0x2000
+bytes = "11 11 11 11 22 22 22 22 33 33 33 33 44 44 44 44"

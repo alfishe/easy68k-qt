@@ -1,0 +1,11 @@
+id = "O-09-EX1"
+title = "Branchless (D1 < 100) -> D0 = 1 in <= 32 cycles"
+track = "optimization"
+level = 4
+difficulty = 4
+source = "ex1.x68"
+
+[expect]
+halted = true
+registers = { D0 = 1 }
+max_cycles = 32

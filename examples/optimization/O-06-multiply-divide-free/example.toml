@@ -1,0 +1,13 @@
+# O-06 — Multiply- and Divide-Free Arithmetic: Shifts, Adds, and Strength Reduction
+id = "O-06"
+title = "Multiply- and Divide-Free Arithmetic: Shifts, Adds, and Strength Reduction"
+track = "optimization"
+level = 4
+difficulty = 3
+requires = ["O-02", "L1-05", "L1-07"]
+source = "main.x68"
+
+[expect]
+halted = true
+registers = { D0 = 32012, D2 = 32012, D3 = 32012 }
+max_cycles = 400

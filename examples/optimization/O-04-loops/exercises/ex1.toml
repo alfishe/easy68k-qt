@@ -1,0 +1,11 @@
+id = "O-04-EX1"
+title = "Sum 16 words at ARR into D0 in <= 200 cycles"
+track = "optimization"
+level = 4
+difficulty = 3
+source = "ex1.x68"
+
+[expect]
+halted = true
+registers = { D0 = 136 }
+max_cycles = 200

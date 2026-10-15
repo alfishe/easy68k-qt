@@ -1,0 +1,13 @@
+# O-11 — Compiler vs Hand Assembly: Reading and Beating GCC -O2 on the 68000
+id = "O-11"
+title = "Compiler vs Hand Assembly: Reading and Beating GCC -O2 on the 68000"
+track = "optimization"
+level = 4
+difficulty = 4
+requires = ["O-10", "C-04", "C-08"]
+source = "main.x68"
+
+[expect]
+halted = true
+registers = { D0 = 300, D1 = 89 }
+max_cycles = 800
