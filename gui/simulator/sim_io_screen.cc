@@ -151,6 +151,7 @@ void SimIoScreen::ResetForRun() {
     keyboard_echo_ = true;
     input_prompt_ = true;
     input_lf_display_ = true;
+    key_commands_enabled_ = true;  // Form1->restoreMenuTask19()
     w = can_width_;
     h = can_height_;
   }

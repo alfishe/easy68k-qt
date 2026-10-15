@@ -63,6 +63,7 @@ if(TARGET easy68k-simio)
     gui/key_map_test.cc
     gui/sim_io_screen_test.cc
     gui/qt_io_backends_test.cc
+    gui/qt_devices_test.cc
   )
   target_link_libraries(easym68k-gui-tests PRIVATE easy68k-simio GTest::gtest)
   add_test(NAME gui-tests COMMAND easym68k-gui-tests)

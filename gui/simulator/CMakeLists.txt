@@ -6,6 +6,10 @@ add_library(easy68k-simio STATIC
   sim_io_screen.cc
   qt_text_io.cc
   qt_graphics_io.cc
+  qt_peripheral_io.cc
+  qt_simulator_env.cc
+  qt_file_io.cc
+  qt_print_io.cc
 )
 target_include_directories(easy68k-simio PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 target_link_libraries(easy68k-simio PUBLIC easym68k-sim Qt6::Gui)

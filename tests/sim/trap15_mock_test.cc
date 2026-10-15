@@ -428,9 +428,9 @@ TEST_F(Trap15Test, Task22_GetCharAt_WritesD1B) {
   EXPECT_EQ(sim_->State().d[1] & 0xFF, static_cast<uint32_t>('X'));
 }
 
-TEST_F(Trap15Test, Task23_Delay_PassesD1W) {
-  sim_->State().d[1] = 50;
-  EXPECT_CALL(sim_env_, DelayHundredths(50u)).Times(1);
+TEST_F(Trap15Test, Task23_Delay_PassesD1L) {
+  sim_->State().d[1] = 0x00012345;
+  EXPECT_CALL(sim_env_, DelayHundredths(0x00012345u)).Times(1);
   RunTask(kTrap15Delay);
 }
 
@@ -443,6 +443,12 @@ TEST_F(Trap15Test, Task24_KeyCommandControl_EnableOnD1Zero) {
 TEST_F(Trap15Test, Task24_KeyCommandControl_DisableOnD1One) {
   sim_->State().d[1] = 1;
   EXPECT_CALL(text_io_, SetKeyCommandsEnabled(false)).Times(1);
+  RunTask(kTrap15KeyCommandControl);
+}
+
+TEST_F(Trap15Test, Task24_KeyCommandControl_OtherValuesIgnored) {
+  sim_->State().d[1] = 5;
+  EXPECT_CALL(text_io_, SetKeyCommandsEnabled(_)).Times(0);
   RunTask(kTrap15KeyCommandControl);
 }
 
@@ -693,6 +699,15 @@ TEST_F(Trap15Test, Task61_MouseRead_WritesD0AndD1) {
   RunTask(kTrap15MouseRead);
   EXPECT_EQ(sim_->State().d[0], 3u);
   EXPECT_EQ(sim_->State().d[1], static_cast<uint32_t>((100 << 16) | 200));
+}
+
+TEST_F(Trap15Test, Task61_MouseRead_OtherModeKeepsD1) {
+  sim_->State().d[0] = 0xFFFFFFFFu;
+  sim_->State().d[1] = 0x12345603u;  // mode 3: reserved
+  EXPECT_CALL(peripheral_io_, ReadMouse(3, _, _)).Times(1);
+  RunTask(kTrap15MouseRead);
+  EXPECT_EQ(sim_->State().d[0], 0u);
+  EXPECT_EQ(sim_->State().d[1], 0x12345603u);
 }
 
 TEST_F(Trap15Test, Task62_KeyIRQ_Enable) {

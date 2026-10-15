@@ -328,16 +328,17 @@ SimResult M68kSimulator::DispatchTrap15() {
       break;
     }
 
-    case kTrap15Delay:  // 23: delay D1.W / 100 seconds
+    case kTrap15Delay:  // 23: delay D1.L / 100 seconds (CODE9.CPP: unsigned D[1])
       if (!config_.sim_env)
         break;
-      config_.sim_env->DelayHundredths(static_cast<uint16_t>(state_.d[1]));
+      config_.sim_env->DelayHundredths(state_.d[1]);
       break;
 
     case kTrap15KeyCommandControl:  // 24: D1=0 enable, D1=1 disable key commands
       if (!config_.text_io)
         break;
-      config_.text_io->SetKeyCommandsEnabled(state_.d[1] == 0);
+      if (state_.d[1] <= 1)  // other values: no change (CODE9.CPP)
+        config_.text_io->SetKeyCommandsEnabled(state_.d[1] == 0);
       break;
 
     case kTrap15ScrollRect:  // 25: scroll D1.L(row,col), D2.L(h,w), D3.W dir
@@ -583,7 +584,8 @@ SimResult M68kSimulator::DispatchTrap15() {
     case kTrap15MouseRead: {  // 61: read mouse; D1.B=mode → D0=buttons, D1=Y<<16|X
       if (!config_.peripheral_io)
         break;
-      long buttons = 0, pos = 0;
+      // Modes other than 0-2 return D0 = 0 and leave D1 (CODE9.CPP).
+      long buttons = 0, pos = static_cast<long>(static_cast<int32_t>(state_.d[1]));
       config_.peripheral_io->ReadMouse(static_cast<int>(static_cast<uint8_t>(state_.d[1])),
                                        &buttons, &pos);
       state_.d[0] = static_cast<uint32_t>(buttons);

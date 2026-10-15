@@ -15,6 +15,7 @@
 #include <array>
 #include <cstdio>
 #include <string>
+#include <utility>
 
 #include "easym68k/sim/ifile_io.h"
 
@@ -33,6 +34,11 @@ class StdFileIO : public IFileIO {
   // `base_dir` empty: names are used as given (process current directory).
   explicit StdFileIO(std::string base_dir = "");
   ~StdFileIO() override;
+
+  // Directory for relative names (the GUI uses the loaded program's, as
+  // the original's current directory followed its file dialogs). Call while
+  // the simulator is not running.
+  void SetBaseDir(std::string base_dir) { base_dir_ = std::move(base_dir); }
 
   StdFileIO(const StdFileIO&) = delete;
   StdFileIO& operator=(const StdFileIO&) = delete;
