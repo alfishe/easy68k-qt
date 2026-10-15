@@ -28,7 +28,7 @@ hash and the program output.
 
 ## Status snapshot
 
-*Updated after every committed iteration (last: 2026-10-15, commit `(X)`).*
+*Updated after every committed iteration (last: 2026-10-15, commit `bf30067`).*
 
 | Area | Rows | Done | Partial | Gap | Notes |
 |------|------|------|---------|-----|-------|
@@ -252,7 +252,7 @@ Each committed iteration updates the snapshot above and adds a line here.
 | 2026-10-15 | `648bd51` | 11.1 exception tests; privilege frame PC fix; corpus hash check fixed | S2 verified (golden `exceptions`) |
 | 2026-10-15 | `8efaeb1` | 11.2 interrupt tests; IRQ injection in both tracers | S4 order documented |
 | 2026-10-15 | `06029a4` | 0.6 golden data infrastructure marked done (delivered by 8.10/10.1) | — |
-| 2026-10-15 | `(X)` | Clang -O2 / MSVC portability fixes (warnings, test portability) | — |
+| 2026-10-15 | `bf30067` | Clang -O2 / MSVC portability fixes (warnings, test portability) | — |
 
 ## 10. Parity acceptance
 
