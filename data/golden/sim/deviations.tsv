@@ -19,3 +19,6 @@ HASH ^MOVE$		the original reads the MOVE destination before writing it (eff_addr
 ^OP0: DC\.W\s+\$0[02A]3C,\$[1-9A-F]	*	ORI/ANDI/EORI to CCR use the low byte of the immediate word only; the original applies the whole word, changing the system byte of SR (bug, fixed; assembled code always has a zero high byte)
 ^AS[LR]\.Dn: 	SR=0002	ASL/ASR with a count register: the original's V test for large counts has an operator-precedence bug (cc_update CASE_4 `shiftCount > (size-1) & source`); the port sets V per the PRM
 HASH ^SWEEP_E_BF$		illegal bit field encodings: the original fetches the extension word before rejecting the encoding, so its illegal-instruction frame stacks PC+2 (see the @illegal rule)
+# Not a comparer rule: privilege violations stack the address of the instruction
+# (the original stacks the PC after its first word); the corpus never reads
+# the frames, and the final stack window is restored before SIMHALT.

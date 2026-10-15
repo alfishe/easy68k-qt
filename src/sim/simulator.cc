@@ -386,7 +386,10 @@ SimResult M68kSimulator::StepInstruction() {
       break;
     case SimResult::kPrivilegeViolation:
       IncrementCycles(kCyclesPrivilege);
-      HandleException(ExceptionVector::kPrivilege, state_.pc);
+      // The 68000 stacks the address of the privileged instruction; the
+      // original stacked the PC after its first word (RUN.CPP OLD_PC = PC),
+      // so an RTE would resume inside the instruction (bug, fixed).
+      HandleException(ExceptionVector::kPrivilege, inst_pc_);
       break;
     case SimResult::kDivideByZero:
       IncrementCycles(kCyclesDivideByZero);

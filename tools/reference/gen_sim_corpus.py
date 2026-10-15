@@ -169,6 +169,10 @@ def program(mnemonic, cases):
         out.append(f"         BRA     T{k + 1}")
     out.append(f"         ORG     ${slot(len(cases)):X}")
     out.append(f"T{len(cases)}       MOVE    #$2700,SR")
+    # Restore the stack window once more, so a privilege-violation frame
+    # from the retry above does not reach the final memory hash.
+    out.append("         MOVEM.L FILL,D0-D7/A0-A6")
+    out.append("         MOVEM.L D0-D7/A0-A6,SSTK-60")
     out.append("         SIMHALT")
     fill = [(w << 16) | PATCH_WORDS[i % len(PATCH_WORDS)] for i, w in enumerate([0x4AFC] * 15)]
     out.append("FILL     DC.L    " + ",".join(f"${v:08X}" for v in fill[:8]))

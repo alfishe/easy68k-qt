@@ -238,7 +238,7 @@ Decision: Parity policy (user instruction, 2026-10-14): do NOT reproduce bugs of
 
 | Task | Status | Commit | Summary |
 |------|--------|--------|---------|
-| 11.1 Exception Tests | TODO | | |
+| 11.1 Exception Tests | DONE | pending | `tests/sim/exception_test.cc`: the plan's 13 cases (bus error via Invalid map, address error frame, privilege violation, illegal, divide by zero, CHK both ways, TRAPV, trace, Line A/F, frame order, RTE, double fault) + exceptions-disabled halt; golden trace `exceptions` (oracle-generated: address errors, illegal, div0, TRAPV, trace, Line A/F, TRAP + RTE). Fixed: privilege violations stack the instruction address (the original stacked the PC after the first word, so RTE resumed inside the instruction). Found and fixed in `compare_sim_corpus.sh`: the memory-hash check accepted every difference (while-loop exit status); with the check working the corpus and sweep still have no unexplained differences (the generator now restores the stack window before SIMHALT). 794 sim tests |
 | 11.2 Interrupt Tests | TODO | | |
 
 ## Phase 12: CI and Code Quality
@@ -317,4 +317,5 @@ Decision: Further original bugs found by the sweep and not reproduced: byte ABCD
 Decision: Golden simulation traces store a digest of the trace (FNV-1a 64 of every INIT/STEP line) plus the final lines instead of full traces, keeping the data small (848 KB, mostly S-records); on a mismatch `tools/reference/compare_sim.sh` shows the first differing instruction. Only programs without accepted deviations are golden, so every expected value is the original's.
 Decision: (10.5, user decision 2026-10-14) The PC is 32-bit as in the original and the 68000; JMP/JSR keep the original's masked target. Breakpoint/Run To/Step Over comparisons use the 24-bit address, fixing the original's full 32-bit compare.
 Decision: (10.4) The remaining Trap #15 tasks are GUI/device back ends (graphics, sound, serial, network, printing, mouse/keyboard state, window, time); their dispatch is unit-tested with mocks (Phase 7) and they are verified with the Qt back ends (13.1). The oracle's headless stubs cannot exercise them meaningfully.
-**NEXT:** 11.1 — exception tests
+Decision: (11.1) Privilege violation frames hold the address of the privileged instruction (68000 PRM); the original's OLD_PC = PC is after the opcode word. CHK and MOVE-destination write faults stay out of the `exceptions` golden trace because of the documented deviations (undefined CHK flags; the original reads a MOVE destination first).
+**NEXT:** 11.2 — interrupt tests

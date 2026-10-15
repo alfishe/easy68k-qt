@@ -28,7 +28,7 @@ hash and the program output.
 
 ## Status snapshot
 
-*Updated after every committed iteration (last: 2026-10-15, commit `e44106a`).*
+*Updated after every committed iteration (last: 2026-10-15, commit `(X)`).*
 
 | Area | Rows | Done | Partial | Gap | Notes |
 |------|------|------|---------|-----|-------|
@@ -42,8 +42,8 @@ hash and the program output.
 
 | Measure | Value |
 |---------|-------|
-| Plan tasks (PROGRESS.md) | 71 done, 41 open (11.1 next) |
-| Simulator unit tests | 780 pass, incl. 27 golden simulation traces (ASan+UBSan clean) |
+| Plan tasks (PROGRESS.md) | 72 done, 40 open (11.2 next) |
+| Simulator unit tests | 794 pass, incl. 28 golden simulation traces (ASan+UBSan clean) |
 | Assembler tests | 400 pass (incl. 132 instruction-matrix suites, 21 golden, 27 corpus cases); ASan+UBSan clean |
 | Integration tests (asm + sim) | 10 pass |
 | Instruction matrix vs oracle | 98,583 / 98,583 cases match (bytes + diagnostic class) |
@@ -52,7 +52,7 @@ hash and the program output.
 | Corpus (directives, macros, conditional/structured, OPT, INCLUDE/INCBIN, MEMORY, errors, every diagnostic text, nested macros/includes) × 3 option variants vs oracle | 27 / 27 match (.L68 byte-identical; .S68 identical or, with SIMHALT, same loaded image) |
 | Assembler option combinations (`--no-list`, `--no-srec`, `--no-warnings`, `--no-cre`, `--no-bitfield`, `--mex --sex --cex`) on all corpus + golden programs; bit field matrix with `--no-bitfield` | all match |
 | Simulator instruction corpus vs oracle (131 programs from the matrix, exceptions on; `compare_sim_corpus.sh`) | all executed cases match: identical or an accepted deviation (`data/golden/sim/deviations.tsv`); memory hash identical or accepted |
-| Golden simulation traces (oracle-generated, `tests/sim/golden_trace_test.cc`) | 27 / 27 match |
+| Golden simulation traces (oracle-generated, `tests/sim/golden_trace_test.cc`) | 28 / 28 match |
 | Simulator opcode sweep vs oracle (every first word, 61,034 opcodes in 16 programs; `compare_sim_corpus.sh --sweep`) | 0 unexplained differences (legal/illegal decision, results, flags, cycles) |
 | GUI | not started (Phase 13) |
 
@@ -61,7 +61,7 @@ hash and the program output.
 | # | Task | Scope | Parity rows | Verification |
 |---|------|-------|-------------|--------------|
 | ✓ | **10.4** Trap #15 file tasks vs oracle | Done (`StdFileIO`, golden `trap15_file`) | S9 | — |
-| 2 | **11.1** Exception tests | Every exception vector with exceptions on/off, stacked frames, double faults, trace bit, privilege, interplay with the illegal-encoding table | S2, S3 | Unit tests; corpus/sweep already cover most of the decode side |
+| ✓ | **11.1** Exception tests | Done (`exception_test.cc`, golden `exceptions`) | S2, S3 | — |
 | 3 | **11.2** Interrupt tests | Autovector IRQ 1-7, NMI, masking, STOP wake, Hardware window auto-IRQ semantics; the oracle has no interrupt source, so compare against hardwareu.cpp/RUN.CPP irqHandler() by review + unit tests | S4 | Unit tests |
 | 4 | **0.6 / 12.1** Golden infrastructure + CI | Mark 0.6 done (golden asm/sim data, oracle regeneration scripts exist); CI on Linux/macOS/Windows running the three suites (oracle tools optional, Linux only: `-m32`) | acceptance item 3 | CI green |
 | 5 | **12.2 / 12.3** Coverage, clang-tidy | Coverage report for src/sim and src/asm; clang-tidy profile (src/asm/core and tools/reference excluded: original layout) | — | coverage gate, zero clang-tidy findings |
@@ -80,7 +80,7 @@ hash and the program output.
 | ID | Feature | Original | Port status | Task |
 |----|---------|----------|-------------|------|
 | S1 | All 68000 instructions, addressing modes, N/Z/V/C/X | RUN.CPP, CODE1-9.CPP | Done — verified against the oracle (instruction corpus + opcode sweep); fixed LEA A4-A7 / CHK D4-D7 decode, illegal-encoding detection, NEGX C/X, CHK N, ABCD/SBCD/NBCD; 32-bit PC as in the original (10.5); deviations: undefined flags, original bugs (see deviations.tsv) | 3-6, 10.0, 10.2, 10.3, 10.5 |
-| S2 | Exceptions: illegal, privilege, div0, CHK, TRAPV, TRAP #n, trace, Line A/F (stacked PC per RUN.CPP: next instruction, except illegal) | RUN.CPP | Done — verified by the corpus | 4.2, 6.5, 9.7, 10.2 |
+| S2 | Exceptions: illegal, privilege, div0, CHK, TRAPV, TRAP #n, trace, Line A/F (stacked PC per RUN.CPP: next instruction, except illegal and — fixed — privilege) | RUN.CPP | Done — corpus, golden `exceptions`, `exception_test.cc` | 4.2, 6.5, 9.7, 10.2, 11.1 ✓ |
 | S3 | Address/bus error (class 0 frame, 50 cycles) | RUN.CPP exceptionHandler | Done — frames verified by the corpus; CLR/Scc/MOVE SR fault as reads; deviation: registers/cycles restored to the instruction start (original keeps (An)+/-(An) and EA cycles) | 9.7, 10.2 |
 | S4 | Interrupts: autovector IRQ 1-7, NMI, STOP wake | RUN.CPP irqHandler, hardwareu.cpp | Done | 9.1 |
 | S5 | Cycle counting, Trap #15 tasks 30/31 | inc_cyc(), CODE9.CPP | Done | 9.2 |
@@ -249,6 +249,7 @@ Each committed iteration updates the snapshot above and adds a line here.
 | 2026-10-14 | `63cff79` | 8.15 assembler parity widening: SIMHALT S-record fix, diagnostics + nesting corpus, option combinations | A2/A3 coverage widened |
 | 2026-10-14 | `d93516f` | 10.5 32-bit program counter (user decision) | 24-bit PC deviation removed; 26 golden traces |
 | 2026-10-15 | `e44106a` | 10.4 Trap #15 file tasks: StdFileIO back end, original buffer/map checks | S9 file tasks verified; S10 Trap #15 buffer checks for file tasks |
+| 2026-10-15 | `(X)` | 11.1 exception tests; privilege frame PC fix; corpus hash check fixed | S2 verified (golden `exceptions`) |
 
 ## 10. Parity acceptance
 

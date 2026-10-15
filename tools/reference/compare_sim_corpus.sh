@@ -44,6 +44,15 @@ if [[ -z "$corpus" ]]; then
 fi
 corpus="$(cd "$corpus" && pwd)"
 
+# True if a "HASH <regex>" deviation matches the program name.
+hash_accepted() {
+  local re
+  while read -r re; do
+    [[ "$1" =~ $re ]] && return 0
+  done < <(grep '^HASH ' "$devs" | cut -f1 | cut -c6-)
+  return 1
+}
+
 status=0
 total=0
 for src in "$corpus"/*.x68; do
@@ -62,10 +71,7 @@ for src in "$corpus"/*.x68; do
     [[ $verbose -eq 1 ]] && echo "$out" | head -n -1 | head -30
   fi
   if [[ "$(grep '^HASH' "$work/$name.ref")" != "$(grep '^HASH' "$work/$name.port")" ]]; then
-    if ! grep '^HASH ' "$devs" | cut -f1 | cut -c6- | while read -r re; do
-         [[ "$name" =~ $re ]] && exit 1; done; then
-      :  # accepted
-    else
+    if ! hash_accepted "$name"; then
       status=1
       echo "$name: memory hash differs"
     fi

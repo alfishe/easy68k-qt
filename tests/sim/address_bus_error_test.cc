@@ -265,12 +265,14 @@ TEST_F(AddressBusErrorTest, LineAStacksNextPc) {
   EXPECT_EQ(sim_.GetMemory().ReadLong((sim_.State().ssp + 2) & kAddressMask).value, kCode + 2);
 }
 
-TEST_F(AddressBusErrorTest, PrivilegeViolationStacksNextPc) {
+TEST_F(AddressBusErrorTest, PrivilegeViolationStacksInstructionAddress) {
+  // 68000: the address of the privileged instruction (the original stacked
+  // the PC after its first word; bug, fixed in 11.1).
   Load({0x4E70});  // RESET in user mode
   sim_.State().sr = 0x0000;
   sim_.GetMemory().WriteLong(0x20, 0x3300);
   sim_.Step();
-  EXPECT_EQ(sim_.GetMemory().ReadLong((sim_.State().ssp + 2) & kAddressMask).value, kCode + 2);
+  EXPECT_EQ(sim_.GetMemory().ReadLong((sim_.State().ssp + 2) & kAddressMask).value, kCode);
 }
 
 TEST_F(AddressBusErrorTest, ChkStacksNextPc) {
