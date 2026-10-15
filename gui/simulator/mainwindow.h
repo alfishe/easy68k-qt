@@ -110,8 +110,13 @@ class MainWindow : public QMainWindow {
   QAction* PrinterFontAction() const { return printer_font_action_; }
   QAction* AutoTraceOptionsAction() const { return auto_trace_options_action_; }
   QAction* BreakPointsAction() const { return break_points_action_; }
+  QAction* ViewEasyBinAction() const { return view_easybin_; }
   QAction* ExceptionsAction() const { return exceptions_; }
   QAction* BitFieldAction() const { return bit_field_; }
+  void SetEasyBinLauncher(std::function<bool(const QString&)> launcher) {
+    easybin_launcher_ = std::move(launcher);
+  }
+  static QString ResolveEasyBinExecutable();
   bool LoggingShown() const { return logging_action_->isVisible(); }
   RegisterWidget* Registers() const { return registers_; }
   SourceView* Source() const { return source_; }
@@ -153,6 +158,7 @@ class MainWindow : public QMainWindow {
   void OnOutputFont();
   void OnPrinterFont();
   void OnAutoTraceOptions();
+  void OnViewEasyBin();
   void OnFullscreenOptions();
   void OnLogOutput();
   void OnLogStart();
@@ -190,6 +196,7 @@ class MainWindow : public QMainWindow {
   std::function<void(const QString&, const QString&)> inform_;
   std::function<SimLog::Exists(const QString&)> ask_log_file_;
   std::function<std::optional<QFont>(const QFont&, bool)> choose_font_;
+  std::function<bool(const QString&)> easybin_launcher_;
   QAction* logging_action_ = nullptr;
   bool program_loaded_ = false;  // Reload available
   bool run_on_show_ = false;     // command line /r
@@ -213,6 +220,7 @@ class MainWindow : public QMainWindow {
   QAction* log_stop_ = nullptr;
   QAction* output_window_ = nullptr;
   QAction* break_points_action_ = nullptr;
+  QAction* view_easybin_ = nullptr;
   QAction* source_font_action_ = nullptr;
   QAction* output_font_action_ = nullptr;
   QAction* printer_font_action_ = nullptr;

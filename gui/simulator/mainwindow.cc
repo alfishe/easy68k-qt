@@ -9,6 +9,7 @@
 #include <QApplication>
 #include <QCloseEvent>
 #include <QCoreApplication>
+#include <QDir>
 #include <QDragEnterEvent>
 #include <QDropEvent>
 #include <QFileDialog>
@@ -19,9 +20,11 @@
 #include <QMessageBox>
 #include <QMimeData>
 #include <QPageSetupDialog>
+#include <QProcess>
 #include <QScreen>
 #include <QSignalBlocker>
 #include <QSplitter>
+#include <QStandardPaths>
 #include <QStatusBar>
 #include <QStyle>
 #include <QToolBar>
@@ -162,6 +165,9 @@ MainWindow::MainWindow(const QString& settings_file, QWidget* parent)
     if (!ok)
       return std::nullopt;
     return chosen;
+  };
+  easybin_launcher_ = [](const QString& program) {
+    return !program.isEmpty() && QProcess::startDetached(program, {});
   };
 
   setWindowTitle(QStringLiteral("Sim68K"));
@@ -375,8 +381,8 @@ void MainWindow::CreateActions() {
   printer_setup_ = Action(QStringLiteral("&Printer Setup..."), {}, &MainWindow::OnPrinterSetup);
   exit_ = Action(QStringLiteral("E&xit"), {}, nullptr);
   connect(exit_, &QAction::triggered, this, &QWidget::close);
-  find_ = Action(QStringLiteral("&Find..."), QKeySequence(Qt::CTRL | Qt::Key_F),
-                 &MainWindow::OnFind);
+  find_ =
+      Action(QStringLiteral("&Find..."), QKeySequence(Qt::CTRL | Qt::Key_F), &MainWindow::OnFind);
   auto* find_next = new QAction(this);
   find_next->setShortcut(QKeySequence(Qt::Key_F3));
   find_next->setShortcutContext(Qt::WindowShortcut);
@@ -391,8 +397,8 @@ void MainWindow::CreateActions() {
   connect(run_, &QAction::triggered, this, [this] { session_->Run(); });
   run_to_cursor_ = Action(QStringLiteral("Run To &Cursor"), QKeySequence(Qt::CTRL | Qt::Key_F9),
                           &MainWindow::OnRunToCursor);
-  auto_trace_ = Action(QStringLiteral("&Auto Trace"), QKeySequence(Qt::Key_F10),
-                       &MainWindow::OnAutoTrace);
+  auto_trace_ =
+      Action(QStringLiteral("&Auto Trace"), QKeySequence(Qt::Key_F10), &MainWindow::OnAutoTrace);
   step_ = Action(QStringLiteral("&Step Over"), QKeySequence(Qt::Key_F8), nullptr);
   connect(step_, &QAction::triggered, this, [this] { session_->StepOver(); });
   trace_ = Action(QStringLiteral("&Trace Into"), QKeySequence(Qt::Key_F7), nullptr);
@@ -479,9 +485,8 @@ void MainWindow::CreateMenus() {
   QAction* hardware = view->addAction(QStringLiteral("&Hardware"));
   connect(hardware, &QAction::triggered, this, [this] { Raise(hardware_window_); });
   break_points_action_ = view->addAction(QStringLiteral("&Break Points"));
-  connect(break_points_action_, &QAction::triggered, this,
-          [this] { Raise(breakpoints_window_); });
-  view->addAction(Pending(QStringLiteral("&EASyBIN"), QStringLiteral("13.20")));
+  connect(break_points_action_, &QAction::triggered, this, [this] { Raise(breakpoints_window_); });
+  view_easybin_ = view->addAction(QStringLiteral("&EASyBIN"), this, &MainWindow::OnViewEasyBin);
 
   QMenu* options = menuBar()->addMenu(QStringLiteral("&Options"));
   source_font_action_ =
@@ -502,9 +507,8 @@ void MainWindow::CreateMenus() {
     SaveSettings();
   });
   options->addSeparator();
-  auto_trace_options_action_ =
-      options->addAction(QStringLiteral("&Auto Trace Options..."), this,
-                         &MainWindow::OnAutoTraceOptions);
+  auto_trace_options_action_ = options->addAction(QStringLiteral("&Auto Trace Options..."), this,
+                                                  &MainWindow::OnAutoTraceOptions);
   options->addSeparator();
   QAction* fullscreen = options->addAction(QStringLiteral("&Fullscreen Options..."));
   connect(fullscreen, &QAction::triggered, this, &MainWindow::OnFullscreenOptions);
@@ -1046,6 +1050,28 @@ void MainWindow::OnFullscreenOptions() {
   if (dialog.exec() == QDialog::Accepted) {
     io_window_->SetFullScreenMonitor(dialog.Monitor());
     SaveSettings();
+  }
+}
+
+QString MainWindow::ResolveEasyBinExecutable() {
+  const QDir app_dir(QCoreApplication::applicationDirPath());
+  for (const QString& rel :
+       {QStringLiteral("easybin"), QStringLiteral("easybin.exe"),
+        QStringLiteral("../easybin/easybin"), QStringLiteral("../easybin/easybin.exe"),
+        QStringLiteral("../gui/easybin/easybin"), QStringLiteral("../gui/easybin/easybin.exe")}) {
+    const QFileInfo candidate(app_dir.filePath(rel));
+    if (candidate.exists() && candidate.isExecutable()) {
+      return candidate.canonicalFilePath();
+    }
+  }
+  return QStandardPaths::findExecutable(QStringLiteral("easybin"));
+}
+
+// SIM68Ku.cpp EASyBIN1Click(): launches EASyBIN asynchronously.
+void MainWindow::OnViewEasyBin() {
+  const QString exe = ResolveEasyBinExecutable();
+  if (easybin_launcher_) {
+    easybin_launcher_(exe);
   }
 }
 
