@@ -28,22 +28,22 @@ hash and the program output.
 
 ## Status snapshot
 
-*Updated after every committed iteration (last: 2026-10-15, commit `635b61c`).*
+*Updated after every committed iteration (last: 2026-10-15, commit `(X)`).*
 
 | Area | Rows | Done | Partial | Gap | Notes |
 |------|------|------|---------|-----|-------|
 | 1. Simulator core | 17 | 17 | 0 | 0 | instruction corpus + opcode sweep match the oracle (documented deviations only); 32-bit PC; Trap #15 text and file tasks verified |
 | 2. Assembler | 9 | 7 | 1 | 1 | core is a port of the original; listings and S-records match the oracle in every option combination; A7 auto-save and A8 template are GUI (13.19) |
-| 3. Sim68K GUI | 22 | 4 | 8 | 10 | Sim68K-Qt runs: main window, run controls, I/O window (13.2) |
+| 3. Sim68K GUI | 22 | 6 | 6 | 10 | Sim68K-Qt runs: main window, run controls, I/O window (13.2) |
 | 4. Edit68K GUI | 14 | 0 | 0 | 14 | |
 | 5. EASyBIN | 4 | 0 | 0 | 4 | |
 | 6. Help | 1 | 0 | 0 | 1 | |
-| **Total** | **67** | **28** | **9** | **30** | |
+| **Total** | **67** | **30** | **7** | **30** | |
 
 | Measure | Value |
 |---------|-------|
-| Plan tasks (PROGRESS.md) | 78 done, 34 open (13.3 next) |
-| Qt back end tests (`easym68k-gui-tests`, offscreen) | 82 pass (ASan+UBSan clean) |
+| Plan tasks (PROGRESS.md) | 79 done, 33 open (13.4 next) |
+| Qt back end tests (`easym68k-gui-tests`, offscreen) | 87 pass (ASan+UBSan clean) |
 | clang-tidy (`tools/clang-tidy.sh`, core libraries) | 0 findings (22 files + public headers) |
 | Simulator unit tests | 805 pass, incl. 28 golden simulation traces (ASan+UBSan clean) |
 | Assembler tests | 406 pass (incl. 132 instruction-matrix suites, 21 golden, 33 corpus cases); ASan+UBSan clean |
@@ -118,8 +118,8 @@ hash and the program output.
 
 | ID | Feature | Original | Task |
 |----|---------|----------|------|
-| G1 | Main window: registers D0-D7, A0-A7, PC, SS, US, SR with T S INT XNZVC, editable | SIM68Ku.dfm | 13.3 — Partial: displayed (13.2), editing 13.3 |
-| G2 | Cycles display + Clear Cycles | SIM68Ku.dfm | 13.3 — Partial: displayed (13.2) |
+| G1 | Main window: registers D0-D7, A0-A7, PC, SS, US, SR with T S INT XNZVC, editable | SIM68Ku.dfm | 13.3 — **Done** |
+| G2 | Cycles display + Clear Cycles | SIM68Ku.dfm | 13.3 — **Done** |
 | G3 | Toolbar + Run menu: Open, Run (F9), Run To Cursor (Ctrl+F9), Auto Trace (F10), Step Over (F8), Trace Into (F7), Pause (F6), Rewind (Ctrl+F2), Reload (Ctrl+F3), Log Start (Ctrl+F4), Log Stop (Ctrl+F5) | SIM68Ku.dfm ActionList | 13.2 — Partial: all but Auto Trace (13.24) and Log Start/Stop (13.12) |
 | G4 | File: Open (Ctrl+O), Open Data (load extra S-record), Close, Printer Setup, Exit | SIM68Ku.dfm | 13.2 — **Done** |
 | G5 | Source view (.L68 mapped to PC), breakpoint gutter, Clear All PC Breakpoints popup, message pane | SIM68Ku.dfm ListBox1/breakP | 13.4 — Partial: listing with PC line and message pane (13.2) |
@@ -265,6 +265,7 @@ Each committed iteration updates the snapshot above and adds a line here.
 | 2026-10-15 | `1d051bb` | 13.1d serial (Qt SerialPort) and network (`StdNetworkIO`) back ends; serial/network buffer and map checks | S9 tasks 40-43, 100-107 back ends; S10 serial buffer checks |
 | 2026-10-15 | `4b1025c` | 13.2a SimSession: program loading, run controls on a worker thread, messages, STOP/IRQ | G3, G4, G5 (model), G6 |
 | 2026-10-15 | `635b61c` | 13.2b Sim68K-Qt main window, I/O window, drag and drop, command line | G1-G6, G8, G11, G14, G18, G20, G22 (new) |
+| 2026-10-15 | `(X)` | 13.3 register panel: editing, A7/US/SS, SR bits, Clear Cycles | G1, G2 |
 
 ## 10. Parity acceptance
 

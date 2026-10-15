@@ -3,6 +3,8 @@
 
 #include "mainwindow.h"
 
+#include <algorithm>
+#include <iterator>
 #include <QActionGroup>
 #include <QApplication>
 #include <QCloseEvent>
@@ -81,7 +83,30 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent) {
   CreateMenus();
   CreateToolBar();
 
-  connect(session_.get(), &SimSession::StateChanged, this, [this] { UpdateActions(); });
+  connect(session_.get(), &SimSession::StateChanged, this, [this] {
+    UpdateActions();
+    registers_->SetEditable(!session_->IsRunning());
+  });
+  // SIM68Ku.cpp loadRegs()/register key handlers: edits go to the CPU.
+  connect(registers_, &RegisterWidget::Edited, this, [this](const sim::CpuState& edited) {
+    if (session_->IsRunning())
+      return;
+    sim::CpuState& cpu = session_->Simulator().State();
+    std::copy(std::begin(edited.d), std::end(edited.d), std::begin(cpu.d));
+    std::copy(std::begin(edited.a), std::end(edited.a), std::begin(cpu.a));
+    cpu.usp = edited.a[7];
+    cpu.ssp = edited.ssp;
+    cpu.pc = edited.pc;
+    cpu.sr = edited.sr;
+    source_->HighlightPc(cpu.pc);  // regPCChange()
+  });
+  connect(registers_, &RegisterWidget::ClearCycles, this, [this] {
+    if (session_->IsRunning())
+      return;
+    session_->Simulator().State().cycles = 0;
+    ShowState();
+  });
+  connect(registers_, &RegisterWidget::PcDoubleClicked, this, &MainWindow::OnGotoPc);
   connect(session_.get(), &SimSession::ExecutionStopped, this, &MainWindow::ShowState);
   connect(session_.get(), &SimSession::Message, messages_, &QPlainTextEdit::appendPlainText);
   connect(session_.get(), &SimSession::MessagesCleared, messages_, &QPlainTextEdit::clear);

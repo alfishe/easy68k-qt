@@ -69,6 +69,7 @@ if(TARGET easy68k-simulator-ui)
     gui/qt_serial_io_test.cc
     gui/sim_session_test.cc
     gui/mainwindow_test.cc
+    gui/register_widget_test.cc
   )
   find_package(Qt6 REQUIRED COMPONENTS Test)
   target_link_libraries(easym68k-gui-tests PRIVATE easy68k-simulator-ui easym68k-asm Qt6::Test GTest::gtest)

@@ -53,6 +53,7 @@ class MainWindow : public QMainWindow {
   QAction* ReloadAction() const { return reload_; }
   QAction* OpenAction() const { return open_; }
   QAction* CloseAction() const { return close_; }
+  RegisterWidget* Registers() const { return registers_; }
 
  protected:
   void dragEnterEvent(QDragEnterEvent* event) override;
