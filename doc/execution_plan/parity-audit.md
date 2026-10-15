@@ -28,7 +28,7 @@ hash and the program output.
 
 ## Status snapshot
 
-*Updated after every committed iteration (last: 2026-10-15, commit `8efaeb1`).*
+*Updated after every committed iteration (last: 2026-10-15, commit `(X)`).*
 
 | Area | Rows | Done | Partial | Gap | Notes |
 |------|------|------|---------|-----|-------|
@@ -42,7 +42,7 @@ hash and the program output.
 
 | Measure | Value |
 |---------|-------|
-| Plan tasks (PROGRESS.md) | 73 done, 39 open (0.6 / 12.1 next) |
+| Plan tasks (PROGRESS.md) | 74 done, 38 open (12.2 / 12.3 next) |
 | Simulator unit tests | 796 pass, incl. 28 golden simulation traces (ASan+UBSan clean) |
 | Assembler tests | 400 pass (incl. 132 instruction-matrix suites, 21 golden, 27 corpus cases); ASan+UBSan clean |
 | Integration tests (asm + sim) | 10 pass |
@@ -63,7 +63,7 @@ hash and the program output.
 | ✓ | **10.4** Trap #15 file tasks vs oracle | Done (`StdFileIO`, golden `trap15_file`) | S9 | — |
 | ✓ | **11.1** Exception tests | Done (`exception_test.cc`, golden `exceptions`) | S2, S3 | — |
 | ✓ | **11.2** Interrupt tests | Done (`interrupt_test.cc`; tracers take `-i STEP:LEVEL`) | S4 | — |
-| 4 | **0.6 / 12.1** Golden infrastructure + CI | Mark 0.6 done (golden asm/sim data, oracle regeneration scripts exist); CI on Linux/macOS/Windows running the three suites (oracle tools optional, Linux only: `-m32`) | acceptance item 3 | CI green |
+| 4 | **0.5 / 12.1** CI (later) | CI pipeline on Linux, macOS, Windows | acceptance item 3 | CI green |
 | 5 | **12.2 / 12.3** Coverage, clang-tidy | Coverage report for src/sim and src/asm; clang-tidy profile (src/asm/core and tools/reference excluded: original layout) | — | coverage gate, zero clang-tidy findings |
 | 6 | **13.1** Trap #15 Qt back ends | Text console, graphics, sound, serial, network, printing, file dialog | S9 | Manual checklist + unit tests where headless |
 | 7 | **13.2-13.18, 13.22-13.24** Sim68K-Qt | Main window, registers, source view, stack/memory viewers, hardware window, I/O console, graphics, log, settings, advanced breakpoints, find, auto trace | 3. Sim68K GUI (21 rows) | 13.21 manual checklist |
@@ -251,6 +251,7 @@ Each committed iteration updates the snapshot above and adds a line here.
 | 2026-10-15 | `e44106a` | 10.4 Trap #15 file tasks: StdFileIO back end, original buffer/map checks | S9 file tasks verified; S10 Trap #15 buffer checks for file tasks |
 | 2026-10-15 | `648bd51` | 11.1 exception tests; privilege frame PC fix; corpus hash check fixed | S2 verified (golden `exceptions`) |
 | 2026-10-15 | `8efaeb1` | 11.2 interrupt tests; IRQ injection in both tracers | S4 order documented |
+| 2026-10-15 | `(X)` | 0.6 golden data infrastructure marked done (delivered by 8.10/10.1) | — |
 
 ## 10. Parity acceptance
 
