@@ -18,19 +18,36 @@ See [PROGRESS.md](PROGRESS.md) for task status and
 [doc/execution_plan/parity-audit.md](doc/execution_plan/parity-audit.md) for
 the feature-by-feature parity snapshot.
 
-- **Simulator core** (`src/sim/`) — all 68000 instructions, exceptions,
-  interrupts, cycle counting, memory map semantics, Trap #15 dispatch,
-  logging and observer hooks (Phases 1–9, bit fields and advanced
-  breakpoints pending).
+- **Simulator core** (`src/sim/`) — all 68000 instructions (including bit-field
+  instructions), exceptions (including class 0 address/bus error frames),
+  autovectored interrupts, cycle counting, memory map semantics, advanced
+  register/memory/expression breakpoints, Step Over / Run To, Trap #15
+  dispatch, logging, and observer hooks (Phases 1–11 complete).
 - **Assembler** (`src/asm/`) — a function-by-function port of the original
   Edit68K assembler (`src/asm/core/`). Listings (.L68) and S-records (.S68)
-  are byte-identical to the original's on the golden programs and the
-  corpus; the instruction matrix (98,583 instruction × addressing mode ×
-  size cases) matches the original assembler.
-- **GUI** (Phase 13) — not started.
+  match the original on the golden programs and corpus; the instruction matrix
+  (98,583 instruction × addressing mode × size cases) matches the original
+  assembler (Phase 8 complete).
+- **GUI applications** (`gui/`, Phase 13 complete — **69/69** parity items and
+  **30/30** Feature Coverage Matrix items verified):
+  - `easy68k-editor` (**Edit68K-Qt**): MDI `.X68`/`.L68` editor with 8-category
+    syntax highlighting, Assembly/Fixed tab stops, integrated assembler (`F9`),
+    clickable error list, simulator launch, printing, and context-sensitive
+    `F1` help.
+  - `easy68k-simulator` (**Sim68K-Qt**): full simulator GUI with register
+    editor, source listing view with breakpoint gutter, I/O console & 640×480
+    graphics window (with full-screen mode), Hardware peripheral window (7-seg,
+    LEDs, switches, buttons, auto-IRQ, memory map), Memory viewer/editor,
+    Stack viewer, Advanced Break Points dialog, Auto Trace, Execution/Output
+    logging, and all 9 Qt Trap #15 backends.
+  - `easybin` (**EASyBIN-Qt**): S-Record and binary utility with 1/2/4-file
+    interleave split modes and color-coded hex/ASCII editor.
+  - `easy68k-help` (**HelpViewer**): offline HTML help browser (`contents.hhc`,
+    `index.hhk`, `ez68k.ali`, and Quick Reference PDF) shared across all three
+    applications.
 
-Correctness is checked against a *reference oracle*: the original
-assembler built on Linux from the original sources
+Correctness is checked against *reference oracles*: the original Edit68K
+assembler and Sim68K simulator built on Linux from the original sources
 (`-DBUILD_REFERENCE_TOOLS=ON`, `tools/reference/`).
 
 ## Architecture
@@ -129,4 +146,4 @@ The learning examples under `examples/` are CC0-1.0 (see `examples/LICENSE`).
 
 ---
 
-*Phase 8 assembler in progress · 904 tests passing · Next: instruction encoding handlers (8.5.3) · Phase 9 (simulator core parity) planned*
+*Phases 0–11 & Phase 13 (GUI) complete · 69/69 parity items & 30/30 feature matrix items verified · Next: Examples & Education (E1–E9)*
