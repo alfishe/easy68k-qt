@@ -28,7 +28,7 @@ hash and the program output.
 
 ## Status snapshot
 
-*Updated after every committed iteration (last: 2026-10-15, commit `(X)`).*
+*Updated after every committed iteration (last: 2026-10-15, commit `2a5e656`).*
 
 | Area | Rows | Done | Partial | Gap | Notes |
 |------|------|------|---------|-----|-------|
@@ -258,7 +258,7 @@ Each committed iteration updates the snapshot above and adds a line here.
 | 2026-10-15 | `bf30067` | Clang -O2 / MSVC portability fixes (warnings, test portability) | — |
 | 2026-10-15 | `c736ec5` | 12.2 coverage tooling + gate; operands/forms corpus | coverage targets met; A1b/A3 coverage widened |
 | 2026-10-15 | `db52bf6` | 12.3 clang-tidy profile and script; 70 findings fixed | — |
-| 2026-10-15 | `(X)` | 13.1a I/O window back ends: SimIoScreen, QtTextIO, QtGraphicsIO, key map; headless Qt tests | S9 text/graphics back ends |
+| 2026-10-15 | `2a5e656` | 13.1a I/O window back ends: SimIoScreen, QtTextIO, QtGraphicsIO, key map; headless Qt tests | S9 text/graphics back ends |
 
 ## 10. Parity acceptance
 
