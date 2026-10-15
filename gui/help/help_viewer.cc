@@ -68,6 +68,16 @@ QString NormalizeWhitespaceUpper(const QString& text) {
   return simplified.toUpper();
 }
 
+QString DecodeHtmlEntities(QString text) {
+  text.replace(QStringLiteral("&aring;"), QString::fromUtf8("\xC3\xA5"), Qt::CaseInsensitive);
+  text.replace(QStringLiteral("&reg;"), QString::fromUtf8("\xC2\xAE"), Qt::CaseInsensitive);
+  text.replace(QStringLiteral("&lt;"), QStringLiteral("<"), Qt::CaseInsensitive);
+  text.replace(QStringLiteral("&gt;"), QStringLiteral(">"), Qt::CaseInsensitive);
+  text.replace(QStringLiteral("&quot;"), QStringLiteral("\""), Qt::CaseInsensitive);
+  text.replace(QStringLiteral("&amp;"), QStringLiteral("&"), Qt::CaseInsensitive);
+  return text;
+}
+
 }  // namespace
 
 HelpViewer::HelpViewer(QWidget* parent, const QString& help_dir)
@@ -423,7 +433,7 @@ void HelpViewer::LoadContentsTree() {
       const QString param_value = match.captured(3).trimmed();
       if (param_name == QStringLiteral("name")) {
         if (current_item->text(0).isEmpty()) {
-          current_item->setText(0, param_value);
+          current_item->setText(0, DecodeHtmlEntities(param_value));
         }
       } else if (param_name == QStringLiteral("local")) {
         const QString resolved = ResolveRelativeTarget(param_value);
@@ -468,7 +478,7 @@ void HelpViewer::LoadIndexEntries() {
       const QString pname = pm.captured(1).toLower();
       const QString pval = pm.captured(2).trimmed();
       if (pname == QStringLiteral("name") && first_name.isEmpty()) {
-        first_name = pval;
+        first_name = DecodeHtmlEntities(pval);
       } else if (pname == QStringLiteral("local") && local_target.isEmpty()) {
         local_target = ResolveRelativeTarget(pval);
       }

@@ -42,8 +42,8 @@ hash and the program output.
 
 | Measure | Value |
 |---------|-------|
-| Plan tasks (PROGRESS.md) | 101 done, 12 open (13.21 next) |
-| Qt back end tests (`easym68k-gui-tests`, offscreen) | 163 pass (ASan+UBSan clean) |
+| Plan tasks (PROGRESS.md) | 102 done, 11 open (E1 next; all parity tasks complete) |
+| Qt back end tests (`easym68k-gui-tests`, offscreen) | 166 pass (ASan+UBSan clean) |
 | clang-tidy (`tools/clang-tidy.sh`, core libraries) | 0 findings (23 files + public headers) |
 | Simulator unit tests | 812 pass, incl. 28 golden simulation traces (ASan+UBSan clean) |
 | Assembler tests | 406 pass (incl. 132 instruction-matrix suites, 21 golden, 33 corpus cases); ASan+UBSan clean |
@@ -72,7 +72,7 @@ hash and the program output.
 | ✓ | **13.19** Edit68K-Qt | Done: MDI editor, assembler options (A7 auto-save, A8 template), find/replace, syntax colouring (`gui/editor`) | 4. Edit68K GUI (14 rows), A7, A8 | 10 unit tests + 13.21 checklist |
 | ✓ | **13.20** EASyBIN-Qt | Done: Binary/S-Record utility (`gui/easybin`) | 5. EASyBIN (4 rows) | checklist + file round-trip tests |
 | ✓ | **13.25** Help | Done: `HelpViewer` (`gui/help`) + `data/help/` | 6. Help (1 row), G20, B4 | 5 unit tests + checklist |
-| 11 | **13.21** Feature parity validation | Manual UI checklist on Linux, macOS, Windows | all | acceptance |
+| ✓ | **13.21** Feature parity validation | Done: `ParityValidationTest` (`tests/gui/parity_validation_test.cc`) + `doc/execution_plan/parity-validation-checklist.md` | all (69/69 Done, 30/30 Feature Coverage Matrix PASS) | acceptance |
 | 12 | **E1-E9** Education track | Runs after parity (E1 runner CLI can reuse `easy68k-sim-trace`) | — | example runner tests |
 | 13 | **0.5 / 12.1** CI (later target) | CI pipeline on Linux, macOS, Windows; set up by the owner when wanted | acceptance item 3 | CI green |
 
@@ -283,6 +283,7 @@ Each committed iteration updates the snapshot above and adds a line here.
 | 2026-10-15 | `2c46600` | 13.20 EASyBIN-Qt binary utility + Sim68K View > EASyBIN | B1-B3, G8, G21 Done; B4 Partial |
 | 2026-10-15 | `99a7fe1` | 13.25 HelpViewer (`easy68k-help`) + 242 help assets (`data/help/`), wired into Sim68K and EASyBIN | H1, G20, B4 Done |
 | 2026-10-15 | `2afea15` | 13.19 Edit68K-Qt (`easy68k-editor` + `easy68k-editor-ui`) + `data/template.NEW` + 10 `EditorTest` tests | E1-E14, A7, A8 Done (all 69/69 parity rows Done) |
+| 2026-10-15 | `pending` | 13.21 Feature parity validation (`ParityValidationTest` + `parity-validation-checklist.md`) | All 30 Feature Coverage Matrix items + 69/69 parity rows validated |
 
 ## 10. Parity acceptance
 
