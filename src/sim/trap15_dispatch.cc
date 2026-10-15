@@ -78,7 +78,7 @@ void ToBase(uint32_t val, int base, char* buf, size_t len) {
 // text output task goes through EmitText()/EmitChar().
 // ---------------------------------------------------------------------------
 
-void M68kSimulator::LogOutputText(const char* text, int length) {
+void M68kSimulator::LogOutputText(const char* text, int length) const {
   IExecutionLogger* log = config_.execution_logger;
   if (log != nullptr && length > 0 && log->IsOutputLogging())
     log->LogOutput(text, length);
@@ -230,7 +230,7 @@ SimResult M68kSimulator::DispatchTrap15() {
     case kTrap15DisplayRadix: {  // 15: display D1.L in base D2.B (2-36)
       if (!config_.text_io)
         break;
-      int base = static_cast<int8_t>(state_.d[2]);
+      int base = static_cast<uint8_t>(state_.d[2]);  // D2.B; only 2-36 accepted
       if (base >= 2 && base <= 36) {
         ToBase(state_.d[1], base, buf, sizeof(buf));
         EmitText(buf, false);

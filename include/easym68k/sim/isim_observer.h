@@ -33,12 +33,12 @@ enum class SimEventType {
 };
 
 struct SimEvent {
-  SimEventType type;
-  uint32_t pc;              // instruction address (kInstructionExecuted,
-                            // kExceptionRaised, kHalted, kStopped) or current PC
-  SimResult result;         // instruction result where applicable, else kOk
-  int interrupt_level = 0;  // kInterruptRequested / interrupt kExceptionRaised
-  int vector = -1;          // exception vector number for kExceptionRaised
+  SimEventType type{};
+  uint32_t pc{};                      // instruction address (kInstructionExecuted,
+                                      // kExceptionRaised, kHalted, kStopped) or current PC
+  SimResult result = SimResult::kOk;  // instruction result where applicable, else kOk
+  int interrupt_level = 0;            // kInterruptRequested / interrupt kExceptionRaised
+  int vector = -1;                    // exception vector number for kExceptionRaised
 };
 
 class ISimObserver {

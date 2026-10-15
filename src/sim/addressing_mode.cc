@@ -82,7 +82,7 @@ EffectiveAddr CalculateEA(Memory& memory, CpuState& state, uint32_t& pc, int mod
       int xi_reg = static_cast<int>((ext & 0x7000) >> 12);
       bool xi_is_addr = (ext & 0x8000) != 0;
       bool xi_is_long = (ext & 0x0800) != 0;
-      int32_t ind;
+      int32_t ind = 0;
       if (xi_is_addr)
         ind = static_cast<int32_t>(state.GetAReg(xi_reg));
       else
@@ -119,7 +119,7 @@ EffectiveAddr CalculateEA(Memory& memory, CpuState& state, uint32_t& pc, int mod
           int xi_reg = static_cast<int>((ext & 0x7000) >> 12);
           bool xi_is_addr = (ext & 0x8000) != 0;
           bool xi_is_long = (ext & 0x0800) != 0;
-          int32_t ind;
+          int32_t ind = 0;
           if (xi_is_addr)
             ind = static_cast<int32_t>(state.GetAReg(xi_reg));
           else

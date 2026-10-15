@@ -19,13 +19,13 @@ SimResult M68kSimulator::OpBitField(uint16_t opcode) {
     return SimResult::kBadInstruction;
 
   const uint32_t extra = FetchWord();
-  uint32_t offset;
+  uint32_t offset = 0;
   if (extra & 0x800)
     offset = state_.d[(extra >> 6) & 0x07];
   else
     offset = (extra >> 6) & 0x1f;
 
-  int width;
+  int width = 0;
   if (extra & 0x20)
     width = static_cast<int>(((state_.d[extra & 7] - 1) & 0x1f) + 1);
   else
@@ -33,10 +33,10 @@ SimResult M68kSimulator::OpBitField(uint16_t opcode) {
 
   const int mode = (opcode >> 3) & 0x7;
   const int reg = opcode & 0x7;
-  uint32_t tmp;
+  uint32_t tmp = 0;
   uint32_t bf0 = 0, bf1 = 0, bf4 = 0;
   uint32_t dest_addr = 0;
-  int cycles;
+  int cycles = 0;
   if (mode == 0) {  // Dn
     tmp = state_.d[reg] << (offset & 0x1f);
     cycles = 7;
@@ -112,7 +112,7 @@ SimResult M68kSimulator::OpBitField(uint16_t opcode) {
       tmp = 0xFFFFFFFFu;
       pick(12, 16, 24);
       break;
-    case kBfins:
+    default:  // kBfins
       tmp = state_.d[(extra >> 12) & 7];
       n_bit = (tmp & (1u << (width - 1))) != 0;
       z_bit = tmp == 0;

@@ -30,7 +30,6 @@ SimResult M68kSimulator::ExecuteInstruction(uint16_t opcode) {
     case 0x1:
       return OpMove(opcode);
     case 0x2:
-      return DispatchMoveOrMovea(opcode);
     case 0x3:
       return DispatchMoveOrMovea(opcode);
     case 0x4:
@@ -78,7 +77,7 @@ SimResult M68kSimulator::DispatchGroup0(uint16_t opcode) {
         return OpBchg(opcode);
       case 2:
         return OpBclr(opcode);
-      case 3:
+      default:  // 3
         return OpBset(opcode);
     }
   }
@@ -91,7 +90,7 @@ SimResult M68kSimulator::DispatchGroup0(uint16_t opcode) {
         return OpBchg(opcode);
       case 2:
         return OpBclr(opcode);
-      case 3:
+      default:  // 3
         return OpBset(opcode);
     }
   }
@@ -121,8 +120,9 @@ SimResult M68kSimulator::DispatchGroup0(uint16_t opcode) {
       return OpEori(opcode);
     case 6:
       return OpCmpi(opcode);
+    default:  // 4 (bit ops, above), 7 (MOVES, 68010+)
+      return SimResult::kBadInstruction;
   }
-  return SimResult::kBadInstruction;
 }
 
 // =============================================================================
@@ -262,6 +262,8 @@ SimResult M68kSimulator::DispatchGroup4(uint16_t opcode) {
           return OpTrapV(opcode);
         case 0x4E77:
           return OpRtr(opcode);
+        default:
+          break;
       }
       if ((opcode & 0xFFC0) == 0x4E80)
         return OpJsr(opcode);

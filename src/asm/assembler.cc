@@ -7,6 +7,7 @@
 
 #include <algorithm>
 #include <cctype>
+#include <climits>
 #include <cstdlib>
 #include <filesystem>
 #include <fstream>
@@ -170,7 +171,9 @@ AssemblyResult Assembler::Assemble(const std::string& source) {
     for (int i = static_cast<int>(lines.size()) - 1; i >= 0 && checked < 5; --i, ++checked) {
       const std::string& l = lines[i];
       if (l.rfind("*~Tab size~", 0) == 0) {
-        co.tab_size = std::max(1, std::atoi(l.c_str() + 11));
+        // strtol, not atoi: out-of-range values are defined (clamped to int).
+        const long ts = std::strtol(l.c_str() + 11, nullptr, 10);
+        co.tab_size = static_cast<int>(std::clamp<long>(ts, 1, INT_MAX));
         lines.erase(lines.begin() + i);
         changed = true;
       } else if (l.rfind("*~Tab type~", 0) == 0) {

@@ -73,10 +73,9 @@ SimResult M68kSimulator::OpOr(uint16_t opcode) {
 
   if (dst_ea) {
     return WriteEA(ea, result, size);
-  } else {
-    state_.d[dn] = (state_.d[dn] & ~mask) | result;
-    return SimResult::kOk;
   }
+  state_.d[dn] = (state_.d[dn] & ~mask) | result;
+  return SimResult::kOk;
 }
 
 // ---------------------------------------------------------------------------
@@ -140,10 +139,9 @@ SimResult M68kSimulator::OpAnd(uint16_t opcode) {
 
   if (dst_ea) {
     return WriteEA(ea, result, size);
-  } else {
-    state_.d[dn] = (state_.d[dn] & ~mask) | result;
-    return SimResult::kOk;
   }
+  state_.d[dn] = (state_.d[dn] & ~mask) | result;
+  return SimResult::kOk;
 }
 
 // ---------------------------------------------------------------------------

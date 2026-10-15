@@ -52,7 +52,7 @@ ShiftOut ShiftRight1(uint32_t val, DataSize size, int type, bool x_in) {
   uint32_t mask = SizeMask(size);
   uint32_t msb = SignBit(size);
   bool c = (val & 1u) != 0;
-  uint32_t result;
+  uint32_t result = 0;
   bool x = x_in;
   switch (type) {
     case 0:  // ASR: fill with sign bit
@@ -79,7 +79,7 @@ int BitOpCycles(uint16_t opcode, int op) {
   int mode = (opcode >> 3) & 0x7;
   int reg = opcode & 0x7;
   bool mem = (opcode & 0x0038) != 0;
-  int base;
+  int base = 0;
   switch (op) {
     case 0:
       base = mem ? 4 : 6;
@@ -145,7 +145,7 @@ SimResult M68kSimulator::OpShiftRotate(uint16_t opcode) {
   int type = (opcode >> 3) & 0x3;
   int dst = opcode & 0x7;
 
-  uint32_t count;
+  uint32_t count = 0;
   if (!reg_count) {
     count = (opcode >> 9) & 0x7;
     if (count == 0)
@@ -176,7 +176,7 @@ SimResult M68kSimulator::OpShiftRotate(uint16_t opcode) {
   }
 
   bool orig_x = state_.GetFlag(kSrExtend);
-  UpdateFlagsShift(state_, result, size, c, (int)count);
+  UpdateFlagsShift(state_, result, size, c, static_cast<int>(count));
   if (type == 3)  // ROL/ROR: X not affected
     state_.SetFlag(kSrExtend, orig_x);
   if (type == 0 && left)  // ASL: override V
@@ -199,7 +199,7 @@ SimResult M68kSimulator::OpBtst(uint16_t opcode) {
   uint32_t bit_num = (opcode & 0x0100) ? state_.d[(opcode >> 9) & 0x7] : (FetchWord() & 0xFF);
   int mode = (opcode >> 3) & 0x7;
   int reg = opcode & 0x7;
-  uint32_t val;
+  uint32_t val = 0;
   if (mode == 0) {
     bit_num &= 31;
     val = state_.d[reg];

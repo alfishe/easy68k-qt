@@ -341,7 +341,7 @@ class M68kSimulator {
   // is enabled, copy to the execution logger (logU.cpp OlogFile).
   void EmitText(const char* text, bool crlf);
   void EmitChar(char ch);
-  void LogOutputText(const char* text, int length);
+  void LogOutputText(const char* text, int length) const;
 
   // Leaf instruction implementations (opcodes_shift.cc)
   SimResult OpShiftRotate(uint16_t opcode);

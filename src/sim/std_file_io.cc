@@ -19,8 +19,8 @@ namespace easym68k::sim {
 StdFileIO::StdFileIO(std::string base_dir) : base_dir_(std::move(base_dir)) {}
 
 StdFileIO::~StdFileIO() {
-  short result;
-  CloseAll(&result);
+  short result = 0;
+  StdFileIO::CloseAll(&result);  // no virtual dispatch during destruction
 }
 
 std::string StdFileIO::Resolve(const char* name) const {
@@ -57,9 +57,9 @@ void StdFileIO::FileOp(long* /*mode*/, const char* name, short* result) {
   if (std::FILE* fp = std::fopen(path.c_str(), "r+b")) {
     *result = kFileSuccess;
     std::fclose(fp);
-  } else if ((fp = std::fopen(path.c_str(), "rb")) != nullptr) {
+  } else if (std::FILE* ro = std::fopen(path.c_str(), "rb")) {
     *result = kFileReadOnly;
-    std::fclose(fp);
+    std::fclose(ro);
   }
 }
 
@@ -70,12 +70,16 @@ void StdFileIO::OpenFile(long* fid, const char* name, short* result) {
     if (files_[i] != nullptr)
       continue;
     std::string path = Resolve(name);
-    if ((files_[i] = std::fopen(path.c_str(), "r+b")) != nullptr) {
+    files_[i] = std::fopen(path.c_str(), "r+b");
+    if (files_[i] != nullptr) {
       *result = kFileSuccess;
       *fid = i;
-    } else if ((files_[i] = std::fopen(path.c_str(), "rb")) != nullptr) {
-      *result = kFileReadOnly;
-      *fid = i;
+    } else {
+      files_[i] = std::fopen(path.c_str(), "rb");
+      if (files_[i] != nullptr) {
+        *result = kFileReadOnly;
+        *fid = i;
+      }
     }
     break;  // the first free slot decides
   }
@@ -87,7 +91,8 @@ void StdFileIO::NewFile(long* fid, const char* name, short* result) {
   for (int i = 0; i < kMaxFiles; i++) {
     if (files_[i] != nullptr)
       continue;
-    if ((files_[i] = std::fopen(Resolve(name).c_str(), "w+b")) != nullptr) {
+    files_[i] = std::fopen(Resolve(name).c_str(), "w+b");
+    if (files_[i] != nullptr) {
       *result = kFileSuccess;
       *fid = i;
     }

@@ -59,7 +59,7 @@ bool EaOk(int mode, int reg, uint16_t mask, Size size = Size::kWord) {
   uint16_t bit = EaBit(mode, reg);
   if (bit == 0 || !(mask & bit))
     return false;
-  return !(bit == kEaAn && size == Size::kByte);
+  return bit != kEaAn || size != Size::kByte;
 }
 
 bool SrcEaOk(uint16_t op, uint16_t mask, Size size = Size::kWord) {
@@ -121,7 +121,7 @@ bool Group0(uint16_t op) {
 }
 
 bool Move(uint16_t op) {
-  Size size;
+  Size size = Size::kLong;
   switch ((op >> 12) & 3) {
     case 1:
       size = Size::kByte;
@@ -338,7 +338,7 @@ bool ComputeLegal(uint16_t op, bool bitfield) {
 }
 
 struct LegalityTables {
-  std::array<uint8_t, 65536> legal[2];
+  std::array<uint8_t, 65536> legal[2]{};
   LegalityTables() {
     for (int bf = 0; bf < 2; bf++)
       for (uint32_t op = 0; op < 65536; op++)

@@ -16,8 +16,10 @@ namespace easym68k::sim {
 // called with add_times=false, so the table includes the EA time).
 // ---------------------------------------------------------------------------
 
-static int JmpJsrCycles(int ea_code, bool is_jsr) {
-  int jmp;
+namespace {
+
+int JmpJsrCycles(int ea_code, bool is_jsr) {
+  int jmp = 0;
   switch (ea_code) {
     case 0x02:  // (An)
       jmp = 8;
@@ -48,12 +50,14 @@ static int JmpJsrCycles(int ea_code, bool is_jsr) {
 // Displacement is relative to the address of the word AFTER the opcode.
 // ---------------------------------------------------------------------------
 
-static int32_t FetchBranchDisp(uint16_t opcode, M68kSimulator& sim) {
+int32_t FetchBranchDisp(uint16_t opcode, M68kSimulator& sim) {
   int8_t disp8 = static_cast<int8_t>(opcode & 0xFF);
   if (disp8 != 0)
     return static_cast<int32_t>(disp8);
   return static_cast<int32_t>(static_cast<int16_t>(sim.FetchWord()));
 }
+
+}  // namespace
 
 // ---------------------------------------------------------------------------
 // BRA — unconditional branch

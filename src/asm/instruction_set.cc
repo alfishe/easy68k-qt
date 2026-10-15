@@ -64,7 +64,7 @@ int effAddr(const OpDescriptor* operand) {
 }
 
 void extWords(const OpDescriptor* op, int size, BuildContext& ctx) {
-  int32_t disp;
+  int32_t disp = 0;
   const bool pass2 = ctx.pass2;
   int& status = ctx.status;
 
@@ -186,14 +186,13 @@ void arithReg(int mask, int size, OpDescriptor* source, OpDescriptor* dest, Buil
       else
         quickMath(0x5040, size, source, dest, ctx);
       return;
-    } else {
-      // Assemble as SUBQ
-      if (size == LONG_SIZE)
-        quickMath(0x5180, size, source, dest, ctx);
-      else
-        quickMath(0x5140, size, source, dest, ctx);
-      return;
     }
+    // Assemble as SUBQ
+    if (size == LONG_SIZE)
+      quickMath(0x5180, size, source, dest, ctx);
+    else
+      quickMath(0x5140, size, source, dest, ctx);
+    return;
   }
   // Otherwise assemble as an ordinary instruction
   if (ctx.pass2)
@@ -257,11 +256,10 @@ void immedInst(int mask, int size, OpDescriptor* source, OpDescriptor* dest, Bui
       // Assemble as ADDQ
       quickMath(0x5000 | (mask & 0x00C0), size, source, dest, ctx);
       return;
-    } else {
-      // Assemble as SUBQ
-      quickMath(0x5100 | (mask & 0x00C0), size, source, dest, ctx);
-      return;
     }
+    // Assemble as SUBQ
+    quickMath(0x5100 | (mask & 0x00C0), size, source, dest, ctx);
+    return;
   }
   // Otherwise assemble as an ordinary instruction
   if (ctx.pass2)
@@ -1152,10 +1150,9 @@ uint16_t pickMask(int size, const Flavor* flavorPtr, int& status) {
   if (!size || size & flavorPtr->sizes) {
     if (size & (BYTE_SIZE | SHORT_SIZE))
       return flavorPtr->bytemask;
-    else if (!size || size == WORD_SIZE)
+    if (!size || size == WORD_SIZE)
       return flavorPtr->wordmask;
-    else
-      return flavorPtr->longmask;
+    return flavorPtr->longmask;
   }
   NewError(status, status::kInvSizeCode);
   return flavorPtr->wordmask;

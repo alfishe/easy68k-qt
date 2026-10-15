@@ -92,7 +92,7 @@ SimResult M68kSimulator::OpAdd(uint16_t opcode) {
   uint32_t ea_val = ReadEA(ea, size);
   uint32_t dn_val = state_.d[dn] & SizeMask(size);
 
-  uint32_t src, dst;
+  uint32_t src = 0, dst = 0;
   if (dst_ea) {
     src = dn_val;
     dst = ea_val;
@@ -106,11 +106,10 @@ SimResult M68kSimulator::OpAdd(uint16_t opcode) {
 
   if (dst_ea) {
     return WriteEA(ea, result, size);
-  } else {
-    uint32_t mask = SizeMask(size);
-    state_.d[dn] = (state_.d[dn] & ~mask) | (result & mask);
-    return SimResult::kOk;
   }
+  uint32_t mask = SizeMask(size);
+  state_.d[dn] = (state_.d[dn] & ~mask) | (result & mask);
+  return SimResult::kOk;
 }
 
 // ---------------------------------------------------------------------------
@@ -145,7 +144,7 @@ SimResult M68kSimulator::OpAddi(uint16_t opcode) {
   int mode = (opcode >> 3) & 0x7;
   int reg = opcode & 0x7;
 
-  uint32_t imm;
+  uint32_t imm = 0;
   if (size == DataSize::kLong) {
     imm = FetchLong();
   } else {
@@ -210,7 +209,7 @@ SimResult M68kSimulator::OpAddx(uint16_t opcode) {
   // CODE3.CPP ADDX/SUBX: fixed time; operands are not fetched via eff_addr().
   IncrementCycles(AddxSubxCycles(mem_mode, size));
 
-  uint32_t src, dst;
+  uint32_t src = 0, dst = 0;
   if (mem_mode) {
     EffectiveAddr src_ea = CalcEA(4, src_reg, size);  // -(An)
     EffectiveAddr dst_ea = CalcEA(4, dst_reg, size);
@@ -219,14 +218,13 @@ SimResult M68kSimulator::OpAddx(uint16_t opcode) {
     uint32_t result = (dst + src + x) & mask;
     UpdateFlagsAddX(state_, src, dst, result, size);
     return WriteEA(dst_ea, result, size);
-  } else {
-    src = state_.d[src_reg] & mask;
-    dst = state_.d[dst_reg] & mask;
-    uint32_t result = (dst + src + x) & mask;
-    UpdateFlagsAddX(state_, src, dst, result, size);
-    state_.d[dst_reg] = (state_.d[dst_reg] & ~mask) | result;
-    return SimResult::kOk;
   }
+  src = state_.d[src_reg] & mask;
+  dst = state_.d[dst_reg] & mask;
+  uint32_t result = (dst + src + x) & mask;
+  UpdateFlagsAddX(state_, src, dst, result, size);
+  state_.d[dst_reg] = (state_.d[dst_reg] & ~mask) | result;
+  return SimResult::kOk;
 }
 
 // ---------------------------------------------------------------------------
@@ -246,7 +244,7 @@ SimResult M68kSimulator::OpSub(uint16_t opcode) {
   uint32_t ea_val = ReadEA(ea, size);
   uint32_t dn_val = state_.d[dn] & SizeMask(size);
 
-  uint32_t src, dst;
+  uint32_t src = 0, dst = 0;
   if (dst_ea) {
     src = dn_val;
     dst = ea_val;
@@ -260,11 +258,10 @@ SimResult M68kSimulator::OpSub(uint16_t opcode) {
 
   if (dst_ea) {
     return WriteEA(ea, result, size);
-  } else {
-    uint32_t mask = SizeMask(size);
-    state_.d[dn] = (state_.d[dn] & ~mask) | (result & mask);
-    return SimResult::kOk;
   }
+  uint32_t mask = SizeMask(size);
+  state_.d[dn] = (state_.d[dn] & ~mask) | (result & mask);
+  return SimResult::kOk;
 }
 
 // ---------------------------------------------------------------------------
@@ -299,7 +296,7 @@ SimResult M68kSimulator::OpSubi(uint16_t opcode) {
   int mode = (opcode >> 3) & 0x7;
   int reg = opcode & 0x7;
 
-  uint32_t imm;
+  uint32_t imm = 0;
   if (size == DataSize::kLong) {
     imm = FetchLong();
   } else {
@@ -362,7 +359,7 @@ SimResult M68kSimulator::OpSubx(uint16_t opcode) {
   // CODE3.CPP ADDX/SUBX: fixed time; operands are not fetched via eff_addr().
   IncrementCycles(AddxSubxCycles(mem_mode, size));
 
-  uint32_t src, dst;
+  uint32_t src = 0, dst = 0;
   if (mem_mode) {
     EffectiveAddr src_ea = CalcEA(4, src_reg, size);
     EffectiveAddr dst_ea = CalcEA(4, dst_reg, size);
@@ -371,14 +368,13 @@ SimResult M68kSimulator::OpSubx(uint16_t opcode) {
     uint32_t result = (dst - src - x) & mask;
     UpdateFlagsSubX(state_, src, dst, result, size);
     return WriteEA(dst_ea, result, size);
-  } else {
-    src = state_.d[src_reg] & mask;
-    dst = state_.d[dst_reg] & mask;
-    uint32_t result = (dst - src - x) & mask;
-    UpdateFlagsSubX(state_, src, dst, result, size);
-    state_.d[dst_reg] = (state_.d[dst_reg] & ~mask) | result;
-    return SimResult::kOk;
   }
+  src = state_.d[src_reg] & mask;
+  dst = state_.d[dst_reg] & mask;
+  uint32_t result = (dst - src - x) & mask;
+  UpdateFlagsSubX(state_, src, dst, result, size);
+  state_.d[dst_reg] = (state_.d[dst_reg] & ~mask) | result;
+  return SimResult::kOk;
 }
 
 // ---------------------------------------------------------------------------
@@ -631,7 +627,7 @@ SimResult M68kSimulator::OpCmpi(uint16_t opcode) {
   int mode = (opcode >> 3) & 0x7;
   int reg = opcode & 0x7;
 
-  uint32_t imm;
+  uint32_t imm = 0;
   if (size == DataSize::kLong) {
     imm = FetchLong();
   } else {
@@ -699,7 +695,7 @@ SimResult M68kSimulator::OpExt(uint16_t opcode) {
   int dn = opcode & 0x7;
   bool to_long = (opcode & 0x0040) != 0;  // bit 6: 0=byte→word, 1=word→long
 
-  uint32_t result;
+  uint32_t result = 0;
   if (to_long) {
     result = static_cast<uint32_t>(static_cast<int16_t>(state_.d[dn] & 0xFFFF));
     state_.d[dn] = result;
@@ -728,8 +724,8 @@ SimResult M68kSimulator::OpAbcd(uint16_t opcode) {
   // CODE5.CPP ABCD/SBCD: 6 (Dn) / 18 (-(An)); operands not fetched via eff_addr().
   IncrementCycles(mem_mode ? 18 : 6);
 
-  uint32_t src, dst;
-  EffectiveAddr src_ea, dst_ea;
+  uint32_t src = 0, dst = 0;
+  EffectiveAddr src_ea{}, dst_ea{};
   if (mem_mode) {
     src_ea = CalcEA(4, src_reg, DataSize::kByte);
     dst_ea = CalcEA(4, dst_reg, DataSize::kByte);
@@ -764,10 +760,9 @@ SimResult M68kSimulator::OpAbcd(uint16_t opcode) {
 
   if (mem_mode) {
     return WriteEA(dst_ea, result, DataSize::kByte);
-  } else {
-    state_.d[dst_reg] = (state_.d[dst_reg] & ~kByteMask) | result;
-    return SimResult::kOk;
   }
+  state_.d[dst_reg] = (state_.d[dst_reg] & ~kByteMask) | result;
+  return SimResult::kOk;
 }
 
 // ---------------------------------------------------------------------------
@@ -784,8 +779,8 @@ SimResult M68kSimulator::OpSbcd(uint16_t opcode) {
   // CODE5.CPP ABCD/SBCD: 6 (Dn) / 18 (-(An)); operands not fetched via eff_addr().
   IncrementCycles(mem_mode ? 18 : 6);
 
-  uint32_t src, dst;
-  EffectiveAddr src_ea, dst_ea;
+  uint32_t src = 0, dst = 0;
+  EffectiveAddr src_ea{}, dst_ea{};
   if (mem_mode) {
     src_ea = CalcEA(4, src_reg, DataSize::kByte);
     dst_ea = CalcEA(4, dst_reg, DataSize::kByte);
@@ -821,10 +816,9 @@ SimResult M68kSimulator::OpSbcd(uint16_t opcode) {
 
   if (mem_mode) {
     return WriteEA(dst_ea, result, DataSize::kByte);
-  } else {
-    state_.d[dst_reg] = (state_.d[dst_reg] & ~kByteMask) | result;
-    return SimResult::kOk;
   }
+  state_.d[dst_reg] = (state_.d[dst_reg] & ~kByteMask) | result;
+  return SimResult::kOk;
 }
 
 // ---------------------------------------------------------------------------

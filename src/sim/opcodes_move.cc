@@ -46,12 +46,12 @@ SimResult M68kSimulator::OpMovem(uint16_t opcode) {
   bool predecrement = (mode == 4);
   bool postincrement = (mode == 3);
 
-  uint16_t mask = static_cast<uint16_t>(FetchWord());
+  uint16_t mask = FetchWord();
 
   // Save An before any side effects for potential self-reference (predecrement case).
   uint32_t save_an = state_.GetAReg(areg);
 
-  uint32_t addr;
+  uint32_t addr = 0;
   if (predecrement || postincrement) {
     addr = save_an & kAddressMask;
   } else {
@@ -71,7 +71,7 @@ SimResult M68kSimulator::OpMovem(uint16_t opcode) {
     if (predecrement) {
       // Reversed register mapping: counter 0=A7, 7=A0, 8=D7, 15=D0
       addr = (addr - sz) & kAddressMask;
-      uint32_t val;
+      uint32_t val = 0;
       if (counter < 8) {
         int an_idx = 7 - counter;
         // If writing the An being used as base, write the saved (pre-decrement) value.
@@ -85,7 +85,7 @@ SimResult M68kSimulator::OpMovem(uint16_t opcode) {
         memory_.WriteWord(addr, static_cast<uint16_t>(val));
     } else if (to_regs) {
       // Normal register mapping: counter 0=D0, 7=D7, 8=A0, 15=A7
-      uint32_t temp;
+      uint32_t temp = 0;
       if (size == DataSize::kLong) {
         temp = memory_.ReadLong(addr).value;
       } else {
@@ -98,7 +98,7 @@ SimResult M68kSimulator::OpMovem(uint16_t opcode) {
       addr = (addr + sz) & kAddressMask;
     } else {
       // Normal register mapping, registers → memory
-      uint32_t val;
+      uint32_t val = 0;
       if (counter < 8)
         val = state_.d[counter];
       else
