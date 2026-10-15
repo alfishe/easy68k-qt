@@ -1,0 +1,13 @@
+# S-05 — Sound System: Standard and Multi-Voice Players (Tasks 70–77)
+id = "S-05"
+title = "Sound System: Standard and Multi-Voice Players (Tasks 70–77)"
+track = "systems"
+level = 4
+difficulty = 2
+requires = ["L0-04"]
+source = "main.x68"
+
+[expect]
+halted = true
+registers = { D2 = 3, D3 = 1 }
+max_cycles = 400

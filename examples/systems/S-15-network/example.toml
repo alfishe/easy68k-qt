@@ -1,0 +1,13 @@
+# S-15 — Network I/O: UDP/TCP Client and Server Sockets (Tasks 100–107)
+id = "S-15"
+title = "Network I/O: UDP/TCP Client and Server Sockets (Tasks 100–107)"
+track = "systems"
+level = 4
+difficulty = 3
+requires = ["L3-03"]
+source = "main.x68"
+
+[expect]
+halted = true
+registers = { D2 = 0x1F900000 }
+max_cycles = 400

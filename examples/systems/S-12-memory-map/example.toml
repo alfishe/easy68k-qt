@@ -1,0 +1,14 @@
+# S-12 — Memory Protection: ROM, Read-Only, Protected, and Invalid Ranges
+id = "S-12"
+title = "Memory Protection: ROM, Read-Only, Protected, and Invalid Ranges"
+track = "systems"
+level = 4
+difficulty = 3
+requires = ["S-09", "S-11"]
+source = "main.x68"
+exceptions = true
+
+[expect]
+halted = true
+registers = { D4 = 0x12345678, D5 = 0xCAFE0001, D6 = 0x00002300, D7 = 1 }
+max_cycles = 500

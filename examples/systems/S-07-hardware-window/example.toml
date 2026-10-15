@@ -1,0 +1,21 @@
+# S-07 — Hardware Window: 7-Segment Display, LEDs, Switches, and Push Buttons
+id = "S-07"
+title = "Hardware Window: 7-Segment Display, LEDs, Switches, and Push Buttons"
+track = "systems"
+level = 4
+difficulty = 2
+requires = ["L0-03", "L1-06"]
+source = "main.x68"
+
+[expect]
+halted = true
+registers = { D0 = 0xA5, D4 = 0x00E00012, D5 = 0x00E00014 }
+max_cycles = 400
+
+[[expect.memory]]
+address = 0xE00000
+bytes = "7D FF 7F"
+
+[[expect.memory]]
+address = 0xE00010
+bytes = "A5"

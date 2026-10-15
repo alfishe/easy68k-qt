@@ -1,0 +1,14 @@
+# S-13 — Mouse and Keyboard Interrupts: Tasks 60, 61, and 62
+id = "S-13"
+title = "Mouse and Keyboard Interrupts: Tasks 60, 61, and 62"
+track = "systems"
+level = 4
+difficulty = 3
+requires = ["S-03", "S-10"]
+source = "main.x68"
+exceptions = true
+
+[expect]
+halted = true
+registers = { D3 = 1, D4 = 0 }
+max_cycles = 500

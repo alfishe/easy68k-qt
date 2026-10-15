@@ -1,0 +1,13 @@
+# S-14 — Serial I/O: COM Port Initialisation, Parameters, and Framing (Tasks 40–43)
+id = "S-14"
+title = "Serial I/O: COM Port Initialisation, Parameters, and Framing (Tasks 40–43)"
+track = "systems"
+level = 4
+difficulty = 3
+requires = ["L3-03"]
+source = "main.x68"
+
+[expect]
+halted = true
+registers = { D2 = 0x1805 }
+max_cycles = 400

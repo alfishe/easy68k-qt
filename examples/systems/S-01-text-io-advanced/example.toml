@@ -1,0 +1,14 @@
+# S-01 — Advanced Text I/O: Cursor, Colours, Echo, and Key State
+id = "S-01"
+title = "Advanced Text I/O: Cursor, Colours, Echo, and Key State"
+track = "systems"
+level = 4
+difficulty = 2
+requires = ["L0-04", "L1-09"]
+source = "main.x68"
+
+[expect]
+halted = true
+output = "Cursor=0A04\r\n"
+registers = { D4 = 0x0A04, D3 = 0 }
+max_cycles = 400

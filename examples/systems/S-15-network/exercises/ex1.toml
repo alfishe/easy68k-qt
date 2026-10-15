@@ -1,0 +1,10 @@
+id = "S-15-EX1"
+title = "Pack TCP port 4096 ($1000) parameter word"
+track = "systems"
+level = 4
+difficulty = 3
+source = "ex1.x68"
+
+[expect]
+halted = true
+registers = { D0 = 0x10000001 }

@@ -1,0 +1,10 @@
+id = "S-02-EX1"
+title = "Round-trip $CAFEBABE through a file"
+track = "systems"
+level = 4
+difficulty = 2
+source = "ex1.x68"
+
+[expect]
+halted = true
+registers = { D0 = 0xCAFEBABE }

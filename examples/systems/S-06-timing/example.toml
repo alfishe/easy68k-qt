@@ -1,0 +1,13 @@
+# S-06 — Timing and Frame Pacing: Tasks 8 and 23
+id = "S-06"
+title = "Timing and Frame Pacing: Tasks 8 and 23"
+track = "systems"
+level = 4
+difficulty = 2
+requires = ["L1-02"]
+source = "main.x68"
+
+[expect]
+halted = true
+registers = { D0 = 25 }
+max_cycles = 250

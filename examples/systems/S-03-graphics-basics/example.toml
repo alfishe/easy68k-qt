@@ -1,0 +1,13 @@
+# S-03 — Graphics Basics: Pixels, Lines, Shapes, Colours, and Pen Position
+id = "S-03"
+title = "Graphics Basics: Pixels, Lines, Shapes, Colours, and Pen Position"
+track = "systems"
+level = 4
+difficulty = 2
+requires = ["L0-04"]
+source = "main.x68"
+
+[expect]
+halted = true
+registers = { D5 = 0x000000FF, D6 = 100, D7 = 50 }
+max_cycles = 500

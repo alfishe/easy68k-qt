@@ -1,0 +1,17 @@
+# S-02 — File I/O: Create, Write, Seek, Read, Close, and Delete
+id = "S-02"
+title = "File I/O: Create, Write, Seek, Read, Close, and Delete"
+track = "systems"
+level = 4
+difficulty = 2
+requires = ["L3-03"]
+source = "main.x68"
+
+[expect]
+halted = true
+registers = { D0 = 0, D3 = 0x36384B21 }
+max_cycles = 500
+
+[[expect.memory]]
+address = 0x2000
+bytes = "36 38 4B 21"

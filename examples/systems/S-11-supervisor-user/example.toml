@@ -1,0 +1,14 @@
+# S-11 — Supervisor vs User Mode: Privilege Violations, USP/SSP, and System Calls
+id = "S-11"
+title = "Supervisor vs User Mode: Privilege Violations, USP/SSP, and System Calls"
+track = "systems"
+level = 4
+difficulty = 3
+requires = ["S-08"]
+source = "main.x68"
+exceptions = true
+
+[expect]
+halted = true
+registers = { D4 = 0xABCD1234, D5 = 1, D6 = 1 }
+max_cycles = 500

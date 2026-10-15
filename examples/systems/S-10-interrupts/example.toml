@@ -1,0 +1,14 @@
+# S-10 — Interrupts: Autovectors, Interrupt Masks, Auto-IRQ, and STOP
+id = "S-10"
+title = "Interrupts: Autovectors, Interrupt Masks, Auto-IRQ, and STOP"
+track = "systems"
+level = 4
+difficulty = 3
+requires = ["S-07", "S-08"]
+source = "main.x68"
+exceptions = true
+
+[expect]
+halted = true
+registers = { D6 = 1 }
+max_cycles = 500

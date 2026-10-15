@@ -1,0 +1,14 @@
+# S-08 — Exceptions and Vector Table: TRAP #n, CHK, TRAPV, and Divide by Zero
+id = "S-08"
+title = "Exceptions and Vector Table: TRAP #n, CHK, TRAPV, and Divide by Zero"
+track = "systems"
+level = 4
+difficulty = 3
+requires = ["L1-05", "L2-04"]
+source = "main.x68"
+exceptions = true
+
+[expect]
+halted = true
+registers = { D7 = 15 }
+max_cycles = 500

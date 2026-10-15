@@ -1,0 +1,13 @@
+id = "S-07-EX1"
+title = "Display '01' on the 7-segment display"
+track = "systems"
+level = 4
+difficulty = 2
+source = "ex1.x68"
+
+[expect]
+halted = true
+
+[[expect.memory]]
+address = 0xE00000
+bytes = "3F FF 06"

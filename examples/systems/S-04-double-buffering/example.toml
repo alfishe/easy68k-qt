@@ -1,0 +1,13 @@
+# S-04 — Double Buffering: Flicker-Free Animation with Tasks 92 and 94
+id = "S-04"
+title = "Double Buffering: Flicker-Free Animation with Tasks 92 and 94"
+track = "systems"
+level = 4
+difficulty = 2
+requires = ["S-03", "L2-02"]
+source = "main.x68"
+
+[expect]
+halted = true
+registers = { D3 = 4, D4 = 48 }
+max_cycles = 1000

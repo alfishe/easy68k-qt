@@ -1,0 +1,17 @@
+# S-16 — Logging and Advanced Debugging: Cycle Counters, Directives, and Breakpoints
+id = "S-16"
+title = "Logging and Advanced Debugging: Cycle Counters, Directives, and Breakpoints"
+track = "systems"
+level = 4
+difficulty = 2
+requires = ["L0-06", "L2-06"]
+source = "main.x68"
+
+[expect]
+halted = true
+registers = { D2 = 50, D3 = 16 }
+max_cycles = 200
+
+[[expect.memory]]
+address = 0x2000
+bytes = "00 00 00 32"

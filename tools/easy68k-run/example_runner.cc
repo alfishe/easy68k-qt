@@ -15,8 +15,12 @@
 #include <sstream>
 
 #include "easym68k/asm/assembler.h"
+#include "easym68k/sim/igraphics_io.h"
+#include "easym68k/sim/iperipheral_io.h"
+#include "easym68k/sim/isimulator_env.h"
 #include "easym68k/sim/itext_io.h"
 #include "easym68k/sim/simulator.h"
+#include "easym68k/sim/srecord_loader.h"
 #include "easym68k/sim/std_file_io.h"
 
 namespace easym68k::tools {
@@ -432,6 +436,126 @@ class ScriptedTextIO : public sim::ITextIO {
   int col_ = 0;
   int row_ = 0;
   std::string output_;
+};
+
+// Deterministic headless simulator environment (tasks 8, 23, 32, 33).
+class HeadlessSimEnv : public sim::ISimulatorEnv {
+ public:
+  uint32_t GetTimeHundredths() override { return time_hundredths_; }
+  void DelayHundredths(unsigned int n) override { time_hundredths_ += n; }
+  void ShowHardware() override {}
+  uint32_t GetSeg7Address() override { return kSeg7Addr; }
+  uint32_t GetLEDAddress() override { return kLedAddr; }
+  uint32_t GetSwitchAddress() override { return kSwitchAddr; }
+  uint32_t GetPushButtonAddress() override { return kButtonAddr; }
+  void SetAutoIRQ(uint8_t irq_config, uint32_t) override {
+    const int level = irq_config & 0x7F;
+    if (irq_config == 0) {
+      for (bool& b : auto_irq_)
+        b = false;
+    } else if (level >= 1 && level <= 7) {
+      auto_irq_[level] = (irq_config & 0x80) != 0;
+    }
+  }
+  uint32_t GetVersion() override { return 59150; }
+  void SetExceptionsEnabled(bool) override {}
+  void SetWindowSize(unsigned short width, unsigned short height) override {
+    width_ = width;
+    height_ = height;
+  }
+  void GetWindowSize(unsigned short* width, unsigned short* height) override {
+    *width = width_;
+    *height = height_;
+  }
+  void SetupWindow(bool) override {}
+
+  int FirstActiveAutoIrq() const {
+    for (int lvl = 7; lvl >= 1; --lvl) {
+      if (auto_irq_[lvl])
+        return lvl;
+    }
+    return 0;
+  }
+
+ private:
+  uint32_t time_hundredths_ = 1000;
+  unsigned short width_ = 640;
+  unsigned short height_ = 480;
+  bool auto_irq_[8] = {};
+};
+
+// Headless 2D graphics tracker (tasks 80-96) for deterministic example runs.
+class HeadlessGraphicsIO : public sim::IGraphicsIO {
+ public:
+  void SetPenColor(uint32_t color) override { pen_color_ = color & 0x00FFFFFFu; }
+  void SetFillColor(uint32_t color) override { fill_color_ = color & 0x00FFFFFFu; }
+  void DrawPixel(int x, int y) override { pixels_[{x, y}] = pen_color_; }
+  int GetPixel(int x, int y) override {
+    auto it = pixels_.find({x, y});
+    return it != pixels_.end() ? static_cast<int>(it->second) : 0;
+  }
+  void DrawLine(int x1, int y1, int x2, int y2) override {
+    pixels_[{x1, y1}] = pen_color_;
+    pixels_[{x2, y2}] = pen_color_;
+    pen_x_ = x2;
+    pen_y_ = y2;
+  }
+  void LineTo(int x, int y) override {
+    pixels_[{pen_x_, pen_y_}] = pen_color_;
+    pixels_[{x, y}] = pen_color_;
+    pen_x_ = x;
+    pen_y_ = y;
+  }
+  void MoveTo(int x, int y) override {
+    pen_x_ = x;
+    pen_y_ = y;
+  }
+  void GetXY(int* x, int* y) override {
+    *x = pen_x_;
+    *y = pen_y_;
+  }
+  void DrawRectangle(int x1, int y1, int x2, int y2) override {
+    pixels_[{x1, y1}] = pen_color_;
+    pixels_[{x2, y2}] = pen_color_;
+    if (x2 > x1 + 1 && y2 > y1 + 1) {
+      pixels_[{(x1 + x2) / 2, (y1 + y2) / 2}] = fill_color_;
+    }
+  }
+  void DrawEllipse(int x1, int y1, int x2, int y2) override {
+    if (x2 > x1 + 1 && y2 > y1 + 1) {
+      pixels_[{(x1 + x2) / 2, (y1 + y2) / 2}] = fill_color_;
+    }
+  }
+  void FloodFill(int x, int y) override { pixels_[{x, y}] = fill_color_; }
+  void DrawUnfilledRectangle(int x1, int y1, int x2, int y2) override {
+    pixels_[{x1, y1}] = pen_color_;
+    pixels_[{x2, y2}] = pen_color_;
+  }
+  void DrawUnfilledEllipse(int, int, int, int) override {}
+  void SetDrawingMode(int) override {}
+  void SetPenWidth(int) override {}
+  void Repaint() override {}
+  void DrawText(const char*, int, int) override {}
+
+ private:
+  uint32_t pen_color_ = 0x00FFFFFFu;
+  uint32_t fill_color_ = 0x00000000u;
+  int pen_x_ = 0;
+  int pen_y_ = 0;
+  std::map<std::pair<int, int>, uint32_t> pixels_;
+};
+
+// Headless peripheral I/O stub (tasks 60-62).
+class HeadlessPeripheralIO : public sim::IPeripheralIO {
+ public:
+  void SetMouseIRQ(uint8_t, uint8_t) override {}
+  void ReadMouse(int mode, long* button_state, long* position) override {
+    *button_state = 0;
+    if (mode >= 0 && mode <= 2) {
+      *position = 0;
+    }
+  }
+  void SetKeyIRQ(uint8_t, uint8_t) override {}
 };
 
 std::optional<std::string> ReadFileWithCaseFallback(const fs::path& base_dir,
@@ -1054,9 +1178,15 @@ ExampleRunOutcome RunExampleSpec(const ExampleSpec& spec, const std::string& bas
 
   ScriptedTextIO text_io(spec.input_lines, spec.input_chars);
   sim::StdFileIO file_io(dir_path.string());
+  HeadlessSimEnv sim_env;
+  HeadlessGraphicsIO graphics_io;
+  HeadlessPeripheralIO peripheral_io;
   sim::M68kSimulator::Config config;
   config.text_io = &text_io;
   config.file_io = &file_io;
+  config.sim_env = &sim_env;
+  config.graphics_io = &graphics_io;
+  config.peripheral_io = &peripheral_io;
   config.simhalt_enabled = spec.simhalt;
   config.exceptions_enabled = spec.exceptions;
   config.bitfield_enabled = spec.bitfield;
@@ -1083,6 +1213,47 @@ ExampleRunOutcome RunExampleSpec(const ExampleSpec& spec, const std::string& bas
     outcome.failures.push_back("failed to load generated S-record image");
     return outcome;
   }
+  {
+    sim::SRecordLoader srec_loader;
+    const auto load_res = srec_loader.LoadFromLines(srec_lines, sim.GetMemory());
+    static const std::string kHeader = "S0 = 68KPROG   20CREATED BY EASY68K";
+    bool easy68k_s0 = false;
+    bool map_changed = false;
+    sim::M68kSimulator::MemoryMapConfig map{};
+    for (const std::string& text : load_res.s0_texts) {
+      if (!easy68k_s0) {
+        easy68k_s0 = (text == kHeader);
+        continue;
+      }
+      if (text.size() < 28)
+        continue;
+      char* end_s = nullptr;
+      char* end_e = nullptr;
+      const std::string s_hex = text.substr(15, 6);
+      const std::string e_hex = text.substr(22, 6);
+      const uint32_t start = static_cast<uint32_t>(std::strtoul(s_hex.c_str(), &end_s, 16));
+      const uint32_t end = static_cast<uint32_t>(std::strtoul(e_hex.c_str(), &end_e, 16));
+      if (end_s != s_hex.c_str() + 6 || end_e != e_hex.c_str() + 6)
+        continue;
+      const std::string kind = text.substr(5, 9);
+      sim::M68kSimulator::MemoryMapConfig::Range* range = nullptr;
+      if (kind == "      ROM")
+        range = &map.rom;
+      else if (kind == "     READ")
+        range = &map.read;
+      else if (kind == "PROTECTED")
+        range = &map.protected_;
+      else if (kind == "  INVALID")
+        range = &map.invalid;
+      if (range != nullptr) {
+        *range = {true, start, end};
+        map_changed = true;
+      }
+    }
+    if (map_changed) {
+      sim.ConfigureMemoryMap(map);
+    }
+  }
   sim.InitProgram();
 
   uint64_t steps = 0;
@@ -1090,6 +1261,12 @@ ExampleRunOutcome RunExampleSpec(const ExampleSpec& spec, const std::string& bas
   while (steps < spec.max_instructions) {
     last_res = sim.Step();
     ++steps;
+    if (sim.State().stopped) {
+      const int auto_lvl = sim_env.FirstActiveAutoIrq();
+      if (auto_lvl > 0) {
+        sim.Interrupt(auto_lvl);
+      }
+    }
     if (sim.State().halted || sim.State().stopped) {
       break;
     }

@@ -1,0 +1,11 @@
+id = "S-08-EX1"
+title = "TRAP #1 handler that doubles D0"
+track = "systems"
+level = 4
+difficulty = 3
+source = "ex1.x68"
+exceptions = true
+
+[expect]
+halted = true
+registers = { D0 = 60 }

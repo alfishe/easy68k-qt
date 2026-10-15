@@ -1,0 +1,11 @@
+id = "S-10-EX1"
+title = "Level 4 autovector ISR at $0070"
+track = "systems"
+level = 4
+difficulty = 3
+source = "ex1.x68"
+exceptions = true
+
+[expect]
+halted = true
+registers = { D0 = 42 }

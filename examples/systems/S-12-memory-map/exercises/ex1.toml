@@ -1,0 +1,11 @@
+id = "S-12-EX1"
+title = "Catch write to MEMORY READ range at $2100"
+track = "systems"
+level = 4
+difficulty = 3
+source = "ex1.x68"
+exceptions = true
+
+[expect]
+halted = true
+registers = { D0 = 0x00002100 }

@@ -1,0 +1,10 @@
+id = "S-04-EX1"
+title = "5-frame pixel animation with Repaint"
+track = "systems"
+level = 4
+difficulty = 2
+source = "ex1.x68"
+
+[expect]
+halted = true
+registers = { D0 = 50 }

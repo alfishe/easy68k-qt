@@ -1,0 +1,10 @@
+id = "S-14-EX1"
+title = "Pack CID=3 SerialSend command and 9600-8N1 params"
+track = "systems"
+level = 4
+difficulty = 3
+source = "ex1.x68"
+
+[expect]
+halted = true
+registers = { D0 = 0x0003002B, D1 = 0x00001805 }

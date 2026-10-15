@@ -1,0 +1,14 @@
+# S-09 — Address and Bus Errors: Odd Addresses, Group 0 Stack Frames, and Recovery
+id = "S-09"
+title = "Address and Bus Errors: Odd Addresses, Group 0 Stack Frames, and Recovery"
+track = "systems"
+level = 4
+difficulty = 4
+requires = ["S-08"]
+source = "main.x68"
+exceptions = true
+
+[expect]
+halted = true
+registers = { D4 = 1, D6 = 0x00002001, D7 = 0x3010 }
+max_cycles = 400
