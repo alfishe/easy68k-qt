@@ -31,8 +31,11 @@ using sim::SimResult;
 // until an interrupt); the halt event gives the faulting instruction.
 class SimSession::Observer : public sim::ISimObserver {
  public:
-  explicit Observer(sim::M68kSimulator* sim) : sim_(sim) {}
+  Observer(sim::M68kSimulator* sim, SimSession* session) : sim_(sim), session_(session) {}
   void OnEvent(const sim::SimEvent& e) override {
+    if (e.type == sim::SimEventType::kInstructionExecuted &&
+        session_->bp_pending_.load(std::memory_order_acquire))
+      session_->ApplyBreakpointQueue();
     if (e.type == sim::SimEventType::kStopped)
       sim_->RequestStop();
     if (e.type == sim::SimEventType::kHalted || e.type == sim::SimEventType::kStopped) {
@@ -45,6 +48,7 @@ class SimSession::Observer : public sim::ISimObserver {
 
  private:
   sim::M68kSimulator* sim_;
+  SimSession* session_;
 };
 
 namespace {
@@ -149,7 +153,7 @@ SimSession::SimSession(Services services, QObject* parent)
   config.exceptions_enabled = false;  // Sim68K default (Options > Enable Exceptions)
   sim_ = std::make_unique<sim::M68kSimulator>(config);
   file_io_->SetMemory(sim_->GetMemory().RawData());
-  observer_ = std::make_unique<Observer>(sim_.get());
+  observer_ = std::make_unique<Observer>(sim_.get(), this);
   sim_->AddObserver(observer_.get());
 
   connect(env_.get(), &QtSimulatorEnv::ExceptionsEnabledChanged, this,
@@ -216,7 +220,7 @@ bool SimSession::Reload() {
 // the dialog was cancelled); Reload keeps them.
 bool SimSession::LoadProgram(const QString& path, bool keep_breakpoints) {
   if (!keep_breakpoints)
-    sim_->ClearBreakpoints();
+    ClearBreakpoints();
   InitSim();
   auto& memory = sim_->GetMemory();
   std::memset(memory.RawData(), 0xFF, memory.Size());                  // erase memory to $FF
@@ -256,7 +260,7 @@ bool SimSession::LoadProgram(const QString& path, bool keep_breakpoints) {
     if (c.start_address)
       sim_->SetStartAddress(*c.start_address);
     for (uint32_t a : c.breakpoints)
-      sim_->AddBreakpoint(a);
+      SetBreakpoint(a, true);
     if (c.bitfield && !sim_->IsBitFieldEnabled()) {
       sim_->SetBitFieldEnabled(true);
       emit OptionsChanged();
@@ -305,7 +309,7 @@ void SimSession::Close() {
   listing_.clear();
   has_listing_ = false;
   InitSim();
-  sim_->ClearBreakpoints();
+  ClearBreakpoints();
   if (state_ != RunState::kNoProgram)
     SetState(RunState::kReady);
   emit ProgramClosed();
@@ -366,6 +370,7 @@ void SimSession::Start(Command command, uint32_t address) {
   screen_->ResumeInput();
   env_->ResumeDelay();
   sim_->ClearStopRequest();
+  ApplyBreakpointQueue();
   SetState(RunState::kRunning);
   QMetaObject::invokeMethod(
       worker_,
@@ -482,6 +487,67 @@ void SimSession::Interrupt(int level) {
   if (state_ == RunState::kRunning || trace_)
     return;
   Start(Command::kResume);
+}
+
+// ---------------------------------------------------------------------------
+// PC breakpoints
+// ---------------------------------------------------------------------------
+
+bool SimSession::HasBreakpoint(uint32_t address) const {
+  return breakpoints_.count(address & sim::kAddressMask) != 0;
+}
+
+std::vector<uint32_t> SimSession::Breakpoints() const {
+  return std::vector<uint32_t>(breakpoints_.begin(), breakpoints_.end());
+}
+
+void SimSession::SetBreakpoint(uint32_t address, bool enabled) {
+  address &= sim::kAddressMask;
+  if (enabled == HasBreakpoint(address))
+    return;
+  if (enabled)
+    breakpoints_.insert(address);
+  else
+    breakpoints_.erase(address);
+  QueueBreakpoint(address, enabled, false);
+  emit BreakpointsChanged();
+}
+
+void SimSession::ToggleBreakpoint(uint32_t address) {
+  SetBreakpoint(address, !HasBreakpoint(address));
+}
+
+void SimSession::ClearBreakpoints() {
+  breakpoints_.clear();
+  QueueBreakpoint(0, false, true);
+  emit BreakpointsChanged();
+}
+
+void SimSession::QueueBreakpoint(uint32_t address, bool enabled, bool clear_all) {
+  {
+    std::lock_guard<std::mutex> lock(bp_mu_);
+    bp_queue_.push_back({address, enabled, clear_all});
+  }
+  bp_pending_.store(true, std::memory_order_release);
+  if (!IsRunning())
+    ApplyBreakpointQueue();
+}
+
+void SimSession::ApplyBreakpointQueue() {
+  std::vector<BpChange> changes;
+  {
+    std::lock_guard<std::mutex> lock(bp_mu_);
+    changes.swap(bp_queue_);
+    bp_pending_.store(false, std::memory_order_release);
+  }
+  for (const BpChange& c : changes) {
+    if (c.clear_all)
+      sim_->ClearBreakpoints();
+    else if (c.enabled)
+      sim_->AddBreakpoint(c.address);
+    else
+      sim_->RemoveBreakpoint(c.address);
+  }
 }
 
 // ---------------------------------------------------------------------------

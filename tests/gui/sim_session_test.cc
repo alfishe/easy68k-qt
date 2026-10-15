@@ -112,6 +112,7 @@ TEST_F(SimSessionTest, ListingCommandsAndBreakpointMessage) {
   SimSession s;
   QSignalSpy messages(&s, &SimSession::Message);
   ASSERT_TRUE(s.Open(Assemble("brk", source)));
+  EXPECT_TRUE(s.HasBreakpoint(0x1002));
   EXPECT_TRUE(s.Simulator().HasBreakpoint(0x1002));
   EXPECT_TRUE(s.BitFieldEnabled());
   s.Run();
@@ -124,12 +125,38 @@ TEST_F(SimSessionTest, ListingCommandsAndBreakpointMessage) {
   ASSERT_TRUE(Until([&] { return !s.IsRunning(); }));
   EXPECT_EQ(s.Simulator().State().pc, 0x1004u);
   // Reload keeps breakpoints; Open clears them (then re-adds *[sim68k]break).
-  s.Simulator().AddBreakpoint(0x1006);
+  s.SetBreakpoint(0x1006, true);
   ASSERT_TRUE(s.Reload());
+  EXPECT_TRUE(s.HasBreakpoint(0x1006));
   EXPECT_TRUE(s.Simulator().HasBreakpoint(0x1006));
   ASSERT_TRUE(s.Open(s.ProgramPath()));
+  EXPECT_FALSE(s.HasBreakpoint(0x1006));
   EXPECT_FALSE(s.Simulator().HasBreakpoint(0x1006));
+  EXPECT_TRUE(s.HasBreakpoint(0x1002));
+}
+
+TEST_F(SimSessionTest, BreakpointSetWhileRunningStopsTheProgram) {
+  const std::string source =
+      "        ORG     $1000\n"
+      "START   ADDQ.L  #1,D0\n"
+      "        BRA     START\n"
+      "        END     START\n";
+  SimSession s;
+  ASSERT_TRUE(s.Open(Assemble("bprun", source)));
+  s.Run();
+  std::this_thread::sleep_for(std::chrono::milliseconds(20));
+  ASSERT_TRUE(s.IsRunning());
+  s.ToggleBreakpoint(0x1002);  // reaches the worker before its next instruction
+  ASSERT_TRUE(Until([&] { return !s.IsRunning(); }));
+  EXPECT_EQ(s.Simulator().State().pc, 0x1002u);
   EXPECT_TRUE(s.Simulator().HasBreakpoint(0x1002));
+  s.ToggleBreakpoint(0x1002);
+  EXPECT_FALSE(s.HasBreakpoint(0x1002));
+  EXPECT_FALSE(s.Simulator().HasBreakpoint(0x1002));
+  s.SetBreakpoint(0x1000, true);
+  s.ClearBreakpoints();
+  EXPECT_TRUE(s.Breakpoints().empty());
+  EXPECT_FALSE(s.Simulator().HasBreakpoint(0x1000));
 }
 
 TEST_F(SimSessionTest, StepOverRunsASubroutine) {

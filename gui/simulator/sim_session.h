@@ -15,14 +15,18 @@
 #ifndef EASY68K_GUI_SIMULATOR_SIM_SESSION_H_
 #define EASY68K_GUI_SIMULATOR_SIM_SESSION_H_
 
+#include <atomic>
 #include <functional>
 #include <memory>
+#include <mutex>
 #include <optional>
 #include <QObject>
 #include <QPagedPaintDevice>
 #include <QString>
 #include <QStringList>
 #include <QThread>
+#include <set>
+#include <vector>
 
 #include "easym68k/sim/isim_observer.h"
 #include "easym68k/sim/simulator.h"
@@ -89,6 +93,15 @@ class SimSession : public QObject {
   RunState State() const { return state_; }
   bool IsRunning() const { return state_ == RunState::kRunning; }
 
+  // ---- PC breakpoints (GUI thread) -----------------------------------------------
+  // May change while the program runs (BREAKPOINTSu.cpp sbpoint()/cbpoint()):
+  // the change reaches the simulator before its next instruction.
+  bool HasBreakpoint(uint32_t address) const;
+  void SetBreakpoint(uint32_t address, bool enabled);
+  void ToggleBreakpoint(uint32_t address);
+  void ClearBreakpoints();
+  std::vector<uint32_t> Breakpoints() const;
+
   // ---- Options ---------------------------------------------------------------------
   void SetExceptionsEnabled(bool enabled);
   bool ExceptionsEnabled() const;
@@ -113,6 +126,7 @@ class SimSession : public QObject {
   void Message(const QString& text);  // a line for the message pane
   void MessagesCleared();             // a program was opened
   void OptionsChanged();              // exceptions / bit field changed by the program
+  void BreakpointsChanged();
   void ProgramLoaded();
   void ProgramClosed();
   // Execution stopped (or the program was rewound/loaded): refresh views.
@@ -157,6 +171,20 @@ class SimSession : public QObject {
   bool stop_reported_ = false;  // "STOP instruction" shown once (stopInstruction)
   bool hardware_enabled_ = false;
   std::function<void()> after_stop_;
+
+  // PC breakpoints: the GUI's copy, and changes queued for the worker while
+  // running (applied by the observer before the next instruction).
+  void QueueBreakpoint(uint32_t address, bool enabled, bool clear_all);
+  void ApplyBreakpointQueue();  // worker thread, or GUI when not running
+  std::set<uint32_t> breakpoints_;
+  std::mutex bp_mu_;
+  struct BpChange {
+    uint32_t address;
+    bool enabled;
+    bool clear_all;
+  };
+  std::vector<BpChange> bp_queue_;
+  std::atomic<bool> bp_pending_{false};
 };
 
 }  // namespace easym68k::gui

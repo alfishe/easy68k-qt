@@ -98,7 +98,7 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent) {
     cpu.ssp = edited.ssp;
     cpu.pc = edited.pc;
     cpu.sr = edited.sr;
-    source_->HighlightPc(cpu.pc);  // regPCChange()
+    source_->HighlightPc(cpu.pc, Halted());  // regPCChange()
   });
   connect(registers_, &RegisterWidget::ClearCycles, this, [this] {
     if (session_->IsRunning())
@@ -107,6 +107,18 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent) {
     ShowState();
   });
   connect(registers_, &RegisterWidget::PcDoubleClicked, this, &MainWindow::OnGotoPc);
+  // Listing: breakpoint gutter and double click (SIM68Ku.cpp breakP, ListBox1).
+  source_->SetBreakpointQuery([this](uint32_t a) { return session_->HasBreakpoint(a); });
+  connect(source_, &SourceView::BreakpointToggled, session_.get(), &SimSession::ToggleBreakpoint);
+  connect(source_, &SourceView::ClearAllBreakpoints, session_.get(), &SimSession::ClearBreakpoints);
+  connect(session_.get(), &SimSession::BreakpointsChanged, source_,
+          &SourceView::RefreshBreakpoints);
+  connect(source_, &SourceView::PcRequested, this, [this](uint32_t address) {
+    if (session_->IsRunning())
+      return;
+    session_->Simulator().State().pc = address;
+    ShowState();
+  });
   connect(session_.get(), &SimSession::ExecutionStopped, this, &MainWindow::ShowState);
   connect(session_.get(), &SimSession::Message, messages_, &QPlainTextEdit::appendPlainText);
   connect(session_.get(), &SimSession::MessagesCleared, messages_, &QPlainTextEdit::clear);
@@ -343,7 +355,7 @@ void MainWindow::ShowState() {
     return;
   const sim::CpuState& cpu = session_->Simulator().State();
   registers_->Show(cpu);
-  source_->HighlightPc(cpu.pc);
+  source_->HighlightPc(cpu.pc, Halted());
 }
 
 // SIM68Ku.cpp setMenuTask19()/restoreMenuTask19().
@@ -435,7 +447,7 @@ void MainWindow::OnRunToCursor() {
 
 void MainWindow::OnGotoPc() {
   if (!session_->IsRunning())
-    source_->HighlightPc(session_->Simulator().State().pc);
+    source_->HighlightPc(session_->Simulator().State().pc, Halted());
 }
 
 void MainWindow::OnAbout() {
@@ -452,6 +464,10 @@ void MainWindow::OnWindowSize(QAction* action) {
 
 QString MainWindow::MessageText() const {
   return messages_->toPlainText();
+}
+
+bool MainWindow::Halted() const {
+  return session_->State() == SimSession::RunState::kHalted;
 }
 
 // ---------------------------------------------------------------------------

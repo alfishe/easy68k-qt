@@ -18,7 +18,9 @@
 #include <QUrl>
 
 #include "easym68k/asm/assembler.h"
+#include "register_widget.h"
 #include "sim_io_screen.h"
+#include "source_view.h"
 
 namespace easym68k::gui {
 namespace {
@@ -169,6 +171,35 @@ TEST_F(MainWindowTest, CommandLineOptions) {
   EXPECT_TRUE(w.Session().BitFieldEnabled());
   w.show();  // /r runs when the window shows
   ASSERT_TRUE(Until([&] { return w.Session().State() == SimSession::RunState::kHalted; }));
+}
+
+TEST_F(MainWindowTest, ListingGutterAndDoubleClick) {
+  MainWindow w;
+  w.resize(900, 700);
+  w.show();
+  ASSERT_TRUE(w.OpenFile(Assemble("lst", kProgram)));
+  SourceView* source = w.Source();
+  const int row = source->List()->currentRow();  // the PC line
+  ASSERT_TRUE(source->CodeLineAddress(row).has_value());
+  EXPECT_EQ(*source->CodeLineAddress(row), 0x1000u);
+  // Toggle a breakpoint on the next code line through the gutter.
+  int next = row + 1;
+  while (!source->CodeLineAddress(next))
+    next++;
+  const uint32_t address = *source->CodeLineAddress(next);
+  emit source->BreakpointToggled(address);
+  EXPECT_TRUE(w.Session().HasBreakpoint(address));
+  w.RunAction()->trigger();
+  ASSERT_TRUE(Until([&] { return !w.Session().IsRunning(); }));
+  EXPECT_EQ(w.Session().Simulator().State().pc, address);
+  EXPECT_EQ(source->List()->currentRow(), next);
+  emit source->ClearAllBreakpoints();
+  EXPECT_TRUE(w.Session().Breakpoints().empty());
+  // Double click sets the PC (ListBox1DblClick()).
+  emit source->PcRequested(0x1000);
+  EXPECT_EQ(w.Session().Simulator().State().pc, 0x1000u);
+  EXPECT_EQ(w.Registers()->PcField()->text(), QStringLiteral("00001000"));
+  EXPECT_EQ(source->List()->currentRow(), row);
 }
 
 TEST_F(MainWindowTest, KeyCommandsCanBeDisabledByTheProgram) {

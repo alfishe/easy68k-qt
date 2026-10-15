@@ -54,6 +54,7 @@ class MainWindow : public QMainWindow {
   QAction* OpenAction() const { return open_; }
   QAction* CloseAction() const { return close_; }
   RegisterWidget* Registers() const { return registers_; }
+  SourceView* Source() const { return source_; }
 
  protected:
   void dragEnterEvent(QDragEnterEvent* event) override;
@@ -80,6 +81,7 @@ class MainWindow : public QMainWindow {
   void OnAbout();
   void OnWindowSize(QAction* action);
   bool Confirm();
+  bool Halted() const;
 
   std::unique_ptr<SimSession> session_;
   QPrinter printer_;
