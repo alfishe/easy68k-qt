@@ -131,6 +131,9 @@ class SimIoScreen : public QObject {
   // `hook` runs on the simulator thread while it waits for input, each time
   // Poke() is called (the session serves GUI requests meanwhile).
   void SetWaitHook(std::function<void()> hook) { wait_hook_ = std::move(hook); }
+  // Called (under the screen lock) for every character the output log
+  // records (simIOu.cpp charOut(), doCRLF(), echo of typed input).
+  void SetOutputLogHook(std::function<void(char)> hook) { output_log_ = std::move(hook); }
   void Poke();
 
   // ---- Graphics (tasks 80-96) -------------------------------------------------
@@ -241,6 +244,7 @@ class SimIoScreen : public QObject {
   bool cancel_input_ = false;
   bool poked_ = false;
   std::function<void()> wait_hook_;
+  std::function<void(char)> output_log_;
   std::string key_buf_;
   std::string line_;
   char input_char_ = 0;

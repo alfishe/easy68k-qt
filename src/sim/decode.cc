@@ -428,4 +428,71 @@ SimResult M68kSimulator::DispatchSimhalt(uint16_t opcode) {
   return SimResult::kLine1111;
 }
 
+// RUN.CPP exec_inst() trace line: the name of the OPCODES.H inst_arr[]
+// entry that decodes `opcode` (first match within the entries of its first
+// hex digit, offsets[]).
+const char* InstructionName(uint16_t opcode) {
+  struct Entry {
+    uint16_t mask;
+    uint16_t val;
+    const char* name;
+  };
+  static constexpr Entry kTable[] = {
+      {0x0000, 0x0a3c, "EORI_TO_CCR "}, {0x0000, 0x0a7c, "EORI_TO_SR  "},
+      {0x0000, 0x003c, "ORI_TO_CCR  "}, {0x0000, 0x007c, "ORI_TO_SR   "},
+      {0x0000, 0x023c, "ANDI_TO_CCR "}, {0x0000, 0x027c, "ANDI_TO_SR  "},
+      {0x0ec7, 0x0108, "MOVEP       "}, {0x00ff, 0x0200, "ANDI        "},
+      {0x00ff, 0x0000, "ORI         "}, {0x00ff, 0x0400, "SUBI        "},
+      {0x00ff, 0x0600, "ADDI        "}, {0x00ff, 0x0800, "BIT_OP      "},
+      {0x00ff, 0x0a00, "EORI        "}, {0x00ff, 0x0c00, "CMPI        "},
+      {0x0eff, 0x0100, "BIT_OP      "}, {0x0fff, 0x1000, "MOVEB       "},
+      {0x0e3f, 0x2040, "MOVEAL      "}, {0x0fff, 0x2000, "MOVEL       "},
+      {0x0e3f, 0x3040, "MOVEAW      "}, {0x0fff, 0x3000, "MOVEW       "},
+      {0x0000, 0x4afc, "ILLEGAL     "}, {0x0000, 0x4e70, "RESET       "},
+      {0x0000, 0x4e71, "NOP         "}, {0x0000, 0x4e72, "STOP        "},
+      {0x0000, 0x4e73, "RTE         "}, {0x0000, 0x4e75, "RTS         "},
+      {0x0000, 0x4e76, "TRAPV       "}, {0x0000, 0x4e77, "RTR         "},
+      {0x0007, 0x4e50, "LINK        "}, {0x0007, 0x4e58, "UNLK        "},
+      {0x0007, 0x4e60, "MOVE_TO_USP "}, {0x0007, 0x4e68, "MOVE_FR_USP "},
+      {0x0007, 0x4840, "SWAP        "}, {0x0007, 0x4880, "EXT         "},
+      {0x0007, 0x48c0, "EXT         "}, {0x000f, 0x4e40, "TRAP        "},
+      {0x003f, 0x40c0, "MOVE_FR_SR  "}, {0x003f, 0x44c0, "MOVE_TO_CCR "},
+      {0x003f, 0x46c0, "MOVE_TO_SR  "}, {0x003f, 0x4800, "NBCD        "},
+      {0x003f, 0x4840, "PEA         "}, {0x003f, 0x4ac0, "TAS         "},
+      {0x003f, 0x4e80, "JSR         "}, {0x003f, 0x4ec0, "JMP         "},
+      {0x007f, 0x4c80, "MOVEM_TO_REG"}, {0x007f, 0x4880, "MOVEM_TO_EA "},
+      {0x00ff, 0x4200, "CLR         "}, {0x00ff, 0x4000, "NEGX        "},
+      {0x00ff, 0x4400, "NEG         "}, {0x00ff, 0x4600, "NOT         "},
+      {0x00ff, 0x4a00, "TST         "}, {0x0e3f, 0x4180, "CHK         "},
+      {0x0e3f, 0x41c0, "LEA         "}, {0x0f07, 0x50c8, "DBCC        "},
+      {0x0f3f, 0x50c0, "SCC         "}, {0x0eff, 0x5100, "SUBQ        "},
+      {0x0eff, 0x5000, "ADDQ        "}, {0x00ff, 0x6000, "BRA         "},
+      {0x00ff, 0x6100, "BSR         "}, {0x0fff, 0x6000, "BCC         "},
+      {0x0eff, 0x7000, "MOVEQ       "}, {0x0e0f, 0x8100, "SBCD        "},
+      {0x0e3f, 0x80c0, "DIVU        "}, {0x0e3f, 0x81c0, "DIVS        "},
+      {0x0fff, 0x8000, "OR          "}, {0x0f3f, 0x90c0, "SUBA        "},
+      {0x0ecf, 0x9100, "SUBX        "}, {0x0fff, 0x9000, "SUB         "},
+      {0x0fff, 0xa000, "LINE_1010   "}, {0x0f3f, 0xb0c0, "CMPA        "},
+      {0x0ec7, 0xb108, "CMPM        "}, {0x0eff, 0xb000, "CMP         "},
+      {0x0eff, 0xb100, "EOR         "}, {0x0e07, 0xc140, "EXG_D       "},
+      {0x0e07, 0xc148, "EXG_A       "}, {0x0e07, 0xc188, "EXG_D_AND_A "},
+      {0x0e0f, 0xc100, "ABCD        "}, {0x0e3f, 0xc1c0, "MULS        "},
+      {0x0e3f, 0xc0c0, "MULU        "}, {0x0fff, 0xc000, "AND         "},
+      {0x0f3f, 0xd0c0, "ADDA        "}, {0x0ecf, 0xd100, "ADDX        "},
+      {0x0fff, 0xd000, "ADD         "}, {0x073f, 0xe8c0, "BIT_FIELD   "},
+      {0x073f, 0xe0c0, "SHIFT_ROT   "}, {0x0fff, 0xe000, "SHIFT_ROT   "},
+      {0x0fff, 0xf000, "LINE_1111   "},
+  };
+  static constexpr int kOffsets[] = {0,  15, 16, 18, 20, 53, 57, 60, 61,
+                                     65, 68, 69, 73, 80, 83, 86, 87};
+  const int group = opcode >> 12;
+  for (int i = kOffsets[group]; i < kOffsets[group + 1]; i++) {
+    if ((opcode & static_cast<uint16_t>(~kTable[i].mask)) == kTable[i].val)
+      return kTable[i].name;
+  }
+  // No entry: executed as an illegal instruction (the original showed the
+  // name of the next group's first entry).
+  return "ILLEGAL     ";
+}
+
 }  // namespace easym68k::sim

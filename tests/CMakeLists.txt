@@ -75,6 +75,7 @@ if(TARGET easy68k-simulator-ui)
     gui/memory_window_test.cc
     gui/hardware_window_test.cc
     gui/io_window_test.cc
+    gui/sim_log_test.cc
   )
   find_package(Qt6 REQUIRED COMPONENTS Test)
   target_link_libraries(easym68k-gui-tests PRIVATE easy68k-simulator-ui easym68k-asm Qt6::Test GTest::gtest)

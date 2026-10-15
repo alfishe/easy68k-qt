@@ -1,6 +1,8 @@
 // Copyright 2024 EASy68K Contributors
 // SPDX-License-Identifier: GPL-2.0-or-later
 
+#include "easym68k/sim/decode.h"
+
 #include <gtest/gtest.h>
 
 #include "easym68k/sim/simulator.h"
@@ -156,6 +158,30 @@ TEST_F(DecodeTest, MovemRegister) {
 TEST_F(DecodeTest, BtstDynamic) {
   SetupOpcode(0x0100);  // BTST D0,D0 (group 0) — dispatches to OpBtst
   EXPECT_EQ(sim_.Step(), SimResult::kOk);
+}
+
+}  // namespace
+}  // namespace easym68k::sim
+
+namespace easym68k::sim {
+namespace {
+
+// OPCODES.H names for the trace line (RUN.CPP exec_inst()).
+TEST(InstructionNameTest, OpcodesTableNames) {
+  EXPECT_STREQ(InstructionName(0x4E71), "NOP         ");
+  EXPECT_STREQ(InstructionName(0x7005), "MOVEQ       ");
+  EXPECT_STREQ(InstructionName(0x1200), "MOVEB       ");
+  EXPECT_STREQ(InstructionName(0x2040), "MOVEAL      ");
+  EXPECT_STREQ(InstructionName(0x4E40), "TRAP        ");
+  EXPECT_STREQ(InstructionName(0x4CDF), "MOVEM_TO_REG");
+  EXPECT_STREQ(InstructionName(0x51C8), "DBCC        ");  // before SCC
+  EXPECT_STREQ(InstructionName(0x6000), "BRA         ");
+  EXPECT_STREQ(InstructionName(0x6700), "BCC         ");
+  EXPECT_STREQ(InstructionName(0xA000), "LINE_1010   ");
+  EXPECT_STREQ(InstructionName(0xFFFF), "LINE_1111   ");
+  EXPECT_STREQ(InstructionName(0xE9C0), "BIT_FIELD   ");
+  EXPECT_STREQ(InstructionName(0x4AFB), "TAS         ");  // by mask only
+  EXPECT_STREQ(InstructionName(0x4E7A), "ILLEGAL     ");  // no entry
 }
 
 }  // namespace

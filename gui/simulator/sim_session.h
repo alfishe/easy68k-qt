@@ -46,6 +46,7 @@ class QtFileIO;
 class QtPrintIO;
 class QtSoundIO;
 class QtSerialIO;
+class SimLog;
 
 class SimSession : public QObject {
   Q_OBJECT
@@ -144,6 +145,7 @@ class SimSession : public QObject {
   QtPeripheralIO& Peripheral() { return *peripheral_; }
   QtPrintIO& Print() { return *print_; }
   QtSoundIO& Sound() { return *sound_; }
+  SimLog& Log() { return *log_; }
 
   // An interrupt request from the hardware window, timers, mouse or keyboard
   // (hardwareu.cpp IRQprocess()): ignored while no program is active; wakes a
@@ -161,6 +163,8 @@ class SimSession : public QObject {
   void MemoryMapChanged();  // set by the program's S0 records
   void ProgramLoaded();
   void ProgramClosed();
+  // SIMHALT or task 9 ended the program (CODE9.CPP: stopLogWithAnnounce()).
+  void ProgramEnded();
   // Execution stopped (or the program was rewound/loaded): refresh views.
   void ExecutionStopped();
 
@@ -195,6 +199,7 @@ class SimSession : public QObject {
   std::unique_ptr<QtSoundIO> sound_;
   std::unique_ptr<QtSerialIO> serial_;
   std::unique_ptr<sim::StdNetworkIO> network_;
+  std::unique_ptr<SimLog> log_;
   std::unique_ptr<sim::M68kSimulator> sim_;
   std::unique_ptr<Observer> observer_;
 

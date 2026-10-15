@@ -17,6 +17,7 @@
 #include <QPrinter>
 #include <vector>
 
+#include "sim_log.h"
 #include "sim_session.h"
 
 namespace easym68k::gui {
@@ -46,6 +47,14 @@ class MainWindow : public QMainWindow {
   // OK/Cancel confirmation ("The current debug environment will be lost");
   // replaceable for tests.
   void SetConfirm(std::function<bool(const QString&)> confirm) { confirm_ = std::move(confirm); }
+  // Information/error messages (title, text); replaceable for tests.
+  void SetInform(std::function<void(const QString&, const QString&)> inform) {
+    inform_ = std::move(inform);
+  }
+  // Replace/Append/Cancel for an existing log file; replaceable for tests.
+  void SetLogFileQuestion(std::function<SimLog::Exists(const QString&)> ask) {
+    ask_log_file_ = std::move(ask);
+  }
 
   // Actions, for tests.
   QAction* RunAction() const { return run_; }
@@ -56,6 +65,9 @@ class MainWindow : public QMainWindow {
   QAction* ReloadAction() const { return reload_; }
   QAction* OpenAction() const { return open_; }
   QAction* CloseAction() const { return close_; }
+  QAction* LogStartAction() const { return log_start_; }
+  QAction* LogStopAction() const { return log_stop_; }
+  bool LoggingShown() const { return logging_action_->isVisible(); }
   RegisterWidget* Registers() const { return registers_; }
   SourceView* Source() const { return source_; }
   StackWindow* Stack() const { return stack_window_; }
@@ -87,6 +99,10 @@ class MainWindow : public QMainWindow {
   void OnGotoPc();
   void OnAbout();
   void OnFullscreenOptions();
+  void OnLogOutput();
+  void OnLogStart();
+  void OnLogStop();
+  void UpdateLogActions();
   void OnWindowSize(QAction* action);
   bool Confirm();
   bool Halted() const;
@@ -107,6 +123,9 @@ class MainWindow : public QMainWindow {
   QPlainTextEdit* messages_ = nullptr;
   QLabel* logging_ = nullptr;
   std::function<bool(const QString&)> confirm_;
+  std::function<void(const QString&, const QString&)> inform_;
+  std::function<SimLog::Exists(const QString&)> ask_log_file_;
+  QAction* logging_action_ = nullptr;
   bool program_loaded_ = false;  // Reload available
   bool run_on_show_ = false;     // command line /r
 

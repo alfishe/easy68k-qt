@@ -23,6 +23,7 @@
 #include "qt_sound_io.h"
 #include "qt_text_io.h"
 #include "sim_io_screen.h"
+#include "sim_log.h"
 
 namespace easym68k::gui {
 
@@ -139,6 +140,12 @@ SimSession::SimSession(Services services, QObject* parent)
   sound_ = std::make_unique<QtSoundIO>(this, QtSoundIO::EffectVoiceFactory());
   serial_ = std::make_unique<QtSerialIO>();
   network_ = std::make_unique<sim::StdNetworkIO>();
+  log_ = std::make_unique<SimLog>();
+  // Trace lines go to the message pane in order with the other messages.
+  log_->SetTraceSink([this](const QString& line) {
+    QMetaObject::invokeMethod(this, [this, line] { emit Message(line); }, Qt::QueuedConnection);
+  });
+  screen_->SetOutputLogHook([this](char ch) { log_->OutputChar(ch); });
 
   sim::M68kSimulator::Config config;
   config.text_io = text_io_.get();
@@ -150,9 +157,11 @@ SimSession::SimSession(Services services, QObject* parent)
   config.peripheral_io = peripheral_.get();
   config.sim_env = env_.get();
   config.print_io = print_.get();
+  config.execution_logger = log_.get();
   config.exceptions_enabled = false;  // Sim68K default (Options > Enable Exceptions)
   sim_ = std::make_unique<sim::M68kSimulator>(config);
   file_io_->SetMemory(sim_->GetMemory().RawData());
+  log_->SetMemory(&sim_->GetMemory());
   observer_ = std::make_unique<Observer>(sim_.get(), this);
   sim_->AddObserver(observer_.get());
 
@@ -217,7 +226,9 @@ bool SimSession::Open(const QString& s68_path) {
 bool SimSession::Reload() {
   if (program_path_.isEmpty() || IsRunning())
     return false;
-  return LoadProgram(program_path_, true);
+  const bool loaded = LoadProgram(program_path_, true);
+  log_->AddMessage("\n***** Reload Program Pressed *****\n");
+  return loaded;
 }
 
 // SIM68Ku.cpp OpenFile(). Breakpoints are cleared on every open, including
@@ -277,6 +288,7 @@ bool SimSession::LoadProgram(const QString& path, bool keep_breakpoints) {
     emit Message(QStringLiteral("Unable to open .L68 file."));
     listing_ = NoListingText();
   }
+  log_->SetListing(listing_);
   sim_->InitProgram();  // PC = start address
   program_path_ = path;
   SetState(RunState::kReady);
@@ -313,6 +325,7 @@ void SimSession::Close() {
     return;
   }
   listing_.clear();
+  log_->SetListing(listing_);
   has_listing_ = false;
   InitSim();
   ClearBreakpoints();
@@ -333,6 +346,7 @@ void SimSession::Rewind() {
     return;
   InitSim();
   SetState(RunState::kReady);
+  log_->AddMessage("\n***** Reset Program Pressed *****\n");
   emit ExecutionStopped();
 }
 
@@ -371,6 +385,12 @@ void SimSession::Start(Command command, uint32_t address) {
       trace_ = false;
       break;
   }
+  // The original traces (message pane line, execution log) the instructions
+  // it executes in trace mode: the first one of Step Over and Trace Into.
+  if (command == Command::kStepOver || command == Command::kTrace)
+    log_->Arm();
+  else
+    log_->Disarm();
   observer_->halt_pc = 0;
   observer_->halt_result = SimResult::kOk;
   screen_->ResumeInput();
@@ -423,6 +443,7 @@ void SimSession::WhenStopped(std::function<void()> action) {
 // RUN.CPP runprog() after an instruction stopped the run.
 void SimSession::OnFinished(Command command, SimResult result) {
   ServiceWorker();  // requests the worker did not reach
+  log_->Disarm();
   const auto& cpu = sim_->State();
   if (cpu.stopped && ExceptionsEnabled()) {
     // STOP: waits for an interrupt; the automatic IRQs keep running unless
@@ -440,6 +461,9 @@ void SimSession::OnFinished(Command command, SimResult result) {
     SetState(RunState::kReady);
   }
   ReportStop(command, result);
+  const SimResult end = observer_->halt_result != SimResult::kOk ? observer_->halt_result : result;
+  if (sim_->State().halted && end == SimResult::kHalted)
+    emit ProgramEnded();
   emit ExecutionStopped();
   if (after_stop_) {
     auto action = std::move(after_stop_);

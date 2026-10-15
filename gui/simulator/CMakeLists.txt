@@ -14,6 +14,7 @@ add_library(easy68k-simio STATIC
   qt_serial_io.cc
   listing.cc
   sim_session.cc
+  sim_log.cc
 )
 target_include_directories(easy68k-simio PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 target_link_libraries(easy68k-simio PUBLIC easym68k-sim Qt6::Gui Qt6::Multimedia)
@@ -32,6 +33,7 @@ add_library(easy68k-simulator-ui STATIC
   memory_window.cc
   hardware_window.cc
   fullscreen_options_dialog.cc
+  log_window.cc
   mainwindow.cc
 )
 target_include_directories(easy68k-simulator-ui PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})

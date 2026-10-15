@@ -28,24 +28,24 @@ hash and the program output.
 
 ## Status snapshot
 
-*Updated after every committed iteration (last: 2026-10-15, commit `16c45c2`).*
+*Updated after every committed iteration (last: 2026-10-15, commit `(X)`).*
 
 | Area | Rows | Done | Partial | Gap | Notes |
 |------|------|------|---------|-----|-------|
 | 1. Simulator core | 17 | 17 | 0 | 0 | instruction corpus + opcode sweep match the oracle (documented deviations only); 32-bit PC; Trap #15 text and file tasks verified |
 | 2. Assembler | 9 | 7 | 1 | 1 | core is a port of the original; listings and S-records match the oracle in every option combination; A7 auto-save and A8 template are GUI (13.19) |
-| 3. Sim68K GUI | 23 | 14 | 3 | 6 | Sim68K-Qt runs: main window, run controls, I/O window (13.2) |
+| 3. Sim68K GUI | 24 | 16 | 3 | 5 | Sim68K-Qt runs: main window, run controls, I/O window (13.2) |
 | 4. Edit68K GUI | 14 | 0 | 0 | 14 | |
 | 5. EASyBIN | 4 | 0 | 0 | 4 | |
 | 6. Help | 1 | 0 | 0 | 1 | |
-| **Total** | **68** | **38** | **4** | **26** | |
+| **Total** | **69** | **40** | **4** | **25** | |
 
 | Measure | Value |
 |---------|-------|
-| Plan tasks (PROGRESS.md) | 88 done, 25 open (13.12 next) |
-| Qt back end tests (`easym68k-gui-tests`, offscreen) | 123 pass (ASan+UBSan clean) |
+| Plan tasks (PROGRESS.md) | 89 done, 24 open (13.13 next) |
+| Qt back end tests (`easym68k-gui-tests`, offscreen) | 129 pass (ASan+UBSan clean) |
 | clang-tidy (`tools/clang-tidy.sh`, core libraries) | 0 findings (23 files + public headers) |
-| Simulator unit tests | 811 pass, incl. 28 golden simulation traces (ASan+UBSan clean) |
+| Simulator unit tests | 812 pass, incl. 28 golden simulation traces (ASan+UBSan clean) |
 | Assembler tests | 406 pass (incl. 132 instruction-matrix suites, 21 golden, 33 corpus cases); ASan+UBSan clean |
 | Line coverage (`tools/coverage.sh`) | easym68k-sim 93.6% (target 90%), easym68k-asm 85.6% (target 85%) |
 | Integration tests (asm + sim) | 10 pass |
@@ -68,7 +68,7 @@ hash and the program output.
 | ✓ | **11.2** Interrupt tests | Done (`interrupt_test.cc`; tracers take `-i STEP:LEVEL`) | S4 | — |
 | ✓ | **12.3** clang-tidy | Done (`ci/clang-tidy.cfg`, `tools/clang-tidy.sh`; 0 findings) | — | — |
 | ✓ | **13.1** Trap #15 Qt back ends | Done: I/O window (`SimIoScreen`, `QtTextIO`, `QtGraphicsIO`), peripheral, environment, file dialog, printing, sound, serial (`QtSerialIO`), network (`StdNetworkIO`) | S9 | — |
-| 7 | **13.2-13.18, 13.22-13.24** Sim68K-Qt (13.2-13.11 ✓; 13.12 next) | Main window, registers, source view, stack/memory viewers, hardware window, I/O console, graphics, log, settings, advanced breakpoints, find, auto trace | 3. Sim68K GUI (23 rows) | 13.21 manual checklist |
+| 7 | **13.2-13.18, 13.22-13.24** Sim68K-Qt (13.2-13.12 ✓; 13.13 next) | Main window, registers, source view, stack/memory viewers, hardware window, I/O console, graphics, log, settings, advanced breakpoints, find, auto trace | 3. Sim68K GUI (23 rows) | 13.21 manual checklist |
 | 8 | **13.19** Edit68K-Qt | Editor, assembler options (A7 auto-save, A8 template), find/replace, syntax colouring, MDI | 4. Edit68K GUI (14 rows), A7, A8 | 13.21 checklist; assembler output already oracle-verified |
 | 9 | **13.20** EASyBIN-Qt | Binary utility | 5. EASyBIN (4 rows) | checklist + file round-trip tests |
 | 10 | **13.25** Help | Help system | 6. Help (1 row) | checklist |
@@ -127,7 +127,7 @@ hash and the program output.
 | G7 | Search: Find (Ctrl+F), Find Next (F3), Go to PC (Ctrl+G) | findDialogS, SIM68Ku.dfm | **NEW 13.23** |
 | G8 | View menu: Output Window, Memory, Stack, Hardware, Break Points, EASyBIN | SIM68Ku.dfm | 13.2 — Partial: Output Window, Memory, Stack, Hardware work; Break Points (13.22), EASyBIN (13.20) |
 | G9 | Options: Source / Output / Printer fonts | SIM68Ku.dfm | 13.18 |
-| G10 | Options: Log Output dialog (exec log type, output log type, file names, memory range) + Replace/Append prompt. Execution logging is active only while tracing (Step/Trace/Auto Trace, not Run); log file layout per RUN.CPP (memory rows, register block, source/instruction line); "***** Reset/Reload Program Pressed *****" markers | logU.dfm, LogfileDialogu.dfm, RUN.CPP | 13.12 (core hooks: 9.4) |
+| G10 | Options: Log Output dialog (exec log type, output log type, file names, memory range) + Replace/Append prompt. Execution logging is active only while tracing (Step/Trace/Auto Trace, not Run); log file layout per RUN.CPP (memory rows, register block, source/instruction line); "***** Reset/Reload Program Pressed *****" markers | logU.dfm, LogfileDialogu.dfm, RUN.CPP | 13.12 — **Done** |
 | G11 | Options: Enable Exceptions, Enable Bit Field Instructions | SIM68Ku.dfm | 13.2 — **Done** |
 | G12 | Options: Auto Trace Options (interval ms, disable display update) | Optionsu.dfm | **NEW 13.24** |
 | G13 | Options: Fullscreen Options (screen number) | FullscreenOptions.dfm | 13.10 — **Done** |
@@ -141,6 +141,7 @@ hash and the program output.
 | G21 | Launch EASyBIN from View menu | SIM68Ku.dfm | 13.20 |
 | G22 | Command line: `file.S68 [/r] [/f] [/e] [/b]` (run, full screen, exceptions, bit field) | SIM68Ku.cpp FormShow() | **NEW** 13.2, 13.10 — **Done** |
 | G23 | S-record load messages: S0 records as text, "Checksum error on line N..." (loading goes on), "Invalid Address on line N...", "Invalid data on line N of .S68 file..." with the line and "Remainder of load stopped...", ".S68 file read successful" | SIMOPS2.CPP loadSrec() | **NEW** 13.8b — **Done** |
+| G24 | Trace line "PC=%08X  Code=%04X  NAME" in the message pane for each traced instruction (Step, Trace, Auto Trace) | RUN.CPP exec_inst(), OPCODES.H | **NEW** 13.12 — **Done** |
 
 ## 4. Edit68K GUI
 
@@ -274,6 +275,7 @@ Each committed iteration updates the snapshot above and adds a line here.
 | 2026-10-15 | `d454022` | 13.8 hardware window; session requests served while waiting; S0 lines and memory map | G8, G17, G23 (new) |
 | 2026-10-15 | `218d9cd` | 13.8b S-record loader as loadSrec(): messages, checksum errors go on, stops | G23 |
 | 2026-10-15 | `16c45c2` | 13.9-13.11 output window: full screen, Fullscreen Options, Ctrl+Tab/Alt+Enter/Shift+Insert | G13, G18, G22 |
+| 2026-10-15 | `(X)` | 13.12 logging: trace lines, execution/output logs, Log Output dialog, Log Start/Stop | G10, G24 (new) |
 
 ## 10. Parity acceptance
 

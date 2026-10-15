@@ -26,11 +26,13 @@
 #include "fullscreen_options_dialog.h"
 #include "hardware_window.h"
 #include "io_window.h"
+#include "log_window.h"
 #include "memory_window.h"
 #include "qt_print_io.h"
 #include "qt_simulator_env.h"
 #include "register_widget.h"
 #include "sim_io_screen.h"
+#include "sim_log.h"
 #include "source_view.h"
 #include "stack_window.h"
 
@@ -63,6 +65,15 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent) {
   confirm_ = [this](const QString& text) {
     return QMessageBox::warning(this, QStringLiteral("Caution"), text,
                                 QMessageBox::Ok | QMessageBox::Cancel) == QMessageBox::Ok;
+  };
+  inform_ = [this](const QString& title, const QString& text) {
+    QMessageBox box(QMessageBox::NoIcon, title, text, QMessageBox::Ok, this);
+    box.exec();
+  };
+  ask_log_file_ = [this](const QString& message) {
+    LogFileExistsDialog dialog(message, this);
+    dialog.exec();
+    return dialog.Choice();
   };
 
   setWindowTitle(QStringLiteral("Sim68K"));
@@ -185,6 +196,14 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent) {
     setWindowTitle(session_->ProgramPath());
     UpdateActions();
   });
+  // SIMHALT / task 9: stopLogWithAnnounce().
+  connect(session_.get(), &SimSession::ProgramEnded, this, [this] {
+    if (!session_->Log().Logging())
+      return;
+    inform_(QStringLiteral("Information"), QStringLiteral("Current Log Stopped."));
+    session_->Log().Stop();
+    UpdateLogActions();
+  });
   connect(session_.get(), &SimSession::ProgramClosed, this, [this] {
     source_->SetListing(session_->Listing(), false);
     UpdateActions();
@@ -198,6 +217,7 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent) {
   });
 
   UpdateActions();
+  UpdateLogActions();
   ShowState();
 }
 
@@ -256,10 +276,10 @@ void MainWindow::CreateActions() {
   connect(rewind_, &QAction::triggered, this, [this] { session_->Rewind(); });
   reload_ = Action(QStringLiteral("Re&load Program"), QKeySequence(Qt::CTRL | Qt::Key_F3), nullptr);
   connect(reload_, &QAction::triggered, this, [this] { session_->Reload(); });
-  log_start_ = Pending(QStringLiteral("L&og Start"), QStringLiteral("13.12"));
-  log_start_->setShortcut(QKeySequence(Qt::CTRL | Qt::Key_F4));
-  log_stop_ = Pending(QStringLiteral("Lo&g Stop"), QStringLiteral("13.12"));
-  log_stop_->setShortcut(QKeySequence(Qt::CTRL | Qt::Key_F5));
+  log_start_ = Action(QStringLiteral("L&og Start"), QKeySequence(Qt::CTRL | Qt::Key_F4),
+                      &MainWindow::OnLogStart);
+  log_stop_ = Action(QStringLiteral("Lo&g Stop"), QKeySequence(Qt::CTRL | Qt::Key_F5),
+                     &MainWindow::OnLogStop);
 
   const QStyle* style = this->style();
   open_->setIcon(style->standardIcon(QStyle::SP_DialogOpenButton));
@@ -329,7 +349,8 @@ void MainWindow::CreateMenus() {
   options->addAction(Pending(QStringLiteral("Output Window Font..."), QStringLiteral("13.18")));
   options->addAction(Pending(QStringLiteral("Printer Font..."), QStringLiteral("13.18")));
   options->addSeparator();
-  options->addAction(Pending(QStringLiteral("&Log Output..."), QStringLiteral("13.12")));
+  QAction* log_output = options->addAction(QStringLiteral("&Log Output..."));
+  connect(log_output, &QAction::triggered, this, &MainWindow::OnLogOutput);
   options->addSeparator();
   exceptions_ = options->addAction(QStringLiteral("&Enable Exceptions"));
   exceptions_->setCheckable(true);
@@ -388,9 +409,11 @@ void MainWindow::CreateToolBar() {
   bar->addSeparator();
   bar->addAction(log_start_);
   bar->addAction(log_stop_);
-  logging_ = new QLabel(QStringLiteral("LOGGING"), bar);
-  logging_->setStyleSheet(QStringLiteral("color: red; font-weight: bold"));
-  bar->addWidget(logging_)->setVisible(false);  // Task 13.12
+  logging_ = new QLabel(QStringLiteral("LOGGING"), bar);  // LoggingLbl
+  logging_->setAlignment(Qt::AlignCenter);
+  logging_->setStyleSheet(QStringLiteral("color: black; background: yellow; padding: 2px 6px"));
+  logging_action_ = bar->addWidget(logging_);
+  logging_action_->setVisible(false);
 }
 
 // SIM68Ku.cpp setMenuActive() / setMenuTrace() / setMenuInactive().
@@ -433,8 +456,18 @@ void MainWindow::SetKeyCommands(bool enabled) {
 // Commands
 // ---------------------------------------------------------------------------
 
+// OpenFile() + Log->setLogFileNames(): a running log stops; the log files
+// are named after the program.
 bool MainWindow::OpenFile(const QString& path) {
-  return session_->Open(path);
+  const bool opened = session_->Open(path);
+  SimLog& log = session_->Log();
+  if (log.Logging()) {
+    log.Stop();
+    inform_(QStringLiteral("Information"), QStringLiteral("Current Log Stopped."));
+  }
+  log.SetFileNames(path);
+  UpdateLogActions();
+  return opened;
 }
 
 void MainWindow::ApplyArguments(const QStringList& args) {
@@ -554,6 +587,46 @@ void MainWindow::OnFullscreenOptions() {
     io_window_->SetFullScreenMonitor(dialog.Monitor());
 }
 
+// Options > Log Output (logU.cpp OKBtnClick()/CancelBtnClick()).
+void MainWindow::OnLogOutput() {
+  LogOutputDialog dialog(session_->Log().GetSettings(), this);
+  if (dialog.exec() == QDialog::Accepted)
+    session_->Log().SetSettings(dialog.Settings());
+  UpdateLogActions();
+}
+
+// logU.cpp startLog()/prepareLogFile().
+void MainWindow::OnLogStart() {
+  switch (session_->Log().Start(ask_log_file_)) {
+    case SimLog::StartResult::kStarted:
+    case SimLog::StartResult::kCancelled:
+      break;
+    case SimLog::StartResult::kExecOpenFailed:
+      inform_(QStringLiteral("Error"), QStringLiteral("Can't open log file. Check log file name."));
+      UpdateLogActions();
+      OnLogOutput();  // Log->Show()
+      return;
+    case SimLog::StartResult::kOutputOpenFailed:
+      inform_(QStringLiteral("Error"), QStringLiteral("Can't open log file."));
+      break;
+  }
+  UpdateLogActions();
+}
+
+void MainWindow::OnLogStop() {
+  session_->Log().Stop();
+  UpdateLogActions();
+}
+
+// ToolLogStart/LogStart, ToolLogStop/LogStop, LoggingLbl.
+void MainWindow::UpdateLogActions() {
+  const SimLog& log = session_->Log();
+  const bool logging = log.Logging();
+  log_start_->setEnabled(!logging && log.CanStart());
+  log_stop_->setEnabled(logging);
+  logging_action_->setVisible(logging);
+}
+
 void MainWindow::BringToFront(int index) {
   QWidget* const chain[] = {io_window_, memory_window_, stack_window_, hardware_window_};
   for (int i = index; i < 4; i++) {
@@ -607,6 +680,7 @@ void MainWindow::dropEvent(QDropEvent* event) {
 
 void MainWindow::closeEvent(QCloseEvent* event) {
   session_->Pause();
+  session_->Log().Stop();  // FormClose(): stopLog()
   session_->Print().EndJob();
   io_window_->close();
   event->accept();

@@ -14,6 +14,10 @@ namespace easym68k::sim {
 // Privilege is checked when the instruction executes. Table lookup.
 bool IsLegalOpcode(uint16_t opcode, bool bitfield_enabled);
 
+// The instruction name Sim68K shows for a traced instruction (OPCODES.H
+// inst_arr[] names, padded to 12 characters, e.g. "MOVEQ       ").
+const char* InstructionName(uint16_t opcode);
+
 }  // namespace easym68k::sim
 
 #endif  // EASYM68K_SIM_DECODE_H_

@@ -273,6 +273,12 @@ void SimIoScreen::TextOutCRLF(std::string_view text) {
 // simIOu.cpp charOut(): control characters move the cursor; others are drawn
 // at the cursor and stored in the text grid. BEL is signalled by the caller.
 void SimIoScreen::CharOutLocked(char ch) {
+  // The output log gets the characters charOut() handles, not BEL or other
+  // control characters.
+  if (output_log_ && ch != '\a' &&
+      (static_cast<unsigned char>(ch) >= 0x20 || ch == '\b' || ch == '\f' || ch == '\n' ||
+       ch == '\r' || ch == '\t' || ch == '\v'))
+    output_log_(ch);
   switch (ch) {
     case '\a':
       break;
@@ -318,6 +324,8 @@ void SimIoScreen::DrawGlyphsLocked(const QString& text, int x, int y) {
 }
 
 void SimIoScreen::DoCRLFLocked() {
+  if (output_log_)
+    output_log_('\n');  // doCRLF() logs a line feed only
   col_ = 0;
   row_++;
   GotoRCLocked(row_, col_);
@@ -692,6 +700,8 @@ void SimIoScreen::KeyPressLocked(char key) {
   }
   key_buf_.push_back(key);
   if (keyboard_echo_) {
+    if (output_log_)
+      output_log_(key);
     DrawGlyphsLocked(Latin1(key), text_x_, text_y_);
     text_[static_cast<size_t>(row_) * kMaxCols + col_] = key;
   }
