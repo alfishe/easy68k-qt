@@ -10,9 +10,10 @@ add_library(easy68k-simio STATIC
   qt_simulator_env.cc
   qt_file_io.cc
   qt_print_io.cc
+  qt_sound_io.cc
 )
 target_include_directories(easy68k-simio PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
-target_link_libraries(easy68k-simio PUBLIC easym68k-sim Qt6::Gui)
+target_link_libraries(easy68k-simio PUBLIC easym68k-sim Qt6::Gui Qt6::Multimedia)
 
 # The Sim68K-Qt application (Task 13.2) will add:
 #   qt_add_executable(easy68k-simulator main.cc mainwindow.cc ...)

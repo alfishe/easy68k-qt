@@ -608,7 +608,8 @@ SimResult M68kSimulator::DispatchTrap15() {
       if (!config_.sound_io)
         break;
       ReadStrFromMem(raw, state_.a[1], buf, sizeof(buf));
-      short result = 0;
+      // D0.W is unchanged when the file is not found (simIOu.cpp playSound()).
+      auto result = static_cast<short>(state_.d[0]);
       config_.sound_io->PlaySound(buf, &result);
       state_.d[0] = (state_.d[0] & 0xFFFF0000u) | static_cast<uint16_t>(result);
       break;
@@ -625,7 +626,7 @@ SimResult M68kSimulator::DispatchTrap15() {
     case kTrap15SoundPlayMem: {  // 72: play from memory index D1.B (standard player)
       if (!config_.sound_io)
         break;
-      short result = 0;
+      auto result = static_cast<short>(state_.d[0]);  // unchanged if nothing loaded
       config_.sound_io->PlaySoundMem(static_cast<int>(static_cast<uint8_t>(state_.d[1])), &result);
       state_.d[0] = (state_.d[0] & 0xFFFF0000u) | static_cast<uint16_t>(result);
       break;
