@@ -8,15 +8,19 @@
 #include <QActionGroup>
 #include <QApplication>
 #include <QCloseEvent>
+#include <QCoreApplication>
 #include <QDragEnterEvent>
 #include <QDropEvent>
 #include <QFileDialog>
 #include <QFileInfo>
+#include <QFontDialog>
 #include <QGuiApplication>
 #include <QMenuBar>
 #include <QMessageBox>
 #include <QMimeData>
 #include <QPageSetupDialog>
+#include <QScreen>
+#include <QSignalBlocker>
 #include <QSplitter>
 #include <QStatusBar>
 #include <QStyle>
@@ -43,9 +47,81 @@ namespace {
 const char kLostWarning[] = "The current debug environment will be lost, click OK to continue.";
 const char kS68Filter[] = "EASy68K S-Record (*.S68 *.s68);;All Files (*)";
 
+// def.h default window locations and sizes.
+constexpr int kMainTop = 100;
+constexpr int kMainLeft = 100;
+constexpr int kMainWidth = 744;
+constexpr int kMainHeight = 500;
+constexpr int kSimIoTop = 300;
+constexpr int kSimIoLeft = 200;
+constexpr int kMemoryTop = 80;
+constexpr int kMemoryLeft = 280;
+constexpr int kStackTop = 200;
+constexpr int kStackLeft = 40;
+constexpr int kStackHeight = 538;
+constexpr int kHardwareTop = 100;
+constexpr int kHardwareLeft = 240;
+
+QFont MakeFixedFont(const QString& family, int point_size) {
+  QFont font(family);
+  font.setPointSize(point_size);
+  font.setStyleHint(QFont::TypeWriter);
+  font.setFixedPitch(true);
+  return font;
+}
+
+void SaveFont(QSettings& settings, const QString& prefix, const QFont& font) {
+  settings.setValue(prefix + QStringLiteral("_name"), font.family());
+  settings.setValue(prefix + QStringLiteral("_size"), font.pointSize() > 0 ? font.pointSize() : 10);
+  settings.setValue(prefix + QStringLiteral("_bold"), font.bold());
+  settings.setValue(prefix + QStringLiteral("_italic"), font.italic());
+  settings.setValue(prefix + QStringLiteral("_underline"), font.underline());
+  settings.setValue(prefix + QStringLiteral("_strikeout"), font.strikeOut());
+}
+
+QFont LoadFont(const QSettings& settings, const QString& prefix, const QFont& def,
+               bool fixed_pitch) {
+  const QString family = settings.value(prefix + QStringLiteral("_name"), def.family()).toString();
+  const int size = settings.value(prefix + QStringLiteral("_size"), def.pointSize()).toInt();
+  QFont font(family.isEmpty() ? def.family() : family);
+  font.setPointSize(size > 0 ? size : def.pointSize());
+  if (fixed_pitch) {
+    font.setStyleHint(QFont::TypeWriter);
+    font.setFixedPitch(true);
+  }
+  font.setBold(settings.value(prefix + QStringLiteral("_bold"), def.bold()).toBool());
+  font.setItalic(settings.value(prefix + QStringLiteral("_italic"), def.italic()).toBool());
+  font.setUnderline(
+      settings.value(prefix + QStringLiteral("_underline"), def.underline()).toBool());
+  font.setStrikeOut(
+      settings.value(prefix + QStringLiteral("_strikeout"), def.strikeOut()).toBool());
+  return font;
+}
+
+int ClampCoord(int value, int def, int limit) {
+  return (value < 0 || value > limit - 20) ? def : value;
+}
+
+int ClampDimension(int value, int def, int limit) {
+  if (value <= 0)
+    return def;
+  return std::min(value, limit);
+}
+
+QString DefaultSettingsPath() {
+  if (QCoreApplication::organizationName() != QLatin1String("EASy68K"))
+    return QString();
+  return QSettings(QSettings::IniFormat, QSettings::UserScope, QStringLiteral("EASy68K"),
+                   QStringLiteral("Sim68K"))
+      .fileName();
+}
+
 }  // namespace
 
-MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent) {
+MainWindow::MainWindow(QWidget* parent) : MainWindow(DefaultSettingsPath(), parent) {}
+
+MainWindow::MainWindow(const QString& settings_file, QWidget* parent)
+    : QMainWindow(parent), settings_file_(settings_file) {
   SimSession::Services services;
   services.file_dialog = [this](bool save, const QString& title, const QString& filter,
                                 const QString& path) -> std::optional<QString> {
@@ -74,6 +150,15 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent) {
     LogFileExistsDialog dialog(message, this);
     dialog.exec();
     return dialog.Choice();
+  };
+  choose_font_ = [this](const QFont& current, bool fixed_pitch) -> std::optional<QFont> {
+    bool ok = false;
+    const QFontDialog::FontDialogOptions opts =
+        fixed_pitch ? QFontDialog::MonospacedFonts : QFontDialog::FontDialogOptions();
+    const QFont chosen = QFontDialog::getFont(&ok, current, this, QStringLiteral("Font"), opts);
+    if (!ok)
+      return std::nullopt;
+    return chosen;
   };
 
   setWindowTitle(QStringLiteral("Sim68K"));
@@ -186,8 +271,13 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent) {
   connect(session_.get(), &SimSession::Message, messages_, &QPlainTextEdit::appendPlainText);
   connect(session_.get(), &SimSession::MessagesCleared, messages_, &QPlainTextEdit::clear);
   connect(session_.get(), &SimSession::OptionsChanged, this, [this] {
-    exceptions_->setChecked(session_->ExceptionsEnabled());
-    bit_field_->setChecked(session_->BitFieldEnabled());
+    {
+      const QSignalBlocker b1(exceptions_);
+      const QSignalBlocker b2(bit_field_);
+      exceptions_->setChecked(session_->ExceptionsEnabled());
+      bit_field_->setChecked(session_->BitFieldEnabled());
+    }
+    SaveSettings();  // CODE9.CPP task 32 subtask 5
   });
   connect(session_.get(), &SimSession::ProgramLoaded, this, [this] {
     program_loaded_ = true;
@@ -216,6 +306,7 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent) {
       a->setChecked(a->text() == size);
   });
 
+  LoadSettings();
   UpdateActions();
   UpdateLogActions();
   ShowState();
@@ -345,9 +436,12 @@ void MainWindow::CreateMenus() {
   view->addAction(Pending(QStringLiteral("&EASyBIN"), QStringLiteral("13.20")));
 
   QMenu* options = menuBar()->addMenu(QStringLiteral("&Options"));
-  options->addAction(Pending(QStringLiteral("Source Window Font..."), QStringLiteral("13.18")));
-  options->addAction(Pending(QStringLiteral("Output Window Font..."), QStringLiteral("13.18")));
-  options->addAction(Pending(QStringLiteral("Printer Font..."), QStringLiteral("13.18")));
+  source_font_action_ =
+      options->addAction(QStringLiteral("&Source Window Font..."), this, &MainWindow::OnSourceFont);
+  output_font_action_ =
+      options->addAction(QStringLiteral("&Output Window Font..."), this, &MainWindow::OnOutputFont);
+  printer_font_action_ =
+      options->addAction(QStringLiteral("&Printer Font..."), this, &MainWindow::OnPrinterFont);
   options->addSeparator();
   QAction* log_output = options->addAction(QStringLiteral("&Log Output..."));
   connect(log_output, &QAction::triggered, this, &MainWindow::OnLogOutput);
@@ -355,8 +449,10 @@ void MainWindow::CreateMenus() {
   exceptions_ = options->addAction(QStringLiteral("&Enable Exceptions"));
   exceptions_->setCheckable(true);
   exceptions_->setChecked(session_->ExceptionsEnabled());
-  connect(exceptions_, &QAction::toggled, this,
-          [this](bool on) { session_->SetExceptionsEnabled(on); });
+  connect(exceptions_, &QAction::toggled, this, [this](bool on) {
+    session_->SetExceptionsEnabled(on);
+    SaveSettings();
+  });
   options->addSeparator();
   options->addAction(Pending(QStringLiteral("&Auto Trace Options..."), QStringLiteral("13.24")));
   options->addSeparator();
@@ -366,8 +462,10 @@ void MainWindow::CreateMenus() {
   bit_field_ = options->addAction(QStringLiteral("Enable &Bit Field Instructions"));
   bit_field_->setCheckable(true);
   bit_field_->setChecked(session_->BitFieldEnabled());
-  connect(bit_field_, &QAction::toggled, this,
-          [this](bool on) { session_->SetBitFieldEnabled(on); });
+  connect(bit_field_, &QAction::toggled, this, [this](bool on) {
+    session_->SetBitFieldEnabled(on);
+    SaveSettings();
+  });
   options->addSeparator();
   QMenu* sizes = options->addMenu(QStringLiteral("Output Window &Size"));
   auto* group = new QActionGroup(this);
@@ -571,6 +669,262 @@ void MainWindow::Raise(QWidget* window) {
   window->activateWindow();
 }
 
+// FontSourceExecute() / STARTSIM.CPP initSim(): listing, heading and messages.
+void MainWindow::SetSourceFont(const QFont& font) {
+  source_font_ = font;
+  source_->SetListFont(font);
+  messages_->setFont(font);
+}
+
+// FontOutputExecute() / STARTSIM.CPP initSim().
+void MainWindow::SetOutputFont(const QFont& font) {
+  output_font_ = font;
+  session_->Screen().SetBaseFont(font, 0x00FFFFFF);
+}
+
+// FontPrinterExecute() / CODE9.CPP initPrint().
+void MainWindow::SetPrinterFont(const QFont& font) {
+  printer_font_ = font;
+  session_->Print().SetFont(font);
+}
+
+void MainWindow::OnSourceFont() {
+  if (const auto chosen = choose_font_(source_font_, true)) {
+    SetSourceFont(*chosen);
+    SaveSettings();
+  }
+}
+
+void MainWindow::OnOutputFont() {
+  if (const auto chosen = choose_font_(output_font_, true)) {
+    SetOutputFont(*chosen);
+    SaveSettings();
+  }
+}
+
+void MainWindow::OnPrinterFont() {
+  if (const auto chosen = choose_font_(printer_font_, false)) {
+    SetPrinterFont(*chosen);
+    SaveSettings();
+  }
+}
+
+// SIM68Ku.cpp defaultSettings().
+void MainWindow::DefaultSettings() {
+  SimLog::Settings log = session_->Log().GetSettings();
+  log.exec_type = SimLog::kExecDisabled;
+  log.output_type = SimLog::kOutputDisabled;
+  session_->Log().SetSettings(log);
+
+  session_->SetExceptionsEnabled(false);
+  session_->SetBitFieldEnabled(false);
+  {
+    const QSignalBlocker b1(exceptions_);
+    const QSignalBlocker b2(bit_field_);
+    exceptions_->setChecked(false);
+    bit_field_->setChecked(false);
+  }
+
+  move(kMainLeft, kMainTop);
+  resize(kMainWidth, kMainHeight);
+  io_window_->move(kSimIoLeft, kSimIoTop);
+  io_window_->SetFullScreenMonitor(0);
+  memory_window_->move(kMemoryLeft, kMemoryTop);
+  memory_window_->ShowAddress(0);
+  stack_window_->move(kStackLeft, kStackTop);
+  stack_window_->resize(stack_window_->width(), kStackHeight);
+  stack_window_->Selector()->setCurrentIndex(8);  // SS
+  hardware_window_->move(kHardwareLeft, kHardwareTop);
+  hardware_window_->AddressField(HardwareWindow::kSeg7)->setText(QStringLiteral("E00000"));
+  hardware_window_->AddressField(HardwareWindow::kLeds)->setText(QStringLiteral("E00010"));
+  hardware_window_->AddressField(HardwareWindow::kSwitches)->setText(QStringLiteral("E00012"));
+  hardware_window_->AddressField(HardwareWindow::kButtons)->setText(QStringLiteral("E00014"));
+
+  SetOutputFont(MakeFixedFont(QStringLiteral("Fixedsys"), 9));
+  SetSourceFont(MakeFixedFont(QStringLiteral("Courier New"), 10));
+  SetPrinterFont(QtPrintIO::DefaultFont());
+
+  auto_trace_interval_ = 200;
+  auto_trace_disable_display_ = false;
+  UpdateLogActions();
+}
+
+void MainWindow::SetSettingsFile(const QString& path) {
+  settings_file_ = path;
+  LoadSettings();
+}
+
+void MainWindow::LoadSettings() {
+  DefaultSettings();
+  if (settings_file_.isEmpty() || !QFileInfo::exists(settings_file_))
+    return;
+  QSettings settings(settings_file_, QSettings::IniFormat);
+  LoadSettings(settings);
+}
+
+// SIM68Ku.cpp LoadSettings().
+void MainWindow::LoadSettings(QSettings& settings) {
+  DefaultSettings();
+  if (settings.allKeys().isEmpty())
+    return;
+
+  SimLog::Settings log = session_->Log().GetSettings();
+  const int exec_log = settings.value(QStringLiteral("exec_log"), 0).toInt();
+  if (exec_log >= 0 && exec_log <= 3)
+    log.exec_type = exec_log;
+  const int out_log = settings.value(QStringLiteral("output_log"), 0).toInt();
+  if (out_log >= 0 && out_log <= 1)
+    log.output_type = out_log;
+  session_->Log().SetSettings(log);
+
+  const bool exc = settings.value(QStringLiteral("exceptions"), false).toBool();
+  const bool bf = settings.value(QStringLiteral("bit_field_enabled"), false).toBool();
+  session_->SetExceptionsEnabled(exc);
+  session_->SetBitFieldEnabled(bf);
+  {
+    const QSignalBlocker b1(exceptions_);
+    const QSignalBlocker b2(bit_field_);
+    exceptions_->setChecked(exc);
+    bit_field_->setChecked(bf);
+  }
+
+  const QScreen* screen = QGuiApplication::primaryScreen();
+  const QSize screen_size = screen ? screen->size() : QSize(1920, 1080);
+  const int sw = screen_size.width();
+  const int sh = screen_size.height();
+
+  io_window_->move(
+      ClampCoord(settings.value(QStringLiteral("simio_left"), kSimIoLeft).toInt(), kSimIoLeft, sw),
+      ClampCoord(settings.value(QStringLiteral("simio_top"), kSimIoTop).toInt(), kSimIoTop, sh));
+  io_window_->setVisible(settings.value(QStringLiteral("simio_visible"), false).toBool());
+
+  memory_window_->move(
+      ClampCoord(settings.value(QStringLiteral("memory_left"), kMemoryLeft).toInt(), kMemoryLeft,
+                 sw),
+      ClampCoord(settings.value(QStringLiteral("memory_top"), kMemoryTop).toInt(), kMemoryTop, sh));
+  const QString mem_addr =
+      settings.value(QStringLiteral("memory_address"), QStringLiteral("000000"))
+          .toString()
+          .trimmed();
+  bool ok = false;
+  const uint32_t parsed_mem = mem_addr.toUInt(&ok, 16);
+  if (ok) {
+    memory_window_->ShowAddress(parsed_mem);
+    memory_window_->AddressField()->setText(mem_addr.toUpper());
+  }
+  memory_window_->setVisible(settings.value(QStringLiteral("memory_visible"), false).toBool());
+
+  stack_window_->move(
+      ClampCoord(settings.value(QStringLiteral("stack_left"), kStackLeft).toInt(), kStackLeft, sw),
+      ClampCoord(settings.value(QStringLiteral("stack_top"), kStackTop).toInt(), kStackTop, sh));
+  stack_window_->resize(
+      stack_window_->width(),
+      ClampDimension(settings.value(QStringLiteral("stack_height"), kStackHeight).toInt(),
+                     kStackHeight, sh));
+  const int which_stack = settings.value(QStringLiteral("which_stack"), 8).toInt();
+  if (which_stack >= 0 && which_stack < stack_window_->Selector()->count())
+    stack_window_->Selector()->setCurrentIndex(which_stack);
+  stack_window_->setVisible(settings.value(QStringLiteral("stack_visible"), false).toBool());
+
+  hardware_window_->move(
+      ClampCoord(settings.value(QStringLiteral("hardware_left"), kHardwareLeft).toInt(),
+                 kHardwareLeft, sw),
+      ClampCoord(settings.value(QStringLiteral("hardware_top"), kHardwareTop).toInt(), kHardwareTop,
+                 sh));
+  hardware_window_->AddressField(HardwareWindow::kSeg7)
+      ->setText(settings.value(QStringLiteral("seg7_address"), QStringLiteral("E00000"))
+                    .toString()
+                    .trimmed()
+                    .toUpper());
+  hardware_window_->AddressField(HardwareWindow::kLeds)
+      ->setText(settings.value(QStringLiteral("led_address"), QStringLiteral("E00010"))
+                    .toString()
+                    .trimmed()
+                    .toUpper());
+  hardware_window_->AddressField(HardwareWindow::kSwitches)
+      ->setText(settings.value(QStringLiteral("switch_address"), QStringLiteral("E00012"))
+                    .toString()
+                    .trimmed()
+                    .toUpper());
+  hardware_window_->AddressField(HardwareWindow::kButtons)
+      ->setText(settings.value(QStringLiteral("button_address"), QStringLiteral("E00014"))
+                    .toString()
+                    .trimmed()
+                    .toUpper());
+  hardware_window_->setVisible(settings.value(QStringLiteral("hardware_visible"), false).toBool());
+
+  move(ClampCoord(settings.value(QStringLiteral("main_left"), kMainLeft).toInt(), kMainLeft, sw),
+       ClampCoord(settings.value(QStringLiteral("main_top"), kMainTop).toInt(), kMainTop, sh));
+  resize(ClampDimension(settings.value(QStringLiteral("main_width"), kMainWidth).toInt(),
+                        kMainWidth, sw),
+         ClampDimension(settings.value(QStringLiteral("main_height"), kMainHeight).toInt(),
+                        kMainHeight, sh));
+
+  SetOutputFont(LoadFont(settings, QStringLiteral("output_font"), output_font_, true));
+  SetSourceFont(LoadFont(settings, QStringLiteral("listing_font"), source_font_, true));
+  SetPrinterFont(LoadFont(settings, QStringLiteral("printer_font"), printer_font_, false));
+
+  io_window_->SetFullScreenMonitor(
+      std::max(0, settings.value(QStringLiteral("fullscreen_monitor"), 0).toInt()));
+  const int interval = settings.value(QStringLiteral("auto_trace_interval"), 200).toInt();
+  if (interval > 0)
+    auto_trace_interval_ = interval;
+  auto_trace_disable_display_ = settings.value(QStringLiteral("disable_display"), false).toBool();
+
+  UpdateLogActions();
+}
+
+void MainWindow::SaveSettings() const {
+  if (settings_file_.isEmpty())
+    return;
+  QSettings settings(settings_file_, QSettings::IniFormat);
+  SaveSettings(settings);
+}
+
+// SIM68Ku.cpp SaveSettings().
+void MainWindow::SaveSettings(QSettings& settings) const {
+  const SimLog::Settings log = session_->Log().GetSettings();
+  settings.setValue(QStringLiteral("exec_log"), log.exec_type);
+  settings.setValue(QStringLiteral("output_log"), log.output_type);
+  settings.setValue(QStringLiteral("exceptions"), session_->ExceptionsEnabled());
+  settings.setValue(QStringLiteral("main_top"), y());
+  settings.setValue(QStringLiteral("main_left"), x());
+  settings.setValue(QStringLiteral("main_height"), height());
+  settings.setValue(QStringLiteral("main_width"), width());
+  settings.setValue(QStringLiteral("simio_top"), io_window_->y());
+  settings.setValue(QStringLiteral("simio_left"), io_window_->x());
+  settings.setValue(QStringLiteral("simio_visible"), io_window_->isVisible());
+  settings.setValue(QStringLiteral("memory_top"), memory_window_->y());
+  settings.setValue(QStringLiteral("memory_left"), memory_window_->x());
+  settings.setValue(QStringLiteral("memory_address"),
+                    memory_window_->AddressField()->text().trimmed());
+  settings.setValue(QStringLiteral("memory_visible"), memory_window_->isVisible());
+  settings.setValue(QStringLiteral("stack_top"), stack_window_->y());
+  settings.setValue(QStringLiteral("stack_left"), stack_window_->x());
+  settings.setValue(QStringLiteral("stack_height"), stack_window_->height());
+  settings.setValue(QStringLiteral("which_stack"), stack_window_->Selector()->currentIndex());
+  settings.setValue(QStringLiteral("stack_visible"), stack_window_->isVisible());
+  settings.setValue(QStringLiteral("hardware_top"), hardware_window_->y());
+  settings.setValue(QStringLiteral("hardware_left"), hardware_window_->x());
+  settings.setValue(QStringLiteral("seg7_address"),
+                    hardware_window_->AddressField(HardwareWindow::kSeg7)->text().trimmed());
+  settings.setValue(QStringLiteral("led_address"),
+                    hardware_window_->AddressField(HardwareWindow::kLeds)->text().trimmed());
+  settings.setValue(QStringLiteral("switch_address"),
+                    hardware_window_->AddressField(HardwareWindow::kSwitches)->text().trimmed());
+  settings.setValue(QStringLiteral("button_address"),
+                    hardware_window_->AddressField(HardwareWindow::kButtons)->text().trimmed());
+  settings.setValue(QStringLiteral("hardware_visible"), hardware_window_->isVisible());
+  SaveFont(settings, QStringLiteral("output_font"), output_font_);
+  SaveFont(settings, QStringLiteral("listing_font"), source_font_);
+  SaveFont(settings, QStringLiteral("printer_font"), printer_font_);
+  settings.setValue(QStringLiteral("fullscreen_monitor"), io_window_->FullScreenMonitor());
+  settings.setValue(QStringLiteral("bit_field_enabled"), session_->BitFieldEnabled());
+  settings.setValue(QStringLiteral("auto_trace_interval"), auto_trace_interval_);
+  settings.setValue(QStringLiteral("disable_display"), auto_trace_disable_display_);
+  settings.sync();
+}
+
 // mmuFullscreenOptionsClick().
 void MainWindow::OnFullscreenOptions() {
   if (io_window_->FullScreen()) {
@@ -583,15 +937,19 @@ void MainWindow::OnFullscreenOptions() {
   }
   FullscreenOptionsDialog dialog(io_window_->FullScreenMonitor(),
                                  static_cast<int>(QGuiApplication::screens().size()), this);
-  if (dialog.exec() == QDialog::Accepted)
+  if (dialog.exec() == QDialog::Accepted) {
     io_window_->SetFullScreenMonitor(dialog.Monitor());
+    SaveSettings();
+  }
 }
 
 // Options > Log Output (logU.cpp OKBtnClick()/CancelBtnClick()).
 void MainWindow::OnLogOutput() {
   LogOutputDialog dialog(session_->Log().GetSettings(), this);
-  if (dialog.exec() == QDialog::Accepted)
+  if (dialog.exec() == QDialog::Accepted) {
     session_->Log().SetSettings(dialog.Settings());
+    SaveSettings();
+  }
   UpdateLogActions();
 }
 
@@ -680,9 +1038,13 @@ void MainWindow::dropEvent(QDropEvent* event) {
 
 void MainWindow::closeEvent(QCloseEvent* event) {
   session_->Pause();
+  SaveSettings();          // FormClose(): SaveSettings()
   session_->Log().Stop();  // FormClose(): stopLog()
   session_->Print().EndJob();
   io_window_->close();
+  memory_window_->close();
+  stack_window_->close();
+  hardware_window_->close();
   event->accept();
 }
 

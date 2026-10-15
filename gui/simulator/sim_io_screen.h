@@ -81,6 +81,7 @@ class SimIoScreen : public QObject {
   // The output font (FontDialogSimIO): applied now and by ResetForRun();
   // task 21 starts from it. `color` is a TColor (0x00BBGGRR).
   void SetBaseFont(const QFont& font, uint32_t color);
+  QFont BaseFont() const;
   void SetTextWrap(bool wrap);  // Options: wrap text at the window edge
 
   // Program start (STARTSIM.CPP): clears the window, keeps its size, resets

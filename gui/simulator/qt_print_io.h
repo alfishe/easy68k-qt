@@ -40,6 +40,7 @@ class QtPrintIO : public sim::IPrintIO {
   // without a form feed open until the application closed.
   void EndJob();
   void SetFont(const QFont& font);
+  const QFont& Font() const { return font_; }
 
   static QFont DefaultFont();
 

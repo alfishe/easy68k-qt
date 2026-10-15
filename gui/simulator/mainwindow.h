@@ -10,11 +10,14 @@
 
 #include <functional>
 #include <memory>
+#include <optional>
 #include <QAction>
+#include <QFont>
 #include <QLabel>
 #include <QMainWindow>
 #include <QPlainTextEdit>
 #include <QPrinter>
+#include <QSettings>
 #include <vector>
 
 #include "sim_log.h"
@@ -34,6 +37,7 @@ class MainWindow : public QMainWindow {
 
  public:
   explicit MainWindow(QWidget* parent = nullptr);
+  explicit MainWindow(const QString& settings_file, QWidget* parent = nullptr);
   ~MainWindow() override;
 
   // Opens a program as File > Open does (no dialog).
@@ -41,6 +45,32 @@ class MainWindow : public QMainWindow {
   // SIM68Ku.cpp FormShow(): `program.S68 [/r] [/e] [/b] [/f]` (run,
   // exceptions, bit field, full screen). Run starts when the window shows.
   void ApplyArguments(const QStringList& args);
+
+  // SIM68Ku.cpp defaultSettings(), LoadSettings(), SaveSettings().
+  void DefaultSettings();
+  void LoadSettings();
+  void LoadSettings(QSettings& settings);
+  void SaveSettings() const;
+  void SaveSettings(QSettings& settings) const;
+  void SetSettingsFile(const QString& path);
+
+  // Options > Source Window Font / Output Window Font / Printer Font.
+  const QFont& SourceFont() const { return source_font_; }
+  void SetSourceFont(const QFont& font);
+  const QFont& OutputFont() const { return output_font_; }
+  void SetOutputFont(const QFont& font);
+  const QFont& PrinterFont() const { return printer_font_; }
+  void SetPrinterFont(const QFont& font);
+  // Font dialog (current font, fixed_pitch_only); replaceable for tests.
+  void SetFontDialog(std::function<std::optional<QFont>(const QFont&, bool fixed_pitch)> dialog) {
+    choose_font_ = std::move(dialog);
+  }
+
+  // Auto Trace options (SIM68Ku.cpp AutoTraceOptions; dialog in 13.24).
+  int AutoTraceInterval() const { return auto_trace_interval_; }
+  void SetAutoTraceInterval(int ms) { auto_trace_interval_ = ms; }
+  bool AutoTraceDisableDisplay() const { return auto_trace_disable_display_; }
+  void SetAutoTraceDisableDisplay(bool disable) { auto_trace_disable_display_ = disable; }
 
   SimSession& Session() { return *session_; }
   QString MessageText() const;  // the message pane
@@ -67,6 +97,11 @@ class MainWindow : public QMainWindow {
   QAction* CloseAction() const { return close_; }
   QAction* LogStartAction() const { return log_start_; }
   QAction* LogStopAction() const { return log_stop_; }
+  QAction* SourceFontAction() const { return source_font_action_; }
+  QAction* OutputFontAction() const { return output_font_action_; }
+  QAction* PrinterFontAction() const { return printer_font_action_; }
+  QAction* ExceptionsAction() const { return exceptions_; }
+  QAction* BitFieldAction() const { return bit_field_; }
   bool LoggingShown() const { return logging_action_->isVisible(); }
   RegisterWidget* Registers() const { return registers_; }
   SourceView* Source() const { return source_; }
@@ -98,6 +133,9 @@ class MainWindow : public QMainWindow {
   void OnRunToCursor();
   void OnGotoPc();
   void OnAbout();
+  void OnSourceFont();
+  void OnOutputFont();
+  void OnPrinterFont();
   void OnFullscreenOptions();
   void OnLogOutput();
   void OnLogStart();
@@ -114,6 +152,12 @@ class MainWindow : public QMainWindow {
 
   std::unique_ptr<SimSession> session_;
   QPrinter printer_;
+  QString settings_file_;
+  QFont source_font_;
+  QFont output_font_;
+  QFont printer_font_;
+  int auto_trace_interval_ = 200;
+  bool auto_trace_disable_display_ = false;
   IoWindow* io_window_ = nullptr;
   StackWindow* stack_window_ = nullptr;
   MemoryWindow* memory_window_ = nullptr;
@@ -125,6 +169,7 @@ class MainWindow : public QMainWindow {
   std::function<bool(const QString&)> confirm_;
   std::function<void(const QString&, const QString&)> inform_;
   std::function<SimLog::Exists(const QString&)> ask_log_file_;
+  std::function<std::optional<QFont>(const QFont&, bool)> choose_font_;
   QAction* logging_action_ = nullptr;
   bool program_loaded_ = false;  // Reload available
   bool run_on_show_ = false;     // command line /r
@@ -147,6 +192,9 @@ class MainWindow : public QMainWindow {
   QAction* log_start_ = nullptr;
   QAction* log_stop_ = nullptr;
   QAction* output_window_ = nullptr;
+  QAction* source_font_action_ = nullptr;
+  QAction* output_font_action_ = nullptr;
+  QAction* printer_font_action_ = nullptr;
   QAction* exceptions_ = nullptr;
   QAction* bit_field_ = nullptr;
   QAction* text_wrap_ = nullptr;

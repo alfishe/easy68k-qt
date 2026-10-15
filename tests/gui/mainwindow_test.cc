@@ -18,9 +18,14 @@
 #include <QUrl>
 
 #include "easym68k/asm/assembler.h"
+#include "hardware_window.h"
+#include "io_window.h"
+#include "memory_window.h"
+#include "qt_print_io.h"
 #include "register_widget.h"
 #include "sim_io_screen.h"
 #include "source_view.h"
+#include "stack_window.h"
 
 namespace easym68k::gui {
 namespace {
@@ -211,6 +216,164 @@ TEST_F(MainWindowTest, KeyCommandsCanBeDisabledByTheProgram) {
   w.Session().Screen().SetKeyCommandsEnabled(true);
   QCoreApplication::processEvents();
   EXPECT_EQ(w.RunAction()->shortcut(), QKeySequence(Qt::Key_F9));
+}
+
+TEST_F(MainWindowTest, FontActionsUpdateSourceOutputAndPrinterFonts) {
+  MainWindow w;
+  EXPECT_EQ(w.SourceFont().family(), QStringLiteral("Courier New"));
+  EXPECT_EQ(w.SourceFont().pointSize(), 10);
+  EXPECT_EQ(w.OutputFont().family(), QStringLiteral("Fixedsys"));
+  EXPECT_EQ(w.OutputFont().pointSize(), 9);
+  EXPECT_EQ(w.PrinterFont().family(), QStringLiteral("Courier New"));
+  EXPECT_EQ(w.PrinterFont().pointSize(), 10);
+
+  bool last_fixed = false;
+  w.SetFontDialog([&](const QFont& current, bool fixed) -> std::optional<QFont> {
+    last_fixed = fixed;
+    QFont next = current;
+    next.setPointSize(current.pointSize() + 4);
+    next.setBold(true);
+    return next;
+  });
+
+  w.SourceFontAction()->trigger();
+  EXPECT_TRUE(last_fixed);
+  EXPECT_EQ(w.SourceFont().pointSize(), 14);
+  EXPECT_TRUE(w.SourceFont().bold());
+  EXPECT_EQ(w.Source()->List()->font().pointSize(), 14);
+
+  w.OutputFontAction()->trigger();
+  EXPECT_TRUE(last_fixed);
+  EXPECT_EQ(w.OutputFont().pointSize(), 13);
+  EXPECT_EQ(w.Session().Screen().BaseFont().pointSize(), 13);
+
+  w.PrinterFontAction()->trigger();
+  EXPECT_FALSE(last_fixed);
+  EXPECT_EQ(w.PrinterFont().pointSize(), 14);
+  EXPECT_EQ(w.Session().Print().Font().pointSize(), 14);
+
+  // Cancel leaves fonts unchanged.
+  w.SetFontDialog([](const QFont&, bool) { return std::nullopt; });
+  w.SourceFontAction()->trigger();
+  EXPECT_EQ(w.SourceFont().pointSize(), 14);
+}
+
+TEST_F(MainWindowTest, SettingsPersistenceRoundTripAndOffscreenClamp) {
+  const QString settings_file = dir_.filePath(QStringLiteral("sim68k.ini"));
+  {
+    MainWindow w1(settings_file);
+    w1.show();
+    SimLog::Settings log = w1.Session().Log().GetSettings();
+    log.exec_type = SimLog::kExecRegisters;
+    log.output_type = SimLog::kOutputText;
+    w1.Session().Log().SetSettings(log);
+    w1.ExceptionsAction()->setChecked(true);
+    w1.BitFieldAction()->setChecked(true);
+    w1.move(140, 120);
+    w1.resize(680, 560);
+    w1.Io()->move(210, 260);
+    w1.Io()->show();
+    w1.Io()->SetFullScreenMonitor(2);
+    w1.MemoryView()->move(290, 90);
+    w1.MemoryView()->ShowAddress(0x002000);
+    w1.MemoryView()->show();
+    w1.Stack()->move(50, 180);
+    w1.Stack()->resize(w1.Stack()->width(), 440);
+    w1.Stack()->Selector()->setCurrentIndex(3);  // A3
+    w1.Stack()->show();
+    w1.Hardware()->move(250, 110);
+    w1.Hardware()->AddressField(HardwareWindow::kSeg7)->setText(QStringLiteral("E10000"));
+    w1.Hardware()->AddressField(HardwareWindow::kLeds)->setText(QStringLiteral("E10010"));
+    w1.Hardware()->AddressField(HardwareWindow::kSwitches)->setText(QStringLiteral("E10012"));
+    w1.Hardware()->AddressField(HardwareWindow::kButtons)->setText(QStringLiteral("E10014"));
+    w1.Hardware()->show();
+    QFont src(QStringLiteral("Monospace"), 12);
+    src.setItalic(true);
+    w1.SetSourceFont(src);
+    QFont out(QStringLiteral("Monospace"), 11);
+    out.setBold(true);
+    w1.SetOutputFont(out);
+    QFont prn(QStringLiteral("Serif"), 15);
+    w1.SetPrinterFont(prn);
+    w1.SetAutoTraceInterval(350);
+    w1.SetAutoTraceDisableDisplay(true);
+    w1.close();
+  }
+
+  MainWindow w2(settings_file);
+  EXPECT_EQ(w2.Session().Log().GetSettings().exec_type, SimLog::kExecRegisters);
+  EXPECT_EQ(w2.Session().Log().GetSettings().output_type, SimLog::kOutputText);
+  EXPECT_TRUE(w2.LogStartAction()->isEnabled());
+  EXPECT_TRUE(w2.Session().ExceptionsEnabled());
+  EXPECT_TRUE(w2.ExceptionsAction()->isChecked());
+  EXPECT_TRUE(w2.Session().BitFieldEnabled());
+  EXPECT_TRUE(w2.BitFieldAction()->isChecked());
+  EXPECT_EQ(w2.x(), 140);
+  EXPECT_EQ(w2.y(), 120);
+  EXPECT_EQ(w2.width(), 680);
+  EXPECT_EQ(w2.height(), 560);
+  EXPECT_EQ(w2.Io()->x(), 210);
+  EXPECT_EQ(w2.Io()->y(), 260);
+  EXPECT_TRUE(w2.Io()->isVisible());
+  EXPECT_EQ(w2.Io()->FullScreenMonitor(), 2);
+  EXPECT_EQ(w2.MemoryView()->x(), 290);
+  EXPECT_EQ(w2.MemoryView()->y(), 90);
+  EXPECT_EQ(w2.MemoryView()->TopAddress(), 0x002000u);
+  EXPECT_EQ(w2.MemoryView()->AddressField()->text(), QStringLiteral("002000"));
+  EXPECT_TRUE(w2.MemoryView()->isVisible());
+  EXPECT_EQ(w2.Stack()->x(), 50);
+  EXPECT_EQ(w2.Stack()->y(), 180);
+  EXPECT_EQ(w2.Stack()->height(), 440);
+  EXPECT_EQ(w2.Stack()->Selector()->currentIndex(), 3);
+  EXPECT_TRUE(w2.Stack()->isVisible());
+  EXPECT_EQ(w2.Hardware()->x(), 250);
+  EXPECT_EQ(w2.Hardware()->y(), 110);
+  EXPECT_EQ(w2.Hardware()->Address(HardwareWindow::kSeg7), 0xE10000u);
+  EXPECT_EQ(w2.Hardware()->Address(HardwareWindow::kLeds), 0xE10010u);
+  EXPECT_EQ(w2.Hardware()->Address(HardwareWindow::kSwitches), 0xE10012u);
+  EXPECT_EQ(w2.Hardware()->Address(HardwareWindow::kButtons), 0xE10014u);
+  EXPECT_TRUE(w2.Hardware()->isVisible());
+  EXPECT_EQ(w2.SourceFont().pointSize(), 12);
+  EXPECT_TRUE(w2.SourceFont().italic());
+  EXPECT_EQ(w2.OutputFont().pointSize(), 11);
+  EXPECT_TRUE(w2.OutputFont().bold());
+  EXPECT_EQ(w2.PrinterFont().pointSize(), 15);
+  EXPECT_EQ(w2.AutoTraceInterval(), 350);
+  EXPECT_TRUE(w2.AutoTraceDisableDisplay());
+  w2.close();
+
+  // Off-screen coordinates fall back to def.h defaults.
+  QSettings bad(settings_file, QSettings::IniFormat);
+  bad.setValue(QStringLiteral("main_left"), -32000);
+  bad.setValue(QStringLiteral("main_top"), 99999);
+  bad.setValue(QStringLiteral("simio_left"), 99999);
+  bad.setValue(QStringLiteral("simio_top"), -10);
+  bad.sync();
+  MainWindow w3(settings_file);
+  EXPECT_EQ(w3.x(), 100);
+  EXPECT_EQ(w3.y(), 100);
+  EXPECT_EQ(w3.Io()->x(), 200);
+  EXPECT_EQ(w3.Io()->y(), 300);
+  w3.close();
+}
+
+TEST_F(MainWindowTest, Task32Subtask5SavesExceptionsSetting) {
+  const QString settings_file = dir_.filePath(QStringLiteral("task32.ini"));
+  const std::string prog =
+      "        ORG     $1000\n"
+      "START   MOVEQ   #5,D1\n"
+      "        MOVEQ   #32,D0\n"
+      "        TRAP    #15\n"
+      "        SIMHALT\n"
+      "        END     START\n";
+  MainWindow w(settings_file);
+  EXPECT_FALSE(w.Session().ExceptionsEnabled());
+  ASSERT_TRUE(w.OpenFile(Assemble("t32", prog)));
+  w.RunAction()->trigger();
+  ASSERT_TRUE(Until([&] { return w.Session().State() == SimSession::RunState::kHalted; }));
+  EXPECT_TRUE(w.Session().ExceptionsEnabled());
+  QSettings saved(settings_file, QSettings::IniFormat);
+  EXPECT_TRUE(saved.value(QStringLiteral("exceptions")).toBool());
 }
 
 }  // namespace

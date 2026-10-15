@@ -122,6 +122,11 @@ void SimIoScreen::SetBaseFont(const QFont& font, uint32_t color) {
   }
 }
 
+QFont SimIoScreen::BaseFont() const {
+  std::lock_guard<std::mutex> lock(mu_);
+  return base_font_;
+}
+
 void SimIoScreen::SetTextWrap(bool wrap) {
   std::lock_guard<std::mutex> lock(mu_);
   text_wrap_ = wrap;
