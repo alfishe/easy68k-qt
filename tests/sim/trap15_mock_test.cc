@@ -250,7 +250,8 @@ TEST_F(Trap15Test, Task3_DisplayNumber_CallsTextOut) {
 }
 
 TEST_F(Trap15Test, Task4_InputNumber_WritesD1L) {
-  EXPECT_CALL(text_io_, TextIn(_, _, _)).WillOnce(SetArgPointee<2>(99L));
+  EXPECT_CALL(text_io_, TextIn(_, _, _))
+      .WillOnce(DoAll(SetArgPointee<1>(2L), SetArgPointee<2>(99L)));
   RunTask(kTrap15InputNumber);
   EXPECT_EQ(sim_->State().d[1], 99u);
 }
@@ -393,7 +394,8 @@ TEST_F(Trap15Test, Task17_DisplayNullStringNumber) {
 TEST_F(Trap15Test, Task18_DisplayNullStringInputNumber) {
   SetStringA1("enter: ");
   EXPECT_CALL(text_io_, TextOut(_)).Times(1);
-  EXPECT_CALL(text_io_, TextIn(_, _, _)).WillOnce(SetArgPointee<2>(7L));
+  EXPECT_CALL(text_io_, TextIn(_, _, _))
+      .WillOnce(DoAll(SetArgPointee<1>(1L), SetArgPointee<2>(7L)));
   RunTask(kTrap15DisplayNullStringInputNumber);
   EXPECT_EQ(sim_->State().d[1], 7u);
 }

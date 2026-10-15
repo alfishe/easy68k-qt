@@ -130,9 +130,18 @@ SimResult M68kSimulator::DispatchTrap15() {
     case kTrap15InputString: {  // 2: read string into (A1), length in D1.W
       if (!config_.text_io)
         break;
-      char* dst = reinterpret_cast<char*>(raw + (state_.a[1] & kAddressMask));
-      long size = static_cast<long>(state_.d[1]);
-      config_.text_io->TextIn(dst, &size, nullptr);
+      // The string (at most 79 keys + terminator) is read into a local buffer
+      // and copied to (A1) byte by byte with the address wrapped to 24 bits,
+      // so input at the top of memory cannot run past it. A cancelled input
+      // (stop/reset while waiting) leaves D1 and memory unchanged.
+      long size = -1;
+      std::memset(buf, 0, sizeof(buf));
+      config_.text_io->TextIn(buf, &size, nullptr);
+      if (size < 0)
+        break;
+      const auto len = static_cast<uint32_t>(std::min<long>(size, sizeof(buf) - 1));
+      for (uint32_t i = 0; i <= len; i++)
+        raw[(state_.a[1] + i) & kAddressMask] = static_cast<uint8_t>(i < len ? buf[i] : '\0');
       state_.d[1] = static_cast<uint32_t>(size);
       break;
     }
@@ -149,16 +158,17 @@ SimResult M68kSimulator::DispatchTrap15() {
       if (!config_.text_io)
         break;
       long result = 0;
-      long size = 0;
+      long size = -1;  // stays -1 when the input is cancelled: D1 unchanged
       config_.text_io->TextIn(buf, &size, &result);
-      state_.d[1] = static_cast<uint32_t>(result);
+      if (size >= 0)
+        state_.d[1] = static_cast<uint32_t>(result);
       break;
     }
 
     case kTrap15InputChar: {  // 5: read single char into D1.B
       if (!config_.text_io)
         break;
-      char ch = 0;
+      char ch = static_cast<char>(state_.d[1]);  // unchanged if cancelled
       config_.text_io->CharIn(&ch);
       state_.d[1] = (state_.d[1] & 0xFFFFFF00u) | static_cast<uint8_t>(ch);
       break;
@@ -276,9 +286,10 @@ SimResult M68kSimulator::DispatchTrap15() {
       ReadStrFromMem(raw, state_.a[1], buf, sizeof(buf));
       EmitText(buf, false);
       long result = 0;
-      long size = 0;
+      long size = -1;
       config_.text_io->TextIn(buf, &size, &result);
-      state_.d[1] = static_cast<uint32_t>(result);
+      if (size >= 0)
+        state_.d[1] = static_cast<uint32_t>(result);
       break;
     }
 

@@ -16,7 +16,12 @@ class ITextIO {
   virtual ~ITextIO() = default;
   virtual void TextOut(std::string_view text) = 0;
   virtual void TextOutCRLF(std::string_view text) = 0;
+  // Reads a line (at most 79 characters) into `buf` (at least 80 bytes, NUL
+  // terminated) and sets *size to its length; for numeric input (`result`
+  // not null) also sets *result to its value. *size, *result and `buf` are
+  // left unchanged when the input is cancelled (simulator stopped or reset).
   virtual void TextIn(char* buf, long* size, long* result) = 0;
+  // Reads one key into *ch; *ch is left unchanged when cancelled.
   virtual void CharIn(char* ch) = 0;
   virtual void CharOut(char ch) = 0;
   virtual void SetCursorPosition(int col, int row) = 0;

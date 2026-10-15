@@ -28,7 +28,7 @@ hash and the program output.
 
 ## Status snapshot
 
-*Updated after every committed iteration (last: 2026-10-15, commit `db52bf6`).*
+*Updated after every committed iteration (last: 2026-10-15, commit `(X)`).*
 
 | Area | Rows | Done | Partial | Gap | Notes |
 |------|------|------|---------|-----|-------|
@@ -42,7 +42,8 @@ hash and the program output.
 
 | Measure | Value |
 |---------|-------|
-| Plan tasks (PROGRESS.md) | 76 done, 36 open (13.1 next) |
+| Plan tasks (PROGRESS.md) | 76 done, 36 open (13.1 in progress: 13.1a done) |
+| Qt back end tests (`easym68k-gui-tests`, offscreen) | 43 pass (ASan+UBSan clean) |
 | clang-tidy (`tools/clang-tidy.sh`, core libraries) | 0 findings (22 files + public headers) |
 | Simulator unit tests | 796 pass, incl. 28 golden simulation traces (ASan+UBSan clean) |
 | Assembler tests | 406 pass (incl. 132 instruction-matrix suites, 21 golden, 33 corpus cases); ASan+UBSan clean |
@@ -67,7 +68,7 @@ hash and the program output.
 | ✓ | **11.2** Interrupt tests | Done (`interrupt_test.cc`; tracers take `-i STEP:LEVEL`) | S4 | — |
 | 4 | **0.5 / 12.1** CI (later) | CI pipeline on Linux, macOS, Windows | acceptance item 3 | CI green |
 | ✓ | **12.3** clang-tidy | Done (`ci/clang-tidy.cfg`, `tools/clang-tidy.sh`; 0 findings) | — | — |
-| 6 | **13.1** Trap #15 Qt back ends | Text console, graphics, sound, serial, network, printing, file dialog | S9 | Manual checklist + unit tests where headless |
+| 6 | **13.1** Trap #15 Qt back ends | 13.1a ✓ I/O window text/graphics/keyboard (`SimIoScreen`, `QtTextIO`, `QtGraphicsIO`); 13.1b peripheral, environment, file dialog, printing; 13.1c sound, serial, network | S9 | unit tests (headless) + manual checklist |
 | 7 | **13.2-13.18, 13.22-13.24** Sim68K-Qt | Main window, registers, source view, stack/memory viewers, hardware window, I/O console, graphics, log, settings, advanced breakpoints, find, auto trace | 3. Sim68K GUI (21 rows) | 13.21 manual checklist |
 | 8 | **13.19** Edit68K-Qt | Editor, assembler options (A7 auto-save, A8 template), find/replace, syntax colouring, MDI | 4. Edit68K GUI (14 rows), A7, A8 | 13.21 checklist; assembler output already oracle-verified |
 | 9 | **13.20** EASyBIN-Qt | Binary utility | 5. EASyBIN (4 rows) | checklist + file round-trip tests |
@@ -89,7 +90,7 @@ hash and the program output.
 | S6 | SIMHALT on/off (`*[sim68k]simhalt_off`) | SIM68Ku.cpp | Done | 9.3 |
 | S7 | Enable Exceptions toggle (Options menu, task 32/5) | SIM68Ku.cpp, hardwareu.cpp | Done | 9.3 (core-owned flag, see note A) |
 | S8 | **68020 bit-field instructions** BFTST/BFEXTU/BFCHG/BFEXTS/BFCLR/BFFFO/BFSET/BFINS (Options → Enable Bit Field Instructions, `*[sim68k]bitfield`) | CODE7.CPP BIT_FIELD() | **Done** (core; menu/listing command in 13.2/13.4) | **NEW 9.8** ✓ |
-| S9 | Trap #15 tasks 0-25, 30-33, 40-43, 50-62, 70-77, 80-96, 100-107 | CODE9.CPP TRAP() | Done (dispatch + interfaces; GUI back ends in 13.1); text/number tasks and file tasks 50-57/59 (headless `StdFileIO`) verified against the oracle (golden `trap15_text`, `trap15_file`) | 7.x, 10.1, 10.4 ✓ |
+| S9 | Trap #15 tasks 0-25, 30-33, 40-43, 50-62, 70-77, 80-96, 100-107 | CODE9.CPP TRAP() | Done (dispatch + interfaces; GUI back ends in 13.1); text/number tasks and file tasks 50-57/59 (headless `StdFileIO`) verified against the oracle (golden `trap15_text`, `trap15_file`); Qt text/graphics/keyboard back ends done (13.1a) | 7.x, 10.1, 10.4 ✓, 13.1 |
 | S10 | Memory map: ROM (writes ignored) / Read (bus error on write) / Protected (bus error unless supervisor) / Invalid (bus error on access); hardware I/O addresses always accessible | UTILS.CPP memoryMapCheck(), hardwareu.cpp | **Done** (core); Trap #15 buffer checks done for file tasks (10.4), text tasks pending | **9.7** + 10.4 + 13.15 |
 | S11 | Execution logging (instruction / +registers / +memory range) | RUN.CPP, logU.cpp | Done (core hooks) | 9.4 |
 | S12 | Output (Trap #15 text) logging | logU.cpp OlogFile | Done (core hooks) | 9.4 |
@@ -257,6 +258,7 @@ Each committed iteration updates the snapshot above and adds a line here.
 | 2026-10-15 | `bf30067` | Clang -O2 / MSVC portability fixes (warnings, test portability) | — |
 | 2026-10-15 | `c736ec5` | 12.2 coverage tooling + gate; operands/forms corpus | coverage targets met; A1b/A3 coverage widened |
 | 2026-10-15 | `db52bf6` | 12.3 clang-tidy profile and script; 70 findings fixed | — |
+| 2026-10-15 | `(X)` | 13.1a I/O window back ends: SimIoScreen, QtTextIO, QtGraphicsIO, key map; headless Qt tests | S9 text/graphics back ends |
 
 ## 10. Parity acceptance
 
