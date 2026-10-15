@@ -23,6 +23,7 @@ struct TraceOptions {
   long max_steps = 100000;
   bool trace_steps = false;                          // one line per instruction
   std::vector<std::pair<uint32_t, uint32_t>> dumps;  // memory dumps (addr, len)
+  std::vector<std::pair<long, int>> irqs;            // raise IRQ (step, level) before that step
   std::string file_dir;  // Trap #15 file tasks: relative names resolve here ("" = cwd)
 };
 

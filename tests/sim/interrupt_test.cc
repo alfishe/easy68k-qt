@@ -297,5 +297,48 @@ TEST_F(InterruptTest, ClearPendingIrqs) {
   EXPECT_EQ(sim_.GetPendingIrqs(), 0u);
 }
 
+// 16. Interrupt and trace after the same instruction (68000 order, Task
+// 11.2): the trace exception is processed with the instruction, the pending
+// interrupt is taken before the next instruction, so its frame is stacked
+// last and its handler runs first, returning into the trace handler. (The
+// original services the interrupt before the trace exception, reversing the
+// handlers; see PROGRESS.md 11.2.)
+TEST_F(InterruptTest, TraceThenInterruptOrder) {
+  ResetWithVectors(0x3FFE, 0x1000);
+  sim_.GetMemory().WriteWord(0x1000, 0x4E71);        // NOP
+  sim_.GetMemory().WriteLong(9 * 4, 0x2000);         // trace vector
+  sim_.GetMemory().WriteLong((24 + 4) * 4, 0x2400);  // IRQ 4
+  sim_.State().sr = kSrSupervisor | kSrTrace;        // mask 0, trace on
+  sim_.Interrupt(4);
+  // A pending IRQ is taken at the instruction boundary before the NOP.
+  EXPECT_EQ(sim_.Step(), SimResult::kOk);
+  EXPECT_EQ(sim_.State().pc, 0x2400u);
+  // With the IRQ raised after the traced instruction instead:
+  ResetWithVectors(0x3FFE, 0x1000);
+  sim_.GetMemory().WriteWord(0x1000, 0x4E71);
+  sim_.GetMemory().WriteLong(9 * 4, 0x2000);
+  sim_.GetMemory().WriteLong((24 + 4) * 4, 0x2400);
+  sim_.State().sr = kSrSupervisor | kSrTrace;
+  EXPECT_EQ(sim_.Step(), SimResult::kTraceException);  // NOP, then trace
+  EXPECT_EQ(sim_.State().pc, 0x2000u);
+  sim_.Interrupt(4);
+  sim_.Step();  // IRQ before the trace handler's first instruction
+  EXPECT_EQ(sim_.State().pc, 0x2400u);
+  EXPECT_EQ(sim_.GetMemory().ReadLong(sim_.State().ssp + 2).value, 0x2000u);
+}
+
+// 17. Interrupts are not serviced while exception processing is disabled
+// (RUN.CPP: only in the "exceptions enabled" branch).
+TEST_F(InterruptTest, NoInterruptsWithExceptionsDisabled) {
+  ResetWithVectors(0x3FFE, 0x1000);
+  sim_.GetMemory().WriteWord(0x1000, 0x4E71);
+  sim_.GetMemory().WriteLong((24 + 7) * 4, 0x2700);
+  sim_.SetExceptionsEnabled(false);
+  sim_.Interrupt(7);
+  sim_.Step();
+  EXPECT_EQ(sim_.State().pc, 0x1002u);
+  sim_.SetExceptionsEnabled(true);
+}
+
 }  // namespace
 }  // namespace easym68k::sim

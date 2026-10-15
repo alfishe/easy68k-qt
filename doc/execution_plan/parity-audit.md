@@ -28,7 +28,7 @@ hash and the program output.
 
 ## Status snapshot
 
-*Updated after every committed iteration (last: 2026-10-15, commit `648bd51`).*
+*Updated after every committed iteration (last: 2026-10-15, commit `(X)`).*
 
 | Area | Rows | Done | Partial | Gap | Notes |
 |------|------|------|---------|-----|-------|
@@ -42,8 +42,8 @@ hash and the program output.
 
 | Measure | Value |
 |---------|-------|
-| Plan tasks (PROGRESS.md) | 72 done, 40 open (11.2 next) |
-| Simulator unit tests | 794 pass, incl. 28 golden simulation traces (ASan+UBSan clean) |
+| Plan tasks (PROGRESS.md) | 73 done, 39 open (0.6 / 12.1 next) |
+| Simulator unit tests | 796 pass, incl. 28 golden simulation traces (ASan+UBSan clean) |
 | Assembler tests | 400 pass (incl. 132 instruction-matrix suites, 21 golden, 27 corpus cases); ASan+UBSan clean |
 | Integration tests (asm + sim) | 10 pass |
 | Instruction matrix vs oracle | 98,583 / 98,583 cases match (bytes + diagnostic class) |
@@ -62,7 +62,7 @@ hash and the program output.
 |---|------|-------|-------------|--------------|
 | ✓ | **10.4** Trap #15 file tasks vs oracle | Done (`StdFileIO`, golden `trap15_file`) | S9 | — |
 | ✓ | **11.1** Exception tests | Done (`exception_test.cc`, golden `exceptions`) | S2, S3 | — |
-| 3 | **11.2** Interrupt tests | Autovector IRQ 1-7, NMI, masking, STOP wake, Hardware window auto-IRQ semantics; the oracle has no interrupt source, so compare against hardwareu.cpp/RUN.CPP irqHandler() by review + unit tests | S4 | Unit tests |
+| ✓ | **11.2** Interrupt tests | Done (`interrupt_test.cc`; tracers take `-i STEP:LEVEL`) | S4 | — |
 | 4 | **0.6 / 12.1** Golden infrastructure + CI | Mark 0.6 done (golden asm/sim data, oracle regeneration scripts exist); CI on Linux/macOS/Windows running the three suites (oracle tools optional, Linux only: `-m32`) | acceptance item 3 | CI green |
 | 5 | **12.2 / 12.3** Coverage, clang-tidy | Coverage report for src/sim and src/asm; clang-tidy profile (src/asm/core and tools/reference excluded: original layout) | — | coverage gate, zero clang-tidy findings |
 | 6 | **13.1** Trap #15 Qt back ends | Text console, graphics, sound, serial, network, printing, file dialog | S9 | Manual checklist + unit tests where headless |
@@ -82,7 +82,7 @@ hash and the program output.
 | S1 | All 68000 instructions, addressing modes, N/Z/V/C/X | RUN.CPP, CODE1-9.CPP | Done — verified against the oracle (instruction corpus + opcode sweep); fixed LEA A4-A7 / CHK D4-D7 decode, illegal-encoding detection, NEGX C/X, CHK N, ABCD/SBCD/NBCD; 32-bit PC as in the original (10.5); deviations: undefined flags, original bugs (see deviations.tsv) | 3-6, 10.0, 10.2, 10.3, 10.5 |
 | S2 | Exceptions: illegal, privilege, div0, CHK, TRAPV, TRAP #n, trace, Line A/F (stacked PC per RUN.CPP: next instruction, except illegal and — fixed — privilege) | RUN.CPP | Done — corpus, golden `exceptions`, `exception_test.cc` | 4.2, 6.5, 9.7, 10.2, 11.1 ✓ |
 | S3 | Address/bus error (class 0 frame, 50 cycles) | RUN.CPP exceptionHandler | Done — frames verified by the corpus; CLR/Scc/MOVE SR fault as reads; deviation: registers/cycles restored to the instruction start (original keeps (An)+/-(An) and EA cycles) | 9.7, 10.2 |
-| S4 | Interrupts: autovector IRQ 1-7, NMI, STOP wake | RUN.CPP irqHandler, hardwareu.cpp | Done | 9.1 |
+| S4 | Interrupts: autovector IRQ 1-7, NMI, STOP wake | RUN.CPP irqHandler, hardwareu.cpp | Done (68000 order: interrupt taken at the instruction boundary after trace/group 2 exceptions; differs from the original's order, see 11.2) | 9.1, 11.2 ✓ |
 | S5 | Cycle counting, Trap #15 tasks 30/31 | inc_cyc(), CODE9.CPP | Done | 9.2 |
 | S6 | SIMHALT on/off (`*[sim68k]simhalt_off`) | SIM68Ku.cpp | Done | 9.3 |
 | S7 | Enable Exceptions toggle (Options menu, task 32/5) | SIM68Ku.cpp, hardwareu.cpp | Done | 9.3 (core-owned flag, see note A) |
@@ -250,6 +250,7 @@ Each committed iteration updates the snapshot above and adds a line here.
 | 2026-10-14 | `d93516f` | 10.5 32-bit program counter (user decision) | 24-bit PC deviation removed; 26 golden traces |
 | 2026-10-15 | `e44106a` | 10.4 Trap #15 file tasks: StdFileIO back end, original buffer/map checks | S9 file tasks verified; S10 Trap #15 buffer checks for file tasks |
 | 2026-10-15 | `648bd51` | 11.1 exception tests; privilege frame PC fix; corpus hash check fixed | S2 verified (golden `exceptions`) |
+| 2026-10-15 | `(X)` | 11.2 interrupt tests; IRQ injection in both tracers | S4 order documented |
 
 ## 10. Parity acceptance
 

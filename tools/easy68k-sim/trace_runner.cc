@@ -148,6 +148,9 @@ bool RunTrace(const std::string& s68_path, const TraceOptions& options, FILE* tr
   long steps = 0;
   const char* reason = "LIMIT";
   while (steps < options.max_steps) {
+    for (const auto& q : options.irqs)
+      if (q.first == steps + 1)
+        sim.Interrupt(q.second);
     sim.Step();
     steps++;
     if (options.trace_steps)

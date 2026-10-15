@@ -12,6 +12,7 @@
 //   -t   write one register line per executed instruction
 //   -o   trace file (default stderr)
 //   -m   dump LEN bytes of memory at ADDR (hex) after the run
+//   -i   raise interrupt LEVEL before instruction STEP (1-based): -i STEP:LEVEL
 //
 // Mirrors TForm1::OpenFile (initSim, erase memory to $FF, clear the toggle
 // switch byte, loadSrec) followed by TForm1::runLoop (runprog until halted).
@@ -61,7 +62,7 @@ void DumpMemory(unsigned addr, unsigned len) {
 int Usage() {
   std::fprintf(stderr,
                "usage: easy68k-ref-sim [-e] [-b] [-n MAX] [-t] [-o TRACE] [-m ADDR:LEN]... "
-               "FILE.S68\n");
+               "[-i STEP:LEVEL]... FILE.S68\n");
   return 2;
 }
 
@@ -72,6 +73,7 @@ int main(int argc, char** argv) {
   long max_steps = 100000;
   const char* file = nullptr;
   std::vector<std::pair<unsigned, unsigned>> dumps;
+  std::vector<std::pair<long, int>> irqs;  // (step, level)
   for (int i = 1; i < argc; i++) {
     std::string a = argv[i];
     if (a == "-e") {
@@ -88,6 +90,12 @@ int main(int argc, char** argv) {
         std::perror(argv[i]);
         return 2;
       }
+    } else if (a == "-i" && i + 1 < argc) {
+      long step = 0;
+      int level = 0;
+      if (std::sscanf(argv[++i], "%ld:%d", &step, &level) != 2 || level < 1 || level > 7)
+        return Usage();
+      irqs.emplace_back(step, level);
     } else if (a == "-m" && i + 1 < argc) {
       unsigned addr = 0, len = 0;
       if (std::sscanf(argv[++i], "%x:%x", &addr, &len) != 2)
@@ -146,6 +154,9 @@ int main(int argc, char** argv) {
   long steps = 0;
   const char* reason = "LIMIT";
   while (steps < max_steps) {
+    for (const auto& q : irqs)
+      if (q.first == steps + 1)
+        irq |= 1 << (q.second - 1);  // hardwareu.cpp: request IRQ level
     runprog();
     steps++;
     if (opt_trace)

@@ -239,7 +239,7 @@ Decision: Parity policy (user instruction, 2026-10-14): do NOT reproduce bugs of
 | Task | Status | Commit | Summary |
 |------|--------|--------|---------|
 | 11.1 Exception Tests | DONE | `648bd51` | `tests/sim/exception_test.cc`: the plan's 13 cases (bus error via Invalid map, address error frame, privilege violation, illegal, divide by zero, CHK both ways, TRAPV, trace, Line A/F, frame order, RTE, double fault) + exceptions-disabled halt; golden trace `exceptions` (oracle-generated: address errors, illegal, div0, TRAPV, trace, Line A/F, TRAP + RTE). Fixed: privilege violations stack the instruction address (the original stacked the PC after the first word, so RTE resumed inside the instruction). Found and fixed in `compare_sim_corpus.sh`: the memory-hash check accepted every difference (while-loop exit status); with the check working the corpus and sweep still have no unexplained differences (the generator now restores the stack window before SIMHALT). 794 sim tests |
-| 11.2 Interrupt Tests | TODO | | |
+| 11.2 Interrupt Tests | DONE | pending | The plan's 5 cases were already covered by `interrupt_test.cc` (9.1: masked/unmasked IRQ, autovector, trace cleared, STOP wake); added the trace-then-interrupt order and "no interrupts with exceptions disabled". Both tracers take `-i STEP:LEVEL` (the oracle sets `irq` as hardwareu.cpp does) to compare interrupt behaviour with the original; 796 sim tests |
 
 ## Phase 12: CI and Code Quality
 
@@ -318,4 +318,6 @@ Decision: Golden simulation traces store a digest of the trace (FNV-1a 64 of eve
 Decision: (10.5, user decision 2026-10-14) The PC is 32-bit as in the original and the 68000; JMP/JSR keep the original's masked target. Breakpoint/Run To/Step Over comparisons use the 24-bit address, fixing the original's full 32-bit compare.
 Decision: (10.4) The remaining Trap #15 tasks are GUI/device back ends (graphics, sound, serial, network, printing, mouse/keyboard state, window, time); their dispatch is unit-tested with mocks (Phase 7) and they are verified with the Qt back ends (13.1). The oracle's headless stubs cannot exercise them meaningfully.
 Decision: (11.1) Privilege violation frames hold the address of the privileged instruction (68000 PRM); the original's OLD_PC = PC is after the opcode word. CHK and MOVE-destination write faults stay out of the `exceptions` golden trace because of the documented deviations (undefined CHK flags; the original reads a MOVE destination first).
-**NEXT:** 11.2 — interrupt tests
+Decision: (11.2) Interrupt timing follows the 68000, not the original: a pending interrupt is taken at the instruction boundary before the next instruction, after the previous instruction's group 2 and trace exceptions, so its frame is stacked last and its handler runs first. The original (RUN.CPP exec_inst()) executes one more instruction and services the interrupt before that instruction's trace and TRAP/CHK/TRAPV/divide exceptions, so their handlers run in the reverse order. Compared with the oracle (`-i`), the port also shows the interrupt entry as its own Step.
+Decision: `M68kSimulator::Config::exceptions_enabled` defaults to true for the library; the Sim68K GUI must start with exceptions off unless the saved settings say otherwise (SIM68Ku.cpp defaultSettings()), tracked for 13.18.
+**NEXT:** 0.6 / 12.1 — golden infrastructure task bookkeeping and CI
