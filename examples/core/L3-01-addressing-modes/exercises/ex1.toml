@@ -1,0 +1,10 @@
+id = "L3-01-EX1"
+title = "Indexed longword load"
+track = "core"
+level = 3
+difficulty = 2
+source = "ex1.x68"
+
+[expect]
+halted = true
+registers = { D0 = 300 }

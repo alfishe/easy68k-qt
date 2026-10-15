@@ -1,0 +1,16 @@
+# L3-04 — Sorting in Memory: Insertion Sort on Word Arrays
+id = "L3-04"
+title = "Sorting in Memory: Insertion Sort on Word Arrays"
+track = "core"
+level = 3
+difficulty = 3
+requires = ["L3-02"]
+source = "main.x68"
+
+[expect]
+halted = true
+registers = { D0 = 4 }
+
+[[expect.memory]]
+address = 0x2000
+bytes = "00 04 00 08 00 0F 00 17 00 2A 00 63"

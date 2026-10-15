@@ -1,0 +1,13 @@
+# L3-07 — Custom Stacks and Power-of-2 Ring Buffer Queues
+id = "L3-07"
+title = "Custom Stacks and Power-of-2 Ring Buffer Queues"
+track = "core"
+level = 3
+difficulty = 3
+requires = ["L3-02"]
+source = "main.x68"
+
+[expect]
+halted = true
+registers = { D0 = 30, D1 = 10, D2 = 1, D3 = 3 }
+max_cycles = 250

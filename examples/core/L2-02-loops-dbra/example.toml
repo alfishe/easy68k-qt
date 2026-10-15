@@ -1,0 +1,13 @@
+# L2-02 — Counted Loops with DBRA / DBF and DBcc
+id = "L2-02"
+title = "Counted Loops with DBRA / DBF and DBcc"
+track = "core"
+level = 2
+difficulty = 2
+requires = ["L2-01"]
+source = "main.x68"
+
+[expect]
+halted = true
+registers = { D0 = 55, D1 = 0x0000FFFF, D2 = 11 }
+max_cycles = 300

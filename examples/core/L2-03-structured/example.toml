@@ -1,0 +1,13 @@
+# L2-03 — EASy68K Structured Control Flow: IF, WHILE, REPEAT, FOR, DBLOOP
+id = "L2-03"
+title = "EASy68K Structured Control Flow: IF, WHILE, REPEAT, FOR, DBLOOP"
+track = "core"
+level = 2
+difficulty = 2
+requires = ["L2-02"]
+source = "main.x68"
+
+[expect]
+halted = true
+registers = { D0 = 21, D2 = 1, D3 = 0 }
+max_cycles = 500

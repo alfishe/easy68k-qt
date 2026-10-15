@@ -1,0 +1,10 @@
+id = "L2-02-EX1"
+title = "Compute 2^8 with DBRA"
+track = "core"
+level = 2
+difficulty = 2
+source = "ex1.x68"
+
+[expect]
+halted = true
+registers = { D0 = 256 }

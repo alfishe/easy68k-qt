@@ -1,0 +1,10 @@
+id = "L3-07-EX1"
+title = "LIFO push and pop order"
+track = "core"
+level = 3
+difficulty = 2
+source = "ex1.x68"
+
+[expect]
+halted = true
+registers = { D0 = 200, D1 = 100, A2 = 0x2100 }

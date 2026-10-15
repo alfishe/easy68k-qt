@@ -1,0 +1,13 @@
+# L3-06 — Linked Lists and Pointer Chasing
+id = "L3-06"
+title = "Linked Lists and Pointer Chasing"
+track = "core"
+level = 3
+difficulty = 3
+requires = ["L3-01"]
+source = "main.x68"
+
+[expect]
+halted = true
+registers = { D0 = 60, D1 = 3 }
+max_cycles = 300

@@ -1,0 +1,13 @@
+# L2-08 — Jump Tables and Switch Dispatch
+id = "L2-08"
+title = "Jump Tables and Switch Dispatch"
+track = "core"
+level = 2
+difficulty = 2
+requires = ["L2-04"]
+source = "main.x68"
+
+[expect]
+halted = true
+registers = { D1 = 42 }
+max_cycles = 200

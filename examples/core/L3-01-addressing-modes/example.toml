@@ -1,0 +1,13 @@
+# L3-01 — All 68000 Addressing Modes Side by Side
+id = "L3-01"
+title = "All 68000 Addressing Modes Side by Side"
+track = "core"
+level = 3
+difficulty = 2
+requires = ["L2-08"]
+source = "main.x68"
+
+[expect]
+halted = true
+registers = { D0 = 140 }
+max_cycles = 200

@@ -1,0 +1,10 @@
+id = "L3-06-EX1"
+title = "Delete middle node in linked list"
+track = "core"
+level = 3
+difficulty = 3
+source = "ex1.x68"
+
+[expect]
+halted = true
+registers = { D0 = 40 }

@@ -23,24 +23,24 @@ Delivery: E2 (Levels 0–1), E3 (Levels 2–3).
 | L1-07 | shifts-rotates | ASL/ASR/LSL/LSR/ROL/ROR/ROXL/ROXR; multiply/divide by 2^n | done |
 | L1-08 | bcd | ABCD/SBCD/NBCD, decimal display | done |
 | L1-09 | number-io | Trap #15 tasks 3/4/15/17/20; radix conversion by hand vs task 15 | done |
-| L2-01 | compare-branch | CMP/TST and all 14 Bcc conditions; signed vs unsigned branches | planned |
-| L2-02 | loops-dbra | DBRA/DBcc, loop counters, off-by-one traps | planned |
-| L2-03 | structured | EASy68K IF/ELSE/ENDI, WHILE, REPEAT, FOR, DBLOOP; inspect the generated code | planned |
-| L2-04 | subroutines | BSR/JSR/RTS, return addresses on the stack | planned |
-| L2-05 | parameters | Registers vs stack parameters; saving registers with MOVEM | planned |
-| L2-06 | stack-frames | LINK/UNLK, locals, frame pointer; Stack window | planned |
-| L2-07 | recursion | Factorial and Fibonacci; stack growth, cost | planned |
-| L2-08 | jump-tables | Computed JMP, d(PC,Xi), switch statements | planned |
-| L3-01 | addressing-modes | All 12 modes side by side with cycle costs | planned |
-| L3-02 | arrays | Indexing with (An)+, d(An,Xi); 2-D arrays | planned |
-| L3-03 | strings | Length, copy, compare, reverse, upper-case; null- vs length-prefixed | planned |
-| L3-04 | sorting | Bubble → insertion → quicksort, with cycle comparison | planned |
-| L3-05 | searching | Linear vs binary search | planned |
-| L3-06 | linked-lists | Nodes, insert/delete, pointer chasing | planned |
-| L3-07 | stack-queue | Ring buffers, -(An)/(An)+ stacks | planned |
-| L3-08 | macros | MACRO/ENDM, parameters, \@, NARG, building a mini-library | planned |
-| L3-09 | conditional-assembly | IFEQ/IFNE…, debug builds, OPT/listing control | planned |
-| L3-10 | multi-file | INCLUDE, INCBIN, SECTION/OFFSET for structs | planned |
-| L3-11 | position-independence | PC-relative code, relocatable routines | planned |
+| L2-01 | compare-branch | CMP/TST and all 14 Bcc conditions; signed vs unsigned branches | done |
+| L2-02 | loops-dbra | DBRA/DBcc, loop counters, off-by-one traps | done |
+| L2-03 | structured | EASy68K IF/ELSE/ENDI, WHILE, REPEAT, FOR, DBLOOP; inspect the generated code | done |
+| L2-04 | subroutines | BSR/JSR/RTS, return addresses on the stack | done |
+| L2-05 | parameters | Registers vs stack parameters; saving registers with MOVEM | done |
+| L2-06 | stack-frames | LINK/UNLK, locals, frame pointer; Stack window | done |
+| L2-07 | recursion | Factorial and Fibonacci; stack growth, cost | done |
+| L2-08 | jump-tables | Computed JMP, d(PC,Xi), switch statements | done |
+| L3-01 | addressing-modes | All 12 modes side by side with cycle costs | done |
+| L3-02 | arrays | Indexing with (An)+, d(An,Xi); 2-D arrays | done |
+| L3-03 | strings | Length, copy, compare, reverse, upper-case; null- vs length-prefixed | done |
+| L3-04 | sorting | Bubble → insertion → quicksort, with cycle comparison | done |
+| L3-05 | searching | Linear vs binary search | done |
+| L3-06 | linked-lists | Nodes, insert/delete, pointer chasing | done |
+| L3-07 | stack-queue | Ring buffers, -(An)/(An)+ stacks | done |
+| L3-08 | macros | MACRO/ENDM, parameters, \@, NARG, building a mini-library | done |
+| L3-09 | conditional-assembly | IFEQ/IFNE…, debug builds, OPT/listing control | done |
+| L3-10 | multi-file | INCLUDE, INCBIN, SECTION/OFFSET for structs | done |
+| L3-11 | position-independence | PC-relative code, relocatable routines | done |
 
 Directory names follow `<ID>-<name>`, e.g. `L2-06-stack-frames`.

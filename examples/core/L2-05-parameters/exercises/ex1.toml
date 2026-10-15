@@ -1,0 +1,10 @@
+id = "L2-05-EX1"
+title = "Preserve D2 across subroutine"
+track = "core"
+level = 2
+difficulty = 2
+source = "ex1.x68"
+
+[expect]
+halted = true
+registers = { D0 = 30, D2 = 0xDEADBEEF }

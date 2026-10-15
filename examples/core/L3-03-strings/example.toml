@@ -1,0 +1,17 @@
+# L3-03 — Strings: Length, Copy, and In-Place Uppercase
+id = "L3-03"
+title = "Strings: Length, Copy, and In-Place Uppercase"
+track = "core"
+level = 3
+difficulty = 2
+requires = ["L3-02"]
+source = "main.x68"
+
+[expect]
+halted = true
+output = "M68K ROCKS!"
+registers = { D0 = 11 }
+
+[[expect.memory]]
+address = 0x2000
+text = "M68K ROCKS!"

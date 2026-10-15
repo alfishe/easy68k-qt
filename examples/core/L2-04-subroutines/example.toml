@@ -1,0 +1,13 @@
+# L2-04 — Subroutines and the Hardware Stack: BSR, JSR, RTS
+id = "L2-04"
+title = "Subroutines and the Hardware Stack: BSR, JSR, RTS"
+track = "core"
+level = 2
+difficulty = 2
+requires = ["L0-06", "L2-02"]
+source = "main.x68"
+
+[expect]
+halted = true
+registers = { D0 = 25, SSP = 0x01000000 }
+max_cycles = 300

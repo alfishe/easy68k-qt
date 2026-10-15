@@ -1,0 +1,10 @@
+id = "L3-05-EX1"
+title = "Linear search index of 26"
+track = "core"
+level = 3
+difficulty = 2
+source = "ex1.x68"
+
+[expect]
+halted = true
+registers = { D0 = 3 }

@@ -1,0 +1,13 @@
+# L3-08 — Assembler Macros: MACRO, ENDM, Parameters, and \@ Labels
+id = "L3-08"
+title = "Assembler Macros: MACRO, ENDM, Parameters, and \\@ Labels"
+track = "core"
+level = 3
+difficulty = 2
+requires = ["L2-04"]
+source = "main.x68"
+
+[expect]
+halted = true
+registers = { D0 = 100, D1 = 0, D2 = 42 }
+max_cycles = 200

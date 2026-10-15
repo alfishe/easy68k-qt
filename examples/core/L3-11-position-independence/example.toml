@@ -1,0 +1,13 @@
+# L3-11 — Position-Independent Code (PIC) with PC-Relative Addressing
+id = "L3-11"
+title = "Position-Independent Code (PIC) with PC-Relative Addressing"
+track = "core"
+level = 3
+difficulty = 3
+requires = ["L3-01"]
+source = "main.x68"
+
+[expect]
+halted = true
+registers = { D0 = 600 }
+max_cycles = 450

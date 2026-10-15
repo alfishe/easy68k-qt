@@ -1,0 +1,13 @@
+# L3-02 — 1-D and 2-D Arrays: Sequential Scan and Row-Major Indexing
+id = "L3-02"
+title = "1-D and 2-D Arrays: Sequential Scan and Row-Major Indexing"
+track = "core"
+level = 3
+difficulty = 2
+requires = ["L3-01"]
+source = "main.x68"
+
+[expect]
+halted = true
+registers = { D0 = 150, D2 = 99 }
+max_cycles = 300

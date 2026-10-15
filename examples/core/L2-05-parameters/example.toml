@@ -1,0 +1,13 @@
+# L2-05 — Passing Parameters and Saving Registers with MOVEM
+id = "L2-05"
+title = "Passing Parameters and Saving Registers with MOVEM"
+track = "core"
+level = 2
+difficulty = 2
+requires = ["L2-04"]
+source = "main.x68"
+
+[expect]
+halted = true
+registers = { D0 = 56, D2 = 0x11111111, D3 = 0x22222222, SSP = 0x01000000 }
+max_cycles = 500

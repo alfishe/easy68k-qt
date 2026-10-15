@@ -1,0 +1,10 @@
+id = "L3-08-EX1"
+title = "SWAP_REG macro with EXG"
+track = "core"
+level = 3
+difficulty = 2
+source = "ex1.x68"
+
+[expect]
+halted = true
+registers = { D0 = 22, D1 = 11 }

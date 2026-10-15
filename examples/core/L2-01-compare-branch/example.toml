@@ -1,0 +1,13 @@
+# L2-01 — Compare and Branch: CMP, TST, and Bcc Conditions
+id = "L2-01"
+title = "Compare and Branch: CMP, TST, and Bcc Conditions"
+track = "core"
+level = 2
+difficulty = 2
+requires = ["L1-03"]
+source = "main.x68"
+
+[expect]
+halted = true
+registers = { D2 = 25, D3 = 0xFFFF0000, D4 = 1 }
+max_cycles = 150

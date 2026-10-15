@@ -1,0 +1,10 @@
+id = "L3-10-EX1"
+title = "OFFSET struct field PT_Z"
+track = "core"
+level = 3
+difficulty = 2
+source = "ex1.x68"
+
+[expect]
+halted = true
+registers = { D0 = 40 }

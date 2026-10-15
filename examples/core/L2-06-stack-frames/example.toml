@@ -1,0 +1,13 @@
+# L2-06 — Stack Frames with LINK and UNLK
+id = "L2-06"
+title = "Stack Frames with LINK and UNLK"
+track = "core"
+level = 2
+difficulty = 2
+requires = ["L2-04", "L2-05"]
+source = "main.x68"
+
+[expect]
+halted = true
+registers = { D0 = 50, A6 = 0xABCD1234, SSP = 0x01000000 }
+max_cycles = 250

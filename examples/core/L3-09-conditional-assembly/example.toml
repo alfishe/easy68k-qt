@@ -1,0 +1,13 @@
+# L3-09 — Conditional Assembly and Listing Control (IFEQ, IFNE, OPT)
+id = "L3-09"
+title = "Conditional Assembly and Listing Control (IFEQ, IFNE, OPT)"
+track = "core"
+level = 3
+difficulty = 2
+requires = ["L3-08"]
+source = "main.x68"
+
+[expect]
+halted = true
+registers = { D0 = 72, D7 = 1 }
+max_cycles = 60

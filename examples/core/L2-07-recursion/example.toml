@@ -1,0 +1,13 @@
+# L2-07 — Recursion: Factorial and Stack Growth
+id = "L2-07"
+title = "Recursion: Factorial and Stack Growth"
+track = "core"
+level = 2
+difficulty = 2
+requires = ["L2-06"]
+source = "main.x68"
+
+[expect]
+halted = true
+registers = { D0 = 120, SSP = 0x01000000 }
+max_cycles = 1000

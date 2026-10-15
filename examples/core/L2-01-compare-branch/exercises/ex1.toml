@@ -1,0 +1,10 @@
+id = "L2-01-EX1"
+title = "Absolute value with TST and BPL"
+track = "core"
+level = 2
+difficulty = 2
+source = "ex1.x68"
+
+[expect]
+halted = true
+registers = { D0 = 42 }

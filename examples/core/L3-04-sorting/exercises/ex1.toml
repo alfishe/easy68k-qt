@@ -1,0 +1,13 @@
+id = "L3-04-EX1"
+title = "Two-element compare and swap"
+track = "core"
+level = 3
+difficulty = 2
+source = "ex1.x68"
+
+[expect]
+halted = true
+
+[[expect.memory]]
+address = 0x2000
+bytes = "00 0A 00 1E"
