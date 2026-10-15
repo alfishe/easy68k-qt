@@ -28,7 +28,7 @@ hash and the program output.
 
 ## Status snapshot
 
-*Updated after every committed iteration (last: 2026-10-15, commit `(X)`).*
+*Updated after every committed iteration (last: 2026-10-15, commit `9328c62`).*
 
 | Area | Rows | Done | Partial | Gap | Notes |
 |------|------|------|---------|-----|-------|
@@ -266,7 +266,7 @@ Each committed iteration updates the snapshot above and adds a line here.
 | 2026-10-15 | `4b1025c` | 13.2a SimSession: program loading, run controls on a worker thread, messages, STOP/IRQ | G3, G4, G5 (model), G6 |
 | 2026-10-15 | `635b61c` | 13.2b Sim68K-Qt main window, I/O window, drag and drop, command line | G1-G6, G8, G11, G14, G18, G20, G22 (new) |
 | 2026-10-15 | `1c0799f` | 13.3 register panel: editing, A7/US/SS, SR bits, Clear Cycles | G1, G2 |
-| 2026-10-15 | `(X)` | 13.4 listing view: heading, breakpoint gutter, PC highlight, double click; breakpoints while running | G5 |
+| 2026-10-15 | `9328c62` | 13.4 listing view: heading, breakpoint gutter, PC highlight, double click; breakpoints while running | G5 |
 
 ## 10. Parity acceptance
 
