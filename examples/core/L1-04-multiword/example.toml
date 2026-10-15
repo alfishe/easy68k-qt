@@ -1,0 +1,13 @@
+# L1-04 — 64-Bit Multiword Arithmetic with ADDX and SUBX
+id = "L1-04"
+title = "64-Bit Multiword Arithmetic with ADDX and SUBX"
+track = "core"
+level = 1
+difficulty = 2
+requires = ["L1-02"]
+source = "main.x68"
+
+[expect]
+halted = true
+registers = { D0 = 4, D1 = 1 }
+max_cycles = 80

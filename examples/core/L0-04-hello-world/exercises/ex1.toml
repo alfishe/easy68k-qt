@@ -1,0 +1,10 @@
+id = "L0-04-EX1"
+title = "Print EASy68K with task 13"
+track = "core"
+level = 0
+difficulty = 1
+source = "ex1.x68"
+
+[expect]
+halted = true
+output = "EASy68K\r\n"

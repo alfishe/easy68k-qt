@@ -1,0 +1,13 @@
+# L1-06 — Bitwise Logic and Bit Manipulation (BTST, BSET, BCLR, BCHG)
+id = "L1-06"
+title = "Bitwise Logic and Bit Manipulation (BTST, BSET, BCLR, BCHG)"
+track = "core"
+level = 1
+difficulty = 1
+requires = ["L1-01"]
+source = "main.x68"
+
+[expect]
+halted = true
+registers = { D0 = 0x30, D1 = 0xFF, D2 = 0x55, D3 = 0x81 }
+max_cycles = 150

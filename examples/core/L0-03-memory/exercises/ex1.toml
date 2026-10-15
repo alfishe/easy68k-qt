@@ -1,0 +1,14 @@
+id = "L0-03-EX1"
+title = "Big-endian low word at $2002"
+track = "core"
+level = 0
+difficulty = 1
+source = "ex1.x68"
+
+[expect]
+halted = true
+registers = { D0 = 0x00003344 }
+
+[[expect.memory]]
+address = 0x2000
+bytes = "11 22 33 44"

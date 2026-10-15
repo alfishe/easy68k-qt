@@ -1,0 +1,11 @@
+id = "L0-02-EX1"
+title = "Load D0, D1, and A1"
+track = "core"
+level = 0
+difficulty = 1
+source = "ex1.x68"
+
+[expect]
+halted = true
+registers = { D0 = 100, D1 = 0xFFFFFFFB, A1 = 0x3000 }
+max_cycles = 40

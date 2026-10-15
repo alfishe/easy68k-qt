@@ -1,0 +1,13 @@
+# L1-02 — Condition Codes (CCR): X, N, Z, V, C
+id = "L1-02"
+title = "Condition Codes (CCR): X, N, Z, V, C"
+track = "core"
+level = 1
+difficulty = 1
+requires = ["L1-01"]
+source = "main.x68"
+
+[expect]
+halted = true
+registers = { D0 = 0, D1 = 0x80, D2 = 5, D3 = 0x15, D4 = 0x0A, D5 = 0x04 }
+max_cycles = 120

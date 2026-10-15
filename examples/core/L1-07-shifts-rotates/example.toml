@@ -1,0 +1,13 @@
+# L1-07 — Shifts and Rotates: ASL, ASR, LSL, LSR, ROL, ROR
+id = "L1-07"
+title = "Shifts and Rotates: ASL, ASR, LSL, LSR, ROL, ROR"
+track = "core"
+level = 1
+difficulty = 2
+requires = ["L1-06"]
+source = "main.x68"
+
+[expect]
+halted = true
+registers = { D0 = 70, D1 = 0xFC, D2 = 0x3C, D3 = 0x03 }
+max_cycles = 120

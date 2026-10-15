@@ -1,0 +1,13 @@
+# L0-06 — Stepping, Tracing, Breakpoints, and Rewind
+id = "L0-06"
+title = "Stepping, Tracing, Breakpoints, and Rewind"
+track = "core"
+level = 0
+difficulty = 1
+requires = ["L0-05"]
+source = "main.x68"
+
+[expect]
+halted = true
+registers = { D0 = 25, D1 = 25 }
+max_cycles = 120

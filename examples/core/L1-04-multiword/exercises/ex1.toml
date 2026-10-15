@@ -1,0 +1,10 @@
+id = "L1-04-EX1"
+title = "64-bit subtraction with SUB.L and SUBX.L"
+track = "core"
+level = 1
+difficulty = 2
+source = "ex1.x68"
+
+[expect]
+halted = true
+registers = { D0 = 3, D1 = 0xFFFFFFFF }

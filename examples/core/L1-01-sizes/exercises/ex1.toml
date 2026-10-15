@@ -1,0 +1,10 @@
+id = "L1-01-EX1"
+title = "Sign-extend byte -10 to 32 bits"
+track = "core"
+level = 1
+difficulty = 1
+source = "ex1.x68"
+
+[expect]
+halted = true
+registers = { D0 = 0xFFFFFFF6 }

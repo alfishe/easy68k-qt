@@ -1,0 +1,10 @@
+id = "L1-05-EX1"
+title = "Quotient and remainder of 50 / 6"
+track = "core"
+level = 1
+difficulty = 2
+source = "ex1.x68"
+
+[expect]
+halted = true
+registers = { D0 = 8, D1 = 2 }

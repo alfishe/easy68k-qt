@@ -1,0 +1,13 @@
+# L0-02 — Loading Data and Address Registers
+id = "L0-02"
+title = "Loading Data and Address Registers"
+track = "core"
+level = 0
+difficulty = 1
+requires = ["L0-01"]
+source = "main.x68"
+
+[expect]
+halted = true
+registers = { D0 = 42, D1 = 0xFFFFFFFF, D2 = 0x12345678, D3 = 42, A0 = 0x2000 }
+max_cycles = 50

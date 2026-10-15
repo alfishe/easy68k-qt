@@ -1,0 +1,10 @@
+id = "L1-06-EX1"
+title = "Uppercase to lowercase with BSET #5"
+track = "core"
+level = 1
+difficulty = 1
+source = "ex1.x68"
+
+[expect]
+halted = true
+registers = { D0 = 0x61 }

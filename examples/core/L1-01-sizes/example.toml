@@ -1,0 +1,13 @@
+# L1-01 — Operation Sizes (.B, .W, .L) and Sign Extension (EXT)
+id = "L1-01"
+title = "Operation Sizes (.B, .W, .L) and Sign Extension (EXT)"
+track = "core"
+level = 1
+difficulty = 1
+requires = ["L0-03"]
+source = "main.x68"
+
+[expect]
+halted = true
+registers = { D0 = 0x1234BEEF, D1 = 0xFFFFFF80 }
+max_cycles = 60

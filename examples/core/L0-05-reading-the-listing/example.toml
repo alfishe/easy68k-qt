@@ -1,0 +1,16 @@
+# L0-05 — Reading the .L68 Listing and S-Records
+id = "L0-05"
+title = "Reading the .L68 Listing and S-Records"
+track = "core"
+level = 0
+difficulty = 1
+requires = ["L0-04"]
+source = "main.x68"
+
+[expect]
+halted = true
+registers = { D0 = 5, A0 = 0x2000, PC = 0x100E }
+
+[[expect.memory]]
+address = 0x2000
+bytes = "CA FE"

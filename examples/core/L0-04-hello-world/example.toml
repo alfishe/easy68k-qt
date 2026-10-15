@@ -1,0 +1,13 @@
+# L0-04 — Hello World with Trap #15 Text I/O
+id = "L0-04"
+title = "Hello World with Trap #15 Text I/O"
+track = "core"
+level = 0
+difficulty = 1
+requires = ["L0-03"]
+source = "main.x68"
+
+[expect]
+halted = true
+output = "Hello, 68000 World!\r\n"
+max_cycles = 200

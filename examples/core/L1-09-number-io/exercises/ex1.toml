@@ -1,0 +1,10 @@
+id = "L1-09-EX1"
+title = "Print 42 in hex with task 15"
+track = "core"
+level = 1
+difficulty = 1
+source = "ex1.x68"
+
+[expect]
+halted = true
+output = "2A"

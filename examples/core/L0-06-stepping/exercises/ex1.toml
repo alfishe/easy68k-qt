@@ -1,0 +1,10 @@
+id = "L0-06-EX1"
+title = "Three calls to ADD_TEN"
+track = "core"
+level = 0
+difficulty = 1
+source = "ex1.x68"
+
+[expect]
+halted = true
+registers = { D0 = 35, D1 = 35 }

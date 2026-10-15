@@ -1,0 +1,10 @@
+id = "L1-07-EX1"
+title = "Nibble swap with ROL.B #4"
+track = "core"
+level = 1
+difficulty = 2
+source = "ex1.x68"
+
+[expect]
+halted = true
+registers = { D0 = 0xC3 }

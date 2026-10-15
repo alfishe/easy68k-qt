@@ -1,0 +1,14 @@
+id = "L0-05-EX1"
+title = "Define MAGIC EQU and store word"
+track = "core"
+level = 0
+difficulty = 1
+source = "ex1.x68"
+
+[expect]
+halted = true
+registers = { D0 = 0x1234 }
+
+[[expect.memory]]
+address = 0x2000
+bytes = "12 34"

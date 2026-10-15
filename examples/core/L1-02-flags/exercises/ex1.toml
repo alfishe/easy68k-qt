@@ -1,0 +1,10 @@
+id = "L1-02-EX1"
+title = "Flags after byte 0 - 1"
+track = "core"
+level = 1
+difficulty = 1
+source = "ex1.x68"
+
+[expect]
+halted = true
+registers = { D0 = 0xFF, D1 = 0x19 }

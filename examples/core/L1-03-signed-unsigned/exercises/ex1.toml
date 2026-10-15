@@ -1,0 +1,10 @@
+id = "L1-03-EX1"
+title = "Signed SLT and unsigned SHI on $80 vs $7F"
+track = "core"
+level = 1
+difficulty = 2
+source = "ex1.x68"
+
+[expect]
+halted = true
+registers = { D2 = 0xFF, D3 = 0xFF }

@@ -1,0 +1,12 @@
+id = "L0-01-EX1"
+title = "Two NOP instructions"
+track = "core"
+level = 0
+difficulty = 1
+source = "ex1.x68"
+
+[expect]
+halted = true
+registers = { PC = 0x1008 }
+min_cycles = 8
+max_cycles = 8

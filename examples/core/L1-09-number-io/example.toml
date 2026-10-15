@@ -1,0 +1,16 @@
+# L1-09 — Number I/O and Base Conversion (Trap #15 Tasks 3, 4, 15)
+id = "L1-09"
+title = "Number I/O and Base Conversion (Trap #15 Tasks 3, 4, 15)"
+track = "core"
+level = 1
+difficulty = 2
+requires = ["L0-04", "L1-05"]
+source = "main.x68"
+
+[expect]
+halted = true
+output = "255 FF 11111111"
+registers = { D3 = 255 }
+
+[input]
+lines = ["255"]

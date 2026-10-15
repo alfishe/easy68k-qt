@@ -1,0 +1,13 @@
+# L1-03 — Signed vs Unsigned Comparisons and Overflow vs Carry
+id = "L1-03"
+title = "Signed vs Unsigned Comparisons and Overflow vs Carry"
+track = "core"
+level = 1
+difficulty = 2
+requires = ["L1-02"]
+source = "main.x68"
+
+[expect]
+halted = true
+registers = { D2 = 0xFF, D3 = 0x00 }
+max_cycles = 80

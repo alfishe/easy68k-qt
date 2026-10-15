@@ -1,0 +1,17 @@
+# L0-03 — Memory Layout, DC/DS, and Big-Endian Byte Order
+id = "L0-03"
+title = "Memory Layout, DC/DS, and Big-Endian Byte Order"
+track = "core"
+level = 0
+difficulty = 1
+requires = ["L0-02"]
+source = "main.x68"
+
+[expect]
+halted = true
+registers = { D0 = 0xAABBCCDD, D1 = 0x0000AABB, D2 = 0x000000DD }
+max_cycles = 100
+
+[[expect.memory]]
+address = 0x2000
+bytes = "AA BB CC DD"

@@ -1,0 +1,13 @@
+# L1-08 — Binary-Coded Decimal (BCD): ABCD, SBCD, NBCD
+id = "L1-08"
+title = "Binary-Coded Decimal (BCD): ABCD, SBCD, NBCD"
+track = "core"
+level = 1
+difficulty = 2
+requires = ["L1-04"]
+source = "main.x68"
+
+[expect]
+halted = true
+registers = { D0 = 0x63, D2 = 0x53 }
+max_cycles = 80

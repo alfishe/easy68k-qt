@@ -1,0 +1,13 @@
+# L0-01 — Program Skeleton: ORG, START, END, SIMHALT
+id = "L0-01"
+title = "Program Skeleton: ORG, START, END, SIMHALT"
+track = "core"
+level = 0
+difficulty = 1
+requires = []
+source = "main.x68"
+
+[expect]
+halted = true
+registers = { D0 = 0, PC = 0x1006 }
+max_cycles = 20

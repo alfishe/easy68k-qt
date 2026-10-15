@@ -1,0 +1,13 @@
+# L1-05 — Multiply and Divide: MULU, MULS, DIVU, DIVS
+id = "L1-05"
+title = "Multiply and Divide: MULU, MULS, DIVU, DIVS"
+track = "core"
+level = 1
+difficulty = 2
+requires = ["L1-03"]
+source = "main.x68"
+
+[expect]
+halted = true
+registers = { D0 = 120000, D1 = 0xFFFFFED4, D2 = 14, D3 = 2 }
+max_cycles = 400
