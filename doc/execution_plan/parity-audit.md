@@ -28,7 +28,7 @@ hash and the program output.
 
 ## Status snapshot
 
-*Updated after every committed iteration (last: 2026-10-15, commit `(X)`).*
+*Updated after every committed iteration (last: 2026-10-15, commit `8efaeb1`).*
 
 | Area | Rows | Done | Partial | Gap | Notes |
 |------|------|------|---------|-----|-------|
@@ -250,7 +250,7 @@ Each committed iteration updates the snapshot above and adds a line here.
 | 2026-10-14 | `d93516f` | 10.5 32-bit program counter (user decision) | 24-bit PC deviation removed; 26 golden traces |
 | 2026-10-15 | `e44106a` | 10.4 Trap #15 file tasks: StdFileIO back end, original buffer/map checks | S9 file tasks verified; S10 Trap #15 buffer checks for file tasks |
 | 2026-10-15 | `648bd51` | 11.1 exception tests; privilege frame PC fix; corpus hash check fixed | S2 verified (golden `exceptions`) |
-| 2026-10-15 | `(X)` | 11.2 interrupt tests; IRQ injection in both tracers | S4 order documented |
+| 2026-10-15 | `8efaeb1` | 11.2 interrupt tests; IRQ injection in both tracers | S4 order documented |
 
 ## 10. Parity acceptance
 
