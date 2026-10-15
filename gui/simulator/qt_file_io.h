@@ -42,6 +42,9 @@ class QtFileIO : public sim::StdFileIO {
   // nothing. D0 = F_ERROR if the name would not fit in memory.
   void DisplayFileDialog(long* mode, long a1, long a2, long a3, short* result) override;
 
+  // The 68000 memory, when it is created after this object.
+  void SetMemory(uint8_t* memory) { memory_ = memory; }
+
   // The Qt filter for the original's extension list ("*.txt;*.dat").
   static QString FilterFor(const QString& extensions);
 

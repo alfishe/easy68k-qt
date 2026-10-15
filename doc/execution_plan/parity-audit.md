@@ -28,7 +28,7 @@ hash and the program output.
 
 ## Status snapshot
 
-*Updated after every committed iteration (last: 2026-10-15, commit `1d051bb`).*
+*Updated after every committed iteration (last: 2026-10-15, commit `(X)`).*
 
 | Area | Rows | Done | Partial | Gap | Notes |
 |------|------|------|---------|-----|-------|
@@ -42,8 +42,8 @@ hash and the program output.
 
 | Measure | Value |
 |---------|-------|
-| Plan tasks (PROGRESS.md) | 77 done, 35 open (13.2 next) |
-| Qt back end tests (`easym68k-gui-tests`, offscreen) | 68 pass (ASan+UBSan clean) |
+| Plan tasks (PROGRESS.md) | 77 done, 35 open (13.2 in progress: 13.2a done) |
+| Qt back end tests (`easym68k-gui-tests`, offscreen) | 77 pass (ASan+UBSan clean) |
 | clang-tidy (`tools/clang-tidy.sh`, core libraries) | 0 findings (22 files + public headers) |
 | Simulator unit tests | 805 pass, incl. 28 golden simulation traces (ASan+UBSan clean) |
 | Assembler tests | 406 pass (incl. 132 instruction-matrix suites, 21 golden, 33 corpus cases); ASan+UBSan clean |
@@ -68,7 +68,7 @@ hash and the program output.
 | ✓ | **11.2** Interrupt tests | Done (`interrupt_test.cc`; tracers take `-i STEP:LEVEL`) | S4 | — |
 | ✓ | **12.3** clang-tidy | Done (`ci/clang-tidy.cfg`, `tools/clang-tidy.sh`; 0 findings) | — | — |
 | ✓ | **13.1** Trap #15 Qt back ends | Done: I/O window (`SimIoScreen`, `QtTextIO`, `QtGraphicsIO`), peripheral, environment, file dialog, printing, sound, serial (`QtSerialIO`), network (`StdNetworkIO`) | S9 | — |
-| 7 | **13.2-13.18, 13.22-13.24** Sim68K-Qt | Main window, registers, source view, stack/memory viewers, hardware window, I/O console, graphics, log, settings, advanced breakpoints, find, auto trace | 3. Sim68K GUI (21 rows) | 13.21 manual checklist |
+| 7 | **13.2-13.18, 13.22-13.24** Sim68K-Qt (13.2a ✓ session model) | Main window, registers, source view, stack/memory viewers, hardware window, I/O console, graphics, log, settings, advanced breakpoints, find, auto trace | 3. Sim68K GUI (21 rows) | 13.21 manual checklist |
 | 8 | **13.19** Edit68K-Qt | Editor, assembler options (A7 auto-save, A8 template), find/replace, syntax colouring, MDI | 4. Edit68K GUI (14 rows), A7, A8 | 13.21 checklist; assembler output already oracle-verified |
 | 9 | **13.20** EASyBIN-Qt | Binary utility | 5. EASyBIN (4 rows) | checklist + file round-trip tests |
 | 10 | **13.25** Help | Help system | 6. Help (1 row) | checklist |
@@ -262,6 +262,7 @@ Each committed iteration updates the snapshot above and adds a line here.
 | 2026-10-15 | `a0db41e` | 13.1b peripheral, simulator environment, file dialog, printing back ends; tasks 23/24/61 dispatch fixes | S9 tasks 8, 10, 23, 32, 33, 58, 60-62 back ends |
 | 2026-10-15 | `88ba984` | 13.1c sound back end (standard + multi-voice players); tasks 70/72 result fix | S9 tasks 70-77 back end |
 | 2026-10-15 | `1d051bb` | 13.1d serial (Qt SerialPort) and network (`StdNetworkIO`) back ends; serial/network buffer and map checks | S9 tasks 40-43, 100-107 back ends; S10 serial buffer checks |
+| 2026-10-15 | `(X)` | 13.2a SimSession: program loading, run controls on a worker thread, messages, STOP/IRQ | G3, G4, G5 (model), G6 |
 
 ## 10. Parity acceptance
 

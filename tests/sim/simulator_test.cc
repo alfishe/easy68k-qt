@@ -156,6 +156,11 @@ TEST_F(SimTest, RunStopRequested) {
   sim_.RequestStop();
   sim_.Run();
   EXPECT_EQ(sim_.State().pc, 0x1000u);
+  sim_.Run();  // the request stays set
+  EXPECT_EQ(sim_.State().pc, 0x1000u);
+  sim_.ClearStopRequest();
+  sim_.Run(2);
+  EXPECT_EQ(sim_.State().pc, 0x1004u);
 }
 
 // ---------------------------------------------------------------------------

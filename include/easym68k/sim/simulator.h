@@ -145,8 +145,10 @@ class M68kSimulator {
   // Run is selected (BreaksFrm->resetDebug()).
   void ResetBreakPassCounts();
 
-  // Thread-safe stop request; checked at top of each Run iteration.
+  // Thread-safe stop request; checked at top of each Run iteration. It stays
+  // set until ClearStopRequest(), InitProgram() or Reset().
   void RequestStop();
+  void ClearStopRequest();
 
   // Inject a hardware interrupt at the given level (1-7).
   // Thread-safe; may be called from any thread (e.g., timer, hardware sim).

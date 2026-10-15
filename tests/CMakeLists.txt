@@ -67,8 +67,10 @@ if(TARGET easy68k-simio)
     gui/qt_devices_test.cc
     gui/qt_sound_io_test.cc
     gui/qt_serial_io_test.cc
+    gui/sim_session_test.cc
   )
-  target_link_libraries(easym68k-gui-tests PRIVATE easy68k-simio GTest::gtest)
+  find_package(Qt6 REQUIRED COMPONENTS Test)
+  target_link_libraries(easym68k-gui-tests PRIVATE easy68k-simio easym68k-asm Qt6::Test GTest::gtest)
   add_test(NAME gui-tests COMMAND easym68k-gui-tests)
   set_tests_properties(gui-tests PROPERTIES ENVIRONMENT "QT_QPA_PLATFORM=offscreen")
 endif()

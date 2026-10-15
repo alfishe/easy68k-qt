@@ -12,6 +12,8 @@ add_library(easy68k-simio STATIC
   qt_print_io.cc
   qt_sound_io.cc
   qt_serial_io.cc
+  listing.cc
+  sim_session.cc
 )
 target_include_directories(easy68k-simio PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 target_link_libraries(easy68k-simio PUBLIC easym68k-sim Qt6::Gui Qt6::Multimedia)

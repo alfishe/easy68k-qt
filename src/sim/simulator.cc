@@ -523,6 +523,10 @@ void M68kSimulator::RequestStop() {
   stop_requested_.store(true, std::memory_order_relaxed);
 }
 
+void M68kSimulator::ClearStopRequest() {
+  stop_requested_.store(false, std::memory_order_relaxed);
+}
+
 // =============================================================================
 // Breakpoints
 // =============================================================================
