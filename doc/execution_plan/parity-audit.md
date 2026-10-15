@@ -42,7 +42,7 @@ hash and the program output.
 
 | Measure | Value |
 |---------|-------|
-| Plan tasks (PROGRESS.md) | 89 done, 24 open (13.13 next) |
+| Plan tasks (PROGRESS.md) | 94 done, 19 open (13.18 next) |
 | Qt back end tests (`easym68k-gui-tests`, offscreen) | 129 pass (ASan+UBSan clean) |
 | clang-tidy (`tools/clang-tidy.sh`, core libraries) | 0 findings (23 files + public headers) |
 | Simulator unit tests | 812 pass, incl. 28 golden simulation traces (ASan+UBSan clean) |
@@ -68,7 +68,7 @@ hash and the program output.
 | ✓ | **11.2** Interrupt tests | Done (`interrupt_test.cc`; tracers take `-i STEP:LEVEL`) | S4 | — |
 | ✓ | **12.3** clang-tidy | Done (`ci/clang-tidy.cfg`, `tools/clang-tidy.sh`; 0 findings) | — | — |
 | ✓ | **13.1** Trap #15 Qt back ends | Done: I/O window (`SimIoScreen`, `QtTextIO`, `QtGraphicsIO`), peripheral, environment, file dialog, printing, sound, serial (`QtSerialIO`), network (`StdNetworkIO`) | S9 | — |
-| 7 | **13.2-13.18, 13.22-13.24** Sim68K-Qt (13.2-13.12 ✓; 13.13 next) | Main window, registers, source view, stack/memory viewers, hardware window, I/O console, graphics, log, settings, advanced breakpoints, find, auto trace | 3. Sim68K GUI (23 rows) | 13.21 manual checklist |
+| 7 | **13.2-13.18, 13.22-13.24** Sim68K-Qt (13.2-13.17 ✓; 13.18 next) | Main window, registers, source view, stack/memory viewers, hardware window, I/O console, graphics, log, settings, advanced breakpoints, find, auto trace | 3. Sim68K GUI (23 rows) | 13.21 manual checklist |
 | 8 | **13.19** Edit68K-Qt | Editor, assembler options (A7 auto-save, A8 template), find/replace, syntax colouring, MDI | 4. Edit68K GUI (14 rows), A7, A8 | 13.21 checklist; assembler output already oracle-verified |
 | 9 | **13.20** EASyBIN-Qt | Binary utility | 5. EASyBIN (4 rows) | checklist + file round-trip tests |
 | 10 | **13.25** Help | Help system | 6. Help (1 row) | checklist |
