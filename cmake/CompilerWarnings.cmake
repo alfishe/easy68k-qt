@@ -15,7 +15,7 @@ if(CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
   endif()
 elseif(CMAKE_CXX_COMPILER_ID MATCHES "MSVC")
   # C runtime "secure" function deprecations do not apply to portable code.
-  add_compile_options(/W4 /utf-8 /D_CRT_SECURE_NO_WARNINGS)
+  add_compile_options(/W4 /utf-8 /D_CRT_SECURE_NO_WARNINGS /DNOMINMAX /wd4100 /wd4244 /wd4267 /wd4458)
   if(EASY68K_WARNINGS_AS_ERRORS)
     add_compile_options(/WX)
   endif()

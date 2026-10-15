@@ -1,0 +1,44 @@
+name: macOS CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build-and-test:
+    name: macOS (Clang)
+    runs-on: macos-14
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: brew install ninja qt@6
+
+      - name: Configure CMake (GUI + ASan + UBSan)
+        run: |
+          cmake -S . -B build -G Ninja \
+            -DCMAKE_BUILD_TYPE=Debug \
+            -DCMAKE_PREFIX_PATH="$(brew --prefix qt@6)" \
+            -DBUILD_GUI=ON \
+            -DBUILD_TESTING=ON \
+            -DENABLE_ASAN=ON \
+            -DENABLE_UBSAN=ON
+
+      - name: Build all targets
+        run: cmake --build build
+
+      - name: Run CTest suite (sim, asm, integration, examples, gui)
+        env:
+          QT_QPA_PLATFORM: offscreen
+        run: ctest --test-dir build --output-on-failure
+
+      - name: Upload CTest logs on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: macos-clang-test-logs
+          path: build/Testing/Temporary/
