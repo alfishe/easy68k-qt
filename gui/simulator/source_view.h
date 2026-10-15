@@ -44,6 +44,10 @@ class SourceView : public QWidget {
   // address (any line with it when the program is halted) and scrolls it
   // into view; leaves the selection if there is none.
   void HighlightPc(uint32_t pc, bool halted);
+  // SIM68Ku.cpp find(): case-insensitive search from row 3 (`next = false`)
+  // or from the row after the previous match (`next = true`); selects and
+  // scrolls the matching row into view.
+  bool Find(const QString& text, bool next);
   // The address of the selected code line (Run To Cursor), if any.
   std::optional<uint32_t> SelectedAddress() const;
   // The address of a code line (index > 2), if any.
@@ -64,6 +68,7 @@ class SourceView : public QWidget {
 
   QStringList lines_;  // as in the file (tabs kept), for addresses
   bool is_listing_ = false;
+  int find_index_ = 3;
   std::function<bool(uint32_t)> has_breakpoint_;
   QListWidget* list_ = nullptr;
   QWidget* gutter_ = nullptr;

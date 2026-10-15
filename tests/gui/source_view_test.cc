@@ -12,6 +12,9 @@
 #include <QTest>
 #include <set>
 
+#include "find_dialog.h"
+#include "mainwindow.h"
+
 namespace easym68k::gui {
 namespace {
 
@@ -115,6 +118,60 @@ TEST_F(SourceViewTest, NoListingTextHasNoCodeLines) {
   EXPECT_FALSE(view_.CodeLineAddress(0).has_value());
   view_.HighlightPc(0x1000, false);
   EXPECT_EQ(view_.List()->currentRow(), -1);
+}
+
+TEST_F(SourceViewTest, FindAndFindNextCaseInsensitive) {
+  // Search starts at row 3 (skips header rows 0..2).
+  EXPECT_FALSE(view_.Find(QStringLiteral("Starting Address"), false));
+
+  // First match for "nop" (case-insensitive) is row 4.
+  EXPECT_TRUE(view_.Find(QStringLiteral("nop"), false));
+  EXPECT_EQ(view_.List()->currentRow(), 4);
+
+  // Next match is row 5.
+  EXPECT_TRUE(view_.Find(QStringLiteral("nop"), true));
+  EXPECT_EQ(view_.List()->currentRow(), 5);
+
+  // No third match; selection stays at row 5.
+  EXPECT_FALSE(view_.Find(QStringLiteral("nop"), true));
+  EXPECT_EQ(view_.List()->currentRow(), 5);
+
+  // next = false restarts from top (row 3).
+  EXPECT_TRUE(view_.Find(QStringLiteral("nop"), false));
+  EXPECT_EQ(view_.List()->currentRow(), 4);
+}
+
+TEST_F(SourceViewTest, FindDialogAndGotoPcInMainWindow) {
+  MainWindow w{QString()};
+  w.Source()->SetListing(Sample(), true);
+  w.Session().Simulator().State().pc = 0x1004;
+
+  ASSERT_NE(w.FindDialogView(), nullptr);
+  EXPECT_FALSE(w.FindDialogView()->isVisible());
+  EXPECT_FALSE(w.FindDialogView()->FindNextButton()->isEnabled());
+
+  w.FindAction()->trigger();
+  EXPECT_TRUE(w.FindDialogView()->isVisible());
+
+  w.FindDialogView()->SetText(QStringLiteral("nop"));
+  ASSERT_TRUE(w.FindDialogView()->FindNextButton()->isEnabled());
+
+  // First click searches from top (row 4); second click searches next (row 5).
+  w.FindDialogView()->FindNextButton()->click();
+  EXPECT_EQ(w.Source()->List()->currentRow(), 4);
+  w.FindDialogView()->FindNextButton()->click();
+  EXPECT_EQ(w.Source()->List()->currentRow(), 5);
+
+  // Changing text resets to search from top; F3 in dialog finds next.
+  w.FindDialogView()->SetText(QStringLiteral("NOP"));
+  w.FindDialogView()->FindNextButton()->click();
+  EXPECT_EQ(w.Source()->List()->currentRow(), 4);
+  QTest::keyClick(w.FindDialogView(), Qt::Key_F3);
+  EXPECT_EQ(w.Source()->List()->currentRow(), 5);
+
+  // Go to PC (Ctrl+G) highlights the PC line (row 7 for $1004).
+  w.GotoPcAction()->trigger();
+  EXPECT_EQ(w.Source()->List()->currentRow(), 7);
 }
 
 }  // namespace

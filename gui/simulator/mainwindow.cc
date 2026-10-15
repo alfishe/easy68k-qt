@@ -28,6 +28,7 @@
 #include <QVBoxLayout>
 
 #include "breakpoints_window.h"
+#include "find_dialog.h"
 #include "fullscreen_options_dialog.h"
 #include "hardware_window.h"
 #include "io_window.h"
@@ -192,6 +193,9 @@ MainWindow::MainWindow(const QString& settings_file, QWidget* parent)
   connect(session_.get(), &SimSession::MemorySnapshot, memory_window_, &MemoryWindow::OnSnapshot);
   hardware_window_ = new HardwareWindow(session_.get(), this);
   breakpoints_window_ = new BreakpointsWindow(session_.get(), this);
+  find_dialog_ = new FindDialog(this);
+  connect(find_dialog_, &FindDialog::FindRequested, this,
+          [this](const QString& text, bool next) { source_->Find(text, next); });
   // Memory1.cpp: an edit refreshes the stack and hardware windows; a switch
   // or button repaints the memory and stack windows.
   connect(memory_window_, &MemoryWindow::MemoryEdited, this, [this] {
@@ -351,8 +355,16 @@ void MainWindow::CreateActions() {
   printer_setup_ = Action(QStringLiteral("&Printer Setup..."), {}, &MainWindow::OnPrinterSetup);
   exit_ = Action(QStringLiteral("E&xit"), {}, nullptr);
   connect(exit_, &QAction::triggered, this, &QWidget::close);
-  find_ = Pending(QStringLiteral("&Find..."), QStringLiteral("13.23"));
-  find_->setShortcut(QKeySequence(Qt::CTRL | Qt::Key_F));
+  find_ = Action(QStringLiteral("&Find..."), QKeySequence(Qt::CTRL | Qt::Key_F),
+                 &MainWindow::OnFind);
+  auto* find_next = new QAction(this);
+  find_next->setShortcut(QKeySequence(Qt::Key_F3));
+  find_next->setShortcutContext(Qt::WindowShortcut);
+  addAction(find_next);
+  connect(find_next, &QAction::triggered, this, [this] {
+    if (!find_dialog_->Text().isEmpty())
+      source_->Find(find_dialog_->Text(), true);
+  });
   goto_pc_ = Action(QStringLiteral("&Go to PC"), QKeySequence(Qt::CTRL | Qt::Key_G),
                     &MainWindow::OnGotoPc);
   run_ = Action(QStringLiteral("&Run"), QKeySequence(Qt::Key_F9), nullptr);
@@ -535,7 +547,6 @@ void MainWindow::UpdateActions() {
   rewind_->setEnabled(loaded);
   reload_->setEnabled(program_loaded_ && !session_->ProgramPath().isEmpty() &&
                       state != S::kRunning);
-  goto_pc_->setEnabled(loaded);
 }
 
 // SIM68Ku.cpp scrshow(): registers and the PC's listing line.
@@ -633,6 +644,10 @@ void MainWindow::OnClose() {
 void MainWindow::OnPrinterSetup() {
   QPageSetupDialog dialog(&printer_, this);
   dialog.exec();
+}
+
+void MainWindow::OnFind() {
+  Raise(find_dialog_);
 }
 
 // SIM68Ku.cpp RunToCursorExecute(): runs to the selected line's address
@@ -1053,6 +1068,7 @@ void MainWindow::closeEvent(QCloseEvent* event) {
   stack_window_->close();
   hardware_window_->close();
   breakpoints_window_->close();
+  find_dialog_->close();
   event->accept();
 }
 

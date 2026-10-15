@@ -163,6 +163,7 @@ void SourceView::SetListFont(const QFont& font) {
 void SourceView::SetListing(const QStringList& lines, bool is_listing) {
   lines_ = lines;
   is_listing_ = is_listing;
+  find_index_ = 3;
   list_->clear();
   QStringList shown;
   shown.reserve(lines.size());
@@ -210,6 +211,27 @@ void SourceView::HighlightPc(uint32_t pc, bool halted) {
   if (r.top() < 0 || r.bottom() > list_->viewport()->height())
     list_->scrollToItem(list_->item(std::max(found - 2, 0)), QAbstractItemView::PositionAtTop);
   gutter_->update();
+}
+
+bool SourceView::Find(const QString& text, bool next) {
+  if (text.isEmpty())
+    return false;
+  if (!next)
+    find_index_ = 3;
+  if (find_index_ >= list_->count())
+    return false;
+  for (; find_index_ < list_->count(); ++find_index_) {
+    if (list_->item(find_index_)->text().contains(text, Qt::CaseInsensitive)) {
+      const int found = find_index_++;
+      list_->setCurrentRow(found);
+      const QRect r = list_->visualItemRect(list_->item(found));
+      if (r.top() < 0 || r.bottom() > list_->viewport()->height())
+        list_->scrollToItem(list_->item(std::max(found - 2, 0)), QAbstractItemView::PositionAtTop);
+      gutter_->update();
+      return true;
+    }
+  }
+  return false;
 }
 
 std::optional<uint32_t> SourceView::SelectedAddress() const {

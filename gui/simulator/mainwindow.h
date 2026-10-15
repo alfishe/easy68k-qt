@@ -32,6 +32,7 @@ class StackWindow;
 class MemoryWindow;
 class HardwareWindow;
 class BreakpointsWindow;
+class FindDialog;
 
 class MainWindow : public QMainWindow {
   Q_OBJECT
@@ -96,6 +97,8 @@ class MainWindow : public QMainWindow {
   QAction* ReloadAction() const { return reload_; }
   QAction* OpenAction() const { return open_; }
   QAction* CloseAction() const { return close_; }
+  QAction* FindAction() const { return find_; }
+  QAction* GotoPcAction() const { return goto_pc_; }
   QAction* LogStartAction() const { return log_start_; }
   QAction* LogStopAction() const { return log_stop_; }
   QAction* SourceFontAction() const { return source_font_action_; }
@@ -112,6 +115,7 @@ class MainWindow : public QMainWindow {
   IoWindow* Io() const { return io_window_; }
   HardwareWindow* Hardware() const { return hardware_window_; }
   BreakpointsWindow* Breakpoints() const { return breakpoints_window_; }
+  FindDialog* FindDialogView() const { return find_dialog_; }
 
  protected:
   void dragEnterEvent(QDragEnterEvent* event) override;
@@ -133,6 +137,7 @@ class MainWindow : public QMainWindow {
   void OnOpenData();
   void OnClose();
   void OnPrinterSetup();
+  void OnFind();
   void OnRunToCursor();
   void OnGotoPc();
   void OnAbout();
@@ -166,6 +171,7 @@ class MainWindow : public QMainWindow {
   MemoryWindow* memory_window_ = nullptr;
   HardwareWindow* hardware_window_ = nullptr;
   BreakpointsWindow* breakpoints_window_ = nullptr;
+  FindDialog* find_dialog_ = nullptr;
   RegisterWidget* registers_ = nullptr;
   SourceView* source_ = nullptr;
   QPlainTextEdit* messages_ = nullptr;
