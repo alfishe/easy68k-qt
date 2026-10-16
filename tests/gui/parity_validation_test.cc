@@ -837,10 +837,18 @@ TEST(ParityValidationTest, GenerateCapabilityVideoWhenRequested) {
   ExamplesCatalog catalog;
   const ExampleCatalogEntry* l0 = catalog.FindById(QStringLiteral("L0-01"));
   ASSERT_NE(l0, nullptr);
-  const QString ex_s68 = temp_dir.filePath(QStringLiteral("L0_01_main.S68"));
   {
+    const QString tmp_ex_dir = temp_dir.filePath(QStringLiteral("L0-01-hello-simhalt"));
+    QDir().mkpath(tmp_ex_dir);
+    const QString tmp_src = QDir(tmp_ex_dir).filePath(QStringLiteral("main.x68"));
+    const QString tmp_toml = QDir(tmp_ex_dir).filePath(QStringLiteral("example.toml"));
+    const QString tmp_readme = QDir(tmp_ex_dir).filePath(QStringLiteral("README.md"));
+    QFile::copy(l0->source_path, tmp_src);
+    QFile::copy(l0->toml_path, tmp_toml);
+    QFile::copy(l0->readme_path, tmp_readme);
+
     editor::MainWindow ed_tmp(temp_dir.filePath(QStringLiteral("ed_tmp.ini")));
-    ASSERT_NE(ed_tmp.OpenFile(l0->source_path), nullptr);
+    ASSERT_NE(ed_tmp.OpenFile(tmp_src), nullptr);
     ed_tmp.SetStatusDialogHandler([](const QString&, int, int, bool, bool) {
       return editor::AssemblerStatusDialog::ActionChoice::kClose;
     });
