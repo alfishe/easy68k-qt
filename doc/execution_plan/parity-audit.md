@@ -286,7 +286,7 @@ Each committed iteration updates the snapshot above and adds a line here.
 | 2026-10-15 | `1dff98a` | 13.21 Feature parity validation (`ParityValidationTest` + `parity-validation-checklist.md`) | All 30 Feature Coverage Matrix items + 69/69 parity rows validated |
 | 2026-10-15 | `abe0845`..`cbff8d7` | E1-E9 Education curriculum (`easy68k-run`, 83 examples + 83 exercises, `ExamplesBrowserDialog`, `SolutionCheckerDialog`, `HelpViewer` cross-links) | 166 runnable curriculum programs + GUI integration verified |
 | 2026-10-15 | `29a20a6` | 0.5 CI pipeline workflow configurations (`ci/github/{linux,macos,windows}.yml`) | CI configs complete (12.1 activation postponed) |
-| 2026-10-16 | `HEAD` | S10 Trap #15 buffer checks (text/print/sound/graphics), C API (`c_api.h`), CMake install/CPack, E9 visual verification | S10 Trap #15 buffer checks complete; 817 sim / 406 asm / 16 integration / 170 GUI tests pass |
+| 2026-10-16 | `2b4fc58` | S10 Trap #15 buffer checks (text/print/sound/graphics), C API (`c_api.h`), CMake install/CPack, E9 visual verification | S10 Trap #15 buffer checks complete; 817 sim / 406 asm / 16 integration / 170 GUI tests pass |
 
 ## 10. Parity acceptance
 
