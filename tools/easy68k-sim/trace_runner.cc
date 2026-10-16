@@ -37,7 +37,7 @@ class ConsoleTextIO : public sim::ITextIO {
   void TextIn(char* buf, long* size, long* result) override {
     char key_buf[256];
     int n = 0;
-    int c;
+    int c = 0;
     // The original accepts at most 79 keys before forcing Enter.
     while (n < 79 && (c = std::fgetc(in_)) != EOF && c != '\n') {
       if (c != '\r')
@@ -51,9 +51,9 @@ class ConsoleTextIO : public sim::ITextIO {
       std::memcpy(buf, key_buf, n + 1);
       *size = n;
     } else {
-      std::strcpy(buf, key_buf);
+      std::memcpy(buf, key_buf, n + 1);
       *size = n;
-      *result = std::atoi(key_buf);
+      *result = std::strtol(key_buf, nullptr, 10);
     }
   }
   void CharIn(char* ch) override {

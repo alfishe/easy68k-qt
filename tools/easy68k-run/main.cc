@@ -84,22 +84,26 @@ int main(int argc, char** argv) {
       cli_max_instructions = std::strtoull(argv[++i], nullptr, 0);
       has_max_instructions = true;
     } else if (arg == "--dump" && i + 1 < argc) {
-      unsigned addr = 0;
-      unsigned len = 0;
-      if (std::sscanf(argv[++i], "%x:%x", &addr, &len) != 2) {
+      const char* spec = argv[++i];
+      char* sep = nullptr;
+      const unsigned long addr = std::strtoul(spec, &sep, 16);
+      if (sep == spec || *sep != ':') {
         return Usage();
       }
-      dump_ranges.emplace_back(addr, len);
+      char* end = nullptr;
+      const unsigned long len = std::strtoul(sep + 1, &end, 16);
+      if (end == sep + 1 || *end != '\0') {
+        return Usage();
+      }
+      dump_ranges.emplace_back(static_cast<uint32_t>(addr), static_cast<uint32_t>(len));
     } else if (arg == "--no-exceptions") {
       disable_exceptions = true;
     } else if (arg == "--no-simhalt") {
       disable_simhalt = true;
-    } else if (!arg.empty() && arg[0] == '-') {
+    } else if ((!arg.empty() && arg[0] == '-') || !target.empty()) {
       return Usage();
-    } else if (target.empty()) {
-      target = arg;
     } else {
-      return Usage();
+      target = arg;
     }
   }
 

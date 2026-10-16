@@ -18,6 +18,7 @@ add_library(easym68k-sim STATIC
   opcodes_shift.cc
   opcodes_bitfield.cc
   break_condition.cc
+  c_api.cc
 )
 
 target_include_directories(easym68k-sim PUBLIC

@@ -69,6 +69,43 @@ if(BUILD_TESTING)
     GIT_TAG v1.14.0
   )
   set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+  set(INSTALL_GTEST OFF CACHE BOOL "" FORCE)
   FetchContent_MakeAvailable(googletest)
   add_subdirectory(tests)
 endif()
+
+# Installation and CPack packaging
+include(GNUInstallDirs)
+
+install(TARGETS easym68k-sim easym68k-asm
+  ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+  LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+)
+install(DIRECTORY include/easym68k
+  DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
+)
+install(TARGETS easy68k-asm easy68k-sim easy68k-run
+  RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+)
+if(BUILD_GUI)
+  install(TARGETS easy68k-simulator easy68k-editor easybin
+    RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+    BUNDLE DESTINATION .
+  )
+endif()
+install(DIRECTORY data/help
+  DESTINATION ${CMAKE_INSTALL_DATADIR}/easy68k
+)
+install(FILES data/template.NEW
+  DESTINATION ${CMAKE_INSTALL_DATADIR}/easy68k
+)
+install(DIRECTORY examples
+  DESTINATION ${CMAKE_INSTALL_DATADIR}/easy68k
+)
+
+set(CPACK_PACKAGE_NAME "easy68k-qt")
+set(CPACK_PACKAGE_VENDOR "EASy68K Contributors")
+set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "Cross-platform Motorola 68000 assembler, simulator, and curriculum")
+set(CPACK_PACKAGE_VERSION ${PROJECT_VERSION})
+set(CPACK_RESOURCE_FILE_LICENSE "${CMAKE_SOURCE_DIR}/LICENSE")
+include(CPack)

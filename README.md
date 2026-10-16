@@ -22,7 +22,8 @@ the feature-by-feature parity snapshot.
   instructions), exceptions (including class 0 address/bus error frames),
   autovectored interrupts, cycle counting, memory map semantics, advanced
   register/memory/expression breakpoints, Step Over / Run To, Trap #15
-  dispatch, logging, and observer hooks (Phases 1–11 complete).
+  dispatch, logging, observer hooks, and a pure-C FFI wrapper
+  (`include/easym68k/sim/c_api.h`) (Phases 1–11 complete).
 - **Assembler** (`src/asm/`) — a function-by-function port of the original
   Edit68K assembler (`src/asm/core/`). Listings (.L68) and S-records (.S68)
   match the original on the golden programs and corpus; the instruction matrix

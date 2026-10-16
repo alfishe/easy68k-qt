@@ -40,7 +40,7 @@ int Usage() {
 
 int main(int argc, char** argv) {
   easym68k::tools::TraceOptions options;
-  FILE* trace = stderr;
+  const char* trace_path = nullptr;
   const char* file = nullptr;
   for (int i = 1; i < argc; i++) {
     std::string a = argv[i];
@@ -53,24 +53,31 @@ int main(int argc, char** argv) {
     } else if (a == "-n" && i + 1 < argc) {
       options.max_steps = std::strtol(argv[++i], nullptr, 0);
     } else if (a == "-o" && i + 1 < argc) {
-      trace = std::fopen(argv[++i], "w");
-      if (!trace) {
-        std::perror(argv[i]);
-        return 2;
-      }
+      trace_path = argv[++i];
     } else if (a == "-i" && i + 1 < argc) {
-      long step = 0;
-      int level = 0;
-      if (std::sscanf(argv[++i], "%ld:%d", &step, &level) != 2 || level < 1 || level > 7)
+      const char* spec = argv[++i];
+      char* sep = nullptr;
+      const long step = std::strtol(spec, &sep, 10);
+      if (sep == spec || *sep != ':')
         return Usage();
-      options.irqs.emplace_back(step, level);
+      char* end = nullptr;
+      const long level = std::strtol(sep + 1, &end, 10);
+      if (end == sep + 1 || *end != '\0' || level < 1 || level > 7)
+        return Usage();
+      options.irqs.emplace_back(step, static_cast<int>(level));
     } else if (a == "-d" && i + 1 < argc) {
       options.file_dir = argv[++i];
     } else if (a == "-m" && i + 1 < argc) {
-      unsigned addr = 0, len = 0;
-      if (std::sscanf(argv[++i], "%x:%x", &addr, &len) != 2)
+      const char* spec = argv[++i];
+      char* sep = nullptr;
+      const unsigned long addr = std::strtoul(spec, &sep, 16);
+      if (sep == spec || *sep != ':')
         return Usage();
-      options.dumps.emplace_back(addr, len);
+      char* end = nullptr;
+      const unsigned long len = std::strtoul(sep + 1, &end, 16);
+      if (end == sep + 1 || *end != '\0')
+        return Usage();
+      options.dumps.emplace_back(static_cast<uint32_t>(addr), static_cast<uint32_t>(len));
     } else if (!a.empty() && a[0] != '-' && !file) {
       file = argv[i];
     } else {
@@ -79,8 +86,16 @@ int main(int argc, char** argv) {
   }
   if (!file)
     return Usage();
+  FILE* trace = stderr;
+  if (trace_path != nullptr) {
+    trace = std::fopen(trace_path, "w");
+    if (!trace) {
+      std::perror(trace_path);
+      return 2;
+    }
+  }
   bool ok = easym68k::tools::RunTrace(file, options, trace, stdin, stdout);
-  if (trace != stderr)
+  if (trace_path != nullptr)
     std::fclose(trace);
   return ok ? 0 : 1;
 }

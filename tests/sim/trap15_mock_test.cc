@@ -1025,5 +1025,27 @@ TEST_F(Trap15Test, UnknownTask_ReturnsOk) {
   EXPECT_EQ(RunTask(250), SimResult::kOk);
 }
 
+TEST_F(Trap15Test, InvalidMapBufferCheck_TextPrintSoundGraphicsRaiseBusError) {
+  SetStringA1("Hello");
+  sim_->SetStartAddress(0x1000);
+  M68kSimulator::MemoryMapConfig map;
+  map.invalid = {true, 0x2002, 0x20FF};  // mid-string in Invalid map
+  sim_->ConfigureMemoryMap(map);
+  sim_->SetExceptionsEnabled(false);
+
+  for (uint8_t task :
+       {kTrap15DisplayStringCRLF, kTrap15DisplayString, kTrap15PrintChar,
+        kTrap15DisplayNullStringCRLF, kTrap15DisplayNullString, kTrap15DisplayNullStringNumber,
+        kTrap15DisplayNullStringInputNumber, kTrap15SoundPlay, kTrap15SoundLoad, kTrap15SoundPlayDX,
+        kTrap15SoundLoadDX, kTrap15DrawText}) {
+    sim_->InitProgram();
+    sim_->SetExceptionsEnabled(false);
+    sim_->GetMemory().WriteWord(0x1000, 0x4E4F);
+    sim_->State().a[1] = 0x2000;
+    sim_->State().d[1] = 5;
+    EXPECT_EQ(RunTask(task), SimResult::kBusError) << "task " << static_cast<int>(task);
+  }
+}
+
 }  // namespace
 }  // namespace easym68k::sim

@@ -9,14 +9,17 @@
 
 #include <gtest/gtest.h>
 
+#include <QApplication>
 #include <QComboBox>
 #include <QDir>
+#include <QElapsedTimer>
 #include <QFile>
 #include <QLineEdit>
+#include <QPixmap>
 #include <QPushButton>
 #include <QTemporaryDir>
-#include <QTest>
 #include <QTextBrowser>
+#include <QThread>
 #include <QTreeWidget>
 
 #include "easym68k/asm/assembler.h"
@@ -26,6 +29,29 @@
 
 namespace easym68k::gui {
 namespace {
+
+bool WaitUntilNotRunning(SimSession& session, int timeout_ms = 3000) {
+  QElapsedTimer timer;
+  timer.start();
+  while (session.IsRunning() && timer.elapsed() < timeout_ms) {
+    QApplication::processEvents();
+    QThread::msleep(5);
+  }
+  QApplication::processEvents();
+  return !session.IsRunning();
+}
+
+void MaybeGrabWidget(QWidget* widget, const QString& filename) {
+  const QByteArray dir_env = qgetenv("EASY68K_SCREENSHOT_DIR");
+  if (dir_env.isEmpty() || !widget)
+    return;
+  const QString dir_path = QString::fromLocal8Bit(dir_env);
+  QDir().mkpath(dir_path);
+  widget->show();
+  QApplication::processEvents();
+  const QPixmap pix = widget->grab();
+  pix.save(QDir(dir_path).filePath(filename), "PNG");
+}
 
 TEST(ExamplesBrowserTest, CatalogDiscoversAll83CurriculumExamplesAndMnemonics) {
   ExamplesCatalog catalog;
@@ -77,6 +103,7 @@ TEST(ExamplesBrowserTest, Edit68KExamplesBrowserFiltersAndOpensSourceAndExercise
   EXPECT_TRUE(dlg->open_naive_button()->isEnabled());
   EXPECT_TRUE(dlg->open_exercise_button()->isEnabled());
   EXPECT_TRUE(dlg->readme_browser()->toPlainText().contains(QStringLiteral("DBRA")));
+  MaybeGrabWidget(dlg, QStringLiteral("13_edit68k_examples_browser.png"));
 
   dlg->TriggerOpenSelectedNaive();
   ASSERT_NE(win.ActiveChild(), nullptr);
@@ -136,7 +163,8 @@ TEST(ExamplesBrowserTest, Sim68KShowsWhatToWatchAndChecksSolutionLiveAndClean) {
 
   // Run L0-01 to completion (NOP; SIMHALT) and check again.
   sim_win.RunAction()->trigger();
-  QTRY_VERIFY(sim_win.Session().State() == SimSession::RunState::kStopped);
+  ASSERT_TRUE(WaitUntilNotRunning(sim_win.Session()));
+  ASSERT_EQ(sim_win.Session().State(), SimSession::RunState::kHalted);
 
   sim_win.CheckSolutionAction()->trigger();
   SolutionCheckerDialog* checker = sim_win.SolutionCheckerView();
@@ -146,6 +174,7 @@ TEST(ExamplesBrowserTest, Sim68KShowsWhatToWatchAndChecksSolutionLiveAndClean) {
   // Also test clean verification button from the dialog.
   const SolutionCheckReport clean_rep = checker->RunCleanVerification();
   EXPECT_TRUE(clean_rep.passed);
+  MaybeGrabWidget(checker, QStringLiteral("14_sim68k_solution_checker.png"));
 }
 
 TEST(ExamplesBrowserTest, HelpViewerCrossLinksInstructionsToCurriculumExamples) {
@@ -153,6 +182,7 @@ TEST(ExamplesBrowserTest, HelpViewerCrossLinksInstructionsToCurriculumExamples) 
   ASSERT_TRUE(viewer.ShowContext(QStringLiteral("DBRA")));
   EXPECT_TRUE(viewer.current_html().contains(QStringLiteral("Related Examples in Curriculum")));
   EXPECT_TRUE(viewer.current_html().contains(QStringLiteral("example://")));
+  MaybeGrabWidget(&viewer, QStringLiteral("15_help_viewer_curriculum_links.png"));
 
   QString activated_id;
   viewer.SetExampleActivationCallback([&activated_id](const QString& id) { activated_id = id; });

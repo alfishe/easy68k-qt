@@ -1075,9 +1075,7 @@ bool ParseExampleSpec(std::string_view toml_text, ExampleSpec* out, std::string*
     }
   }
 
-  if (!flush_mem_table())
-    return false;
-  return true;
+  return flush_mem_table();
 }
 
 bool LoadExampleSpecFile(const std::string& path, ExampleSpec* out, std::string* error) {
@@ -1098,7 +1096,7 @@ ExampleRunOutcome RunExampleSpec(const ExampleSpec& spec, const std::string& bas
   const fs::path dir_path = base_dir.empty() ? fs::current_path() : fs::path(base_dir);
   const std::string src_rel = source_override.empty() ? spec.source : source_override;
   if (src_rel.empty()) {
-    outcome.failures.push_back("spec has no 'source' file");
+    outcome.failures.emplace_back("spec has no 'source' file");
     return outcome;
   }
 
@@ -1162,7 +1160,7 @@ ExampleRunOutcome RunExampleSpec(const ExampleSpec& spec, const std::string& bas
         }
       }
       if (outcome.failures.empty()) {
-        outcome.failures.push_back("assembly failed");
+        outcome.failures.emplace_back("assembly failed");
       }
       return outcome;
     }
@@ -1210,7 +1208,7 @@ ExampleRunOutcome RunExampleSpec(const ExampleSpec& spec, const std::string& bas
     }
   }
   if (!sim.LoadSRecordLines(srec_lines)) {
-    outcome.failures.push_back("failed to load generated S-record image");
+    outcome.failures.emplace_back("failed to load generated S-record image");
     return outcome;
   }
   {
@@ -1331,7 +1329,7 @@ ExampleRunOutcome RunExampleSpec(const ExampleSpec& spec, const std::string& bas
       char buf[128];
       std::snprintf(buf, sizeof(buf), "register %s: expected 0x%08X (%u), got 0x%08X (%u)",
                     reg_name.c_str(), expected_val, expected_val, actual_val, actual_val);
-      outcome.failures.push_back(buf);
+      outcome.failures.emplace_back(buf);
     }
   }
 

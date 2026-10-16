@@ -28,7 +28,7 @@ hash and the program output.
 
 ## Status snapshot
 
-*Updated after every committed iteration (last: 2026-10-15, commit `2afea15`).*
+*Updated after every committed iteration (last: 2026-10-16, commit `014899e`).*
 
 | Area | Rows | Done | Partial | Gap | Notes |
 |------|------|------|---------|-----|-------|
@@ -42,13 +42,13 @@ hash and the program output.
 
 | Measure | Value |
 |---------|-------|
-| Plan tasks (PROGRESS.md) | 102 done, 11 open (E1 next; all parity tasks complete) |
-| Qt back end tests (`easym68k-gui-tests`, offscreen) | 166 pass (ASan+UBSan clean) |
-| clang-tidy (`tools/clang-tidy.sh`, core libraries) | 0 findings (23 files + public headers) |
-| Simulator unit tests | 812 pass, incl. 28 golden simulation traces (ASan+UBSan clean) |
+| Plan tasks (PROGRESS.md) | 112 done, 1 postponed (12.1 GitHub Actions activation; all parity & E0–E9 tasks complete) |
+| Qt back end & GUI tests (`easym68k-gui-tests`, offscreen) | 170 pass (ASan+UBSan clean) |
+| clang-tidy (`tools/clang-tidy.sh`, core libraries) | 0 findings (24 files + public headers) |
+| Simulator unit tests | 817 pass, incl. 28 golden simulation traces + C API tests (ASan+UBSan clean) |
 | Assembler tests | 406 pass (incl. 132 instruction-matrix suites, 21 golden, 33 corpus cases); ASan+UBSan clean |
-| Line coverage (`tools/coverage.sh`) | easym68k-sim 93.6% (target 90%), easym68k-asm 85.6% (target 85%) |
-| Integration tests (asm + sim) | 10 pass |
+| Line coverage (`tools/coverage.sh`) | easym68k-sim 92.9% (target 90%), easym68k-asm 85.9% (target 85%) |
+| Integration tests (asm + sim + curriculum runner) | 16 pass (incl. all 83 curriculum examples + 83 exercises = 166 runnable programs) |
 | Instruction matrix vs oracle | 98,583 / 98,583 cases match (bytes + diagnostic class) |
 | Golden programs, S-records (.S68) vs oracle | 21 / 21 match |
 | Golden programs, listings (.L68) vs oracle | 21 / 21 match |
@@ -73,8 +73,8 @@ hash and the program output.
 | ✓ | **13.20** EASyBIN-Qt | Done: Binary/S-Record utility (`gui/easybin`) | 5. EASyBIN (4 rows) | checklist + file round-trip tests |
 | ✓ | **13.25** Help | Done: `HelpViewer` (`gui/help`) + `data/help/` | 6. Help (1 row), G20, B4 | 5 unit tests + checklist |
 | ✓ | **13.21** Feature parity validation | Done: `ParityValidationTest` (`tests/gui/parity_validation_test.cc`) + `doc/execution_plan/parity-validation-checklist.md` | all (69/69 Done, 30/30 Feature Coverage Matrix PASS) | acceptance |
-| 12 | **E1-E9** Education track | Runs after parity (E1 runner CLI can reuse `easy68k-sim-trace`) | — | example runner tests |
-| 13 | **0.5 / 12.1** CI (later target) | CI pipeline on Linux, macOS, Windows; set up by the owner when wanted | acceptance item 3 | CI green |
+| ✓ | **E1-E9** Education track | Done: `easy68k-run` CLI, 83 curriculum examples + 83 exercises (166 verified programs), `ExamplesBrowserDialog`, `SolutionCheckerDialog`, and `HelpViewer` cross-links | — | 16 integration + 4 GUI tests |
+| ✓ | **0.5** CI workflow configs | Done: `ci/github/{linux,macos,windows}.yml` (12.1 activation postponed) | acceptance item 3 | local gates green |
 
 ---
 
@@ -91,7 +91,7 @@ hash and the program output.
 | S7 | Enable Exceptions toggle (Options menu, task 32/5) | SIM68Ku.cpp, hardwareu.cpp | Done | 9.3 (core-owned flag, see note A) |
 | S8 | **68020 bit-field instructions** BFTST/BFEXTU/BFCHG/BFEXTS/BFCLR/BFFFO/BFSET/BFINS (Options → Enable Bit Field Instructions, `*[sim68k]bitfield`) | CODE7.CPP BIT_FIELD() | **Done** (core; menu/listing command in 13.2/13.4) | **NEW 9.8** ✓ |
 | S9 | Trap #15 tasks 0-25, 30-33, 40-43, 50-62, 70-77, 80-96, 100-107 | CODE9.CPP TRAP() | Done (dispatch + interfaces; GUI back ends in 13.1); text/number tasks and file tasks 50-57/59 (headless `StdFileIO`) verified against the oracle (golden `trap15_text`, `trap15_file`); Qt text/graphics/keyboard (13.1a), mouse/keyboard IRQ, environment, file dialog and printing (13.1b), sound (13.1c), serial and network (13.1d) back ends done | 7.x, 10.1, 10.4 ✓, 13.1 |
-| S10 | Memory map: ROM (writes ignored) / Read (bus error on write) / Protected (bus error unless supervisor) / Invalid (bus error on access); hardware I/O addresses always accessible | UTILS.CPP memoryMapCheck(), hardwareu.cpp | **Done** (core); Trap #15 buffer checks done for file (10.4) and serial (13.1d) tasks, text tasks pending | **9.7** + 10.4 + 13.15 |
+| S10 | Memory map: ROM (writes ignored) / Read (bus error on write) / Protected (bus error unless supervisor) / Invalid (bus error on access); hardware I/O addresses always accessible | UTILS.CPP memoryMapCheck(), hardwareu.cpp | **Done** (core + all Trap #15 buffer checks: text 0/1/13/14/17/18, print 10, serial 40/42/43, file 51-54/57/59, sound 70/71/73/74, graphics 95) | **9.7** + 10.4 + 13.15 ✓ |
 | S11 | Execution logging (instruction / +registers / +memory range) | RUN.CPP, logU.cpp | Done (core hooks) | 9.4 |
 | S12 | Output (Trap #15 text) logging | logU.cpp OlogFile | Done (core hooks) | 9.4 |
 | S13 | PC breakpoints | BPoint.cpp | Done (core) | 4.1 |
@@ -284,6 +284,9 @@ Each committed iteration updates the snapshot above and adds a line here.
 | 2026-10-15 | `99a7fe1` | 13.25 HelpViewer (`easy68k-help`) + 242 help assets (`data/help/`), wired into Sim68K and EASyBIN | H1, G20, B4 Done |
 | 2026-10-15 | `2afea15` | 13.19 Edit68K-Qt (`easy68k-editor` + `easy68k-editor-ui`) + `data/template.NEW` + 10 `EditorTest` tests | E1-E14, A7, A8 Done (all 69/69 parity rows Done) |
 | 2026-10-15 | `1dff98a` | 13.21 Feature parity validation (`ParityValidationTest` + `parity-validation-checklist.md`) | All 30 Feature Coverage Matrix items + 69/69 parity rows validated |
+| 2026-10-15 | `abe0845`..`cbff8d7` | E1-E9 Education curriculum (`easy68k-run`, 83 examples + 83 exercises, `ExamplesBrowserDialog`, `SolutionCheckerDialog`, `HelpViewer` cross-links) | 166 runnable curriculum programs + GUI integration verified |
+| 2026-10-15 | `29a20a6` | 0.5 CI pipeline workflow configurations (`ci/github/{linux,macos,windows}.yml`) | CI configs complete (12.1 activation postponed) |
+| 2026-10-16 | `HEAD` | S10 Trap #15 buffer checks (text/print/sound/graphics), C API (`c_api.h`), CMake install/CPack, E9 visual verification | S10 Trap #15 buffer checks complete; 817 sim / 406 asm / 16 integration / 170 GUI tests pass |
 
 ## 10. Parity acceptance
 

@@ -139,6 +139,9 @@ SimResult M68kSimulator::DispatchTrap15() {
       size_t copy_len = (len <= 0) ? 0 : (len > 255 ? 255 : static_cast<size_t>(len));
       std::memcpy(buf, raw + (state_.a[1] & kAddressMask), copy_len);
       buf[copy_len] = '\0';
+      if (memory_.CheckBuffer(state_.a[1], static_cast<uint32_t>(std::strlen(buf)), kMemInvalid) !=
+          SimResult::kOk)
+        return SimResult::kBusError;
       EmitText(buf, task == kTrap15DisplayStringCRLF);
       break;
     }
@@ -214,9 +217,16 @@ SimResult M68kSimulator::DispatchTrap15() {
     case kTrap15PrintChar: {  // 10: print null-terminated string at (A1)
       if (!config_.print_io)
         break;
-      const char* src = reinterpret_cast<const char*>(raw + (state_.a[1] & kAddressMask));
-      while (*src)
-        config_.print_io->PrintChar(*src++);
+      uint32_t start = state_.a[1] & kAddressMask;
+      const char* src = reinterpret_cast<const char*>(raw + start);
+      size_t len = 0;
+      while (start + len < kMemorySize && src[len] != '\0')
+        ++len;
+      if (memory_.CheckBuffer(state_.a[1], static_cast<uint32_t>(len), kMemInvalid) !=
+          SimResult::kOk)
+        return SimResult::kBusError;
+      for (size_t i = 0; i < len; ++i)
+        config_.print_io->PrintChar(src[i]);
       break;
     }
 
@@ -249,6 +259,9 @@ SimResult M68kSimulator::DispatchTrap15() {
       if (!config_.text_io)
         break;
       ReadStrFromMem(raw, state_.a[1], buf, sizeof(buf));
+      if (memory_.CheckBuffer(state_.a[1], static_cast<uint32_t>(std::strlen(buf)), kMemInvalid) !=
+          SimResult::kOk)
+        return SimResult::kBusError;
       EmitText(buf, task == kTrap15DisplayNullStringCRLF);
       break;
     }
@@ -289,6 +302,9 @@ SimResult M68kSimulator::DispatchTrap15() {
       if (!config_.text_io)
         break;
       ReadStrFromMem(raw, state_.a[1], buf, sizeof(buf));
+      if (memory_.CheckBuffer(state_.a[1], static_cast<uint32_t>(std::strlen(buf)), kMemInvalid) !=
+          SimResult::kOk)
+        return SimResult::kBusError;
       EmitText(buf, false);
       char num[32];
       std::snprintf(num, sizeof(num), "%d", static_cast<int32_t>(state_.d[1]));
@@ -300,6 +316,9 @@ SimResult M68kSimulator::DispatchTrap15() {
       if (!config_.text_io)
         break;
       ReadStrFromMem(raw, state_.a[1], buf, sizeof(buf));
+      if (memory_.CheckBuffer(state_.a[1], static_cast<uint32_t>(std::strlen(buf)), kMemInvalid) !=
+          SimResult::kOk)
+        return SimResult::kBusError;
       EmitText(buf, false);
       long result = 0;
       long size = -1;
@@ -641,6 +660,9 @@ SimResult M68kSimulator::DispatchTrap15() {
       if (!config_.sound_io)
         break;
       ReadStrFromMem(raw, state_.a[1], buf, sizeof(buf));
+      if (memory_.CheckBuffer(state_.a[1], static_cast<uint32_t>(std::strlen(buf)), kMemInvalid) !=
+          SimResult::kOk)
+        return SimResult::kBusError;
       // D0.W is unchanged when the file is not found (simIOu.cpp playSound()).
       auto result = static_cast<short>(state_.d[0]);
       config_.sound_io->PlaySound(buf, &result);
@@ -652,6 +674,9 @@ SimResult M68kSimulator::DispatchTrap15() {
       if (!config_.sound_io)
         break;
       ReadStrFromMem(raw, state_.a[1], buf, sizeof(buf));
+      if (memory_.CheckBuffer(state_.a[1], static_cast<uint32_t>(std::strlen(buf)), kMemInvalid) !=
+          SimResult::kOk)
+        return SimResult::kBusError;
       config_.sound_io->LoadSound(buf, static_cast<int>(static_cast<uint8_t>(state_.d[1])));
       break;
     }
@@ -669,6 +694,9 @@ SimResult M68kSimulator::DispatchTrap15() {
       if (!config_.sound_io)
         break;
       ReadStrFromMem(raw, state_.a[1], buf, sizeof(buf));
+      if (memory_.CheckBuffer(state_.a[1], static_cast<uint32_t>(std::strlen(buf)), kMemInvalid) !=
+          SimResult::kOk)
+        return SimResult::kBusError;
       short result = 0;
       config_.sound_io->PlaySoundMulti(buf, &result);
       state_.d[0] = (state_.d[0] & 0xFFFF0000u) | static_cast<uint16_t>(result);
@@ -679,6 +707,9 @@ SimResult M68kSimulator::DispatchTrap15() {
       if (!config_.sound_io)
         break;
       ReadStrFromMem(raw, state_.a[1], buf, sizeof(buf));
+      if (memory_.CheckBuffer(state_.a[1], static_cast<uint32_t>(std::strlen(buf)), kMemInvalid) !=
+          SimResult::kOk)
+        return SimResult::kBusError;
       short result = 0;
       config_.sound_io->LoadSoundMulti(buf, static_cast<int>(static_cast<uint8_t>(state_.d[1])),
                                        &result);
@@ -828,6 +859,9 @@ SimResult M68kSimulator::DispatchTrap15() {
       if (!config_.graphics_io)
         break;
       ReadStrFromMem(raw, state_.a[1], buf, sizeof(buf));
+      if (memory_.CheckBuffer(state_.a[1], static_cast<uint32_t>(std::strlen(buf)), kMemInvalid) !=
+          SimResult::kOk)
+        return SimResult::kBusError;
       config_.graphics_io->DrawText(buf, static_cast<int16_t>(state_.d[1]),
                                     static_cast<int16_t>(state_.d[2]));
       break;

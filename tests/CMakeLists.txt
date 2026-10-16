@@ -27,6 +27,7 @@ add_executable(easym68k-sim-tests
   sim/execution_logger_test.cc
   sim/observer_test.cc
   sim/address_bus_error_test.cc
+  sim/c_api_test.cc
 )
 target_link_libraries(easym68k-sim-tests PRIVATE easym68k-sim easy68k-sim-trace GTest::gtest_main GTest::gmock)
 target_compile_definitions(easym68k-sim-tests PRIVATE EASY68K_SOURCE_DIR="${CMAKE_SOURCE_DIR}")
