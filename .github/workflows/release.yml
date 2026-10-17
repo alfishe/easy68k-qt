@@ -367,11 +367,22 @@ jobs:
         timeout-minutes: 2
         run: |
           suite=build/packages/easy68k-qt-Suite
+          # macOS has no GNU timeout: run in the background, then the app must
+          # still be alive (killed here) or have exited cleanly (easybin quits
+          # on its own when idle).
           for app in easy68k-simulator easy68k-editor easybin; do
-            rc=0
-            timeout 15 "$suite/$app.app/Contents/MacOS/$app" > /dev/null 2>&1 || rc=$?
-            if [ "$rc" -ne 124 ] && [ "$rc" -ne 0 ]; then
-              echo "::error::$app exited with $rc"; exit 1
+            "$suite/$app.app/Contents/MacOS/$app" > /dev/null 2>&1 &
+            pid=$!
+            sleep 10
+            if kill -0 "$pid" 2>/dev/null; then
+              kill "$pid"
+              wait "$pid" 2>/dev/null || true
+            else
+              wait "$pid"
+              rc=$?
+              if [ "$rc" -ne 0 ]; then
+                echo "::error::$app exited with $rc"; exit 1
+              fi
             fi
           done
           "$suite/easy68k-asm" examples/core/L0-01-hello-simhalt/main.x68

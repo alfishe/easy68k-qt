@@ -166,9 +166,13 @@ TEST_F(SimLogTest, ExecutionAndOutputLogs) {
   s.Rewind();
   log.Stop();
   const QString exec = Read(settings.exec_path);
-  EXPECT_TRUE(exec.startsWith(QStringLiteral("EASy68K execution log file: ")))
+  // The execution log opens in QIODevice::Text mode, so Windows writes CRLF
+  // (the original Delphi app did too); compare content, not line endings.
+  QString exec_n = exec;
+  exec_n.replace(QStringLiteral("\r\n"), QStringLiteral("\n"));
+  EXPECT_TRUE(exec_n.startsWith(QStringLiteral("EASy68K execution log file: ")))
       << exec.toStdString();
-  EXPECT_TRUE(exec.contains(QStringLiteral(
+  EXPECT_TRUE(exec_n.contains(QStringLiteral(
       "\n\n00001000: 72 01 61 00 00 12 43 F9 00 00 10 1A 10 3C 00 0E r-a---C------<--\n"
       "00001010: 4E 4F FF FF FF FF 74 02 4E 75 44 6F 6E 65 00 FF NO----t-NuDone--\n"
       "\nD0=00000000 D4=00000000 A0=00000000 A4=00000000    T_S__INT___XNZVC\n"
@@ -177,8 +181,8 @@ TEST_F(SimLogTest, ExecutionAndOutputLogs) {
       "D3=00000000 D7=00000000 A3=00000000 A7=01000000 SS=01000000\n"
       "PC=00001000  Code=7201")))
       << exec.toStdString();
-  EXPECT_EQ(exec.count(QStringLiteral("PC=")), 1);  // Run is not logged
-  EXPECT_TRUE(exec.endsWith(QStringLiteral("\n***** Reset Program Pressed *****\n")));
+  EXPECT_EQ(exec_n.count(QStringLiteral("PC=")), 1);  // Run is not logged
+  EXPECT_TRUE(exec_n.endsWith(QStringLiteral("\n***** Reset Program Pressed *****\n")));
   const QString output = Read(settings.output_path);
   EXPECT_TRUE(output.startsWith(QStringLiteral("EASy68K output log file: ")));
   EXPECT_TRUE(output.contains(QStringLiteral("\r\n\r\nDone\n***** Reset Program Pressed *****\n")))
