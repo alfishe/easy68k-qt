@@ -112,6 +112,7 @@ QString HelpViewer::DefaultHelpDir() {
         QDir(app_dir).filePath(QStringLiteral("../data/help")),
         QDir(app_dir).filePath(QStringLiteral("../../data/help")),
         QDir(app_dir).filePath(QStringLiteral("../share/easy68k/help")),
+        QDir(app_dir).filePath(QStringLiteral("../Resources/data/help")),
     };
     for (const QString& candidate : candidates) {
       if (QDir(candidate).exists()) {

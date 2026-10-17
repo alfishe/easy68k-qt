@@ -16,9 +16,13 @@ target_link_libraries(easy68k-editor-ui PUBLIC
   Qt6::PrintSupport
 )
 
-qt_add_executable(easy68k-editor
+qt_add_executable(easy68k-editor WIN32 MACOSX_BUNDLE
   main.cc
 )
 target_link_libraries(easy68k-editor PRIVATE
   easy68k-editor-ui
+)
+easy68k_configure_gui_app(TARGET easy68k-editor
+  BUNDLE_NAME "Edit68K"
+  FILE_DESCRIPTION "EASy68K editor and assembler IDE"
 )

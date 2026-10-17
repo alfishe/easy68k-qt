@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Sim68K
+GenericName=68000 Simulator
+Comment=EASy68K Motorola 68000 simulator with Trap #15 I/O
+Icon=easy68k-simulator
+Exec=easy68k-simulator %f
+Terminal=false
+MimeType=text/x-x68k;
+Categories=Development;Education;Emulator;

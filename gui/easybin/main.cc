@@ -4,6 +4,7 @@
 // EASyBIN-Qt: binary file creation and editing utility for EASy68K.
 
 #include <QApplication>
+#include <QIcon>
 
 #include "easybin/mainwindow.h"
 
@@ -11,6 +12,7 @@ int main(int argc, char** argv) {
   QApplication app(argc, argv);
   QApplication::setApplicationName(QStringLiteral("EASyBIN"));
   QApplication::setOrganizationName(QStringLiteral("EASy68K"));
+  QApplication::setWindowIcon(QIcon(QStringLiteral(":/icons/easybin.png")));
   easym68k::easybin::MainWindow window;
   window.show();
   window.ApplyArguments(QApplication::arguments().mid(1));

@@ -9,9 +9,13 @@ target_link_libraries(easy68k-easybin-ui PUBLIC
   Qt6::Widgets
 )
 
-qt_add_executable(easybin
+qt_add_executable(easybin WIN32 MACOSX_BUNDLE
   main.cc
 )
 target_link_libraries(easybin PRIVATE
   easy68k-easybin-ui
+)
+easy68k_configure_gui_app(TARGET easybin
+  BUNDLE_NAME "EASyBIN"
+  FILE_DESCRIPTION "EASy68K binary file editor"
 )

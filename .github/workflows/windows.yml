@@ -1,0 +1,43 @@
+name: Windows CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build-and-test:
+    name: Windows (MSVC)
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install Qt 6
+        uses: jurplel/install-qt-action@v4
+        with:
+          version: '6.7.*'
+          modules: 'qtmultimedia qtserialport'
+
+      - name: Configure CMake
+        run: |
+          cmake -S . -B build \
+            -DBUILD_GUI=ON \
+            -DBUILD_TESTING=ON
+
+      - name: Build all targets
+        run: cmake --build build --config Release --parallel
+
+      - name: Run CTest suite (sim, asm, integration, examples, gui)
+        env:
+          QT_QPA_PLATFORM: offscreen
+        run: ctest --test-dir build -C Release --output-on-failure
+
+      - name: Upload CTest logs on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: windows-msvc-test-logs
+          path: build/Testing/Temporary/

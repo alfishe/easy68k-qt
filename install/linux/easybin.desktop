@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=EASyBIN
+GenericName=Binary File Editor
+Comment=EASy68K binary file creation and editing utility
+Icon=easybin
+Exec=easybin %f
+Terminal=false
+Categories=Development;Education;Utility;

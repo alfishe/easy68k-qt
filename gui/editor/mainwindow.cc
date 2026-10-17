@@ -86,9 +86,7 @@ MainWindow::MainWindow(const QString& settings_path, QWidget* parent)
     QDir().mkpath(cfg_dir);
     settings_path_ = cfg_dir + QStringLiteral("/edit68k.ini");
   }
-#ifdef EASY68K_TEMPLATE_PATH
-  template_path_ = QStringLiteral(EASY68K_TEMPLATE_PATH);
-#endif
+  template_path_ = DefaultTemplatePath();
 
   setWindowTitle(QStringLiteral("Edit68K"));
   resize(900, 680);
@@ -615,12 +613,24 @@ bool MainWindow::LaunchSimulator(const QString& s68_path) {
     return simulator_launcher_(s68_path);
   }
   const QString app_dir = QCoreApplication::applicationDirPath();
-  QString sim_bin = QDir(app_dir).filePath(QStringLiteral("easy68k-simulator"));
-  if (!QFileInfo::exists(sim_bin)) {
-    sim_bin = QDir(app_dir).filePath(QStringLiteral("../simulator/easy68k-simulator"));
-  }
-  if (!QFileInfo::exists(sim_bin)) {
-    sim_bin = QStringLiteral("easy68k-simulator");
+  // Packaged layouts keep the apps side by side (Windows zip root, AppImage
+  // usr/bin); macOS DMGs use sibling bundles. Bare name falls back to PATH.
+  const QStringList candidates = {
+      QDir(app_dir).filePath(QStringLiteral("easy68k-simulator")),
+      QDir(app_dir).filePath(QStringLiteral("easy68k-simulator.exe")),
+      QDir(app_dir).filePath(QStringLiteral("../simulator/easy68k-simulator")),
+      QDir(app_dir).filePath(QStringLiteral("../simulator/easy68k-simulator.exe")),
+      QDir(app_dir).filePath(
+          QStringLiteral("../simulator/easy68k-simulator.app/Contents/MacOS/easy68k-simulator")),
+      QDir(app_dir).filePath(
+          QStringLiteral("../../../easy68k-simulator.app/Contents/MacOS/easy68k-simulator")),
+  };
+  QString sim_bin = QStringLiteral("easy68k-simulator");
+  for (const QString& candidate : candidates) {
+    if (QFileInfo::exists(candidate)) {
+      sim_bin = candidate;
+      break;
+    }
   }
   return QProcess::startDetached(sim_bin, {s68_path});
 }
@@ -648,6 +658,34 @@ void MainWindow::ApplyPreferencesToChild(EditorChild* child) {
   child->SetAutoIndent(prefs_.auto_indent);
   child->SetRealTabs(prefs_.real_tabs);
   child->SetSyntaxTheme(prefs_.theme);
+}
+
+QString MainWindow::DefaultTemplatePath() {
+  const QString env_path = qEnvironmentVariable("EASY68K_TEMPLATE_PATH");
+  if (!env_path.isEmpty() && QFileInfo::exists(env_path)) {
+    return QFileInfo(env_path).absoluteFilePath();
+  }
+
+  if (QCoreApplication::instance() != nullptr) {
+    const QString app_dir = QCoreApplication::applicationDirPath();
+    const QStringList candidates = {
+        QDir(app_dir).filePath(QStringLiteral("data/template.NEW")),
+        QDir(app_dir).filePath(QStringLiteral("../data/template.NEW")),
+        QDir(app_dir).filePath(QStringLiteral("../../data/template.NEW")),
+        QDir(app_dir).filePath(QStringLiteral("../share/easy68k/template.NEW")),
+        QDir(app_dir).filePath(QStringLiteral("../Resources/data/template.NEW")),
+    };
+    for (const QString& candidate : candidates) {
+      if (QFileInfo::exists(candidate)) {
+        return QFileInfo(candidate).absoluteFilePath();
+      }
+    }
+  }
+
+#ifdef EASY68K_TEMPLATE_PATH
+  return QStringLiteral(EASY68K_TEMPLATE_PATH);
+#endif
+  return QString();
 }
 
 QString MainWindow::LoadTemplateText() const {

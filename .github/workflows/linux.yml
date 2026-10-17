@@ -1,0 +1,75 @@
+name: Linux CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build-and-test:
+    name: Linux (${{ matrix.compiler }})
+    runs-on: ubuntu-24.04
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - compiler: gcc
+            cc: gcc
+            cxx: g++
+          - compiler: clang
+            cc: clang
+            cxx: clang++
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            cmake \
+            ninja-build \
+            clang \
+            clang-tidy \
+            llvm \
+            qt6-base-dev \
+            qt6-multimedia-dev \
+            libqt6serialport6-dev
+
+      - name: Configure CMake (GUI + ASan + UBSan)
+        env:
+          CC: ${{ matrix.cc }}
+          CXX: ${{ matrix.cxx }}
+        run: |
+          cmake -S . -B build -G Ninja \
+            -DCMAKE_BUILD_TYPE=Debug \
+            -DBUILD_GUI=ON \
+            -DBUILD_TESTING=ON \
+            -DENABLE_ASAN=ON \
+            -DENABLE_UBSAN=ON
+
+      - name: Build all targets
+        run: cmake --build build
+
+      - name: Run CTest suite (sim, asm, integration, examples, gui)
+        env:
+          QT_QPA_PLATFORM: offscreen
+          ASAN_OPTIONS: detect_leaks=0
+        run: ctest --test-dir build --output-on-failure
+
+      - name: Run clang-tidy on core libraries
+        if: matrix.compiler == 'clang'
+        run: ./tools/clang-tidy.sh build-tidy
+
+      - name: Run code coverage gate on core libraries
+        if: matrix.compiler == 'clang'
+        run: ./tools/coverage.sh build-cov
+
+      - name: Upload CTest logs on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: linux-${{ matrix.compiler }}-test-logs
+          path: build/Testing/Temporary/

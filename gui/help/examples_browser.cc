@@ -194,6 +194,7 @@ QString ExamplesCatalog::DefaultExamplesDir() {
         QDir(app_dir).filePath(QStringLiteral("../examples")),
         QDir(app_dir).filePath(QStringLiteral("../../examples")),
         QDir(app_dir).filePath(QStringLiteral("../share/easy68k/examples")),
+        QDir(app_dir).filePath(QStringLiteral("../Resources/data/examples")),
     };
     for (const QString& candidate : candidates) {
       if (QFileInfo::exists(QDir(candidate).filePath(QStringLiteral("README.md")))) {

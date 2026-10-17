@@ -65,6 +65,8 @@ ubsan.*
 *.zip
 *.deb
 *.rpm
+*.dmg
+*.AppImage
 
 # Golden simulation output (Trap #15 text) is test data
 !data/golden/sim/programs/*.out

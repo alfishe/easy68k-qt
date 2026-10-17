@@ -386,5 +386,45 @@ TEST(EditorTest, SettingsRoundTripPersistsPreferences) {
   EXPECT_EQ(win2.preferences().theme.preset, SyntaxTheme::kColor2);
 }
 
+TEST(EditorTest, TemplatePathPrefersEnvVarThenFallsBackToRealPath) {
+  QTemporaryDir temp_dir;
+  ASSERT_TRUE(temp_dir.isValid());
+
+  const QString env_file = temp_dir.filePath(QStringLiteral("template.NEW"));
+  {
+    QFile file(env_file);
+    ASSERT_TRUE(file.open(QIODevice::WriteOnly));
+    file.write("* template\n");
+  }
+
+  qputenv("EASY68K_TEMPLATE_PATH", env_file.toUtf8());
+  EXPECT_EQ(MainWindow::DefaultTemplatePath(), QFileInfo(env_file).absoluteFilePath());
+
+  // A non-existent env value is ignored instead of winning the probe.
+  qputenv("EASY68K_TEMPLATE_PATH", temp_dir.filePath(QStringLiteral("missing.NEW")).toUtf8());
+  const QString fallback = MainWindow::DefaultTemplatePath();
+  EXPECT_TRUE(fallback.isEmpty() || QFileInfo::exists(fallback));
+
+  qunsetenv("EASY68K_TEMPLATE_PATH");
+}
+
+TEST(EditorTest, MainWindowConstructorAdoptsProbedTemplatePath) {
+  QTemporaryDir temp_dir;
+  ASSERT_TRUE(temp_dir.isValid());
+
+  const QString env_file = temp_dir.filePath(QStringLiteral("template.NEW"));
+  {
+    QFile file(env_file);
+    ASSERT_TRUE(file.open(QIODevice::WriteOnly));
+    file.write("* template\n");
+  }
+  qputenv("EASY68K_TEMPLATE_PATH", env_file.toUtf8());
+
+  MainWindow win(temp_dir.filePath(QStringLiteral("edit68k.ini")));
+  EXPECT_EQ(win.template_file_path(), QFileInfo(env_file).absoluteFilePath());
+
+  qunsetenv("EASY68K_TEMPLATE_PATH");
+}
+
 }  // namespace
 }  // namespace easym68k::editor

@@ -70,6 +70,7 @@ class MainWindow : public QMainWindow {
   QString settings_file_path() const { return settings_path_; }
 
   // Template management
+  static QString DefaultTemplatePath();
   QString LoadTemplateText() const;
   bool SaveTemplateText(const QString& text);
   void SetTemplateFilePath(const QString& path) { template_path_ = path; }

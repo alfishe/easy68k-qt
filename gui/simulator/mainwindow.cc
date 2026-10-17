@@ -1170,7 +1170,9 @@ QString MainWindow::ResolveEasyBinExecutable() {
   for (const QString& rel :
        {QStringLiteral("easybin"), QStringLiteral("easybin.exe"),
         QStringLiteral("../easybin/easybin"), QStringLiteral("../easybin/easybin.exe"),
-        QStringLiteral("../gui/easybin/easybin"), QStringLiteral("../gui/easybin/easybin.exe")}) {
+        QStringLiteral("../gui/easybin/easybin"), QStringLiteral("../gui/easybin/easybin.exe"),
+        QStringLiteral("../gui/easybin/easybin.app/Contents/MacOS/easybin"),
+        QStringLiteral("../../../easybin.app/Contents/MacOS/easybin")}) {
     const QFileInfo candidate(app_dir.filePath(rel));
     if (candidate.exists() && candidate.isExecutable()) {
       return candidate.canonicalFilePath();

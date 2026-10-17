@@ -3,6 +3,7 @@
 
 #include <QApplication>
 #include <QFileInfo>
+#include <QIcon>
 
 #include "editor/mainwindow.h"
 
@@ -10,6 +11,7 @@ int main(int argc, char* argv[]) {
   QApplication app(argc, argv);
   QApplication::setApplicationName(QStringLiteral("Edit68K"));
   QApplication::setOrganizationName(QStringLiteral("EASy68K"));
+  QApplication::setWindowIcon(QIcon(QStringLiteral(":/icons/easy68k-editor.png")));
 
   easym68k::editor::MainWindow window;
   bool opened_any = false;

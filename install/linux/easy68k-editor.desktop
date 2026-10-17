@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Edit68K
+GenericName=68000 Assembler IDE
+Comment=EASy68K editor and integrated 68000 assembler
+Icon=easy68k-editor
+Exec=easy68k-editor %f
+Terminal=false
+MimeType=text/x-x68k;
+Categories=Development;Education;

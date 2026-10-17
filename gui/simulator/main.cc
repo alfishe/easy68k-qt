@@ -4,6 +4,7 @@
 // Sim68K-Qt: the EASy68K 68000 simulator.
 
 #include <QApplication>
+#include <QIcon>
 
 #include "mainwindow.h"
 
@@ -11,6 +12,7 @@ int main(int argc, char** argv) {
   QApplication app(argc, argv);
   QApplication::setApplicationName(QStringLiteral("Sim68K"));
   QApplication::setOrganizationName(QStringLiteral("EASy68K"));
+  QApplication::setWindowIcon(QIcon(QStringLiteral(":/icons/easy68k-simulator.png")));
   easym68k::gui::MainWindow window;
   window.show();
   window.ApplyArguments(QApplication::arguments().mid(1));
