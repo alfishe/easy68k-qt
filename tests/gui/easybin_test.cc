@@ -267,7 +267,8 @@ TEST(EasyBinTest, Sim68KViewMenuLaunchesEasyBin) {
   EXPECT_TRUE(sim_win.ViewEasyBinAction()->isEnabled());
   sim_win.ViewEasyBinAction()->trigger();
   EXPECT_FALSE(launched_path.isEmpty());
-  EXPECT_TRUE(launched_path.endsWith(QStringLiteral("easybin")));
+  EXPECT_TRUE(launched_path.endsWith(QStringLiteral("easybin")) ||
+              launched_path.endsWith(QStringLiteral("easybin.exe")));
 }
 
 }  // namespace
