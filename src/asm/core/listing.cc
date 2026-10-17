@@ -94,7 +94,7 @@ int AsmCore::initList()
     return NORMAL;
   }
   catch( ... ) {
-    sprintf(buffer, "ERROR: An exception occurred in routine 'initList'. \n");
+    snprintf(buffer, sizeof(buffer), "ERROR: An exception occurred in routine 'initList'. \n");
     printError(NULL, EXCEPTION, 0);
     return MILD_ERROR;
   }
@@ -141,13 +141,13 @@ int AsmCore::listLine(const char text[], const char lineIdent[])   // ck 4-2006 
       putc('\n', listFile);
 
     if (ferror(listFile)) {
-      sprintf(buffer,"Error writing to listing file\n");
+      snprintf(buffer, sizeof(buffer), "Error writing to listing file\n");
       return MILD_ERROR;
     }
     lineNumL68++;
   }
   catch( ... ) {
-    sprintf(buffer, "ERROR: An exception occurred in routine 'listLine'. \n");
+    snprintf(buffer, sizeof(buffer), "ERROR: An exception occurred in routine 'listLine'. \n");
     printError(NULL, EXCEPTION, 0);
     return MILD_ERROR;
   }
@@ -159,9 +159,9 @@ int AsmCore::listLine(const char text[], const char lineIdent[])   // ck 4-2006 
 int AsmCore::listLoc()
 {
   if (offsetMode || showEqual)
-    sprintf(listData, "%08lX= ", loc);
+    snprintf(listData, sizeof(listData), "%08lX= ", loc);
   else
-    sprintf(listData, "%08lX  ", loc);
+    snprintf(listData, sizeof(listData), "%08lX  ", loc);
   listPtr = listData + 10;
 
   return NORMAL;
@@ -172,9 +172,9 @@ int AsmCore::listLoc()
 int AsmCore::listCond(bool cond)
 {
   if (cond)
-    sprintf(listPtr,"               %s ","FALSE");
+    snprintf(listPtr, sizeof(listData) - (listPtr - listData), "               %s ","FALSE");
   else
-    sprintf(listPtr,"               %s ","TRUE");
+    snprintf(listPtr, sizeof(listData) - (listPtr - listData), "               %s ","TRUE");
 
   return NORMAL;
 }
@@ -213,16 +213,16 @@ int AsmCore::listObj(int data, int size)
     continuation = true;
   }
   switch (size) {
-    case BYTE_SIZE: sprintf(listPtr, "%02X ", data & 0xFF);
+    case BYTE_SIZE: snprintf(listPtr, sizeof(listData) - (listPtr - listData), "%02X ", data & 0xFF);
       listPtr += 3;
       break;
-    case WORD_SIZE: sprintf(listPtr, "%04X ", data & 0xFFFF);
+    case WORD_SIZE: snprintf(listPtr, sizeof(listData) - (listPtr - listData), "%04X ", data & 0xFFFF);
       listPtr += 5;
       break;
-    case LONG_SIZE: sprintf(listPtr, "%08lX ", data);
+    case LONG_SIZE: snprintf(listPtr, sizeof(listData) - (listPtr - listData), "%08lX ", data);
       listPtr += 9;
       break;
-    default: sprintf(buffer,"LISTOBJ: INVALID SIZE CODE!\n");
+    default: snprintf(buffer, sizeof(buffer), "LISTOBJ: INVALID SIZE CODE!\n");
       return MILD_ERROR;
   }
 
@@ -263,7 +263,7 @@ int AsmCore::finishList()
     return NORMAL;
   }
   catch( ... ) {
-    sprintf(buffer, "ERROR: An exception occurred in routine 'finishList'. \n");
+    snprintf(buffer, sizeof(buffer), "ERROR: An exception occurred in routine 'finishList'. \n");
     printError(NULL, EXCEPTION, 0);
     return MILD_ERROR;
   }

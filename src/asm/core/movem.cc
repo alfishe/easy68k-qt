@@ -196,7 +196,7 @@ int AsmCore::movem(int	size, char *label, char *op, int *errorPtr)
   }
   catch( ... ) {
     NEWERROR(*errorPtr, EXCEPTION);
-    sprintf(buffer, "ERROR: An exception occurred in routine 'movem'. \n");
+    snprintf(buffer, sizeof(buffer), "ERROR: An exception occurred in routine 'movem'. \n");
     return NULL;
   }
 
@@ -234,7 +234,7 @@ int AsmCore::reg(int size, char *label, char *op, int *errorPtr)
   }
   catch( ... ) {
     NEWERROR(*errorPtr, EXCEPTION);
-    sprintf(buffer, "ERROR: An exception occurred in routine 'reg'. \n");
+    snprintf(buffer, sizeof(buffer), "ERROR: An exception occurred in routine 'reg'. \n");
     return NULL;
   }
 
@@ -366,7 +366,7 @@ char *AsmCore::evalList(char *p, unsigned short *listPtr, int *errorPtr)
   }
   catch( ... ) {
     NEWERROR(*errorPtr, EXCEPTION);
-    sprintf(buffer, "ERROR: An exception occurred in routine 'evalList'. \n");
+    snprintf(buffer, sizeof(buffer), "ERROR: An exception occurred in routine 'evalList'. \n");
     return NULL;
   }
 

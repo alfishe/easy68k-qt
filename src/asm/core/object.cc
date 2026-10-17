@@ -170,13 +170,13 @@ int AsmCore::outputObj(int newAddr, int data, int size)
     // If no S-record is already being assembled, then start making one
     if (!lineFlag) {
       if ((newAddr & 0xFFFF) == newAddr) {
-	sprintf(sRecord, "S1  %04X", newAddr);
+	snprintf(sRecord, sizeof(sRecord), "S1  %04X", newAddr);
 	byteCount = 3;
       }	else if ((newAddr & 0xFFFFFF) == newAddr) {
-	sprintf(sRecord, "S2  %06X", newAddr);
+	snprintf(sRecord, sizeof(sRecord), "S2  %06X", newAddr);
 	byteCount = 4;
       }	else {
-	sprintf(sRecord, "S3  %08lX", newAddr);
+	snprintf(sRecord, sizeof(sRecord), "S3  %08lX", newAddr);
 	byteCount = 5;
       }
       objPtr = sRecord + 4 + (byteCount-1)*2;
@@ -188,27 +188,27 @@ int AsmCore::outputObj(int newAddr, int data, int size)
     switch (size) {
       case BYTE_SIZE :
         data &= 0xFF;
-	sprintf(objPtr, "%02X", data);
+	snprintf(objPtr, sizeof(sRecord) - (objPtr - sRecord), "%02X", data);
 	byteCount++;
 	break;
       case WORD_SIZE :
         data &= 0xFFFF;
-	sprintf(objPtr, "%04X", data);
+	snprintf(objPtr, sizeof(sRecord) - (objPtr - sRecord), "%04X", data);
 	byteCount += 2;
 	break;
       case LONG_SIZE :
-        sprintf(objPtr, "%08lX", data);
+        snprintf(objPtr, sizeof(sRecord) - (objPtr - sRecord), "%08lX", data);
 	byteCount += 4;
 	break;
       default :
-        sprintf(buffer,"outputObj: INVALID SIZE CODE!\n");
+        snprintf(buffer, sizeof(buffer), "outputObj: INVALID SIZE CODE!\n");
 	return MILD_ERROR;
     }
     objPtr += size*2;
     objAddr += (int) size;
   }
   catch( ... ) {
-    sprintf(buffer, "ERROR: An exception occurred in routine 'initObj'. \n");
+    snprintf(buffer, sizeof(buffer), "ERROR: An exception occurred in routine 'initObj'. \n");
     printError(NULL, EXCEPTION, 0);
     return MILD_ERROR;
   }
@@ -223,7 +223,7 @@ int AsmCore::writeObj()
 
   try {
     // Fill in the record length (including the checksum in the record length
-    sprintf(recLen, "%02X", byteCount);
+    snprintf(recLen, sizeof(recLen), "%02X", byteCount);
     sRec += 2;          // point to byte count location
     memcpy(sRec, recLen, 2);  // port: two digits, no terminator (was strncpy)
 
@@ -234,13 +234,13 @@ int AsmCore::writeObj()
       sRec += 2;
       checksum += (char) (std::strtol(pair, nullptr, 16) & 0xFF);
     }
-    sprintf(sRec, "%02X\n", (~checksum & 0xFF)); // put checksum in sRecord
+    snprintf(sRec, sizeof(sRecord) - (sRec - sRecord), "%02X\n", (~checksum & 0xFF)); // put checksum in sRecord
 
     // Output the S-record to the object file
     fputs(sRecord, objFile);
   }
   catch( ... ) {
-    sprintf(buffer, "ERROR: An exception occurred in routine 'writeObj'. \n");
+    snprintf(buffer, sizeof(buffer), "ERROR: An exception occurred in routine 'writeObj'. \n");
     printError(NULL, EXCEPTION, 0);
     return MILD_ERROR;
   }
@@ -259,31 +259,31 @@ int AsmCore::writeMap(const char* name, int start, int end)
   char data[8];  // the original's data[6] is one byte short for "%06X"
 
   try {
-    sprintf(sRecord, "S0  %04X", 0);
+    snprintf(sRecord, sizeof(sRecord), "S0  %04X", 0);
     byteCount = 3;
     objPtr = sRecord + 4 + (byteCount-1)*2;
 
-    sprintf(objPtr, "%s", name);
+    snprintf(objPtr, sizeof(sRecord) - (objPtr - sRecord), "%s", name);
     objPtr += 20;
     byteCount += 10;
-    sprintf(data,"%06X", start);
+    snprintf(data, sizeof(data), "%06X", start);
     for (int i=0; i<6; i++) {
-      sprintf(objPtr, "%02X", data[i]);
+      snprintf(objPtr, sizeof(sRecord) - (objPtr - sRecord), "%02X", data[i]);
       objPtr += 2;
     }
     byteCount += 6;
-    sprintf(objPtr, "2C");                    // ","
+    snprintf(objPtr, sizeof(sRecord) - (objPtr - sRecord), "2C");                    // ","
     objPtr += 2;
     byteCount += 1;
-    sprintf(data, "%06X", end);
+    snprintf(data, sizeof(data), "%06X", end);
     for (int i=0; i<6; i++) {
-      sprintf(objPtr, "%02X", data[i]);
+      snprintf(objPtr, sizeof(sRecord) - (objPtr - sRecord), "%02X", data[i]);
       objPtr += 2;
     }
     byteCount += 6;
   }
   catch( ... ) {
-    sprintf(buffer, "ERROR: An exception occurred in routine 'writeMap'. \n");
+    snprintf(buffer, sizeof(buffer), "ERROR: An exception occurred in routine 'writeMap'. \n");
     printError(NULL, EXCEPTION, 0);
     return MILD_ERROR;
   }
@@ -321,14 +321,14 @@ int AsmCore::finishObj()
     // Write out a S8 record and close the file
     // S8 Record. The address field contains a 3-byte starting execution address.
     // There is no data field.
-    sprintf(sRecord, "S8  %06X", startAddress);
+    snprintf(sRecord, sizeof(sRecord), "S8  %06X", startAddress);
     byteCount = 4;
     objPtr = sRecord + 4 + (byteCount-1)*2;
     writeObj();
 
   }
   catch( ... ) {
-    sprintf(buffer, "ERROR: An exception occurred in routine 'finishObj'. \n");
+    snprintf(buffer, sizeof(buffer), "ERROR: An exception occurred in routine 'finishObj'. \n");
     printError(NULL, EXCEPTION, 0);
     return MILD_ERROR;
   }

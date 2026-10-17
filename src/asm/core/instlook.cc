@@ -194,7 +194,7 @@ char *AsmCore::instLookup(char *p, const instruction **instPtrPtr, char *sizePtr
   }
   catch( ... ) {
     NEWERROR(*errorPtr, EXCEPTION);
-    sprintf(buffer, "ERROR: An exception occurred in routine 'instLookup'. \n");
+    snprintf(buffer, sizeof(buffer), "ERROR: An exception occurred in routine 'instLookup'. \n");
     return NULL;
   }
   //return NORMAL;

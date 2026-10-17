@@ -116,7 +116,7 @@ int AsmCore::effAddr(opDescriptor *operand)
   if (operand->mode == IMMEDIATE)
     return 0x3C;
 
-  sprintf(buffer,"INVALID EFFECTIVE ADDRESSING MODE!\n");
+  snprintf(buffer, sizeof(buffer), "INVALID EFFECTIVE ADDRESSING MODE!\n");
   // The original shows a message box and exits; the flavor lists never
   // pass such a mode here.
 
@@ -199,7 +199,7 @@ int AsmCore::extWords(opDescriptor *op, int size, int *errorPtr)
       loc += 4;
     }
   } else {
-    sprintf(buffer,"INVALID EFFECTIVE ADDRESSING MODE!\n");
+    snprintf(buffer, sizeof(buffer), "INVALID EFFECTIVE ADDRESSING MODE!\n");
 
    return MILD_ERROR;
   }

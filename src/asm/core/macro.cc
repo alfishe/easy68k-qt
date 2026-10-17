@@ -310,7 +310,7 @@ int AsmCore::asmMacro(int size, char *label, char *arg, int *errorPtr)
             // if NARG opcode
             //} else if( !(stricmp(token[1], "NARG")) ) {
             } else if( !(strnicmp(capL, "NARG", 4)) && !(isalnum(*(capL+4))) ) {            
-              sprintf(macL,"%d",argN);
+              snprintf(macL, sizeof(macLine) - (macL - macLine),"%d",argN);
               if (argN > 9)
                 macL++;
               macL++;

@@ -176,7 +176,7 @@ int AsmCore::strcap(char *d, char *s)
 	*d = '\0';
   }
   catch( ... ) {
-    sprintf(buffer, "ERROR: An exception occurred in routine 'strcap'. \n");
+    snprintf(buffer, sizeof(buffer), "ERROR: An exception occurred in routine 'strcap'. \n");
     printError(NULL, EXCEPTION, 0);
     return NULL;
   }
@@ -193,7 +193,7 @@ char *AsmCore::skipSpace(char *p)
 	return p;
   }
   catch( ... ) {
-    sprintf(buffer, "ERROR: An exception occurred in routine 'skipSpace'. \n");
+    snprintf(buffer, sizeof(buffer), "ERROR: An exception occurred in routine 'skipSpace'. \n");
     printError(NULL, EXCEPTION, 0);
     return NULL;
   }
@@ -270,7 +270,7 @@ int AsmCore::processFile()
     }
   }
   catch( ... ) {
-    sprintf(buffer, "ERROR: An exception occurred in routine 'processFile'. \n");
+    snprintf(buffer, sizeof(buffer), "ERROR: An exception occurred in routine 'processFile'. \n");
     printError(NULL, EXCEPTION, 0);
     return NULL;
   }
@@ -493,7 +493,7 @@ int AsmCore::assemble(char *line, int *errorPtr)
   }
   catch( ... ) {
     NEWERROR(*errorPtr, EXCEPTION);
-    sprintf(buffer, "ERROR: An exception occurred in routine 'assemble'. \n");
+    snprintf(buffer, sizeof(buffer), "ERROR: An exception occurred in routine 'assemble'. \n");
     return NULL;
   }
 
