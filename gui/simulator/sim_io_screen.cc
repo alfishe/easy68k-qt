@@ -317,10 +317,13 @@ void SimIoScreen::CharOutLocked(char ch) {
 }
 
 // VCL TCanvas.TextOut: opaque background in the fill colour; the pen moves
-// to the end of the text.
+// to the end of the text. GDI text is aliased, and antialiasing would blend
+// the glyph into the fill colour (no exact font-colour pixel remains).
 void SimIoScreen::DrawGlyphsLocked(const QString& text, int x, int y) {
   QPainter p(&back_);
-  p.setFont(font_);
+  QFont font = font_;
+  font.setStyleStrategy(QFont::NoAntialias);
+  p.setFont(font);
   const int w = p.fontMetrics().horizontalAdvance(text);
   p.fillRect(QRect(x, y, w, row_height_), QColor(ToRgb(brush_color_)));
   p.setPen(QColor(ToRgb(font_color_)));

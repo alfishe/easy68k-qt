@@ -140,6 +140,9 @@ if(UNIX AND NOT APPLE)
   set(_linux_cmds
     COMMAND ${CMAKE_COMMAND} -E make_directory "${CMAKE_BINARY_DIR}/packages"
     COMMAND ${CMAKE_COMMAND} -E rm -rf "${EASY68K_SUITE_STAGING}"
+    COMMAND ${CMAKE_COMMAND} -E make_directory "${EASY68K_SUITE_STAGING}/bin"
+    COMMAND ${CMAKE_COMMAND} -E make_directory "${EASY68K_SUITE_STAGING}/share/easy68k"
+    COMMAND ${CMAKE_COMMAND} -E make_directory "${EASY68K_SUITE_STAGING}/share/applications"
   )
   foreach(_target IN LISTS EASY68K_SUITE_DEPS)
     list(APPEND _linux_cmds

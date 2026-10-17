@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 3.16)
-include(cmake/MacOSDeploymentTarget.cmake)
 project(easym68k VERSION 1.0.0 LANGUAGES CXX)
+
+# After project(): APPLE is defined, so the module can act on it.
+include(cmake/MacOSDeploymentTarget.cmake)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)

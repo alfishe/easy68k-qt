@@ -1,4 +1,5 @@
-# Minimum macOS version for all Apple builds. Must be included BEFORE project().
+# Minimum macOS version for all Apple builds. Include AFTER project(): APPLE
+# is only defined once the system is known.
 #
 # CMake defaults CMAKE_OSX_DEPLOYMENT_TARGET to the HOST OS version, so binaries
 # built on a newer GitHub runner would refuse to run on older macOS. Qt 6.9
