@@ -129,7 +129,7 @@ TEST(RegisterWidgetTest, EditedRegisterIsUsedByTheNextStep) {
   ASSERT_TRUE(r.success);
   const QString path = dir.filePath(QStringLiteral("reg.S68"));
   QFile f(path);
-  f.open(QIODevice::WriteOnly);
+  ASSERT_TRUE(f.open(QIODevice::WriteOnly));
   f.write(r.srecord.c_str());
   f.close();
 

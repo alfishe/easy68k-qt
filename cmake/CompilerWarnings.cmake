@@ -5,6 +5,12 @@ if(CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
   if(EASY68K_WARNINGS_AS_ERRORS)
     add_compile_options(-Werror)
   endif()
+  if(CMAKE_CXX_COMPILER_ID MATCHES "AppleClang")
+    # The Apple SDK unconditionally deprecates sprintf() in C++ mode and the
+    # ported assembler core uses it pervasively (mirrors _CRT_SECURE_NO_WARNINGS
+    # below). Warnings stay visible; they just stop failing the build.
+    add_compile_options(-Wno-error=deprecated-declarations)
+  endif()
   if(ENABLE_ASAN)
     add_compile_options(-fsanitize=address -fno-omit-frame-pointer)
     add_link_options(-fsanitize=address)

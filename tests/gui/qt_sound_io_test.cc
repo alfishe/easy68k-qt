@@ -57,7 +57,7 @@ class QtSoundIOTest : public ::testing::Test {
   QtSoundIOTest() {
     wav_ = dir_.filePath(QStringLiteral("beep.wav"));
     QFile f(wav_);
-    f.open(QIODevice::WriteOnly);
+    EXPECT_TRUE(f.open(QIODevice::WriteOnly));
     f.write("RIFF....WAVE");
   }
 

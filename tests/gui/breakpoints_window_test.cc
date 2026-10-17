@@ -64,10 +64,10 @@ class BreakpointsWindowTest : public ::testing::Test {
     EXPECT_TRUE(r.success) << (r.errors.empty() ? "" : r.errors[0].message);
     const QString base = dir_.filePath(name);
     QFile s68(base + QStringLiteral(".S68"));
-    s68.open(QIODevice::WriteOnly);
+    EXPECT_TRUE(s68.open(QIODevice::WriteOnly));
     s68.write(r.srecord.c_str());
     QFile l68(base + QStringLiteral(".L68"));
-    l68.open(QIODevice::WriteOnly);
+    EXPECT_TRUE(l68.open(QIODevice::WriteOnly));
     l68.write(assembler.GetListing().c_str());
     return base + QStringLiteral(".S68");
   }
