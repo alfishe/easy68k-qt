@@ -684,8 +684,9 @@ QString MainWindow::DefaultTemplatePath() {
 
 #ifdef EASY68K_TEMPLATE_PATH
   return QStringLiteral(EASY68K_TEMPLATE_PATH);
-#endif
+#else
   return QString();
+#endif
 }
 
 QString MainWindow::LoadTemplateText() const {
