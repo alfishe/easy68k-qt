@@ -16,7 +16,7 @@ target_link_libraries(easy68k-editor-ui PUBLIC
   Qt6::PrintSupport
 )
 
-qt_add_executable(easy68k-editor WIN32 MACOSX_BUNDLE
+qt_add_executable(easy68k-editor WIN32
   main.cc
 )
 target_link_libraries(easy68k-editor PRIVATE

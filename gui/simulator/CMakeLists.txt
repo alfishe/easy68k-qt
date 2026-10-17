@@ -49,7 +49,7 @@ qt_add_resources(easy68k-simulator-ui hardware_glyphs
   FILES resources/switch.png resources/push_button.png resources/irq_button.png
 )
 
-qt_add_executable(easy68k-simulator WIN32 MACOSX_BUNDLE main.cc)
+qt_add_executable(easy68k-simulator WIN32 main.cc)
 target_link_libraries(easy68k-simulator PRIVATE easy68k-simulator-ui)
 easy68k_configure_gui_app(TARGET easy68k-simulator
   BUNDLE_NAME "Sim68K"

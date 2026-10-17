@@ -9,7 +9,7 @@ target_link_libraries(easy68k-easybin-ui PUBLIC
   Qt6::Widgets
 )
 
-qt_add_executable(easybin WIN32 MACOSX_BUNDLE
+qt_add_executable(easybin WIN32
   main.cc
 )
 target_link_libraries(easybin PRIVATE

@@ -12,16 +12,22 @@ function(easy68k_configure_gui_app)
   cmake_parse_arguments(ARG "" "${oneValueArgs}" "" ${ARGN})
 
   set(app ${ARG_TARGET})
-  set_target_properties(${app} PROPERTIES
-    MACOSX_BUNDLE_INFO_PLIST "${CMAKE_SOURCE_DIR}/install/macos/Info.plist"
-    MACOSX_BUNDLE_BUNDLE_NAME "${ARG_BUNDLE_NAME}"
-    MACOSX_BUNDLE_GUI_IDENTIFIER "org.easy68k.${app}"
-    MACOSX_BUNDLE_ICON_FILE "${app}.icns"
-    MACOSX_BUNDLE_LONG_VERSION_STRING "${ARG_BUNDLE_NAME} ${PROJECT_VERSION}"
-    MACOSX_BUNDLE_BUNDLE_VERSION "${PROJECT_VERSION}"
-    MACOSX_BUNDLE_SHORT_VERSION_STRING "${PROJECT_VERSION}"
-    MACOSX_BUNDLE_INFO_STRING "${ARG_BUNDLE_NAME} ${PROJECT_VERSION}"
-    MACOSX_BUNDLE_COPYRIGHT "Copyright EASy68K Contributors")
+  # MACOSX_BUNDLE only on Apple: with the property set, install(TARGETS)
+  # picks the BUNDLE clause even on Linux, so the GUI apps would never land
+  # in bin/ (and the DEB would ship without them).
+  if(APPLE)
+    set_target_properties(${app} PROPERTIES
+      MACOSX_BUNDLE TRUE
+      MACOSX_BUNDLE_INFO_PLIST "${CMAKE_SOURCE_DIR}/install/macos/Info.plist"
+      MACOSX_BUNDLE_BUNDLE_NAME "${ARG_BUNDLE_NAME}"
+      MACOSX_BUNDLE_GUI_IDENTIFIER "org.easy68k.${app}"
+      MACOSX_BUNDLE_ICON_FILE "${app}.icns"
+      MACOSX_BUNDLE_LONG_VERSION_STRING "${ARG_BUNDLE_NAME} ${PROJECT_VERSION}"
+      MACOSX_BUNDLE_BUNDLE_VERSION "${PROJECT_VERSION}"
+      MACOSX_BUNDLE_SHORT_VERSION_STRING "${PROJECT_VERSION}"
+      MACOSX_BUNDLE_INFO_STRING "${ARG_BUNDLE_NAME} ${PROJECT_VERSION}"
+      MACOSX_BUNDLE_COPYRIGHT "Copyright EASy68K Contributors")
+  endif()
 
   if(APPLE)
     set(_icns "${CMAKE_SOURCE_DIR}/install/macos/${app}.icns")

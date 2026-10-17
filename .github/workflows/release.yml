@@ -183,13 +183,15 @@ jobs:
         run: |
           apt-get update
           apt-get install -y --no-install-recommends ./packages/*.deb file
+          # What is actually inside? (fails loudly if the GUI apps are missing)
+          dpkg -L easy68k-qt
+          test -x /usr/bin/easy68k-simulator
+          test -x /usr/bin/easy68k-editor
+          test -x /usr/bin/easybin
           # The deb rides on the distro Qt: Depends must have been computed.
           deps=$(dpkg-deb -f packages/*.deb Depends)
           echo "Depends: $deps"
           case "$deps" in *libqt6gui6*) ;; *) echo "expected libqt6 runtime deps" >&2; exit 1;; esac
-          test -x /usr/bin/easy68k-simulator
-          test -x /usr/bin/easy68k-editor
-          test -x /usr/bin/easybin
           test -f /usr/share/applications/easy68k-simulator.desktop
           test -f /usr/share/icons/hicolor/256x256/apps/easy68k-simulator.png
           test -f /usr/share/easy68k/help/main.htm
