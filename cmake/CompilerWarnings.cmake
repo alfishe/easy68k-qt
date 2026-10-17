@@ -25,6 +25,10 @@ elseif(CMAKE_CXX_COMPILER_ID MATCHES "MSVC")
   if(EASY68K_WARNINGS_AS_ERRORS)
     add_compile_options(/WX)
   endif()
+  # The assembler recurses one frame cycle per macro nesting level and the
+  # original allows 256 levels (the diagnostics corpus listing encodes them);
+  # Debug frames need ~17 KB each, far beyond the default 1 MB stack.
+  add_link_options(/STACK:33554432)
 endif()
 
 # Source-based coverage (Task 12.2): tools/coverage.sh builds with this.
